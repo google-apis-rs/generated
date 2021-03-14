@@ -1,6 +1,6 @@
 [package]
 name = "google-logging2-cli"
-version = "0.1.0-20200501"
+version = "0.1.0-20210308"
 authors = ["Sebastian Thiel <byronimo@gmail.com>"]
 edition = "2018"
 # for now, let's not even accidentally publish these
@@ -20,4 +20,4 @@ google_cli_shared = { git = "https://github.com/google-apis-rs/generator", versi
 default-boxed = "0.1.6"
 [dependencies.google-logging2]
 path = "../lib"
-version = "0.1.0-20200501"
+version = "0.1.0-20210308"

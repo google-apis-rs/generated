@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("libraryagent1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200512")
+            .version("0.1.0-20210312")
             .about("A simple Google Example Library API.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -42,14 +42,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             shelves0 = shelves0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists shelves. The order is unspecified but deterministic. Newly created\nshelves will not necessarily be added to the end of this list.");
+            let mcmd = SubCommand::with_name("list").about("Lists shelves. The order is unspecified but deterministic. Newly created shelves will not necessarily be added to the end of this list.");
             shelves0 = shelves0.subcommand(mcmd);
         }
         let mut books1 = SubCommand::with_name("books")
             .setting(AppSettings::ColoredHelp)
             .about("methods: borrow, get, list and r#return");
         {
-            let mcmd = SubCommand::with_name("borrow").about("Borrow a book from the library. Returns the book if it is borrowed\nsuccessfully. Returns NOT_FOUND if the book does not exist in the library.\nReturns quota exceeded error if the amount of books borrowed exceeds\nallocation quota in any dimensions.");
+            let mcmd = SubCommand::with_name("borrow").about("Borrow a book from the library. Returns the book if it is borrowed successfully. Returns NOT_FOUND if the book does not exist in the library. Returns quota exceeded error if the amount of books borrowed exceeds allocation quota in any dimensions.");
             books1 = books1.subcommand(mcmd);
         }
         {
@@ -58,11 +58,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             books1 = books1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists books in a shelf. The order is unspecified but deterministic. Newly\ncreated books will not necessarily be added to the end of this list.\nReturns NOT_FOUND if the shelf does not exist.");
+            let mcmd = SubCommand::with_name("list").about("Lists books in a shelf. The order is unspecified but deterministic. Newly created books will not necessarily be added to the end of this list. Returns NOT_FOUND if the shelf does not exist.");
             books1 = books1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("r#return").about("Return a book to the library. Returns the book if it is returned to the\nlibrary successfully.\nReturns error if the book does not belong to the library\nor the users didn\'t borrow before.");
+            let mcmd = SubCommand::with_name("r#return").about("Return a book to the library. Returns the book if it is returned to the library successfully. Returns error if the book does not belong to the library or the users didn\'t borrow before.");
             books1 = books1.subcommand(mcmd);
         }
         shelves0 = shelves0.subcommand(books1);

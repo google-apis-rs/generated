@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("jobs3_p1beta1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200505")
-            .about("Cloud Talent Solution provides the capability to create, read, update, and delete job postings, as well as search jobs based on keywords and filters.\n")
+            .version("0.1.0-20210309")
+            .about("Cloud Talent Solution provides the capability to create, read, update, and delete job postings, as well as search jobs based on keywords and filters. ")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -37,14 +37,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: complete");
         {
-            let mcmd = SubCommand::with_name("complete").about("Completes the specified prefix with keyword suggestions.\nIntended for use by a job search auto-complete search box.");
+            let mcmd = SubCommand::with_name("complete").about("Completes the specified prefix with keyword suggestions. Intended for use by a job search auto-complete search box.");
             projects0 = projects0.subcommand(mcmd);
         }
         let mut client_events1 = SubCommand::with_name("client_events")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create");
         {
-            let mcmd = SubCommand::with_name("create").about("Report events issued when end user interacts with customer\'s application\nthat uses Cloud Talent Solution. You may inspect the created events in\n[self service\ntools](https://console.cloud.google.com/talent-solution/overview).\n[Learn\nmore](https://cloud.google.com/talent-solution/docs/management-tools)\nabout self service tools.");
+            let mcmd = SubCommand::with_name("create").about("Report events issued when end user interacts with customer\'s application that uses Cloud Talent Solution. You may inspect the created events in [self service tools](https://console.cloud.google.com/talent-solution/overview). [Learn more](https://cloud.google.com/talent-solution/docs/management-tools) about self service tools.");
             client_events1 = client_events1.subcommand(mcmd);
         }
         let mut companies1 = SubCommand::with_name("companies")
@@ -55,7 +55,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             companies1 = companies1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes specified company.\nPrerequisite: The company has no jobs associated with it.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes specified company. Prerequisite: The company has no jobs associated with it.");
             companies1 = companies1.subcommand(mcmd);
         }
         {
@@ -68,7 +68,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             companies1 = companies1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates specified company. Company names can\'t be updated. To update a\ncompany name, delete the company and all jobs associated with it, and only\nthen re-create them.");
+            let mcmd = SubCommand::with_name("patch").about("Updates specified company. Company names can\'t be updated. To update a company name, delete the company and all jobs associated with it, and only then re-create them.");
             companies1 = companies1.subcommand(mcmd);
         }
         let mut jobs1 = SubCommand::with_name("jobs")
@@ -80,15 +80,15 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             jobs1 = jobs1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a new job.\n\nTypically, the job becomes searchable within 10 seconds, but it may take\nup to 5 minutes.");
+            let mcmd = SubCommand::with_name("create").about("Creates a new job. Typically, the job becomes searchable within 10 seconds, but it may take up to 5 minutes.");
             jobs1 = jobs1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes the specified job.\n\nTypically, the job becomes unsearchable within 10 seconds, but it may take\nup to 5 minutes.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes the specified job. Typically, the job becomes unsearchable within 10 seconds, but it may take up to 5 minutes.");
             jobs1 = jobs1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Retrieves the specified job, whose status is OPEN or recently EXPIRED\nwithin the last 90 days.");
+            let mcmd = SubCommand::with_name("get").about("Retrieves the specified job, whose status is OPEN or recently EXPIRED within the last 90 days.");
             jobs1 = jobs1.subcommand(mcmd);
         }
         {
@@ -96,22 +96,22 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             jobs1 = jobs1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates specified job.\n\nTypically, updated contents become visible in search results within 10\nseconds, but it may take up to 5 minutes.");
+            let mcmd = SubCommand::with_name("patch").about("Updates specified job. Typically, updated contents become visible in search results within 10 seconds, but it may take up to 5 minutes.");
             jobs1 = jobs1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("search").about("Searches for jobs using the provided SearchJobsRequest.\n\nThis call constrains the visibility of jobs\npresent in the database, and only returns jobs that the caller has\npermission to search against.");
+            let mcmd = SubCommand::with_name("search").about("Searches for jobs using the provided SearchJobsRequest. This call constrains the visibility of jobs present in the database, and only returns jobs that the caller has permission to search against.");
             jobs1 = jobs1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("search_for_alert").about("Searches for jobs using the provided SearchJobsRequest.\n\nThis API call is intended for the use case of targeting passive job\nseekers (for example, job seekers who have signed up to receive email\nalerts about potential job opportunities), and has different algorithmic\nadjustments that are targeted to passive job seekers.\n\nThis call constrains the visibility of jobs\npresent in the database, and only returns jobs the caller has\npermission to search against.");
+            let mcmd = SubCommand::with_name("search_for_alert").about("Searches for jobs using the provided SearchJobsRequest. This API call is intended for the use case of targeting passive job seekers (for example, job seekers who have signed up to receive email alerts about potential job opportunities), and has different algorithmic adjustments that are targeted to passive job seekers. This call constrains the visibility of jobs present in the database, and only returns jobs the caller has permission to search against.");
             jobs1 = jobs1.subcommand(mcmd);
         }
         let mut operations1 = SubCommand::with_name("operations")
             .setting(AppSettings::ColoredHelp)
             .about("methods: get");
         {
-            let mcmd = SubCommand::with_name("get").about("Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.");
+            let mcmd = SubCommand::with_name("get").about("Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.");
             operations1 = operations1.subcommand(mcmd);
         }
         projects0 = projects0.subcommand(operations1);

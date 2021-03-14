@@ -41,28 +41,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ErrorContext {
-        #[doc = "The HTTP request which was processed when the error was\ntriggered."]
+        #[doc = "The HTTP request which was processed when the error was triggered."]
         #[serde(
             rename = "httpRequest",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub http_request: ::std::option::Option<crate::schemas::HttpRequestContext>,
-        #[doc = "The location in the source code where the decision was made to\nreport the error, usually the place where it was logged.\nFor a logged exception this would be the source line where the\nexception is logged, usually close to the place where it was\ncaught."]
+        #[doc = "The location in the source code where the decision was made to report the error, usually the place where it was logged. For a logged exception this would be the source line where the exception is logged, usually close to the place where it was caught."]
         #[serde(
             rename = "reportLocation",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub report_location: ::std::option::Option<crate::schemas::SourceLocation>,
-        #[doc = "Source code that was used to build the executable which has\ncaused the given error message."]
+        #[doc = "Source code that was used to build the executable which has caused the given error message."]
         #[serde(
             rename = "sourceReferences",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub source_references: ::std::option::Option<Vec<crate::schemas::SourceReference>>,
-        #[doc = "The user who caused or was affected by the crash.\nThis can be a user ID, an email address, or an arbitrary token that\nuniquely identifies the user.\nWhen sending an error report, leave this field empty if the user was not\nlogged in. In this case the\nError Reporting system will use other data, such as remote IP address, to\ndistinguish affected users. See `affected_users_count` in\n`ErrorGroupStats`."]
+        #[doc = "The user who caused or was affected by the crash. This can be a user ID, an email address, or an arbitrary token that uniquely identifies the user. When sending an error report, leave this field empty if the user was not logged in. In this case the Error Reporting system will use other data, such as remote IP address, to distinguish affected users. See `affected_users_count` in `ErrorGroupStats`."]
         #[serde(
             rename = "user",
             default,
@@ -100,7 +100,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub context: ::std::option::Option<crate::schemas::ErrorContext>,
-        #[doc = "Time when the event occurred as provided in the error report.\nIf the report did not contain a timestamp, the time the error was received\nby the Error Reporting system is used."]
+        #[doc = "Time when the event occurred as provided in the error report. If the report did not contain a timestamp, the time the error was received by the Error Reporting system is used."]
         #[serde(
             rename = "eventTime",
             default,
@@ -145,20 +145,27 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ErrorGroup {
-        #[doc = "Group IDs are unique for a given project. If the same kind of error\noccurs in different service contexts, it will receive the same group ID."]
+        #[doc = "Group IDs are unique for a given project. If the same kind of error occurs in different service contexts, it will receive the same group ID."]
         #[serde(
             rename = "groupId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub group_id: ::std::option::Option<String>,
-        #[doc = "The group resource name.\nExample: <code>projects/my-project-123/groups/CNSgkpnppqKCUw</code>"]
+        #[doc = "The group resource name. Example: projects/my-project-123/groups/CNSgkpnppqKCUw"]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
+        #[doc = "Error group's resolution status. An unspecified resolution status will be interpreted as OPEN"]
+        #[serde(
+            rename = "resolutionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resolution_status: ::std::option::Option<crate::schemas::ErrorGroupResolutionStatus>,
         #[doc = "Associated tracking issues."]
         #[serde(
             rename = "trackingIssues",
@@ -177,6 +184,98 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ErrorGroupResolutionStatus {
+        #[doc = "Error Group manually acknowledged, it can have an issue link attached."]
+        Acknowledged,
+        #[doc = "The error group is muted and excluded by default on group stats requests."]
+        Muted,
+        #[doc = "The error group is not being addressed. This is the default for new groups. It is also used for errors re-occurring after marked RESOLVED."]
+        Open,
+        #[doc = "Status is unknown. When left unspecified in requests, it is treated like OPEN."]
+        ResolutionStatusUnspecified,
+        #[doc = "Error Group manually resolved, more events for this group are not expected to occur."]
+        Resolved,
+    }
+    impl ErrorGroupResolutionStatus {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ErrorGroupResolutionStatus::Acknowledged => "ACKNOWLEDGED",
+                ErrorGroupResolutionStatus::Muted => "MUTED",
+                ErrorGroupResolutionStatus::Open => "OPEN",
+                ErrorGroupResolutionStatus::ResolutionStatusUnspecified => {
+                    "RESOLUTION_STATUS_UNSPECIFIED"
+                }
+                ErrorGroupResolutionStatus::Resolved => "RESOLVED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ErrorGroupResolutionStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ErrorGroupResolutionStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ErrorGroupResolutionStatus, ()> {
+            Ok(match s {
+                "ACKNOWLEDGED" => ErrorGroupResolutionStatus::Acknowledged,
+                "MUTED" => ErrorGroupResolutionStatus::Muted,
+                "OPEN" => ErrorGroupResolutionStatus::Open,
+                "RESOLUTION_STATUS_UNSPECIFIED" => {
+                    ErrorGroupResolutionStatus::ResolutionStatusUnspecified
+                }
+                "RESOLVED" => ErrorGroupResolutionStatus::Resolved,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for ErrorGroupResolutionStatus {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ErrorGroupResolutionStatus {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ErrorGroupResolutionStatus {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ACKNOWLEDGED" => ErrorGroupResolutionStatus::Acknowledged,
+                "MUTED" => ErrorGroupResolutionStatus::Muted,
+                "OPEN" => ErrorGroupResolutionStatus::Open,
+                "RESOLUTION_STATUS_UNSPECIFIED" => {
+                    ErrorGroupResolutionStatus::ResolutionStatusUnspecified
+                }
+                "RESOLVED" => ErrorGroupResolutionStatus::Resolved,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for ErrorGroupResolutionStatus {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ErrorGroupResolutionStatus {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -190,14 +289,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ErrorGroupStats {
-        #[doc = "Service contexts with a non-zero error count for the given filter\ncriteria. This list can be truncated if multiple services are affected.\nRefer to `num_affected_services` for the total count."]
+        #[doc = "Service contexts with a non-zero error count for the given filter criteria. This list can be truncated if multiple services are affected. Refer to `num_affected_services` for the total count."]
         #[serde(
             rename = "affectedServices",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub affected_services: ::std::option::Option<Vec<crate::schemas::ServiceContext>>,
-        #[doc = "Approximate number of affected users in the given group that\nmatch the filter criteria.\nUsers are distinguished by data in the `ErrorContext` of the\nindividual error events, such as their login name or their remote\nIP address in case of HTTP requests.\nThe number of affected users can be zero even if the number of\nerrors is non-zero if no data was provided from which the\naffected user could be deduced.\nUsers are counted based on data in the request\ncontext that was provided in the error report. If more users are\nimplicitly affected, such as due to a crash of the whole service,\nthis is not reflected here."]
+        #[doc = "Approximate number of affected users in the given group that match the filter criteria. Users are distinguished by data in the `ErrorContext` of the individual error events, such as their login name or their remote IP address in case of HTTP requests. The number of affected users can be zero even if the number of errors is non-zero if no data was provided from which the affected user could be deduced. Users are counted based on data in the request context that was provided in the error report. If more users are implicitly affected, such as due to a crash of the whole service, this is not reflected here."]
         #[serde(
             rename = "affectedUsersCount",
             default,
@@ -205,7 +304,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub affected_users_count: ::std::option::Option<i64>,
-        #[doc = "Approximate total number of events in the given group that match\nthe filter criteria."]
+        #[doc = "Approximate total number of events in the given group that match the filter criteria."]
         #[serde(
             rename = "count",
             default,
@@ -213,7 +312,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub count: ::std::option::Option<i64>,
-        #[doc = "Approximate first occurrence that was ever seen for this group\nand which matches the given filter criteria, ignoring the\ntime_range that was specified in the request."]
+        #[doc = "Approximate first occurrence that was ever seen for this group and which matches the given filter criteria, ignoring the time_range that was specified in the request."]
         #[serde(
             rename = "firstSeenTime",
             default,
@@ -227,28 +326,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub group: ::std::option::Option<crate::schemas::ErrorGroup>,
-        #[doc = "Approximate last occurrence that was ever seen for this group and\nwhich matches the given filter criteria, ignoring the time_range\nthat was specified in the request."]
+        #[doc = "Approximate last occurrence that was ever seen for this group and which matches the given filter criteria, ignoring the time_range that was specified in the request."]
         #[serde(
             rename = "lastSeenTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub last_seen_time: ::std::option::Option<String>,
-        #[doc = "The total number of services with a non-zero error count for the given\nfilter criteria."]
+        #[doc = "The total number of services with a non-zero error count for the given filter criteria."]
         #[serde(
             rename = "numAffectedServices",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub num_affected_services: ::std::option::Option<i32>,
-        #[doc = "An arbitrary event that is chosen as representative for the whole group.\nThe representative event is intended to be used as a quick preview for\nthe whole group. Events in the group are usually sufficiently similar\nto each other such that showing an arbitrary representative provides\ninsight into the characteristics of the group as a whole."]
+        #[doc = "An arbitrary event that is chosen as representative for the whole group. The representative event is intended to be used as a quick preview for the whole group. Events in the group are usually sufficiently similar to each other such that showing an arbitrary representative provides insight into the characteristics of the group as a whole."]
         #[serde(
             rename = "representative",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub representative: ::std::option::Option<crate::schemas::ErrorEvent>,
-        #[doc = "Approximate number of occurrences over time.\nTimed counts returned by ListGroups are guaranteed to be:\n\n* Inside the requested time interval\n* Non-overlapping, and\n* Ordered by ascending time."]
+        #[doc = "Approximate number of occurrences over time. Timed counts returned by ListGroups are guaranteed to be: - Inside the requested time interval - Non-overlapping, and - Ordered by ascending time."]
         #[serde(
             rename = "timedCounts",
             default,
@@ -293,7 +392,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub referrer: ::std::option::Option<String>,
-        #[doc = "The IP address from which the request originated.\nThis can be IPv4, IPv6, or a token which is derived from the\nIP address, depending on the data that has been provided\nin the error report."]
+        #[doc = "The IP address from which the request originated. This can be IPv4, IPv6, or a token which is derived from the IP address, depending on the data that has been provided in the error report."]
         #[serde(
             rename = "remoteIp",
             default,
@@ -352,7 +451,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub error_events: ::std::option::Option<Vec<crate::schemas::ErrorEvent>>,
-        #[doc = "If non-empty, more results are available.\nPass this token, along with the same query parameters as the first\nrequest, to view the next page of results."]
+        #[doc = "If non-empty, more results are available. Pass this token, along with the same query parameters as the first request, to view the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -397,14 +496,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub error_group_stats: ::std::option::Option<Vec<crate::schemas::ErrorGroupStats>>,
-        #[doc = "If non-empty, more results are available.\nPass this token, along with the same query parameters as the first\nrequest, to view the next page of results."]
+        #[doc = "If non-empty, more results are available. Pass this token, along with the same query parameters as the first request, to view the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub next_page_token: ::std::option::Option<String>,
-        #[doc = "The timestamp specifies the start time to which the request was restricted.\nThe start time is set based on the requested time range. It may be adjusted\nto a later time if a project has exceeded the storage quota and older data\nhas been deleted."]
+        #[doc = "The timestamp specifies the start time to which the request was restricted. The start time is set based on the requested time range. It may be adjusted to a later time if a project has exceeded the storage quota and older data has been deleted."]
         #[serde(
             rename = "timeRangeBegin",
             default,
@@ -466,14 +565,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub context: ::std::option::Option<crate::schemas::ErrorContext>,
-        #[doc = "Optional. Time when the event occurred.\nIf not provided, the time when the event was received by the\nError Reporting system will be used."]
+        #[doc = "Optional. Time when the event occurred. If not provided, the time when the event was received by the Error Reporting system will be used."]
         #[serde(
             rename = "eventTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub event_time: ::std::option::Option<String>,
-        #[doc = "Required. The error message.\nIf no `context.reportLocation` is provided, the message must contain a\nheader (typically consisting of the exception type name and an error\nmessage) and an exception stack trace in one of the supported programming\nlanguages and formats.\nSupported languages are Java, Python, JavaScript, Ruby, C#, PHP, and Go.\nSupported stack trace formats are:\n\n* **Java**: Must be the return value of\n  [`Throwable.printStackTrace()`](https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html#printStackTrace%28%29).\n* **Python**: Must be the return value of\n  [`traceback.format_exc()`](https://docs.python.org/2/library/traceback.html#traceback.format_exc).\n* **JavaScript**: Must be the value of\n  [`error.stack`](https://github.com/v8/v8/wiki/Stack-Trace-API) as returned\n  by V8.\n* **Ruby**: Must contain frames returned by\n  [`Exception.backtrace`](https://ruby-doc.org/core-2.2.0/Exception.html#method-i-backtrace).\n* **C#**: Must be the return value of\n  [`Exception.ToString()`](https://msdn.microsoft.com/en-us/library/system.exception.tostring.aspx).\n* **PHP**: Must start with `PHP (Notice|Parse error|Fatal error|Warning)`\n  and contain the result of\n  [`(string)$exception`](http://php.net/manual/en/exception.tostring.php).\n* **Go**: Must be the return value of\n  [`runtime.Stack()`](https://golang.org/pkg/runtime/debug/#Stack)."]
+        #[doc = "Required. The error message. If no `context.reportLocation` is provided, the message must contain a header (typically consisting of the exception type name and an error message) and an exception stack trace in one of the supported programming languages and formats. Supported languages are Java, Python, JavaScript, Ruby, C#, PHP, and Go. Supported stack trace formats are: * **Java**: Must be the return value of [`Throwable.printStackTrace()`](https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html#printStackTrace%28%29). * **Python**: Must be the return value of [`traceback.format_exc()`](https://docs.python.org/2/library/traceback.html#traceback.format_exc). * **JavaScript**: Must be the value of [`error.stack`](https://github.com/v8/v8/wiki/Stack-Trace-API) as returned by V8. * **Ruby**: Must contain frames returned by [`Exception.backtrace`](https://ruby-doc.org/core-2.2.0/Exception.html#method-i-backtrace). * **C#**: Must be the return value of [`Exception.ToString()`](https://msdn.microsoft.com/en-us/library/system.exception.tostring.aspx). * **PHP**: Must start with `PHP (Notice|Parse error|Fatal error|Warning)` and contain the result of [`(string)$exception`](http://php.net/manual/en/exception.tostring.php). * **Go**: Must be the return value of [`runtime.Stack()`](https://golang.org/pkg/runtime/debug/#Stack)."]
         #[serde(
             rename = "message",
             default,
@@ -511,21 +610,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ServiceContext {
-        #[doc = "Type of the MonitoredResource. List of possible values:\nhttps://cloud.google.com/monitoring/api/resources\n\nValue is set automatically for incoming errors and must not be set when\nreporting errors."]
+        #[doc = "Type of the MonitoredResource. List of possible values: https://cloud.google.com/monitoring/api/resources Value is set automatically for incoming errors and must not be set when reporting errors."]
         #[serde(
             rename = "resourceType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub resource_type: ::std::option::Option<String>,
-        #[doc = "An identifier of the service, such as the name of the\nexecutable, job, or Google App Engine service name. This field is expected\nto have a low number of values that are relatively stable over time, as\nopposed to `version`, which can be changed whenever new code is deployed.\n\nContains the service name for error reports extracted from Google\nApp Engine logs or `default` if the App Engine default service is used."]
+        #[doc = "An identifier of the service, such as the name of the executable, job, or Google App Engine service name. This field is expected to have a low number of values that are relatively stable over time, as opposed to `version`, which can be changed whenever new code is deployed. Contains the service name for error reports extracted from Google App Engine logs or `default` if the App Engine default service is used."]
         #[serde(
             rename = "service",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub service: ::std::option::Option<String>,
-        #[doc = "Represents the source code version that the developer provided,\nwhich could represent a version label or a Git SHA-1 hash, for example.\nFor App Engine standard environment, the version is set to the version of\nthe app."]
+        #[doc = "Represents the source code version that the developer provided, which could represent a version label or a Git SHA-1 hash, for example. For App Engine standard environment, the version is set to the version of the app."]
         #[serde(
             rename = "version",
             default,
@@ -556,14 +655,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SourceLocation {
-        #[doc = "The source code filename, which can include a truncated relative\npath, or a full path from a production machine."]
+        #[doc = "The source code filename, which can include a truncated relative path, or a full path from a production machine."]
         #[serde(
             rename = "filePath",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub file_path: ::std::option::Option<String>,
-        #[doc = "Human-readable name of a function or method.\nThe value can include optional context like the class or package name.\nFor example, `my.package.MyClass.method` in case of Java."]
+        #[doc = "Human-readable name of a function or method. The value can include optional context like the class or package name. For example, `my.package.MyClass.method` in case of Java."]
         #[serde(
             rename = "functionName",
             default,
@@ -601,14 +700,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SourceReference {
-        #[doc = "Optional. A URI string identifying the repository.\nExample: \"https://github.com/GoogleCloudPlatform/kubernetes.git\""]
+        #[doc = "Optional. A URI string identifying the repository. Example: \"https://github.com/GoogleCloudPlatform/kubernetes.git\""]
         #[serde(
             rename = "repository",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub repository: ::std::option::Option<String>,
-        #[doc = "The canonical and persistent identifier of the deployed revision.\nExample (git): \"0035781c50ec7aa23385dc841529ce8a4b70db1b\""]
+        #[doc = "The canonical and persistent identifier of the deployed revision. Example (git): \"0035781c50ec7aa23385dc841529ce8a4b70db1b\""]
         #[serde(
             rename = "revisionId",
             default,
@@ -685,7 +784,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TrackingIssue {
-        #[doc = "A URL pointing to a related entry in an issue tracking system.\nExample: https://github.com/user/project/issues/4"]
+        #[doc = "A URL pointing to a related entry in an issue tracking system. Example: `https://github.com/user/project/issues/4`"]
         #[serde(
             rename = "url",
             default,
@@ -860,17 +959,17 @@ pub struct Client {
 impl Client {
     pub fn new<A>(auth: A) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client::with_reqwest_client(auth, ::reqwest::Client::builder().build().unwrap())
     }
     pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::Client) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client {
             reqwest,
-            auth: auth.into(),
+            auth: Box::new(auth),
         }
     }
     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
@@ -1061,7 +1160,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -1077,24 +1176,28 @@ pub mod resources {
                 output.push_str("/events");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -1102,11 +1205,17 @@ pub mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListTimeRangePeriod {
+                    #[doc = "Retrieve data for the last day. Recommended minimum timed count duration: 1 hour."]
                     Period1Day,
+                    #[doc = "Retrieve data for the last hour. Recommended minimum timed count duration: 1 min."]
                     Period1Hour,
+                    #[doc = "Retrieve data for the last week. Recommended minimum timed count duration: 6 hours."]
                     Period1Week,
+                    #[doc = "Retrieve data for the last 30 days. Recommended minimum timed count duration: 1 day."]
                     Period30Days,
+                    #[doc = "Retrieve data for the last 6 hours. Recommended minimum timed count duration: 10 min."]
                     Period6Hours,
+                    #[doc = "Do not use."]
                     PeriodUnspecified,
                 }
                 impl ListTimeRangePeriod {
@@ -1220,7 +1329,7 @@ pub mod resources {
                         time_range_period: None,
                     }
                 }
-                #[doc = "Report an individual error event.\n\nThis endpoint accepts **either** an OAuth token,\n**or** an [API key](https://support.google.com/cloud/answer/6158862)\nfor authentication. To use an API key, append it to the URL as the value of\na `key` parameter. For example:\n\n`POST https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456`"]
+                #[doc = "Report an individual error event and record the event to a log. This endpoint accepts **either** an OAuth token, **or** an [API key](https://support.google.com/cloud/answer/6158862) for authentication. To use an API key, append it to the URL as the value of a `key` parameter. For example: `POST https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456` **Note:** [Error Reporting](/error-reporting) is a global service built on Cloud Logging and doesn't analyze logs stored in regional log buckets or logs routed to other Google Cloud projects. For more information, see [Using Error Reporting with regionalized logs](/error-reporting/docs/regionalization)."]
                 pub fn report(
                     &self,
                     request: crate::schemas::ReportedErrorEvent,
@@ -1287,17 +1396,17 @@ pub mod resources {
                     self.page_token = Some(value.into());
                     self
                 }
-                #[doc = "Optional. The exact value to match against\n[`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type)."]
+                #[doc = "Optional. The exact value to match against [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type)."]
                 pub fn service_filter_resource_type(mut self, value: impl Into<String>) -> Self {
                     self.service_filter_resource_type = Some(value.into());
                     self
                 }
-                #[doc = "Optional. The exact value to match against\n[`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service)."]
+                #[doc = "Optional. The exact value to match against [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service)."]
                 pub fn service_filter_service(mut self, value: impl Into<String>) -> Self {
                     self.service_filter_service = Some(value.into());
                     self
                 }
-                #[doc = "Optional. The exact value to match against\n[`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version)."]
+                #[doc = "Optional. The exact value to match against [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version)."]
                 pub fn service_filter_version(mut self, value: impl Into<String>) -> Self {
                     self.service_filter_version = Some(value.into());
                     self
@@ -1355,106 +1464,6 @@ pub mod resources {
                     self.xgafv = Some(value);
                     self
                 }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-                #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-                #[doc = r" populated fields in the yielded items will be determined by the"]
-                #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_error_events<T>(self) -> crate::iter::PageItemIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                {
-                    let fields = ::google_field_selector::to_string::<T>();
-                    let fields: Option<String> = if fields.is_empty() {
-                        None
-                    } else {
-                        Some(fields)
-                    };
-                    self.iter_error_events_with_fields(fields)
-                }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                #[doc = r" fields in `#items_type` will be the default fields populated by"]
-                #[doc = r" the server."]
-                pub fn iter_error_events_with_default_fields(
-                    self,
-                ) -> crate::iter::PageItemIter<Self, crate::schemas::ErrorEvent> {
-                    self.iter_error_events_with_fields(None::<String>)
-                }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                #[doc = r" fields in `#items_type` will be all fields available. This should"]
-                #[doc = r" primarily be used during developement and debugging as fetching"]
-                #[doc = r" all fields can be expensive both in bandwidth and server"]
-                #[doc = r" resources."]
-                pub fn iter_error_events_with_all_fields(
-                    self,
-                ) -> crate::iter::PageItemIter<Self, crate::schemas::ErrorEvent> {
-                    self.iter_error_events_with_fields(Some("*"))
-                }
-                pub fn iter_error_events_with_fields<T, F>(
-                    mut self,
-                    fields: Option<F>,
-                ) -> crate::iter::PageItemIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                    F: AsRef<str>,
-                {
-                    self.fields = Some({
-                        let mut selector = concat!("nextPageToken,", "errorEvents").to_owned();
-                        let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                        if !items_fields.is_empty() {
-                            selector.push_str("(");
-                            selector.push_str(items_fields);
-                            selector.push_str(")");
-                        }
-                        selector
-                    });
-                    crate::iter::PageItemIter::new(self, "errorEvents")
-                }
-                pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                {
-                    let fields = ::google_field_selector::to_string::<T>();
-                    let fields: Option<String> = if fields.is_empty() {
-                        None
-                    } else {
-                        Some(fields)
-                    };
-                    self.iter_with_fields(fields)
-                }
-                pub fn iter_with_default_fields(
-                    self,
-                ) -> crate::iter::PageIter<Self, crate::schemas::ListEventsResponse>
-                {
-                    self.iter_with_fields(None::<&str>)
-                }
-                pub fn iter_with_all_fields(
-                    self,
-                ) -> crate::iter::PageIter<Self, crate::schemas::ListEventsResponse>
-                {
-                    self.iter_with_fields(Some("*"))
-                }
-                pub fn iter_with_fields<T, F>(
-                    mut self,
-                    fields: Option<F>,
-                ) -> crate::iter::PageIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                    F: AsRef<str>,
-                {
-                    let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                    if !fields.is_empty() {
-                        match fields.chars().rev().nth(0) {
-                            Some(',') | None => {}
-                            _ => fields.push_str(","),
-                        }
-                        fields.push_str("nextPageToken");
-                        self.fields = Some(fields);
-                    }
-                    crate::iter::PageIter::new(self)
-                }
                 #[doc = r" Execute the given operation. The fields requested are"]
                 #[doc = r" determined by the FieldSelector attribute of the return type."]
                 #[doc = r" This allows for flexible and ergonomic partial responses. See"]
@@ -1511,7 +1520,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
@@ -1527,46 +1536,39 @@ pub mod resources {
                     output.push_str("/events");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("groupId", &self.group_id)]);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[(
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("groupId", &self.group_id)]);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[(
                         "serviceFilter.resourceType",
                         &self.service_filter_resource_type,
                     )]);
-                    let req = req.query(&[("serviceFilter.service", &self.service_filter_service)]);
-                    let req = req.query(&[("serviceFilter.version", &self.service_filter_version)]);
-                    let req = req.query(&[("timeRange.period", &self.time_range_period)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                    req = req.query(&[("serviceFilter.service", &self.service_filter_service)]);
+                    req = req.query(&[("serviceFilter.version", &self.service_filter_version)]);
+                    req = req.query(&[("timeRange.period", &self.time_range_period)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
-                }
-            }
-            impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-                fn set_page_token(&mut self, value: String) {
-                    self.page_token = value.into();
-                }
-                fn execute<T>(&mut self) -> Result<T, crate::Error>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                {
-                    todo!("implement async `execute` method for `IterableMethod` trait")
                 }
             }
             #[doc = "Created via [EventsActions::report()](struct.EventsActions.html#method.report)"]
@@ -1692,7 +1694,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -1709,24 +1711,28 @@ pub mod resources {
                     output.push_str("/events:report");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -1735,8 +1741,11 @@ pub mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListAlignment {
+                    #[doc = "The time periods shall be consecutive, have width equal to the requested duration, and be aligned at the end of the requested time period. This can result in a different size of the first time period."]
                     AlignmentEqualAtEnd,
+                    #[doc = "The time periods shall be consecutive, have width equal to the requested duration, and be aligned at the `alignment_time` provided in the request. The `alignment_time` does not have to be inside the query period but even if it is outside, only time periods are returned which overlap with the query period. A rounded alignment will typically result in a different size of the first or the last time period."]
                     AlignmentEqualRounded,
+                    #[doc = "No alignment specified."]
                     ErrorCountAlignmentUnspecified,
                 }
                 impl ListAlignment {
@@ -1814,10 +1823,15 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListOrder {
+                    #[doc = "Number of affected users in the given time window in descending order."]
                     AffectedUsersDesc,
+                    #[doc = "Total count of errors in the given time window in descending order."]
                     CountDesc,
+                    #[doc = "Timestamp when the group was created in descending order."]
                     CreatedDesc,
+                    #[doc = "No group order specified."]
                     GroupOrderUnspecified,
+                    #[doc = "Timestamp when the group was last seen in the given time window in descending order."]
                     LastSeenDesc,
                 }
                 impl ListOrder {
@@ -1895,11 +1909,17 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListTimeRangePeriod {
+                    #[doc = "Retrieve data for the last day. Recommended minimum timed count duration: 1 hour."]
                     Period1Day,
+                    #[doc = "Retrieve data for the last hour. Recommended minimum timed count duration: 1 min."]
                     Period1Hour,
+                    #[doc = "Retrieve data for the last week. Recommended minimum timed count duration: 6 hours."]
                     Period1Week,
+                    #[doc = "Retrieve data for the last 30 days. Recommended minimum timed count duration: 1 day."]
                     Period30Days,
+                    #[doc = "Retrieve data for the last 6 hours. Recommended minimum timed count duration: 10 min."]
                     Period6Hours,
+                    #[doc = "Do not use."]
                     PeriodUnspecified,
                 }
                 impl ListTimeRangePeriod {
@@ -2049,7 +2069,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "Optional. The alignment of the timed counts to be returned.\nDefault is `ALIGNMENT_EQUAL_AT_END`."]
+                #[doc = "Optional. The alignment of the timed counts to be returned. Default is `ALIGNMENT_EQUAL_AT_END`."]
                 pub fn alignment(
                     mut self,
                     value: crate::resources::projects::group_stats::params::ListAlignment,
@@ -2057,17 +2077,17 @@ pub mod resources {
                     self.alignment = Some(value);
                     self
                 }
-                #[doc = "Optional. Time where the timed counts shall be aligned if rounded\nalignment is chosen. Default is 00:00 UTC."]
+                #[doc = "Optional. Time where the timed counts shall be aligned if rounded alignment is chosen. Default is 00:00 UTC."]
                 pub fn alignment_time(mut self, value: impl Into<String>) -> Self {
                     self.alignment_time = Some(value.into());
                     self
                 }
-                #[doc = "Optional. List all <code>ErrorGroupStats</code> with these IDs."]
+                #[doc = "Optional. List all ErrorGroupStats with these IDs."]
                 pub fn group_id(mut self, value: impl Into<Vec<String>>) -> Self {
                     self.group_id = Some(value.into());
                     self
                 }
-                #[doc = "Optional. The sort order in which the results are returned.\nDefault is `COUNT_DESC`."]
+                #[doc = "Optional. The sort order in which the results are returned. Default is `COUNT_DESC`."]
                 pub fn order(
                     mut self,
                     value: crate::resources::projects::group_stats::params::ListOrder,
@@ -2075,27 +2095,27 @@ pub mod resources {
                     self.order = Some(value);
                     self
                 }
-                #[doc = "Optional. The maximum number of results to return per response.\nDefault is 20."]
+                #[doc = "Optional. The maximum number of results to return per response. Default is 20."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
                     self
                 }
-                #[doc = "Optional. A `next_page_token` provided by a previous response. To view\nadditional results, pass this token along with the identical query\nparameters as the first request."]
+                #[doc = "Optional. A `next_page_token` provided by a previous response. To view additional results, pass this token along with the identical query parameters as the first request."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
                     self
                 }
-                #[doc = "Optional. The exact value to match against\n[`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type)."]
+                #[doc = "Optional. The exact value to match against [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type)."]
                 pub fn service_filter_resource_type(mut self, value: impl Into<String>) -> Self {
                     self.service_filter_resource_type = Some(value.into());
                     self
                 }
-                #[doc = "Optional. The exact value to match against\n[`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service)."]
+                #[doc = "Optional. The exact value to match against [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service)."]
                 pub fn service_filter_service(mut self, value: impl Into<String>) -> Self {
                     self.service_filter_service = Some(value.into());
                     self
                 }
-                #[doc = "Optional. The exact value to match against\n[`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version)."]
+                #[doc = "Optional. The exact value to match against [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version)."]
                 pub fn service_filter_version(mut self, value: impl Into<String>) -> Self {
                     self.service_filter_version = Some(value.into());
                     self
@@ -2108,7 +2128,7 @@ pub mod resources {
                     self.time_range_period = Some(value);
                     self
                 }
-                #[doc = "Optional. The preferred duration for a single returned `TimedCount`.\nIf not set, no timed counts are returned."]
+                #[doc = "Optional. The preferred duration for a single returned `TimedCount`. If not set, no timed counts are returned."]
                 pub fn timed_count_duration(mut self, value: impl Into<String>) -> Self {
                     self.timed_count_duration = Some(value.into());
                     self
@@ -2157,108 +2177,6 @@ pub mod resources {
                 pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
                     self.xgafv = Some(value);
                     self
-                }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-                #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-                #[doc = r" populated fields in the yielded items will be determined by the"]
-                #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_error_group_stats<T>(self) -> crate::iter::PageItemIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                {
-                    let fields = ::google_field_selector::to_string::<T>();
-                    let fields: Option<String> = if fields.is_empty() {
-                        None
-                    } else {
-                        Some(fields)
-                    };
-                    self.iter_error_group_stats_with_fields(fields)
-                }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                #[doc = r" fields in `#items_type` will be the default fields populated by"]
-                #[doc = r" the server."]
-                pub fn iter_error_group_stats_with_default_fields(
-                    self,
-                ) -> crate::iter::PageItemIter<Self, crate::schemas::ErrorGroupStats>
-                {
-                    self.iter_error_group_stats_with_fields(None::<String>)
-                }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                #[doc = r" fields in `#items_type` will be all fields available. This should"]
-                #[doc = r" primarily be used during developement and debugging as fetching"]
-                #[doc = r" all fields can be expensive both in bandwidth and server"]
-                #[doc = r" resources."]
-                pub fn iter_error_group_stats_with_all_fields(
-                    self,
-                ) -> crate::iter::PageItemIter<Self, crate::schemas::ErrorGroupStats>
-                {
-                    self.iter_error_group_stats_with_fields(Some("*"))
-                }
-                pub fn iter_error_group_stats_with_fields<T, F>(
-                    mut self,
-                    fields: Option<F>,
-                ) -> crate::iter::PageItemIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                    F: AsRef<str>,
-                {
-                    self.fields = Some({
-                        let mut selector = concat!("nextPageToken,", "errorGroupStats").to_owned();
-                        let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                        if !items_fields.is_empty() {
-                            selector.push_str("(");
-                            selector.push_str(items_fields);
-                            selector.push_str(")");
-                        }
-                        selector
-                    });
-                    crate::iter::PageItemIter::new(self, "errorGroupStats")
-                }
-                pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                {
-                    let fields = ::google_field_selector::to_string::<T>();
-                    let fields: Option<String> = if fields.is_empty() {
-                        None
-                    } else {
-                        Some(fields)
-                    };
-                    self.iter_with_fields(fields)
-                }
-                pub fn iter_with_default_fields(
-                    self,
-                ) -> crate::iter::PageIter<Self, crate::schemas::ListGroupStatsResponse>
-                {
-                    self.iter_with_fields(None::<&str>)
-                }
-                pub fn iter_with_all_fields(
-                    self,
-                ) -> crate::iter::PageIter<Self, crate::schemas::ListGroupStatsResponse>
-                {
-                    self.iter_with_fields(Some("*"))
-                }
-                pub fn iter_with_fields<T, F>(
-                    mut self,
-                    fields: Option<F>,
-                ) -> crate::iter::PageIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                    F: AsRef<str>,
-                {
-                    let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                    if !fields.is_empty() {
-                        match fields.chars().rev().nth(0) {
-                            Some(',') | None => {}
-                            _ => fields.push_str(","),
-                        }
-                        fields.push_str("nextPageToken");
-                        self.fields = Some(fields);
-                    }
-                    crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
                 #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -2316,7 +2234,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
@@ -2332,50 +2250,45 @@ pub mod resources {
                     output.push_str("/groupStats");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("alignment", &self.alignment)]);
-                    let req = req.query(&[("alignmentTime", &self.alignment_time)]);
-                    let req = req.query(&[("groupId", &self.group_id)]);
-                    let req = req.query(&[("order", &self.order)]);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[(
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("alignment", &self.alignment)]);
+                    req = req.query(&[("alignmentTime", &self.alignment_time)]);
+                    for value in self.group_id.iter().flatten() {
+                        req = req.query(&[("groupId", value)]);
+                    }
+                    req = req.query(&[("order", &self.order)]);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[(
                         "serviceFilter.resourceType",
                         &self.service_filter_resource_type,
                     )]);
-                    let req = req.query(&[("serviceFilter.service", &self.service_filter_service)]);
-                    let req = req.query(&[("serviceFilter.version", &self.service_filter_version)]);
-                    let req = req.query(&[("timeRange.period", &self.time_range_period)]);
-                    let req = req.query(&[("timedCountDuration", &self.timed_count_duration)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                    req = req.query(&[("serviceFilter.service", &self.service_filter_service)]);
+                    req = req.query(&[("serviceFilter.version", &self.service_filter_version)]);
+                    req = req.query(&[("timeRange.period", &self.time_range_period)]);
+                    req = req.query(&[("timedCountDuration", &self.timed_count_duration)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
-                }
-            }
-            impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-                fn set_page_token(&mut self, value: String) {
-                    self.page_token = value.into();
-                }
-                fn execute<T>(&mut self) -> Result<T, crate::Error>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                {
-                    todo!("implement async `execute` method for `IterableMethod` trait")
                 }
             }
         }
@@ -2408,7 +2321,7 @@ pub mod resources {
                         group_name: group_name.into(),
                     }
                 }
-                #[doc = "Replace the data for the specified group.\nFails if the group does not exist."]
+                #[doc = "Replace the data for the specified group. Fails if the group does not exist."]
                 pub fn update(
                     &self,
                     request: crate::schemas::ErrorGroup,
@@ -2553,7 +2466,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
@@ -2568,24 +2481,28 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -2710,7 +2627,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -2726,24 +2643,28 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -2758,6 +2679,7 @@ pub enum Error {
         reqwest_err: ::reqwest::Error,
         body: Option<String>,
     },
+    IO(std::io::Error),
     Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
@@ -2767,6 +2689,7 @@ impl Error {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
             Error::Reqwest { .. } => None,
+            Error::IO(_) => None,
             Error::Other(_) => None,
         }
     }
@@ -2784,6 +2707,7 @@ impl ::std::fmt::Display for Error {
                 }
                 Ok(())
             }
+            Error::IO(err) => write!(f, "IO Error: {}", err),
             Error::Other(err) => write!(f, "Uknown Error: {}", err),
         }
     }
@@ -2803,6 +2727,12 @@ impl From<::reqwest::Error> for Error {
             reqwest_err,
             body: None,
         }
+    }
+}
+
+impl From<std::io::Error> for Error {
+    fn from(err: std::io::Error) -> Error {
+        Error::IO(err)
     }
 }
 #[allow(dead_code)]
@@ -2872,13 +2802,13 @@ mod multipart {
 
     pub(crate) struct Part {
         content_type: ::mime::Mime,
-        body: Box<dyn ::std::io::Read + Send>,
+        body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
     }
 
     impl Part {
         pub(crate) fn new(
             content_type: ::mime::Mime,
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         ) -> Part {
             Part { content_type, body }
         }
@@ -2887,7 +2817,7 @@ mod multipart {
     pub(crate) struct RelatedMultiPartReader {
         state: RelatedMultiPartReaderState,
         boundary: String,
-        next_body: Option<Box<dyn ::std::io::Read + Send>>,
+        next_body: Option<Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>>,
         parts: std::vec::IntoIter<Part>,
     }
 
@@ -2901,13 +2831,18 @@ mod multipart {
             content_type: Vec<u8>,
         },
         WriteBody {
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         },
     }
 
-    impl ::std::io::Read for RelatedMultiPartReader {
-        fn read(&mut self, buf: &mut [u8]) -> ::std::io::Result<usize> {
+    impl futures::io::AsyncRead for RelatedMultiPartReader {
+        fn poll_read(
+            mut self: std::pin::Pin<&mut Self>,
+            ctx: &mut futures::task::Context,
+            buf: &mut [u8],
+        ) -> futures::task::Poll<Result<usize, futures::io::Error>> {
             use RelatedMultiPartReaderState::*;
+
             let mut bytes_written: usize = 0;
             loop {
                 let rem_buf = &mut buf[bytes_written..];
@@ -2955,7 +2890,14 @@ mod multipart {
                         }
                     }
                     WriteBody { body } => {
-                        let written = body.read(rem_buf)?;
+                        let body = std::pin::Pin::new(body);
+                        let written = match futures::io::AsyncRead::poll_read(body, ctx, rem_buf) {
+                            futures::task::Poll::Ready(Ok(n)) => n,
+                            futures::task::Poll::Ready(Err(err)) => {
+                                return futures::task::Poll::Ready(Err(err));
+                            }
+                            futures::task::Poll::Pending => return futures::task::Poll::Pending,
+                        };
                         bytes_written += written;
                         if written == 0 {
                             self.state = WriteBoundary {
@@ -2968,7 +2910,8 @@ mod multipart {
                     }
                 }
             }
-            Ok(bytes_written)
+
+            futures::task::Poll::Ready(Ok(bytes_written))
         }
     }
 
@@ -3007,128 +2950,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-pub mod iter {
-    pub trait IterableMethod {
-        fn set_page_token(&mut self, value: String);
-        fn execute<T>(&mut self) -> Result<T, crate::Error>
-        where
-            T: ::serde::de::DeserializeOwned;
-    }
-
-    pub struct PageIter<M, T> {
-        pub method: M,
-        pub finished: bool,
-        pub _phantom: ::std::marker::PhantomData<T>,
-    }
-
-    impl<M, T> PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M) -> Self {
-            PageIter {
-                method,
-                finished: false,
-                _phantom: ::std::marker::PhantomData,
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, crate::Error>;
-
-        fn next(&mut self) -> Option<Result<T, crate::Error>> {
-            if self.finished {
-                return None;
-            }
-            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
-                match self.method.execute() {
-                    Ok(r) => r,
-                    Err(err) => return Some(Err(err)),
-                };
-            if let Some(next_page_token) = paginated_result
-                .get("nextPageToken")
-                .and_then(|t| t.as_str())
-            {
-                self.method.set_page_token(next_page_token.to_owned());
-            } else {
-                self.finished = true;
-            }
-
-            Some(
-                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
-                    Ok(resp) => Ok(resp),
-                    Err(err) => Err(err.into()),
-                },
-            )
-        }
-    }
-
-    pub struct PageItemIter<M, T> {
-        items_field: &'static str,
-        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
-        items: ::std::vec::IntoIter<T>,
-    }
-
-    impl<M, T> PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
-            PageItemIter {
-                items_field,
-                page_iter: PageIter::new(method),
-                items: Vec::new().into_iter(),
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, crate::Error>;
-
-        fn next(&mut self) -> Option<Result<T, crate::Error>> {
-            loop {
-                if let Some(v) = self.items.next() {
-                    return Some(Ok(v));
-                }
-
-                let next_page = self.page_iter.next();
-                match next_page {
-                    None => return None,
-                    Some(Err(err)) => return Some(Err(err)),
-                    Some(Ok(next_page)) => {
-                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
-                            next_page;
-                        let items_array = match next_page.remove(self.items_field) {
-                            Some(items) => items,
-                            None => {
-                                return Some(Err(crate::Error::Other(
-                                    format!("no {} field found in iter response", self.items_field)
-                                        .into(),
-                                )))
-                            }
-                        };
-                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
-                        match items_vec {
-                            Ok(items) => self.items = items.into_iter(),
-                            Err(err) => return Some(Err(err.into())),
-                        }
-                    }
-                }
-            }
         }
     }
 }

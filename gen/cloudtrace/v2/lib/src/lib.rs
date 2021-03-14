@@ -19,14 +19,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Annotation {
-        #[doc = "A set of attributes on the annotation. You can have up to 4 attributes\nper Annotation."]
+        #[doc = "A set of attributes on the annotation. You can have up to 4 attributes per Annotation."]
         #[serde(
             rename = "attributes",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub attributes: ::std::option::Option<crate::schemas::Attributes>,
-        #[doc = "A user-supplied message describing the event. The maximum length for\nthe description is 256 bytes."]
+        #[doc = "A user-supplied message describing the event. The maximum length for the description is 256 bytes."]
         #[serde(
             rename = "description",
             default,
@@ -103,7 +103,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Attributes {
-        #[doc = "The set of attributes. Each attribute's key can be up to 128 bytes\nlong. The value can be a string up to 256 bytes, a signed 64-bit integer,\nor the Boolean values `true` and `false`. For example:\n\n````text\n\"/instance_id\": { \"string_value\": { \"value\": \"my-instance\" } }\n\"/http/request_bytes\": { \"int_value\": 300 }\n\"abc.com/myattribute\": { \"bool_value\": false }````"]
+        #[doc = "The set of attributes. Each attribute's key can be up to 128 bytes long. The value can be a string up to 256 bytes, a signed 64-bit integer, or the Boolean values `true` and `false`. For example: \"/instance_id\": { \"string_value\": { \"value\": \"my-instance\" } } \"/http/request_bytes\": { \"int_value\": 300 } \"abc.com/myattribute\": { \"bool_value\": false }"]
         #[serde(
             rename = "attributeMap",
             default,
@@ -112,7 +112,7 @@ pub mod schemas {
         pub attribute_map: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::AttributeValue>,
         >,
-        #[doc = "The number of attributes that were discarded. Attributes can be discarded\nbecause their keys are too long or because there are too many attributes.\nIf this value is 0 then all attributes are valid."]
+        #[doc = "The number of attributes that were discarded. Attributes can be discarded because their keys are too long or because there are too many attributes. If this value is 0 then all attributes are valid."]
         #[serde(
             rename = "droppedAttributesCount",
             default,
@@ -132,7 +132,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct BatchWriteSpansRequest {
-        #[doc = "Required. A list of new spans. The span names must not match existing\nspans, or the results are undefined."]
+        #[doc = "Required. A list of new spans. The span names must not match existing spans, or the results are undefined."]
         #[serde(
             rename = "spans",
             default,
@@ -187,7 +187,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Link {
-        #[doc = "A set of attributes on the link. You have have up to  32 attributes per\nlink."]
+        #[doc = "A set of attributes on the link. You have have up to 32 attributes per link."]
         #[serde(
             rename = "attributes",
             default,
@@ -315,7 +315,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Links {
-        #[doc = "The number of dropped links after the maximum size was enforced. If\nthis value is 0, then no links were dropped."]
+        #[doc = "The number of dropped links after the maximum size was enforced. If this value is 0, then no links were dropped."]
         #[serde(
             rename = "droppedLinksCount",
             default,
@@ -353,7 +353,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct MessageEvent {
-        #[doc = "The number of compressed bytes sent or received. If missing assumed to\nbe the same size as uncompressed."]
+        #[doc = "The number of compressed bytes sent or received. If missing assumed to be the same size as uncompressed."]
         #[serde(
             rename = "compressedSizeBytes",
             default,
@@ -361,7 +361,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub compressed_size_bytes: ::std::option::Option<i64>,
-        #[doc = "An identifier for the MessageEvent's message that can be used to match\nSENT and RECEIVED MessageEvents. It is recommended to be unique within\na Span."]
+        #[doc = "An identifier for the MessageEvent's message that can be used to match SENT and RECEIVED MessageEvents. It is recommended to be unique within a Span."]
         #[serde(
             rename = "id",
             default,
@@ -369,7 +369,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
-        #[doc = "Type of MessageEvent. Indicates whether the message was sent or\nreceived."]
+        #[doc = "Type of MessageEvent. Indicates whether the message was sent or received."]
         #[serde(
             rename = "type",
             default,
@@ -484,14 +484,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Module {
-        #[doc = "A unique identifier for the module, usually a hash of its\ncontents (up to 128 bytes)."]
+        #[doc = "A unique identifier for the module, usually a hash of its contents (up to 128 bytes)."]
         #[serde(
             rename = "buildId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub build_id: ::std::option::Option<crate::schemas::TruncatableString>,
-        #[doc = "For example: main binary, kernel modules, and dynamic libraries\nsuch as libc.so, sharedlib.so (up to 256 bytes)."]
+        #[doc = "For example: main binary, kernel modules, and dynamic libraries such as libc.so, sharedlib.so (up to 256 bytes)."]
         #[serde(
             rename = "module",
             default,
@@ -511,28 +511,28 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Span {
-        #[doc = "A set of attributes on the span. You can have up to 32 attributes per\nspan."]
+        #[doc = "A set of attributes on the span. You can have up to 32 attributes per span."]
         #[serde(
             rename = "attributes",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub attributes: ::std::option::Option<crate::schemas::Attributes>,
-        #[doc = "Optional. The number of child spans that were generated while this span\nwas active. If set, allows implementation to detect missing child spans."]
+        #[doc = "Optional. The number of child spans that were generated while this span was active. If set, allows implementation to detect missing child spans."]
         #[serde(
             rename = "childSpanCount",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub child_span_count: ::std::option::Option<i32>,
-        #[doc = "Required. A description of the span's operation (up to 128 bytes).\nStackdriver Trace displays the description in the\nGoogle Cloud Platform Console.\nFor example, the display name can be a qualified method name or a file name\nand a line number where the operation is called. A best practice is to use\nthe same display name within an application and at the same call point.\nThis makes it easier to correlate spans in different traces."]
+        #[doc = "Required. A description of the span's operation (up to 128 bytes). Trace displays the description in the Google Cloud Platform Console. For example, the display name can be a qualified method name or a file name and a line number where the operation is called. A best practice is to use the same display name within an application and at the same call point. This makes it easier to correlate spans in different traces."]
         #[serde(
             rename = "displayName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<crate::schemas::TruncatableString>,
-        #[doc = "Required. The end time of the span. On the client side, this is the time kept by\nthe local machine where the span execution ends. On the server side, this\nis the time when the server application handler stops running."]
+        #[doc = "Required. The end time of the span. On the client side, this is the time kept by the local machine where the span execution ends. On the server side, this is the time when the server application handler stops running."]
         #[serde(
             rename = "endTime",
             default,
@@ -546,21 +546,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub links: ::std::option::Option<crate::schemas::Links>,
-        #[doc = "The resource name of the span in the following format:\n\n````text\nprojects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project;\n````\n\nit is a 32-character hexadecimal encoding of a 16-byte array.\n\n[SPAN_ID] is a unique identifier for a span within a trace; it\nis a 16-character hexadecimal encoding of an 8-byte array."]
+        #[doc = "Required. The resource name of the span in the following format: projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project; it is a 32-character hexadecimal encoding of a 16-byte array. [SPAN_ID] is a unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte array. It should not be zero."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "The [SPAN_ID] of this span's parent span. If this is a root span,\nthen this field must be empty."]
+        #[doc = "The [SPAN_ID] of this span's parent span. If this is a root span, then this field must be empty."]
         #[serde(
             rename = "parentSpanId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub parent_span_id: ::std::option::Option<String>,
-        #[doc = "Optional. Set this parameter to indicate whether this span is in\nthe same process as its parent. If you do not set this parameter,\nStackdriver Trace is unable to take advantage of this helpful\ninformation."]
+        #[doc = "Optional. Set this parameter to indicate whether this span is in the same process as its parent. If you do not set this parameter, Trace is unable to take advantage of this helpful information."]
         #[serde(
             rename = "sameProcessAsParentSpan",
             default,
@@ -574,7 +574,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub span_id: ::std::option::Option<String>,
-        #[doc = "Distinguishes between spans generated in a particular context. For example,\ntwo spans with the same name may be distinguished using `CLIENT` (caller)\nand `SERVER` (callee) to identify an RPC call."]
+        #[doc = "Optional. Distinguishes between spans generated in a particular context. For example, two spans with the same name may be distinguished using `CLIENT` (caller) and `SERVER` (callee) to identify an RPC call."]
         #[serde(
             rename = "spanKind",
             default,
@@ -588,7 +588,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub stack_trace: ::std::option::Option<crate::schemas::StackTrace>,
-        #[doc = "Required. The start time of the span. On the client side, this is the time kept by\nthe local machine where the span execution starts. On the server side, this\nis the time when the server's application handler starts running."]
+        #[doc = "Required. The start time of the span. On the client side, this is the time kept by the local machine where the span execution starts. On the server side, this is the time when the server's application handler starts running."]
         #[serde(
             rename = "startTime",
             default,
@@ -602,7 +602,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub status: ::std::option::Option<crate::schemas::Status>,
-        #[doc = "A set of time events. You can have up to 32 annotations and 128 message\nevents per span."]
+        #[doc = "A set of time events. You can have up to 32 annotations and 128 message events per span."]
         #[serde(
             rename = "timeEvents",
             default,
@@ -622,17 +622,17 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SpanSpanKind {
-        #[doc = "Indicates that the span covers the client-side wrapper around an RPC or\nother remote request."]
+        #[doc = "Indicates that the span covers the client-side wrapper around an RPC or other remote request."]
         Client,
-        #[doc = "Indicates that the span describes consumer recieving a message from a\nbroker. Unlike client and  server, there is no direct critical path\nlatency relationship between producer and consumer spans (e.g. receiving\na message from a pubsub service subscription)."]
+        #[doc = "Indicates that the span describes consumer receiving a message from a broker. Unlike client and server, there is no direct critical path latency relationship between producer and consumer spans (e.g. receiving a message from a pubsub service subscription)."]
         Consumer,
         #[doc = "Indicates that the span is used internally. Default value."]
         Internal,
-        #[doc = "Indicates that the span describes producer sending a message to a broker.\nUnlike client and  server, there is no direct critical path latency\nrelationship between producer and consumer spans (e.g. publishing a\nmessage to a pubsub service)."]
+        #[doc = "Indicates that the span describes producer sending a message to a broker. Unlike client and server, there is no direct critical path latency relationship between producer and consumer spans (e.g. publishing a message to a pubsub service)."]
         Producer,
-        #[doc = "Indicates that the span covers server-side handling of an RPC or other\nremote network request."]
+        #[doc = "Indicates that the span covers server-side handling of an RPC or other remote network request."]
         Server,
-        #[doc = "Unspecified. Do NOT use as default.\nImplementations MAY assume SpanKind.INTERNAL to be default."]
+        #[doc = "Unspecified. Do NOT use as default. Implementations MAY assume SpanKind.INTERNAL to be default."]
         SpanKindUnspecified,
     }
     impl SpanSpanKind {
@@ -724,7 +724,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct StackFrame {
-        #[doc = "The column number where the function call appears, if available.\nThis is important in JavaScript because of its anonymous functions."]
+        #[doc = "The column number where the function call appears, if available. This is important in JavaScript because of its anonymous functions."]
         #[serde(
             rename = "columnNumber",
             default,
@@ -732,14 +732,14 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub column_number: ::std::option::Option<i64>,
-        #[doc = "The name of the source file where the function call appears (up to 256\nbytes)."]
+        #[doc = "The name of the source file where the function call appears (up to 256 bytes)."]
         #[serde(
             rename = "fileName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub file_name: ::std::option::Option<crate::schemas::TruncatableString>,
-        #[doc = "The fully-qualified name that uniquely identifies the function or\nmethod that is active in this frame (up to 1024 bytes)."]
+        #[doc = "The fully-qualified name that uniquely identifies the function or method that is active in this frame (up to 1024 bytes)."]
         #[serde(
             rename = "functionName",
             default,
@@ -761,7 +761,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub load_module: ::std::option::Option<crate::schemas::Module>,
-        #[doc = "An un-mangled function name, if `function_name` is\n[mangled](http://www.avabodh.com/cxxin/namemangling.html). The name can\nbe fully-qualified (up to 1024 bytes)."]
+        #[doc = "An un-mangled function name, if `function_name` is [mangled](http://www.avabodh.com/cxxin/namemangling.html). The name can be fully-qualified (up to 1024 bytes)."]
         #[serde(
             rename = "originalFunctionName",
             default,
@@ -799,7 +799,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct StackFrames {
-        #[doc = "The number of stack frames that were dropped because there\nwere too many stack frames.\nIf this value is 0, then no stack frames were dropped."]
+        #[doc = "The number of stack frames that were dropped because there were too many stack frames. If this value is 0, then no stack frames were dropped."]
         #[serde(
             rename = "droppedFramesCount",
             default,
@@ -844,7 +844,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub stack_frames: ::std::option::Option<crate::schemas::StackFrames>,
-        #[doc = "The hash ID is used to conserve network bandwidth for duplicate\nstack traces within a single trace.\n\nOften multiple spans will have identical stack traces.\nThe first occurrence of a stack trace should contain both the\n`stackFrame` content and a value in `stackTraceHashId`.\n\nSubsequent spans within the same request can refer\nto that stack trace by only setting `stackTraceHashId`."]
+        #[doc = "The hash ID is used to conserve network bandwidth for duplicate stack traces within a single trace. Often multiple spans will have identical stack traces. The first occurrence of a stack trace should contain both the `stackFrame` content and a value in `stackTraceHashId`. Subsequent spans within the same request can refer to that stack trace by only setting `stackTraceHashId`."]
         #[serde(
             rename = "stackTraceHashId",
             default,
@@ -872,7 +872,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub code: ::std::option::Option<i32>,
-        #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
+        #[doc = "A list of messages that carry the error details. There is a common set of message types for APIs to use."]
         #[serde(
             rename = "details",
             default,
@@ -880,7 +880,7 @@ pub mod schemas {
         )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
-        #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
+        #[doc = "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client."]
         #[serde(
             rename = "message",
             default,
@@ -956,14 +956,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TimeEvents {
-        #[doc = "The number of dropped annotations in all the included time events.\nIf the value is 0, then no annotations were dropped."]
+        #[doc = "The number of dropped annotations in all the included time events. If the value is 0, then no annotations were dropped."]
         #[serde(
             rename = "droppedAnnotationsCount",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub dropped_annotations_count: ::std::option::Option<i32>,
-        #[doc = "The number of dropped message events in all the included time events.\nIf the value is 0, then no message events were dropped."]
+        #[doc = "The number of dropped message events in all the included time events. If the value is 0, then no message events were dropped."]
         #[serde(
             rename = "droppedMessageEventsCount",
             default,
@@ -1001,14 +1001,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TruncatableString {
-        #[doc = "The number of bytes removed from the original string. If this\nvalue is 0, then the string was not shortened."]
+        #[doc = "The number of bytes removed from the original string. If this value is 0, then the string was not shortened."]
         #[serde(
             rename = "truncatedByteCount",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub truncated_byte_count: ::std::option::Option<i32>,
-        #[doc = "The shortened string. For example, if the original string is 500\nbytes long and the limit of the string is 128 bytes, then\n`value` contains the first 128 bytes of the 500-byte string.\n\nTruncation always happens on a UTF8 character boundary. If there\nare multi-byte characters in the string, then the length of the\nshortened string might be less than the size limit."]
+        #[doc = "The shortened string. For example, if the original string is 500 bytes long and the limit of the string is 128 bytes, then `value` contains the first 128 bytes of the 500-byte string. Truncation always happens on a UTF8 character boundary. If there are multi-byte characters in the string, then the length of the shortened string might be less than the size limit."]
         #[serde(
             rename = "value",
             default,
@@ -1183,17 +1183,17 @@ pub struct Client {
 impl Client {
     pub fn new<A>(auth: A) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client::with_reqwest_client(auth, ::reqwest::Client::builder().build().unwrap())
     }
     pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::Client) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client {
             reqwest,
-            auth: auth.into(),
+            auth: Box::new(auth),
         }
     }
     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
@@ -1236,7 +1236,7 @@ pub mod resources {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Sends new spans to new or existing traces. You cannot update\nexisting spans.\nIn this case, writing traces is not considered an active developer\nmethod since traces are machine generated."]
+                #[doc = "Sends new spans to new or existing traces. You cannot update existing spans."]
                 pub fn batch_write(
                     &self,
                     request: crate::schemas::BatchWriteSpansRequest,
@@ -1389,7 +1389,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -1406,24 +1406,28 @@ pub mod resources {
                     output.push_str("/traces:batchWrite");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -1437,7 +1441,7 @@ pub mod resources {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "Creates a new span.\nIn this case, writing traces is not considered an active developer\nmethod since traces are machine generated."]
+                    #[doc = "Creates a new span."]
                     pub fn create_span(
                         &self,
                         request: crate::schemas::Span,
@@ -1583,7 +1587,7 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         let req = req.json(&self.request);
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
@@ -1599,27 +1603,28 @@ pub mod resources {
                         }
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -1635,6 +1640,7 @@ pub enum Error {
         reqwest_err: ::reqwest::Error,
         body: Option<String>,
     },
+    IO(std::io::Error),
     Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
@@ -1644,6 +1650,7 @@ impl Error {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
             Error::Reqwest { .. } => None,
+            Error::IO(_) => None,
             Error::Other(_) => None,
         }
     }
@@ -1661,6 +1668,7 @@ impl ::std::fmt::Display for Error {
                 }
                 Ok(())
             }
+            Error::IO(err) => write!(f, "IO Error: {}", err),
             Error::Other(err) => write!(f, "Uknown Error: {}", err),
         }
     }
@@ -1680,6 +1688,12 @@ impl From<::reqwest::Error> for Error {
             reqwest_err,
             body: None,
         }
+    }
+}
+
+impl From<std::io::Error> for Error {
+    fn from(err: std::io::Error) -> Error {
+        Error::IO(err)
     }
 }
 #[allow(dead_code)]
@@ -1749,13 +1763,13 @@ mod multipart {
 
     pub(crate) struct Part {
         content_type: ::mime::Mime,
-        body: Box<dyn ::std::io::Read + Send>,
+        body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
     }
 
     impl Part {
         pub(crate) fn new(
             content_type: ::mime::Mime,
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         ) -> Part {
             Part { content_type, body }
         }
@@ -1764,7 +1778,7 @@ mod multipart {
     pub(crate) struct RelatedMultiPartReader {
         state: RelatedMultiPartReaderState,
         boundary: String,
-        next_body: Option<Box<dyn ::std::io::Read + Send>>,
+        next_body: Option<Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>>,
         parts: std::vec::IntoIter<Part>,
     }
 
@@ -1778,13 +1792,18 @@ mod multipart {
             content_type: Vec<u8>,
         },
         WriteBody {
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         },
     }
 
-    impl ::std::io::Read for RelatedMultiPartReader {
-        fn read(&mut self, buf: &mut [u8]) -> ::std::io::Result<usize> {
+    impl futures::io::AsyncRead for RelatedMultiPartReader {
+        fn poll_read(
+            mut self: std::pin::Pin<&mut Self>,
+            ctx: &mut futures::task::Context,
+            buf: &mut [u8],
+        ) -> futures::task::Poll<Result<usize, futures::io::Error>> {
             use RelatedMultiPartReaderState::*;
+
             let mut bytes_written: usize = 0;
             loop {
                 let rem_buf = &mut buf[bytes_written..];
@@ -1832,7 +1851,14 @@ mod multipart {
                         }
                     }
                     WriteBody { body } => {
-                        let written = body.read(rem_buf)?;
+                        let body = std::pin::Pin::new(body);
+                        let written = match futures::io::AsyncRead::poll_read(body, ctx, rem_buf) {
+                            futures::task::Poll::Ready(Ok(n)) => n,
+                            futures::task::Poll::Ready(Err(err)) => {
+                                return futures::task::Poll::Ready(Err(err));
+                            }
+                            futures::task::Poll::Pending => return futures::task::Poll::Pending,
+                        };
                         bytes_written += written;
                         if written == 0 {
                             self.state = WriteBoundary {
@@ -1845,7 +1871,8 @@ mod multipart {
                     }
                 }
             }
-            Ok(bytes_written)
+
+            futures::task::Poll::Ready(Ok(bytes_written))
         }
     }
 

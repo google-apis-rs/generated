@@ -62,14 +62,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub android_fallback_link: ::std::option::Option<String>,
-        #[doc = "If specified, this overrides the \u{2018}link\u{2019} parameter on Android."]
+        #[doc = "If specified, this overrides the ‘link’ parameter on Android."]
         #[serde(
             rename = "androidLink",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub android_link: ::std::option::Option<String>,
-        #[doc = "Minimum version code for the Android app. If the installed app\u{2019}s version\ncode is lower, then the user is taken to the Play Store."]
+        #[doc = "Minimum version code for the Android app. If the installed app’s version code is lower, then the user is taken to the Play Store."]
         #[serde(
             rename = "androidMinPackageVersionCode",
             default,
@@ -107,21 +107,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CreateManagedShortLinkRequest {
-        #[doc = "Information about the Dynamic Link to be shortened.\n[Learn\nmore](https://firebase.google.com/docs/reference/dynamic-links/link-shortener)."]
+        #[doc = "Information about the Dynamic Link to be shortened. [Learn more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener)."]
         #[serde(
             rename = "dynamicLinkInfo",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub dynamic_link_info: ::std::option::Option<crate::schemas::DynamicLinkInfo>,
-        #[doc = "Full long Dynamic Link URL with desired query parameters specified.\nFor example,\n\"https://sample.app.goo.gl/?link=http://www.google.com&apn=com.sample\",\n[Learn\nmore](https://firebase.google.com/docs/reference/dynamic-links/link-shortener)."]
+        #[doc = "Full long Dynamic Link URL with desired query parameters specified. For example, \"https://sample.app.goo.gl/?link=http://www.google.com&apn=com.sample\", [Learn more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener)."]
         #[serde(
             rename = "longDynamicLink",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub long_dynamic_link: ::std::option::Option<String>,
-        #[doc = "Link name to associate with the link. It's used for marketer to identify\nmanually-created links in the Firebase console\n(https://console.firebase.google.com/).\nLinks must be named to be tracked."]
+        #[doc = "Link name to associate with the link. It's used for marketer to identify manually-created links in the Firebase console (https://console.firebase.google.com/). Links must be named to be tracked."]
         #[serde(
             rename = "name",
             default,
@@ -211,14 +211,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CreateShortDynamicLinkRequest {
-        #[doc = "Information about the Dynamic Link to be shortened.\n[Learn\nmore](https://firebase.google.com/docs/reference/dynamic-links/link-shortener)."]
+        #[doc = "Information about the Dynamic Link to be shortened. [Learn more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener)."]
         #[serde(
             rename = "dynamicLinkInfo",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub dynamic_link_info: ::std::option::Option<crate::schemas::DynamicLinkInfo>,
-        #[doc = "Full long Dynamic Link URL with desired query parameters specified.\nFor example,\n\"https://sample.app.goo.gl/?link=http://www.google.com&apn=com.sample\",\n[Learn\nmore](https://firebase.google.com/docs/reference/dynamic-links/link-shortener)."]
+        #[doc = "Full long Dynamic Link URL with desired query parameters specified. For example, \"https://sample.app.goo.gl/?link=http://www.google.com&apn=com.sample\", [Learn more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener)."]
         #[serde(
             rename = "longDynamicLink",
             default,
@@ -353,14 +353,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub language_code: ::std::option::Option<String>,
-        #[doc = "Device language code setting obtained by executing JavaScript code in\nWebView."]
+        #[doc = "Device language code setting obtained by executing JavaScript code in WebView."]
         #[serde(
             rename = "languageCodeFromWebview",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub language_code_from_webview: ::std::option::Option<String>,
-        #[doc = "Device language code raw setting.\niOS does returns language code in different format than iOS WebView.\nFor example WebView returns en_US, but iOS returns en-US.\nField below will return raw value returned by iOS."]
+        #[doc = "Device language code raw setting. iOS does returns language code in different format than iOS WebView. For example WebView returns en_US, but iOS returns en-US. Field below will return raw value returned by iOS."]
         #[serde(
             rename = "languageCodeRaw",
             default,
@@ -449,9 +449,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DynamicLinkEventStatEvent {
-        #[doc = "Indicates that the app is opened for the first time after an install\ntriggered by FDLs"]
+        #[doc = "Indicates that the app is opened for the first time after an install triggered by FDLs"]
         AppFirstOpen,
-        #[doc = "Indicates that an FDL triggers an app install from Play store, currently\nit's impossible to get stats from App store."]
+        #[doc = "Indicates that an FDL triggers an app install from Play store, currently it's impossible to get stats from App store."]
         AppInstall,
         #[doc = "Indicates that the app is opened via an FDL for non-first time."]
         AppReOpen,
@@ -546,13 +546,13 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DynamicLinkEventStatPlatform {
-        #[doc = "Represents Android platform.\nAll apps and browsers on Android are classfied in this category."]
+        #[doc = "Represents Android platform. All apps and browsers on Android are classfied in this category."]
         Android,
         #[doc = "Represents desktop."]
         Desktop,
         #[doc = "Unspecified platform."]
         DynamicLinkPlatformUnspecified,
-        #[doc = "Represents iOS platform.\nAll apps and browsers on iOS are classfied in this category."]
+        #[doc = "Represents iOS platform. All apps and browsers on iOS are classfied in this category."]
         Ios,
         #[doc = "Platforms are not categorized as Android/iOS/Destop fall into here."]
         Other,
@@ -649,49 +649,49 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DynamicLinkInfo {
-        #[doc = "Parameters used for tracking. See all tracking parameters in the\n[documentation](https://firebase.google.com/docs/dynamic-links/create-manually)."]
+        #[doc = "Parameters used for tracking. See all tracking parameters in the [documentation](https://firebase.google.com/docs/dynamic-links/create-manually)."]
         #[serde(
             rename = "analyticsInfo",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub analytics_info: ::std::option::Option<crate::schemas::AnalyticsInfo>,
-        #[doc = "Android related information. See Android related parameters in the\n[documentation](https://firebase.google.com/docs/dynamic-links/create-manually)."]
+        #[doc = "Android related information. See Android related parameters in the [documentation](https://firebase.google.com/docs/dynamic-links/create-manually)."]
         #[serde(
             rename = "androidInfo",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub android_info: ::std::option::Option<crate::schemas::AndroidInfo>,
-        #[doc = "Desktop related information. See desktop related parameters in the\n[documentation](https://firebase.google.com/docs/dynamic-links/create-manually)."]
+        #[doc = "Desktop related information. See desktop related parameters in the [documentation](https://firebase.google.com/docs/dynamic-links/create-manually)."]
         #[serde(
             rename = "desktopInfo",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub desktop_info: ::std::option::Option<crate::schemas::DesktopInfo>,
-        #[doc = "E.g. https://maps.app.goo.gl, https://maps.page.link, https://g.co/maps\nMore examples can be found in description of getNormalizedUriPrefix in\nj/c/g/firebase/dynamiclinks/uri/DdlDomain.java\n\nWill fallback to dynamic_link_domain is this field is missing"]
+        #[doc = "E.g. https://maps.app.goo.gl, https://maps.page.link, https://g.co/maps More examples can be found in description of getNormalizedUriPrefix in j/c/g/firebase/dynamiclinks/uri/DdlDomain.java Will fallback to dynamic_link_domain is this field is missing"]
         #[serde(
             rename = "domainUriPrefix",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub domain_uri_prefix: ::std::option::Option<String>,
-        #[doc = "Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl\n[Learn\nmore](https://firebase.google.com/docs/dynamic-links/android/receive) on\nhow to set up Dynamic Link domain associated with your Firebase project.\n\nRequired if missing domain_uri_prefix."]
+        #[doc = "Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl [Learn more](https://firebase.google.com/docs/dynamic-links/android/receive) on how to set up Dynamic Link domain associated with your Firebase project. Required if missing domain_uri_prefix."]
         #[serde(
             rename = "dynamicLinkDomain",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub dynamic_link_domain: ::std::option::Option<String>,
-        #[doc = "iOS related information. See iOS related parameters in the\n[documentation](https://firebase.google.com/docs/dynamic-links/create-manually)."]
+        #[doc = "iOS related information. See iOS related parameters in the [documentation](https://firebase.google.com/docs/dynamic-links/create-manually)."]
         #[serde(
             rename = "iosInfo",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ios_info: ::std::option::Option<crate::schemas::IosInfo>,
-        #[doc = "The link your app will open, You can specify any URL your app can handle.\nThis link must be a well-formatted URL, be properly URL-encoded, and use\nthe HTTP or HTTPS scheme. See 'link' parameters in the\n[documentation](https://firebase.google.com/docs/dynamic-links/create-manually).\n\nRequired."]
+        #[doc = "The link your app will open, You can specify any URL your app can handle. This link must be a well-formatted URL, be properly URL-encoded, and use the HTTP or HTTPS scheme. See 'link' parameters in the [documentation](https://firebase.google.com/docs/dynamic-links/create-manually). Required."]
         #[serde(
             rename = "link",
             default,
@@ -705,7 +705,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub navigation_info: ::std::option::Option<crate::schemas::NavigationInfo>,
-        #[doc = "Parameters for social meta tag params.\nUsed to set meta tag data for link previews on social sites."]
+        #[doc = "Parameters for social meta tag params. Used to set meta tag data for link previews on social sites."]
         #[serde(
             rename = "socialMetaTagInfo",
             default,
@@ -847,9 +847,9 @@ pub mod schemas {
         NotUriSocialUrl,
         #[doc = "Indicates certain paramater is too long."]
         TooLongParam,
-        #[doc = "Android link param is not needed, e.g. when param 'al' and 'link' have\nthe same value.."]
+        #[doc = "Android link param is not needed, e.g. when param 'al' and 'link' have the same value.."]
         UnnecessaryAndroidLink,
-        #[doc = "Android package min version param is not needed, e.g. when\n'apn' is missing."]
+        #[doc = "Android package min version param is not needed, e.g. when 'apn' is missing."]
         UnnecessaryAndroidPackageMinVersion,
         #[doc = "iOS app store ID is not needed."]
         UnnecessaryIosAppStoreId,
@@ -1106,7 +1106,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GetIosPostInstallAttributionRequest {
-        #[doc = "App installation epoch time (https://en.wikipedia.org/wiki/Unix_time).\nThis is a client signal for a more accurate weak match."]
+        #[doc = "App installation epoch time (https://en.wikipedia.org/wiki/Unix_time). This is a client signal for a more accurate weak match."]
         #[serde(
             rename = "appInstallationTime",
             default,
@@ -1128,14 +1128,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub device: ::std::option::Option<crate::schemas::DeviceInfo>,
-        #[doc = "iOS version, ie: 9.3.5.\nConsider adding \"build\"."]
+        #[doc = "iOS version, ie: 9.3.5. Consider adding \"build\"."]
         #[serde(
             rename = "iosVersion",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ios_version: ::std::option::Option<String>,
-        #[doc = "App post install attribution retrieval information. Disambiguates\nmechanism (iSDK or developer invoked) to retrieve payload from\nclicked link."]
+        #[doc = "App post install attribution retrieval information. Disambiguates mechanism (iSDK or developer invoked) to retrieve payload from clicked link."]
         #[serde(
             rename = "retrievalMethod",
             default,
@@ -1151,14 +1151,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub sdk_version: ::std::option::Option<String>,
-        #[doc = "Possible unique matched link that server need to check before performing\nfingerprint match. If passed link is short server need to expand the link.\nIf link is long server need to vslidate the link."]
+        #[doc = "Possible unique matched link that server need to check before performing fingerprint match. If passed link is short server need to expand the link. If link is long server need to vslidate the link."]
         #[serde(
             rename = "uniqueMatchLinkToCheck",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub unique_match_link_to_check: ::std::option::Option<String>,
-        #[doc = "Strong match page information. Disambiguates between default UI and\ncustom page to present when strong match succeeds/fails to find cookie."]
+        #[doc = "Strong match page information. Disambiguates between default UI and custom page to present when strong match succeeds/fails to find cookie."]
         #[serde(
             rename = "visualStyle",
             default,
@@ -1179,11 +1179,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GetIosPostInstallAttributionRequestRetrievalMethod {
-        #[doc = "iSDK performs a strong match only if weak match is found upon a dev\nAPI call."]
+        #[doc = "iSDK performs a strong match only if weak match is found upon a dev API call."]
         ExplicitStrongAfterWeakMatch,
         #[doc = "iSDK performs a server lookup by device fingerprint upon a dev API call."]
         ExplicitWeakMatch,
-        #[doc = "iSDK performs a server lookup by device fingerprint in the background\nwhen app is first-opened; no API called by developer."]
+        #[doc = "iSDK performs a server lookup by device fingerprint in the background when app is first-opened; no API called by developer."]
         ImplicitWeakMatch,
         #[doc = "Unknown method."]
         UnknownPayloadRetrievalMethod,
@@ -1203,7 +1203,7 @@ pub mod schemas {
         fn from_str(
             s: &str,
         ) -> ::std::result::Result<GetIosPostInstallAttributionRequestRetrievalMethod, ()> {
-            Ok ( match s { "EXPLICIT_STRONG_AFTER_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ExplicitStrongAfterWeakMatch , "EXPLICIT_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ExplicitWeakMatch , "IMPLICIT_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ImplicitWeakMatch , "UNKNOWN_PAYLOAD_RETRIEVAL_METHOD" => GetIosPostInstallAttributionRequestRetrievalMethod :: UnknownPayloadRetrievalMethod , _ => return Err ( ( ) ) , } )
+            Ok (match s { "EXPLICIT_STRONG_AFTER_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ExplicitStrongAfterWeakMatch , "EXPLICIT_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ExplicitWeakMatch , "IMPLICIT_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ImplicitWeakMatch , "UNKNOWN_PAYLOAD_RETRIEVAL_METHOD" => GetIosPostInstallAttributionRequestRetrievalMethod :: UnknownPayloadRetrievalMethod , _ => return Err (()) , })
         }
     }
     impl ::std::fmt::Display for GetIosPostInstallAttributionRequestRetrievalMethod {
@@ -1225,7 +1225,7 @@ pub mod schemas {
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "EXPLICIT_STRONG_AFTER_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ExplicitStrongAfterWeakMatch , "EXPLICIT_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ExplicitWeakMatch , "IMPLICIT_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ImplicitWeakMatch , "UNKNOWN_PAYLOAD_RETRIEVAL_METHOD" => GetIosPostInstallAttributionRequestRetrievalMethod :: UnknownPayloadRetrievalMethod , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok (match value { "EXPLICIT_STRONG_AFTER_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ExplicitStrongAfterWeakMatch , "EXPLICIT_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ExplicitWeakMatch , "IMPLICIT_WEAK_MATCH" => GetIosPostInstallAttributionRequestRetrievalMethod :: ImplicitWeakMatch , "UNKNOWN_PAYLOAD_RETRIEVAL_METHOD" => GetIosPostInstallAttributionRequestRetrievalMethod :: UnknownPayloadRetrievalMethod , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
         }
     }
     impl ::google_field_selector::FieldSelector for GetIosPostInstallAttributionRequestRetrievalMethod {
@@ -1335,7 +1335,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GetIosPostInstallAttributionResponse {
-        #[doc = "The minimum version for app, specified by dev through ?imv= parameter.\nReturn to iSDK to allow app to evaluate if current version meets this."]
+        #[doc = "The minimum version for app, specified by dev through ?imv= parameter. Return to iSDK to allow app to evaluate if current version meets this."]
         #[serde(
             rename = "appMinimumVersion",
             default,
@@ -1351,42 +1351,42 @@ pub mod schemas {
         pub attribution_confidence: ::std::option::Option<
             crate::schemas::GetIosPostInstallAttributionResponseAttributionConfidence,
         >,
-        #[doc = "The deep-link attributed post-install via one of several techniques\n(fingerprint, copy unique)."]
+        #[doc = "The deep-link attributed post-install via one of several techniques (fingerprint, copy unique)."]
         #[serde(
             rename = "deepLink",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub deep_link: ::std::option::Option<String>,
-        #[doc = "User-agent specific custom-scheme URIs for iSDK to open. This will be set\naccording to the user-agent tha the click was originally made in. There is\nno Safari-equivalent custom-scheme open URLs.\nie: googlechrome://www.example.com\nie: firefox://open-url?url=http://www.example.com\nie: opera-http://example.com"]
+        #[doc = "User-agent specific custom-scheme URIs for iSDK to open. This will be set according to the user-agent tha the click was originally made in. There is no Safari-equivalent custom-scheme open URLs. ie: googlechrome://www.example.com ie: firefox://open-url?url=http://www.example.com ie: opera-http://example.com"]
         #[serde(
             rename = "externalBrowserDestinationLink",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub external_browser_destination_link: ::std::option::Option<String>,
-        #[doc = "The link to navigate to update the app if min version is not met.\nThis is either (in order): 1) fallback link (from ?ifl= parameter, if\nspecified by developer) or 2) AppStore URL (from ?isi= parameter, if\nspecified), or 3) the payload link (from required link= parameter)."]
+        #[doc = "The link to navigate to update the app if min version is not met. This is either (in order): 1) fallback link (from ?ifl= parameter, if specified by developer) or 2) AppStore URL (from ?isi= parameter, if specified), or 3) the payload link (from required link= parameter)."]
         #[serde(
             rename = "fallbackLink",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fallback_link: ::std::option::Option<String>,
-        #[doc = "Invitation ID attributed post-install via one of several techniques\n(fingerprint, copy unique)."]
+        #[doc = "Invitation ID attributed post-install via one of several techniques (fingerprint, copy unique)."]
         #[serde(
             rename = "invitationId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub invitation_id: ::std::option::Option<String>,
-        #[doc = "Instruction for iSDK to attemmpt to perform strong match. For instance,\nif browser does not support/allow cookie or outside of support browsers,\nthis will be false."]
+        #[doc = "Instruction for iSDK to attemmpt to perform strong match. For instance, if browser does not support/allow cookie or outside of support browsers, this will be false."]
         #[serde(
             rename = "isStrongMatchExecutable",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_strong_match_executable: ::std::option::Option<bool>,
-        #[doc = "Describes why match failed, ie: \"discarded due to low confidence\".\nThis message will be publicly visible."]
+        #[doc = "Describes why match failed, ie: \"discarded due to low confidence\". This message will be publicly visible."]
         #[serde(
             rename = "matchMessage",
             default,
@@ -1402,14 +1402,14 @@ pub mod schemas {
         pub request_ip_version: ::std::option::Option<
             crate::schemas::GetIosPostInstallAttributionResponseRequestIpVersion,
         >,
-        #[doc = "Entire FDL (short or long) attributed post-install via one of several\ntechniques (fingerprint, copy unique)."]
+        #[doc = "Entire FDL (short or long) attributed post-install via one of several techniques (fingerprint, copy unique)."]
         #[serde(
             rename = "requestedLink",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub requested_link: ::std::option::Option<String>,
-        #[doc = "The entire FDL, expanded from a short link. It is the same as the\nrequested_link, if it is long. Parameters from this should not be\nused directly (ie: server can default utm_[campaign|medium|source]\nto a value when requested_link lack them, server determine the best\nfallback_link when requested_link specifies >1 fallback links)."]
+        #[doc = "The entire FDL, expanded from a short link. It is the same as the requested_link, if it is long. Parameters from this should not be used directly (ie: server can default utm_[campaign|medium|source] to a value when requested_link lack them, server determine the best fallback_link when requested_link specifies >1 fallback links)."]
         #[serde(
             rename = "resolvedLink",
             default,
@@ -1466,11 +1466,11 @@ pub mod schemas {
     pub enum GetIosPostInstallAttributionResponseAttributionConfidence {
         #[doc = "Default confidence, match based on fingerprint"]
         Default,
-        #[doc = "Unique confidence, match based on \"unique match link to check\" or other\nmeans"]
+        #[doc = "Unique confidence, match based on \"unique match link to check\" or other means"]
         Unique,
         #[doc = "Unset."]
         UnknownAttributionConfidence,
-        #[doc = "Weak confidence, more than one matching link found or link suspected to\nbe false positive"]
+        #[doc = "Weak confidence, more than one matching link found or link suspected to be false positive"]
         Weak,
     }
     impl GetIosPostInstallAttributionResponseAttributionConfidence {
@@ -1489,7 +1489,7 @@ pub mod schemas {
             s: &str,
         ) -> ::std::result::Result<GetIosPostInstallAttributionResponseAttributionConfidence, ()>
         {
-            Ok ( match s { "DEFAULT" => GetIosPostInstallAttributionResponseAttributionConfidence :: Default , "UNIQUE" => GetIosPostInstallAttributionResponseAttributionConfidence :: Unique , "UNKNOWN_ATTRIBUTION_CONFIDENCE" => GetIosPostInstallAttributionResponseAttributionConfidence :: UnknownAttributionConfidence , "WEAK" => GetIosPostInstallAttributionResponseAttributionConfidence :: Weak , _ => return Err ( ( ) ) , } )
+            Ok (match s { "DEFAULT" => GetIosPostInstallAttributionResponseAttributionConfidence :: Default , "UNIQUE" => GetIosPostInstallAttributionResponseAttributionConfidence :: Unique , "UNKNOWN_ATTRIBUTION_CONFIDENCE" => GetIosPostInstallAttributionResponseAttributionConfidence :: UnknownAttributionConfidence , "WEAK" => GetIosPostInstallAttributionResponseAttributionConfidence :: Weak , _ => return Err (()) , })
         }
     }
     impl ::std::fmt::Display for GetIosPostInstallAttributionResponseAttributionConfidence {
@@ -1511,7 +1511,7 @@ pub mod schemas {
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "DEFAULT" => GetIosPostInstallAttributionResponseAttributionConfidence :: Default , "UNIQUE" => GetIosPostInstallAttributionResponseAttributionConfidence :: Unique , "UNKNOWN_ATTRIBUTION_CONFIDENCE" => GetIosPostInstallAttributionResponseAttributionConfidence :: UnknownAttributionConfidence , "WEAK" => GetIosPostInstallAttributionResponseAttributionConfidence :: Weak , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok (match value { "DEFAULT" => GetIosPostInstallAttributionResponseAttributionConfidence :: Default , "UNIQUE" => GetIosPostInstallAttributionResponseAttributionConfidence :: Unique , "UNKNOWN_ATTRIBUTION_CONFIDENCE" => GetIosPostInstallAttributionResponseAttributionConfidence :: UnknownAttributionConfidence , "WEAK" => GetIosPostInstallAttributionResponseAttributionConfidence :: Weak , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
         }
     }
     impl ::google_field_selector::FieldSelector
@@ -1635,7 +1635,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bundle_id: ::std::option::Option<String>,
-        #[doc = "FDL link to be verified from an app universal link open.\nThe FDL link can be one of:\n\n1. short FDL.\n   e.g. <app_code>.page.link/<ddl_id>, or\n1. long FDL.\n   e.g. <app_code>.page.link/?{query params}, or\n1. Invite FDL.\n   e.g. <app_code>.page.link/i/<invite_id_or_alias>"]
+        #[doc = "FDL link to be verified from an app universal link open. The FDL link can be one of: 1) short FDL. e.g. .page.link/, or 2) long FDL. e.g. .page.link/?{query params}, or 3) Invite FDL. e.g. .page.link/i/"]
         #[serde(
             rename = "requestedLink",
             default,
@@ -1673,7 +1673,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GetIosReopenAttributionResponse {
-        #[doc = "The deep-link attributed the app universal link open. For both regular\nFDL links and invite FDL links."]
+        #[doc = "The deep-link attributed the app universal link open. For both regular FDL links and invite FDL links."]
         #[serde(
             rename = "deepLink",
             default,
@@ -1687,14 +1687,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub invitation_id: ::std::option::Option<String>,
-        #[doc = "FDL input value of the \"&imv=\" parameter, minimum app version to be\nreturned to Google Firebase SDK running on iOS-9."]
+        #[doc = "FDL input value of the \"&imv=\" parameter, minimum app version to be returned to Google Firebase SDK running on iOS-9."]
         #[serde(
             rename = "iosMinAppVersion",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ios_min_app_version: ::std::option::Option<String>,
-        #[doc = "The entire FDL, expanded from a short link. It is the same as the\nrequested_link, if it is long."]
+        #[doc = "The entire FDL, expanded from a short link. It is the same as the requested_link, if it is long."]
         #[serde(
             rename = "resolvedLink",
             default,
@@ -1760,21 +1760,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GooglePlayAnalytics {
-        #[doc = "[AdWords autotagging\nparameter](https://support.google.com/analytics/answer/1033981?hl=en); used\nto measure Google AdWords ads. This value is generated dynamically and\nshould never be modified."]
+        #[doc = "[AdWords autotagging parameter](https://support.google.com/analytics/answer/1033981?hl=en); used to measure Google AdWords ads. This value is generated dynamically and should never be modified."]
         #[serde(
             rename = "gclid",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub gclid: ::std::option::Option<String>,
-        #[doc = "Campaign name; used for keyword analysis to identify a specific product\npromotion or strategic campaign."]
+        #[doc = "Campaign name; used for keyword analysis to identify a specific product promotion or strategic campaign."]
         #[serde(
             rename = "utmCampaign",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub utm_campaign: ::std::option::Option<String>,
-        #[doc = "Campaign content; used for A/B testing and content-targeted ads to\ndifferentiate ads or links that point to the same URL."]
+        #[doc = "Campaign content; used for A/B testing and content-targeted ads to differentiate ads or links that point to the same URL."]
         #[serde(
             rename = "utmContent",
             default,
@@ -1788,7 +1788,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub utm_medium: ::std::option::Option<String>,
-        #[doc = "Campaign source; used to identify a search engine, newsletter, or other\nsource."]
+        #[doc = "Campaign source; used to identify a search engine, newsletter, or other source."]
         #[serde(
             rename = "utmSource",
             default,
@@ -1840,7 +1840,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ios_bundle_id: ::std::option::Option<String>,
-        #[doc = "Custom (destination) scheme to use for iOS. By default, we\u{2019}ll use the\nbundle ID as the custom scheme. Developer can override this behavior using\nthis param."]
+        #[doc = "Custom (destination) scheme to use for iOS. By default, we’ll use the bundle ID as the custom scheme. Developer can override this behavior using this param."]
         #[serde(
             rename = "iosCustomScheme",
             default,
@@ -1906,7 +1906,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub at: ::std::option::Option<String>,
-        #[doc = "Campaign text that developers can optionally add to any link in order to\ntrack sales from a specific marketing campaign."]
+        #[doc = "Campaign text that developers can optionally add to any link in order to track sales from a specific marketing campaign."]
         #[serde(
             rename = "ct",
             default,
@@ -1920,7 +1920,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mt: ::std::option::Option<String>,
-        #[doc = "Provider token that enables analytics for Dynamic Links from within iTunes\nConnect."]
+        #[doc = "Provider token that enables analytics for Dynamic Links from within iTunes Connect."]
         #[serde(
             rename = "pt",
             default,
@@ -1973,14 +1973,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub info: ::std::option::Option<crate::schemas::DynamicLinkInfo>,
-        #[doc = "Short durable link url, for example, \"https://sample.app.goo.gl/xyz123\".\n\nRequired."]
+        #[doc = "Short durable link url, for example, \"https://sample.app.goo.gl/xyz123\". Required."]
         #[serde(
             rename = "link",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub link: ::std::option::Option<String>,
-        #[doc = "Link name defined by the creator.\n\nRequired."]
+        #[doc = "Link name defined by the creator. Required."]
         #[serde(
             rename = "linkName",
             default,
@@ -2007,7 +2007,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ManagedShortLinkFlaggedAttributeItems {
+        #[doc = "Indicates that short url has been flagged by AbuseIAm team as spam."]
         Spam,
+        #[doc = "Indicates that no attributes were found for this short url."]
         UnspecifiedAttribute,
     }
     impl ManagedShortLinkFlaggedAttributeItems {
@@ -2082,7 +2084,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ManagedShortLinkVisibility {
-        #[doc = "Link created in console and should not be shown in console (but can\nbe shown in the console again if it is unarchived)."]
+        #[doc = "Link created in console and should not be shown in console (but can be shown in the console again if it is unarchived)."]
         Archived,
         #[doc = "Link created outside of console and should never be shown in console."]
         NeverShown,
@@ -2174,7 +2176,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct NavigationInfo {
-        #[doc = "If this option is on, FDL click will be forced to redirect rather than\nshow an interstitial page."]
+        #[doc = "If this option is on, FDL click will be forced to redirect rather than show an interstitial page."]
         #[serde(
             rename = "enableForcedRedirect",
             default,
@@ -2277,13 +2279,13 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SuffixOption {
-        #[doc = "Custom DDL suffix is a client specified string, for example,\n\"buy2get1free\".\nNOTE: custom suffix should only be available to managed short link\ncreation"]
+        #[doc = "Custom DDL suffix is a client specified string, for example, \"buy2get1free\". NOTE: custom suffix should only be available to managed short link creation"]
         Custom,
         #[doc = "The suffix option is not specified, performs as UNGUESSABLE ."]
         OptionUnspecified,
-        #[doc = "Short Dynamic Link suffix is a base62 [0-9A-Za-z] string starting with a\nlength of 4 chars. the length will increase when all the space is\noccupied."]
+        #[doc = "Short Dynamic Link suffix is a base62 [0-9A-Za-z] string starting with a length of 4 chars. the length will increase when all the space is occupied."]
         Short,
-        #[doc = "Short Dynamic Link suffix is a base62 [0-9A-Za-z] encoded string of\na random generated 96 bit random number, which has a length of 17 chars.\nFor example, \"nlAR8U4SlKRZw1cb2\".\nIt prevents other people from guessing and crawling short Dynamic Links\nthat contain personal identifiable information."]
+        #[doc = "Short Dynamic Link suffix is a base62 [0-9A-Za-z] encoded string of a random generated 96 bit random number, which has a length of 17 chars. For example, \"nlAR8U4SlKRZw1cb2\". It prevents other people from guessing and crawling short Dynamic Links that contain personal identifiable information."]
         Unguessable,
     }
     impl SuffixOption {
@@ -2513,17 +2515,17 @@ pub struct Client {
 impl Client {
     pub fn new<A>(auth: A) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client::with_reqwest_client(auth, ::reqwest::Client::builder().build().unwrap())
     }
     pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::Client) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client {
             reqwest,
-            auth: auth.into(),
+            auth: Box::new(auth),
         }
     }
     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
@@ -2564,7 +2566,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Creates a managed short Dynamic Link given either a valid long Dynamic Link\nor details such as Dynamic Link domain, Android and iOS app information.\nThe created short Dynamic Link will not expire.\n\nThis differs from CreateShortDynamicLink in the following ways:\n\n* The request will also contain a name for the link (non unique name\n  for the front end).\n* The response must be authenticated with an auth token (generated with\n  the admin service account).\n* The link will appear in the FDL list of links in the console front end.\n\nThe Dynamic Link domain in the request must be owned by requester's\nFirebase project."]
+            #[doc = "Creates a managed short Dynamic Link given either a valid long Dynamic Link or details such as Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire. This differs from CreateShortDynamicLink in the following ways: - The request will also contain a name for the link (non unique name for the front end). - The response must be authenticated with an auth token (generated with the admin service account). - The link will appear in the FDL list of links in the console front end. The Dynamic Link domain in the request must be owned by requester's Firebase project."]
             pub fn create(
                 &self,
                 request: crate::schemas::CreateManagedShortLinkRequest,
@@ -2707,7 +2709,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -2716,24 +2718,28 @@ pub mod resources {
                 output.push_str("v1/managedShortLinks:create");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -2748,7 +2754,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Creates a short Dynamic Link given either a valid long Dynamic Link or\ndetails such as Dynamic Link domain, Android and iOS app information.\nThe created short Dynamic Link will not expire.\n\nRepeated calls with the same long Dynamic Link or Dynamic Link information\nwill produce the same short Dynamic Link.\n\nThe Dynamic Link domain in the request must be owned by requester's\nFirebase project."]
+            #[doc = "Creates a short Dynamic Link given either a valid long Dynamic Link or details such as Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire. Repeated calls with the same long Dynamic Link or Dynamic Link information will produce the same short Dynamic Link. The Dynamic Link domain in the request must be owned by requester's Firebase project."]
             pub fn create(
                 &self,
                 request: crate::schemas::CreateShortDynamicLinkRequest,
@@ -2891,7 +2897,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -2900,24 +2906,28 @@ pub mod resources {
                 output.push_str("v1/shortLinks");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -2932,7 +2942,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Fetches analytics stats of a short Dynamic Link for a given\nduration. Metrics include number of clicks, redirects, installs,\napp first opens, and app reopens."]
+            #[doc = "Fetches analytics stats of a short Dynamic Link for a given duration. Metrics include number of clicks, redirects, installs, app first opens, and app reopens."]
             pub fn get_link_stats(
                 &self,
                 dynamic_link: impl Into<String>,
@@ -3133,7 +3143,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -3149,26 +3159,30 @@ pub mod resources {
                 output.push_str("/linkStats");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("durationDays", &self.duration_days)]);
-                let req = req.query(&[("sdkVersion", &self.sdk_version)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("durationDays", &self.duration_days)]);
+                req = req.query(&[("sdkVersion", &self.sdk_version)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -3294,7 +3308,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -3303,24 +3317,28 @@ pub mod resources {
                 output.push_str("v1/installAttribution");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -3444,7 +3462,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -3453,24 +3471,28 @@ pub mod resources {
                 output.push_str("v1/reopenAttribution");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -3484,6 +3506,7 @@ pub enum Error {
         reqwest_err: ::reqwest::Error,
         body: Option<String>,
     },
+    IO(std::io::Error),
     Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
@@ -3493,6 +3516,7 @@ impl Error {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
             Error::Reqwest { .. } => None,
+            Error::IO(_) => None,
             Error::Other(_) => None,
         }
     }
@@ -3510,6 +3534,7 @@ impl ::std::fmt::Display for Error {
                 }
                 Ok(())
             }
+            Error::IO(err) => write!(f, "IO Error: {}", err),
             Error::Other(err) => write!(f, "Uknown Error: {}", err),
         }
     }
@@ -3529,6 +3554,12 @@ impl From<::reqwest::Error> for Error {
             reqwest_err,
             body: None,
         }
+    }
+}
+
+impl From<std::io::Error> for Error {
+    fn from(err: std::io::Error) -> Error {
+        Error::IO(err)
     }
 }
 #[allow(dead_code)]
@@ -3598,13 +3629,13 @@ mod multipart {
 
     pub(crate) struct Part {
         content_type: ::mime::Mime,
-        body: Box<dyn ::std::io::Read + Send>,
+        body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
     }
 
     impl Part {
         pub(crate) fn new(
             content_type: ::mime::Mime,
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         ) -> Part {
             Part { content_type, body }
         }
@@ -3613,7 +3644,7 @@ mod multipart {
     pub(crate) struct RelatedMultiPartReader {
         state: RelatedMultiPartReaderState,
         boundary: String,
-        next_body: Option<Box<dyn ::std::io::Read + Send>>,
+        next_body: Option<Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>>,
         parts: std::vec::IntoIter<Part>,
     }
 
@@ -3627,13 +3658,18 @@ mod multipart {
             content_type: Vec<u8>,
         },
         WriteBody {
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         },
     }
 
-    impl ::std::io::Read for RelatedMultiPartReader {
-        fn read(&mut self, buf: &mut [u8]) -> ::std::io::Result<usize> {
+    impl futures::io::AsyncRead for RelatedMultiPartReader {
+        fn poll_read(
+            mut self: std::pin::Pin<&mut Self>,
+            ctx: &mut futures::task::Context,
+            buf: &mut [u8],
+        ) -> futures::task::Poll<Result<usize, futures::io::Error>> {
             use RelatedMultiPartReaderState::*;
+
             let mut bytes_written: usize = 0;
             loop {
                 let rem_buf = &mut buf[bytes_written..];
@@ -3681,7 +3717,14 @@ mod multipart {
                         }
                     }
                     WriteBody { body } => {
-                        let written = body.read(rem_buf)?;
+                        let body = std::pin::Pin::new(body);
+                        let written = match futures::io::AsyncRead::poll_read(body, ctx, rem_buf) {
+                            futures::task::Poll::Ready(Ok(n)) => n,
+                            futures::task::Poll::Ready(Err(err)) => {
+                                return futures::task::Poll::Ready(Err(err));
+                            }
+                            futures::task::Poll::Pending => return futures::task::Poll::Pending,
+                        };
                         bytes_written += written;
                         if written == 0 {
                             self.state = WriteBoundary {
@@ -3694,7 +3737,8 @@ mod multipart {
                     }
                 }
             }
-            Ok(bytes_written)
+
+            futures::task::Poll::Ready(Ok(bytes_written))
         }
     }
 

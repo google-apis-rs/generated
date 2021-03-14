@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("androidmanagement1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200427")
+            .version("0.1.0-20210311")
             .about("The Android Management API provides remote enterprise management of Android devices and apps.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -35,7 +35,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .takes_value(false));
         let mut enterprises0 = SubCommand::with_name("enterprises")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: create, get and patch");
+            .about("methods: create, delete, get, list and patch");
         {
             let mcmd = SubCommand::with_name("create").about(
                 "Creates an enterprise. This is the last step in the enterprise signup flow.",
@@ -43,7 +43,16 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             enterprises0 = enterprises0.subcommand(mcmd);
         }
         {
+            let mcmd = SubCommand::with_name("delete")
+                .about("This feature is not generally available yet. Deletes an enterprise.");
+            enterprises0 = enterprises0.subcommand(mcmd);
+        }
+        {
             let mcmd = SubCommand::with_name("get").about("Gets an enterprise.");
+            enterprises0 = enterprises0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("This feature is not generally available yet. Lists enterprises that are managed by an EMM. Only partial views are returned.");
             enterprises0 = enterprises0.subcommand(mcmd);
         }
         {

@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("logging2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200501")
+            .version("0.1.0-20210308")
             .about("Writes log entries and manages your Cloud Logging configuration. The table entries below are presented in alphabetical order, not in order of common use. For explanations of the concepts found in the table entries, read the documentation at https://cloud.google.com/logging/docs.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -38,9 +38,13 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .about("sub-resources: buckets, exclusions, locations, logs and sinks");
         let mut entries0 = SubCommand::with_name("entries")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: list and write");
+            .about("methods: list, tail and write");
         {
             let mcmd = SubCommand::with_name("list").about("Lists log entries. Use this method to retrieve log entries that originated from a project/folder/organization/billing account. For ways to export log entries, see Exporting Logs (https://cloud.google.com/logging/docs/export).");
+            entries0 = entries0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("tail").about("Streaming read of log entries as they are ingested. Until the stream is terminated, it will continue reading logs.");
             entries0 = entries0.subcommand(mcmd);
         }
         {
@@ -77,12 +81,21 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .about("sub-resources: exclusions, locations, logs and sinks");
         let mut locations0 = SubCommand::with_name("locations")
             .setting(AppSettings::ColoredHelp)
-            .about("sub-resources: buckets");
+            .about("methods: get and list");
+        {
+            let mcmd = SubCommand::with_name("get").about("Gets information about a location.");
+            locations0 = locations0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists information about the supported locations for this service.");
+            locations0 = locations0.subcommand(mcmd);
+        }
         let mut logs0 = SubCommand::with_name("logs")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete and list");
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not be deleted. Entries received after the delete operation with a timestamp before the operation will be deleted.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes all the log entries in a log for the _Default Log Bucket. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not be deleted. Entries received after the delete operation with a timestamp before the operation will be deleted.");
             logs0 = logs0.subcommand(mcmd);
         }
         {
@@ -150,7 +163,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: get");
         {
-            let mcmd = SubCommand::with_name("get").about("Gets a bucket (Beta).");
+            let mcmd = SubCommand::with_name("get").about("Gets a bucket.");
             buckets1 = buckets1.subcommand(mcmd);
         }
         let mut exclusions1 = SubCommand::with_name("exclusions")
@@ -180,12 +193,21 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut locations1 = SubCommand::with_name("locations")
             .setting(AppSettings::ColoredHelp)
-            .about("sub-resources: buckets");
+            .about("methods: get and list");
+        {
+            let mcmd = SubCommand::with_name("get").about("Gets information about a location.");
+            locations1 = locations1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists information about the supported locations for this service.");
+            locations1 = locations1.subcommand(mcmd);
+        }
         let mut logs1 = SubCommand::with_name("logs")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete and list");
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not be deleted. Entries received after the delete operation with a timestamp before the operation will be deleted.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes all the log entries in a log for the _Default Log Bucket. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not be deleted. Entries received after the delete operation with a timestamp before the operation will be deleted.");
             logs1 = logs1.subcommand(mcmd);
         }
         {
@@ -246,12 +268,21 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut locations1 = SubCommand::with_name("locations")
             .setting(AppSettings::ColoredHelp)
-            .about("sub-resources: buckets");
+            .about("methods: get and list");
+        {
+            let mcmd = SubCommand::with_name("get").about("Gets information about a location.");
+            locations1 = locations1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists information about the supported locations for this service.");
+            locations1 = locations1.subcommand(mcmd);
+        }
         let mut logs1 = SubCommand::with_name("logs")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete and list");
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not be deleted. Entries received after the delete operation with a timestamp before the operation will be deleted.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes all the log entries in a log for the _Default Log Bucket. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not be deleted. Entries received after the delete operation with a timestamp before the operation will be deleted.");
             logs1 = logs1.subcommand(mcmd);
         }
         {
@@ -287,17 +318,29 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut buckets1 = SubCommand::with_name("buckets")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: get, list and patch");
+            .about("methods: create, delete, get, list, patch and undelete");
         {
-            let mcmd = SubCommand::with_name("get").about("Gets a bucket (Beta).");
+            let mcmd = SubCommand::with_name("create").about("Creates a bucket that can be used to store log entries. Once a bucket has been created, the region cannot be changed.");
             buckets1 = buckets1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists buckets (Beta).");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket will be purged and all logs in the bucket will be permanently deleted.");
             buckets1 = buckets1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates a bucket. This method replaces the following fields in the existing bucket with values from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked, FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created. This method is in Beta.");
+            let mcmd = SubCommand::with_name("get").about("Gets a bucket.");
+            buckets1 = buckets1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Lists buckets.");
+            buckets1 = buckets1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Updates a bucket. This method replaces the following fields in the existing bucket with values from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked, FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created.");
+            buckets1 = buckets1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("undelete").about("Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period of 7 days.");
             buckets1 = buckets1.subcommand(mcmd);
         }
         let mut exclusions1 = SubCommand::with_name("exclusions")
@@ -327,12 +370,21 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut locations1 = SubCommand::with_name("locations")
             .setting(AppSettings::ColoredHelp)
-            .about("sub-resources: buckets");
+            .about("methods: get and list");
+        {
+            let mcmd = SubCommand::with_name("get").about("Gets information about a location.");
+            locations1 = locations1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists information about the supported locations for this service.");
+            locations1 = locations1.subcommand(mcmd);
+        }
         let mut logs1 = SubCommand::with_name("logs")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete and list");
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not be deleted. Entries received after the delete operation with a timestamp before the operation will be deleted.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes all the log entries in a log for the _Default Log Bucket. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not be deleted. Entries received after the delete operation with a timestamp before the operation will be deleted.");
             logs1 = logs1.subcommand(mcmd);
         }
         {
@@ -393,12 +445,21 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut locations1 = SubCommand::with_name("locations")
             .setting(AppSettings::ColoredHelp)
-            .about("sub-resources: buckets");
+            .about("methods: get and list");
+        {
+            let mcmd = SubCommand::with_name("get").about("Gets information about a location.");
+            locations1 = locations1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists information about the supported locations for this service.");
+            locations1 = locations1.subcommand(mcmd);
+        }
         let mut logs1 = SubCommand::with_name("logs")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete and list");
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes all the log entries in a log. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not be deleted. Entries received after the delete operation with a timestamp before the operation will be deleted.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes all the log entries in a log for the _Default Log Bucket. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not be deleted. Entries received after the delete operation with a timestamp before the operation will be deleted.");
             logs1 = logs1.subcommand(mcmd);
         }
         {
@@ -456,66 +517,248 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("update").about("Updates a sink. This method replaces the following fields in the existing sink with values from the new sink: destination, and filter.The updated sink might also have a new writer_identity; see the unique_writer_identity field.");
             sinks1 = sinks1.subcommand(mcmd);
         }
-        let mut buckets2 = SubCommand::with_name("buckets")
+        let mut views2 = SubCommand::with_name("views")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: list and patch");
+            .about("methods: get");
         {
-            let mcmd = SubCommand::with_name("list").about("Lists buckets (Beta).");
-            buckets2 = buckets2.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("patch").about("Updates a bucket. This method replaces the following fields in the existing bucket with values from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked, FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created. This method is in Beta.");
-            buckets2 = buckets2.subcommand(mcmd);
+            let mcmd = SubCommand::with_name("get").about("Gets a view.");
+            views2 = views2.subcommand(mcmd);
         }
         let mut buckets2 = SubCommand::with_name("buckets")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: get, list and patch");
+            .about("methods: create, delete, list, patch and undelete");
         {
-            let mcmd = SubCommand::with_name("get").about("Gets a bucket (Beta).");
+            let mcmd = SubCommand::with_name("create").about("Creates a bucket that can be used to store log entries. Once a bucket has been created, the region cannot be changed.");
             buckets2 = buckets2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists buckets (Beta).");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket will be purged and all logs in the bucket will be permanently deleted.");
             buckets2 = buckets2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates a bucket. This method replaces the following fields in the existing bucket with values from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked, FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created. This method is in Beta.");
-            buckets2 = buckets2.subcommand(mcmd);
-        }
-        let mut buckets2 = SubCommand::with_name("buckets")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: get, list and patch");
-        {
-            let mcmd = SubCommand::with_name("get").about("Gets a bucket (Beta).");
+            let mcmd = SubCommand::with_name("list").about("Lists buckets.");
             buckets2 = buckets2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists buckets (Beta).");
+            let mcmd = SubCommand::with_name("patch").about("Updates a bucket. This method replaces the following fields in the existing bucket with values from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked, FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created.");
             buckets2 = buckets2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates a bucket. This method replaces the following fields in the existing bucket with values from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked, FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created. This method is in Beta.");
+            let mcmd = SubCommand::with_name("undelete").about("Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period of 7 days.");
             buckets2 = buckets2.subcommand(mcmd);
         }
         let mut buckets2 = SubCommand::with_name("buckets")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: get, list and patch");
+            .about("methods: create, delete, get, list, patch and undelete");
         {
-            let mcmd = SubCommand::with_name("get").about("Gets a bucket (Beta).");
+            let mcmd = SubCommand::with_name("create").about("Creates a bucket that can be used to store log entries. Once a bucket has been created, the region cannot be changed.");
             buckets2 = buckets2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists buckets (Beta).");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket will be purged and all logs in the bucket will be permanently deleted.");
             buckets2 = buckets2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates a bucket. This method replaces the following fields in the existing bucket with values from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked, FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created. This method is in Beta.");
+            let mcmd = SubCommand::with_name("get").about("Gets a bucket.");
             buckets2 = buckets2.subcommand(mcmd);
         }
+        {
+            let mcmd = SubCommand::with_name("list").about("Lists buckets.");
+            buckets2 = buckets2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Updates a bucket. This method replaces the following fields in the existing bucket with values from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked, FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created.");
+            buckets2 = buckets2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("undelete").about("Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period of 7 days.");
+            buckets2 = buckets2.subcommand(mcmd);
+        }
+        let mut views2 = SubCommand::with_name("views")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get, list and patch");
+        {
+            let mcmd = SubCommand::with_name("create").about(
+                "Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.",
+            );
+            views2 = views2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes a view from a bucket.");
+            views2 = views2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Gets a view.");
+            views2 = views2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Lists views on a bucket.");
+            views2 = views2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Updates a view. This method replaces the following fields in the existing view with values from the new view: filter.");
+            views2 = views2.subcommand(mcmd);
+        }
+        let mut buckets2 = SubCommand::with_name("buckets")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get, list, patch and undelete");
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates a bucket that can be used to store log entries. Once a bucket has been created, the region cannot be changed.");
+            buckets2 = buckets2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket will be purged and all logs in the bucket will be permanently deleted.");
+            buckets2 = buckets2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Gets a bucket.");
+            buckets2 = buckets2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Lists buckets.");
+            buckets2 = buckets2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Updates a bucket. This method replaces the following fields in the existing bucket with values from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked, FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created.");
+            buckets2 = buckets2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("undelete").about("Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period of 7 days.");
+            buckets2 = buckets2.subcommand(mcmd);
+        }
+        let mut buckets2 = SubCommand::with_name("buckets")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get, list, patch and undelete");
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates a bucket that can be used to store log entries. Once a bucket has been created, the region cannot be changed.");
+            buckets2 = buckets2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7 days, the bucket will be purged and all logs in the bucket will be permanently deleted.");
+            buckets2 = buckets2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Gets a bucket.");
+            buckets2 = buckets2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Lists buckets.");
+            buckets2 = buckets2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Updates a bucket. This method replaces the following fields in the existing bucket with values from the new bucket: retention_periodIf the retention period is decreased and the bucket is locked, FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region may not be modified after it is created.");
+            buckets2 = buckets2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("undelete").about("Undeletes a bucket. A bucket that has been deleted may be undeleted within the grace period of 7 days.");
+            buckets2 = buckets2.subcommand(mcmd);
+        }
+        let mut views3 = SubCommand::with_name("views")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, list and patch");
+        {
+            let mcmd = SubCommand::with_name("create").about(
+                "Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.",
+            );
+            views3 = views3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes a view from a bucket.");
+            views3 = views3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Lists views on a bucket.");
+            views3 = views3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Updates a view. This method replaces the following fields in the existing view with values from the new view: filter.");
+            views3 = views3.subcommand(mcmd);
+        }
+        let mut views3 = SubCommand::with_name("views")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get, list and patch");
+        {
+            let mcmd = SubCommand::with_name("create").about(
+                "Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.",
+            );
+            views3 = views3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes a view from a bucket.");
+            views3 = views3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Gets a view.");
+            views3 = views3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Lists views on a bucket.");
+            views3 = views3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Updates a view. This method replaces the following fields in the existing view with values from the new view: filter.");
+            views3 = views3.subcommand(mcmd);
+        }
+        let mut views3 = SubCommand::with_name("views")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get, list and patch");
+        {
+            let mcmd = SubCommand::with_name("create").about(
+                "Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.",
+            );
+            views3 = views3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes a view from a bucket.");
+            views3 = views3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Gets a view.");
+            views3 = views3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Lists views on a bucket.");
+            views3 = views3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Updates a view. This method replaces the following fields in the existing view with values from the new view: filter.");
+            views3 = views3.subcommand(mcmd);
+        }
+        let mut views3 = SubCommand::with_name("views")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get, list and patch");
+        {
+            let mcmd = SubCommand::with_name("create").about(
+                "Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.",
+            );
+            views3 = views3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes a view from a bucket.");
+            views3 = views3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Gets a view.");
+            views3 = views3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Lists views on a bucket.");
+            views3 = views3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Updates a view. This method replaces the following fields in the existing view with values from the new view: filter.");
+            views3 = views3.subcommand(mcmd);
+        }
+        buckets2 = buckets2.subcommand(views3);
+        buckets2 = buckets2.subcommand(views3);
+        buckets2 = buckets2.subcommand(views3);
+        buckets2 = buckets2.subcommand(views3);
         locations1 = locations1.subcommand(buckets2);
         locations1 = locations1.subcommand(buckets2);
+        buckets1 = buckets1.subcommand(views2);
         locations1 = locations1.subcommand(buckets2);
         locations1 = locations1.subcommand(buckets2);
+        buckets1 = buckets1.subcommand(views2);
         projects0 = projects0.subcommand(sinks1);
         projects0 = projects0.subcommand(metrics1);
         projects0 = projects0.subcommand(logs1);

@@ -1,23 +1,26 @@
-#![doc = "# Resources and Methods\n    * [contact_groups](resources/contact_groups/struct.ContactGroupsActions.html)\n      * [*batchGet*](resources/contact_groups/struct.BatchGetRequestBuilder.html), [*create*](resources/contact_groups/struct.CreateRequestBuilder.html), [*delete*](resources/contact_groups/struct.DeleteRequestBuilder.html), [*get*](resources/contact_groups/struct.GetRequestBuilder.html), [*list*](resources/contact_groups/struct.ListRequestBuilder.html), [*update*](resources/contact_groups/struct.UpdateRequestBuilder.html)\n      * [members](resources/contact_groups/members/struct.MembersActions.html)\n        * [*modify*](resources/contact_groups/members/struct.ModifyRequestBuilder.html)\n    * [people](resources/people/struct.PeopleActions.html)\n      * [*createContact*](resources/people/struct.CreateContactRequestBuilder.html), [*deleteContact*](resources/people/struct.DeleteContactRequestBuilder.html), [*deleteContactPhoto*](resources/people/struct.DeleteContactPhotoRequestBuilder.html), [*get*](resources/people/struct.GetRequestBuilder.html), [*getBatchGet*](resources/people/struct.GetBatchGetRequestBuilder.html), [*updateContact*](resources/people/struct.UpdateContactRequestBuilder.html), [*updateContactPhoto*](resources/people/struct.UpdateContactPhotoRequestBuilder.html)\n      * [connections](resources/people/connections/struct.ConnectionsActions.html)\n        * [*list*](resources/people/connections/struct.ListRequestBuilder.html)\n"]
+#![doc = "# Resources and Methods\n    * [contact_groups](resources/contact_groups/struct.ContactGroupsActions.html)\n      * [*batchGet*](resources/contact_groups/struct.BatchGetRequestBuilder.html), [*create*](resources/contact_groups/struct.CreateRequestBuilder.html), [*delete*](resources/contact_groups/struct.DeleteRequestBuilder.html), [*get*](resources/contact_groups/struct.GetRequestBuilder.html), [*list*](resources/contact_groups/struct.ListRequestBuilder.html), [*update*](resources/contact_groups/struct.UpdateRequestBuilder.html)\n      * [members](resources/contact_groups/members/struct.MembersActions.html)\n        * [*modify*](resources/contact_groups/members/struct.ModifyRequestBuilder.html)\n    * [other_contacts](resources/other_contacts/struct.OtherContactsActions.html)\n      * [*copyOtherContactToMyContactsGroup*](resources/other_contacts/struct.CopyOtherContactToMyContactsGroupRequestBuilder.html), [*list*](resources/other_contacts/struct.ListRequestBuilder.html), [*search*](resources/other_contacts/struct.SearchRequestBuilder.html)\n    * [people](resources/people/struct.PeopleActions.html)\n      * [*createContact*](resources/people/struct.CreateContactRequestBuilder.html), [*deleteContact*](resources/people/struct.DeleteContactRequestBuilder.html), [*deleteContactPhoto*](resources/people/struct.DeleteContactPhotoRequestBuilder.html), [*get*](resources/people/struct.GetRequestBuilder.html), [*getBatchGet*](resources/people/struct.GetBatchGetRequestBuilder.html), [*listDirectoryPeople*](resources/people/struct.ListDirectoryPeopleRequestBuilder.html), [*searchContacts*](resources/people/struct.SearchContactsRequestBuilder.html), [*searchDirectoryPeople*](resources/people/struct.SearchDirectoryPeopleRequestBuilder.html), [*updateContact*](resources/people/struct.UpdateContactRequestBuilder.html), [*updateContactPhoto*](resources/people/struct.UpdateContactPhotoRequestBuilder.html)\n      * [connections](resources/people/connections/struct.ConnectionsActions.html)\n        * [*list*](resources/people/connections/struct.ListRequestBuilder.html)\n"]
 pub mod scopes {
     #[doc = "See, edit, download, and permanently delete your contacts\n\n`https://www.googleapis.com/auth/contacts`"]
     pub const CONTACTS: &str = "https://www.googleapis.com/auth/contacts";
+    #[doc = "See and download contact info automatically saved in your \"Other contacts\"\n\n`https://www.googleapis.com/auth/contacts.other.readonly`"]
+    pub const CONTACTS_OTHER_READONLY: &str =
+        "https://www.googleapis.com/auth/contacts.other.readonly";
     #[doc = "See and download your contacts\n\n`https://www.googleapis.com/auth/contacts.readonly`"]
     pub const CONTACTS_READONLY: &str = "https://www.googleapis.com/auth/contacts.readonly";
     #[doc = "See and download your organization's GSuite directory\n\n`https://www.googleapis.com/auth/directory.readonly`"]
     pub const DIRECTORY_READONLY: &str = "https://www.googleapis.com/auth/directory.readonly";
     #[doc = "View your street addresses\n\n`https://www.googleapis.com/auth/user.addresses.read`"]
     pub const USER_ADDRESSES_READ: &str = "https://www.googleapis.com/auth/user.addresses.read";
-    #[doc = "View your complete date of birth\n\n`https://www.googleapis.com/auth/user.birthday.read`"]
+    #[doc = "See and download your exact date of birth\n\n`https://www.googleapis.com/auth/user.birthday.read`"]
     pub const USER_BIRTHDAY_READ: &str = "https://www.googleapis.com/auth/user.birthday.read";
-    #[doc = "View your email addresses\n\n`https://www.googleapis.com/auth/user.emails.read`"]
+    #[doc = "See and download all of your Google Account email addresses\n\n`https://www.googleapis.com/auth/user.emails.read`"]
     pub const USER_EMAILS_READ: &str = "https://www.googleapis.com/auth/user.emails.read";
     #[doc = "See your gender\n\n`https://www.googleapis.com/auth/user.gender.read`"]
     pub const USER_GENDER_READ: &str = "https://www.googleapis.com/auth/user.gender.read";
     #[doc = "See your education, work history and org info\n\n`https://www.googleapis.com/auth/user.organization.read`"]
     pub const USER_ORGANIZATION_READ: &str =
         "https://www.googleapis.com/auth/user.organization.read";
-    #[doc = "View your phone numbers\n\n`https://www.googleapis.com/auth/user.phonenumbers.read`"]
+    #[doc = "See and download your personal phone numbers\n\n`https://www.googleapis.com/auth/user.phonenumbers.read`"]
     pub const USER_PHONENUMBERS_READ: &str =
         "https://www.googleapis.com/auth/user.phonenumbers.read";
     #[doc = "View your email address\n\n`https://www.googleapis.com/auth/userinfo.email`"]
@@ -53,7 +56,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub country: ::std::option::Option<String>,
-        #[doc = "The [ISO 3166-1 alpha-2](http://www.iso.org/iso/country_codes.htm) country\ncode of the address."]
+        #[doc = "The [ISO 3166-1 alpha-2](http://www.iso.org/iso/country_codes.htm) country code of the address."]
         #[serde(
             rename = "countryCode",
             default,
@@ -67,14 +70,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub extended_address: ::std::option::Option<String>,
-        #[doc = "Output only. The type of the address translated and formatted in the viewer's\naccount locale or the `Accept-Language` HTTP header locale."]
+        #[doc = "Output only. The type of the address translated and formatted in the viewer's account locale or the `Accept-Language` HTTP header locale."]
         #[serde(
             rename = "formattedType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub formatted_type: ::std::option::Option<String>,
-        #[doc = "The unstructured value of the address. If this is not set by the user it\nwill be automatically constructed from structured values."]
+        #[doc = "The unstructured value of the address. If this is not set by the user it will be automatically constructed from structured values."]
         #[serde(
             rename = "formattedValue",
             default,
@@ -102,7 +105,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub postal_code: ::std::option::Option<String>,
-        #[doc = "The type of the address. The type can be custom or one of these predefined\nvalues:\n\n* `home`\n* `work`\n* `other`"]
+        #[doc = "The type of the address. The type can be custom or one of these predefined values: * `home` * `work` * `other`"]
         #[serde(
             rename = "type",
             default,
@@ -489,15 +492,119 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct CalendarUrl {
+        #[doc = "Output only. The type of the calendar URL translated and formatted in the viewer's account locale or the `Accept-Language` HTTP header locale."]
+        #[serde(
+            rename = "formattedType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub formatted_type: ::std::option::Option<String>,
+        #[doc = "Metadata about the calendar URL."]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
+        #[doc = "The type of the calendar URL. The type can be custom or one of these predefined values: * `home` * `freeBusy` * `work`"]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub r#type: ::std::option::Option<String>,
+        #[doc = "The calendar URL."]
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub url: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for CalendarUrl {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CalendarUrl {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ClientData {
+        #[doc = "The client specified key of the client data."]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub key: ::std::option::Option<String>,
+        #[doc = "Metadata about the client data."]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
+        #[doc = "The client specified value of the client data."]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub value: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for ClientData {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ClientData {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct ContactGroup {
-        #[doc = "The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the\nresource. Used for web cache validation."]
+        #[doc = "The group's client data."]
+        #[serde(
+            rename = "clientData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub client_data: ::std::option::Option<Vec<crate::schemas::GroupClientData>>,
+        #[doc = "The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the resource. Used for web cache validation."]
         #[serde(
             rename = "etag",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<String>,
-        #[doc = "Output only. The name translated and formatted in the viewer's account locale\nor the `Accept-Language` HTTP header locale for system groups names.\nGroup names set by the owner are the same as name."]
+        #[doc = "Output only. The name translated and formatted in the viewer's account locale or the `Accept-Language` HTTP header locale for system groups names. Group names set by the owner are the same as name."]
         #[serde(
             rename = "formattedName",
             default,
@@ -511,14 +618,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub group_type: ::std::option::Option<crate::schemas::ContactGroupGroupType>,
-        #[doc = "Output only. The total number of contacts in the group irrespective of max members in\nspecified in the request."]
+        #[doc = "Output only. The total number of contacts in the group irrespective of max members in specified in the request."]
         #[serde(
             rename = "memberCount",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub member_count: ::std::option::Option<i32>,
-        #[doc = "Output only. The list of contact person resource names that are members of the contact\ngroup. The field is not populated for LIST requests and can only be updated\nthrough the\n[ModifyContactGroupMembers](/people/api/rest/v1/contactgroups/members/modify)."]
+        #[doc = "Output only. The list of contact person resource names that are members of the contact group. The field is only populated for GET requests and will only return as many members as `maxMembers` in the get request."]
         #[serde(
             rename = "memberResourceNames",
             default,
@@ -532,14 +639,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata: ::std::option::Option<crate::schemas::ContactGroupMetadata>,
-        #[doc = "The contact group name set by the group owner or a system provided name\nfor system groups."]
+        #[doc = "The contact group name set by the group owner or a system provided name for system groups."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "The resource name for the contact group, assigned by the server. An ASCII\nstring, in the form of `contactGroups/{contact_group_id}`."]
+        #[doc = "The resource name for the contact group, assigned by the server. An ASCII string, in the form of `contactGroups/{contact_group_id}`."]
         #[serde(
             rename = "resourceName",
             default,
@@ -653,7 +760,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub contact_group_id: ::std::option::Option<String>,
-        #[doc = "The resource name for the contact group, assigned by the server. An ASCII\nstring, in the form of `contactGroups/{contact_group_id}`.\nOnly contact_group_resource_name can be used for modifying memberships.\nAny contact group membership can be removed, but only user group or\n\"myContacts\" or \"starred\" system groups memberships can be added. A\ncontact must always have at least one contact group membership."]
+        #[doc = "The resource name for the contact group, assigned by the server. An ASCII string, in the form of `contactGroups/{contact_group_id}`. Only contact_group_resource_name can be used for modifying memberships. Any contact group membership can be removed, but only user group or \"myContacts\" or \"starred\" system groups memberships can be added. A contact must always have at least one contact group membership."]
         #[serde(
             rename = "contactGroupResourceName",
             default,
@@ -684,7 +791,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ContactGroupMetadata {
-        #[doc = "Output only. True if the contact group resource has been deleted. Populated only for\n[`ListContactGroups`](/people/api/rest/v1/contactgroups/list) requests\nthat include a sync token."]
+        #[doc = "Output only. True if the contact group resource has been deleted. Populated only for [`ListContactGroups`](/people/api/rest/v1/contactgroups/list) requests that include a sync token."]
         #[serde(
             rename = "deleted",
             default,
@@ -755,8 +862,119 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct CopyOtherContactToMyContactsGroupRequest {
+        #[doc = "Required. A field mask to restrict which fields are copied into the new contact. Valid values are: * emailAddresses * names * phoneNumbers"]
+        #[serde(
+            rename = "copyMask",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub copy_mask: ::std::option::Option<String>,
+        #[doc = "Optional. A field mask to restrict which fields on the person are returned. Multiple fields can be specified by separating them with commas. Defaults to the copy mask with metadata and membership fields if not set. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined"]
+        #[serde(
+            rename = "readMask",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub read_mask: ::std::option::Option<String>,
+        #[doc = "Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set."]
+        #[serde(
+            rename = "sources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub sources: ::std::option::Option<
+            Vec<crate::schemas::CopyOtherContactToMyContactsGroupRequestSourcesItems>,
+        >,
+    }
+    impl ::google_field_selector::FieldSelector for CopyOtherContactToMyContactsGroupRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CopyOtherContactToMyContactsGroupRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum CopyOtherContactToMyContactsGroupRequestSourcesItems {
+        #[doc = "Returns SourceType.CONTACT."]
+        ReadSourceTypeContact,
+        #[doc = "Returns SourceType.DOMAIN_CONTACT."]
+        ReadSourceTypeDomainContact,
+        #[doc = "Returns SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, and SourceType.PROFILE."]
+        ReadSourceTypeProfile,
+        #[doc = "Unspecified."]
+        ReadSourceTypeUnspecified,
+    }
+    impl CopyOtherContactToMyContactsGroupRequestSourcesItems {
+        pub fn as_str(self) -> &'static str {
+            match self { CopyOtherContactToMyContactsGroupRequestSourcesItems :: ReadSourceTypeContact => "READ_SOURCE_TYPE_CONTACT" , CopyOtherContactToMyContactsGroupRequestSourcesItems :: ReadSourceTypeDomainContact => "READ_SOURCE_TYPE_DOMAIN_CONTACT" , CopyOtherContactToMyContactsGroupRequestSourcesItems :: ReadSourceTypeProfile => "READ_SOURCE_TYPE_PROFILE" , CopyOtherContactToMyContactsGroupRequestSourcesItems :: ReadSourceTypeUnspecified => "READ_SOURCE_TYPE_UNSPECIFIED" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CopyOtherContactToMyContactsGroupRequestSourcesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CopyOtherContactToMyContactsGroupRequestSourcesItems {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<CopyOtherContactToMyContactsGroupRequestSourcesItems, ()>
+        {
+            Ok (match s { "READ_SOURCE_TYPE_CONTACT" => CopyOtherContactToMyContactsGroupRequestSourcesItems :: ReadSourceTypeContact , "READ_SOURCE_TYPE_DOMAIN_CONTACT" => CopyOtherContactToMyContactsGroupRequestSourcesItems :: ReadSourceTypeDomainContact , "READ_SOURCE_TYPE_PROFILE" => CopyOtherContactToMyContactsGroupRequestSourcesItems :: ReadSourceTypeProfile , "READ_SOURCE_TYPE_UNSPECIFIED" => CopyOtherContactToMyContactsGroupRequestSourcesItems :: ReadSourceTypeUnspecified , _ => return Err (()) , })
+        }
+    }
+    impl ::std::fmt::Display for CopyOtherContactToMyContactsGroupRequestSourcesItems {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for CopyOtherContactToMyContactsGroupRequestSourcesItems {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for CopyOtherContactToMyContactsGroupRequestSourcesItems {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok (match value { "READ_SOURCE_TYPE_CONTACT" => CopyOtherContactToMyContactsGroupRequestSourcesItems :: ReadSourceTypeContact , "READ_SOURCE_TYPE_DOMAIN_CONTACT" => CopyOtherContactToMyContactsGroupRequestSourcesItems :: ReadSourceTypeDomainContact , "READ_SOURCE_TYPE_PROFILE" => CopyOtherContactToMyContactsGroupRequestSourcesItems :: ReadSourceTypeProfile , "READ_SOURCE_TYPE_UNSPECIFIED" => CopyOtherContactToMyContactsGroupRequestSourcesItems :: ReadSourceTypeUnspecified , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for CopyOtherContactToMyContactsGroupRequestSourcesItems
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CopyOtherContactToMyContactsGroupRequestSourcesItems {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct CoverPhoto {
-        #[doc = "True if the cover photo is the default cover photo;\nfalse if the cover photo is a user-provided cover photo."]
+        #[doc = "True if the cover photo is the default cover photo; false if the cover photo is a user-provided cover photo."]
         #[serde(
             rename = "default",
             default,
@@ -808,6 +1026,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub contact_group: ::std::option::Option<crate::schemas::ContactGroup>,
+        #[doc = "Optional. A field mask to restrict which fields on the group are returned. Defaults to `metadata`, `groupType`, and `name` if not set or set to empty. Valid fields are: * clientData * groupType * metadata * name"]
+        #[serde(
+            rename = "readGroupFields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub read_group_fields: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for CreateContactGroupRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -832,21 +1057,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Date {
-        #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month, or 0\nif specifying a year by itself or a year and month where the day is not\nsignificant."]
+        #[doc = "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant."]
         #[serde(
             rename = "day",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub day: ::std::option::Option<i32>,
-        #[doc = "Month of year. Must be from 1 to 12, or 0 if specifying a year without a\nmonth and day."]
+        #[doc = "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day."]
         #[serde(
             rename = "month",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub month: ::std::option::Option<i32>,
-        #[doc = "Year of date. Must be from 1 to 9999, or 0 if specifying a date without\na year."]
+        #[doc = "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year."]
         #[serde(
             rename = "year",
             default,
@@ -877,7 +1102,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DeleteContactPhotoResponse {
-        #[doc = "The updated person, if person_fields is set in the\nDeleteContactPhotoRequest; otherwise this will be unset."]
+        #[doc = "The updated person, if person_fields is set in the DeleteContactPhotoRequest; otherwise this will be unset."]
         #[serde(
             rename = "person",
             default,
@@ -946,7 +1171,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "Output only. The type of the email address translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
+        #[doc = "Output only. The type of the email address translated and formatted in the viewer's account locale or the `Accept-Language` HTTP header locale."]
         #[serde(
             rename = "formattedType",
             default,
@@ -960,7 +1185,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
-        #[doc = "The type of the email address. The type can be custom or one of these\npredefined values:\n\n* `home`\n* `work`\n* `other`"]
+        #[doc = "The type of the email address. The type can be custom or one of these predefined values: * `home` * `work` * `other`"]
         #[serde(
             rename = "type",
             default,
@@ -1029,7 +1254,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub date: ::std::option::Option<crate::schemas::Date>,
-        #[doc = "Output only. The type of the event translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
+        #[doc = "Output only. The type of the event translated and formatted in the viewer's account locale or the `Accept-Language` HTTP header locale."]
         #[serde(
             rename = "formattedType",
             default,
@@ -1043,7 +1268,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
-        #[doc = "The type of the event. The type can be custom or one of these predefined\nvalues:\n\n* `anniversary`\n* `other`"]
+        #[doc = "The type of the event. The type can be custom or one of these predefined values: * `anniversary` * `other`"]
         #[serde(
             rename = "type",
             default,
@@ -1073,8 +1298,60 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct ExternalId {
+        #[doc = "Output only. The type of the event translated and formatted in the viewer's account locale or the `Accept-Language` HTTP header locale."]
+        #[serde(
+            rename = "formattedType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub formatted_type: ::std::option::Option<String>,
+        #[doc = "Metadata about the external ID."]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
+        #[doc = "The type of the external ID. The type can be custom or one of these predefined values: * `account` * `customer` * `loginId` * `network` * `organization`"]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub r#type: ::std::option::Option<String>,
+        #[doc = "The value of the external ID."]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub value: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for ExternalId {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ExternalId {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct FieldMetadata {
-        #[doc = "True if the field is the primary field; false if the field is a secondary\nfield."]
+        #[doc = "True if the field is the primary field; false if the field is a secondary field."]
         #[serde(
             rename = "primary",
             default,
@@ -1088,7 +1365,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub source: ::std::option::Option<crate::schemas::Source>,
-        #[doc = "Output only. True if the field is verified; false if the field is unverified. A\nverified field is typically a name, email address, phone number, or\nwebsite that has been confirmed to be owned by the person."]
+        #[doc = "Output only. True if the field is verified; false if the field is unverified. A verified field is typically a name, email address, phone number, or website that has been confirmed to be owned by the person."]
         #[serde(
             rename = "verified",
             default,
@@ -1118,15 +1395,53 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct FileAs {
+        #[doc = "Metadata about the file-as."]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
+        #[doc = "The file-as value"]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub value: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for FileAs {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for FileAs {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct Gender {
-        #[doc = "The type of pronouns that should be used to address the person. The value\ncan be custom or one of these predefined values:\n\n* `male`\n* `female`\n* `other`"]
+        #[doc = "The type of pronouns that should be used to address the person. The value can be custom or one of these predefined values: * `male` * `female` * `other`"]
         #[serde(
             rename = "addressMeAs",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub address_me_as: ::std::option::Option<String>,
-        #[doc = "Output only. The value of the gender translated and formatted in the viewer's account\nlocale or the `Accept-Language` HTTP header locale. Unspecified or custom\nvalue are not localized."]
+        #[doc = "Output only. The value of the gender translated and formatted in the viewer's account locale or the `Accept-Language` HTTP header locale. Unspecified or custom value are not localized."]
         #[serde(
             rename = "formattedValue",
             default,
@@ -1140,7 +1455,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
-        #[doc = "The gender for the person. The gender can be custom or one of these\npredefined values:\n\n* `male`\n* `female`\n* `unspecified`"]
+        #[doc = "The gender for the person. The gender can be custom or one of these predefined values: * `male` * `female` * `unspecified`"]
         #[serde(
             rename = "value",
             default,
@@ -1190,15 +1505,53 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct GroupClientData {
+        #[doc = "The client specified key of the client data."]
+        #[serde(
+            rename = "key",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub key: ::std::option::Option<String>,
+        #[doc = "The client specified value of the client data."]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub value: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for GroupClientData {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GroupClientData {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct ImClient {
-        #[doc = "Output only. The protocol of the IM client formatted in the viewer's account\nlocale or the `Accept-Language` HTTP header locale."]
+        #[doc = "Output only. The protocol of the IM client formatted in the viewer's account locale or the `Accept-Language` HTTP header locale."]
         #[serde(
             rename = "formattedProtocol",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub formatted_protocol: ::std::option::Option<String>,
-        #[doc = "Output only. The type of the IM client translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
+        #[doc = "Output only. The type of the IM client translated and formatted in the viewer's account locale or the `Accept-Language` HTTP header locale."]
         #[serde(
             rename = "formattedType",
             default,
@@ -1212,14 +1565,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
-        #[doc = "The protocol of the IM client. The protocol can be custom or one of these\npredefined values:\n\n* `aim`\n* `msn`\n* `yahoo`\n* `skype`\n* `qq`\n* `googleTalk`\n* `icq`\n* `jabber`\n* `netMeeting`"]
+        #[doc = "The protocol of the IM client. The protocol can be custom or one of these predefined values: * `aim` * `msn` * `yahoo` * `skype` * `qq` * `googleTalk` * `icq` * `jabber` * `netMeeting`"]
         #[serde(
             rename = "protocol",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub protocol: ::std::option::Option<String>,
-        #[doc = "The type of the IM client. The type can be custom or one of these\npredefined values:\n\n* `home`\n* `work`\n* `other`"]
+        #[doc = "The type of the IM client. The type can be custom or one of these predefined values: * `home` * `work` * `other`"]
         #[serde(
             rename = "type",
             default,
@@ -1302,14 +1655,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub connections: ::std::option::Option<Vec<crate::schemas::Person>>,
-        #[doc = "A token, which can be sent as `page_token` to retrieve the next page.\nIf this field is omitted, there are no subsequent pages."]
+        #[doc = "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages."]
         #[serde(
             rename = "nextPageToken",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub next_page_token: ::std::option::Option<String>,
-        #[doc = "A token, which can be sent as `sync_token` to retrieve changes since the\nlast request. Request must set `request_sync_token` to return the sync\ntoken."]
+        #[doc = "A token, which can be sent as `sync_token` to retrieve changes since the last request. Request must set `request_sync_token` to return the sync token. When the response is paginated, only the last page will contain `nextSyncToken`."]
         #[serde(
             rename = "nextSyncToken",
             default,
@@ -1323,7 +1676,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub total_items: ::std::option::Option<i32>,
-        #[doc = "**DEPRECATED** (Please use totalItems)\nThe total number of people in the list without pagination."]
+        #[doc = "**DEPRECATED** (Please use totalItems) The total number of people in the list without pagination."]
         #[serde(
             rename = "totalPeople",
             default,
@@ -1354,7 +1707,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ListContactGroupsResponse {
-        #[doc = "The list of contact groups. Members of the contact groups are not\npopulated."]
+        #[doc = "The list of contact groups. Members of the contact groups are not populated."]
         #[serde(
             rename = "contactGroups",
             default,
@@ -1405,6 +1758,96 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct ListDirectoryPeopleResponse {
+        #[doc = "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages."]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub next_page_token: ::std::option::Option<String>,
+        #[doc = "A token, which can be sent as `sync_token` to retrieve changes since the last request. Request must set `request_sync_token` to return the sync token."]
+        #[serde(
+            rename = "nextSyncToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub next_sync_token: ::std::option::Option<String>,
+        #[doc = "The list of people in the domain directory."]
+        #[serde(
+            rename = "people",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub people: ::std::option::Option<Vec<crate::schemas::Person>>,
+    }
+    impl ::google_field_selector::FieldSelector for ListDirectoryPeopleResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ListDirectoryPeopleResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ListOtherContactsResponse {
+        #[doc = "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages."]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub next_page_token: ::std::option::Option<String>,
+        #[doc = "A token, which can be sent as `sync_token` to retrieve changes since the last request. Request must set `request_sync_token` to return the sync token."]
+        #[serde(
+            rename = "nextSyncToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub next_sync_token: ::std::option::Option<String>,
+        #[doc = "The list of \"Other contacts\" returned as Person resources. \"Other contacts\" support a limited subset of fields. See ListOtherContactsRequest.request_mask for more detailed information."]
+        #[serde(
+            rename = "otherContacts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub other_contacts: ::std::option::Option<Vec<crate::schemas::Person>>,
+    }
+    impl ::google_field_selector::FieldSelector for ListOtherContactsResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ListOtherContactsResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct Locale {
         #[doc = "Metadata about the locale."]
         #[serde(
@@ -1413,7 +1856,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
-        #[doc = "The well-formed [IETF BCP 47](https://tools.ietf.org/html/bcp47)\nlanguage tag representing the locale."]
+        #[doc = "The well-formed [IETF BCP 47](https://tools.ietf.org/html/bcp47) language tag representing the locale."]
         #[serde(
             rename = "value",
             default,
@@ -1427,6 +1870,86 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Locale {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Location {
+        #[doc = "The building identifier."]
+        #[serde(
+            rename = "buildingId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub building_id: ::std::option::Option<String>,
+        #[doc = "Whether the location is the current location."]
+        #[serde(
+            rename = "current",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub current: ::std::option::Option<bool>,
+        #[doc = "The individual desk location."]
+        #[serde(
+            rename = "deskCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub desk_code: ::std::option::Option<String>,
+        #[doc = "The floor name or number."]
+        #[serde(
+            rename = "floor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub floor: ::std::option::Option<String>,
+        #[doc = "The floor section in `floor_name`."]
+        #[serde(
+            rename = "floorSection",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub floor_section: ::std::option::Option<String>,
+        #[doc = "Metadata about the location."]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
+        #[doc = "The type of the location. The type can be custom or one of these predefined values: * `desk` * `grewUp`"]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub r#type: ::std::option::Option<String>,
+        #[doc = "The free-form value of the location."]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub value: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for Location {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Location {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1488,15 +2011,188 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct MiscKeyword {
+        #[doc = "Output only. The type of the miscellaneous keyword translated and formatted in the viewer's account locale or the `Accept-Language` HTTP header locale."]
+        #[serde(
+            rename = "formattedType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub formatted_type: ::std::option::Option<String>,
+        #[doc = "Metadata about the miscellaneous keyword."]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
+        #[doc = "The miscellaneous keyword type."]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub r#type: ::std::option::Option<crate::schemas::MiscKeywordType>,
+        #[doc = "The value of the miscellaneous keyword."]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub value: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for MiscKeyword {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for MiscKeyword {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum MiscKeywordType {
+        #[doc = "Home."]
+        Home,
+        #[doc = "Other."]
+        Other,
+        #[doc = "Outlook field for billing information."]
+        OutlookBillingInformation,
+        #[doc = "Outlook field for directory server."]
+        OutlookDirectoryServer,
+        #[doc = "Outlook field for keyword."]
+        OutlookKeyword,
+        #[doc = "Outlook field for mileage."]
+        OutlookMileage,
+        #[doc = "Outlook field for priority."]
+        OutlookPriority,
+        #[doc = "Outlook field for sensitivity."]
+        OutlookSensitivity,
+        #[doc = "Outlook field for subject."]
+        OutlookSubject,
+        #[doc = "Outlook field for user."]
+        OutlookUser,
+        #[doc = "Unspecified."]
+        TypeUnspecified,
+        #[doc = "Work."]
+        Work,
+    }
+    impl MiscKeywordType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                MiscKeywordType::Home => "HOME",
+                MiscKeywordType::Other => "OTHER",
+                MiscKeywordType::OutlookBillingInformation => "OUTLOOK_BILLING_INFORMATION",
+                MiscKeywordType::OutlookDirectoryServer => "OUTLOOK_DIRECTORY_SERVER",
+                MiscKeywordType::OutlookKeyword => "OUTLOOK_KEYWORD",
+                MiscKeywordType::OutlookMileage => "OUTLOOK_MILEAGE",
+                MiscKeywordType::OutlookPriority => "OUTLOOK_PRIORITY",
+                MiscKeywordType::OutlookSensitivity => "OUTLOOK_SENSITIVITY",
+                MiscKeywordType::OutlookSubject => "OUTLOOK_SUBJECT",
+                MiscKeywordType::OutlookUser => "OUTLOOK_USER",
+                MiscKeywordType::TypeUnspecified => "TYPE_UNSPECIFIED",
+                MiscKeywordType::Work => "WORK",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for MiscKeywordType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MiscKeywordType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MiscKeywordType, ()> {
+            Ok(match s {
+                "HOME" => MiscKeywordType::Home,
+                "OTHER" => MiscKeywordType::Other,
+                "OUTLOOK_BILLING_INFORMATION" => MiscKeywordType::OutlookBillingInformation,
+                "OUTLOOK_DIRECTORY_SERVER" => MiscKeywordType::OutlookDirectoryServer,
+                "OUTLOOK_KEYWORD" => MiscKeywordType::OutlookKeyword,
+                "OUTLOOK_MILEAGE" => MiscKeywordType::OutlookMileage,
+                "OUTLOOK_PRIORITY" => MiscKeywordType::OutlookPriority,
+                "OUTLOOK_SENSITIVITY" => MiscKeywordType::OutlookSensitivity,
+                "OUTLOOK_SUBJECT" => MiscKeywordType::OutlookSubject,
+                "OUTLOOK_USER" => MiscKeywordType::OutlookUser,
+                "TYPE_UNSPECIFIED" => MiscKeywordType::TypeUnspecified,
+                "WORK" => MiscKeywordType::Work,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for MiscKeywordType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for MiscKeywordType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for MiscKeywordType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "HOME" => MiscKeywordType::Home,
+                "OTHER" => MiscKeywordType::Other,
+                "OUTLOOK_BILLING_INFORMATION" => MiscKeywordType::OutlookBillingInformation,
+                "OUTLOOK_DIRECTORY_SERVER" => MiscKeywordType::OutlookDirectoryServer,
+                "OUTLOOK_KEYWORD" => MiscKeywordType::OutlookKeyword,
+                "OUTLOOK_MILEAGE" => MiscKeywordType::OutlookMileage,
+                "OUTLOOK_PRIORITY" => MiscKeywordType::OutlookPriority,
+                "OUTLOOK_SENSITIVITY" => MiscKeywordType::OutlookSensitivity,
+                "OUTLOOK_SUBJECT" => MiscKeywordType::OutlookSubject,
+                "OUTLOOK_USER" => MiscKeywordType::OutlookUser,
+                "TYPE_UNSPECIFIED" => MiscKeywordType::TypeUnspecified,
+                "WORK" => MiscKeywordType::Work,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for MiscKeywordType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for MiscKeywordType {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct ModifyContactGroupMembersRequest {
-        #[doc = "Optional. The resource names of the contact people to add in the form of\n`people/{person_id}`."]
+        #[doc = "Optional. The resource names of the contact people to add in the form of `people/{person_id}`. The total number of resource names in `resource_names_to_add` and `resource_names_to_remove` must be less than or equal to 1000."]
         #[serde(
             rename = "resourceNamesToAdd",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub resource_names_to_add: ::std::option::Option<Vec<String>>,
-        #[doc = "Optional. The resource names of the contact people to remove in the form of\n`people/{person_id}`."]
+        #[doc = "Optional. The resource names of the contact people to remove in the form of `people/{person_id}`. The total number of resource names in `resource_names_to_add` and `resource_names_to_remove` must be less than or equal to 1000."]
         #[serde(
             rename = "resourceNamesToRemove",
             default,
@@ -1527,7 +2223,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ModifyContactGroupMembersResponse {
-        #[doc = "The contact people resource names that cannot be removed from their\nlast contact group."]
+        #[doc = "The contact people resource names that cannot be removed from their last contact group."]
         #[serde(
             rename = "canNotRemoveLastContactGroupResourceNames",
             default,
@@ -1565,14 +2261,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Name {
-        #[doc = "Output only. The display name formatted according to the locale specified by\nthe viewer's account or the `Accept-Language` HTTP header."]
+        #[doc = "Output only. The display name formatted according to the locale specified by the viewer's account or the `Accept-Language` HTTP header."]
         #[serde(
             rename = "displayName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "Output only. The display name with the last name first formatted according to\nthe locale specified by the viewer's account or the\n`Accept-Language` HTTP header."]
+        #[doc = "Output only. The display name with the last name first formatted according to the locale specified by the viewer's account or the `Accept-Language` HTTP header."]
         #[serde(
             rename = "displayNameLastFirst",
             default,
@@ -1663,6 +2359,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub phonetic_middle_name: ::std::option::Option<String>,
+        #[doc = "The free form name value."]
+        #[serde(
+            rename = "unstructuredName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub unstructured_name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Name {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1729,7 +2432,7 @@ pub mod schemas {
         Gplus,
         #[doc = "Initials."]
         Initials,
-        #[doc = "Maiden name or birth family name. Used when the person's family name has\nchanged as a result of marriage."]
+        #[doc = "Maiden name or birth family name. Used when the person's family name has changed as a result of marriage."]
         MaidenName,
         #[doc = "A professional affiliation or other name; for example, `Dr. Smith.`"]
         OtherName,
@@ -1866,7 +2569,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Organization {
-        #[doc = "True if the organization is the person's current organization;\nfalse if the organization is a past organization."]
+        #[doc = "True if the organization is the person's current organization; false if the organization is a past organization."]
         #[serde(
             rename = "current",
             default,
@@ -1880,7 +2583,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub department: ::std::option::Option<String>,
-        #[doc = "The domain name associated with the organization; for example,\n`google.com`."]
+        #[doc = "The domain name associated with the organization; for example, `google.com`."]
         #[serde(
             rename = "domain",
             default,
@@ -1894,7 +2597,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub end_date: ::std::option::Option<crate::schemas::Date>,
-        #[doc = "Output only. The type of the organization translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
+        #[doc = "Output only. The type of the organization translated and formatted in the viewer's account locale or the `Accept-Language` HTTP header locale."]
         #[serde(
             rename = "formattedType",
             default,
@@ -1936,7 +2639,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub phonetic_name: ::std::option::Option<String>,
-        #[doc = "The type of the organization. The type can be custom or  one of these\npredefined values:\n\n* `work`\n* `school`"]
+        #[doc = "The type of the organization. The type can be custom or one of these predefined values: * `work` * `school`"]
         #[serde(
             rename = "type",
             default,
@@ -1950,7 +2653,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub start_date: ::std::option::Option<crate::schemas::Date>,
-        #[doc = "The symbol associated with the organization; for example, a stock ticker\nsymbol, abbreviation, or acronym."]
+        #[doc = "The symbol associated with the organization; for example, a stock ticker symbol, abbreviation, or acronym."]
         #[serde(
             rename = "symbol",
             default,
@@ -1995,7 +2698,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub addresses: ::std::option::Option<Vec<crate::schemas::Address>>,
-        #[doc = "Output only. **DEPRECATED** (Please use `person.ageRanges` instead)\n\nThe person's age range."]
+        #[doc = "Output only. **DEPRECATED** (Please use `person.ageRanges` instead) The person's age range."]
         #[serde(
             rename = "ageRange",
             default,
@@ -2009,27 +2712,41 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub age_ranges: ::std::option::Option<Vec<crate::schemas::AgeRangeType>>,
-        #[doc = "The person's biographies."]
+        #[doc = "The person's biographies. This field is a singleton for contact sources."]
         #[serde(
             rename = "biographies",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub biographies: ::std::option::Option<Vec<crate::schemas::Biography>>,
-        #[doc = "The person's birthdays."]
+        #[doc = "The person's birthdays. This field is a singleton for contact sources."]
         #[serde(
             rename = "birthdays",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub birthdays: ::std::option::Option<Vec<crate::schemas::Birthday>>,
-        #[doc = "**DEPRECATED**: No data will be returned\nThe person's bragging rights."]
+        #[doc = "**DEPRECATED**: No data will be returned The person's bragging rights."]
         #[serde(
             rename = "braggingRights",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bragging_rights: ::std::option::Option<Vec<crate::schemas::BraggingRights>>,
+        #[doc = "The person's calendar URLs."]
+        #[serde(
+            rename = "calendarUrls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub calendar_urls: ::std::option::Option<Vec<crate::schemas::CalendarUrl>>,
+        #[doc = "The person's client data."]
+        #[serde(
+            rename = "clientData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub client_data: ::std::option::Option<Vec<crate::schemas::ClientData>>,
         #[doc = "Output only. The person's cover photos."]
         #[serde(
             rename = "coverPhotos",
@@ -2044,7 +2761,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub email_addresses: ::std::option::Option<Vec<crate::schemas::EmailAddress>>,
-        #[doc = "The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the\nresource. Used for web cache validation."]
+        #[doc = "The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the resource. Used for web cache validation."]
         #[serde(
             rename = "etag",
             default,
@@ -2058,7 +2775,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub events: ::std::option::Option<Vec<crate::schemas::Event>>,
-        #[doc = "The person's genders."]
+        #[doc = "The person's external IDs."]
+        #[serde(
+            rename = "externalIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub external_ids: ::std::option::Option<Vec<crate::schemas::ExternalId>>,
+        #[doc = "The person's file-ases."]
+        #[serde(
+            rename = "fileAses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub file_ases: ::std::option::Option<Vec<crate::schemas::FileAs>>,
+        #[doc = "The person's genders. This field is a singleton for contact sources."]
         #[serde(
             rename = "genders",
             default,
@@ -2086,6 +2817,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub locales: ::std::option::Option<Vec<crate::schemas::Locale>>,
+        #[doc = "The person's locations."]
+        #[serde(
+            rename = "locations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub locations: ::std::option::Option<Vec<crate::schemas::Location>>,
         #[doc = "The person's group memberships."]
         #[serde(
             rename = "memberships",
@@ -2100,7 +2838,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata: ::std::option::Option<crate::schemas::PersonMetadata>,
-        #[doc = "The person's names."]
+        #[doc = "The person's miscellaneous keywords."]
+        #[serde(
+            rename = "miscKeywords",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub misc_keywords: ::std::option::Option<Vec<crate::schemas::MiscKeyword>>,
+        #[doc = "The person's names. This field is a singleton for contact sources."]
         #[serde(
             rename = "names",
             default,
@@ -2149,7 +2894,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub relations: ::std::option::Option<Vec<crate::schemas::Relation>>,
-        #[doc = "Output only. **DEPRECATED**: No data will be returned\nThe person's relationship interests."]
+        #[doc = "Output only. **DEPRECATED**: No data will be returned The person's relationship interests."]
         #[serde(
             rename = "relationshipInterests",
             default,
@@ -2157,21 +2902,21 @@ pub mod schemas {
         )]
         pub relationship_interests:
             ::std::option::Option<Vec<crate::schemas::RelationshipInterest>>,
-        #[doc = "Output only. **DEPRECATED**: No data will be returned\nThe person's relationship statuses."]
+        #[doc = "Output only. **DEPRECATED**: No data will be returned The person's relationship statuses."]
         #[serde(
             rename = "relationshipStatuses",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub relationship_statuses: ::std::option::Option<Vec<crate::schemas::RelationshipStatus>>,
-        #[doc = "The person's residences."]
+        #[doc = "**DEPRECATED**: (Please use `person.locations` instead) The person's residences."]
         #[serde(
             rename = "residences",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub residences: ::std::option::Option<Vec<crate::schemas::Residence>>,
-        #[doc = "The resource name for the person, assigned by the server. An ASCII string\nwith a max length of 27 characters, in the form of\n`people/{person_id}`."]
+        #[doc = "The resource name for the person, assigned by the server. An ASCII string with a max length of 27 characters, in the form of `people/{person_id}`."]
         #[serde(
             rename = "resourceName",
             default,
@@ -2192,7 +2937,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub skills: ::std::option::Option<Vec<crate::schemas::Skill>>,
-        #[doc = "Output only. **DEPRECATED**: No data will be returned\nThe person's taglines."]
+        #[doc = "Output only. **DEPRECATED**: No data will be returned The person's taglines."]
         #[serde(
             rename = "taglines",
             default,
@@ -2318,7 +3063,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PersonMetadata {
-        #[doc = "Output only. True if the person resource has been deleted. Populated only for\n[`connections.list`](/people/api/rest/v1/people.connections/list) requests\nthat include a sync token."]
+        #[doc = "Output only. True if the person resource has been deleted. Populated only for [`connections.list`](/people/api/rest/v1/people.connections/list) requests that include a sync token."]
         #[serde(
             rename = "deleted",
             default,
@@ -2332,14 +3077,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub linked_people_resource_names: ::std::option::Option<Vec<String>>,
-        #[doc = "Output only. **DEPRECATED** (Please use\n`person.metadata.sources.profileMetadata.objectType` instead)\n\nThe type of the person object."]
+        #[doc = "Output only. **DEPRECATED** (Please use `person.metadata.sources.profileMetadata.objectType` instead) The type of the person object."]
         #[serde(
             rename = "objectType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub object_type: ::std::option::Option<crate::schemas::PersonMetadataObjectType>,
-        #[doc = "Output only. Any former resource names this person has had. Populated only for\n[`connections.list`](/people/api/rest/v1/people.connections/list) requests\nthat include a sync token.\n\nThe resource name may change when adding or removing fields that link a\ncontact and profile such as a verified email, verified phone number, or\nprofile URL."]
+        #[doc = "Output only. Any former resource names this person has had. Populated only for [`connections.list`](/people/api/rest/v1/people.connections/list) requests that include a sync token. The resource name may change when adding or removing fields that link a contact and profile such as a verified email, verified phone number, or profile URL."]
         #[serde(
             rename = "previousResourceNames",
             default,
@@ -2368,7 +3113,7 @@ pub mod schemas {
     pub enum PersonMetadataObjectType {
         #[doc = "Unspecified."]
         ObjectTypeUnspecified,
-        #[doc = "[Google+ Page.](http://www.google.com/+/brands/)"]
+        #[doc = "[Currents Page.](https://gsuite.google.com/products/currents/)"]
         Page,
         #[doc = "Person."]
         Person,
@@ -2442,7 +3187,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct PersonResponse {
-        #[doc = "**DEPRECATED** (Please use status instead)\n\n[HTTP 1.1 status code]\n(http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)."]
+        #[doc = "**DEPRECATED** (Please use status instead) [HTTP 1.1 status code] (http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)."]
         #[serde(
             rename = "httpStatusCode",
             default,
@@ -2456,7 +3201,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub person: ::std::option::Option<crate::schemas::Person>,
-        #[doc = "The original requested resource name. May be different than the resource\nname on the returned person.\n\nThe resource name can change when adding or removing fields that link a\ncontact and profile such as a verified email, verified phone number, or a\nprofile URL."]
+        #[doc = "The original requested resource name. May be different than the resource name on the returned person. The resource name can change when adding or removing fields that link a contact and profile such as a verified email, verified phone number, or a profile URL."]
         #[serde(
             rename = "requestedResourceName",
             default,
@@ -2494,14 +3239,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PhoneNumber {
-        #[doc = "Output only. The canonicalized [ITU-T\nE.164](https://law.resource.org/pub/us/cfr/ibr/004/itu-t.E.164.1.2008.pdf)\nform of the phone number."]
+        #[doc = "Output only. The canonicalized [ITU-T E.164](https://law.resource.org/pub/us/cfr/ibr/004/itu-t.E.164.1.2008.pdf) form of the phone number."]
         #[serde(
             rename = "canonicalForm",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub canonical_form: ::std::option::Option<String>,
-        #[doc = "Output only. The type of the phone number translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
+        #[doc = "Output only. The type of the phone number translated and formatted in the viewer's account locale or the `Accept-Language` HTTP header locale."]
         #[serde(
             rename = "formattedType",
             default,
@@ -2515,7 +3260,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
-        #[doc = "The type of the phone number. The type can be custom or one of these\npredefined values:\n\n* `home`\n* `work`\n* `mobile`\n* `homeFax`\n* `workFax`\n* `otherFax`\n* `pager`\n* `workMobile`\n* `workPager`\n* `main`\n* `googleVoice`\n* `other`"]
+        #[doc = "The type of the phone number. The type can be custom or one of these predefined values: * `home` * `work` * `mobile` * `homeFax` * `workFax` * `otherFax` * `pager` * `workMobile` * `workPager` * `main` * `googleVoice` * `other`"]
         #[serde(
             rename = "type",
             default,
@@ -2553,7 +3298,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Photo {
-        #[doc = "True if the photo is a default photo;\nfalse if the photo is a user-provided photo."]
+        #[doc = "True if the photo is a default photo; false if the photo is a user-provided photo."]
         #[serde(
             rename = "default",
             default,
@@ -2567,7 +3312,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
-        #[doc = "The URL of the photo. You can change the desired size by appending a query\nparameter `sz={size}` at the end of the url, where {size} is the size in\npixels. Example:\nhttps://lh3.googleusercontent.com/-T_wVWLlmg7w/AAAAAAAAAAI/AAAAAAAABa8/00gzXvDBYqw/s100/photo.jpg?sz=50"]
+        #[doc = "The URL of the photo. You can change the desired size by appending a query parameter `sz={size}` at the end of the url, where {size} is the size in pixels. Example: https://lh3.googleusercontent.com/-T_wVWLlmg7w/AAAAAAAAAAI/AAAAAAAABa8/00gzXvDBYqw/s100/photo.jpg?sz=50"]
         #[serde(
             rename = "url",
             default,
@@ -2627,7 +3372,7 @@ pub mod schemas {
     pub enum ProfileMetadataObjectType {
         #[doc = "Unspecified."]
         ObjectTypeUnspecified,
-        #[doc = "[Google+ Page.](http://www.google.com/+/brands/)"]
+        #[doc = "[Currents Page.](https://gsuite.google.com/products/currents/)"]
         Page,
         #[doc = "Person."]
         Person,
@@ -2701,9 +3446,13 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ProfileMetadataUserTypesItems {
+        #[doc = "The user is a G Suite user."]
         GoogleAppsUser,
+        #[doc = "The user is a Google user."]
         GoogleUser,
+        #[doc = "The user is a Currents user."]
         GplusUser,
+        #[doc = "The user type is not known."]
         UserTypeUnknown,
     }
     impl ProfileMetadataUserTypesItems {
@@ -2789,7 +3538,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Relation {
-        #[doc = "Output only. The type of the relation translated and formatted in the viewer's\naccount locale or the locale specified in the Accept-Language HTTP header."]
+        #[doc = "Output only. The type of the relation translated and formatted in the viewer's account locale or the locale specified in the Accept-Language HTTP header."]
         #[serde(
             rename = "formattedType",
             default,
@@ -2810,7 +3559,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub person: ::std::option::Option<String>,
-        #[doc = "The person's relation to the other person. The type can be custom or one of\nthese predefined values:\n\n* `spouse`\n* `child`\n* `mother`\n* `father`\n* `parent`\n* `brother`\n* `sister`\n* `friend`\n* `relative`\n* `domesticPartner`\n* `manager`\n* `assistant`\n* `referredBy`\n* `partner`"]
+        #[doc = "The person's relation to the other person. The type can be custom or one of these predefined values: * `spouse` * `child` * `mother` * `father` * `parent` * `brother` * `sister` * `friend` * `relative` * `domesticPartner` * `manager` * `assistant` * `referredBy` * `partner`"]
         #[serde(
             rename = "type",
             default,
@@ -2841,7 +3590,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RelationshipInterest {
-        #[doc = "Output only. The value of the relationship interest translated and formatted\nin the viewer's account locale or the locale specified in the\nAccept-Language HTTP header."]
+        #[doc = "Output only. The value of the relationship interest translated and formatted in the viewer's account locale or the locale specified in the Accept-Language HTTP header."]
         #[serde(
             rename = "formattedValue",
             default,
@@ -2855,7 +3604,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
-        #[doc = "The kind of relationship the person is looking for. The value can be custom\nor one of these predefined values:\n\n* `friend`\n* `date`\n* `relationship`\n* `networking`"]
+        #[doc = "The kind of relationship the person is looking for. The value can be custom or one of these predefined values: * `friend` * `date` * `relationship` * `networking`"]
         #[serde(
             rename = "value",
             default,
@@ -2886,7 +3635,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RelationshipStatus {
-        #[doc = "Output only. The value of the relationship status translated and formatted in\nthe viewer's account locale or the `Accept-Language` HTTP header locale."]
+        #[doc = "Output only. The value of the relationship status translated and formatted in the viewer's account locale or the `Accept-Language` HTTP header locale."]
         #[serde(
             rename = "formattedValue",
             default,
@@ -2900,7 +3649,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
-        #[doc = "The relationship status. The value can be custom or one of these\npredefined values:\n\n* `single`\n* `inARelationship`\n* `engaged`\n* `married`\n* `itsComplicated`\n* `openRelationship`\n* `widowed`\n* `inDomesticPartnership`\n* `inCivilUnion`"]
+        #[doc = "The relationship status. The value can be custom or one of these predefined values: * `single` * `inARelationship` * `engaged` * `married` * `itsComplicated` * `openRelationship` * `widowed` * `inDomesticPartnership` * `inCivilUnion`"]
         #[serde(
             rename = "value",
             default,
@@ -2931,7 +3680,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Residence {
-        #[doc = "True if the residence is the person's current residence;\nfalse if the residence is a past residence."]
+        #[doc = "True if the residence is the person's current residence; false if the residence is a past residence."]
         #[serde(
             rename = "current",
             default,
@@ -2975,8 +3724,115 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct SearchDirectoryPeopleResponse {
+        #[doc = "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages."]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub next_page_token: ::std::option::Option<String>,
+        #[doc = "The list of people in the domain directory that match the query."]
+        #[serde(
+            rename = "people",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub people: ::std::option::Option<Vec<crate::schemas::Person>>,
+        #[doc = "The total number of items in the list without pagination."]
+        #[serde(
+            rename = "totalSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub total_size: ::std::option::Option<i32>,
+    }
+    impl ::google_field_selector::FieldSelector for SearchDirectoryPeopleResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SearchDirectoryPeopleResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SearchResponse {
+        #[doc = "The results of the request."]
+        #[serde(
+            rename = "results",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub results: ::std::option::Option<Vec<crate::schemas::SearchResult>>,
+    }
+    impl ::google_field_selector::FieldSelector for SearchResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SearchResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SearchResult {
+        #[doc = "The matched Person."]
+        #[serde(
+            rename = "person",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub person: ::std::option::Option<crate::schemas::Person>,
+    }
+    impl ::google_field_selector::FieldSelector for SearchResult {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SearchResult {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct SipAddress {
-        #[doc = "Output only. The type of the SIP address translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
+        #[doc = "Output only. The type of the SIP address translated and formatted in the viewer's account locale or the `Accept-Language` HTTP header locale."]
         #[serde(
             rename = "formattedType",
             default,
@@ -2990,14 +3846,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
-        #[doc = "The type of the SIP address. The type can be custom or or one of these\npredefined values:\n\n* `home`\n* `work`\n* `mobile`\n* `other`"]
+        #[doc = "The type of the SIP address. The type can be custom or or one of these predefined values: * `home` * `work` * `mobile` * `other`"]
         #[serde(
             rename = "type",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<String>,
-        #[doc = "The SIP address in the\n[RFC 3261 19.1](https://tools.ietf.org/html/rfc3261#section-19.1) SIP URI\nformat."]
+        #[doc = "The SIP address in the [RFC 3261 19.1](https://tools.ietf.org/html/rfc3261#section-19.1) SIP URI format."]
         #[serde(
             rename = "value",
             default,
@@ -3066,7 +3922,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Source {
-        #[doc = "**Only populated in `person.metadata.sources`.**\n\nThe [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the\nsource. Used for web cache validation."]
+        #[doc = "**Only populated in `person.metadata.sources`.** The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the source. Used for web cache validation."]
         #[serde(
             rename = "etag",
             default,
@@ -3080,7 +3936,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Output only. **Only populated in `person.metadata.sources`.**\n\nMetadata about a source of type PROFILE."]
+        #[doc = "Output only. **Only populated in `person.metadata.sources`.** Metadata about a source of type PROFILE."]
         #[serde(
             rename = "profileMetadata",
             default,
@@ -3094,7 +3950,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<crate::schemas::SourceType>,
-        #[doc = "Output only. **Only populated in `person.metadata.sources`.**\n\nLast update timestamp of this source."]
+        #[doc = "Output only. **Only populated in `person.metadata.sources`.** Last update timestamp of this source."]
         #[serde(
             rename = "updateTime",
             default,
@@ -3116,11 +3972,15 @@ pub mod schemas {
     pub enum SourceType {
         #[doc = "[Google Account](https://accounts.google.com)."]
         Account,
-        #[doc = "[Google contact](https://contacts.google.com). You can view the\ncontact at\n[https://contact.google.com/](https://contact.google.com/){id}, where\n{id} is the source id."]
+        #[doc = "[Google contact](https://contacts.google.com). You can view the contact at [https://contact.google.com/](https://contact.google.com/){id}, where {id} is the source id."]
         Contact,
+        #[doc = "[G Suite domain shared contact](https://support.google.com/a/answer/9281635)."]
+        DomainContact,
         #[doc = "[G Suite domain profile](https://support.google.com/a/answer/1628008)."]
         DomainProfile,
-        #[doc = "[Google profile](https://profiles.google.com). You can view the\nprofile at\n[https://profiles.google.com/](https://profiles.google.com/){id}, where\n{id} is the source id."]
+        #[doc = "[Google \"Other contact\"](https://contacts.google.com/other)."]
+        OtherContact,
+        #[doc = "[Google profile](https://profiles.google.com). You can view the profile at [https://profiles.google.com/](https://profiles.google.com/){id}, where {id} is the source id."]
         Profile,
         #[doc = "Unspecified."]
         SourceTypeUnspecified,
@@ -3130,7 +3990,9 @@ pub mod schemas {
             match self {
                 SourceType::Account => "ACCOUNT",
                 SourceType::Contact => "CONTACT",
+                SourceType::DomainContact => "DOMAIN_CONTACT",
                 SourceType::DomainProfile => "DOMAIN_PROFILE",
+                SourceType::OtherContact => "OTHER_CONTACT",
                 SourceType::Profile => "PROFILE",
                 SourceType::SourceTypeUnspecified => "SOURCE_TYPE_UNSPECIFIED",
             }
@@ -3147,7 +4009,9 @@ pub mod schemas {
             Ok(match s {
                 "ACCOUNT" => SourceType::Account,
                 "CONTACT" => SourceType::Contact,
+                "DOMAIN_CONTACT" => SourceType::DomainContact,
                 "DOMAIN_PROFILE" => SourceType::DomainProfile,
+                "OTHER_CONTACT" => SourceType::OtherContact,
                 "PROFILE" => SourceType::Profile,
                 "SOURCE_TYPE_UNSPECIFIED" => SourceType::SourceTypeUnspecified,
                 _ => return Err(()),
@@ -3176,7 +4040,9 @@ pub mod schemas {
             Ok(match value {
                 "ACCOUNT" => SourceType::Account,
                 "CONTACT" => SourceType::Contact,
+                "DOMAIN_CONTACT" => SourceType::DomainContact,
                 "DOMAIN_PROFILE" => SourceType::DomainProfile,
+                "OTHER_CONTACT" => SourceType::OtherContact,
                 "PROFILE" => SourceType::Profile,
                 "SOURCE_TYPE_UNSPECIFIED" => SourceType::SourceTypeUnspecified,
                 _ => {
@@ -3207,7 +4073,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub code: ::std::option::Option<i32>,
-        #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
+        #[doc = "A list of messages that carry the error details. There is a common set of message types for APIs to use."]
         #[serde(
             rename = "details",
             default,
@@ -3215,7 +4081,7 @@ pub mod schemas {
         )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
-        #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
+        #[doc = "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client."]
         #[serde(
             rename = "message",
             default,
@@ -3291,6 +4157,20 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub contact_group: ::std::option::Option<crate::schemas::ContactGroup>,
+        #[doc = "Optional. A field mask to restrict which fields on the group are returned. Defaults to `metadata`, `groupType`, and `name` if not set or set to empty. Valid fields are: * clientData * groupType * memberCount * metadata * name"]
+        #[serde(
+            rename = "readGroupFields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub read_group_fields: ::std::option::Option<String>,
+        #[doc = "Optional. A field mask to restrict which fields on the group are updated. Multiple fields can be specified by separating them with commas. Defaults to `name` if not set or set to empty. Updated fields are replaced. Valid values are: * clientData * name"]
+        #[serde(
+            rename = "updateGroupFields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub update_group_fields: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for UpdateContactGroupRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -3315,7 +4195,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UpdateContactPhotoRequest {
-        #[doc = "Optional. A field mask to restrict which fields on the person are returned. Multiple\nfields can be specified by separating them with commas. Defaults to empty\nif not set, which will skip the post mutate get. Valid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* residences\n* sipAddresses\n* skills\n* urls\n* userDefined"]
+        #[doc = "Optional. A field mask to restrict which fields on the person are returned. Multiple fields can be specified by separating them with commas. Defaults to empty if not set, which will skip the post mutate get. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined"]
         #[serde(
             rename = "personFields",
             default,
@@ -3329,6 +4209,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub photo_bytes: ::std::option::Option<::google_api_bytes::Bytes>,
+        #[doc = "Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set."]
+        #[serde(
+            rename = "sources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub sources:
+            ::std::option::Option<Vec<crate::schemas::UpdateContactPhotoRequestSourcesItems>>,
     }
     impl ::google_field_selector::FieldSelector for UpdateContactPhotoRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -3336,6 +4224,111 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for UpdateContactPhotoRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum UpdateContactPhotoRequestSourcesItems {
+        #[doc = "Returns SourceType.CONTACT."]
+        ReadSourceTypeContact,
+        #[doc = "Returns SourceType.DOMAIN_CONTACT."]
+        ReadSourceTypeDomainContact,
+        #[doc = "Returns SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, and SourceType.PROFILE."]
+        ReadSourceTypeProfile,
+        #[doc = "Unspecified."]
+        ReadSourceTypeUnspecified,
+    }
+    impl UpdateContactPhotoRequestSourcesItems {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                UpdateContactPhotoRequestSourcesItems::ReadSourceTypeContact => {
+                    "READ_SOURCE_TYPE_CONTACT"
+                }
+                UpdateContactPhotoRequestSourcesItems::ReadSourceTypeDomainContact => {
+                    "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+                }
+                UpdateContactPhotoRequestSourcesItems::ReadSourceTypeProfile => {
+                    "READ_SOURCE_TYPE_PROFILE"
+                }
+                UpdateContactPhotoRequestSourcesItems::ReadSourceTypeUnspecified => {
+                    "READ_SOURCE_TYPE_UNSPECIFIED"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for UpdateContactPhotoRequestSourcesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for UpdateContactPhotoRequestSourcesItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<UpdateContactPhotoRequestSourcesItems, ()> {
+            Ok(match s {
+                "READ_SOURCE_TYPE_CONTACT" => {
+                    UpdateContactPhotoRequestSourcesItems::ReadSourceTypeContact
+                }
+                "READ_SOURCE_TYPE_DOMAIN_CONTACT" => {
+                    UpdateContactPhotoRequestSourcesItems::ReadSourceTypeDomainContact
+                }
+                "READ_SOURCE_TYPE_PROFILE" => {
+                    UpdateContactPhotoRequestSourcesItems::ReadSourceTypeProfile
+                }
+                "READ_SOURCE_TYPE_UNSPECIFIED" => {
+                    UpdateContactPhotoRequestSourcesItems::ReadSourceTypeUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for UpdateContactPhotoRequestSourcesItems {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for UpdateContactPhotoRequestSourcesItems {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for UpdateContactPhotoRequestSourcesItems {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "READ_SOURCE_TYPE_CONTACT" => {
+                    UpdateContactPhotoRequestSourcesItems::ReadSourceTypeContact
+                }
+                "READ_SOURCE_TYPE_DOMAIN_CONTACT" => {
+                    UpdateContactPhotoRequestSourcesItems::ReadSourceTypeDomainContact
+                }
+                "READ_SOURCE_TYPE_PROFILE" => {
+                    UpdateContactPhotoRequestSourcesItems::ReadSourceTypeProfile
+                }
+                "READ_SOURCE_TYPE_UNSPECIFIED" => {
+                    UpdateContactPhotoRequestSourcesItems::ReadSourceTypeUnspecified
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for UpdateContactPhotoRequestSourcesItems {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for UpdateContactPhotoRequestSourcesItems {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -3353,7 +4346,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UpdateContactPhotoResponse {
-        #[doc = "The updated person, if person_fields is set in the\nUpdateContactPhotoRequest; otherwise this will be unset."]
+        #[doc = "The updated person, if person_fields is set in the UpdateContactPhotoRequest; otherwise this will be unset."]
         #[serde(
             rename = "person",
             default,
@@ -3384,7 +4377,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Url {
-        #[doc = "Output only. The type of the URL translated and formatted in the viewer's\naccount locale or the `Accept-Language` HTTP header locale."]
+        #[doc = "Output only. The type of the URL translated and formatted in the viewer's account locale or the `Accept-Language` HTTP header locale."]
         #[serde(
             rename = "formattedType",
             default,
@@ -3398,7 +4391,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
-        #[doc = "The type of the URL. The type can be custom or one of these predefined\nvalues:\n\n* `home`\n* `work`\n* `blog`\n* `profile`\n* `homePage`\n* `ftp`\n* `reservations`\n* `appInstallPage`: website for a Google+ application.\n* `other`"]
+        #[doc = "The type of the URL. The type can be custom or one of these predefined values: * `home` * `work` * `blog` * `profile` * `homePage` * `ftp` * `reservations` * `appInstallPage`: website for a Currents application. * `other`"]
         #[serde(
             rename = "type",
             default,
@@ -3625,17 +4618,17 @@ pub struct Client {
 impl Client {
     pub fn new<A>(auth: A) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client::with_reqwest_client(auth, ::reqwest::Client::builder().build().unwrap())
     }
     pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::Client) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client {
             reqwest,
-            auth: auth.into(),
+            auth: Box::new(auth),
         }
     }
     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
@@ -3644,6 +4637,13 @@ impl Client {
     #[doc = "Actions that can be performed on the contact_groups resource"]
     pub fn contact_groups(&self) -> crate::resources::contact_groups::ContactGroupsActions {
         crate::resources::contact_groups::ContactGroupsActions {
+            reqwest: &self.reqwest,
+            auth: self.auth_ref(),
+        }
+    }
+    #[doc = "Actions that can be performed on the other_contacts resource"]
+    pub fn other_contacts(&self) -> crate::resources::other_contacts::OtherContactsActions {
+        crate::resources::other_contacts::OtherContactsActions {
             reqwest: &self.reqwest,
             auth: self.auth_ref(),
         }
@@ -3667,7 +4667,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Get a list of contact groups owned by the authenticated user by specifying\na list of contact group resource names."]
+            #[doc = "Get a list of contact groups owned by the authenticated user by specifying a list of contact group resource names."]
             pub fn batch_get(&self) -> BatchGetRequestBuilder {
                 BatchGetRequestBuilder {
                     reqwest: &self.reqwest,
@@ -3683,6 +4683,7 @@ pub mod resources {
                     upload_protocol: None,
                     upload_type: None,
                     xgafv: None,
+                    group_fields: None,
                     max_members: None,
                     resource_names: None,
                 }
@@ -3709,7 +4710,7 @@ pub mod resources {
                     xgafv: None,
                 }
             }
-            #[doc = "Delete an existing contact group owned by the authenticated user by\nspecifying a contact group resource name."]
+            #[doc = "Delete an existing contact group owned by the authenticated user by specifying a contact group resource name."]
             pub fn delete(&self, resource_name: impl Into<String>) -> DeleteRequestBuilder {
                 DeleteRequestBuilder {
                     reqwest: &self.reqwest,
@@ -3729,7 +4730,7 @@ pub mod resources {
                     delete_contacts: None,
                 }
             }
-            #[doc = "Get a specific contact group owned by the authenticated user by specifying\na contact group resource name."]
+            #[doc = "Get a specific contact group owned by the authenticated user by specifying a contact group resource name."]
             pub fn get(&self, resource_name: impl Into<String>) -> GetRequestBuilder {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
@@ -3746,10 +4747,11 @@ pub mod resources {
                     upload_type: None,
                     xgafv: None,
                     resource_name: resource_name.into(),
+                    group_fields: None,
                     max_members: None,
                 }
             }
-            #[doc = "List all contact groups owned by the authenticated user. Members of the\ncontact groups are not populated."]
+            #[doc = "List all contact groups owned by the authenticated user. Members of the contact groups are not populated."]
             pub fn list(&self) -> ListRequestBuilder {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
@@ -3765,12 +4767,13 @@ pub mod resources {
                     upload_protocol: None,
                     upload_type: None,
                     xgafv: None,
+                    group_fields: None,
                     page_size: None,
                     page_token: None,
                     sync_token: None,
                 }
             }
-            #[doc = "Update the name of an existing contact group owned by the authenticated\nuser."]
+            #[doc = "Update the name of an existing contact group owned by the authenticated user."]
             pub fn update(
                 &self,
                 request: crate::schemas::UpdateContactGroupRequest,
@@ -3807,6 +4810,7 @@ pub mod resources {
         pub struct BatchGetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            group_fields: Option<String>,
             max_members: Option<i32>,
             resource_names: Option<Vec<String>>,
             access_token: Option<String>,
@@ -3822,7 +4826,12 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> BatchGetRequestBuilder<'a> {
-            #[doc = "Optional. Specifies the maximum number of members to return for each group. Defaults\nto 0 if not set, which will return zero members."]
+            #[doc = "Optional. A field mask to restrict which fields on the group are returned. Defaults to `metadata`, `groupType`, `memberCount`, and `name` if not set or set to empty. Valid fields are: * clientData * groupType * memberCount * metadata * name"]
+            pub fn group_fields(mut self, value: impl Into<String>) -> Self {
+                self.group_fields = Some(value.into());
+                self
+            }
+            #[doc = "Optional. Specifies the maximum number of members to return for each group. Defaults to 0 if not set, which will return zero members."]
             pub fn max_members(mut self, value: i32) -> Self {
                 self.max_members = Some(value);
                 self
@@ -3933,7 +4942,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -3941,26 +4950,33 @@ pub mod resources {
                 output.push_str("v1/contactGroups:batchGet");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("maxMembers", &self.max_members)]);
-                let req = req.query(&[("resourceNames", &self.resource_names)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("groupFields", &self.group_fields)]);
+                req = req.query(&[("maxMembers", &self.max_members)]);
+                for value in self.resource_names.iter().flatten() {
+                    req = req.query(&[("resourceNames", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -4084,7 +5100,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -4093,24 +5109,28 @@ pub mod resources {
                 output.push_str("v1/contactGroups");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -4240,7 +5260,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -4255,25 +5275,29 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("deleteContacts", &self.delete_contacts)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("deleteContacts", &self.delete_contacts)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -4283,6 +5307,7 @@ pub mod resources {
             pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             resource_name: String,
+            group_fields: Option<String>,
             max_members: Option<i32>,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
@@ -4297,7 +5322,12 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetRequestBuilder<'a> {
-            #[doc = "Optional. Specifies the maximum number of members to return. Defaults to 0 if not\nset, which will return zero members."]
+            #[doc = "Optional. A field mask to restrict which fields on the group are returned. Defaults to `metadata`, `groupType`, `memberCount`, and `name` if not set or set to empty. Valid fields are: * clientData * groupType * memberCount * metadata * name"]
+            pub fn group_fields(mut self, value: impl Into<String>) -> Self {
+                self.group_fields = Some(value.into());
+                self
+            }
+            #[doc = "Optional. Specifies the maximum number of members to return. Defaults to 0 if not set, which will return zero members."]
             pub fn max_members(mut self, value: i32) -> Self {
                 self.max_members = Some(value);
                 self
@@ -4403,7 +5433,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -4418,25 +5448,30 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("maxMembers", &self.max_members)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("groupFields", &self.group_fields)]);
+                req = req.query(&[("maxMembers", &self.max_members)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -4445,6 +5480,7 @@ pub mod resources {
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            group_fields: Option<String>,
             page_size: Option<i32>,
             page_token: Option<String>,
             sync_token: Option<String>,
@@ -4461,17 +5497,22 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "Optional. The maximum number of resources to return. Valid values are between 1 and\n1000, inclusive. Defaults to 30 if not set or set to 0."]
+            #[doc = "Optional. A field mask to restrict which fields on the group are returned. Defaults to `metadata`, `groupType`, `memberCount`, and `name` if not set or set to empty. Valid fields are: * clientData * groupType * memberCount * metadata * name"]
+            pub fn group_fields(mut self, value: impl Into<String>) -> Self {
+                self.group_fields = Some(value.into());
+                self
+            }
+            #[doc = "Optional. The maximum number of resources to return. Valid values are between 1 and 1000, inclusive. Defaults to 30 if not set or set to 0."]
             pub fn page_size(mut self, value: i32) -> Self {
                 self.page_size = Some(value);
                 self
             }
-            #[doc = "Optional. The next_page_token value returned from a previous call to\n[ListContactGroups](/people/api/rest/v1/contactgroups/list).\nRequests the next page of resources."]
+            #[doc = "Optional. The next_page_token value returned from a previous call to [ListContactGroups](/people/api/rest/v1/contactgroups/list). Requests the next page of resources."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
             }
-            #[doc = "Optional. A sync token, returned by a previous call to `contactgroups.list`.\nOnly resources changed since the sync token was created will be returned."]
+            #[doc = "Optional. A sync token, returned by a previous call to `contactgroups.list`. Only resources changed since the sync token was created will be returned."]
             pub fn sync_token(mut self, value: impl Into<String>) -> Self {
                 self.sync_token = Some(value.into());
                 self
@@ -4520,106 +5561,6 @@ pub mod resources {
             pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
                 self.xgafv = Some(value);
                 self
-            }
-            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-            #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-            #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-            #[doc = r" populated fields in the yielded items will be determined by the"]
-            #[doc = r" `FieldSelector` implementation."]
-            pub fn iter_contact_groups<T>(self) -> crate::iter::PageItemIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.iter_contact_groups_with_fields(fields)
-            }
-            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-            #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-            #[doc = r" fields in `#items_type` will be the default fields populated by"]
-            #[doc = r" the server."]
-            pub fn iter_contact_groups_with_default_fields(
-                self,
-            ) -> crate::iter::PageItemIter<Self, crate::schemas::ContactGroup> {
-                self.iter_contact_groups_with_fields(None::<String>)
-            }
-            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-            #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-            #[doc = r" fields in `#items_type` will be all fields available. This should"]
-            #[doc = r" primarily be used during developement and debugging as fetching"]
-            #[doc = r" all fields can be expensive both in bandwidth and server"]
-            #[doc = r" resources."]
-            pub fn iter_contact_groups_with_all_fields(
-                self,
-            ) -> crate::iter::PageItemIter<Self, crate::schemas::ContactGroup> {
-                self.iter_contact_groups_with_fields(Some("*"))
-            }
-            pub fn iter_contact_groups_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> crate::iter::PageItemIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: AsRef<str>,
-            {
-                self.fields = Some({
-                    let mut selector = concat!("nextPageToken,", "contactGroups").to_owned();
-                    let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                    if !items_fields.is_empty() {
-                        selector.push_str("(");
-                        selector.push_str(items_fields);
-                        selector.push_str(")");
-                    }
-                    selector
-                });
-                crate::iter::PageItemIter::new(self, "contactGroups")
-            }
-            pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.iter_with_fields(fields)
-            }
-            pub fn iter_with_default_fields(
-                self,
-            ) -> crate::iter::PageIter<Self, crate::schemas::ListContactGroupsResponse>
-            {
-                self.iter_with_fields(None::<&str>)
-            }
-            pub fn iter_with_all_fields(
-                self,
-            ) -> crate::iter::PageIter<Self, crate::schemas::ListContactGroupsResponse>
-            {
-                self.iter_with_fields(Some("*"))
-            }
-            pub fn iter_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> crate::iter::PageIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: AsRef<str>,
-            {
-                let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                if !fields.is_empty() {
-                    match fields.chars().rev().nth(0) {
-                        Some(',') | None => {}
-                        _ => fields.push_str(","),
-                    }
-                    fields.push_str("nextPageToken");
-                    self.fields = Some(fields);
-                }
-                crate::iter::PageIter::new(self)
             }
             #[doc = r" Execute the given operation. The fields requested are"]
             #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -4677,7 +5618,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -4685,39 +5626,33 @@ pub mod resources {
                 output.push_str("v1/contactGroups");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("pageSize", &self.page_size)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("syncToken", &self.sync_token)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("groupFields", &self.group_fields)]);
+                req = req.query(&[("pageSize", &self.page_size)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("syncToken", &self.sync_token)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
-            }
-        }
-        impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-            fn set_page_token(&mut self, value: String) {
-                self.page_token = value.into();
-            }
-            fn execute<T>(&mut self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-            {
-                todo!("implement async `execute` method for `IterableMethod` trait")
             }
         }
         #[doc = "Created via [ContactGroupsActions::update()](struct.ContactGroupsActions.html#method.update)"]
@@ -4841,7 +5776,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -4857,24 +5792,28 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -4888,7 +5827,7 @@ pub mod resources {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Modify the members of a contact group owned by the authenticated user.\n\nThe only system contact groups that can have members added are\n`contactGroups/myContacts` and `contactGroups/starred`. Other system\ncontact groups are deprecated and can only have contacts removed."]
+                #[doc = "Modify the members of a contact group owned by the authenticated user. The only system contact groups that can have members added are `contactGroups/myContacts` and `contactGroups/starred`. Other system contact groups are deprecated and can only have contacts removed."]
                 pub fn modify(
                     &self,
                     request: crate::schemas::ModifyContactGroupMembersRequest,
@@ -5036,7 +5975,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -5053,180 +5992,50 @@ pub mod resources {
                     output.push_str("/members:modify");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
         }
     }
-    pub mod people {
+    pub mod other_contacts {
         pub mod params {}
-        pub struct PeopleActions<'a> {
+        pub struct OtherContactsActions<'a> {
             pub(crate) reqwest: &'a reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
-        impl<'a> PeopleActions<'a> {
+        impl<'a> OtherContactsActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Create a new contact and return the person resource for that contact."]
-            pub fn create_contact(
+            #[doc = "Copies an \"Other contact\" to a new contact in the user's \"myContacts\" group"]
+            pub fn copy_other_contact_to_my_contacts_group(
                 &self,
-                request: crate::schemas::Person,
-            ) -> CreateContactRequestBuilder {
-                CreateContactRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    request,
-                    access_token: None,
-                    alt: None,
-                    callback: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    upload_protocol: None,
-                    upload_type: None,
-                    xgafv: None,
-                }
-            }
-            #[doc = "Delete a contact person. Any non-contact data will not be deleted."]
-            pub fn delete_contact(
-                &self,
+                request: crate::schemas::CopyOtherContactToMyContactsGroupRequest,
                 resource_name: impl Into<String>,
-            ) -> DeleteContactRequestBuilder {
-                DeleteContactRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    access_token: None,
-                    alt: None,
-                    callback: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    upload_protocol: None,
-                    upload_type: None,
-                    xgafv: None,
-                    resource_name: resource_name.into(),
-                }
-            }
-            #[doc = "Delete a contact's photo."]
-            pub fn delete_contact_photo(
-                &self,
-                resource_name: impl Into<String>,
-            ) -> DeleteContactPhotoRequestBuilder {
-                DeleteContactPhotoRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    access_token: None,
-                    alt: None,
-                    callback: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    upload_protocol: None,
-                    upload_type: None,
-                    xgafv: None,
-                    resource_name: resource_name.into(),
-                    person_fields: None,
-                }
-            }
-            #[doc = "Provides information about a person by specifying a resource name. Use\n`people/me` to indicate the authenticated user.\n\nThe request throws a 400 error if 'personFields' is not specified."]
-            pub fn get(&self, resource_name: impl Into<String>) -> GetRequestBuilder {
-                GetRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    access_token: None,
-                    alt: None,
-                    callback: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    upload_protocol: None,
-                    upload_type: None,
-                    xgafv: None,
-                    resource_name: resource_name.into(),
-                    person_fields: None,
-                    request_mask_include_field: None,
-                }
-            }
-            #[doc = "Provides information about a list of specific people by specifying a list\nof requested resource names. Use `people/me` to indicate the authenticated\nuser.\n\nThe request throws a 400 error if 'personFields' is not specified."]
-            pub fn get_batch_get(&self) -> GetBatchGetRequestBuilder {
-                GetBatchGetRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    access_token: None,
-                    alt: None,
-                    callback: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    upload_protocol: None,
-                    upload_type: None,
-                    xgafv: None,
-                    person_fields: None,
-                    request_mask_include_field: None,
-                    resource_names: None,
-                }
-            }
-            #[doc = "Update contact data for an existing contact person. Any non-contact data\nwill not be modified.\n\nThe request throws a 400 error if `updatePersonFields` is not specified.\n\nThe request throws a 400 error if `person.metadata.sources` is not\nspecified for the contact to be updated.\n\nThe request throws a 400 error with an error with reason\n`\"failedPrecondition\"` if `person.metadata.sources.etag` is different than\nthe contact's etag, which indicates the contact has changed since its data\nwas read. Clients should get the latest person and re-apply their updates\nto the latest person."]
-            pub fn update_contact(
-                &self,
-                request: crate::schemas::Person,
-                resource_name: impl Into<String>,
-            ) -> UpdateContactRequestBuilder {
-                UpdateContactRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    request,
-                    access_token: None,
-                    alt: None,
-                    callback: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    upload_protocol: None,
-                    upload_type: None,
-                    xgafv: None,
-                    resource_name: resource_name.into(),
-                    update_person_fields: None,
-                }
-            }
-            #[doc = "Update a contact's photo."]
-            pub fn update_contact_photo(
-                &self,
-                request: crate::schemas::UpdateContactPhotoRequest,
-                resource_name: impl Into<String>,
-            ) -> UpdateContactPhotoRequestBuilder {
-                UpdateContactPhotoRequestBuilder {
+            ) -> CopyOtherContactToMyContactsGroupRequestBuilder {
+                CopyOtherContactToMyContactsGroupRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
                     request,
@@ -5244,20 +6053,58 @@ pub mod resources {
                     resource_name: resource_name.into(),
                 }
             }
-            #[doc = "Actions that can be performed on the connections resource"]
-            pub fn connections(&self) -> crate::resources::people::connections::ConnectionsActions {
-                crate::resources::people::connections::ConnectionsActions {
+            #[doc = "List all \"Other contacts\", that is contacts that are not in a contact group. \"Other contacts\" are typically auto created contacts from interactions."]
+            pub fn list(&self) -> ListRequestBuilder {
+                ListRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    page_size: None,
+                    page_token: None,
+                    read_mask: None,
+                    request_sync_token: None,
+                    sync_token: None,
+                }
+            }
+            #[doc = "Provides a list of contacts in the authenticated user's other contacts that matches the search query."]
+            pub fn search(&self) -> SearchRequestBuilder {
+                SearchRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    page_size: None,
+                    query: None,
+                    read_mask: None,
                 }
             }
         }
-        #[doc = "Created via [PeopleActions::create_contact()](struct.PeopleActions.html#method.create_contact)"]
+        #[doc = "Created via [OtherContactsActions::copy_other_contact_to_my_contacts_group()](struct.OtherContactsActions.html#method.copy_other_contact_to_my_contacts_group)"]
         #[derive(Debug, Clone)]
-        pub struct CreateContactRequestBuilder<'a> {
+        pub struct CopyOtherContactToMyContactsGroupRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            request: crate::schemas::Person,
+            request: crate::schemas::CopyOtherContactToMyContactsGroupRequest,
+            resource_name: String,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
@@ -5270,7 +6117,7 @@ pub mod resources {
             upload_type: Option<String>,
             xgafv: Option<crate::params::Xgafv>,
         }
-        impl<'a> CreateContactRequestBuilder<'a> {
+        impl<'a> CopyOtherContactToMyContactsGroupRequestBuilder<'a> {
             #[doc = "OAuth access token."]
             pub fn access_token(mut self, value: impl Into<String>) -> Self {
                 self.access_token = Some(value.into());
@@ -5372,7 +6219,1618 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
+                let req = req.json(&self.request);
+                Ok(req.send().await?.error_for_status()?.json().await?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://people.googleapis.com/".to_owned();
+                output.push_str("v1/");
+                {
+                    let var_as_str = &self.resource_name;
+                    output.extend(::percent_encoding::utf8_percent_encode(
+                        &var_as_str,
+                        crate::RESERVED,
+                    ));
+                }
+                output.push_str(":copyOtherContactToMyContactsGroup");
+                output
+            }
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
+                Ok(req)
+            }
+        }
+        #[doc = "Created via [OtherContactsActions::list()](struct.OtherContactsActions.html#method.list)"]
+        #[derive(Debug, Clone)]
+        pub struct ListRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            page_size: Option<i32>,
+            page_token: Option<String>,
+            read_mask: Option<String>,
+            request_sync_token: Option<bool>,
+            sync_token: Option<String>,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a> ListRequestBuilder<'a> {
+            #[doc = "Optional. The number of \"Other contacts\" to include in the response. Valid values are between 1 and 1000, inclusive. Defaults to 100 if not set or set to 0."]
+            pub fn page_size(mut self, value: i32) -> Self {
+                self.page_size = Some(value);
+                self
+            }
+            #[doc = "Optional. A page token, received from a previous `ListOtherContacts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListOtherContacts` must match the call that provided the page token."]
+            pub fn page_token(mut self, value: impl Into<String>) -> Self {
+                self.page_token = Some(value.into());
+                self
+            }
+            #[doc = "Required. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Valid values are: * emailAddresses * names * phoneNumbers"]
+            pub fn read_mask(mut self, value: impl Into<String>) -> Self {
+                self.read_mask = Some(value.into());
+                self
+            }
+            #[doc = "Optional. Whether the response should include `next_sync_token`, which can be used to get all changes since the last request. For subsequent sync requests use the `sync_token` param instead. Initial sync requests that specify `request_sync_token` have an additional rate limit."]
+            pub fn request_sync_token(mut self, value: bool) -> Self {
+                self.request_sync_token = Some(value);
+                self
+            }
+            #[doc = "Optional. A sync token, received from a previous `ListOtherContacts` call. Provide this to retrieve only the resources changed since the last request. Sync requests that specify `sync_token` have an additional rate limit. When syncing, all other parameters provided to `ListOtherContacts` must match the call that provided the sync token."]
+            pub fn sync_token(mut self, value: impl Into<String>) -> Self {
+                self.sync_token = Some(value.into());
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub async fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields).await
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub async fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::ListOtherContactsResponse, crate::Error> {
+                self.execute_with_fields(None::<&str>).await
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub async fn execute_with_all_fields(
+                self,
+            ) -> Result<crate::schemas::ListOtherContactsResponse, crate::Error> {
+                self.execute_with_fields(Some("*")).await
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub async fn execute_with_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute().await
+            }
+            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path()).await?;
+                Ok(req.send().await?.error_for_status()?.json().await?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://people.googleapis.com/".to_owned();
+                output.push_str("v1/otherContacts");
+                output
+            }
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("pageSize", &self.page_size)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("readMask", &self.read_mask)]);
+                req = req.query(&[("requestSyncToken", &self.request_sync_token)]);
+                req = req.query(&[("syncToken", &self.sync_token)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
+                Ok(req)
+            }
+        }
+        #[doc = "Created via [OtherContactsActions::search()](struct.OtherContactsActions.html#method.search)"]
+        #[derive(Debug, Clone)]
+        pub struct SearchRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            page_size: Option<i32>,
+            query: Option<String>,
+            read_mask: Option<String>,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a> SearchRequestBuilder<'a> {
+            #[doc = "Optional. The number of results to return. Defaults to 10 if field is not set, or set to 0."]
+            pub fn page_size(mut self, value: i32) -> Self {
+                self.page_size = Some(value);
+                self
+            }
+            #[doc = "Required. The plain-text query for the request. The query is used to match prefix phrases of the fields on a person. For example, a person with name \"foo name\" matches queries such as \"f\", \"fo\", \"foo\", \"foo n\", \"nam\", etc., but not \"oo n\"."]
+            pub fn query(mut self, value: impl Into<String>) -> Self {
+                self.query = Some(value.into());
+                self
+            }
+            #[doc = "Required. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Valid values are: * emailAddresses * names * phoneNumbers"]
+            pub fn read_mask(mut self, value: impl Into<String>) -> Self {
+                self.read_mask = Some(value.into());
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub async fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields).await
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub async fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::SearchResponse, crate::Error> {
+                self.execute_with_fields(None::<&str>).await
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub async fn execute_with_all_fields(
+                self,
+            ) -> Result<crate::schemas::SearchResponse, crate::Error> {
+                self.execute_with_fields(Some("*")).await
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub async fn execute_with_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute().await
+            }
+            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path()).await?;
+                Ok(req.send().await?.error_for_status()?.json().await?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://people.googleapis.com/".to_owned();
+                output.push_str("v1/otherContacts:search");
+                output
+            }
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("pageSize", &self.page_size)]);
+                req = req.query(&[("query", &self.query)]);
+                req = req.query(&[("readMask", &self.read_mask)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
+                Ok(req)
+            }
+        }
+    }
+    pub mod people {
+        pub mod params {
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+            pub enum CreateContactSourcesItems {
+                #[doc = "Returns SourceType.CONTACT."]
+                ReadSourceTypeContact,
+                #[doc = "Returns SourceType.DOMAIN_CONTACT."]
+                ReadSourceTypeDomainContact,
+                #[doc = "Returns SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, and SourceType.PROFILE."]
+                ReadSourceTypeProfile,
+                #[doc = "Unspecified."]
+                ReadSourceTypeUnspecified,
+            }
+            impl CreateContactSourcesItems {
+                pub fn as_str(self) -> &'static str {
+                    match self {
+                        CreateContactSourcesItems::ReadSourceTypeContact => {
+                            "READ_SOURCE_TYPE_CONTACT"
+                        }
+                        CreateContactSourcesItems::ReadSourceTypeDomainContact => {
+                            "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+                        }
+                        CreateContactSourcesItems::ReadSourceTypeProfile => {
+                            "READ_SOURCE_TYPE_PROFILE"
+                        }
+                        CreateContactSourcesItems::ReadSourceTypeUnspecified => {
+                            "READ_SOURCE_TYPE_UNSPECIFIED"
+                        }
+                    }
+                }
+            }
+            impl ::std::convert::AsRef<str> for CreateContactSourcesItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for CreateContactSourcesItems {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<CreateContactSourcesItems, ()> {
+                    Ok(match s {
+                        "READ_SOURCE_TYPE_CONTACT" => {
+                            CreateContactSourcesItems::ReadSourceTypeContact
+                        }
+                        "READ_SOURCE_TYPE_DOMAIN_CONTACT" => {
+                            CreateContactSourcesItems::ReadSourceTypeDomainContact
+                        }
+                        "READ_SOURCE_TYPE_PROFILE" => {
+                            CreateContactSourcesItems::ReadSourceTypeProfile
+                        }
+                        "READ_SOURCE_TYPE_UNSPECIFIED" => {
+                            CreateContactSourcesItems::ReadSourceTypeUnspecified
+                        }
+                        _ => return Err(()),
+                    })
+                }
+            }
+            impl ::std::fmt::Display for CreateContactSourcesItems {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                    f.write_str(self.as_str())
+                }
+            }
+            impl ::serde::Serialize for CreateContactSourcesItems {
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+                where
+                    S: ::serde::ser::Serializer,
+                {
+                    serializer.serialize_str(self.as_str())
+                }
+            }
+            impl<'de> ::serde::Deserialize<'de> for CreateContactSourcesItems {
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+                where
+                    D: ::serde::de::Deserializer<'de>,
+                {
+                    let value: &'de str = <&str>::deserialize(deserializer)?;
+                    Ok(match value {
+                        "READ_SOURCE_TYPE_CONTACT" => {
+                            CreateContactSourcesItems::ReadSourceTypeContact
+                        }
+                        "READ_SOURCE_TYPE_DOMAIN_CONTACT" => {
+                            CreateContactSourcesItems::ReadSourceTypeDomainContact
+                        }
+                        "READ_SOURCE_TYPE_PROFILE" => {
+                            CreateContactSourcesItems::ReadSourceTypeProfile
+                        }
+                        "READ_SOURCE_TYPE_UNSPECIFIED" => {
+                            CreateContactSourcesItems::ReadSourceTypeUnspecified
+                        }
+                        _ => {
+                            return Err(::serde::de::Error::custom(format!(
+                                "invalid enum for #name: {}",
+                                value
+                            )))
+                        }
+                    })
+                }
+            }
+            impl ::google_field_selector::FieldSelector for CreateContactSourcesItems {
+                fn fields() -> Vec<::google_field_selector::Field> {
+                    Vec::new()
+                }
+            }
+            impl ::google_field_selector::ToFieldType for CreateContactSourcesItems {
+                fn field_type() -> ::google_field_selector::FieldType {
+                    ::google_field_selector::FieldType::Leaf
+                }
+            }
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+            pub enum DeleteContactPhotoSourcesItems {
+                #[doc = "Returns SourceType.CONTACT."]
+                ReadSourceTypeContact,
+                #[doc = "Returns SourceType.DOMAIN_CONTACT."]
+                ReadSourceTypeDomainContact,
+                #[doc = "Returns SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, and SourceType.PROFILE."]
+                ReadSourceTypeProfile,
+                #[doc = "Unspecified."]
+                ReadSourceTypeUnspecified,
+            }
+            impl DeleteContactPhotoSourcesItems {
+                pub fn as_str(self) -> &'static str {
+                    match self {
+                        DeleteContactPhotoSourcesItems::ReadSourceTypeContact => {
+                            "READ_SOURCE_TYPE_CONTACT"
+                        }
+                        DeleteContactPhotoSourcesItems::ReadSourceTypeDomainContact => {
+                            "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+                        }
+                        DeleteContactPhotoSourcesItems::ReadSourceTypeProfile => {
+                            "READ_SOURCE_TYPE_PROFILE"
+                        }
+                        DeleteContactPhotoSourcesItems::ReadSourceTypeUnspecified => {
+                            "READ_SOURCE_TYPE_UNSPECIFIED"
+                        }
+                    }
+                }
+            }
+            impl ::std::convert::AsRef<str> for DeleteContactPhotoSourcesItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for DeleteContactPhotoSourcesItems {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<DeleteContactPhotoSourcesItems, ()> {
+                    Ok(match s {
+                        "READ_SOURCE_TYPE_CONTACT" => {
+                            DeleteContactPhotoSourcesItems::ReadSourceTypeContact
+                        }
+                        "READ_SOURCE_TYPE_DOMAIN_CONTACT" => {
+                            DeleteContactPhotoSourcesItems::ReadSourceTypeDomainContact
+                        }
+                        "READ_SOURCE_TYPE_PROFILE" => {
+                            DeleteContactPhotoSourcesItems::ReadSourceTypeProfile
+                        }
+                        "READ_SOURCE_TYPE_UNSPECIFIED" => {
+                            DeleteContactPhotoSourcesItems::ReadSourceTypeUnspecified
+                        }
+                        _ => return Err(()),
+                    })
+                }
+            }
+            impl ::std::fmt::Display for DeleteContactPhotoSourcesItems {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                    f.write_str(self.as_str())
+                }
+            }
+            impl ::serde::Serialize for DeleteContactPhotoSourcesItems {
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+                where
+                    S: ::serde::ser::Serializer,
+                {
+                    serializer.serialize_str(self.as_str())
+                }
+            }
+            impl<'de> ::serde::Deserialize<'de> for DeleteContactPhotoSourcesItems {
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+                where
+                    D: ::serde::de::Deserializer<'de>,
+                {
+                    let value: &'de str = <&str>::deserialize(deserializer)?;
+                    Ok(match value {
+                        "READ_SOURCE_TYPE_CONTACT" => {
+                            DeleteContactPhotoSourcesItems::ReadSourceTypeContact
+                        }
+                        "READ_SOURCE_TYPE_DOMAIN_CONTACT" => {
+                            DeleteContactPhotoSourcesItems::ReadSourceTypeDomainContact
+                        }
+                        "READ_SOURCE_TYPE_PROFILE" => {
+                            DeleteContactPhotoSourcesItems::ReadSourceTypeProfile
+                        }
+                        "READ_SOURCE_TYPE_UNSPECIFIED" => {
+                            DeleteContactPhotoSourcesItems::ReadSourceTypeUnspecified
+                        }
+                        _ => {
+                            return Err(::serde::de::Error::custom(format!(
+                                "invalid enum for #name: {}",
+                                value
+                            )))
+                        }
+                    })
+                }
+            }
+            impl ::google_field_selector::FieldSelector for DeleteContactPhotoSourcesItems {
+                fn fields() -> Vec<::google_field_selector::Field> {
+                    Vec::new()
+                }
+            }
+            impl ::google_field_selector::ToFieldType for DeleteContactPhotoSourcesItems {
+                fn field_type() -> ::google_field_selector::FieldType {
+                    ::google_field_selector::FieldType::Leaf
+                }
+            }
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+            pub enum GetSourcesItems {
+                #[doc = "Returns SourceType.CONTACT."]
+                ReadSourceTypeContact,
+                #[doc = "Returns SourceType.DOMAIN_CONTACT."]
+                ReadSourceTypeDomainContact,
+                #[doc = "Returns SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, and SourceType.PROFILE."]
+                ReadSourceTypeProfile,
+                #[doc = "Unspecified."]
+                ReadSourceTypeUnspecified,
+            }
+            impl GetSourcesItems {
+                pub fn as_str(self) -> &'static str {
+                    match self {
+                        GetSourcesItems::ReadSourceTypeContact => "READ_SOURCE_TYPE_CONTACT",
+                        GetSourcesItems::ReadSourceTypeDomainContact => {
+                            "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+                        }
+                        GetSourcesItems::ReadSourceTypeProfile => "READ_SOURCE_TYPE_PROFILE",
+                        GetSourcesItems::ReadSourceTypeUnspecified => {
+                            "READ_SOURCE_TYPE_UNSPECIFIED"
+                        }
+                    }
+                }
+            }
+            impl ::std::convert::AsRef<str> for GetSourcesItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for GetSourcesItems {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<GetSourcesItems, ()> {
+                    Ok(match s {
+                        "READ_SOURCE_TYPE_CONTACT" => GetSourcesItems::ReadSourceTypeContact,
+                        "READ_SOURCE_TYPE_DOMAIN_CONTACT" => {
+                            GetSourcesItems::ReadSourceTypeDomainContact
+                        }
+                        "READ_SOURCE_TYPE_PROFILE" => GetSourcesItems::ReadSourceTypeProfile,
+                        "READ_SOURCE_TYPE_UNSPECIFIED" => {
+                            GetSourcesItems::ReadSourceTypeUnspecified
+                        }
+                        _ => return Err(()),
+                    })
+                }
+            }
+            impl ::std::fmt::Display for GetSourcesItems {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                    f.write_str(self.as_str())
+                }
+            }
+            impl ::serde::Serialize for GetSourcesItems {
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+                where
+                    S: ::serde::ser::Serializer,
+                {
+                    serializer.serialize_str(self.as_str())
+                }
+            }
+            impl<'de> ::serde::Deserialize<'de> for GetSourcesItems {
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+                where
+                    D: ::serde::de::Deserializer<'de>,
+                {
+                    let value: &'de str = <&str>::deserialize(deserializer)?;
+                    Ok(match value {
+                        "READ_SOURCE_TYPE_CONTACT" => GetSourcesItems::ReadSourceTypeContact,
+                        "READ_SOURCE_TYPE_DOMAIN_CONTACT" => {
+                            GetSourcesItems::ReadSourceTypeDomainContact
+                        }
+                        "READ_SOURCE_TYPE_PROFILE" => GetSourcesItems::ReadSourceTypeProfile,
+                        "READ_SOURCE_TYPE_UNSPECIFIED" => {
+                            GetSourcesItems::ReadSourceTypeUnspecified
+                        }
+                        _ => {
+                            return Err(::serde::de::Error::custom(format!(
+                                "invalid enum for #name: {}",
+                                value
+                            )))
+                        }
+                    })
+                }
+            }
+            impl ::google_field_selector::FieldSelector for GetSourcesItems {
+                fn fields() -> Vec<::google_field_selector::Field> {
+                    Vec::new()
+                }
+            }
+            impl ::google_field_selector::ToFieldType for GetSourcesItems {
+                fn field_type() -> ::google_field_selector::FieldType {
+                    ::google_field_selector::FieldType::Leaf
+                }
+            }
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+            pub enum GetBatchGetSourcesItems {
+                #[doc = "Returns SourceType.CONTACT."]
+                ReadSourceTypeContact,
+                #[doc = "Returns SourceType.DOMAIN_CONTACT."]
+                ReadSourceTypeDomainContact,
+                #[doc = "Returns SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, and SourceType.PROFILE."]
+                ReadSourceTypeProfile,
+                #[doc = "Unspecified."]
+                ReadSourceTypeUnspecified,
+            }
+            impl GetBatchGetSourcesItems {
+                pub fn as_str(self) -> &'static str {
+                    match self {
+                        GetBatchGetSourcesItems::ReadSourceTypeContact => {
+                            "READ_SOURCE_TYPE_CONTACT"
+                        }
+                        GetBatchGetSourcesItems::ReadSourceTypeDomainContact => {
+                            "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+                        }
+                        GetBatchGetSourcesItems::ReadSourceTypeProfile => {
+                            "READ_SOURCE_TYPE_PROFILE"
+                        }
+                        GetBatchGetSourcesItems::ReadSourceTypeUnspecified => {
+                            "READ_SOURCE_TYPE_UNSPECIFIED"
+                        }
+                    }
+                }
+            }
+            impl ::std::convert::AsRef<str> for GetBatchGetSourcesItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for GetBatchGetSourcesItems {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<GetBatchGetSourcesItems, ()> {
+                    Ok(match s {
+                        "READ_SOURCE_TYPE_CONTACT" => {
+                            GetBatchGetSourcesItems::ReadSourceTypeContact
+                        }
+                        "READ_SOURCE_TYPE_DOMAIN_CONTACT" => {
+                            GetBatchGetSourcesItems::ReadSourceTypeDomainContact
+                        }
+                        "READ_SOURCE_TYPE_PROFILE" => {
+                            GetBatchGetSourcesItems::ReadSourceTypeProfile
+                        }
+                        "READ_SOURCE_TYPE_UNSPECIFIED" => {
+                            GetBatchGetSourcesItems::ReadSourceTypeUnspecified
+                        }
+                        _ => return Err(()),
+                    })
+                }
+            }
+            impl ::std::fmt::Display for GetBatchGetSourcesItems {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                    f.write_str(self.as_str())
+                }
+            }
+            impl ::serde::Serialize for GetBatchGetSourcesItems {
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+                where
+                    S: ::serde::ser::Serializer,
+                {
+                    serializer.serialize_str(self.as_str())
+                }
+            }
+            impl<'de> ::serde::Deserialize<'de> for GetBatchGetSourcesItems {
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+                where
+                    D: ::serde::de::Deserializer<'de>,
+                {
+                    let value: &'de str = <&str>::deserialize(deserializer)?;
+                    Ok(match value {
+                        "READ_SOURCE_TYPE_CONTACT" => {
+                            GetBatchGetSourcesItems::ReadSourceTypeContact
+                        }
+                        "READ_SOURCE_TYPE_DOMAIN_CONTACT" => {
+                            GetBatchGetSourcesItems::ReadSourceTypeDomainContact
+                        }
+                        "READ_SOURCE_TYPE_PROFILE" => {
+                            GetBatchGetSourcesItems::ReadSourceTypeProfile
+                        }
+                        "READ_SOURCE_TYPE_UNSPECIFIED" => {
+                            GetBatchGetSourcesItems::ReadSourceTypeUnspecified
+                        }
+                        _ => {
+                            return Err(::serde::de::Error::custom(format!(
+                                "invalid enum for #name: {}",
+                                value
+                            )))
+                        }
+                    })
+                }
+            }
+            impl ::google_field_selector::FieldSelector for GetBatchGetSourcesItems {
+                fn fields() -> Vec<::google_field_selector::Field> {
+                    Vec::new()
+                }
+            }
+            impl ::google_field_selector::ToFieldType for GetBatchGetSourcesItems {
+                fn field_type() -> ::google_field_selector::FieldType {
+                    ::google_field_selector::FieldType::Leaf
+                }
+            }
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+            pub enum ListDirectoryPeopleMergeSourcesItems {
+                #[doc = "User owned contact."]
+                DirectoryMergeSourceTypeContact,
+                #[doc = "Unspecified."]
+                DirectoryMergeSourceTypeUnspecified,
+            }
+            impl ListDirectoryPeopleMergeSourcesItems {
+                pub fn as_str(self) -> &'static str {
+                    match self { ListDirectoryPeopleMergeSourcesItems :: DirectoryMergeSourceTypeContact => "DIRECTORY_MERGE_SOURCE_TYPE_CONTACT" , ListDirectoryPeopleMergeSourcesItems :: DirectoryMergeSourceTypeUnspecified => "DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED" , }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListDirectoryPeopleMergeSourcesItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListDirectoryPeopleMergeSourcesItems {
+                type Err = ();
+                fn from_str(
+                    s: &str,
+                ) -> ::std::result::Result<ListDirectoryPeopleMergeSourcesItems, ()>
+                {
+                    Ok (match s { "DIRECTORY_MERGE_SOURCE_TYPE_CONTACT" => ListDirectoryPeopleMergeSourcesItems :: DirectoryMergeSourceTypeContact , "DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED" => ListDirectoryPeopleMergeSourcesItems :: DirectoryMergeSourceTypeUnspecified , _ => return Err (()) , })
+                }
+            }
+            impl ::std::fmt::Display for ListDirectoryPeopleMergeSourcesItems {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                    f.write_str(self.as_str())
+                }
+            }
+            impl ::serde::Serialize for ListDirectoryPeopleMergeSourcesItems {
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+                where
+                    S: ::serde::ser::Serializer,
+                {
+                    serializer.serialize_str(self.as_str())
+                }
+            }
+            impl<'de> ::serde::Deserialize<'de> for ListDirectoryPeopleMergeSourcesItems {
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+                where
+                    D: ::serde::de::Deserializer<'de>,
+                {
+                    let value: &'de str = <&str>::deserialize(deserializer)?;
+                    Ok (match value { "DIRECTORY_MERGE_SOURCE_TYPE_CONTACT" => ListDirectoryPeopleMergeSourcesItems :: DirectoryMergeSourceTypeContact , "DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED" => ListDirectoryPeopleMergeSourcesItems :: DirectoryMergeSourceTypeUnspecified , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
+                }
+            }
+            impl ::google_field_selector::FieldSelector for ListDirectoryPeopleMergeSourcesItems {
+                fn fields() -> Vec<::google_field_selector::Field> {
+                    Vec::new()
+                }
+            }
+            impl ::google_field_selector::ToFieldType for ListDirectoryPeopleMergeSourcesItems {
+                fn field_type() -> ::google_field_selector::FieldType {
+                    ::google_field_selector::FieldType::Leaf
+                }
+            }
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+            pub enum ListDirectoryPeopleSourcesItems {
+                #[doc = "G Suite domain shared contact."]
+                DirectorySourceTypeDomainContact,
+                #[doc = "G Suite domain profile."]
+                DirectorySourceTypeDomainProfile,
+                #[doc = "Unspecified."]
+                DirectorySourceTypeUnspecified,
+            }
+            impl ListDirectoryPeopleSourcesItems {
+                pub fn as_str(self) -> &'static str {
+                    match self {
+                        ListDirectoryPeopleSourcesItems::DirectorySourceTypeDomainContact => {
+                            "DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT"
+                        }
+                        ListDirectoryPeopleSourcesItems::DirectorySourceTypeDomainProfile => {
+                            "DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE"
+                        }
+                        ListDirectoryPeopleSourcesItems::DirectorySourceTypeUnspecified => {
+                            "DIRECTORY_SOURCE_TYPE_UNSPECIFIED"
+                        }
+                    }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListDirectoryPeopleSourcesItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListDirectoryPeopleSourcesItems {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListDirectoryPeopleSourcesItems, ()> {
+                    Ok(match s {
+                        "DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT" => {
+                            ListDirectoryPeopleSourcesItems::DirectorySourceTypeDomainContact
+                        }
+                        "DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE" => {
+                            ListDirectoryPeopleSourcesItems::DirectorySourceTypeDomainProfile
+                        }
+                        "DIRECTORY_SOURCE_TYPE_UNSPECIFIED" => {
+                            ListDirectoryPeopleSourcesItems::DirectorySourceTypeUnspecified
+                        }
+                        _ => return Err(()),
+                    })
+                }
+            }
+            impl ::std::fmt::Display for ListDirectoryPeopleSourcesItems {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                    f.write_str(self.as_str())
+                }
+            }
+            impl ::serde::Serialize for ListDirectoryPeopleSourcesItems {
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+                where
+                    S: ::serde::ser::Serializer,
+                {
+                    serializer.serialize_str(self.as_str())
+                }
+            }
+            impl<'de> ::serde::Deserialize<'de> for ListDirectoryPeopleSourcesItems {
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+                where
+                    D: ::serde::de::Deserializer<'de>,
+                {
+                    let value: &'de str = <&str>::deserialize(deserializer)?;
+                    Ok(match value {
+                        "DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT" => {
+                            ListDirectoryPeopleSourcesItems::DirectorySourceTypeDomainContact
+                        }
+                        "DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE" => {
+                            ListDirectoryPeopleSourcesItems::DirectorySourceTypeDomainProfile
+                        }
+                        "DIRECTORY_SOURCE_TYPE_UNSPECIFIED" => {
+                            ListDirectoryPeopleSourcesItems::DirectorySourceTypeUnspecified
+                        }
+                        _ => {
+                            return Err(::serde::de::Error::custom(format!(
+                                "invalid enum for #name: {}",
+                                value
+                            )))
+                        }
+                    })
+                }
+            }
+            impl ::google_field_selector::FieldSelector for ListDirectoryPeopleSourcesItems {
+                fn fields() -> Vec<::google_field_selector::Field> {
+                    Vec::new()
+                }
+            }
+            impl ::google_field_selector::ToFieldType for ListDirectoryPeopleSourcesItems {
+                fn field_type() -> ::google_field_selector::FieldType {
+                    ::google_field_selector::FieldType::Leaf
+                }
+            }
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+            pub enum SearchDirectoryPeopleMergeSourcesItems {
+                #[doc = "User owned contact."]
+                DirectoryMergeSourceTypeContact,
+                #[doc = "Unspecified."]
+                DirectoryMergeSourceTypeUnspecified,
+            }
+            impl SearchDirectoryPeopleMergeSourcesItems {
+                pub fn as_str(self) -> &'static str {
+                    match self { SearchDirectoryPeopleMergeSourcesItems :: DirectoryMergeSourceTypeContact => "DIRECTORY_MERGE_SOURCE_TYPE_CONTACT" , SearchDirectoryPeopleMergeSourcesItems :: DirectoryMergeSourceTypeUnspecified => "DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED" , }
+                }
+            }
+            impl ::std::convert::AsRef<str> for SearchDirectoryPeopleMergeSourcesItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for SearchDirectoryPeopleMergeSourcesItems {
+                type Err = ();
+                fn from_str(
+                    s: &str,
+                ) -> ::std::result::Result<SearchDirectoryPeopleMergeSourcesItems, ()>
+                {
+                    Ok (match s { "DIRECTORY_MERGE_SOURCE_TYPE_CONTACT" => SearchDirectoryPeopleMergeSourcesItems :: DirectoryMergeSourceTypeContact , "DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED" => SearchDirectoryPeopleMergeSourcesItems :: DirectoryMergeSourceTypeUnspecified , _ => return Err (()) , })
+                }
+            }
+            impl ::std::fmt::Display for SearchDirectoryPeopleMergeSourcesItems {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                    f.write_str(self.as_str())
+                }
+            }
+            impl ::serde::Serialize for SearchDirectoryPeopleMergeSourcesItems {
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+                where
+                    S: ::serde::ser::Serializer,
+                {
+                    serializer.serialize_str(self.as_str())
+                }
+            }
+            impl<'de> ::serde::Deserialize<'de> for SearchDirectoryPeopleMergeSourcesItems {
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+                where
+                    D: ::serde::de::Deserializer<'de>,
+                {
+                    let value: &'de str = <&str>::deserialize(deserializer)?;
+                    Ok (match value { "DIRECTORY_MERGE_SOURCE_TYPE_CONTACT" => SearchDirectoryPeopleMergeSourcesItems :: DirectoryMergeSourceTypeContact , "DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED" => SearchDirectoryPeopleMergeSourcesItems :: DirectoryMergeSourceTypeUnspecified , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
+                }
+            }
+            impl ::google_field_selector::FieldSelector for SearchDirectoryPeopleMergeSourcesItems {
+                fn fields() -> Vec<::google_field_selector::Field> {
+                    Vec::new()
+                }
+            }
+            impl ::google_field_selector::ToFieldType for SearchDirectoryPeopleMergeSourcesItems {
+                fn field_type() -> ::google_field_selector::FieldType {
+                    ::google_field_selector::FieldType::Leaf
+                }
+            }
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+            pub enum SearchDirectoryPeopleSourcesItems {
+                #[doc = "G Suite domain shared contact."]
+                DirectorySourceTypeDomainContact,
+                #[doc = "G Suite domain profile."]
+                DirectorySourceTypeDomainProfile,
+                #[doc = "Unspecified."]
+                DirectorySourceTypeUnspecified,
+            }
+            impl SearchDirectoryPeopleSourcesItems {
+                pub fn as_str(self) -> &'static str {
+                    match self {
+                        SearchDirectoryPeopleSourcesItems::DirectorySourceTypeDomainContact => {
+                            "DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT"
+                        }
+                        SearchDirectoryPeopleSourcesItems::DirectorySourceTypeDomainProfile => {
+                            "DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE"
+                        }
+                        SearchDirectoryPeopleSourcesItems::DirectorySourceTypeUnspecified => {
+                            "DIRECTORY_SOURCE_TYPE_UNSPECIFIED"
+                        }
+                    }
+                }
+            }
+            impl ::std::convert::AsRef<str> for SearchDirectoryPeopleSourcesItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for SearchDirectoryPeopleSourcesItems {
+                type Err = ();
+                fn from_str(
+                    s: &str,
+                ) -> ::std::result::Result<SearchDirectoryPeopleSourcesItems, ()> {
+                    Ok(match s {
+                        "DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT" => {
+                            SearchDirectoryPeopleSourcesItems::DirectorySourceTypeDomainContact
+                        }
+                        "DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE" => {
+                            SearchDirectoryPeopleSourcesItems::DirectorySourceTypeDomainProfile
+                        }
+                        "DIRECTORY_SOURCE_TYPE_UNSPECIFIED" => {
+                            SearchDirectoryPeopleSourcesItems::DirectorySourceTypeUnspecified
+                        }
+                        _ => return Err(()),
+                    })
+                }
+            }
+            impl ::std::fmt::Display for SearchDirectoryPeopleSourcesItems {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                    f.write_str(self.as_str())
+                }
+            }
+            impl ::serde::Serialize for SearchDirectoryPeopleSourcesItems {
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+                where
+                    S: ::serde::ser::Serializer,
+                {
+                    serializer.serialize_str(self.as_str())
+                }
+            }
+            impl<'de> ::serde::Deserialize<'de> for SearchDirectoryPeopleSourcesItems {
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+                where
+                    D: ::serde::de::Deserializer<'de>,
+                {
+                    let value: &'de str = <&str>::deserialize(deserializer)?;
+                    Ok(match value {
+                        "DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT" => {
+                            SearchDirectoryPeopleSourcesItems::DirectorySourceTypeDomainContact
+                        }
+                        "DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE" => {
+                            SearchDirectoryPeopleSourcesItems::DirectorySourceTypeDomainProfile
+                        }
+                        "DIRECTORY_SOURCE_TYPE_UNSPECIFIED" => {
+                            SearchDirectoryPeopleSourcesItems::DirectorySourceTypeUnspecified
+                        }
+                        _ => {
+                            return Err(::serde::de::Error::custom(format!(
+                                "invalid enum for #name: {}",
+                                value
+                            )))
+                        }
+                    })
+                }
+            }
+            impl ::google_field_selector::FieldSelector for SearchDirectoryPeopleSourcesItems {
+                fn fields() -> Vec<::google_field_selector::Field> {
+                    Vec::new()
+                }
+            }
+            impl ::google_field_selector::ToFieldType for SearchDirectoryPeopleSourcesItems {
+                fn field_type() -> ::google_field_selector::FieldType {
+                    ::google_field_selector::FieldType::Leaf
+                }
+            }
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+            pub enum UpdateContactSourcesItems {
+                #[doc = "Returns SourceType.CONTACT."]
+                ReadSourceTypeContact,
+                #[doc = "Returns SourceType.DOMAIN_CONTACT."]
+                ReadSourceTypeDomainContact,
+                #[doc = "Returns SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, and SourceType.PROFILE."]
+                ReadSourceTypeProfile,
+                #[doc = "Unspecified."]
+                ReadSourceTypeUnspecified,
+            }
+            impl UpdateContactSourcesItems {
+                pub fn as_str(self) -> &'static str {
+                    match self {
+                        UpdateContactSourcesItems::ReadSourceTypeContact => {
+                            "READ_SOURCE_TYPE_CONTACT"
+                        }
+                        UpdateContactSourcesItems::ReadSourceTypeDomainContact => {
+                            "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+                        }
+                        UpdateContactSourcesItems::ReadSourceTypeProfile => {
+                            "READ_SOURCE_TYPE_PROFILE"
+                        }
+                        UpdateContactSourcesItems::ReadSourceTypeUnspecified => {
+                            "READ_SOURCE_TYPE_UNSPECIFIED"
+                        }
+                    }
+                }
+            }
+            impl ::std::convert::AsRef<str> for UpdateContactSourcesItems {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for UpdateContactSourcesItems {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<UpdateContactSourcesItems, ()> {
+                    Ok(match s {
+                        "READ_SOURCE_TYPE_CONTACT" => {
+                            UpdateContactSourcesItems::ReadSourceTypeContact
+                        }
+                        "READ_SOURCE_TYPE_DOMAIN_CONTACT" => {
+                            UpdateContactSourcesItems::ReadSourceTypeDomainContact
+                        }
+                        "READ_SOURCE_TYPE_PROFILE" => {
+                            UpdateContactSourcesItems::ReadSourceTypeProfile
+                        }
+                        "READ_SOURCE_TYPE_UNSPECIFIED" => {
+                            UpdateContactSourcesItems::ReadSourceTypeUnspecified
+                        }
+                        _ => return Err(()),
+                    })
+                }
+            }
+            impl ::std::fmt::Display for UpdateContactSourcesItems {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                    f.write_str(self.as_str())
+                }
+            }
+            impl ::serde::Serialize for UpdateContactSourcesItems {
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+                where
+                    S: ::serde::ser::Serializer,
+                {
+                    serializer.serialize_str(self.as_str())
+                }
+            }
+            impl<'de> ::serde::Deserialize<'de> for UpdateContactSourcesItems {
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+                where
+                    D: ::serde::de::Deserializer<'de>,
+                {
+                    let value: &'de str = <&str>::deserialize(deserializer)?;
+                    Ok(match value {
+                        "READ_SOURCE_TYPE_CONTACT" => {
+                            UpdateContactSourcesItems::ReadSourceTypeContact
+                        }
+                        "READ_SOURCE_TYPE_DOMAIN_CONTACT" => {
+                            UpdateContactSourcesItems::ReadSourceTypeDomainContact
+                        }
+                        "READ_SOURCE_TYPE_PROFILE" => {
+                            UpdateContactSourcesItems::ReadSourceTypeProfile
+                        }
+                        "READ_SOURCE_TYPE_UNSPECIFIED" => {
+                            UpdateContactSourcesItems::ReadSourceTypeUnspecified
+                        }
+                        _ => {
+                            return Err(::serde::de::Error::custom(format!(
+                                "invalid enum for #name: {}",
+                                value
+                            )))
+                        }
+                    })
+                }
+            }
+            impl ::google_field_selector::FieldSelector for UpdateContactSourcesItems {
+                fn fields() -> Vec<::google_field_selector::Field> {
+                    Vec::new()
+                }
+            }
+            impl ::google_field_selector::ToFieldType for UpdateContactSourcesItems {
+                fn field_type() -> ::google_field_selector::FieldType {
+                    ::google_field_selector::FieldType::Leaf
+                }
+            }
+        }
+        pub struct PeopleActions<'a> {
+            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+        }
+        impl<'a> PeopleActions<'a> {
+            fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                self.auth
+            }
+            #[doc = "Create a new contact and return the person resource for that contact. The request returns a 400 error if more than one field is specified on a field that is a singleton for contact sources: * biographies * birthdays * genders * names"]
+            pub fn create_contact(
+                &self,
+                request: crate::schemas::Person,
+            ) -> CreateContactRequestBuilder {
+                CreateContactRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    request,
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    person_fields: None,
+                    sources: None,
+                }
+            }
+            #[doc = "Delete a contact person. Any non-contact data will not be deleted."]
+            pub fn delete_contact(
+                &self,
+                resource_name: impl Into<String>,
+            ) -> DeleteContactRequestBuilder {
+                DeleteContactRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    resource_name: resource_name.into(),
+                }
+            }
+            #[doc = "Delete a contact's photo."]
+            pub fn delete_contact_photo(
+                &self,
+                resource_name: impl Into<String>,
+            ) -> DeleteContactPhotoRequestBuilder {
+                DeleteContactPhotoRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    resource_name: resource_name.into(),
+                    person_fields: None,
+                    sources: None,
+                }
+            }
+            #[doc = "Provides information about a person by specifying a resource name. Use `people/me` to indicate the authenticated user. The request returns a 400 error if 'personFields' is not specified."]
+            pub fn get(&self, resource_name: impl Into<String>) -> GetRequestBuilder {
+                GetRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    resource_name: resource_name.into(),
+                    person_fields: None,
+                    request_mask_include_field: None,
+                    sources: None,
+                }
+            }
+            #[doc = "Provides information about a list of specific people by specifying a list of requested resource names. Use `people/me` to indicate the authenticated user. The request returns a 400 error if 'personFields' is not specified."]
+            pub fn get_batch_get(&self) -> GetBatchGetRequestBuilder {
+                GetBatchGetRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    person_fields: None,
+                    request_mask_include_field: None,
+                    resource_names: None,
+                    sources: None,
+                }
+            }
+            #[doc = "Provides a list of domain profiles and domain contacts in the authenticated user's domain directory."]
+            pub fn list_directory_people(&self) -> ListDirectoryPeopleRequestBuilder {
+                ListDirectoryPeopleRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    merge_sources: None,
+                    page_size: None,
+                    page_token: None,
+                    read_mask: None,
+                    request_sync_token: None,
+                    sources: None,
+                    sync_token: None,
+                }
+            }
+            #[doc = "Provides a list of contacts in the authenticated user's grouped contacts that matches the search query."]
+            pub fn search_contacts(&self) -> SearchContactsRequestBuilder {
+                SearchContactsRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    page_size: None,
+                    query: None,
+                    read_mask: None,
+                }
+            }
+            #[doc = "Provides a list of domain profiles and domain contacts in the authenticated user's domain directory that match the search query."]
+            pub fn search_directory_people(&self) -> SearchDirectoryPeopleRequestBuilder {
+                SearchDirectoryPeopleRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    merge_sources: None,
+                    page_size: None,
+                    page_token: None,
+                    query: None,
+                    read_mask: None,
+                    sources: None,
+                }
+            }
+            #[doc = "Update contact data for an existing contact person. Any non-contact data will not be modified. Any non-contact data in the person to update will be ignored. All fields specified in the `update_mask` will be replaced. The server returns a 400 error if `person.metadata.sources` is not specified for the contact to be updated or if there is no contact source. The server returns a 400 error with reason `\"failedPrecondition\"` if `person.metadata.sources.etag` is different than the contact's etag, which indicates the contact has changed since its data was read. Clients should get the latest person and merge their updates into the latest person. The server returns a 400 error if `memberships` are being updated and there are no contact group memberships specified on the person. The server returns a 400 error if more than one field is specified on a field that is a singleton for contact sources: * biographies * birthdays * genders * names"]
+            pub fn update_contact(
+                &self,
+                request: crate::schemas::Person,
+                resource_name: impl Into<String>,
+            ) -> UpdateContactRequestBuilder {
+                UpdateContactRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    request,
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    resource_name: resource_name.into(),
+                    person_fields: None,
+                    sources: None,
+                    update_person_fields: None,
+                }
+            }
+            #[doc = "Update a contact's photo."]
+            pub fn update_contact_photo(
+                &self,
+                request: crate::schemas::UpdateContactPhotoRequest,
+                resource_name: impl Into<String>,
+            ) -> UpdateContactPhotoRequestBuilder {
+                UpdateContactPhotoRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    request,
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    resource_name: resource_name.into(),
+                }
+            }
+            #[doc = "Actions that can be performed on the connections resource"]
+            pub fn connections(&self) -> crate::resources::people::connections::ConnectionsActions {
+                crate::resources::people::connections::ConnectionsActions {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                }
+            }
+        }
+        #[doc = "Created via [PeopleActions::create_contact()](struct.PeopleActions.html#method.create_contact)"]
+        #[derive(Debug, Clone)]
+        pub struct CreateContactRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            request: crate::schemas::Person,
+            person_fields: Option<String>,
+            sources: Option<Vec<crate::resources::people::params::CreateContactSourcesItems>>,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a> CreateContactRequestBuilder<'a> {
+            #[doc = "Required. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Defaults to all fields if not set. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined"]
+            pub fn person_fields(mut self, value: impl Into<String>) -> Self {
+                self.person_fields = Some(value.into());
+                self
+            }
+            #[doc = "Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set."]
+            pub fn sources(
+                mut self,
+                value: impl Into<Vec<crate::resources::people::params::CreateContactSourcesItems>>,
+            ) -> Self {
+                self.sources = Some(value.into());
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub async fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields).await
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub async fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::Person, crate::Error> {
+                self.execute_with_fields(None::<&str>).await
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub async fn execute_with_all_fields(
+                self,
+            ) -> Result<crate::schemas::Person, crate::Error> {
+                self.execute_with_fields(Some("*")).await
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub async fn execute_with_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute().await
+            }
+            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -5381,24 +7839,32 @@ pub mod resources {
                 output.push_str("v1/people:createContact");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("personFields", &self.person_fields)]);
+                for value in self.sources.iter().flatten() {
+                    req = req.query(&[("sources", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -5522,7 +7988,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -5538,24 +8004,28 @@ pub mod resources {
                 output.push_str(":deleteContact");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -5566,6 +8036,7 @@ pub mod resources {
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             resource_name: String,
             person_fields: Option<String>,
+            sources: Option<Vec<crate::resources::people::params::DeleteContactPhotoSourcesItems>>,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
@@ -5579,9 +8050,17 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> DeleteContactPhotoRequestBuilder<'a> {
-            #[doc = "Optional. A field mask to restrict which fields on the person are returned. Multiple\nfields can be specified by separating them with commas. Defaults to empty\nif not set, which will skip the post mutate get. Valid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* residences\n* sipAddresses\n* skills\n* urls\n* userDefined"]
+            #[doc = "Optional. A field mask to restrict which fields on the person are returned. Multiple fields can be specified by separating them with commas. Defaults to empty if not set, which will skip the post mutate get. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined"]
             pub fn person_fields(mut self, value: impl Into<String>) -> Self {
                 self.person_fields = Some(value.into());
+                self
+            }
+            #[doc = "Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set."]
+            pub fn sources(
+                mut self,
+                value: impl Into<Vec<crate::resources::people::params::DeleteContactPhotoSourcesItems>>,
+            ) -> Self {
+                self.sources = Some(value.into());
                 self
             }
             #[doc = "OAuth access token."]
@@ -5685,7 +8164,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -5701,25 +8180,32 @@ pub mod resources {
                 output.push_str(":deleteContactPhoto");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("personFields", &self.person_fields)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("personFields", &self.person_fields)]);
+                for value in self.sources.iter().flatten() {
+                    req = req.query(&[("sources", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -5731,6 +8217,7 @@ pub mod resources {
             resource_name: String,
             person_fields: Option<String>,
             request_mask_include_field: Option<String>,
+            sources: Option<Vec<crate::resources::people::params::GetSourcesItems>>,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
@@ -5744,14 +8231,22 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetRequestBuilder<'a> {
-            #[doc = "Required. A field mask to restrict which fields on the person are returned. Multiple\nfields can be specified by separating them with commas. Valid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* residences\n* sipAddresses\n* skills\n* urls\n* userDefined"]
+            #[doc = "Required. A field mask to restrict which fields on the person are returned. Multiple fields can be specified by separating them with commas. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined"]
             pub fn person_fields(mut self, value: impl Into<String>) -> Self {
                 self.person_fields = Some(value.into());
                 self
             }
-            #[doc = "Required. Comma-separated list of person fields to be included in the response. Each\npath should start with `person.`: for example, `person.names` or\n`person.photos`."]
+            #[doc = "Required. Comma-separated list of person fields to be included in the response. Each path should start with `person.`: for example, `person.names` or `person.photos`."]
             pub fn request_mask_include_field(mut self, value: impl Into<String>) -> Self {
                 self.request_mask_include_field = Some(value.into());
+                self
+            }
+            #[doc = "Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_PROFILE and READ_SOURCE_TYPE_CONTACT if not set."]
+            pub fn sources(
+                mut self,
+                value: impl Into<Vec<crate::resources::people::params::GetSourcesItems>>,
+            ) -> Self {
+                self.sources = Some(value.into());
                 self
             }
             #[doc = "OAuth access token."]
@@ -5855,7 +8350,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -5870,27 +8365,33 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("personFields", &self.person_fields)]);
-                let req =
-                    req.query(&[("requestMask.includeField", &self.request_mask_include_field)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("personFields", &self.person_fields)]);
+                req = req.query(&[("requestMask.includeField", &self.request_mask_include_field)]);
+                for value in self.sources.iter().flatten() {
+                    req = req.query(&[("sources", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -5902,6 +8403,7 @@ pub mod resources {
             person_fields: Option<String>,
             request_mask_include_field: Option<String>,
             resource_names: Option<Vec<String>>,
+            sources: Option<Vec<crate::resources::people::params::GetBatchGetSourcesItems>>,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
@@ -5915,19 +8417,27 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetBatchGetRequestBuilder<'a> {
-            #[doc = "Required. A field mask to restrict which fields on each person are returned. Multiple\nfields can be specified by separating them with commas. Valid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* residences\n* sipAddresses\n* skills\n* urls\n* userDefined"]
+            #[doc = "Required. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined"]
             pub fn person_fields(mut self, value: impl Into<String>) -> Self {
                 self.person_fields = Some(value.into());
                 self
             }
-            #[doc = "Required. Comma-separated list of person fields to be included in the response. Each\npath should start with `person.`: for example, `person.names` or\n`person.photos`."]
+            #[doc = "Required. Comma-separated list of person fields to be included in the response. Each path should start with `person.`: for example, `person.names` or `person.photos`."]
             pub fn request_mask_include_field(mut self, value: impl Into<String>) -> Self {
                 self.request_mask_include_field = Some(value.into());
                 self
             }
-            #[doc = "Required. The resource names of the people to provide information about.\n\n* To get information about the authenticated user, specify `people/me`.\n* To get information about a google account, specify\n  `people/{account_id}`.\n* To get information about a contact, specify the resource name that\n  identifies the contact as returned by\n  [`people.connections.list`](/people/api/rest/v1/people.connections/list).\n\nYou can include up to 50 resource names in one request."]
+            #[doc = "Required. The resource names of the people to provide information about. It's repeatable. The URL query parameter should be resourceNames=<name1>&resourceNames=<name2>&... - To get information about the authenticated user, specify `people/me`. - To get information about a google account, specify `people/{account_id}`. - To get information about a contact, specify the resource name that identifies the contact as returned by [`people.connections.list`](/people/api/rest/v1/people.connections/list). You can include up to 50 resource names in one request."]
             pub fn resource_names(mut self, value: impl Into<Vec<String>>) -> Self {
                 self.resource_names = Some(value.into());
+                self
+            }
+            #[doc = "Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set."]
+            pub fn sources(
+                mut self,
+                value: impl Into<Vec<crate::resources::people::params::GetBatchGetSourcesItems>>,
+            ) -> Self {
+                self.sources = Some(value.into());
                 self
             }
             #[doc = "OAuth access token."]
@@ -6031,7 +8541,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -6039,28 +8549,634 @@ pub mod resources {
                 output.push_str("v1/people:batchGet");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("personFields", &self.person_fields)]);
-                let req =
-                    req.query(&[("requestMask.includeField", &self.request_mask_include_field)]);
-                let req = req.query(&[("resourceNames", &self.resource_names)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("personFields", &self.person_fields)]);
+                req = req.query(&[("requestMask.includeField", &self.request_mask_include_field)]);
+                for value in self.resource_names.iter().flatten() {
+                    req = req.query(&[("resourceNames", value)]);
+                }
+                for value in self.sources.iter().flatten() {
+                    req = req.query(&[("sources", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
+                Ok(req)
+            }
+        }
+        #[doc = "Created via [PeopleActions::list_directory_people()](struct.PeopleActions.html#method.list_directory_people)"]
+        #[derive(Debug, Clone)]
+        pub struct ListDirectoryPeopleRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            merge_sources:
+                Option<Vec<crate::resources::people::params::ListDirectoryPeopleMergeSourcesItems>>,
+            page_size: Option<i32>,
+            page_token: Option<String>,
+            read_mask: Option<String>,
+            request_sync_token: Option<bool>,
+            sources: Option<Vec<crate::resources::people::params::ListDirectoryPeopleSourcesItems>>,
+            sync_token: Option<String>,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a> ListDirectoryPeopleRequestBuilder<'a> {
+            #[doc = "Optional. Additional data to merge into the directory sources if they are connected through verified join keys such as email addresses or phone numbers."]
+            pub fn merge_sources(
+                mut self,
+                value: impl Into<
+                    Vec<crate::resources::people::params::ListDirectoryPeopleMergeSourcesItems>,
+                >,
+            ) -> Self {
+                self.merge_sources = Some(value.into());
+                self
+            }
+            #[doc = "Optional. The number of people to include in the response. Valid values are between 1 and 1000, inclusive. Defaults to 100 if not set or set to 0."]
+            pub fn page_size(mut self, value: i32) -> Self {
+                self.page_size = Some(value);
+                self
+            }
+            #[doc = "Optional. A page token, received from a previous `ListDirectoryPeople` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDirectoryPeople` must match the call that provided the page token."]
+            pub fn page_token(mut self, value: impl Into<String>) -> Self {
+                self.page_token = Some(value.into());
+                self
+            }
+            #[doc = "Required. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined"]
+            pub fn read_mask(mut self, value: impl Into<String>) -> Self {
+                self.read_mask = Some(value.into());
+                self
+            }
+            #[doc = "Optional. Whether the response should include `next_sync_token`, which can be used to get all changes since the last request. For subsequent sync requests use the `sync_token` param instead."]
+            pub fn request_sync_token(mut self, value: bool) -> Self {
+                self.request_sync_token = Some(value);
+                self
+            }
+            #[doc = "Required. Directory sources to return."]
+            pub fn sources(
+                mut self,
+                value: impl Into<Vec<crate::resources::people::params::ListDirectoryPeopleSourcesItems>>,
+            ) -> Self {
+                self.sources = Some(value.into());
+                self
+            }
+            #[doc = "Optional. A sync token, received from a previous `ListDirectoryPeople` call. Provide this to retrieve only the resources changed since the last request. When syncing, all other parameters provided to `ListDirectoryPeople` must match the call that provided the sync token."]
+            pub fn sync_token(mut self, value: impl Into<String>) -> Self {
+                self.sync_token = Some(value.into());
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub async fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields).await
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub async fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::ListDirectoryPeopleResponse, crate::Error> {
+                self.execute_with_fields(None::<&str>).await
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub async fn execute_with_all_fields(
+                self,
+            ) -> Result<crate::schemas::ListDirectoryPeopleResponse, crate::Error> {
+                self.execute_with_fields(Some("*")).await
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub async fn execute_with_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute().await
+            }
+            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path()).await?;
+                Ok(req.send().await?.error_for_status()?.json().await?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://people.googleapis.com/".to_owned();
+                output.push_str("v1/people:listDirectoryPeople");
+                output
+            }
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in self.merge_sources.iter().flatten() {
+                    req = req.query(&[("mergeSources", value)]);
+                }
+                req = req.query(&[("pageSize", &self.page_size)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("readMask", &self.read_mask)]);
+                req = req.query(&[("requestSyncToken", &self.request_sync_token)]);
+                for value in self.sources.iter().flatten() {
+                    req = req.query(&[("sources", value)]);
+                }
+                req = req.query(&[("syncToken", &self.sync_token)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
+                Ok(req)
+            }
+        }
+        #[doc = "Created via [PeopleActions::search_contacts()](struct.PeopleActions.html#method.search_contacts)"]
+        #[derive(Debug, Clone)]
+        pub struct SearchContactsRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            page_size: Option<i32>,
+            query: Option<String>,
+            read_mask: Option<String>,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a> SearchContactsRequestBuilder<'a> {
+            #[doc = "Optional. The number of results to return."]
+            pub fn page_size(mut self, value: i32) -> Self {
+                self.page_size = Some(value);
+                self
+            }
+            #[doc = "Required. The plain-text query for the request. The query is used to match prefix phrases of the fields on a person. For example, a person with name \"foo name\" matches queries such as \"f\", \"fo\", \"foo\", \"foo n\", \"nam\", etc., but not \"oo n\"."]
+            pub fn query(mut self, value: impl Into<String>) -> Self {
+                self.query = Some(value.into());
+                self
+            }
+            #[doc = "Required. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined"]
+            pub fn read_mask(mut self, value: impl Into<String>) -> Self {
+                self.read_mask = Some(value.into());
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub async fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields).await
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub async fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::SearchResponse, crate::Error> {
+                self.execute_with_fields(None::<&str>).await
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub async fn execute_with_all_fields(
+                self,
+            ) -> Result<crate::schemas::SearchResponse, crate::Error> {
+                self.execute_with_fields(Some("*")).await
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub async fn execute_with_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute().await
+            }
+            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path()).await?;
+                Ok(req.send().await?.error_for_status()?.json().await?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://people.googleapis.com/".to_owned();
+                output.push_str("v1/people:searchContacts");
+                output
+            }
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("pageSize", &self.page_size)]);
+                req = req.query(&[("query", &self.query)]);
+                req = req.query(&[("readMask", &self.read_mask)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
+                Ok(req)
+            }
+        }
+        #[doc = "Created via [PeopleActions::search_directory_people()](struct.PeopleActions.html#method.search_directory_people)"]
+        #[derive(Debug, Clone)]
+        pub struct SearchDirectoryPeopleRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            merge_sources: Option<
+                Vec<crate::resources::people::params::SearchDirectoryPeopleMergeSourcesItems>,
+            >,
+            page_size: Option<i32>,
+            page_token: Option<String>,
+            query: Option<String>,
+            read_mask: Option<String>,
+            sources:
+                Option<Vec<crate::resources::people::params::SearchDirectoryPeopleSourcesItems>>,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a> SearchDirectoryPeopleRequestBuilder<'a> {
+            #[doc = "Optional. Additional data to merge into the directory sources if they are connected through verified join keys such as email addresses or phone numbers."]
+            pub fn merge_sources(
+                mut self,
+                value: impl Into<
+                    Vec<crate::resources::people::params::SearchDirectoryPeopleMergeSourcesItems>,
+                >,
+            ) -> Self {
+                self.merge_sources = Some(value.into());
+                self
+            }
+            #[doc = "Optional. The number of people to include in the response. Valid values are between 1 and 500, inclusive. Defaults to 100 if not set or set to 0."]
+            pub fn page_size(mut self, value: i32) -> Self {
+                self.page_size = Some(value);
+                self
+            }
+            #[doc = "Optional. A page token, received from a previous `SearchDirectoryPeople` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `SearchDirectoryPeople` must match the call that provided the page token."]
+            pub fn page_token(mut self, value: impl Into<String>) -> Self {
+                self.page_token = Some(value.into());
+                self
+            }
+            #[doc = "Required. Prefix query that matches fields in the person. Does NOT use the read_mask for determining what fields to match."]
+            pub fn query(mut self, value: impl Into<String>) -> Self {
+                self.query = Some(value.into());
+                self
+            }
+            #[doc = "Required. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined"]
+            pub fn read_mask(mut self, value: impl Into<String>) -> Self {
+                self.read_mask = Some(value.into());
+                self
+            }
+            #[doc = "Required. Directory sources to return."]
+            pub fn sources(
+                mut self,
+                value: impl Into<
+                    Vec<crate::resources::people::params::SearchDirectoryPeopleSourcesItems>,
+                >,
+            ) -> Self {
+                self.sources = Some(value.into());
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub async fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields).await
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub async fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::SearchDirectoryPeopleResponse, crate::Error> {
+                self.execute_with_fields(None::<&str>).await
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub async fn execute_with_all_fields(
+                self,
+            ) -> Result<crate::schemas::SearchDirectoryPeopleResponse, crate::Error> {
+                self.execute_with_fields(Some("*")).await
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub async fn execute_with_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute().await
+            }
+            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path()).await?;
+                Ok(req.send().await?.error_for_status()?.json().await?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://people.googleapis.com/".to_owned();
+                output.push_str("v1/people:searchDirectoryPeople");
+                output
+            }
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in self.merge_sources.iter().flatten() {
+                    req = req.query(&[("mergeSources", value)]);
+                }
+                req = req.query(&[("pageSize", &self.page_size)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("query", &self.query)]);
+                req = req.query(&[("readMask", &self.read_mask)]);
+                for value in self.sources.iter().flatten() {
+                    req = req.query(&[("sources", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -6071,6 +9187,8 @@ pub mod resources {
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Person,
             resource_name: String,
+            person_fields: Option<String>,
+            sources: Option<Vec<crate::resources::people::params::UpdateContactSourcesItems>>,
             update_person_fields: Option<String>,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
@@ -6085,7 +9203,20 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> UpdateContactRequestBuilder<'a> {
-            #[doc = "Required. A field mask to restrict which fields on the person are updated. Multiple\nfields can be specified by separating them with commas.\nAll updated fields will be replaced. Valid values are:\n\n* addresses\n* biographies\n* birthdays\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* relations\n* residences\n* sipAddresses\n* urls\n* userDefined"]
+            #[doc = "Optional. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Defaults to all fields if not set. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined"]
+            pub fn person_fields(mut self, value: impl Into<String>) -> Self {
+                self.person_fields = Some(value.into());
+                self
+            }
+            #[doc = "Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set."]
+            pub fn sources(
+                mut self,
+                value: impl Into<Vec<crate::resources::people::params::UpdateContactSourcesItems>>,
+            ) -> Self {
+                self.sources = Some(value.into());
+                self
+            }
+            #[doc = "Required. A field mask to restrict which fields on the person are updated. Multiple fields can be specified by separating them with commas. All updated fields will be replaced. Valid values are: * addresses * biographies * birthdays * calendarUrls * clientData * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * relations * sipAddresses * urls * userDefined"]
             pub fn update_person_fields(mut self, value: impl Into<String>) -> Self {
                 self.update_person_fields = Some(value.into());
                 self
@@ -6191,7 +9322,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -6208,25 +9339,33 @@ pub mod resources {
                 output.push_str(":updateContact");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                let req = req.query(&[("updatePersonFields", &self.update_person_fields)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                req = req.query(&[("personFields", &self.person_fields)]);
+                for value in self.sources.iter().flatten() {
+                    req = req.query(&[("sources", value)]);
+                }
+                req = req.query(&[("updatePersonFields", &self.update_person_fields)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -6351,7 +9490,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -6368,24 +9507,28 @@ pub mod resources {
                 output.push_str(":updateContactPhoto");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -6393,9 +9536,13 @@ pub mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListSortOrder {
+                    #[doc = "Sort people by first name."]
                     FirstNameAscending,
+                    #[doc = "Sort people by when they were changed; older entries first."]
                     LastModifiedAscending,
+                    #[doc = "Sort people by when they were changed; newer entries first."]
                     LastModifiedDescending,
+                    #[doc = "Sort people by last name."]
                     LastNameAscending,
                 }
                 impl ListSortOrder {
@@ -6468,6 +9615,99 @@ pub mod resources {
                         ::google_field_selector::FieldType::Leaf
                     }
                 }
+                #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+                pub enum ListSourcesItems {
+                    #[doc = "Returns SourceType.CONTACT."]
+                    ReadSourceTypeContact,
+                    #[doc = "Returns SourceType.DOMAIN_CONTACT."]
+                    ReadSourceTypeDomainContact,
+                    #[doc = "Returns SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, and SourceType.PROFILE."]
+                    ReadSourceTypeProfile,
+                    #[doc = "Unspecified."]
+                    ReadSourceTypeUnspecified,
+                }
+                impl ListSourcesItems {
+                    pub fn as_str(self) -> &'static str {
+                        match self {
+                            ListSourcesItems::ReadSourceTypeContact => "READ_SOURCE_TYPE_CONTACT",
+                            ListSourcesItems::ReadSourceTypeDomainContact => {
+                                "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+                            }
+                            ListSourcesItems::ReadSourceTypeProfile => "READ_SOURCE_TYPE_PROFILE",
+                            ListSourcesItems::ReadSourceTypeUnspecified => {
+                                "READ_SOURCE_TYPE_UNSPECIFIED"
+                            }
+                        }
+                    }
+                }
+                impl ::std::convert::AsRef<str> for ListSourcesItems {
+                    fn as_ref(&self) -> &str {
+                        self.as_str()
+                    }
+                }
+                impl ::std::str::FromStr for ListSourcesItems {
+                    type Err = ();
+                    fn from_str(s: &str) -> ::std::result::Result<ListSourcesItems, ()> {
+                        Ok(match s {
+                            "READ_SOURCE_TYPE_CONTACT" => ListSourcesItems::ReadSourceTypeContact,
+                            "READ_SOURCE_TYPE_DOMAIN_CONTACT" => {
+                                ListSourcesItems::ReadSourceTypeDomainContact
+                            }
+                            "READ_SOURCE_TYPE_PROFILE" => ListSourcesItems::ReadSourceTypeProfile,
+                            "READ_SOURCE_TYPE_UNSPECIFIED" => {
+                                ListSourcesItems::ReadSourceTypeUnspecified
+                            }
+                            _ => return Err(()),
+                        })
+                    }
+                }
+                impl ::std::fmt::Display for ListSourcesItems {
+                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                        f.write_str(self.as_str())
+                    }
+                }
+                impl ::serde::Serialize for ListSourcesItems {
+                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+                    where
+                        S: ::serde::ser::Serializer,
+                    {
+                        serializer.serialize_str(self.as_str())
+                    }
+                }
+                impl<'de> ::serde::Deserialize<'de> for ListSourcesItems {
+                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+                    where
+                        D: ::serde::de::Deserializer<'de>,
+                    {
+                        let value: &'de str = <&str>::deserialize(deserializer)?;
+                        Ok(match value {
+                            "READ_SOURCE_TYPE_CONTACT" => ListSourcesItems::ReadSourceTypeContact,
+                            "READ_SOURCE_TYPE_DOMAIN_CONTACT" => {
+                                ListSourcesItems::ReadSourceTypeDomainContact
+                            }
+                            "READ_SOURCE_TYPE_PROFILE" => ListSourcesItems::ReadSourceTypeProfile,
+                            "READ_SOURCE_TYPE_UNSPECIFIED" => {
+                                ListSourcesItems::ReadSourceTypeUnspecified
+                            }
+                            _ => {
+                                return Err(::serde::de::Error::custom(format!(
+                                    "invalid enum for #name: {}",
+                                    value
+                                )))
+                            }
+                        })
+                    }
+                }
+                impl ::google_field_selector::FieldSelector for ListSourcesItems {
+                    fn fields() -> Vec<::google_field_selector::Field> {
+                        Vec::new()
+                    }
+                }
+                impl ::google_field_selector::ToFieldType for ListSourcesItems {
+                    fn field_type() -> ::google_field_selector::FieldType {
+                        ::google_field_selector::FieldType::Leaf
+                    }
+                }
             }
             pub struct ConnectionsActions<'a> {
                 pub(crate) reqwest: &'a reqwest::Client,
@@ -6477,7 +9717,7 @@ pub mod resources {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Provides a list of the authenticated user's contacts merged with any\nconnected profiles.\n\nThe request throws a 400 error if 'personFields' is not specified."]
+                #[doc = "Provides a list of the authenticated user's contacts. The request returns a 400 error if `personFields` is not specified. The request returns a 410 error if `sync_token` is specified and is expired. Sync tokens expire after 7 days to prevent data drift between clients and the server. To handle a sync token expired error, a request should be sent without `sync_token` to get all contacts."]
                 pub fn list(&self, resource_name: impl Into<String>) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
@@ -6500,6 +9740,7 @@ pub mod resources {
                         request_mask_include_field: None,
                         request_sync_token: None,
                         sort_order: None,
+                        sources: None,
                         sync_token: None,
                     }
                 }
@@ -6516,6 +9757,8 @@ pub mod resources {
                 request_mask_include_field: Option<String>,
                 request_sync_token: Option<bool>,
                 sort_order: Option<crate::resources::people::connections::params::ListSortOrder>,
+                sources:
+                    Option<Vec<crate::resources::people::connections::params::ListSourcesItems>>,
                 sync_token: Option<String>,
                 access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
@@ -6530,32 +9773,32 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "Optional. The number of connections to include in the response. Valid values are\nbetween 1 and 2000, inclusive. Defaults to 100 if not set or set to 0."]
+                #[doc = "Optional. The number of connections to include in the response. Valid values are between 1 and 1000, inclusive. Defaults to 100 if not set or set to 0."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
                     self
                 }
-                #[doc = "Optional. A page token, received from a previous `ListConnections` call.\nProvide this to retrieve the subsequent page.\n\nWhen paginating, all other parameters provided to `ListConnections`\nmust match the call that provided the page token."]
+                #[doc = "Optional. A page token, received from a previous `ListConnections` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConnections` must match the call that provided the page token."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
                     self
                 }
-                #[doc = "Required. A field mask to restrict which fields on each person are returned. Multiple\nfields can be specified by separating them with commas. Valid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* residences\n* sipAddresses\n* skills\n* urls\n* userDefined"]
+                #[doc = "Required. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined"]
                 pub fn person_fields(mut self, value: impl Into<String>) -> Self {
                     self.person_fields = Some(value.into());
                     self
                 }
-                #[doc = "Required. Comma-separated list of person fields to be included in the response. Each\npath should start with `person.`: for example, `person.names` or\n`person.photos`."]
+                #[doc = "Required. Comma-separated list of person fields to be included in the response. Each path should start with `person.`: for example, `person.names` or `person.photos`."]
                 pub fn request_mask_include_field(mut self, value: impl Into<String>) -> Self {
                     self.request_mask_include_field = Some(value.into());
                     self
                 }
-                #[doc = "Optional. Whether the response should include `next_sync_token`, which can be used to\nget all changes since the last request. For subsequent sync requests use\nthe `sync_token` param instead. Initial sync requests that specify\n`request_sync_token` have an additional rate limit."]
+                #[doc = "Optional. Whether the response should include `next_sync_token` on the last page, which can be used to get all changes since the last request. For subsequent sync requests use the `sync_token` param instead. Initial full sync requests that specify `request_sync_token` and do not specify `sync_token` have an additional rate limit per user. Each client should generally only be doing a full sync once every few days per user and so should not hit this limit."]
                 pub fn request_sync_token(mut self, value: bool) -> Self {
                     self.request_sync_token = Some(value);
                     self
                 }
-                #[doc = "Optional. The order in which the connections should be sorted. Defaults to\n`LAST_MODIFIED_ASCENDING`."]
+                #[doc = "Optional. The order in which the connections should be sorted. Defaults to `LAST_MODIFIED_ASCENDING`."]
                 pub fn sort_order(
                     mut self,
                     value: crate::resources::people::connections::params::ListSortOrder,
@@ -6563,7 +9806,17 @@ pub mod resources {
                     self.sort_order = Some(value);
                     self
                 }
-                #[doc = "Optional. A sync token, received from a previous `ListConnections` call.\nProvide this to retrieve only the resources changed since the last request.\nSync requests that specify `sync_token` have an additional rate limit.\n\nWhen syncing, all other parameters provided to `ListConnections`\nmust match the call that provided the sync token."]
+                #[doc = "Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set."]
+                pub fn sources(
+                    mut self,
+                    value: impl Into<
+                        Vec<crate::resources::people::connections::params::ListSourcesItems>,
+                    >,
+                ) -> Self {
+                    self.sources = Some(value.into());
+                    self
+                }
+                #[doc = "Optional. A sync token, received from a previous `ListConnections` call. Provide this to retrieve only the resources changed since the last request. When syncing, all other parameters provided to `ListConnections` except `page_size` and `page_token` must match the initial call that provided the sync token. Sync tokens expire after seven days, after which a full sync request without a `sync_token` should be made."]
                 pub fn sync_token(mut self, value: impl Into<String>) -> Self {
                     self.sync_token = Some(value.into());
                     self
@@ -6612,106 +9865,6 @@ pub mod resources {
                 pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
                     self.xgafv = Some(value);
                     self
-                }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-                #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-                #[doc = r" populated fields in the yielded items will be determined by the"]
-                #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_connections<T>(self) -> crate::iter::PageItemIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                {
-                    let fields = ::google_field_selector::to_string::<T>();
-                    let fields: Option<String> = if fields.is_empty() {
-                        None
-                    } else {
-                        Some(fields)
-                    };
-                    self.iter_connections_with_fields(fields)
-                }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                #[doc = r" fields in `#items_type` will be the default fields populated by"]
-                #[doc = r" the server."]
-                pub fn iter_connections_with_default_fields(
-                    self,
-                ) -> crate::iter::PageItemIter<Self, crate::schemas::Person> {
-                    self.iter_connections_with_fields(None::<String>)
-                }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                #[doc = r" fields in `#items_type` will be all fields available. This should"]
-                #[doc = r" primarily be used during developement and debugging as fetching"]
-                #[doc = r" all fields can be expensive both in bandwidth and server"]
-                #[doc = r" resources."]
-                pub fn iter_connections_with_all_fields(
-                    self,
-                ) -> crate::iter::PageItemIter<Self, crate::schemas::Person> {
-                    self.iter_connections_with_fields(Some("*"))
-                }
-                pub fn iter_connections_with_fields<T, F>(
-                    mut self,
-                    fields: Option<F>,
-                ) -> crate::iter::PageItemIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                    F: AsRef<str>,
-                {
-                    self.fields = Some({
-                        let mut selector = concat!("nextPageToken,", "connections").to_owned();
-                        let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                        if !items_fields.is_empty() {
-                            selector.push_str("(");
-                            selector.push_str(items_fields);
-                            selector.push_str(")");
-                        }
-                        selector
-                    });
-                    crate::iter::PageItemIter::new(self, "connections")
-                }
-                pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                {
-                    let fields = ::google_field_selector::to_string::<T>();
-                    let fields: Option<String> = if fields.is_empty() {
-                        None
-                    } else {
-                        Some(fields)
-                    };
-                    self.iter_with_fields(fields)
-                }
-                pub fn iter_with_default_fields(
-                    self,
-                ) -> crate::iter::PageIter<Self, crate::schemas::ListConnectionsResponse>
-                {
-                    self.iter_with_fields(None::<&str>)
-                }
-                pub fn iter_with_all_fields(
-                    self,
-                ) -> crate::iter::PageIter<Self, crate::schemas::ListConnectionsResponse>
-                {
-                    self.iter_with_fields(Some("*"))
-                }
-                pub fn iter_with_fields<T, F>(
-                    mut self,
-                    fields: Option<F>,
-                ) -> crate::iter::PageIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                    F: AsRef<str>,
-                {
-                    let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                    if !fields.is_empty() {
-                        match fields.chars().rev().nth(0) {
-                            Some(',') | None => {}
-                            _ => fields.push_str(","),
-                        }
-                        fields.push_str("nextPageToken");
-                        self.fields = Some(fields);
-                    }
-                    crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
                 #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -6769,7 +9922,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
@@ -6785,44 +9938,40 @@ pub mod resources {
                     output.push_str("/connections");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("personFields", &self.person_fields)]);
-                    let req = req
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("personFields", &self.person_fields)]);
+                    req = req
                         .query(&[("requestMask.includeField", &self.request_mask_include_field)]);
-                    let req = req.query(&[("requestSyncToken", &self.request_sync_token)]);
-                    let req = req.query(&[("sortOrder", &self.sort_order)]);
-                    let req = req.query(&[("syncToken", &self.sync_token)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                    req = req.query(&[("requestSyncToken", &self.request_sync_token)]);
+                    req = req.query(&[("sortOrder", &self.sort_order)]);
+                    for value in self.sources.iter().flatten() {
+                        req = req.query(&[("sources", value)]);
+                    }
+                    req = req.query(&[("syncToken", &self.sync_token)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
-                }
-            }
-            impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-                fn set_page_token(&mut self, value: String) {
-                    self.page_token = value.into();
-                }
-                fn execute<T>(&mut self) -> Result<T, crate::Error>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                {
-                    todo!("implement async `execute` method for `IterableMethod` trait")
                 }
             }
         }
@@ -6836,6 +9985,7 @@ pub enum Error {
         reqwest_err: ::reqwest::Error,
         body: Option<String>,
     },
+    IO(std::io::Error),
     Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
@@ -6845,6 +9995,7 @@ impl Error {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
             Error::Reqwest { .. } => None,
+            Error::IO(_) => None,
             Error::Other(_) => None,
         }
     }
@@ -6862,6 +10013,7 @@ impl ::std::fmt::Display for Error {
                 }
                 Ok(())
             }
+            Error::IO(err) => write!(f, "IO Error: {}", err),
             Error::Other(err) => write!(f, "Uknown Error: {}", err),
         }
     }
@@ -6881,6 +10033,12 @@ impl From<::reqwest::Error> for Error {
             reqwest_err,
             body: None,
         }
+    }
+}
+
+impl From<std::io::Error> for Error {
+    fn from(err: std::io::Error) -> Error {
+        Error::IO(err)
     }
 }
 #[allow(dead_code)]
@@ -6950,13 +10108,13 @@ mod multipart {
 
     pub(crate) struct Part {
         content_type: ::mime::Mime,
-        body: Box<dyn ::std::io::Read + Send>,
+        body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
     }
 
     impl Part {
         pub(crate) fn new(
             content_type: ::mime::Mime,
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         ) -> Part {
             Part { content_type, body }
         }
@@ -6965,7 +10123,7 @@ mod multipart {
     pub(crate) struct RelatedMultiPartReader {
         state: RelatedMultiPartReaderState,
         boundary: String,
-        next_body: Option<Box<dyn ::std::io::Read + Send>>,
+        next_body: Option<Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>>,
         parts: std::vec::IntoIter<Part>,
     }
 
@@ -6979,13 +10137,18 @@ mod multipart {
             content_type: Vec<u8>,
         },
         WriteBody {
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         },
     }
 
-    impl ::std::io::Read for RelatedMultiPartReader {
-        fn read(&mut self, buf: &mut [u8]) -> ::std::io::Result<usize> {
+    impl futures::io::AsyncRead for RelatedMultiPartReader {
+        fn poll_read(
+            mut self: std::pin::Pin<&mut Self>,
+            ctx: &mut futures::task::Context,
+            buf: &mut [u8],
+        ) -> futures::task::Poll<Result<usize, futures::io::Error>> {
             use RelatedMultiPartReaderState::*;
+
             let mut bytes_written: usize = 0;
             loop {
                 let rem_buf = &mut buf[bytes_written..];
@@ -7033,7 +10196,14 @@ mod multipart {
                         }
                     }
                     WriteBody { body } => {
-                        let written = body.read(rem_buf)?;
+                        let body = std::pin::Pin::new(body);
+                        let written = match futures::io::AsyncRead::poll_read(body, ctx, rem_buf) {
+                            futures::task::Poll::Ready(Ok(n)) => n,
+                            futures::task::Poll::Ready(Err(err)) => {
+                                return futures::task::Poll::Ready(Err(err));
+                            }
+                            futures::task::Poll::Pending => return futures::task::Poll::Pending,
+                        };
                         bytes_written += written;
                         if written == 0 {
                             self.state = WriteBoundary {
@@ -7046,7 +10216,8 @@ mod multipart {
                     }
                 }
             }
-            Ok(bytes_written)
+
+            futures::task::Poll::Ready(Ok(bytes_written))
         }
     }
 
@@ -7085,128 +10256,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-pub mod iter {
-    pub trait IterableMethod {
-        fn set_page_token(&mut self, value: String);
-        fn execute<T>(&mut self) -> Result<T, crate::Error>
-        where
-            T: ::serde::de::DeserializeOwned;
-    }
-
-    pub struct PageIter<M, T> {
-        pub method: M,
-        pub finished: bool,
-        pub _phantom: ::std::marker::PhantomData<T>,
-    }
-
-    impl<M, T> PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M) -> Self {
-            PageIter {
-                method,
-                finished: false,
-                _phantom: ::std::marker::PhantomData,
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, crate::Error>;
-
-        fn next(&mut self) -> Option<Result<T, crate::Error>> {
-            if self.finished {
-                return None;
-            }
-            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
-                match self.method.execute() {
-                    Ok(r) => r,
-                    Err(err) => return Some(Err(err)),
-                };
-            if let Some(next_page_token) = paginated_result
-                .get("nextPageToken")
-                .and_then(|t| t.as_str())
-            {
-                self.method.set_page_token(next_page_token.to_owned());
-            } else {
-                self.finished = true;
-            }
-
-            Some(
-                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
-                    Ok(resp) => Ok(resp),
-                    Err(err) => Err(err.into()),
-                },
-            )
-        }
-    }
-
-    pub struct PageItemIter<M, T> {
-        items_field: &'static str,
-        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
-        items: ::std::vec::IntoIter<T>,
-    }
-
-    impl<M, T> PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
-            PageItemIter {
-                items_field,
-                page_iter: PageIter::new(method),
-                items: Vec::new().into_iter(),
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, crate::Error>;
-
-        fn next(&mut self) -> Option<Result<T, crate::Error>> {
-            loop {
-                if let Some(v) = self.items.next() {
-                    return Some(Ok(v));
-                }
-
-                let next_page = self.page_iter.next();
-                match next_page {
-                    None => return None,
-                    Some(Err(err)) => return Some(Err(err)),
-                    Some(Ok(next_page)) => {
-                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
-                            next_page;
-                        let items_array = match next_page.remove(self.items_field) {
-                            Some(items) => items,
-                            None => {
-                                return Some(Err(crate::Error::Other(
-                                    format!("no {} field found in iter response", self.items_field)
-                                        .into(),
-                                )))
-                            }
-                        };
-                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
-                        match items_vec {
-                            Ok(items) => self.items = items.into_iter(),
-                            Err(err) => return Some(Err(err.into())),
-                        }
-                    }
-                }
-            }
         }
     }
 }

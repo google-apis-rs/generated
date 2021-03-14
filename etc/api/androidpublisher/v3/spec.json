@@ -1,35 +1,69 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/SetFLBXGvnz8NnoZq8WRUMdUaG4\"",
+  "etag": null,
   "discoveryVersion": "v1",
   "id": "androidpublisher:v3",
   "name": "androidpublisher",
   "canonicalName": "Android Publisher",
   "fullyEncodeReservedExpansion": null,
   "version": "v3",
-  "revision": "20200505",
-  "title": "Google Play Developer API",
-  "description": "Accesses Android application developers' Google Play accounts.",
+  "revision": "20210311",
+  "title": "Google Play Android Developer API",
+  "description": "Lets Android application developers access their Google Play accounts.",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "icons": {
-    "x16": "https://www.google.com/images/icons/product/android-16.png",
-    "x32": "https://www.google.com/images/icons/product/android-32.png"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "documentationLink": "https://developers.google.com/android-publisher",
   "protocol": "rest",
-  "baseUrl": "https://www.googleapis.com/androidpublisher/v3/applications/",
-  "basePath": "/androidpublisher/v3/applications/",
-  "rootUrl": "https://www.googleapis.com/",
-  "servicePath": "androidpublisher/v3/applications/",
-  "batchPath": "batch/androidpublisher/v3",
+  "baseUrl": "https://androidpublisher.googleapis.com/",
+  "basePath": "",
+  "rootUrl": "https://androidpublisher.googleapis.com/",
+  "servicePath": "",
+  "batchPath": "batch",
   "version_module": null,
   "packagePath": null,
   "labels": null,
   "features": null,
   "parameters": {
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [
+        "1",
+        "2"
+      ],
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "repeated": false
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
     "alt": {
-      "description": "Data format for the response.",
+      "description": "Data format for response.",
       "default": "json",
       "location": "query",
       "required": false,
@@ -39,11 +73,29 @@
       "maximum": null,
       "pattern": null,
       "enum": [
-        "json"
+        "json",
+        "media",
+        "proto"
       ],
       "enumDescriptions": [
-        "Responses with Content-Type of application/json"
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
       ],
+      "repeated": false
+    },
+    "callback": {
+      "description": "JSONP",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
       "repeated": false
     },
     "fields": {
@@ -103,7 +155,7 @@
       "repeated": false
     },
     "quotaUser": {
-      "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "default": null,
       "location": "query",
       "required": false,
@@ -116,8 +168,22 @@
       "enumDescriptions": [],
       "repeated": false
     },
-    "userIp": {
-      "description": "Deprecated. Please use quotaUser instead.",
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "default": null,
       "location": "query",
       "required": false,
@@ -143,7 +209,7 @@
   "schemas": {
     "Apk": {
       "id": "Apk",
-      "description": null,
+      "description": "Information about an APK. The resource for ApksService.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -153,12 +219,8 @@
           "description": "Information about the binary payload of this APK.",
           "$ref": "ApkBinary"
         },
-        "testBinary": {
-          "description": null,
-          "$ref": "ApkBinary"
-        },
         "versionCode": {
-          "description": "The version code of the APK, as specified in the APK's manifest file.",
+          "description": "The version code of the APK, as specified in the manifest file.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -205,7 +267,7 @@
     },
     "ApksAddExternallyHostedRequest": {
       "id": "ApksAddExternallyHostedRequest",
-      "description": null,
+      "description": "Request to create a new externally hosted APK.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -221,7 +283,7 @@
     },
     "ApksAddExternallyHostedResponse": {
       "id": "ApksAddExternallyHostedResponse",
-      "description": null,
+      "description": "Response for creating a new externally hosted APK.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -237,14 +299,14 @@
     },
     "ApksListResponse": {
       "id": "ApksListResponse",
-      "description": null,
+      "description": "Response listing all APKs.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "apks": {
-          "description": null,
+          "description": "All APKs.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -256,7 +318,7 @@
           }
         },
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidpublisher#apksListResponse\".",
+          "description": "The kind of this response (\"androidpublisher#apksListResponse\").",
           "type": "string",
           "format": null,
           "enum": [],
@@ -271,7 +333,7 @@
     },
     "AppDetails": {
       "id": "AppDetails",
-      "description": null,
+      "description": "The app details. The resource for DetailsService.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -323,14 +385,14 @@
     },
     "AppEdit": {
       "id": "AppEdit",
-      "description": "Represents an edit of an app. An edit allows clients to make multiple changes before committing them in one operation.",
+      "description": "An app edit. The resource for EditsService.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "expiryTimeSeconds": {
-          "description": "The time at which the edit will expire and will be no longer valid for use in any subsequent API calls (encoded as seconds since the Epoch).",
+          "description": "Output only. The time (as seconds since Epoch) at which the edit will expire and will be no longer valid for use.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -340,7 +402,7 @@
           "items": null
         },
         "id": {
-          "description": "The ID of the edit that can be used in subsequent API calls.",
+          "description": "Output only. Identifier of the edit. Can be used in subsequent API calls.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -355,7 +417,7 @@
     },
     "Bundle": {
       "id": "Bundle",
-      "description": null,
+      "description": "Information about a bundle. The resource for BundlesService.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -382,7 +444,7 @@
           "items": null
         },
         "versionCode": {
-          "description": "The version code of the Android App Bundle. As specified in the Android App Bundle's base module APK manifest file.",
+          "description": "The version code of the Android App Bundle, as specified in the Android App Bundle's base module APK manifest file.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -397,14 +459,14 @@
     },
     "BundlesListResponse": {
       "id": "BundlesListResponse",
-      "description": null,
+      "description": "Response listing all bundles.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "bundles": {
-          "description": null,
+          "description": "All bundles.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -416,7 +478,7 @@
           }
         },
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidpublisher#bundlesListResponse\".",
+          "description": "The kind of this response (\"androidpublisher#bundlesListResponse\").",
           "type": "string",
           "format": null,
           "enum": [],
@@ -431,7 +493,7 @@
     },
     "Comment": {
       "id": "Comment",
-      "description": null,
+      "description": "An entry of conversation between user and developer.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -449,70 +511,16 @@
       "additionalProperties": null,
       "items": null
     },
-    "Control": {
-      "id": "Control",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "modRanges": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "ModRange"
-          }
-        },
-        "stratifiedSamplings": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "StratifiedSampling"
-          }
-        },
-        "versionCodes": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": "int64",
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
     "CountryTargeting": {
       "id": "CountryTargeting",
-      "description": null,
+      "description": "Country targeting specification.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "countries": {
-          "description": null,
+          "description": "Countries to target, specified as two letter [CLDR codes](https://unicode.org/cldr/charts/latest/supplemental/territory_containment_un_m_49.html).",
           "type": "array",
           "format": null,
           "enum": [],
@@ -530,7 +538,7 @@
           }
         },
         "includeRestOfWorld": {
-          "description": null,
+          "description": "Include \"rest of world\" as well as explicitly targeted countries.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -555,8 +563,16 @@
           "description": "The type of the deobfuscation file.",
           "type": "string",
           "format": null,
-          "enum": [],
-          "enumDescriptions": [],
+          "enum": [
+            "deobfuscationFileTypeUnspecified",
+            "proguard",
+            "nativeCode"
+          ],
+          "enumDescriptions": [
+            "Unspecified deobfuscation file type.",
+            "Proguard deobfuscation file type.",
+            "Native debugging symbols file type."
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -567,14 +583,14 @@
     },
     "DeobfuscationFilesUploadResponse": {
       "id": "DeobfuscationFilesUploadResponse",
-      "description": null,
+      "description": "Responses for the upload.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "deobfuscationFile": {
-          "description": null,
+          "description": "The uploaded Deobfuscation File configuration.",
           "$ref": "DeobfuscationFile"
         }
       },
@@ -583,7 +599,7 @@
     },
     "DeveloperComment": {
       "id": "DeveloperComment",
-      "description": null,
+      "description": "Developer entry from conversation between user and developer.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -609,14 +625,14 @@
     },
     "DeviceMetadata": {
       "id": "DeviceMetadata",
-      "description": null,
+      "description": "Characteristics of the user's device.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "cpuMake": {
-          "description": "Device CPU make e.g. \"Qualcomm\"",
+          "description": "Device CPU make, e.g. \"Qualcomm\"",
           "type": "string",
           "format": null,
           "enum": [],
@@ -626,7 +642,7 @@
           "items": null
         },
         "cpuModel": {
-          "description": "Device CPU model e.g. \"MSM8974\"",
+          "description": "Device CPU model, e.g. \"MSM8974\"",
           "type": "string",
           "format": null,
           "enum": [],
@@ -686,7 +702,7 @@
           "items": null
         },
         "ramMb": {
-          "description": "Device RAM in Megabytes e.g. \"2048\"",
+          "description": "Device RAM in Megabytes, e.g. \"2048\"",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -731,14 +747,14 @@
     },
     "DeviceSpec": {
       "id": "DeviceSpec",
-      "description": null,
+      "description": "The device spec used to generate a system APK.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "screenDensity": {
-          "description": null,
+          "description": "Screen dpi.",
           "type": "integer",
           "format": "uint32",
           "enum": [],
@@ -748,7 +764,7 @@
           "items": null
         },
         "supportedAbis": {
-          "description": null,
+          "description": "Supported ABI architectures in the order of preference. The values should be the string as reported by the platform, e.g. \"armeabi-v7a\", \"x86_64\".",
           "type": "array",
           "format": null,
           "enum": [],
@@ -766,7 +782,7 @@
           }
         },
         "supportedLocales": {
-          "description": null,
+          "description": "All installed locales represented as BCP-47 strings, e.g. \"en-US\".",
           "type": "array",
           "format": null,
           "enum": [],
@@ -789,14 +805,14 @@
     },
     "ExpansionFile": {
       "id": "ExpansionFile",
-      "description": null,
+      "description": "An expansion file. The resource for ExpansionFilesService.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "fileSize": {
-          "description": "If set this field indicates that this APK has an Expansion File uploaded to it: this APK does not reference another APK's Expansion File. The field's value is the size of the uploaded Expansion File in bytes.",
+          "description": "If set, this field indicates that this APK has an expansion file uploaded to it: this APK does not reference another APK's expansion file. The field's value is the size of the uploaded expansion file in bytes.",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -806,7 +822,7 @@
           "items": null
         },
         "referencesVersion": {
-          "description": "If set this APK's Expansion File references another APK's Expansion File. The file_size field will not be set.",
+          "description": "If set, this APK's expansion file references another APK's expansion file. The file_size field will not be set.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -821,14 +837,14 @@
     },
     "ExpansionFilesUploadResponse": {
       "id": "ExpansionFilesUploadResponse",
-      "description": null,
+      "description": "Response for uploading an expansion file.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "expansionFile": {
-          "description": null,
+          "description": "The uploaded expansion file configuration.",
           "$ref": "ExpansionFile"
         }
       },
@@ -837,7 +853,7 @@
     },
     "ExternallyHostedApk": {
       "id": "ExternallyHostedApk",
-      "description": "Defines an APK available for this application that is hosted externally and not uploaded to Google Play. This function is only available to enterprises who are using Google Play for Work, and whos application is restricted to the enterprise private channel",
+      "description": "Defines an APK available for this application that is hosted externally and not uploaded to Google Play. This function is only available to organizations using Managed Play whose application is configured to restrict distribution to the organizations.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -854,7 +870,7 @@
           "items": null
         },
         "certificateBase64s": {
-          "description": "A certificate (or array of certificates if a certificate-chain is used) used to signed this APK, represented as a base64 encoded byte array.",
+          "description": "A certificate (or array of certificates if a certificate-chain is used) used to sign this APK, represented as a base64 encoded byte array.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -882,7 +898,7 @@
           "items": null
         },
         "fileSha1Base64": {
-          "description": "The SHA1 checksum of this APK, represented as a base64 encoded byte array.",
+          "description": "The sha1 checksum of this APK, represented as a base64 encoded byte array.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -892,7 +908,7 @@
           "items": null
         },
         "fileSha256Base64": {
-          "description": "The SHA256 checksum of this APK, represented as a base64 encoded byte array.",
+          "description": "The sha256 checksum of this APK, represented as a base64 encoded byte array.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -996,7 +1012,7 @@
           "properties": {},
           "additionalProperties": null,
           "items": {
-            "$ref": "ExternallyHostedApkUsesPermission"
+            "$ref": "UsesPermission"
           }
         },
         "versionCode": {
@@ -1023,41 +1039,9 @@
       "additionalProperties": null,
       "items": null
     },
-    "ExternallyHostedApkUsesPermission": {
-      "id": "ExternallyHostedApkUsesPermission",
-      "description": "A permission used by this APK.",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "maxSdkVersion": {
-          "description": "Optionally, the maximum SDK version for which the permission is required.",
-          "type": "integer",
-          "format": "int32",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "name": {
-          "description": "The name of the permission requested.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
     "Image": {
       "id": "Image",
-      "description": null,
+      "description": "An uploaded image. The resource for ImagesService.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1074,7 +1058,7 @@
           "items": null
         },
         "sha1": {
-          "description": "A sha1 hash of the image that was uploaded.",
+          "description": "A sha1 hash of the image.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1084,7 +1068,7 @@
           "items": null
         },
         "sha256": {
-          "description": "A sha256 hash of the image that was uploaded.",
+          "description": "A sha256 hash of the image.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1109,14 +1093,14 @@
     },
     "ImagesDeleteAllResponse": {
       "id": "ImagesDeleteAllResponse",
-      "description": null,
+      "description": "Response for deleting all images.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "deleted": {
-          "description": null,
+          "description": "The deleted images.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1133,14 +1117,14 @@
     },
     "ImagesListResponse": {
       "id": "ImagesListResponse",
-      "description": null,
+      "description": "Response listing all images.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "images": {
-          "description": null,
+          "description": "All listed Images.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1157,14 +1141,14 @@
     },
     "ImagesUploadResponse": {
       "id": "ImagesUploadResponse",
-      "description": null,
+      "description": "Response for uploading an image.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "image": {
-          "description": null,
+          "description": "The uploaded image.",
           "$ref": "Image"
         }
       },
@@ -1173,14 +1157,14 @@
     },
     "InAppProduct": {
       "id": "InAppProduct",
-      "description": null,
+      "description": "An in-app product. The resource for InappproductsService.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "defaultLanguage": {
-          "description": "The default language of the localized data, as defined by BCP 47. e.g. \"en-US\", \"en-GB\".",
+          "description": "Default language of the localized data, as defined by BCP-47. e.g. \"en-US\".",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1190,11 +1174,11 @@
           "items": null
         },
         "defaultPrice": {
-          "description": "Default price cannot be zero. In-app products can never be free. Default price is always in the developer's Checkout merchant currency.",
+          "description": "Default price. Cannot be zero, as in-app products are never free. Always in the developer's Checkout merchant currency.",
           "$ref": "Price"
         },
         "gracePeriod": {
-          "description": "Grace period of the subscription, specified in ISO 8601 format. It will allow developers to give their subscribers a grace period when the payment for the new recurrence period is declined. Acceptable values = \"P3D\" (three days), \"P7D\" (seven days), \"P14D\" (fourteen days), and \"P30D\" (thirty days)",
+          "description": "Grace period of the subscription, specified in ISO 8601 format. Allows developers to give their subscribers a grace period when the payment for the new recurrence period is declined. Acceptable values are P0D (zero days), P3D (three days), P7D (seven days), P14D (14 days), and P30D (30 days).",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1204,20 +1188,20 @@
           "items": null
         },
         "listings": {
-          "description": "List of localized title and description data.",
+          "description": "List of localized title and description data. Map key is the language of the localized data, as defined by BCP-47, e.g. \"en-US\".",
           "type": "object",
           "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
           "additionalProperties": {
-            "description": "The language of the localized data, as defined by BCP 47. i.e.: \"en-US\", \"en-GB\".",
+            "description": null,
             "$ref": "InAppProductListing"
           },
           "items": null
         },
         "packageName": {
-          "description": "The package name of the parent app.",
+          "description": "Package name of the parent app.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1227,30 +1211,38 @@
           "items": null
         },
         "prices": {
-          "description": "Prices per buyer region. None of these prices should be zero. In-app products can never be free.",
+          "description": "Prices per buyer region. None of these can be zero, as in-app products are never free. Map key is region code, as defined by ISO 3166-2.",
           "type": "object",
           "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
           "additionalProperties": {
-            "description": "Region code, as defined by ISO 3166-2.",
+            "description": null,
             "$ref": "Price"
           },
           "items": null
         },
         "purchaseType": {
-          "description": "Purchase type enum value. Unmodifiable after creation.",
+          "description": "The type of the product, e.g. a recurring subscription.",
           "type": "string",
           "format": null,
-          "enum": [],
-          "enumDescriptions": [],
+          "enum": [
+            "purchaseTypeUnspecified",
+            "managedUser",
+            "subscription"
+          ],
+          "enumDescriptions": [
+            "Unspecified purchase type.",
+            "The default product type - one time purchase.",
+            "In-app product with a recurring period."
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
         },
         "sku": {
-          "description": "The stock-keeping-unit (SKU) of the product, unique within an app.",
+          "description": "Stock-keeping-unit (SKU) of the product, unique within an app.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1260,17 +1252,25 @@
           "items": null
         },
         "status": {
-          "description": null,
+          "description": "The status of the product, e.g. whether it's active.",
           "type": "string",
           "format": null,
-          "enum": [],
-          "enumDescriptions": [],
+          "enum": [
+            "statusUnspecified",
+            "active",
+            "inactive"
+          ],
+          "enumDescriptions": [
+            "Unspecified status.",
+            "The product is published and active in the store.",
+            "The product is not published and therefore inactive in the store."
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
         },
         "subscriptionPeriod": {
-          "description": "Subscription period, specified in ISO 8601 format. Acceptable values are \"P1W\" (one week), \"P1M\" (one month), \"P3M\" (three months), \"P6M\" (six months), and \"P1Y\" (one year).",
+          "description": "Subscription period, specified in ISO 8601 format. Acceptable values are P1W (one week), P1M (one month), P3M (three months), P6M (six months), and P1Y (one year).",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1280,7 +1280,7 @@
           "items": null
         },
         "trialPeriod": {
-          "description": "Trial period, specified in ISO 8601 format. Acceptable values are anything between \"P7D\" (seven days) and \"P999D\" (999 days). Seasonal subscriptions cannot have a trial period.",
+          "description": "Trial period, specified in ISO 8601 format. Acceptable values are anything between P7D (seven days) and P999D (999 days).",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1295,14 +1295,32 @@
     },
     "InAppProductListing": {
       "id": "InAppProductListing",
-      "description": null,
+      "description": "Store listing of a single in-app product.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "benefits": {
+          "description": "Localized entitlement benefits for a subscription.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
         "description": {
-          "description": null,
+          "description": "Description for the store listing.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1312,7 +1330,7 @@
           "items": null
         },
         "title": {
-          "description": null,
+          "description": "Title for the store listing.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1327,14 +1345,14 @@
     },
     "InappproductsListResponse": {
       "id": "InappproductsListResponse",
-      "description": null,
+      "description": "Response listing all in-app products.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "inappproduct": {
-          "description": null,
+          "description": "All in-app products.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1346,7 +1364,7 @@
           }
         },
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidpublisher#inappproductsListResponse\".",
+          "description": "The kind of this response (\"androidpublisher#inappproductsListResponse\").",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1356,11 +1374,11 @@
           "items": null
         },
         "pageInfo": {
-          "description": null,
+          "description": "Information about the current page.",
           "$ref": "PageInfo"
         },
         "tokenPagination": {
-          "description": null,
+          "description": "Pagination token, to handle a number of products that is over one page.",
           "$ref": "TokenPagination"
         }
       },
@@ -1376,7 +1394,7 @@
       "enumDescriptions": [],
       "properties": {
         "certificateFingerprint": {
-          "description": "The SHA256 fingerprint of the certificate used to signed the generated artifact.",
+          "description": "The sha256 fingerprint of the certificate used to sign the generated artifact.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1396,7 +1414,7 @@
           "items": null
         },
         "sha256": {
-          "description": "The SHA-256 hash of the artifact represented as a lowercase hexadecimal number, matching the output of the sha256sum command.",
+          "description": "The sha256 hash of the artifact represented as a lowercase hexadecimal number, matching the output of the sha256sum command.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1463,14 +1481,14 @@
     },
     "Listing": {
       "id": "Listing",
-      "description": null,
+      "description": "A localized store listing. The resource for ListingsService.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "fullDescription": {
-          "description": "Full description of the app; this may be up to 4000 characters in length.",
+          "description": "Full description of the app.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1480,7 +1498,7 @@
           "items": null
         },
         "language": {
-          "description": "Language localization code (for example, \"de-AT\" for Austrian German).",
+          "description": "Language localization code (a BCP-47 language tag; for example, \"de-AT\" for Austrian German).",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1490,7 +1508,7 @@
           "items": null
         },
         "shortDescription": {
-          "description": "Short description of the app (previously known as promo text); this may be up to 80 characters in length.",
+          "description": "Short description of the app.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1500,7 +1518,7 @@
           "items": null
         },
         "title": {
-          "description": "App's localized title.",
+          "description": "Localized title of the app.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1525,14 +1543,14 @@
     },
     "ListingsListResponse": {
       "id": "ListingsListResponse",
-      "description": null,
+      "description": "Response listing all localized listings.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidpublisher#listingsListResponse\".",
+          "description": "The kind of this response (\"androidpublisher#listingsListResponse\").",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1542,7 +1560,7 @@
           "items": null
         },
         "listings": {
-          "description": null,
+          "description": "All localized listings.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1559,14 +1577,14 @@
     },
     "LocalizedText": {
       "id": "LocalizedText",
-      "description": null,
+      "description": "Release notes specification, i.e. language and text.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "language": {
-          "description": "The language code, in BCP 47 format (eg \"en-US\").",
+          "description": "Language localization code (a BCP-47 language tag; for example, \"de-AT\" for Austrian German).",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1576,41 +1594,9 @@
           "items": null
         },
         "text": {
-          "description": "The text in the given `language`.",
+          "description": "The text in the given language.",
           "type": "string",
           "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "ModRange": {
-      "id": "ModRange",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "end": {
-          "description": null,
-          "type": "string",
-          "format": "int64",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "start": {
-          "description": null,
-          "type": "string",
-          "format": "int64",
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -1623,14 +1609,14 @@
     },
     "PageInfo": {
       "id": "PageInfo",
-      "description": null,
+      "description": "Information about the current page. List operations that supports paging return only one \"page\" of results. This protocol buffer message describes the page that has been returned.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "resultPerPage": {
-          "description": null,
+          "description": "Maximum number of results returned in one page. ! The number of results included in the API response.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1640,7 +1626,7 @@
           "items": null
         },
         "startIndex": {
-          "description": null,
+          "description": "Index of the first result returned in the current page.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1650,7 +1636,7 @@
           "items": null
         },
         "totalResults": {
-          "description": null,
+          "description": "Total number of results available on the backend ! The total number of results in the result set.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1665,14 +1651,14 @@
     },
     "Price": {
       "id": "Price",
-      "description": null,
+      "description": "Definition of a price, i.e. currency and units.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "currency": {
-          "description": "3 letter Currency code, as defined by ISO 4217.",
+          "description": "3 letter Currency code, as defined by ISO 4217. See java/com/google/common/money/CurrencyCode.java",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1682,7 +1668,7 @@
           "items": null
         },
         "priceMicros": {
-          "description": "The price in millionths of the currency base unit represented as a string.",
+          "description": "Price in 1/million of the currency base unit, represented as a string.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1704,7 +1690,7 @@
       "enumDescriptions": [],
       "properties": {
         "acknowledgementState": {
-          "description": "The acknowledgement state of the inapp product. Possible values are:  \n- Yet to be acknowledged \n- Acknowledged",
+          "description": "The acknowledgement state of the inapp product. Possible values are: 0. Yet to be acknowledged 1. Acknowledged",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1714,7 +1700,7 @@
           "items": null
         },
         "consumptionState": {
-          "description": "The consumption state of the inapp product. Possible values are:  \n- Yet to be consumed \n- Consumed",
+          "description": "The consumption state of the inapp product. Possible values are: 0. Yet to be consumed 1. Consumed",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1735,6 +1721,26 @@
         },
         "kind": {
           "description": "This kind represents an inappPurchase object in the androidpublisher service.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "obfuscatedExternalAccountId": {
+          "description": "An obfuscated version of the id that is uniquely associated with the user's account in your app. Only present if specified using https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid when the purchase was made.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "obfuscatedExternalProfileId": {
+          "description": "An obfuscated version of the id that is uniquely associated with the user's profile in your app. Only present if specified using https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid when the purchase was made.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1764,7 +1770,7 @@
           "items": null
         },
         "purchaseState": {
-          "description": "The purchase state of the order. Possible values are:  \n- Purchased \n- Canceled \n- Pending",
+          "description": "The purchase state of the order. Possible values are: 0. Purchased 1. Canceled 2. Pending",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1794,7 +1800,7 @@
           "items": null
         },
         "purchaseType": {
-          "description": "The type of purchase of the inapp product. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are:  \n- Test (i.e. purchased from a license testing account) \n- Promo (i.e. purchased using a promo code) \n- Rewarded (i.e. from watching a video ad instead of paying)",
+          "description": "The type of purchase of the inapp product. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are: 0. Test (i.e. purchased from a license testing account) 1. Promo (i.e. purchased using a promo code) 2. Rewarded (i.e. from watching a video ad instead of paying)",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1812,6 +1818,16 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "regionCode": {
+          "description": "ISO 3166-1 alpha-2 billing region code of the user at the time the product was granted.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -1819,7 +1835,7 @@
     },
     "ProductPurchasesAcknowledgeRequest": {
       "id": "ProductPurchasesAcknowledgeRequest",
-      "description": null,
+      "description": "Request for the product.purchases.acknowledge API.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1841,7 +1857,7 @@
     },
     "Review": {
       "id": "Review",
-      "description": null,
+      "description": "An Android app review.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1885,7 +1901,7 @@
     },
     "ReviewReplyResult": {
       "id": "ReviewReplyResult",
-      "description": null,
+      "description": "The result of replying/updating a reply to review.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1911,18 +1927,18 @@
     },
     "ReviewsListResponse": {
       "id": "ReviewsListResponse",
-      "description": null,
+      "description": "Response listing reviews.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "pageInfo": {
-          "description": null,
+          "description": "Information about the current page.",
           "$ref": "PageInfo"
         },
         "reviews": {
-          "description": null,
+          "description": "List of reviews.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1934,7 +1950,7 @@
           }
         },
         "tokenPagination": {
-          "description": null,
+          "description": "Pagination token, to handle a number of products that is over one page.",
           "$ref": "TokenPagination"
         }
       },
@@ -1943,7 +1959,7 @@
     },
     "ReviewsReplyRequest": {
       "id": "ReviewsReplyRequest",
-      "description": null,
+      "description": "Request to reply to review or update existing reply.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1965,131 +1981,15 @@
     },
     "ReviewsReplyResponse": {
       "id": "ReviewsReplyResponse",
-      "description": null,
+      "description": "Response on status of replying to a review.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "result": {
-          "description": null,
+          "description": "The result of replying/updating a reply to review.",
           "$ref": "ReviewReplyResult"
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "Sampling": {
-      "id": "Sampling",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "modRanges": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "ModRange"
-          }
-        },
-        "modulus": {
-          "description": null,
-          "type": "string",
-          "format": "int64",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "salt": {
-          "description": null,
-          "type": "integer",
-          "format": "int32",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "stratifiedSamplings": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "StratifiedSampling"
-          }
-        },
-        "useAndroidId": {
-          "description": null,
-          "type": "boolean",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "StratifiedSampling": {
-      "id": "StratifiedSampling",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "modRanges": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "ModRange"
-          }
-        },
-        "stratum": {
-          "description": null,
-          "$ref": "Stratum"
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "Stratum": {
-      "id": "Stratum",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "brand": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
         }
       },
       "additionalProperties": null,
@@ -2104,7 +2004,7 @@
       "enumDescriptions": [],
       "properties": {
         "cancelSurveyReason": {
-          "description": "The cancellation reason the user chose in the survey. Possible values are:  \n- Other \n- I don't use this service enough \n- Technical issues \n- Cost-related reasons \n- I found a better app",
+          "description": "The cancellation reason the user chose in the survey. Possible values are: 0. Other 1. I don't use this service enough 2. Technical issues 3. Cost-related reasons 4. I found a better app",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -2172,7 +2072,7 @@
           "$ref": "Price"
         },
         "state": {
-          "description": "The current state of the price change. Possible values are:  \n- Outstanding: State for a pending price change waiting for the user to agree. In this state, you can optionally seek confirmation from the user using the In-App API. \n- Accepted: State for an accepted price change that the subscription will renew with unless it's canceled. The price change takes effect on a future date when the subscription renews. Note that the change might not occur when the subscription is renewed next.",
+          "description": "The current state of the price change. Possible values are: 0. Outstanding: State for a pending price change waiting for the user to agree. In this state, you can optionally seek confirmation from the user using the In-App API. 1. Accepted: State for an accepted price change that the subscription will renew with unless it's canceled. The price change takes effect on a future date when the subscription renews. Note that the change might not occur when the subscription is renewed next.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -2194,7 +2094,7 @@
       "enumDescriptions": [],
       "properties": {
         "acknowledgementState": {
-          "description": "The acknowledgement state of the subscription product. Possible values are:  \n- Yet to be acknowledged \n- Acknowledged",
+          "description": "The acknowledgement state of the subscription product. Possible values are: 0. Yet to be acknowledged 1. Acknowledged",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -2224,7 +2124,7 @@
           "items": null
         },
         "cancelReason": {
-          "description": "The reason why a subscription was canceled or is not auto-renewing. Possible values are:  \n- User canceled the subscription \n- Subscription was canceled by the system, for example because of a billing problem \n- Subscription was replaced with a new subscription \n- Subscription was canceled by the developer",
+          "description": "The reason why a subscription was canceled or is not auto-renewing. Possible values are: 0. User canceled the subscription 1. Subscription was canceled by the system, for example because of a billing problem 2. Subscription was replaced with a new subscription 3. Subscription was canceled by the developer",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -2308,7 +2208,7 @@
           "items": null
         },
         "introductoryPriceInfo": {
-          "description": "Introductory price information of the subscription. This is only present when the subscription was purchased with an introductory price.\n\nThis field does not indicate the subscription is currently in introductory price period.",
+          "description": "Introductory price information of the subscription. This is only present when the subscription was purchased with an introductory price. This field does not indicate the subscription is currently in introductory price period.",
           "$ref": "IntroductoryPriceInfo"
         },
         "kind": {
@@ -2322,7 +2222,27 @@
           "items": null
         },
         "linkedPurchaseToken": {
-          "description": "The purchase token of the originating purchase if this subscription is one of the following:  \n- Re-signup of a canceled but non-lapsed subscription \n- Upgrade/downgrade from a previous subscription  For example, suppose a user originally signs up and you receive purchase token X, then the user cancels and goes through the resignup flow (before their subscription lapses) and you receive purchase token Y, and finally the user upgrades their subscription and you receive purchase token Z. If you call this API with purchase token Z, this field will be set to Y. If you call this API with purchase token Y, this field will be set to X. If you call this API with purchase token X, this field will not be set.",
+          "description": "The purchase token of the originating purchase if this subscription is one of the following: 0. Re-signup of a canceled but non-lapsed subscription 1. Upgrade/downgrade from a previous subscription For example, suppose a user originally signs up and you receive purchase token X, then the user cancels and goes through the resignup flow (before their subscription lapses) and you receive purchase token Y, and finally the user upgrades their subscription and you receive purchase token Z. If you call this API with purchase token Z, this field will be set to Y. If you call this API with purchase token Y, this field will be set to X. If you call this API with purchase token X, this field will not be set.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "obfuscatedExternalAccountId": {
+          "description": "An obfuscated version of the id that is uniquely associated with the user's account in your app. Present for the following purchases: * If account linking happened as part of the subscription purchase flow. * It was specified using https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid when the purchase was made.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "obfuscatedExternalProfileId": {
+          "description": "An obfuscated version of the id that is uniquely associated with the user's profile in your app. Only present if specified using https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid when the purchase was made.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2342,7 +2262,7 @@
           "items": null
         },
         "paymentState": {
-          "description": "The payment state of the subscription. Possible values are:  \n- Payment pending \n- Payment received \n- Free trial \n- Pending deferred upgrade/downgrade",
+          "description": "The payment state of the subscription. Possible values are: 0. Payment pending 1. Payment received 2. Free trial 3. Pending deferred upgrade/downgrade Not present for canceled, expired subscriptions.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -2362,7 +2282,7 @@
           "items": null
         },
         "priceChange": {
-          "description": "The latest price change information available. This is present only when there is an upcoming price change for the subscription yet to be applied.\n\nOnce the subscription renews with the new price or the subscription is canceled, no price change information will be returned.",
+          "description": "The latest price change information available. This is present only when there is an upcoming price change for the subscription yet to be applied. Once the subscription renews with the new price or the subscription is canceled, no price change information will be returned.",
           "$ref": "SubscriptionPriceChange"
         },
         "priceCurrencyCode": {
@@ -2406,7 +2326,7 @@
           "items": null
         },
         "promotionType": {
-          "description": "The type of promotion applied on this purchase. This field is only set if a promotion is applied when the subscription was purchased. Possible values are:  \n- One time code \n- Vanity code",
+          "description": "The type of promotion applied on this purchase. This field is only set if a promotion is applied when the subscription was purchased. Possible values are: 0. One time code 1. Vanity code",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -2416,7 +2336,7 @@
           "items": null
         },
         "purchaseType": {
-          "description": "The type of purchase of the subscription. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are:  \n- Test (i.e. purchased from a license testing account) \n- Promo (i.e. purchased using a promo code)",
+          "description": "The type of purchase of the subscription. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are: 0. Test (i.e. purchased from a license testing account) 1. Promo (i.e. purchased using a promo code)",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -2451,7 +2371,7 @@
     },
     "SubscriptionPurchasesAcknowledgeRequest": {
       "id": "SubscriptionPurchasesAcknowledgeRequest",
-      "description": null,
+      "description": "Request for the purchases.subscriptions.acknowledge API.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -2473,7 +2393,7 @@
     },
     "SubscriptionPurchasesDeferRequest": {
       "id": "SubscriptionPurchasesDeferRequest",
-      "description": null,
+      "description": "Request for the purchases.subscriptions.defer API.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -2489,7 +2409,7 @@
     },
     "SubscriptionPurchasesDeferResponse": {
       "id": "SubscriptionPurchasesDeferResponse",
-      "description": null,
+      "description": "Response for the purchases.subscriptions.defer API.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -2509,32 +2429,16 @@
       "additionalProperties": null,
       "items": null
     },
-    "SystemApkVariantsCreateRequest": {
-      "id": "SystemApkVariantsCreateRequest",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "deviceSpec": {
-          "description": null,
-          "$ref": "DeviceSpec"
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "SystemApkVariantsListResponse": {
-      "id": "SystemApkVariantsListResponse",
-      "description": null,
+    "SystemApksListResponse": {
+      "id": "SystemApksListResponse",
+      "description": "Response to list previously created system APK variants.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "variants": {
-          "description": null,
+          "description": "All system APK variants created.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2551,68 +2455,14 @@
     },
     "Testers": {
       "id": "Testers",
-      "description": null,
+      "description": "The testers of an app. The resource for TestersService.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
-        "autoEnrolledAndroidGroups": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        },
-        "autoEnrolledGoogleGroups": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        },
-        "excludedGoogleGroups": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        },
         "googleGroups": {
-          "description": "A list of all Google Groups, as email addresses, that define testers for this track.",
+          "description": "All testing Google Groups, as email addresses.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2635,14 +2485,14 @@
     },
     "Timestamp": {
       "id": "Timestamp",
-      "description": null,
+      "description": "A Timestamp represents a point in time independent of any time zone or local calendar, encoded as a count of seconds and fractions of seconds at nanosecond resolution. The count is relative to an epoch at UTC midnight on January 1, 1970.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "nanos": {
-          "description": null,
+          "description": "Non-negative fractions of a second at nanosecond resolution. Must be from 0 to 999,999,999 inclusive.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -2652,7 +2502,7 @@
           "items": null
         },
         "seconds": {
-          "description": null,
+          "description": "Represents seconds of UTC time since Unix epoch.",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -2667,14 +2517,14 @@
     },
     "TokenPagination": {
       "id": "TokenPagination",
-      "description": null,
+      "description": "Pagination information returned by a List operation when token pagination is enabled. List operations that supports paging return only one \"page\" of results. This protocol buffer message describes the page that has been returned. When using token pagination, clients should use the next/previous token to get another page of the result. The presence or absence of next/previous token indicates whether a next/previous page is available and provides a mean of accessing this page. ListRequest.page_token should be set to either next_page_token or previous_page_token to access another page.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "nextPageToken": {
-          "description": null,
+          "description": "Tokens to pass to the standard list field 'page_token'. Whenever available, tokens are preferred over manipulating start_index.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2699,14 +2549,14 @@
     },
     "Track": {
       "id": "Track",
-      "description": null,
+      "description": "A track configuration. The resource for TracksService.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "releases": {
-          "description": "A list of all active releases in this track during a read request. On an update request, it represents desired changes.",
+          "description": "In a read request, represents all active releases in the track. In an update request, represents desired changes.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2718,7 +2568,7 @@
           }
         },
         "track": {
-          "description": "Identifier for this track.",
+          "description": "Identifier of the track.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2733,30 +2583,18 @@
     },
     "TrackRelease": {
       "id": "TrackRelease",
-      "description": null,
+      "description": "A release within a track.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
-        "controls": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "Control"
-          }
-        },
         "countryTargeting": {
-          "description": null,
+          "description": "Restricts a release to a specific set of countries.",
           "$ref": "CountryTargeting"
         },
         "inAppUpdatePriority": {
-          "description": "In-app update priority of the release. All newly added APKs in the release will be considered at this priority. in_app_update_priority can take values between [0, 5]. 5 is the highest priority. Default priority is 0. in_app_update_priority can not be updated once the release is rolled out. See https://developer.android.com/guide/playcore/in-app-updates.",
+          "description": "In-app update priority of the release. All newly added APKs in the release will be considered at this priority. Can take values in the range [0, 5], with 5 the highest priority. Defaults to 0. in_app_update_priority can not be updated once the release is rolled out. See https://developer.android.com/guide/playcore/in-app-updates.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -2766,7 +2604,7 @@
           "items": null
         },
         "name": {
-          "description": "The release name, used to identify this release in the Play Console UI. Not required to be unique. This is optional, if not set it will be generated from the version_name in the APKs.",
+          "description": "The release name. Not required to be unique. If not set, the name is generated from the APK's version_name. If the release contains multiple APKs, the name is generated from the date.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2775,20 +2613,8 @@
           "additionalProperties": null,
           "items": null
         },
-        "pinnedVersions": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "TrackReleasePin"
-          }
-        },
         "releaseNotes": {
-          "description": "The description of what is new in the app in this release.",
+          "description": "A description of what is new in this release.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2799,32 +2625,30 @@
             "$ref": "LocalizedText"
           }
         },
-        "rollbackEnabled": {
-          "description": null,
-          "type": "boolean",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "sampling": {
-          "description": null,
-          "$ref": "Sampling"
-        },
         "status": {
-          "description": "The desired status of this release.",
+          "description": "The status of the release.",
           "type": "string",
           "format": null,
-          "enum": [],
-          "enumDescriptions": [],
+          "enum": [
+            "statusUnspecified",
+            "draft",
+            "inProgress",
+            "halted",
+            "completed"
+          ],
+          "enumDescriptions": [
+            "Unspecified status.",
+            "The release's APKs are not being served to users.",
+            "The release's APKs are being served to a fraction of users, determined by 'user_fraction'.",
+            "The release's APKs will no longer be served to users. Users who already have these APKs are unaffected.",
+            "The release will have no further changes. Its APKs are being served to all users, unless they are eligible to APKs of a more recent release."
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
         },
         "userFraction": {
-          "description": "Fraction of users who are eligible to receive the release. 0 < fraction < 1. To be set, release status must be \"inProgress\" or \"halted\".",
+          "description": "Fraction of users who are eligible for a staged release. 0 < fraction < 1. Can only be set when status is \"inProgress\" or \"halted\".",
           "type": "number",
           "format": "double",
           "enum": [],
@@ -2834,7 +2658,7 @@
           "items": null
         },
         "versionCodes": {
-          "description": "A list of all version codes of APKs that will be exposed to the users of this track when this release is rolled out. Note that this list should contain all versions you wish to be active, including those you wish to retain from previous releases.",
+          "description": "Version codes of all APKs in the release. Must include version codes to retain from previous releases.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2850,168 +2674,6 @@
             "additionalProperties": null,
             "items": null
           }
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "TrackReleasePin": {
-      "id": "TrackReleasePin",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "targetings": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "TrackReleasePinPinTargeting"
-          }
-        },
-        "versionCodes": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": "int64",
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "TrackReleasePinPinTargeting": {
-      "id": "TrackReleasePinPinTargeting",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "countryCodes": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        },
-        "devices": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "TrackReleasePinPinTargetingDevicePin"
-          }
-        },
-        "phoneskyVersions": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": "int64",
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        },
-        "sdkVersions": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "integer",
-            "format": "int32",
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "TrackReleasePinPinTargetingDevicePin": {
-      "id": "TrackReleasePinPinTargetingDevicePin",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "brand": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "device": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "product": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
         }
       },
       "additionalProperties": null,
@@ -3019,14 +2681,14 @@
     },
     "TracksListResponse": {
       "id": "TracksListResponse",
-      "description": null,
+      "description": "Response listing all tracks.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidpublisher#tracksListResponse\".",
+          "description": "The kind of this response (\"androidpublisher#tracksListResponse\").",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3036,7 +2698,7 @@
           "items": null
         },
         "tracks": {
-          "description": null,
+          "description": "All tracks.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -3053,7 +2715,7 @@
     },
     "UserComment": {
       "id": "UserComment",
-      "description": null,
+      "description": "User entry from conversation between user and developer.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -3100,7 +2762,7 @@
           "items": null
         },
         "deviceMetadata": {
-          "description": "Some information about the characteristics of the user's device",
+          "description": "Information about the characteristics of the user's device.",
           "$ref": "DeviceMetadata"
         },
         "lastModified": {
@@ -3108,7 +2770,7 @@
           "$ref": "Timestamp"
         },
         "originalText": {
-          "description": "Untranslated text of the review, in the case where the review has been translated. If the review has not been translated this is left blank.",
+          "description": "Untranslated text of the review, where the review was translated. If the review was not translated this is left blank.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3148,7 +2810,7 @@
           "items": null
         },
         "thumbsDownCount": {
-          "description": "Number of users who have given this review a thumbs down",
+          "description": "Number of users who have given this review a thumbs down.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -3158,7 +2820,7 @@
           "items": null
         },
         "thumbsUpCount": {
-          "description": "Number of users who have given this review a thumbs up",
+          "description": "Number of users who have given this review a thumbs up.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -3171,20 +2833,52 @@
       "additionalProperties": null,
       "items": null
     },
+    "UsesPermission": {
+      "id": "UsesPermission",
+      "description": "A permission used by this APK.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "maxSdkVersion": {
+          "description": "Optionally, the maximum SDK version for which the permission is required.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "name": {
+          "description": "The name of the permission requested.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "Variant": {
       "id": "Variant",
-      "description": "Represents the variant of a generated system APK from an uploaded App Bundle.",
+      "description": "APK that is suitable for inclusion in a system image. The resource of SystemApksService.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "deviceSpec": {
-          "description": null,
+          "description": "The device spec used to generate the APK.",
           "$ref": "DeviceSpec"
         },
         "variantId": {
-          "description": null,
+          "description": "Output only. The ID of a previously created system APK variant.",
           "type": "integer",
           "format": "uint32",
           "enum": [],
@@ -3246,7 +2940,7 @@
           "items": null
         },
         "voidedReason": {
-          "description": "The reason why the purchase was voided, possible values are:  \n- Other \n- Remorse \n- Not_received \n- Defective \n- Accidental_purchase \n- Fraud \n- Friendly_fraud \n- Chargeback",
+          "description": "The reason why the purchase was voided, possible values are: 0. Other 1. Remorse 2. Not_received 3. Defective 4. Accidental_purchase 5. Fraud 6. Friendly_fraud 7. Chargeback",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -3256,7 +2950,7 @@
           "items": null
         },
         "voidedSource": {
-          "description": "The initiator of voided purchase, possible values are:  \n- User \n- Developer \n- Google",
+          "description": "The initiator of voided purchase, possible values are: 0. User 1. Developer 2. Google",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -3281,18 +2975,18 @@
     },
     "VoidedPurchasesListResponse": {
       "id": "VoidedPurchasesListResponse",
-      "description": null,
+      "description": "Response for the voidedpurchases.list API.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "pageInfo": {
-          "description": null,
+          "description": "General pagination information.",
           "$ref": "PageInfo"
         },
         "tokenPagination": {
-          "description": null,
+          "description": "Pagination information for token pagination.",
           "$ref": "TokenPagination"
         },
         "voidedPurchases": {
@@ -3320,12 +3014,12 @@
           "methods": {
             "addexternallyhosted": {
               "id": "androidpublisher.edits.apks.addexternallyhosted",
-              "path": "{packageName}/edits/{editId}/apks/externallyHosted",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/externallyHosted",
               "httpMethod": "POST",
-              "description": "Creates a new APK without uploading the APK itself to Google Play, instead hosting the APK at a specified URL. This function is only available to enterprises using Google Play for Work whose application is configured to restrict distribution to the enterprise domain.",
+              "description": "Creates a new APK without uploading the APK itself to Google Play, instead hosting the APK at a specified URL. This function is only available to organizations using Managed Play whose application is configured to restrict distribution to the organizations.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3339,7 +3033,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3374,12 +3068,12 @@
             },
             "list": {
               "id": "androidpublisher.edits.apks.list",
-              "path": "{packageName}/edits/{editId}/apks",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks",
               "httpMethod": "GET",
-              "description": null,
+              "description": "Lists all current APKs of the app and edit.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3393,7 +3087,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3426,12 +3120,12 @@
             },
             "upload": {
               "id": "androidpublisher.edits.apks.upload",
-              "path": "{packageName}/edits/{editId}/apks",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks",
               "httpMethod": "POST",
-              "description": null,
+              "description": "Uploads an APK and adds to the current edit.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3445,7 +3139,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3479,7 +3173,7 @@
                   "application/octet-stream",
                   "application/vnd.android.package-archive"
                 ],
-                "maxSize": "1GB",
+                "maxSize": "10737418240",
                 "protocols": {
                   "simple": {
                     "multipart": true,
@@ -3499,12 +3193,12 @@
           "methods": {
             "list": {
               "id": "androidpublisher.edits.bundles.list",
-              "path": "{packageName}/edits/{editId}/bundles",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/bundles",
               "httpMethod": "GET",
-              "description": null,
+              "description": "Lists all current Android App Bundles of the app and edit.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3518,7 +3212,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3551,9 +3245,9 @@
             },
             "upload": {
               "id": "androidpublisher.edits.bundles.upload",
-              "path": "{packageName}/edits/{editId}/bundles",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/bundles",
               "httpMethod": "POST",
-              "description": "Uploads a new Android App Bundle to this edit. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See: https://developers.google.com/api-client-library/java/google-api-java-client/errors for an example in java.",
+              "description": "Uploads a new Android App Bundle to this edit. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example in java.",
               "parameters": {
                 "ackBundleInstallationWarning": {
                   "description": "Must be set to true if the bundle installation may trigger a warning on user devices (for example, if installation size may be over a threshold, typically 100 MB).",
@@ -3570,7 +3264,7 @@
                   "repeated": false
                 },
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3584,7 +3278,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3617,7 +3311,7 @@
                 "accept": [
                   "application/octet-stream"
                 ],
-                "maxSize": "10GB",
+                "maxSize": "10737418240",
                 "protocols": {
                   "simple": {
                     "multipart": true,
@@ -3637,12 +3331,12 @@
           "methods": {
             "upload": {
               "id": "androidpublisher.edits.deobfuscationfiles.upload",
-              "path": "{packageName}/edits/{editId}/apks/{apkVersionCode}/deobfuscationFiles/{deobfuscationFileType}",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/deobfuscationFiles/{deobfuscationFileType}",
               "httpMethod": "POST",
-              "description": "Uploads the deobfuscation file of the specified APK. If a deobfuscation or symbolication file already exists, it will be replaced. See https://developer.android.com/studio/build/shrink-code to learn more about deobfuscation files.",
+              "description": "Uploads a new deobfuscation file and attaches to the specified APK.",
               "parameters": {
                 "apkVersionCode": {
-                  "description": "The version code of the APK whose deobfuscation file is being uploaded.",
+                  "description": "The version code of the APK whose Deobfuscation File is being uploaded.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3656,7 +3350,7 @@
                   "repeated": false
                 },
                 "deobfuscationFileType": {
-                  "description": null,
+                  "description": "The type of the deobfuscation file.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3666,12 +3360,14 @@
                   "maximum": null,
                   "pattern": null,
                   "enum": [
-                    "nativeCode",
-                    "proguard"
+                    "deobfuscationFileTypeUnspecified",
+                    "proguard",
+                    "nativeCode"
                   ],
                   "enumDescriptions": [
-                    "",
-                    ""
+                    "Unspecified deobfuscation file type.",
+                    "Proguard deobfuscation file type.",
+                    "Native debugging symbols file type."
                   ],
                   "repeated": false
                 },
@@ -3690,7 +3386,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier of the Android app for which the deobfuscation files are being uploaded; for example, \"com.spiffygame\".",
+                  "description": "Unique identifier for the Android app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3725,7 +3421,7 @@
                 "accept": [
                   "application/octet-stream"
                 ],
-                "maxSize": "300MB",
+                "maxSize": "314572800",
                 "protocols": {
                   "simple": {
                     "multipart": true,
@@ -3745,12 +3441,12 @@
           "methods": {
             "get": {
               "id": "androidpublisher.edits.details.get",
-              "path": "{packageName}/edits/{editId}/details",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/details",
               "httpMethod": "GET",
-              "description": "Fetches app details for this edit. This includes the default language and developer support contact information.",
+              "description": "Gets details of an app.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3764,7 +3460,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3797,12 +3493,12 @@
             },
             "patch": {
               "id": "androidpublisher.edits.details.patch",
-              "path": "{packageName}/edits/{editId}/details",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/details",
               "httpMethod": "PATCH",
-              "description": "Updates app details for this edit. This method supports patch semantics.",
+              "description": "Patches details of an app.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3816,7 +3512,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3851,12 +3547,12 @@
             },
             "update": {
               "id": "androidpublisher.edits.details.update",
-              "path": "{packageName}/edits/{editId}/details",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/details",
               "httpMethod": "PUT",
-              "description": "Updates app details for this edit.",
+              "description": "Updates details of an app.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3870,7 +3566,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3910,12 +3606,12 @@
           "methods": {
             "get": {
               "id": "androidpublisher.edits.expansionfiles.get",
-              "path": "{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
               "httpMethod": "GET",
-              "description": "Fetches the Expansion File configuration for the APK specified.",
+              "description": "Fetches the expansion file configuration for the specified APK.",
               "parameters": {
                 "apkVersionCode": {
-                  "description": "The version code of the APK whose Expansion File configuration is being read or modified.",
+                  "description": "The version code of the APK whose expansion file configuration is being read or modified.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3929,7 +3625,7 @@
                   "repeated": false
                 },
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3943,7 +3639,7 @@
                   "repeated": false
                 },
                 "expansionFileType": {
-                  "description": null,
+                  "description": "The file type of the file configuration which is being read or modified.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3953,17 +3649,19 @@
                   "maximum": null,
                   "pattern": null,
                   "enum": [
+                    "expansionFileTypeUnspecified",
                     "main",
                     "patch"
                   ],
                   "enumDescriptions": [
-                    "",
-                    ""
+                    "Unspecified expansion file type.",
+                    "Main expansion file.",
+                    "Patch expansion file."
                   ],
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3998,12 +3696,12 @@
             },
             "patch": {
               "id": "androidpublisher.edits.expansionfiles.patch",
-              "path": "{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
               "httpMethod": "PATCH",
-              "description": "Updates the APK's Expansion File configuration to reference another APK's Expansion Files. To add a new Expansion File use the Upload method. This method supports patch semantics.",
+              "description": "Patches the APK's expansion file configuration to reference another APK's expansion file. To add a new expansion file use the Upload method.",
               "parameters": {
                 "apkVersionCode": {
-                  "description": "The version code of the APK whose Expansion File configuration is being read or modified.",
+                  "description": "The version code of the APK whose expansion file configuration is being read or modified.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4017,7 +3715,7 @@
                   "repeated": false
                 },
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4031,7 +3729,7 @@
                   "repeated": false
                 },
                 "expansionFileType": {
-                  "description": null,
+                  "description": "The file type of the expansion file configuration which is being updated.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4041,17 +3739,19 @@
                   "maximum": null,
                   "pattern": null,
                   "enum": [
+                    "expansionFileTypeUnspecified",
                     "main",
                     "patch"
                   ],
                   "enumDescriptions": [
-                    "",
-                    ""
+                    "Unspecified expansion file type.",
+                    "Main expansion file.",
+                    "Patch expansion file."
                   ],
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4088,12 +3788,12 @@
             },
             "update": {
               "id": "androidpublisher.edits.expansionfiles.update",
-              "path": "{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
               "httpMethod": "PUT",
-              "description": "Updates the APK's Expansion File configuration to reference another APK's Expansion Files. To add a new Expansion File use the Upload method.",
+              "description": "Updates the APK's expansion file configuration to reference another APK's expansion file. To add a new expansion file use the Upload method.",
               "parameters": {
                 "apkVersionCode": {
-                  "description": "The version code of the APK whose Expansion File configuration is being read or modified.",
+                  "description": "The version code of the APK whose expansion file configuration is being read or modified.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4107,7 +3807,7 @@
                   "repeated": false
                 },
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4121,7 +3821,7 @@
                   "repeated": false
                 },
                 "expansionFileType": {
-                  "description": null,
+                  "description": "The file type of the file configuration which is being read or modified.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4131,17 +3831,19 @@
                   "maximum": null,
                   "pattern": null,
                   "enum": [
+                    "expansionFileTypeUnspecified",
                     "main",
                     "patch"
                   ],
                   "enumDescriptions": [
-                    "",
-                    ""
+                    "Unspecified expansion file type.",
+                    "Main expansion file.",
+                    "Patch expansion file."
                   ],
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4178,12 +3880,12 @@
             },
             "upload": {
               "id": "androidpublisher.edits.expansionfiles.upload",
-              "path": "{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
               "httpMethod": "POST",
-              "description": "Uploads and attaches a new Expansion File to the APK specified.",
+              "description": "Uploads a new expansion file and attaches to the specified APK.",
               "parameters": {
                 "apkVersionCode": {
-                  "description": "The version code of the APK whose Expansion File configuration is being read or modified.",
+                  "description": "The version code of the APK whose expansion file configuration is being read or modified.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4197,7 +3899,7 @@
                   "repeated": false
                 },
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4211,7 +3913,7 @@
                   "repeated": false
                 },
                 "expansionFileType": {
-                  "description": null,
+                  "description": "The file type of the expansion file configuration which is being updated.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4221,17 +3923,19 @@
                   "maximum": null,
                   "pattern": null,
                   "enum": [
+                    "expansionFileTypeUnspecified",
                     "main",
                     "patch"
                   ],
                   "enumDescriptions": [
-                    "",
-                    ""
+                    "Unspecified expansion file type.",
+                    "Main expansion file.",
+                    "Patch expansion file."
                   ],
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4266,7 +3970,7 @@
                 "accept": [
                   "application/octet-stream"
                 ],
-                "maxSize": "2048MB",
+                "maxSize": "2147483648",
                 "protocols": {
                   "simple": {
                     "multipart": true,
@@ -4286,12 +3990,12 @@
           "methods": {
             "delete": {
               "id": "androidpublisher.edits.images.delete",
-              "path": "{packageName}/edits/{editId}/listings/{language}/{imageType}/{imageId}",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}/{imageId}",
               "httpMethod": "DELETE",
               "description": "Deletes the image (specified by id) from the edit.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4319,7 +4023,7 @@
                   "repeated": false
                 },
                 "imageType": {
-                  "description": null,
+                  "description": "Type of the Image.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4329,35 +4033,31 @@
                   "maximum": null,
                   "pattern": null,
                   "enum": [
-                    "automotiveScreenshots",
-                    "daydreamStereoImage",
-                    "featureGraphic",
-                    "icon",
+                    "appImageTypeUnspecified",
                     "phoneScreenshots",
-                    "promoGraphic",
                     "sevenInchScreenshots",
                     "tenInchScreenshots",
-                    "tvBanner",
                     "tvScreenshots",
-                    "wearScreenshots"
+                    "wearScreenshots",
+                    "icon",
+                    "featureGraphic",
+                    "tvBanner"
                   ],
                   "enumDescriptions": [
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    ""
+                    "Unspecified type. Do not use.",
+                    "Phone screenshot.",
+                    "Seven inch screenshot.",
+                    "Ten inch screenshot.",
+                    "TV screenshot.",
+                    "Wear screenshot.",
+                    "Icon.",
+                    "Feature graphic.",
+                    "TV banner."
                   ],
                   "repeated": false
                 },
                 "language": {
-                  "description": "The language code (a BCP-47 language tag) of the localized listing whose images are to read or modified. For example, to select Austrian German, pass \"de-AT\".",
+                  "description": "Language localization code (a BCP-47 language tag; for example, \"de-AT\" for Austrian German).",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4371,7 +4071,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4405,12 +4105,12 @@
             },
             "deleteall": {
               "id": "androidpublisher.edits.images.deleteall",
-              "path": "{packageName}/edits/{editId}/listings/{language}/{imageType}",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}",
               "httpMethod": "DELETE",
-              "description": "Deletes all images for the specified language and image type.",
+              "description": "Deletes all images for the specified language and image type. Returns an empty response if no images are found.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4424,7 +4124,7 @@
                   "repeated": false
                 },
                 "imageType": {
-                  "description": null,
+                  "description": "Type of the Image. Providing an image type that refers to no images is a no-op.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4434,35 +4134,31 @@
                   "maximum": null,
                   "pattern": null,
                   "enum": [
-                    "automotiveScreenshots",
-                    "daydreamStereoImage",
-                    "featureGraphic",
-                    "icon",
+                    "appImageTypeUnspecified",
                     "phoneScreenshots",
-                    "promoGraphic",
                     "sevenInchScreenshots",
                     "tenInchScreenshots",
-                    "tvBanner",
                     "tvScreenshots",
-                    "wearScreenshots"
+                    "wearScreenshots",
+                    "icon",
+                    "featureGraphic",
+                    "tvBanner"
                   ],
                   "enumDescriptions": [
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    ""
+                    "Unspecified type. Do not use.",
+                    "Phone screenshot.",
+                    "Seven inch screenshot.",
+                    "Ten inch screenshot.",
+                    "TV screenshot.",
+                    "Wear screenshot.",
+                    "Icon.",
+                    "Feature graphic.",
+                    "TV banner."
                   ],
                   "repeated": false
                 },
                 "language": {
-                  "description": "The language code (a BCP-47 language tag) of the localized listing whose images are to read or modified. For example, to select Austrian German, pass \"de-AT\".",
+                  "description": "Language localization code (a BCP-47 language tag; for example, \"de-AT\" for Austrian German). Providing a language that is not supported by the App is a no-op.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4476,7 +4172,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4511,12 +4207,12 @@
             },
             "list": {
               "id": "androidpublisher.edits.images.list",
-              "path": "{packageName}/edits/{editId}/listings/{language}/{imageType}",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}",
               "httpMethod": "GET",
-              "description": "Lists all images for the specified language and image type.",
+              "description": "Lists all images. The response may be empty.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4530,7 +4226,7 @@
                   "repeated": false
                 },
                 "imageType": {
-                  "description": null,
+                  "description": "Type of the Image. Providing an image type that refers to no images will return an empty response.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4540,35 +4236,31 @@
                   "maximum": null,
                   "pattern": null,
                   "enum": [
-                    "automotiveScreenshots",
-                    "daydreamStereoImage",
-                    "featureGraphic",
-                    "icon",
+                    "appImageTypeUnspecified",
                     "phoneScreenshots",
-                    "promoGraphic",
                     "sevenInchScreenshots",
                     "tenInchScreenshots",
-                    "tvBanner",
                     "tvScreenshots",
-                    "wearScreenshots"
+                    "wearScreenshots",
+                    "icon",
+                    "featureGraphic",
+                    "tvBanner"
                   ],
                   "enumDescriptions": [
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    ""
+                    "Unspecified type. Do not use.",
+                    "Phone screenshot.",
+                    "Seven inch screenshot.",
+                    "Ten inch screenshot.",
+                    "TV screenshot.",
+                    "Wear screenshot.",
+                    "Icon.",
+                    "Feature graphic.",
+                    "TV banner."
                   ],
                   "repeated": false
                 },
                 "language": {
-                  "description": "The language code (a BCP-47 language tag) of the localized listing whose images are to read or modified. For example, to select Austrian German, pass \"de-AT\".",
+                  "description": "Language localization code (a BCP-47 language tag; for example, \"de-AT\" for Austrian German). There must be a store listing for the specified language.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4582,7 +4274,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4617,12 +4309,12 @@
             },
             "upload": {
               "id": "androidpublisher.edits.images.upload",
-              "path": "{packageName}/edits/{editId}/listings/{language}/{imageType}",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}",
               "httpMethod": "POST",
-              "description": "Uploads a new image and adds it to the list of images for the specified language and image type.",
+              "description": "Uploads an image of the specified language and image type, and adds to the edit.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4636,7 +4328,7 @@
                   "repeated": false
                 },
                 "imageType": {
-                  "description": null,
+                  "description": "Type of the Image.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4646,35 +4338,31 @@
                   "maximum": null,
                   "pattern": null,
                   "enum": [
-                    "automotiveScreenshots",
-                    "daydreamStereoImage",
-                    "featureGraphic",
-                    "icon",
+                    "appImageTypeUnspecified",
                     "phoneScreenshots",
-                    "promoGraphic",
                     "sevenInchScreenshots",
                     "tenInchScreenshots",
-                    "tvBanner",
                     "tvScreenshots",
-                    "wearScreenshots"
+                    "wearScreenshots",
+                    "icon",
+                    "featureGraphic",
+                    "tvBanner"
                   ],
                   "enumDescriptions": [
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    ""
+                    "Unspecified type. Do not use.",
+                    "Phone screenshot.",
+                    "Seven inch screenshot.",
+                    "Ten inch screenshot.",
+                    "TV screenshot.",
+                    "Wear screenshot.",
+                    "Icon.",
+                    "Feature graphic.",
+                    "TV banner."
                   ],
                   "repeated": false
                 },
                 "language": {
-                  "description": "The language code (a BCP-47 language tag) of the localized listing whose images are to read or modified. For example, to select Austrian German, pass \"de-AT\".",
+                  "description": "Language localization code (a BCP-47 language tag; for example, \"de-AT\" for Austrian German). Providing a language that is not supported by the App is a no-op.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4688,7 +4376,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4723,7 +4411,7 @@
                 "accept": [
                   "image/*"
                 ],
-                "maxSize": "15MB",
+                "maxSize": "15728640",
                 "protocols": {
                   "simple": {
                     "multipart": true,
@@ -4743,12 +4431,12 @@
           "methods": {
             "delete": {
               "id": "androidpublisher.edits.listings.delete",
-              "path": "{packageName}/edits/{editId}/listings/{language}",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
               "httpMethod": "DELETE",
-              "description": "Deletes the specified localized store listing from an edit.",
+              "description": "Deletes a localized store listing.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4762,7 +4450,7 @@
                   "repeated": false
                 },
                 "language": {
-                  "description": "The language code (a BCP-47 language tag) of the localized listing to read or modify. For example, to select Austrian German, pass \"de-AT\".",
+                  "description": "Language localization code (a BCP-47 language tag; for example, \"de-AT\" for Austrian German).",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4776,7 +4464,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4808,12 +4496,12 @@
             },
             "deleteall": {
               "id": "androidpublisher.edits.listings.deleteall",
-              "path": "{packageName}/edits/{editId}/listings",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings",
               "httpMethod": "DELETE",
-              "description": "Deletes all localized listings from an edit.",
+              "description": "Deletes all store listings.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4827,7 +4515,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4858,12 +4546,12 @@
             },
             "get": {
               "id": "androidpublisher.edits.listings.get",
-              "path": "{packageName}/edits/{editId}/listings/{language}",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
               "httpMethod": "GET",
-              "description": "Fetches information about a localized store listing.",
+              "description": "Gets a localized store listing.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4877,7 +4565,7 @@
                   "repeated": false
                 },
                 "language": {
-                  "description": "The language code (a BCP-47 language tag) of the localized listing to read or modify. For example, to select Austrian German, pass \"de-AT\".",
+                  "description": "Language localization code (a BCP-47 language tag; for example, \"de-AT\" for Austrian German).",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4891,7 +4579,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4925,12 +4613,12 @@
             },
             "list": {
               "id": "androidpublisher.edits.listings.list",
-              "path": "{packageName}/edits/{editId}/listings",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings",
               "httpMethod": "GET",
-              "description": "Returns all of the localized store listings attached to this edit.",
+              "description": "Lists all localized store listings.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4944,7 +4632,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4977,12 +4665,12 @@
             },
             "patch": {
               "id": "androidpublisher.edits.listings.patch",
-              "path": "{packageName}/edits/{editId}/listings/{language}",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
               "httpMethod": "PATCH",
-              "description": "Creates or updates a localized store listing. This method supports patch semantics.",
+              "description": "Patches a localized store listing.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4996,7 +4684,7 @@
                   "repeated": false
                 },
                 "language": {
-                  "description": "The language code (a BCP-47 language tag) of the localized listing to read or modify. For example, to select Austrian German, pass \"de-AT\".",
+                  "description": "Language localization code (a BCP-47 language tag; for example, \"de-AT\" for Austrian German).",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5010,7 +4698,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5046,12 +4734,12 @@
             },
             "update": {
               "id": "androidpublisher.edits.listings.update",
-              "path": "{packageName}/edits/{editId}/listings/{language}",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
               "httpMethod": "PUT",
               "description": "Creates or updates a localized store listing.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5065,7 +4753,7 @@
                   "repeated": false
                 },
                 "language": {
-                  "description": "The language code (a BCP-47 language tag) of the localized listing to read or modify. For example, to select Austrian German, pass \"de-AT\".",
+                  "description": "Language localization code (a BCP-47 language tag; for example, \"de-AT\" for Austrian German).",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5079,7 +4767,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5120,12 +4808,12 @@
           "methods": {
             "get": {
               "id": "androidpublisher.edits.testers.get",
-              "path": "{packageName}/edits/{editId}/testers/{track}",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}",
               "httpMethod": "GET",
-              "description": null,
+              "description": "Gets testers.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5139,7 +4827,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5153,7 +4841,7 @@
                   "repeated": false
                 },
                 "track": {
-                  "description": "The track to read or modify.",
+                  "description": "The track to read from.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5187,12 +4875,12 @@
             },
             "patch": {
               "id": "androidpublisher.edits.testers.patch",
-              "path": "{packageName}/edits/{editId}/testers/{track}",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}",
               "httpMethod": "PATCH",
-              "description": null,
+              "description": "Patches testers.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5206,7 +4894,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5220,7 +4908,7 @@
                   "repeated": false
                 },
                 "track": {
-                  "description": "The track to read or modify.",
+                  "description": "The track to update.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5256,12 +4944,12 @@
             },
             "update": {
               "id": "androidpublisher.edits.testers.update",
-              "path": "{packageName}/edits/{editId}/testers/{track}",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}",
               "httpMethod": "PUT",
-              "description": null,
+              "description": "Updates testers.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5275,7 +4963,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5289,7 +4977,7 @@
                   "repeated": false
                 },
                 "track": {
-                  "description": "The track to read or modify.",
+                  "description": "The track to update.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5330,12 +5018,12 @@
           "methods": {
             "get": {
               "id": "androidpublisher.edits.tracks.get",
-              "path": "{packageName}/edits/{editId}/tracks/{track}",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}",
               "httpMethod": "GET",
-              "description": "Fetches the track configuration for the specified track type. Includes the APK version codes that are in this track.",
+              "description": "Gets a track.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5349,7 +5037,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5363,7 +5051,7 @@
                   "repeated": false
                 },
                 "track": {
-                  "description": "The track to read or modify.",
+                  "description": "Identifier of the track.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5397,12 +5085,12 @@
             },
             "list": {
               "id": "androidpublisher.edits.tracks.list",
-              "path": "{packageName}/edits/{editId}/tracks",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks",
               "httpMethod": "GET",
-              "description": "Lists all the track configurations for this edit.",
+              "description": "Lists all tracks.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5416,7 +5104,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5449,12 +5137,12 @@
             },
             "patch": {
               "id": "androidpublisher.edits.tracks.patch",
-              "path": "{packageName}/edits/{editId}/tracks/{track}",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}",
               "httpMethod": "PATCH",
-              "description": "Updates the track configuration for the specified track type. This method supports patch semantics.",
+              "description": "Patches a track.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5468,7 +5156,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5482,7 +5170,7 @@
                   "repeated": false
                 },
                 "track": {
-                  "description": "The track to read or modify.",
+                  "description": "Identifier of the track.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5518,12 +5206,12 @@
             },
             "update": {
               "id": "androidpublisher.edits.tracks.update",
-              "path": "{packageName}/edits/{editId}/tracks/{track}",
+              "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}",
               "httpMethod": "PUT",
-              "description": "Updates the track configuration for the specified track type.",
+              "description": "Updates a track.",
               "parameters": {
                 "editId": {
-                  "description": "Unique identifier for this edit.",
+                  "description": "Identifier of the edit.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5537,7 +5225,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5551,7 +5239,7 @@
                   "repeated": false
                 },
                 "track": {
-                  "description": "The track to read or modify.",
+                  "description": "Identifier of the track.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5591,12 +5279,12 @@
       "methods": {
         "commit": {
           "id": "androidpublisher.edits.commit",
-          "path": "{packageName}/edits/{editId}:commit",
+          "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}:commit",
           "httpMethod": "POST",
-          "description": "Commits/applies the changes made in this edit back to the app.",
+          "description": "Commits an app edit.",
           "parameters": {
             "editId": {
-              "description": "Unique identifier for this edit.",
+              "description": "Identifier of the edit.",
               "default": null,
               "location": "path",
               "required": true,
@@ -5610,7 +5298,7 @@
               "repeated": false
             },
             "packageName": {
-              "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+              "description": "Package name of the app.",
               "default": null,
               "location": "path",
               "required": true,
@@ -5643,12 +5331,12 @@
         },
         "delete": {
           "id": "androidpublisher.edits.delete",
-          "path": "{packageName}/edits/{editId}",
+          "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}",
           "httpMethod": "DELETE",
-          "description": "Deletes an edit for an app. Creating a new edit will automatically delete any of your previous edits so this method need only be called if you want to preemptively abandon an edit.",
+          "description": "Deletes an app edit.",
           "parameters": {
             "editId": {
-              "description": "Unique identifier for this edit.",
+              "description": "Identifier of the edit.",
               "default": null,
               "location": "path",
               "required": true,
@@ -5662,7 +5350,7 @@
               "repeated": false
             },
             "packageName": {
-              "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+              "description": "Package name of the app.",
               "default": null,
               "location": "path",
               "required": true,
@@ -5693,12 +5381,12 @@
         },
         "get": {
           "id": "androidpublisher.edits.get",
-          "path": "{packageName}/edits/{editId}",
+          "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}",
           "httpMethod": "GET",
-          "description": "Returns information about the edit specified. Calls will fail if the edit is no long active (e.g. has been deleted, superseded or expired).",
+          "description": "Gets an app edit.",
           "parameters": {
             "editId": {
-              "description": "Unique identifier for this edit.",
+              "description": "Identifier of the edit.",
               "default": null,
               "location": "path",
               "required": true,
@@ -5712,7 +5400,7 @@
               "repeated": false
             },
             "packageName": {
-              "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+              "description": "Package name of the app.",
               "default": null,
               "location": "path",
               "required": true,
@@ -5745,12 +5433,12 @@
         },
         "insert": {
           "id": "androidpublisher.edits.insert",
-          "path": "{packageName}/edits",
+          "path": "androidpublisher/v3/applications/{packageName}/edits",
           "httpMethod": "POST",
-          "description": "Creates a new edit for an app, populated with the app's current state.",
+          "description": "Creates a new edit for an app.",
           "parameters": {
             "packageName": {
-              "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+              "description": "Package name of the app.",
               "default": null,
               "location": "path",
               "required": true,
@@ -5784,12 +5472,12 @@
         },
         "validate": {
           "id": "androidpublisher.edits.validate",
-          "path": "{packageName}/edits/{editId}:validate",
+          "path": "androidpublisher/v3/applications/{packageName}/edits/{editId}:validate",
           "httpMethod": "POST",
-          "description": "Checks that the edit can be successfully committed. The edit's changes are not applied to the live app.",
+          "description": "Validates an app edit.",
           "parameters": {
             "editId": {
-              "description": "Unique identifier for this edit.",
+              "description": "Identifier of the edit.",
               "default": null,
               "location": "path",
               "required": true,
@@ -5803,7 +5491,7 @@
               "repeated": false
             },
             "packageName": {
-              "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+              "description": "Package name of the app.",
               "default": null,
               "location": "path",
               "required": true,
@@ -5841,12 +5529,12 @@
       "methods": {
         "delete": {
           "id": "androidpublisher.inappproducts.delete",
-          "path": "{packageName}/inappproducts/{sku}",
+          "path": "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
           "httpMethod": "DELETE",
-          "description": "Delete an in-app product for an app.",
+          "description": "Deletes an in-app product (i.e. a managed product or a subscriptions).",
           "parameters": {
             "packageName": {
-              "description": "Unique identifier for the Android app with the in-app product; for example, \"com.spiffygame\".",
+              "description": "Package name of the app.",
               "default": null,
               "location": "path",
               "required": true,
@@ -5891,12 +5579,12 @@
         },
         "get": {
           "id": "androidpublisher.inappproducts.get",
-          "path": "{packageName}/inappproducts/{sku}",
+          "path": "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
           "httpMethod": "GET",
-          "description": "Returns information about the in-app product specified.",
+          "description": "Gets an in-app product, which can be a managed product or a subscription.",
           "parameters": {
             "packageName": {
-              "description": null,
+              "description": "Package name of the app.",
               "default": null,
               "location": "path",
               "required": true,
@@ -5943,9 +5631,9 @@
         },
         "insert": {
           "id": "androidpublisher.inappproducts.insert",
-          "path": "{packageName}/inappproducts",
+          "path": "androidpublisher/v3/applications/{packageName}/inappproducts",
           "httpMethod": "POST",
-          "description": "Creates a new in-app product for an app.",
+          "description": "Creates an in-app product (i.e. a managed product or a subscriptions).",
           "parameters": {
             "autoConvertMissingPrices": {
               "description": "If true the prices for all regions targeted by the parent app that don't have a price specified for this in-app product will be auto converted to the target currency based on the default price. Defaults to false.",
@@ -5962,7 +5650,7 @@
               "repeated": false
             },
             "packageName": {
-              "description": "Unique identifier for the Android app; for example, \"com.spiffygame\".",
+              "description": "Package name of the app.",
               "default": null,
               "location": "path",
               "required": true,
@@ -5996,12 +5684,12 @@
         },
         "list": {
           "id": "androidpublisher.inappproducts.list",
-          "path": "{packageName}/inappproducts",
+          "path": "androidpublisher/v3/applications/{packageName}/inappproducts",
           "httpMethod": "GET",
-          "description": "List all the in-app products for an Android app, both subscriptions and managed in-app products..",
+          "description": "Lists all in-app products - both managed products and subscriptions.",
           "parameters": {
             "maxResults": {
-              "description": null,
+              "description": "How many results the list operation should return.",
               "default": null,
               "location": "query",
               "required": false,
@@ -6015,7 +5703,7 @@
               "repeated": false
             },
             "packageName": {
-              "description": "Unique identifier for the Android app with in-app products; for example, \"com.spiffygame\".",
+              "description": "Package name of the app.",
               "default": null,
               "location": "path",
               "required": true,
@@ -6029,7 +5717,7 @@
               "repeated": false
             },
             "startIndex": {
-              "description": null,
+              "description": "The index of the first element to return.",
               "default": null,
               "location": "query",
               "required": false,
@@ -6043,7 +5731,7 @@
               "repeated": false
             },
             "token": {
-              "description": null,
+              "description": "Pagination token. If empty, list starts at the first product.",
               "default": null,
               "location": "query",
               "required": false,
@@ -6075,9 +5763,9 @@
         },
         "patch": {
           "id": "androidpublisher.inappproducts.patch",
-          "path": "{packageName}/inappproducts/{sku}",
+          "path": "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
           "httpMethod": "PATCH",
-          "description": "Updates the details of an in-app product. This method supports patch semantics.",
+          "description": "Patches an in-app product (i.e. a managed product or a subscriptions).",
           "parameters": {
             "autoConvertMissingPrices": {
               "description": "If true the prices for all regions targeted by the parent app that don't have a price specified for this in-app product will be auto converted to the target currency based on the default price. Defaults to false.",
@@ -6094,7 +5782,7 @@
               "repeated": false
             },
             "packageName": {
-              "description": "Unique identifier for the Android app with the in-app product; for example, \"com.spiffygame\".",
+              "description": "Package name of the app.",
               "default": null,
               "location": "path",
               "required": true,
@@ -6143,9 +5831,9 @@
         },
         "update": {
           "id": "androidpublisher.inappproducts.update",
-          "path": "{packageName}/inappproducts/{sku}",
+          "path": "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
           "httpMethod": "PUT",
-          "description": "Updates the details of an in-app product.",
+          "description": "Updates an in-app product (i.e. a managed product or a subscriptions).",
           "parameters": {
             "autoConvertMissingPrices": {
               "description": "If true the prices for all regions targeted by the parent app that don't have a price specified for this in-app product will be auto converted to the target currency based on the default price. Defaults to false.",
@@ -6162,7 +5850,7 @@
               "repeated": false
             },
             "packageName": {
-              "description": "Unique identifier for the Android app with the in-app product; for example, \"com.spiffygame\".",
+              "description": "Package name of the app.",
               "default": null,
               "location": "path",
               "required": true,
@@ -6216,12 +5904,12 @@
       "methods": {
         "uploadapk": {
           "id": "androidpublisher.internalappsharingartifacts.uploadapk",
-          "path": "internalappsharing/{packageName}/artifacts/apk",
+          "path": "androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/apk",
           "httpMethod": "POST",
-          "description": "Uploads an APK to internal app sharing. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See: https://developers.google.com/api-client-library/java/google-api-java-client/errors for an example in java.",
+          "description": "Uploads an APK to internal app sharing. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example in java.",
           "parameters": {
             "packageName": {
-              "description": "Unique identifier for the Android app; for example, \"com.spiffygame\".",
+              "description": "Package name of the app.",
               "default": null,
               "location": "path",
               "required": true,
@@ -6254,7 +5942,7 @@
               "application/octet-stream",
               "application/vnd.android.package-archive"
             ],
-            "maxSize": "1GB",
+            "maxSize": "1073741824",
             "protocols": {
               "simple": {
                 "multipart": true,
@@ -6269,12 +5957,12 @@
         },
         "uploadbundle": {
           "id": "androidpublisher.internalappsharingartifacts.uploadbundle",
-          "path": "internalappsharing/{packageName}/artifacts/bundle",
+          "path": "androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/bundle",
           "httpMethod": "POST",
-          "description": "Uploads an app bundle to internal app sharing. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See: https://developers.google.com/api-client-library/java/google-api-java-client/errors for an example in java.",
+          "description": "Uploads an app bundle to internal app sharing. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example in java.",
           "parameters": {
             "packageName": {
-              "description": "Unique identifier for the Android app; for example, \"com.spiffygame\".",
+              "description": "Package name of the app.",
               "default": null,
               "location": "path",
               "required": true,
@@ -6306,7 +5994,7 @@
             "accept": [
               "application/octet-stream"
             ],
-            "maxSize": "10GB",
+            "maxSize": "10737418240",
             "protocols": {
               "simple": {
                 "multipart": true,
@@ -6326,7 +6014,7 @@
       "methods": {
         "refund": {
           "id": "androidpublisher.orders.refund",
-          "path": "{packageName}/orders/{orderId}:refund",
+          "path": "androidpublisher/v3/applications/{packageName}/orders/{orderId}:refund",
           "httpMethod": "POST",
           "description": "Refund a user's subscription or in-app purchase order.",
           "parameters": {
@@ -6359,7 +6047,7 @@
               "repeated": false
             },
             "revoke": {
-              "description": "Whether to revoke the purchased item. If set to true, access to the subscription or in-app item will be terminated immediately. If the item is a recurring subscription, all future payments will also be terminated. Consumed in-app items need to be handled by developer's app. (optional)",
+              "description": "Whether to revoke the purchased item. If set to true, access to the subscription or in-app item will be terminated immediately. If the item is a recurring subscription, all future payments will also be terminated. Consumed in-app items need to be handled by developer's app. (optional).",
               "default": null,
               "location": "query",
               "required": false,
@@ -6397,7 +6085,7 @@
           "methods": {
             "acknowledge": {
               "id": "androidpublisher.purchases.products.acknowledge",
-              "path": "{packageName}/purchases/products/{productId}/tokens/{token}:acknowledge",
+              "path": "androidpublisher/v3/applications/{packageName}/purchases/products/{productId}/tokens/{token}:acknowledge",
               "httpMethod": "POST",
               "description": "Acknowledges a purchase of an inapp item.",
               "parameters": {
@@ -6430,7 +6118,7 @@
                   "repeated": false
                 },
                 "token": {
-                  "description": "The token provided to the user's device when the subscription was purchased.",
+                  "description": "The token provided to the user's device when the inapp product was purchased.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -6464,7 +6152,7 @@
             },
             "get": {
               "id": "androidpublisher.purchases.products.get",
-              "path": "{packageName}/purchases/products/{productId}/tokens/{token}",
+              "path": "androidpublisher/v3/applications/{packageName}/purchases/products/{productId}/tokens/{token}",
               "httpMethod": "GET",
               "description": "Checks the purchase and consumption status of an inapp item.",
               "parameters": {
@@ -6536,7 +6224,7 @@
           "methods": {
             "acknowledge": {
               "id": "androidpublisher.purchases.subscriptions.acknowledge",
-              "path": "{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:acknowledge",
+              "path": "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:acknowledge",
               "httpMethod": "POST",
               "description": "Acknowledges a subscription purchase.",
               "parameters": {
@@ -6603,7 +6291,7 @@
             },
             "cancel": {
               "id": "androidpublisher.purchases.subscriptions.cancel",
-              "path": "{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:cancel",
+              "path": "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:cancel",
               "httpMethod": "POST",
               "description": "Cancels a user's subscription purchase. The subscription remains valid until its expiration time.",
               "parameters": {
@@ -6668,7 +6356,7 @@
             },
             "defer": {
               "id": "androidpublisher.purchases.subscriptions.defer",
-              "path": "{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:defer",
+              "path": "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:defer",
               "httpMethod": "POST",
               "description": "Defers a user's subscription purchase until a specified future expiration time.",
               "parameters": {
@@ -6737,7 +6425,7 @@
             },
             "get": {
               "id": "androidpublisher.purchases.subscriptions.get",
-              "path": "{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}",
+              "path": "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}",
               "httpMethod": "GET",
               "description": "Checks whether a user's subscription purchase is valid and returns its expiry time.",
               "parameters": {
@@ -6804,7 +6492,7 @@
             },
             "refund": {
               "id": "androidpublisher.purchases.subscriptions.refund",
-              "path": "{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:refund",
+              "path": "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:refund",
               "httpMethod": "POST",
               "description": "Refunds a user's subscription purchase, but the subscription remains valid until its expiration time and it will continue to recur.",
               "parameters": {
@@ -6823,7 +6511,7 @@
                   "repeated": false
                 },
                 "subscriptionId": {
-                  "description": "The purchased subscription ID (for example, 'monthly001').",
+                  "description": "\"The purchased subscription ID (for example, 'monthly001').",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -6869,7 +6557,7 @@
             },
             "revoke": {
               "id": "androidpublisher.purchases.subscriptions.revoke",
-              "path": "{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:revoke",
+              "path": "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:revoke",
               "httpMethod": "POST",
               "description": "Refunds and immediately revokes a user's subscription purchase. Access to the subscription will be terminated immediately and it will stop recurring.",
               "parameters": {
@@ -6939,7 +6627,7 @@
           "methods": {
             "list": {
               "id": "androidpublisher.purchases.voidedpurchases.list",
-              "path": "{packageName}/purchases/voidedpurchases",
+              "path": "androidpublisher/v3/applications/{packageName}/purchases/voidedpurchases",
               "httpMethod": "GET",
               "description": "Lists the purchases that were canceled, refunded or charged-back.",
               "parameters": {
@@ -6958,7 +6646,7 @@
                   "repeated": false
                 },
                 "maxResults": {
-                  "description": null,
+                  "description": "Defines how many results the list operation should return. The default number depends on the resource collection.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -6986,7 +6674,7 @@
                   "repeated": false
                 },
                 "startIndex": {
-                  "description": null,
+                  "description": "Defines the index of the first element to return. This can only be used if indexed paging is enabled.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -7014,7 +6702,7 @@
                   "repeated": false
                 },
                 "token": {
-                  "description": null,
+                  "description": "Defines the token of the page to return, usually taken from TokenPagination. This can only be used if token paging is enabled.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -7028,7 +6716,7 @@
                   "repeated": false
                 },
                 "type": {
-                  "description": "The type of voided purchases that you want to see in the response. Possible values are:  \n- 0: Only voided in-app product purchases will be returned in the response. This is the default value.\n- 1: Both voided in-app purchases and voided subscription purchases will be returned in the response.  Note: Before requesting to receive voided subscription purchases, you must switch to use orderId in the response which uniquely identifies one-time purchases and subscriptions. Otherwise, you will receive multiple subscription orders with the same PurchaseToken, because subscription renewal orders share the same PurchaseToken.",
+                  "description": "The type of voided purchases that you want to see in the response. Possible values are: 0. Only voided in-app product purchases will be returned in the response. This is the default value. 1. Both voided in-app purchases and voided subscription purchases will be returned in the response. Note: Before requesting to receive voided subscription purchases, you must switch to use orderId in the response which uniquely identifies one-time purchases and subscriptions. Otherwise, you will receive multiple subscription orders with the same PurchaseToken, because subscription renewal orders share the same PurchaseToken.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -7068,12 +6756,12 @@
       "methods": {
         "get": {
           "id": "androidpublisher.reviews.get",
-          "path": "{packageName}/reviews/{reviewId}",
+          "path": "androidpublisher/v3/applications/{packageName}/reviews/{reviewId}",
           "httpMethod": "GET",
-          "description": "Returns a single review.",
+          "description": "Gets a single review.",
           "parameters": {
             "packageName": {
-              "description": "Unique identifier for the Android app for which we want reviews; for example, \"com.spiffygame\".",
+              "description": "Package name of the app.",
               "default": null,
               "location": "path",
               "required": true,
@@ -7087,7 +6775,7 @@
               "repeated": false
             },
             "reviewId": {
-              "description": null,
+              "description": "Unique identifier for a review.",
               "default": null,
               "location": "path",
               "required": true,
@@ -7101,7 +6789,7 @@
               "repeated": false
             },
             "translationLanguage": {
-              "description": null,
+              "description": "Language localization code.",
               "default": null,
               "location": "query",
               "required": false,
@@ -7134,12 +6822,12 @@
         },
         "list": {
           "id": "androidpublisher.reviews.list",
-          "path": "{packageName}/reviews",
+          "path": "androidpublisher/v3/applications/{packageName}/reviews",
           "httpMethod": "GET",
-          "description": "Returns a list of reviews. Only reviews from last week will be returned.",
+          "description": "Lists all reviews.",
           "parameters": {
             "maxResults": {
-              "description": null,
+              "description": "How many results the list operation should return.",
               "default": null,
               "location": "query",
               "required": false,
@@ -7153,7 +6841,7 @@
               "repeated": false
             },
             "packageName": {
-              "description": "Unique identifier for the Android app for which we want reviews; for example, \"com.spiffygame\".",
+              "description": "Package name of the app.",
               "default": null,
               "location": "path",
               "required": true,
@@ -7167,7 +6855,7 @@
               "repeated": false
             },
             "startIndex": {
-              "description": null,
+              "description": "The index of the first element to return.",
               "default": null,
               "location": "query",
               "required": false,
@@ -7181,7 +6869,7 @@
               "repeated": false
             },
             "token": {
-              "description": null,
+              "description": "Pagination token. If empty, list starts at the first review.",
               "default": null,
               "location": "query",
               "required": false,
@@ -7195,7 +6883,7 @@
               "repeated": false
             },
             "translationLanguage": {
-              "description": null,
+              "description": "Language localization code.",
               "default": null,
               "location": "query",
               "required": false,
@@ -7227,12 +6915,12 @@
         },
         "reply": {
           "id": "androidpublisher.reviews.reply",
-          "path": "{packageName}/reviews/{reviewId}:reply",
+          "path": "androidpublisher/v3/applications/{packageName}/reviews/{reviewId}:reply",
           "httpMethod": "POST",
-          "description": "Reply to a single review, or update an existing reply.",
+          "description": "Replies to a single review, or updates an existing reply.",
           "parameters": {
             "packageName": {
-              "description": "Unique identifier for the Android app for which we want reviews; for example, \"com.spiffygame\".",
+              "description": "Package name of the app.",
               "default": null,
               "location": "path",
               "required": true,
@@ -7246,7 +6934,7 @@
               "repeated": false
             },
             "reviewId": {
-              "description": null,
+              "description": "Unique identifier for a review.",
               "default": null,
               "location": "path",
               "required": true,
@@ -7288,12 +6976,12 @@
           "methods": {
             "create": {
               "id": "androidpublisher.systemapks.variants.create",
-              "path": "{packageName}/systemApks/{versionCode}/variants",
+              "path": "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants",
               "httpMethod": "POST",
-              "description": "Creates a new variant of APK which is suitable for inclusion in a system image.",
+              "description": "Creates an APK which is suitable for inclusion in a system image from an already uploaded Android App Bundle.",
               "parameters": {
                 "packageName": {
-                  "description": "Unique identifier for the Android app; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -7326,7 +7014,7 @@
                 "versionCode"
               ],
               "request": {
-                "$ref": "SystemApkVariantsCreateRequest"
+                "$ref": "Variant"
               },
               "response": {
                 "$ref": "Variant"
@@ -7342,12 +7030,12 @@
             },
             "download": {
               "id": "androidpublisher.systemapks.variants.download",
-              "path": "{packageName}/systemApks/{versionCode}/variants/{variantId}:download",
+              "path": "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants/{variantId}:download",
               "httpMethod": "GET",
-              "description": "Download a previously created APK which is suitable for inclusion in a system image.",
+              "description": "Downloads a previously created system APK which is suitable for inclusion in a system image.",
               "parameters": {
                 "packageName": {
-                  "description": "Unique identifier for the Android app; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -7361,7 +7049,7 @@
                   "repeated": false
                 },
                 "variantId": {
-                  "description": null,
+                  "description": "The ID of a previously created system APK variant.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -7407,12 +7095,12 @@
             },
             "get": {
               "id": "androidpublisher.systemapks.variants.get",
-              "path": "{packageName}/systemApks/{versionCode}/variants/{variantId}",
+              "path": "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants/{variantId}",
               "httpMethod": "GET",
               "description": "Returns a previously created system APK variant.",
               "parameters": {
                 "packageName": {
-                  "description": "Unique identifier for the Android app; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -7426,7 +7114,7 @@
                   "repeated": false
                 },
                 "variantId": {
-                  "description": "Unique identifier for this variant.",
+                  "description": "The ID of a previously created system APK variant.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -7474,12 +7162,12 @@
             },
             "list": {
               "id": "androidpublisher.systemapks.variants.list",
-              "path": "{packageName}/systemApks/{versionCode}/variants",
+              "path": "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants",
               "httpMethod": "GET",
               "description": "Returns the list of previously created system APK variants.",
               "parameters": {
                 "packageName": {
-                  "description": "Unique identifier for the Android app; for example, \"com.spiffygame\".",
+                  "description": "Package name of the app.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -7513,7 +7201,7 @@
               ],
               "request": null,
               "response": {
-                "$ref": "SystemApkVariantsListResponse"
+                "$ref": "SystemApksListResponse"
               },
               "scopes": [
                 "https://www.googleapis.com/auth/androidpublisher"

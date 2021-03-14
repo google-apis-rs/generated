@@ -7,7 +7,7 @@
   "canonicalName": "Libraryagent",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200512",
+  "revision": "20210312",
   "title": "Library Agent API",
   "description": "A simple Google Example Library API.",
   "ownerDomain": "google.com",
@@ -226,7 +226,7 @@
           "items": null
         },
         "name": {
-          "description": "The resource name of the book.\nBook names have the form `shelves/{shelf_id}/books/{book_id}`.\nThe name is ignored when creating a book.",
+          "description": "The resource name of the book. Book names have the form `shelves/{shelf_id}/books/{book_id}`. The name is ignored when creating a book.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -280,7 +280,7 @@
           }
         },
         "nextPageToken": {
-          "description": "A token to retrieve next page of results.\nPass this value in the\nListBooksRequest.page_token\nfield in the subsequent call to `ListBooks` method to retrieve the next\npage of results.",
+          "description": "A token to retrieve next page of results. Pass this value in the ListBooksRequest.page_token field in the subsequent call to `ListBooks` method to retrieve the next page of results.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -302,7 +302,7 @@
       "enumDescriptions": [],
       "properties": {
         "nextPageToken": {
-          "description": "A token to retrieve next page of results.\nPass this value in the\nListShelvesRequest.page_token\nfield in the subsequent call to `ListShelves` method to retrieve the next\npage of results.",
+          "description": "A token to retrieve next page of results. Pass this value in the ListShelvesRequest.page_token field in the subsequent call to `ListShelves` method to retrieve the next page of results.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -336,7 +336,7 @@
       "enumDescriptions": [],
       "properties": {
         "name": {
-          "description": "Output only. The resource name of the shelf.\nShelf names have the form `shelves/{shelf_id}`.\nThe name is ignored when creating a shelf.",
+          "description": "Output only. The resource name of the shelf. Shelf names have the form `shelves/{shelf_id}`. The name is ignored when creating a shelf.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -370,7 +370,7 @@
               "id": "libraryagent.shelves.books.borrow",
               "path": "v1/{+name}:borrow",
               "httpMethod": "POST",
-              "description": "Borrow a book from the library. Returns the book if it is borrowed\nsuccessfully. Returns NOT_FOUND if the book does not exist in the library.\nReturns quota exceeded error if the amount of books borrowed exceeds\nallocation quota in any dimensions.",
+              "description": "Borrow a book from the library. Returns the book if it is borrowed successfully. Returns NOT_FOUND if the book does not exist in the library. Returns quota exceeded error if the amount of books borrowed exceeds allocation quota in any dimensions.",
               "parameters": {
                 "name": {
                   "description": "Required. The name of the book to borrow.",
@@ -444,10 +444,10 @@
               "id": "libraryagent.shelves.books.list",
               "path": "v1/{+parent}/books",
               "httpMethod": "GET",
-              "description": "Lists books in a shelf. The order is unspecified but deterministic. Newly\ncreated books will not necessarily be added to the end of this list.\nReturns NOT_FOUND if the shelf does not exist.",
+              "description": "Lists books in a shelf. The order is unspecified but deterministic. Newly created books will not necessarily be added to the end of this list. Returns NOT_FOUND if the shelf does not exist.",
               "parameters": {
                 "pageSize": {
-                  "description": "Requested page size. Server may return fewer books than requested.\nIf unspecified, server will pick an appropriate default.",
+                  "description": "Requested page size. Server may return fewer books than requested. If unspecified, server will pick an appropriate default.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -461,7 +461,7 @@
                   "repeated": false
                 },
                 "pageToken": {
-                  "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListBooksResponse.next_page_token.\nreturned from the previous call to `ListBooks` method.",
+                  "description": "A token identifying a page of results the server should return. Typically, this is the value of ListBooksResponse.next_page_token. returned from the previous call to `ListBooks` method.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -509,7 +509,7 @@
               "id": "libraryagent.shelves.books.return",
               "path": "v1/{+name}:return",
               "httpMethod": "POST",
-              "description": "Return a book to the library. Returns the book if it is returned to the\nlibrary successfully.\nReturns error if the book does not belong to the library\nor the users didn't borrow before.",
+              "description": "Return a book to the library. Returns the book if it is returned to the library successfully. Returns error if the book does not belong to the library or the users didn't borrow before.",
               "parameters": {
                 "name": {
                   "description": "Required. The name of the book to return.",
@@ -587,10 +587,10 @@
           "id": "libraryagent.shelves.list",
           "path": "v1/shelves",
           "httpMethod": "GET",
-          "description": "Lists shelves. The order is unspecified but deterministic. Newly created\nshelves will not necessarily be added to the end of this list.",
+          "description": "Lists shelves. The order is unspecified but deterministic. Newly created shelves will not necessarily be added to the end of this list.",
           "parameters": {
             "pageSize": {
-              "description": "Requested page size. Server may return fewer shelves than requested.\nIf unspecified, server will pick an appropriate default.",
+              "description": "Requested page size. Server may return fewer shelves than requested. If unspecified, server will pick an appropriate default.",
               "default": null,
               "location": "query",
               "required": false,
@@ -604,7 +604,7 @@
               "repeated": false
             },
             "pageToken": {
-              "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nListShelvesResponse.next_page_token\nreturned from the previous call to `ListShelves` method.",
+              "description": "A token identifying a page of results the server should return. Typically, this is the value of ListShelvesResponse.next_page_token returned from the previous call to `ListShelves` method.",
               "default": null,
               "location": "query",
               "required": false,

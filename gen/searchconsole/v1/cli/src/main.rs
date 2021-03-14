@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("searchconsole1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200512")
-            .about("Provides tools for running validation tests against single URLs")
+            .version("0.1.0-20210309")
+            .about("The Search Console API provides access to both Search Console data (verified users only) and to public information on an URL basis (anyone)")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -33,6 +33,56 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .help("Provide more output to aid with debugging")
                 .multiple(false)
                 .takes_value(false));
+        let mut searchanalytics0 = SubCommand::with_name("searchanalytics")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: query");
+        {
+            let mcmd = SubCommand::with_name("query").about("Query your data with filters and parameters that you define. Returns zero or more rows grouped by the row keys that you define. You must define a date range of one or more days. When date is one of the group by values, any days without data are omitted from the result list. If you need to know which days have data, issue a broad date range query grouped by date for any metric, and see which day rows are returned.");
+            searchanalytics0 = searchanalytics0.subcommand(mcmd);
+        }
+        let mut sitemaps0 = SubCommand::with_name("sitemaps")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: delete, get, list and submit");
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes a sitemap from this site.");
+            sitemaps0 = sitemaps0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Retrieves information about a specific sitemap.");
+            sitemaps0 = sitemaps0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about(" Lists the [sitemaps-entries](/webmaster-tools/v3/sitemaps) submitted for this site, or included in the sitemap index file (if `sitemapIndex` is specified in the request).");
+            sitemaps0 = sitemaps0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("submit").about("Submits a sitemap for a site.");
+            sitemaps0 = sitemaps0.subcommand(mcmd);
+        }
+        let mut sites0 = SubCommand::with_name("sites")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: add, delete, get and list");
+        {
+            let mcmd = SubCommand::with_name("add")
+                .about(" Adds a site to the set of the user\'s sites in Search Console.");
+            sites0 = sites0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete")
+                .about(" Removes a site from the set of the user\'s Search Console sites.");
+            sites0 = sites0.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("get").about(" Retrieves information about specific site.");
+            sites0 = sites0.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("list").about(" Lists the user\'s Search Console sites.");
+            sites0 = sites0.subcommand(mcmd);
+        }
         let mut url_testing_tools0 = SubCommand::with_name("url_testing_tools")
             .setting(AppSettings::ColoredHelp)
             .about("sub-resources: mobile_friendly_test");
@@ -46,6 +96,9 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         url_testing_tools0 = url_testing_tools0.subcommand(mobile_friendly_test1);
         app = app.subcommand(url_testing_tools0);
+        app = app.subcommand(sites0);
+        app = app.subcommand(sitemaps0);
+        app = app.subcommand(searchanalytics0);
 
         Self { app }
     }

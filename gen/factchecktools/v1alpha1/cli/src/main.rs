@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("factchecktools1_alpha1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200511")
+            .version("0.1.0-20210312")
             .about("")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -60,12 +60,12 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("list").about(
-                "List the `ClaimReview` markup pages for a specific URL or for an\norganization.",
+                "List the `ClaimReview` markup pages for a specific URL or for an organization.",
             );
             pages0 = pages0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Update for all `ClaimReview` markup on a page\n\nNote that this is a full update. To retain the existing `ClaimReview`\nmarkup on a page, first perform a Get operation, then modify the returned\nmarkup, and finally call Update with the entire `ClaimReview` markup as the\nbody.");
+            let mcmd = SubCommand::with_name("update").about("Update for all `ClaimReview` markup on a page Note that this is a full update. To retain the existing `ClaimReview` markup on a page, first perform a Get operation, then modify the returned markup, and finally call Update with the entire `ClaimReview` markup as the body.");
             pages0 = pages0.subcommand(mcmd);
         }
         app = app.subcommand(pages0);

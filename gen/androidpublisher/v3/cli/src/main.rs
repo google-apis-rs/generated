@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("androidpublisher3")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200505")
-            .about("Accesses Android application developers\' Google Play accounts.")
+            .version("0.1.0-20210311")
+            .about("Lets Android application developers access their Google Play accounts.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -37,69 +37,67 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: commit, delete, get, insert and validate");
         {
-            let mcmd = SubCommand::with_name("commit")
-                .about("Commits/applies the changes made in this edit back to the app.");
+            let mcmd = SubCommand::with_name("commit").about("Commits an app edit.");
             edits0 = edits0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes an edit for an app. Creating a new edit will automatically delete any of your previous edits so this method need only be called if you want to preemptively abandon an edit.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes an app edit.");
             edits0 = edits0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Returns information about the edit specified. Calls will fail if the edit is no long active (e.g. has been deleted, superseded or expired).");
+            let mcmd = SubCommand::with_name("get").about("Gets an app edit.");
             edits0 = edits0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("insert")
-                .about("Creates a new edit for an app, populated with the app\'s current state.");
+            let mcmd = SubCommand::with_name("insert").about("Creates a new edit for an app.");
             edits0 = edits0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("validate").about("Checks that the edit can be successfully committed. The edit\'s changes are not applied to the live app.");
+            let mcmd = SubCommand::with_name("validate").about("Validates an app edit.");
             edits0 = edits0.subcommand(mcmd);
         }
         let mut inappproducts0 = SubCommand::with_name("inappproducts")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete, get, insert, list, patch and update");
         {
-            let mcmd =
-                SubCommand::with_name("delete").about("Delete an in-app product for an app.");
+            let mcmd = SubCommand::with_name("delete")
+                .about("Deletes an in-app product (i.e. a managed product or a subscriptions).");
             inappproducts0 = inappproducts0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("get")
-                .about("Returns information about the in-app product specified.");
+                .about("Gets an in-app product, which can be a managed product or a subscription.");
             inappproducts0 = inappproducts0.subcommand(mcmd);
         }
         {
-            let mcmd =
-                SubCommand::with_name("insert").about("Creates a new in-app product for an app.");
+            let mcmd = SubCommand::with_name("insert")
+                .about("Creates an in-app product (i.e. a managed product or a subscriptions).");
             inappproducts0 = inappproducts0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("List all the in-app products for an Android app, both subscriptions and managed in-app products..");
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists all in-app products - both managed products and subscriptions.");
             inappproducts0 = inappproducts0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about(
-                "Updates the details of an in-app product. This method supports patch semantics.",
-            );
+            let mcmd = SubCommand::with_name("patch")
+                .about("Patches an in-app product (i.e. a managed product or a subscriptions).");
             inappproducts0 = inappproducts0.subcommand(mcmd);
         }
         {
-            let mcmd =
-                SubCommand::with_name("update").about("Updates the details of an in-app product.");
+            let mcmd = SubCommand::with_name("update")
+                .about("Updates an in-app product (i.e. a managed product or a subscriptions).");
             inappproducts0 = inappproducts0.subcommand(mcmd);
         }
         let mut internalappsharingartifacts0 = SubCommand::with_name("internalappsharingartifacts")
             .setting(AppSettings::ColoredHelp)
             .about("methods: uploadapk and uploadbundle");
         {
-            let mcmd = SubCommand::with_name("uploadapk").about("Uploads an APK to internal app sharing. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See: https://developers.google.com/api-client-library/java/google-api-java-client/errors for an example in java.");
+            let mcmd = SubCommand::with_name("uploadapk").about("Uploads an APK to internal app sharing. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example in java.");
             internalappsharingartifacts0 = internalappsharingartifacts0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("uploadbundle").about("Uploads an app bundle to internal app sharing. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See: https://developers.google.com/api-client-library/java/google-api-java-client/errors for an example in java.");
+            let mcmd = SubCommand::with_name("uploadbundle").about("Uploads an app bundle to internal app sharing. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example in java.");
             internalappsharingartifacts0 = internalappsharingartifacts0.subcommand(mcmd);
         }
         let mut orders0 = SubCommand::with_name("orders")
@@ -117,17 +115,16 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: get, list and reply");
         {
-            let mcmd = SubCommand::with_name("get").about("Returns a single review.");
+            let mcmd = SubCommand::with_name("get").about("Gets a single review.");
             reviews0 = reviews0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Returns a list of reviews. Only reviews from last week will be returned.");
+            let mcmd = SubCommand::with_name("list").about("Lists all reviews.");
             reviews0 = reviews0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("reply")
-                .about("Reply to a single review, or update an existing reply.");
+                .about("Replies to a single review, or updates an existing reply.");
             reviews0 = reviews0.subcommand(mcmd);
         }
         let mut systemapks0 = SubCommand::with_name("systemapks")
@@ -137,49 +134,52 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: addexternallyhosted, list and upload");
         {
-            let mcmd = SubCommand::with_name("addexternallyhosted").about("Creates a new APK without uploading the APK itself to Google Play, instead hosting the APK at a specified URL. This function is only available to enterprises using Google Play for Work whose application is configured to restrict distribution to the enterprise domain.");
+            let mcmd = SubCommand::with_name("addexternallyhosted").about("Creates a new APK without uploading the APK itself to Google Play, instead hosting the APK at a specified URL. This function is only available to organizations using Managed Play whose application is configured to restrict distribution to the organizations.");
             apks1 = apks1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list");
+            let mcmd =
+                SubCommand::with_name("list").about("Lists all current APKs of the app and edit.");
             apks1 = apks1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("upload");
+            let mcmd = SubCommand::with_name("upload")
+                .about("Uploads an APK and adds to the current edit.");
             apks1 = apks1.subcommand(mcmd);
         }
         let mut bundles1 = SubCommand::with_name("bundles")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list and upload");
         {
-            let mcmd = SubCommand::with_name("list");
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists all current Android App Bundles of the app and edit.");
             bundles1 = bundles1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("upload").about("Uploads a new Android App Bundle to this edit. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See: https://developers.google.com/api-client-library/java/google-api-java-client/errors for an example in java.");
+            let mcmd = SubCommand::with_name("upload").about("Uploads a new Android App Bundle to this edit. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example in java.");
             bundles1 = bundles1.subcommand(mcmd);
         }
         let mut deobfuscationfiles1 = SubCommand::with_name("deobfuscationfiles")
             .setting(AppSettings::ColoredHelp)
             .about("methods: upload");
         {
-            let mcmd = SubCommand::with_name("upload").about("Uploads the deobfuscation file of the specified APK. If a deobfuscation or symbolication file already exists, it will be replaced. See https://developer.android.com/studio/build/shrink-code to learn more about deobfuscation files.");
+            let mcmd = SubCommand::with_name("upload")
+                .about("Uploads a new deobfuscation file and attaches to the specified APK.");
             deobfuscationfiles1 = deobfuscationfiles1.subcommand(mcmd);
         }
         let mut details1 = SubCommand::with_name("details")
             .setting(AppSettings::ColoredHelp)
             .about("methods: get, patch and update");
         {
-            let mcmd = SubCommand::with_name("get").about("Fetches app details for this edit. This includes the default language and developer support contact information.");
+            let mcmd = SubCommand::with_name("get").about("Gets details of an app.");
             details1 = details1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch")
-                .about("Updates app details for this edit. This method supports patch semantics.");
+            let mcmd = SubCommand::with_name("patch").about("Patches details of an app.");
             details1 = details1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Updates app details for this edit.");
+            let mcmd = SubCommand::with_name("update").about("Updates details of an app.");
             details1 = details1.subcommand(mcmd);
         }
         let mut expansionfiles1 = SubCommand::with_name("expansionfiles")
@@ -187,20 +187,20 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .about("methods: get, patch, update and upload");
         {
             let mcmd = SubCommand::with_name("get")
-                .about("Fetches the Expansion File configuration for the APK specified.");
+                .about("Fetches the expansion file configuration for the specified APK.");
             expansionfiles1 = expansionfiles1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates the APK\'s Expansion File configuration to reference another APK\'s Expansion Files. To add a new Expansion File use the Upload method. This method supports patch semantics.");
+            let mcmd = SubCommand::with_name("patch").about("Patches the APK\'s expansion file configuration to reference another APK\'s expansion file. To add a new expansion file use the Upload method.");
             expansionfiles1 = expansionfiles1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Updates the APK\'s Expansion File configuration to reference another APK\'s Expansion Files. To add a new Expansion File use the Upload method.");
+            let mcmd = SubCommand::with_name("update").about("Updates the APK\'s expansion file configuration to reference another APK\'s expansion file. To add a new expansion file use the Upload method.");
             expansionfiles1 = expansionfiles1.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("upload")
-                .about("Uploads and attaches a new Expansion File to the APK specified.");
+                .about("Uploads a new expansion file and attaches to the specified APK.");
             expansionfiles1 = expansionfiles1.subcommand(mcmd);
         }
         let mut images1 = SubCommand::with_name("images")
@@ -212,44 +212,41 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             images1 = images1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("deleteall")
-                .about("Deletes all images for the specified language and image type.");
+            let mcmd = SubCommand::with_name("deleteall").about("Deletes all images for the specified language and image type. Returns an empty response if no images are found.");
             images1 = images1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Lists all images for the specified language and image type.");
+            let mcmd =
+                SubCommand::with_name("list").about("Lists all images. The response may be empty.");
             images1 = images1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("upload").about("Uploads a new image and adds it to the list of images for the specified language and image type.");
+            let mcmd = SubCommand::with_name("upload").about(
+                "Uploads an image of the specified language and image type, and adds to the edit.",
+            );
             images1 = images1.subcommand(mcmd);
         }
         let mut listings1 = SubCommand::with_name("listings")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete, deleteall, get, list, patch and update");
         {
-            let mcmd = SubCommand::with_name("delete")
-                .about("Deletes the specified localized store listing from an edit.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a localized store listing.");
             listings1 = listings1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("deleteall")
-                .about("Deletes all localized listings from an edit.");
+            let mcmd = SubCommand::with_name("deleteall").about("Deletes all store listings.");
             listings1 = listings1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get")
-                .about("Fetches information about a localized store listing.");
+            let mcmd = SubCommand::with_name("get").about("Gets a localized store listing.");
             listings1 = listings1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Returns all of the localized store listings attached to this edit.");
+            let mcmd = SubCommand::with_name("list").about("Lists all localized store listings.");
             listings1 = listings1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Creates or updates a localized store listing. This method supports patch semantics.");
+            let mcmd = SubCommand::with_name("patch").about("Patches a localized store listing.");
             listings1 = listings1.subcommand(mcmd);
         }
         {
@@ -261,36 +258,34 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: get, patch and update");
         {
-            let mcmd = SubCommand::with_name("get");
+            let mcmd = SubCommand::with_name("get").about("Gets testers.");
             testers1 = testers1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch");
+            let mcmd = SubCommand::with_name("patch").about("Patches testers.");
             testers1 = testers1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update");
+            let mcmd = SubCommand::with_name("update").about("Updates testers.");
             testers1 = testers1.subcommand(mcmd);
         }
         let mut tracks1 = SubCommand::with_name("tracks")
             .setting(AppSettings::ColoredHelp)
             .about("methods: get, list, patch and update");
         {
-            let mcmd = SubCommand::with_name("get").about("Fetches the track configuration for the specified track type. Includes the APK version codes that are in this track.");
+            let mcmd = SubCommand::with_name("get").about("Gets a track.");
             tracks1 = tracks1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Lists all the track configurations for this edit.");
+            let mcmd = SubCommand::with_name("list").about("Lists all tracks.");
             tracks1 = tracks1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates the track configuration for the specified track type. This method supports patch semantics.");
+            let mcmd = SubCommand::with_name("patch").about("Patches a track.");
             tracks1 = tracks1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update")
-                .about("Updates the track configuration for the specified track type.");
+            let mcmd = SubCommand::with_name("update").about("Updates a track.");
             tracks1 = tracks1.subcommand(mcmd);
         }
         let mut products1 = SubCommand::with_name("products")
@@ -348,13 +343,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, download, get and list");
         {
-            let mcmd = SubCommand::with_name("create").about(
-                "Creates a new variant of APK which is suitable for inclusion in a system image.",
-            );
+            let mcmd = SubCommand::with_name("create").about("Creates an APK which is suitable for inclusion in a system image from an already uploaded Android App Bundle.");
             variants1 = variants1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("download").about("Download a previously created APK which is suitable for inclusion in a system image.");
+            let mcmd = SubCommand::with_name("download").about("Downloads a previously created system APK which is suitable for inclusion in a system image.");
             variants1 = variants1.subcommand(mcmd);
         }
         {

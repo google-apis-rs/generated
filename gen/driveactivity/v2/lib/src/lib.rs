@@ -20,7 +20,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Action {
-        #[doc = "The actor responsible for this action (or empty if all actors are\nresponsible)."]
+        #[doc = "The actor responsible for this action (or empty if all actors are responsible)."]
         #[serde(
             rename = "actor",
             default,
@@ -34,7 +34,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub detail: ::std::option::Option<crate::schemas::ActionDetail>,
-        #[doc = "The target this action affects (or empty if affecting all targets). This\nrepresents the state of the target immediately after this action occurred."]
+        #[doc = "The target this action affects (or empty if affecting all targets). This represents the state of the target immediately after this action occurred."]
         #[serde(
             rename = "target",
             default,
@@ -647,7 +647,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Copy {
-        #[doc = "The the original object."]
+        #[doc = "The original object."]
         #[serde(
             rename = "originalObject",
             default,
@@ -678,21 +678,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Create {
-        #[doc = "If present, indicates the object was created by copying an existing Drive\nobject."]
+        #[doc = "If present, indicates the object was created by copying an existing Drive object."]
         #[serde(
             rename = "copy",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub copy: ::std::option::Option<crate::schemas::Copy>,
-        #[doc = "If present, indicates the object was newly created (e.g. as a blank\ndocument), not derived from a Drive object or external object."]
+        #[doc = "If present, indicates the object was newly created (e.g. as a blank document), not derived from a Drive object or external object."]
         #[serde(
             rename = "new",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub new: ::std::option::Option<crate::schemas::New>,
-        #[doc = "If present, indicates the object originated externally and was uploaded\nto Drive."]
+        #[doc = "If present, indicates the object originated externally and was uploaded to Drive."]
         #[serde(
             rename = "upload",
             default,
@@ -968,7 +968,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub legacy_id: ::std::option::Option<String>,
-        #[doc = "The name of the domain, e.g. \"google.com\"."]
+        #[doc = "The name of the domain, e.g. `google.com`."]
         #[serde(
             rename = "name",
             default,
@@ -999,7 +999,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Drive {
-        #[doc = "The resource name of the shared drive. The format is\n\"COLLECTION_ID/DRIVE_ID\". Clients should not assume a specific collection\nID for this resource name."]
+        #[doc = "The resource name of the shared drive. The format is `COLLECTION_ID/DRIVE_ID`. Clients should not assume a specific collection ID for this resource name."]
         #[serde(
             rename = "name",
             default,
@@ -1058,14 +1058,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub actors: ::std::option::Option<Vec<crate::schemas::Actor>>,
-        #[doc = "Key information about the primary action for this activity. This is either\nrepresentative, or the most important, of all actions in the activity,\naccording to the ConsolidationStrategy in the request."]
+        #[doc = "Key information about the primary action for this activity. This is either representative, or the most important, of all actions in the activity, according to the ConsolidationStrategy in the request."]
         #[serde(
             rename = "primaryActionDetail",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub primary_action_detail: ::std::option::Option<crate::schemas::ActionDetail>,
-        #[doc = "All Google Drive objects this activity is about (e.g. file, folder, drive).\nThis represents the state of the target immediately after the actions\noccurred."]
+        #[doc = "All Google Drive objects this activity is about (e.g. file, folder, drive). This represents the state of the target immediately after the actions occurred."]
         #[serde(
             rename = "targets",
             default,
@@ -1253,7 +1253,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub drive_file: ::std::option::Option<crate::schemas::DriveFile>,
-        #[doc = "The Drive item is a folder. Includes information about the type of\nfolder."]
+        #[doc = "The Drive item is a folder. Includes information about the type of folder."]
         #[serde(
             rename = "driveFolder",
             default,
@@ -1274,14 +1274,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub folder: ::std::option::Option<crate::schemas::Folder>,
-        #[doc = "The MIME type of the Drive item.  See\nhttps://developers.google.com/drive/v3/web/mime-types."]
+        #[doc = "The MIME type of the Drive item. See https://developers.google.com/drive/v3/web/mime-types."]
         #[serde(
             rename = "mimeType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mime_type: ::std::option::Option<String>,
-        #[doc = "The target Drive item. The format is \"items/ITEM_ID\"."]
+        #[doc = "The target Drive item. The format is `items/ITEM_ID`."]
         #[serde(
             rename = "name",
             default,
@@ -1333,7 +1333,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub drive_file: ::std::option::Option<crate::schemas::DriveFile>,
-        #[doc = "The Drive item is a folder. Includes information about the type of\nfolder."]
+        #[doc = "The Drive item is a folder. Includes information about the type of folder."]
         #[serde(
             rename = "driveFolder",
             default,
@@ -1354,7 +1354,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub folder: ::std::option::Option<crate::schemas::Folder>,
-        #[doc = "The target Drive item. The format is \"items/ITEM_ID\"."]
+        #[doc = "The target Drive item. The format is `items/ITEM_ID`."]
         #[serde(
             rename = "name",
             default,
@@ -1392,7 +1392,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DriveReference {
-        #[doc = "The resource name of the shared drive. The format is\n\"COLLECTION_ID/DRIVE_ID\". Clients should not assume a specific collection\nID for this resource name."]
+        #[doc = "The resource name of the shared drive. The format is `COLLECTION_ID/DRIVE_ID`. Clients should not assume a specific collection ID for this resource name."]
         #[serde(
             rename = "name",
             default,
@@ -1478,21 +1478,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct FileComment {
-        #[doc = "The comment in the discussion thread. This identifier is an opaque string\ncompatible with the Drive API; see\nhttps://developers.google.com/drive/v3/reference/comments/get"]
+        #[doc = "The comment in the discussion thread. This identifier is an opaque string compatible with the Drive API; see https://developers.google.com/drive/v3/reference/comments/get"]
         #[serde(
             rename = "legacyCommentId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub legacy_comment_id: ::std::option::Option<String>,
-        #[doc = "The discussion thread to which the comment was added. This identifier is an\nopaque string compatible with the Drive API and references the first\ncomment in a discussion; see\nhttps://developers.google.com/drive/v3/reference/comments/get"]
+        #[doc = "The discussion thread to which the comment was added. This identifier is an opaque string compatible with the Drive API and references the first comment in a discussion; see https://developers.google.com/drive/v3/reference/comments/get"]
         #[serde(
             rename = "legacyDiscussionId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub legacy_discussion_id: ::std::option::Option<String>,
-        #[doc = "The link to the discussion thread containing this comment, for example,\n\"https://docs.google.com/DOCUMENT_ID/edit?disco=THREAD_ID\"."]
+        #[doc = "The link to the discussion thread containing this comment, for example, `https://docs.google.com/DOCUMENT_ID/edit?disco=THREAD_ID`."]
         #[serde(
             rename = "linkToDiscussion",
             default,
@@ -1718,7 +1718,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_current_user: ::std::option::Option<bool>,
-        #[doc = "The identifier for this user that can be used with the People API to get\nmore information. The format is \"people/ACCOUNT_ID\". See\nhttps://developers.google.com/people/."]
+        #[doc = "The identifier for this user that can be used with the People API to get more information. The format is `people/ACCOUNT_ID`. See https://developers.google.com/people/."]
         #[serde(
             rename = "personName",
             default,
@@ -1911,7 +1911,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Permission {
-        #[doc = "If true, the item can be discovered (e.g. in the user's \"Shared with me\"\ncollection) without needing a link to the item."]
+        #[doc = "If true, the item can be discovered (e.g. in the user's \"Shared with me\" collection) without needing a link to the item."]
         #[serde(
             rename = "allowDiscovery",
             default,
@@ -1939,7 +1939,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub group: ::std::option::Option<crate::schemas::Group>,
-        #[doc = "Indicates the\n<a href=\"/drive/web/manage-sharing#roles\">Google Drive permissions\nrole</a>. The role determines a user's ability to read, write, and\ncomment on items."]
+        #[doc = "Indicates the [Google Drive permissions role](https://developers.google.com/drive/web/manage-sharing#roles). The role determines a user's ability to read, write, and comment on items."]
         #[serde(
             rename = "role",
             default,
@@ -1968,7 +1968,7 @@ pub mod schemas {
     pub enum PermissionRole {
         #[doc = "A role granting the ability to view and comment on content."]
         Commenter,
-        #[doc = "A role granting the ability to contribute content. This role is sometimes\nalso known as \"writer\"."]
+        #[doc = "A role granting the ability to contribute content. This role is sometimes also known as \"writer\"."]
         Editor,
         #[doc = "A role granting the ability to contribute and manage content."]
         FileOrganizer,
@@ -1976,11 +1976,11 @@ pub mod schemas {
         Organizer,
         #[doc = "A role granting full access."]
         Owner,
-        #[doc = "A role granting the ability to view content only after it has been\npublished to the web. This role is sometimes also known as \"published\nreader\". See https://support.google.com/sites/answer/6372880 for more\ninformation."]
+        #[doc = "A role granting the ability to view content only after it has been published to the web. This role is sometimes also known as \"published reader\". See https://support.google.com/sites/answer/6372880 for more information."]
         PublishedViewer,
         #[doc = "The role is not available."]
         RoleUnspecified,
-        #[doc = "A role granting the ability to view content. This role is sometimes also\nknown as \"reader\"."]
+        #[doc = "A role granting the ability to view content. This role is sometimes also known as \"reader\"."]
         Viewer,
     }
     impl PermissionRole {
@@ -2243,42 +2243,42 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct QueryDriveActivityRequest {
-        #[doc = "Return activities for this Drive folder and all children and descendants.\nThe format is \"items/ITEM_ID\"."]
+        #[doc = "Return activities for this Drive folder and all children and descendants. The format is `items/ITEM_ID`."]
         #[serde(
             rename = "ancestorName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ancestor_name: ::std::option::Option<String>,
-        #[doc = "Details on how to consolidate related actions that make up the activity. If\nnot set, then related actions are not consolidated."]
+        #[doc = "Details on how to consolidate related actions that make up the activity. If not set, then related actions are not consolidated."]
         #[serde(
             rename = "consolidationStrategy",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub consolidation_strategy: ::std::option::Option<crate::schemas::ConsolidationStrategy>,
-        #[doc = "The filtering for items returned from this query request. The format of the\nfilter string is a sequence of expressions, joined by an optional \"AND\",\nwhere each expression is of the form \"field operator value\".\n\nSupported fields:\n\n* <tt>time</tt>: Uses numerical operators on date values either in\n  terms of milliseconds since Jan 1, 1970 or in RFC 3339 format.\n  Examples:\n  \n  * <tt>time > 1452409200000 AND time <= 1492812924310</tt>\n  * <tt>time >= \"2016-01-10T01:02:03-05:00\"</tt>\n* <tt>detail.action_detail_case</tt>: Uses the \"has\" operator (:) and\n  either a singular value or a list of allowed action types enclosed in\n  parentheses.\n  Examples:\n  \n  * <tt>detail.action_detail_case: RENAME</tt>\n  * <tt>detail.action_detail_case:(CREATE EDIT)</tt>\n  * <tt>-detail.action_detail_case:MOVE</tt>"]
+        #[doc = "The filtering for items returned from this query request. The format of the filter string is a sequence of expressions, joined by an optional \"AND\", where each expression is of the form \"field operator value\". Supported fields: - `time`: Uses numerical operators on date values either in terms of milliseconds since Jan 1, 1970 or in RFC 3339 format. Examples: - `time > 1452409200000 AND time <= 1492812924310` - `time >= \"2016-01-10T01:02:03-05:00\"` - `detail.action_detail_case`: Uses the \"has\" operator (:) and either a singular value or a list of allowed action types enclosed in parentheses. Examples: - `detail.action_detail_case: RENAME` - `detail.action_detail_case:(CREATE EDIT)` - `-detail.action_detail_case:MOVE`"]
         #[serde(
             rename = "filter",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub filter: ::std::option::Option<String>,
-        #[doc = "Return activities for this Drive item. The format is\n\"items/ITEM_ID\"."]
+        #[doc = "Return activities for this Drive item. The format is `items/ITEM_ID`."]
         #[serde(
             rename = "itemName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub item_name: ::std::option::Option<String>,
-        #[doc = "The miminum number of activities desired in the response; the server will\nattempt to return at least this quanitity. The server may also return fewer\nactivities if it has a partial response ready before the request times out.\nIf not set, a default value is used."]
+        #[doc = "The miminum number of activities desired in the response; the server will attempt to return at least this quanitity. The server may also return fewer activities if it has a partial response ready before the request times out. If not set, a default value is used."]
         #[serde(
             rename = "pageSize",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub page_size: ::std::option::Option<i32>,
-        #[doc = "The token identifying which page of results to return. Set this to the\nnext_page_token value returned from a previous query to obtain the\nfollowing page of results. If not set, the first page of results will be\nreturned."]
+        #[doc = "The token identifying which page of results to return. Set this to the next_page_token value returned from a previous query to obtain the following page of results. If not set, the first page of results will be returned."]
         #[serde(
             rename = "pageToken",
             default,
@@ -2316,7 +2316,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub activities: ::std::option::Option<Vec<crate::schemas::DriveActivity>>,
-        #[doc = "Token to retrieve the next page of results, or\nempty if there are no more results in the list."]
+        #[doc = "Token to retrieve the next page of results, or empty if there are no more results in the list."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -2520,9 +2520,9 @@ pub mod schemas {
         DriveFileStream,
         #[doc = "The feature which changed restriction settings was not available."]
         FeatureUnspecified,
-        #[doc = "When restricted, this prevents actions like copy, download, and print\nthat might result in uncontrolled duplicates of items."]
+        #[doc = "When restricted, this prevents actions like copy, download, and print that might result in uncontrolled duplicates of items."]
         ItemDuplication,
-        #[doc = "When restricted, this prevents items from being shared outside the\ndomain."]
+        #[doc = "When restricted, this prevents items from being shared outside the domain."]
         SharingOutsideDomain,
     }
     impl RestrictionChangeFeature {
@@ -3423,17 +3423,17 @@ pub struct Client {
 impl Client {
     pub fn new<A>(auth: A) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client::with_reqwest_client(auth, ::reqwest::Client::builder().build().unwrap())
     }
     pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::Client) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client {
             reqwest,
-            auth: auth.into(),
+            auth: Box::new(auth),
         }
     }
     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
@@ -3601,7 +3601,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -3610,24 +3610,28 @@ pub mod resources {
                 output.push_str("v2/activity:query");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -3641,6 +3645,7 @@ pub enum Error {
         reqwest_err: ::reqwest::Error,
         body: Option<String>,
     },
+    IO(std::io::Error),
     Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
@@ -3650,6 +3655,7 @@ impl Error {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
             Error::Reqwest { .. } => None,
+            Error::IO(_) => None,
             Error::Other(_) => None,
         }
     }
@@ -3667,6 +3673,7 @@ impl ::std::fmt::Display for Error {
                 }
                 Ok(())
             }
+            Error::IO(err) => write!(f, "IO Error: {}", err),
             Error::Other(err) => write!(f, "Uknown Error: {}", err),
         }
     }
@@ -3686,6 +3693,12 @@ impl From<::reqwest::Error> for Error {
             reqwest_err,
             body: None,
         }
+    }
+}
+
+impl From<std::io::Error> for Error {
+    fn from(err: std::io::Error) -> Error {
+        Error::IO(err)
     }
 }
 #[allow(dead_code)]
@@ -3755,13 +3768,13 @@ mod multipart {
 
     pub(crate) struct Part {
         content_type: ::mime::Mime,
-        body: Box<dyn ::std::io::Read + Send>,
+        body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
     }
 
     impl Part {
         pub(crate) fn new(
             content_type: ::mime::Mime,
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         ) -> Part {
             Part { content_type, body }
         }
@@ -3770,7 +3783,7 @@ mod multipart {
     pub(crate) struct RelatedMultiPartReader {
         state: RelatedMultiPartReaderState,
         boundary: String,
-        next_body: Option<Box<dyn ::std::io::Read + Send>>,
+        next_body: Option<Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>>,
         parts: std::vec::IntoIter<Part>,
     }
 
@@ -3784,13 +3797,18 @@ mod multipart {
             content_type: Vec<u8>,
         },
         WriteBody {
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         },
     }
 
-    impl ::std::io::Read for RelatedMultiPartReader {
-        fn read(&mut self, buf: &mut [u8]) -> ::std::io::Result<usize> {
+    impl futures::io::AsyncRead for RelatedMultiPartReader {
+        fn poll_read(
+            mut self: std::pin::Pin<&mut Self>,
+            ctx: &mut futures::task::Context,
+            buf: &mut [u8],
+        ) -> futures::task::Poll<Result<usize, futures::io::Error>> {
             use RelatedMultiPartReaderState::*;
+
             let mut bytes_written: usize = 0;
             loop {
                 let rem_buf = &mut buf[bytes_written..];
@@ -3838,7 +3856,14 @@ mod multipart {
                         }
                     }
                     WriteBody { body } => {
-                        let written = body.read(rem_buf)?;
+                        let body = std::pin::Pin::new(body);
+                        let written = match futures::io::AsyncRead::poll_read(body, ctx, rem_buf) {
+                            futures::task::Poll::Ready(Ok(n)) => n,
+                            futures::task::Poll::Ready(Err(err)) => {
+                                return futures::task::Poll::Ready(Err(err));
+                            }
+                            futures::task::Poll::Pending => return futures::task::Poll::Pending,
+                        };
                         bytes_written += written;
                         if written == 0 {
                             self.state = WriteBoundary {
@@ -3851,7 +3876,8 @@ mod multipart {
                     }
                 }
             }
-            Ok(bytes_written)
+
+            futures::task::Poll::Ready(Ok(bytes_written))
         }
     }
 

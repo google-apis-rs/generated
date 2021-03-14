@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("drive3")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200505")
+            .version("0.1.0-20210308")
             .about("Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -129,9 +129,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: copy, create, delete, empty_trash, export, generate_ids, get, list, update and watch");
         {
-            let mcmd = SubCommand::with_name("copy").about(
-                "Creates a copy of a file and applies any requested updates with patch semantics.",
-            );
+            let mcmd = SubCommand::with_name("copy").about("Creates a copy of a file and applies any requested updates with patch semantics. Folders cannot be copied.");
             files0 = files0.subcommand(mcmd);
         }
         {
@@ -167,8 +165,9 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             files0 = files0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update")
-                .about("Updates a file\'s metadata and/or content with patch semantics.");
+            let mcmd = SubCommand::with_name("update").about(
+                "Updates a file\'s metadata and/or content. This method supports patch semantics.",
+            );
             files0 = files0.subcommand(mcmd);
         }
         {

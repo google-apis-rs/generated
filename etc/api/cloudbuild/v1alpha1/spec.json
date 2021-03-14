@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Build",
   "fullyEncodeReservedExpansion": true,
   "version": "v1alpha1",
-  "revision": "20200506",
+  "revision": "20210308",
   "title": "Cloud Build API",
   "description": "Creates and manages builds on Google Cloud Platform.",
   "ownerDomain": "google.com",
@@ -209,14 +209,14 @@
   "schemas": {
     "ArtifactObjects": {
       "id": "ArtifactObjects",
-      "description": "Files in the workspace to upload to Cloud Storage upon successful\ncompletion of all build steps.",
+      "description": "Files in the workspace to upload to Cloud Storage upon successful completion of all build steps.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "location": {
-          "description": "Cloud Storage bucket and optional object path, in the form\n\"gs://bucket/path/to/somewhere/\". (see [Bucket Name\nRequirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).\n\nFiles in the workspace matching any path pattern will be uploaded to\nCloud Storage with this location as a prefix.",
+          "description": "Cloud Storage bucket and optional object path, in the form \"gs://bucket/path/to/somewhere/\". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -253,7 +253,7 @@
     },
     "ArtifactResult": {
       "id": "ArtifactResult",
-      "description": "An artifact that was uploaded during a build. This\nis a single record in the artifact manifest JSON file.",
+      "description": "An artifact that was uploaded during a build. This is a single record in the artifact manifest JSON file.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -272,7 +272,7 @@
           }
         },
         "location": {
-          "description": "The path of an artifact in a Google Cloud Storage bucket, with the\ngeneration number. For example,\n`gs://mybucket/path/to/output.jar#generation`.",
+          "description": "The path of an artifact in a Google Cloud Storage bucket, with the generation number. For example, `gs://mybucket/path/to/output.jar#generation`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -287,14 +287,14 @@
     },
     "Artifacts": {
       "id": "Artifacts",
-      "description": "Artifacts produced by a build that should be uploaded upon\nsuccessful completion of all build steps.",
+      "description": "Artifacts produced by a build that should be uploaded upon successful completion of all build steps.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "images": {
-          "description": "A list of images to be pushed upon the successful completion of all build\nsteps.\n\nThe images will be pushed using the builder service account's credentials.\n\nThe digests of the pushed images will be stored in the Build resource's\nresults field.\n\nIf any of the images fail to be pushed, the build is marked FAILURE.",
+          "description": "A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -312,7 +312,7 @@
           }
         },
         "objects": {
-          "description": "A list of objects to be uploaded to Cloud Storage upon successful\ncompletion of all build steps.\n\nFiles in the workspace matching specified paths globs will be uploaded to\nthe specified Cloud Storage location using the builder service account's\ncredentials.\n\nThe location and generation of the uploaded objects will be stored in the\nBuild resource's results field.\n\nIf any objects fail to be pushed, the build is marked FAILURE.",
+          "description": "A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.",
           "$ref": "ArtifactObjects"
         }
       },
@@ -321,18 +321,22 @@
     },
     "Build": {
       "id": "Build",
-      "description": "A build resource in the Cloud Build API.\n\nAt a high level, a `Build` describes where to find source code, how to build\nit (for example, the builder image to run on the source), and where to store\nthe built artifacts.\n\nFields can include the following variables, which will be expanded when the\nbuild is created:\n\n- $PROJECT_ID: the project ID of the build.\n- $BUILD_ID: the autogenerated ID of the build.\n- $REPO_NAME: the source repository name specified by RepoSource.\n- $BRANCH_NAME: the branch name specified by RepoSource.\n- $TAG_NAME: the tag name specified by RepoSource.\n- $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or\n  resolved from the specified branch or tag.\n- $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.",
+      "description": "A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "artifacts": {
-          "description": "Artifacts produced by the build that should be uploaded upon\nsuccessful completion of all build steps.",
+          "description": "Artifacts produced by the build that should be uploaded upon successful completion of all build steps.",
           "$ref": "Artifacts"
         },
+        "availableSecrets": {
+          "description": "Secrets and secret environment variables.",
+          "$ref": "Secrets"
+        },
         "buildTriggerId": {
-          "description": "Output only. The ID of the `BuildTrigger` that triggered this build, if it\nwas triggered automatically.",
+          "description": "Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -352,7 +356,7 @@
           "items": null
         },
         "finishTime": {
-          "description": "Output only. Time at which execution of the build was finished.\n\nThe difference between finish_time and start_time is the duration of the\nbuild's execution.",
+          "description": "Output only. Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -372,7 +376,7 @@
           "items": null
         },
         "images": {
-          "description": "A list of images to be pushed upon the successful completion of all build\nsteps.\n\nThe images are pushed using the builder service account's credentials.\n\nThe digests of the pushed images will be stored in the `Build` resource's\nresults field.\n\nIf any of the images fail to be pushed, the build status is marked\n`FAILURE`.",
+          "description": "A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -400,7 +404,17 @@
           "items": null
         },
         "logsBucket": {
-          "description": "Google Cloud Storage bucket where logs should be written (see\n[Bucket Name\nRequirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).\nLogs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.",
+          "description": "Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "name": {
+          "description": "Output only. The 'Build' name with format: `projects/{project}/locations/{location}/builds/{build}`, where {build} is a unique identifier generated by the service.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -424,7 +438,7 @@
           "items": null
         },
         "queueTtl": {
-          "description": "TTL in queue for this build. If provided and the build is enqueued longer\nthan this value, the build will expire and the build status will be\n`EXPIRED`.\n\nThe TTL starts ticking from create_time.",
+          "description": "TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.",
           "type": "string",
           "format": "google-duration",
           "enum": [],
@@ -438,7 +452,7 @@
           "$ref": "Results"
         },
         "secrets": {
-          "description": "Secrets to decrypt using Cloud Key Management Service.",
+          "description": "Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets",
           "type": "array",
           "format": null,
           "enum": [],
@@ -448,6 +462,16 @@
           "items": {
             "$ref": "Secret"
           }
+        },
+        "serviceAccount": {
+          "description": "IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         },
         "source": {
           "description": "The location of the source files to build.",
@@ -557,7 +581,7 @@
           }
         },
         "timeout": {
-          "description": "Amount of time that this build should be allowed to run, to second\ngranularity. If this amount of time elapses, work on the build will cease\nand the build status will be `TIMEOUT`.\n\nDefault time is ten minutes.",
+          "description": "Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.",
           "type": "string",
           "format": "google-duration",
           "enum": [],
@@ -567,7 +591,7 @@
           "items": null
         },
         "timing": {
-          "description": "Output only. Stores timing information for phases of the build. Valid keys\nare:\n\n* BUILD: time to execute all build steps\n* PUSH: time to push all specified images.\n* FETCHSOURCE: time to fetch source.\n\nIf the build does not specify source or images,\nthese keys will not be included.",
+          "description": "Output only. Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -608,7 +632,7 @@
       "enumDescriptions": [],
       "properties": {
         "diskSizeGb": {
-          "description": "Requested disk size for the VM that runs the build. Note that this is *NOT*\n\"disk free\"; some of the space will be used by the operating system and\nbuild utilities. Also note that this is the minimum disk size that will be\nallocated for the build -- the build may run with a larger disk than\nrequested. At present, the maximum disk size is 1000GB; builds that request\nmore than the maximum are rejected with an error.",
+          "description": "Requested disk size for the VM that runs the build. Note that this is *NOT* \"disk free\"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -617,8 +641,18 @@
           "additionalProperties": null,
           "items": null
         },
+        "dynamicSubstitutions": {
+          "description": "Option to specify whether or not to apply bash style string operations to the substitutions. NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration file.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "env": {
-          "description": "A list of global environment variable definitions that will exist for all\nbuild steps in this build. If a variable is defined in both globally and in\na build step, the variable will use the build step value.\n\nThe elements are of the form \"KEY=VALUE\" for the environment variable \"KEY\"\nbeing given the value \"VALUE\".",
+          "description": "A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form \"KEY=VALUE\" for the environment variable \"KEY\" being given the value \"VALUE\".",
           "type": "array",
           "format": null,
           "enum": [],
@@ -636,7 +670,7 @@
           }
         },
         "logStreamingOption": {
-          "description": "Option to define build log streaming behavior to Google Cloud\nStorage.",
+          "description": "Option to define build log streaming behavior to Google Cloud Storage.",
           "type": "string",
           "format": null,
           "enum": [
@@ -647,25 +681,31 @@
           "enumDescriptions": [
             "Service may automatically determine build log streaming behavior.",
             "Build logs should be streamed to Google Cloud Storage.",
-            "Build logs should not be streamed to Google Cloud Storage; they will be\nwritten when the build is completed."
+            "Build logs should not be streamed to Google Cloud Storage; they will be written when the build is completed."
           ],
           "properties": {},
           "additionalProperties": null,
           "items": null
         },
         "logging": {
-          "description": "Option to specify the logging mode, which determines where the logs are\nstored.",
+          "description": "Option to specify the logging mode, which determines if and where build logs are stored.",
           "type": "string",
           "format": null,
           "enum": [
             "LOGGING_UNSPECIFIED",
             "LEGACY",
-            "GCS_ONLY"
+            "GCS_ONLY",
+            "STACKDRIVER_ONLY",
+            "CLOUD_LOGGING_ONLY",
+            "NONE"
           ],
           "enumDescriptions": [
-            "The service determines the logging mode. The default is `LEGACY`. Do not\nrely on the default logging behavior as it may change in the future.",
-            "Stackdriver logging and Cloud Storage logging are enabled.",
-            "Only Cloud Storage logging is enabled."
+            "The service determines the logging mode. The default is `LEGACY`. Do not rely on the default logging behavior as it may change in the future.",
+            "Cloud Logging and Cloud Storage logging are enabled.",
+            "Only Cloud Storage logging is enabled.",
+            "This option is the same as CLOUD_LOGGING_ONLY.",
+            "Only Cloud Logging is enabled. Note that logs for both the Cloud Console UI and Cloud SDK are based on Cloud Storage logs, so neither will provide logs if this option is chosen.",
+            "Turn off all logging. No build logs will be captured."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -678,12 +718,16 @@
           "enum": [
             "UNSPECIFIED",
             "N1_HIGHCPU_8",
-            "N1_HIGHCPU_32"
+            "N1_HIGHCPU_32",
+            "E2_HIGHCPU_8",
+            "E2_HIGHCPU_32"
           ],
           "enumDescriptions": [
             "Standard machine type.",
             "Highcpu machine with 8 CPUs.",
-            "Highcpu machine with 32 CPUs."
+            "Highcpu machine with 32 CPUs.",
+            "Highcpu e2 machine with 8 CPUs.",
+            "Highcpu e2 machine with 32 CPUs."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -706,7 +750,7 @@
           "items": null
         },
         "secretEnv": {
-          "description": "A list of global environment variables, which are encrypted using a Cloud\nKey Management Service crypto key. These values must be specified in the\nbuild's `Secret`. These variables will be available to all build steps\nin this build.",
+          "description": "A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. These variables will be available to all build steps in this build.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -728,11 +772,7 @@
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [
-            "No hash requested.",
-            "Use a sha256 hash.",
-            "Use a md5 hash."
-          ],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": {
@@ -743,14 +783,18 @@
               "SHA256",
               "MD5"
             ],
-            "enumDescriptions": [],
+            "enumDescriptions": [
+              "No hash requested.",
+              "Use a sha256 hash.",
+              "Use a md5 hash."
+            ],
             "properties": {},
             "additionalProperties": null,
             "items": null
           }
         },
         "substitutionOption": {
-          "description": "Option to specify behavior when there is an error in the substitution\nchecks.",
+          "description": "Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.",
           "type": "string",
           "format": null,
           "enum": [
@@ -758,7 +802,7 @@
             "ALLOW_LOOSE"
           ],
           "enumDescriptions": [
-            "Fails the build if error in substitutions checks, like missing\na substitution in the template or in the map.",
+            "Fails the build if error in substitutions checks, like missing a substitution in the template or in the map.",
             "Do not fail the build if error in substitutions checks."
           ],
           "properties": {},
@@ -766,7 +810,7 @@
           "items": null
         },
         "volumes": {
-          "description": "Global list of volumes to mount for ALL build steps\n\nEach volume is created as an empty volume prior to starting the build\nprocess. Upon completion of the build, volumes and their contents are\ndiscarded. Global volume names and paths cannot conflict with the volumes\ndefined a build step.\n\nUsing a global volume in a build with only one step is not valid as\nit is indicative of a build request with an incorrect configuration.",
+          "description": "Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -778,7 +822,7 @@
           }
         },
         "workerPool": {
-          "description": "Option to specify a `WorkerPool` for the build.\nFormat: projects/{project}/workerPools/{workerPool}\n\nThis field is experimental.",
+          "description": "Option to specify a `WorkerPool` for the build. Format: projects/{project}/locations/{location}/workerPools/{workerPool} This field is in beta and is available only to restricted users.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -800,7 +844,7 @@
       "enumDescriptions": [],
       "properties": {
         "args": {
-          "description": "A list of arguments that will be presented to the step when it is started.\n\nIf the image used to run the step's container has an entrypoint, the `args`\nare used as arguments to that entrypoint. If the image does not define\nan entrypoint, the first element in args is used as the entrypoint,\nand the remainder will be used as arguments.",
+          "description": "A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -818,7 +862,7 @@
           }
         },
         "dir": {
-          "description": "Working directory to use when running this step's container.\n\nIf this value is a relative path, it is relative to the build's working\ndirectory. If this value is absolute, it may be outside the build's working\ndirectory, in which case the contents of the path may not be persisted\nacross build step executions, unless a `volume` for that path is specified.\n\nIf the build specifies a `RepoSource` with `dir` and a step with a `dir`,\nwhich specifies an absolute path, the `RepoSource` `dir` is ignored for\nthe step's execution.",
+          "description": "Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -828,7 +872,7 @@
           "items": null
         },
         "entrypoint": {
-          "description": "Entrypoint to be used instead of the build step image's default entrypoint.\nIf unset, the image's default entrypoint is used.",
+          "description": "Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -838,7 +882,7 @@
           "items": null
         },
         "env": {
-          "description": "A list of environment variable definitions to be used when running a step.\n\nThe elements are of the form \"KEY=VALUE\" for the environment variable \"KEY\"\nbeing given the value \"VALUE\".",
+          "description": "A list of environment variable definitions to be used when running a step. The elements are of the form \"KEY=VALUE\" for the environment variable \"KEY\" being given the value \"VALUE\".",
           "type": "array",
           "format": null,
           "enum": [],
@@ -856,7 +900,7 @@
           }
         },
         "id": {
-          "description": "Unique identifier for this build step, used in `wait_for` to\nreference this build step as a dependency.",
+          "description": "Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -866,7 +910,7 @@
           "items": null
         },
         "name": {
-          "description": "Required. The name of the container image that will run this particular\nbuild step.\n\nIf the image is available in the host's Docker daemon's cache, it\nwill be run directly. If not, the host will attempt to pull the image\nfirst, using the builder service account's credentials if necessary.\n\nThe Docker daemon's cache will already have the latest versions of all of\nthe officially supported build steps\n([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)).\nThe Docker daemon will also have cached many of the layers for some popular\nimages, like \"ubuntu\", \"debian\", but they will be refreshed at the time you\nattempt to use them.\n\nIf you built an image in a previous build step, it will be stored in the\nhost's Docker daemon's cache and is available to use as the name for a\nlater build step.",
+          "description": "Required. The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like \"ubuntu\", \"debian\", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -876,11 +920,11 @@
           "items": null
         },
         "pullTiming": {
-          "description": "Output only. Stores timing information for pulling this build step's\nbuilder image only.",
+          "description": "Output only. Stores timing information for pulling this build step's builder image only.",
           "$ref": "TimeSpan"
         },
         "secretEnv": {
-          "description": "A list of environment variables which are encrypted using a Cloud Key\nManagement Service crypto key. These values must be specified in the\nbuild's `Secret`.",
+          "description": "A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -898,7 +942,7 @@
           }
         },
         "status": {
-          "description": "Output only. Status of the build step. At this time, build step status is\nonly updated on build completion; step status is not updated in real-time\nas the build progresses.",
+          "description": "Output only. Status of the build step. At this time, build step status is only updated on build completion; step status is not updated in real-time as the build progresses.",
           "type": "string",
           "format": null,
           "enum": [
@@ -928,7 +972,7 @@
           "items": null
         },
         "timeout": {
-          "description": "Time limit for executing this build step. If not defined, the step has no\ntime limit and will be allowed to continue to run until either it completes\nor the build itself times out.",
+          "description": "Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out.",
           "type": "string",
           "format": "google-duration",
           "enum": [],
@@ -942,7 +986,7 @@
           "$ref": "TimeSpan"
         },
         "volumes": {
-          "description": "List of volumes to mount into the build step.\n\nEach volume is created as an empty volume prior to execution of the\nbuild step. Upon completion of the build, volumes and their contents are\ndiscarded.\n\nUsing a named volume in only one step is not valid as it is indicative\nof a build request with an incorrect configuration.",
+          "description": "List of volumes to mount into the build step. Each volume is created as an empty volume prior to execution of the build step. Upon completion of the build, volumes and their contents are discarded. Using a named volume in only one step is not valid as it is indicative of a build request with an incorrect configuration.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -954,7 +998,7 @@
           }
         },
         "waitFor": {
-          "description": "The ID(s) of the step(s) that this build step depends on.\nThis build step will not start until all the build steps in `wait_for`\nhave completed successfully. If `wait_for` is empty, this build step will\nstart when all previous build steps in the `Build.Steps` list have\ncompleted successfully.",
+          "description": "The ID(s) of the step(s) that this build step depends on. This build step will not start until all the build steps in `wait_for` have completed successfully. If `wait_for` is empty, this build step will start when all previous build steps in the `Build.Steps` list have completed successfully.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -994,7 +1038,7 @@
           "items": null
         },
         "name": {
-          "description": "Name used to push the container image to Google Container Registry, as\npresented to `docker push`.",
+          "description": "Name used to push the container image to Google Container Registry, as presented to `docker push`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1011,9 +1055,20 @@
       "additionalProperties": null,
       "items": null
     },
+    "CancelOperationRequest": {
+      "id": "CancelOperationRequest",
+      "description": "The request message for Operations.CancelOperation.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {},
+      "additionalProperties": null,
+      "items": null
+    },
     "Empty": {
       "id": "Empty",
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1024,7 +1079,7 @@
     },
     "FileHashes": {
       "id": "FileHashes",
-      "description": "Container message for hashes of byte content of files, used in\nSourceProvenance messages to verify integrity of source input to the build.",
+      "description": "Container message for hashes of byte content of files, used in SourceProvenance messages to verify integrity of source input to the build.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1041,6 +1096,28 @@
           "items": {
             "$ref": "Hash"
           }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "HTTPDelivery": {
+      "id": "HTTPDelivery",
+      "description": "HTTPDelivery is the delivery configuration for an HTTP notification.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "uri": {
+          "description": "The URI to which JSON-containing HTTP POST requests should be sent.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -1086,6 +1163,47 @@
       "additionalProperties": null,
       "items": null
     },
+    "InlineSecret": {
+      "id": "InlineSecret",
+      "description": "Pairs a set of secret environment variables mapped to encrypted values with the Cloud KMS key to use to decrypt the value.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "envMap": {
+          "description": "Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a build's secrets.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "type": "string",
+            "format": "byte",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        },
+        "kmsKeyName": {
+          "description": "Resource name of Cloud KMS crypto key to decrypt the encrypted value. In format: projects/*/locations/*/keyRings/*/cryptoKeys/*",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "ListWorkerPoolsResponse": {
       "id": "ListWorkerPoolsResponse",
       "description": "Response containing existing `WorkerPools`.",
@@ -1119,7 +1237,7 @@
       "enumDescriptions": [],
       "properties": {
         "network": {
-          "description": "Network on which the workers are created.\n\"default\" network is used if empty.",
+          "description": "Network on which the workers are created. \"default\" network is used if empty.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1129,7 +1247,7 @@
           "items": null
         },
         "projectId": {
-          "description": "Project id containing the defined network and subnetwork. For a peered VPC,\nthis will be the same as the project_id in which the workers are created.\nFor a shared VPC, this will be the project sharing the network with the\nproject_id project in which workers will be created. For custom workers\nwith no VPC, this will be the same as project_id.",
+          "description": "Project id containing the defined network and subnetwork. For a peered VPC, this will be the same as the project_id in which the workers are created. For a shared VPC, this will be the project sharing the network with the project_id project in which workers will be created. For custom workers with no VPC, this will be the same as project_id.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1139,13 +1257,294 @@
           "items": null
         },
         "subnetwork": {
-          "description": "Subnetwork on which the workers are created.\n\"default\" subnetwork is used if empty.",
+          "description": "Subnetwork on which the workers are created. \"default\" subnetwork is used if empty.",
           "type": "string",
           "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Notification": {
+      "id": "Notification",
+      "description": "Notification is the container which holds the data that is relevant to this particular notification.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "filter": {
+          "description": "The filter string to use for notification filtering. Currently, this is assumed to be a CEL program. See https://opensource.google/projects/cel for more.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "httpDelivery": {
+          "description": "Configuration for HTTP delivery.",
+          "$ref": "HTTPDelivery"
+        },
+        "slackDelivery": {
+          "description": "Configuration for Slack delivery.",
+          "$ref": "SlackDelivery"
+        },
+        "smtpDelivery": {
+          "description": "Configuration for SMTP (email) delivery.",
+          "$ref": "SMTPDelivery"
+        },
+        "structDelivery": {
+          "description": "Escape hatch for users to supply custom delivery configs.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "Properties of the object.",
+            "type": "any",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "NotifierConfig": {
+      "id": "NotifierConfig",
+      "description": "NotifierConfig is the top-level configuration message.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "apiVersion": {
+          "description": "The API version of this configuration format.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "The type of notifier to use (e.g. SMTPNotifier).",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "metadata": {
+          "description": "Metadata for referring to/handling/deploying this notifier.",
+          "$ref": "NotifierMetadata"
+        },
+        "spec": {
+          "description": "The actual configuration for this notifier.",
+          "$ref": "NotifierSpec"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "NotifierMetadata": {
+      "id": "NotifierMetadata",
+      "description": "NotifierMetadata contains the data which can be used to reference or describe this notifier.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "name": {
+          "description": "The human-readable and user-given name for the notifier. For example: \"repo-merge-email-notifier\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "notifier": {
+          "description": "The string representing the name and version of notifier to deploy. Expected to be of the form of \"/:\". For example: \"gcr.io/my-project/notifiers/smtp:1.2.34\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "NotifierSecret": {
+      "id": "NotifierSecret",
+      "description": "NotifierSecret is the container that maps a secret name (reference) to its Google Cloud Secret Manager resource path.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "name": {
+          "description": "Name is the local name of the secret, such as the verbatim string \"my-smtp-password\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "value": {
+          "description": "Value is interpreted to be a resource path for fetching the actual (versioned) secret data for this secret. For example, this would be a Google Cloud Secret Manager secret version resource path like: \"projects/my-project/secrets/my-secret/versions/latest\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "NotifierSecretRef": {
+      "id": "NotifierSecretRef",
+      "description": "NotifierSecretRef contains the reference to a secret stored in the corresponding NotifierSpec.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "secretRef": {
+          "description": "The value of `secret_ref` should be a `name` that is registered in a `Secret` in the `secrets` list of the `Spec`.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "NotifierSpec": {
+      "id": "NotifierSpec",
+      "description": "NotifierSpec is the configuration container for notifications.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "notification": {
+          "description": "The configuration of this particular notifier.",
+          "$ref": "Notification"
+        },
+        "secrets": {
+          "description": "Configurations for secret resources used by this particular notifier.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "NotifierSecret"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Operation": {
+      "id": "Operation",
+      "description": "This resource represents a long-running operation that is the result of a network API call.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "done": {
+          "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "error": {
+          "description": "The error result of the operation in case of failure or cancellation.",
+          "$ref": "Status"
+        },
+        "metadata": {
+          "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        },
+        "name": {
+          "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "response": {
+          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
           "items": null
         }
       },
@@ -1161,7 +1560,7 @@
       "enumDescriptions": [],
       "properties": {
         "branchName": {
-          "description": "Regex matching branches to build.\n\nThe syntax of the regular expressions accepted is the syntax accepted by\nRE2 and described at https://github.com/google/re2/wiki/Syntax",
+          "description": "Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1181,7 +1580,7 @@
           "items": null
         },
         "dir": {
-          "description": "Directory, relative to the source root, in which to run the build.\n\nThis must be a relative path. If a step's `dir` is specified and is an\nabsolute path, this value is ignored for that step's execution.",
+          "description": "Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1191,7 +1590,7 @@
           "items": null
         },
         "invertRegex": {
-          "description": "Only trigger a build if the revision regex does NOT match the revision\nregex.",
+          "description": "Only trigger a build if the revision regex does NOT match the revision regex.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -1201,7 +1600,7 @@
           "items": null
         },
         "projectId": {
-          "description": "ID of the project that owns the Cloud Source Repository. If omitted, the\nproject ID requesting the build is assumed.",
+          "description": "ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1211,7 +1610,7 @@
           "items": null
         },
         "repoName": {
-          "description": "Required. Name of the Cloud Source Repository.",
+          "description": "Name of the Cloud Source Repository.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1221,7 +1620,7 @@
           "items": null
         },
         "substitutions": {
-          "description": "Substitutions to use in a triggered build.\nShould only be used with RunBuildTrigger",
+          "description": "Substitutions to use in a triggered build. Should only be used with RunBuildTrigger",
           "type": "object",
           "format": null,
           "enum": [],
@@ -1240,7 +1639,7 @@
           "items": null
         },
         "tagName": {
-          "description": "Regex matching tags to build.\n\nThe syntax of the regular expressions accepted is the syntax accepted by\nRE2 and described at https://github.com/google/re2/wiki/Syntax",
+          "description": "Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1276,7 +1675,7 @@
           "$ref": "TimeSpan"
         },
         "buildStepImages": {
-          "description": "List of build step digests, in the order corresponding to build step\nindices.",
+          "description": "List of build step digests, in the order corresponding to build step indices.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1294,7 +1693,7 @@
           }
         },
         "buildStepOutputs": {
-          "description": "List of build step outputs, produced by builder images, in the order\ncorresponding to build step indices.\n\n[Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders)\ncan produce this output by writing to `$BUILDER_OUTPUT/output`.\nOnly the first 4KB of data is stored.",
+          "description": "List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1337,9 +1736,83 @@
       "additionalProperties": null,
       "items": null
     },
+    "SMTPDelivery": {
+      "id": "SMTPDelivery",
+      "description": "SMTPDelivery is the delivery configuration for an SMTP (email) notification.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "fromAddress": {
+          "description": "This is the SMTP account/email that appears in the `From:` of the email. If empty, it is assumed to be sender.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "password": {
+          "description": "The SMTP sender's password.",
+          "$ref": "NotifierSecretRef"
+        },
+        "port": {
+          "description": "The SMTP port of the server.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "recipientAddresses": {
+          "description": "This is the list of addresses to which we send the email (i.e. in the `To:` of the email).",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "senderAddress": {
+          "description": "This is the SMTP account/email that is used to send the message.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "server": {
+          "description": "The address of the SMTP server.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "Secret": {
       "id": "Secret",
-      "description": "Pairs a set of secret environment variables containing encrypted\nvalues with the Cloud KMS key to use to decrypt the value.",
+      "description": "Pairs a set of secret environment variables containing encrypted values with the Cloud KMS key to use to decrypt the value. Note: Use `kmsKeyName` with `available_secrets` instead of using `kmsKeyName` with `secret`. For instructions see: https://cloud.google.com/cloud-build/docs/securing-builds/use-encrypted-credentials.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1356,7 +1829,7 @@
           "items": null
         },
         "secretEnv": {
-          "description": "Map of environment variable name to its encrypted value.\n\nSecret environment variables must be unique across all of a build's\nsecrets, and must be used by at least one build step. Values can be at most\n64 KB in size. There can be at most 100 secret values across all of a\nbuild's secrets.",
+          "description": "Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a build's secrets.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -1378,6 +1851,90 @@
       "additionalProperties": null,
       "items": null
     },
+    "SecretManagerSecret": {
+      "id": "SecretManagerSecret",
+      "description": "Pairs a secret environment variable with a SecretVersion in Secret Manager.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "env": {
+          "description": "Environment variable name to associate with the secret. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "versionName": {
+          "description": "Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Secrets": {
+      "id": "Secrets",
+      "description": "Secrets and secret environment variables.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "inline": {
+          "description": "Secrets encrypted with KMS key and the associated secret environment variable.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "InlineSecret"
+          }
+        },
+        "secretManager": {
+          "description": "Secrets in Secret Manager and associated secret environment variable.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "SecretManagerSecret"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "SlackDelivery": {
+      "id": "SlackDelivery",
+      "description": "SlackDelivery is the delivery configuration for delivering Slack messages via webhooks. See Slack webhook documentation at: https://api.slack.com/messaging/webhooks.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "webhookUri": {
+          "description": "The secret reference for the Slack webhook URI for sending messages to a channel.",
+          "$ref": "NotifierSecretRef"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "Source": {
       "id": "Source",
       "description": "Location of the source in a supported storage service.",
@@ -1387,7 +1944,7 @@
       "enumDescriptions": [],
       "properties": {
         "repoSource": {
-          "description": "If provided, get the source from this location in a Cloud Source\nRepository.",
+          "description": "If provided, get the source from this location in a Cloud Source Repository.",
           "$ref": "RepoSource"
         },
         "storageSource": {
@@ -1400,14 +1957,14 @@
     },
     "SourceProvenance": {
       "id": "SourceProvenance",
-      "description": "Provenance of the source. Ways to find the original source, or verify that\nsome source was used for this build.",
+      "description": "Provenance of the source. Ways to find the original source, or verify that some source was used for this build.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "fileHashes": {
-          "description": "Output only. Hash(es) of the build source, which can be used to verify that\nthe original source integrity was maintained in the build. Note that\n`FileHashes` will only be populated if `BuildOptions` has requested a\n`SourceProvenanceHash`.\n\nThe keys to this map are file paths used as build source and the values\ncontain the hash values for those files.\n\nIf the build source came in a single package such as a gzipped tarfile\n(`.tar.gz`), the `FileHash` will be for the single path to that file.",
+          "description": "Output only. Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -1420,12 +1977,71 @@
           "items": null
         },
         "resolvedRepoSource": {
-          "description": "A copy of the build's `source.repo_source`, if exists, with any\nrevisions resolved.",
+          "description": "A copy of the build's `source.repo_source`, if exists, with any revisions resolved.",
           "$ref": "RepoSource"
         },
         "resolvedStorageSource": {
-          "description": "A copy of the build's `source.storage_source`, if exists, with any\ngenerations resolved.",
+          "description": "A copy of the build's `source.storage_source`, if exists, with any generations resolved.",
           "$ref": "StorageSource"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Status": {
+      "id": "Status",
+      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "code": {
+          "description": "The status code, which should be an enum value of google.rpc.Code.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "details": {
+          "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "object",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": {
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "type": "any",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "items": null
+          }
+        },
+        "message": {
+          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -1440,7 +2056,7 @@
       "enumDescriptions": [],
       "properties": {
         "bucket": {
-          "description": "Google Cloud Storage bucket containing the source (see\n[Bucket Name\nRequirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).",
+          "description": "Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1450,7 +2066,7 @@
           "items": null
         },
         "generation": {
-          "description": "Google Cloud Storage generation for the object. If the generation is\nomitted, the latest generation will be used.",
+          "description": "Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -1460,7 +2076,7 @@
           "items": null
         },
         "object": {
-          "description": "Google Cloud Storage object containing the source.\n\nThis object must be a gzipped archive file (`.tar.gz`) containing source to\nbuild.",
+          "description": "Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1507,14 +2123,14 @@
     },
     "Volume": {
       "id": "Volume",
-      "description": "Volume describes a Docker container volume which is mounted into build steps\nin order to persist files across build step execution.",
+      "description": "Volume describes a Docker container volume which is mounted into build steps in order to persist files across build step execution.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "name": {
-          "description": "Name of the volume to mount.\n\nVolume names must be unique per build step and must be valid names for\nDocker volumes. Each named volume must be used by at least two build steps.",
+          "description": "Name of the volume to mount. Volume names must be unique per build step and must be valid names for Docker volumes. Each named volume must be used by at least two build steps.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1524,7 +2140,7 @@
           "items": null
         },
         "path": {
-          "description": "Path at which to mount the volume.\n\nPaths must be absolute and cannot conflict with other volume paths on the\nsame build step or with certain reserved volume paths.",
+          "description": "Path at which to mount the volume. Paths must be absolute and cannot conflict with other volume paths on the same build step or with certain reserved volume paths.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1539,14 +2155,14 @@
     },
     "WorkerConfig": {
       "id": "WorkerConfig",
-      "description": "WorkerConfig defines the configuration to be used for a creating workers in\nthe pool.",
+      "description": "WorkerConfig defines the configuration to be used for a creating workers in the pool.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "diskSizeGb": {
-          "description": "Size of the disk attached to the worker, in GB.\nSee https://cloud.google.com/compute/docs/disks/\nIf `0` is specified, Cloud Build will use a standard disk size.\n`disk_size` is overridden if you specify a different disk size in\n`build_options`. In this case, a VM with a disk size specified in the\n`build_options` will be created on demand at build time. For more\ninformation see\nhttps://cloud.google.com/cloud-build/docs/api/reference/rest/v1/projects.builds#buildoptions",
+          "description": "Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/ If `0` is specified, Cloud Build will use a standard disk size. `disk_size` is overridden if you specify a different disk size in `build_options`. In this case, a VM with a disk size specified in the `build_options` will be created on demand at build time. For more information see https://cloud.google.com/cloud-build/docs/api/reference/rest/v1/projects.builds#buildoptions",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -1556,7 +2172,7 @@
           "items": null
         },
         "machineType": {
-          "description": "Machine Type of the worker, such as n1-standard-1.\nSee https://cloud.google.com/compute/docs/machine-types.\nIf left blank, Cloud Build will use a standard unspecified machine to\ncreate the worker pool.\n`machine_type` is overridden if you specify a different machine type in\n`build_options`. In this case, the VM specified in the `build_options`\nwill be created on demand at build time. For more information see\nhttps://cloud.google.com/cloud-build/docs/speeding-up-builds#using_custom_virtual_machine_sizes",
+          "description": "Machine Type of the worker, such as n1-standard-1. See https://cloud.google.com/compute/docs/machine-types. If left blank, Cloud Build will use a standard unspecified machine to create the worker pool. `machine_type` is overridden if you specify a different machine type in `build_options`. In this case, the VM specified in the `build_options` will be created on demand at build time. For more information see https://cloud.google.com/cloud-build/docs/speeding-up-builds#using_custom_virtual_machine_sizes",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1566,11 +2182,11 @@
           "items": null
         },
         "network": {
-          "description": "The network definition used to create the worker.\nIf this section is left empty, the workers will be created in\nWorkerPool.project_id on the default network.",
+          "description": "The network definition used to create the worker. If this section is left empty, the workers will be created in WorkerPool.project_id on the default network.",
           "$ref": "Network"
         },
         "tag": {
-          "description": "The tag applied to the worker, and the same tag used by the firewall rule.\nIt is used to identify the Cloud Build workers among other VMs.\nThe default value for tag is `worker`.",
+          "description": "The tag applied to the worker, and the same tag used by the firewall rule. It is used to identify the Cloud Build workers among other VMs. The default value for tag is `worker`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1585,14 +2201,14 @@
     },
     "WorkerPool": {
       "id": "WorkerPool",
-      "description": "Configuration for a WorkerPool to run the builds.\n\nWorkers are machines that Cloud Build uses to run your builds. By default,\nall workers run in a project owned by Cloud Build. To have full control over\nthe workers that execute your builds -- such as enabling them to access\nprivate resources on your private network -- you can request Cloud Build to\nrun the workers in your own project by creating a custom workers pool.",
+      "description": "Configuration for a WorkerPool to run the builds. Workers are machines that Cloud Build uses to run your builds. By default, all workers run in a project owned by Cloud Build. To have full control over the workers that execute your builds -- such as enabling them to access private resources on your private network -- you can request Cloud Build to run the workers in your own project by creating a custom workers pool.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "createTime": {
-          "description": "Output only. Time at which the request to create the `WorkerPool` was\nreceived.",
+          "description": "Output only. Time at which the request to create the `WorkerPool` was received.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -1602,7 +2218,7 @@
           "items": null
         },
         "deleteTime": {
-          "description": "Output only. Time at which the request to delete the `WorkerPool` was\nreceived.",
+          "description": "Output only. Time at which the request to delete the `WorkerPool` was received.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -1632,17 +2248,11 @@
           "items": null
         },
         "regions": {
-          "description": "List of regions to create the `WorkerPool`. Regions can't be empty.\nIf Cloud Build adds a new GCP region in the future, the existing\n`WorkerPool` will not be enabled in the new region automatically;\nyou must add the new region to the `regions` field to enable the\n`WorkerPool` in that region.",
+          "description": "List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.",
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [
-            "no region",
-            "us-central1 region",
-            "us-west1 region",
-            "us-east1 region",
-            "us-east4 region"
-          ],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": {
@@ -1655,14 +2265,20 @@
               "us-east1",
               "us-east4"
             ],
-            "enumDescriptions": [],
+            "enumDescriptions": [
+              "no region",
+              "us-central1 region",
+              "us-west1 region",
+              "us-east1 region",
+              "us-east4 region"
+            ],
             "properties": {},
             "additionalProperties": null,
             "items": null
           }
         },
         "serviceAccountEmail": {
-          "description": "Output only. The service account used to manage the `WorkerPool`. The\nservice account must have the Compute Instance Admin (Beta) permission at\nthe project level.",
+          "description": "Output only. The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1694,7 +2310,7 @@
           "items": null
         },
         "updateTime": {
-          "description": "Output only. Time at which the request to update the `WorkerPool` was\nreceived.",
+          "description": "Output only. Time at which the request to update the `WorkerPool` was received.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -1725,6 +2341,92 @@
   "resources": {
     "projects": {
       "resources": {
+        "locations": {
+          "resources": {
+            "operations": {
+              "resources": {},
+              "methods": {
+                "cancel": {
+                  "id": "cloudbuild.projects.locations.operations.cancel",
+                  "path": "v1alpha1/{+name}:cancel",
+                  "httpMethod": "POST",
+                  "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                  "parameters": {
+                    "name": {
+                      "description": "The name of the operation resource to be cancelled.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "request": {
+                    "$ref": "CancelOperationRequest"
+                  },
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "get": {
+                  "id": "cloudbuild.projects.locations.operations.get",
+                  "path": "v1alpha1/{+name}",
+                  "httpMethod": "GET",
+                  "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                  "parameters": {
+                    "name": {
+                      "description": "The name of the operation resource.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                }
+              }
+            }
+          },
+          "methods": {}
+        },
         "workerPools": {
           "resources": {},
           "methods": {
@@ -1774,7 +2476,7 @@
               "description": "Deletes a `WorkerPool` by its project ID and WorkerPool name.",
               "parameters": {
                 "name": {
-                  "description": "The field will contain name of the resource requested, for example:\n\"projects/project-1/workerPools/workerpool-name\"",
+                  "description": "The field will contain name of the resource requested, for example: \"projects/project-1/workerPools/workerpool-name\"",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -1811,7 +2513,7 @@
               "description": "Returns information about a `WorkerPool`.",
               "parameters": {
                 "name": {
-                  "description": "The field will contain name of the resource requested, for example:\n\"projects/project-1/workerPools/workerpool-name\"",
+                  "description": "The field will contain name of the resource requested, for example: \"projects/project-1/workerPools/workerpool-name\"",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -1885,7 +2587,7 @@
               "description": "Update a `WorkerPool`.",
               "parameters": {
                 "name": {
-                  "description": "The field will contain name of the resource requested, for example:\n\"projects/project-1/workerPools/workerpool-name\"",
+                  "description": "The field will contain name of the resource requested, for example: \"projects/project-1/workerPools/workerpool-name\"",
                   "default": null,
                   "location": "path",
                   "required": true,

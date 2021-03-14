@@ -7,7 +7,7 @@
   "canonicalName": "Recommender",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20200509",
+  "revision": "20210307",
   "title": "Recommender API",
   "description": "",
   "ownerDomain": "google.com",
@@ -216,7 +216,7 @@
       "enumDescriptions": [],
       "properties": {
         "cost": {
-          "description": "An approximate projection on amount saved or amount incurred. Negative cost\nunits indicate cost savings and positive cost units indicate increase.\nSee google.type.Money documentation for positive/negative units.",
+          "description": "An approximate projection on amount saved or amount incurred. Negative cost units indicate cost savings and positive cost units indicate increase. See google.type.Money documentation for positive/negative units.",
           "$ref": "GoogleTypeMoney"
         },
         "duration": {
@@ -273,7 +273,7 @@
     },
     "GoogleCloudRecommenderV1beta1Insight": {
       "id": "GoogleCloudRecommenderV1beta1Insight",
-      "description": "An insight along with the information used to derive the insight. The insight\nmay have associated recomendations as well.",
+      "description": "An insight along with the information used to derive the insight. The insight may have associated recomendations as well.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -314,7 +314,7 @@
           "items": null
         },
         "content": {
-          "description": "A struct of custom fields to explain the insight.\nExample: \"grantedPermissionsCount\": \"1000\"",
+          "description": "A struct of custom fields to explain the insight. Example: \"grantedPermissionsCount\": \"1000\"",
           "type": "object",
           "format": null,
           "enum": [],
@@ -333,7 +333,7 @@
           "items": null
         },
         "description": {
-          "description": "Free-form human readable summary in English. The maximum length is 500\ncharacters.",
+          "description": "Free-form human readable summary in English. The maximum length is 500 characters.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -343,7 +343,7 @@
           "items": null
         },
         "etag": {
-          "description": "Fingerprint of the Insight. Provides optimistic locking when updating\nstates.",
+          "description": "Fingerprint of the Insight. Provides optimistic locking when updating states.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -383,7 +383,7 @@
           "items": null
         },
         "observationPeriod": {
-          "description": "Observation period that led to the insight. The source data used to\ngenerate the insight ends at last_refresh_time and begins at\n(last_refresh_time - observation_period).",
+          "description": "Observation period that led to the insight. The source data used to generate the insight ends at last_refresh_time and begins at (last_refresh_time - observation_period).",
           "type": "string",
           "format": "google-duration",
           "enum": [],
@@ -427,7 +427,7 @@
       "enumDescriptions": [],
       "properties": {
         "recommendation": {
-          "description": "Recommendation resource name, e.g.\nprojects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/recommendations/[RECOMMENDATION_ID]",
+          "description": "Recommendation resource name, e.g. projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/recommendations/[RECOMMENDATION_ID]",
           "type": "string",
           "format": null,
           "enum": [],
@@ -460,9 +460,9 @@
           ],
           "enumDescriptions": [
             "Unspecified state.",
-            "Insight is active. Content for ACTIVE insights can be updated by Google.\nACTIVE insights can be marked DISMISSED OR ACCEPTED.",
-            "Some action has been taken based on this insight. Insights become\naccepted when a recommendation derived from the insight has been marked\nCLAIMED, SUCCEEDED, or FAILED. ACTIVE insights can also be marked\nACCEPTED explicitly. Content for ACCEPTED insights is immutable. ACCEPTED\ninsights can only be marked ACCEPTED (which may update state metadata).",
-            "Insight is dismissed. Content for DISMISSED insights can be updated by\nGoogle. DISMISSED insights can be marked as ACTIVE."
+            "Insight is active. Content for ACTIVE insights can be updated by Google. ACTIVE insights can be marked DISMISSED OR ACCEPTED.",
+            "Some action has been taken based on this insight. Insights become accepted when a recommendation derived from the insight has been marked CLAIMED, SUCCEEDED, or FAILED. ACTIVE insights can also be marked ACCEPTED explicitly. Content for ACCEPTED insights is immutable. ACCEPTED insights can only be marked ACCEPTED (which may update state metadata).",
+            "Insight is dismissed. Content for DISMISSED insights can be updated by Google. DISMISSED insights can be marked as ACTIVE."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -512,7 +512,7 @@
           }
         },
         "nextPageToken": {
-          "description": "A token that can be used to request the next page of results. This field is\nempty if there are no additional results.",
+          "description": "A token that can be used to request the next page of results. This field is empty if there are no additional results.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -534,7 +534,7 @@
       "enumDescriptions": [],
       "properties": {
         "nextPageToken": {
-          "description": "A token that can be used to request the next page of results. This field is\nempty if there are no additional results.",
+          "description": "A token that can be used to request the next page of results. This field is empty if there are no additional results.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -578,7 +578,7 @@
           "items": null
         },
         "stateMetadata": {
-          "description": "Optional. State properties user wish to include with this state.  Full replace of the\ncurrent state_metadata.",
+          "description": "Optional. State properties user wish to include with this state. Full replace of the current state_metadata.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -619,7 +619,7 @@
           "items": null
         },
         "stateMetadata": {
-          "description": "State properties to include with this state. Overwrites any existing\n`state_metadata`.\nKeys must match the regex /^a-z0-9{0,62}$/.\nValues must match the regex /^[a-zA-Z0-9_./-]{0,255}$/.",
+          "description": "State properties to include with this state. Overwrites any existing `state_metadata`. Keys must match the regex /^a-z0-9{0,62}$/. Values must match the regex /^[a-zA-Z0-9_./-]{0,255}$/.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -660,7 +660,7 @@
           "items": null
         },
         "stateMetadata": {
-          "description": "State properties to include with this state. Overwrites any existing\n`state_metadata`.\nKeys must match the regex /^a-z0-9{0,62}$/.\nValues must match the regex /^[a-zA-Z0-9_./-]{0,255}$/.",
+          "description": "State properties to include with this state. Overwrites any existing `state_metadata`. Keys must match the regex /^a-z0-9{0,62}$/. Values must match the regex /^[a-zA-Z0-9_./-]{0,255}$/.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -701,7 +701,7 @@
           "items": null
         },
         "stateMetadata": {
-          "description": "State properties to include with this state. Overwrites any existing\n`state_metadata`.\nKeys must match the regex /^a-z0-9{0,62}$/.\nValues must match the regex /^[a-zA-Z0-9_./-]{0,255}$/.",
+          "description": "State properties to include with this state. Overwrites any existing `state_metadata`. Keys must match the regex /^a-z0-9{0,62}$/. Values must match the regex /^[a-zA-Z0-9_./-]{0,255}$/.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -725,14 +725,14 @@
     },
     "GoogleCloudRecommenderV1beta1Operation": {
       "id": "GoogleCloudRecommenderV1beta1Operation",
-      "description": "Contains an operation for a resource loosely based on the JSON-PATCH format\nwith support for:\n\n* Custom filters for describing partial array patch.\n* Extended path values for describing nested arrays.\n* Custom fields for describing the resource for which the operation is being\n  described.\n* Allows extension to custom operations not natively supported by RFC6902.\nSee https://tools.ietf.org/html/rfc6902 for details on the original RFC.",
+      "description": "Contains an operation for a resource loosely based on the JSON-PATCH format with support for: * Custom filters for describing partial array patch. * Extended path values for describing nested arrays. * Custom fields for describing the resource for which the operation is being described. * Allows extension to custom operations not natively supported by RFC6902. See https://tools.ietf.org/html/rfc6902 for details on the original RFC.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "action": {
-          "description": "Type of this operation. Contains one of 'and', 'remove', 'replace', 'move',\n'copy', 'test' and 'custom' operations. This field is case-insensitive and\nalways populated.",
+          "description": "Type of this operation. Contains one of 'and', 'remove', 'replace', 'move', 'copy', 'test' and 'custom' operations. This field is case-insensitive and always populated.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -742,7 +742,7 @@
           "items": null
         },
         "path": {
-          "description": "Path to the target field being operated on. If the operation is at the\nresource level, then path should be \"/\". This field is always populated.",
+          "description": "Path to the target field being operated on. If the operation is at the resource level, then path should be \"/\". This field is always populated.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -752,7 +752,7 @@
           "items": null
         },
         "pathFilters": {
-          "description": "Set of filters to apply if `path` refers to array elements or nested array\nelements in order to narrow down to a single unique element that is being\ntested/modified.\nThis is intended to be an exact match per filter. To perform advanced\nmatching, use path_value_matchers.\n\n* Example: {\n  \"/versions/*/name\" : \"it-123\"\n  \"/versions/*/targetSize/percent\": 20\n  }\n* Example: {\n  \"/bindings/*/role\": \"roles/admin\"\n  \"/bindings/*/condition\" : null\n  }\n* Example: {\n  \"/bindings/*/role\": \"roles/admin\"\n  \"/bindings/*/members/*\" : [\"x@google.com\", \"y@google.com\"]\n  }\nWhen both path_filters and path_value_matchers are set, an implicit AND\nmust be performed.",
+          "description": "Set of filters to apply if `path` refers to array elements or nested array elements in order to narrow down to a single unique element that is being tested/modified. This is intended to be an exact match per filter. To perform advanced matching, use path_value_matchers. * Example: { \"/versions/*/name\" : \"it-123\" \"/versions/*/targetSize/percent\": 20 } * Example: { \"/bindings/*/role\": \"roles/owner\" \"/bindings/*/condition\" : null } * Example: { \"/bindings/*/role\": \"roles/owner\" \"/bindings/*/members/*\" : [\"x@example.com\", \"y@example.com\"] } When both path_filters and path_value_matchers are set, an implicit AND must be performed.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -771,7 +771,7 @@
           "items": null
         },
         "pathValueMatchers": {
-          "description": "Similar to path_filters, this contains set of filters to apply if `path`\nfield referes to array elements. This is meant to support value matching\nbeyond exact match. To perform exact match, use path_filters.\nWhen both path_filters and path_value_matchers are set, an implicit AND\nmust be performed.",
+          "description": "Similar to path_filters, this contains set of filters to apply if `path` field refers to array elements. This is meant to support value matching beyond exact match. To perform exact match, use path_filters. When both path_filters and path_value_matchers are set, an implicit AND must be performed.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -784,7 +784,7 @@
           "items": null
         },
         "resource": {
-          "description": "Contains the fully qualified resource name. This field is always populated.\nex: //cloudresourcemanager.googleapis.com/projects/foo.",
+          "description": "Contains the fully qualified resource name. This field is always populated. ex: //cloudresourcemanager.googleapis.com/projects/foo.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -794,7 +794,7 @@
           "items": null
         },
         "resourceType": {
-          "description": "Type of GCP resource being modified/tested. This field is always populated.\nExample: cloudresourcemanager.googleapis.com/Project,\ncompute.googleapis.com/Instance",
+          "description": "Type of GCP resource being modified/tested. This field is always populated. Example: cloudresourcemanager.googleapis.com/Project, compute.googleapis.com/Instance",
           "type": "string",
           "format": null,
           "enum": [],
@@ -804,7 +804,7 @@
           "items": null
         },
         "sourcePath": {
-          "description": "Can be set with action 'copy' or 'move' to indicate the source field within\nresource or source_resource, ignored if provided for other operation types.",
+          "description": "Can be set with action 'copy' or 'move' to indicate the source field within resource or source_resource, ignored if provided for other operation types.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -814,7 +814,7 @@
           "items": null
         },
         "sourceResource": {
-          "description": "Can be set with action 'copy' to copy resource configuration across\ndifferent resources of the same type. Example: A resource clone can be\ndone via action = 'copy', path = \"/\", from = \"/\",\nsource_resource = <source> and resource_name = <target>.\nThis field is empty for all other values of `action`.",
+          "description": "Can be set with action 'copy' to copy resource configuration across different resources of the same type. Example: A resource clone can be done via action = 'copy', path = \"/\", from = \"/\", source_resource = and resource_name = . This field is empty for all other values of `action`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -824,7 +824,7 @@
           "items": null
         },
         "value": {
-          "description": "Value for the `path` field. Will be set for actions:'add'/'replace'.\nMaybe set for action: 'test'. Either this or `value_matcher` will be set\nfor 'test' operation. An exact match must be performed.",
+          "description": "Value for the `path` field. Will be set for actions:'add'/'replace'. Maybe set for action: 'test'. Either this or `value_matcher` will be set for 'test' operation. An exact match must be performed.",
           "type": "any",
           "format": null,
           "enum": [],
@@ -834,7 +834,7 @@
           "items": null
         },
         "valueMatcher": {
-          "description": "Can be set for action 'test' for advanced matching for the value of\n'path' field. Either this or `value` will be set for 'test' operation.",
+          "description": "Can be set for action 'test' for advanced matching for the value of 'path' field. Either this or `value` will be set for 'test' operation.",
           "$ref": "GoogleCloudRecommenderV1beta1ValueMatcher"
         }
       },
@@ -850,7 +850,7 @@
       "enumDescriptions": [],
       "properties": {
         "operations": {
-          "description": "List of operations across one or more resources that belong to this group.\nLoosely based on RFC6902 and should be performed in the order they appear.",
+          "description": "List of operations across one or more resources that belong to this group. Loosely based on RFC6902 and should be performed in the order they appear.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -867,14 +867,14 @@
     },
     "GoogleCloudRecommenderV1beta1Recommendation": {
       "id": "GoogleCloudRecommenderV1beta1Recommendation",
-      "description": "A recommendation along with a suggested action. E.g., a rightsizing\nrecommendation for an underutilized VM, IAM role recommendations, etc",
+      "description": "A recommendation along with a suggested action. E.g., a rightsizing recommendation for an underutilized VM, IAM role recommendations, etc",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "additionalImpact": {
-          "description": "Optional set of additional impact that this recommendation may have when\ntrying to optimize for the primary category. These may be positive\nor negative.",
+          "description": "Optional set of additional impact that this recommendation may have when trying to optimize for the primary category. These may be positive or negative.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -902,7 +902,7 @@
           "$ref": "GoogleCloudRecommenderV1beta1RecommendationContent"
         },
         "description": {
-          "description": "Free-form human readable summary in English. The maximum length is 500\ncharacters.",
+          "description": "Free-form human readable summary in English. The maximum length is 500 characters.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -912,7 +912,7 @@
           "items": null
         },
         "etag": {
-          "description": "Fingerprint of the Recommendation. Provides optimistic locking when\nupdating states.",
+          "description": "Fingerprint of the Recommendation. Provides optimistic locking when updating states.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -922,7 +922,7 @@
           "items": null
         },
         "lastRefreshTime": {
-          "description": "Last time this recommendation was refreshed by the system that created it\nin the first place.",
+          "description": "Last time this recommendation was refreshed by the system that created it in the first place.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -942,11 +942,11 @@
           "items": null
         },
         "primaryImpact": {
-          "description": "The primary impact that this recommendation can have while trying to\noptimize for one category.",
+          "description": "The primary impact that this recommendation can have while trying to optimize for one category.",
           "$ref": "GoogleCloudRecommenderV1beta1Impact"
         },
         "recommenderSubtype": {
-          "description": "Contains an identifier for a subtype of recommendations produced for the\nsame recommender. Subtype is a function of content and impact, meaning a\nnew subtype might be added when significant changes to `content` or\n`primary_impact.category` are introduced. See the Recommenders section\nto see a list of subtypes for a given Recommender.\n\nExamples:\n  For recommender = \"google.iam.policy.Recommender\",\n  recommender_subtype can be one of \"REMOVE_ROLE\"/\"REPLACE_ROLE\"",
+          "description": "Contains an identifier for a subtype of recommendations produced for the same recommender. Subtype is a function of content and impact, meaning a new subtype might be added when significant changes to `content` or `primary_impact.category` are introduced. See the Recommenders section to see a list of subtypes for a given Recommender. Examples: For recommender = \"google.iam.policy.Recommender\", recommender_subtype can be one of \"REMOVE_ROLE\"/\"REPLACE_ROLE\"",
           "type": "string",
           "format": null,
           "enum": [],
@@ -972,7 +972,7 @@
       "enumDescriptions": [],
       "properties": {
         "operationGroups": {
-          "description": "Operations to one or more Google Cloud resources grouped in such a way\nthat, all operations within one group are expected to be performed\natomically and in an order.",
+          "description": "Operations to one or more Google Cloud resources grouped in such a way that, all operations within one group are expected to be performed atomically and in an order.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -996,7 +996,7 @@
       "enumDescriptions": [],
       "properties": {
         "insight": {
-          "description": "Insight resource name, e.g.\nprojects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/insights/[INSIGHT_ID]",
+          "description": "Insight resource name, e.g. projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/insights/[INSIGHT_ID]",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1031,11 +1031,11 @@
           ],
           "enumDescriptions": [
             "Default state. Don't use directly.",
-            "Recommendation is active and can be applied. Recommendations content can\nbe updated by Google.\n\nACTIVE recommendations can be marked as CLAIMED, SUCCEEDED, or FAILED.",
-            "Recommendation is in claimed state. Recommendations content is\nimmutable and cannot be updated by Google.\n\nCLAIMED recommendations can be marked as CLAIMED, SUCCEEDED, or FAILED.",
-            "Recommendation is in succeeded state. Recommendations content is\nimmutable and cannot be updated by Google.\n\nSUCCEEDED recommendations can be marked as SUCCEEDED, or FAILED.",
-            "Recommendation is in failed state. Recommendations content is immutable\nand cannot be updated by Google.\n\nFAILED recommendations can be marked as SUCCEEDED, or FAILED.",
-            "Recommendation is in dismissed state. Recommendation content can be\nupdated by Google.\n\nDISMISSED recommendations can be marked as ACTIVE."
+            "Recommendation is active and can be applied. Recommendations content can be updated by Google. ACTIVE recommendations can be marked as CLAIMED, SUCCEEDED, or FAILED.",
+            "Recommendation is in claimed state. Recommendations content is immutable and cannot be updated by Google. CLAIMED recommendations can be marked as CLAIMED, SUCCEEDED, or FAILED.",
+            "Recommendation is in succeeded state. Recommendations content is immutable and cannot be updated by Google. SUCCEEDED recommendations can be marked as SUCCEEDED, or FAILED.",
+            "Recommendation is in failed state. Recommendations content is immutable and cannot be updated by Google. FAILED recommendations can be marked as SUCCEEDED, or FAILED.",
+            "Recommendation is in dismissed state. Recommendation content can be updated by Google. DISMISSED recommendations can be marked as ACTIVE."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -1073,7 +1073,7 @@
       "enumDescriptions": [],
       "properties": {
         "matchesPattern": {
-          "description": "To be used for full regex matching. The regular expression is using the\nGoogle RE2 syntax (https://github.com/google/re2/wiki/Syntax), so to be\nused with RE2::FullMatch",
+          "description": "To be used for full regex matching. The regular expression is using the Google RE2 syntax (https://github.com/google/re2/wiki/Syntax), so to be used with RE2::FullMatch",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1095,7 +1095,7 @@
       "enumDescriptions": [],
       "properties": {
         "currencyCode": {
-          "description": "The 3-letter currency code defined in ISO 4217.",
+          "description": "The three-letter currency code defined in ISO 4217.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1105,7 +1105,7 @@
           "items": null
         },
         "nanos": {
-          "description": "Number of nano (10^-9) units of the amount.\nThe value must be between -999,999,999 and +999,999,999 inclusive.\nIf `units` is positive, `nanos` must be positive or zero.\nIf `units` is zero, `nanos` can be positive, zero, or negative.\nIf `units` is negative, `nanos` must be negative or zero.\nFor example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.",
+          "description": "Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1115,7 +1115,7 @@
           "items": null
         },
         "units": {
-          "description": "The whole units of the amount.\nFor example if `currencyCode` is `\"USD\"`, then 1 unit is one US dollar.",
+          "description": "The whole units of the amount. For example if `currencyCode` is `\"USD\"`, then 1 unit is one US dollar.",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -1130,6 +1130,1260 @@
     }
   },
   "resources": {
+    "billingAccounts": {
+      "resources": {
+        "locations": {
+          "resources": {
+            "insightTypes": {
+              "resources": {
+                "insights": {
+                  "resources": {},
+                  "methods": {
+                    "get": {
+                      "id": "recommender.billingAccounts.locations.insightTypes.insights.get",
+                      "path": "v1beta1/{+name}",
+                      "httpMethod": "GET",
+                      "description": "Gets the requested insight. Requires the recommender.*.get IAM permission for the specified insight type.",
+                      "parameters": {
+                        "name": {
+                          "description": "Required. Name of the insight.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^billingAccounts/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "request": null,
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1Insight"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    },
+                    "list": {
+                      "id": "recommender.billingAccounts.locations.insightTypes.insights.list",
+                      "path": "v1beta1/{+parent}/insights",
+                      "httpMethod": "GET",
+                      "description": "Lists insights for a Cloud project. Requires the recommender.*.list IAM permission for the specified insight type.",
+                      "parameters": {
+                        "filter": {
+                          "description": "Optional. Filter expression to restrict the insights returned. Supported filter fields: state Eg: `state:\"DISMISSED\" or state:\"ACTIVE\"",
+                          "default": null,
+                          "location": "query",
+                          "required": false,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": null,
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        },
+                        "pageSize": {
+                          "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. If not specified, the server will determine the number of results to return.",
+                          "default": null,
+                          "location": "query",
+                          "required": false,
+                          "type": "integer",
+                          "format": "int32",
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": null,
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        },
+                        "pageToken": {
+                          "description": "Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters must be identical to those in the previous call.",
+                          "default": null,
+                          "location": "query",
+                          "required": false,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": null,
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        },
+                        "parent": {
+                          "description": "Required. The container resource on which to execute the request. Acceptable formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 2. `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 3. `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 4. `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^billingAccounts/[^/]+/locations/[^/]+/insightTypes/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "request": null,
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1ListInsightsResponse"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    },
+                    "markAccepted": {
+                      "id": "recommender.billingAccounts.locations.insightTypes.insights.markAccepted",
+                      "path": "v1beta1/{+name}:markAccepted",
+                      "httpMethod": "POST",
+                      "description": "Marks the Insight State as Accepted. Users can use this method to indicate to the Recommender API that they have applied some action based on the insight. This stops the insight content from being updated. MarkInsightAccepted can be applied to insights in ACTIVE state. Requires the recommender.*.update IAM permission for the specified insight.",
+                      "parameters": {
+                        "name": {
+                          "description": "Required. Name of the insight.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^billingAccounts/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "request": {
+                        "$ref": "GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest"
+                      },
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1Insight"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    }
+                  }
+                }
+              },
+              "methods": {}
+            },
+            "recommenders": {
+              "resources": {
+                "recommendations": {
+                  "resources": {},
+                  "methods": {
+                    "get": {
+                      "id": "recommender.billingAccounts.locations.recommenders.recommendations.get",
+                      "path": "v1beta1/{+name}",
+                      "httpMethod": "GET",
+                      "description": "Gets the requested recommendation. Requires the recommender.*.get IAM permission for the specified recommender.",
+                      "parameters": {
+                        "name": {
+                          "description": "Required. Name of the recommendation.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^billingAccounts/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "request": null,
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1Recommendation"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    },
+                    "list": {
+                      "id": "recommender.billingAccounts.locations.recommenders.recommendations.list",
+                      "path": "v1beta1/{+parent}/recommendations",
+                      "httpMethod": "GET",
+                      "description": "Lists recommendations for a Cloud project. Requires the recommender.*.list IAM permission for the specified recommender.",
+                      "parameters": {
+                        "filter": {
+                          "description": "Filter expression to restrict the recommendations returned. Supported filter fields: state_info.state Eg: `state_info.state:\"DISMISSED\" or state_info.state:\"FAILED\"",
+                          "default": null,
+                          "location": "query",
+                          "required": false,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": null,
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        },
+                        "pageSize": {
+                          "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. If not specified, the server will determine the number of results to return.",
+                          "default": null,
+                          "location": "query",
+                          "required": false,
+                          "type": "integer",
+                          "format": "int32",
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": null,
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        },
+                        "pageToken": {
+                          "description": "Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters must be identical to those in the previous call.",
+                          "default": null,
+                          "location": "query",
+                          "required": false,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": null,
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        },
+                        "parent": {
+                          "description": "Required. The container resource on which to execute the request. Acceptable formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 2. `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 3. `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 4. `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to supported recommenders: https://cloud.google.com/recommender/docs/recommenders.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^billingAccounts/[^/]+/locations/[^/]+/recommenders/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "request": null,
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1ListRecommendationsResponse"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    },
+                    "markClaimed": {
+                      "id": "recommender.billingAccounts.locations.recommenders.recommendations.markClaimed",
+                      "path": "v1beta1/{+name}:markClaimed",
+                      "httpMethod": "POST",
+                      "description": "Marks the Recommendation State as Claimed. Users can use this method to indicate to the Recommender API that they are starting to apply the recommendation themselves. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationClaimed can be applied to recommendations in CLAIMED or ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender.",
+                      "parameters": {
+                        "name": {
+                          "description": "Required. Name of the recommendation.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^billingAccounts/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "request": {
+                        "$ref": "GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest"
+                      },
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1Recommendation"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    },
+                    "markFailed": {
+                      "id": "recommender.billingAccounts.locations.recommenders.recommendations.markFailed",
+                      "path": "v1beta1/{+name}:markFailed",
+                      "httpMethod": "POST",
+                      "description": "Marks the Recommendation State as Failed. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation failed. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationFailed can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender.",
+                      "parameters": {
+                        "name": {
+                          "description": "Required. Name of the recommendation.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^billingAccounts/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "request": {
+                        "$ref": "GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest"
+                      },
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1Recommendation"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    },
+                    "markSucceeded": {
+                      "id": "recommender.billingAccounts.locations.recommenders.recommendations.markSucceeded",
+                      "path": "v1beta1/{+name}:markSucceeded",
+                      "httpMethod": "POST",
+                      "description": "Marks the Recommendation State as Succeeded. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation was successful. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender.",
+                      "parameters": {
+                        "name": {
+                          "description": "Required. Name of the recommendation.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^billingAccounts/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "request": {
+                        "$ref": "GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest"
+                      },
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1Recommendation"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    }
+                  }
+                }
+              },
+              "methods": {}
+            }
+          },
+          "methods": {}
+        }
+      },
+      "methods": {}
+    },
+    "folders": {
+      "resources": {
+        "locations": {
+          "resources": {
+            "insightTypes": {
+              "resources": {
+                "insights": {
+                  "resources": {},
+                  "methods": {
+                    "get": {
+                      "id": "recommender.folders.locations.insightTypes.insights.get",
+                      "path": "v1beta1/{+name}",
+                      "httpMethod": "GET",
+                      "description": "Gets the requested insight. Requires the recommender.*.get IAM permission for the specified insight type.",
+                      "parameters": {
+                        "name": {
+                          "description": "Required. Name of the insight.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^folders/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "request": null,
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1Insight"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    },
+                    "list": {
+                      "id": "recommender.folders.locations.insightTypes.insights.list",
+                      "path": "v1beta1/{+parent}/insights",
+                      "httpMethod": "GET",
+                      "description": "Lists insights for a Cloud project. Requires the recommender.*.list IAM permission for the specified insight type.",
+                      "parameters": {
+                        "filter": {
+                          "description": "Optional. Filter expression to restrict the insights returned. Supported filter fields: state Eg: `state:\"DISMISSED\" or state:\"ACTIVE\"",
+                          "default": null,
+                          "location": "query",
+                          "required": false,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": null,
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        },
+                        "pageSize": {
+                          "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. If not specified, the server will determine the number of results to return.",
+                          "default": null,
+                          "location": "query",
+                          "required": false,
+                          "type": "integer",
+                          "format": "int32",
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": null,
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        },
+                        "pageToken": {
+                          "description": "Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters must be identical to those in the previous call.",
+                          "default": null,
+                          "location": "query",
+                          "required": false,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": null,
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        },
+                        "parent": {
+                          "description": "Required. The container resource on which to execute the request. Acceptable formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 2. `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 3. `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 4. `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^folders/[^/]+/locations/[^/]+/insightTypes/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "request": null,
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1ListInsightsResponse"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    },
+                    "markAccepted": {
+                      "id": "recommender.folders.locations.insightTypes.insights.markAccepted",
+                      "path": "v1beta1/{+name}:markAccepted",
+                      "httpMethod": "POST",
+                      "description": "Marks the Insight State as Accepted. Users can use this method to indicate to the Recommender API that they have applied some action based on the insight. This stops the insight content from being updated. MarkInsightAccepted can be applied to insights in ACTIVE state. Requires the recommender.*.update IAM permission for the specified insight.",
+                      "parameters": {
+                        "name": {
+                          "description": "Required. Name of the insight.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^folders/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "request": {
+                        "$ref": "GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest"
+                      },
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1Insight"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    }
+                  }
+                }
+              },
+              "methods": {}
+            },
+            "recommenders": {
+              "resources": {
+                "recommendations": {
+                  "resources": {},
+                  "methods": {
+                    "get": {
+                      "id": "recommender.folders.locations.recommenders.recommendations.get",
+                      "path": "v1beta1/{+name}",
+                      "httpMethod": "GET",
+                      "description": "Gets the requested recommendation. Requires the recommender.*.get IAM permission for the specified recommender.",
+                      "parameters": {
+                        "name": {
+                          "description": "Required. Name of the recommendation.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^folders/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "request": null,
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1Recommendation"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    },
+                    "list": {
+                      "id": "recommender.folders.locations.recommenders.recommendations.list",
+                      "path": "v1beta1/{+parent}/recommendations",
+                      "httpMethod": "GET",
+                      "description": "Lists recommendations for a Cloud project. Requires the recommender.*.list IAM permission for the specified recommender.",
+                      "parameters": {
+                        "filter": {
+                          "description": "Filter expression to restrict the recommendations returned. Supported filter fields: state_info.state Eg: `state_info.state:\"DISMISSED\" or state_info.state:\"FAILED\"",
+                          "default": null,
+                          "location": "query",
+                          "required": false,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": null,
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        },
+                        "pageSize": {
+                          "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. If not specified, the server will determine the number of results to return.",
+                          "default": null,
+                          "location": "query",
+                          "required": false,
+                          "type": "integer",
+                          "format": "int32",
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": null,
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        },
+                        "pageToken": {
+                          "description": "Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters must be identical to those in the previous call.",
+                          "default": null,
+                          "location": "query",
+                          "required": false,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": null,
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        },
+                        "parent": {
+                          "description": "Required. The container resource on which to execute the request. Acceptable formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 2. `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 3. `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 4. `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to supported recommenders: https://cloud.google.com/recommender/docs/recommenders.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^folders/[^/]+/locations/[^/]+/recommenders/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "request": null,
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1ListRecommendationsResponse"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    },
+                    "markClaimed": {
+                      "id": "recommender.folders.locations.recommenders.recommendations.markClaimed",
+                      "path": "v1beta1/{+name}:markClaimed",
+                      "httpMethod": "POST",
+                      "description": "Marks the Recommendation State as Claimed. Users can use this method to indicate to the Recommender API that they are starting to apply the recommendation themselves. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationClaimed can be applied to recommendations in CLAIMED or ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender.",
+                      "parameters": {
+                        "name": {
+                          "description": "Required. Name of the recommendation.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^folders/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "request": {
+                        "$ref": "GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest"
+                      },
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1Recommendation"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    },
+                    "markFailed": {
+                      "id": "recommender.folders.locations.recommenders.recommendations.markFailed",
+                      "path": "v1beta1/{+name}:markFailed",
+                      "httpMethod": "POST",
+                      "description": "Marks the Recommendation State as Failed. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation failed. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationFailed can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender.",
+                      "parameters": {
+                        "name": {
+                          "description": "Required. Name of the recommendation.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^folders/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "request": {
+                        "$ref": "GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest"
+                      },
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1Recommendation"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    },
+                    "markSucceeded": {
+                      "id": "recommender.folders.locations.recommenders.recommendations.markSucceeded",
+                      "path": "v1beta1/{+name}:markSucceeded",
+                      "httpMethod": "POST",
+                      "description": "Marks the Recommendation State as Succeeded. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation was successful. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender.",
+                      "parameters": {
+                        "name": {
+                          "description": "Required. Name of the recommendation.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^folders/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "request": {
+                        "$ref": "GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest"
+                      },
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1Recommendation"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    }
+                  }
+                }
+              },
+              "methods": {}
+            }
+          },
+          "methods": {}
+        }
+      },
+      "methods": {}
+    },
+    "organizations": {
+      "resources": {
+        "locations": {
+          "resources": {
+            "insightTypes": {
+              "resources": {
+                "insights": {
+                  "resources": {},
+                  "methods": {
+                    "get": {
+                      "id": "recommender.organizations.locations.insightTypes.insights.get",
+                      "path": "v1beta1/{+name}",
+                      "httpMethod": "GET",
+                      "description": "Gets the requested insight. Requires the recommender.*.get IAM permission for the specified insight type.",
+                      "parameters": {
+                        "name": {
+                          "description": "Required. Name of the insight.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^organizations/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "request": null,
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1Insight"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    },
+                    "list": {
+                      "id": "recommender.organizations.locations.insightTypes.insights.list",
+                      "path": "v1beta1/{+parent}/insights",
+                      "httpMethod": "GET",
+                      "description": "Lists insights for a Cloud project. Requires the recommender.*.list IAM permission for the specified insight type.",
+                      "parameters": {
+                        "filter": {
+                          "description": "Optional. Filter expression to restrict the insights returned. Supported filter fields: state Eg: `state:\"DISMISSED\" or state:\"ACTIVE\"",
+                          "default": null,
+                          "location": "query",
+                          "required": false,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": null,
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        },
+                        "pageSize": {
+                          "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. If not specified, the server will determine the number of results to return.",
+                          "default": null,
+                          "location": "query",
+                          "required": false,
+                          "type": "integer",
+                          "format": "int32",
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": null,
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        },
+                        "pageToken": {
+                          "description": "Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters must be identical to those in the previous call.",
+                          "default": null,
+                          "location": "query",
+                          "required": false,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": null,
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        },
+                        "parent": {
+                          "description": "Required. The container resource on which to execute the request. Acceptable formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 2. `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 3. `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 4. `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^organizations/[^/]+/locations/[^/]+/insightTypes/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "request": null,
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1ListInsightsResponse"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    },
+                    "markAccepted": {
+                      "id": "recommender.organizations.locations.insightTypes.insights.markAccepted",
+                      "path": "v1beta1/{+name}:markAccepted",
+                      "httpMethod": "POST",
+                      "description": "Marks the Insight State as Accepted. Users can use this method to indicate to the Recommender API that they have applied some action based on the insight. This stops the insight content from being updated. MarkInsightAccepted can be applied to insights in ACTIVE state. Requires the recommender.*.update IAM permission for the specified insight.",
+                      "parameters": {
+                        "name": {
+                          "description": "Required. Name of the insight.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^organizations/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "request": {
+                        "$ref": "GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest"
+                      },
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1Insight"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    }
+                  }
+                }
+              },
+              "methods": {}
+            },
+            "recommenders": {
+              "resources": {
+                "recommendations": {
+                  "resources": {},
+                  "methods": {
+                    "get": {
+                      "id": "recommender.organizations.locations.recommenders.recommendations.get",
+                      "path": "v1beta1/{+name}",
+                      "httpMethod": "GET",
+                      "description": "Gets the requested recommendation. Requires the recommender.*.get IAM permission for the specified recommender.",
+                      "parameters": {
+                        "name": {
+                          "description": "Required. Name of the recommendation.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^organizations/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "request": null,
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1Recommendation"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    },
+                    "list": {
+                      "id": "recommender.organizations.locations.recommenders.recommendations.list",
+                      "path": "v1beta1/{+parent}/recommendations",
+                      "httpMethod": "GET",
+                      "description": "Lists recommendations for a Cloud project. Requires the recommender.*.list IAM permission for the specified recommender.",
+                      "parameters": {
+                        "filter": {
+                          "description": "Filter expression to restrict the recommendations returned. Supported filter fields: state_info.state Eg: `state_info.state:\"DISMISSED\" or state_info.state:\"FAILED\"",
+                          "default": null,
+                          "location": "query",
+                          "required": false,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": null,
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        },
+                        "pageSize": {
+                          "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. If not specified, the server will determine the number of results to return.",
+                          "default": null,
+                          "location": "query",
+                          "required": false,
+                          "type": "integer",
+                          "format": "int32",
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": null,
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        },
+                        "pageToken": {
+                          "description": "Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters must be identical to those in the previous call.",
+                          "default": null,
+                          "location": "query",
+                          "required": false,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": null,
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        },
+                        "parent": {
+                          "description": "Required. The container resource on which to execute the request. Acceptable formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 2. `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 3. `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 4. `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to supported recommenders: https://cloud.google.com/recommender/docs/recommenders.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^organizations/[^/]+/locations/[^/]+/recommenders/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "request": null,
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1ListRecommendationsResponse"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    },
+                    "markClaimed": {
+                      "id": "recommender.organizations.locations.recommenders.recommendations.markClaimed",
+                      "path": "v1beta1/{+name}:markClaimed",
+                      "httpMethod": "POST",
+                      "description": "Marks the Recommendation State as Claimed. Users can use this method to indicate to the Recommender API that they are starting to apply the recommendation themselves. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationClaimed can be applied to recommendations in CLAIMED or ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender.",
+                      "parameters": {
+                        "name": {
+                          "description": "Required. Name of the recommendation.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^organizations/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "request": {
+                        "$ref": "GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest"
+                      },
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1Recommendation"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    },
+                    "markFailed": {
+                      "id": "recommender.organizations.locations.recommenders.recommendations.markFailed",
+                      "path": "v1beta1/{+name}:markFailed",
+                      "httpMethod": "POST",
+                      "description": "Marks the Recommendation State as Failed. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation failed. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationFailed can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender.",
+                      "parameters": {
+                        "name": {
+                          "description": "Required. Name of the recommendation.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^organizations/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "request": {
+                        "$ref": "GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest"
+                      },
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1Recommendation"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    },
+                    "markSucceeded": {
+                      "id": "recommender.organizations.locations.recommenders.recommendations.markSucceeded",
+                      "path": "v1beta1/{+name}:markSucceeded",
+                      "httpMethod": "POST",
+                      "description": "Marks the Recommendation State as Succeeded. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation was successful. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender.",
+                      "parameters": {
+                        "name": {
+                          "description": "Required. Name of the recommendation.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^organizations/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "request": {
+                        "$ref": "GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest"
+                      },
+                      "response": {
+                        "$ref": "GoogleCloudRecommenderV1beta1Recommendation"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    }
+                  }
+                }
+              },
+              "methods": {}
+            }
+          },
+          "methods": {}
+        }
+      },
+      "methods": {}
+    },
     "projects": {
       "resources": {
         "locations": {
@@ -1143,7 +2397,7 @@
                       "id": "recommender.projects.locations.insightTypes.insights.get",
                       "path": "v1beta1/{+name}",
                       "httpMethod": "GET",
-                      "description": "Gets the requested insight. Requires the recommender.*.get IAM permission\nfor the specified insight type.",
+                      "description": "Gets the requested insight. Requires the recommender.*.get IAM permission for the specified insight type.",
                       "parameters": {
                         "name": {
                           "description": "Required. Name of the insight.",
@@ -1180,10 +2434,10 @@
                       "id": "recommender.projects.locations.insightTypes.insights.list",
                       "path": "v1beta1/{+parent}/insights",
                       "httpMethod": "GET",
-                      "description": "Lists insights for a Cloud project. Requires the recommender.*.list IAM\npermission for the specified insight type.",
+                      "description": "Lists insights for a Cloud project. Requires the recommender.*.list IAM permission for the specified insight type.",
                       "parameters": {
                         "filter": {
-                          "description": "Optional. Filter expression to restrict the insights returned. Supported\nfilter fields: state\nEg: `state:\"DISMISSED\" or state:\"ACTIVE\"",
+                          "description": "Optional. Filter expression to restrict the insights returned. Supported filter fields: state Eg: `state:\"DISMISSED\" or state:\"ACTIVE\"",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -1197,7 +2451,7 @@
                           "repeated": false
                         },
                         "pageSize": {
-                          "description": "Optional. The maximum number of results to return from this request.  Non-positive\nvalues are ignored. If not specified, the server will determine the number\nof results to return.",
+                          "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. If not specified, the server will determine the number of results to return.",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -1211,7 +2465,7 @@
                           "repeated": false
                         },
                         "pageToken": {
-                          "description": "Optional. If present, retrieves the next batch of results from the preceding call to\nthis method. `page_token` must be the value of `next_page_token` from the\nprevious response. The values of other method parameters must be identical\nto those in the previous call.",
+                          "description": "Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters must be identical to those in the previous call.",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -1225,7 +2479,7 @@
                           "repeated": false
                         },
                         "parent": {
-                          "description": "Required. The container resource on which to execute the request.\nAcceptable formats:\n\n1.\n\"projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]\",\n\nLOCATION here refers to GCP Locations:\nhttps://cloud.google.com/about/locations/",
+                          "description": "Required. The container resource on which to execute the request. Acceptable formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 2. `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 3. `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 4. `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -1259,7 +2513,7 @@
                       "id": "recommender.projects.locations.insightTypes.insights.markAccepted",
                       "path": "v1beta1/{+name}:markAccepted",
                       "httpMethod": "POST",
-                      "description": "Marks the Insight State as Accepted. Users can use this method to\nindicate to the Recommender API that they have applied some action based\non the insight. This stops the insight content from being updated.\n\nMarkInsightAccepted can be applied to insights in ACTIVE state. Requires\nthe recommender.*.update IAM permission for the specified insight.",
+                      "description": "Marks the Insight State as Accepted. Users can use this method to indicate to the Recommender API that they have applied some action based on the insight. This stops the insight content from being updated. MarkInsightAccepted can be applied to insights in ACTIVE state. Requires the recommender.*.update IAM permission for the specified insight.",
                       "parameters": {
                         "name": {
                           "description": "Required. Name of the insight.",
@@ -1308,7 +2562,7 @@
                       "id": "recommender.projects.locations.recommenders.recommendations.get",
                       "path": "v1beta1/{+name}",
                       "httpMethod": "GET",
-                      "description": "Gets the requested recommendation. Requires the recommender.*.get\nIAM permission for the specified recommender.",
+                      "description": "Gets the requested recommendation. Requires the recommender.*.get IAM permission for the specified recommender.",
                       "parameters": {
                         "name": {
                           "description": "Required. Name of the recommendation.",
@@ -1345,10 +2599,10 @@
                       "id": "recommender.projects.locations.recommenders.recommendations.list",
                       "path": "v1beta1/{+parent}/recommendations",
                       "httpMethod": "GET",
-                      "description": "Lists recommendations for a Cloud project. Requires the recommender.*.list\nIAM permission for the specified recommender.",
+                      "description": "Lists recommendations for a Cloud project. Requires the recommender.*.list IAM permission for the specified recommender.",
                       "parameters": {
                         "filter": {
-                          "description": "Filter expression to restrict the recommendations returned. Supported\nfilter fields: state_info.state\nEg: `state_info.state:\"DISMISSED\" or state_info.state:\"FAILED\"",
+                          "description": "Filter expression to restrict the recommendations returned. Supported filter fields: state_info.state Eg: `state_info.state:\"DISMISSED\" or state_info.state:\"FAILED\"",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -1362,7 +2616,7 @@
                           "repeated": false
                         },
                         "pageSize": {
-                          "description": "Optional. The maximum number of results to return from this request.  Non-positive\nvalues are ignored. If not specified, the server will determine the number\nof results to return.",
+                          "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. If not specified, the server will determine the number of results to return.",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -1376,7 +2630,7 @@
                           "repeated": false
                         },
                         "pageToken": {
-                          "description": "Optional. If present, retrieves the next batch of results from the preceding call to\nthis method. `page_token` must be the value of `next_page_token` from the\nprevious response. The values of other method parameters must be identical\nto those in the previous call.",
+                          "description": "Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters must be identical to those in the previous call.",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -1390,7 +2644,7 @@
                           "repeated": false
                         },
                         "parent": {
-                          "description": "Required. The container resource on which to execute the request.\nAcceptable formats:\n\n1.\n\"projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]\",\n\nLOCATION here refers to GCP Locations:\nhttps://cloud.google.com/about/locations/",
+                          "description": "Required. The container resource on which to execute the request. Acceptable formats: 1. `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 2. `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 3. `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 4. `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to supported recommenders: https://cloud.google.com/recommender/docs/recommenders.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -1424,7 +2678,7 @@
                       "id": "recommender.projects.locations.recommenders.recommendations.markClaimed",
                       "path": "v1beta1/{+name}:markClaimed",
                       "httpMethod": "POST",
-                      "description": "Marks the Recommendation State as Claimed. Users can use this method to\nindicate to the Recommender API that they are starting to apply the\nrecommendation themselves. This stops the recommendation content from being\nupdated. Associated insights are frozen and placed in the ACCEPTED state.\n\nMarkRecommendationClaimed can be applied to recommendations in CLAIMED or\nACTIVE state.\n\nRequires the recommender.*.update IAM permission for the specified\nrecommender.",
+                      "description": "Marks the Recommendation State as Claimed. Users can use this method to indicate to the Recommender API that they are starting to apply the recommendation themselves. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationClaimed can be applied to recommendations in CLAIMED or ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender.",
                       "parameters": {
                         "name": {
                           "description": "Required. Name of the recommendation.",
@@ -1463,7 +2717,7 @@
                       "id": "recommender.projects.locations.recommenders.recommendations.markFailed",
                       "path": "v1beta1/{+name}:markFailed",
                       "httpMethod": "POST",
-                      "description": "Marks the Recommendation State as Failed. Users can use this method to\nindicate to the Recommender API that they have applied the recommendation\nthemselves, and the operation failed. This stops the recommendation content\nfrom being updated. Associated insights are frozen and placed in the\nACCEPTED state.\n\nMarkRecommendationFailed can be applied to recommendations in ACTIVE,\nCLAIMED, SUCCEEDED, or FAILED state.\n\nRequires the recommender.*.update IAM permission for the specified\nrecommender.",
+                      "description": "Marks the Recommendation State as Failed. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation failed. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationFailed can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender.",
                       "parameters": {
                         "name": {
                           "description": "Required. Name of the recommendation.",
@@ -1502,7 +2756,7 @@
                       "id": "recommender.projects.locations.recommenders.recommendations.markSucceeded",
                       "path": "v1beta1/{+name}:markSucceeded",
                       "httpMethod": "POST",
-                      "description": "Marks the Recommendation State as Succeeded. Users can use this method to\nindicate to the Recommender API that they have applied the recommendation\nthemselves, and the operation was successful. This stops the recommendation\ncontent from being updated. Associated insights are frozen and placed in\nthe ACCEPTED state.\n\nMarkRecommendationSucceeded can be applied to recommendations in ACTIVE,\nCLAIMED, SUCCEEDED, or FAILED state.\n\nRequires the recommender.*.update IAM permission for the specified\nrecommender.",
+                      "description": "Marks the Recommendation State as Succeeded. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation was successful. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender.",
                       "parameters": {
                         "name": {
                           "description": "Required. Name of the recommendation.",

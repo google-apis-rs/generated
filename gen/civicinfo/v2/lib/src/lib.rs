@@ -21,13 +21,6 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub election_administration_body: ::std::option::Option<crate::schemas::AdministrativeBody>,
-        #[doc = "An ID for this object. IDs may change in future requests and should not be cached. Access to this field requires special access that can be requested from the Request more link on the Quotas page."]
-        #[serde(
-            rename = "id",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub id: ::std::option::Option<String>,
         #[doc = "The city or county that provides election information for this voter. This object can have the same elements as state."]
         #[serde(
             rename = "local_jurisdiction",
@@ -80,12 +73,6 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub absentee_voting_info_url: ::std::option::Option<String>,
-        #[serde(
-            rename = "addressLines",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub address_lines: ::std::option::Option<Vec<String>>,
         #[doc = "A URL provided by this administrative body to give contest information to the voter."]
         #[serde(
             rename = "ballotInfoUrl",
@@ -107,6 +94,20 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub election_info_url: ::std::option::Option<String>,
+        #[doc = "A last minute or emergency notification text provided by this administrative body."]
+        #[serde(
+            rename = "electionNoticeText",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub election_notice_text: ::std::option::Option<String>,
+        #[doc = "A URL provided by this administrative body for additional information related to the last minute or emergency notification."]
+        #[serde(
+            rename = "electionNoticeUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub election_notice_url: ::std::option::Option<String>,
         #[doc = "The election officials for this election administrative body."]
         #[serde(
             rename = "electionOfficials",
@@ -349,20 +350,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub electorate_specifications: ::std::option::Option<String>,
-        #[doc = "An ID for this object. IDs may change in future requests and should not be cached. Access to this field requires special access that can be requested from the Request more link on the Quotas page."]
-        #[serde(
-            rename = "id",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub id: ::std::option::Option<String>,
         #[doc = "The levels of government of the office for this contest. There may be more than one in cases where a jurisdiction effectively acts at two different levels of government; for example, the mayor of the District of Columbia acts at \"locality\" level, but also effectively at both \"administrative-area-2\" and \"administrative-area-1\"."]
         #[serde(
             rename = "level",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub level: ::std::option::Option<Vec<String>>,
+        pub level: ::std::option::Option<Vec<crate::schemas::ContestLevelItems>>,
         #[doc = "The number of candidates that will be elected to office in this contest."]
         #[serde(
             rename = "numberElected",
@@ -386,7 +380,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub office: ::std::option::Option<String>,
-        #[doc = "If this is a partisan election, the name of the party it is for."]
+        #[doc = "If this is a partisan election, the name of the party/parties it is for."]
+        #[serde(
+            rename = "primaryParties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub primary_parties: ::std::option::Option<Vec<String>>,
+        #[doc = "[DEPRECATED] If this is a partisan election, the name of the party it is for. This field as deprecated in favor of the array \"primaryParties\", as contests may contain more than one party."]
         #[serde(
             rename = "primaryParty",
             default,
@@ -476,7 +477,7 @@ pub mod schemas {
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub roles: ::std::option::Option<Vec<String>>,
+        pub roles: ::std::option::Option<Vec<crate::schemas::ContestRolesItems>>,
         #[doc = "A list of sources for this contest. If multiple sources are listed, the data has been aggregated from those sources."]
         #[serde(
             rename = "sources",
@@ -502,92 +503,204 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ContextParams {
-        #[serde(
-            rename = "clientProfile",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub client_profile: ::std::option::Option<String>,
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ContestLevelItems {
+        AdministrativeArea1,
+        AdministrativeArea2,
+        Country,
+        International,
+        Locality,
+        Regional,
+        Special,
+        SubLocality1,
+        SubLocality2,
     }
-    impl ::google_field_selector::FieldSelector for ContextParams {
+    impl ContestLevelItems {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ContestLevelItems::AdministrativeArea1 => "administrativeArea1",
+                ContestLevelItems::AdministrativeArea2 => "administrativeArea2",
+                ContestLevelItems::Country => "country",
+                ContestLevelItems::International => "international",
+                ContestLevelItems::Locality => "locality",
+                ContestLevelItems::Regional => "regional",
+                ContestLevelItems::Special => "special",
+                ContestLevelItems::SubLocality1 => "subLocality1",
+                ContestLevelItems::SubLocality2 => "subLocality2",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContestLevelItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContestLevelItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContestLevelItems, ()> {
+            Ok(match s {
+                "administrativeArea1" => ContestLevelItems::AdministrativeArea1,
+                "administrativeArea2" => ContestLevelItems::AdministrativeArea2,
+                "country" => ContestLevelItems::Country,
+                "international" => ContestLevelItems::International,
+                "locality" => ContestLevelItems::Locality,
+                "regional" => ContestLevelItems::Regional,
+                "special" => ContestLevelItems::Special,
+                "subLocality1" => ContestLevelItems::SubLocality1,
+                "subLocality2" => ContestLevelItems::SubLocality2,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for ContestLevelItems {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ContestLevelItems {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ContestLevelItems {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "administrativeArea1" => ContestLevelItems::AdministrativeArea1,
+                "administrativeArea2" => ContestLevelItems::AdministrativeArea2,
+                "country" => ContestLevelItems::Country,
+                "international" => ContestLevelItems::International,
+                "locality" => ContestLevelItems::Locality,
+                "regional" => ContestLevelItems::Regional,
+                "special" => ContestLevelItems::Special,
+                "subLocality1" => ContestLevelItems::SubLocality1,
+                "subLocality2" => ContestLevelItems::SubLocality2,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for ContestLevelItems {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for ContextParams {
+    impl ::google_field_selector::ToFieldType for ContestLevelItems {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DivisionRepresentativeInfoRequest {
-        #[serde(
-            rename = "contextParams",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub context_params: ::std::option::Option<crate::schemas::ContextParams>,
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ContestRolesItems {
+        DeputyHeadOfGovernment,
+        ExecutiveCouncil,
+        GovernmentOfficer,
+        HeadOfGovernment,
+        HeadOfState,
+        HighestCourtJudge,
+        Judge,
+        LegislatorLowerBody,
+        LegislatorUpperBody,
+        SchoolBoard,
+        SpecialPurposeOfficer,
     }
-    impl ::google_field_selector::FieldSelector for DivisionRepresentativeInfoRequest {
+    impl ContestRolesItems {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ContestRolesItems::DeputyHeadOfGovernment => "deputyHeadOfGovernment",
+                ContestRolesItems::ExecutiveCouncil => "executiveCouncil",
+                ContestRolesItems::GovernmentOfficer => "governmentOfficer",
+                ContestRolesItems::HeadOfGovernment => "headOfGovernment",
+                ContestRolesItems::HeadOfState => "headOfState",
+                ContestRolesItems::HighestCourtJudge => "highestCourtJudge",
+                ContestRolesItems::Judge => "judge",
+                ContestRolesItems::LegislatorLowerBody => "legislatorLowerBody",
+                ContestRolesItems::LegislatorUpperBody => "legislatorUpperBody",
+                ContestRolesItems::SchoolBoard => "schoolBoard",
+                ContestRolesItems::SpecialPurposeOfficer => "specialPurposeOfficer",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ContestRolesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ContestRolesItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ContestRolesItems, ()> {
+            Ok(match s {
+                "deputyHeadOfGovernment" => ContestRolesItems::DeputyHeadOfGovernment,
+                "executiveCouncil" => ContestRolesItems::ExecutiveCouncil,
+                "governmentOfficer" => ContestRolesItems::GovernmentOfficer,
+                "headOfGovernment" => ContestRolesItems::HeadOfGovernment,
+                "headOfState" => ContestRolesItems::HeadOfState,
+                "highestCourtJudge" => ContestRolesItems::HighestCourtJudge,
+                "judge" => ContestRolesItems::Judge,
+                "legislatorLowerBody" => ContestRolesItems::LegislatorLowerBody,
+                "legislatorUpperBody" => ContestRolesItems::LegislatorUpperBody,
+                "schoolBoard" => ContestRolesItems::SchoolBoard,
+                "specialPurposeOfficer" => ContestRolesItems::SpecialPurposeOfficer,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for ContestRolesItems {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ContestRolesItems {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ContestRolesItems {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "deputyHeadOfGovernment" => ContestRolesItems::DeputyHeadOfGovernment,
+                "executiveCouncil" => ContestRolesItems::ExecutiveCouncil,
+                "governmentOfficer" => ContestRolesItems::GovernmentOfficer,
+                "headOfGovernment" => ContestRolesItems::HeadOfGovernment,
+                "headOfState" => ContestRolesItems::HeadOfState,
+                "highestCourtJudge" => ContestRolesItems::HighestCourtJudge,
+                "judge" => ContestRolesItems::Judge,
+                "legislatorLowerBody" => ContestRolesItems::LegislatorLowerBody,
+                "legislatorUpperBody" => ContestRolesItems::LegislatorUpperBody,
+                "schoolBoard" => ContestRolesItems::SchoolBoard,
+                "specialPurposeOfficer" => ContestRolesItems::SpecialPurposeOfficer,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for ContestRolesItems {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for DivisionRepresentativeInfoRequest {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DivisionSearchRequest {
-        #[serde(
-            rename = "contextParams",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub context_params: ::std::option::Option<crate::schemas::ContextParams>,
-    }
-    impl ::google_field_selector::FieldSelector for DivisionSearchRequest {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for DivisionSearchRequest {
+    impl ::google_field_selector::ToFieldType for ContestRolesItems {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -656,7 +769,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "The unique Open Civic Data identifier for this division."]
+        #[doc = "The unique Open Civic Data identifier for this division"]
         #[serde(
             rename = "ocdId",
             default,
@@ -798,36 +911,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ElectionsQueryRequest {
-        #[serde(
-            rename = "contextParams",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub context_params: ::std::option::Option<crate::schemas::ContextParams>,
-    }
-    impl ::google_field_selector::FieldSelector for ElectionsQueryRequest {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ElectionsQueryRequest {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct ElectionsQueryResponse {
         #[doc = "A list of available elections"]
         #[serde(
@@ -874,12 +957,6 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[serde(
-            rename = "kgForeignKey",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub kg_foreign_key: ::std::option::Option<String>,
         #[doc = "The name of the district."]
         #[serde(
             rename = "name",
@@ -893,7 +970,7 @@ pub mod schemas {
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub scope: ::std::option::Option<String>,
+        pub scope: ::std::option::Option<crate::schemas::ElectoralDistrictScope>,
     }
     impl ::google_field_selector::FieldSelector for ElectoralDistrict {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -905,32 +982,119 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FieldMetadataProto {
-        #[serde(
-            rename = "internal",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub internal: ::std::option::Option<crate::schemas::InternalFieldMetadataProto>,
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ElectoralDistrictScope {
+        CityCouncil,
+        Citywide,
+        Congressional,
+        CountyCouncil,
+        Countywide,
+        Judicial,
+        National,
+        SchoolBoard,
+        Special,
+        StateLower,
+        StateUpper,
+        Statewide,
+        Township,
+        Ward,
     }
-    impl ::google_field_selector::FieldSelector for FieldMetadataProto {
+    impl ElectoralDistrictScope {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ElectoralDistrictScope::CityCouncil => "cityCouncil",
+                ElectoralDistrictScope::Citywide => "citywide",
+                ElectoralDistrictScope::Congressional => "congressional",
+                ElectoralDistrictScope::CountyCouncil => "countyCouncil",
+                ElectoralDistrictScope::Countywide => "countywide",
+                ElectoralDistrictScope::Judicial => "judicial",
+                ElectoralDistrictScope::National => "national",
+                ElectoralDistrictScope::SchoolBoard => "schoolBoard",
+                ElectoralDistrictScope::Special => "special",
+                ElectoralDistrictScope::StateLower => "stateLower",
+                ElectoralDistrictScope::StateUpper => "stateUpper",
+                ElectoralDistrictScope::Statewide => "statewide",
+                ElectoralDistrictScope::Township => "township",
+                ElectoralDistrictScope::Ward => "ward",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ElectoralDistrictScope {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ElectoralDistrictScope {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ElectoralDistrictScope, ()> {
+            Ok(match s {
+                "cityCouncil" => ElectoralDistrictScope::CityCouncil,
+                "citywide" => ElectoralDistrictScope::Citywide,
+                "congressional" => ElectoralDistrictScope::Congressional,
+                "countyCouncil" => ElectoralDistrictScope::CountyCouncil,
+                "countywide" => ElectoralDistrictScope::Countywide,
+                "judicial" => ElectoralDistrictScope::Judicial,
+                "national" => ElectoralDistrictScope::National,
+                "schoolBoard" => ElectoralDistrictScope::SchoolBoard,
+                "special" => ElectoralDistrictScope::Special,
+                "stateLower" => ElectoralDistrictScope::StateLower,
+                "stateUpper" => ElectoralDistrictScope::StateUpper,
+                "statewide" => ElectoralDistrictScope::Statewide,
+                "township" => ElectoralDistrictScope::Township,
+                "ward" => ElectoralDistrictScope::Ward,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for ElectoralDistrictScope {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ElectoralDistrictScope {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ElectoralDistrictScope {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "cityCouncil" => ElectoralDistrictScope::CityCouncil,
+                "citywide" => ElectoralDistrictScope::Citywide,
+                "congressional" => ElectoralDistrictScope::Congressional,
+                "countyCouncil" => ElectoralDistrictScope::CountyCouncil,
+                "countywide" => ElectoralDistrictScope::Countywide,
+                "judicial" => ElectoralDistrictScope::Judicial,
+                "national" => ElectoralDistrictScope::National,
+                "schoolBoard" => ElectoralDistrictScope::SchoolBoard,
+                "special" => ElectoralDistrictScope::Special,
+                "stateLower" => ElectoralDistrictScope::StateLower,
+                "stateUpper" => ElectoralDistrictScope::StateUpper,
+                "statewide" => ElectoralDistrictScope::Statewide,
+                "township" => ElectoralDistrictScope::Township,
+                "ward" => ElectoralDistrictScope::Ward,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for ElectoralDistrictScope {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for FieldMetadataProto {
+    impl ::google_field_selector::ToFieldType for ElectoralDistrictScope {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -948,7 +1112,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GeographicDivision {
-        #[doc = "Any other valid OCD IDs that refer to the same division.\n\nBecause OCD IDs are meant to be human-readable and at least somewhat predictable, there are occasionally several identifiers for a single division. These identifiers are defined to be equivalent to one another, and one is always indicated as the primary identifier. The primary identifier will be returned in ocd_id above, and any other equivalent valid identifiers will be returned in this list.\n\nFor example, if this division's OCD ID is ocd-division/country:us/district:dc, this will contain ocd-division/country:us/state:dc."]
+        #[doc = "Any other valid OCD IDs that refer to the same division.\\n\\nBecause OCD IDs are meant to be human-readable and at least somewhat predictable, there are occasionally several identifiers for a single division. These identifiers are defined to be equivalent to one another, and one is always indicated as the primary identifier. The primary identifier will be returned in ocd_id above, and any other equivalent valid identifiers will be returned in this list.\\n\\nFor example, if this division's OCD ID is ocd-division/country:us/district:dc, this will contain ocd-division/country:us/state:dc."]
         #[serde(
             rename = "alsoKnownAs",
             default,
@@ -992,78 +1156,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct InternalFieldMetadataProto {
-        #[serde(
-            rename = "isAuto",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub is_auto: ::std::option::Option<bool>,
-        #[serde(
-            rename = "sourceSummary",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub source_summary: ::std::option::Option<crate::schemas::InternalSourceSummaryProto>,
-    }
-    impl ::google_field_selector::FieldSelector for InternalFieldMetadataProto {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for InternalFieldMetadataProto {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct InternalSourceSummaryProto {
-        #[serde(
-            rename = "dataset",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub dataset: ::std::option::Option<String>,
-        #[serde(
-            rename = "provider",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub provider: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for InternalSourceSummaryProto {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for InternalSourceSummaryProto {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct Office {
         #[doc = "The OCD ID of the division with which this office is associated."]
         #[serde(
@@ -1078,7 +1170,7 @@ pub mod schemas {
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub levels: ::std::option::Option<Vec<String>>,
+        pub levels: ::std::option::Option<Vec<crate::schemas::OfficeLevelsItems>>,
         #[doc = "The human-readable name of the office."]
         #[serde(
             rename = "name",
@@ -1099,7 +1191,7 @@ pub mod schemas {
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub roles: ::std::option::Option<Vec<String>>,
+        pub roles: ::std::option::Option<Vec<crate::schemas::OfficeRolesItems>>,
         #[doc = "A list of sources for this office. If multiple sources are listed, the data has been aggregated from those sources."]
         #[serde(
             rename = "sources",
@@ -1114,6 +1206,208 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Office {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum OfficeLevelsItems {
+        AdministrativeArea1,
+        AdministrativeArea2,
+        Country,
+        International,
+        Locality,
+        Regional,
+        Special,
+        SubLocality1,
+        SubLocality2,
+    }
+    impl OfficeLevelsItems {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                OfficeLevelsItems::AdministrativeArea1 => "administrativeArea1",
+                OfficeLevelsItems::AdministrativeArea2 => "administrativeArea2",
+                OfficeLevelsItems::Country => "country",
+                OfficeLevelsItems::International => "international",
+                OfficeLevelsItems::Locality => "locality",
+                OfficeLevelsItems::Regional => "regional",
+                OfficeLevelsItems::Special => "special",
+                OfficeLevelsItems::SubLocality1 => "subLocality1",
+                OfficeLevelsItems::SubLocality2 => "subLocality2",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for OfficeLevelsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for OfficeLevelsItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<OfficeLevelsItems, ()> {
+            Ok(match s {
+                "administrativeArea1" => OfficeLevelsItems::AdministrativeArea1,
+                "administrativeArea2" => OfficeLevelsItems::AdministrativeArea2,
+                "country" => OfficeLevelsItems::Country,
+                "international" => OfficeLevelsItems::International,
+                "locality" => OfficeLevelsItems::Locality,
+                "regional" => OfficeLevelsItems::Regional,
+                "special" => OfficeLevelsItems::Special,
+                "subLocality1" => OfficeLevelsItems::SubLocality1,
+                "subLocality2" => OfficeLevelsItems::SubLocality2,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for OfficeLevelsItems {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for OfficeLevelsItems {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for OfficeLevelsItems {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "administrativeArea1" => OfficeLevelsItems::AdministrativeArea1,
+                "administrativeArea2" => OfficeLevelsItems::AdministrativeArea2,
+                "country" => OfficeLevelsItems::Country,
+                "international" => OfficeLevelsItems::International,
+                "locality" => OfficeLevelsItems::Locality,
+                "regional" => OfficeLevelsItems::Regional,
+                "special" => OfficeLevelsItems::Special,
+                "subLocality1" => OfficeLevelsItems::SubLocality1,
+                "subLocality2" => OfficeLevelsItems::SubLocality2,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for OfficeLevelsItems {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for OfficeLevelsItems {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum OfficeRolesItems {
+        DeputyHeadOfGovernment,
+        ExecutiveCouncil,
+        GovernmentOfficer,
+        HeadOfGovernment,
+        HeadOfState,
+        HighestCourtJudge,
+        Judge,
+        LegislatorLowerBody,
+        LegislatorUpperBody,
+        SchoolBoard,
+        SpecialPurposeOfficer,
+    }
+    impl OfficeRolesItems {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                OfficeRolesItems::DeputyHeadOfGovernment => "deputyHeadOfGovernment",
+                OfficeRolesItems::ExecutiveCouncil => "executiveCouncil",
+                OfficeRolesItems::GovernmentOfficer => "governmentOfficer",
+                OfficeRolesItems::HeadOfGovernment => "headOfGovernment",
+                OfficeRolesItems::HeadOfState => "headOfState",
+                OfficeRolesItems::HighestCourtJudge => "highestCourtJudge",
+                OfficeRolesItems::Judge => "judge",
+                OfficeRolesItems::LegislatorLowerBody => "legislatorLowerBody",
+                OfficeRolesItems::LegislatorUpperBody => "legislatorUpperBody",
+                OfficeRolesItems::SchoolBoard => "schoolBoard",
+                OfficeRolesItems::SpecialPurposeOfficer => "specialPurposeOfficer",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for OfficeRolesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for OfficeRolesItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<OfficeRolesItems, ()> {
+            Ok(match s {
+                "deputyHeadOfGovernment" => OfficeRolesItems::DeputyHeadOfGovernment,
+                "executiveCouncil" => OfficeRolesItems::ExecutiveCouncil,
+                "governmentOfficer" => OfficeRolesItems::GovernmentOfficer,
+                "headOfGovernment" => OfficeRolesItems::HeadOfGovernment,
+                "headOfState" => OfficeRolesItems::HeadOfState,
+                "highestCourtJudge" => OfficeRolesItems::HighestCourtJudge,
+                "judge" => OfficeRolesItems::Judge,
+                "legislatorLowerBody" => OfficeRolesItems::LegislatorLowerBody,
+                "legislatorUpperBody" => OfficeRolesItems::LegislatorUpperBody,
+                "schoolBoard" => OfficeRolesItems::SchoolBoard,
+                "specialPurposeOfficer" => OfficeRolesItems::SpecialPurposeOfficer,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for OfficeRolesItems {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for OfficeRolesItems {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for OfficeRolesItems {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "deputyHeadOfGovernment" => OfficeRolesItems::DeputyHeadOfGovernment,
+                "executiveCouncil" => OfficeRolesItems::ExecutiveCouncil,
+                "governmentOfficer" => OfficeRolesItems::GovernmentOfficer,
+                "headOfGovernment" => OfficeRolesItems::HeadOfGovernment,
+                "headOfState" => OfficeRolesItems::HeadOfState,
+                "highestCourtJudge" => OfficeRolesItems::HighestCourtJudge,
+                "judge" => OfficeRolesItems::Judge,
+                "legislatorLowerBody" => OfficeRolesItems::LegislatorLowerBody,
+                "legislatorUpperBody" => OfficeRolesItems::LegislatorUpperBody,
+                "schoolBoard" => OfficeRolesItems::SchoolBoard,
+                "specialPurposeOfficer" => OfficeRolesItems::SpecialPurposeOfficer,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for OfficeRolesItems {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for OfficeRolesItems {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1199,48 +1493,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PointProto {
-        #[serde(
-            rename = "latE7",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub lat_e7: ::std::option::Option<u32>,
-        #[serde(
-            rename = "lngE7",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub lng_e7: ::std::option::Option<u32>,
-        #[serde(
-            rename = "metadata",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub metadata: ::std::option::Option<crate::schemas::FieldMetadataProto>,
-    }
-    impl ::google_field_selector::FieldSelector for PointProto {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for PointProto {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct PollingLocation {
@@ -1258,21 +1510,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub end_date: ::std::option::Option<String>,
-        #[doc = "An ID for this object. IDs may change in future requests and should not be cached. Access to this field requires special access that can be requested from the Request more link on the Quotas page."]
-        #[serde(
-            rename = "id",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub id: ::std::option::Option<String>,
-        #[doc = "Latitude of the location, in degrees north of the equator. Only some locations -- generally, ballot drop boxes for vote-by-mail elections -- will have this set; for others, use a geocoding service like the Google Maps API to resolve the address to a geographic point."]
+        #[doc = "Latitude of the location, in degrees north of the equator. Note this field may not be available for some locations."]
         #[serde(
             rename = "latitude",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub latitude: ::std::option::Option<f64>,
-        #[doc = "Longitude of the location, in degrees east of the Prime Meridian. Only some locations -- generally, ballot drop boxes for vote-by-mail elections -- will have this set; for others, use a geocoding service like the Google Maps API to resolve the address to a geographic point."]
+        #[doc = "Longitude of the location, in degrees east of the Prime Meridian. Note this field may not be available for some locations."]
         #[serde(
             rename = "longitude",
             default,
@@ -1344,240 +1589,8 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct PostalAddress {
-        #[serde(
-            rename = "addressLines",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub address_lines: ::std::option::Option<Vec<String>>,
-        #[serde(
-            rename = "administrativeAreaName",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub administrative_area_name: ::std::option::Option<String>,
-        #[serde(
-            rename = "countryName",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub country_name: ::std::option::Option<String>,
-        #[serde(
-            rename = "countryNameCode",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub country_name_code: ::std::option::Option<String>,
-        #[serde(
-            rename = "dependentLocalityName",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub dependent_locality_name: ::std::option::Option<String>,
-        #[serde(
-            rename = "dependentThoroughfareName",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub dependent_thoroughfare_name: ::std::option::Option<String>,
-        #[serde(
-            rename = "firmName",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub firm_name: ::std::option::Option<String>,
-        #[serde(
-            rename = "isDisputed",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub is_disputed: ::std::option::Option<bool>,
-        #[serde(
-            rename = "languageCode",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub language_code: ::std::option::Option<String>,
-        #[serde(
-            rename = "localityName",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub locality_name: ::std::option::Option<String>,
-        #[serde(
-            rename = "postBoxNumber",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub post_box_number: ::std::option::Option<String>,
-        #[serde(
-            rename = "postalCodeNumber",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub postal_code_number: ::std::option::Option<String>,
-        #[serde(
-            rename = "postalCodeNumberExtension",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub postal_code_number_extension: ::std::option::Option<String>,
-        #[serde(
-            rename = "premiseName",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub premise_name: ::std::option::Option<String>,
-        #[serde(
-            rename = "recipientName",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub recipient_name: ::std::option::Option<String>,
-        #[serde(
-            rename = "sortingCode",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub sorting_code: ::std::option::Option<String>,
-        #[serde(
-            rename = "subAdministrativeAreaName",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub sub_administrative_area_name: ::std::option::Option<String>,
-        #[serde(
-            rename = "subPremiseName",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub sub_premise_name: ::std::option::Option<String>,
-        #[serde(
-            rename = "thoroughfareName",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub thoroughfare_name: ::std::option::Option<String>,
-        #[serde(
-            rename = "thoroughfareNumber",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub thoroughfare_number: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for PostalAddress {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for PostalAddress {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Provenance {
-        #[serde(
-            rename = "collidedSegmentSource",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub collided_segment_source: ::std::option::Option<crate::schemas::StreetSegmentList>,
-        #[serde(
-            rename = "ctclContestUuid",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub ctcl_contest_uuid: ::std::option::Option<String>,
-        #[serde(
-            rename = "ctclOfficeUuid",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub ctcl_office_uuid: ::std::option::Option<String>,
-        #[serde(
-            rename = "datasetId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub dataset_id: ::std::option::Option<i64>,
-        #[serde(
-            rename = "precinctId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub precinct_id: ::std::option::Option<i64>,
-        #[serde(
-            rename = "precinctSplitId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub precinct_split_id: ::std::option::Option<i64>,
-        #[serde(
-            rename = "tsStreetSegmentId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub ts_street_segment_id: ::std::option::Option<String>,
-        #[serde(
-            rename = "vip5PrecinctId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub vip_5_precinct_id: ::std::option::Option<String>,
-        #[serde(
-            rename = "vip5StreetSegmentId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub vip_5_street_segment_id: ::std::option::Option<String>,
-        #[serde(
-            rename = "vipStreetSegmentId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub vip_street_segment_id: ::std::option::Option<i64>,
-    }
-    impl ::google_field_selector::FieldSelector for Provenance {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for Provenance {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct RepresentativeInfoData {
-        #[doc = "Political geographic divisions that contain the requested address."]
+        #[doc = "A map of political geographic divisions that contain the requested address, keyed by the unique Open Civic Data identifier for this division."]
         #[serde(
             rename = "divisions",
             default,
@@ -1623,38 +1636,8 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct RepresentativeInfoRequest {
-        #[serde(
-            rename = "contextParams",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub context_params: ::std::option::Option<crate::schemas::ContextParams>,
-    }
-    impl ::google_field_selector::FieldSelector for RepresentativeInfoRequest {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for RepresentativeInfoRequest {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct RepresentativeInfoResponse {
-        #[doc = "Political geographic divisions that contain the requested address."]
+        #[doc = "A map of political geographic divisions that contain the requested address, keyed by the unique Open Civic Data identifier for this division."]
         #[serde(
             rename = "divisions",
             default,
@@ -1814,362 +1797,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct StreetSegment {
-        #[serde(
-            rename = "administrationRegionIds",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub administration_region_ids: ::std::option::Option<Vec<String>>,
-        #[serde(
-            rename = "beforeGeocodeId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub before_geocode_id: ::std::option::Option<String>,
-        #[serde(
-            rename = "catalistUniquePrecinctCode",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub catalist_unique_precinct_code: ::std::option::Option<String>,
-        #[serde(
-            rename = "city",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub city: ::std::option::Option<String>,
-        #[serde(
-            rename = "cityCouncilDistrict",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub city_council_district: ::std::option::Option<String>,
-        #[serde(
-            rename = "congressionalDistrict",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub congressional_district: ::std::option::Option<String>,
-        #[serde(
-            rename = "contestIds",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub contest_ids: ::std::option::Option<Vec<String>>,
-        #[serde(
-            rename = "countyCouncilDistrict",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub county_council_district: ::std::option::Option<String>,
-        #[serde(
-            rename = "countyFips",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub county_fips: ::std::option::Option<String>,
-        #[serde(
-            rename = "datasetId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub dataset_id: ::std::option::Option<i64>,
-        #[serde(
-            rename = "earlyVoteSiteByIds",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub early_vote_site_by_ids: ::std::option::Option<Vec<String>>,
-        #[serde(
-            rename = "endHouseNumber",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub end_house_number: ::std::option::Option<i64>,
-        #[serde(
-            rename = "geocodedPoint",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub geocoded_point: ::std::option::Option<crate::schemas::PointProto>,
-        #[serde(
-            rename = "geographicDivisionOcdIds",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub geographic_division_ocd_ids: ::std::option::Option<Vec<String>>,
-        #[serde(
-            rename = "id",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub id: ::std::option::Option<String>,
-        #[serde(
-            rename = "judicialDistrict",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub judicial_district: ::std::option::Option<String>,
-        #[serde(
-            rename = "mailOnly",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub mail_only: ::std::option::Option<bool>,
-        #[serde(
-            rename = "municipalDistrict",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub municipal_district: ::std::option::Option<String>,
-        #[serde(
-            rename = "ncoaAddress",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub ncoa_address: ::std::option::Option<String>,
-        #[serde(
-            rename = "oddOrEvens",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub odd_or_evens: ::std::option::Option<Vec<String>>,
-        #[serde(
-            rename = "originalId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub original_id: ::std::option::Option<String>,
-        #[serde(
-            rename = "pollinglocationByIds",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub pollinglocation_by_ids: ::std::option::Option<Vec<String>>,
-        #[serde(
-            rename = "precinctName",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub precinct_name: ::std::option::Option<String>,
-        #[serde(
-            rename = "precinctOcdId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub precinct_ocd_id: ::std::option::Option<String>,
-        #[serde(
-            rename = "provenances",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub provenances: ::std::option::Option<Vec<crate::schemas::Provenance>>,
-        #[serde(
-            rename = "published",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub published: ::std::option::Option<bool>,
-        #[serde(
-            rename = "schoolDistrict",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub school_district: ::std::option::Option<String>,
-        #[serde(
-            rename = "startHouseNumber",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub start_house_number: ::std::option::Option<i64>,
-        #[serde(
-            rename = "startLatE7",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub start_lat_e7: ::std::option::Option<i32>,
-        #[serde(
-            rename = "startLngE7",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub start_lng_e7: ::std::option::Option<i32>,
-        #[serde(
-            rename = "state",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub state: ::std::option::Option<String>,
-        #[serde(
-            rename = "stateHouseDistrict",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub state_house_district: ::std::option::Option<String>,
-        #[serde(
-            rename = "stateSenateDistrict",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub state_senate_district: ::std::option::Option<String>,
-        #[serde(
-            rename = "streetName",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub street_name: ::std::option::Option<String>,
-        #[serde(
-            rename = "subAdministrativeAreaName",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub sub_administrative_area_name: ::std::option::Option<String>,
-        #[serde(
-            rename = "surrogateId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub surrogate_id: ::std::option::Option<i64>,
-        #[serde(
-            rename = "targetsmartUniquePrecinctCode",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub targetsmart_unique_precinct_code: ::std::option::Option<String>,
-        #[serde(
-            rename = "townshipDistrict",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub township_district: ::std::option::Option<String>,
-        #[serde(
-            rename = "unitNumber",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub unit_number: ::std::option::Option<String>,
-        #[serde(
-            rename = "unitType",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub unit_type: ::std::option::Option<String>,
-        #[serde(
-            rename = "vanPrecinctCode",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub van_precinct_code: ::std::option::Option<String>,
-        #[serde(
-            rename = "voterGeographicDivisionOcdIds",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub voter_geographic_division_ocd_ids: ::std::option::Option<Vec<String>>,
-        #[serde(
-            rename = "wardDistrict",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub ward_district: ::std::option::Option<String>,
-        #[serde(
-            rename = "wildcard",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub wildcard: ::std::option::Option<bool>,
-        #[serde(
-            rename = "zip",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub zip: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for StreetSegment {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for StreetSegment {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct StreetSegmentList {
-        #[serde(
-            rename = "segments",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub segments: ::std::option::Option<Vec<crate::schemas::StreetSegment>>,
-    }
-    impl ::google_field_selector::FieldSelector for StreetSegmentList {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for StreetSegmentList {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct VoterInfoRequest {
-        #[serde(
-            rename = "contextParams",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub context_params: ::std::option::Option<crate::schemas::ContextParams>,
-        #[serde(
-            rename = "voterInfoSegmentResult",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub voter_info_segment_result:
-            ::std::option::Option<Box<crate::schemas::VoterInfoSegmentResult>>,
-    }
-    impl ::google_field_selector::FieldSelector for VoterInfoRequest {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for VoterInfoRequest {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct VoterInfoResponse {
@@ -2242,12 +1869,6 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub precinct_id: ::std::option::Option<String>,
-        #[serde(
-            rename = "segments",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub segments: ::std::option::Option<Vec<crate::schemas::StreetSegment>>,
         #[doc = "Local Election Information for the state that the voter votes in. For the US, there will only be one element in this array."]
         #[serde(
             rename = "state",
@@ -2266,57 +1887,23 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct VoterInfoSegmentResult {
-        #[serde(
-            rename = "generatedMillis",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub generated_millis: ::std::option::Option<i64>,
-        #[serde(
-            rename = "postalAddress",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub postal_address: ::std::option::Option<crate::schemas::PostalAddress>,
-        #[serde(
-            rename = "request",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub request: ::std::option::Option<Box<crate::schemas::VoterInfoRequest>>,
-        #[serde(
-            rename = "response",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub response: ::std::option::Option<crate::schemas::VoterInfoResponse>,
-    }
-    impl ::google_field_selector::FieldSelector for VoterInfoSegmentResult {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for VoterInfoSegmentResult {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
 }
 pub mod params {
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
+        #[doc = "Media download with context-dependent Content-Type"]
+        Media,
+        #[doc = "Responses with Content-Type of application/x-protobuf"]
+        Proto,
     }
     impl Alt {
         pub fn as_str(self) -> &'static str {
             match self {
                 Alt::Json => "json",
+                Alt::Media => "media",
+                Alt::Proto => "proto",
             }
         }
     }
@@ -2330,6 +1917,8 @@ pub mod params {
         fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
             Ok(match s {
                 "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
                 _ => return Err(()),
             })
         }
@@ -2355,6 +1944,8 @@ pub mod params {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2374,6 +1965,77 @@ pub mod params {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum Xgafv {
+        #[doc = "v1 error format"]
+        _1,
+        #[doc = "v2 error format"]
+        _2,
+    }
+    impl Xgafv {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                Xgafv::_1 => "1",
+                Xgafv::_2 => "2",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for Xgafv {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for Xgafv {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for Xgafv {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for Xgafv {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Xgafv {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
 }
 pub struct Client {
     reqwest: ::reqwest::Client,
@@ -2382,17 +2044,17 @@ pub struct Client {
 impl Client {
     pub fn new<A>(auth: A) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client::with_reqwest_client(auth, ::reqwest::Client::builder().build().unwrap())
     }
     pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::Client) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client {
             reqwest,
-            auth: auth.into(),
+            auth: Box::new(auth),
         }
     }
     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
@@ -2432,21 +2094,21 @@ pub mod resources {
                 self.auth
             }
             #[doc = "Searches for political divisions by their natural name or OCD ID."]
-            pub fn search(
-                &self,
-                request: crate::schemas::DivisionSearchRequest,
-            ) -> SearchRequestBuilder {
+            pub fn search(&self) -> SearchRequestBuilder {
                 SearchRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
-                    request,
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     query: None,
                 }
             }
@@ -2456,20 +2118,33 @@ pub mod resources {
         pub struct SearchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            request: crate::schemas::DivisionSearchRequest,
             query: Option<String>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> SearchRequestBuilder<'a> {
             #[doc = "The search query. Queries can cover any parts of a OCD ID or a human readable division name. All words given in the query are treated as required patterns. In addition to that, most query operators of the Apache Lucene library are supported. See http://lucene.apache.org/core/2_9_4/queryparsersyntax.html"]
             pub fn query(mut self, value: impl Into<String>) -> Self {
                 self.query = Some(value.into());
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2487,14 +2162,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -2553,30 +2238,37 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
-                let req = req.json(&self.request);
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/civicinfo/v2/".to_owned();
-                output.push_str("divisions");
+                let mut output = "https://civicinfo.googleapis.com/".to_owned();
+                output.push_str("civicinfo/v2/divisions");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("query", &self.query)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("query", &self.query)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -2592,40 +2284,42 @@ pub mod resources {
                 self.auth
             }
             #[doc = "List of available elections to query."]
-            pub fn election_query(
-                &self,
-                request: crate::schemas::ElectionsQueryRequest,
-            ) -> ElectionQueryRequestBuilder {
+            pub fn election_query(&self) -> ElectionQueryRequestBuilder {
                 ElectionQueryRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
-                    request,
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                 }
             }
             #[doc = "Looks up information relevant to a voter based on the voter's registered address."]
             pub fn voter_info_query(
                 &self,
-                request: crate::schemas::VoterInfoRequest,
                 address: impl Into<String>,
             ) -> VoterInfoQueryRequestBuilder {
                 VoterInfoQueryRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
-                    request,
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     address: address.into(),
                     election_id: None,
                     official_only: None,
@@ -2638,16 +2332,29 @@ pub mod resources {
         pub struct ElectionQueryRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            request: crate::schemas::ElectionsQueryRequest,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ElectionQueryRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -2663,14 +2370,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -2729,29 +2446,36 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
-                let req = req.json(&self.request);
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/civicinfo/v2/".to_owned();
-                output.push_str("elections");
+                let mut output = "https://civicinfo.googleapis.com/".to_owned();
+                output.push_str("civicinfo/v2/elections");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -2760,21 +2484,24 @@ pub mod resources {
         pub struct VoterInfoQueryRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            request: crate::schemas::VoterInfoRequest,
             address: String,
             election_id: Option<i64>,
             official_only: Option<bool>,
             return_all_available_data: Option<bool>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> VoterInfoQueryRequestBuilder<'a> {
-            #[doc = "The unique ID of the election to look up. A list of election IDs can be obtained at https://www.googleapis.com/civicinfo/{version}/electionsIf no election ID is specified in the query and there is more than one election with data for the given voter, the additional elections are provided in the otherElections response field."]
+            #[doc = "The unique ID of the election to look up. A list of election IDs can be obtained at https://www.googleapis.com/civicinfo/{version}/elections. If no election ID is specified in the query and there is more than one election with data for the given voter, the additional elections are provided in the otherElections response field."]
             pub fn election_id(mut self, value: i64) -> Self {
                 self.election_id = Some(value);
                 self
@@ -2784,9 +2511,19 @@ pub mod resources {
                 self.official_only = Some(value);
                 self
             }
-            #[doc = "If set to true, the query will return the success codeand include any partial information when it is unable to determine a matching address or unable to determine the election for electionId=0 queries."]
+            #[doc = "If set to true, the query will return the success code and include any partial information when it is unable to determine a matching address or unable to determine the election for electionId=0 queries."]
             pub fn return_all_available_data(mut self, value: bool) -> Self {
                 self.return_all_available_data = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2804,14 +2541,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -2870,33 +2617,40 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
-                let req = req.json(&self.request);
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/civicinfo/v2/".to_owned();
-                output.push_str("voterinfo");
+                let mut output = "https://civicinfo.googleapis.com/".to_owned();
+                output.push_str("civicinfo/v2/voterinfo");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("address", &self.address)]);
-                let req = req.query(&[("electionId", &self.election_id)]);
-                let req = req.query(&[("officialOnly", &self.official_only)]);
-                let req = req.query(&[("returnAllAvailableData", &self.return_all_available_data)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("address", &self.address)]);
+                req = req.query(&[("electionId", &self.election_id)]);
+                req = req.query(&[("officialOnly", &self.official_only)]);
+                req = req.query(&[("returnAllAvailableData", &self.return_all_available_data)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -3451,19 +3205,21 @@ pub mod resources {
             #[doc = "Looks up political geography and representative information for a single address."]
             pub fn representative_info_by_address(
                 &self,
-                request: crate::schemas::RepresentativeInfoRequest,
             ) -> RepresentativeInfoByAddressRequestBuilder {
                 RepresentativeInfoByAddressRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
-                    request,
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     address: None,
                     include_offices: None,
                     levels: None,
@@ -3473,20 +3229,22 @@ pub mod resources {
             #[doc = "Looks up representative information for a single geographic division."]
             pub fn representative_info_by_division(
                 &self,
-                request: crate::schemas::DivisionRepresentativeInfoRequest,
                 ocd_id: impl Into<String>,
             ) -> RepresentativeInfoByDivisionRequestBuilder {
                 RepresentativeInfoByDivisionRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
-                    request,
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     ocd_id: ocd_id.into(),
                     levels: None,
                     recursive: None,
@@ -3496,9 +3254,9 @@ pub mod resources {
         }
         #[doc = "Created via [RepresentativesActions::representative_info_by_address()](struct.RepresentativesActions.html#method.representative_info_by_address)"]
         #[derive(Debug, Clone)]
-        pub struct RepresentativeInfoByAddressRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: RepresentativeInfoRequest , address : Option < String > , include_offices : Option < bool > , levels : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressLevelsItems > > , roles : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressRolesItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
+        pub struct RepresentativeInfoByAddressRequestBuilder < 'a > { pub (crate) reqwest : & 'a :: reqwest :: Client , pub (crate) auth : & 'a dyn :: google_api_auth :: GetAccessToken , address : Option < String > , include_offices : Option < bool > , levels : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressLevelsItems > > , roles : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressRolesItems > > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
         impl<'a> RepresentativeInfoByAddressRequestBuilder<'a> {
-            #[doc = "The address to look up. May only be specified if the field ocdId is not given in the URL."]
+            #[doc = "The address to look up. May only be specified if the field ocdId is not given in the URL"]
             pub fn address(mut self, value: impl Into<String>) -> Self {
                 self.address = Some(value.into());
                 self
@@ -3524,6 +3282,16 @@ pub mod resources {
                 self.roles = Some(value.into());
                 self
             }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -3539,14 +3307,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -3605,39 +3383,50 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
-                let req = req.json(&self.request);
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/civicinfo/v2/".to_owned();
-                output.push_str("representatives");
+                let mut output = "https://civicinfo.googleapis.com/".to_owned();
+                output.push_str("civicinfo/v2/representatives");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("address", &self.address)]);
-                let req = req.query(&[("includeOffices", &self.include_offices)]);
-                let req = req.query(&[("levels", &self.levels)]);
-                let req = req.query(&[("roles", &self.roles)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("address", &self.address)]);
+                req = req.query(&[("includeOffices", &self.include_offices)]);
+                for value in self.levels.iter().flatten() {
+                    req = req.query(&[("levels", value)]);
+                }
+                for value in self.roles.iter().flatten() {
+                    req = req.query(&[("roles", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
         #[doc = "Created via [RepresentativesActions::representative_info_by_division()](struct.RepresentativesActions.html#method.representative_info_by_division)"]
         #[derive(Debug, Clone)]
-        pub struct RepresentativeInfoByDivisionRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: DivisionRepresentativeInfoRequest , ocd_id : String , levels : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionLevelsItems > > , recursive : Option < bool > , roles : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionRolesItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
+        pub struct RepresentativeInfoByDivisionRequestBuilder < 'a > { pub (crate) reqwest : & 'a :: reqwest :: Client , pub (crate) auth : & 'a dyn :: google_api_auth :: GetAccessToken , ocd_id : String , levels : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionLevelsItems > > , recursive : Option < bool > , roles : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionRolesItems > > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
         impl<'a> RepresentativeInfoByDivisionRequestBuilder<'a> {
             #[doc = "A list of office levels to filter by. Only offices that serve at least one of these levels will be returned. Divisions that don't contain a matching office will not be returned."]
             pub fn levels(
@@ -3660,6 +3449,16 @@ pub mod resources {
                 self.roles = Some(value.into());
                 self
             }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -3675,14 +3474,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -3741,13 +3550,12 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
-                let req = req.json(&self.request);
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/civicinfo/v2/".to_owned();
-                output.push_str("representatives/");
+                let mut output = "https://civicinfo.googleapis.com/".to_owned();
+                output.push_str("civicinfo/v2/representatives/");
                 {
                     let var_as_str = &self.ocd_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -3757,23 +3565,35 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("levels", &self.levels)]);
-                let req = req.query(&[("recursive", &self.recursive)]);
-                let req = req.query(&[("roles", &self.roles)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in self.levels.iter().flatten() {
+                    req = req.query(&[("levels", value)]);
+                }
+                req = req.query(&[("recursive", &self.recursive)]);
+                for value in self.roles.iter().flatten() {
+                    req = req.query(&[("roles", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -3787,6 +3607,7 @@ pub enum Error {
         reqwest_err: ::reqwest::Error,
         body: Option<String>,
     },
+    IO(std::io::Error),
     Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
@@ -3796,6 +3617,7 @@ impl Error {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
             Error::Reqwest { .. } => None,
+            Error::IO(_) => None,
             Error::Other(_) => None,
         }
     }
@@ -3813,6 +3635,7 @@ impl ::std::fmt::Display for Error {
                 }
                 Ok(())
             }
+            Error::IO(err) => write!(f, "IO Error: {}", err),
             Error::Other(err) => write!(f, "Uknown Error: {}", err),
         }
     }
@@ -3832,6 +3655,12 @@ impl From<::reqwest::Error> for Error {
             reqwest_err,
             body: None,
         }
+    }
+}
+
+impl From<std::io::Error> for Error {
+    fn from(err: std::io::Error) -> Error {
+        Error::IO(err)
     }
 }
 #[allow(dead_code)]
@@ -3901,13 +3730,13 @@ mod multipart {
 
     pub(crate) struct Part {
         content_type: ::mime::Mime,
-        body: Box<dyn ::std::io::Read + Send>,
+        body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
     }
 
     impl Part {
         pub(crate) fn new(
             content_type: ::mime::Mime,
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         ) -> Part {
             Part { content_type, body }
         }
@@ -3916,7 +3745,7 @@ mod multipart {
     pub(crate) struct RelatedMultiPartReader {
         state: RelatedMultiPartReaderState,
         boundary: String,
-        next_body: Option<Box<dyn ::std::io::Read + Send>>,
+        next_body: Option<Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>>,
         parts: std::vec::IntoIter<Part>,
     }
 
@@ -3930,13 +3759,18 @@ mod multipart {
             content_type: Vec<u8>,
         },
         WriteBody {
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         },
     }
 
-    impl ::std::io::Read for RelatedMultiPartReader {
-        fn read(&mut self, buf: &mut [u8]) -> ::std::io::Result<usize> {
+    impl futures::io::AsyncRead for RelatedMultiPartReader {
+        fn poll_read(
+            mut self: std::pin::Pin<&mut Self>,
+            ctx: &mut futures::task::Context,
+            buf: &mut [u8],
+        ) -> futures::task::Poll<Result<usize, futures::io::Error>> {
             use RelatedMultiPartReaderState::*;
+
             let mut bytes_written: usize = 0;
             loop {
                 let rem_buf = &mut buf[bytes_written..];
@@ -3984,7 +3818,14 @@ mod multipart {
                         }
                     }
                     WriteBody { body } => {
-                        let written = body.read(rem_buf)?;
+                        let body = std::pin::Pin::new(body);
+                        let written = match futures::io::AsyncRead::poll_read(body, ctx, rem_buf) {
+                            futures::task::Poll::Ready(Ok(n)) => n,
+                            futures::task::Poll::Ready(Err(err)) => {
+                                return futures::task::Poll::Ready(Err(err));
+                            }
+                            futures::task::Poll::Pending => return futures::task::Poll::Pending,
+                        };
                         bytes_written += written;
                         if written == 0 {
                             self.state = WriteBoundary {
@@ -3997,7 +3838,8 @@ mod multipart {
                     }
                 }
             }
-            Ok(bytes_written)
+
+            futures::task::Poll::Ready(Ok(bytes_written))
         }
     }
 

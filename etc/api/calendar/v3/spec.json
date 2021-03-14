@@ -1,20 +1,20 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/9DzaytSdmaQ1zkNc9P_nvRDhSF0\"",
+  "etag": null,
   "discoveryVersion": "v1",
   "id": "calendar:v3",
   "name": "calendar",
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v3",
-  "revision": "20200503",
+  "revision": "20210222",
   "title": "Calendar API",
   "description": "Manipulates events and other calendar data.",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "icons": {
-    "x16": "http://www.google.com/images/icons/product/calendar-16.png",
-    "x32": "http://www.google.com/images/icons/product/calendar-32.png"
+    "x16": "http://fonts.gstatic.com/s/i/productlogos/calendar_2020q4/v8/web-16dp/logo_calendar_2020q4_color_1x_web_16dp.png",
+    "x32": "http://fonts.gstatic.com/s/i/productlogos/calendar_2020q4/v8/web-32dp/logo_calendar_2020q4_color_1x_web_32dp.png"
   },
   "documentationLink": "https://developers.google.com/google-apps/calendar/firstapp",
   "protocol": "rest",
@@ -144,7 +144,7 @@
           "description": "View events on all your calendars"
         },
         "https://www.googleapis.com/auth/calendar.readonly": {
-          "description": "View your calendars"
+          "description": "See and download any calendar you can access using your Google Calendar"
         },
         "https://www.googleapis.com/auth/calendar.settings.readonly": {
           "description": "View your Calendar settings"
@@ -801,7 +801,7 @@
           "items": null
         },
         "type": {
-          "description": "The type of delivery mechanism used for this channel.",
+          "description": "The type of delivery mechanism used for this channel. Valid values are \"web_hook\" (or \"webhook\"). Both values refer to a channel where Http requests are used to deliver messages.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1114,7 +1114,7 @@
       "enumDescriptions": [],
       "properties": {
         "type": {
-          "description": "The conference solution type.\nIf a client encounters an unfamiliar or empty type, it should still be able to display the entry points. However, it should disallow modifications.\nThe possible values are:  \n- \"eventHangout\" for Hangouts for consumers (http://hangouts.google.com)\n- \"eventNamedHangout\" for classic Hangouts for G Suite users (http://hangouts.google.com)\n- \"hangoutsMeet\" for Hangouts Meet (http://meet.google.com)\n- \"addOn\" for 3P conference providers",
+          "description": "The conference solution type.\nIf a client encounters an unfamiliar or empty type, it should still be able to display the entry points. However, it should disallow modifications.\nThe possible values are:  \n- \"eventHangout\" for Hangouts for consumers (http://hangouts.google.com)\n- \"eventNamedHangout\" for classic Hangouts for Google Workspace users (http://hangouts.google.com)\n- \"hangoutsMeet\" for Google Meet (http://meet.google.com)\n- \"addOn\" for 3P conference providers",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1340,7 +1340,7 @@
           }
         },
         "attendees": {
-          "description": "The attendees of the event. See the Events with attendees guide for more information on scheduling events with other calendar users.",
+          "description": "The attendees of the event. See the Events with attendees guide for more information on scheduling events with other calendar users. Service accounts need to use domain-wide delegation of authority to populate the attendee list.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1470,6 +1470,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "eventType": {
+          "description": "Specific type of the event. Read-only. Possible values are:  \n- \"default\" - A regular event or not further specified. \n- \"outOfOffice\" - An out-of-office event.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "extendedProperties": {
           "description": "Extended properties of the event.",
           "type": "object",
@@ -1520,14 +1530,14 @@
           "items": null
         },
         "gadget": {
-          "description": "A gadget that extends this event.",
+          "description": "A gadget that extends this event. Gadgets are deprecated; this structure is instead only used for returning birthday calendar metadata.",
           "type": "object",
           "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {
             "display": {
-              "description": "The gadget's display mode. Optional. Possible values are:  \n- \"icon\" - The gadget displays next to the event's title in the calendar view. \n- \"chip\" - The gadget displays when the event is clicked.",
+              "description": "The gadget's display mode. Deprecated. Possible values are:  \n- \"icon\" - The gadget displays next to the event's title in the calendar view. \n- \"chip\" - The gadget displays when the event is clicked.",
               "type": "string",
               "format": null,
               "enum": [],
@@ -1537,7 +1547,7 @@
               "items": null
             },
             "height": {
-              "description": "The gadget's height in pixels. The height must be an integer greater than 0. Optional.",
+              "description": "The gadget's height in pixels. The height must be an integer greater than 0. Optional. Deprecated.",
               "type": "integer",
               "format": "int32",
               "enum": [],
@@ -1547,7 +1557,7 @@
               "items": null
             },
             "iconLink": {
-              "description": "The gadget's icon URL. The URL scheme must be HTTPS.",
+              "description": "The gadget's icon URL. The URL scheme must be HTTPS. Deprecated.",
               "type": "string",
               "format": null,
               "enum": [],
@@ -1557,7 +1567,7 @@
               "items": null
             },
             "link": {
-              "description": "The gadget's URL. The URL scheme must be HTTPS.",
+              "description": "The gadget's URL. The URL scheme must be HTTPS. Deprecated.",
               "type": "string",
               "format": null,
               "enum": [],
@@ -1586,7 +1596,7 @@
               "items": null
             },
             "title": {
-              "description": "The gadget's title.",
+              "description": "The gadget's title. Deprecated.",
               "type": "string",
               "format": null,
               "enum": [],
@@ -1596,7 +1606,7 @@
               "items": null
             },
             "type": {
-              "description": "The gadget's type.",
+              "description": "The gadget's type. Deprecated.",
               "type": "string",
               "format": null,
               "enum": [],
@@ -1606,7 +1616,7 @@
               "items": null
             },
             "width": {
-              "description": "The gadget's width in pixels. The width must be an integer greater than 0. Optional.",
+              "description": "The gadget's width in pixels. The width must be an integer greater than 0. Optional. Deprecated.",
               "type": "integer",
               "format": "int32",
               "enum": [],

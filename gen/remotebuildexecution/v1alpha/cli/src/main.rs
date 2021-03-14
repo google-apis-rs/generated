@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("remotebuildexecution1_alpha")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200505")
+            .version("0.1.0-20210309")
             .about("Supplies a Remote Execution API service for tools such as bazel.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -38,13 +38,13 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .about("sub-resources: instances and operations");
         let mut instances1 = SubCommand::with_name("instances")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: create, delete, get and list");
+            .about("methods: create, delete, get, list and patch");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a new instance in the specified region.\nReturns a long running operation which contains an instance on completion.\nWhile the long running operation is in progress, any call to `GetInstance`\nreturns an instance in state `CREATING`.");
+            let mcmd = SubCommand::with_name("create").about("Creates a new instance in the specified region. Returns a long running operation which contains an instance on completion. While the long running operation is in progress, any call to `GetInstance` returns an instance in state `CREATING`.");
             instances1 = instances1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes the specified instance.\nReturns a long running operation which contains a `google.protobuf.Empty`\nresponse on completion.\nDeleting an instance with worker pools in it will delete these worker\npools.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes the specified instance. Returns a long running operation which contains a `google.protobuf.Empty` response on completion. Deleting an instance with worker pools in it will delete these worker pools.");
             instances1 = instances1.subcommand(mcmd);
         }
         {
@@ -55,22 +55,26 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("list").about("Lists instances in a project.");
             instances1 = instances1.subcommand(mcmd);
         }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Updates the specified instance. Returns a long running operation which contains the updated instance in the response on completion.");
+            instances1 = instances1.subcommand(mcmd);
+        }
         let mut operations1 = SubCommand::with_name("operations")
             .setting(AppSettings::ColoredHelp)
             .about("methods: get");
         {
-            let mcmd = SubCommand::with_name("get").about("Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.");
+            let mcmd = SubCommand::with_name("get").about("Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.");
             operations1 = operations1.subcommand(mcmd);
         }
         let mut workerpools2 = SubCommand::with_name("workerpools")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get, list and patch");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a new worker pool with a specified size and configuration.\nReturns a long running operation which contains a worker pool on\ncompletion. While the long running operation is in progress, any call to\n`GetWorkerPool` returns a worker pool in state `CREATING`.");
+            let mcmd = SubCommand::with_name("create").about("Creates a new worker pool with a specified size and configuration. Returns a long running operation which contains a worker pool on completion. While the long running operation is in progress, any call to `GetWorkerPool` returns a worker pool in state `CREATING`.");
             workerpools2 = workerpools2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes the specified worker pool.\nReturns a long running operation, which contains a `google.protobuf.Empty`\nresponse on completion.\nWhile the long running operation is in progress, any call to\n`GetWorkerPool` returns a worker pool in state `DELETING`.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes the specified worker pool. Returns a long running operation, which contains a `google.protobuf.Empty` response on completion. While the long running operation is in progress, any call to `GetWorkerPool` returns a worker pool in state `DELETING`.");
             workerpools2 = workerpools2.subcommand(mcmd);
         }
         {
@@ -82,7 +86,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             workerpools2 = workerpools2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates an existing worker pool with a specified size and/or configuration.\nReturns a long running operation, which contains a worker pool on\ncompletion. While the long running operation is in progress, any call to\n`GetWorkerPool` returns a worker pool in state `UPDATING`.");
+            let mcmd = SubCommand::with_name("patch").about("Updates an existing worker pool with a specified size and/or configuration. Returns a long running operation, which contains a worker pool on completion. While the long running operation is in progress, any call to `GetWorkerPool` returns a worker pool in state `UPDATING`.");
             workerpools2 = workerpools2.subcommand(mcmd);
         }
         instances1 = instances1.subcommand(workerpools2);

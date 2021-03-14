@@ -7,7 +7,7 @@
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20200509",
+  "revision": "20210224",
   "title": "Knowledge Graph Search API",
   "description": "Searches the Google Knowledge Graph for entities.",
   "ownerDomain": "google.com",
@@ -201,14 +201,14 @@
   "schemas": {
     "SearchResponse": {
       "id": "SearchResponse",
-      "description": "Response message includes the context and a list of matching results\nwhich contain the detail of associated entities.",
+      "description": "Response message includes the context and a list of matching results which contain the detail of associated entities.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "@context": {
-          "description": "The local context applicable for the response. See more details at\nhttp://www.w3.org/TR/json-ld/#context-definitions.",
+          "description": "The local context applicable for the response. See more details at http://www.w3.org/TR/json-ld/#context-definitions.",
           "type": "any",
           "format": null,
           "enum": [],
@@ -258,10 +258,10 @@
           "id": "kgsearch.entities.search",
           "path": "v1/entities:search",
           "httpMethod": "GET",
-          "description": "Searches Knowledge Graph for entities that match the constraints.\nA list of matched entities will be returned in response, which will be in\nJSON-LD format and compatible with http://schema.org",
+          "description": "Searches Knowledge Graph for entities that match the constraints. A list of matched entities will be returned in response, which will be in JSON-LD format and compatible with http://schema.org",
           "parameters": {
             "ids": {
-              "description": "The list of entity id to be used for search instead of query string.\nTo specify multiple ids in the HTTP request, repeat the parameter in the\nURL as in ...?ids=A&ids=B",
+              "description": "The list of entity id to be used for search instead of query string. To specify multiple ids in the HTTP request, repeat the parameter in the URL as in ...?ids=A&ids=B",
               "default": null,
               "location": "query",
               "required": false,
@@ -289,7 +289,7 @@
               "repeated": false
             },
             "languages": {
-              "description": "The list of language codes (defined in ISO 693) to run the query with,\ne.g. 'en'.",
+              "description": "The list of language codes (defined in ISO 693) to run the query with, e.g. 'en'.",
               "default": null,
               "location": "query",
               "required": false,
@@ -345,7 +345,7 @@
               "repeated": false
             },
             "types": {
-              "description": "Restricts returned entities with these types, e.g. Person\n(as defined in http://schema.org/Person). If multiple types are specified,\nreturned entities will contain one or more of these types.",
+              "description": "Restricts returned entities with these types, e.g. Person (as defined in http://schema.org/Person). If multiple types are specified, returned entities will contain one or more of these types.",
               "default": null,
               "location": "query",
               "required": false,

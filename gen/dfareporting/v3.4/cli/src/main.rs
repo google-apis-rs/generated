@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("dfareporting3d4")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200326")
-            .about("Manages your DoubleClick Campaign Manager ad campaigns and reports.")
+            .version("0.1.0-20210210")
+            .about("Build applications to efficiently manage large or complex trafficking, reporting, and attribution workflows for Campaign Manager 360.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -186,8 +186,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             advertiser_landing_pages0 = advertiser_landing_pages0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch")
-                .about("Updates an existing landing page. This method supports patch semantics.");
+            let mcmd = SubCommand::with_name("patch").about("Updates an existing advertiser landing page. This method supports patch semantics.");
             advertiser_landing_pages0 = advertiser_landing_pages0.subcommand(mcmd);
         }
         {
@@ -852,7 +851,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("list").about(
-                "Retrieves a list of projects, possibly filtered. This method supports paging.",
+                "Retrieves a list of projects, possibly filtered. This method supports paging .",
             );
             projects0 = projects0.subcommand(mcmd);
         }
@@ -910,7 +909,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut reports0 = SubCommand::with_name("reports")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: delete, get, insert, list, run and update");
+            .about("methods: delete, get, insert, list, patch, run and update");
         {
             let mcmd = SubCommand::with_name("delete").about("Deletes a report by its ID.");
             reports0 = reports0.subcommand(mcmd);
@@ -925,6 +924,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("list").about("Retrieves list of reports.");
+            reports0 = reports0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch")
+                .about("Updates an existing report. This method supports patch semantics.");
             reports0 = reports0.subcommand(mcmd);
         }
         {

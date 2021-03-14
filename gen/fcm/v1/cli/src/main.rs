@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("fcm1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200505")
+            .version("0.1.0-20210312")
             .about("FCM send API that provides a cross-platform messaging solution to reliably deliver messages at no cost.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -41,7 +41,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .about("methods: send");
         {
             let mcmd = SubCommand::with_name("send").about(
-                "Send a message to specified target (a registration token, topic\nor condition).",
+                "Send a message to specified target (a registration token, topic or condition).",
             );
             messages1 = messages1.subcommand(mcmd);
         }

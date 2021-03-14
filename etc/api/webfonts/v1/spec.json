@@ -1,35 +1,69 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/5_fiJZHCPuxNkgUtCVK8tszhsbo\"",
+  "etag": null,
   "discoveryVersion": "v1",
   "id": "webfonts:v1",
   "name": "webfonts",
-  "canonicalName": null,
+  "canonicalName": "Webfonts",
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20200302",
-  "title": "Google Fonts Developer API",
-  "description": "Accesses the metadata for all families served by Google Fonts, providing a list of families currently available (including available styles and a list of supported script subsets).",
+  "revision": "20210213",
+  "title": "Web Fonts Developer API",
+  "description": "The Google Web Fonts Developer API lets you retrieve information about web fonts served by Google.",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "icons": {
-    "x16": "https://www.google.com/images/icons/feature/font_api-16.png",
-    "x32": "https://www.google.com/images/icons/feature/font_api-32.gif"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "documentationLink": "https://developers.google.com/fonts/docs/developer_api",
   "protocol": "rest",
-  "baseUrl": "https://www.googleapis.com/webfonts/v1/",
-  "basePath": "/webfonts/v1/",
-  "rootUrl": "https://www.googleapis.com/",
-  "servicePath": "webfonts/v1/",
-  "batchPath": "batch/webfonts/v1",
+  "baseUrl": "https://webfonts.googleapis.com/",
+  "basePath": "",
+  "rootUrl": "https://webfonts.googleapis.com/",
+  "servicePath": "",
+  "batchPath": "batch",
   "version_module": null,
   "packagePath": null,
   "labels": null,
   "features": null,
   "parameters": {
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [
+        "1",
+        "2"
+      ],
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "repeated": false
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
     "alt": {
-      "description": "Data format for the response.",
+      "description": "Data format for response.",
       "default": "json",
       "location": "query",
       "required": false,
@@ -39,11 +73,29 @@
       "maximum": null,
       "pattern": null,
       "enum": [
-        "json"
+        "json",
+        "media",
+        "proto"
       ],
       "enumDescriptions": [
-        "Responses with Content-Type of application/json"
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
       ],
+      "repeated": false
+    },
+    "callback": {
+      "description": "JSONP",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
       "repeated": false
     },
     "fields": {
@@ -103,7 +155,7 @@
       "repeated": false
     },
     "quotaUser": {
-      "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "default": null,
       "location": "query",
       "required": false,
@@ -116,8 +168,22 @@
       "enumDescriptions": [],
       "repeated": false
     },
-    "userIp": {
-      "description": "Deprecated. Please use quotaUser instead.",
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "default": null,
       "location": "query",
       "required": false,
@@ -135,7 +201,7 @@
   "schemas": {
     "Webfont": {
       "id": "Webfont",
-      "description": null,
+      "description": "Metadata describing a family of fonts.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -169,7 +235,7 @@
           "enumDescriptions": [],
           "properties": {},
           "additionalProperties": {
-            "description": "The font file URL (value) for an specific variant (key).",
+            "description": null,
             "type": "string",
             "format": null,
             "enum": [],
@@ -193,7 +259,7 @@
         "lastModified": {
           "description": "The date (format \"yyyy-MM-dd\") the font was modified for the last time.",
           "type": "string",
-          "format": "date",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -252,7 +318,7 @@
     },
     "WebfontList": {
       "id": "WebfontList",
-      "description": null,
+      "description": "Response containing the list of fonts currently served by the Google Fonts API.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -291,12 +357,12 @@
       "methods": {
         "list": {
           "id": "webfonts.webfonts.list",
-          "path": "webfonts",
+          "path": "v1/webfonts",
           "httpMethod": "GET",
-          "description": "Retrieves the list of fonts currently served by the Google Fonts Developer API",
+          "description": "Retrieves the list of fonts currently served by the Google Fonts Developer API.",
           "parameters": {
             "sort": {
-              "description": "Enables sorting of the list",
+              "description": "Enables sorting of the list.",
               "default": null,
               "location": "query",
               "required": false,
@@ -306,13 +372,15 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "alpha",
-                "date",
-                "popularity",
-                "style",
-                "trending"
+                "SORT_UNDEFINED",
+                "ALPHA",
+                "DATE",
+                "POPULARITY",
+                "STYLE",
+                "TRENDING"
               ],
               "enumDescriptions": [
+                "No sorting specified, use the default sorting method.",
                 "Sort alphabetically",
                 "Sort by date added",
                 "Sort by popularity",

@@ -16,7 +16,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AddBandingRequest {
-        #[doc = "The banded range to add. The bandedRangeId\nfield is optional; if one is not set, an id will be randomly generated. (It\nis an error to specify the ID of a range that already exists.)"]
+        #[doc = "The banded range to add. The bandedRangeId field is optional; if one is not set, an id will be randomly generated. (It is an error to specify the ID of a range that already exists.)"]
         #[serde(
             rename = "bandedRange",
             default,
@@ -60,7 +60,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AddChartRequest {
-        #[doc = "The chart that should be added to the spreadsheet, including the position\nwhere it should be placed. The chartId\nfield is optional; if one is not set, an id will be randomly generated. (It\nis an error to specify the ID of an embedded object that already exists.)"]
+        #[doc = "The chart that should be added to the spreadsheet, including the position where it should be placed. The chartId field is optional; if one is not set, an id will be randomly generated. (It is an error to specify the ID of an embedded object that already exists.)"]
         #[serde(
             rename = "chart",
             default,
@@ -141,6 +141,75 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct AddDataSourceRequest {
+        #[doc = "The data source to add."]
+        #[serde(
+            rename = "dataSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source: ::std::option::Option<crate::schemas::DataSource>,
+    }
+    impl ::google_field_selector::FieldSelector for AddDataSourceRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for AddDataSourceRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AddDataSourceResponse {
+        #[doc = "The data execution status."]
+        #[serde(
+            rename = "dataExecutionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_execution_status: ::std::option::Option<crate::schemas::DataExecutionStatus>,
+        #[doc = "The data source that was created."]
+        #[serde(
+            rename = "dataSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source: ::std::option::Option<crate::schemas::DataSource>,
+    }
+    impl ::google_field_selector::FieldSelector for AddDataSourceResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for AddDataSourceResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct AddDimensionGroupRequest {
         #[doc = "The range over which to create a group."]
         #[serde(
@@ -195,7 +264,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AddFilterViewRequest {
-        #[doc = "The filter to add. The filterViewId\nfield is optional; if one is not set, an id will be randomly generated. (It\nis an error to specify the ID of a filter that already exists.)"]
+        #[doc = "The filter to add. The filterViewId field is optional; if one is not set, an id will be randomly generated. (It is an error to specify the ID of a filter that already exists.)"]
         #[serde(
             rename = "filter",
             default,
@@ -248,7 +317,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AddNamedRangeRequest {
-        #[doc = "The named range to add. The namedRangeId\nfield is optional; if one is not set, an id will be randomly generated. (It\nis an error to specify the ID of a range that already exists.)"]
+        #[doc = "The named range to add. The namedRangeId field is optional; if one is not set, an id will be randomly generated. (It is an error to specify the ID of a range that already exists.)"]
         #[serde(
             rename = "namedRange",
             default,
@@ -310,7 +379,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AddProtectedRangeRequest {
-        #[doc = "The protected range to be added. The\nprotectedRangeId field is optional; if\none is not set, an id will be randomly generated. (It is an error to\nspecify the ID of a range that already exists.)"]
+        #[doc = "The protected range to be added. The protectedRangeId field is optional; if one is not set, an id will be randomly generated. (It is an error to specify the ID of a range that already exists.)"]
         #[serde(
             rename = "protectedRange",
             default,
@@ -363,7 +432,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AddSheetRequest {
-        #[doc = "The properties the new sheet should have.\nAll properties are optional.\nThe sheetId field is optional; if one is not\nset, an id will be randomly generated. (It is an error to specify the ID\nof a sheet that already exists.)"]
+        #[doc = "The properties the new sheet should have. All properties are optional. The sheetId field is optional; if one is not set, an id will be randomly generated. (It is an error to specify the ID of a sheet that already exists.)"]
         #[serde(
             rename = "properties",
             default,
@@ -407,7 +476,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AddSlicerRequest {
-        #[doc = "The slicer that should be added to the spreadsheet, including\nthe position where it should be placed. The slicerId field is optional; if one is not set, an id\nwill be randomly generated. (It is an error to specify the ID\nof a slicer that already exists.)"]
+        #[doc = "The slicer that should be added to the spreadsheet, including the position where it should be placed. The slicerId field is optional; if one is not set, an id will be randomly generated. (It is an error to specify the ID of a slicer that already exists.)"]
         #[serde(
             rename = "slicer",
             default,
@@ -451,7 +520,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AppendCellsRequest {
-        #[doc = "The fields of CellData that should be updated.\nAt least one field must be specified.\nThe root is the CellData; 'row.values.' should not be specified.\nA single `\"*\"` can be used as short-hand for listing every field."]
+        #[doc = "The fields of CellData that should be updated. At least one field must be specified. The root is the CellData; 'row.values.' should not be specified. A single `\"*\"` can be used as short-hand for listing every field."]
         #[serde(
             rename = "fields",
             default,
@@ -613,7 +682,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub spreadsheet_id: ::std::option::Option<String>,
-        #[doc = "The range (in A1 notation) of the table that values are being appended to\n(before the values were appended).\nEmpty if no table was found."]
+        #[doc = "The range (in A1 notation) of the table that values are being appended to (before the values were appended). Empty if no table was found."]
         #[serde(
             rename = "tableRange",
             default,
@@ -651,21 +720,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AutoFillRequest {
-        #[doc = "The range to autofill. This will examine the range and detect\nthe location that has data and automatically fill that data\nin to the rest of the range."]
+        #[doc = "The range to autofill. This will examine the range and detect the location that has data and automatically fill that data in to the rest of the range."]
         #[serde(
             rename = "range",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub range: ::std::option::Option<crate::schemas::GridRange>,
-        #[doc = "The source and destination areas to autofill.\nThis explicitly lists the source of the autofill and where to\nextend that data."]
+        #[doc = "The source and destination areas to autofill. This explicitly lists the source of the autofill and where to extend that data."]
         #[serde(
             rename = "sourceAndDestination",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub source_and_destination: ::std::option::Option<crate::schemas::SourceAndDestination>,
-        #[doc = "True if we should generate data with the \"alternate\" series.\nThis differs based on the type and amount of source data."]
+        #[doc = "True if we should generate data with the \"alternate\" series. This differs based on the type and amount of source data."]
         #[serde(
             rename = "useAlternateSeries",
             default,
@@ -696,6 +765,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AutoResizeDimensionsRequest {
+        #[doc = "The dimensions on a data source sheet to automatically resize."]
+        #[serde(
+            rename = "dataSourceSheetDimensions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_sheet_dimensions:
+            ::std::option::Option<crate::schemas::DataSourceSheetDimensionRange>,
         #[doc = "The dimensions to automatically resize."]
         #[serde(
             rename = "dimensions",
@@ -725,7 +802,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub banded_range_id: ::std::option::Option<i32>,
-        #[doc = "Properties for column bands. These properties are applied on a column-\nby-column basis throughout all the columns in the range. At least one of\nrow_properties or column_properties must be specified."]
+        #[doc = "Properties for column bands. These properties are applied on a column- by-column basis throughout all the columns in the range. At least one of row_properties or column_properties must be specified."]
         #[serde(
             rename = "columnProperties",
             default,
@@ -739,7 +816,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub range: ::std::option::Option<crate::schemas::GridRange>,
-        #[doc = "Properties for row bands. These properties are applied on a row-by-row\nbasis throughout all the rows in the range. At least one of\nrow_properties or column_properties must be specified."]
+        #[doc = "Properties for row bands. These properties are applied on a row-by-row basis throughout all the rows in the range. At least one of row_properties or column_properties must be specified."]
         #[serde(
             rename = "rowProperties",
             default,
@@ -768,35 +845,35 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub first_band_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The first color that is alternating. (Required)\nIf first_band_color is also set, this field takes precedence."]
+        #[doc = "The first color that is alternating. (Required) If first_band_color is also set, this field takes precedence."]
         #[serde(
             rename = "firstBandColorStyle",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub first_band_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
-        #[doc = "The color of the last row or column. If this field is not set, the last\nrow or column is filled with either first_band_color or\nsecond_band_color, depending on the color of the previous row or\ncolumn."]
+        #[doc = "The color of the last row or column. If this field is not set, the last row or column is filled with either first_band_color or second_band_color, depending on the color of the previous row or column."]
         #[serde(
             rename = "footerColor",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub footer_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The color of the last row or column. If this field is not set, the last\nrow or column is filled with either first_band_color or\nsecond_band_color, depending on the color of the previous row or\ncolumn.\nIf footer_color is also set, this field takes precedence."]
+        #[doc = "The color of the last row or column. If this field is not set, the last row or column is filled with either first_band_color or second_band_color, depending on the color of the previous row or column. If footer_color is also set, this field takes precedence."]
         #[serde(
             rename = "footerColorStyle",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub footer_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
-        #[doc = "The color of the first row or column. If this field is set, the first row\nor column is filled with this color and the colors alternate between\nfirst_band_color and second_band_color starting from the second\nrow or column. Otherwise, the first row or column is filled with\nfirst_band_color and the colors proceed to alternate as they normally\nwould."]
+        #[doc = "The color of the first row or column. If this field is set, the first row or column is filled with this color and the colors alternate between first_band_color and second_band_color starting from the second row or column. Otherwise, the first row or column is filled with first_band_color and the colors proceed to alternate as they normally would."]
         #[serde(
             rename = "headerColor",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub header_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The color of the first row or column. If this field is set, the first row\nor column is filled with this color and the colors alternate between\nfirst_band_color and second_band_color starting from the second\nrow or column. Otherwise, the first row or column is filled with\nfirst_band_color and the colors proceed to alternate as they normally\nwould. If header_color is also set, this field takes precedence."]
+        #[doc = "The color of the first row or column. If this field is set, the first row or column is filled with this color and the colors alternate between first_band_color and second_band_color starting from the second row or column. Otherwise, the first row or column is filled with first_band_color and the colors proceed to alternate as they normally would. If header_color is also set, this field takes precedence."]
         #[serde(
             rename = "headerColorStyle",
             default,
@@ -810,7 +887,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub second_band_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The second color that is alternating. (Required)\nIf second_band_color is also set, this field takes precedence."]
+        #[doc = "The second color that is alternating. (Required) If second_band_color is also set, this field takes precedence."]
         #[serde(
             rename = "secondBandColorStyle",
             default,
@@ -840,42 +917,42 @@ pub mod schemas {
         )]
         pub comparison_type:
             ::std::option::Option<crate::schemas::BaselineValueFormatComparisonType>,
-        #[doc = "Description which is appended after the baseline value.\nThis field is optional."]
+        #[doc = "Description which is appended after the baseline value. This field is optional."]
         #[serde(
             rename = "description",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "Color to be used, in case baseline value represents a negative change for\nkey value. This field is optional."]
+        #[doc = "Color to be used, in case baseline value represents a negative change for key value. This field is optional."]
         #[serde(
             rename = "negativeColor",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub negative_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "Color to be used, in case baseline value represents a negative change for\nkey value. This field is optional.\nIf negative_color is also set, this field takes precedence."]
+        #[doc = "Color to be used, in case baseline value represents a negative change for key value. This field is optional. If negative_color is also set, this field takes precedence."]
         #[serde(
             rename = "negativeColorStyle",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub negative_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
-        #[doc = "Specifies the horizontal text positioning of baseline value.\nThis field is optional. If not specified, default positioning is used."]
+        #[doc = "Specifies the horizontal text positioning of baseline value. This field is optional. If not specified, default positioning is used."]
         #[serde(
             rename = "position",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub position: ::std::option::Option<crate::schemas::TextPosition>,
-        #[doc = "Color to be used, in case baseline value represents a positive change for\nkey value. This field is optional."]
+        #[doc = "Color to be used, in case baseline value represents a positive change for key value. This field is optional."]
         #[serde(
             rename = "positiveColor",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub positive_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "Color to be used, in case baseline value represents a positive change for\nkey value. This field is optional.\nIf positive_color is also set, this field takes precedence."]
+        #[doc = "Color to be used, in case baseline value represents a positive change for key value. This field is optional. If positive_color is also set, this field takes precedence."]
         #[serde(
             rename = "positiveColorStyle",
             default,
@@ -986,7 +1063,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct BasicChartAxis {
-        #[doc = "The format of the title.\nOnly valid if the axis is not associated with the domain."]
+        #[doc = "The format of the title. Only valid if the axis is not associated with the domain."]
         #[serde(
             rename = "format",
             default,
@@ -1000,7 +1077,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub position: ::std::option::Option<crate::schemas::BasicChartAxisPosition>,
-        #[doc = "The title of this axis. If set, this overrides any title inferred\nfrom headers of the data."]
+        #[doc = "The title of this axis. If set, this overrides any title inferred from headers of the data."]
         #[serde(
             rename = "title",
             default,
@@ -1036,11 +1113,11 @@ pub mod schemas {
     pub enum BasicChartAxisPosition {
         #[doc = "Default value, do not use."]
         BasicChartAxisPositionUnspecified,
-        #[doc = "The axis rendered at the bottom of a chart.\nFor most charts, this is the standard major axis.\nFor bar charts, this is a minor axis."]
+        #[doc = "The axis rendered at the bottom of a chart. For most charts, this is the standard major axis. For bar charts, this is a minor axis."]
         BottomAxis,
-        #[doc = "The axis rendered at the left of a chart.\nFor most charts, this is a minor axis.\nFor bar charts, this is the standard major axis."]
+        #[doc = "The axis rendered at the left of a chart. For most charts, this is a minor axis. For bar charts, this is the standard major axis."]
         LeftAxis,
-        #[doc = "The axis rendered at the right of a chart.\nFor most charts, this is a minor axis.\nFor bar charts, this is an unusual major axis."]
+        #[doc = "The axis rendered at the right of a chart. For most charts, this is a minor axis. For bar charts, this is an unusual major axis."]
         RightAxis,
     }
     impl BasicChartAxisPosition {
@@ -1120,19 +1197,10 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct BasicChartDomain {
-        #[doc = "The data of the domain. For example, if charting stock prices over time,\nthis is the data representing the dates."]
+        #[doc = "The data of the domain. For example, if charting stock prices over time, this is the data representing the dates."]
         #[serde(
             rename = "domain",
             default,
@@ -1161,28 +1229,42 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct BasicChartSeries {
-        #[doc = "The color for elements (such as bars, lines, and points) associated with\nthis series.  If empty, a default color is used."]
+        #[doc = "The color for elements (such as bars, lines, and points) associated with this series. If empty, a default color is used."]
         #[serde(
             rename = "color",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The color for elements (such as bars, lines, and points) associated with\nthis series.  If empty, a default color is used.\nIf color is also set, this field takes precedence."]
+        #[doc = "The color for elements (such as bars, lines, and points) associated with this series. If empty, a default color is used. If color is also set, this field takes precedence."]
         #[serde(
             rename = "colorStyle",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub color_style: ::std::option::Option<crate::schemas::ColorStyle>,
-        #[doc = "The line style of this series. Valid only if the\nchartType is AREA,\nLINE, or SCATTER.\nCOMBO charts are also supported if the\nseries chart type is\nAREA or LINE."]
+        #[doc = "Information about the data labels for this series."]
+        #[serde(
+            rename = "dataLabel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_label: ::std::option::Option<crate::schemas::DataLabel>,
+        #[doc = "The line style of this series. Valid only if the chartType is AREA, LINE, or SCATTER. COMBO charts are also supported if the series chart type is AREA or LINE."]
         #[serde(
             rename = "lineStyle",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub line_style: ::std::option::Option<crate::schemas::LineStyle>,
-        #[doc = "The type of this series. Valid only if the\nchartType is\nCOMBO.\nDifferent types will change the way the series is visualized.\nOnly LINE, AREA,\nand COLUMN are supported."]
+        #[doc = "The style for points associated with this series. Valid only if the chartType is AREA, LINE, or SCATTER. COMBO charts are also supported if the series chart type is AREA, LINE, or SCATTER. If empty, a default point style is used."]
+        #[serde(
+            rename = "pointStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub point_style: ::std::option::Option<crate::schemas::PointStyle>,
+        #[doc = "The type of this series. Valid only if the chartType is COMBO. Different types will change the way the series is visualized. Only LINE, AREA, and COLUMN are supported."]
         #[serde(
             rename = "type",
             default,
@@ -1196,7 +1278,15 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub series: ::std::option::Option<crate::schemas::ChartData>,
-        #[doc = "The minor axis that will specify the range of values for this series.\nFor example, if charting stocks over time, the \"Volume\" series\nmay want to be pinned to the right with the prices pinned to the left,\nbecause the scale of trading volume is different than the scale of\nprices.\nIt is an error to specify an axis that isn't a valid minor axis\nfor the chart's type."]
+        #[doc = "Style override settings for series data points."]
+        #[serde(
+            rename = "styleOverrides",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub style_overrides:
+            ::std::option::Option<Vec<crate::schemas::BasicSeriesDataPointStyleOverride>>,
+        #[doc = "The minor axis that will specify the range of values for this series. For example, if charting stocks over time, the \"Volume\" series may want to be pinned to the right with the prices pinned to the left, because the scale of trading volume is different than the scale of prices. It is an error to specify an axis that isn't a valid minor axis for the chart's type."]
         #[serde(
             rename = "targetAxis",
             default,
@@ -1216,21 +1306,21 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BasicChartSeriesType {
-        #[doc = "An <a href=\"/chart/interactive/docs/gallery/areachart\">area chart</a>."]
+        #[doc = "An area chart."]
         Area,
-        #[doc = "A <a href=\"/chart/interactive/docs/gallery/barchart\">bar chart</a>."]
+        #[doc = "A bar chart."]
         Bar,
         #[doc = "Default value, do not use."]
         BasicChartTypeUnspecified,
-        #[doc = "A <a href=\"/chart/interactive/docs/gallery/columnchart\">column chart</a>."]
+        #[doc = "A column chart."]
         Column,
-        #[doc = "A <a href=\"/chart/interactive/docs/gallery/combochart\">combo chart</a>."]
+        #[doc = "A combo chart."]
         Combo,
-        #[doc = "A <a href=\"/chart/interactive/docs/gallery/linechart\">line chart</a>."]
+        #[doc = "A line chart."]
         Line,
-        #[doc = "A <a href=\"/chart/interactive/docs/gallery/scatterchart\">scatter\nchart</a>."]
+        #[doc = "A scatter chart."]
         Scatter,
-        #[doc = "A <a href=\"/chart/interactive/docs/gallery/steppedareachart\">stepped area\nchart</a>."]
+        #[doc = "A stepped area chart."]
         SteppedArea,
     }
     impl BasicChartSeriesType {
@@ -1319,11 +1409,11 @@ pub mod schemas {
     pub enum BasicChartSeriesTargetAxis {
         #[doc = "Default value, do not use."]
         BasicChartAxisPositionUnspecified,
-        #[doc = "The axis rendered at the bottom of a chart.\nFor most charts, this is the standard major axis.\nFor bar charts, this is a minor axis."]
+        #[doc = "The axis rendered at the bottom of a chart. For most charts, this is the standard major axis. For bar charts, this is a minor axis."]
         BottomAxis,
-        #[doc = "The axis rendered at the left of a chart.\nFor most charts, this is a minor axis.\nFor bar charts, this is the standard major axis."]
+        #[doc = "The axis rendered at the left of a chart. For most charts, this is a minor axis. For bar charts, this is the standard major axis."]
         LeftAxis,
-        #[doc = "The axis rendered at the right of a chart.\nFor most charts, this is a minor axis.\nFor bar charts, this is an unusual major axis."]
+        #[doc = "The axis rendered at the right of a chart. For most charts, this is a minor axis. For bar charts, this is an unusual major axis."]
         RightAxis,
     }
     impl BasicChartSeriesTargetAxis {
@@ -1420,28 +1510,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub chart_type: ::std::option::Option<crate::schemas::BasicChartSpecChartType>,
-        #[doc = "The behavior of tooltips and data highlighting when hovering on data and\nchart area."]
+        #[doc = "The behavior of tooltips and data highlighting when hovering on data and chart area."]
         #[serde(
             rename = "compareMode",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub compare_mode: ::std::option::Option<crate::schemas::BasicChartSpecCompareMode>,
-        #[doc = "The domain of data this is charting.\nOnly a single domain is supported."]
+        #[doc = "The domain of data this is charting. Only a single domain is supported."]
         #[serde(
             rename = "domains",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub domains: ::std::option::Option<Vec<crate::schemas::BasicChartDomain>>,
-        #[doc = "The number of rows or columns in the data that are \"headers\".\nIf not set, Google Sheets will guess how many rows are headers based\non the data.\n\n(Note that BasicChartAxis.title may override the axis title\ninferred from the header values.)"]
+        #[doc = "The number of rows or columns in the data that are \"headers\". If not set, Google Sheets will guess how many rows are headers based on the data. (Note that BasicChartAxis.title may override the axis title inferred from the header values.)"]
         #[serde(
             rename = "headerCount",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub header_count: ::std::option::Option<i32>,
-        #[doc = "If some values in a series are missing, gaps may appear in the chart (e.g,\nsegments of lines in a line chart will be missing).  To eliminate these\ngaps set this to true.\nApplies to Line, Area, and Combo charts."]
+        #[doc = "If some values in a series are missing, gaps may appear in the chart (e.g, segments of lines in a line chart will be missing). To eliminate these gaps set this to true. Applies to Line, Area, and Combo charts."]
         #[serde(
             rename = "interpolateNulls",
             default,
@@ -1455,7 +1545,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub legend_position: ::std::option::Option<crate::schemas::BasicChartSpecLegendPosition>,
-        #[doc = "Gets whether all lines should be rendered smooth or straight by default.\nApplies to Line charts."]
+        #[doc = "Gets whether all lines should be rendered smooth or straight by default. Applies to Line charts."]
         #[serde(
             rename = "lineSmoothing",
             default,
@@ -1469,20 +1559,27 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub series: ::std::option::Option<Vec<crate::schemas::BasicChartSeries>>,
-        #[doc = "The stacked type for charts that support vertical stacking.\nApplies to Area, Bar, Column, Combo, and Stepped Area charts."]
+        #[doc = "The stacked type for charts that support vertical stacking. Applies to Area, Bar, Column, Combo, and Stepped Area charts."]
         #[serde(
             rename = "stackedType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub stacked_type: ::std::option::Option<crate::schemas::BasicChartSpecStackedType>,
-        #[doc = "True to make the chart 3D.\nApplies to Bar and Column charts."]
+        #[doc = "True to make the chart 3D. Applies to Bar and Column charts."]
         #[serde(
             rename = "threeDimensional",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub three_dimensional: ::std::option::Option<bool>,
+        #[doc = "Controls whether to display additional data labels on stacked charts which sum the total value of all stacked values at each value along the domain axis. These data labels can only be set when chart_type is one of AREA, BAR, COLUMN, COMBO or STEPPED_AREA and stacked_type is either STACKED or PERCENT_STACKED. In addition, for COMBO, this will only be supported if there is only one type of stackable series type or one type has more series than the others and each of the other types have no more than one series. For example, if a chart has two stacked bar series and one area series, the total data labels will be supported. If it has three bar series and two area series, total data labels are not allowed. Neither CUSTOM nor placement can be set on the total_data_label."]
+        #[serde(
+            rename = "totalDataLabel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub total_data_label: ::std::option::Option<crate::schemas::DataLabel>,
     }
     impl ::google_field_selector::FieldSelector for BasicChartSpec {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1496,21 +1593,21 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BasicChartSpecChartType {
-        #[doc = "An <a href=\"/chart/interactive/docs/gallery/areachart\">area chart</a>."]
+        #[doc = "An area chart."]
         Area,
-        #[doc = "A <a href=\"/chart/interactive/docs/gallery/barchart\">bar chart</a>."]
+        #[doc = "A bar chart."]
         Bar,
         #[doc = "Default value, do not use."]
         BasicChartTypeUnspecified,
-        #[doc = "A <a href=\"/chart/interactive/docs/gallery/columnchart\">column chart</a>."]
+        #[doc = "A column chart."]
         Column,
-        #[doc = "A <a href=\"/chart/interactive/docs/gallery/combochart\">combo chart</a>."]
+        #[doc = "A combo chart."]
         Combo,
-        #[doc = "A <a href=\"/chart/interactive/docs/gallery/linechart\">line chart</a>."]
+        #[doc = "A line chart."]
         Line,
-        #[doc = "A <a href=\"/chart/interactive/docs/gallery/scatterchart\">scatter\nchart</a>."]
+        #[doc = "A scatter chart."]
         Scatter,
-        #[doc = "A <a href=\"/chart/interactive/docs/gallery/steppedareachart\">stepped area\nchart</a>."]
+        #[doc = "A stepped area chart."]
         SteppedArea,
     }
     impl BasicChartSpecChartType {
@@ -1605,7 +1702,7 @@ pub mod schemas {
     pub enum BasicChartSpecCompareMode {
         #[doc = "Default value, do not use."]
         BasicChartCompareModeUnspecified,
-        #[doc = "All data elements with the same category (e.g., domain value) are\nhighlighted and shown in the tooltip."]
+        #[doc = "All data elements with the same category (e.g., domain value) are highlighted and shown in the tooltip."]
         Category,
         #[doc = "Only the focused data element is highlighted and shown in the tooltip."]
         Datum,
@@ -1786,9 +1883,9 @@ pub mod schemas {
         BasicChartStackedTypeUnspecified,
         #[doc = "Series are not stacked."]
         NotStacked,
-        #[doc = "Vertical stacks are stretched to reach the top of the chart, with\nvalues laid out as percentages of each other."]
+        #[doc = "Vertical stacks are stretched to reach the top of the chart, with values laid out as percentages of each other."]
         PercentStacked,
-        #[doc = "Series values are stacked, each value is rendered vertically beginning\nfrom the top of the value below it."]
+        #[doc = "Series values are stacked, each value is rendered vertically beginning from the top of the value below it."]
         Stacked,
     }
     impl BasicChartSpecStackedType {
@@ -1871,7 +1968,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct BasicFilter {
-        #[doc = "The criteria for showing/hiding values per column.\nThe map's key is the column index, and the value is the criteria for\nthat column."]
+        #[doc = "The criteria for showing/hiding values per column. The map's key is the column index, and the value is the criteria for that column. This field is deprecated in favor of filter_specs."]
         #[serde(
             rename = "criteria",
             default,
@@ -1880,6 +1977,13 @@ pub mod schemas {
         pub criteria: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::FilterCriteria>,
         >,
+        #[doc = "The filter criteria per column. Both criteria and filter_specs are populated in responses. If both fields are specified in an update request, this field takes precedence."]
+        #[serde(
+            rename = "filterSpecs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub filter_specs: ::std::option::Option<Vec<crate::schemas::FilterSpec>>,
         #[doc = "The range the filter covers."]
         #[serde(
             rename = "range",
@@ -1887,7 +1991,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub range: ::std::option::Option<crate::schemas::GridRange>,
-        #[doc = "The sort order per column. Later specifications are used when values\nare equal in the earlier specifications."]
+        #[doc = "The sort order per column. Later specifications are used when values are equal in the earlier specifications."]
         #[serde(
             rename = "sortSpecs",
             default,
@@ -1901,6 +2005,49 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for BasicFilter {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct BasicSeriesDataPointStyleOverride {
+        #[doc = "Color of the series data point. If empty, the series default is used."]
+        #[serde(
+            rename = "color",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "Color of the series data point. If empty, the series default is used. If color is also set, this field takes precedence."]
+        #[serde(
+            rename = "colorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub color_style: ::std::option::Option<crate::schemas::ColorStyle>,
+        #[doc = "Zero based index of the series data point."]
+        #[serde(
+            rename = "index",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub index: ::std::option::Option<i32>,
+        #[doc = "Point style of the series data point. Valid only if the chartType is AREA, LINE, or SCATTER. COMBO charts are also supported if the series chart type is AREA, LINE, or SCATTER. If empty, the series default is used."]
+        #[serde(
+            rename = "pointStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub point_style: ::std::option::Option<crate::schemas::PointStyle>,
+    }
+    impl ::google_field_selector::FieldSelector for BasicSeriesDataPointStyleOverride {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for BasicSeriesDataPointStyleOverride {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1949,7 +2096,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct BatchClearValuesByDataFilterResponse {
-        #[doc = "The ranges that were cleared, in A1 notation. If the requests are for an\nunbounded range or a ranger larger than the bounds of the sheet, this is\nthe actual ranges that were cleared, bounded to the sheet's limits."]
+        #[doc = "The ranges that were cleared, in A1 notation. If the requests are for an unbounded range or a ranger larger than the bounds of the sheet, this is the actual ranges that were cleared, bounded to the sheet's limits."]
         #[serde(
             rename = "clearedRanges",
             default,
@@ -2018,7 +2165,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct BatchClearValuesResponse {
-        #[doc = "The ranges that were cleared, in A1 notation. If the requests are for an\nunbounded range or a ranger larger than the bounds of the sheet, this is\nthe actual ranges that were cleared, bounded to the sheet's limits."]
+        #[doc = "The ranges that were cleared, in A1 notation. If the requests are for an unbounded range or a ranger larger than the bounds of the sheet, this is the actual ranges that were cleared, bounded to the sheet's limits."]
         #[serde(
             rename = "clearedRanges",
             default,
@@ -2056,14 +2203,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct BatchGetValuesByDataFilterRequest {
-        #[doc = "The data filters used to match the ranges of values to retrieve. Ranges\nthat match any of the specified data filters are included in the response."]
+        #[doc = "The data filters used to match the ranges of values to retrieve. Ranges that match any of the specified data filters are included in the response."]
         #[serde(
             rename = "dataFilters",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub data_filters: ::std::option::Option<Vec<crate::schemas::DataFilter>>,
-        #[doc = "How dates, times, and durations should be represented in the output.\nThis is ignored if value_render_option is\nFORMATTED_VALUE.\nThe default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER]."]
+        #[doc = "How dates, times, and durations should be represented in the output. This is ignored if value_render_option is FORMATTED_VALUE. The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER]."]
         #[serde(
             rename = "dateTimeRenderOption",
             default,
@@ -2072,7 +2219,7 @@ pub mod schemas {
         pub date_time_render_option: ::std::option::Option<
             crate::schemas::BatchGetValuesByDataFilterRequestDateTimeRenderOption,
         >,
-        #[doc = "The major dimension that results should use.\n\nFor example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,\nthen a request that selects that range and sets `majorDimension=ROWS`\nreturns `[[1,2],[3,4]]`, whereas a request that sets\n`majorDimension=COLUMNS` returns `[[1,3],[2,4]]`."]
+        #[doc = "The major dimension that results should use. For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then a request that selects that range and sets `majorDimension=ROWS` returns `[[1,2],[3,4]]`, whereas a request that sets `majorDimension=COLUMNS` returns `[[1,3],[2,4]]`."]
         #[serde(
             rename = "majorDimension",
             default,
@@ -2080,7 +2227,7 @@ pub mod schemas {
         )]
         pub major_dimension:
             ::std::option::Option<crate::schemas::BatchGetValuesByDataFilterRequestMajorDimension>,
-        #[doc = "How values should be represented in the output.\nThe default render option is ValueRenderOption.FORMATTED_VALUE."]
+        #[doc = "How values should be represented in the output. The default render option is ValueRenderOption.FORMATTED_VALUE."]
         #[serde(
             rename = "valueRenderOption",
             default,
@@ -2102,9 +2249,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BatchGetValuesByDataFilterRequestDateTimeRenderOption {
-        #[doc = "Instructs date, time, datetime, and duration fields to be output\nas strings in their given number format (which is dependent\non the spreadsheet locale)."]
+        #[doc = "Instructs date, time, datetime, and duration fields to be output as strings in their given number format (which is dependent on the spreadsheet locale)."]
         FormattedString,
-        #[doc = "Instructs date, time, datetime, and duration fields to be output\nas doubles in \"serial number\" format, as popularized by Lotus 1-2-3.\nThe whole number portion of the value (left of the decimal) counts\nthe days since December 30th 1899. The fractional portion (right of\nthe decimal) counts the time as a fraction of the day. For example,\nJanuary 1st 1900 at noon would be 2.5, 2 because it's 2 days after\nDecember 30st 1899, and .5 because noon is half a day.  February 1st\n1900 at 3pm would be 33.625. This correctly treats the year 1900 as\nnot a leap year."]
+        #[doc = "Instructs date, time, datetime, and duration fields to be output as doubles in \"serial number\" format, as popularized by Lotus 1-2-3. The whole number portion of the value (left of the decimal) counts the days since December 30th 1899. The fractional portion (right of the decimal) counts the time as a fraction of the day. For example, January 1st 1900 at noon would be 2.5, 2 because it's 2 days after December 30st 1899, and .5 because noon is half a day. February 1st 1900 at 3pm would be 33.625. This correctly treats the year 1900 as not a leap year."]
         SerialNumber,
     }
     impl BatchGetValuesByDataFilterRequestDateTimeRenderOption {
@@ -2276,11 +2423,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BatchGetValuesByDataFilterRequestValueRenderOption {
-        #[doc = "Values will be calculated & formatted in the reply according to the\ncell's formatting.  Formatting is based on the spreadsheet's locale,\nnot the requesting user's locale.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen `A2` would return `\"$1.23\"`."]
+        #[doc = "Values will be calculated & formatted in the reply according to the cell's formatting. Formatting is based on the spreadsheet's locale, not the requesting user's locale. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would return `\"$1.23\"`."]
         FormattedValue,
-        #[doc = "Values will not be calculated.  The reply will include the formulas.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen A2 would return `\"=A1\"`."]
+        #[doc = "Values will not be calculated. The reply will include the formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then A2 would return `\"=A1\"`."]
         Formula,
-        #[doc = "Values will be calculated, but not formatted in the reply.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen `A2` would return the number `1.23`."]
+        #[doc = "Values will be calculated, but not formatted in the reply. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would return the number `1.23`."]
         UnformattedValue,
     }
     impl BatchGetValuesByDataFilterRequestValueRenderOption {
@@ -2400,7 +2547,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub spreadsheet_id: ::std::option::Option<String>,
-        #[doc = "The requested values. The order of the ValueRanges is the same as the\norder of the requested ranges."]
+        #[doc = "The requested values. The order of the ValueRanges is the same as the order of the requested ranges."]
         #[serde(
             rename = "valueRanges",
             default,
@@ -2422,28 +2569,28 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct BatchUpdateSpreadsheetRequest {
-        #[doc = "Determines if the update response should include the spreadsheet\nresource."]
+        #[doc = "Determines if the update response should include the spreadsheet resource."]
         #[serde(
             rename = "includeSpreadsheetInResponse",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub include_spreadsheet_in_response: ::std::option::Option<bool>,
-        #[doc = "A list of updates to apply to the spreadsheet.\nRequests will be applied in the order they are specified.\nIf any request is not valid, no requests will be applied."]
+        #[doc = "A list of updates to apply to the spreadsheet. Requests will be applied in the order they are specified. If any request is not valid, no requests will be applied."]
         #[serde(
             rename = "requests",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub requests: ::std::option::Option<Vec<crate::schemas::Request>>,
-        #[doc = "True if grid data should be returned. Meaningful only if\ninclude_spreadsheet_in_response is 'true'.\nThis parameter is ignored if a field mask was set in the request."]
+        #[doc = "True if grid data should be returned. Meaningful only if include_spreadsheet_in_response is 'true'. This parameter is ignored if a field mask was set in the request."]
         #[serde(
             rename = "responseIncludeGridData",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub response_include_grid_data: ::std::option::Option<bool>,
-        #[doc = "Limits the ranges included in the response spreadsheet.\nMeaningful only if include_spreadsheet_in_response is 'true'."]
+        #[doc = "Limits the ranges included in the response spreadsheet. Meaningful only if include_spreadsheet_in_response is 'true'."]
         #[serde(
             rename = "responseRanges",
             default,
@@ -2465,7 +2612,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct BatchUpdateSpreadsheetResponse {
-        #[doc = "The reply of the updates.  This maps 1:1 with the updates, although\nreplies to some requests may be empty."]
+        #[doc = "The reply of the updates. This maps 1:1 with the updates, although replies to some requests may be empty."]
         #[serde(
             rename = "replies",
             default,
@@ -2479,7 +2626,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub spreadsheet_id: ::std::option::Option<String>,
-        #[doc = "The spreadsheet after updates were applied. This is only set if\n[BatchUpdateSpreadsheetRequest.include_spreadsheet_in_response] is `true`."]
+        #[doc = "The spreadsheet after updates were applied. This is only set if [BatchUpdateSpreadsheetRequest.include_spreadsheet_in_response] is `true`."]
         #[serde(
             rename = "updatedSpreadsheet",
             default,
@@ -2499,21 +2646,21 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct BatchUpdateValuesByDataFilterRequest {
-        #[doc = "The new values to apply to the spreadsheet.  If more than one range is\nmatched by the specified DataFilter the specified values are applied to\nall of those ranges."]
+        #[doc = "The new values to apply to the spreadsheet. If more than one range is matched by the specified DataFilter the specified values are applied to all of those ranges."]
         #[serde(
             rename = "data",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub data: ::std::option::Option<Vec<crate::schemas::DataFilterValueRange>>,
-        #[doc = "Determines if the update response should include the values\nof the cells that were updated. By default, responses\ndo not include the updated values. The `updatedData` field within\neach of the BatchUpdateValuesResponse.responses contains the updated\nvalues. If the range to write was larger than the range actually written,\nthe response includes all values in the requested range (excluding trailing\nempty rows and columns)."]
+        #[doc = "Determines if the update response should include the values of the cells that were updated. By default, responses do not include the updated values. The `updatedData` field within each of the BatchUpdateValuesResponse.responses contains the updated values. If the range to write was larger than the range actually written, the response includes all values in the requested range (excluding trailing empty rows and columns)."]
         #[serde(
             rename = "includeValuesInResponse",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub include_values_in_response: ::std::option::Option<bool>,
-        #[doc = "Determines how dates, times, and durations in the response should be\nrendered. This is ignored if response_value_render_option is\nFORMATTED_VALUE.\nThe default dateTime render option is\nDateTimeRenderOption.SERIAL_NUMBER."]
+        #[doc = "Determines how dates, times, and durations in the response should be rendered. This is ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is DateTimeRenderOption.SERIAL_NUMBER."]
         #[serde(
             rename = "responseDateTimeRenderOption",
             default,
@@ -2522,7 +2669,7 @@ pub mod schemas {
         pub response_date_time_render_option: ::std::option::Option<
             crate::schemas::BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption,
         >,
-        #[doc = "Determines how values in the response should be rendered.\nThe default render option is ValueRenderOption.FORMATTED_VALUE."]
+        #[doc = "Determines how values in the response should be rendered. The default render option is ValueRenderOption.FORMATTED_VALUE."]
         #[serde(
             rename = "responseValueRenderOption",
             default,
@@ -2553,9 +2700,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption {
-        #[doc = "Instructs date, time, datetime, and duration fields to be output\nas strings in their given number format (which is dependent\non the spreadsheet locale)."]
+        #[doc = "Instructs date, time, datetime, and duration fields to be output as strings in their given number format (which is dependent on the spreadsheet locale)."]
         FormattedString,
-        #[doc = "Instructs date, time, datetime, and duration fields to be output\nas doubles in \"serial number\" format, as popularized by Lotus 1-2-3.\nThe whole number portion of the value (left of the decimal) counts\nthe days since December 30th 1899. The fractional portion (right of\nthe decimal) counts the time as a fraction of the day. For example,\nJanuary 1st 1900 at noon would be 2.5, 2 because it's 2 days after\nDecember 30st 1899, and .5 because noon is half a day.  February 1st\n1900 at 3pm would be 33.625. This correctly treats the year 1900 as\nnot a leap year."]
+        #[doc = "Instructs date, time, datetime, and duration fields to be output as doubles in \"serial number\" format, as popularized by Lotus 1-2-3. The whole number portion of the value (left of the decimal) counts the days since December 30th 1899. The fractional portion (right of the decimal) counts the time as a fraction of the day. For example, January 1st 1900 at noon would be 2.5, 2 because it's 2 days after December 30st 1899, and .5 because noon is half a day. February 1st 1900 at 3pm would be 33.625. This correctly treats the year 1900 as not a leap year."]
         SerialNumber,
     }
     impl BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption {
@@ -2578,7 +2725,7 @@ pub mod schemas {
             BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption,
             (),
         > {
-            Ok ( match s { "FORMATTED_STRING" => BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption :: FormattedString , "SERIAL_NUMBER" => BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption :: SerialNumber , _ => return Err ( ( ) ) , } )
+            Ok (match s { "FORMATTED_STRING" => BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption :: FormattedString , "SERIAL_NUMBER" => BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption :: SerialNumber , _ => return Err (()) , })
         }
     }
     impl ::std::fmt::Display for BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption {
@@ -2602,7 +2749,7 @@ pub mod schemas {
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "FORMATTED_STRING" => BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption :: FormattedString , "SERIAL_NUMBER" => BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption :: SerialNumber , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok (match value { "FORMATTED_STRING" => BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption :: FormattedString , "SERIAL_NUMBER" => BatchUpdateValuesByDataFilterRequestResponseDateTimeRenderOption :: SerialNumber , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
         }
     }
     impl ::google_field_selector::FieldSelector
@@ -2621,11 +2768,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BatchUpdateValuesByDataFilterRequestResponseValueRenderOption {
-        #[doc = "Values will be calculated & formatted in the reply according to the\ncell's formatting.  Formatting is based on the spreadsheet's locale,\nnot the requesting user's locale.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen `A2` would return `\"$1.23\"`."]
+        #[doc = "Values will be calculated & formatted in the reply according to the cell's formatting. Formatting is based on the spreadsheet's locale, not the requesting user's locale. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would return `\"$1.23\"`."]
         FormattedValue,
-        #[doc = "Values will not be calculated.  The reply will include the formulas.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen A2 would return `\"=A1\"`."]
+        #[doc = "Values will not be calculated. The reply will include the formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then A2 would return `\"=A1\"`."]
         Formula,
-        #[doc = "Values will be calculated, but not formatted in the reply.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen `A2` would return the number `1.23`."]
+        #[doc = "Values will be calculated, but not formatted in the reply. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would return the number `1.23`."]
         UnformattedValue,
     }
     impl BatchUpdateValuesByDataFilterRequestResponseValueRenderOption {
@@ -2720,9 +2867,9 @@ pub mod schemas {
     pub enum BatchUpdateValuesByDataFilterRequestValueInputOption {
         #[doc = "Default input value. This value must not be used."]
         InputValueOptionUnspecified,
-        #[doc = "The values the user has entered will not be parsed and will be stored\nas-is."]
+        #[doc = "The values the user has entered will not be parsed and will be stored as-is."]
         Raw,
-        #[doc = "The values will be parsed as if the user typed them into the UI.\nNumbers will stay as numbers, but strings may be converted to numbers,\ndates, etc. following the same rules that are applied when entering\ntext into a cell via the Google Sheets UI."]
+        #[doc = "The values will be parsed as if the user typed them into the UI. Numbers will stay as numbers, but strings may be converted to numbers, dates, etc. following the same rules that are applied when entering text into a cell via the Google Sheets UI."]
         UserEntered,
     }
     impl BatchUpdateValuesByDataFilterRequestValueInputOption {
@@ -2741,7 +2888,7 @@ pub mod schemas {
             s: &str,
         ) -> ::std::result::Result<BatchUpdateValuesByDataFilterRequestValueInputOption, ()>
         {
-            Ok ( match s { "INPUT_VALUE_OPTION_UNSPECIFIED" => BatchUpdateValuesByDataFilterRequestValueInputOption :: InputValueOptionUnspecified , "RAW" => BatchUpdateValuesByDataFilterRequestValueInputOption :: Raw , "USER_ENTERED" => BatchUpdateValuesByDataFilterRequestValueInputOption :: UserEntered , _ => return Err ( ( ) ) , } )
+            Ok (match s { "INPUT_VALUE_OPTION_UNSPECIFIED" => BatchUpdateValuesByDataFilterRequestValueInputOption :: InputValueOptionUnspecified , "RAW" => BatchUpdateValuesByDataFilterRequestValueInputOption :: Raw , "USER_ENTERED" => BatchUpdateValuesByDataFilterRequestValueInputOption :: UserEntered , _ => return Err (()) , })
         }
     }
     impl ::std::fmt::Display for BatchUpdateValuesByDataFilterRequestValueInputOption {
@@ -2763,7 +2910,7 @@ pub mod schemas {
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "INPUT_VALUE_OPTION_UNSPECIFIED" => BatchUpdateValuesByDataFilterRequestValueInputOption :: InputValueOptionUnspecified , "RAW" => BatchUpdateValuesByDataFilterRequestValueInputOption :: Raw , "USER_ENTERED" => BatchUpdateValuesByDataFilterRequestValueInputOption :: UserEntered , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok (match value { "INPUT_VALUE_OPTION_UNSPECIFIED" => BatchUpdateValuesByDataFilterRequestValueInputOption :: InputValueOptionUnspecified , "RAW" => BatchUpdateValuesByDataFilterRequestValueInputOption :: Raw , "USER_ENTERED" => BatchUpdateValuesByDataFilterRequestValueInputOption :: UserEntered , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
         }
     }
     impl ::google_field_selector::FieldSelector
@@ -2801,7 +2948,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub total_updated_cells: ::std::option::Option<i32>,
-        #[doc = "The total number of columns where at least one cell in the column was\nupdated."]
+        #[doc = "The total number of columns where at least one cell in the column was updated."]
         #[serde(
             rename = "totalUpdatedColumns",
             default,
@@ -2815,7 +2962,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub total_updated_rows: ::std::option::Option<i32>,
-        #[doc = "The total number of sheets where at least one cell in the sheet was\nupdated."]
+        #[doc = "The total number of sheets where at least one cell in the sheet was updated."]
         #[serde(
             rename = "totalUpdatedSheets",
             default,
@@ -2842,14 +2989,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub data: ::std::option::Option<Vec<crate::schemas::ValueRange>>,
-        #[doc = "Determines if the update response should include the values\nof the cells that were updated. By default, responses\ndo not include the updated values. The `updatedData` field within\neach of the BatchUpdateValuesResponse.responses contains the updated\nvalues. If the range to write was larger than the range actually written,\nthe response includes all values in the requested range (excluding trailing\nempty rows and columns)."]
+        #[doc = "Determines if the update response should include the values of the cells that were updated. By default, responses do not include the updated values. The `updatedData` field within each of the BatchUpdateValuesResponse.responses contains the updated values. If the range to write was larger than the range actually written, the response includes all values in the requested range (excluding trailing empty rows and columns)."]
         #[serde(
             rename = "includeValuesInResponse",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub include_values_in_response: ::std::option::Option<bool>,
-        #[doc = "Determines how dates, times, and durations in the response should be\nrendered. This is ignored if response_value_render_option is\nFORMATTED_VALUE.\nThe default dateTime render option is\nDateTimeRenderOption.SERIAL_NUMBER."]
+        #[doc = "Determines how dates, times, and durations in the response should be rendered. This is ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is DateTimeRenderOption.SERIAL_NUMBER."]
         #[serde(
             rename = "responseDateTimeRenderOption",
             default,
@@ -2858,7 +3005,7 @@ pub mod schemas {
         pub response_date_time_render_option: ::std::option::Option<
             crate::schemas::BatchUpdateValuesRequestResponseDateTimeRenderOption,
         >,
-        #[doc = "Determines how values in the response should be rendered.\nThe default render option is ValueRenderOption.FORMATTED_VALUE."]
+        #[doc = "Determines how values in the response should be rendered. The default render option is ValueRenderOption.FORMATTED_VALUE."]
         #[serde(
             rename = "responseValueRenderOption",
             default,
@@ -2888,9 +3035,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BatchUpdateValuesRequestResponseDateTimeRenderOption {
-        #[doc = "Instructs date, time, datetime, and duration fields to be output\nas strings in their given number format (which is dependent\non the spreadsheet locale)."]
+        #[doc = "Instructs date, time, datetime, and duration fields to be output as strings in their given number format (which is dependent on the spreadsheet locale)."]
         FormattedString,
-        #[doc = "Instructs date, time, datetime, and duration fields to be output\nas doubles in \"serial number\" format, as popularized by Lotus 1-2-3.\nThe whole number portion of the value (left of the decimal) counts\nthe days since December 30th 1899. The fractional portion (right of\nthe decimal) counts the time as a fraction of the day. For example,\nJanuary 1st 1900 at noon would be 2.5, 2 because it's 2 days after\nDecember 30st 1899, and .5 because noon is half a day.  February 1st\n1900 at 3pm would be 33.625. This correctly treats the year 1900 as\nnot a leap year."]
+        #[doc = "Instructs date, time, datetime, and duration fields to be output as doubles in \"serial number\" format, as popularized by Lotus 1-2-3. The whole number portion of the value (left of the decimal) counts the days since December 30th 1899. The fractional portion (right of the decimal) counts the time as a fraction of the day. For example, January 1st 1900 at noon would be 2.5, 2 because it's 2 days after December 30st 1899, and .5 because noon is half a day. February 1st 1900 at 3pm would be 33.625. This correctly treats the year 1900 as not a leap year."]
         SerialNumber,
     }
     impl BatchUpdateValuesRequestResponseDateTimeRenderOption {
@@ -2976,11 +3123,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BatchUpdateValuesRequestResponseValueRenderOption {
-        #[doc = "Values will be calculated & formatted in the reply according to the\ncell's formatting.  Formatting is based on the spreadsheet's locale,\nnot the requesting user's locale.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen `A2` would return `\"$1.23\"`."]
+        #[doc = "Values will be calculated & formatted in the reply according to the cell's formatting. Formatting is based on the spreadsheet's locale, not the requesting user's locale. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would return `\"$1.23\"`."]
         FormattedValue,
-        #[doc = "Values will not be calculated.  The reply will include the formulas.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen A2 would return `\"=A1\"`."]
+        #[doc = "Values will not be calculated. The reply will include the formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then A2 would return `\"=A1\"`."]
         Formula,
-        #[doc = "Values will be calculated, but not formatted in the reply.\nFor example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency,\nthen `A2` would return the number `1.23`."]
+        #[doc = "Values will be calculated, but not formatted in the reply. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would return the number `1.23`."]
         UnformattedValue,
     }
     impl BatchUpdateValuesRequestResponseValueRenderOption {
@@ -3068,9 +3215,9 @@ pub mod schemas {
     pub enum BatchUpdateValuesRequestValueInputOption {
         #[doc = "Default input value. This value must not be used."]
         InputValueOptionUnspecified,
-        #[doc = "The values the user has entered will not be parsed and will be stored\nas-is."]
+        #[doc = "The values the user has entered will not be parsed and will be stored as-is."]
         Raw,
-        #[doc = "The values will be parsed as if the user typed them into the UI.\nNumbers will stay as numbers, but strings may be converted to numbers,\ndates, etc. following the same rules that are applied when entering\ntext into a cell via the Google Sheets UI."]
+        #[doc = "The values will be parsed as if the user typed them into the UI. Numbers will stay as numbers, but strings may be converted to numbers, dates, etc. following the same rules that are applied when entering text into a cell via the Google Sheets UI."]
         UserEntered,
     }
     impl BatchUpdateValuesRequestValueInputOption {
@@ -3150,7 +3297,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct BatchUpdateValuesResponse {
-        #[doc = "One UpdateValuesResponse per requested range, in the same order as\nthe requests appeared."]
+        #[doc = "One UpdateValuesResponse per requested range, in the same order as the requests appeared."]
         #[serde(
             rename = "responses",
             default,
@@ -3171,7 +3318,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub total_updated_cells: ::std::option::Option<i32>,
-        #[doc = "The total number of columns where at least one cell in the column was\nupdated."]
+        #[doc = "The total number of columns where at least one cell in the column was updated."]
         #[serde(
             rename = "totalUpdatedColumns",
             default,
@@ -3185,7 +3332,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub total_updated_rows: ::std::option::Option<i32>,
-        #[doc = "The total number of sheets where at least one cell in the sheet was\nupdated."]
+        #[doc = "The total number of sheets where at least one cell in the sheet was updated."]
         #[serde(
             rename = "totalUpdatedSheets",
             default,
@@ -3215,6 +3362,127 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct BigQueryDataSourceSpec {
+        #[doc = "The ID of a BigQuery enabled GCP project with a billing account attached. For any queries executed against the data source, the project is charged."]
+        #[serde(
+            rename = "projectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub project_id: ::std::option::Option<String>,
+        #[doc = "A BigQueryQuerySpec."]
+        #[serde(
+            rename = "querySpec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub query_spec: ::std::option::Option<crate::schemas::BigQueryQuerySpec>,
+        #[doc = "A BigQueryTableSpec."]
+        #[serde(
+            rename = "tableSpec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub table_spec: ::std::option::Option<crate::schemas::BigQueryTableSpec>,
+    }
+    impl ::google_field_selector::FieldSelector for BigQueryDataSourceSpec {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for BigQueryDataSourceSpec {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BigQueryQuerySpec {
+        #[doc = "The raw query string."]
+        #[serde(
+            rename = "rawQuery",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub raw_query: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for BigQueryQuerySpec {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for BigQueryQuerySpec {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BigQueryTableSpec {
+        #[doc = "The BigQuery dataset id."]
+        #[serde(
+            rename = "datasetId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub dataset_id: ::std::option::Option<String>,
+        #[doc = "The BigQuery table id."]
+        #[serde(
+            rename = "tableId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub table_id: ::std::option::Option<String>,
+        #[doc = "The ID of a BigQuery project the table belongs to. If not specified, the project_id is assumed."]
+        #[serde(
+            rename = "tableProjectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub table_project_id: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for BigQueryTableSpec {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for BigQueryTableSpec {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct BooleanCondition {
         #[doc = "The type of condition."]
         #[serde(
@@ -3223,7 +3491,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<crate::schemas::BooleanConditionType>,
-        #[doc = "The values of the condition. The number of supported values depends\non the condition type.  Some support zero values,\nothers one or two values,\nand ConditionType.ONE_OF_LIST supports an arbitrary number of values."]
+        #[doc = "The values of the condition. The number of supported values depends on the condition type. Some support zero values, others one or two values, and ConditionType.ONE_OF_LIST supports an arbitrary number of values."]
         #[serde(
             rename = "values",
             default,
@@ -3243,65 +3511,69 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BooleanConditionType {
-        #[doc = "The cell's value must be empty.\nSupported by conditional formatting and filters.\nRequires no ConditionValues."]
+        #[doc = "The cell's value must be empty. Supported by conditional formatting and filters. Requires no ConditionValues."]
         Blank,
-        #[doc = "The cell's value must be TRUE/FALSE or in the list of condition values.\nSupported by data validation.\nRenders as a cell checkbox.\nSupports zero, one or two ConditionValues.  No\nvalues indicates the cell must be TRUE or FALSE, where TRUE renders as\nchecked and FALSE renders as unchecked.  One value indicates the cell\nwill render as checked when it contains that value and unchecked when it\nis blank.  Two values indicate that the cell will render as checked when\nit contains the first value and unchecked when it contains the second\nvalue.  For example, [\"Yes\",\"No\"] indicates that the cell will render a\nchecked box when it has the value \"Yes\" and an unchecked box when it has\nthe value \"No\"."]
+        #[doc = "The cell's value must be TRUE/FALSE or in the list of condition values. Supported by data validation. Renders as a cell checkbox. Supports zero, one or two ConditionValues. No values indicates the cell must be TRUE or FALSE, where TRUE renders as checked and FALSE renders as unchecked. One value indicates the cell will render as checked when it contains that value and unchecked when it is blank. Two values indicate that the cell will render as checked when it contains the first value and unchecked when it contains the second value. For example, [\"Yes\",\"No\"] indicates that the cell will render a checked box when it has the value \"Yes\" and an unchecked box when it has the value \"No\"."]
         Boolean,
         #[doc = "The default value, do not use."]
         ConditionTypeUnspecified,
-        #[doc = "The condition's formula must evaluate to true.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
+        #[doc = "The condition's formula must evaluate to true. Supported by data validation, conditional formatting and filters. Not supported by data source sheet filters. Requires a single ConditionValue."]
         CustomFormula,
-        #[doc = "The cell's value must be after the date of the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue\nthat may be a relative date."]
+        #[doc = "The cell's value must be after the date of the condition's value. Supported by data validation, conditional formatting and filters. Requires a single ConditionValue that may be a relative date."]
         DateAfter,
-        #[doc = "The cell's value must be before the date of the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue\nthat may be a relative date."]
+        #[doc = "The cell's value must be before the date of the condition's value. Supported by data validation, conditional formatting and filters. Requires a single ConditionValue that may be a relative date."]
         DateBefore,
-        #[doc = "The cell's value must be between the dates of the two condition values.\nSupported by data validation.\nRequires exactly two ConditionValues."]
+        #[doc = "The cell's value must be between the dates of the two condition values. Supported by data validation. Requires exactly two ConditionValues."]
         DateBetween,
-        #[doc = "The cell's value must be the same date as the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
+        #[doc = "The cell's value must be the same date as the condition's value. Supported by data validation, conditional formatting and filters. Requires a single ConditionValue for data validation, conditional formatting, and filters on non-data source objects and at least one ConditionValue for filters on data source objects."]
         DateEq,
-        #[doc = "The cell's value must be a date.\nSupported by data validation.\nRequires no ConditionValues."]
+        #[doc = "The cell's value must be a date. Supported by data validation. Requires no ConditionValues."]
         DateIsValid,
-        #[doc = "The cell's value must be outside the dates of the two condition values.\nSupported by data validation.\nRequires exactly two ConditionValues."]
+        #[doc = "The cell's value must be outside the dates of the two condition values. Supported by data validation. Requires exactly two ConditionValues."]
         DateNotBetween,
-        #[doc = "The cell's value must be on or after the date of the condition's value.\nSupported by data validation.\nRequires a single ConditionValue\nthat may be a relative date."]
+        #[doc = "The cell's value must be exactly not the condition's value. Supported by filters on data source objects. Requires at least one ConditionValue."]
+        DateNotEq,
+        #[doc = "The cell's value must be on or after the date of the condition's value. Supported by data validation. Requires a single ConditionValue that may be a relative date."]
         DateOnOrAfter,
-        #[doc = "The cell's value must be on or before the date of the condition's value.\nSupported by data validation.\nRequires a single ConditionValue\nthat may be a relative date."]
+        #[doc = "The cell's value must be on or before the date of the condition's value. Supported by data validation. Requires a single ConditionValue that may be a relative date."]
         DateOnOrBefore,
-        #[doc = "The cell's value must not be empty.\nSupported by conditional formatting and filters.\nRequires no ConditionValues."]
+        #[doc = "The cell's value must not be empty. Supported by conditional formatting and filters. Requires no ConditionValues."]
         NotBlank,
-        #[doc = "The cell's value must be between the two condition values.\nSupported by data validation, conditional formatting and filters.\nRequires exactly two ConditionValues."]
+        #[doc = "The cell's value must be between the two condition values. Supported by data validation, conditional formatting and filters. Requires exactly two ConditionValues."]
         NumberBetween,
-        #[doc = "The cell's value must be equal to the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
+        #[doc = "The cell's value must be equal to the condition's value. Supported by data validation, conditional formatting and filters. Requires a single ConditionValue for data validation, conditional formatting, and filters on non-data source objects and at least one ConditionValue for filters on data source objects."]
         NumberEq,
-        #[doc = "The cell's value must be greater than the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
+        #[doc = "The cell's value must be greater than the condition's value. Supported by data validation, conditional formatting and filters. Requires a single ConditionValue."]
         NumberGreater,
-        #[doc = "The cell's value must be greater than or equal to the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
+        #[doc = "The cell's value must be greater than or equal to the condition's value. Supported by data validation, conditional formatting and filters. Requires a single ConditionValue."]
         NumberGreaterThanEq,
-        #[doc = "The cell's value must be less than the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
+        #[doc = "The cell's value must be less than the condition's value. Supported by data validation, conditional formatting and filters. Requires a single ConditionValue."]
         NumberLess,
-        #[doc = "The cell's value must be less than or equal to the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
+        #[doc = "The cell's value must be less than or equal to the condition's value. Supported by data validation, conditional formatting and filters. Requires a single ConditionValue."]
         NumberLessThanEq,
-        #[doc = "The cell's value must not be between the two condition values.\nSupported by data validation, conditional formatting and filters.\nRequires exactly two ConditionValues."]
+        #[doc = "The cell's value must not be between the two condition values. Supported by data validation, conditional formatting and filters. Requires exactly two ConditionValues."]
         NumberNotBetween,
-        #[doc = "The cell's value must be not equal to the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
+        #[doc = "The cell's value must be not equal to the condition's value. Supported by data validation, conditional formatting and filters. Requires a single ConditionValue for data validation, conditional formatting, and filters on non-data source objects and at least one ConditionValue for filters on data source objects."]
         NumberNotEq,
-        #[doc = "The cell's value must be in the list of condition values.\nSupported by data validation.\nSupports any number of condition values,\none per item in the list.\nFormulas are not supported in the values."]
+        #[doc = "The cell's value must be in the list of condition values. Supported by data validation. Supports any number of condition values, one per item in the list. Formulas are not supported in the values."]
         OneOfList,
-        #[doc = "The cell's value must be listed in the grid in condition value's range.\nSupported by data validation.\nRequires a single ConditionValue,\nand the value must be a valid range in A1 notation."]
+        #[doc = "The cell's value must be listed in the grid in condition value's range. Supported by data validation. Requires a single ConditionValue, and the value must be a valid range in A1 notation."]
         OneOfRange,
-        #[doc = "The cell's value must contain the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
+        #[doc = "The cell's value must contain the condition's value. Supported by data validation, conditional formatting and filters. Requires a single ConditionValue."]
         TextContains,
-        #[doc = "The cell's value must end with the condition's value.\nSupported by conditional formatting and filters.\nRequires a single ConditionValue."]
+        #[doc = "The cell's value must end with the condition's value. Supported by conditional formatting and filters. Requires a single ConditionValue."]
         TextEndsWith,
-        #[doc = "The cell's value must be exactly the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
+        #[doc = "The cell's value must be exactly the condition's value. Supported by data validation, conditional formatting and filters. Requires a single ConditionValue for data validation, conditional formatting, and filters on non-data source objects and at least one ConditionValue for filters on data source objects."]
         TextEq,
-        #[doc = "The cell's value must be a valid email address.\nSupported by data validation.\nRequires no ConditionValues."]
+        #[doc = "The cell's value must be a valid email address. Supported by data validation. Requires no ConditionValues."]
         TextIsEmail,
-        #[doc = "The cell's value must be a valid URL.\nSupported by data validation.\nRequires no ConditionValues."]
+        #[doc = "The cell's value must be a valid URL. Supported by data validation. Requires no ConditionValues."]
         TextIsUrl,
-        #[doc = "The cell's value must not contain the condition's value.\nSupported by data validation, conditional formatting and filters.\nRequires a single ConditionValue."]
+        #[doc = "The cell's value must not contain the condition's value. Supported by data validation, conditional formatting and filters. Requires a single ConditionValue."]
         TextNotContains,
-        #[doc = "The cell's value must start with the condition's value.\nSupported by conditional formatting and filters.\nRequires a single ConditionValue."]
+        #[doc = "The cell's value must be exactly not the condition's value. Supported by filters on data source objects. Requires at least one ConditionValue."]
+        TextNotEq,
+        #[doc = "The cell's value must start with the condition's value. Supported by conditional formatting and filters. Requires a single ConditionValue."]
         TextStartsWith,
     }
     impl BooleanConditionType {
@@ -3317,6 +3589,7 @@ pub mod schemas {
                 BooleanConditionType::DateEq => "DATE_EQ",
                 BooleanConditionType::DateIsValid => "DATE_IS_VALID",
                 BooleanConditionType::DateNotBetween => "DATE_NOT_BETWEEN",
+                BooleanConditionType::DateNotEq => "DATE_NOT_EQ",
                 BooleanConditionType::DateOnOrAfter => "DATE_ON_OR_AFTER",
                 BooleanConditionType::DateOnOrBefore => "DATE_ON_OR_BEFORE",
                 BooleanConditionType::NotBlank => "NOT_BLANK",
@@ -3336,6 +3609,7 @@ pub mod schemas {
                 BooleanConditionType::TextIsEmail => "TEXT_IS_EMAIL",
                 BooleanConditionType::TextIsUrl => "TEXT_IS_URL",
                 BooleanConditionType::TextNotContains => "TEXT_NOT_CONTAINS",
+                BooleanConditionType::TextNotEq => "TEXT_NOT_EQ",
                 BooleanConditionType::TextStartsWith => "TEXT_STARTS_WITH",
             }
         }
@@ -3359,6 +3633,7 @@ pub mod schemas {
                 "DATE_EQ" => BooleanConditionType::DateEq,
                 "DATE_IS_VALID" => BooleanConditionType::DateIsValid,
                 "DATE_NOT_BETWEEN" => BooleanConditionType::DateNotBetween,
+                "DATE_NOT_EQ" => BooleanConditionType::DateNotEq,
                 "DATE_ON_OR_AFTER" => BooleanConditionType::DateOnOrAfter,
                 "DATE_ON_OR_BEFORE" => BooleanConditionType::DateOnOrBefore,
                 "NOT_BLANK" => BooleanConditionType::NotBlank,
@@ -3378,6 +3653,7 @@ pub mod schemas {
                 "TEXT_IS_EMAIL" => BooleanConditionType::TextIsEmail,
                 "TEXT_IS_URL" => BooleanConditionType::TextIsUrl,
                 "TEXT_NOT_CONTAINS" => BooleanConditionType::TextNotContains,
+                "TEXT_NOT_EQ" => BooleanConditionType::TextNotEq,
                 "TEXT_STARTS_WITH" => BooleanConditionType::TextStartsWith,
                 _ => return Err(()),
             })
@@ -3413,6 +3689,7 @@ pub mod schemas {
                 "DATE_EQ" => BooleanConditionType::DateEq,
                 "DATE_IS_VALID" => BooleanConditionType::DateIsValid,
                 "DATE_NOT_BETWEEN" => BooleanConditionType::DateNotBetween,
+                "DATE_NOT_EQ" => BooleanConditionType::DateNotEq,
                 "DATE_ON_OR_AFTER" => BooleanConditionType::DateOnOrAfter,
                 "DATE_ON_OR_BEFORE" => BooleanConditionType::DateOnOrBefore,
                 "NOT_BLANK" => BooleanConditionType::NotBlank,
@@ -3432,6 +3709,7 @@ pub mod schemas {
                 "TEXT_IS_EMAIL" => BooleanConditionType::TextIsEmail,
                 "TEXT_IS_URL" => BooleanConditionType::TextIsUrl,
                 "TEXT_NOT_CONTAINS" => BooleanConditionType::TextNotContains,
+                "TEXT_NOT_EQ" => BooleanConditionType::TextNotEq,
                 "TEXT_STARTS_WITH" => BooleanConditionType::TextStartsWith,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -3456,14 +3734,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct BooleanRule {
-        #[doc = "The condition of the rule. If the condition evaluates to true,\nthe format is applied."]
+        #[doc = "The condition of the rule. If the condition evaluates to true, the format is applied."]
         #[serde(
             rename = "condition",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub condition: ::std::option::Option<crate::schemas::BooleanCondition>,
-        #[doc = "The format to apply.\nConditional formatting can only apply a subset of formatting:\nbold, italic,\nstrikethrough,\nforeground color &\nbackground color."]
+        #[doc = "The format to apply. Conditional formatting can only apply a subset of formatting: bold, italic, strikethrough, foreground color & background color."]
         #[serde(
             rename = "format",
             default,
@@ -3492,7 +3770,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The color of the border.\nIf color is also set, this field takes precedence."]
+        #[doc = "The color of the border. If color is also set, this field takes precedence."]
         #[serde(
             rename = "colorStyle",
             default,
@@ -3506,7 +3784,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub style: ::std::option::Option<crate::schemas::BorderStyle>,
-        #[doc = "The width of the border, in pixels.\nDeprecated; the width is determined by the \"style\" field."]
+        #[doc = "The width of the border, in pixels. Deprecated; the width is determined by the \"style\" field."]
         #[serde(
             rename = "width",
             default,
@@ -3532,7 +3810,7 @@ pub mod schemas {
         Dotted,
         #[doc = "The border is two solid lines."]
         Double,
-        #[doc = "No border.\nUsed only when updating a border in order to erase it."]
+        #[doc = "No border. Used only when updating a border in order to erase it."]
         None,
         #[doc = "The border is a thin solid line."]
         Solid,
@@ -3679,63 +3957,63 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bubble_border_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The bubble border color.\nIf bubble_border_color is also set, this field takes precedence."]
+        #[doc = "The bubble border color. If bubble_border_color is also set, this field takes precedence."]
         #[serde(
             rename = "bubbleBorderColorStyle",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bubble_border_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
-        #[doc = "The data containing the bubble labels.  These do not need to be unique."]
+        #[doc = "The data containing the bubble labels. These do not need to be unique."]
         #[serde(
             rename = "bubbleLabels",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bubble_labels: ::std::option::Option<crate::schemas::ChartData>,
-        #[doc = "The max radius size of the bubbles, in pixels.\nIf specified, the field must be a positive value."]
+        #[doc = "The max radius size of the bubbles, in pixels. If specified, the field must be a positive value."]
         #[serde(
             rename = "bubbleMaxRadiusSize",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bubble_max_radius_size: ::std::option::Option<i32>,
-        #[doc = "The minimum radius size of the bubbles, in pixels.\nIf specific, the field must be a positive value."]
+        #[doc = "The minimum radius size of the bubbles, in pixels. If specific, the field must be a positive value."]
         #[serde(
             rename = "bubbleMinRadiusSize",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bubble_min_radius_size: ::std::option::Option<i32>,
-        #[doc = "The opacity of the bubbles between 0 and 1.0.\n0 is fully transparent and 1 is fully opaque."]
+        #[doc = "The opacity of the bubbles between 0 and 1.0. 0 is fully transparent and 1 is fully opaque."]
         #[serde(
             rename = "bubbleOpacity",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bubble_opacity: ::std::option::Option<f32>,
-        #[doc = "The data contianing the bubble sizes.  Bubble sizes are used to draw\nthe bubbles at different sizes relative to each other.\nIf specified, group_ids must also be specified.  This field is\noptional."]
+        #[doc = "The data contianing the bubble sizes. Bubble sizes are used to draw the bubbles at different sizes relative to each other. If specified, group_ids must also be specified. This field is optional."]
         #[serde(
             rename = "bubbleSizes",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bubble_sizes: ::std::option::Option<crate::schemas::ChartData>,
-        #[doc = "The format of the text inside the bubbles.\nUnderline and Strikethrough are not supported."]
+        #[doc = "The format of the text inside the bubbles. Strikethrough and underline are not supported."]
         #[serde(
             rename = "bubbleTextStyle",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bubble_text_style: ::std::option::Option<crate::schemas::TextFormat>,
-        #[doc = "The data containing the bubble x-values.  These values locate the bubbles\nin the chart horizontally."]
+        #[doc = "The data containing the bubble x-values. These values locate the bubbles in the chart horizontally."]
         #[serde(
             rename = "domain",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub domain: ::std::option::Option<crate::schemas::ChartData>,
-        #[doc = "The data containing the bubble group IDs. All bubbles with the same group\nID are drawn in the same color. If bubble_sizes is specified then\nthis field must also be specified but may contain blank values.\nThis field is optional."]
+        #[doc = "The data containing the bubble group IDs. All bubbles with the same group ID are drawn in the same color. If bubble_sizes is specified then this field must also be specified but may contain blank values. This field is optional."]
         #[serde(
             rename = "groupIds",
             default,
@@ -3749,7 +4027,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub legend_position: ::std::option::Option<crate::schemas::BubbleChartSpecLegendPosition>,
-        #[doc = "The data contianing the bubble y-values.  These values locate the bubbles\nin the chart vertically."]
+        #[doc = "The data contianing the bubble y-values. These values locate the bubbles in the chart vertically."]
         #[serde(
             rename = "series",
             default,
@@ -3870,26 +4148,17 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct CandlestickChartSpec {
-        #[doc = "The Candlestick chart data.\nOnly one CandlestickData is supported."]
+        #[doc = "The Candlestick chart data. Only one CandlestickData is supported."]
         #[serde(
             rename = "data",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub data: ::std::option::Option<Vec<crate::schemas::CandlestickData>>,
-        #[doc = "The domain data (horizontal axis) for the candlestick chart.  String data\nwill be treated as discrete labels, other data will be treated as\ncontinuous values."]
+        #[doc = "The domain data (horizontal axis) for the candlestick chart. String data will be treated as discrete labels, other data will be treated as continuous values."]
         #[serde(
             rename = "domain",
             default,
@@ -3908,40 +4177,31 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct CandlestickData {
-        #[doc = "The range data (vertical axis) for the close/final value for each candle.\nThis is the top of the candle body.  If greater than the open value the\ncandle will be filled.  Otherwise the candle will be hollow."]
+        #[doc = "The range data (vertical axis) for the close/final value for each candle. This is the top of the candle body. If greater than the open value the candle will be filled. Otherwise the candle will be hollow."]
         #[serde(
             rename = "closeSeries",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub close_series: ::std::option::Option<crate::schemas::CandlestickSeries>,
-        #[doc = "The range data (vertical axis) for the high/maximum value for each\ncandle. This is the top of the candle's center line."]
+        #[doc = "The range data (vertical axis) for the high/maximum value for each candle. This is the top of the candle's center line."]
         #[serde(
             rename = "highSeries",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub high_series: ::std::option::Option<crate::schemas::CandlestickSeries>,
-        #[doc = "The range data (vertical axis) for the low/minimum value for each candle.\nThis is the bottom of the candle's center line."]
+        #[doc = "The range data (vertical axis) for the low/minimum value for each candle. This is the bottom of the candle's center line."]
         #[serde(
             rename = "lowSeries",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub low_series: ::std::option::Option<crate::schemas::CandlestickSeries>,
-        #[doc = "The range data (vertical axis) for the open/initial value for each\ncandle. This is the bottom of the candle body.  If less than the close\nvalue the candle will be filled.  Otherwise the candle will be hollow."]
+        #[doc = "The range data (vertical axis) for the open/initial value for each candle. This is the bottom of the candle body. If less than the close value the candle will be filled. Otherwise the candle will be hollow."]
         #[serde(
             rename = "openSeries",
             default,
@@ -3960,16 +4220,7 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct CandlestickDomain {
         #[doc = "The data of the CandlestickDomain."]
@@ -3998,16 +4249,7 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct CandlestickSeries {
         #[doc = "The data of the CandlestickSeries."]
@@ -4032,35 +4274,49 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct CellData {
-        #[doc = "A data validation rule on the cell, if any.\n\nWhen writing, the new data validation rule will overwrite any prior rule."]
+        #[doc = "Output only. Information about a data source formula on the cell. The field is set if user_entered_value is a formula referencing some DATA_SOURCE sheet, e.g `=SUM(DataSheet!Column)`."]
+        #[serde(
+            rename = "dataSourceFormula",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_formula: ::std::option::Option<crate::schemas::DataSourceFormula>,
+        #[doc = "A data source table anchored at this cell. The size of data source table itself is computed dynamically based on its configuration. Only the first cell of the data source table contains the data source table definition. The other cells will contain the display values of the data source table result in their effective_value fields."]
+        #[serde(
+            rename = "dataSourceTable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_table: ::std::option::Option<crate::schemas::DataSourceTable>,
+        #[doc = "A data validation rule on the cell, if any. When writing, the new data validation rule will overwrite any prior rule."]
         #[serde(
             rename = "dataValidation",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub data_validation: ::std::option::Option<crate::schemas::DataValidationRule>,
-        #[doc = "The effective format being used by the cell.\nThis includes the results of applying any conditional formatting and,\nif the cell contains a formula, the computed number format.\nIf the effective format is the default format, effective format will\nnot be written.\nThis field is read-only."]
+        #[doc = "The effective format being used by the cell. This includes the results of applying any conditional formatting and, if the cell contains a formula, the computed number format. If the effective format is the default format, effective format will not be written. This field is read-only."]
         #[serde(
             rename = "effectiveFormat",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub effective_format: ::std::option::Option<crate::schemas::CellFormat>,
-        #[doc = "The effective value of the cell. For cells with formulas, this is\nthe calculated value.  For cells with literals, this is\nthe same as the user_entered_value.\nThis field is read-only."]
+        #[doc = "The effective value of the cell. For cells with formulas, this is the calculated value. For cells with literals, this is the same as the user_entered_value. This field is read-only."]
         #[serde(
             rename = "effectiveValue",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub effective_value: ::std::option::Option<crate::schemas::ExtendedValue>,
-        #[doc = "The formatted value of the cell.\nThis is the value as it's shown to the user.\nThis field is read-only."]
+        #[doc = "The formatted value of the cell. This is the value as it's shown to the user. This field is read-only."]
         #[serde(
             rename = "formattedValue",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub formatted_value: ::std::option::Option<String>,
-        #[doc = "A hyperlink this cell points to, if any.\nThis field is read-only.  (To set it, use a `=HYPERLINK` formula\nin the userEnteredValue.formulaValue\nfield.)"]
+        #[doc = "A hyperlink this cell points to, if any. If the cell contains multiple hyperlinks, this field will be empty. This field is read-only. To set it, use a `=HYPERLINK` formula in the userEnteredValue.formulaValue field."]
         #[serde(
             rename = "hyperlink",
             default,
@@ -4074,28 +4330,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub note: ::std::option::Option<String>,
-        #[doc = "A pivot table anchored at this cell. The size of pivot table itself\nis computed dynamically based on its data, grouping, filters, values,\netc. Only the top-left cell of the pivot table contains the pivot table\ndefinition. The other cells will contain the calculated values of the\nresults of the pivot in their effective_value fields."]
+        #[doc = "A pivot table anchored at this cell. The size of pivot table itself is computed dynamically based on its data, grouping, filters, values, etc. Only the top-left cell of the pivot table contains the pivot table definition. The other cells will contain the calculated values of the results of the pivot in their effective_value fields."]
         #[serde(
             rename = "pivotTable",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub pivot_table: ::std::option::Option<crate::schemas::PivotTable>,
-        #[doc = "Runs of rich text applied to subsections of the cell.  Runs are only valid\non user entered strings, not formulas, bools, or numbers.\nRuns start at specific indexes in the text and continue until the next\nrun. Properties of a run will continue unless explicitly changed\nin a subsequent run (and properties of the first run will continue\nthe properties of the cell unless explicitly changed).\n\nWhen writing, the new runs will overwrite any prior runs.  When writing a\nnew user_entered_value, previous runs are erased."]
+        #[doc = "Runs of rich text applied to subsections of the cell. Runs are only valid on user entered strings, not formulas, bools, or numbers. Properties of a run start at a specific index in the text and continue until the next run. Runs will inherit the properties of the cell unless explicitly changed. When writing, the new runs will overwrite any prior runs. When writing a new user_entered_value, previous runs are erased."]
         #[serde(
             rename = "textFormatRuns",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub text_format_runs: ::std::option::Option<Vec<crate::schemas::TextFormatRun>>,
-        #[doc = "The format the user entered for the cell.\n\nWhen writing, the new format will be merged with the existing format."]
+        #[doc = "The format the user entered for the cell. When writing, the new format will be merged with the existing format."]
         #[serde(
             rename = "userEnteredFormat",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub user_entered_format: ::std::option::Option<crate::schemas::CellFormat>,
-        #[doc = "The value the user entered in the cell. e.g, `1234`, `'Hello'`, or `=NOW()`\nNote: Dates, Times and DateTimes are represented as doubles in\nserial number format."]
+        #[doc = "The value the user entered in the cell. e.g, `1234`, `'Hello'`, or `=NOW()` Note: Dates, Times and DateTimes are represented as doubles in serial number format."]
         #[serde(
             rename = "userEnteredValue",
             default,
@@ -4124,7 +4380,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub background_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The background color of the cell.\nIf background_color is also set, this field takes precedence."]
+        #[doc = "The background color of the cell. If background_color is also set, this field takes precedence."]
         #[serde(
             rename = "backgroundColorStyle",
             default,
@@ -4467,7 +4723,7 @@ pub mod schemas {
         Middle,
         #[doc = "The text is explicitly aligned to the top of the cell."]
         Top,
-        #[doc = "The vertical alignment is not specified.  Do not use this."]
+        #[doc = "The vertical alignment is not specified. Do not use this."]
         VerticalAlignUnspecified,
     }
     impl CellFormatVerticalAlignment {
@@ -4548,13 +4804,13 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CellFormatWrapStrategy {
-        #[doc = "Lines that are longer than the cell width will be clipped.\nThe text will never wrap to the next line unless the user manually\ninserts a new line.\nExample:\n\n````text\n| First sentence. |\n| Manual newline t| <- Text is clipped\n| Next newline.   |````"]
+        #[doc = "Lines that are longer than the cell width will be clipped. The text will never wrap to the next line unless the user manually inserts a new line. Example: | First sentence. | | Manual newline t| <- Text is clipped | Next newline. |"]
         Clip,
-        #[doc = "This wrap strategy represents the old Google Sheets wrap strategy where\nwords that are longer than a line are clipped rather than broken. This\nstrategy is not supported on all platforms and is being phased out.\nExample:\n\n````text\n| Cell has a |\n| loooooooooo| <- Word is clipped.\n| word.      |````"]
+        #[doc = "This wrap strategy represents the old Google Sheets wrap strategy where words that are longer than a line are clipped rather than broken. This strategy is not supported on all platforms and is being phased out. Example: | Cell has a | | loooooooooo| <- Word is clipped. | word. |"]
         LegacyWrap,
-        #[doc = "Lines that are longer than the cell width will be written in the next\ncell over, so long as that cell is empty. If the next cell over is\nnon-empty, this behaves the same as CLIP. The text will never wrap\nto the next line unless the user manually inserts a new line.\nExample:\n\n````text\n| First sentence. |\n| Manual newline that is very long. <- Text continues into next cell\n| Next newline.   |````"]
+        #[doc = "Lines that are longer than the cell width will be written in the next cell over, so long as that cell is empty. If the next cell over is non-empty, this behaves the same as CLIP. The text will never wrap to the next line unless the user manually inserts a new line. Example: | First sentence. | | Manual newline that is very long. <- Text continues into next cell | Next newline. |"]
         OverflowCell,
-        #[doc = "Words that are longer than a line are wrapped at the character level\nrather than clipped.\nExample:\n\n````text\n| Cell has a |\n| loooooooooo| <- Word is broken.\n| ong word.  |````"]
+        #[doc = "Words that are longer than a line are wrapped at the character level rather than clipped. Example: | Cell has a | | loooooooooo| <- Word is broken. | ong word. |"]
         Wrap,
         #[doc = "The default value, do not use."]
         WrapStrategyUnspecified,
@@ -4636,14 +4892,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ChartAxisViewWindowOptions {
-        #[doc = "The maximum numeric value to be shown in this view window. If unset, will\nautomatically determine a maximum value that looks good for the data."]
+        #[doc = "The maximum numeric value to be shown in this view window. If unset, will automatically determine a maximum value that looks good for the data."]
         #[serde(
             rename = "viewWindowMax",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub view_window_max: ::std::option::Option<f64>,
-        #[doc = "The minimum numeric value to be shown in this view window. If unset, will\nautomatically determine a minimum value that looks good for the data."]
+        #[doc = "The minimum numeric value to be shown in this view window. If unset, will automatically determine a minimum value that looks good for the data."]
         #[serde(
             rename = "viewWindowMin",
             default,
@@ -4671,13 +4927,13 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ChartAxisViewWindowOptionsViewWindowMode {
-        #[doc = "The default view window mode used in the Sheets editor for this chart\ntype. In most cases, if set, the default mode is equivalent to\n`PRETTY`."]
+        #[doc = "The default view window mode used in the Sheets editor for this chart type. In most cases, if set, the default mode is equivalent to `PRETTY`."]
         DefaultViewWindowMode,
-        #[doc = "Follows the min and max exactly if specified. If a value is unspecified,\nit will fall back to the `PRETTY` value."]
+        #[doc = "Follows the min and max exactly if specified. If a value is unspecified, it will fall back to the `PRETTY` value."]
         Explicit,
-        #[doc = "Chooses a min and max that make the chart look good. Both min and max are\nignored in this mode."]
+        #[doc = "Chooses a min and max that make the chart look good. Both min and max are ignored in this mode."]
         Pretty,
-        #[doc = "Do not use. Represents that the currently set mode is not supported by\nthe API."]
+        #[doc = "Do not use. Represents that the currently set mode is not supported by the API."]
         ViewWindowModeUnsupported,
     }
     impl ChartAxisViewWindowOptionsViewWindowMode {
@@ -4777,14 +5033,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ChartCustomNumberFormatOptions {
-        #[doc = "Custom prefix to be prepended to the chart attribute.\nThis field is optional."]
+        #[doc = "Custom prefix to be prepended to the chart attribute. This field is optional."]
         #[serde(
             rename = "prefix",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub prefix: ::std::option::Option<String>,
-        #[doc = "Custom suffix to be appended to the chart attribute.\nThis field is optional."]
+        #[doc = "Custom suffix to be appended to the chart attribute. This field is optional."]
         #[serde(
             rename = "suffix",
             default,
@@ -4803,18 +5059,30 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ChartData {
+        #[doc = "The aggregation type for the series of a data source chart. Only supported for data source charts."]
+        #[serde(
+            rename = "aggregateType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub aggregate_type: ::std::option::Option<crate::schemas::ChartDataAggregateType>,
+        #[doc = "The reference to the data source column that the data reads from."]
+        #[serde(
+            rename = "columnReference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub column_reference: ::std::option::Option<crate::schemas::DataSourceColumnReference>,
+        #[doc = "The rule to group the data by if the ChartData backs the domain of a data source chart. Only supported for data source charts."]
+        #[serde(
+            rename = "groupRule",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub group_rule: ::std::option::Option<crate::schemas::ChartGroupRule>,
         #[doc = "The source ranges of the data."]
         #[serde(
             rename = "sourceRange",
@@ -4833,6 +5101,351 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ChartDataAggregateType {
+        #[doc = "Average aggregate function."]
+        Average,
+        #[doc = "Default value, do not use."]
+        ChartAggregateTypeUnspecified,
+        #[doc = "Count aggregate function."]
+        Count,
+        #[doc = "Maximum aggregate function."]
+        Max,
+        #[doc = "Median aggregate function."]
+        Median,
+        #[doc = "Minimum aggregate function."]
+        Min,
+        #[doc = "Sum aggregate function."]
+        Sum,
+    }
+    impl ChartDataAggregateType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ChartDataAggregateType::Average => "AVERAGE",
+                ChartDataAggregateType::ChartAggregateTypeUnspecified => {
+                    "CHART_AGGREGATE_TYPE_UNSPECIFIED"
+                }
+                ChartDataAggregateType::Count => "COUNT",
+                ChartDataAggregateType::Max => "MAX",
+                ChartDataAggregateType::Median => "MEDIAN",
+                ChartDataAggregateType::Min => "MIN",
+                ChartDataAggregateType::Sum => "SUM",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ChartDataAggregateType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ChartDataAggregateType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ChartDataAggregateType, ()> {
+            Ok(match s {
+                "AVERAGE" => ChartDataAggregateType::Average,
+                "CHART_AGGREGATE_TYPE_UNSPECIFIED" => {
+                    ChartDataAggregateType::ChartAggregateTypeUnspecified
+                }
+                "COUNT" => ChartDataAggregateType::Count,
+                "MAX" => ChartDataAggregateType::Max,
+                "MEDIAN" => ChartDataAggregateType::Median,
+                "MIN" => ChartDataAggregateType::Min,
+                "SUM" => ChartDataAggregateType::Sum,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for ChartDataAggregateType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ChartDataAggregateType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ChartDataAggregateType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "AVERAGE" => ChartDataAggregateType::Average,
+                "CHART_AGGREGATE_TYPE_UNSPECIFIED" => {
+                    ChartDataAggregateType::ChartAggregateTypeUnspecified
+                }
+                "COUNT" => ChartDataAggregateType::Count,
+                "MAX" => ChartDataAggregateType::Max,
+                "MEDIAN" => ChartDataAggregateType::Median,
+                "MIN" => ChartDataAggregateType::Min,
+                "SUM" => ChartDataAggregateType::Sum,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for ChartDataAggregateType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ChartDataAggregateType {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ChartDateTimeRule {
+        #[doc = "The type of date-time grouping to apply."]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub r#type: ::std::option::Option<crate::schemas::ChartDateTimeRuleType>,
+    }
+    impl ::google_field_selector::FieldSelector for ChartDateTimeRule {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ChartDateTimeRule {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ChartDateTimeRuleType {
+        #[doc = "The default type, do not use."]
+        ChartDateTimeRuleTypeUnspecified,
+        #[doc = "Group dates by day and month, for example 22-Nov. The month is translated based on the spreadsheet locale."]
+        DayMonth,
+        #[doc = "Group dates by day of month, from 1 to 31."]
+        DayOfMonth,
+        #[doc = "Group dates by day of week, for example Sunday. The days of the week will be translated based on the spreadsheet locale."]
+        DayOfWeek,
+        #[doc = "Group dates by day of year, from 1 to 366. Note that dates after Feb. 29 fall in different buckets in leap years than in non-leap years."]
+        DayOfYear,
+        #[doc = "Group dates by hour using a 24-hour system, from 0 to 23."]
+        Hour,
+        #[doc = "Group dates by hour and minute using a 24-hour system, for example 19:45."]
+        HourMinute,
+        #[doc = "Group dates by hour and minute using a 12-hour system, for example 7:45 PM. The AM/PM designation is translated based on the spreadsheet locale."]
+        HourMinuteAmpm,
+        #[doc = "Group dates by minute, from 0 to 59."]
+        Minute,
+        #[doc = "Group dates by month, for example Nov. The month is translated based on the spreadsheet locale."]
+        Month,
+        #[doc = "Group dates by quarter, for example Q1 (which represents Jan-Mar)."]
+        Quarter,
+        #[doc = "Group dates by second, from 0 to 59."]
+        Second,
+        #[doc = "Group dates by year, for example 2008."]
+        Year,
+        #[doc = "Group dates by year and month, for example 2008-Nov. The month is translated based on the spreadsheet locale."]
+        YearMonth,
+        #[doc = "Group dates by year, month, and day, for example 2008-11-22."]
+        YearMonthDay,
+        #[doc = "Group dates by year and quarter, for example 2008 Q4."]
+        YearQuarter,
+    }
+    impl ChartDateTimeRuleType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ChartDateTimeRuleType::ChartDateTimeRuleTypeUnspecified => {
+                    "CHART_DATE_TIME_RULE_TYPE_UNSPECIFIED"
+                }
+                ChartDateTimeRuleType::DayMonth => "DAY_MONTH",
+                ChartDateTimeRuleType::DayOfMonth => "DAY_OF_MONTH",
+                ChartDateTimeRuleType::DayOfWeek => "DAY_OF_WEEK",
+                ChartDateTimeRuleType::DayOfYear => "DAY_OF_YEAR",
+                ChartDateTimeRuleType::Hour => "HOUR",
+                ChartDateTimeRuleType::HourMinute => "HOUR_MINUTE",
+                ChartDateTimeRuleType::HourMinuteAmpm => "HOUR_MINUTE_AMPM",
+                ChartDateTimeRuleType::Minute => "MINUTE",
+                ChartDateTimeRuleType::Month => "MONTH",
+                ChartDateTimeRuleType::Quarter => "QUARTER",
+                ChartDateTimeRuleType::Second => "SECOND",
+                ChartDateTimeRuleType::Year => "YEAR",
+                ChartDateTimeRuleType::YearMonth => "YEAR_MONTH",
+                ChartDateTimeRuleType::YearMonthDay => "YEAR_MONTH_DAY",
+                ChartDateTimeRuleType::YearQuarter => "YEAR_QUARTER",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ChartDateTimeRuleType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ChartDateTimeRuleType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ChartDateTimeRuleType, ()> {
+            Ok(match s {
+                "CHART_DATE_TIME_RULE_TYPE_UNSPECIFIED" => {
+                    ChartDateTimeRuleType::ChartDateTimeRuleTypeUnspecified
+                }
+                "DAY_MONTH" => ChartDateTimeRuleType::DayMonth,
+                "DAY_OF_MONTH" => ChartDateTimeRuleType::DayOfMonth,
+                "DAY_OF_WEEK" => ChartDateTimeRuleType::DayOfWeek,
+                "DAY_OF_YEAR" => ChartDateTimeRuleType::DayOfYear,
+                "HOUR" => ChartDateTimeRuleType::Hour,
+                "HOUR_MINUTE" => ChartDateTimeRuleType::HourMinute,
+                "HOUR_MINUTE_AMPM" => ChartDateTimeRuleType::HourMinuteAmpm,
+                "MINUTE" => ChartDateTimeRuleType::Minute,
+                "MONTH" => ChartDateTimeRuleType::Month,
+                "QUARTER" => ChartDateTimeRuleType::Quarter,
+                "SECOND" => ChartDateTimeRuleType::Second,
+                "YEAR" => ChartDateTimeRuleType::Year,
+                "YEAR_MONTH" => ChartDateTimeRuleType::YearMonth,
+                "YEAR_MONTH_DAY" => ChartDateTimeRuleType::YearMonthDay,
+                "YEAR_QUARTER" => ChartDateTimeRuleType::YearQuarter,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for ChartDateTimeRuleType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ChartDateTimeRuleType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ChartDateTimeRuleType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "CHART_DATE_TIME_RULE_TYPE_UNSPECIFIED" => {
+                    ChartDateTimeRuleType::ChartDateTimeRuleTypeUnspecified
+                }
+                "DAY_MONTH" => ChartDateTimeRuleType::DayMonth,
+                "DAY_OF_MONTH" => ChartDateTimeRuleType::DayOfMonth,
+                "DAY_OF_WEEK" => ChartDateTimeRuleType::DayOfWeek,
+                "DAY_OF_YEAR" => ChartDateTimeRuleType::DayOfYear,
+                "HOUR" => ChartDateTimeRuleType::Hour,
+                "HOUR_MINUTE" => ChartDateTimeRuleType::HourMinute,
+                "HOUR_MINUTE_AMPM" => ChartDateTimeRuleType::HourMinuteAmpm,
+                "MINUTE" => ChartDateTimeRuleType::Minute,
+                "MONTH" => ChartDateTimeRuleType::Month,
+                "QUARTER" => ChartDateTimeRuleType::Quarter,
+                "SECOND" => ChartDateTimeRuleType::Second,
+                "YEAR" => ChartDateTimeRuleType::Year,
+                "YEAR_MONTH" => ChartDateTimeRuleType::YearMonth,
+                "YEAR_MONTH_DAY" => ChartDateTimeRuleType::YearMonthDay,
+                "YEAR_QUARTER" => ChartDateTimeRuleType::YearQuarter,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for ChartDateTimeRuleType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ChartDateTimeRuleType {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct ChartGroupRule {
+        #[doc = "A ChartDateTimeRule."]
+        #[serde(
+            rename = "dateTimeRule",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub date_time_rule: ::std::option::Option<crate::schemas::ChartDateTimeRule>,
+        #[doc = "A ChartHistogramRule"]
+        #[serde(
+            rename = "histogramRule",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub histogram_rule: ::std::option::Option<crate::schemas::ChartHistogramRule>,
+    }
+    impl ::google_field_selector::FieldSelector for ChartGroupRule {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ChartGroupRule {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct ChartHistogramRule {
+        #[doc = "The size of the buckets that are created. Must be positive."]
+        #[serde(
+            rename = "intervalSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub interval_size: ::std::option::Option<f64>,
+        #[doc = "The maximum value at which items are placed into buckets. Values greater than the maximum are grouped into a single bucket. If omitted, it is determined by the maximum item value."]
+        #[serde(
+            rename = "maxValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub max_value: ::std::option::Option<f64>,
+        #[doc = "The minimum value at which items are placed into buckets. Values that are less than the minimum are grouped into a single bucket. If omitted, it is determined by the minimum item value."]
+        #[serde(
+            rename = "minValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub min_value: ::std::option::Option<f64>,
+    }
+    impl ::google_field_selector::FieldSelector for ChartHistogramRule {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ChartHistogramRule {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -4846,7 +5459,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ChartSourceRange {
-        #[doc = "The ranges of data for a series or domain.\nExactly one dimension must have a length of 1,\nand all sources in the list must have the same dimension\nwith length 1.\nThe domain (if it exists) & all series must have the same number\nof source ranges. If using more than one source range, then the source\nrange at a given offset must be in order and contiguous across the domain\nand series.\n\nFor example, these are valid configurations:\n\n````text\ndomain sources: A1:A5\nseries1 sources: B1:B5\nseries2 sources: D6:D10\n\ndomain sources: A1:A5, C10:C12\nseries1 sources: B1:B5, D10:D12\nseries2 sources: C1:C5, E10:E12````"]
+        #[doc = "The ranges of data for a series or domain. Exactly one dimension must have a length of 1, and all sources in the list must have the same dimension with length 1. The domain (if it exists) & all series must have the same number of source ranges. If using more than one source range, then the source range at a given offset must be in order and contiguous across the domain and series. For example, these are valid configurations: domain sources: A1:A5 series1 sources: B1:B5 series2 sources: D6:D10 domain sources: A1:A5, C10:C12 series1 sources: B1:B5, D10:D12 series2 sources: C1:C5, E10:E12"]
         #[serde(
             rename = "sources",
             default,
@@ -4868,28 +5481,28 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ChartSpec {
-        #[doc = "The alternative text that describes the chart.  This is often used\nfor accessibility."]
+        #[doc = "The alternative text that describes the chart. This is often used for accessibility."]
         #[serde(
             rename = "altText",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub alt_text: ::std::option::Option<String>,
-        #[doc = "The background color of the entire chart.\nNot applicable to Org charts."]
+        #[doc = "The background color of the entire chart. Not applicable to Org charts."]
         #[serde(
             rename = "backgroundColor",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub background_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The background color of the entire chart.\nNot applicable to Org charts.\nIf background_color is also set, this field takes precedence."]
+        #[doc = "The background color of the entire chart. Not applicable to Org charts. If background_color is also set, this field takes precedence."]
         #[serde(
             rename = "backgroundColorStyle",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub background_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
-        #[doc = "A basic chart specification, can be one of many kinds of charts.\nSee BasicChartType for the list of all\ncharts this supports."]
+        #[doc = "A basic chart specification, can be one of many kinds of charts. See BasicChartType for the list of all charts this supports."]
         #[serde(
             rename = "basicChart",
             default,
@@ -4910,7 +5523,22 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub candlestick_chart: ::std::option::Option<crate::schemas::CandlestickChartSpec>,
-        #[doc = "The name of the font to use by default for all chart text (e.g. title,\naxis labels, legend).  If a font is specified for a specific part of the\nchart it will override this font name."]
+        #[doc = "If present, the field contains data source chart specific properties."]
+        #[serde(
+            rename = "dataSourceChartProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_chart_properties:
+            ::std::option::Option<crate::schemas::DataSourceChartProperties>,
+        #[doc = "The filters applied to the source data of the chart. Only supported for data source charts."]
+        #[serde(
+            rename = "filterSpecs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub filter_specs: ::std::option::Option<Vec<crate::schemas::FilterSpec>>,
+        #[doc = "The name of the font to use by default for all chart text (e.g. title, axis labels, legend). If a font is specified for a specific part of the chart it will override this font name."]
         #[serde(
             rename = "fontName",
             default,
@@ -4932,7 +5560,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub histogram_chart: ::std::option::Option<crate::schemas::HistogramChartSpec>,
-        #[doc = "True to make a chart fill the entire space in which it's rendered with\nminimum padding.  False to use the default padding.\n(Not applicable to Geo and Org charts.)"]
+        #[doc = "True to make a chart fill the entire space in which it's rendered with minimum padding. False to use the default padding. (Not applicable to Geo and Org charts.)"]
         #[serde(
             rename = "maximized",
             default,
@@ -4960,6 +5588,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub scorecard_chart: ::std::option::Option<crate::schemas::ScorecardChartSpec>,
+        #[doc = "The order to sort the chart data by. Only a single sort spec is supported. Only supported for data source charts."]
+        #[serde(
+            rename = "sortSpecs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub sort_specs: ::std::option::Option<Vec<crate::schemas::SortSpec>>,
         #[doc = "The subtitle of the chart."]
         #[serde(
             rename = "subtitle",
@@ -4967,14 +5602,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub subtitle: ::std::option::Option<String>,
-        #[doc = "The subtitle text format.\nStrikethrough and underline are not supported."]
+        #[doc = "The subtitle text format. Strikethrough and underline are not supported."]
         #[serde(
             rename = "subtitleTextFormat",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub subtitle_text_format: ::std::option::Option<crate::schemas::TextFormat>,
-        #[doc = "The subtitle text position.\nThis field is optional."]
+        #[doc = "The subtitle text position. This field is optional."]
         #[serde(
             rename = "subtitleTextPosition",
             default,
@@ -4988,14 +5623,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub title: ::std::option::Option<String>,
-        #[doc = "The title text format.\nStrikethrough and underline are not supported."]
+        #[doc = "The title text format. Strikethrough and underline are not supported."]
         #[serde(
             rename = "titleTextFormat",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub title_text_format: ::std::option::Option<crate::schemas::TextFormat>,
-        #[doc = "The title text position.\nThis field is optional."]
+        #[doc = "The title text position. This field is optional."]
         #[serde(
             rename = "titleTextPosition",
             default,
@@ -5193,7 +5828,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ClearValuesResponse {
-        #[doc = "The range (in A1 notation) that was cleared.\n(If the request was for an unbounded range or a ranger larger\nthan the bounds of the sheet, this will be the actual range\nthat was cleared, bounded to the sheet's limits.)"]
+        #[doc = "The range (in A1 notation) that was cleared. (If the request was for an unbounded range or a ranger larger than the bounds of the sheet, this will be the actual range that was cleared, bounded to the sheet's limits.)"]
         #[serde(
             rename = "clearedRange",
             default,
@@ -5222,7 +5857,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Color {
-        #[doc = "The fraction of this color that should be applied to the pixel. That is,\nthe final pixel color is defined by the equation:\n\npixel color = alpha * (this color) + (1.0 - alpha) * (background color)\n\nThis means that a value of 1.0 corresponds to a solid color, whereas\na value of 0.0 corresponds to a completely transparent color. This\nuses a wrapper message rather than a simple float scalar so that it is\npossible to distinguish between a default value and the value being unset.\nIf omitted, this color object is to be rendered as a solid color\n(as if the alpha value had been explicitly given with a value of 1.0)."]
+        #[doc = "The fraction of this color that should be applied to the pixel. That is, the final pixel color is defined by the equation: pixel color = alpha * (this color) + (1.0 - alpha) * (background color) This means that a value of 1.0 corresponds to a solid color, whereas a value of 0.0 corresponds to a completely transparent color. This uses a wrapper message rather than a simple float scalar so that it is possible to distinguish between a default value and the value being unset. If omitted, this color object is to be rendered as a solid color (as if the alpha value had been explicitly given with a value of 1.0)."]
         #[serde(
             rename = "alpha",
             default,
@@ -5414,14 +6049,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ConditionValue {
-        #[doc = "A relative date (based on the current date).\nValid only if the type is\nDATE_BEFORE,\nDATE_AFTER,\nDATE_ON_OR_BEFORE or\nDATE_ON_OR_AFTER.\n\nRelative dates are not supported in data validation.\nThey are supported only in conditional formatting and\nconditional filters."]
+        #[doc = "A relative date (based on the current date). Valid only if the type is DATE_BEFORE, DATE_AFTER, DATE_ON_OR_BEFORE or DATE_ON_OR_AFTER. Relative dates are not supported in data validation. They are supported only in conditional formatting and conditional filters."]
         #[serde(
             rename = "relativeDate",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub relative_date: ::std::option::Option<crate::schemas::ConditionValueRelativeDate>,
-        #[doc = "A value the condition is based on.\nThe value is parsed as if the user typed into a cell.\nFormulas are supported (and must begin with an `=` or a '+')."]
+        #[doc = "A value the condition is based on. The value is parsed as if the user typed into a cell. Formulas are supported (and must begin with an `=` or a '+')."]
         #[serde(
             rename = "userEnteredValue",
             default,
@@ -5553,7 +6188,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub gradient_rule: ::std::option::Option<crate::schemas::GradientRule>,
-        #[doc = "The ranges that are formatted if the condition is true.\nAll the ranges must be on the same grid."]
+        #[doc = "The ranges that are formatted if the condition is true. All the ranges must be on the same grid."]
         #[serde(
             rename = "ranges",
             default,
@@ -5584,7 +6219,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CopyPasteRequest {
-        #[doc = "The location to paste to. If the range covers a span that's\na multiple of the source's height or width, then the\ndata will be repeated to fill in the destination range.\nIf the range is smaller than the source range, the entire\nsource data will still be copied (beyond the end of the destination range)."]
+        #[doc = "The location to paste to. If the range covers a span that's a multiple of the source's height or width, then the data will be repeated to fill in the destination range. If the range is smaller than the source range, the entire source data will still be copied (beyond the end of the destination range)."]
         #[serde(
             rename = "destination",
             default,
@@ -5910,7 +6545,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub destination: ::std::option::Option<crate::schemas::GridCoordinate>,
-        #[doc = "What kind of data to paste.  All the source data will be cut, regardless\nof what is pasted."]
+        #[doc = "What kind of data to paste. All the source data will be cut, regardless of what is pasted."]
         #[serde(
             rename = "pasteType",
             default,
@@ -6049,6 +6684,307 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct DataExecutionStatus {
+        #[doc = "The error code."]
+        #[serde(
+            rename = "errorCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub error_code: ::std::option::Option<crate::schemas::DataExecutionStatusErrorCode>,
+        #[doc = "The error message, which may be empty."]
+        #[serde(
+            rename = "errorMessage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub error_message: ::std::option::Option<String>,
+        #[doc = "Gets the time the data last successfully refreshed."]
+        #[serde(
+            rename = "lastRefreshTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub last_refresh_time: ::std::option::Option<String>,
+        #[doc = "The state of the data execution."]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub state: ::std::option::Option<crate::schemas::DataExecutionStatusState>,
+    }
+    impl ::google_field_selector::FieldSelector for DataExecutionStatus {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataExecutionStatus {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum DataExecutionStatusErrorCode {
+        #[doc = "The data execution is currently in progress, can not be refreshed until it completes."]
+        ConcurrentQuery,
+        #[doc = "Default value, do not use."]
+        DataExecutionErrorCodeUnspecified,
+        #[doc = "The database referenced by the data source is not found. */"]
+        DataNotFound,
+        #[doc = "The data execution returns duplicate column names or aliases."]
+        DuplicateColumnNames,
+        #[doc = "Error is received from the backend data execution engine (e.g. BigQuery). Check error_message for details."]
+        Engine,
+        #[doc = "The data execution is interrupted. Please refresh later."]
+        Interrupted,
+        #[doc = "The data execution returns columns with missing aliases."]
+        MissingColumnAlias,
+        #[doc = "The data source object is currently in error state. To force refresh, set force in RefreshDataSourceRequest."]
+        ObjectInErrorState,
+        #[doc = "The data source object does not exist."]
+        ObjectNotFound,
+        #[doc = "The data source object specification is invalid."]
+        ObjectSpecInvalid,
+        #[doc = "Other errors."]
+        Other,
+        #[doc = "One or some of the provided data source parameters are invalid."]
+        ParameterInvalid,
+        #[doc = "The user does not have access to the database referenced by the data source."]
+        PermissionDenied,
+        #[doc = "The data execution timed out."]
+        TimedOut,
+        #[doc = "The data execution returns more cells than the limit."]
+        TooManyCells,
+        #[doc = "The data execution returns values that exceed the maximum characters allowed in a single cell."]
+        TooManyCharsPerCell,
+        #[doc = "The data execution returns more rows than the limit."]
+        TooManyRows,
+        #[doc = "The data execution returns an unsupported data type."]
+        UnsupportedDataType,
+    }
+    impl DataExecutionStatusErrorCode {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                DataExecutionStatusErrorCode::ConcurrentQuery => "CONCURRENT_QUERY",
+                DataExecutionStatusErrorCode::DataExecutionErrorCodeUnspecified => {
+                    "DATA_EXECUTION_ERROR_CODE_UNSPECIFIED"
+                }
+                DataExecutionStatusErrorCode::DataNotFound => "DATA_NOT_FOUND",
+                DataExecutionStatusErrorCode::DuplicateColumnNames => "DUPLICATE_COLUMN_NAMES",
+                DataExecutionStatusErrorCode::Engine => "ENGINE",
+                DataExecutionStatusErrorCode::Interrupted => "INTERRUPTED",
+                DataExecutionStatusErrorCode::MissingColumnAlias => "MISSING_COLUMN_ALIAS",
+                DataExecutionStatusErrorCode::ObjectInErrorState => "OBJECT_IN_ERROR_STATE",
+                DataExecutionStatusErrorCode::ObjectNotFound => "OBJECT_NOT_FOUND",
+                DataExecutionStatusErrorCode::ObjectSpecInvalid => "OBJECT_SPEC_INVALID",
+                DataExecutionStatusErrorCode::Other => "OTHER",
+                DataExecutionStatusErrorCode::ParameterInvalid => "PARAMETER_INVALID",
+                DataExecutionStatusErrorCode::PermissionDenied => "PERMISSION_DENIED",
+                DataExecutionStatusErrorCode::TimedOut => "TIMED_OUT",
+                DataExecutionStatusErrorCode::TooManyCells => "TOO_MANY_CELLS",
+                DataExecutionStatusErrorCode::TooManyCharsPerCell => "TOO_MANY_CHARS_PER_CELL",
+                DataExecutionStatusErrorCode::TooManyRows => "TOO_MANY_ROWS",
+                DataExecutionStatusErrorCode::UnsupportedDataType => "UNSUPPORTED_DATA_TYPE",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DataExecutionStatusErrorCode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DataExecutionStatusErrorCode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DataExecutionStatusErrorCode, ()> {
+            Ok(match s {
+                "CONCURRENT_QUERY" => DataExecutionStatusErrorCode::ConcurrentQuery,
+                "DATA_EXECUTION_ERROR_CODE_UNSPECIFIED" => {
+                    DataExecutionStatusErrorCode::DataExecutionErrorCodeUnspecified
+                }
+                "DATA_NOT_FOUND" => DataExecutionStatusErrorCode::DataNotFound,
+                "DUPLICATE_COLUMN_NAMES" => DataExecutionStatusErrorCode::DuplicateColumnNames,
+                "ENGINE" => DataExecutionStatusErrorCode::Engine,
+                "INTERRUPTED" => DataExecutionStatusErrorCode::Interrupted,
+                "MISSING_COLUMN_ALIAS" => DataExecutionStatusErrorCode::MissingColumnAlias,
+                "OBJECT_IN_ERROR_STATE" => DataExecutionStatusErrorCode::ObjectInErrorState,
+                "OBJECT_NOT_FOUND" => DataExecutionStatusErrorCode::ObjectNotFound,
+                "OBJECT_SPEC_INVALID" => DataExecutionStatusErrorCode::ObjectSpecInvalid,
+                "OTHER" => DataExecutionStatusErrorCode::Other,
+                "PARAMETER_INVALID" => DataExecutionStatusErrorCode::ParameterInvalid,
+                "PERMISSION_DENIED" => DataExecutionStatusErrorCode::PermissionDenied,
+                "TIMED_OUT" => DataExecutionStatusErrorCode::TimedOut,
+                "TOO_MANY_CELLS" => DataExecutionStatusErrorCode::TooManyCells,
+                "TOO_MANY_CHARS_PER_CELL" => DataExecutionStatusErrorCode::TooManyCharsPerCell,
+                "TOO_MANY_ROWS" => DataExecutionStatusErrorCode::TooManyRows,
+                "UNSUPPORTED_DATA_TYPE" => DataExecutionStatusErrorCode::UnsupportedDataType,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for DataExecutionStatusErrorCode {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for DataExecutionStatusErrorCode {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for DataExecutionStatusErrorCode {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "CONCURRENT_QUERY" => DataExecutionStatusErrorCode::ConcurrentQuery,
+                "DATA_EXECUTION_ERROR_CODE_UNSPECIFIED" => {
+                    DataExecutionStatusErrorCode::DataExecutionErrorCodeUnspecified
+                }
+                "DATA_NOT_FOUND" => DataExecutionStatusErrorCode::DataNotFound,
+                "DUPLICATE_COLUMN_NAMES" => DataExecutionStatusErrorCode::DuplicateColumnNames,
+                "ENGINE" => DataExecutionStatusErrorCode::Engine,
+                "INTERRUPTED" => DataExecutionStatusErrorCode::Interrupted,
+                "MISSING_COLUMN_ALIAS" => DataExecutionStatusErrorCode::MissingColumnAlias,
+                "OBJECT_IN_ERROR_STATE" => DataExecutionStatusErrorCode::ObjectInErrorState,
+                "OBJECT_NOT_FOUND" => DataExecutionStatusErrorCode::ObjectNotFound,
+                "OBJECT_SPEC_INVALID" => DataExecutionStatusErrorCode::ObjectSpecInvalid,
+                "OTHER" => DataExecutionStatusErrorCode::Other,
+                "PARAMETER_INVALID" => DataExecutionStatusErrorCode::ParameterInvalid,
+                "PERMISSION_DENIED" => DataExecutionStatusErrorCode::PermissionDenied,
+                "TIMED_OUT" => DataExecutionStatusErrorCode::TimedOut,
+                "TOO_MANY_CELLS" => DataExecutionStatusErrorCode::TooManyCells,
+                "TOO_MANY_CHARS_PER_CELL" => DataExecutionStatusErrorCode::TooManyCharsPerCell,
+                "TOO_MANY_ROWS" => DataExecutionStatusErrorCode::TooManyRows,
+                "UNSUPPORTED_DATA_TYPE" => DataExecutionStatusErrorCode::UnsupportedDataType,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for DataExecutionStatusErrorCode {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataExecutionStatusErrorCode {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum DataExecutionStatusState {
+        #[doc = "Default value, do not use."]
+        DataExecutionStateUnspecified,
+        #[doc = "The data execution has completed with errors."]
+        Failed,
+        #[doc = "The data execution has not started."]
+        NotStarted,
+        #[doc = "The data execution has started and is running."]
+        Running,
+        #[doc = "The data execution has completed successfully."]
+        Succeeded,
+    }
+    impl DataExecutionStatusState {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                DataExecutionStatusState::DataExecutionStateUnspecified => {
+                    "DATA_EXECUTION_STATE_UNSPECIFIED"
+                }
+                DataExecutionStatusState::Failed => "FAILED",
+                DataExecutionStatusState::NotStarted => "NOT_STARTED",
+                DataExecutionStatusState::Running => "RUNNING",
+                DataExecutionStatusState::Succeeded => "SUCCEEDED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DataExecutionStatusState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DataExecutionStatusState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DataExecutionStatusState, ()> {
+            Ok(match s {
+                "DATA_EXECUTION_STATE_UNSPECIFIED" => {
+                    DataExecutionStatusState::DataExecutionStateUnspecified
+                }
+                "FAILED" => DataExecutionStatusState::Failed,
+                "NOT_STARTED" => DataExecutionStatusState::NotStarted,
+                "RUNNING" => DataExecutionStatusState::Running,
+                "SUCCEEDED" => DataExecutionStatusState::Succeeded,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for DataExecutionStatusState {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for DataExecutionStatusState {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for DataExecutionStatusState {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "DATA_EXECUTION_STATE_UNSPECIFIED" => {
+                    DataExecutionStatusState::DataExecutionStateUnspecified
+                }
+                "FAILED" => DataExecutionStatusState::Failed,
+                "NOT_STARTED" => DataExecutionStatusState::NotStarted,
+                "RUNNING" => DataExecutionStatusState::Running,
+                "SUCCEEDED" => DataExecutionStatusState::Succeeded,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for DataExecutionStatusState {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataExecutionStatusState {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct DataFilter {
         #[doc = "Selects data that matches the specified A1 range."]
         #[serde(
@@ -6057,7 +6993,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub a_1_range: ::std::option::Option<String>,
-        #[doc = "Selects data associated with the developer metadata matching the criteria\ndescribed by this DeveloperMetadataLookup."]
+        #[doc = "Selects data associated with the developer metadata matching the criteria described by this DeveloperMetadataLookup."]
         #[serde(
             rename = "developerMetadataLookup",
             default,
@@ -6100,7 +7036,7 @@ pub mod schemas {
         )]
         pub major_dimension:
             ::std::option::Option<crate::schemas::DataFilterValueRangeMajorDimension>,
-        #[doc = "The data to be written.  If the provided values exceed any of the ranges\nmatched by the data filter then the request fails.  If the provided values\nare less than the matched ranges only the specified values are written,\nexisting values in the matched ranges remain unaffected."]
+        #[doc = "The data to be written. If the provided values exceed any of the ranges matched by the data filter then the request fails. If the provided values are less than the matched ranges only the specified values are written, existing values in the matched ranges remain unaffected."]
         #[serde(
             rename = "values",
             default,
@@ -6195,6 +7131,1182 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct DataLabel {
+        #[doc = "Data to use for custom labels. Only used if type is set to CUSTOM. This data must be the same length as the series or other element this data label is applied to. In addition, if the series is split into multiple source ranges, this source data must come from the next column in the source data. For example, if the series is B2:B4,E6:E8 then this data must come from C2:C4,F6:F8."]
+        #[serde(
+            rename = "customLabelData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub custom_label_data: ::std::option::Option<crate::schemas::ChartData>,
+        #[doc = "The placement of the data label relative to the labeled data."]
+        #[serde(
+            rename = "placement",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub placement: ::std::option::Option<crate::schemas::DataLabelPlacement>,
+        #[doc = "The type of the data label."]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub r#type: ::std::option::Option<crate::schemas::DataLabelType>,
+        #[doc = "The text format used for the data label."]
+        #[serde(
+            rename = "textFormat",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub text_format: ::std::option::Option<crate::schemas::TextFormat>,
+    }
+    impl ::google_field_selector::FieldSelector for DataLabel {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataLabel {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum DataLabelPlacement {
+        #[doc = "Above a data point."]
+        Above,
+        #[doc = "Below a data point."]
+        Below,
+        #[doc = "Center within a bar or column, both horizontally and vertically."]
+        Center,
+        #[doc = "The positioning is determined automatically by the renderer."]
+        DataLabelPlacementUnspecified,
+        #[doc = "Inside a bar or column at the base."]
+        InsideBase,
+        #[doc = "Inside a bar or column at the end (top if positive, bottom if negative)."]
+        InsideEnd,
+        #[doc = "To the left of a data point."]
+        Left,
+        #[doc = "Outside a bar or column at the end."]
+        OutsideEnd,
+        #[doc = "To the right of a data point."]
+        Right,
+    }
+    impl DataLabelPlacement {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                DataLabelPlacement::Above => "ABOVE",
+                DataLabelPlacement::Below => "BELOW",
+                DataLabelPlacement::Center => "CENTER",
+                DataLabelPlacement::DataLabelPlacementUnspecified => {
+                    "DATA_LABEL_PLACEMENT_UNSPECIFIED"
+                }
+                DataLabelPlacement::InsideBase => "INSIDE_BASE",
+                DataLabelPlacement::InsideEnd => "INSIDE_END",
+                DataLabelPlacement::Left => "LEFT",
+                DataLabelPlacement::OutsideEnd => "OUTSIDE_END",
+                DataLabelPlacement::Right => "RIGHT",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DataLabelPlacement {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DataLabelPlacement {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DataLabelPlacement, ()> {
+            Ok(match s {
+                "ABOVE" => DataLabelPlacement::Above,
+                "BELOW" => DataLabelPlacement::Below,
+                "CENTER" => DataLabelPlacement::Center,
+                "DATA_LABEL_PLACEMENT_UNSPECIFIED" => {
+                    DataLabelPlacement::DataLabelPlacementUnspecified
+                }
+                "INSIDE_BASE" => DataLabelPlacement::InsideBase,
+                "INSIDE_END" => DataLabelPlacement::InsideEnd,
+                "LEFT" => DataLabelPlacement::Left,
+                "OUTSIDE_END" => DataLabelPlacement::OutsideEnd,
+                "RIGHT" => DataLabelPlacement::Right,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for DataLabelPlacement {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for DataLabelPlacement {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for DataLabelPlacement {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ABOVE" => DataLabelPlacement::Above,
+                "BELOW" => DataLabelPlacement::Below,
+                "CENTER" => DataLabelPlacement::Center,
+                "DATA_LABEL_PLACEMENT_UNSPECIFIED" => {
+                    DataLabelPlacement::DataLabelPlacementUnspecified
+                }
+                "INSIDE_BASE" => DataLabelPlacement::InsideBase,
+                "INSIDE_END" => DataLabelPlacement::InsideEnd,
+                "LEFT" => DataLabelPlacement::Left,
+                "OUTSIDE_END" => DataLabelPlacement::OutsideEnd,
+                "RIGHT" => DataLabelPlacement::Right,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for DataLabelPlacement {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataLabelPlacement {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum DataLabelType {
+        #[doc = "The data label is displayed using values from a custom data source indicated by customLabelData."]
+        Custom,
+        #[doc = "The data label is displayed using values from the series data."]
+        Data,
+        #[doc = "The data label type is not specified and will be interpreted depending on the context of the data label within the chart."]
+        DataLabelTypeUnspecified,
+        #[doc = "The data label is not displayed."]
+        None,
+    }
+    impl DataLabelType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                DataLabelType::Custom => "CUSTOM",
+                DataLabelType::Data => "DATA",
+                DataLabelType::DataLabelTypeUnspecified => "DATA_LABEL_TYPE_UNSPECIFIED",
+                DataLabelType::None => "NONE",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DataLabelType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DataLabelType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DataLabelType, ()> {
+            Ok(match s {
+                "CUSTOM" => DataLabelType::Custom,
+                "DATA" => DataLabelType::Data,
+                "DATA_LABEL_TYPE_UNSPECIFIED" => DataLabelType::DataLabelTypeUnspecified,
+                "NONE" => DataLabelType::None,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for DataLabelType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for DataLabelType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for DataLabelType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "CUSTOM" => DataLabelType::Custom,
+                "DATA" => DataLabelType::Data,
+                "DATA_LABEL_TYPE_UNSPECIFIED" => DataLabelType::DataLabelTypeUnspecified,
+                "NONE" => DataLabelType::None,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for DataLabelType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataLabelType {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DataSource {
+        #[doc = "All calculated columns in the data source."]
+        #[serde(
+            rename = "calculatedColumns",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub calculated_columns: ::std::option::Option<Vec<crate::schemas::DataSourceColumn>>,
+        #[doc = "The spreadsheet-scoped unique ID that identifies the data source. Example: 1080547365."]
+        #[serde(
+            rename = "dataSourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_id: ::std::option::Option<String>,
+        #[doc = "The ID of the Sheet connected with the data source. The field cannot be changed once set. When creating a data source, an associated DATA_SOURCE sheet is also created, if the field is not specified, the ID of the created sheet will be randomly generated."]
+        #[serde(
+            rename = "sheetId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub sheet_id: ::std::option::Option<i32>,
+        #[doc = "The DataSourceSpec for the data source connected with this spreadsheet."]
+        #[serde(
+            rename = "spec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub spec: ::std::option::Option<crate::schemas::DataSourceSpec>,
+    }
+    impl ::google_field_selector::FieldSelector for DataSource {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataSource {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DataSourceChartProperties {
+        #[doc = "Output only. The data execution status."]
+        #[serde(
+            rename = "dataExecutionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_execution_status: ::std::option::Option<crate::schemas::DataExecutionStatus>,
+        #[doc = "ID of the data source that the chart is associated with."]
+        #[serde(
+            rename = "dataSourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_id: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for DataSourceChartProperties {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataSourceChartProperties {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DataSourceColumn {
+        #[doc = "The formula of the calculated column."]
+        #[serde(
+            rename = "formula",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub formula: ::std::option::Option<String>,
+        #[doc = "The column reference."]
+        #[serde(
+            rename = "reference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub reference: ::std::option::Option<crate::schemas::DataSourceColumnReference>,
+    }
+    impl ::google_field_selector::FieldSelector for DataSourceColumn {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataSourceColumn {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DataSourceColumnReference {
+        #[doc = "The display name of the column. It should be unique within a data source."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for DataSourceColumnReference {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataSourceColumnReference {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DataSourceFormula {
+        #[doc = "Output only. The data execution status."]
+        #[serde(
+            rename = "dataExecutionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_execution_status: ::std::option::Option<crate::schemas::DataExecutionStatus>,
+        #[doc = "The ID of the data source the formula is associated with."]
+        #[serde(
+            rename = "dataSourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_id: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for DataSourceFormula {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataSourceFormula {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DataSourceObjectReference {
+        #[doc = "References to a data source chart."]
+        #[serde(
+            rename = "chartId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub chart_id: ::std::option::Option<i32>,
+        #[doc = "References to a cell containing DataSourceFormula."]
+        #[serde(
+            rename = "dataSourceFormulaCell",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_formula_cell: ::std::option::Option<crate::schemas::GridCoordinate>,
+        #[doc = "References to a data source PivotTable anchored at the cell."]
+        #[serde(
+            rename = "dataSourcePivotTableAnchorCell",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_pivot_table_anchor_cell:
+            ::std::option::Option<crate::schemas::GridCoordinate>,
+        #[doc = "References to a DataSourceTable anchored at the cell."]
+        #[serde(
+            rename = "dataSourceTableAnchorCell",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_table_anchor_cell: ::std::option::Option<crate::schemas::GridCoordinate>,
+        #[doc = "References to a DATA_SOURCE sheet."]
+        #[serde(
+            rename = "sheetId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub sheet_id: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for DataSourceObjectReference {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataSourceObjectReference {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DataSourceObjectReferences {
+        #[doc = "The references."]
+        #[serde(
+            rename = "references",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub references: ::std::option::Option<Vec<crate::schemas::DataSourceObjectReference>>,
+    }
+    impl ::google_field_selector::FieldSelector for DataSourceObjectReferences {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataSourceObjectReferences {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DataSourceParameter {
+        #[doc = "Named parameter. Must be a legitimate identifier for the DataSource that supports it. For example, [BigQuery identifier](https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#identifiers)."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "ID of a NamedRange. Its size must be 1x1."]
+        #[serde(
+            rename = "namedRangeId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub named_range_id: ::std::option::Option<String>,
+        #[doc = "A range that contains the value of the parameter. Its size must be 1x1."]
+        #[serde(
+            rename = "range",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub range: ::std::option::Option<crate::schemas::GridRange>,
+    }
+    impl ::google_field_selector::FieldSelector for DataSourceParameter {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataSourceParameter {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DataSourceRefreshDailySchedule {
+        #[doc = "The start time of a time interval in which a data source refresh is scheduled. Only `hours` part is used. The time interval size defaults to that in the Sheets editor."]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_time: ::std::option::Option<crate::schemas::TimeOfDay>,
+    }
+    impl ::google_field_selector::FieldSelector for DataSourceRefreshDailySchedule {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataSourceRefreshDailySchedule {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DataSourceRefreshMonthlySchedule {
+        #[doc = "Days of the month to refresh. Only 1-28 are supported, mapping to the 1st to the 28th day. At lesat one day must be specified."]
+        #[serde(
+            rename = "daysOfMonth",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub days_of_month: ::std::option::Option<Vec<i32>>,
+        #[doc = "The start time of a time interval in which a data source refresh is scheduled. Only `hours` part is used. The time interval size defaults to that in the Sheets editor."]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_time: ::std::option::Option<crate::schemas::TimeOfDay>,
+    }
+    impl ::google_field_selector::FieldSelector for DataSourceRefreshMonthlySchedule {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataSourceRefreshMonthlySchedule {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DataSourceRefreshSchedule {
+        #[doc = "Daily refresh schedule."]
+        #[serde(
+            rename = "dailySchedule",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub daily_schedule: ::std::option::Option<crate::schemas::DataSourceRefreshDailySchedule>,
+        #[doc = "True if the refresh schedule is enabled, or false otherwise."]
+        #[serde(
+            rename = "enabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub enabled: ::std::option::Option<bool>,
+        #[doc = "Monthly refresh schedule."]
+        #[serde(
+            rename = "monthlySchedule",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub monthly_schedule:
+            ::std::option::Option<crate::schemas::DataSourceRefreshMonthlySchedule>,
+        #[doc = "Output only. The time interval of the next run."]
+        #[serde(
+            rename = "nextRun",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub next_run: ::std::option::Option<crate::schemas::Interval>,
+        #[doc = "The scope of the refresh. Must be ALL_DATA_SOURCES."]
+        #[serde(
+            rename = "refreshScope",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub refresh_scope:
+            ::std::option::Option<crate::schemas::DataSourceRefreshScheduleRefreshScope>,
+        #[doc = "Weekly refresh schedule."]
+        #[serde(
+            rename = "weeklySchedule",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub weekly_schedule: ::std::option::Option<crate::schemas::DataSourceRefreshWeeklySchedule>,
+    }
+    impl ::google_field_selector::FieldSelector for DataSourceRefreshSchedule {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataSourceRefreshSchedule {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum DataSourceRefreshScheduleRefreshScope {
+        #[doc = "Refreshes all data sources and their associated data source objects in the spreadsheet."]
+        AllDataSources,
+        #[doc = "Default value, do not use."]
+        DataSourceRefreshScopeUnspecified,
+    }
+    impl DataSourceRefreshScheduleRefreshScope {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                DataSourceRefreshScheduleRefreshScope::AllDataSources => "ALL_DATA_SOURCES",
+                DataSourceRefreshScheduleRefreshScope::DataSourceRefreshScopeUnspecified => {
+                    "DATA_SOURCE_REFRESH_SCOPE_UNSPECIFIED"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DataSourceRefreshScheduleRefreshScope {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DataSourceRefreshScheduleRefreshScope {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DataSourceRefreshScheduleRefreshScope, ()> {
+            Ok(match s {
+                "ALL_DATA_SOURCES" => DataSourceRefreshScheduleRefreshScope::AllDataSources,
+                "DATA_SOURCE_REFRESH_SCOPE_UNSPECIFIED" => {
+                    DataSourceRefreshScheduleRefreshScope::DataSourceRefreshScopeUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for DataSourceRefreshScheduleRefreshScope {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for DataSourceRefreshScheduleRefreshScope {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for DataSourceRefreshScheduleRefreshScope {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ALL_DATA_SOURCES" => DataSourceRefreshScheduleRefreshScope::AllDataSources,
+                "DATA_SOURCE_REFRESH_SCOPE_UNSPECIFIED" => {
+                    DataSourceRefreshScheduleRefreshScope::DataSourceRefreshScopeUnspecified
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for DataSourceRefreshScheduleRefreshScope {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataSourceRefreshScheduleRefreshScope {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DataSourceRefreshWeeklySchedule {
+        #[doc = "Days of the week to refresh. At least one day must be specified."]
+        #[serde(
+            rename = "daysOfWeek",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub days_of_week: ::std::option::Option<
+            Vec<crate::schemas::DataSourceRefreshWeeklyScheduleDaysOfWeekItems>,
+        >,
+        #[doc = "The start time of a time interval in which a data source refresh is scheduled. Only `hours` part is used. The time interval size defaults to that in the Sheets editor."]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_time: ::std::option::Option<crate::schemas::TimeOfDay>,
+    }
+    impl ::google_field_selector::FieldSelector for DataSourceRefreshWeeklySchedule {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataSourceRefreshWeeklySchedule {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum DataSourceRefreshWeeklyScheduleDaysOfWeekItems {
+        #[doc = "The day of the week is unspecified."]
+        DayOfWeekUnspecified,
+        #[doc = "Friday"]
+        Friday,
+        #[doc = "Monday"]
+        Monday,
+        #[doc = "Saturday"]
+        Saturday,
+        #[doc = "Sunday"]
+        Sunday,
+        #[doc = "Thursday"]
+        Thursday,
+        #[doc = "Tuesday"]
+        Tuesday,
+        #[doc = "Wednesday"]
+        Wednesday,
+    }
+    impl DataSourceRefreshWeeklyScheduleDaysOfWeekItems {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                DataSourceRefreshWeeklyScheduleDaysOfWeekItems::DayOfWeekUnspecified => {
+                    "DAY_OF_WEEK_UNSPECIFIED"
+                }
+                DataSourceRefreshWeeklyScheduleDaysOfWeekItems::Friday => "FRIDAY",
+                DataSourceRefreshWeeklyScheduleDaysOfWeekItems::Monday => "MONDAY",
+                DataSourceRefreshWeeklyScheduleDaysOfWeekItems::Saturday => "SATURDAY",
+                DataSourceRefreshWeeklyScheduleDaysOfWeekItems::Sunday => "SUNDAY",
+                DataSourceRefreshWeeklyScheduleDaysOfWeekItems::Thursday => "THURSDAY",
+                DataSourceRefreshWeeklyScheduleDaysOfWeekItems::Tuesday => "TUESDAY",
+                DataSourceRefreshWeeklyScheduleDaysOfWeekItems::Wednesday => "WEDNESDAY",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DataSourceRefreshWeeklyScheduleDaysOfWeekItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DataSourceRefreshWeeklyScheduleDaysOfWeekItems {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<DataSourceRefreshWeeklyScheduleDaysOfWeekItems, ()> {
+            Ok(match s {
+                "DAY_OF_WEEK_UNSPECIFIED" => {
+                    DataSourceRefreshWeeklyScheduleDaysOfWeekItems::DayOfWeekUnspecified
+                }
+                "FRIDAY" => DataSourceRefreshWeeklyScheduleDaysOfWeekItems::Friday,
+                "MONDAY" => DataSourceRefreshWeeklyScheduleDaysOfWeekItems::Monday,
+                "SATURDAY" => DataSourceRefreshWeeklyScheduleDaysOfWeekItems::Saturday,
+                "SUNDAY" => DataSourceRefreshWeeklyScheduleDaysOfWeekItems::Sunday,
+                "THURSDAY" => DataSourceRefreshWeeklyScheduleDaysOfWeekItems::Thursday,
+                "TUESDAY" => DataSourceRefreshWeeklyScheduleDaysOfWeekItems::Tuesday,
+                "WEDNESDAY" => DataSourceRefreshWeeklyScheduleDaysOfWeekItems::Wednesday,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for DataSourceRefreshWeeklyScheduleDaysOfWeekItems {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for DataSourceRefreshWeeklyScheduleDaysOfWeekItems {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for DataSourceRefreshWeeklyScheduleDaysOfWeekItems {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "DAY_OF_WEEK_UNSPECIFIED" => {
+                    DataSourceRefreshWeeklyScheduleDaysOfWeekItems::DayOfWeekUnspecified
+                }
+                "FRIDAY" => DataSourceRefreshWeeklyScheduleDaysOfWeekItems::Friday,
+                "MONDAY" => DataSourceRefreshWeeklyScheduleDaysOfWeekItems::Monday,
+                "SATURDAY" => DataSourceRefreshWeeklyScheduleDaysOfWeekItems::Saturday,
+                "SUNDAY" => DataSourceRefreshWeeklyScheduleDaysOfWeekItems::Sunday,
+                "THURSDAY" => DataSourceRefreshWeeklyScheduleDaysOfWeekItems::Thursday,
+                "TUESDAY" => DataSourceRefreshWeeklyScheduleDaysOfWeekItems::Tuesday,
+                "WEDNESDAY" => DataSourceRefreshWeeklyScheduleDaysOfWeekItems::Wednesday,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for DataSourceRefreshWeeklyScheduleDaysOfWeekItems {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataSourceRefreshWeeklyScheduleDaysOfWeekItems {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DataSourceSheetDimensionRange {
+        #[doc = "The columns on the data source sheet."]
+        #[serde(
+            rename = "columnReferences",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub column_references:
+            ::std::option::Option<Vec<crate::schemas::DataSourceColumnReference>>,
+        #[doc = "The ID of the data source sheet the range is on."]
+        #[serde(
+            rename = "sheetId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub sheet_id: ::std::option::Option<i32>,
+    }
+    impl ::google_field_selector::FieldSelector for DataSourceSheetDimensionRange {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataSourceSheetDimensionRange {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DataSourceSheetProperties {
+        #[doc = "The columns displayed on the sheet, corresponding to the values in RowData."]
+        #[serde(
+            rename = "columns",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub columns: ::std::option::Option<Vec<crate::schemas::DataSourceColumn>>,
+        #[doc = "The data execution status."]
+        #[serde(
+            rename = "dataExecutionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_execution_status: ::std::option::Option<crate::schemas::DataExecutionStatus>,
+        #[doc = "ID of the DataSource the sheet is connected to."]
+        #[serde(
+            rename = "dataSourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_id: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for DataSourceSheetProperties {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataSourceSheetProperties {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DataSourceSpec {
+        #[doc = "A BigQueryDataSourceSpec."]
+        #[serde(
+            rename = "bigQuery",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub big_query: ::std::option::Option<crate::schemas::BigQueryDataSourceSpec>,
+        #[doc = "The parameters of the data source, used when querying the data source."]
+        #[serde(
+            rename = "parameters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub parameters: ::std::option::Option<Vec<crate::schemas::DataSourceParameter>>,
+    }
+    impl ::google_field_selector::FieldSelector for DataSourceSpec {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataSourceSpec {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct DataSourceTable {
+        #[doc = "The type to select columns for the data source table. Defaults to SELECTED."]
+        #[serde(
+            rename = "columnSelectionType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub column_selection_type:
+            ::std::option::Option<crate::schemas::DataSourceTableColumnSelectionType>,
+        #[doc = "Columns selected for the data source table. The column_selection_type must be SELECTED."]
+        #[serde(
+            rename = "columns",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub columns: ::std::option::Option<Vec<crate::schemas::DataSourceColumnReference>>,
+        #[doc = "Output only. The data execution status."]
+        #[serde(
+            rename = "dataExecutionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_execution_status: ::std::option::Option<crate::schemas::DataExecutionStatus>,
+        #[doc = "The ID of the data source the data source table is associated with."]
+        #[serde(
+            rename = "dataSourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_id: ::std::option::Option<String>,
+        #[doc = "Filter specifications in the data source table."]
+        #[serde(
+            rename = "filterSpecs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub filter_specs: ::std::option::Option<Vec<crate::schemas::FilterSpec>>,
+        #[doc = "The limit of rows to return. If not set, a default limit is applied. Please refer to the Sheets editor for the default and max limit."]
+        #[serde(
+            rename = "rowLimit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub row_limit: ::std::option::Option<i32>,
+        #[doc = "Sort specifications in the data source table. The result of the data source table is sorted based on the sort specifications in order."]
+        #[serde(
+            rename = "sortSpecs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub sort_specs: ::std::option::Option<Vec<crate::schemas::SortSpec>>,
+    }
+    impl ::google_field_selector::FieldSelector for DataSourceTable {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataSourceTable {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum DataSourceTableColumnSelectionType {
+        #[doc = "The default column selection type, do not use."]
+        DataSourceTableColumnSelectionTypeUnspecified,
+        #[doc = "Select columns specified by columns field."]
+        Selected,
+        #[doc = "Sync all current and future columns in the data source. If set, the data source table fetches all the columns in the data source at the time of refresh."]
+        SyncAll,
+    }
+    impl DataSourceTableColumnSelectionType {
+        pub fn as_str(self) -> &'static str {
+            match self { DataSourceTableColumnSelectionType :: DataSourceTableColumnSelectionTypeUnspecified => "DATA_SOURCE_TABLE_COLUMN_SELECTION_TYPE_UNSPECIFIED" , DataSourceTableColumnSelectionType :: Selected => "SELECTED" , DataSourceTableColumnSelectionType :: SyncAll => "SYNC_ALL" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DataSourceTableColumnSelectionType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DataSourceTableColumnSelectionType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DataSourceTableColumnSelectionType, ()> {
+            Ok (match s { "DATA_SOURCE_TABLE_COLUMN_SELECTION_TYPE_UNSPECIFIED" => DataSourceTableColumnSelectionType :: DataSourceTableColumnSelectionTypeUnspecified , "SELECTED" => DataSourceTableColumnSelectionType :: Selected , "SYNC_ALL" => DataSourceTableColumnSelectionType :: SyncAll , _ => return Err (()) , })
+        }
+    }
+    impl ::std::fmt::Display for DataSourceTableColumnSelectionType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for DataSourceTableColumnSelectionType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for DataSourceTableColumnSelectionType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok (match value { "DATA_SOURCE_TABLE_COLUMN_SELECTION_TYPE_UNSPECIFIED" => DataSourceTableColumnSelectionType :: DataSourceTableColumnSelectionTypeUnspecified , "SELECTED" => DataSourceTableColumnSelectionType :: Selected , "SYNC_ALL" => DataSourceTableColumnSelectionType :: SyncAll , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for DataSourceTableColumnSelectionType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DataSourceTableColumnSelectionType {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -6221,7 +8333,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub input_message: ::std::option::Option<String>,
-        #[doc = "True if the UI should be customized based on the kind of condition.\nIf true, \"List\" conditions will show a dropdown."]
+        #[doc = "True if the UI should be customized based on the kind of condition. If true, \"List\" conditions will show a dropdown."]
         #[serde(
             rename = "showCustomUi",
             default,
@@ -6281,23 +8393,23 @@ pub mod schemas {
     pub enum DateTimeRuleType {
         #[doc = "The default type, do not use."]
         DateTimeRuleTypeUnspecified,
-        #[doc = "Group dates by day and month, for example 22-Nov. The month is\ntranslated based on the spreadsheet locale."]
+        #[doc = "Group dates by day and month, for example 22-Nov. The month is translated based on the spreadsheet locale."]
         DayMonth,
         #[doc = "Group dates by day of month, from 1 to 31."]
         DayOfMonth,
-        #[doc = "Group dates by day of week, for example Sunday. The days of the week will\nbe translated based on the spreadsheet locale."]
+        #[doc = "Group dates by day of week, for example Sunday. The days of the week will be translated based on the spreadsheet locale."]
         DayOfWeek,
-        #[doc = "Group dates by day of year, from 1 to 366. Note that dates after Feb. 29\nfall in different buckets in leap years than in non-leap years."]
+        #[doc = "Group dates by day of year, from 1 to 366. Note that dates after Feb. 29 fall in different buckets in leap years than in non-leap years."]
         DayOfYear,
         #[doc = "Group dates by hour using a 24-hour system, from 0 to 23."]
         Hour,
         #[doc = "Group dates by hour and minute using a 24-hour system, for example 19:45."]
         HourMinute,
-        #[doc = "Group dates by hour and minute using a 12-hour system, for example 7:45\nPM. The AM/PM designation is translated based on the spreadsheet\nlocale."]
+        #[doc = "Group dates by hour and minute using a 12-hour system, for example 7:45 PM. The AM/PM designation is translated based on the spreadsheet locale."]
         HourMinuteAmpm,
         #[doc = "Group dates by minute, from 0 to 59."]
         Minute,
-        #[doc = "Group dates by month, for example Nov. The month is translated based\non the spreadsheet locale."]
+        #[doc = "Group dates by month, for example Nov. The month is translated based on the spreadsheet locale."]
         Month,
         #[doc = "Group dates by quarter, for example Q1 (which represents Jan-Mar)."]
         Quarter,
@@ -6305,7 +8417,7 @@ pub mod schemas {
         Second,
         #[doc = "Group dates by year, for example 2008."]
         Year,
-        #[doc = "Group dates by year and month, for example 2008-Nov. The month is\ntranslated based on the spreadsheet locale."]
+        #[doc = "Group dates by year and month, for example 2008-Nov. The month is translated based on the spreadsheet locale."]
         YearMonth,
         #[doc = "Group dates by year, month, and day, for example 2008-11-22."]
         YearMonthDay,
@@ -6521,8 +8633,39 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct DeleteDataSourceRequest {
+        #[doc = "The ID of the data source to delete."]
+        #[serde(
+            rename = "dataSourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_id: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for DeleteDataSourceRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DeleteDataSourceRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct DeleteDeveloperMetadataRequest {
-        #[doc = "The data filter describing the criteria used to select which developer\nmetadata entry to delete."]
+        #[doc = "The data filter describing the criteria used to select which developer metadata entry to delete."]
         #[serde(
             rename = "dataFilter",
             default,
@@ -6678,7 +8821,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DeleteDuplicatesRequest {
-        #[doc = "The columns in the range to analyze for duplicate values. If no columns are\nselected then all columns are analyzed for duplicates."]
+        #[doc = "The columns in the range to analyze for duplicate values. If no columns are selected then all columns are analyzed for duplicates."]
         #[serde(
             rename = "comparisonColumns",
             default,
@@ -6878,7 +9021,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub range: ::std::option::Option<crate::schemas::GridRange>,
-        #[doc = "The dimension from which deleted cells will be replaced with.\nIf ROWS, existing cells will be shifted upward to\nreplace the deleted cells. If COLUMNS, existing cells\nwill be shifted left to replace the deleted cells."]
+        #[doc = "The dimension from which deleted cells will be replaced with. If ROWS, existing cells will be shifted upward to replace the deleted cells. If COLUMNS, existing cells will be shifted left to replace the deleted cells."]
         #[serde(
             rename = "shiftDimension",
             default,
@@ -6986,7 +9129,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DeleteSheetRequest {
-        #[doc = "The ID of the sheet to delete."]
+        #[doc = "The ID of the sheet to delete. If the sheet is of SheetType.DATA_SOURCE type, the associated DataSource is also deleted."]
         #[serde(
             rename = "sheetId",
             default,
@@ -7024,14 +9167,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub location: ::std::option::Option<crate::schemas::DeveloperMetadataLocation>,
-        #[doc = "The spreadsheet-scoped unique ID that identifies the metadata. IDs may be\nspecified when metadata is created, otherwise one will be randomly\ngenerated and assigned. Must be positive."]
+        #[doc = "The spreadsheet-scoped unique ID that identifies the metadata. IDs may be specified when metadata is created, otherwise one will be randomly generated and assigned. Must be positive."]
         #[serde(
             rename = "metadataId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata_id: ::std::option::Option<i32>,
-        #[doc = "The metadata key. There may be multiple metadata in a spreadsheet with the\nsame key.  Developer metadata must always have a key specified."]
+        #[doc = "The metadata key. There may be multiple metadata in a spreadsheet with the same key. Developer metadata must always have a key specified."]
         #[serde(
             rename = "metadataKey",
             default,
@@ -7045,7 +9188,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata_value: ::std::option::Option<String>,
-        #[doc = "The metadata visibility.  Developer metadata must always have a visibility\nspecified."]
+        #[doc = "The metadata visibility. Developer metadata must always have a visibility specified."]
         #[serde(
             rename = "visibility",
             default,
@@ -7067,9 +9210,9 @@ pub mod schemas {
     pub enum DeveloperMetadataVisibility {
         #[doc = "Default value."]
         DeveloperMetadataVisibilityUnspecified,
-        #[doc = "Document-visible metadata is accessible from any developer project with\naccess to the document."]
+        #[doc = "Document-visible metadata is accessible from any developer project with access to the document."]
         Document,
-        #[doc = "Project-visible metadata is only visible to and accessible by the developer\nproject that created the metadata."]
+        #[doc = "Project-visible metadata is only visible to and accessible by the developer project that created the metadata."]
         Project,
     }
     impl DeveloperMetadataVisibility {
@@ -7158,14 +9301,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DeveloperMetadataLocation {
-        #[doc = "Represents the row or column when metadata is associated with\na dimension. The specified DimensionRange must represent a single row\nor column; it cannot be unbounded or span multiple rows or columns."]
+        #[doc = "Represents the row or column when metadata is associated with a dimension. The specified DimensionRange must represent a single row or column; it cannot be unbounded or span multiple rows or columns."]
         #[serde(
             rename = "dimensionRange",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub dimension_range: ::std::option::Option<crate::schemas::DimensionRange>,
-        #[doc = "The type of location this object represents.  This field is read-only."]
+        #[doc = "The type of location this object represents. This field is read-only."]
         #[serde(
             rename = "locationType",
             default,
@@ -7303,7 +9446,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DeveloperMetadataLookup {
-        #[doc = "Determines how this lookup matches the location.  If this field is\nspecified as EXACT, only developer metadata associated on the exact\nlocation specified is matched.  If this field is specified to INTERSECTING,\ndeveloper metadata associated on intersecting locations is also\nmatched.  If left unspecified, this field assumes a default value of\nINTERSECTING.\nIf this field is specified, a metadataLocation\nmust also be specified."]
+        #[doc = "Determines how this lookup matches the location. If this field is specified as EXACT, only developer metadata associated on the exact location specified is matched. If this field is specified to INTERSECTING, developer metadata associated on intersecting locations is also matched. If left unspecified, this field assumes a default value of INTERSECTING. If this field is specified, a metadataLocation must also be specified."]
         #[serde(
             rename = "locationMatchingStrategy",
             default,
@@ -7311,7 +9454,7 @@ pub mod schemas {
         )]
         pub location_matching_strategy:
             ::std::option::Option<crate::schemas::DeveloperMetadataLookupLocationMatchingStrategy>,
-        #[doc = "Limits the selected developer metadata to those entries which are\nassociated with locations of the specified type.  For example, when this\nfield is specified as ROW this lookup\nonly considers developer metadata associated on rows.  If the field is left\nunspecified, all location types are considered.  This field cannot be\nspecified as SPREADSHEET when\nthe locationMatchingStrategy\nis specified as INTERSECTING or when the\nmetadataLocation is specified as a\nnon-spreadsheet location: spreadsheet metadata cannot intersect any other\ndeveloper metadata location.  This field also must be left unspecified when\nthe locationMatchingStrategy\nis specified as EXACT."]
+        #[doc = "Limits the selected developer metadata to those entries which are associated with locations of the specified type. For example, when this field is specified as ROW this lookup only considers developer metadata associated on rows. If the field is left unspecified, all location types are considered. This field cannot be specified as SPREADSHEET when the locationMatchingStrategy is specified as INTERSECTING or when the metadataLocation is specified as a non-spreadsheet location: spreadsheet metadata cannot intersect any other developer metadata location. This field also must be left unspecified when the locationMatchingStrategy is specified as EXACT."]
         #[serde(
             rename = "locationType",
             default,
@@ -7319,35 +9462,35 @@ pub mod schemas {
         )]
         pub location_type:
             ::std::option::Option<crate::schemas::DeveloperMetadataLookupLocationType>,
-        #[doc = "Limits the selected developer metadata to that which has a matching\nDeveloperMetadata.metadata_id."]
+        #[doc = "Limits the selected developer metadata to that which has a matching DeveloperMetadata.metadata_id."]
         #[serde(
             rename = "metadataId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata_id: ::std::option::Option<i32>,
-        #[doc = "Limits the selected developer metadata to that which has a matching\nDeveloperMetadata.metadata_key."]
+        #[doc = "Limits the selected developer metadata to that which has a matching DeveloperMetadata.metadata_key."]
         #[serde(
             rename = "metadataKey",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata_key: ::std::option::Option<String>,
-        #[doc = "Limits the selected developer metadata to those entries associated with\nthe specified location.  This field either matches exact locations or all\nintersecting locations according the specified\nlocationMatchingStrategy."]
+        #[doc = "Limits the selected developer metadata to those entries associated with the specified location. This field either matches exact locations or all intersecting locations according the specified locationMatchingStrategy."]
         #[serde(
             rename = "metadataLocation",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata_location: ::std::option::Option<crate::schemas::DeveloperMetadataLocation>,
-        #[doc = "Limits the selected developer metadata to that which has a matching\nDeveloperMetadata.metadata_value."]
+        #[doc = "Limits the selected developer metadata to that which has a matching DeveloperMetadata.metadata_value."]
         #[serde(
             rename = "metadataValue",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata_value: ::std::option::Option<String>,
-        #[doc = "Limits the selected developer metadata to that which has a matching\nDeveloperMetadata.visibility.  If left unspecified, all developer\nmetadata visibile to the requesting project is considered."]
+        #[doc = "Limits the selected developer metadata to that which has a matching DeveloperMetadata.visibility. If left unspecified, all developer metadata visibile to the requesting project is considered."]
         #[serde(
             rename = "visibility",
             default,
@@ -7369,9 +9512,9 @@ pub mod schemas {
     pub enum DeveloperMetadataLookupLocationMatchingStrategy {
         #[doc = "Default value. This value must not be used."]
         DeveloperMetadataLocationMatchingStrategyUnspecified,
-        #[doc = "Indicates that a specified location should be matched exactly.  For\nexample, if row three were specified as a location this matching strategy\nwould only match developer metadata also associated on row three.  Metadata\nassociated on other locations would not be considered."]
+        #[doc = "Indicates that a specified location should be matched exactly. For example, if row three were specified as a location this matching strategy would only match developer metadata also associated on row three. Metadata associated on other locations would not be considered."]
         ExactLocation,
-        #[doc = "Indicates that a specified location should match that exact location as\nwell as any intersecting locations.  For example, if row three were\nspecified as a location this matching strategy would match developer\nmetadata associated on row three as well as metadata associated on\nlocations that intersect row three.  If, for instance, there was developer\nmetadata associated on column B, this matching strategy would also match\nthat location because column B intersects row three."]
+        #[doc = "Indicates that a specified location should match that exact location as well as any intersecting locations. For example, if row three were specified as a location this matching strategy would match developer metadata associated on row three as well as metadata associated on locations that intersect row three. If, for instance, there was developer metadata associated on column B, this matching strategy would also match that location because column B intersects row three."]
         IntersectingLocation,
     }
     impl DeveloperMetadataLookupLocationMatchingStrategy {
@@ -7389,7 +9532,7 @@ pub mod schemas {
         fn from_str(
             s: &str,
         ) -> ::std::result::Result<DeveloperMetadataLookupLocationMatchingStrategy, ()> {
-            Ok ( match s { "DEVELOPER_METADATA_LOCATION_MATCHING_STRATEGY_UNSPECIFIED" => DeveloperMetadataLookupLocationMatchingStrategy :: DeveloperMetadataLocationMatchingStrategyUnspecified , "EXACT_LOCATION" => DeveloperMetadataLookupLocationMatchingStrategy :: ExactLocation , "INTERSECTING_LOCATION" => DeveloperMetadataLookupLocationMatchingStrategy :: IntersectingLocation , _ => return Err ( ( ) ) , } )
+            Ok (match s { "DEVELOPER_METADATA_LOCATION_MATCHING_STRATEGY_UNSPECIFIED" => DeveloperMetadataLookupLocationMatchingStrategy :: DeveloperMetadataLocationMatchingStrategyUnspecified , "EXACT_LOCATION" => DeveloperMetadataLookupLocationMatchingStrategy :: ExactLocation , "INTERSECTING_LOCATION" => DeveloperMetadataLookupLocationMatchingStrategy :: IntersectingLocation , _ => return Err (()) , })
         }
     }
     impl ::std::fmt::Display for DeveloperMetadataLookupLocationMatchingStrategy {
@@ -7411,7 +9554,7 @@ pub mod schemas {
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "DEVELOPER_METADATA_LOCATION_MATCHING_STRATEGY_UNSPECIFIED" => DeveloperMetadataLookupLocationMatchingStrategy :: DeveloperMetadataLocationMatchingStrategyUnspecified , "EXACT_LOCATION" => DeveloperMetadataLookupLocationMatchingStrategy :: ExactLocation , "INTERSECTING_LOCATION" => DeveloperMetadataLookupLocationMatchingStrategy :: IntersectingLocation , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok (match value { "DEVELOPER_METADATA_LOCATION_MATCHING_STRATEGY_UNSPECIFIED" => DeveloperMetadataLookupLocationMatchingStrategy :: DeveloperMetadataLocationMatchingStrategyUnspecified , "EXACT_LOCATION" => DeveloperMetadataLookupLocationMatchingStrategy :: ExactLocation , "INTERSECTING_LOCATION" => DeveloperMetadataLookupLocationMatchingStrategy :: IntersectingLocation , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
         }
     }
     impl ::google_field_selector::FieldSelector for DeveloperMetadataLookupLocationMatchingStrategy {
@@ -7520,9 +9663,9 @@ pub mod schemas {
     pub enum DeveloperMetadataLookupVisibility {
         #[doc = "Default value."]
         DeveloperMetadataVisibilityUnspecified,
-        #[doc = "Document-visible metadata is accessible from any developer project with\naccess to the document."]
+        #[doc = "Document-visible metadata is accessible from any developer project with access to the document."]
         Document,
-        #[doc = "Project-visible metadata is only visible to and accessible by the developer\nproject that created the metadata."]
+        #[doc = "Project-visible metadata is only visible to and accessible by the developer project that created the metadata."]
         Project,
     }
     impl DeveloperMetadataLookupVisibility {
@@ -7611,14 +9754,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DimensionGroup {
-        #[doc = "This field is true if this group is collapsed. A collapsed group remains\ncollapsed if an overlapping group at a shallower depth is expanded.\n\nA true value does not imply that all dimensions within the group are\nhidden, since a dimension's visibility can change independently from this\ngroup property. However, when this property is updated, all dimensions\nwithin it are set to hidden if this field is true, or set to visible if\nthis field is false."]
+        #[doc = "This field is true if this group is collapsed. A collapsed group remains collapsed if an overlapping group at a shallower depth is expanded. A true value does not imply that all dimensions within the group are hidden, since a dimension's visibility can change independently from this group property. However, when this property is updated, all dimensions within it are set to hidden if this field is true, or set to visible if this field is false."]
         #[serde(
             rename = "collapsed",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub collapsed: ::std::option::Option<bool>,
-        #[doc = "The depth of the group, representing how many groups have a range that\nwholly contains the range of this group."]
+        #[doc = "The depth of the group, representing how many groups have a range that wholly contains the range of this group."]
         #[serde(
             rename = "depth",
             default,
@@ -7656,6 +9799,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DimensionProperties {
+        #[doc = "Output only. If set, this is a column in a data source sheet."]
+        #[serde(
+            rename = "dataSourceColumnReference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_column_reference:
+            ::std::option::Option<crate::schemas::DataSourceColumnReference>,
         #[doc = "The developer metadata associated with a single row or column."]
         #[serde(
             rename = "developerMetadata",
@@ -7663,7 +9814,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub developer_metadata: ::std::option::Option<Vec<crate::schemas::DeveloperMetadata>>,
-        #[doc = "True if this dimension is being filtered.\nThis field is read-only."]
+        #[doc = "True if this dimension is being filtered. This field is read-only."]
         #[serde(
             rename = "hiddenByFilter",
             default,
@@ -7889,28 +10040,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DuplicateSheetRequest {
-        #[doc = "The zero-based index where the new sheet should be inserted.\nThe index of all sheets after this are incremented."]
+        #[doc = "The zero-based index where the new sheet should be inserted. The index of all sheets after this are incremented."]
         #[serde(
             rename = "insertSheetIndex",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub insert_sheet_index: ::std::option::Option<i32>,
-        #[doc = "If set, the ID of the new sheet. If not set, an ID is chosen.\nIf set, the ID must not conflict with any existing sheet ID.\nIf set, it must be non-negative."]
+        #[doc = "If set, the ID of the new sheet. If not set, an ID is chosen. If set, the ID must not conflict with any existing sheet ID. If set, it must be non-negative."]
         #[serde(
             rename = "newSheetId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub new_sheet_id: ::std::option::Option<i32>,
-        #[doc = "The name of the new sheet.  If empty, a new name is chosen for you."]
+        #[doc = "The name of the new sheet. If empty, a new name is chosen for you."]
         #[serde(
             rename = "newSheetName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub new_sheet_name: ::std::option::Option<String>,
-        #[doc = "The sheet to duplicate."]
+        #[doc = "The sheet to duplicate. If the source sheet is of DATA_SOURCE type, its backing DataSource is also duplicated and associated with the new copy of the sheet. No data execution is triggered, the grid data of this sheet is also copied over but only available after the batch request completes."]
         #[serde(
             rename = "sourceSheetId",
             default,
@@ -7963,7 +10114,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Editors {
-        #[doc = "True if anyone in the document's domain has edit access to the protected\nrange.  Domain protection is only supported on documents within a domain."]
+        #[doc = "True if anyone in the document's domain has edit access to the protected range. Domain protection is only supported on documents within a domain."]
         #[serde(
             rename = "domainUsersCanEdit",
             default,
@@ -7999,6 +10150,13 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct EmbeddedChart {
+        #[doc = "The border of the chart."]
+        #[serde(
+            rename = "border",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub border: ::std::option::Option<crate::schemas::EmbeddedObjectBorder>,
         #[doc = "The ID of the chart."]
         #[serde(
             rename = "chartId",
@@ -8032,6 +10190,35 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct EmbeddedObjectBorder {
+        #[doc = "The color of the border."]
+        #[serde(
+            rename = "color",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The color of the border. If color is also set, this field takes precedence."]
+        #[serde(
+            rename = "colorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub color_style: ::std::option::Option<crate::schemas::ColorStyle>,
+    }
+    impl ::google_field_selector::FieldSelector for EmbeddedObjectBorder {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for EmbeddedObjectBorder {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -8044,7 +10231,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct EmbeddedObjectPosition {
-        #[doc = "If true, the embedded object is put on a new sheet whose ID\nis chosen for you. Used only when writing."]
+        #[doc = "If true, the embedded object is put on a new sheet whose ID is chosen for you. Used only when writing."]
         #[serde(
             rename = "newSheet",
             default,
@@ -8058,7 +10245,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub overlay_position: ::std::option::Option<crate::schemas::OverlayPosition>,
-        #[doc = "The sheet this is on. Set only if the embedded object\nis on its own sheet. Must be non-negative."]
+        #[doc = "The sheet this is on. Set only if the embedded object is on its own sheet. Must be non-negative."]
         #[serde(
             rename = "sheetId",
             default,
@@ -8089,7 +10276,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ErrorValue {
-        #[doc = "A message with more information about the error\n(in the spreadsheet's locale)."]
+        #[doc = "A message with more information about the error (in the spreadsheet's locale)."]
         #[serde(
             rename = "message",
             default,
@@ -8236,7 +10423,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bool_value: ::std::option::Option<bool>,
-        #[doc = "Represents an error.\nThis field is read-only."]
+        #[doc = "Represents an error. This field is read-only."]
         #[serde(
             rename = "errorValue",
             default,
@@ -8250,14 +10437,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub formula_value: ::std::option::Option<String>,
-        #[doc = "Represents a double value.\nNote: Dates, Times and DateTimes are represented as doubles in\n\"serial number\" format."]
+        #[doc = "Represents a double value. Note: Dates, Times and DateTimes are represented as doubles in \"serial number\" format."]
         #[serde(
             rename = "numberValue",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub number_value: ::std::option::Option<f64>,
-        #[doc = "Represents a string value.\nLeading single quotes are not included. For example, if the user typed\n`'123` into the UI, this would be represented as a `stringValue` of\n`\"123\"`."]
+        #[doc = "Represents a string value. Leading single quotes are not included. For example, if the user typed `'123` into the UI, this would be represented as a `stringValue` of `\"123\"`."]
         #[serde(
             rename = "stringValue",
             default,
@@ -8279,7 +10466,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct FilterCriteria {
-        #[doc = "A condition that must be true for values to be shown.\n(This does not override hidden_values -- if a value is listed there,\nit will still be hidden.)"]
+        #[doc = "A condition that must be true for values to be shown. (This does not override hidden_values -- if a value is listed there, it will still be hidden.)"]
         #[serde(
             rename = "condition",
             default,
@@ -8293,28 +10480,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub hidden_values: ::std::option::Option<Vec<String>>,
-        #[doc = "The background fill color to filter by; only cells with this fill color are\nshown. Mutually exclusive with visible_foreground_color."]
+        #[doc = "The background fill color to filter by; only cells with this fill color are shown. Mutually exclusive with visible_foreground_color."]
         #[serde(
             rename = "visibleBackgroundColor",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub visible_background_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The background fill color to filter by; only cells with this fill color are\nshown. This field is mutually exclusive with visible_foreground_color,\nand must be set to an RGB-type color. If visible_background_color is\nalso set, this field takes precedence."]
+        #[doc = "The background fill color to filter by; only cells with this fill color are shown. This field is mutually exclusive with visible_foreground_color, and must be set to an RGB-type color. If visible_background_color is also set, this field takes precedence."]
         #[serde(
             rename = "visibleBackgroundColorStyle",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub visible_background_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
-        #[doc = "The foreground color to filter by; only cells with this foreground color\nare shown. Mutually exclusive with visible_background_color."]
+        #[doc = "The foreground color to filter by; only cells with this foreground color are shown. Mutually exclusive with visible_background_color."]
         #[serde(
             rename = "visibleForegroundColor",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub visible_foreground_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The foreground color to filter by; only cells with this foreground color\nare shown. This field is mutually exclusive with\nvisible_background_color, and must be set to an RGB-type color. If\nvisible_foreground_color is also set, this field takes precedence."]
+        #[doc = "The foreground color to filter by; only cells with this foreground color are shown. This field is mutually exclusive with visible_background_color, and must be set to an RGB-type color. If visible_foreground_color is also set, this field takes precedence."]
         #[serde(
             rename = "visibleForegroundColorStyle",
             default,
@@ -8335,8 +10522,45 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
+    pub struct FilterSpec {
+        #[doc = "The column index."]
+        #[serde(
+            rename = "columnIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub column_index: ::std::option::Option<i32>,
+        #[doc = "Reference to a data source column."]
+        #[serde(
+            rename = "dataSourceColumnReference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_column_reference:
+            ::std::option::Option<crate::schemas::DataSourceColumnReference>,
+        #[doc = "The criteria for the column."]
+        #[serde(
+            rename = "filterCriteria",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub filter_criteria: ::std::option::Option<crate::schemas::FilterCriteria>,
+    }
+    impl ::google_field_selector::FieldSelector for FilterSpec {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for FilterSpec {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
     pub struct FilterView {
-        #[doc = "The criteria for showing/hiding values per column.\nThe map's key is the column index, and the value is the criteria for\nthat column."]
+        #[doc = "The criteria for showing/hiding values per column. The map's key is the column index, and the value is the criteria for that column. This field is deprecated in favor of filter_specs."]
         #[serde(
             rename = "criteria",
             default,
@@ -8345,6 +10569,13 @@ pub mod schemas {
         pub criteria: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::FilterCriteria>,
         >,
+        #[doc = "The filter criteria for showing/hiding values per column. Both criteria and filter_specs are populated in responses. If both fields are specified in an update request, this field takes precedence."]
+        #[serde(
+            rename = "filterSpecs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub filter_specs: ::std::option::Option<Vec<crate::schemas::FilterSpec>>,
         #[doc = "The ID of the filter view."]
         #[serde(
             rename = "filterViewId",
@@ -8352,21 +10583,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub filter_view_id: ::std::option::Option<i32>,
-        #[doc = "The named range this filter view is backed by, if any.\n\nWhen writing, only one of range or named_range_id\nmay be set."]
+        #[doc = "The named range this filter view is backed by, if any. When writing, only one of range or named_range_id may be set."]
         #[serde(
             rename = "namedRangeId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub named_range_id: ::std::option::Option<String>,
-        #[doc = "The range this filter view covers.\n\nWhen writing, only one of range or named_range_id\nmay be set."]
+        #[doc = "The range this filter view covers. When writing, only one of range or named_range_id may be set."]
         #[serde(
             rename = "range",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub range: ::std::option::Option<crate::schemas::GridRange>,
-        #[doc = "The sort order per column. Later specifications are used when values\nare equal in the earlier specifications."]
+        #[doc = "The sort order per column. Later specifications are used when values are equal in the earlier specifications."]
         #[serde(
             rename = "sortSpecs",
             default,
@@ -8418,7 +10649,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub find: ::std::option::Option<String>,
-        #[doc = "True if the search should include cells with formulas.\nFalse to skip cells with formulas."]
+        #[doc = "True if the search should include cells with formulas. False to skip cells with formulas."]
         #[serde(
             rename = "includeFormulas",
             default,
@@ -8453,7 +10684,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub replacement: ::std::option::Option<String>,
-        #[doc = "True if the find value is a regex.\nThe regular expression and replacement should follow Java regex rules\nat https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html.\nThe replacement string is allowed to refer to capturing groups.\nFor example, if one cell has the contents `\"Google Sheets\"` and another\nhas `\"Google Docs\"`, then searching for `\"o.* (.*)\"` with a replacement of\n`\"$1 Rocks\"` would change the contents of the cells to\n`\"GSheets Rocks\"` and `\"GDocs Rocks\"` respectively."]
+        #[doc = "True if the find value is a regex. The regular expression and replacement should follow Java regex rules at https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html. The replacement string is allowed to refer to capturing groups. For example, if one cell has the contents `\"Google Sheets\"` and another has `\"Google Docs\"`, then searching for `\"o.* (.*)\"` with a replacement of `\"$1 Rocks\"` would change the contents of the cells to `\"GSheets Rocks\"` and `\"GDocs Rocks\"` respectively."]
         #[serde(
             rename = "searchByRegex",
             default,
@@ -8498,7 +10729,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub formulas_changed: ::std::option::Option<i32>,
-        #[doc = "The number of occurrences (possibly multiple within a cell) changed.\nFor example, if replacing `\"e\"` with `\"o\"` in `\"Google Sheets\"`, this would\nbe `\"3\"` because `\"Google Sheets\"` -> `\"Googlo Shoots\"`."]
+        #[doc = "The number of occurrences (possibly multiple within a cell) changed. For example, if replacing `\"e\"` with `\"o\"` in `\"Google Sheets\"`, this would be `\"3\"` because `\"Google Sheets\"` -> `\"Googlo Shoots\"`."]
         #[serde(
             rename = "occurrencesChanged",
             default,
@@ -8550,14 +10781,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GetSpreadsheetByDataFilterRequest {
-        #[doc = "The DataFilters used to select which ranges to retrieve from\nthe spreadsheet."]
+        #[doc = "The DataFilters used to select which ranges to retrieve from the spreadsheet."]
         #[serde(
             rename = "dataFilters",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub data_filters: ::std::option::Option<Vec<crate::schemas::DataFilter>>,
-        #[doc = "True if grid data should be returned.\nThis parameter is ignored if a field mask was set in the request."]
+        #[doc = "True if grid data should be returned. This parameter is ignored if a field mask was set in the request."]
         #[serde(
             rename = "includeGridData",
             default,
@@ -8660,21 +10891,21 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GridData {
-        #[doc = "Metadata about the requested columns in the grid, starting with the column\nin start_column."]
+        #[doc = "Metadata about the requested columns in the grid, starting with the column in start_column."]
         #[serde(
             rename = "columnMetadata",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub column_metadata: ::std::option::Option<Vec<crate::schemas::DimensionProperties>>,
-        #[doc = "The data in the grid, one entry per row,\nstarting with the row in startRow.\nThe values in RowData will correspond to columns starting\nat start_column."]
+        #[doc = "The data in the grid, one entry per row, starting with the row in startRow. The values in RowData will correspond to columns starting at start_column."]
         #[serde(
             rename = "rowData",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub row_data: ::std::option::Option<Vec<crate::schemas::RowData>>,
-        #[doc = "Metadata about the requested rows in the grid, starting with the row\nin start_row."]
+        #[doc = "Metadata about the requested rows in the grid, starting with the row in start_row."]
         #[serde(
             rename = "rowMetadata",
             default,
@@ -8842,7 +11073,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct HistogramChartSpec {
-        #[doc = "By default the bucket size (the range of values stacked in a single\ncolumn) is chosen automatically, but it may be overridden here.\nE.g., A bucket size of 1.5 results in buckets from 0 - 1.5, 1.5 - 3.0, etc.\nCannot be negative.\nThis field is optional."]
+        #[doc = "By default the bucket size (the range of values stacked in a single column) is chosen automatically, but it may be overridden here. E.g., A bucket size of 1.5 results in buckets from 0 - 1.5, 1.5 - 3.0, etc. Cannot be negative. This field is optional."]
         #[serde(
             rename = "bucketSize",
             default,
@@ -8857,21 +11088,21 @@ pub mod schemas {
         )]
         pub legend_position:
             ::std::option::Option<crate::schemas::HistogramChartSpecLegendPosition>,
-        #[doc = "The outlier percentile is used to ensure that outliers do not adversely\naffect the calculation of bucket sizes.  For example, setting an outlier\npercentile of 0.05 indicates that the top and bottom 5% of values when\ncalculating buckets.  The values are still included in the chart, they will\nbe added to the first or last buckets instead of their own buckets.\nMust be between 0.0 and 0.5."]
+        #[doc = "The outlier percentile is used to ensure that outliers do not adversely affect the calculation of bucket sizes. For example, setting an outlier percentile of 0.05 indicates that the top and bottom 5% of values when calculating buckets. The values are still included in the chart, they will be added to the first or last buckets instead of their own buckets. Must be between 0.0 and 0.5."]
         #[serde(
             rename = "outlierPercentile",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub outlier_percentile: ::std::option::Option<f64>,
-        #[doc = "The series for a histogram may be either a single series of values to be\nbucketed or multiple series, each of the same length, containing the name\nof the series followed by the values to be bucketed for that series."]
+        #[doc = "The series for a histogram may be either a single series of values to be bucketed or multiple series, each of the same length, containing the name of the series followed by the values to be bucketed for that series."]
         #[serde(
             rename = "series",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub series: ::std::option::Option<Vec<crate::schemas::HistogramSeries>>,
-        #[doc = "Whether horizontal divider lines should be displayed between items in each\ncolumn."]
+        #[doc = "Whether horizontal divider lines should be displayed between items in each column."]
         #[serde(
             rename = "showItemDividers",
             default,
@@ -8995,7 +11226,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct HistogramRule {
-        #[doc = "The maximum value at which items are placed into buckets\nof constant size. Values above end are lumped into a single bucket.\nThis field is optional."]
+        #[doc = "The maximum value at which items are placed into buckets of constant size. Values above end are lumped into a single bucket. This field is optional."]
         #[serde(
             rename = "end",
             default,
@@ -9009,7 +11240,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub interval: ::std::option::Option<f64>,
-        #[doc = "The minimum value at which items are placed into buckets\nof constant size. Values below start are lumped into a single bucket.\nThis field is optional."]
+        #[doc = "The minimum value at which items are placed into buckets of constant size. Values below start are lumped into a single bucket. This field is optional."]
         #[serde(
             rename = "start",
             default,
@@ -9031,14 +11262,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct HistogramSeries {
-        #[doc = "The color of the column representing this series in each bucket.\nThis field is optional."]
+        #[doc = "The color of the column representing this series in each bucket. This field is optional."]
         #[serde(
             rename = "barColor",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bar_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The color of the column representing this series in each bucket.\nThis field is optional.\nIf bar_color is also set, this field takes precedence."]
+        #[doc = "The color of the column representing this series in each bucket. This field is optional. If bar_color is also set, this field takes precedence."]
         #[serde(
             rename = "barColorStyle",
             default,
@@ -9076,14 +11307,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct InsertDimensionRequest {
-        #[doc = "Whether dimension properties should be extended from the dimensions\nbefore or after the newly inserted dimensions.\nTrue to inherit from the dimensions before (in which case the start\nindex must be greater than 0), and false to inherit from the dimensions\nafter.\n\nFor example, if row index 0 has red background and row index 1\nhas a green background, then inserting 2 rows at index 1 can inherit\neither the green or red background.  If `inheritFromBefore` is true,\nthe two new rows will be red (because the row before the insertion point\nwas red), whereas if `inheritFromBefore` is false, the two new rows will\nbe green (because the row after the insertion point was green)."]
+        #[doc = "Whether dimension properties should be extended from the dimensions before or after the newly inserted dimensions. True to inherit from the dimensions before (in which case the start index must be greater than 0), and false to inherit from the dimensions after. For example, if row index 0 has red background and row index 1 has a green background, then inserting 2 rows at index 1 can inherit either the green or red background. If `inheritFromBefore` is true, the two new rows will be red (because the row before the insertion point was red), whereas if `inheritFromBefore` is false, the two new rows will be green (because the row after the insertion point was green)."]
         #[serde(
             rename = "inheritFromBefore",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub inherit_from_before: ::std::option::Option<bool>,
-        #[doc = "The dimensions to insert.  Both the start and end indexes must be bounded."]
+        #[doc = "The dimensions to insert. Both the start and end indexes must be bounded."]
         #[serde(
             rename = "range",
             default,
@@ -9121,7 +11352,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub range: ::std::option::Option<crate::schemas::GridRange>,
-        #[doc = "The dimension which will be shifted when inserting cells.\nIf ROWS, existing cells will be shifted down.\nIf COLUMNS, existing cells will be shifted right."]
+        #[doc = "The dimension which will be shifted when inserting cells. If ROWS, existing cells will be shifted down. If COLUMNS, existing cells will be shifted right."]
         #[serde(
             rename = "shiftDimension",
             default,
@@ -9227,7 +11458,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The color this interpolation point should use.\nIf color is also set, this field takes precedence."]
+        #[doc = "The color this interpolation point should use. If color is also set, this field takes precedence."]
         #[serde(
             rename = "colorStyle",
             default,
@@ -9241,7 +11472,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<crate::schemas::InterpolationPointType>,
-        #[doc = "The value this interpolation point uses.  May be a formula.\nUnused if type is MIN or\nMAX."]
+        #[doc = "The value this interpolation point uses. May be a formula. Unused if type is MIN or MAX."]
         #[serde(
             rename = "value",
             default,
@@ -9263,15 +11494,15 @@ pub mod schemas {
     pub enum InterpolationPointType {
         #[doc = "The default value, do not use."]
         InterpolationPointTypeUnspecified,
-        #[doc = "The interpolation point uses the maximum value in the\ncells over the range of the conditional format."]
+        #[doc = "The interpolation point uses the maximum value in the cells over the range of the conditional format."]
         Max,
-        #[doc = "The interpolation point uses the minimum value in the\ncells over the range of the conditional format."]
+        #[doc = "The interpolation point uses the minimum value in the cells over the range of the conditional format."]
         Min,
-        #[doc = "The interpolation point uses exactly the value in\nInterpolationPoint.value."]
+        #[doc = "The interpolation point uses exactly the value in InterpolationPoint.value."]
         Number,
-        #[doc = "The interpolation point is the given percentage over\nall the cells in the range of the conditional format.\nThis is equivalent to NUMBER if the value was:\n`=(MAX(FLATTEN(range)) * (value / 100)) + (MIN(FLATTEN(range)) * (1 - (value / 100)))`\n(where errors in the range are ignored when flattening)."]
+        #[doc = "The interpolation point is the given percentage over all the cells in the range of the conditional format. This is equivalent to NUMBER if the value was: `=(MAX(FLATTEN(range)) * (value / 100)) + (MIN(FLATTEN(range)) * (1 - (value / 100)))` (where errors in the range are ignored when flattening)."]
         Percent,
-        #[doc = "The interpolation point is the given percentile\nover all the cells in the range of the conditional format.\nThis is equivalent to NUMBER if the value was:\n`=PERCENTILE(FLATTEN(range), value / 100)`\n(where errors in the range are ignored when flattening)."]
+        #[doc = "The interpolation point is the given percentile over all the cells in the range of the conditional format. This is equivalent to NUMBER if the value was: `=PERCENTILE(FLATTEN(range), value / 100)` (where errors in the range are ignored when flattening)."]
         Percentile,
     }
     impl InterpolationPointType {
@@ -9357,17 +11588,55 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Interval {
+        #[doc = "Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end."]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub end_time: ::std::option::Option<String>,
+        #[doc = "Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start."]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_time: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for Interval {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Interval {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct IterativeCalculationSettings {
-        #[doc = "When iterative calculation is enabled and successive results differ by\nless than this threshold value, the calculation rounds stop."]
+        #[doc = "When iterative calculation is enabled and successive results differ by less than this threshold value, the calculation rounds stop."]
         #[serde(
             rename = "convergenceThreshold",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub convergence_threshold: ::std::option::Option<f64>,
-        #[doc = "When iterative calculation is enabled, the maximum number of calculation\nrounds to perform."]
+        #[doc = "When iterative calculation is enabled, the maximum number of calculation rounds to perform."]
         #[serde(
             rename = "maxIterations",
             default,
@@ -9389,7 +11658,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct KeyValueFormat {
-        #[doc = "Specifies the horizontal text positioning of key value.\nThis field is optional. If not specified, default positioning is used."]
+        #[doc = "Specifies the horizontal text positioning of key value. This field is optional. If not specified, default positioning is used."]
         #[serde(
             rename = "position",
             default,
@@ -9454,7 +11723,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LineStyleType {
-        #[doc = "A custom dash for a line. Modifying the exact custom dash style is\ncurrently unsupported."]
+        #[doc = "A custom dash for a line. Modifying the exact custom dash style is currently unsupported."]
         Custom,
         #[doc = "A dotted line."]
         Dotted,
@@ -9562,7 +11831,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ManualRule {
-        #[doc = "The list of group names and the corresponding items from the source data\nthat map to each group name."]
+        #[doc = "The list of group names and the corresponding items from the source data that map to each group name."]
         #[serde(
             rename = "groups",
             default,
@@ -9584,14 +11853,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ManualRuleGroup {
-        #[doc = "The group name, which must be a string. Each group in a given\nManualRule must have a unique group name."]
+        #[doc = "The group name, which must be a string. Each group in a given ManualRule must have a unique group name."]
         #[serde(
             rename = "groupName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub group_name: ::std::option::Option<crate::schemas::ExtendedValue>,
-        #[doc = "The items in the source data that should be placed into this group. Each\nitem may be a string, number, or boolean. Items may appear in at most one\ngroup within a given ManualRule. Items that do not appear in any\ngroup will appear on their own."]
+        #[doc = "The items in the source data that should be placed into this group. Each item may be a string, number, or boolean. Items may appear in at most one group within a given ManualRule. Items that do not appear in any group will appear on their own."]
         #[serde(
             rename = "items",
             default,
@@ -9649,7 +11918,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct MatchedValueRange {
-        #[doc = "The DataFilters from the request that matched the range of\nvalues."]
+        #[doc = "The DataFilters from the request that matched the range of values."]
         #[serde(
             rename = "dataFilters",
             default,
@@ -9801,7 +12070,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct MoveDimensionRequest {
-        #[doc = "The zero-based start index of where to move the source data to,\nbased on the coordinates *before* the source data is removed\nfrom the grid.  Existing data will be shifted down or right\n(depending on the dimension) to make room for the moved dimensions.\nThe source dimensions are removed from the grid, so the\nthe data may end up in a different index than specified.\n\nFor example, given `A1..A5` of `0, 1, 2, 3, 4` and wanting to move\n`\"1\"` and `\"2\"` to between `\"3\"` and `\"4\"`, the source would be\n`ROWS [1..3)`,and the destination index would be `\"4\"`\n(the zero-based index of row 5).\nThe end result would be `A1..A5` of `0, 3, 1, 2, 4`."]
+        #[doc = "The zero-based start index of where to move the source data to, based on the coordinates *before* the source data is removed from the grid. Existing data will be shifted down or right (depending on the dimension) to make room for the moved dimensions. The source dimensions are removed from the grid, so the the data may end up in a different index than specified. For example, given `A1..A5` of `0, 1, 2, 3, 4` and wanting to move `\"1\"` and `\"2\"` to between `\"3\"` and `\"4\"`, the source would be `ROWS [1..3)`,and the destination index would be `\"4\"` (the zero-based index of row 5). The end result would be `A1..A5` of `0, 3, 1, 2, 4`."]
         #[serde(
             rename = "destinationIndex",
             default,
@@ -9884,14 +12153,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct NumberFormat {
-        #[doc = "Pattern string used for formatting.  If not set, a default pattern based on\nthe user's locale will be used if necessary for the given type.\nSee the [Date and Number Formats guide](/sheets/api/guides/formats) for\nmore information about the supported patterns."]
+        #[doc = "Pattern string used for formatting. If not set, a default pattern based on the user's locale will be used if necessary for the given type. See the [Date and Number Formats guide](/sheets/api/guides/formats) for more information about the supported patterns."]
         #[serde(
             rename = "pattern",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub pattern: ::std::option::Option<String>,
-        #[doc = "The type of the number format.\nWhen writing, this field must be set."]
+        #[doc = "The type of the number format. When writing, this field must be set."]
         #[serde(
             rename = "type",
             default,
@@ -9919,7 +12188,7 @@ pub mod schemas {
         DateTime,
         #[doc = "Number formatting, e.g, `1,000.12`"]
         Number,
-        #[doc = "The number format is not specified\nand is based on the contents of the cell.\nDo not explicitly use this."]
+        #[doc = "The number format is not specified and is based on the contents of the cell. Do not explicitly use this."]
         NumberFormatTypeUnspecified,
         #[doc = "Percent formatting, e.g `10.12%`"]
         Percent,
@@ -10019,7 +12288,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct OrgChartSpec {
-        #[doc = "The data containing the labels for all the nodes in the chart.  Labels\nmust be unique."]
+        #[doc = "The data containing the labels for all the nodes in the chart. Labels must be unique."]
         #[serde(
             rename = "labels",
             default,
@@ -10033,7 +12302,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub node_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The color of the org chart nodes.\nIf node_color is also set, this field takes precedence."]
+        #[doc = "The color of the org chart nodes. If node_color is also set, this field takes precedence."]
         #[serde(
             rename = "nodeColorStyle",
             default,
@@ -10047,7 +12316,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub node_size: ::std::option::Option<crate::schemas::OrgChartSpecNodeSize>,
-        #[doc = "The data containing the label of the parent for the corresponding node.\nA blank value indicates that the node has no parent and is a top-level\nnode.\nThis field is optional."]
+        #[doc = "The data containing the label of the parent for the corresponding node. A blank value indicates that the node has no parent and is a top-level node. This field is optional."]
         #[serde(
             rename = "parentLabels",
             default,
@@ -10061,14 +12330,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub selected_node_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The color of the selected org chart nodes.\nIf selected_node_color is also set, this field takes precedence."]
+        #[doc = "The color of the selected org chart nodes. If selected_node_color is also set, this field takes precedence."]
         #[serde(
             rename = "selectedNodeColorStyle",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub selected_node_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
-        #[doc = "The data containing the tooltip for the corresponding node.  A blank value\nresults in no tooltip being displayed for the node.\nThis field is optional."]
+        #[doc = "The data containing the tooltip for the corresponding node. A blank value results in no tooltip being displayed for the node. This field is optional."]
         #[serde(
             rename = "tooltips",
             default,
@@ -10200,14 +12469,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub height_pixels: ::std::option::Option<i32>,
-        #[doc = "The horizontal offset, in pixels, that the object is offset\nfrom the anchor cell."]
+        #[doc = "The horizontal offset, in pixels, that the object is offset from the anchor cell."]
         #[serde(
             rename = "offsetXPixels",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub offset_x_pixels: ::std::option::Option<i32>,
-        #[doc = "The vertical offset, in pixels, that the object is offset\nfrom the anchor cell."]
+        #[doc = "The vertical offset, in pixels, that the object is offset from the anchor cell."]
         #[serde(
             rename = "offsetYPixels",
             default,
@@ -10604,7 +12873,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PivotFilterCriteria {
-        #[doc = "Values that should be included.  Values not listed here are excluded."]
+        #[doc = "A condition that must be true for values to be shown. (`visibleValues` does not override this -- even if a value is listed there, it is still hidden if it does not meet the condition.) Condition values that refer to ranges in A1-notation are evaluated relative to the pivot table sheet. References are treated absolutely, so are not filled down the pivot table. For example, a condition value of `=A1` on \"Pivot Table 1\" is treated as `'Pivot Table 1'!$A$1`. The source data of the pivot table can be referenced by column header name. For example, if the source data has columns named \"Revenue\" and \"Cost\" and a condition is applied to the \"Revenue\" column with type `NUMBER_GREATER` and value `=Cost`, then only columns where \"Revenue\" > \"Cost\" are included."]
+        #[serde(
+            rename = "condition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub condition: ::std::option::Option<crate::schemas::BooleanCondition>,
+        #[doc = "Whether values are visible by default. If true, the visible_values are ignored, all values that meet condition (if specified) are shown. If false, values that are both in visible_values and meet condition are shown."]
+        #[serde(
+            rename = "visibleByDefault",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub visible_by_default: ::std::option::Option<bool>,
+        #[doc = "Values that should be included. Values not listed here are excluded."]
         #[serde(
             rename = "visibleValues",
             default,
@@ -10623,9 +12906,70 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PivotFilterSpec {
+        #[doc = "The column offset of the source range."]
+        #[serde(
+            rename = "columnOffsetIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub column_offset_index: ::std::option::Option<i32>,
+        #[doc = "The reference to the data source column."]
+        #[serde(
+            rename = "dataSourceColumnReference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_column_reference:
+            ::std::option::Option<crate::schemas::DataSourceColumnReference>,
+        #[doc = "The criteria for the column."]
+        #[serde(
+            rename = "filterCriteria",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub filter_criteria: ::std::option::Option<crate::schemas::PivotFilterCriteria>,
+    }
+    impl ::google_field_selector::FieldSelector for PivotFilterSpec {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PivotFilterSpec {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct PivotGroup {
+        #[doc = "The reference to the data source column this grouping is based on."]
+        #[serde(
+            rename = "dataSourceColumnReference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_column_reference:
+            ::std::option::Option<crate::schemas::DataSourceColumnReference>,
+        #[doc = "The count limit on rows or columns to apply to this pivot group."]
+        #[serde(
+            rename = "groupLimit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub group_limit: ::std::option::Option<crate::schemas::PivotGroupLimit>,
         #[doc = "The group rule to apply to this row/column group."]
         #[serde(
             rename = "groupRule",
@@ -10633,14 +12977,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub group_rule: ::std::option::Option<crate::schemas::PivotGroupRule>,
-        #[doc = "The labels to use for the row/column groups which can be customized. For\nexample, in the following pivot table, the row label is `Region` (which\ncould be renamed to `State`) and the column label is `Product` (which\ncould be renamed `Item`). Pivot tables created before December 2017 do\nnot have header labels. If you'd like to add header labels to an existing\npivot table, please delete the existing pivot table and then create a new\npivot table with same parameters.\n\n````text\n+--------------+---------+-------+\n| SUM of Units | Product |       |\n| Region       | Pen     | Paper |\n+--------------+---------+-------+\n| New York     |     345 |    98 |\n| Oregon       |     234 |   123 |\n| Tennessee    |     531 |   415 |\n+--------------+---------+-------+\n| Grand Total  |    1110 |   636 |\n+--------------+---------+-------+````"]
+        #[doc = "The labels to use for the row/column groups which can be customized. For example, in the following pivot table, the row label is `Region` (which could be renamed to `State`) and the column label is `Product` (which could be renamed `Item`). Pivot tables created before December 2017 do not have header labels. If you'd like to add header labels to an existing pivot table, please delete the existing pivot table and then create a new pivot table with same parameters. +--------------+---------+-------+ | SUM of Units | Product | | | Region | Pen | Paper | +--------------+---------+-------+ | New York | 345 | 98 | | Oregon | 234 | 123 | | Tennessee | 531 | 415 | +--------------+---------+-------+ | Grand Total | 1110 | 636 | +--------------+---------+-------+"]
         #[serde(
             rename = "label",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub label: ::std::option::Option<String>,
-        #[doc = "True if the headings in this pivot group should be repeated.\nThis is only valid for row groupings and is ignored by columns.\n\nBy default, we minimize repitition of headings by not showing higher\nlevel headings where they are the same. For example, even though the\nthird row below corresponds to \"Q1 Mar\", \"Q1\" is not shown because\nit is redundant with previous rows. Setting repeat_headings to true\nwould cause \"Q1\" to be repeated for \"Feb\" and \"Mar\".\n\n````text\n+--------------+\n| Q1     | Jan |\n|        | Feb |\n|        | Mar |\n+--------+-----+\n| Q1 Total     |\n+--------------+````"]
+        #[doc = "True if the headings in this pivot group should be repeated. This is only valid for row groupings and is ignored by columns. By default, we minimize repitition of headings by not showing higher level headings where they are the same. For example, even though the third row below corresponds to \"Q1 Mar\", \"Q1\" is not shown because it is redundant with previous rows. Setting repeat_headings to true would cause \"Q1\" to be repeated for \"Feb\" and \"Mar\". +--------------+ | Q1 | Jan | | | Feb | | | Mar | +--------+-----+ | Q1 Total | +--------------+"]
         #[serde(
             rename = "repeatHeadings",
             default,
@@ -10661,14 +13005,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub sort_order: ::std::option::Option<crate::schemas::PivotGroupSortOrder>,
-        #[doc = "The column offset of the source range that this grouping is based on.\n\nFor example, if the source was `C10:E15`, a `sourceColumnOffset` of `0`\nmeans this group refers to column `C`, whereas the offset `1` would\nrefer to column `D`."]
+        #[doc = "The column offset of the source range that this grouping is based on. For example, if the source was `C10:E15`, a `sourceColumnOffset` of `0` means this group refers to column `C`, whereas the offset `1` would refer to column `D`."]
         #[serde(
             rename = "sourceColumnOffset",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub source_column_offset: ::std::option::Option<i32>,
-        #[doc = "The bucket of the opposite pivot group to sort by.\nIf not specified, sorting is alphabetical by this group's values."]
+        #[doc = "The bucket of the opposite pivot group to sort by. If not specified, sorting is alphabetical by this group's values."]
         #[serde(
             rename = "valueBucket",
             default,
@@ -10770,6 +13114,44 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PivotGroupLimit {
+        #[doc = "The order in which the group limit is applied to the pivot table. Pivot group limits are applied from lower to higher order number. Order numbers are normalized to consecutive integers from 0. For write request, to fully customize the applying orders, all pivot group limits should have this field set with an unique number. Otherwise, the order is determined by the index in the PivotTable.rows list and then the PivotTable.columns list."]
+        #[serde(
+            rename = "applyOrder",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub apply_order: ::std::option::Option<i32>,
+        #[doc = "The count limit."]
+        #[serde(
+            rename = "countLimit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub count_limit: ::std::option::Option<i32>,
+    }
+    impl ::google_field_selector::FieldSelector for PivotGroupLimit {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PivotGroupLimit {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct PivotGroupRule {
@@ -10809,14 +13191,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct PivotGroupSortValueBucket {
-        #[doc = "Determines the bucket from which values are chosen to sort.\n\nFor example, in a pivot table with one row group & two column groups,\nthe row group can list up to two values. The first value corresponds\nto a value within the first column group, and the second value\ncorresponds to a value in the second column group.  If no values\nare listed, this would indicate that the row should be sorted according\nto the \"Grand Total\" over the column groups. If a single value is listed,\nthis would correspond to using the \"Total\" of that bucket."]
+        #[doc = "Determines the bucket from which values are chosen to sort. For example, in a pivot table with one row group & two column groups, the row group can list up to two values. The first value corresponds to a value within the first column group, and the second value corresponds to a value in the second column group. If no values are listed, this would indicate that the row should be sorted according to the \"Grand Total\" over the column groups. If a single value is listed, this would correspond to using the \"Total\" of that bucket."]
         #[serde(
             rename = "buckets",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub buckets: ::std::option::Option<Vec<crate::schemas::ExtendedValue>>,
-        #[doc = "The offset in the PivotTable.values list which the values in this\ngrouping should be sorted by."]
+        #[doc = "The offset in the PivotTable.values list which the values in this grouping should be sorted by."]
         #[serde(
             rename = "valuesIndex",
             default,
@@ -10845,7 +13227,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub collapsed: ::std::option::Option<bool>,
-        #[doc = "The calculated value the metadata corresponds to.\n(Note that formulaValue is not valid,\nbecause the values will be calculated.)"]
+        #[doc = "The calculated value the metadata corresponds to. (Note that formulaValue is not valid, because the values will be calculated.)"]
         #[serde(
             rename = "value",
             default,
@@ -10874,7 +13256,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub columns: ::std::option::Option<Vec<crate::schemas::PivotGroup>>,
-        #[doc = "An optional mapping of filters per source column offset.\n\nThe filters are applied before aggregating data into the pivot table.\nThe map's key is the column offset of the source range that you want to\nfilter, and the value is the criteria for that column.\n\nFor example, if the source was `C10:E15`, a key of `0` will have the filter\nfor column `C`, whereas the key `1` is for column `D`."]
+        #[doc = "An optional mapping of filters per source column offset. The filters are applied before aggregating data into the pivot table. The map's key is the column offset of the source range that you want to filter, and the value is the criteria for that column. For example, if the source was `C10:E15`, a key of `0` will have the filter for column `C`, whereas the key `1` is for column `D`. This field is deprecated in favor of filter_specs."]
         #[serde(
             rename = "criteria",
             default,
@@ -10883,6 +13265,27 @@ pub mod schemas {
         pub criteria: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::PivotFilterCriteria>,
         >,
+        #[doc = "Output only. The data execution status for data source pivot tables."]
+        #[serde(
+            rename = "dataExecutionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_execution_status: ::std::option::Option<crate::schemas::DataExecutionStatus>,
+        #[doc = "The ID of the data source the pivot table is reading data from."]
+        #[serde(
+            rename = "dataSourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_id: ::std::option::Option<String>,
+        #[doc = "The filters applied to the source columns before aggregating data for the pivot table. Both criteria and filter_specs are populated in responses. If both fields are specified in an update request, this field takes precedence."]
+        #[serde(
+            rename = "filterSpecs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub filter_specs: ::std::option::Option<Vec<crate::schemas::PivotFilterSpec>>,
         #[doc = "Each row grouping in the pivot table."]
         #[serde(
             rename = "rows",
@@ -10897,7 +13300,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub source: ::std::option::Option<crate::schemas::GridRange>,
-        #[doc = "Whether values should be listed horizontally (as columns)\nor vertically (as rows)."]
+        #[doc = "Whether values should be listed horizontally (as columns) or vertically (as rows)."]
         #[serde(
             rename = "valueLayout",
             default,
@@ -11006,7 +13409,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PivotValue {
-        #[doc = "If specified, indicates that pivot values should be displayed as\nthe result of a calculation with another pivot value. For example, if\ncalculated_display_type is specified as PERCENT_OF_GRAND_TOTAL, all the\npivot values are displayed as the percentage of the grand total. In\nthe Sheets UI, this is referred to as \"Show As\" in the value section of a\npivot table."]
+        #[doc = "If specified, indicates that pivot values should be displayed as the result of a calculation with another pivot value. For example, if calculated_display_type is specified as PERCENT_OF_GRAND_TOTAL, all the pivot values are displayed as the percentage of the grand total. In the Sheets editor, this is referred to as \"Show As\" in the value section of a pivot table."]
         #[serde(
             rename = "calculatedDisplayType",
             default,
@@ -11014,7 +13417,15 @@ pub mod schemas {
         )]
         pub calculated_display_type:
             ::std::option::Option<crate::schemas::PivotValueCalculatedDisplayType>,
-        #[doc = "A custom formula to calculate the value.  The formula must start\nwith an `=` character."]
+        #[doc = "The reference to the data source column that this value reads from."]
+        #[serde(
+            rename = "dataSourceColumnReference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_column_reference:
+            ::std::option::Option<crate::schemas::DataSourceColumnReference>,
+        #[doc = "A custom formula to calculate the value. The formula must start with an `=` character."]
         #[serde(
             rename = "formula",
             default,
@@ -11028,14 +13439,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "The column offset of the source range that this value reads from.\n\nFor example, if the source was `C10:E15`, a `sourceColumnOffset` of `0`\nmeans this value refers to column `C`, whereas the offset `1` would\nrefer to column `D`."]
+        #[doc = "The column offset of the source range that this value reads from. For example, if the source was `C10:E15`, a `sourceColumnOffset` of `0` means this value refers to column `C`, whereas the offset `1` would refer to column `D`."]
         #[serde(
             rename = "sourceColumnOffset",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub source_column_offset: ::std::option::Option<i32>,
-        #[doc = "A function to summarize the value.\nIf formula is set, the only supported values are\nSUM and\nCUSTOM.\nIf sourceColumnOffset is set, then `CUSTOM`\nis not supported."]
+        #[doc = "A function to summarize the value. If formula is set, the only supported values are SUM and CUSTOM. If sourceColumnOffset is set, then `CUSTOM` is not supported."]
         #[serde(
             rename = "summarizeFunction",
             default,
@@ -11150,7 +13561,7 @@ pub mod schemas {
         Counta,
         #[doc = "Corresponds to the `COUNTUNIQUE` function."]
         Countunique,
-        #[doc = "Indicates the formula should be used as-is.\nOnly valid if PivotValue.formula was set."]
+        #[doc = "Indicates the formula should be used as-is. Only valid if PivotValue.formula was set."]
         Custom,
         #[doc = "Corresponds to the `MAX` function."]
         Max,
@@ -11283,6 +13694,141 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct PointStyle {
+        #[doc = "The point shape. If empty or unspecified, a default shape is used."]
+        #[serde(
+            rename = "shape",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub shape: ::std::option::Option<crate::schemas::PointStyleShape>,
+        #[doc = "The point size. If empty, a default size is used."]
+        #[serde(
+            rename = "size",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub size: ::std::option::Option<f64>,
+    }
+    impl ::google_field_selector::FieldSelector for PointStyle {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PointStyle {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum PointStyleShape {
+        #[doc = "A circle shape."]
+        Circle,
+        #[doc = "A diamond shape."]
+        Diamond,
+        #[doc = "A hexagon shape."]
+        Hexagon,
+        #[doc = "A pentagon shape."]
+        Pentagon,
+        #[doc = "Default value."]
+        PointShapeUnspecified,
+        #[doc = "A square shape."]
+        Square,
+        #[doc = "A star shape."]
+        Star,
+        #[doc = "A triangle shape."]
+        Triangle,
+        #[doc = "An x-mark shape."]
+        XMark,
+    }
+    impl PointStyleShape {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                PointStyleShape::Circle => "CIRCLE",
+                PointStyleShape::Diamond => "DIAMOND",
+                PointStyleShape::Hexagon => "HEXAGON",
+                PointStyleShape::Pentagon => "PENTAGON",
+                PointStyleShape::PointShapeUnspecified => "POINT_SHAPE_UNSPECIFIED",
+                PointStyleShape::Square => "SQUARE",
+                PointStyleShape::Star => "STAR",
+                PointStyleShape::Triangle => "TRIANGLE",
+                PointStyleShape::XMark => "X_MARK",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PointStyleShape {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PointStyleShape {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PointStyleShape, ()> {
+            Ok(match s {
+                "CIRCLE" => PointStyleShape::Circle,
+                "DIAMOND" => PointStyleShape::Diamond,
+                "HEXAGON" => PointStyleShape::Hexagon,
+                "PENTAGON" => PointStyleShape::Pentagon,
+                "POINT_SHAPE_UNSPECIFIED" => PointStyleShape::PointShapeUnspecified,
+                "SQUARE" => PointStyleShape::Square,
+                "STAR" => PointStyleShape::Star,
+                "TRIANGLE" => PointStyleShape::Triangle,
+                "X_MARK" => PointStyleShape::XMark,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for PointStyleShape {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for PointStyleShape {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for PointStyleShape {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "CIRCLE" => PointStyleShape::Circle,
+                "DIAMOND" => PointStyleShape::Diamond,
+                "HEXAGON" => PointStyleShape::Hexagon,
+                "PENTAGON" => PointStyleShape::Pentagon,
+                "POINT_SHAPE_UNSPECIFIED" => PointStyleShape::PointShapeUnspecified,
+                "SQUARE" => PointStyleShape::Square,
+                "STAR" => PointStyleShape::Star,
+                "TRIANGLE" => PointStyleShape::Triangle,
+                "X_MARK" => PointStyleShape::XMark,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for PointStyleShape {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PointStyleShape {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -11302,49 +13848,49 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "The users and groups with edit access to the protected range.\nThis field is only visible to users with edit access to the protected\nrange and the document.\nEditors are not supported with warning_only protection."]
+        #[doc = "The users and groups with edit access to the protected range. This field is only visible to users with edit access to the protected range and the document. Editors are not supported with warning_only protection."]
         #[serde(
             rename = "editors",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub editors: ::std::option::Option<crate::schemas::Editors>,
-        #[doc = "The named range this protected range is backed by, if any.\n\nWhen writing, only one of range or named_range_id\nmay be set."]
+        #[doc = "The named range this protected range is backed by, if any. When writing, only one of range or named_range_id may be set."]
         #[serde(
             rename = "namedRangeId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub named_range_id: ::std::option::Option<String>,
-        #[doc = "The ID of the protected range.\nThis field is read-only."]
+        #[doc = "The ID of the protected range. This field is read-only."]
         #[serde(
             rename = "protectedRangeId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub protected_range_id: ::std::option::Option<i32>,
-        #[doc = "The range that is being protected.\nThe range may be fully unbounded, in which case this is considered\na protected sheet.\n\nWhen writing, only one of range or named_range_id\nmay be set."]
+        #[doc = "The range that is being protected. The range may be fully unbounded, in which case this is considered a protected sheet. When writing, only one of range or named_range_id may be set."]
         #[serde(
             rename = "range",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub range: ::std::option::Option<crate::schemas::GridRange>,
-        #[doc = "True if the user who requested this protected range can edit the\nprotected area.\nThis field is read-only."]
+        #[doc = "True if the user who requested this protected range can edit the protected area. This field is read-only."]
         #[serde(
             rename = "requestingUserCanEdit",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub requesting_user_can_edit: ::std::option::Option<bool>,
-        #[doc = "The list of unprotected ranges within a protected sheet.\nUnprotected ranges are only supported on protected sheets."]
+        #[doc = "The list of unprotected ranges within a protected sheet. Unprotected ranges are only supported on protected sheets."]
         #[serde(
             rename = "unprotectedRanges",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub unprotected_ranges: ::std::option::Option<Vec<crate::schemas::GridRange>>,
-        #[doc = "True if this protected range will show a warning when editing.\nWarning-based protection means that every user can edit data in the\nprotected range, except editing will prompt a warning asking the user\nto confirm the edit.\n\nWhen writing: if this field is true, then editors is ignored.\nAdditionally, if this field is changed from true to false and the\n`editors` field is not set (nor included in the field mask), then\nthe editors will be set to all the editors in the document."]
+        #[doc = "True if this protected range will show a warning when editing. Warning-based protection means that every user can edit data in the protected range, except editing will prompt a warning asking the user to confirm the edit. When writing: if this field is true, then editors is ignored. Additionally, if this field is changed from true to false and the `editors` field is not set (nor included in the field mask), then the editors will be set to all the editors in the document."]
         #[serde(
             rename = "warningOnly",
             default,
@@ -11394,6 +13940,128 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct RefreshDataSourceObjectExecutionStatus {
+        #[doc = "The data execution status."]
+        #[serde(
+            rename = "dataExecutionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_execution_status: ::std::option::Option<crate::schemas::DataExecutionStatus>,
+        #[doc = "Reference to a data source object being refreshed."]
+        #[serde(
+            rename = "reference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub reference: ::std::option::Option<crate::schemas::DataSourceObjectReference>,
+    }
+    impl ::google_field_selector::FieldSelector for RefreshDataSourceObjectExecutionStatus {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for RefreshDataSourceObjectExecutionStatus {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct RefreshDataSourceRequest {
+        #[doc = "Reference to a DataSource. If specified, refreshes all associated data source objects for the data source."]
+        #[serde(
+            rename = "dataSourceId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_id: ::std::option::Option<String>,
+        #[doc = "Refreshes the data source objects regardless of the current state. If not set and a referenced data source object was in error state, the refresh will fail immediately."]
+        #[serde(
+            rename = "force",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub force: ::std::option::Option<bool>,
+        #[doc = "Refreshes all existing data source objects in the spreadsheet."]
+        #[serde(
+            rename = "isAll",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub is_all: ::std::option::Option<bool>,
+        #[doc = "References to data source objects to refresh."]
+        #[serde(
+            rename = "references",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub references: ::std::option::Option<crate::schemas::DataSourceObjectReferences>,
+    }
+    impl ::google_field_selector::FieldSelector for RefreshDataSourceRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for RefreshDataSourceRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct RefreshDataSourceResponse {
+        #[doc = "All the refresh status for the data source object references specified in the request. If is_all is specified, the field contains only those in failure status."]
+        #[serde(
+            rename = "statuses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub statuses:
+            ::std::option::Option<Vec<crate::schemas::RefreshDataSourceObjectExecutionStatus>>,
+    }
+    impl ::google_field_selector::FieldSelector for RefreshDataSourceResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for RefreshDataSourceResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct RepeatCellRequest {
@@ -11404,7 +14072,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cell: ::std::option::Option<crate::schemas::CellData>,
-        #[doc = "The fields that should be updated.  At least one field must be specified.\nThe root `cell` is implied and should not be specified.\nA single `\"*\"` can be used as short-hand for listing every field."]
+        #[doc = "The fields that should be updated. At least one field must be specified. The root `cell` is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field."]
         #[serde(
             rename = "fields",
             default,
@@ -11455,6 +14123,13 @@ pub mod schemas {
         )]
         pub add_conditional_format_rule:
             ::std::option::Option<crate::schemas::AddConditionalFormatRuleRequest>,
+        #[doc = "Adds a data source."]
+        #[serde(
+            rename = "addDataSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub add_data_source: ::std::option::Option<crate::schemas::AddDataSourceRequest>,
         #[doc = "Creates a group over the specified range."]
         #[serde(
             rename = "addDimensionGroup",
@@ -11518,7 +14193,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub auto_fill: ::std::option::Option<crate::schemas::AutoFillRequest>,
-        #[doc = "Automatically resizes one or more dimensions based on the contents\nof the cells in that dimension."]
+        #[doc = "Automatically resizes one or more dimensions based on the contents of the cells in that dimension."]
         #[serde(
             rename = "autoResizeDimensions",
             default,
@@ -11570,6 +14245,13 @@ pub mod schemas {
         )]
         pub delete_conditional_format_rule:
             ::std::option::Option<crate::schemas::DeleteConditionalFormatRuleRequest>,
+        #[doc = "Deletes a data source."]
+        #[serde(
+            rename = "deleteDataSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub delete_data_source: ::std::option::Option<crate::schemas::DeleteDataSourceRequest>,
         #[doc = "Deletes developer metadata"]
         #[serde(
             rename = "deleteDeveloperMetadata",
@@ -11593,7 +14275,7 @@ pub mod schemas {
         )]
         pub delete_dimension_group:
             ::std::option::Option<crate::schemas::DeleteDimensionGroupRequest>,
-        #[doc = "Removes rows containing duplicate values in specified columns of a cell\nrange."]
+        #[doc = "Removes rows containing duplicate values in specified columns of a cell range."]
         #[serde(
             rename = "deleteDuplicates",
             default,
@@ -11708,6 +14390,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub randomize_range: ::std::option::Option<crate::schemas::RandomizeRangeRequest>,
+        #[doc = "Refreshs one or multiple data sources and associated dbobjects."]
+        #[serde(
+            rename = "refreshDataSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub refresh_data_source: ::std::option::Option<crate::schemas::RefreshDataSourceRequest>,
         #[doc = "Repeats a single cell across a range."]
         #[serde(
             rename = "repeatCell",
@@ -11793,6 +14482,13 @@ pub mod schemas {
         )]
         pub update_conditional_format_rule:
             ::std::option::Option<crate::schemas::UpdateConditionalFormatRuleRequest>,
+        #[doc = "Updates a data source."]
+        #[serde(
+            rename = "updateDataSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub update_data_source: ::std::option::Option<crate::schemas::UpdateDataSourceRequest>,
         #[doc = "Updates an existing developer metadata entry"]
         #[serde(
             rename = "updateDeveloperMetadata",
@@ -11817,6 +14513,14 @@ pub mod schemas {
         )]
         pub update_dimension_properties:
             ::std::option::Option<crate::schemas::UpdateDimensionPropertiesRequest>,
+        #[doc = "Updates an embedded object's border."]
+        #[serde(
+            rename = "updateEmbeddedObjectBorder",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub update_embedded_object_border:
+            ::std::option::Option<crate::schemas::UpdateEmbeddedObjectBorderRequest>,
         #[doc = "Updates an embedded object's (e.g. chart, image) position."]
         #[serde(
             rename = "updateEmbeddedObjectPosition",
@@ -11899,6 +14603,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub add_chart: ::std::option::Option<crate::schemas::AddChartResponse>,
+        #[doc = "A reply from adding a data source."]
+        #[serde(
+            rename = "addDataSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub add_data_source: ::std::option::Option<crate::schemas::AddDataSourceResponse>,
         #[doc = "A reply from adding a dimension group."]
         #[serde(
             rename = "addDimensionGroup",
@@ -12002,6 +14713,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub find_replace: ::std::option::Option<crate::schemas::FindReplaceResponse>,
+        #[doc = "A reply from refreshing data source objects."]
+        #[serde(
+            rename = "refreshDataSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub refresh_data_source: ::std::option::Option<crate::schemas::RefreshDataSourceResponse>,
         #[doc = "A reply from trimming whitespace."]
         #[serde(
             rename = "trimWhitespace",
@@ -12017,6 +14735,13 @@ pub mod schemas {
         )]
         pub update_conditional_format_rule:
             ::std::option::Option<crate::schemas::UpdateConditionalFormatRuleResponse>,
+        #[doc = "A reply from updating a data source."]
+        #[serde(
+            rename = "updateDataSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub update_data_source: ::std::option::Option<crate::schemas::UpdateDataSourceResponse>,
         #[doc = "A reply from updating a developer metadata entry."]
         #[serde(
             rename = "updateDeveloperMetadata",
@@ -12070,28 +14795,28 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ScorecardChartSpec {
-        #[doc = "The aggregation type for key and baseline chart data in scorecard chart.\nThis field is optional."]
+        #[doc = "The aggregation type for key and baseline chart data in scorecard chart. This field is not supported for data source charts. Use the ChartData.aggregateType field of the key_value_data or baseline_value_data instead for data source charts. This field is optional."]
         #[serde(
             rename = "aggregateType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub aggregate_type: ::std::option::Option<crate::schemas::ScorecardChartSpecAggregateType>,
-        #[doc = "The data for scorecard baseline value.\nThis field is optional."]
+        #[doc = "The data for scorecard baseline value. This field is optional."]
         #[serde(
             rename = "baselineValueData",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub baseline_value_data: ::std::option::Option<crate::schemas::ChartData>,
-        #[doc = "Formatting options for baseline value.\nThis field is needed only if baseline_value_data is specified."]
+        #[doc = "Formatting options for baseline value. This field is needed only if baseline_value_data is specified."]
         #[serde(
             rename = "baselineValueFormat",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub baseline_value_format: ::std::option::Option<crate::schemas::BaselineValueFormat>,
-        #[doc = "Custom formatting options for numeric key/baseline values in scorecard\nchart. This field is used only when number_format_source is set to\nCUSTOM. This field is optional."]
+        #[doc = "Custom formatting options for numeric key/baseline values in scorecard chart. This field is used only when number_format_source is set to CUSTOM. This field is optional."]
         #[serde(
             rename = "customFormatOptions",
             default,
@@ -12113,7 +14838,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub key_value_format: ::std::option::Option<crate::schemas::KeyValueFormat>,
-        #[doc = "The number format source used in the scorecard chart.\nThis field is optional."]
+        #[doc = "The number format source used in the scorecard chart. This field is optional."]
         #[serde(
             rename = "numberFormatSource",
             default,
@@ -12121,7 +14846,7 @@ pub mod schemas {
         )]
         pub number_format_source:
             ::std::option::Option<crate::schemas::ScorecardChartSpecNumberFormatSource>,
-        #[doc = "Value to scale scorecard key and baseline value. For example, a factor of\n10 can be used to divide all values in the chart by 10.\nThis field is optional."]
+        #[doc = "Value to scale scorecard key and baseline value. For example, a factor of 10 can be used to divide all values in the chart by 10. This field is optional."]
         #[serde(
             rename = "scaleFactor",
             default,
@@ -12336,7 +15061,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SearchDeveloperMetadataRequest {
-        #[doc = "The data filters describing the criteria used to determine which\nDeveloperMetadata entries to return.  DeveloperMetadata matching any of the\nspecified filters are included in the response."]
+        #[doc = "The data filters describing the criteria used to determine which DeveloperMetadata entries to return. DeveloperMetadata matching any of the specified filters are included in the response."]
         #[serde(
             rename = "dataFilters",
             default,
@@ -12428,7 +15153,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub range: ::std::option::Option<crate::schemas::GridRange>,
-        #[doc = "The data validation rule to set on each cell in the range,\nor empty to clear the data validation in the range."]
+        #[doc = "The data validation rule to set on each cell in the range, or empty to clear the data validation in the range."]
         #[serde(
             rename = "rule",
             default,
@@ -12471,7 +15196,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub charts: ::std::option::Option<Vec<crate::schemas::EmbeddedChart>>,
-        #[doc = "All column groups on this sheet, ordered by increasing range start index,\nthen by group depth."]
+        #[doc = "All column groups on this sheet, ordered by increasing range start index, then by group depth."]
         #[serde(
             rename = "columnGroups",
             default,
@@ -12485,7 +15210,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub conditional_formats: ::std::option::Option<Vec<crate::schemas::ConditionalFormatRule>>,
-        #[doc = "Data in the grid, if this is a grid sheet.\n\nThe number of GridData objects returned is dependent on the number of\nranges requested on this sheet. For example, if this is representing\n`Sheet1`, and the spreadsheet was requested with ranges\n`Sheet1!A1:C10` and `Sheet1!D15:E20`, then the first GridData will have a\nstartRow/startColumn of `0`,\nwhile the second one will have `startRow 14` (zero-based row 15),\nand `startColumn 3` (zero-based column D)."]
+        #[doc = "Data in the grid, if this is a grid sheet. The number of GridData objects returned is dependent on the number of ranges requested on this sheet. For example, if this is representing `Sheet1`, and the spreadsheet was requested with ranges `Sheet1!A1:C10` and `Sheet1!D15:E20`, then the first GridData will have a startRow/startColumn of `0`, while the second one will have `startRow 14` (zero-based row 15), and `startColumn 3` (zero-based column D). For a DATA_SOURCE sheet, you can not request a specific range, the GridData contains all the values."]
         #[serde(
             rename = "data",
             default,
@@ -12527,7 +15252,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub protected_ranges: ::std::option::Option<Vec<crate::schemas::ProtectedRange>>,
-        #[doc = "All row groups on this sheet, ordered by increasing range start index, then\nby group depth."]
+        #[doc = "All row groups on this sheet, ordered by increasing range start index, then by group depth."]
         #[serde(
             rename = "rowGroups",
             default,
@@ -12556,7 +15281,15 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct SheetProperties {
-        #[doc = "Additional properties of the sheet if this sheet is a grid.\n(If the sheet is an object sheet, containing a chart or image, then\nthis field will be absent.)\nWhen writing it is an error to set any grid properties on non-grid sheets."]
+        #[doc = "Output only. If present, the field contains DATA_SOURCE sheet specific properties."]
+        #[serde(
+            rename = "dataSourceSheetProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_sheet_properties:
+            ::std::option::Option<crate::schemas::DataSourceSheetProperties>,
+        #[doc = "Additional properties of the sheet if this sheet is a grid. (If the sheet is an object sheet, containing a chart or image, then this field will be absent.) When writing it is an error to set any grid properties on non-grid sheets. If this sheet is a DATA_SOURCE sheet, this field is output only but contains the properties that reflect how a data source sheet is rendered in the UI, e.g. row_count."]
         #[serde(
             rename = "gridProperties",
             default,
@@ -12570,7 +15303,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub hidden: ::std::option::Option<bool>,
-        #[doc = "The index of the sheet within the spreadsheet.\nWhen adding or updating sheet properties, if this field\nis excluded then the sheet is added or moved to the end\nof the sheet list. When updating sheet indices or inserting\nsheets, movement is considered in \"before the move\" indexes.\nFor example, if there were 3 sheets (S1, S2, S3) in order to\nmove S1 ahead of S2 the index would have to be set to 2. A sheet\nindex update request is ignored if the requested index is\nidentical to the sheets current index or if the requested new\nindex is equal to the current sheet index + 1."]
+        #[doc = "The index of the sheet within the spreadsheet. When adding or updating sheet properties, if this field is excluded then the sheet is added or moved to the end of the sheet list. When updating sheet indices or inserting sheets, movement is considered in \"before the move\" indexes. For example, if there were 3 sheets (S1, S2, S3) in order to move S1 ahead of S2 the index would have to be set to 2. A sheet index update request is ignored if the requested index is identical to the sheets current index or if the requested new index is equal to the current sheet index + 1."]
         #[serde(
             rename = "index",
             default,
@@ -12584,14 +15317,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub right_to_left: ::std::option::Option<bool>,
-        #[doc = "The ID of the sheet. Must be non-negative.\nThis field cannot be changed once set."]
+        #[doc = "The ID of the sheet. Must be non-negative. This field cannot be changed once set."]
         #[serde(
             rename = "sheetId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub sheet_id: ::std::option::Option<i32>,
-        #[doc = "The type of sheet. Defaults to GRID.\nThis field cannot be changed once set."]
+        #[doc = "The type of sheet. Defaults to GRID. This field cannot be changed once set."]
         #[serde(
             rename = "sheetType",
             default,
@@ -12605,7 +15338,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub tab_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The color of the tab in the UI.\nIf tab_color is also set, this field takes precedence."]
+        #[doc = "The color of the tab in the UI. If tab_color is also set, this field takes precedence."]
         #[serde(
             rename = "tabColorStyle",
             default,
@@ -12632,6 +15365,8 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SheetPropertiesSheetType {
+        #[doc = "The sheet connects with an external DataSource and shows the preview of data."]
+        DataSource,
         #[doc = "The sheet is a grid."]
         Grid,
         #[doc = "The sheet has no grid and instead has an object like a chart or image."]
@@ -12642,6 +15377,7 @@ pub mod schemas {
     impl SheetPropertiesSheetType {
         pub fn as_str(self) -> &'static str {
             match self {
+                SheetPropertiesSheetType::DataSource => "DATA_SOURCE",
                 SheetPropertiesSheetType::Grid => "GRID",
                 SheetPropertiesSheetType::Object => "OBJECT",
                 SheetPropertiesSheetType::SheetTypeUnspecified => "SHEET_TYPE_UNSPECIFIED",
@@ -12657,6 +15393,7 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<SheetPropertiesSheetType, ()> {
             Ok(match s {
+                "DATA_SOURCE" => SheetPropertiesSheetType::DataSource,
                 "GRID" => SheetPropertiesSheetType::Grid,
                 "OBJECT" => SheetPropertiesSheetType::Object,
                 "SHEET_TYPE_UNSPECIFIED" => SheetPropertiesSheetType::SheetTypeUnspecified,
@@ -12684,6 +15421,7 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "DATA_SOURCE" => SheetPropertiesSheetType::DataSource,
                 "GRID" => SheetPropertiesSheetType::Grid,
                 "OBJECT" => SheetPropertiesSheetType::Object,
                 "SHEET_TYPE_UNSPECIFIED" => SheetPropertiesSheetType::SheetTypeUnspecified,
@@ -12710,7 +15448,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Slicer {
-        #[doc = "The position of the slicer. Note that slicer can be positioned only on\nexisting sheet. Also, width and height of slicer can be automatically\nadjusted to keep it within permitted limits."]
+        #[doc = "The position of the slicer. Note that slicer can be positioned only on existing sheet. Also, width and height of slicer can be automatically adjusted to keep it within permitted limits."]
         #[serde(
             rename = "position",
             default,
@@ -12746,7 +15484,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct SlicerSpec {
-        #[doc = "True if the filter should apply to pivot tables.\nIf not set, default to `True`."]
+        #[doc = "True if the filter should apply to pivot tables. If not set, default to `True`."]
         #[serde(
             rename = "applyToPivotTables",
             default,
@@ -12760,7 +15498,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub background_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The background color of the slicer.\nIf background_color is also set, this field takes precedence."]
+        #[doc = "The background color of the slicer. If background_color is also set, this field takes precedence."]
         #[serde(
             rename = "backgroundColorStyle",
             default,
@@ -12788,7 +15526,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub filter_criteria: ::std::option::Option<crate::schemas::FilterCriteria>,
-        #[doc = "The horizontal alignment of title in the slicer.\nIf unspecified, defaults to `LEFT`"]
+        #[doc = "The horizontal alignment of title in the slicer. If unspecified, defaults to `LEFT`"]
         #[serde(
             rename = "horizontalAlignment",
             default,
@@ -12919,7 +15657,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub range: ::std::option::Option<crate::schemas::GridRange>,
-        #[doc = "The sort order per column. Later specifications are used when values\nare equal in the earlier specifications."]
+        #[doc = "The sort order per column. Later specifications are used when values are equal in the earlier specifications."]
         #[serde(
             rename = "sortSpecs",
             default,
@@ -12941,20 +15679,28 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct SortSpec {
-        #[doc = "The background fill color to sort by; cells with this fill color are sorted\nto the top. Mutually exclusive with foreground_color."]
+        #[doc = "The background fill color to sort by; cells with this fill color are sorted to the top. Mutually exclusive with foreground_color."]
         #[serde(
             rename = "backgroundColor",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub background_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The background fill color to sort by; cells with this fill color are sorted\nto the top. Mutually exclusive with foreground_color, and must be an\nRGB-type color. If background_color is also set, this field takes\nprecedence."]
+        #[doc = "The background fill color to sort by; cells with this fill color are sorted to the top. Mutually exclusive with foreground_color, and must be an RGB-type color. If background_color is also set, this field takes precedence."]
         #[serde(
             rename = "backgroundColorStyle",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub background_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
+        #[doc = "Reference to a data source column."]
+        #[serde(
+            rename = "dataSourceColumnReference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_column_reference:
+            ::std::option::Option<crate::schemas::DataSourceColumnReference>,
         #[doc = "The dimension the sort should be applied to."]
         #[serde(
             rename = "dimensionIndex",
@@ -12962,14 +15708,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub dimension_index: ::std::option::Option<i32>,
-        #[doc = "The foreground color to sort by; cells with this foreground color are\nsorted to the top. Mutually exclusive with background_color."]
+        #[doc = "The foreground color to sort by; cells with this foreground color are sorted to the top. Mutually exclusive with background_color."]
         #[serde(
             rename = "foregroundColor",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub foreground_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The foreground color to sort by; cells with this foreground color are\nsorted to the top. Mutually exclusive with background_color, and must\nbe an RGB-type color. If foreground_color is also set, this field takes\nprecedence."]
+        #[doc = "The foreground color to sort by; cells with this foreground color are sorted to the top. Mutually exclusive with background_color, and must be an RGB-type color. If foreground_color is also set, this field takes precedence."]
         #[serde(
             rename = "foregroundColorStyle",
             default,
@@ -13090,7 +15836,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub dimension: ::std::option::Option<crate::schemas::SourceAndDestinationDimension>,
-        #[doc = "The number of rows or columns that data should be filled into.\nPositive numbers expand beyond the last row or last column\nof the source.  Negative numbers expand before the first row\nor first column of the source."]
+        #[doc = "The number of rows or columns that data should be filled into. Positive numbers expand beyond the last row or last column of the source. Negative numbers expand before the first row or first column of the source."]
         #[serde(
             rename = "fillLength",
             default,
@@ -13195,6 +15941,21 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Spreadsheet {
+        #[doc = "Output only. A list of data source refresh schedules."]
+        #[serde(
+            rename = "dataSourceSchedules",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_schedules:
+            ::std::option::Option<Vec<crate::schemas::DataSourceRefreshSchedule>>,
+        #[doc = "A list of external data sources connected with the spreadsheet."]
+        #[serde(
+            rename = "dataSources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_sources: ::std::option::Option<Vec<crate::schemas::DataSource>>,
         #[doc = "The developer metadata associated with a spreadsheet."]
         #[serde(
             rename = "developerMetadata",
@@ -13223,14 +15984,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub sheets: ::std::option::Option<Vec<crate::schemas::Sheet>>,
-        #[doc = "The ID of the spreadsheet.\nThis field is read-only."]
+        #[doc = "The ID of the spreadsheet. This field is read-only."]
         #[serde(
             rename = "spreadsheetId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub spreadsheet_id: ::std::option::Option<String>,
-        #[doc = "The url of the spreadsheet.\nThis field is read-only."]
+        #[doc = "The url of the spreadsheet. This field is read-only."]
         #[serde(
             rename = "spreadsheetUrl",
             default,
@@ -13259,14 +16020,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub auto_recalc: ::std::option::Option<crate::schemas::SpreadsheetPropertiesAutoRecalc>,
-        #[doc = "The default format of all cells in the spreadsheet.\nCellData.effectiveFormat will not be set if\nthe cell's format is equal to this default format. This field is read-only."]
+        #[doc = "The default format of all cells in the spreadsheet. CellData.effectiveFormat will not be set if the cell's format is equal to this default format. This field is read-only."]
         #[serde(
             rename = "defaultFormat",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub default_format: ::std::option::Option<crate::schemas::CellFormat>,
-        #[doc = "Determines whether and how circular references are resolved with iterative\ncalculation.  Absence of this field means that circular references result\nin calculation errors."]
+        #[doc = "Determines whether and how circular references are resolved with iterative calculation. Absence of this field means that circular references result in calculation errors."]
         #[serde(
             rename = "iterativeCalculationSettings",
             default,
@@ -13274,7 +16035,7 @@ pub mod schemas {
         )]
         pub iterative_calculation_settings:
             ::std::option::Option<crate::schemas::IterativeCalculationSettings>,
-        #[doc = "The locale of the spreadsheet in one of the following formats:\n\n* an ISO 639-1 language code such as `en`\n\n* an ISO 639-2 language code such as `fil`, if no 639-1 code exists\n\n* a combination of the ISO language code and country code, such as `en_US`\n\nNote: when updating this field, not all locales/languages are supported."]
+        #[doc = "The locale of the spreadsheet in one of the following formats: * an ISO 639-1 language code such as `en` * an ISO 639-2 language code such as `fil`, if no 639-1 code exists * a combination of the ISO language code and country code, such as `en_US` Note: when updating this field, not all locales/languages are supported."]
         #[serde(
             rename = "locale",
             default,
@@ -13288,7 +16049,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub spreadsheet_theme: ::std::option::Option<crate::schemas::SpreadsheetTheme>,
-        #[doc = "The time zone of the spreadsheet, in CLDR format such as\n`America/New_York`. If the time zone isn't recognized, this may\nbe a custom time zone such as `GMT-07:00`."]
+        #[doc = "The time zone of the spreadsheet, in CLDR format such as `America/New_York`. If the time zone isn't recognized, this may be a custom time zone such as `GMT-07:00`."]
         #[serde(
             rename = "timeZone",
             default,
@@ -13404,14 +16165,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct SpreadsheetTheme {
-        #[doc = "/ Name of the primary font family."]
+        #[doc = "Name of the primary font family."]
         #[serde(
             rename = "primaryFontFamily",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub primary_font_family: ::std::option::Option<String>,
-        #[doc = "The spreadsheet theme color pairs. To update you must provide all theme\ncolor pairs."]
+        #[doc = "The spreadsheet theme color pairs. To update you must provide all theme color pairs."]
         #[serde(
             rename = "themeColors",
             default,
@@ -13461,7 +16222,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub foreground_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The foreground color of the text.\nIf foreground_color is also set, this field takes precedence."]
+        #[doc = "The foreground color of the text. If foreground_color is also set, this field takes precedence."]
         #[serde(
             rename = "foregroundColorStyle",
             default,
@@ -13504,7 +16265,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct TextFormatRun {
-        #[doc = "The format of this run.  Absent values inherit the cell's format."]
+        #[doc = "The format of this run. Absent values inherit the cell's format."]
         #[serde(
             rename = "format",
             default,
@@ -13661,14 +16422,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TextRotation {
-        #[doc = "The angle between the standard orientation and the desired orientation.\nMeasured in degrees. Valid values are between -90 and 90. Positive\nangles are angled upwards, negative are angled downwards.\n\nNote: For LTR text direction positive angles are in the\ncounterclockwise direction, whereas for RTL they are in the clockwise\ndirection"]
+        #[doc = "The angle between the standard orientation and the desired orientation. Measured in degrees. Valid values are between -90 and 90. Positive angles are angled upwards, negative are angled downwards. Note: For LTR text direction positive angles are in the counterclockwise direction, whereas for RTL they are in the clockwise direction"]
         #[serde(
             rename = "angle",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub angle: ::std::option::Option<i32>,
-        #[doc = "If true, text reads top to bottom, but the orientation of individual\ncharacters is unchanged.\nFor example:\n\n````text\n| V |\n| e |\n| r |\n| t |\n| i |\n| c |\n| a |\n| l |````"]
+        #[doc = "If true, text reads top to bottom, but the orientation of individual characters is unchanged. For example: | V | | e | | r | | t | | i | | c | | a | | l |"]
         #[serde(
             rename = "vertical",
             default,
@@ -13699,7 +16460,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TextToColumnsRequest {
-        #[doc = "The delimiter to use. Used only if delimiterType is\nCUSTOM."]
+        #[doc = "The delimiter to use. Used only if delimiterType is CUSTOM."]
         #[serde(
             rename = "delimiter",
             default,
@@ -13714,7 +16475,7 @@ pub mod schemas {
         )]
         pub delimiter_type:
             ::std::option::Option<crate::schemas::TextToColumnsRequestDelimiterType>,
-        #[doc = "The source data range.  This must span exactly one column."]
+        #[doc = "The source data range. This must span exactly one column."]
         #[serde(
             rename = "source",
             default,
@@ -13981,59 +16742,111 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct TimeOfDay {
+        #[doc = "Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value \"24:00:00\" for scenarios like business closing time."]
+        #[serde(
+            rename = "hours",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub hours: ::std::option::Option<i32>,
+        #[doc = "Minutes of hour of day. Must be from 0 to 59."]
+        #[serde(
+            rename = "minutes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub minutes: ::std::option::Option<i32>,
+        #[doc = "Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999."]
+        #[serde(
+            rename = "nanos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub nanos: ::std::option::Option<i32>,
+        #[doc = "Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds."]
+        #[serde(
+            rename = "seconds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub seconds: ::std::option::Option<i32>,
+    }
+    impl ::google_field_selector::FieldSelector for TimeOfDay {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for TimeOfDay {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct TreemapChartColorScale {
-        #[doc = "The background color for cells with a color value greater than or equal\nto maxValue. Defaults to #109618 if not\nspecified."]
+        #[doc = "The background color for cells with a color value greater than or equal to maxValue. Defaults to #109618 if not specified."]
         #[serde(
             rename = "maxValueColor",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub max_value_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The background color for cells with a color value greater than or equal\nto maxValue. Defaults to #109618 if not\nspecified.\nIf max_value_color is also set, this field takes precedence."]
+        #[doc = "The background color for cells with a color value greater than or equal to maxValue. Defaults to #109618 if not specified. If max_value_color is also set, this field takes precedence."]
         #[serde(
             rename = "maxValueColorStyle",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub max_value_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
-        #[doc = "The background color for cells with a color value at the midpoint between\nminValue and\nmaxValue. Defaults to #efe6dc if not\nspecified."]
+        #[doc = "The background color for cells with a color value at the midpoint between minValue and maxValue. Defaults to #efe6dc if not specified."]
         #[serde(
             rename = "midValueColor",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mid_value_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The background color for cells with a color value at the midpoint between\nminValue and\nmaxValue. Defaults to #efe6dc if not\nspecified.\nIf mid_value_color is also set, this field takes precedence."]
+        #[doc = "The background color for cells with a color value at the midpoint between minValue and maxValue. Defaults to #efe6dc if not specified. If mid_value_color is also set, this field takes precedence."]
         #[serde(
             rename = "midValueColorStyle",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mid_value_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
-        #[doc = "The background color for cells with a color value less than or equal to\nminValue. Defaults to #dc3912 if not\nspecified."]
+        #[doc = "The background color for cells with a color value less than or equal to minValue. Defaults to #dc3912 if not specified."]
         #[serde(
             rename = "minValueColor",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub min_value_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The background color for cells with a color value less than or equal to\nminValue. Defaults to #dc3912 if not\nspecified.\nIf min_value_color is also set, this field takes precedence."]
+        #[doc = "The background color for cells with a color value less than or equal to minValue. Defaults to #dc3912 if not specified. If min_value_color is also set, this field takes precedence."]
         #[serde(
             rename = "minValueColorStyle",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub min_value_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
-        #[doc = "The background color for cells that have no color data associated with\nthem. Defaults to #000000 if not specified."]
+        #[doc = "The background color for cells that have no color data associated with them. Defaults to #000000 if not specified."]
         #[serde(
             rename = "noDataColor",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub no_data_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The background color for cells that have no color data associated with\nthem. Defaults to #000000 if not specified.\nIf no_data_color is also set, this field takes precedence."]
+        #[doc = "The background color for cells that have no color data associated with them. Defaults to #000000 if not specified. If no_data_color is also set, this field takes precedence."]
         #[serde(
             rename = "noDataColorStyle",
             default,
@@ -14055,14 +16868,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct TreemapChartSpec {
-        #[doc = "The data that determines the background color of each treemap data cell.\nThis field is optional. If not specified, size_data is used to\ndetermine background colors. If specified, the data is expected to be\nnumeric. color_scale will determine how the values in this data map to\ndata cell background colors."]
+        #[doc = "The data that determines the background color of each treemap data cell. This field is optional. If not specified, size_data is used to determine background colors. If specified, the data is expected to be numeric. color_scale will determine how the values in this data map to data cell background colors."]
         #[serde(
             rename = "colorData",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub color_data: ::std::option::Option<crate::schemas::ChartData>,
-        #[doc = "The color scale for data cells in the treemap chart. Data cells are\nassigned colors based on their color values. These color values come from\ncolor_data, or from size_data if color_data is not specified.\nCells with color values less than or equal to min_value will\nhave minValueColor as their\nbackground color. Cells with color values greater than or equal to\nmax_value will have\nmaxValueColor as their background\ncolor. Cells with color values between min_value and max_value will\nhave background colors on a gradient between\nminValueColor and\nmaxValueColor, the midpoint of\nthe gradient being midValueColor.\nCells with missing or non-numeric color values will have\nnoDataColor as their background\ncolor."]
+        #[doc = "The color scale for data cells in the treemap chart. Data cells are assigned colors based on their color values. These color values come from color_data, or from size_data if color_data is not specified. Cells with color values less than or equal to min_value will have minValueColor as their background color. Cells with color values greater than or equal to max_value will have maxValueColor as their background color. Cells with color values between min_value and max_value will have background colors on a gradient between minValueColor and maxValueColor, the midpoint of the gradient being midValueColor. Cells with missing or non-numeric color values will have noDataColor as their background color."]
         #[serde(
             rename = "colorScale",
             default,
@@ -14076,7 +16889,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub header_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The background color for header cells.\nIf header_color is also set, this field takes precedence."]
+        #[doc = "The background color for header cells. If header_color is also set, this field takes precedence."]
         #[serde(
             rename = "headerColorStyle",
             default,
@@ -14090,7 +16903,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub hide_tooltips: ::std::option::Option<bool>,
-        #[doc = "The number of additional data levels beyond the labeled levels to be shown\non the treemap chart. These levels are not interactive and are shown\nwithout their labels. Defaults to 0 if not specified."]
+        #[doc = "The number of additional data levels beyond the labeled levels to be shown on the treemap chart. These levels are not interactive and are shown without their labels. Defaults to 0 if not specified."]
         #[serde(
             rename = "hintedLevels",
             default,
@@ -14104,21 +16917,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub labels: ::std::option::Option<crate::schemas::ChartData>,
-        #[doc = "The number of data levels to show on the treemap chart. These levels are\ninteractive and are shown with their labels. Defaults to 2 if not\nspecified."]
+        #[doc = "The number of data levels to show on the treemap chart. These levels are interactive and are shown with their labels. Defaults to 2 if not specified."]
         #[serde(
             rename = "levels",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub levels: ::std::option::Option<i32>,
-        #[doc = "The maximum possible data value. Cells with values greater than this will\nhave the same color as cells with this value. If not specified, defaults\nto the actual maximum value from color_data, or the maximum value from\nsize_data if color_data is not specified."]
+        #[doc = "The maximum possible data value. Cells with values greater than this will have the same color as cells with this value. If not specified, defaults to the actual maximum value from color_data, or the maximum value from size_data if color_data is not specified."]
         #[serde(
             rename = "maxValue",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub max_value: ::std::option::Option<f64>,
-        #[doc = "The minimum possible data value. Cells with values less than this will\nhave the same color as cells with this value. If not specified, defaults\nto the actual minimum value from color_data, or the minimum value from\nsize_data if color_data is not specified."]
+        #[doc = "The minimum possible data value. Cells with values less than this will have the same color as cells with this value. If not specified, defaults to the actual minimum value from color_data, or the minimum value from size_data if color_data is not specified."]
         #[serde(
             rename = "minValue",
             default,
@@ -14132,7 +16945,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub parent_labels: ::std::option::Option<crate::schemas::ChartData>,
-        #[doc = "The data that determines the size of each treemap data cell. This data is\nexpected to be numeric. The cells corresponding to non-numeric or missing\ndata will not be rendered. If color_data is not specified, this data\nis used to determine data cell background colors as well."]
+        #[doc = "The data that determines the size of each treemap data cell. This data is expected to be numeric. The cells corresponding to non-numeric or missing data will not be rendered. If color_data is not specified, this data is used to determine data cell background colors as well."]
         #[serde(
             rename = "sizeData",
             default,
@@ -14232,7 +17045,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UnmergeCellsRequest {
-        #[doc = "The range within which all cells should be unmerged.\nIf the range spans multiple merges, all will be unmerged.\nThe range must not partially span any merge."]
+        #[doc = "The range within which all cells should be unmerged. If the range spans multiple merges, all will be unmerged. The range must not partially span any merge."]
         #[serde(
             rename = "range",
             default,
@@ -14261,7 +17074,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub banded_range: ::std::option::Option<crate::schemas::BandedRange>,
-        #[doc = "The fields that should be updated.  At least one field must be specified.\nThe root `bandedRange` is implied and should not be specified.\nA single `\"*\"` can be used as short-hand for listing every field."]
+        #[doc = "The fields that should be updated. At least one field must be specified. The root `bandedRange` is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field."]
         #[serde(
             rename = "fields",
             default,
@@ -14347,14 +17160,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct UpdateCellsRequest {
-        #[doc = "The fields of CellData that should be updated.\nAt least one field must be specified.\nThe root is the CellData; 'row.values.' should not be specified.\nA single `\"*\"` can be used as short-hand for listing every field."]
+        #[doc = "The fields of CellData that should be updated. At least one field must be specified. The root is the CellData; 'row.values.' should not be specified. A single `\"*\"` can be used as short-hand for listing every field."]
         #[serde(
             rename = "fields",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fields: ::std::option::Option<String>,
-        #[doc = "The range to write data to.\n\nIf the data in rows does not cover the entire requested range,\nthe fields matching those set in fields will be cleared."]
+        #[doc = "The range to write data to. If the data in rows does not cover the entire requested range, the fields matching those set in fields will be cleared."]
         #[serde(
             rename = "range",
             default,
@@ -14368,7 +17181,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub rows: ::std::option::Option<Vec<crate::schemas::RowData>>,
-        #[doc = "The coordinate to start writing data at.\nAny number of rows and columns (including a different number of\ncolumns per row) may be written."]
+        #[doc = "The coordinate to start writing data at. Any number of rows and columns (including a different number of columns per row) may be written."]
         #[serde(
             rename = "start",
             default,
@@ -14440,7 +17253,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub rule: ::std::option::Option<crate::schemas::ConditionalFormatRule>,
-        #[doc = "The sheet of the rule to move.  Required if new_index is set,\nunused otherwise."]
+        #[doc = "The sheet of the rule to move. Required if new_index is set, unused otherwise."]
         #[serde(
             rename = "sheetId",
             default,
@@ -14469,21 +17282,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub new_index: ::std::option::Option<i32>,
-        #[doc = "The new rule that replaced the old rule (if replacing),\nor the rule that was moved (if moved)"]
+        #[doc = "The new rule that replaced the old rule (if replacing), or the rule that was moved (if moved)"]
         #[serde(
             rename = "newRule",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub new_rule: ::std::option::Option<crate::schemas::ConditionalFormatRule>,
-        #[doc = "The old index of the rule. Not set if a rule was replaced\n(because it is the same as new_index)."]
+        #[doc = "The old index of the rule. Not set if a rule was replaced (because it is the same as new_index)."]
         #[serde(
             rename = "oldIndex",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub old_index: ::std::option::Option<i32>,
-        #[doc = "The old (deleted) rule. Not set if a rule was moved\n(because it is the same as new_rule)."]
+        #[doc = "The old (deleted) rule. Not set if a rule was moved (because it is the same as new_rule)."]
         #[serde(
             rename = "oldRule",
             default,
@@ -14497,6 +17310,82 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for UpdateConditionalFormatRuleResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UpdateDataSourceRequest {
+        #[doc = "The data source to update."]
+        #[serde(
+            rename = "dataSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source: ::std::option::Option<crate::schemas::DataSource>,
+        #[doc = "The fields that should be updated. At least one field must be specified. The root `dataSource` is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field."]
+        #[serde(
+            rename = "fields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub fields: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for UpdateDataSourceRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for UpdateDataSourceRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UpdateDataSourceResponse {
+        #[doc = "The data execution status."]
+        #[serde(
+            rename = "dataExecutionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_execution_status: ::std::option::Option<crate::schemas::DataExecutionStatus>,
+        #[doc = "The updated data source."]
+        #[serde(
+            rename = "dataSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source: ::std::option::Option<crate::schemas::DataSource>,
+    }
+    impl ::google_field_selector::FieldSelector for UpdateDataSourceResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for UpdateDataSourceResponse {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -14528,7 +17417,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub developer_metadata: ::std::option::Option<crate::schemas::DeveloperMetadata>,
-        #[doc = "The fields that should be updated.  At least one field must be specified.\nThe root `developerMetadata` is implied and should not be specified.\nA single `\"*\"` can be used as short-hand for listing every field."]
+        #[doc = "The fields that should be updated. At least one field must be specified. The root `developerMetadata` is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field."]
         #[serde(
             rename = "fields",
             default,
@@ -14590,14 +17479,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UpdateDimensionGroupRequest {
-        #[doc = "The group whose state should be updated. The range and depth of the group\nshould specify a valid group on the sheet, and all other fields updated."]
+        #[doc = "The group whose state should be updated. The range and depth of the group should specify a valid group on the sheet, and all other fields updated."]
         #[serde(
             rename = "dimensionGroup",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub dimension_group: ::std::option::Option<crate::schemas::DimensionGroup>,
-        #[doc = "The fields that should be updated.  At least one field must be specified.\nThe root `dimensionGroup` is implied and should not be specified.\nA single `\"*\"` can be used as short-hand for listing every field."]
+        #[doc = "The fields that should be updated. At least one field must be specified. The root `dimensionGroup` is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field."]
         #[serde(
             rename = "fields",
             default,
@@ -14628,7 +17517,15 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UpdateDimensionPropertiesRequest {
-        #[doc = "The fields that should be updated.  At least one field must be specified.\nThe root `properties` is implied and should not be specified.\nA single `\"*\"` can be used as short-hand for listing every field."]
+        #[doc = "The columns on a data source sheet to update."]
+        #[serde(
+            rename = "dataSourceSheetRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source_sheet_range:
+            ::std::option::Option<crate::schemas::DataSourceSheetDimensionRange>,
+        #[doc = "The fields that should be updated. At least one field must be specified. The root `properties` is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field."]
         #[serde(
             rename = "fields",
             default,
@@ -14661,6 +17558,42 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct UpdateEmbeddedObjectBorderRequest {
+        #[doc = "The border that applies to the embedded object."]
+        #[serde(
+            rename = "border",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub border: ::std::option::Option<crate::schemas::EmbeddedObjectBorder>,
+        #[doc = "The fields that should be updated. At least one field must be specified. The root `border` is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field."]
+        #[serde(
+            rename = "fields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub fields: ::std::option::Option<String>,
+        #[doc = "The ID of the embedded object to update."]
+        #[serde(
+            rename = "objectId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub object_id: ::std::option::Option<i32>,
+    }
+    impl ::google_field_selector::FieldSelector for UpdateEmbeddedObjectBorderRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for UpdateEmbeddedObjectBorderRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -14673,14 +17606,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UpdateEmbeddedObjectPositionRequest {
-        #[doc = "The fields of OverlayPosition\nthat should be updated when setting a new position. Used only if\nnewPosition.overlayPosition\nis set, in which case at least one field must\nbe specified.  The root `newPosition.overlayPosition` is implied and\nshould not be specified.\nA single `\"*\"` can be used as short-hand for listing every field."]
+        #[doc = "The fields of OverlayPosition that should be updated when setting a new position. Used only if newPosition.overlayPosition is set, in which case at least one field must be specified. The root `newPosition.overlayPosition` is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field."]
         #[serde(
             rename = "fields",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fields: ::std::option::Option<String>,
-        #[doc = "An explicit position to move the embedded object to.\nIf newPosition.sheetId is set,\na new sheet with that ID will be created.\nIf newPosition.newSheet is set to true,\na new sheet will be created with an ID that will be chosen for you."]
+        #[doc = "An explicit position to move the embedded object to. If newPosition.sheetId is set, a new sheet with that ID will be created. If newPosition.newSheet is set to true, a new sheet will be created with an ID that will be chosen for you."]
         #[serde(
             rename = "newPosition",
             default,
@@ -14740,7 +17673,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct UpdateFilterViewRequest {
-        #[doc = "The fields that should be updated.  At least one field must be specified.\nThe root `filter` is implied and should not be specified.\nA single `\"*\"` can be used as short-hand for listing every field."]
+        #[doc = "The fields that should be updated. At least one field must be specified. The root `filter` is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field."]
         #[serde(
             rename = "fields",
             default,
@@ -14778,7 +17711,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UpdateNamedRangeRequest {
-        #[doc = "The fields that should be updated.  At least one field must be specified.\nThe root `namedRange` is implied and should not be specified.\nA single `\"*\"` can be used as short-hand for listing every field."]
+        #[doc = "The fields that should be updated. At least one field must be specified. The root `namedRange` is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field."]
         #[serde(
             rename = "fields",
             default,
@@ -14816,7 +17749,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UpdateProtectedRangeRequest {
-        #[doc = "The fields that should be updated.  At least one field must be specified.\nThe root `protectedRange` is implied and should not be specified.\nA single `\"*\"` can be used as short-hand for listing every field."]
+        #[doc = "The fields that should be updated. At least one field must be specified. The root `protectedRange` is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field."]
         #[serde(
             rename = "fields",
             default,
@@ -14845,7 +17778,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct UpdateSheetPropertiesRequest {
-        #[doc = "The fields that should be updated.  At least one field must be specified.\nThe root `properties` is implied and should not be specified.\nA single `\"*\"` can be used as short-hand for listing every field."]
+        #[doc = "The fields that should be updated. At least one field must be specified. The root `properties` is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field."]
         #[serde(
             rename = "fields",
             default,
@@ -14874,7 +17807,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct UpdateSlicerSpecRequest {
-        #[doc = "The fields that should be updated.  At least one field must be specified.\nThe root `SlicerSpec` is implied and should not be specified. A single \"*\"`\ncan be used as short-hand for listing every field."]
+        #[doc = "The fields that should be updated. At least one field must be specified. The root `SlicerSpec` is implied and should not be specified. A single \"*\"` can be used as short-hand for listing every field."]
         #[serde(
             rename = "fields",
             default,
@@ -14910,7 +17843,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct UpdateSpreadsheetPropertiesRequest {
-        #[doc = "The fields that should be updated.  At least one field must be specified.\nThe root 'properties' is implied and should not be specified.\nA single `\"*\"` can be used as short-hand for listing every field."]
+        #[doc = "The fields that should be updated. At least one field must be specified. The root 'properties' is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field."]
         #[serde(
             rename = "fields",
             default,
@@ -14958,7 +17891,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub updated_columns: ::std::option::Option<i32>,
-        #[doc = "The values of the cells in the range matched by the dataFilter after all\nupdates were applied. This is only included if the request's\n`includeValuesInResponse` field was `true`."]
+        #[doc = "The values of the cells in the range matched by the dataFilter after all updates were applied. This is only included if the request's `includeValuesInResponse` field was `true`."]
         #[serde(
             rename = "updatedData",
             default,
@@ -15013,7 +17946,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub updated_columns: ::std::option::Option<i32>,
-        #[doc = "The values of the cells after updates were applied.\nThis is only included if the request's `includeValuesInResponse` field\nwas `true`."]
+        #[doc = "The values of the cells after updates were applied. This is only included if the request's `includeValuesInResponse` field was `true`."]
         #[serde(
             rename = "updatedData",
             default,
@@ -15047,21 +17980,21 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ValueRange {
-        #[doc = "The major dimension of the values.\n\nFor output, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,\nthen requesting `range=A1:B2,majorDimension=ROWS` will return\n`[[1,2],[3,4]]`,\nwhereas requesting `range=A1:B2,majorDimension=COLUMNS` will return\n`[[1,3],[2,4]]`.\n\nFor input, with `range=A1:B2,majorDimension=ROWS` then `[[1,2],[3,4]]`\nwill set `A1=1,B1=2,A2=3,B2=4`. With `range=A1:B2,majorDimension=COLUMNS`\nthen `[[1,2],[3,4]]` will set `A1=1,B1=3,A2=2,B2=4`.\n\nWhen writing, if this field is not set, it defaults to ROWS."]
+        #[doc = "The major dimension of the values. For output, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`. For input, with `range=A1:B2,majorDimension=ROWS` then `[[1,2],[3,4]]` will set `A1=1,B1=2,A2=3,B2=4`. With `range=A1:B2,majorDimension=COLUMNS` then `[[1,2],[3,4]]` will set `A1=1,B1=3,A2=2,B2=4`. When writing, if this field is not set, it defaults to ROWS."]
         #[serde(
             rename = "majorDimension",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub major_dimension: ::std::option::Option<crate::schemas::ValueRangeMajorDimension>,
-        #[doc = "The range the values cover, in A1 notation.\nFor output, this range indicates the entire requested range,\neven though the values will exclude trailing rows and columns.\nWhen appending values, this field represents the range to search for a\ntable, after which values will be appended."]
+        #[doc = "The range the values cover, in A1 notation. For output, this range indicates the entire requested range, even though the values will exclude trailing rows and columns. When appending values, this field represents the range to search for a table, after which values will be appended."]
         #[serde(
             rename = "range",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub range: ::std::option::Option<String>,
-        #[doc = "The data that was read or to be written.  This is an array of arrays,\nthe outer array representing all the data and each inner array\nrepresenting a major dimension. Each item in the inner array\ncorresponds with one cell.\n\nFor output, empty trailing rows and columns will not be included.\n\nFor input, supported value types are: bool, string, and double.\nNull values will be skipped.\nTo set a cell to an empty value, set the string value to an empty string."]
+        #[doc = "The data that was read or to be written. This is an array of arrays, the outer array representing all the data and each inner array representing a major dimension. Each item in the inner array corresponds with one cell. For output, empty trailing rows and columns will not be included. For input, supported value types are: bool, string, and double. Null values will be skipped. To set a cell to an empty value, set the string value to an empty string."]
         #[serde(
             rename = "values",
             default,
@@ -15166,7 +18099,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The color of the column.\nIf color is also set, this field takes precedence."]
+        #[doc = "The color of the column. If color is also set, this field takes precedence."]
         #[serde(
             rename = "colorStyle",
             default,
@@ -15204,7 +18137,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct WaterfallChartCustomSubtotal {
-        #[doc = "True if the data point at subtotal_index is the subtotal. If false,\nthe subtotal will be computed and appear after the data point."]
+        #[doc = "True if the data point at subtotal_index is the subtotal. If false, the subtotal will be computed and appear after the data point."]
         #[serde(
             rename = "dataIsSubtotal",
             default,
@@ -15218,7 +18151,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub label: ::std::option::Option<String>,
-        #[doc = "The 0-based index of a data point within the series. If\ndata_is_subtotal is true, the data point at this index is the\nsubtotal. Otherwise, the subtotal appears after the data point with\nthis index. A series can have multiple subtotals at arbitrary indices,\nbut subtotals do not affect the indices of the data points. For\nexample, if a series has three data points, their indices will always\nbe 0, 1, and 2, regardless of how many subtotals exist on the series or\nwhat data points they are associated with."]
+        #[doc = "The 0-based index of a data point within the series. If data_is_subtotal is true, the data point at this index is the subtotal. Otherwise, the subtotal appears after the data point with this index. A series can have multiple subtotals at arbitrary indices, but subtotals do not affect the indices of the data points. For example, if a series has three data points, their indices will always be 0, 1, and 2, regardless of how many subtotals exist on the series or what data points they are associated with."]
         #[serde(
             rename = "subtotalIndex",
             default,
@@ -15237,16 +18170,7 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct WaterfallChartDomain {
         #[doc = "The data of the WaterfallChartDomain."]
@@ -15278,7 +18202,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct WaterfallChartSeries {
-        #[doc = "Custom subtotal columns appearing in this series. The order in which\nsubtotals are defined is not significant. Only one subtotal may be\ndefined for each data point."]
+        #[doc = "Custom subtotal columns appearing in this series. The order in which subtotals are defined is not significant. Only one subtotal may be defined for each data point."]
         #[serde(
             rename = "customSubtotals",
             default,
@@ -15293,7 +18217,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub data: ::std::option::Option<crate::schemas::ChartData>,
-        #[doc = "True to hide the subtotal column from the end of the series. By default,\na subtotal column will appear at the end of each series. Setting this\nfield to true will hide that subtotal column for this series."]
+        #[doc = "Information about the data labels for this series."]
+        #[serde(
+            rename = "dataLabel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_label: ::std::option::Option<crate::schemas::DataLabel>,
+        #[doc = "True to hide the subtotal column from the end of the series. By default, a subtotal column will appear at the end of each series. Setting this field to true will hide that subtotal column for this series."]
         #[serde(
             rename = "hideTrailingSubtotal",
             default,
@@ -15381,6 +18312,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub stacked_type: ::std::option::Option<crate::schemas::WaterfallChartSpecStackedType>,
+        #[doc = "Controls whether to display additional data labels on stacked charts which sum the total value of all stacked values at each value along the domain axis. stacked_type must be STACKED and neither CUSTOM nor placement can be set on the total_data_label."]
+        #[serde(
+            rename = "totalDataLabel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub total_data_label: ::std::option::Option<crate::schemas::DataLabel>,
     }
     impl ::google_field_selector::FieldSelector for WaterfallChartSpec {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -15396,7 +18334,7 @@ pub mod schemas {
     pub enum WaterfallChartSpecStackedType {
         #[doc = "Series will spread out along the horizontal axis."]
         Sequential,
-        #[doc = "Values corresponding to the same domain (horizontal axis) value will be\nstacked vertically."]
+        #[doc = "Values corresponding to the same domain (horizontal axis) value will be stacked vertically."]
         Stacked,
         #[doc = "Default value, do not use."]
         WaterfallStackedTypeUnspecified,
@@ -15631,17 +18569,17 @@ pub struct Client {
 impl Client {
     pub fn new<A>(auth: A) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client::with_reqwest_client(auth, ::reqwest::Client::builder().build().unwrap())
     }
     pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::Client) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client {
             reqwest,
-            auth: auth.into(),
+            auth: Box::new(auth),
         }
     }
     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
@@ -15666,7 +18604,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Applies one or more updates to the spreadsheet.\n\nEach request is validated before\nbeing applied. If any request is not valid then the entire request will\nfail and nothing will be applied.\n\nSome requests have replies to\ngive you some information about how\nthey are applied. The replies will mirror the requests.  For example,\nif you applied 4 updates and the 3rd one had a reply, then the\nresponse will have 2 empty replies, the actual reply, and another empty\nreply, in that order.\n\nDue to the collaborative nature of spreadsheets, it is not guaranteed that\nthe spreadsheet will reflect exactly your changes after this completes,\nhowever it is guaranteed that the updates in the request will be\napplied together atomically. Your changes may be altered with respect to\ncollaborator changes. If there are no collaborators, the spreadsheet\nshould reflect your changes."]
+            #[doc = "Applies one or more updates to the spreadsheet. Each request is validated before being applied. If any request is not valid then the entire request will fail and nothing will be applied. Some requests have replies to give you some information about how they are applied. The replies will mirror the requests. For example, if you applied 4 updates and the 3rd one had a reply, then the response will have 2 empty replies, the actual reply, and another empty reply, in that order. Due to the collaborative nature of spreadsheets, it is not guaranteed that the spreadsheet will reflect exactly your changes after this completes, however it is guaranteed that the updates in the request will be applied together atomically. Your changes may be altered with respect to collaborator changes. If there are no collaborators, the spreadsheet should reflect your changes."]
             pub fn batch_update(
                 &self,
                 request: crate::schemas::BatchUpdateSpreadsheetRequest,
@@ -15709,7 +18647,7 @@ pub mod resources {
                     xgafv: None,
                 }
             }
-            #[doc = "Returns the spreadsheet at the given ID.\nThe caller must specify the spreadsheet ID.\n\nBy default, data within grids will not be returned.\nYou can include grid data one of two ways:\n\n* Specify a field mask listing your desired fields using the `fields` URL\n  parameter in HTTP\n\n* Set the includeGridData\n  URL parameter to true.  If a field mask is set, the `includeGridData`\n  parameter is ignored\n\nFor large spreadsheets, it is recommended to retrieve only the specific\nfields of the spreadsheet that you want.\n\nTo retrieve only subsets of the spreadsheet, use the\nranges URL parameter.\nMultiple ranges can be specified.  Limiting the range will\nreturn only the portions of the spreadsheet that intersect the requested\nranges. Ranges are specified using A1 notation."]
+            #[doc = "Returns the spreadsheet at the given ID. The caller must specify the spreadsheet ID. By default, data within grids will not be returned. You can include grid data one of two ways: * Specify a field mask listing your desired fields using the `fields` URL parameter in HTTP * Set the includeGridData URL parameter to true. If a field mask is set, the `includeGridData` parameter is ignored For large spreadsheets, it is recommended to retrieve only the specific fields of the spreadsheet that you want. To retrieve only subsets of the spreadsheet, use the ranges URL parameter. Multiple ranges can be specified. Limiting the range will return only the portions of the spreadsheet that intersect the requested ranges. Ranges are specified using A1 notation."]
             pub fn get(&self, spreadsheet_id: impl Into<String>) -> GetRequestBuilder {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
@@ -15730,7 +18668,7 @@ pub mod resources {
                     ranges: None,
                 }
             }
-            #[doc = "Returns the spreadsheet at the given ID.\nThe caller must specify the spreadsheet ID.\n\nThis method differs from GetSpreadsheet in that it allows selecting\nwhich subsets of spreadsheet data to return by specifying a\ndataFilters parameter.\nMultiple DataFilters can be specified.  Specifying one or\nmore data filters will return the portions of the spreadsheet that\nintersect ranges matched by any of the filters.\n\nBy default, data within grids will not be returned.\nYou can include grid data one of two ways:\n\n* Specify a field mask listing your desired fields using the `fields` URL\n  parameter in HTTP\n\n* Set the includeGridData\n  parameter to true.  If a field mask is set, the `includeGridData`\n  parameter is ignored\n\nFor large spreadsheets, it is recommended to retrieve only the specific\nfields of the spreadsheet that you want."]
+            #[doc = "Returns the spreadsheet at the given ID. The caller must specify the spreadsheet ID. This method differs from GetSpreadsheet in that it allows selecting which subsets of spreadsheet data to return by specifying a dataFilters parameter. Multiple DataFilters can be specified. Specifying one or more data filters will return the portions of the spreadsheet that intersect ranges matched by any of the filters. By default, data within grids will not be returned. You can include grid data one of two ways: * Specify a field mask listing your desired fields using the `fields` URL parameter in HTTP * Set the includeGridData parameter to true. If a field mask is set, the `includeGridData` parameter is ignored For large spreadsheets, it is recommended to retrieve only the specific fields of the spreadsheet that you want."]
             pub fn get_by_data_filter(
                 &self,
                 request: crate::schemas::GetSpreadsheetByDataFilterRequest,
@@ -15900,7 +18838,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -15917,24 +18855,28 @@ pub mod resources {
                 output.push_str(":batchUpdate");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -16058,7 +19000,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -16067,24 +19009,28 @@ pub mod resources {
                 output.push_str("v4/spreadsheets");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -16109,7 +19055,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetRequestBuilder<'a> {
-            #[doc = "True if grid data should be returned.\nThis parameter is ignored if a field mask was set in the request."]
+            #[doc = "True if grid data should be returned. This parameter is ignored if a field mask was set in the request."]
             pub fn include_grid_data(mut self, value: bool) -> Self {
                 self.include_grid_data = Some(value);
                 self
@@ -16220,7 +19166,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -16235,26 +19181,32 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("includeGridData", &self.include_grid_data)]);
-                let req = req.query(&[("ranges", &self.ranges)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("includeGridData", &self.include_grid_data)]);
+                for value in self.ranges.iter().flatten() {
+                    req = req.query(&[("ranges", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -16379,7 +19331,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -16396,24 +19348,28 @@ pub mod resources {
                 output.push_str(":getByDataFilter");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -16427,7 +19383,7 @@ pub mod resources {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Returns the developer metadata with the specified ID.\nThe caller must specify the spreadsheet ID and the developer metadata's\nunique metadataId."]
+                #[doc = "Returns the developer metadata with the specified ID. The caller must specify the spreadsheet ID and the developer metadata's unique metadataId."]
                 pub fn get(
                     &self,
                     spreadsheet_id: impl Into<String>,
@@ -16451,7 +19407,7 @@ pub mod resources {
                         metadata_id,
                     }
                 }
-                #[doc = "Returns all developer metadata matching the specified DataFilter.\nIf the provided DataFilter represents a DeveloperMetadataLookup object,\nthis will return all DeveloperMetadata entries selected by it. If the\nDataFilter represents a location in a spreadsheet, this will return all\ndeveloper metadata associated with locations intersecting that region."]
+                #[doc = "Returns all developer metadata matching the specified DataFilter. If the provided DataFilter represents a DeveloperMetadataLookup object, this will return all DeveloperMetadata entries selected by it. If the DataFilter represents a location in a spreadsheet, this will return all developer metadata associated with locations intersecting that region."]
                 pub fn search(
                     &self,
                     request: crate::schemas::SearchDeveloperMetadataRequest,
@@ -16597,7 +19553,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
@@ -16621,24 +19577,28 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -16765,7 +19725,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -16782,24 +19742,28 @@ pub mod resources {
                     output.push_str("/developerMetadata:search");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -16814,7 +19778,7 @@ pub mod resources {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Copies a single sheet from a spreadsheet to another spreadsheet.\nReturns the properties of the newly created sheet."]
+                #[doc = "Copies a single sheet from a spreadsheet to another spreadsheet. Returns the properties of the newly created sheet."]
                 pub fn copy_to(
                     &self,
                     request: crate::schemas::CopySheetToAnotherSpreadsheetRequest,
@@ -16963,7 +19927,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -16989,24 +19953,28 @@ pub mod resources {
                     output.push_str(":copyTo");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -17015,7 +19983,9 @@ pub mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum AppendInsertDataOption {
+                    #[doc = "Rows are inserted for the new data."]
                     InsertRows,
+                    #[doc = "The new data overwrites existing data in the areas it is written. (Note: adding data to the end of the sheet will still insert new rows or columns so the data can be written.)"]
                     Overwrite,
                 }
                 impl AppendInsertDataOption {
@@ -17084,7 +20054,9 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum AppendResponseDateTimeRenderOption {
+                    #[doc = "Instructs date, time, datetime, and duration fields to be output as strings in their given number format (which is dependent on the spreadsheet locale)."]
                     FormattedString,
+                    #[doc = "Instructs date, time, datetime, and duration fields to be output as doubles in \"serial number\" format, as popularized by Lotus 1-2-3. The whole number portion of the value (left of the decimal) counts the days since December 30th 1899. The fractional portion (right of the decimal) counts the time as a fraction of the day. For example, January 1st 1900 at noon would be 2.5, 2 because it's 2 days after December 30st 1899, and .5 because noon is half a day. February 1st 1900 at 3pm would be 33.625. This correctly treats the year 1900 as not a leap year."]
                     SerialNumber,
                 }
                 impl AppendResponseDateTimeRenderOption {
@@ -17162,8 +20134,11 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum AppendResponseValueRenderOption {
+                    #[doc = "Values will be calculated & formatted in the reply according to the cell's formatting. Formatting is based on the spreadsheet's locale, not the requesting user's locale. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would return `\"$1.23\"`."]
                     FormattedValue,
+                    #[doc = "Values will not be calculated. The reply will include the formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then A2 would return `\"=A1\"`."]
                     Formula,
+                    #[doc = "Values will be calculated, but not formatted in the reply. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would return the number `1.23`."]
                     UnformattedValue,
                 }
                 impl AppendResponseValueRenderOption {
@@ -17244,8 +20219,11 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum AppendValueInputOption {
+                    #[doc = "Default input value. This value must not be used."]
                     InputValueOptionUnspecified,
+                    #[doc = "The values the user has entered will not be parsed and will be stored as-is."]
                     Raw,
+                    #[doc = "The values will be parsed as if the user typed them into the UI. Numbers will stay as numbers, but strings may be converted to numbers, dates, etc. following the same rules that are applied when entering text into a cell via the Google Sheets UI."]
                     UserEntered,
                 }
                 impl AppendValueInputOption {
@@ -17323,7 +20301,9 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum BatchGetDateTimeRenderOption {
+                    #[doc = "Instructs date, time, datetime, and duration fields to be output as strings in their given number format (which is dependent on the spreadsheet locale)."]
                     FormattedString,
+                    #[doc = "Instructs date, time, datetime, and duration fields to be output as doubles in \"serial number\" format, as popularized by Lotus 1-2-3. The whole number portion of the value (left of the decimal) counts the days since December 30th 1899. The fractional portion (right of the decimal) counts the time as a fraction of the day. For example, January 1st 1900 at noon would be 2.5, 2 because it's 2 days after December 30st 1899, and .5 because noon is half a day. February 1st 1900 at 3pm would be 33.625. This correctly treats the year 1900 as not a leap year."]
                     SerialNumber,
                 }
                 impl BatchGetDateTimeRenderOption {
@@ -17395,8 +20375,11 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum BatchGetMajorDimension {
+                    #[doc = "Operates on the columns of a sheet."]
                     Columns,
+                    #[doc = "The default value, do not use."]
                     DimensionUnspecified,
+                    #[doc = "Operates on the rows of a sheet."]
                     Rows,
                 }
                 impl BatchGetMajorDimension {
@@ -17468,8 +20451,11 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum BatchGetValueRenderOption {
+                    #[doc = "Values will be calculated & formatted in the reply according to the cell's formatting. Formatting is based on the spreadsheet's locale, not the requesting user's locale. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would return `\"$1.23\"`."]
                     FormattedValue,
+                    #[doc = "Values will not be calculated. The reply will include the formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then A2 would return `\"=A1\"`."]
                     Formula,
+                    #[doc = "Values will be calculated, but not formatted in the reply. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would return the number `1.23`."]
                     UnformattedValue,
                 }
                 impl BatchGetValueRenderOption {
@@ -17541,7 +20527,9 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum GetDateTimeRenderOption {
+                    #[doc = "Instructs date, time, datetime, and duration fields to be output as strings in their given number format (which is dependent on the spreadsheet locale)."]
                     FormattedString,
+                    #[doc = "Instructs date, time, datetime, and duration fields to be output as doubles in \"serial number\" format, as popularized by Lotus 1-2-3. The whole number portion of the value (left of the decimal) counts the days since December 30th 1899. The fractional portion (right of the decimal) counts the time as a fraction of the day. For example, January 1st 1900 at noon would be 2.5, 2 because it's 2 days after December 30st 1899, and .5 because noon is half a day. February 1st 1900 at 3pm would be 33.625. This correctly treats the year 1900 as not a leap year."]
                     SerialNumber,
                 }
                 impl GetDateTimeRenderOption {
@@ -17610,8 +20598,11 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum GetMajorDimension {
+                    #[doc = "Operates on the columns of a sheet."]
                     Columns,
+                    #[doc = "The default value, do not use."]
                     DimensionUnspecified,
+                    #[doc = "Operates on the rows of a sheet."]
                     Rows,
                 }
                 impl GetMajorDimension {
@@ -17683,8 +20674,11 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum GetValueRenderOption {
+                    #[doc = "Values will be calculated & formatted in the reply according to the cell's formatting. Formatting is based on the spreadsheet's locale, not the requesting user's locale. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would return `\"$1.23\"`."]
                     FormattedValue,
+                    #[doc = "Values will not be calculated. The reply will include the formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then A2 would return `\"=A1\"`."]
                     Formula,
+                    #[doc = "Values will be calculated, but not formatted in the reply. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would return the number `1.23`."]
                     UnformattedValue,
                 }
                 impl GetValueRenderOption {
@@ -17756,7 +20750,9 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum UpdateResponseDateTimeRenderOption {
+                    #[doc = "Instructs date, time, datetime, and duration fields to be output as strings in their given number format (which is dependent on the spreadsheet locale)."]
                     FormattedString,
+                    #[doc = "Instructs date, time, datetime, and duration fields to be output as doubles in \"serial number\" format, as popularized by Lotus 1-2-3. The whole number portion of the value (left of the decimal) counts the days since December 30th 1899. The fractional portion (right of the decimal) counts the time as a fraction of the day. For example, January 1st 1900 at noon would be 2.5, 2 because it's 2 days after December 30st 1899, and .5 because noon is half a day. February 1st 1900 at 3pm would be 33.625. This correctly treats the year 1900 as not a leap year."]
                     SerialNumber,
                 }
                 impl UpdateResponseDateTimeRenderOption {
@@ -17834,8 +20830,11 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum UpdateResponseValueRenderOption {
+                    #[doc = "Values will be calculated & formatted in the reply according to the cell's formatting. Formatting is based on the spreadsheet's locale, not the requesting user's locale. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would return `\"$1.23\"`."]
                     FormattedValue,
+                    #[doc = "Values will not be calculated. The reply will include the formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then A2 would return `\"=A1\"`."]
                     Formula,
+                    #[doc = "Values will be calculated, but not formatted in the reply. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would return the number `1.23`."]
                     UnformattedValue,
                 }
                 impl UpdateResponseValueRenderOption {
@@ -17916,8 +20915,11 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum UpdateValueInputOption {
+                    #[doc = "Default input value. This value must not be used."]
                     InputValueOptionUnspecified,
+                    #[doc = "The values the user has entered will not be parsed and will be stored as-is."]
                     Raw,
+                    #[doc = "The values will be parsed as if the user typed them into the UI. Numbers will stay as numbers, but strings may be converted to numbers, dates, etc. following the same rules that are applied when entering text into a cell via the Google Sheets UI."]
                     UserEntered,
                 }
                 impl UpdateValueInputOption {
@@ -18002,7 +21004,7 @@ pub mod resources {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Appends values to a spreadsheet. The input range is used to search for\nexisting data and find a \"table\" within that range. Values will be\nappended to the next row of the table, starting with the first column of\nthe table. See the\n[guide](/sheets/api/guides/values#appending_values)\nand\n[sample code](/sheets/api/samples/writing#append_values)\nfor specific details of how tables are detected and data is appended.\n\nThe caller must specify the spreadsheet ID, range, and\na valueInputOption.  The `valueInputOption` only\ncontrols how the input data will be added to the sheet (column-wise or\nrow-wise), it does not influence what cell the data starts being written\nto."]
+                #[doc = "Appends values to a spreadsheet. The input range is used to search for existing data and find a \"table\" within that range. Values will be appended to the next row of the table, starting with the first column of the table. See the [guide](/sheets/api/guides/values#appending_values) and [sample code](/sheets/api/samples/writing#append_values) for specific details of how tables are detected and data is appended. The caller must specify the spreadsheet ID, range, and a valueInputOption. The `valueInputOption` only controls how the input data will be added to the sheet (column-wise or row-wise), it does not influence what cell the data starts being written to."]
                 pub fn append(
                     &self,
                     request: crate::schemas::ValueRange,
@@ -18033,7 +21035,7 @@ pub mod resources {
                         value_input_option: None,
                     }
                 }
-                #[doc = "Clears one or more ranges of values from a spreadsheet.\nThe caller must specify the spreadsheet ID and one or more ranges.\nOnly values are cleared -- all other properties of the cell (such as\nformatting, data validation, etc..) are kept."]
+                #[doc = "Clears one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and one or more ranges. Only values are cleared -- all other properties of the cell (such as formatting, data validation, etc..) are kept."]
                 pub fn batch_clear(
                     &self,
                     request: crate::schemas::BatchClearValuesRequest,
@@ -18057,7 +21059,7 @@ pub mod resources {
                         spreadsheet_id: spreadsheet_id.into(),
                     }
                 }
-                #[doc = "Clears one or more ranges of values from a spreadsheet.\nThe caller must specify the spreadsheet ID and one or more\nDataFilters. Ranges matching any of the specified data\nfilters will be cleared.  Only values are cleared -- all other properties\nof the cell (such as formatting, data validation, etc..) are kept."]
+                #[doc = "Clears one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and one or more DataFilters. Ranges matching any of the specified data filters will be cleared. Only values are cleared -- all other properties of the cell (such as formatting, data validation, etc..) are kept."]
                 pub fn batch_clear_by_data_filter(
                     &self,
                     request: crate::schemas::BatchClearValuesByDataFilterRequest,
@@ -18081,7 +21083,7 @@ pub mod resources {
                         spreadsheet_id: spreadsheet_id.into(),
                     }
                 }
-                #[doc = "Returns one or more ranges of values from a spreadsheet.\nThe caller must specify the spreadsheet ID and one or more ranges."]
+                #[doc = "Returns one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and one or more ranges."]
                 pub fn batch_get(
                     &self,
                     spreadsheet_id: impl Into<String>,
@@ -18107,7 +21109,7 @@ pub mod resources {
                         value_render_option: None,
                     }
                 }
-                #[doc = "Returns one or more ranges of values that match the specified data filters.\nThe caller must specify the spreadsheet ID and one or more\nDataFilters.  Ranges that match any of the data filters in\nthe request will be returned."]
+                #[doc = "Returns one or more ranges of values that match the specified data filters. The caller must specify the spreadsheet ID and one or more DataFilters. Ranges that match any of the data filters in the request will be returned."]
                 pub fn batch_get_by_data_filter(
                     &self,
                     request: crate::schemas::BatchGetValuesByDataFilterRequest,
@@ -18131,7 +21133,7 @@ pub mod resources {
                         spreadsheet_id: spreadsheet_id.into(),
                     }
                 }
-                #[doc = "Sets values in one or more ranges of a spreadsheet.\nThe caller must specify the spreadsheet ID,\na valueInputOption, and one or more\nValueRanges."]
+                #[doc = "Sets values in one or more ranges of a spreadsheet. The caller must specify the spreadsheet ID, a valueInputOption, and one or more ValueRanges."]
                 pub fn batch_update(
                     &self,
                     request: crate::schemas::BatchUpdateValuesRequest,
@@ -18155,7 +21157,7 @@ pub mod resources {
                         spreadsheet_id: spreadsheet_id.into(),
                     }
                 }
-                #[doc = "Sets values in one or more ranges of a spreadsheet.\nThe caller must specify the spreadsheet ID,\na valueInputOption, and one or more\nDataFilterValueRanges."]
+                #[doc = "Sets values in one or more ranges of a spreadsheet. The caller must specify the spreadsheet ID, a valueInputOption, and one or more DataFilterValueRanges."]
                 pub fn batch_update_by_data_filter(
                     &self,
                     request: crate::schemas::BatchUpdateValuesByDataFilterRequest,
@@ -18179,7 +21181,7 @@ pub mod resources {
                         spreadsheet_id: spreadsheet_id.into(),
                     }
                 }
-                #[doc = "Clears values from a spreadsheet.\nThe caller must specify the spreadsheet ID and range.\nOnly values are cleared -- all other properties of the cell (such as\nformatting, data validation, etc..) are kept."]
+                #[doc = "Clears values from a spreadsheet. The caller must specify the spreadsheet ID and range. Only values are cleared -- all other properties of the cell (such as formatting, data validation, etc..) are kept."]
                 pub fn clear(
                     &self,
                     request: crate::schemas::ClearValuesRequest,
@@ -18205,7 +21207,7 @@ pub mod resources {
                         range: range.into(),
                     }
                 }
-                #[doc = "Returns a range of values from a spreadsheet.\nThe caller must specify the spreadsheet ID and a range."]
+                #[doc = "Returns a range of values from a spreadsheet. The caller must specify the spreadsheet ID and a range."]
                 pub fn get(
                     &self,
                     spreadsheet_id: impl Into<String>,
@@ -18232,7 +21234,7 @@ pub mod resources {
                         value_render_option: None,
                     }
                 }
-                #[doc = "Sets values in a range of a spreadsheet.\nThe caller must specify the spreadsheet ID, range, and\na valueInputOption."]
+                #[doc = "Sets values in a range of a spreadsheet. The caller must specify the spreadsheet ID, range, and a valueInputOption."]
                 pub fn update(
                     &self,
                     request: crate::schemas::ValueRange,
@@ -18265,9 +21267,9 @@ pub mod resources {
             }
             #[doc = "Created via [ValuesActions::append()](struct.ValuesActions.html#method.append)"]
             #[derive(Debug, Clone)]
-            pub struct AppendRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: ValueRange , spreadsheet_id : String , range : String , include_values_in_response : Option < bool > , insert_data_option : Option < crate :: resources :: spreadsheets :: values :: params :: AppendInsertDataOption > , response_date_time_render_option : Option < crate :: resources :: spreadsheets :: values :: params :: AppendResponseDateTimeRenderOption > , response_value_render_option : Option < crate :: resources :: spreadsheets :: values :: params :: AppendResponseValueRenderOption > , value_input_option : Option < crate :: resources :: spreadsheets :: values :: params :: AppendValueInputOption > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+            pub struct AppendRequestBuilder < 'a > { pub (crate) reqwest : & 'a :: reqwest :: Client , pub (crate) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: ValueRange , spreadsheet_id : String , range : String , include_values_in_response : Option < bool > , insert_data_option : Option < crate :: resources :: spreadsheets :: values :: params :: AppendInsertDataOption > , response_date_time_render_option : Option < crate :: resources :: spreadsheets :: values :: params :: AppendResponseDateTimeRenderOption > , response_value_render_option : Option < crate :: resources :: spreadsheets :: values :: params :: AppendResponseValueRenderOption > , value_input_option : Option < crate :: resources :: spreadsheets :: values :: params :: AppendValueInputOption > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
             impl<'a> AppendRequestBuilder<'a> {
-                #[doc = "Determines if the update response should include the values\nof the cells that were appended. By default, responses\ndo not include the updated values."]
+                #[doc = "Determines if the update response should include the values of the cells that were appended. By default, responses do not include the updated values."]
                 pub fn include_values_in_response(mut self, value: bool) -> Self {
                     self.include_values_in_response = Some(value);
                     self
@@ -18280,7 +21282,7 @@ pub mod resources {
                     self.insert_data_option = Some(value);
                     self
                 }
-                #[doc = "Determines how dates, times, and durations in the response should be\nrendered. This is ignored if response_value_render_option is\nFORMATTED_VALUE.\nThe default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER]."]
+                #[doc = "Determines how dates, times, and durations in the response should be rendered. This is ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER]."]
                 pub fn response_date_time_render_option(
                     mut self,
                     value : crate :: resources :: spreadsheets :: values :: params :: AppendResponseDateTimeRenderOption,
@@ -18288,7 +21290,7 @@ pub mod resources {
                     self.response_date_time_render_option = Some(value);
                     self
                 }
-                #[doc = "Determines how values in the response should be rendered.\nThe default render option is ValueRenderOption.FORMATTED_VALUE."]
+                #[doc = "Determines how values in the response should be rendered. The default render option is ValueRenderOption.FORMATTED_VALUE."]
                 pub fn response_value_render_option(
                     mut self,
                     value : crate :: resources :: spreadsheets :: values :: params :: AppendResponseValueRenderOption,
@@ -18405,7 +21407,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -18430,36 +21432,40 @@ pub mod resources {
                     output.push_str(":append");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req =
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req =
                         req.query(&[("includeValuesInResponse", &self.include_values_in_response)]);
-                    let req = req.query(&[("insertDataOption", &self.insert_data_option)]);
-                    let req = req.query(&[(
+                    req = req.query(&[("insertDataOption", &self.insert_data_option)]);
+                    req = req.query(&[(
                         "responseDateTimeRenderOption",
                         &self.response_date_time_render_option,
                     )]);
-                    let req = req.query(&[(
+                    req = req.query(&[(
                         "responseValueRenderOption",
                         &self.response_value_render_option,
                     )]);
-                    let req = req.query(&[("valueInputOption", &self.value_input_option)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                    req = req.query(&[("valueInputOption", &self.value_input_option)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -18586,7 +21592,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -18603,24 +21609,28 @@ pub mod resources {
                     output.push_str("/values:batchClear");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -18747,7 +21757,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -18764,24 +21774,28 @@ pub mod resources {
                     output.push_str("/values:batchClearByDataFilter");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -18813,7 +21827,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> BatchGetRequestBuilder<'a> {
-                #[doc = "How dates, times, and durations should be represented in the output.\nThis is ignored if value_render_option is\nFORMATTED_VALUE.\nThe default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER]."]
+                #[doc = "How dates, times, and durations should be represented in the output. This is ignored if value_render_option is FORMATTED_VALUE. The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER]."]
                 pub fn date_time_render_option(
                     mut self,
                     value : crate :: resources :: spreadsheets :: values :: params :: BatchGetDateTimeRenderOption,
@@ -18821,7 +21835,7 @@ pub mod resources {
                     self.date_time_render_option = Some(value);
                     self
                 }
-                #[doc = "The major dimension that results should use.\n\nFor example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,\nthen requesting `range=A1:B2,majorDimension=ROWS` returns `[[1,2],[3,4]]`,\nwhereas requesting `range=A1:B2,majorDimension=COLUMNS` returns\n`[[1,3],[2,4]]`."]
+                #[doc = "The major dimension that results should use. For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting `range=A1:B2,majorDimension=ROWS` returns `[[1,2],[3,4]]`, whereas requesting `range=A1:B2,majorDimension=COLUMNS` returns `[[1,3],[2,4]]`."]
                 pub fn major_dimension(
                     mut self,
                     value: crate::resources::spreadsheets::values::params::BatchGetMajorDimension,
@@ -18834,7 +21848,7 @@ pub mod resources {
                     self.ranges = Some(value.into());
                     self
                 }
-                #[doc = "How values should be represented in the output.\nThe default render option is ValueRenderOption.FORMATTED_VALUE."]
+                #[doc = "How values should be represented in the output. The default render option is ValueRenderOption.FORMATTED_VALUE."]
                 pub fn value_render_option(
                     mut self,
                     value : crate :: resources :: spreadsheets :: values :: params :: BatchGetValueRenderOption,
@@ -18943,7 +21957,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
@@ -18959,28 +21973,34 @@ pub mod resources {
                     output.push_str("/values:batchGet");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("dateTimeRenderOption", &self.date_time_render_option)]);
-                    let req = req.query(&[("majorDimension", &self.major_dimension)]);
-                    let req = req.query(&[("ranges", &self.ranges)]);
-                    let req = req.query(&[("valueRenderOption", &self.value_render_option)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("dateTimeRenderOption", &self.date_time_render_option)]);
+                    req = req.query(&[("majorDimension", &self.major_dimension)]);
+                    for value in self.ranges.iter().flatten() {
+                        req = req.query(&[("ranges", value)]);
+                    }
+                    req = req.query(&[("valueRenderOption", &self.value_render_option)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -19107,7 +22127,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -19124,24 +22144,28 @@ pub mod resources {
                     output.push_str("/values:batchGetByDataFilter");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -19268,7 +22292,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -19285,24 +22309,28 @@ pub mod resources {
                     output.push_str("/values:batchUpdate");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -19429,7 +22457,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -19446,24 +22474,28 @@ pub mod resources {
                     output.push_str("/values:batchUpdateByDataFilter");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -19589,7 +22621,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -19614,24 +22646,28 @@ pub mod resources {
                     output.push_str(":clear");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -19661,7 +22697,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> GetRequestBuilder<'a> {
-                #[doc = "How dates, times, and durations should be represented in the output.\nThis is ignored if value_render_option is\nFORMATTED_VALUE.\nThe default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER]."]
+                #[doc = "How dates, times, and durations should be represented in the output. This is ignored if value_render_option is FORMATTED_VALUE. The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER]."]
                 pub fn date_time_render_option(
                     mut self,
                     value: crate::resources::spreadsheets::values::params::GetDateTimeRenderOption,
@@ -19669,7 +22705,7 @@ pub mod resources {
                     self.date_time_render_option = Some(value);
                     self
                 }
-                #[doc = "The major dimension that results should use.\n\nFor example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then\nrequesting `range=A1:B2,majorDimension=ROWS` returns `[[1,2],[3,4]]`,\nwhereas requesting `range=A1:B2,majorDimension=COLUMNS` returns\n`[[1,3],[2,4]]`."]
+                #[doc = "The major dimension that results should use. For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting `range=A1:B2,majorDimension=ROWS` returns `[[1,2],[3,4]]`, whereas requesting `range=A1:B2,majorDimension=COLUMNS` returns `[[1,3],[2,4]]`."]
                 pub fn major_dimension(
                     mut self,
                     value: crate::resources::spreadsheets::values::params::GetMajorDimension,
@@ -19677,7 +22713,7 @@ pub mod resources {
                     self.major_dimension = Some(value);
                     self
                 }
-                #[doc = "How values should be represented in the output.\nThe default render option is ValueRenderOption.FORMATTED_VALUE."]
+                #[doc = "How values should be represented in the output. The default render option is ValueRenderOption.FORMATTED_VALUE."]
                 pub fn value_render_option(
                     mut self,
                     value: crate::resources::spreadsheets::values::params::GetValueRenderOption,
@@ -19786,7 +22822,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
@@ -19809,40 +22845,44 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("dateTimeRenderOption", &self.date_time_render_option)]);
-                    let req = req.query(&[("majorDimension", &self.major_dimension)]);
-                    let req = req.query(&[("valueRenderOption", &self.value_render_option)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("dateTimeRenderOption", &self.date_time_render_option)]);
+                    req = req.query(&[("majorDimension", &self.major_dimension)]);
+                    req = req.query(&[("valueRenderOption", &self.value_render_option)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
             #[doc = "Created via [ValuesActions::update()](struct.ValuesActions.html#method.update)"]
             #[derive(Debug, Clone)]
-            pub struct UpdateRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: ValueRange , spreadsheet_id : String , range : String , include_values_in_response : Option < bool > , response_date_time_render_option : Option < crate :: resources :: spreadsheets :: values :: params :: UpdateResponseDateTimeRenderOption > , response_value_render_option : Option < crate :: resources :: spreadsheets :: values :: params :: UpdateResponseValueRenderOption > , value_input_option : Option < crate :: resources :: spreadsheets :: values :: params :: UpdateValueInputOption > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+            pub struct UpdateRequestBuilder < 'a > { pub (crate) reqwest : & 'a :: reqwest :: Client , pub (crate) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: ValueRange , spreadsheet_id : String , range : String , include_values_in_response : Option < bool > , response_date_time_render_option : Option < crate :: resources :: spreadsheets :: values :: params :: UpdateResponseDateTimeRenderOption > , response_value_render_option : Option < crate :: resources :: spreadsheets :: values :: params :: UpdateResponseValueRenderOption > , value_input_option : Option < crate :: resources :: spreadsheets :: values :: params :: UpdateValueInputOption > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
             impl<'a> UpdateRequestBuilder<'a> {
-                #[doc = "Determines if the update response should include the values\nof the cells that were updated. By default, responses\ndo not include the updated values.\nIf the range to write was larger than the range actually written, the\nresponse includes all values in the requested range (excluding trailing\nempty rows and columns)."]
+                #[doc = "Determines if the update response should include the values of the cells that were updated. By default, responses do not include the updated values. If the range to write was larger than the range actually written, the response includes all values in the requested range (excluding trailing empty rows and columns)."]
                 pub fn include_values_in_response(mut self, value: bool) -> Self {
                     self.include_values_in_response = Some(value);
                     self
                 }
-                #[doc = "Determines how dates, times, and durations in the response should be\nrendered. This is ignored if response_value_render_option is\nFORMATTED_VALUE.\nThe default dateTime render option is\nDateTimeRenderOption.SERIAL_NUMBER."]
+                #[doc = "Determines how dates, times, and durations in the response should be rendered. This is ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is DateTimeRenderOption.SERIAL_NUMBER."]
                 pub fn response_date_time_render_option(
                     mut self,
                     value : crate :: resources :: spreadsheets :: values :: params :: UpdateResponseDateTimeRenderOption,
@@ -19850,7 +22890,7 @@ pub mod resources {
                     self.response_date_time_render_option = Some(value);
                     self
                 }
-                #[doc = "Determines how values in the response should be rendered.\nThe default render option is ValueRenderOption.FORMATTED_VALUE."]
+                #[doc = "Determines how values in the response should be rendered. The default render option is ValueRenderOption.FORMATTED_VALUE."]
                 pub fn response_value_render_option(
                     mut self,
                     value : crate :: resources :: spreadsheets :: values :: params :: UpdateResponseValueRenderOption,
@@ -19967,7 +23007,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -19991,35 +23031,39 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                    let req =
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                    req =
                         req.query(&[("includeValuesInResponse", &self.include_values_in_response)]);
-                    let req = req.query(&[(
+                    req = req.query(&[(
                         "responseDateTimeRenderOption",
                         &self.response_date_time_render_option,
                     )]);
-                    let req = req.query(&[(
+                    req = req.query(&[(
                         "responseValueRenderOption",
                         &self.response_value_render_option,
                     )]);
-                    let req = req.query(&[("valueInputOption", &self.value_input_option)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                    req = req.query(&[("valueInputOption", &self.value_input_option)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -20034,6 +23078,7 @@ pub enum Error {
         reqwest_err: ::reqwest::Error,
         body: Option<String>,
     },
+    IO(std::io::Error),
     Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
@@ -20043,6 +23088,7 @@ impl Error {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
             Error::Reqwest { .. } => None,
+            Error::IO(_) => None,
             Error::Other(_) => None,
         }
     }
@@ -20060,6 +23106,7 @@ impl ::std::fmt::Display for Error {
                 }
                 Ok(())
             }
+            Error::IO(err) => write!(f, "IO Error: {}", err),
             Error::Other(err) => write!(f, "Uknown Error: {}", err),
         }
     }
@@ -20079,6 +23126,12 @@ impl From<::reqwest::Error> for Error {
             reqwest_err,
             body: None,
         }
+    }
+}
+
+impl From<std::io::Error> for Error {
+    fn from(err: std::io::Error) -> Error {
+        Error::IO(err)
     }
 }
 #[allow(dead_code)]
@@ -20148,13 +23201,13 @@ mod multipart {
 
     pub(crate) struct Part {
         content_type: ::mime::Mime,
-        body: Box<dyn ::std::io::Read + Send>,
+        body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
     }
 
     impl Part {
         pub(crate) fn new(
             content_type: ::mime::Mime,
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         ) -> Part {
             Part { content_type, body }
         }
@@ -20163,7 +23216,7 @@ mod multipart {
     pub(crate) struct RelatedMultiPartReader {
         state: RelatedMultiPartReaderState,
         boundary: String,
-        next_body: Option<Box<dyn ::std::io::Read + Send>>,
+        next_body: Option<Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>>,
         parts: std::vec::IntoIter<Part>,
     }
 
@@ -20177,13 +23230,18 @@ mod multipart {
             content_type: Vec<u8>,
         },
         WriteBody {
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         },
     }
 
-    impl ::std::io::Read for RelatedMultiPartReader {
-        fn read(&mut self, buf: &mut [u8]) -> ::std::io::Result<usize> {
+    impl futures::io::AsyncRead for RelatedMultiPartReader {
+        fn poll_read(
+            mut self: std::pin::Pin<&mut Self>,
+            ctx: &mut futures::task::Context,
+            buf: &mut [u8],
+        ) -> futures::task::Poll<Result<usize, futures::io::Error>> {
             use RelatedMultiPartReaderState::*;
+
             let mut bytes_written: usize = 0;
             loop {
                 let rem_buf = &mut buf[bytes_written..];
@@ -20231,7 +23289,14 @@ mod multipart {
                         }
                     }
                     WriteBody { body } => {
-                        let written = body.read(rem_buf)?;
+                        let body = std::pin::Pin::new(body);
+                        let written = match futures::io::AsyncRead::poll_read(body, ctx, rem_buf) {
+                            futures::task::Poll::Ready(Ok(n)) => n,
+                            futures::task::Poll::Ready(Err(err)) => {
+                                return futures::task::Poll::Ready(Err(err));
+                            }
+                            futures::task::Poll::Pending => return futures::task::Poll::Pending,
+                        };
                         bytes_written += written;
                         if written == 0 {
                             self.state = WriteBoundary {
@@ -20244,7 +23309,8 @@ mod multipart {
                     }
                 }
             }
-            Ok(bytes_written)
+
+            futures::task::Poll::Ready(Ok(bytes_written))
         }
     }
 

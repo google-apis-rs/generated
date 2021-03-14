@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("container1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200425")
+            .version("0.1.0-20210226")
             .about("Builds and manages container-based applications, powered by the open source Kubernetes technology.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -72,11 +72,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a cluster, consisting of the specified number and type of Google\nCompute Engine instances.\n\nBy default, the cluster is created in the project\'s\n[default\nnetwork](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).\n\nOne firewall is added for the cluster. After cluster creation,\nthe Kubelet creates routes for each node to allow the containers\non that node to communicate with all other instances in the\ncluster.\n\nFinally, an entry is added to the project\'s global metadata indicating\nwhich CIDR range the cluster is using.");
+            let mcmd = SubCommand::with_name("create").about("Creates a cluster, consisting of the specified number and type of Google Compute Engine instances. By default, the cluster is created in the project\'s [default network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). One firewall is added for the cluster. After cluster creation, the Kubelet creates routes for each node to allow the containers on that node to communicate with all other instances in the cluster. Finally, an entry is added to the project\'s global metadata indicating which CIDR range the cluster is using.");
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes the cluster, including the Kubernetes endpoint and all worker\nnodes.\n\nFirewalls and routes that were configured during cluster creation\nare also deleted.\n\nOther Google Compute Engine resources that might be in use by the cluster,\nsuch as load balancer resources, are not deleted if they weren\'t present\nwhen the cluster was initially created.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes the cluster, including the Kubernetes endpoint and all worker nodes. Firewalls and routes that were configured during cluster creation are also deleted. Other Google Compute Engine resources that might be in use by the cluster, such as load balancer resources, are not deleted if they weren\'t present when the cluster was initially created.");
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
@@ -85,12 +85,12 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_jwks").about("Gets the public component of the cluster signing keys in\nJSON Web Key format.\nThis API is not yet intended for general use, and is not available for all\nclusters.");
+            let mcmd = SubCommand::with_name("get_jwks").about("Gets the public component of the cluster signing keys in JSON Web Key format. This API is not yet intended for general use, and is not available for all clusters.");
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("list").about(
-                "Lists all clusters owned by a project in either the specified zone or all\nzones.",
+                "Lists all clusters owned by a project in either the specified zone or all zones.",
             );
             clusters2 = clusters2.subcommand(mcmd);
         }
@@ -105,7 +105,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_locations").about("Sets the locations for a specific cluster.\nDeprecated. Use\n[projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/update)\ninstead.");
+            let mcmd = SubCommand::with_name("set_locations").about("Sets the locations for a specific cluster. Deprecated. Use [projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/update) instead.");
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
@@ -119,7 +119,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_master_auth").about("Sets master auth materials. Currently supports changing the admin password\nor a specific cluster, either via password generation or explicitly setting\nthe password.");
+            let mcmd = SubCommand::with_name("set_master_auth").about("Sets master auth materials. Currently supports changing the admin password or a specific cluster, either via password generation or explicitly setting the password.");
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
@@ -182,11 +182,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a cluster, consisting of the specified number and type of Google\nCompute Engine instances.\n\nBy default, the cluster is created in the project\'s\n[default\nnetwork](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).\n\nOne firewall is added for the cluster. After cluster creation,\nthe Kubelet creates routes for each node to allow the containers\non that node to communicate with all other instances in the\ncluster.\n\nFinally, an entry is added to the project\'s global metadata indicating\nwhich CIDR range the cluster is using.");
+            let mcmd = SubCommand::with_name("create").about("Creates a cluster, consisting of the specified number and type of Google Compute Engine instances. By default, the cluster is created in the project\'s [default network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). One firewall is added for the cluster. After cluster creation, the Kubelet creates routes for each node to allow the containers on that node to communicate with all other instances in the cluster. Finally, an entry is added to the project\'s global metadata indicating which CIDR range the cluster is using.");
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes the cluster, including the Kubernetes endpoint and all worker\nnodes.\n\nFirewalls and routes that were configured during cluster creation\nare also deleted.\n\nOther Google Compute Engine resources that might be in use by the cluster,\nsuch as load balancer resources, are not deleted if they weren\'t present\nwhen the cluster was initially created.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes the cluster, including the Kubernetes endpoint and all worker nodes. Firewalls and routes that were configured during cluster creation are also deleted. Other Google Compute Engine resources that might be in use by the cluster, such as load balancer resources, are not deleted if they weren\'t present when the cluster was initially created.");
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
@@ -201,12 +201,12 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("list").about(
-                "Lists all clusters owned by a project in either the specified zone or all\nzones.",
+                "Lists all clusters owned by a project in either the specified zone or all zones.",
             );
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("locations").about("Sets the locations for a specific cluster.\nDeprecated. Use\n[projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/update)\ninstead.");
+            let mcmd = SubCommand::with_name("locations").about("Sets the locations for a specific cluster. Deprecated. Use [projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/update) instead.");
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
@@ -234,7 +234,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_master_auth").about("Sets master auth materials. Currently supports changing the admin password\nor a specific cluster, either via password generation or explicitly setting\nthe password.");
+            let mcmd = SubCommand::with_name("set_master_auth").about("Sets master auth materials. Currently supports changing the admin password or a specific cluster, either via password generation or explicitly setting the password.");
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
@@ -288,7 +288,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             node_pools3 = node_pools3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("rollback").about("Rolls back a previously Aborted or Failed NodePool upgrade.\nThis makes no changes if the last upgrade successfully completed.");
+            let mcmd = SubCommand::with_name("rollback").about("Rolls back a previously Aborted or Failed NodePool upgrade. This makes no changes if the last upgrade successfully completed.");
             node_pools3 = node_pools3.subcommand(mcmd);
         }
         {
@@ -302,8 +302,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             node_pools3 = node_pools3.subcommand(mcmd);
         }
         {
-            let mcmd =
-                SubCommand::with_name("set_size").about("Sets the size for a specific node pool.");
+            let mcmd = SubCommand::with_name("set_size").about("Sets the size for a specific node pool. The new size will be used for all replicas, including future replicas created by modifying NodePool.locations.");
             node_pools3 = node_pools3.subcommand(mcmd);
         }
         {
@@ -315,7 +314,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: get_openid_configuration");
         {
-            let mcmd = SubCommand::with_name("get_openid_configuration").about("Gets the OIDC discovery document for the cluster.\nSee the\n[OpenID Connect Discovery 1.0\nspecification](https://openid.net/specs/openid-connect-discovery-1_0.html)\nfor details.\nThis API is not yet intended for general use, and is not available for all\nclusters.");
+            let mcmd = SubCommand::with_name("get_openid_configuration").about("Gets the OIDC discovery document for the cluster. See the [OpenID Connect Discovery 1.0 specification](https://openid.net/specs/openid-connect-discovery-1_0.html) for details. This API is not yet intended for general use, and is not available for all clusters.");
             well_known3 = well_known3.subcommand(mcmd);
         }
         let mut node_pools3 = SubCommand::with_name("node_pools")
@@ -343,7 +342,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             node_pools3 = node_pools3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("rollback").about("Rolls back a previously Aborted or Failed NodePool upgrade.\nThis makes no changes if the last upgrade successfully completed.");
+            let mcmd = SubCommand::with_name("rollback").about("Rolls back a previously Aborted or Failed NodePool upgrade. This makes no changes if the last upgrade successfully completed.");
             node_pools3 = node_pools3.subcommand(mcmd);
         }
         {
@@ -352,8 +351,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             node_pools3 = node_pools3.subcommand(mcmd);
         }
         {
-            let mcmd =
-                SubCommand::with_name("set_size").about("Sets the size for a specific node pool.");
+            let mcmd = SubCommand::with_name("set_size").about("Sets the size for a specific node pool. The new size will be used for all replicas, including future replicas created by modifying NodePool.locations.");
             node_pools3 = node_pools3.subcommand(mcmd);
         }
         {

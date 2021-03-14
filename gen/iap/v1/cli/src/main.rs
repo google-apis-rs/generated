@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("iap1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200511")
+            .version("0.1.0-20210226")
             .about("Controls access to cloud applications running on Google Cloud Platform.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -40,7 +40,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: get_iam_policy, get_iap_settings, set_iam_policy, test_iam_permissions and update_iap_settings");
         {
-            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for an Identity-Aware Proxy protected\nresource.\nMore information about managing access via IAP can be found at:\nhttps://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api");
+            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for an Identity-Aware Proxy protected resource. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api");
             v_10 = v_10.subcommand(mcmd);
         }
         {
@@ -49,22 +49,22 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             v_10 = v_10.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy for an Identity-Aware Proxy protected\nresource. Replaces any existing policy.\nMore information about managing access via IAP can be found at:\nhttps://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces any existing policy. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api");
             v_10 = v_10.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the Identity-Aware Proxy protected\nresource.\nMore information about managing access via IAP can be found at:\nhttps://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api");
+            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the Identity-Aware Proxy protected resource. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api");
             v_10 = v_10.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update_iap_settings").about("Updates the IAP settings on a particular IAP protected resource. It\nreplaces all fields unless the `update_mask` is set.");
+            let mcmd = SubCommand::with_name("update_iap_settings").about("Updates the IAP settings on a particular IAP protected resource. It replaces all fields unless the `update_mask` is set.");
             v_10 = v_10.subcommand(mcmd);
         }
         let mut brands1 = SubCommand::with_name("brands")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, get and list");
         {
-            let mcmd = SubCommand::with_name("create").about("Constructs a new OAuth brand for the project if one does not exist.\nThe created brand is \"internal only\", meaning that OAuth clients created\nunder it only accept requests from users who belong to the same G Suite\norganization as the project. The brand is created in an un-reviewed status.\nNOTE: The \"internal only\" status can be manually changed in the Google\nCloud console. Requires that a brand does not already exist for the\nproject, and that the specified support email is owned by the caller.");
+            let mcmd = SubCommand::with_name("create").about("Constructs a new OAuth brand for the project if one does not exist. The created brand is \"internal only\", meaning that OAuth clients created under it only accept requests from users who belong to the same G Suite organization as the project. The brand is created in an un-reviewed status. NOTE: The \"internal only\" status can be manually changed in the Google Cloud console. Requires that a brand does not already exist for the project, and that the specified support email is owned by the caller.");
             brands1 = brands1.subcommand(mcmd);
         }
         {
@@ -82,15 +82,15 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .setting(AppSettings::ColoredHelp)
                 .about("methods: create, delete, get, list and reset_secret");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates an Identity Aware Proxy (IAP) OAuth client. The client is owned\nby IAP. Requires that the brand for the project exists and that it is\nset for internal-only use.");
+            let mcmd = SubCommand::with_name("create").about("Creates an Identity Aware Proxy (IAP) OAuth client. The client is owned by IAP. Requires that the brand for the project exists and that it is set for internal-only use.");
             identity_aware_proxy_clients2 = identity_aware_proxy_clients2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes an Identity Aware Proxy (IAP) OAuth client. Useful for removing\nobsolete clients, managing the number of clients in a given project, and\ncleaning up after tests. Requires that the client is owned by IAP.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes an Identity Aware Proxy (IAP) OAuth client. Useful for removing obsolete clients, managing the number of clients in a given project, and cleaning up after tests. Requires that the client is owned by IAP.");
             identity_aware_proxy_clients2 = identity_aware_proxy_clients2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Retrieves an Identity Aware Proxy (IAP) OAuth client.\nRequires that the client is owned by IAP.");
+            let mcmd = SubCommand::with_name("get").about("Retrieves an Identity Aware Proxy (IAP) OAuth client. Requires that the client is owned by IAP.");
             identity_aware_proxy_clients2 = identity_aware_proxy_clients2.subcommand(mcmd);
         }
         {
@@ -99,7 +99,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             identity_aware_proxy_clients2 = identity_aware_proxy_clients2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("reset_secret").about("Resets an Identity Aware Proxy (IAP) OAuth client secret. Useful if the\nsecret was compromised. Requires that the client is owned by IAP.");
+            let mcmd = SubCommand::with_name("reset_secret").about("Resets an Identity Aware Proxy (IAP) OAuth client secret. Useful if the secret was compromised. Requires that the client is owned by IAP.");
             identity_aware_proxy_clients2 = identity_aware_proxy_clients2.subcommand(mcmd);
         }
         brands1 = brands1.subcommand(identity_aware_proxy_clients2);

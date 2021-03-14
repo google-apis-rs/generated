@@ -41,14 +41,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub account_id: ::std::option::Option<String>,
-        #[doc = "The fingerprint of the GTM Account as computed at storage time.\nThis value is recomputed whenever the account is modified."]
+        #[doc = "The fingerprint of the GTM Account as computed at storage time. This value is recomputed whenever the account is modified."]
         #[serde(
             rename = "fingerprint",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fingerprint: ::std::option::Option<String>,
-        #[doc = "Account display name.\n@mutable tagmanager.accounts.create\n@mutable tagmanager.accounts.update"]
+        #[doc = "Account display name. @mutable tagmanager.accounts.create @mutable tagmanager.accounts.update"]
         #[serde(
             rename = "name",
             default,
@@ -62,7 +62,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub path: ::std::option::Option<String>,
-        #[doc = "Whether the account shares data anonymously with Google and others.\nThis flag enables benchmarking by sharing your data in an anonymous form.\nGoogle will remove all identifiable information about your website, combine\nthe data with hundreds of other anonymous sites and report aggregate trends\nin the benchmarking service.\n@mutable tagmanager.accounts.create\n@mutable tagmanager.accounts.update"]
+        #[doc = "Whether the account shares data anonymously with Google and others. This flag enables benchmarking by sharing your data in an anonymous form. Google will remove all identifiable information about your website, combine the data with hundreds of other anonymous sites and report aggregate trends in the benchmarking service. @mutable tagmanager.accounts.create @mutable tagmanager.accounts.update"]
         #[serde(
             rename = "shareData",
             default,
@@ -100,7 +100,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AccountAccess {
-        #[doc = "Whether the user has no access, user access, or admin access to an account.\n@mutable tagmanager.accounts.permissions.create\n@mutable tagmanager.accounts.permissions.update"]
+        #[doc = "Whether the user has no access, user access, or admin access to an account. @mutable tagmanager.accounts.permissions.create @mutable tagmanager.accounts.permissions.update"]
         #[serde(
             rename = "permission",
             default,
@@ -242,7 +242,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub path: ::std::option::Option<String>,
-        #[doc = "Type of built-in variable.\n@required.tagmanager.accounts.containers.workspaces.built_in_variable.update\n@mutable tagmanager.accounts.containers.workspaces.built_in_variable.update"]
+        #[doc = "Type of built-in variable. @required.tagmanager.accounts.containers.workspaces.built_in_variable.update @mutable tagmanager.accounts.containers.workspaces.built_in_variable.update"]
         #[serde(
             rename = "type",
             default,
@@ -938,27 +938,41 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_id: ::std::option::Option<String>,
-        #[doc = "The fingerprint of the GTM Client as computed at storage time.\nThis value is recomputed whenever the client is modified."]
+        #[doc = "The fingerprint of the GTM Client as computed at storage time. This value is recomputed whenever the client is modified."]
         #[serde(
             rename = "fingerprint",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fingerprint: ::std::option::Option<String>,
-        #[doc = "Client display name.\n@mutable tagmanager.accounts.containers.workspaces.clients.create\n@mutable tagmanager.accounts.containers.workspaces.clients.update"]
+        #[doc = "Client display name. @mutable tagmanager.accounts.containers.workspaces.clients.create @mutable tagmanager.accounts.containers.workspaces.clients.update"]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "The client's parameters.\n@mutable tagmanager.accounts.containers.workspaces.clients.create\n@mutable tagmanager.accounts.containers.workspaces.clients.update"]
+        #[doc = "User notes on how to apply this tag in the container. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update"]
+        #[serde(
+            rename = "notes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub notes: ::std::option::Option<String>,
+        #[doc = "The client's parameters. @mutable tagmanager.accounts.containers.workspaces.clients.create @mutable tagmanager.accounts.containers.workspaces.clients.update"]
         #[serde(
             rename = "parameter",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub parameter: ::std::option::Option<Vec<crate::schemas::Parameter>>,
+        #[doc = "Parent folder id."]
+        #[serde(
+            rename = "parentFolderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub parent_folder_id: ::std::option::Option<String>,
         #[doc = "GTM client's API relative path."]
         #[serde(
             rename = "path",
@@ -966,14 +980,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub path: ::std::option::Option<String>,
-        #[doc = "Priority determines relative firing order.\n@mutable tagmanager.accounts.containers.workspaces.clients.create\n@mutable tagmanager.accounts.containers.workspaces.clients.update"]
+        #[doc = "Priority determines relative firing order. @mutable tagmanager.accounts.containers.workspaces.clients.create @mutable tagmanager.accounts.containers.workspaces.clients.update"]
         #[serde(
             rename = "priority",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub priority: ::std::option::Option<i32>,
-        #[doc = "Client type.\n@mutable tagmanager.accounts.containers.workspaces.clients.create\n@mutable tagmanager.accounts.containers.workspaces.clients.update"]
+        #[doc = "Client type. @mutable tagmanager.accounts.containers.workspaces.clients.create @mutable tagmanager.accounts.containers.workspaces.clients.update"]
         #[serde(
             rename = "type",
             default,
@@ -1018,14 +1032,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Condition {
-        #[doc = "A list of named parameters (key/value), depending on the condition's type.\nNotes:<ul>\n\n<li>For binary operators, include parameters named <code>arg0</code> and\n   <code>arg1</code> for specifying the left and right operands,\n   respectively.</li>\n<li>At this time, the left operand (<code>arg0</code>) must be a reference\n    to a variable.</li>\n<li>For case-insensitive Regex matching, include a boolean parameter named\n    <code>ignore_case</code> that is set to <code>true</code>.\n    If not specified or set to any other value, the matching will be case\n    sensitive.</li>\n<li>To negate an operator, include a boolean parameter named\n    <code>negate</code> boolean parameter that is set to <code>true</code>.\n    </li>\n</ul>\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "A list of named parameters (key/value), depending on the condition's type. Notes: - For binary operators, include parameters named arg0 and arg1 for specifying the left and right operands, respectively. - At this time, the left operand (arg0) must be a reference to a variable. - For case-insensitive Regex matching, include a boolean parameter named ignore_case that is set to true. If not specified or set to any other value, the matching will be case sensitive. - To negate an operator, include a boolean parameter named negate boolean parameter that is set to true. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "parameter",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub parameter: ::std::option::Option<Vec<crate::schemas::Parameter>>,
-        #[doc = "The type of operator for this condition.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "The type of operator for this condition. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "type",
             default,
@@ -1056,7 +1070,7 @@ pub mod schemas {
         LessOrEquals,
         MatchRegex,
         StartsWith,
-        #[doc = "NOTE(lanzone): When defining a ConditionType here, don't forget to also\ndefine a matching PredicateType (in condition.proto)."]
+        #[doc = "NOTE(lanzone): When defining a ConditionType here, don't forget to also define a matching PredicateType (in condition.proto)."]
         UrlMatches,
     }
     impl ConditionType {
@@ -1180,28 +1194,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_id: ::std::option::Option<String>,
-        #[doc = "List of domain names associated with the Container.\n@mutable tagmanager.accounts.containers.create\n@mutable tagmanager.accounts.containers.update"]
+        #[doc = "List of domain names associated with the Container. @mutable tagmanager.accounts.containers.create @mutable tagmanager.accounts.containers.update"]
         #[serde(
             rename = "domainName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub domain_name: ::std::option::Option<Vec<String>>,
-        #[doc = "The fingerprint of the GTM Container as computed at storage time.  This\nvalue is recomputed whenever the account is modified."]
+        #[doc = "The fingerprint of the GTM Container as computed at storage time. This value is recomputed whenever the account is modified."]
         #[serde(
             rename = "fingerprint",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fingerprint: ::std::option::Option<String>,
-        #[doc = "Container display name.\n@mutable tagmanager.accounts.containers.create\n@mutable tagmanager.accounts.containers.update"]
+        #[doc = "Container display name. @mutable tagmanager.accounts.containers.create @mutable tagmanager.accounts.containers.update"]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Container Notes.\n@mutable tagmanager.accounts.containers.create\n@mutable tagmanager.accounts.containers.update"]
+        #[doc = "Container Notes. @mutable tagmanager.accounts.containers.create @mutable tagmanager.accounts.containers.update"]
         #[serde(
             rename = "notes",
             default,
@@ -1229,7 +1243,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub tag_manager_url: ::std::option::Option<String>,
-        #[doc = "List of Usage Contexts for the Container. Valid values include: <code>web,\nandroid, or ios</code>.\n@mutable tagmanager.accounts.containers.create\n@mutable tagmanager.accounts.containers.update"]
+        #[doc = "List of Usage Contexts for the Container. Valid values include: web, android, or ios. @mutable tagmanager.accounts.containers.create @mutable tagmanager.accounts.containers.update"]
         #[serde(
             rename = "usageContext",
             default,
@@ -1254,6 +1268,7 @@ pub mod schemas {
         AndroidSdk5,
         Ios,
         IosSdk5,
+        Server,
         UsageContextUnspecified,
         Web,
     }
@@ -1265,6 +1280,7 @@ pub mod schemas {
                 ContainerUsageContextItems::AndroidSdk5 => "androidSdk5",
                 ContainerUsageContextItems::Ios => "ios",
                 ContainerUsageContextItems::IosSdk5 => "iosSdk5",
+                ContainerUsageContextItems::Server => "server",
                 ContainerUsageContextItems::UsageContextUnspecified => "usageContextUnspecified",
                 ContainerUsageContextItems::Web => "web",
             }
@@ -1284,6 +1300,7 @@ pub mod schemas {
                 "androidSdk5" => ContainerUsageContextItems::AndroidSdk5,
                 "ios" => ContainerUsageContextItems::Ios,
                 "iosSdk5" => ContainerUsageContextItems::IosSdk5,
+                "server" => ContainerUsageContextItems::Server,
                 "usageContextUnspecified" => ContainerUsageContextItems::UsageContextUnspecified,
                 "web" => ContainerUsageContextItems::Web,
                 _ => return Err(()),
@@ -1315,6 +1332,7 @@ pub mod schemas {
                 "androidSdk5" => ContainerUsageContextItems::AndroidSdk5,
                 "ios" => ContainerUsageContextItems::Ios,
                 "iosSdk5" => ContainerUsageContextItems::IosSdk5,
+                "server" => ContainerUsageContextItems::Server,
                 "usageContextUnspecified" => ContainerUsageContextItems::UsageContextUnspecified,
                 "web" => ContainerUsageContextItems::Web,
                 _ => {
@@ -1349,14 +1367,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ContainerAccess {
-        #[doc = "GTM Container ID.\n@mutable tagmanager.accounts.permissions.create\n@mutable tagmanager.accounts.permissions.update"]
+        #[doc = "GTM Container ID. @mutable tagmanager.accounts.permissions.create @mutable tagmanager.accounts.permissions.update"]
         #[serde(
             rename = "containerId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_id: ::std::option::Option<String>,
-        #[doc = "List of Container permissions.\n@mutable tagmanager.accounts.permissions.create\n@mutable tagmanager.accounts.permissions.update"]
+        #[doc = "List of Container permissions. @mutable tagmanager.accounts.permissions.create @mutable tagmanager.accounts.permissions.update"]
         #[serde(
             rename = "permission",
             default,
@@ -1534,14 +1552,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub deleted: ::std::option::Option<bool>,
-        #[doc = "Container version description.\n@mutable tagmanager.accounts.containers.versions.update"]
+        #[doc = "Container version description. @mutable tagmanager.accounts.containers.versions.update"]
         #[serde(
             rename = "description",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "The fingerprint of the GTM Container Version as computed at\nstorage time. This value is recomputed whenever the container version is\nmodified."]
+        #[doc = "The fingerprint of the GTM Container Version as computed at storage time. This value is recomputed whenever the container version is modified."]
         #[serde(
             rename = "fingerprint",
             default,
@@ -1555,7 +1573,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub folder: ::std::option::Option<Vec<crate::schemas::Folder>>,
-        #[doc = "Container version display name.\n@mutable tagmanager.accounts.containers.versions.update"]
+        #[doc = "Container version display name. @mutable tagmanager.accounts.containers.versions.update"]
         #[serde(
             rename = "name",
             default,
@@ -1663,6 +1681,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
+        #[doc = "Number of clients in the container version."]
+        #[serde(
+            rename = "numClients",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub num_clients: ::std::option::Option<String>,
         #[doc = "Number of custom templates in the container version."]
         #[serde(
             rename = "numCustomTemplates",
@@ -1826,14 +1851,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_version: ::std::option::Option<crate::schemas::ContainerVersion>,
-        #[doc = "Auto generated workspace path created as a result of version creation. This\nfield should only be populated if the created version was not a quick\npreview."]
+        #[doc = "Auto generated workspace path created as a result of version creation. This field should only be populated if the created version was not a quick preview."]
         #[serde(
             rename = "newWorkspacePath",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub new_workspace_path: ::std::option::Option<String>,
-        #[doc = "Whether version creation failed when syncing the workspace to the latest\ncontainer version."]
+        #[doc = "Whether version creation failed when syncing the workspace to the latest container version."]
         #[serde(
             rename = "syncStatus",
             default,
@@ -1878,7 +1903,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_id: ::std::option::Option<String>,
-        #[doc = "The fingerprint of the GTM Custom Template as computed at storage time.\nThis value is recomputed whenever the template is modified."]
+        #[doc = "The fingerprint of the GTM Custom Template as computed at storage time. This value is recomputed whenever the template is modified."]
         #[serde(
             rename = "fingerprint",
             default,
@@ -1965,7 +1990,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub change_status: ::std::option::Option<crate::schemas::EntityChangeStatus>,
-        #[doc = "The Folder being represented by the entity."]
+        #[doc = "The client being represented by the entity."]
+        #[serde(
+            rename = "client",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub client: ::std::option::Option<crate::schemas::Client>,
+        #[doc = "The folder being represented by the entity."]
         #[serde(
             rename = "folder",
             default,
@@ -2137,14 +2169,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_version_id: ::std::option::Option<String>,
-        #[doc = "The environment description. Can be set or changed only on USER type\nenvironments.\n@mutable tagmanager.accounts.containers.environments.create\n@mutable tagmanager.accounts.containers.environments.update"]
+        #[doc = "The environment description. Can be set or changed only on USER type environments. @mutable tagmanager.accounts.containers.environments.create @mutable tagmanager.accounts.containers.environments.update"]
         #[serde(
             rename = "description",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "Whether or not to enable debug by default for the environment.\n@mutable tagmanager.accounts.containers.environments.create\n@mutable tagmanager.accounts.containers.environments.update"]
+        #[doc = "Whether or not to enable debug by default for the environment. @mutable tagmanager.accounts.containers.environments.create @mutable tagmanager.accounts.containers.environments.update"]
         #[serde(
             rename = "enableDebug",
             default,
@@ -2158,14 +2190,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub environment_id: ::std::option::Option<String>,
-        #[doc = "The fingerprint of the GTM environment as computed at storage time.\nThis value is recomputed whenever the environment is modified."]
+        #[doc = "The fingerprint of the GTM environment as computed at storage time. This value is recomputed whenever the environment is modified."]
         #[serde(
             rename = "fingerprint",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fingerprint: ::std::option::Option<String>,
-        #[doc = "The environment display name. Can be set or changed only on USER type\nenvironments.\n@mutable tagmanager.accounts.containers.environments.create\n@mutable tagmanager.accounts.containers.environments.update"]
+        #[doc = "The environment display name. Can be set or changed only on USER type environments. @mutable tagmanager.accounts.containers.environments.create @mutable tagmanager.accounts.containers.environments.update"]
         #[serde(
             rename = "name",
             default,
@@ -2193,7 +2225,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub tag_manager_url: ::std::option::Option<String>,
-        #[doc = "Default preview page url for the environment.\n@mutable tagmanager.accounts.containers.environments.create\n@mutable tagmanager.accounts.containers.environments.update"]
+        #[doc = "Default preview page url for the environment. @mutable tagmanager.accounts.containers.environments.create @mutable tagmanager.accounts.containers.environments.update"]
         #[serde(
             rename = "url",
             default,
@@ -2226,7 +2258,7 @@ pub mod schemas {
         Live,
         #[doc = "Points to a user defined environment."]
         User,
-        #[doc = "Automatically managed environment that points to a workspace preview or\nversion created by a workspace."]
+        #[doc = "Automatically managed environment that points to a workspace preview or version created by a workspace."]
         Workspace,
     }
     impl EnvironmentType {
@@ -2326,7 +2358,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_id: ::std::option::Option<String>,
-        #[doc = "The fingerprint of the GTM Folder as computed at storage time.\nThis value is recomputed whenever the folder is modified."]
+        #[doc = "The fingerprint of the GTM Folder as computed at storage time. This value is recomputed whenever the folder is modified."]
         #[serde(
             rename = "fingerprint",
             default,
@@ -2340,14 +2372,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub folder_id: ::std::option::Option<String>,
-        #[doc = "Folder display name.\n@mutable tagmanager.accounts.containers.workspaces.folders.create\n@mutable tagmanager.accounts.containers.workspaces.folders.update"]
+        #[doc = "Folder display name. @mutable tagmanager.accounts.containers.workspaces.folders.create @mutable tagmanager.accounts.containers.workspaces.folders.update"]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "User notes on how to apply this folder in the container.\n@mutable tagmanager.accounts.containers.workspaces.folders.create\n@mutable tagmanager.accounts.containers.workspaces.folders.update"]
+        #[doc = "User notes on how to apply this folder in the container. @mutable tagmanager.accounts.containers.workspaces.folders.create @mutable tagmanager.accounts.containers.workspaces.folders.update"]
         #[serde(
             rename = "notes",
             default,
@@ -2458,7 +2490,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub host: ::std::option::Option<String>,
-        #[doc = "If a user has manually edited the community  gallery template."]
+        #[doc = "If a user has manually edited the community gallery template."]
         #[serde(
             rename = "isModified",
             default,
@@ -2479,7 +2511,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub repository: ::std::option::Option<String>,
-        #[doc = "The signature of the community gallery template as computed at import time.\nThis value is recomputed whenever the template is updated from the gallery."]
+        #[doc = "The signature of the community gallery template as computed at import time. This value is recomputed whenever the template is updated from the gallery."]
         #[serde(
             rename = "signature",
             default,
@@ -3050,14 +3082,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct MergeConflict {
-        #[doc = "The base version entity (since the latest sync operation) that has\nconflicting changes compared to the workspace. If this field is missing,\nit means the workspace entity is deleted from the base version."]
+        #[doc = "The base version entity (since the latest sync operation) that has conflicting changes compared to the workspace. If this field is missing, it means the workspace entity is deleted from the base version."]
         #[serde(
             rename = "entityInBaseVersion",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub entity_in_base_version: ::std::option::Option<crate::schemas::Entity>,
-        #[doc = "The workspace entity that has conflicting changes compared to the\nbase version. If an entity is deleted in a workspace, it will still\nappear with a deleted change status."]
+        #[doc = "The workspace entity that has conflicting changes compared to the base version. If an entity is deleted in a workspace, it will still appear with a deleted change status."]
         #[serde(
             rename = "entityInWorkspace",
             default,
@@ -3088,35 +3120,35 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Parameter {
-        #[doc = "The named key that uniquely identifies a parameter.  Required for top-level\nparameters, as well as map values.  Ignored for list values.\n@mutable tagmanager.accounts.containers.workspaces.variables.create\n@mutable tagmanager.accounts.containers.workspaces.variables.update\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update\n@mutable tagmanager.accounts.containers.workspaces.tags.create\n@mutable tagmanager.accounts.containers.workspaces.tags.update"]
+        #[doc = "The named key that uniquely identifies a parameter. Required for top-level parameters, as well as map values. Ignored for list values. @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable tagmanager.accounts.containers.workspaces.variables.update @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update"]
         #[serde(
             rename = "key",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub key: ::std::option::Option<String>,
-        #[doc = "This list parameter's parameters (keys will be ignored).\n@mutable tagmanager.accounts.containers.workspaces.variables.create\n@mutable tagmanager.accounts.containers.workspaces.variables.update\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update\n@mutable tagmanager.accounts.containers.workspaces.tags.create\n@mutable tagmanager.accounts.containers.workspaces.tags.update"]
+        #[doc = "This list parameter's parameters (keys will be ignored). @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable tagmanager.accounts.containers.workspaces.variables.update @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update"]
         #[serde(
             rename = "list",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub list: ::std::option::Option<Vec<crate::schemas::Parameter>>,
-        #[doc = "This map parameter's parameters (must have keys; keys must be unique).\n@mutable tagmanager.accounts.containers.workspaces.variables.create\n@mutable tagmanager.accounts.containers.workspaces.variables.update\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update\n@mutable tagmanager.accounts.containers.workspaces.tags.create\n@mutable tagmanager.accounts.containers.workspaces.tags.update"]
+        #[doc = "This map parameter's parameters (must have keys; keys must be unique). @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable tagmanager.accounts.containers.workspaces.variables.update @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update"]
         #[serde(
             rename = "map",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub map: ::std::option::Option<Vec<crate::schemas::Parameter>>,
-        #[doc = "The parameter type.  Valid values are:<ul>\n\n<li><code>boolean</code>: The value represents a boolean, represented as\n    'true' or 'false'</li>\n<li><code>integer</code>: The value represents a 64-bit signed integer\n    value, in base 10</li>\n<li><code>list</code>: A list of parameters should be specified</li>\n<li><code>map</code>: A map of parameters should be specified</li>\n<li><code>template</code>: The value represents any text; this can include\n    variable references (even variable references that might return\n    non-string types)</li>\n<li><code>trigger_reference</code>: The value represents a trigger,\n    represented as the trigger id</li>\n<li><code>tag_reference</code>: The value represents a tag, represented as\n    the tag name</li>\n</ul>\n@mutable tagmanager.accounts.containers.workspaces.variables.create\n@mutable tagmanager.accounts.containers.workspaces.variables.update\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update\n@mutable tagmanager.accounts.containers.workspaces.tags.create\n@mutable tagmanager.accounts.containers.workspaces.tags.update"]
+        #[doc = "The parameter type. Valid values are: - boolean: The value represents a boolean, represented as 'true' or 'false' - integer: The value represents a 64-bit signed integer value, in base 10 - list: A list of parameters should be specified - map: A map of parameters should be specified - template: The value represents any text; this can include variable references (even variable references that might return non-string types) - trigger_reference: The value represents a trigger, represented as the trigger id - tag_reference: The value represents a tag, represented as the tag name @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable tagmanager.accounts.containers.workspaces.variables.update @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update"]
         #[serde(
             rename = "type",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<crate::schemas::ParameterType>,
-        #[doc = "A parameter's value (may contain variable references such as\n\"{{myVariable}}\")\nas appropriate to the specified type.\n@mutable tagmanager.accounts.containers.workspaces.variables.create\n@mutable tagmanager.accounts.containers.workspaces.variables.update\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update\n@mutable tagmanager.accounts.containers.workspaces.tags.create\n@mutable tagmanager.accounts.containers.workspaces.tags.update"]
+        #[doc = "A parameter's value (may contain variable references such as \"{{myVariable}}\") as appropriate to the specified type. @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable tagmanager.accounts.containers.workspaces.variables.update @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update"]
         #[serde(
             rename = "value",
             default,
@@ -3293,7 +3325,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_version: ::std::option::Option<crate::schemas::ContainerVersion>,
-        #[doc = "Whether quick previewing failed when syncing the workspace to the latest\ncontainer version."]
+        #[doc = "Whether quick previewing failed when syncing the workspace to the latest container version."]
         #[serde(
             rename = "syncStatus",
             default,
@@ -3355,7 +3387,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RevertFolderResponse {
-        #[doc = "Folder as it appears in the latest container version since the last\nworkspace synchronization operation. If no folder is present, that means\nthe folder was deleted in the latest container version."]
+        #[doc = "Folder as it appears in the latest container version since the last workspace synchronization operation. If no folder is present, that means the folder was deleted in the latest container version."]
         #[serde(
             rename = "folder",
             default,
@@ -3386,7 +3418,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RevertTagResponse {
-        #[doc = "Tag as it appears in the latest container version since the last\nworkspace synchronization operation. If no tag is present, that means\nthe tag was deleted in the latest container version."]
+        #[doc = "Tag as it appears in the latest container version since the last workspace synchronization operation. If no tag is present, that means the tag was deleted in the latest container version."]
         #[serde(
             rename = "tag",
             default,
@@ -3417,7 +3449,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RevertTemplateResponse {
-        #[doc = "Template as it appears in the latest container version since the last\nworkspace synchronization operation. If no template is present, that means\nthe template was deleted in the latest container version."]
+        #[doc = "Template as it appears in the latest container version since the last workspace synchronization operation. If no template is present, that means the template was deleted in the latest container version."]
         #[serde(
             rename = "template",
             default,
@@ -3448,7 +3480,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RevertTriggerResponse {
-        #[doc = "Trigger as it appears in the latest container version since the last\nworkspace synchronization operation. If no trigger is present, that means\nthe trigger was deleted in the latest container version."]
+        #[doc = "Trigger as it appears in the latest container version since the last workspace synchronization operation. If no trigger is present, that means the trigger was deleted in the latest container version."]
         #[serde(
             rename = "trigger",
             default,
@@ -3479,7 +3511,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RevertVariableResponse {
-        #[doc = "Variable as it appears in the latest container version since the last\nworkspace synchronization operation. If no variable is present, that means\nthe variable was deleted in the latest container version."]
+        #[doc = "Variable as it appears in the latest container version since the last workspace synchronization operation. If no variable is present, that means the variable was deleted in the latest container version."]
         #[serde(
             rename = "variable",
             default,
@@ -3510,7 +3542,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RevertZoneResponse {
-        #[doc = "Zone as it appears in the latest container version since the last\nworkspace synchronization operation. If no zone is present, that means\nthe zone was deleted in the latest container version."]
+        #[doc = "Zone as it appears in the latest container version since the last workspace synchronization operation. If no zone is present, that means the zone was deleted in the latest container version."]
         #[serde(
             rename = "zone",
             default,
@@ -3541,7 +3573,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SetupTag {
-        #[doc = "If true, fire the main tag if and only if the setup tag fires\nsuccessfully.\nIf false, fire the main tag regardless of setup tag firing status."]
+        #[doc = "If true, fire the main tag if and only if the setup tag fires successfully. If false, fire the main tag regardless of setup tag firing status."]
         #[serde(
             rename = "stopOnSetupFailure",
             default,
@@ -3617,7 +3649,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SyncWorkspaceResponse {
-        #[doc = "The merge conflict after sync.\nIf this field is not empty, the sync is still treated as successful.\nBut a version cannot be created until all conflicts are resolved."]
+        #[doc = "The merge conflict after sync. If this field is not empty, the sync is still treated as successful. But a version cannot be created until all conflicts are resolved."]
         #[serde(
             rename = "mergeConflict",
             default,
@@ -3662,14 +3694,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub account_id: ::std::option::Option<String>,
-        #[doc = "Blocking rule IDs. If any of the listed rules evaluate to true, the tag\nwill not fire.\n@mutable tagmanager.accounts.containers.workspaces.tags.create\n@mutable tagmanager.accounts.containers.workspaces.tags.update"]
+        #[doc = "Blocking rule IDs. If any of the listed rules evaluate to true, the tag will not fire. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update"]
         #[serde(
             rename = "blockingRuleId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub blocking_rule_id: ::std::option::Option<Vec<String>>,
-        #[doc = "Blocking trigger IDs. If any of the listed triggers evaluate to true, the\ntag will not fire.\n@mutable tagmanager.accounts.containers.workspaces.tags.create\n@mutable tagmanager.accounts.containers.workspaces.tags.update"]
+        #[doc = "Blocking trigger IDs. If any of the listed triggers evaluate to true, the tag will not fire. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update"]
         #[serde(
             rename = "blockingTriggerId",
             default,
@@ -3683,63 +3715,63 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_id: ::std::option::Option<String>,
-        #[doc = "The fingerprint of the GTM Tag as computed at storage time.\nThis value is recomputed whenever the tag is modified."]
+        #[doc = "The fingerprint of the GTM Tag as computed at storage time. This value is recomputed whenever the tag is modified."]
         #[serde(
             rename = "fingerprint",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fingerprint: ::std::option::Option<String>,
-        #[doc = "Firing rule IDs. A tag will fire when any of the listed rules are true and\nall of its <code>blockingRuleIds</code> (if any specified) are false.\n@mutable tagmanager.accounts.containers.workspaces.tags.create\n@mutable tagmanager.accounts.containers.workspaces.tags.update"]
+        #[doc = "Firing rule IDs. A tag will fire when any of the listed rules are true and all of its blockingRuleIds (if any specified) are false. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update"]
         #[serde(
             rename = "firingRuleId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub firing_rule_id: ::std::option::Option<Vec<String>>,
-        #[doc = "Firing trigger IDs. A tag will fire when any of the listed triggers are\ntrue and all of its <code>blockingTriggerIds</code> (if any specified) are\nfalse.\n@mutable tagmanager.accounts.containers.workspaces.tags.create\n@mutable tagmanager.accounts.containers.workspaces.tags.update"]
+        #[doc = "Firing trigger IDs. A tag will fire when any of the listed triggers are true and all of its blockingTriggerIds (if any specified) are false. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update"]
         #[serde(
             rename = "firingTriggerId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub firing_trigger_id: ::std::option::Option<Vec<String>>,
-        #[doc = "If set to true, this tag will only fire in the live environment (e.g. not\nin preview or debug mode).\n@mutable tagmanager.accounts.containers.workspaces.tags.create\n@mutable tagmanager.accounts.containers.workspaces.tags.update"]
+        #[doc = "If set to true, this tag will only fire in the live environment (e.g. not in preview or debug mode). @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update"]
         #[serde(
             rename = "liveOnly",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub live_only: ::std::option::Option<bool>,
-        #[doc = "A map of key-value pairs of tag metadata to be included in the event data\nfor tag monitoring.\nNotes:<ul>\n\n<li>This parameter must be type <code>MAP</code>.</li>\n<li>Each parameter in the map are type <code>TEMPLATE</code>, however\ncannot contain variable references.</li>\n</ul>\n@mutable tagmanager.accounts.containers.workspaces.tags.create\n@mutable tagmanager.accounts.containers.workspaces.tags.update"]
+        #[doc = "A map of key-value pairs of tag metadata to be included in the event data for tag monitoring. Notes: - This parameter must be type MAP. - Each parameter in the map are type TEMPLATE, however cannot contain variable references. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update"]
         #[serde(
             rename = "monitoringMetadata",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub monitoring_metadata: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "If non-empty, then the tag display name will be included in the monitoring\nmetadata map using the key specified.\n@mutable tagmanager.accounts.containers.workspaces.tags.create\n@mutable tagmanager.accounts.containers.workspaces.tags.update"]
+        #[doc = "If non-empty, then the tag display name will be included in the monitoring metadata map using the key specified. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update"]
         #[serde(
             rename = "monitoringMetadataTagNameKey",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub monitoring_metadata_tag_name_key: ::std::option::Option<String>,
-        #[doc = "Tag display name.\n@mutable tagmanager.accounts.containers.workspaces.tags.create\n@mutable tagmanager.accounts.containers.workspaces.tags.update"]
+        #[doc = "Tag display name. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update"]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "User notes on how to apply this tag in the container.\n@mutable tagmanager.accounts.containers.workspaces.tags.create\n@mutable tagmanager.accounts.containers.workspaces.tags.update"]
+        #[doc = "User notes on how to apply this tag in the container. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update"]
         #[serde(
             rename = "notes",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub notes: ::std::option::Option<String>,
-        #[doc = "The tag's parameters.\n@mutable tagmanager.accounts.containers.workspaces.tags.create\n@mutable tagmanager.accounts.containers.workspaces.tags.update"]
+        #[doc = "The tag's parameters. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update"]
         #[serde(
             rename = "parameter",
             default,
@@ -3760,28 +3792,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub path: ::std::option::Option<String>,
-        #[doc = "Indicates whether the tag is paused, which prevents the tag from firing.\n@mutable tagmanager.accounts.containers.workspaces.tags.create\n@mutable tagmanager.accounts.containers.workspaces.tags.update"]
+        #[doc = "Indicates whether the tag is paused, which prevents the tag from firing. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update"]
         #[serde(
             rename = "paused",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub paused: ::std::option::Option<bool>,
-        #[doc = "User defined numeric priority of the tag. Tags are fired asynchronously in\norder of priority. Tags with higher numeric value fire first. A tag's\npriority can be a positive or negative value. The default value is 0.\n@mutable tagmanager.accounts.containers.workspaces.tags.create\n@mutable tagmanager.accounts.containers.workspaces.tags.update"]
+        #[doc = "User defined numeric priority of the tag. Tags are fired asynchronously in order of priority. Tags with higher numeric value fire first. A tag's priority can be a positive or negative value. The default value is 0. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update"]
         #[serde(
             rename = "priority",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub priority: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "GTM Tag Type.\n@mutable tagmanager.accounts.containers.workspaces.tags.create\n@mutable tagmanager.accounts.containers.workspaces.tags.update"]
+        #[doc = "GTM Tag Type. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update"]
         #[serde(
             rename = "type",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<String>,
-        #[doc = "The end timestamp in milliseconds to schedule a tag.\n@mutable tagmanager.accounts.containers.workspaces.tags.create\n@mutable tagmanager.accounts.containers.workspaces.tags.update"]
+        #[doc = "The end timestamp in milliseconds to schedule a tag. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update"]
         #[serde(
             rename = "scheduleEndMs",
             default,
@@ -3789,7 +3821,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub schedule_end_ms: ::std::option::Option<i64>,
-        #[doc = "The start timestamp in milliseconds to schedule a tag.\n@mutable tagmanager.accounts.containers.workspaces.tags.create\n@mutable tagmanager.accounts.containers.workspaces.tags.update"]
+        #[doc = "The start timestamp in milliseconds to schedule a tag. @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable tagmanager.accounts.containers.workspaces.tags.update"]
         #[serde(
             rename = "scheduleStartMs",
             default,
@@ -3852,7 +3884,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TagTagFiringOption {
-        #[doc = "Tag can only be fired per event but can be fired multiple times per load\n(e.g., app load or page load)."]
+        #[doc = "Tag can only be fired per event but can be fired multiple times per load (e.g., app load or page load)."]
         OncePerEvent,
         #[doc = "Tag can only be fired per load (e.g., app load or page load)."]
         OncePerLoad,
@@ -3943,7 +3975,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TeardownTag {
-        #[doc = "If true, fire the teardown tag if and only if the main tag fires\nsuccessfully.\nIf false, fire the teardown tag regardless of main tag firing status."]
+        #[doc = "If true, fire the teardown tag if and only if the main tag fires successfully. If false, fire the teardown tag regardless of main tag firing status."]
         #[serde(
             rename = "stopTeardownOnFailure",
             default,
@@ -3988,14 +4020,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub account_id: ::std::option::Option<String>,
-        #[doc = "Used in the case of auto event tracking.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "Used in the case of auto event tracking. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "autoEventFilter",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub auto_event_filter: ::std::option::Option<Vec<crate::schemas::Condition>>,
-        #[doc = "Whether or not we should only fire tags if the form submit or link click\nevent is not cancelled by some other event handler (e.g. because of\nvalidation). Only valid for Form Submission and Link Click triggers.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "Whether or not we should only fire tags if the form submit or link click event is not cancelled by some other event handler (e.g. because of validation). Only valid for Form Submission and Link Click triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "checkValidation",
             default,
@@ -4009,91 +4041,91 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_id: ::std::option::Option<String>,
-        #[doc = "A visibility trigger minimum continuous visible time (in milliseconds).\nOnly valid for AMP Visibility trigger.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "A visibility trigger minimum continuous visible time (in milliseconds). Only valid for AMP Visibility trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "continuousTimeMinMilliseconds",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub continuous_time_min_milliseconds: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "Used in the case of custom event, which is fired iff all Conditions are\ntrue.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "Used in the case of custom event, which is fired iff all Conditions are true. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "customEventFilter",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub custom_event_filter: ::std::option::Option<Vec<crate::schemas::Condition>>,
-        #[doc = "Name of the GTM event that is fired. Only valid for Timer triggers.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "Name of the GTM event that is fired. Only valid for Timer triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "eventName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub event_name: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "The trigger will only fire iff all Conditions are true.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "The trigger will only fire iff all Conditions are true. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "filter",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub filter: ::std::option::Option<Vec<crate::schemas::Condition>>,
-        #[doc = "The fingerprint of the GTM Trigger as computed at storage time.\nThis value is recomputed whenever the trigger is modified."]
+        #[doc = "The fingerprint of the GTM Trigger as computed at storage time. This value is recomputed whenever the trigger is modified."]
         #[serde(
             rename = "fingerprint",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fingerprint: ::std::option::Option<String>,
-        #[doc = "List of integer percentage values for scroll triggers. The trigger will\nfire when each percentage is reached when the view is scrolled\nhorizontally. Only valid for AMP scroll triggers.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled horizontally. Only valid for AMP scroll triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "horizontalScrollPercentageList",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub horizontal_scroll_percentage_list: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "Time between triggering recurring Timer Events (in milliseconds). Only\nvalid for Timer triggers.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "interval",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub interval: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "Time between Timer Events to fire (in seconds). Only valid for AMP Timer\ntrigger.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "intervalSeconds",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub interval_seconds: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "Limit of the number of GTM events this Timer Trigger will fire. If no limit\nis set, we will continue to fire GTM events until the user leaves the page.\nOnly valid for Timer triggers.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "Limit of the number of GTM events this Timer Trigger will fire. If no limit is set, we will continue to fire GTM events until the user leaves the page. Only valid for Timer triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "limit",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub limit: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "Max time to fire Timer Events (in seconds). Only valid for AMP Timer\ntrigger.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "Max time to fire Timer Events (in seconds). Only valid for AMP Timer trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "maxTimerLengthSeconds",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub max_timer_length_seconds: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "Trigger display name.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "Trigger display name. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "User notes on how to apply this trigger in the container.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "User notes on how to apply this trigger in the container. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "notes",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub notes: ::std::option::Option<String>,
-        #[doc = "Additional parameters.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "Additional parameters. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "parameter",
             default,
@@ -4114,14 +4146,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub path: ::std::option::Option<String>,
-        #[doc = "Defines the data layer event that causes this trigger.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "Defines the data layer event that causes this trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "type",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<crate::schemas::TriggerType>,
-        #[doc = "A click trigger CSS selector (i.e. \"a\", \"button\" etc.). Only valid for AMP\nClick trigger.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "A click trigger CSS selector (i.e. \"a\", \"button\" etc.). Only valid for AMP Click trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "selector",
             default,
@@ -4135,7 +4167,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub tag_manager_url: ::std::option::Option<String>,
-        #[doc = "A visibility trigger minimum total visible time (in milliseconds).\nOnly valid for AMP Visibility trigger.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "A visibility trigger minimum total visible time (in milliseconds). Only valid for AMP Visibility trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "totalTimeMinMilliseconds",
             default,
@@ -4149,49 +4181,49 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub trigger_id: ::std::option::Option<String>,
-        #[doc = "Globally unique id of the trigger that auto-generates this (a Form Submit,\nLink Click or Timer listener) if any. Used to make incompatible auto-events\nwork together with trigger filtering based on trigger ids. This value is\npopulated during output generation since the tags implied by triggers don't\nexist until then. Only valid for Form Submit, Link Click and Timer\ntriggers.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "Globally unique id of the trigger that auto-generates this (a Form Submit, Link Click or Timer listener) if any. Used to make incompatible auto-events work together with trigger filtering based on trigger ids. This value is populated during output generation since the tags implied by triggers don't exist until then. Only valid for Form Submit, Link Click and Timer triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "uniqueTriggerId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub unique_trigger_id: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "List of integer percentage values for scroll triggers. The trigger will\nfire when each percentage is reached when the view is scrolled vertically.\nOnly valid for AMP scroll triggers.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled vertically. Only valid for AMP scroll triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "verticalScrollPercentageList",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub vertical_scroll_percentage_list: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "A visibility trigger CSS selector (i.e. \"#id\"). Only valid for AMP\nVisibility trigger.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "A visibility trigger CSS selector (i.e. \"#id\"). Only valid for AMP Visibility trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "visibilitySelector",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub visibility_selector: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "A visibility trigger maximum percent visibility. Only valid for AMP\nVisibility trigger.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "A visibility trigger maximum percent visibility. Only valid for AMP Visibility trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "visiblePercentageMax",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub visible_percentage_max: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "A visibility trigger minimum percent visibility. Only valid for AMP\nVisibility trigger.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "A visibility trigger minimum percent visibility. Only valid for AMP Visibility trigger. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "visiblePercentageMin",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub visible_percentage_min: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "Whether or not we should delay the form submissions or link opening\nuntil all of the tags have fired (by preventing the default\naction and later simulating the default action). Only valid for\nForm Submission and Link Click triggers.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "Whether or not we should delay the form submissions or link opening until all of the tags have fired (by preventing the default action and later simulating the default action). Only valid for Form Submission and Link Click triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "waitForTags",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub wait_for_tags: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "How long to wait (in milliseconds) for tags to fire when 'waits_for_tags'\nabove evaluates to <code>true</code>.  Only valid for Form Submission and\nLink Click triggers.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
+        #[doc = "How long to wait (in milliseconds) for tags to fire when 'waits_for_tags' above evaluates to true. Only valid for Form Submission and Link Click triggers. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "waitForTagsTimeout",
             default,
@@ -4418,7 +4450,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UserPermission {
-        #[doc = "GTM Account access permissions.\n@mutable tagmanager.accounts.permissions.create\n@mutable tagmanager.accounts.permissions.update"]
+        #[doc = "GTM Account access permissions. @mutable tagmanager.accounts.permissions.create @mutable tagmanager.accounts.permissions.update"]
         #[serde(
             rename = "accountAccess",
             default,
@@ -4432,14 +4464,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub account_id: ::std::option::Option<String>,
-        #[doc = "GTM Container access permissions.\n@mutable tagmanager.accounts.permissions.create\n@mutable tagmanager.accounts.permissions.update"]
+        #[doc = "GTM Container access permissions. @mutable tagmanager.accounts.permissions.create @mutable tagmanager.accounts.permissions.update"]
         #[serde(
             rename = "containerAccess",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_access: ::std::option::Option<Vec<crate::schemas::ContainerAccess>>,
-        #[doc = "User's email address.\n@mutable tagmanager.accounts.permissions.create"]
+        #[doc = "User's email address. @mutable tagmanager.accounts.permissions.create"]
         #[serde(
             rename = "emailAddress",
             default,
@@ -4491,21 +4523,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_id: ::std::option::Option<String>,
-        #[doc = "For mobile containers only: A list of trigger IDs for disabling conditional\nvariables; the variable is enabled if one of the enabling trigger is true\nwhile all the disabling trigger are false. Treated as an unordered set.\n@mutable tagmanager.accounts.containers.workspaces.variables.create\n@mutable tagmanager.accounts.containers.workspaces.variables.update"]
+        #[doc = "For mobile containers only: A list of trigger IDs for disabling conditional variables; the variable is enabled if one of the enabling trigger is true while all the disabling trigger are false. Treated as an unordered set. @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable tagmanager.accounts.containers.workspaces.variables.update"]
         #[serde(
             rename = "disablingTriggerId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub disabling_trigger_id: ::std::option::Option<Vec<String>>,
-        #[doc = "For mobile containers only: A list of trigger IDs for enabling conditional\nvariables; the variable is enabled if one of the enabling triggers is true\nwhile all the disabling triggers are false. Treated as an unordered set.\n@mutable tagmanager.accounts.containers.workspaces.variables.create\n@mutable tagmanager.accounts.containers.workspaces.variables.update"]
+        #[doc = "For mobile containers only: A list of trigger IDs for enabling conditional variables; the variable is enabled if one of the enabling triggers is true while all the disabling triggers are false. Treated as an unordered set. @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable tagmanager.accounts.containers.workspaces.variables.update"]
         #[serde(
             rename = "enablingTriggerId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub enabling_trigger_id: ::std::option::Option<Vec<String>>,
-        #[doc = "The fingerprint of the GTM Variable as computed at storage time.\nThis value is recomputed whenever the variable is modified."]
+        #[doc = "The fingerprint of the GTM Variable as computed at storage time. This value is recomputed whenever the variable is modified."]
         #[serde(
             rename = "fingerprint",
             default,
@@ -4519,21 +4551,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub format_value: ::std::option::Option<crate::schemas::VariableFormatValue>,
-        #[doc = "Variable display name.\n@mutable tagmanager.accounts.containers.workspaces.variables.create\n@mutable tagmanager.accounts.containers.workspaces.variables.update"]
+        #[doc = "Variable display name. @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable tagmanager.accounts.containers.workspaces.variables.update"]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "User notes on how to apply this variable in the container.\n@mutable tagmanager.accounts.containers.workspaces.variables.create\n@mutable tagmanager.accounts.containers.workspaces.variables.update"]
+        #[doc = "User notes on how to apply this variable in the container. @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable tagmanager.accounts.containers.workspaces.variables.update"]
         #[serde(
             rename = "notes",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub notes: ::std::option::Option<String>,
-        #[doc = "The variable's parameters.\n@mutable tagmanager.accounts.containers.workspaces.variables.create\n@mutable tagmanager.accounts.containers.workspaces.variables.update"]
+        #[doc = "The variable's parameters. @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable tagmanager.accounts.containers.workspaces.variables.update"]
         #[serde(
             rename = "parameter",
             default,
@@ -4554,14 +4586,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub path: ::std::option::Option<String>,
-        #[doc = "GTM Variable Type.\n@mutable tagmanager.accounts.containers.workspaces.variables.create\n@mutable tagmanager.accounts.containers.workspaces.variables.update"]
+        #[doc = "GTM Variable Type. @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable tagmanager.accounts.containers.workspaces.variables.update"]
         #[serde(
             rename = "type",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<String>,
-        #[doc = "The end timestamp in milliseconds to schedule a variable.\n@mutable tagmanager.accounts.containers.workspaces.variables.create\n@mutable tagmanager.accounts.containers.workspaces.variables.update"]
+        #[doc = "The end timestamp in milliseconds to schedule a variable. @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable tagmanager.accounts.containers.workspaces.variables.update"]
         #[serde(
             rename = "scheduleEndMs",
             default,
@@ -4569,7 +4601,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub schedule_end_ms: ::std::option::Option<i64>,
-        #[doc = "The start timestamp in milliseconds to schedule a variable.\n@mutable tagmanager.accounts.containers.workspaces.variables.create\n@mutable tagmanager.accounts.containers.workspaces.variables.update"]
+        #[doc = "The start timestamp in milliseconds to schedule a variable. @mutable tagmanager.accounts.containers.workspaces.variables.create @mutable tagmanager.accounts.containers.workspaces.variables.update"]
         #[serde(
             rename = "scheduleStartMs",
             default,
@@ -4622,7 +4654,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct VariableFormatValue {
-        #[doc = "The option to convert a string-type variable value to either lowercase or\nuppercase."]
+        #[doc = "The option to convert a string-type variable value to either lowercase or uppercase."]
         #[serde(
             rename = "caseConversionType",
             default,
@@ -4771,21 +4803,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_id: ::std::option::Option<String>,
-        #[doc = "Workspace description.\n@mutable tagmanager.accounts.containers.workspaces.create\n@mutable tagmanager.accounts.containers.workspaces.update"]
+        #[doc = "Workspace description. @mutable tagmanager.accounts.containers.workspaces.create @mutable tagmanager.accounts.containers.workspaces.update"]
         #[serde(
             rename = "description",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "The fingerprint of the GTM Workspace as computed at storage time. This\nvalue is recomputed whenever the workspace is modified."]
+        #[doc = "The fingerprint of the GTM Workspace as computed at storage time. This value is recomputed whenever the workspace is modified."]
         #[serde(
             rename = "fingerprint",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fingerprint: ::std::option::Option<String>,
-        #[doc = "Workspace display name.\n@mutable tagmanager.accounts.containers.workspaces.create\n@mutable tagmanager.accounts.containers.workspaces.update"]
+        #[doc = "Workspace display name. @mutable tagmanager.accounts.containers.workspaces.create @mutable tagmanager.accounts.containers.workspaces.update"]
         #[serde(
             rename = "name",
             default,
@@ -4865,7 +4897,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_id: ::std::option::Option<String>,
-        #[doc = "The fingerprint of the GTM Zone as computed at storage time.\nThis value is recomputed whenever the zone is modified."]
+        #[doc = "The fingerprint of the GTM Zone as computed at storage time. This value is recomputed whenever the zone is modified."]
         #[serde(
             rename = "fingerprint",
             default,
@@ -4952,7 +4984,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub condition: ::std::option::Option<Vec<crate::schemas::Condition>>,
-        #[doc = "Custom evaluation trigger IDs. A zone will evaluate its boundary\nconditions when any of the listed triggers are true."]
+        #[doc = "Custom evaluation trigger IDs. A zone will evaluate its boundary conditions when any of the listed triggers are true."]
         #[serde(
             rename = "customEvaluationTriggerId",
             default,
@@ -5203,17 +5235,17 @@ pub struct Client {
 impl Client {
     pub fn new<A>(auth: A) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client::with_reqwest_client(auth, ::reqwest::Client::builder().build().unwrap())
     }
     pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::Client) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client {
             reqwest,
-            auth: auth.into(),
+            auth: Box::new(auth),
         }
     }
     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
@@ -5438,11 +5470,11 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://tagmanager.googleapis.com/".to_owned();
                 output.push_str("tagmanager/v2/");
                 {
                     let var_as_str = &self.path;
@@ -5453,24 +5485,28 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -5543,104 +5579,6 @@ pub mod resources {
                 self.xgafv = Some(value);
                 self
             }
-            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-            #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-            #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-            #[doc = r" populated fields in the yielded items will be determined by the"]
-            #[doc = r" `FieldSelector` implementation."]
-            pub fn iter_account<T>(self) -> crate::iter::PageItemIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.iter_account_with_fields(fields)
-            }
-            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-            #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-            #[doc = r" fields in `#items_type` will be the default fields populated by"]
-            #[doc = r" the server."]
-            pub fn iter_account_with_default_fields(
-                self,
-            ) -> crate::iter::PageItemIter<Self, crate::schemas::Account> {
-                self.iter_account_with_fields(None::<String>)
-            }
-            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-            #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-            #[doc = r" fields in `#items_type` will be all fields available. This should"]
-            #[doc = r" primarily be used during developement and debugging as fetching"]
-            #[doc = r" all fields can be expensive both in bandwidth and server"]
-            #[doc = r" resources."]
-            pub fn iter_account_with_all_fields(
-                self,
-            ) -> crate::iter::PageItemIter<Self, crate::schemas::Account> {
-                self.iter_account_with_fields(Some("*"))
-            }
-            pub fn iter_account_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> crate::iter::PageItemIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: AsRef<str>,
-            {
-                self.fields = Some({
-                    let mut selector = concat!("nextPageToken,", "account").to_owned();
-                    let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                    if !items_fields.is_empty() {
-                        selector.push_str("(");
-                        selector.push_str(items_fields);
-                        selector.push_str(")");
-                    }
-                    selector
-                });
-                crate::iter::PageItemIter::new(self, "account")
-            }
-            pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.iter_with_fields(fields)
-            }
-            pub fn iter_with_default_fields(
-                self,
-            ) -> crate::iter::PageIter<Self, crate::schemas::ListAccountsResponse> {
-                self.iter_with_fields(None::<&str>)
-            }
-            pub fn iter_with_all_fields(
-                self,
-            ) -> crate::iter::PageIter<Self, crate::schemas::ListAccountsResponse> {
-                self.iter_with_fields(Some("*"))
-            }
-            pub fn iter_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> crate::iter::PageIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: AsRef<str>,
-            {
-                let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                if !fields.is_empty() {
-                    match fields.chars().rev().nth(0) {
-                        Some(',') | None => {}
-                        _ => fields.push_str(","),
-                    }
-                    fields.push_str("nextPageToken");
-                    self.fields = Some(fields);
-                }
-                crate::iter::PageIter::new(self)
-            }
             #[doc = r" Execute the given operation. The fields requested are"]
             #[doc = r" determined by the FieldSelector attribute of the return type."]
             #[doc = r" This allows for flexible and ergonomic partial responses. See"]
@@ -5697,45 +5635,38 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://tagmanager.googleapis.com/".to_owned();
                 output.push_str("tagmanager/v2/accounts");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
-            }
-        }
-        impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-            fn set_page_token(&mut self, value: String) {
-                self.page_token = value.into();
-            }
-            fn execute<T>(&mut self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-            {
-                todo!("implement async `execute` method for `IterableMethod` trait")
             }
         }
         #[doc = "Created via [AccountsActions::update()](struct.AccountsActions.html#method.update)"]
@@ -5759,7 +5690,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> UpdateRequestBuilder<'a> {
-            #[doc = "When provided, this fingerprint must match the fingerprint of the account\nin storage."]
+            #[doc = "When provided, this fingerprint must match the fingerprint of the account in storage."]
             pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                 self.fingerprint = Some(value.into());
                 self
@@ -5865,12 +5796,12 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://tagmanager.googleapis.com/".to_owned();
                 output.push_str("tagmanager/v2/");
                 {
                     let var_as_str = &self.path;
@@ -5881,25 +5812,29 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("fingerprint", &self.fingerprint)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("fingerprint", &self.fingerprint)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -6182,12 +6117,12 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://tagmanager.googleapis.com/".to_owned();
                     output.push_str("tagmanager/v2/");
                     {
                         let var_as_str = &self.parent;
@@ -6199,24 +6134,28 @@ pub mod resources {
                     output.push_str("/containers");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -6285,12 +6224,12 @@ pub mod resources {
                     self
                 }
                 pub async fn execute(self) -> Result<(), crate::Error> {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     req.send().await?.error_for_status()?;
                     Ok(())
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://tagmanager.googleapis.com/".to_owned();
                     output.push_str("tagmanager/v2/");
                     {
                         let var_as_str = &self.path;
@@ -6301,24 +6240,28 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -6442,11 +6385,11 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://tagmanager.googleapis.com/".to_owned();
                     output.push_str("tagmanager/v2/");
                     {
                         let var_as_str = &self.path;
@@ -6457,24 +6400,28 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -6548,106 +6495,6 @@ pub mod resources {
                     self.xgafv = Some(value);
                     self
                 }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-                #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-                #[doc = r" populated fields in the yielded items will be determined by the"]
-                #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_container<T>(self) -> crate::iter::PageItemIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                {
-                    let fields = ::google_field_selector::to_string::<T>();
-                    let fields: Option<String> = if fields.is_empty() {
-                        None
-                    } else {
-                        Some(fields)
-                    };
-                    self.iter_container_with_fields(fields)
-                }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                #[doc = r" fields in `#items_type` will be the default fields populated by"]
-                #[doc = r" the server."]
-                pub fn iter_container_with_default_fields(
-                    self,
-                ) -> crate::iter::PageItemIter<Self, crate::schemas::Container> {
-                    self.iter_container_with_fields(None::<String>)
-                }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                #[doc = r" fields in `#items_type` will be all fields available. This should"]
-                #[doc = r" primarily be used during developement and debugging as fetching"]
-                #[doc = r" all fields can be expensive both in bandwidth and server"]
-                #[doc = r" resources."]
-                pub fn iter_container_with_all_fields(
-                    self,
-                ) -> crate::iter::PageItemIter<Self, crate::schemas::Container> {
-                    self.iter_container_with_fields(Some("*"))
-                }
-                pub fn iter_container_with_fields<T, F>(
-                    mut self,
-                    fields: Option<F>,
-                ) -> crate::iter::PageItemIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                    F: AsRef<str>,
-                {
-                    self.fields = Some({
-                        let mut selector = concat!("nextPageToken,", "container").to_owned();
-                        let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                        if !items_fields.is_empty() {
-                            selector.push_str("(");
-                            selector.push_str(items_fields);
-                            selector.push_str(")");
-                        }
-                        selector
-                    });
-                    crate::iter::PageItemIter::new(self, "container")
-                }
-                pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                {
-                    let fields = ::google_field_selector::to_string::<T>();
-                    let fields: Option<String> = if fields.is_empty() {
-                        None
-                    } else {
-                        Some(fields)
-                    };
-                    self.iter_with_fields(fields)
-                }
-                pub fn iter_with_default_fields(
-                    self,
-                ) -> crate::iter::PageIter<Self, crate::schemas::ListContainersResponse>
-                {
-                    self.iter_with_fields(None::<&str>)
-                }
-                pub fn iter_with_all_fields(
-                    self,
-                ) -> crate::iter::PageIter<Self, crate::schemas::ListContainersResponse>
-                {
-                    self.iter_with_fields(Some("*"))
-                }
-                pub fn iter_with_fields<T, F>(
-                    mut self,
-                    fields: Option<F>,
-                ) -> crate::iter::PageIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                    F: AsRef<str>,
-                {
-                    let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                    if !fields.is_empty() {
-                        match fields.chars().rev().nth(0) {
-                            Some(',') | None => {}
-                            _ => fields.push_str(","),
-                        }
-                        fields.push_str("nextPageToken");
-                        self.fields = Some(fields);
-                    }
-                    crate::iter::PageIter::new(self)
-                }
                 #[doc = r" Execute the given operation. The fields requested are"]
                 #[doc = r" determined by the FieldSelector attribute of the return type."]
                 #[doc = r" This allows for flexible and ergonomic partial responses. See"]
@@ -6704,11 +6551,11 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://tagmanager.googleapis.com/".to_owned();
                     output.push_str("tagmanager/v2/");
                     {
                         let var_as_str = &self.parent;
@@ -6720,37 +6567,30 @@ pub mod resources {
                     output.push_str("/containers");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
-                }
-            }
-            impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-                fn set_page_token(&mut self, value: String) {
-                    self.page_token = value.into();
-                }
-                fn execute<T>(&mut self) -> Result<T, crate::Error>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                {
-                    todo!("implement async `execute` method for `IterableMethod` trait")
                 }
             }
             #[doc = "Created via [ContainersActions::update()](struct.ContainersActions.html#method.update)"]
@@ -6774,7 +6614,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> UpdateRequestBuilder<'a> {
-                #[doc = "When provided, this fingerprint must match the fingerprint of the\ncontainer in storage."]
+                #[doc = "When provided, this fingerprint must match the fingerprint of the container in storage."]
                 pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                     self.fingerprint = Some(value.into());
                     self
@@ -6880,12 +6720,12 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://tagmanager.googleapis.com/".to_owned();
                     output.push_str("tagmanager/v2/");
                     {
                         let var_as_str = &self.path;
@@ -6896,25 +6736,29 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                    let req = req.query(&[("fingerprint", &self.fingerprint)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                    req = req.query(&[("fingerprint", &self.fingerprint)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -7181,12 +7025,12 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         let req = req.json(&self.request);
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.parent;
@@ -7198,27 +7042,28 @@ pub mod resources {
                         output.push_str("/environments");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -7287,12 +7132,12 @@ pub mod resources {
                         self
                     }
                     pub async fn execute(self) -> Result<(), crate::Error> {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         req.send().await?.error_for_status()?;
                         Ok(())
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.path;
@@ -7303,27 +7148,28 @@ pub mod resources {
                         }
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -7447,11 +7293,11 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.path;
@@ -7462,27 +7308,28 @@ pub mod resources {
                         }
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -7556,109 +7403,6 @@ pub mod resources {
                         self.xgafv = Some(value);
                         self
                     }
-                    #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                    #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-                    #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-                    #[doc = r" populated fields in the yielded items will be determined by the"]
-                    #[doc = r" `FieldSelector` implementation."]
-                    pub fn iter_environment<T>(self) -> crate::iter::PageItemIter<Self, T>
-                    where
-                        T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                    {
-                        let fields = ::google_field_selector::to_string::<T>();
-                        let fields: Option<String> = if fields.is_empty() {
-                            None
-                        } else {
-                            Some(fields)
-                        };
-                        self.iter_environment_with_fields(fields)
-                    }
-                    #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                    #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                    #[doc = r" fields in `#items_type` will be the default fields populated by"]
-                    #[doc = r" the server."]
-                    pub fn iter_environment_with_default_fields(
-                        self,
-                    ) -> crate::iter::PageItemIter<Self, crate::schemas::Environment>
-                    {
-                        self.iter_environment_with_fields(None::<String>)
-                    }
-                    #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                    #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                    #[doc = r" fields in `#items_type` will be all fields available. This should"]
-                    #[doc = r" primarily be used during developement and debugging as fetching"]
-                    #[doc = r" all fields can be expensive both in bandwidth and server"]
-                    #[doc = r" resources."]
-                    pub fn iter_environment_with_all_fields(
-                        self,
-                    ) -> crate::iter::PageItemIter<Self, crate::schemas::Environment>
-                    {
-                        self.iter_environment_with_fields(Some("*"))
-                    }
-                    pub fn iter_environment_with_fields<T, F>(
-                        mut self,
-                        fields: Option<F>,
-                    ) -> crate::iter::PageItemIter<Self, T>
-                    where
-                        T: ::serde::de::DeserializeOwned,
-                        F: AsRef<str>,
-                    {
-                        self.fields = Some({
-                            let mut selector = concat!("nextPageToken,", "environment").to_owned();
-                            let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                            if !items_fields.is_empty() {
-                                selector.push_str("(");
-                                selector.push_str(items_fields);
-                                selector.push_str(")");
-                            }
-                            selector
-                        });
-                        crate::iter::PageItemIter::new(self, "environment")
-                    }
-                    pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-                    where
-                        T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                    {
-                        let fields = ::google_field_selector::to_string::<T>();
-                        let fields: Option<String> = if fields.is_empty() {
-                            None
-                        } else {
-                            Some(fields)
-                        };
-                        self.iter_with_fields(fields)
-                    }
-                    pub fn iter_with_default_fields(
-                        self,
-                    ) -> crate::iter::PageIter<Self, crate::schemas::ListEnvironmentsResponse>
-                    {
-                        self.iter_with_fields(None::<&str>)
-                    }
-                    pub fn iter_with_all_fields(
-                        self,
-                    ) -> crate::iter::PageIter<Self, crate::schemas::ListEnvironmentsResponse>
-                    {
-                        self.iter_with_fields(Some("*"))
-                    }
-                    pub fn iter_with_fields<T, F>(
-                        mut self,
-                        fields: Option<F>,
-                    ) -> crate::iter::PageIter<Self, T>
-                    where
-                        T: ::serde::de::DeserializeOwned,
-                        F: AsRef<str>,
-                    {
-                        let mut fields =
-                            fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                        if !fields.is_empty() {
-                            match fields.chars().rev().nth(0) {
-                                Some(',') | None => {}
-                                _ => fields.push_str(","),
-                            }
-                            fields.push_str("nextPageToken");
-                            self.fields = Some(fields);
-                        }
-                        crate::iter::PageIter::new(self)
-                    }
                     #[doc = r" Execute the given operation. The fields requested are"]
                     #[doc = r" determined by the FieldSelector attribute of the return type."]
                     #[doc = r" This allows for flexible and ergonomic partial responses. See"]
@@ -7717,11 +7461,11 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.parent;
@@ -7733,40 +7477,30 @@ pub mod resources {
                         output.push_str("/environments");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("pageToken", &self.page_token)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("pageToken", &self.page_token)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
-                    }
-                }
-                impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-                    fn set_page_token(&mut self, value: String) {
-                        self.page_token = value.into();
-                    }
-                    fn execute<T>(&mut self) -> Result<T, crate::Error>
-                    where
-                        T: ::serde::de::DeserializeOwned,
-                    {
-                        todo!("implement async `execute` method for `IterableMethod` trait")
                     }
                 }
                 #[doc = "Created via [EnvironmentsActions::reauthorize()](struct.EnvironmentsActions.html#method.reauthorize)"]
@@ -7890,12 +7624,12 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         let req = req.json(&self.request);
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.path;
@@ -7907,27 +7641,28 @@ pub mod resources {
                         output.push_str(":reauthorize");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -7952,7 +7687,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> UpdateRequestBuilder<'a> {
-                    #[doc = "When provided, this fingerprint must match the fingerprint of the\nenvironment in storage."]
+                    #[doc = "When provided, this fingerprint must match the fingerprint of the environment in storage."]
                     pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                         self.fingerprint = Some(value.into());
                         self
@@ -8058,12 +7793,12 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         let req = req.json(&self.request);
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.path;
@@ -8074,28 +7809,29 @@ pub mod resources {
                         }
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                        let req = req.query(&[("fingerprint", &self.fingerprint)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                        req = req.query(&[("fingerprint", &self.fingerprint)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -8273,11 +8009,11 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.parent;
@@ -8289,27 +8025,28 @@ pub mod resources {
                         output.push_str("/version_headers:latest");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -8389,112 +8126,6 @@ pub mod resources {
                         self.xgafv = Some(value);
                         self
                     }
-                    #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                    #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-                    #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-                    #[doc = r" populated fields in the yielded items will be determined by the"]
-                    #[doc = r" `FieldSelector` implementation."]
-                    pub fn iter_container_version_header<T>(
-                        self,
-                    ) -> crate::iter::PageItemIter<Self, T>
-                    where
-                        T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                    {
-                        let fields = ::google_field_selector::to_string::<T>();
-                        let fields: Option<String> = if fields.is_empty() {
-                            None
-                        } else {
-                            Some(fields)
-                        };
-                        self.iter_container_version_header_with_fields(fields)
-                    }
-                    #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                    #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                    #[doc = r" fields in `#items_type` will be the default fields populated by"]
-                    #[doc = r" the server."]
-                    pub fn iter_container_version_header_with_default_fields(
-                        self,
-                    ) -> crate::iter::PageItemIter<Self, crate::schemas::ContainerVersionHeader>
-                    {
-                        self.iter_container_version_header_with_fields(None::<String>)
-                    }
-                    #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                    #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                    #[doc = r" fields in `#items_type` will be all fields available. This should"]
-                    #[doc = r" primarily be used during developement and debugging as fetching"]
-                    #[doc = r" all fields can be expensive both in bandwidth and server"]
-                    #[doc = r" resources."]
-                    pub fn iter_container_version_header_with_all_fields(
-                        self,
-                    ) -> crate::iter::PageItemIter<Self, crate::schemas::ContainerVersionHeader>
-                    {
-                        self.iter_container_version_header_with_fields(Some("*"))
-                    }
-                    pub fn iter_container_version_header_with_fields<T, F>(
-                        mut self,
-                        fields: Option<F>,
-                    ) -> crate::iter::PageItemIter<Self, T>
-                    where
-                        T: ::serde::de::DeserializeOwned,
-                        F: AsRef<str>,
-                    {
-                        self.fields = Some({
-                            let mut selector =
-                                concat!("nextPageToken,", "containerVersionHeader").to_owned();
-                            let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                            if !items_fields.is_empty() {
-                                selector.push_str("(");
-                                selector.push_str(items_fields);
-                                selector.push_str(")");
-                            }
-                            selector
-                        });
-                        crate::iter::PageItemIter::new(self, "containerVersionHeader")
-                    }
-                    pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-                    where
-                        T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                    {
-                        let fields = ::google_field_selector::to_string::<T>();
-                        let fields: Option<String> = if fields.is_empty() {
-                            None
-                        } else {
-                            Some(fields)
-                        };
-                        self.iter_with_fields(fields)
-                    }
-                    pub fn iter_with_default_fields(
-                        self,
-                    ) -> crate::iter::PageIter<Self, crate::schemas::ListContainerVersionsResponse>
-                    {
-                        self.iter_with_fields(None::<&str>)
-                    }
-                    pub fn iter_with_all_fields(
-                        self,
-                    ) -> crate::iter::PageIter<Self, crate::schemas::ListContainerVersionsResponse>
-                    {
-                        self.iter_with_fields(Some("*"))
-                    }
-                    pub fn iter_with_fields<T, F>(
-                        mut self,
-                        fields: Option<F>,
-                    ) -> crate::iter::PageIter<Self, T>
-                    where
-                        T: ::serde::de::DeserializeOwned,
-                        F: AsRef<str>,
-                    {
-                        let mut fields =
-                            fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                        if !fields.is_empty() {
-                            match fields.chars().rev().nth(0) {
-                                Some(',') | None => {}
-                                _ => fields.push_str(","),
-                            }
-                            fields.push_str("nextPageToken");
-                            self.fields = Some(fields);
-                        }
-                        crate::iter::PageIter::new(self)
-                    }
                     #[doc = r" Execute the given operation. The fields requested are"]
                     #[doc = r" determined by the FieldSelector attribute of the return type."]
                     #[doc = r" This allows for flexible and ergonomic partial responses. See"]
@@ -8553,11 +8184,11 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.parent;
@@ -8569,41 +8200,31 @@ pub mod resources {
                         output.push_str("/version_headers");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("includeDeleted", &self.include_deleted)]);
-                        let req = req.query(&[("pageToken", &self.page_token)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("includeDeleted", &self.include_deleted)]);
+                        req = req.query(&[("pageToken", &self.page_token)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
-                    }
-                }
-                impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-                    fn set_page_token(&mut self, value: String) {
-                        self.page_token = value.into();
-                    }
-                    fn execute<T>(&mut self) -> Result<T, crate::Error>
-                    where
-                        T: ::serde::de::DeserializeOwned,
-                    {
-                        todo!("implement async `execute` method for `IterableMethod` trait")
                     }
                 }
             }
@@ -8695,7 +8316,7 @@ pub mod resources {
                             fingerprint: None,
                         }
                     }
-                    #[doc = "Sets the latest version used for synchronization of workspaces when\ndetecting conflicts and errors."]
+                    #[doc = "Sets the latest version used for synchronization of workspaces when detecting conflicts and errors."]
                     pub fn set_latest(&self, path: impl Into<String>) -> SetLatestRequestBuilder {
                         SetLatestRequestBuilder {
                             reqwest: &self.reqwest,
@@ -8824,12 +8445,12 @@ pub mod resources {
                         self
                     }
                     pub async fn execute(self) -> Result<(), crate::Error> {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         req.send().await?.error_for_status()?;
                         Ok(())
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.path;
@@ -8840,27 +8461,28 @@ pub mod resources {
                         }
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -8884,7 +8506,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> GetRequestBuilder<'a> {
-                    #[doc = "The GTM ContainerVersion ID. Specify <code>published</code> to retrieve\nthe currently published version."]
+                    #[doc = "The GTM ContainerVersion ID. Specify published to retrieve the currently published version."]
                     pub fn container_version_id(mut self, value: impl Into<String>) -> Self {
                         self.container_version_id = Some(value.into());
                         self
@@ -8992,11 +8614,11 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.path;
@@ -9007,28 +8629,29 @@ pub mod resources {
                         }
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("containerVersionId", &self.container_version_id)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("containerVersionId", &self.container_version_id)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -9154,11 +8777,11 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.parent;
@@ -9170,27 +8793,28 @@ pub mod resources {
                         output.push_str("/versions:live");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -9214,7 +8838,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> PublishRequestBuilder<'a> {
-                    #[doc = "When provided, this fingerprint must match the fingerprint of the\ncontainer version in storage."]
+                    #[doc = "When provided, this fingerprint must match the fingerprint of the container version in storage."]
                     pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                         self.fingerprint = Some(value.into());
                         self
@@ -9322,11 +8946,11 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.path;
@@ -9338,28 +8962,29 @@ pub mod resources {
                         output.push_str(":publish");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("fingerprint", &self.fingerprint)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("fingerprint", &self.fingerprint)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -9485,11 +9110,11 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.path;
@@ -9501,27 +9126,28 @@ pub mod resources {
                         output.push_str(":set_latest");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -9647,11 +9273,11 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.path;
@@ -9663,27 +9289,28 @@ pub mod resources {
                         output.push_str(":undelete");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -9708,7 +9335,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> UpdateRequestBuilder<'a> {
-                    #[doc = "When provided, this fingerprint must match the fingerprint of the\ncontainer version in storage."]
+                    #[doc = "When provided, this fingerprint must match the fingerprint of the container version in storage."]
                     pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                         self.fingerprint = Some(value.into());
                         self
@@ -9816,12 +9443,12 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         let req = req.json(&self.request);
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.path;
@@ -9832,28 +9459,29 @@ pub mod resources {
                         }
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                        let req = req.query(&[("fingerprint", &self.fingerprint)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                        req = req.query(&[("fingerprint", &self.fingerprint)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -9892,7 +9520,7 @@ pub mod resources {
                             parent: parent.into(),
                         }
                     }
-                    #[doc = "Creates a Container Version from the entities present in the workspace,\ndeletes the workspace, and sets the base container version to the newly\ncreated version."]
+                    #[doc = "Creates a Container Version from the entities present in the workspace, deletes the workspace, and sets the base container version to the newly created version."]
                     pub fn create_version(
                         &self,
                         request: crate::schemas::CreateContainerVersionRequestVersionOptions,
@@ -9993,7 +9621,7 @@ pub mod resources {
                             page_token: None,
                         }
                     }
-                    #[doc = "Quick previews a workspace by creating a fake container version from all\nentities in the provided workspace."]
+                    #[doc = "Quick previews a workspace by creating a fake container version from all entities in the provided workspace."]
                     pub fn quick_preview(
                         &self,
                         path: impl Into<String>,
@@ -10015,7 +9643,7 @@ pub mod resources {
                             path: path.into(),
                         }
                     }
-                    #[doc = "Resolves a merge conflict for a workspace entity by updating it to the\nresolved entity passed in the request."]
+                    #[doc = "Resolves a merge conflict for a workspace entity by updating it to the resolved entity passed in the request."]
                     pub fn resolve_conflict(
                         &self,
                         request: crate::schemas::Entity,
@@ -10040,7 +9668,7 @@ pub mod resources {
                             fingerprint: None,
                         }
                     }
-                    #[doc = "Syncs a workspace to the latest container version by updating all\nunmodified workspace entities and displaying conflicts for modified\nentities."]
+                    #[doc = "Syncs a workspace to the latest container version by updating all unmodified workspace entities and displaying conflicts for modified entities."]
                     pub fn sync(&self, path: impl Into<String>) -> SyncRequestBuilder {
                         SyncRequestBuilder {
                             reqwest: &self.reqwest,
@@ -10084,15 +9712,15 @@ pub mod resources {
                             fingerprint: None,
                         }
                     }
-                    #[doc = "Actions that can be performed on the built_in_variables resource"]pub fn built_in_variables ( & self ) -> crate :: resources :: accounts :: containers :: workspaces :: built_in_variables :: BuiltInVariablesActions{
-                        crate :: resources :: accounts :: containers :: workspaces :: built_in_variables :: BuiltInVariablesActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
+                    #[doc = "Actions that can be performed on the built_in_variables resource"]                    pub fn built_in_variables (& self) -> crate :: resources :: accounts :: containers :: workspaces :: built_in_variables :: BuiltInVariablesActions{
+                        crate :: resources :: accounts :: containers :: workspaces :: built_in_variables :: BuiltInVariablesActions { reqwest : & self . reqwest , auth : self . auth_ref () , }
                     }
                     #[doc = "Actions that can be performed on the folders resource"]
                     pub fn folders(
                         &self,
                     ) -> crate::resources::accounts::containers::workspaces::folders::FoldersActions
                     {
-                        crate :: resources :: accounts :: containers :: workspaces :: folders :: FoldersActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
+                        crate :: resources :: accounts :: containers :: workspaces :: folders :: FoldersActions { reqwest : & self . reqwest , auth : self . auth_ref () , }
                     }
                     #[doc = "Actions that can be performed on the tags resource"]
                     pub fn tags(
@@ -10104,18 +9732,18 @@ pub mod resources {
                             auth: self.auth_ref(),
                         }
                     }
-                    #[doc = "Actions that can be performed on the templates resource"]pub fn templates ( & self ) -> crate :: resources :: accounts :: containers :: workspaces :: templates :: TemplatesActions{
-                        crate :: resources :: accounts :: containers :: workspaces :: templates :: TemplatesActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
+                    #[doc = "Actions that can be performed on the templates resource"]                    pub fn templates (& self) -> crate :: resources :: accounts :: containers :: workspaces :: templates :: TemplatesActions{
+                        crate :: resources :: accounts :: containers :: workspaces :: templates :: TemplatesActions { reqwest : & self . reqwest , auth : self . auth_ref () , }
                     }
                     #[doc = "Actions that can be performed on the triggers resource"]
                     pub fn triggers(
                         &self,
                     ) -> crate::resources::accounts::containers::workspaces::triggers::TriggersActions
                     {
-                        crate :: resources :: accounts :: containers :: workspaces :: triggers :: TriggersActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
+                        crate :: resources :: accounts :: containers :: workspaces :: triggers :: TriggersActions { reqwest : & self . reqwest , auth : self . auth_ref () , }
                     }
-                    #[doc = "Actions that can be performed on the variables resource"]pub fn variables ( & self ) -> crate :: resources :: accounts :: containers :: workspaces :: variables :: VariablesActions{
-                        crate :: resources :: accounts :: containers :: workspaces :: variables :: VariablesActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
+                    #[doc = "Actions that can be performed on the variables resource"]                    pub fn variables (& self) -> crate :: resources :: accounts :: containers :: workspaces :: variables :: VariablesActions{
+                        crate :: resources :: accounts :: containers :: workspaces :: variables :: VariablesActions { reqwest : & self . reqwest , auth : self . auth_ref () , }
                     }
                     #[doc = "Actions that can be performed on the zones resource"]
                     pub fn zones(
@@ -10249,12 +9877,12 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         let req = req.json(&self.request);
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.parent;
@@ -10266,27 +9894,28 @@ pub mod resources {
                         output.push_str("/workspaces");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -10413,12 +10042,12 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         let req = req.json(&self.request);
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.path;
@@ -10430,27 +10059,28 @@ pub mod resources {
                         output.push_str(":create_version");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -10519,12 +10149,12 @@ pub mod resources {
                         self
                     }
                     pub async fn execute(self) -> Result<(), crate::Error> {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         req.send().await?.error_for_status()?;
                         Ok(())
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.path;
@@ -10535,27 +10165,28 @@ pub mod resources {
                         }
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -10679,11 +10310,11 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.path;
@@ -10694,27 +10325,28 @@ pub mod resources {
                         }
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -10840,11 +10472,11 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.path;
@@ -10856,27 +10488,28 @@ pub mod resources {
                         output.push_str("/status");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -10950,109 +10583,6 @@ pub mod resources {
                         self.xgafv = Some(value);
                         self
                     }
-                    #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                    #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-                    #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-                    #[doc = r" populated fields in the yielded items will be determined by the"]
-                    #[doc = r" `FieldSelector` implementation."]
-                    pub fn iter_workspace<T>(self) -> crate::iter::PageItemIter<Self, T>
-                    where
-                        T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                    {
-                        let fields = ::google_field_selector::to_string::<T>();
-                        let fields: Option<String> = if fields.is_empty() {
-                            None
-                        } else {
-                            Some(fields)
-                        };
-                        self.iter_workspace_with_fields(fields)
-                    }
-                    #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                    #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                    #[doc = r" fields in `#items_type` will be the default fields populated by"]
-                    #[doc = r" the server."]
-                    pub fn iter_workspace_with_default_fields(
-                        self,
-                    ) -> crate::iter::PageItemIter<Self, crate::schemas::Workspace>
-                    {
-                        self.iter_workspace_with_fields(None::<String>)
-                    }
-                    #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                    #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                    #[doc = r" fields in `#items_type` will be all fields available. This should"]
-                    #[doc = r" primarily be used during developement and debugging as fetching"]
-                    #[doc = r" all fields can be expensive both in bandwidth and server"]
-                    #[doc = r" resources."]
-                    pub fn iter_workspace_with_all_fields(
-                        self,
-                    ) -> crate::iter::PageItemIter<Self, crate::schemas::Workspace>
-                    {
-                        self.iter_workspace_with_fields(Some("*"))
-                    }
-                    pub fn iter_workspace_with_fields<T, F>(
-                        mut self,
-                        fields: Option<F>,
-                    ) -> crate::iter::PageItemIter<Self, T>
-                    where
-                        T: ::serde::de::DeserializeOwned,
-                        F: AsRef<str>,
-                    {
-                        self.fields = Some({
-                            let mut selector = concat!("nextPageToken,", "workspace").to_owned();
-                            let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                            if !items_fields.is_empty() {
-                                selector.push_str("(");
-                                selector.push_str(items_fields);
-                                selector.push_str(")");
-                            }
-                            selector
-                        });
-                        crate::iter::PageItemIter::new(self, "workspace")
-                    }
-                    pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-                    where
-                        T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                    {
-                        let fields = ::google_field_selector::to_string::<T>();
-                        let fields: Option<String> = if fields.is_empty() {
-                            None
-                        } else {
-                            Some(fields)
-                        };
-                        self.iter_with_fields(fields)
-                    }
-                    pub fn iter_with_default_fields(
-                        self,
-                    ) -> crate::iter::PageIter<Self, crate::schemas::ListWorkspacesResponse>
-                    {
-                        self.iter_with_fields(None::<&str>)
-                    }
-                    pub fn iter_with_all_fields(
-                        self,
-                    ) -> crate::iter::PageIter<Self, crate::schemas::ListWorkspacesResponse>
-                    {
-                        self.iter_with_fields(Some("*"))
-                    }
-                    pub fn iter_with_fields<T, F>(
-                        mut self,
-                        fields: Option<F>,
-                    ) -> crate::iter::PageIter<Self, T>
-                    where
-                        T: ::serde::de::DeserializeOwned,
-                        F: AsRef<str>,
-                    {
-                        let mut fields =
-                            fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                        if !fields.is_empty() {
-                            match fields.chars().rev().nth(0) {
-                                Some(',') | None => {}
-                                _ => fields.push_str(","),
-                            }
-                            fields.push_str("nextPageToken");
-                            self.fields = Some(fields);
-                        }
-                        crate::iter::PageIter::new(self)
-                    }
                     #[doc = r" Execute the given operation. The fields requested are"]
                     #[doc = r" determined by the FieldSelector attribute of the return type."]
                     #[doc = r" This allows for flexible and ergonomic partial responses. See"]
@@ -11111,11 +10641,11 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.parent;
@@ -11127,40 +10657,30 @@ pub mod resources {
                         output.push_str("/workspaces");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("pageToken", &self.page_token)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("pageToken", &self.page_token)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
-                    }
-                }
-                impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-                    fn set_page_token(&mut self, value: String) {
-                        self.page_token = value.into();
-                    }
-                    fn execute<T>(&mut self) -> Result<T, crate::Error>
-                    where
-                        T: ::serde::de::DeserializeOwned,
-                    {
-                        todo!("implement async `execute` method for `IterableMethod` trait")
                     }
                 }
                 #[doc = "Created via [WorkspacesActions::quick_preview()](struct.WorkspacesActions.html#method.quick_preview)"]
@@ -11285,11 +10805,11 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.path;
@@ -11301,27 +10821,28 @@ pub mod resources {
                         output.push_str(":quick_preview");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -11346,7 +10867,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ResolveConflictRequestBuilder<'a> {
-                    #[doc = "When provided, this fingerprint must match the fingerprint of the\nentity_in_workspace in the merge conflict."]
+                    #[doc = "When provided, this fingerprint must match the fingerprint of the entity_in_workspace in the merge conflict."]
                     pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                         self.fingerprint = Some(value.into());
                         self
@@ -11397,13 +10918,13 @@ pub mod resources {
                         self
                     }
                     pub async fn execute(self) -> Result<(), crate::Error> {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         let req = req.json(&self.request);
                         req.send().await?.error_for_status()?;
                         Ok(())
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.path;
@@ -11415,28 +10936,29 @@ pub mod resources {
                         output.push_str(":resolve_conflict");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("fingerprint", &self.fingerprint)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("fingerprint", &self.fingerprint)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -11562,11 +11084,11 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.path;
@@ -11578,27 +11100,28 @@ pub mod resources {
                         output.push_str(":sync");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -11623,7 +11146,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> UpdateRequestBuilder<'a> {
-                    #[doc = "When provided, this fingerprint must match the fingerprint of the\nworkspace in storage."]
+                    #[doc = "When provided, this fingerprint must match the fingerprint of the workspace in storage."]
                     pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                         self.fingerprint = Some(value.into());
                         self
@@ -11729,12 +11252,12 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         let req = req.json(&self.request);
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://tagmanager.googleapis.com/".to_owned();
                         output.push_str("tagmanager/v2/");
                         {
                             let var_as_str = &self.path;
@@ -11745,28 +11268,29 @@ pub mod resources {
                         }
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                        let req = req.query(&[("fingerprint", &self.fingerprint)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                        req = req.query(&[("fingerprint", &self.fingerprint)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -11808,7 +11332,9 @@ pub mod resources {
                             ClickText,
                             ClickUrl,
                             ClientName,
+                            #[doc = "For web or mobile."]
                             ContainerId,
+                            #[doc = "For web or mobile."]
                             ContainerVersion,
                             DebugMode,
                             DeviceName,
@@ -11820,6 +11346,7 @@ pub mod resources {
                             ErrorLine,
                             ErrorMessage,
                             ErrorUrl,
+                            #[doc = "For web or mobile."]
                             Event,
                             EventName,
                             FirebaseEventParameterCampaign,
@@ -11867,6 +11394,7 @@ pub mod resources {
                             PageUrl,
                             Platform,
                             QueryString,
+                            #[doc = "For web or mobile."]
                             RandomNumber,
                             Referrer,
                             RequestMethod,
@@ -11898,7 +11426,7 @@ pub mod resources {
                         impl ::std::str::FromStr for CreateTypeItems {
                             type Err = ();
                             fn from_str(s: &str) -> ::std::result::Result<CreateTypeItems, ()> {
-                                Ok ( match s { "advertiserId" => CreateTypeItems :: AdvertiserId , "advertisingTrackingEnabled" => CreateTypeItems :: AdvertisingTrackingEnabled , "ampBrowserLanguage" => CreateTypeItems :: AmpBrowserLanguage , "ampCanonicalHost" => CreateTypeItems :: AmpCanonicalHost , "ampCanonicalPath" => CreateTypeItems :: AmpCanonicalPath , "ampCanonicalUrl" => CreateTypeItems :: AmpCanonicalUrl , "ampClientId" => CreateTypeItems :: AmpClientId , "ampClientMaxScrollX" => CreateTypeItems :: AmpClientMaxScrollX , "ampClientMaxScrollY" => CreateTypeItems :: AmpClientMaxScrollY , "ampClientScreenHeight" => CreateTypeItems :: AmpClientScreenHeight , "ampClientScreenWidth" => CreateTypeItems :: AmpClientScreenWidth , "ampClientScrollX" => CreateTypeItems :: AmpClientScrollX , "ampClientScrollY" => CreateTypeItems :: AmpClientScrollY , "ampClientTimestamp" => CreateTypeItems :: AmpClientTimestamp , "ampClientTimezone" => CreateTypeItems :: AmpClientTimezone , "ampGtmEvent" => CreateTypeItems :: AmpGtmEvent , "ampPageDownloadTime" => CreateTypeItems :: AmpPageDownloadTime , "ampPageLoadTime" => CreateTypeItems :: AmpPageLoadTime , "ampPageViewId" => CreateTypeItems :: AmpPageViewId , "ampReferrer" => CreateTypeItems :: AmpReferrer , "ampTitle" => CreateTypeItems :: AmpTitle , "ampTotalEngagedTime" => CreateTypeItems :: AmpTotalEngagedTime , "appId" => CreateTypeItems :: AppId , "appName" => CreateTypeItems :: AppName , "appVersionCode" => CreateTypeItems :: AppVersionCode , "appVersionName" => CreateTypeItems :: AppVersionName , "builtInVariableTypeUnspecified" => CreateTypeItems :: BuiltInVariableTypeUnspecified , "clickClasses" => CreateTypeItems :: ClickClasses , "clickElement" => CreateTypeItems :: ClickElement , "clickId" => CreateTypeItems :: ClickId , "clickTarget" => CreateTypeItems :: ClickTarget , "clickText" => CreateTypeItems :: ClickText , "clickUrl" => CreateTypeItems :: ClickUrl , "clientName" => CreateTypeItems :: ClientName , "containerId" => CreateTypeItems :: ContainerId , "containerVersion" => CreateTypeItems :: ContainerVersion , "debugMode" => CreateTypeItems :: DebugMode , "deviceName" => CreateTypeItems :: DeviceName , "elementVisibilityFirstTime" => CreateTypeItems :: ElementVisibilityFirstTime , "elementVisibilityRatio" => CreateTypeItems :: ElementVisibilityRatio , "elementVisibilityRecentTime" => CreateTypeItems :: ElementVisibilityRecentTime , "elementVisibilityTime" => CreateTypeItems :: ElementVisibilityTime , "environmentName" => CreateTypeItems :: EnvironmentName , "errorLine" => CreateTypeItems :: ErrorLine , "errorMessage" => CreateTypeItems :: ErrorMessage , "errorUrl" => CreateTypeItems :: ErrorUrl , "event" => CreateTypeItems :: Event , "eventName" => CreateTypeItems :: EventName , "firebaseEventParameterCampaign" => CreateTypeItems :: FirebaseEventParameterCampaign , "firebaseEventParameterCampaignAclid" => CreateTypeItems :: FirebaseEventParameterCampaignAclid , "firebaseEventParameterCampaignAnid" => CreateTypeItems :: FirebaseEventParameterCampaignAnid , "firebaseEventParameterCampaignClickTimestamp" => CreateTypeItems :: FirebaseEventParameterCampaignClickTimestamp , "firebaseEventParameterCampaignContent" => CreateTypeItems :: FirebaseEventParameterCampaignContent , "firebaseEventParameterCampaignCp1" => CreateTypeItems :: FirebaseEventParameterCampaignCp1 , "firebaseEventParameterCampaignGclid" => CreateTypeItems :: FirebaseEventParameterCampaignGclid , "firebaseEventParameterCampaignSource" => CreateTypeItems :: FirebaseEventParameterCampaignSource , "firebaseEventParameterCampaignTerm" => CreateTypeItems :: FirebaseEventParameterCampaignTerm , "firebaseEventParameterCurrency" => CreateTypeItems :: FirebaseEventParameterCurrency , "firebaseEventParameterDynamicLinkAcceptTime" => CreateTypeItems :: FirebaseEventParameterDynamicLinkAcceptTime , "firebaseEventParameterDynamicLinkLinkid" => CreateTypeItems :: FirebaseEventParameterDynamicLinkLinkid , "firebaseEventParameterNotificationMessageDeviceTime" => CreateTypeItems :: FirebaseEventParameterNotificationMessageDeviceTime , "firebaseEventParameterNotificationMessageId" => CreateTypeItems :: FirebaseEventParameterNotificationMessageId , "firebaseEventParameterNotificationMessageName" => CreateTypeItems :: FirebaseEventParameterNotificationMessageName , "firebaseEventParameterNotificationMessageTime" => CreateTypeItems :: FirebaseEventParameterNotificationMessageTime , "firebaseEventParameterNotificationTopic" => CreateTypeItems :: FirebaseEventParameterNotificationTopic , "firebaseEventParameterPreviousAppVersion" => CreateTypeItems :: FirebaseEventParameterPreviousAppVersion , "firebaseEventParameterPreviousOsVersion" => CreateTypeItems :: FirebaseEventParameterPreviousOsVersion , "firebaseEventParameterPrice" => CreateTypeItems :: FirebaseEventParameterPrice , "firebaseEventParameterProductId" => CreateTypeItems :: FirebaseEventParameterProductId , "firebaseEventParameterQuantity" => CreateTypeItems :: FirebaseEventParameterQuantity , "firebaseEventParameterValue" => CreateTypeItems :: FirebaseEventParameterValue , "firstPartyServingUrl" => CreateTypeItems :: FirstPartyServingUrl , "formClasses" => CreateTypeItems :: FormClasses , "formElement" => CreateTypeItems :: FormElement , "formId" => CreateTypeItems :: FormId , "formTarget" => CreateTypeItems :: FormTarget , "formText" => CreateTypeItems :: FormText , "formUrl" => CreateTypeItems :: FormUrl , "historySource" => CreateTypeItems :: HistorySource , "htmlId" => CreateTypeItems :: HtmlId , "language" => CreateTypeItems :: Language , "newHistoryFragment" => CreateTypeItems :: NewHistoryFragment , "newHistoryState" => CreateTypeItems :: NewHistoryState , "newHistoryUrl" => CreateTypeItems :: NewHistoryUrl , "oldHistoryFragment" => CreateTypeItems :: OldHistoryFragment , "oldHistoryState" => CreateTypeItems :: OldHistoryState , "oldHistoryUrl" => CreateTypeItems :: OldHistoryUrl , "osVersion" => CreateTypeItems :: OsVersion , "pageHostname" => CreateTypeItems :: PageHostname , "pagePath" => CreateTypeItems :: PagePath , "pageUrl" => CreateTypeItems :: PageUrl , "platform" => CreateTypeItems :: Platform , "queryString" => CreateTypeItems :: QueryString , "randomNumber" => CreateTypeItems :: RandomNumber , "referrer" => CreateTypeItems :: Referrer , "requestMethod" => CreateTypeItems :: RequestMethod , "requestPath" => CreateTypeItems :: RequestPath , "resolution" => CreateTypeItems :: Resolution , "scrollDepthDirection" => CreateTypeItems :: ScrollDepthDirection , "scrollDepthThreshold" => CreateTypeItems :: ScrollDepthThreshold , "scrollDepthUnits" => CreateTypeItems :: ScrollDepthUnits , "sdkVersion" => CreateTypeItems :: SdkVersion , "videoCurrentTime" => CreateTypeItems :: VideoCurrentTime , "videoDuration" => CreateTypeItems :: VideoDuration , "videoPercent" => CreateTypeItems :: VideoPercent , "videoProvider" => CreateTypeItems :: VideoProvider , "videoStatus" => CreateTypeItems :: VideoStatus , "videoTitle" => CreateTypeItems :: VideoTitle , "videoUrl" => CreateTypeItems :: VideoUrl , "videoVisible" => CreateTypeItems :: VideoVisible , _ => return Err ( ( ) ) , } )
+                                Ok (match s { "advertiserId" => CreateTypeItems :: AdvertiserId , "advertisingTrackingEnabled" => CreateTypeItems :: AdvertisingTrackingEnabled , "ampBrowserLanguage" => CreateTypeItems :: AmpBrowserLanguage , "ampCanonicalHost" => CreateTypeItems :: AmpCanonicalHost , "ampCanonicalPath" => CreateTypeItems :: AmpCanonicalPath , "ampCanonicalUrl" => CreateTypeItems :: AmpCanonicalUrl , "ampClientId" => CreateTypeItems :: AmpClientId , "ampClientMaxScrollX" => CreateTypeItems :: AmpClientMaxScrollX , "ampClientMaxScrollY" => CreateTypeItems :: AmpClientMaxScrollY , "ampClientScreenHeight" => CreateTypeItems :: AmpClientScreenHeight , "ampClientScreenWidth" => CreateTypeItems :: AmpClientScreenWidth , "ampClientScrollX" => CreateTypeItems :: AmpClientScrollX , "ampClientScrollY" => CreateTypeItems :: AmpClientScrollY , "ampClientTimestamp" => CreateTypeItems :: AmpClientTimestamp , "ampClientTimezone" => CreateTypeItems :: AmpClientTimezone , "ampGtmEvent" => CreateTypeItems :: AmpGtmEvent , "ampPageDownloadTime" => CreateTypeItems :: AmpPageDownloadTime , "ampPageLoadTime" => CreateTypeItems :: AmpPageLoadTime , "ampPageViewId" => CreateTypeItems :: AmpPageViewId , "ampReferrer" => CreateTypeItems :: AmpReferrer , "ampTitle" => CreateTypeItems :: AmpTitle , "ampTotalEngagedTime" => CreateTypeItems :: AmpTotalEngagedTime , "appId" => CreateTypeItems :: AppId , "appName" => CreateTypeItems :: AppName , "appVersionCode" => CreateTypeItems :: AppVersionCode , "appVersionName" => CreateTypeItems :: AppVersionName , "builtInVariableTypeUnspecified" => CreateTypeItems :: BuiltInVariableTypeUnspecified , "clickClasses" => CreateTypeItems :: ClickClasses , "clickElement" => CreateTypeItems :: ClickElement , "clickId" => CreateTypeItems :: ClickId , "clickTarget" => CreateTypeItems :: ClickTarget , "clickText" => CreateTypeItems :: ClickText , "clickUrl" => CreateTypeItems :: ClickUrl , "clientName" => CreateTypeItems :: ClientName , "containerId" => CreateTypeItems :: ContainerId , "containerVersion" => CreateTypeItems :: ContainerVersion , "debugMode" => CreateTypeItems :: DebugMode , "deviceName" => CreateTypeItems :: DeviceName , "elementVisibilityFirstTime" => CreateTypeItems :: ElementVisibilityFirstTime , "elementVisibilityRatio" => CreateTypeItems :: ElementVisibilityRatio , "elementVisibilityRecentTime" => CreateTypeItems :: ElementVisibilityRecentTime , "elementVisibilityTime" => CreateTypeItems :: ElementVisibilityTime , "environmentName" => CreateTypeItems :: EnvironmentName , "errorLine" => CreateTypeItems :: ErrorLine , "errorMessage" => CreateTypeItems :: ErrorMessage , "errorUrl" => CreateTypeItems :: ErrorUrl , "event" => CreateTypeItems :: Event , "eventName" => CreateTypeItems :: EventName , "firebaseEventParameterCampaign" => CreateTypeItems :: FirebaseEventParameterCampaign , "firebaseEventParameterCampaignAclid" => CreateTypeItems :: FirebaseEventParameterCampaignAclid , "firebaseEventParameterCampaignAnid" => CreateTypeItems :: FirebaseEventParameterCampaignAnid , "firebaseEventParameterCampaignClickTimestamp" => CreateTypeItems :: FirebaseEventParameterCampaignClickTimestamp , "firebaseEventParameterCampaignContent" => CreateTypeItems :: FirebaseEventParameterCampaignContent , "firebaseEventParameterCampaignCp1" => CreateTypeItems :: FirebaseEventParameterCampaignCp1 , "firebaseEventParameterCampaignGclid" => CreateTypeItems :: FirebaseEventParameterCampaignGclid , "firebaseEventParameterCampaignSource" => CreateTypeItems :: FirebaseEventParameterCampaignSource , "firebaseEventParameterCampaignTerm" => CreateTypeItems :: FirebaseEventParameterCampaignTerm , "firebaseEventParameterCurrency" => CreateTypeItems :: FirebaseEventParameterCurrency , "firebaseEventParameterDynamicLinkAcceptTime" => CreateTypeItems :: FirebaseEventParameterDynamicLinkAcceptTime , "firebaseEventParameterDynamicLinkLinkid" => CreateTypeItems :: FirebaseEventParameterDynamicLinkLinkid , "firebaseEventParameterNotificationMessageDeviceTime" => CreateTypeItems :: FirebaseEventParameterNotificationMessageDeviceTime , "firebaseEventParameterNotificationMessageId" => CreateTypeItems :: FirebaseEventParameterNotificationMessageId , "firebaseEventParameterNotificationMessageName" => CreateTypeItems :: FirebaseEventParameterNotificationMessageName , "firebaseEventParameterNotificationMessageTime" => CreateTypeItems :: FirebaseEventParameterNotificationMessageTime , "firebaseEventParameterNotificationTopic" => CreateTypeItems :: FirebaseEventParameterNotificationTopic , "firebaseEventParameterPreviousAppVersion" => CreateTypeItems :: FirebaseEventParameterPreviousAppVersion , "firebaseEventParameterPreviousOsVersion" => CreateTypeItems :: FirebaseEventParameterPreviousOsVersion , "firebaseEventParameterPrice" => CreateTypeItems :: FirebaseEventParameterPrice , "firebaseEventParameterProductId" => CreateTypeItems :: FirebaseEventParameterProductId , "firebaseEventParameterQuantity" => CreateTypeItems :: FirebaseEventParameterQuantity , "firebaseEventParameterValue" => CreateTypeItems :: FirebaseEventParameterValue , "firstPartyServingUrl" => CreateTypeItems :: FirstPartyServingUrl , "formClasses" => CreateTypeItems :: FormClasses , "formElement" => CreateTypeItems :: FormElement , "formId" => CreateTypeItems :: FormId , "formTarget" => CreateTypeItems :: FormTarget , "formText" => CreateTypeItems :: FormText , "formUrl" => CreateTypeItems :: FormUrl , "historySource" => CreateTypeItems :: HistorySource , "htmlId" => CreateTypeItems :: HtmlId , "language" => CreateTypeItems :: Language , "newHistoryFragment" => CreateTypeItems :: NewHistoryFragment , "newHistoryState" => CreateTypeItems :: NewHistoryState , "newHistoryUrl" => CreateTypeItems :: NewHistoryUrl , "oldHistoryFragment" => CreateTypeItems :: OldHistoryFragment , "oldHistoryState" => CreateTypeItems :: OldHistoryState , "oldHistoryUrl" => CreateTypeItems :: OldHistoryUrl , "osVersion" => CreateTypeItems :: OsVersion , "pageHostname" => CreateTypeItems :: PageHostname , "pagePath" => CreateTypeItems :: PagePath , "pageUrl" => CreateTypeItems :: PageUrl , "platform" => CreateTypeItems :: Platform , "queryString" => CreateTypeItems :: QueryString , "randomNumber" => CreateTypeItems :: RandomNumber , "referrer" => CreateTypeItems :: Referrer , "requestMethod" => CreateTypeItems :: RequestMethod , "requestPath" => CreateTypeItems :: RequestPath , "resolution" => CreateTypeItems :: Resolution , "scrollDepthDirection" => CreateTypeItems :: ScrollDepthDirection , "scrollDepthThreshold" => CreateTypeItems :: ScrollDepthThreshold , "scrollDepthUnits" => CreateTypeItems :: ScrollDepthUnits , "sdkVersion" => CreateTypeItems :: SdkVersion , "videoCurrentTime" => CreateTypeItems :: VideoCurrentTime , "videoDuration" => CreateTypeItems :: VideoDuration , "videoPercent" => CreateTypeItems :: VideoPercent , "videoProvider" => CreateTypeItems :: VideoProvider , "videoStatus" => CreateTypeItems :: VideoStatus , "videoTitle" => CreateTypeItems :: VideoTitle , "videoUrl" => CreateTypeItems :: VideoUrl , "videoVisible" => CreateTypeItems :: VideoVisible , _ => return Err (()) , })
                             }
                         }
                         impl ::std::fmt::Display for CreateTypeItems {
@@ -11925,7 +11453,7 @@ pub mod resources {
                                 D: ::serde::de::Deserializer<'de>,
                             {
                                 let value: &'de str = <&str>::deserialize(deserializer)?;
-                                Ok ( match value { "advertiserId" => CreateTypeItems :: AdvertiserId , "advertisingTrackingEnabled" => CreateTypeItems :: AdvertisingTrackingEnabled , "ampBrowserLanguage" => CreateTypeItems :: AmpBrowserLanguage , "ampCanonicalHost" => CreateTypeItems :: AmpCanonicalHost , "ampCanonicalPath" => CreateTypeItems :: AmpCanonicalPath , "ampCanonicalUrl" => CreateTypeItems :: AmpCanonicalUrl , "ampClientId" => CreateTypeItems :: AmpClientId , "ampClientMaxScrollX" => CreateTypeItems :: AmpClientMaxScrollX , "ampClientMaxScrollY" => CreateTypeItems :: AmpClientMaxScrollY , "ampClientScreenHeight" => CreateTypeItems :: AmpClientScreenHeight , "ampClientScreenWidth" => CreateTypeItems :: AmpClientScreenWidth , "ampClientScrollX" => CreateTypeItems :: AmpClientScrollX , "ampClientScrollY" => CreateTypeItems :: AmpClientScrollY , "ampClientTimestamp" => CreateTypeItems :: AmpClientTimestamp , "ampClientTimezone" => CreateTypeItems :: AmpClientTimezone , "ampGtmEvent" => CreateTypeItems :: AmpGtmEvent , "ampPageDownloadTime" => CreateTypeItems :: AmpPageDownloadTime , "ampPageLoadTime" => CreateTypeItems :: AmpPageLoadTime , "ampPageViewId" => CreateTypeItems :: AmpPageViewId , "ampReferrer" => CreateTypeItems :: AmpReferrer , "ampTitle" => CreateTypeItems :: AmpTitle , "ampTotalEngagedTime" => CreateTypeItems :: AmpTotalEngagedTime , "appId" => CreateTypeItems :: AppId , "appName" => CreateTypeItems :: AppName , "appVersionCode" => CreateTypeItems :: AppVersionCode , "appVersionName" => CreateTypeItems :: AppVersionName , "builtInVariableTypeUnspecified" => CreateTypeItems :: BuiltInVariableTypeUnspecified , "clickClasses" => CreateTypeItems :: ClickClasses , "clickElement" => CreateTypeItems :: ClickElement , "clickId" => CreateTypeItems :: ClickId , "clickTarget" => CreateTypeItems :: ClickTarget , "clickText" => CreateTypeItems :: ClickText , "clickUrl" => CreateTypeItems :: ClickUrl , "clientName" => CreateTypeItems :: ClientName , "containerId" => CreateTypeItems :: ContainerId , "containerVersion" => CreateTypeItems :: ContainerVersion , "debugMode" => CreateTypeItems :: DebugMode , "deviceName" => CreateTypeItems :: DeviceName , "elementVisibilityFirstTime" => CreateTypeItems :: ElementVisibilityFirstTime , "elementVisibilityRatio" => CreateTypeItems :: ElementVisibilityRatio , "elementVisibilityRecentTime" => CreateTypeItems :: ElementVisibilityRecentTime , "elementVisibilityTime" => CreateTypeItems :: ElementVisibilityTime , "environmentName" => CreateTypeItems :: EnvironmentName , "errorLine" => CreateTypeItems :: ErrorLine , "errorMessage" => CreateTypeItems :: ErrorMessage , "errorUrl" => CreateTypeItems :: ErrorUrl , "event" => CreateTypeItems :: Event , "eventName" => CreateTypeItems :: EventName , "firebaseEventParameterCampaign" => CreateTypeItems :: FirebaseEventParameterCampaign , "firebaseEventParameterCampaignAclid" => CreateTypeItems :: FirebaseEventParameterCampaignAclid , "firebaseEventParameterCampaignAnid" => CreateTypeItems :: FirebaseEventParameterCampaignAnid , "firebaseEventParameterCampaignClickTimestamp" => CreateTypeItems :: FirebaseEventParameterCampaignClickTimestamp , "firebaseEventParameterCampaignContent" => CreateTypeItems :: FirebaseEventParameterCampaignContent , "firebaseEventParameterCampaignCp1" => CreateTypeItems :: FirebaseEventParameterCampaignCp1 , "firebaseEventParameterCampaignGclid" => CreateTypeItems :: FirebaseEventParameterCampaignGclid , "firebaseEventParameterCampaignSource" => CreateTypeItems :: FirebaseEventParameterCampaignSource , "firebaseEventParameterCampaignTerm" => CreateTypeItems :: FirebaseEventParameterCampaignTerm , "firebaseEventParameterCurrency" => CreateTypeItems :: FirebaseEventParameterCurrency , "firebaseEventParameterDynamicLinkAcceptTime" => CreateTypeItems :: FirebaseEventParameterDynamicLinkAcceptTime , "firebaseEventParameterDynamicLinkLinkid" => CreateTypeItems :: FirebaseEventParameterDynamicLinkLinkid , "firebaseEventParameterNotificationMessageDeviceTime" => CreateTypeItems :: FirebaseEventParameterNotificationMessageDeviceTime , "firebaseEventParameterNotificationMessageId" => CreateTypeItems :: FirebaseEventParameterNotificationMessageId , "firebaseEventParameterNotificationMessageName" => CreateTypeItems :: FirebaseEventParameterNotificationMessageName , "firebaseEventParameterNotificationMessageTime" => CreateTypeItems :: FirebaseEventParameterNotificationMessageTime , "firebaseEventParameterNotificationTopic" => CreateTypeItems :: FirebaseEventParameterNotificationTopic , "firebaseEventParameterPreviousAppVersion" => CreateTypeItems :: FirebaseEventParameterPreviousAppVersion , "firebaseEventParameterPreviousOsVersion" => CreateTypeItems :: FirebaseEventParameterPreviousOsVersion , "firebaseEventParameterPrice" => CreateTypeItems :: FirebaseEventParameterPrice , "firebaseEventParameterProductId" => CreateTypeItems :: FirebaseEventParameterProductId , "firebaseEventParameterQuantity" => CreateTypeItems :: FirebaseEventParameterQuantity , "firebaseEventParameterValue" => CreateTypeItems :: FirebaseEventParameterValue , "firstPartyServingUrl" => CreateTypeItems :: FirstPartyServingUrl , "formClasses" => CreateTypeItems :: FormClasses , "formElement" => CreateTypeItems :: FormElement , "formId" => CreateTypeItems :: FormId , "formTarget" => CreateTypeItems :: FormTarget , "formText" => CreateTypeItems :: FormText , "formUrl" => CreateTypeItems :: FormUrl , "historySource" => CreateTypeItems :: HistorySource , "htmlId" => CreateTypeItems :: HtmlId , "language" => CreateTypeItems :: Language , "newHistoryFragment" => CreateTypeItems :: NewHistoryFragment , "newHistoryState" => CreateTypeItems :: NewHistoryState , "newHistoryUrl" => CreateTypeItems :: NewHistoryUrl , "oldHistoryFragment" => CreateTypeItems :: OldHistoryFragment , "oldHistoryState" => CreateTypeItems :: OldHistoryState , "oldHistoryUrl" => CreateTypeItems :: OldHistoryUrl , "osVersion" => CreateTypeItems :: OsVersion , "pageHostname" => CreateTypeItems :: PageHostname , "pagePath" => CreateTypeItems :: PagePath , "pageUrl" => CreateTypeItems :: PageUrl , "platform" => CreateTypeItems :: Platform , "queryString" => CreateTypeItems :: QueryString , "randomNumber" => CreateTypeItems :: RandomNumber , "referrer" => CreateTypeItems :: Referrer , "requestMethod" => CreateTypeItems :: RequestMethod , "requestPath" => CreateTypeItems :: RequestPath , "resolution" => CreateTypeItems :: Resolution , "scrollDepthDirection" => CreateTypeItems :: ScrollDepthDirection , "scrollDepthThreshold" => CreateTypeItems :: ScrollDepthThreshold , "scrollDepthUnits" => CreateTypeItems :: ScrollDepthUnits , "sdkVersion" => CreateTypeItems :: SdkVersion , "videoCurrentTime" => CreateTypeItems :: VideoCurrentTime , "videoDuration" => CreateTypeItems :: VideoDuration , "videoPercent" => CreateTypeItems :: VideoPercent , "videoProvider" => CreateTypeItems :: VideoProvider , "videoStatus" => CreateTypeItems :: VideoStatus , "videoTitle" => CreateTypeItems :: VideoTitle , "videoUrl" => CreateTypeItems :: VideoUrl , "videoVisible" => CreateTypeItems :: VideoVisible , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+                                Ok (match value { "advertiserId" => CreateTypeItems :: AdvertiserId , "advertisingTrackingEnabled" => CreateTypeItems :: AdvertisingTrackingEnabled , "ampBrowserLanguage" => CreateTypeItems :: AmpBrowserLanguage , "ampCanonicalHost" => CreateTypeItems :: AmpCanonicalHost , "ampCanonicalPath" => CreateTypeItems :: AmpCanonicalPath , "ampCanonicalUrl" => CreateTypeItems :: AmpCanonicalUrl , "ampClientId" => CreateTypeItems :: AmpClientId , "ampClientMaxScrollX" => CreateTypeItems :: AmpClientMaxScrollX , "ampClientMaxScrollY" => CreateTypeItems :: AmpClientMaxScrollY , "ampClientScreenHeight" => CreateTypeItems :: AmpClientScreenHeight , "ampClientScreenWidth" => CreateTypeItems :: AmpClientScreenWidth , "ampClientScrollX" => CreateTypeItems :: AmpClientScrollX , "ampClientScrollY" => CreateTypeItems :: AmpClientScrollY , "ampClientTimestamp" => CreateTypeItems :: AmpClientTimestamp , "ampClientTimezone" => CreateTypeItems :: AmpClientTimezone , "ampGtmEvent" => CreateTypeItems :: AmpGtmEvent , "ampPageDownloadTime" => CreateTypeItems :: AmpPageDownloadTime , "ampPageLoadTime" => CreateTypeItems :: AmpPageLoadTime , "ampPageViewId" => CreateTypeItems :: AmpPageViewId , "ampReferrer" => CreateTypeItems :: AmpReferrer , "ampTitle" => CreateTypeItems :: AmpTitle , "ampTotalEngagedTime" => CreateTypeItems :: AmpTotalEngagedTime , "appId" => CreateTypeItems :: AppId , "appName" => CreateTypeItems :: AppName , "appVersionCode" => CreateTypeItems :: AppVersionCode , "appVersionName" => CreateTypeItems :: AppVersionName , "builtInVariableTypeUnspecified" => CreateTypeItems :: BuiltInVariableTypeUnspecified , "clickClasses" => CreateTypeItems :: ClickClasses , "clickElement" => CreateTypeItems :: ClickElement , "clickId" => CreateTypeItems :: ClickId , "clickTarget" => CreateTypeItems :: ClickTarget , "clickText" => CreateTypeItems :: ClickText , "clickUrl" => CreateTypeItems :: ClickUrl , "clientName" => CreateTypeItems :: ClientName , "containerId" => CreateTypeItems :: ContainerId , "containerVersion" => CreateTypeItems :: ContainerVersion , "debugMode" => CreateTypeItems :: DebugMode , "deviceName" => CreateTypeItems :: DeviceName , "elementVisibilityFirstTime" => CreateTypeItems :: ElementVisibilityFirstTime , "elementVisibilityRatio" => CreateTypeItems :: ElementVisibilityRatio , "elementVisibilityRecentTime" => CreateTypeItems :: ElementVisibilityRecentTime , "elementVisibilityTime" => CreateTypeItems :: ElementVisibilityTime , "environmentName" => CreateTypeItems :: EnvironmentName , "errorLine" => CreateTypeItems :: ErrorLine , "errorMessage" => CreateTypeItems :: ErrorMessage , "errorUrl" => CreateTypeItems :: ErrorUrl , "event" => CreateTypeItems :: Event , "eventName" => CreateTypeItems :: EventName , "firebaseEventParameterCampaign" => CreateTypeItems :: FirebaseEventParameterCampaign , "firebaseEventParameterCampaignAclid" => CreateTypeItems :: FirebaseEventParameterCampaignAclid , "firebaseEventParameterCampaignAnid" => CreateTypeItems :: FirebaseEventParameterCampaignAnid , "firebaseEventParameterCampaignClickTimestamp" => CreateTypeItems :: FirebaseEventParameterCampaignClickTimestamp , "firebaseEventParameterCampaignContent" => CreateTypeItems :: FirebaseEventParameterCampaignContent , "firebaseEventParameterCampaignCp1" => CreateTypeItems :: FirebaseEventParameterCampaignCp1 , "firebaseEventParameterCampaignGclid" => CreateTypeItems :: FirebaseEventParameterCampaignGclid , "firebaseEventParameterCampaignSource" => CreateTypeItems :: FirebaseEventParameterCampaignSource , "firebaseEventParameterCampaignTerm" => CreateTypeItems :: FirebaseEventParameterCampaignTerm , "firebaseEventParameterCurrency" => CreateTypeItems :: FirebaseEventParameterCurrency , "firebaseEventParameterDynamicLinkAcceptTime" => CreateTypeItems :: FirebaseEventParameterDynamicLinkAcceptTime , "firebaseEventParameterDynamicLinkLinkid" => CreateTypeItems :: FirebaseEventParameterDynamicLinkLinkid , "firebaseEventParameterNotificationMessageDeviceTime" => CreateTypeItems :: FirebaseEventParameterNotificationMessageDeviceTime , "firebaseEventParameterNotificationMessageId" => CreateTypeItems :: FirebaseEventParameterNotificationMessageId , "firebaseEventParameterNotificationMessageName" => CreateTypeItems :: FirebaseEventParameterNotificationMessageName , "firebaseEventParameterNotificationMessageTime" => CreateTypeItems :: FirebaseEventParameterNotificationMessageTime , "firebaseEventParameterNotificationTopic" => CreateTypeItems :: FirebaseEventParameterNotificationTopic , "firebaseEventParameterPreviousAppVersion" => CreateTypeItems :: FirebaseEventParameterPreviousAppVersion , "firebaseEventParameterPreviousOsVersion" => CreateTypeItems :: FirebaseEventParameterPreviousOsVersion , "firebaseEventParameterPrice" => CreateTypeItems :: FirebaseEventParameterPrice , "firebaseEventParameterProductId" => CreateTypeItems :: FirebaseEventParameterProductId , "firebaseEventParameterQuantity" => CreateTypeItems :: FirebaseEventParameterQuantity , "firebaseEventParameterValue" => CreateTypeItems :: FirebaseEventParameterValue , "firstPartyServingUrl" => CreateTypeItems :: FirstPartyServingUrl , "formClasses" => CreateTypeItems :: FormClasses , "formElement" => CreateTypeItems :: FormElement , "formId" => CreateTypeItems :: FormId , "formTarget" => CreateTypeItems :: FormTarget , "formText" => CreateTypeItems :: FormText , "formUrl" => CreateTypeItems :: FormUrl , "historySource" => CreateTypeItems :: HistorySource , "htmlId" => CreateTypeItems :: HtmlId , "language" => CreateTypeItems :: Language , "newHistoryFragment" => CreateTypeItems :: NewHistoryFragment , "newHistoryState" => CreateTypeItems :: NewHistoryState , "newHistoryUrl" => CreateTypeItems :: NewHistoryUrl , "oldHistoryFragment" => CreateTypeItems :: OldHistoryFragment , "oldHistoryState" => CreateTypeItems :: OldHistoryState , "oldHistoryUrl" => CreateTypeItems :: OldHistoryUrl , "osVersion" => CreateTypeItems :: OsVersion , "pageHostname" => CreateTypeItems :: PageHostname , "pagePath" => CreateTypeItems :: PagePath , "pageUrl" => CreateTypeItems :: PageUrl , "platform" => CreateTypeItems :: Platform , "queryString" => CreateTypeItems :: QueryString , "randomNumber" => CreateTypeItems :: RandomNumber , "referrer" => CreateTypeItems :: Referrer , "requestMethod" => CreateTypeItems :: RequestMethod , "requestPath" => CreateTypeItems :: RequestPath , "resolution" => CreateTypeItems :: Resolution , "scrollDepthDirection" => CreateTypeItems :: ScrollDepthDirection , "scrollDepthThreshold" => CreateTypeItems :: ScrollDepthThreshold , "scrollDepthUnits" => CreateTypeItems :: ScrollDepthUnits , "sdkVersion" => CreateTypeItems :: SdkVersion , "videoCurrentTime" => CreateTypeItems :: VideoCurrentTime , "videoDuration" => CreateTypeItems :: VideoDuration , "videoPercent" => CreateTypeItems :: VideoPercent , "videoProvider" => CreateTypeItems :: VideoProvider , "videoStatus" => CreateTypeItems :: VideoStatus , "videoTitle" => CreateTypeItems :: VideoTitle , "videoUrl" => CreateTypeItems :: VideoUrl , "videoVisible" => CreateTypeItems :: VideoVisible , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
                             }
                         }
                         impl ::google_field_selector::FieldSelector for CreateTypeItems {
@@ -11974,7 +11502,9 @@ pub mod resources {
                             ClickText,
                             ClickUrl,
                             ClientName,
+                            #[doc = "For web or mobile."]
                             ContainerId,
+                            #[doc = "For web or mobile."]
                             ContainerVersion,
                             DebugMode,
                             DeviceName,
@@ -11986,6 +11516,7 @@ pub mod resources {
                             ErrorLine,
                             ErrorMessage,
                             ErrorUrl,
+                            #[doc = "For web or mobile."]
                             Event,
                             EventName,
                             FirebaseEventParameterCampaign,
@@ -12033,6 +11564,7 @@ pub mod resources {
                             PageUrl,
                             Platform,
                             QueryString,
+                            #[doc = "For web or mobile."]
                             RandomNumber,
                             Referrer,
                             RequestMethod,
@@ -12064,7 +11596,7 @@ pub mod resources {
                         impl ::std::str::FromStr for DeleteTypeItems {
                             type Err = ();
                             fn from_str(s: &str) -> ::std::result::Result<DeleteTypeItems, ()> {
-                                Ok ( match s { "advertiserId" => DeleteTypeItems :: AdvertiserId , "advertisingTrackingEnabled" => DeleteTypeItems :: AdvertisingTrackingEnabled , "ampBrowserLanguage" => DeleteTypeItems :: AmpBrowserLanguage , "ampCanonicalHost" => DeleteTypeItems :: AmpCanonicalHost , "ampCanonicalPath" => DeleteTypeItems :: AmpCanonicalPath , "ampCanonicalUrl" => DeleteTypeItems :: AmpCanonicalUrl , "ampClientId" => DeleteTypeItems :: AmpClientId , "ampClientMaxScrollX" => DeleteTypeItems :: AmpClientMaxScrollX , "ampClientMaxScrollY" => DeleteTypeItems :: AmpClientMaxScrollY , "ampClientScreenHeight" => DeleteTypeItems :: AmpClientScreenHeight , "ampClientScreenWidth" => DeleteTypeItems :: AmpClientScreenWidth , "ampClientScrollX" => DeleteTypeItems :: AmpClientScrollX , "ampClientScrollY" => DeleteTypeItems :: AmpClientScrollY , "ampClientTimestamp" => DeleteTypeItems :: AmpClientTimestamp , "ampClientTimezone" => DeleteTypeItems :: AmpClientTimezone , "ampGtmEvent" => DeleteTypeItems :: AmpGtmEvent , "ampPageDownloadTime" => DeleteTypeItems :: AmpPageDownloadTime , "ampPageLoadTime" => DeleteTypeItems :: AmpPageLoadTime , "ampPageViewId" => DeleteTypeItems :: AmpPageViewId , "ampReferrer" => DeleteTypeItems :: AmpReferrer , "ampTitle" => DeleteTypeItems :: AmpTitle , "ampTotalEngagedTime" => DeleteTypeItems :: AmpTotalEngagedTime , "appId" => DeleteTypeItems :: AppId , "appName" => DeleteTypeItems :: AppName , "appVersionCode" => DeleteTypeItems :: AppVersionCode , "appVersionName" => DeleteTypeItems :: AppVersionName , "builtInVariableTypeUnspecified" => DeleteTypeItems :: BuiltInVariableTypeUnspecified , "clickClasses" => DeleteTypeItems :: ClickClasses , "clickElement" => DeleteTypeItems :: ClickElement , "clickId" => DeleteTypeItems :: ClickId , "clickTarget" => DeleteTypeItems :: ClickTarget , "clickText" => DeleteTypeItems :: ClickText , "clickUrl" => DeleteTypeItems :: ClickUrl , "clientName" => DeleteTypeItems :: ClientName , "containerId" => DeleteTypeItems :: ContainerId , "containerVersion" => DeleteTypeItems :: ContainerVersion , "debugMode" => DeleteTypeItems :: DebugMode , "deviceName" => DeleteTypeItems :: DeviceName , "elementVisibilityFirstTime" => DeleteTypeItems :: ElementVisibilityFirstTime , "elementVisibilityRatio" => DeleteTypeItems :: ElementVisibilityRatio , "elementVisibilityRecentTime" => DeleteTypeItems :: ElementVisibilityRecentTime , "elementVisibilityTime" => DeleteTypeItems :: ElementVisibilityTime , "environmentName" => DeleteTypeItems :: EnvironmentName , "errorLine" => DeleteTypeItems :: ErrorLine , "errorMessage" => DeleteTypeItems :: ErrorMessage , "errorUrl" => DeleteTypeItems :: ErrorUrl , "event" => DeleteTypeItems :: Event , "eventName" => DeleteTypeItems :: EventName , "firebaseEventParameterCampaign" => DeleteTypeItems :: FirebaseEventParameterCampaign , "firebaseEventParameterCampaignAclid" => DeleteTypeItems :: FirebaseEventParameterCampaignAclid , "firebaseEventParameterCampaignAnid" => DeleteTypeItems :: FirebaseEventParameterCampaignAnid , "firebaseEventParameterCampaignClickTimestamp" => DeleteTypeItems :: FirebaseEventParameterCampaignClickTimestamp , "firebaseEventParameterCampaignContent" => DeleteTypeItems :: FirebaseEventParameterCampaignContent , "firebaseEventParameterCampaignCp1" => DeleteTypeItems :: FirebaseEventParameterCampaignCp1 , "firebaseEventParameterCampaignGclid" => DeleteTypeItems :: FirebaseEventParameterCampaignGclid , "firebaseEventParameterCampaignSource" => DeleteTypeItems :: FirebaseEventParameterCampaignSource , "firebaseEventParameterCampaignTerm" => DeleteTypeItems :: FirebaseEventParameterCampaignTerm , "firebaseEventParameterCurrency" => DeleteTypeItems :: FirebaseEventParameterCurrency , "firebaseEventParameterDynamicLinkAcceptTime" => DeleteTypeItems :: FirebaseEventParameterDynamicLinkAcceptTime , "firebaseEventParameterDynamicLinkLinkid" => DeleteTypeItems :: FirebaseEventParameterDynamicLinkLinkid , "firebaseEventParameterNotificationMessageDeviceTime" => DeleteTypeItems :: FirebaseEventParameterNotificationMessageDeviceTime , "firebaseEventParameterNotificationMessageId" => DeleteTypeItems :: FirebaseEventParameterNotificationMessageId , "firebaseEventParameterNotificationMessageName" => DeleteTypeItems :: FirebaseEventParameterNotificationMessageName , "firebaseEventParameterNotificationMessageTime" => DeleteTypeItems :: FirebaseEventParameterNotificationMessageTime , "firebaseEventParameterNotificationTopic" => DeleteTypeItems :: FirebaseEventParameterNotificationTopic , "firebaseEventParameterPreviousAppVersion" => DeleteTypeItems :: FirebaseEventParameterPreviousAppVersion , "firebaseEventParameterPreviousOsVersion" => DeleteTypeItems :: FirebaseEventParameterPreviousOsVersion , "firebaseEventParameterPrice" => DeleteTypeItems :: FirebaseEventParameterPrice , "firebaseEventParameterProductId" => DeleteTypeItems :: FirebaseEventParameterProductId , "firebaseEventParameterQuantity" => DeleteTypeItems :: FirebaseEventParameterQuantity , "firebaseEventParameterValue" => DeleteTypeItems :: FirebaseEventParameterValue , "firstPartyServingUrl" => DeleteTypeItems :: FirstPartyServingUrl , "formClasses" => DeleteTypeItems :: FormClasses , "formElement" => DeleteTypeItems :: FormElement , "formId" => DeleteTypeItems :: FormId , "formTarget" => DeleteTypeItems :: FormTarget , "formText" => DeleteTypeItems :: FormText , "formUrl" => DeleteTypeItems :: FormUrl , "historySource" => DeleteTypeItems :: HistorySource , "htmlId" => DeleteTypeItems :: HtmlId , "language" => DeleteTypeItems :: Language , "newHistoryFragment" => DeleteTypeItems :: NewHistoryFragment , "newHistoryState" => DeleteTypeItems :: NewHistoryState , "newHistoryUrl" => DeleteTypeItems :: NewHistoryUrl , "oldHistoryFragment" => DeleteTypeItems :: OldHistoryFragment , "oldHistoryState" => DeleteTypeItems :: OldHistoryState , "oldHistoryUrl" => DeleteTypeItems :: OldHistoryUrl , "osVersion" => DeleteTypeItems :: OsVersion , "pageHostname" => DeleteTypeItems :: PageHostname , "pagePath" => DeleteTypeItems :: PagePath , "pageUrl" => DeleteTypeItems :: PageUrl , "platform" => DeleteTypeItems :: Platform , "queryString" => DeleteTypeItems :: QueryString , "randomNumber" => DeleteTypeItems :: RandomNumber , "referrer" => DeleteTypeItems :: Referrer , "requestMethod" => DeleteTypeItems :: RequestMethod , "requestPath" => DeleteTypeItems :: RequestPath , "resolution" => DeleteTypeItems :: Resolution , "scrollDepthDirection" => DeleteTypeItems :: ScrollDepthDirection , "scrollDepthThreshold" => DeleteTypeItems :: ScrollDepthThreshold , "scrollDepthUnits" => DeleteTypeItems :: ScrollDepthUnits , "sdkVersion" => DeleteTypeItems :: SdkVersion , "videoCurrentTime" => DeleteTypeItems :: VideoCurrentTime , "videoDuration" => DeleteTypeItems :: VideoDuration , "videoPercent" => DeleteTypeItems :: VideoPercent , "videoProvider" => DeleteTypeItems :: VideoProvider , "videoStatus" => DeleteTypeItems :: VideoStatus , "videoTitle" => DeleteTypeItems :: VideoTitle , "videoUrl" => DeleteTypeItems :: VideoUrl , "videoVisible" => DeleteTypeItems :: VideoVisible , _ => return Err ( ( ) ) , } )
+                                Ok (match s { "advertiserId" => DeleteTypeItems :: AdvertiserId , "advertisingTrackingEnabled" => DeleteTypeItems :: AdvertisingTrackingEnabled , "ampBrowserLanguage" => DeleteTypeItems :: AmpBrowserLanguage , "ampCanonicalHost" => DeleteTypeItems :: AmpCanonicalHost , "ampCanonicalPath" => DeleteTypeItems :: AmpCanonicalPath , "ampCanonicalUrl" => DeleteTypeItems :: AmpCanonicalUrl , "ampClientId" => DeleteTypeItems :: AmpClientId , "ampClientMaxScrollX" => DeleteTypeItems :: AmpClientMaxScrollX , "ampClientMaxScrollY" => DeleteTypeItems :: AmpClientMaxScrollY , "ampClientScreenHeight" => DeleteTypeItems :: AmpClientScreenHeight , "ampClientScreenWidth" => DeleteTypeItems :: AmpClientScreenWidth , "ampClientScrollX" => DeleteTypeItems :: AmpClientScrollX , "ampClientScrollY" => DeleteTypeItems :: AmpClientScrollY , "ampClientTimestamp" => DeleteTypeItems :: AmpClientTimestamp , "ampClientTimezone" => DeleteTypeItems :: AmpClientTimezone , "ampGtmEvent" => DeleteTypeItems :: AmpGtmEvent , "ampPageDownloadTime" => DeleteTypeItems :: AmpPageDownloadTime , "ampPageLoadTime" => DeleteTypeItems :: AmpPageLoadTime , "ampPageViewId" => DeleteTypeItems :: AmpPageViewId , "ampReferrer" => DeleteTypeItems :: AmpReferrer , "ampTitle" => DeleteTypeItems :: AmpTitle , "ampTotalEngagedTime" => DeleteTypeItems :: AmpTotalEngagedTime , "appId" => DeleteTypeItems :: AppId , "appName" => DeleteTypeItems :: AppName , "appVersionCode" => DeleteTypeItems :: AppVersionCode , "appVersionName" => DeleteTypeItems :: AppVersionName , "builtInVariableTypeUnspecified" => DeleteTypeItems :: BuiltInVariableTypeUnspecified , "clickClasses" => DeleteTypeItems :: ClickClasses , "clickElement" => DeleteTypeItems :: ClickElement , "clickId" => DeleteTypeItems :: ClickId , "clickTarget" => DeleteTypeItems :: ClickTarget , "clickText" => DeleteTypeItems :: ClickText , "clickUrl" => DeleteTypeItems :: ClickUrl , "clientName" => DeleteTypeItems :: ClientName , "containerId" => DeleteTypeItems :: ContainerId , "containerVersion" => DeleteTypeItems :: ContainerVersion , "debugMode" => DeleteTypeItems :: DebugMode , "deviceName" => DeleteTypeItems :: DeviceName , "elementVisibilityFirstTime" => DeleteTypeItems :: ElementVisibilityFirstTime , "elementVisibilityRatio" => DeleteTypeItems :: ElementVisibilityRatio , "elementVisibilityRecentTime" => DeleteTypeItems :: ElementVisibilityRecentTime , "elementVisibilityTime" => DeleteTypeItems :: ElementVisibilityTime , "environmentName" => DeleteTypeItems :: EnvironmentName , "errorLine" => DeleteTypeItems :: ErrorLine , "errorMessage" => DeleteTypeItems :: ErrorMessage , "errorUrl" => DeleteTypeItems :: ErrorUrl , "event" => DeleteTypeItems :: Event , "eventName" => DeleteTypeItems :: EventName , "firebaseEventParameterCampaign" => DeleteTypeItems :: FirebaseEventParameterCampaign , "firebaseEventParameterCampaignAclid" => DeleteTypeItems :: FirebaseEventParameterCampaignAclid , "firebaseEventParameterCampaignAnid" => DeleteTypeItems :: FirebaseEventParameterCampaignAnid , "firebaseEventParameterCampaignClickTimestamp" => DeleteTypeItems :: FirebaseEventParameterCampaignClickTimestamp , "firebaseEventParameterCampaignContent" => DeleteTypeItems :: FirebaseEventParameterCampaignContent , "firebaseEventParameterCampaignCp1" => DeleteTypeItems :: FirebaseEventParameterCampaignCp1 , "firebaseEventParameterCampaignGclid" => DeleteTypeItems :: FirebaseEventParameterCampaignGclid , "firebaseEventParameterCampaignSource" => DeleteTypeItems :: FirebaseEventParameterCampaignSource , "firebaseEventParameterCampaignTerm" => DeleteTypeItems :: FirebaseEventParameterCampaignTerm , "firebaseEventParameterCurrency" => DeleteTypeItems :: FirebaseEventParameterCurrency , "firebaseEventParameterDynamicLinkAcceptTime" => DeleteTypeItems :: FirebaseEventParameterDynamicLinkAcceptTime , "firebaseEventParameterDynamicLinkLinkid" => DeleteTypeItems :: FirebaseEventParameterDynamicLinkLinkid , "firebaseEventParameterNotificationMessageDeviceTime" => DeleteTypeItems :: FirebaseEventParameterNotificationMessageDeviceTime , "firebaseEventParameterNotificationMessageId" => DeleteTypeItems :: FirebaseEventParameterNotificationMessageId , "firebaseEventParameterNotificationMessageName" => DeleteTypeItems :: FirebaseEventParameterNotificationMessageName , "firebaseEventParameterNotificationMessageTime" => DeleteTypeItems :: FirebaseEventParameterNotificationMessageTime , "firebaseEventParameterNotificationTopic" => DeleteTypeItems :: FirebaseEventParameterNotificationTopic , "firebaseEventParameterPreviousAppVersion" => DeleteTypeItems :: FirebaseEventParameterPreviousAppVersion , "firebaseEventParameterPreviousOsVersion" => DeleteTypeItems :: FirebaseEventParameterPreviousOsVersion , "firebaseEventParameterPrice" => DeleteTypeItems :: FirebaseEventParameterPrice , "firebaseEventParameterProductId" => DeleteTypeItems :: FirebaseEventParameterProductId , "firebaseEventParameterQuantity" => DeleteTypeItems :: FirebaseEventParameterQuantity , "firebaseEventParameterValue" => DeleteTypeItems :: FirebaseEventParameterValue , "firstPartyServingUrl" => DeleteTypeItems :: FirstPartyServingUrl , "formClasses" => DeleteTypeItems :: FormClasses , "formElement" => DeleteTypeItems :: FormElement , "formId" => DeleteTypeItems :: FormId , "formTarget" => DeleteTypeItems :: FormTarget , "formText" => DeleteTypeItems :: FormText , "formUrl" => DeleteTypeItems :: FormUrl , "historySource" => DeleteTypeItems :: HistorySource , "htmlId" => DeleteTypeItems :: HtmlId , "language" => DeleteTypeItems :: Language , "newHistoryFragment" => DeleteTypeItems :: NewHistoryFragment , "newHistoryState" => DeleteTypeItems :: NewHistoryState , "newHistoryUrl" => DeleteTypeItems :: NewHistoryUrl , "oldHistoryFragment" => DeleteTypeItems :: OldHistoryFragment , "oldHistoryState" => DeleteTypeItems :: OldHistoryState , "oldHistoryUrl" => DeleteTypeItems :: OldHistoryUrl , "osVersion" => DeleteTypeItems :: OsVersion , "pageHostname" => DeleteTypeItems :: PageHostname , "pagePath" => DeleteTypeItems :: PagePath , "pageUrl" => DeleteTypeItems :: PageUrl , "platform" => DeleteTypeItems :: Platform , "queryString" => DeleteTypeItems :: QueryString , "randomNumber" => DeleteTypeItems :: RandomNumber , "referrer" => DeleteTypeItems :: Referrer , "requestMethod" => DeleteTypeItems :: RequestMethod , "requestPath" => DeleteTypeItems :: RequestPath , "resolution" => DeleteTypeItems :: Resolution , "scrollDepthDirection" => DeleteTypeItems :: ScrollDepthDirection , "scrollDepthThreshold" => DeleteTypeItems :: ScrollDepthThreshold , "scrollDepthUnits" => DeleteTypeItems :: ScrollDepthUnits , "sdkVersion" => DeleteTypeItems :: SdkVersion , "videoCurrentTime" => DeleteTypeItems :: VideoCurrentTime , "videoDuration" => DeleteTypeItems :: VideoDuration , "videoPercent" => DeleteTypeItems :: VideoPercent , "videoProvider" => DeleteTypeItems :: VideoProvider , "videoStatus" => DeleteTypeItems :: VideoStatus , "videoTitle" => DeleteTypeItems :: VideoTitle , "videoUrl" => DeleteTypeItems :: VideoUrl , "videoVisible" => DeleteTypeItems :: VideoVisible , _ => return Err (()) , })
                             }
                         }
                         impl ::std::fmt::Display for DeleteTypeItems {
@@ -12091,7 +11623,7 @@ pub mod resources {
                                 D: ::serde::de::Deserializer<'de>,
                             {
                                 let value: &'de str = <&str>::deserialize(deserializer)?;
-                                Ok ( match value { "advertiserId" => DeleteTypeItems :: AdvertiserId , "advertisingTrackingEnabled" => DeleteTypeItems :: AdvertisingTrackingEnabled , "ampBrowserLanguage" => DeleteTypeItems :: AmpBrowserLanguage , "ampCanonicalHost" => DeleteTypeItems :: AmpCanonicalHost , "ampCanonicalPath" => DeleteTypeItems :: AmpCanonicalPath , "ampCanonicalUrl" => DeleteTypeItems :: AmpCanonicalUrl , "ampClientId" => DeleteTypeItems :: AmpClientId , "ampClientMaxScrollX" => DeleteTypeItems :: AmpClientMaxScrollX , "ampClientMaxScrollY" => DeleteTypeItems :: AmpClientMaxScrollY , "ampClientScreenHeight" => DeleteTypeItems :: AmpClientScreenHeight , "ampClientScreenWidth" => DeleteTypeItems :: AmpClientScreenWidth , "ampClientScrollX" => DeleteTypeItems :: AmpClientScrollX , "ampClientScrollY" => DeleteTypeItems :: AmpClientScrollY , "ampClientTimestamp" => DeleteTypeItems :: AmpClientTimestamp , "ampClientTimezone" => DeleteTypeItems :: AmpClientTimezone , "ampGtmEvent" => DeleteTypeItems :: AmpGtmEvent , "ampPageDownloadTime" => DeleteTypeItems :: AmpPageDownloadTime , "ampPageLoadTime" => DeleteTypeItems :: AmpPageLoadTime , "ampPageViewId" => DeleteTypeItems :: AmpPageViewId , "ampReferrer" => DeleteTypeItems :: AmpReferrer , "ampTitle" => DeleteTypeItems :: AmpTitle , "ampTotalEngagedTime" => DeleteTypeItems :: AmpTotalEngagedTime , "appId" => DeleteTypeItems :: AppId , "appName" => DeleteTypeItems :: AppName , "appVersionCode" => DeleteTypeItems :: AppVersionCode , "appVersionName" => DeleteTypeItems :: AppVersionName , "builtInVariableTypeUnspecified" => DeleteTypeItems :: BuiltInVariableTypeUnspecified , "clickClasses" => DeleteTypeItems :: ClickClasses , "clickElement" => DeleteTypeItems :: ClickElement , "clickId" => DeleteTypeItems :: ClickId , "clickTarget" => DeleteTypeItems :: ClickTarget , "clickText" => DeleteTypeItems :: ClickText , "clickUrl" => DeleteTypeItems :: ClickUrl , "clientName" => DeleteTypeItems :: ClientName , "containerId" => DeleteTypeItems :: ContainerId , "containerVersion" => DeleteTypeItems :: ContainerVersion , "debugMode" => DeleteTypeItems :: DebugMode , "deviceName" => DeleteTypeItems :: DeviceName , "elementVisibilityFirstTime" => DeleteTypeItems :: ElementVisibilityFirstTime , "elementVisibilityRatio" => DeleteTypeItems :: ElementVisibilityRatio , "elementVisibilityRecentTime" => DeleteTypeItems :: ElementVisibilityRecentTime , "elementVisibilityTime" => DeleteTypeItems :: ElementVisibilityTime , "environmentName" => DeleteTypeItems :: EnvironmentName , "errorLine" => DeleteTypeItems :: ErrorLine , "errorMessage" => DeleteTypeItems :: ErrorMessage , "errorUrl" => DeleteTypeItems :: ErrorUrl , "event" => DeleteTypeItems :: Event , "eventName" => DeleteTypeItems :: EventName , "firebaseEventParameterCampaign" => DeleteTypeItems :: FirebaseEventParameterCampaign , "firebaseEventParameterCampaignAclid" => DeleteTypeItems :: FirebaseEventParameterCampaignAclid , "firebaseEventParameterCampaignAnid" => DeleteTypeItems :: FirebaseEventParameterCampaignAnid , "firebaseEventParameterCampaignClickTimestamp" => DeleteTypeItems :: FirebaseEventParameterCampaignClickTimestamp , "firebaseEventParameterCampaignContent" => DeleteTypeItems :: FirebaseEventParameterCampaignContent , "firebaseEventParameterCampaignCp1" => DeleteTypeItems :: FirebaseEventParameterCampaignCp1 , "firebaseEventParameterCampaignGclid" => DeleteTypeItems :: FirebaseEventParameterCampaignGclid , "firebaseEventParameterCampaignSource" => DeleteTypeItems :: FirebaseEventParameterCampaignSource , "firebaseEventParameterCampaignTerm" => DeleteTypeItems :: FirebaseEventParameterCampaignTerm , "firebaseEventParameterCurrency" => DeleteTypeItems :: FirebaseEventParameterCurrency , "firebaseEventParameterDynamicLinkAcceptTime" => DeleteTypeItems :: FirebaseEventParameterDynamicLinkAcceptTime , "firebaseEventParameterDynamicLinkLinkid" => DeleteTypeItems :: FirebaseEventParameterDynamicLinkLinkid , "firebaseEventParameterNotificationMessageDeviceTime" => DeleteTypeItems :: FirebaseEventParameterNotificationMessageDeviceTime , "firebaseEventParameterNotificationMessageId" => DeleteTypeItems :: FirebaseEventParameterNotificationMessageId , "firebaseEventParameterNotificationMessageName" => DeleteTypeItems :: FirebaseEventParameterNotificationMessageName , "firebaseEventParameterNotificationMessageTime" => DeleteTypeItems :: FirebaseEventParameterNotificationMessageTime , "firebaseEventParameterNotificationTopic" => DeleteTypeItems :: FirebaseEventParameterNotificationTopic , "firebaseEventParameterPreviousAppVersion" => DeleteTypeItems :: FirebaseEventParameterPreviousAppVersion , "firebaseEventParameterPreviousOsVersion" => DeleteTypeItems :: FirebaseEventParameterPreviousOsVersion , "firebaseEventParameterPrice" => DeleteTypeItems :: FirebaseEventParameterPrice , "firebaseEventParameterProductId" => DeleteTypeItems :: FirebaseEventParameterProductId , "firebaseEventParameterQuantity" => DeleteTypeItems :: FirebaseEventParameterQuantity , "firebaseEventParameterValue" => DeleteTypeItems :: FirebaseEventParameterValue , "firstPartyServingUrl" => DeleteTypeItems :: FirstPartyServingUrl , "formClasses" => DeleteTypeItems :: FormClasses , "formElement" => DeleteTypeItems :: FormElement , "formId" => DeleteTypeItems :: FormId , "formTarget" => DeleteTypeItems :: FormTarget , "formText" => DeleteTypeItems :: FormText , "formUrl" => DeleteTypeItems :: FormUrl , "historySource" => DeleteTypeItems :: HistorySource , "htmlId" => DeleteTypeItems :: HtmlId , "language" => DeleteTypeItems :: Language , "newHistoryFragment" => DeleteTypeItems :: NewHistoryFragment , "newHistoryState" => DeleteTypeItems :: NewHistoryState , "newHistoryUrl" => DeleteTypeItems :: NewHistoryUrl , "oldHistoryFragment" => DeleteTypeItems :: OldHistoryFragment , "oldHistoryState" => DeleteTypeItems :: OldHistoryState , "oldHistoryUrl" => DeleteTypeItems :: OldHistoryUrl , "osVersion" => DeleteTypeItems :: OsVersion , "pageHostname" => DeleteTypeItems :: PageHostname , "pagePath" => DeleteTypeItems :: PagePath , "pageUrl" => DeleteTypeItems :: PageUrl , "platform" => DeleteTypeItems :: Platform , "queryString" => DeleteTypeItems :: QueryString , "randomNumber" => DeleteTypeItems :: RandomNumber , "referrer" => DeleteTypeItems :: Referrer , "requestMethod" => DeleteTypeItems :: RequestMethod , "requestPath" => DeleteTypeItems :: RequestPath , "resolution" => DeleteTypeItems :: Resolution , "scrollDepthDirection" => DeleteTypeItems :: ScrollDepthDirection , "scrollDepthThreshold" => DeleteTypeItems :: ScrollDepthThreshold , "scrollDepthUnits" => DeleteTypeItems :: ScrollDepthUnits , "sdkVersion" => DeleteTypeItems :: SdkVersion , "videoCurrentTime" => DeleteTypeItems :: VideoCurrentTime , "videoDuration" => DeleteTypeItems :: VideoDuration , "videoPercent" => DeleteTypeItems :: VideoPercent , "videoProvider" => DeleteTypeItems :: VideoProvider , "videoStatus" => DeleteTypeItems :: VideoStatus , "videoTitle" => DeleteTypeItems :: VideoTitle , "videoUrl" => DeleteTypeItems :: VideoUrl , "videoVisible" => DeleteTypeItems :: VideoVisible , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+                                Ok (match value { "advertiserId" => DeleteTypeItems :: AdvertiserId , "advertisingTrackingEnabled" => DeleteTypeItems :: AdvertisingTrackingEnabled , "ampBrowserLanguage" => DeleteTypeItems :: AmpBrowserLanguage , "ampCanonicalHost" => DeleteTypeItems :: AmpCanonicalHost , "ampCanonicalPath" => DeleteTypeItems :: AmpCanonicalPath , "ampCanonicalUrl" => DeleteTypeItems :: AmpCanonicalUrl , "ampClientId" => DeleteTypeItems :: AmpClientId , "ampClientMaxScrollX" => DeleteTypeItems :: AmpClientMaxScrollX , "ampClientMaxScrollY" => DeleteTypeItems :: AmpClientMaxScrollY , "ampClientScreenHeight" => DeleteTypeItems :: AmpClientScreenHeight , "ampClientScreenWidth" => DeleteTypeItems :: AmpClientScreenWidth , "ampClientScrollX" => DeleteTypeItems :: AmpClientScrollX , "ampClientScrollY" => DeleteTypeItems :: AmpClientScrollY , "ampClientTimestamp" => DeleteTypeItems :: AmpClientTimestamp , "ampClientTimezone" => DeleteTypeItems :: AmpClientTimezone , "ampGtmEvent" => DeleteTypeItems :: AmpGtmEvent , "ampPageDownloadTime" => DeleteTypeItems :: AmpPageDownloadTime , "ampPageLoadTime" => DeleteTypeItems :: AmpPageLoadTime , "ampPageViewId" => DeleteTypeItems :: AmpPageViewId , "ampReferrer" => DeleteTypeItems :: AmpReferrer , "ampTitle" => DeleteTypeItems :: AmpTitle , "ampTotalEngagedTime" => DeleteTypeItems :: AmpTotalEngagedTime , "appId" => DeleteTypeItems :: AppId , "appName" => DeleteTypeItems :: AppName , "appVersionCode" => DeleteTypeItems :: AppVersionCode , "appVersionName" => DeleteTypeItems :: AppVersionName , "builtInVariableTypeUnspecified" => DeleteTypeItems :: BuiltInVariableTypeUnspecified , "clickClasses" => DeleteTypeItems :: ClickClasses , "clickElement" => DeleteTypeItems :: ClickElement , "clickId" => DeleteTypeItems :: ClickId , "clickTarget" => DeleteTypeItems :: ClickTarget , "clickText" => DeleteTypeItems :: ClickText , "clickUrl" => DeleteTypeItems :: ClickUrl , "clientName" => DeleteTypeItems :: ClientName , "containerId" => DeleteTypeItems :: ContainerId , "containerVersion" => DeleteTypeItems :: ContainerVersion , "debugMode" => DeleteTypeItems :: DebugMode , "deviceName" => DeleteTypeItems :: DeviceName , "elementVisibilityFirstTime" => DeleteTypeItems :: ElementVisibilityFirstTime , "elementVisibilityRatio" => DeleteTypeItems :: ElementVisibilityRatio , "elementVisibilityRecentTime" => DeleteTypeItems :: ElementVisibilityRecentTime , "elementVisibilityTime" => DeleteTypeItems :: ElementVisibilityTime , "environmentName" => DeleteTypeItems :: EnvironmentName , "errorLine" => DeleteTypeItems :: ErrorLine , "errorMessage" => DeleteTypeItems :: ErrorMessage , "errorUrl" => DeleteTypeItems :: ErrorUrl , "event" => DeleteTypeItems :: Event , "eventName" => DeleteTypeItems :: EventName , "firebaseEventParameterCampaign" => DeleteTypeItems :: FirebaseEventParameterCampaign , "firebaseEventParameterCampaignAclid" => DeleteTypeItems :: FirebaseEventParameterCampaignAclid , "firebaseEventParameterCampaignAnid" => DeleteTypeItems :: FirebaseEventParameterCampaignAnid , "firebaseEventParameterCampaignClickTimestamp" => DeleteTypeItems :: FirebaseEventParameterCampaignClickTimestamp , "firebaseEventParameterCampaignContent" => DeleteTypeItems :: FirebaseEventParameterCampaignContent , "firebaseEventParameterCampaignCp1" => DeleteTypeItems :: FirebaseEventParameterCampaignCp1 , "firebaseEventParameterCampaignGclid" => DeleteTypeItems :: FirebaseEventParameterCampaignGclid , "firebaseEventParameterCampaignSource" => DeleteTypeItems :: FirebaseEventParameterCampaignSource , "firebaseEventParameterCampaignTerm" => DeleteTypeItems :: FirebaseEventParameterCampaignTerm , "firebaseEventParameterCurrency" => DeleteTypeItems :: FirebaseEventParameterCurrency , "firebaseEventParameterDynamicLinkAcceptTime" => DeleteTypeItems :: FirebaseEventParameterDynamicLinkAcceptTime , "firebaseEventParameterDynamicLinkLinkid" => DeleteTypeItems :: FirebaseEventParameterDynamicLinkLinkid , "firebaseEventParameterNotificationMessageDeviceTime" => DeleteTypeItems :: FirebaseEventParameterNotificationMessageDeviceTime , "firebaseEventParameterNotificationMessageId" => DeleteTypeItems :: FirebaseEventParameterNotificationMessageId , "firebaseEventParameterNotificationMessageName" => DeleteTypeItems :: FirebaseEventParameterNotificationMessageName , "firebaseEventParameterNotificationMessageTime" => DeleteTypeItems :: FirebaseEventParameterNotificationMessageTime , "firebaseEventParameterNotificationTopic" => DeleteTypeItems :: FirebaseEventParameterNotificationTopic , "firebaseEventParameterPreviousAppVersion" => DeleteTypeItems :: FirebaseEventParameterPreviousAppVersion , "firebaseEventParameterPreviousOsVersion" => DeleteTypeItems :: FirebaseEventParameterPreviousOsVersion , "firebaseEventParameterPrice" => DeleteTypeItems :: FirebaseEventParameterPrice , "firebaseEventParameterProductId" => DeleteTypeItems :: FirebaseEventParameterProductId , "firebaseEventParameterQuantity" => DeleteTypeItems :: FirebaseEventParameterQuantity , "firebaseEventParameterValue" => DeleteTypeItems :: FirebaseEventParameterValue , "firstPartyServingUrl" => DeleteTypeItems :: FirstPartyServingUrl , "formClasses" => DeleteTypeItems :: FormClasses , "formElement" => DeleteTypeItems :: FormElement , "formId" => DeleteTypeItems :: FormId , "formTarget" => DeleteTypeItems :: FormTarget , "formText" => DeleteTypeItems :: FormText , "formUrl" => DeleteTypeItems :: FormUrl , "historySource" => DeleteTypeItems :: HistorySource , "htmlId" => DeleteTypeItems :: HtmlId , "language" => DeleteTypeItems :: Language , "newHistoryFragment" => DeleteTypeItems :: NewHistoryFragment , "newHistoryState" => DeleteTypeItems :: NewHistoryState , "newHistoryUrl" => DeleteTypeItems :: NewHistoryUrl , "oldHistoryFragment" => DeleteTypeItems :: OldHistoryFragment , "oldHistoryState" => DeleteTypeItems :: OldHistoryState , "oldHistoryUrl" => DeleteTypeItems :: OldHistoryUrl , "osVersion" => DeleteTypeItems :: OsVersion , "pageHostname" => DeleteTypeItems :: PageHostname , "pagePath" => DeleteTypeItems :: PagePath , "pageUrl" => DeleteTypeItems :: PageUrl , "platform" => DeleteTypeItems :: Platform , "queryString" => DeleteTypeItems :: QueryString , "randomNumber" => DeleteTypeItems :: RandomNumber , "referrer" => DeleteTypeItems :: Referrer , "requestMethod" => DeleteTypeItems :: RequestMethod , "requestPath" => DeleteTypeItems :: RequestPath , "resolution" => DeleteTypeItems :: Resolution , "scrollDepthDirection" => DeleteTypeItems :: ScrollDepthDirection , "scrollDepthThreshold" => DeleteTypeItems :: ScrollDepthThreshold , "scrollDepthUnits" => DeleteTypeItems :: ScrollDepthUnits , "sdkVersion" => DeleteTypeItems :: SdkVersion , "videoCurrentTime" => DeleteTypeItems :: VideoCurrentTime , "videoDuration" => DeleteTypeItems :: VideoDuration , "videoPercent" => DeleteTypeItems :: VideoPercent , "videoProvider" => DeleteTypeItems :: VideoProvider , "videoStatus" => DeleteTypeItems :: VideoStatus , "videoTitle" => DeleteTypeItems :: VideoTitle , "videoUrl" => DeleteTypeItems :: VideoUrl , "videoVisible" => DeleteTypeItems :: VideoVisible , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
                             }
                         }
                         impl ::google_field_selector::FieldSelector for DeleteTypeItems {
@@ -12140,7 +11672,9 @@ pub mod resources {
                             ClickText,
                             ClickUrl,
                             ClientName,
+                            #[doc = "For web or mobile."]
                             ContainerId,
+                            #[doc = "For web or mobile."]
                             ContainerVersion,
                             DebugMode,
                             DeviceName,
@@ -12152,6 +11686,7 @@ pub mod resources {
                             ErrorLine,
                             ErrorMessage,
                             ErrorUrl,
+                            #[doc = "For web or mobile."]
                             Event,
                             EventName,
                             FirebaseEventParameterCampaign,
@@ -12199,6 +11734,7 @@ pub mod resources {
                             PageUrl,
                             Platform,
                             QueryString,
+                            #[doc = "For web or mobile."]
                             RandomNumber,
                             Referrer,
                             RequestMethod,
@@ -12230,7 +11766,7 @@ pub mod resources {
                         impl ::std::str::FromStr for RevertType {
                             type Err = ();
                             fn from_str(s: &str) -> ::std::result::Result<RevertType, ()> {
-                                Ok ( match s { "advertiserId" => RevertType :: AdvertiserId , "advertisingTrackingEnabled" => RevertType :: AdvertisingTrackingEnabled , "ampBrowserLanguage" => RevertType :: AmpBrowserLanguage , "ampCanonicalHost" => RevertType :: AmpCanonicalHost , "ampCanonicalPath" => RevertType :: AmpCanonicalPath , "ampCanonicalUrl" => RevertType :: AmpCanonicalUrl , "ampClientId" => RevertType :: AmpClientId , "ampClientMaxScrollX" => RevertType :: AmpClientMaxScrollX , "ampClientMaxScrollY" => RevertType :: AmpClientMaxScrollY , "ampClientScreenHeight" => RevertType :: AmpClientScreenHeight , "ampClientScreenWidth" => RevertType :: AmpClientScreenWidth , "ampClientScrollX" => RevertType :: AmpClientScrollX , "ampClientScrollY" => RevertType :: AmpClientScrollY , "ampClientTimestamp" => RevertType :: AmpClientTimestamp , "ampClientTimezone" => RevertType :: AmpClientTimezone , "ampGtmEvent" => RevertType :: AmpGtmEvent , "ampPageDownloadTime" => RevertType :: AmpPageDownloadTime , "ampPageLoadTime" => RevertType :: AmpPageLoadTime , "ampPageViewId" => RevertType :: AmpPageViewId , "ampReferrer" => RevertType :: AmpReferrer , "ampTitle" => RevertType :: AmpTitle , "ampTotalEngagedTime" => RevertType :: AmpTotalEngagedTime , "appId" => RevertType :: AppId , "appName" => RevertType :: AppName , "appVersionCode" => RevertType :: AppVersionCode , "appVersionName" => RevertType :: AppVersionName , "builtInVariableTypeUnspecified" => RevertType :: BuiltInVariableTypeUnspecified , "clickClasses" => RevertType :: ClickClasses , "clickElement" => RevertType :: ClickElement , "clickId" => RevertType :: ClickId , "clickTarget" => RevertType :: ClickTarget , "clickText" => RevertType :: ClickText , "clickUrl" => RevertType :: ClickUrl , "clientName" => RevertType :: ClientName , "containerId" => RevertType :: ContainerId , "containerVersion" => RevertType :: ContainerVersion , "debugMode" => RevertType :: DebugMode , "deviceName" => RevertType :: DeviceName , "elementVisibilityFirstTime" => RevertType :: ElementVisibilityFirstTime , "elementVisibilityRatio" => RevertType :: ElementVisibilityRatio , "elementVisibilityRecentTime" => RevertType :: ElementVisibilityRecentTime , "elementVisibilityTime" => RevertType :: ElementVisibilityTime , "environmentName" => RevertType :: EnvironmentName , "errorLine" => RevertType :: ErrorLine , "errorMessage" => RevertType :: ErrorMessage , "errorUrl" => RevertType :: ErrorUrl , "event" => RevertType :: Event , "eventName" => RevertType :: EventName , "firebaseEventParameterCampaign" => RevertType :: FirebaseEventParameterCampaign , "firebaseEventParameterCampaignAclid" => RevertType :: FirebaseEventParameterCampaignAclid , "firebaseEventParameterCampaignAnid" => RevertType :: FirebaseEventParameterCampaignAnid , "firebaseEventParameterCampaignClickTimestamp" => RevertType :: FirebaseEventParameterCampaignClickTimestamp , "firebaseEventParameterCampaignContent" => RevertType :: FirebaseEventParameterCampaignContent , "firebaseEventParameterCampaignCp1" => RevertType :: FirebaseEventParameterCampaignCp1 , "firebaseEventParameterCampaignGclid" => RevertType :: FirebaseEventParameterCampaignGclid , "firebaseEventParameterCampaignSource" => RevertType :: FirebaseEventParameterCampaignSource , "firebaseEventParameterCampaignTerm" => RevertType :: FirebaseEventParameterCampaignTerm , "firebaseEventParameterCurrency" => RevertType :: FirebaseEventParameterCurrency , "firebaseEventParameterDynamicLinkAcceptTime" => RevertType :: FirebaseEventParameterDynamicLinkAcceptTime , "firebaseEventParameterDynamicLinkLinkid" => RevertType :: FirebaseEventParameterDynamicLinkLinkid , "firebaseEventParameterNotificationMessageDeviceTime" => RevertType :: FirebaseEventParameterNotificationMessageDeviceTime , "firebaseEventParameterNotificationMessageId" => RevertType :: FirebaseEventParameterNotificationMessageId , "firebaseEventParameterNotificationMessageName" => RevertType :: FirebaseEventParameterNotificationMessageName , "firebaseEventParameterNotificationMessageTime" => RevertType :: FirebaseEventParameterNotificationMessageTime , "firebaseEventParameterNotificationTopic" => RevertType :: FirebaseEventParameterNotificationTopic , "firebaseEventParameterPreviousAppVersion" => RevertType :: FirebaseEventParameterPreviousAppVersion , "firebaseEventParameterPreviousOsVersion" => RevertType :: FirebaseEventParameterPreviousOsVersion , "firebaseEventParameterPrice" => RevertType :: FirebaseEventParameterPrice , "firebaseEventParameterProductId" => RevertType :: FirebaseEventParameterProductId , "firebaseEventParameterQuantity" => RevertType :: FirebaseEventParameterQuantity , "firebaseEventParameterValue" => RevertType :: FirebaseEventParameterValue , "firstPartyServingUrl" => RevertType :: FirstPartyServingUrl , "formClasses" => RevertType :: FormClasses , "formElement" => RevertType :: FormElement , "formId" => RevertType :: FormId , "formTarget" => RevertType :: FormTarget , "formText" => RevertType :: FormText , "formUrl" => RevertType :: FormUrl , "historySource" => RevertType :: HistorySource , "htmlId" => RevertType :: HtmlId , "language" => RevertType :: Language , "newHistoryFragment" => RevertType :: NewHistoryFragment , "newHistoryState" => RevertType :: NewHistoryState , "newHistoryUrl" => RevertType :: NewHistoryUrl , "oldHistoryFragment" => RevertType :: OldHistoryFragment , "oldHistoryState" => RevertType :: OldHistoryState , "oldHistoryUrl" => RevertType :: OldHistoryUrl , "osVersion" => RevertType :: OsVersion , "pageHostname" => RevertType :: PageHostname , "pagePath" => RevertType :: PagePath , "pageUrl" => RevertType :: PageUrl , "platform" => RevertType :: Platform , "queryString" => RevertType :: QueryString , "randomNumber" => RevertType :: RandomNumber , "referrer" => RevertType :: Referrer , "requestMethod" => RevertType :: RequestMethod , "requestPath" => RevertType :: RequestPath , "resolution" => RevertType :: Resolution , "scrollDepthDirection" => RevertType :: ScrollDepthDirection , "scrollDepthThreshold" => RevertType :: ScrollDepthThreshold , "scrollDepthUnits" => RevertType :: ScrollDepthUnits , "sdkVersion" => RevertType :: SdkVersion , "videoCurrentTime" => RevertType :: VideoCurrentTime , "videoDuration" => RevertType :: VideoDuration , "videoPercent" => RevertType :: VideoPercent , "videoProvider" => RevertType :: VideoProvider , "videoStatus" => RevertType :: VideoStatus , "videoTitle" => RevertType :: VideoTitle , "videoUrl" => RevertType :: VideoUrl , "videoVisible" => RevertType :: VideoVisible , _ => return Err ( ( ) ) , } )
+                                Ok (match s { "advertiserId" => RevertType :: AdvertiserId , "advertisingTrackingEnabled" => RevertType :: AdvertisingTrackingEnabled , "ampBrowserLanguage" => RevertType :: AmpBrowserLanguage , "ampCanonicalHost" => RevertType :: AmpCanonicalHost , "ampCanonicalPath" => RevertType :: AmpCanonicalPath , "ampCanonicalUrl" => RevertType :: AmpCanonicalUrl , "ampClientId" => RevertType :: AmpClientId , "ampClientMaxScrollX" => RevertType :: AmpClientMaxScrollX , "ampClientMaxScrollY" => RevertType :: AmpClientMaxScrollY , "ampClientScreenHeight" => RevertType :: AmpClientScreenHeight , "ampClientScreenWidth" => RevertType :: AmpClientScreenWidth , "ampClientScrollX" => RevertType :: AmpClientScrollX , "ampClientScrollY" => RevertType :: AmpClientScrollY , "ampClientTimestamp" => RevertType :: AmpClientTimestamp , "ampClientTimezone" => RevertType :: AmpClientTimezone , "ampGtmEvent" => RevertType :: AmpGtmEvent , "ampPageDownloadTime" => RevertType :: AmpPageDownloadTime , "ampPageLoadTime" => RevertType :: AmpPageLoadTime , "ampPageViewId" => RevertType :: AmpPageViewId , "ampReferrer" => RevertType :: AmpReferrer , "ampTitle" => RevertType :: AmpTitle , "ampTotalEngagedTime" => RevertType :: AmpTotalEngagedTime , "appId" => RevertType :: AppId , "appName" => RevertType :: AppName , "appVersionCode" => RevertType :: AppVersionCode , "appVersionName" => RevertType :: AppVersionName , "builtInVariableTypeUnspecified" => RevertType :: BuiltInVariableTypeUnspecified , "clickClasses" => RevertType :: ClickClasses , "clickElement" => RevertType :: ClickElement , "clickId" => RevertType :: ClickId , "clickTarget" => RevertType :: ClickTarget , "clickText" => RevertType :: ClickText , "clickUrl" => RevertType :: ClickUrl , "clientName" => RevertType :: ClientName , "containerId" => RevertType :: ContainerId , "containerVersion" => RevertType :: ContainerVersion , "debugMode" => RevertType :: DebugMode , "deviceName" => RevertType :: DeviceName , "elementVisibilityFirstTime" => RevertType :: ElementVisibilityFirstTime , "elementVisibilityRatio" => RevertType :: ElementVisibilityRatio , "elementVisibilityRecentTime" => RevertType :: ElementVisibilityRecentTime , "elementVisibilityTime" => RevertType :: ElementVisibilityTime , "environmentName" => RevertType :: EnvironmentName , "errorLine" => RevertType :: ErrorLine , "errorMessage" => RevertType :: ErrorMessage , "errorUrl" => RevertType :: ErrorUrl , "event" => RevertType :: Event , "eventName" => RevertType :: EventName , "firebaseEventParameterCampaign" => RevertType :: FirebaseEventParameterCampaign , "firebaseEventParameterCampaignAclid" => RevertType :: FirebaseEventParameterCampaignAclid , "firebaseEventParameterCampaignAnid" => RevertType :: FirebaseEventParameterCampaignAnid , "firebaseEventParameterCampaignClickTimestamp" => RevertType :: FirebaseEventParameterCampaignClickTimestamp , "firebaseEventParameterCampaignContent" => RevertType :: FirebaseEventParameterCampaignContent , "firebaseEventParameterCampaignCp1" => RevertType :: FirebaseEventParameterCampaignCp1 , "firebaseEventParameterCampaignGclid" => RevertType :: FirebaseEventParameterCampaignGclid , "firebaseEventParameterCampaignSource" => RevertType :: FirebaseEventParameterCampaignSource , "firebaseEventParameterCampaignTerm" => RevertType :: FirebaseEventParameterCampaignTerm , "firebaseEventParameterCurrency" => RevertType :: FirebaseEventParameterCurrency , "firebaseEventParameterDynamicLinkAcceptTime" => RevertType :: FirebaseEventParameterDynamicLinkAcceptTime , "firebaseEventParameterDynamicLinkLinkid" => RevertType :: FirebaseEventParameterDynamicLinkLinkid , "firebaseEventParameterNotificationMessageDeviceTime" => RevertType :: FirebaseEventParameterNotificationMessageDeviceTime , "firebaseEventParameterNotificationMessageId" => RevertType :: FirebaseEventParameterNotificationMessageId , "firebaseEventParameterNotificationMessageName" => RevertType :: FirebaseEventParameterNotificationMessageName , "firebaseEventParameterNotificationMessageTime" => RevertType :: FirebaseEventParameterNotificationMessageTime , "firebaseEventParameterNotificationTopic" => RevertType :: FirebaseEventParameterNotificationTopic , "firebaseEventParameterPreviousAppVersion" => RevertType :: FirebaseEventParameterPreviousAppVersion , "firebaseEventParameterPreviousOsVersion" => RevertType :: FirebaseEventParameterPreviousOsVersion , "firebaseEventParameterPrice" => RevertType :: FirebaseEventParameterPrice , "firebaseEventParameterProductId" => RevertType :: FirebaseEventParameterProductId , "firebaseEventParameterQuantity" => RevertType :: FirebaseEventParameterQuantity , "firebaseEventParameterValue" => RevertType :: FirebaseEventParameterValue , "firstPartyServingUrl" => RevertType :: FirstPartyServingUrl , "formClasses" => RevertType :: FormClasses , "formElement" => RevertType :: FormElement , "formId" => RevertType :: FormId , "formTarget" => RevertType :: FormTarget , "formText" => RevertType :: FormText , "formUrl" => RevertType :: FormUrl , "historySource" => RevertType :: HistorySource , "htmlId" => RevertType :: HtmlId , "language" => RevertType :: Language , "newHistoryFragment" => RevertType :: NewHistoryFragment , "newHistoryState" => RevertType :: NewHistoryState , "newHistoryUrl" => RevertType :: NewHistoryUrl , "oldHistoryFragment" => RevertType :: OldHistoryFragment , "oldHistoryState" => RevertType :: OldHistoryState , "oldHistoryUrl" => RevertType :: OldHistoryUrl , "osVersion" => RevertType :: OsVersion , "pageHostname" => RevertType :: PageHostname , "pagePath" => RevertType :: PagePath , "pageUrl" => RevertType :: PageUrl , "platform" => RevertType :: Platform , "queryString" => RevertType :: QueryString , "randomNumber" => RevertType :: RandomNumber , "referrer" => RevertType :: Referrer , "requestMethod" => RevertType :: RequestMethod , "requestPath" => RevertType :: RequestPath , "resolution" => RevertType :: Resolution , "scrollDepthDirection" => RevertType :: ScrollDepthDirection , "scrollDepthThreshold" => RevertType :: ScrollDepthThreshold , "scrollDepthUnits" => RevertType :: ScrollDepthUnits , "sdkVersion" => RevertType :: SdkVersion , "videoCurrentTime" => RevertType :: VideoCurrentTime , "videoDuration" => RevertType :: VideoDuration , "videoPercent" => RevertType :: VideoPercent , "videoProvider" => RevertType :: VideoProvider , "videoStatus" => RevertType :: VideoStatus , "videoTitle" => RevertType :: VideoTitle , "videoUrl" => RevertType :: VideoUrl , "videoVisible" => RevertType :: VideoVisible , _ => return Err (()) , })
                             }
                         }
                         impl ::std::fmt::Display for RevertType {
@@ -12257,7 +11793,7 @@ pub mod resources {
                                 D: ::serde::de::Deserializer<'de>,
                             {
                                 let value: &'de str = <&str>::deserialize(deserializer)?;
-                                Ok ( match value { "advertiserId" => RevertType :: AdvertiserId , "advertisingTrackingEnabled" => RevertType :: AdvertisingTrackingEnabled , "ampBrowserLanguage" => RevertType :: AmpBrowserLanguage , "ampCanonicalHost" => RevertType :: AmpCanonicalHost , "ampCanonicalPath" => RevertType :: AmpCanonicalPath , "ampCanonicalUrl" => RevertType :: AmpCanonicalUrl , "ampClientId" => RevertType :: AmpClientId , "ampClientMaxScrollX" => RevertType :: AmpClientMaxScrollX , "ampClientMaxScrollY" => RevertType :: AmpClientMaxScrollY , "ampClientScreenHeight" => RevertType :: AmpClientScreenHeight , "ampClientScreenWidth" => RevertType :: AmpClientScreenWidth , "ampClientScrollX" => RevertType :: AmpClientScrollX , "ampClientScrollY" => RevertType :: AmpClientScrollY , "ampClientTimestamp" => RevertType :: AmpClientTimestamp , "ampClientTimezone" => RevertType :: AmpClientTimezone , "ampGtmEvent" => RevertType :: AmpGtmEvent , "ampPageDownloadTime" => RevertType :: AmpPageDownloadTime , "ampPageLoadTime" => RevertType :: AmpPageLoadTime , "ampPageViewId" => RevertType :: AmpPageViewId , "ampReferrer" => RevertType :: AmpReferrer , "ampTitle" => RevertType :: AmpTitle , "ampTotalEngagedTime" => RevertType :: AmpTotalEngagedTime , "appId" => RevertType :: AppId , "appName" => RevertType :: AppName , "appVersionCode" => RevertType :: AppVersionCode , "appVersionName" => RevertType :: AppVersionName , "builtInVariableTypeUnspecified" => RevertType :: BuiltInVariableTypeUnspecified , "clickClasses" => RevertType :: ClickClasses , "clickElement" => RevertType :: ClickElement , "clickId" => RevertType :: ClickId , "clickTarget" => RevertType :: ClickTarget , "clickText" => RevertType :: ClickText , "clickUrl" => RevertType :: ClickUrl , "clientName" => RevertType :: ClientName , "containerId" => RevertType :: ContainerId , "containerVersion" => RevertType :: ContainerVersion , "debugMode" => RevertType :: DebugMode , "deviceName" => RevertType :: DeviceName , "elementVisibilityFirstTime" => RevertType :: ElementVisibilityFirstTime , "elementVisibilityRatio" => RevertType :: ElementVisibilityRatio , "elementVisibilityRecentTime" => RevertType :: ElementVisibilityRecentTime , "elementVisibilityTime" => RevertType :: ElementVisibilityTime , "environmentName" => RevertType :: EnvironmentName , "errorLine" => RevertType :: ErrorLine , "errorMessage" => RevertType :: ErrorMessage , "errorUrl" => RevertType :: ErrorUrl , "event" => RevertType :: Event , "eventName" => RevertType :: EventName , "firebaseEventParameterCampaign" => RevertType :: FirebaseEventParameterCampaign , "firebaseEventParameterCampaignAclid" => RevertType :: FirebaseEventParameterCampaignAclid , "firebaseEventParameterCampaignAnid" => RevertType :: FirebaseEventParameterCampaignAnid , "firebaseEventParameterCampaignClickTimestamp" => RevertType :: FirebaseEventParameterCampaignClickTimestamp , "firebaseEventParameterCampaignContent" => RevertType :: FirebaseEventParameterCampaignContent , "firebaseEventParameterCampaignCp1" => RevertType :: FirebaseEventParameterCampaignCp1 , "firebaseEventParameterCampaignGclid" => RevertType :: FirebaseEventParameterCampaignGclid , "firebaseEventParameterCampaignSource" => RevertType :: FirebaseEventParameterCampaignSource , "firebaseEventParameterCampaignTerm" => RevertType :: FirebaseEventParameterCampaignTerm , "firebaseEventParameterCurrency" => RevertType :: FirebaseEventParameterCurrency , "firebaseEventParameterDynamicLinkAcceptTime" => RevertType :: FirebaseEventParameterDynamicLinkAcceptTime , "firebaseEventParameterDynamicLinkLinkid" => RevertType :: FirebaseEventParameterDynamicLinkLinkid , "firebaseEventParameterNotificationMessageDeviceTime" => RevertType :: FirebaseEventParameterNotificationMessageDeviceTime , "firebaseEventParameterNotificationMessageId" => RevertType :: FirebaseEventParameterNotificationMessageId , "firebaseEventParameterNotificationMessageName" => RevertType :: FirebaseEventParameterNotificationMessageName , "firebaseEventParameterNotificationMessageTime" => RevertType :: FirebaseEventParameterNotificationMessageTime , "firebaseEventParameterNotificationTopic" => RevertType :: FirebaseEventParameterNotificationTopic , "firebaseEventParameterPreviousAppVersion" => RevertType :: FirebaseEventParameterPreviousAppVersion , "firebaseEventParameterPreviousOsVersion" => RevertType :: FirebaseEventParameterPreviousOsVersion , "firebaseEventParameterPrice" => RevertType :: FirebaseEventParameterPrice , "firebaseEventParameterProductId" => RevertType :: FirebaseEventParameterProductId , "firebaseEventParameterQuantity" => RevertType :: FirebaseEventParameterQuantity , "firebaseEventParameterValue" => RevertType :: FirebaseEventParameterValue , "firstPartyServingUrl" => RevertType :: FirstPartyServingUrl , "formClasses" => RevertType :: FormClasses , "formElement" => RevertType :: FormElement , "formId" => RevertType :: FormId , "formTarget" => RevertType :: FormTarget , "formText" => RevertType :: FormText , "formUrl" => RevertType :: FormUrl , "historySource" => RevertType :: HistorySource , "htmlId" => RevertType :: HtmlId , "language" => RevertType :: Language , "newHistoryFragment" => RevertType :: NewHistoryFragment , "newHistoryState" => RevertType :: NewHistoryState , "newHistoryUrl" => RevertType :: NewHistoryUrl , "oldHistoryFragment" => RevertType :: OldHistoryFragment , "oldHistoryState" => RevertType :: OldHistoryState , "oldHistoryUrl" => RevertType :: OldHistoryUrl , "osVersion" => RevertType :: OsVersion , "pageHostname" => RevertType :: PageHostname , "pagePath" => RevertType :: PagePath , "pageUrl" => RevertType :: PageUrl , "platform" => RevertType :: Platform , "queryString" => RevertType :: QueryString , "randomNumber" => RevertType :: RandomNumber , "referrer" => RevertType :: Referrer , "requestMethod" => RevertType :: RequestMethod , "requestPath" => RevertType :: RequestPath , "resolution" => RevertType :: Resolution , "scrollDepthDirection" => RevertType :: ScrollDepthDirection , "scrollDepthThreshold" => RevertType :: ScrollDepthThreshold , "scrollDepthUnits" => RevertType :: ScrollDepthUnits , "sdkVersion" => RevertType :: SdkVersion , "videoCurrentTime" => RevertType :: VideoCurrentTime , "videoDuration" => RevertType :: VideoDuration , "videoPercent" => RevertType :: VideoPercent , "videoProvider" => RevertType :: VideoProvider , "videoStatus" => RevertType :: VideoStatus , "videoTitle" => RevertType :: VideoTitle , "videoUrl" => RevertType :: VideoUrl , "videoVisible" => RevertType :: VideoVisible , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+                                Ok (match value { "advertiserId" => RevertType :: AdvertiserId , "advertisingTrackingEnabled" => RevertType :: AdvertisingTrackingEnabled , "ampBrowserLanguage" => RevertType :: AmpBrowserLanguage , "ampCanonicalHost" => RevertType :: AmpCanonicalHost , "ampCanonicalPath" => RevertType :: AmpCanonicalPath , "ampCanonicalUrl" => RevertType :: AmpCanonicalUrl , "ampClientId" => RevertType :: AmpClientId , "ampClientMaxScrollX" => RevertType :: AmpClientMaxScrollX , "ampClientMaxScrollY" => RevertType :: AmpClientMaxScrollY , "ampClientScreenHeight" => RevertType :: AmpClientScreenHeight , "ampClientScreenWidth" => RevertType :: AmpClientScreenWidth , "ampClientScrollX" => RevertType :: AmpClientScrollX , "ampClientScrollY" => RevertType :: AmpClientScrollY , "ampClientTimestamp" => RevertType :: AmpClientTimestamp , "ampClientTimezone" => RevertType :: AmpClientTimezone , "ampGtmEvent" => RevertType :: AmpGtmEvent , "ampPageDownloadTime" => RevertType :: AmpPageDownloadTime , "ampPageLoadTime" => RevertType :: AmpPageLoadTime , "ampPageViewId" => RevertType :: AmpPageViewId , "ampReferrer" => RevertType :: AmpReferrer , "ampTitle" => RevertType :: AmpTitle , "ampTotalEngagedTime" => RevertType :: AmpTotalEngagedTime , "appId" => RevertType :: AppId , "appName" => RevertType :: AppName , "appVersionCode" => RevertType :: AppVersionCode , "appVersionName" => RevertType :: AppVersionName , "builtInVariableTypeUnspecified" => RevertType :: BuiltInVariableTypeUnspecified , "clickClasses" => RevertType :: ClickClasses , "clickElement" => RevertType :: ClickElement , "clickId" => RevertType :: ClickId , "clickTarget" => RevertType :: ClickTarget , "clickText" => RevertType :: ClickText , "clickUrl" => RevertType :: ClickUrl , "clientName" => RevertType :: ClientName , "containerId" => RevertType :: ContainerId , "containerVersion" => RevertType :: ContainerVersion , "debugMode" => RevertType :: DebugMode , "deviceName" => RevertType :: DeviceName , "elementVisibilityFirstTime" => RevertType :: ElementVisibilityFirstTime , "elementVisibilityRatio" => RevertType :: ElementVisibilityRatio , "elementVisibilityRecentTime" => RevertType :: ElementVisibilityRecentTime , "elementVisibilityTime" => RevertType :: ElementVisibilityTime , "environmentName" => RevertType :: EnvironmentName , "errorLine" => RevertType :: ErrorLine , "errorMessage" => RevertType :: ErrorMessage , "errorUrl" => RevertType :: ErrorUrl , "event" => RevertType :: Event , "eventName" => RevertType :: EventName , "firebaseEventParameterCampaign" => RevertType :: FirebaseEventParameterCampaign , "firebaseEventParameterCampaignAclid" => RevertType :: FirebaseEventParameterCampaignAclid , "firebaseEventParameterCampaignAnid" => RevertType :: FirebaseEventParameterCampaignAnid , "firebaseEventParameterCampaignClickTimestamp" => RevertType :: FirebaseEventParameterCampaignClickTimestamp , "firebaseEventParameterCampaignContent" => RevertType :: FirebaseEventParameterCampaignContent , "firebaseEventParameterCampaignCp1" => RevertType :: FirebaseEventParameterCampaignCp1 , "firebaseEventParameterCampaignGclid" => RevertType :: FirebaseEventParameterCampaignGclid , "firebaseEventParameterCampaignSource" => RevertType :: FirebaseEventParameterCampaignSource , "firebaseEventParameterCampaignTerm" => RevertType :: FirebaseEventParameterCampaignTerm , "firebaseEventParameterCurrency" => RevertType :: FirebaseEventParameterCurrency , "firebaseEventParameterDynamicLinkAcceptTime" => RevertType :: FirebaseEventParameterDynamicLinkAcceptTime , "firebaseEventParameterDynamicLinkLinkid" => RevertType :: FirebaseEventParameterDynamicLinkLinkid , "firebaseEventParameterNotificationMessageDeviceTime" => RevertType :: FirebaseEventParameterNotificationMessageDeviceTime , "firebaseEventParameterNotificationMessageId" => RevertType :: FirebaseEventParameterNotificationMessageId , "firebaseEventParameterNotificationMessageName" => RevertType :: FirebaseEventParameterNotificationMessageName , "firebaseEventParameterNotificationMessageTime" => RevertType :: FirebaseEventParameterNotificationMessageTime , "firebaseEventParameterNotificationTopic" => RevertType :: FirebaseEventParameterNotificationTopic , "firebaseEventParameterPreviousAppVersion" => RevertType :: FirebaseEventParameterPreviousAppVersion , "firebaseEventParameterPreviousOsVersion" => RevertType :: FirebaseEventParameterPreviousOsVersion , "firebaseEventParameterPrice" => RevertType :: FirebaseEventParameterPrice , "firebaseEventParameterProductId" => RevertType :: FirebaseEventParameterProductId , "firebaseEventParameterQuantity" => RevertType :: FirebaseEventParameterQuantity , "firebaseEventParameterValue" => RevertType :: FirebaseEventParameterValue , "firstPartyServingUrl" => RevertType :: FirstPartyServingUrl , "formClasses" => RevertType :: FormClasses , "formElement" => RevertType :: FormElement , "formId" => RevertType :: FormId , "formTarget" => RevertType :: FormTarget , "formText" => RevertType :: FormText , "formUrl" => RevertType :: FormUrl , "historySource" => RevertType :: HistorySource , "htmlId" => RevertType :: HtmlId , "language" => RevertType :: Language , "newHistoryFragment" => RevertType :: NewHistoryFragment , "newHistoryState" => RevertType :: NewHistoryState , "newHistoryUrl" => RevertType :: NewHistoryUrl , "oldHistoryFragment" => RevertType :: OldHistoryFragment , "oldHistoryState" => RevertType :: OldHistoryState , "oldHistoryUrl" => RevertType :: OldHistoryUrl , "osVersion" => RevertType :: OsVersion , "pageHostname" => RevertType :: PageHostname , "pagePath" => RevertType :: PagePath , "pageUrl" => RevertType :: PageUrl , "platform" => RevertType :: Platform , "queryString" => RevertType :: QueryString , "randomNumber" => RevertType :: RandomNumber , "referrer" => RevertType :: Referrer , "requestMethod" => RevertType :: RequestMethod , "requestPath" => RevertType :: RequestPath , "resolution" => RevertType :: Resolution , "scrollDepthDirection" => RevertType :: ScrollDepthDirection , "scrollDepthThreshold" => RevertType :: ScrollDepthThreshold , "scrollDepthUnits" => RevertType :: ScrollDepthUnits , "sdkVersion" => RevertType :: SdkVersion , "videoCurrentTime" => RevertType :: VideoCurrentTime , "videoDuration" => RevertType :: VideoDuration , "videoPercent" => RevertType :: VideoPercent , "videoProvider" => RevertType :: VideoProvider , "videoStatus" => RevertType :: VideoStatus , "videoTitle" => RevertType :: VideoTitle , "videoUrl" => RevertType :: VideoUrl , "videoVisible" => RevertType :: VideoVisible , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
                             }
                         }
                         impl ::google_field_selector::FieldSelector for RevertType {
@@ -12362,7 +11898,7 @@ pub mod resources {
                     }
                     #[doc = "Created via [BuiltInVariablesActions::create()](struct.BuiltInVariablesActions.html#method.create)"]
                     #[derive(Debug, Clone)]
-                    pub struct CreateRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , parent : String , r#type : Option < Vec < crate :: resources :: accounts :: containers :: workspaces :: built_in_variables :: params :: CreateTypeItems > > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+                    pub struct CreateRequestBuilder < 'a > { pub (crate) reqwest : & 'a :: reqwest :: Client , pub (crate) auth : & 'a dyn :: google_api_auth :: GetAccessToken , parent : String , r#type : Option < Vec < crate :: resources :: accounts :: containers :: workspaces :: built_in_variables :: params :: CreateTypeItems > > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                     impl<'a> CreateRequestBuilder<'a> {
                         #[doc = "The types of built-in variables to enable."]
                         pub fn r#type(
@@ -12476,11 +12012,11 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.parent;
@@ -12492,35 +12028,38 @@ pub mod resources {
                             output.push_str("/built_in_variables");
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("type", &self.r#type)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            for value in self.r#type.iter().flatten() {
+                                req = req.query(&[("type", value)]);
+                            }
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
                     #[doc = "Created via [BuiltInVariablesActions::delete()](struct.BuiltInVariablesActions.html#method.delete)"]
                     #[derive(Debug, Clone)]
-                    pub struct DeleteRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , path : String , r#type : Option < Vec < crate :: resources :: accounts :: containers :: workspaces :: built_in_variables :: params :: DeleteTypeItems > > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+                    pub struct DeleteRequestBuilder < 'a > { pub (crate) reqwest : & 'a :: reqwest :: Client , pub (crate) auth : & 'a dyn :: google_api_auth :: GetAccessToken , path : String , r#type : Option < Vec < crate :: resources :: accounts :: containers :: workspaces :: built_in_variables :: params :: DeleteTypeItems > > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                     impl<'a> DeleteRequestBuilder<'a> {
                         #[doc = "The types of built-in variables to delete."]
                         pub fn r#type(
@@ -12576,12 +12115,12 @@ pub mod resources {
                             self
                         }
                         pub async fn execute(self) -> Result<(), crate::Error> {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             req.send().await?.error_for_status()?;
                             Ok(())
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -12592,29 +12131,32 @@ pub mod resources {
                             }
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                            let req = req.query(&[("type", &self.r#type)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                            for value in self.r#type.iter().flatten() {
+                                req = req.query(&[("type", value)]);
+                            }
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -12688,117 +12230,6 @@ pub mod resources {
                             self.xgafv = Some(value);
                             self
                         }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-                        #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-                        #[doc = r" populated fields in the yielded items will be determined by the"]
-                        #[doc = r" `FieldSelector` implementation."]
-                        pub fn iter_built_in_variable<T>(self) -> crate::iter::PageItemIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned
-                                + ::google_field_selector::FieldSelector,
-                        {
-                            let fields = ::google_field_selector::to_string::<T>();
-                            let fields: Option<String> = if fields.is_empty() {
-                                None
-                            } else {
-                                Some(fields)
-                            };
-                            self.iter_built_in_variable_with_fields(fields)
-                        }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                        #[doc = r" fields in `#items_type` will be the default fields populated by"]
-                        #[doc = r" the server."]
-                        pub fn iter_built_in_variable_with_default_fields(
-                            self,
-                        ) -> crate::iter::PageItemIter<Self, crate::schemas::BuiltInVariable>
-                        {
-                            self.iter_built_in_variable_with_fields(None::<String>)
-                        }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                        #[doc = r" fields in `#items_type` will be all fields available. This should"]
-                        #[doc = r" primarily be used during developement and debugging as fetching"]
-                        #[doc = r" all fields can be expensive both in bandwidth and server"]
-                        #[doc = r" resources."]
-                        pub fn iter_built_in_variable_with_all_fields(
-                            self,
-                        ) -> crate::iter::PageItemIter<Self, crate::schemas::BuiltInVariable>
-                        {
-                            self.iter_built_in_variable_with_fields(Some("*"))
-                        }
-                        pub fn iter_built_in_variable_with_fields<T, F>(
-                            mut self,
-                            fields: Option<F>,
-                        ) -> crate::iter::PageItemIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                            F: AsRef<str>,
-                        {
-                            self.fields = Some({
-                                let mut selector =
-                                    concat!("nextPageToken,", "builtInVariable").to_owned();
-                                let items_fields =
-                                    fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                                if !items_fields.is_empty() {
-                                    selector.push_str("(");
-                                    selector.push_str(items_fields);
-                                    selector.push_str(")");
-                                }
-                                selector
-                            });
-                            crate::iter::PageItemIter::new(self, "builtInVariable")
-                        }
-                        pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned
-                                + ::google_field_selector::FieldSelector,
-                        {
-                            let fields = ::google_field_selector::to_string::<T>();
-                            let fields: Option<String> = if fields.is_empty() {
-                                None
-                            } else {
-                                Some(fields)
-                            };
-                            self.iter_with_fields(fields)
-                        }
-                        pub fn iter_with_default_fields(
-                            self,
-                        ) -> crate::iter::PageIter<
-                            Self,
-                            crate::schemas::ListEnabledBuiltInVariablesResponse,
-                        > {
-                            self.iter_with_fields(None::<&str>)
-                        }
-                        pub fn iter_with_all_fields(
-                            self,
-                        ) -> crate::iter::PageIter<
-                            Self,
-                            crate::schemas::ListEnabledBuiltInVariablesResponse,
-                        > {
-                            self.iter_with_fields(Some("*"))
-                        }
-                        pub fn iter_with_fields<T, F>(
-                            mut self,
-                            fields: Option<F>,
-                        ) -> crate::iter::PageIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                            F: AsRef<str>,
-                        {
-                            let mut fields =
-                                fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                            if !fields.is_empty() {
-                                match fields.chars().rev().nth(0) {
-                                    Some(',') | None => {}
-                                    _ => fields.push_str(","),
-                                }
-                                fields.push_str("nextPageToken");
-                                self.fields = Some(fields);
-                            }
-                            crate::iter::PageIter::new(self)
-                        }
                         #[doc = r" Execute the given operation. The fields requested are"]
                         #[doc = r" determined by the FieldSelector attribute of the return type."]
                         #[doc = r" This allows for flexible and ergonomic partial responses. See"]
@@ -12858,11 +12289,11 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.parent;
@@ -12874,46 +12305,36 @@ pub mod resources {
                             output.push_str("/built_in_variables");
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("pageToken", &self.page_token)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
-                        }
-                    }
-                    impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-                        fn set_page_token(&mut self, value: String) {
-                            self.page_token = value.into();
-                        }
-                        fn execute<T>(&mut self) -> Result<T, crate::Error>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                        {
-                            todo!("implement async `execute` method for `IterableMethod` trait")
                         }
                     }
                     #[doc = "Created via [BuiltInVariablesActions::revert()](struct.BuiltInVariablesActions.html#method.revert)"]
                     #[derive(Debug, Clone)]
-                    pub struct RevertRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , path : String , r#type : Option < crate :: resources :: accounts :: containers :: workspaces :: built_in_variables :: params :: RevertType > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+                    pub struct RevertRequestBuilder < 'a > { pub (crate) reqwest : & 'a :: reqwest :: Client , pub (crate) auth : & 'a dyn :: google_api_auth :: GetAccessToken , path : String , r#type : Option < crate :: resources :: accounts :: containers :: workspaces :: built_in_variables :: params :: RevertType > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                     impl<'a> RevertRequestBuilder<'a> {
                         #[doc = "The type of built-in variable to revert."]
                         pub fn r#type(
@@ -13027,11 +12448,11 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -13043,29 +12464,30 @@ pub mod resources {
                             output.push_str("/built_in_variables:revert");
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("type", &self.r#type)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("type", &self.r#type)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -13377,12 +12799,12 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             let req = req.json(&self.request);
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.parent;
@@ -13394,28 +12816,29 @@ pub mod resources {
                             output.push_str("/folders");
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -13484,12 +12907,12 @@ pub mod resources {
                             self
                         }
                         pub async fn execute(self) -> Result<(), crate::Error> {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             req.send().await?.error_for_status()?;
                             Ok(())
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -13500,28 +12923,29 @@ pub mod resources {
                             }
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -13595,234 +13019,6 @@ pub mod resources {
                             self.xgafv = Some(value);
                             self
                         }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-                        #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-                        #[doc = r" populated fields in the yielded items will be determined by the"]
-                        #[doc = r" `FieldSelector` implementation."]
-                        pub fn iter_tag<T>(self) -> crate::iter::PageItemIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned
-                                + ::google_field_selector::FieldSelector,
-                        {
-                            let fields = ::google_field_selector::to_string::<T>();
-                            let fields: Option<String> = if fields.is_empty() {
-                                None
-                            } else {
-                                Some(fields)
-                            };
-                            self.iter_tag_with_fields(fields)
-                        }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                        #[doc = r" fields in `#items_type` will be the default fields populated by"]
-                        #[doc = r" the server."]
-                        pub fn iter_tag_with_default_fields(
-                            self,
-                        ) -> crate::iter::PageItemIter<Self, crate::schemas::Tag>
-                        {
-                            self.iter_tag_with_fields(None::<String>)
-                        }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                        #[doc = r" fields in `#items_type` will be all fields available. This should"]
-                        #[doc = r" primarily be used during developement and debugging as fetching"]
-                        #[doc = r" all fields can be expensive both in bandwidth and server"]
-                        #[doc = r" resources."]
-                        pub fn iter_tag_with_all_fields(
-                            self,
-                        ) -> crate::iter::PageItemIter<Self, crate::schemas::Tag>
-                        {
-                            self.iter_tag_with_fields(Some("*"))
-                        }
-                        pub fn iter_tag_with_fields<T, F>(
-                            mut self,
-                            fields: Option<F>,
-                        ) -> crate::iter::PageItemIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                            F: AsRef<str>,
-                        {
-                            self.fields = Some({
-                                let mut selector = concat!("nextPageToken,", "tag").to_owned();
-                                let items_fields =
-                                    fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                                if !items_fields.is_empty() {
-                                    selector.push_str("(");
-                                    selector.push_str(items_fields);
-                                    selector.push_str(")");
-                                }
-                                selector
-                            });
-                            crate::iter::PageItemIter::new(self, "tag")
-                        }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-                        #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-                        #[doc = r" populated fields in the yielded items will be determined by the"]
-                        #[doc = r" `FieldSelector` implementation."]
-                        pub fn iter_trigger<T>(self) -> crate::iter::PageItemIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned
-                                + ::google_field_selector::FieldSelector,
-                        {
-                            let fields = ::google_field_selector::to_string::<T>();
-                            let fields: Option<String> = if fields.is_empty() {
-                                None
-                            } else {
-                                Some(fields)
-                            };
-                            self.iter_trigger_with_fields(fields)
-                        }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                        #[doc = r" fields in `#items_type` will be the default fields populated by"]
-                        #[doc = r" the server."]
-                        pub fn iter_trigger_with_default_fields(
-                            self,
-                        ) -> crate::iter::PageItemIter<Self, crate::schemas::Trigger>
-                        {
-                            self.iter_trigger_with_fields(None::<String>)
-                        }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                        #[doc = r" fields in `#items_type` will be all fields available. This should"]
-                        #[doc = r" primarily be used during developement and debugging as fetching"]
-                        #[doc = r" all fields can be expensive both in bandwidth and server"]
-                        #[doc = r" resources."]
-                        pub fn iter_trigger_with_all_fields(
-                            self,
-                        ) -> crate::iter::PageItemIter<Self, crate::schemas::Trigger>
-                        {
-                            self.iter_trigger_with_fields(Some("*"))
-                        }
-                        pub fn iter_trigger_with_fields<T, F>(
-                            mut self,
-                            fields: Option<F>,
-                        ) -> crate::iter::PageItemIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                            F: AsRef<str>,
-                        {
-                            self.fields = Some({
-                                let mut selector = concat!("nextPageToken,", "trigger").to_owned();
-                                let items_fields =
-                                    fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                                if !items_fields.is_empty() {
-                                    selector.push_str("(");
-                                    selector.push_str(items_fields);
-                                    selector.push_str(")");
-                                }
-                                selector
-                            });
-                            crate::iter::PageItemIter::new(self, "trigger")
-                        }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-                        #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-                        #[doc = r" populated fields in the yielded items will be determined by the"]
-                        #[doc = r" `FieldSelector` implementation."]
-                        pub fn iter_variable<T>(self) -> crate::iter::PageItemIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned
-                                + ::google_field_selector::FieldSelector,
-                        {
-                            let fields = ::google_field_selector::to_string::<T>();
-                            let fields: Option<String> = if fields.is_empty() {
-                                None
-                            } else {
-                                Some(fields)
-                            };
-                            self.iter_variable_with_fields(fields)
-                        }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                        #[doc = r" fields in `#items_type` will be the default fields populated by"]
-                        #[doc = r" the server."]
-                        pub fn iter_variable_with_default_fields(
-                            self,
-                        ) -> crate::iter::PageItemIter<Self, crate::schemas::Variable>
-                        {
-                            self.iter_variable_with_fields(None::<String>)
-                        }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                        #[doc = r" fields in `#items_type` will be all fields available. This should"]
-                        #[doc = r" primarily be used during developement and debugging as fetching"]
-                        #[doc = r" all fields can be expensive both in bandwidth and server"]
-                        #[doc = r" resources."]
-                        pub fn iter_variable_with_all_fields(
-                            self,
-                        ) -> crate::iter::PageItemIter<Self, crate::schemas::Variable>
-                        {
-                            self.iter_variable_with_fields(Some("*"))
-                        }
-                        pub fn iter_variable_with_fields<T, F>(
-                            mut self,
-                            fields: Option<F>,
-                        ) -> crate::iter::PageItemIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                            F: AsRef<str>,
-                        {
-                            self.fields = Some({
-                                let mut selector = concat!("nextPageToken,", "variable").to_owned();
-                                let items_fields =
-                                    fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                                if !items_fields.is_empty() {
-                                    selector.push_str("(");
-                                    selector.push_str(items_fields);
-                                    selector.push_str(")");
-                                }
-                                selector
-                            });
-                            crate::iter::PageItemIter::new(self, "variable")
-                        }
-                        pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned
-                                + ::google_field_selector::FieldSelector,
-                        {
-                            let fields = ::google_field_selector::to_string::<T>();
-                            let fields: Option<String> = if fields.is_empty() {
-                                None
-                            } else {
-                                Some(fields)
-                            };
-                            self.iter_with_fields(fields)
-                        }
-                        pub fn iter_with_default_fields(
-                            self,
-                        ) -> crate::iter::PageIter<Self, crate::schemas::FolderEntities>
-                        {
-                            self.iter_with_fields(None::<&str>)
-                        }
-                        pub fn iter_with_all_fields(
-                            self,
-                        ) -> crate::iter::PageIter<Self, crate::schemas::FolderEntities>
-                        {
-                            self.iter_with_fields(Some("*"))
-                        }
-                        pub fn iter_with_fields<T, F>(
-                            mut self,
-                            fields: Option<F>,
-                        ) -> crate::iter::PageIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                            F: AsRef<str>,
-                        {
-                            let mut fields =
-                                fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                            if !fields.is_empty() {
-                                match fields.chars().rev().nth(0) {
-                                    Some(',') | None => {}
-                                    _ => fields.push_str(","),
-                                }
-                                fields.push_str("nextPageToken");
-                                self.fields = Some(fields);
-                            }
-                            crate::iter::PageIter::new(self)
-                        }
                         #[doc = r" Execute the given operation. The fields requested are"]
                         #[doc = r" determined by the FieldSelector attribute of the return type."]
                         #[doc = r" This allows for flexible and ergonomic partial responses. See"]
@@ -13882,11 +13078,11 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -13898,41 +13094,31 @@ pub mod resources {
                             output.push_str(":entities");
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("pageToken", &self.page_token)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
-                        }
-                    }
-                    impl<'a> crate::iter::IterableMethod for EntitiesRequestBuilder<'a> {
-                        fn set_page_token(&mut self, value: String) {
-                            self.page_token = value.into();
-                        }
-                        fn execute<T>(&mut self) -> Result<T, crate::Error>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                        {
-                            todo!("implement async `execute` method for `IterableMethod` trait")
                         }
                     }
                     #[doc = "Created via [FoldersActions::get()](struct.FoldersActions.html#method.get)"]
@@ -14056,11 +13242,11 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -14071,28 +13257,29 @@ pub mod resources {
                             }
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -14166,112 +13353,6 @@ pub mod resources {
                             self.xgafv = Some(value);
                             self
                         }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-                        #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-                        #[doc = r" populated fields in the yielded items will be determined by the"]
-                        #[doc = r" `FieldSelector` implementation."]
-                        pub fn iter_folder<T>(self) -> crate::iter::PageItemIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned
-                                + ::google_field_selector::FieldSelector,
-                        {
-                            let fields = ::google_field_selector::to_string::<T>();
-                            let fields: Option<String> = if fields.is_empty() {
-                                None
-                            } else {
-                                Some(fields)
-                            };
-                            self.iter_folder_with_fields(fields)
-                        }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                        #[doc = r" fields in `#items_type` will be the default fields populated by"]
-                        #[doc = r" the server."]
-                        pub fn iter_folder_with_default_fields(
-                            self,
-                        ) -> crate::iter::PageItemIter<Self, crate::schemas::Folder>
-                        {
-                            self.iter_folder_with_fields(None::<String>)
-                        }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                        #[doc = r" fields in `#items_type` will be all fields available. This should"]
-                        #[doc = r" primarily be used during developement and debugging as fetching"]
-                        #[doc = r" all fields can be expensive both in bandwidth and server"]
-                        #[doc = r" resources."]
-                        pub fn iter_folder_with_all_fields(
-                            self,
-                        ) -> crate::iter::PageItemIter<Self, crate::schemas::Folder>
-                        {
-                            self.iter_folder_with_fields(Some("*"))
-                        }
-                        pub fn iter_folder_with_fields<T, F>(
-                            mut self,
-                            fields: Option<F>,
-                        ) -> crate::iter::PageItemIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                            F: AsRef<str>,
-                        {
-                            self.fields = Some({
-                                let mut selector = concat!("nextPageToken,", "folder").to_owned();
-                                let items_fields =
-                                    fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                                if !items_fields.is_empty() {
-                                    selector.push_str("(");
-                                    selector.push_str(items_fields);
-                                    selector.push_str(")");
-                                }
-                                selector
-                            });
-                            crate::iter::PageItemIter::new(self, "folder")
-                        }
-                        pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned
-                                + ::google_field_selector::FieldSelector,
-                        {
-                            let fields = ::google_field_selector::to_string::<T>();
-                            let fields: Option<String> = if fields.is_empty() {
-                                None
-                            } else {
-                                Some(fields)
-                            };
-                            self.iter_with_fields(fields)
-                        }
-                        pub fn iter_with_default_fields(
-                            self,
-                        ) -> crate::iter::PageIter<Self, crate::schemas::ListFoldersResponse>
-                        {
-                            self.iter_with_fields(None::<&str>)
-                        }
-                        pub fn iter_with_all_fields(
-                            self,
-                        ) -> crate::iter::PageIter<Self, crate::schemas::ListFoldersResponse>
-                        {
-                            self.iter_with_fields(Some("*"))
-                        }
-                        pub fn iter_with_fields<T, F>(
-                            mut self,
-                            fields: Option<F>,
-                        ) -> crate::iter::PageIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                            F: AsRef<str>,
-                        {
-                            let mut fields =
-                                fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                            if !fields.is_empty() {
-                                match fields.chars().rev().nth(0) {
-                                    Some(',') | None => {}
-                                    _ => fields.push_str(","),
-                                }
-                                fields.push_str("nextPageToken");
-                                self.fields = Some(fields);
-                            }
-                            crate::iter::PageIter::new(self)
-                        }
                         #[doc = r" Execute the given operation. The fields requested are"]
                         #[doc = r" determined by the FieldSelector attribute of the return type."]
                         #[doc = r" This allows for flexible and ergonomic partial responses. See"]
@@ -14331,11 +13412,11 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.parent;
@@ -14347,41 +13428,31 @@ pub mod resources {
                             output.push_str("/folders");
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("pageToken", &self.page_token)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
-                        }
-                    }
-                    impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-                        fn set_page_token(&mut self, value: String) {
-                            self.page_token = value.into();
-                        }
-                        fn execute<T>(&mut self) -> Result<T, crate::Error>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                        {
-                            todo!("implement async `execute` method for `IterableMethod` trait")
                         }
                     }
                     #[doc = "Created via [FoldersActions::move_entities_to_folder()](struct.FoldersActions.html#method.move_entities_to_folder)"]
@@ -14468,13 +13539,13 @@ pub mod resources {
                             self
                         }
                         pub async fn execute(self) -> Result<(), crate::Error> {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             let req = req.json(&self.request);
                             req.send().await?.error_for_status()?;
                             Ok(())
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -14486,31 +13557,38 @@ pub mod resources {
                             output.push_str(":move_entities_to_folder");
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("tagId", &self.tag_id)]);
-                            let req = req.query(&[("triggerId", &self.trigger_id)]);
-                            let req = req.query(&[("variableId", &self.variable_id)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            for value in self.tag_id.iter().flatten() {
+                                req = req.query(&[("tagId", value)]);
+                            }
+                            for value in self.trigger_id.iter().flatten() {
+                                req = req.query(&[("triggerId", value)]);
+                            }
+                            for value in self.variable_id.iter().flatten() {
+                                req = req.query(&[("variableId", value)]);
+                            }
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -14534,7 +13612,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> RevertRequestBuilder<'a> {
-                        #[doc = "When provided, this fingerprint must match the fingerprint of the tag\nin storage."]
+                        #[doc = "When provided, this fingerprint must match the fingerprint of the tag in storage."]
                         pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                             self.fingerprint = Some(value.into());
                             self
@@ -14643,11 +13721,11 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -14659,29 +13737,30 @@ pub mod resources {
                             output.push_str(":revert");
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("fingerprint", &self.fingerprint)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("fingerprint", &self.fingerprint)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -14706,7 +13785,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> UpdateRequestBuilder<'a> {
-                        #[doc = "When provided, this fingerprint must match the fingerprint of the folder in\nstorage."]
+                        #[doc = "When provided, this fingerprint must match the fingerprint of the folder in storage."]
                         pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                             self.fingerprint = Some(value.into());
                             self
@@ -14813,12 +13892,12 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             let req = req.json(&self.request);
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -14829,29 +13908,30 @@ pub mod resources {
                             }
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                            let req = req.query(&[("fingerprint", &self.fingerprint)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                            req = req.query(&[("fingerprint", &self.fingerprint)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -15116,12 +14196,12 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             let req = req.json(&self.request);
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.parent;
@@ -15133,28 +14213,29 @@ pub mod resources {
                             output.push_str("/tags");
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -15223,12 +14304,12 @@ pub mod resources {
                             self
                         }
                         pub async fn execute(self) -> Result<(), crate::Error> {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             req.send().await?.error_for_status()?;
                             Ok(())
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -15239,28 +14320,29 @@ pub mod resources {
                             }
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -15385,11 +14467,11 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -15400,28 +14482,29 @@ pub mod resources {
                             }
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -15495,112 +14578,6 @@ pub mod resources {
                             self.xgafv = Some(value);
                             self
                         }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-                        #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-                        #[doc = r" populated fields in the yielded items will be determined by the"]
-                        #[doc = r" `FieldSelector` implementation."]
-                        pub fn iter_tag<T>(self) -> crate::iter::PageItemIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned
-                                + ::google_field_selector::FieldSelector,
-                        {
-                            let fields = ::google_field_selector::to_string::<T>();
-                            let fields: Option<String> = if fields.is_empty() {
-                                None
-                            } else {
-                                Some(fields)
-                            };
-                            self.iter_tag_with_fields(fields)
-                        }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                        #[doc = r" fields in `#items_type` will be the default fields populated by"]
-                        #[doc = r" the server."]
-                        pub fn iter_tag_with_default_fields(
-                            self,
-                        ) -> crate::iter::PageItemIter<Self, crate::schemas::Tag>
-                        {
-                            self.iter_tag_with_fields(None::<String>)
-                        }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                        #[doc = r" fields in `#items_type` will be all fields available. This should"]
-                        #[doc = r" primarily be used during developement and debugging as fetching"]
-                        #[doc = r" all fields can be expensive both in bandwidth and server"]
-                        #[doc = r" resources."]
-                        pub fn iter_tag_with_all_fields(
-                            self,
-                        ) -> crate::iter::PageItemIter<Self, crate::schemas::Tag>
-                        {
-                            self.iter_tag_with_fields(Some("*"))
-                        }
-                        pub fn iter_tag_with_fields<T, F>(
-                            mut self,
-                            fields: Option<F>,
-                        ) -> crate::iter::PageItemIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                            F: AsRef<str>,
-                        {
-                            self.fields = Some({
-                                let mut selector = concat!("nextPageToken,", "tag").to_owned();
-                                let items_fields =
-                                    fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                                if !items_fields.is_empty() {
-                                    selector.push_str("(");
-                                    selector.push_str(items_fields);
-                                    selector.push_str(")");
-                                }
-                                selector
-                            });
-                            crate::iter::PageItemIter::new(self, "tag")
-                        }
-                        pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned
-                                + ::google_field_selector::FieldSelector,
-                        {
-                            let fields = ::google_field_selector::to_string::<T>();
-                            let fields: Option<String> = if fields.is_empty() {
-                                None
-                            } else {
-                                Some(fields)
-                            };
-                            self.iter_with_fields(fields)
-                        }
-                        pub fn iter_with_default_fields(
-                            self,
-                        ) -> crate::iter::PageIter<Self, crate::schemas::ListTagsResponse>
-                        {
-                            self.iter_with_fields(None::<&str>)
-                        }
-                        pub fn iter_with_all_fields(
-                            self,
-                        ) -> crate::iter::PageIter<Self, crate::schemas::ListTagsResponse>
-                        {
-                            self.iter_with_fields(Some("*"))
-                        }
-                        pub fn iter_with_fields<T, F>(
-                            mut self,
-                            fields: Option<F>,
-                        ) -> crate::iter::PageIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                            F: AsRef<str>,
-                        {
-                            let mut fields =
-                                fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                            if !fields.is_empty() {
-                                match fields.chars().rev().nth(0) {
-                                    Some(',') | None => {}
-                                    _ => fields.push_str(","),
-                                }
-                                fields.push_str("nextPageToken");
-                                self.fields = Some(fields);
-                            }
-                            crate::iter::PageIter::new(self)
-                        }
                         #[doc = r" Execute the given operation. The fields requested are"]
                         #[doc = r" determined by the FieldSelector attribute of the return type."]
                         #[doc = r" This allows for flexible and ergonomic partial responses. See"]
@@ -15660,11 +14637,11 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.parent;
@@ -15676,41 +14653,31 @@ pub mod resources {
                             output.push_str("/tags");
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("pageToken", &self.page_token)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
-                        }
-                    }
-                    impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-                        fn set_page_token(&mut self, value: String) {
-                            self.page_token = value.into();
-                        }
-                        fn execute<T>(&mut self) -> Result<T, crate::Error>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                        {
-                            todo!("implement async `execute` method for `IterableMethod` trait")
                         }
                     }
                     #[doc = "Created via [TagsActions::revert()](struct.TagsActions.html#method.revert)"]
@@ -15733,7 +14700,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> RevertRequestBuilder<'a> {
-                        #[doc = "When provided, this fingerprint must match the fingerprint of thetag\nin storage."]
+                        #[doc = "When provided, this fingerprint must match the fingerprint of thetag in storage."]
                         pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                             self.fingerprint = Some(value.into());
                             self
@@ -15842,11 +14809,11 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -15858,29 +14825,30 @@ pub mod resources {
                             output.push_str(":revert");
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("fingerprint", &self.fingerprint)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("fingerprint", &self.fingerprint)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -15905,7 +14873,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> UpdateRequestBuilder<'a> {
-                        #[doc = "When provided, this fingerprint must match the fingerprint of the tag in\nstorage."]
+                        #[doc = "When provided, this fingerprint must match the fingerprint of the tag in storage."]
                         pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                             self.fingerprint = Some(value.into());
                             self
@@ -16012,12 +14980,12 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             let req = req.json(&self.request);
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -16028,29 +14996,30 @@ pub mod resources {
                             }
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                            let req = req.query(&[("fingerprint", &self.fingerprint)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                            req = req.query(&[("fingerprint", &self.fingerprint)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -16317,12 +15286,12 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             let req = req.json(&self.request);
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.parent;
@@ -16334,28 +15303,29 @@ pub mod resources {
                             output.push_str("/templates");
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -16424,12 +15394,12 @@ pub mod resources {
                             self
                         }
                         pub async fn execute(self) -> Result<(), crate::Error> {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             req.send().await?.error_for_status()?;
                             Ok(())
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -16440,28 +15410,29 @@ pub mod resources {
                             }
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -16588,11 +15559,11 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -16603,28 +15574,29 @@ pub mod resources {
                             }
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -16698,112 +15670,6 @@ pub mod resources {
                             self.xgafv = Some(value);
                             self
                         }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-                        #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-                        #[doc = r" populated fields in the yielded items will be determined by the"]
-                        #[doc = r" `FieldSelector` implementation."]
-                        pub fn iter_template<T>(self) -> crate::iter::PageItemIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned
-                                + ::google_field_selector::FieldSelector,
-                        {
-                            let fields = ::google_field_selector::to_string::<T>();
-                            let fields: Option<String> = if fields.is_empty() {
-                                None
-                            } else {
-                                Some(fields)
-                            };
-                            self.iter_template_with_fields(fields)
-                        }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                        #[doc = r" fields in `#items_type` will be the default fields populated by"]
-                        #[doc = r" the server."]
-                        pub fn iter_template_with_default_fields(
-                            self,
-                        ) -> crate::iter::PageItemIter<Self, crate::schemas::CustomTemplate>
-                        {
-                            self.iter_template_with_fields(None::<String>)
-                        }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                        #[doc = r" fields in `#items_type` will be all fields available. This should"]
-                        #[doc = r" primarily be used during developement and debugging as fetching"]
-                        #[doc = r" all fields can be expensive both in bandwidth and server"]
-                        #[doc = r" resources."]
-                        pub fn iter_template_with_all_fields(
-                            self,
-                        ) -> crate::iter::PageItemIter<Self, crate::schemas::CustomTemplate>
-                        {
-                            self.iter_template_with_fields(Some("*"))
-                        }
-                        pub fn iter_template_with_fields<T, F>(
-                            mut self,
-                            fields: Option<F>,
-                        ) -> crate::iter::PageItemIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                            F: AsRef<str>,
-                        {
-                            self.fields = Some({
-                                let mut selector = concat!("nextPageToken,", "template").to_owned();
-                                let items_fields =
-                                    fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                                if !items_fields.is_empty() {
-                                    selector.push_str("(");
-                                    selector.push_str(items_fields);
-                                    selector.push_str(")");
-                                }
-                                selector
-                            });
-                            crate::iter::PageItemIter::new(self, "template")
-                        }
-                        pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned
-                                + ::google_field_selector::FieldSelector,
-                        {
-                            let fields = ::google_field_selector::to_string::<T>();
-                            let fields: Option<String> = if fields.is_empty() {
-                                None
-                            } else {
-                                Some(fields)
-                            };
-                            self.iter_with_fields(fields)
-                        }
-                        pub fn iter_with_default_fields(
-                            self,
-                        ) -> crate::iter::PageIter<Self, crate::schemas::ListTemplatesResponse>
-                        {
-                            self.iter_with_fields(None::<&str>)
-                        }
-                        pub fn iter_with_all_fields(
-                            self,
-                        ) -> crate::iter::PageIter<Self, crate::schemas::ListTemplatesResponse>
-                        {
-                            self.iter_with_fields(Some("*"))
-                        }
-                        pub fn iter_with_fields<T, F>(
-                            mut self,
-                            fields: Option<F>,
-                        ) -> crate::iter::PageIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                            F: AsRef<str>,
-                        {
-                            let mut fields =
-                                fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                            if !fields.is_empty() {
-                                match fields.chars().rev().nth(0) {
-                                    Some(',') | None => {}
-                                    _ => fields.push_str(","),
-                                }
-                                fields.push_str("nextPageToken");
-                                self.fields = Some(fields);
-                            }
-                            crate::iter::PageIter::new(self)
-                        }
                         #[doc = r" Execute the given operation. The fields requested are"]
                         #[doc = r" determined by the FieldSelector attribute of the return type."]
                         #[doc = r" This allows for flexible and ergonomic partial responses. See"]
@@ -16863,11 +15729,11 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.parent;
@@ -16879,41 +15745,31 @@ pub mod resources {
                             output.push_str("/templates");
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("pageToken", &self.page_token)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
-                        }
-                    }
-                    impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-                        fn set_page_token(&mut self, value: String) {
-                            self.page_token = value.into();
-                        }
-                        fn execute<T>(&mut self) -> Result<T, crate::Error>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                        {
-                            todo!("implement async `execute` method for `IterableMethod` trait")
                         }
                     }
                     #[doc = "Created via [TemplatesActions::revert()](struct.TemplatesActions.html#method.revert)"]
@@ -16936,7 +15792,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> RevertRequestBuilder<'a> {
-                        #[doc = "When provided, this fingerprint must match the fingerprint of the template\nin storage."]
+                        #[doc = "When provided, this fingerprint must match the fingerprint of the template in storage."]
                         pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                             self.fingerprint = Some(value.into());
                             self
@@ -17045,11 +15901,11 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -17061,29 +15917,30 @@ pub mod resources {
                             output.push_str(":revert");
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("fingerprint", &self.fingerprint)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("fingerprint", &self.fingerprint)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -17108,7 +15965,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> UpdateRequestBuilder<'a> {
-                        #[doc = "When provided, this fingerprint must match the fingerprint of the templates\nin storage."]
+                        #[doc = "When provided, this fingerprint must match the fingerprint of the templates in storage."]
                         pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                             self.fingerprint = Some(value.into());
                             self
@@ -17217,12 +16074,12 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             let req = req.json(&self.request);
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -17233,29 +16090,30 @@ pub mod resources {
                             }
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                            let req = req.query(&[("fingerprint", &self.fingerprint)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                            req = req.query(&[("fingerprint", &self.fingerprint)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -17520,12 +16378,12 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             let req = req.json(&self.request);
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.parent;
@@ -17537,28 +16395,29 @@ pub mod resources {
                             output.push_str("/triggers");
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -17627,12 +16486,12 @@ pub mod resources {
                             self
                         }
                         pub async fn execute(self) -> Result<(), crate::Error> {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             req.send().await?.error_for_status()?;
                             Ok(())
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -17643,28 +16502,29 @@ pub mod resources {
                             }
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -17789,11 +16649,11 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -17804,28 +16664,29 @@ pub mod resources {
                             }
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -17899,112 +16760,6 @@ pub mod resources {
                             self.xgafv = Some(value);
                             self
                         }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-                        #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-                        #[doc = r" populated fields in the yielded items will be determined by the"]
-                        #[doc = r" `FieldSelector` implementation."]
-                        pub fn iter_trigger<T>(self) -> crate::iter::PageItemIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned
-                                + ::google_field_selector::FieldSelector,
-                        {
-                            let fields = ::google_field_selector::to_string::<T>();
-                            let fields: Option<String> = if fields.is_empty() {
-                                None
-                            } else {
-                                Some(fields)
-                            };
-                            self.iter_trigger_with_fields(fields)
-                        }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                        #[doc = r" fields in `#items_type` will be the default fields populated by"]
-                        #[doc = r" the server."]
-                        pub fn iter_trigger_with_default_fields(
-                            self,
-                        ) -> crate::iter::PageItemIter<Self, crate::schemas::Trigger>
-                        {
-                            self.iter_trigger_with_fields(None::<String>)
-                        }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                        #[doc = r" fields in `#items_type` will be all fields available. This should"]
-                        #[doc = r" primarily be used during developement and debugging as fetching"]
-                        #[doc = r" all fields can be expensive both in bandwidth and server"]
-                        #[doc = r" resources."]
-                        pub fn iter_trigger_with_all_fields(
-                            self,
-                        ) -> crate::iter::PageItemIter<Self, crate::schemas::Trigger>
-                        {
-                            self.iter_trigger_with_fields(Some("*"))
-                        }
-                        pub fn iter_trigger_with_fields<T, F>(
-                            mut self,
-                            fields: Option<F>,
-                        ) -> crate::iter::PageItemIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                            F: AsRef<str>,
-                        {
-                            self.fields = Some({
-                                let mut selector = concat!("nextPageToken,", "trigger").to_owned();
-                                let items_fields =
-                                    fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                                if !items_fields.is_empty() {
-                                    selector.push_str("(");
-                                    selector.push_str(items_fields);
-                                    selector.push_str(")");
-                                }
-                                selector
-                            });
-                            crate::iter::PageItemIter::new(self, "trigger")
-                        }
-                        pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned
-                                + ::google_field_selector::FieldSelector,
-                        {
-                            let fields = ::google_field_selector::to_string::<T>();
-                            let fields: Option<String> = if fields.is_empty() {
-                                None
-                            } else {
-                                Some(fields)
-                            };
-                            self.iter_with_fields(fields)
-                        }
-                        pub fn iter_with_default_fields(
-                            self,
-                        ) -> crate::iter::PageIter<Self, crate::schemas::ListTriggersResponse>
-                        {
-                            self.iter_with_fields(None::<&str>)
-                        }
-                        pub fn iter_with_all_fields(
-                            self,
-                        ) -> crate::iter::PageIter<Self, crate::schemas::ListTriggersResponse>
-                        {
-                            self.iter_with_fields(Some("*"))
-                        }
-                        pub fn iter_with_fields<T, F>(
-                            mut self,
-                            fields: Option<F>,
-                        ) -> crate::iter::PageIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                            F: AsRef<str>,
-                        {
-                            let mut fields =
-                                fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                            if !fields.is_empty() {
-                                match fields.chars().rev().nth(0) {
-                                    Some(',') | None => {}
-                                    _ => fields.push_str(","),
-                                }
-                                fields.push_str("nextPageToken");
-                                self.fields = Some(fields);
-                            }
-                            crate::iter::PageIter::new(self)
-                        }
                         #[doc = r" Execute the given operation. The fields requested are"]
                         #[doc = r" determined by the FieldSelector attribute of the return type."]
                         #[doc = r" This allows for flexible and ergonomic partial responses. See"]
@@ -18064,11 +16819,11 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.parent;
@@ -18080,41 +16835,31 @@ pub mod resources {
                             output.push_str("/triggers");
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("pageToken", &self.page_token)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
-                        }
-                    }
-                    impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-                        fn set_page_token(&mut self, value: String) {
-                            self.page_token = value.into();
-                        }
-                        fn execute<T>(&mut self) -> Result<T, crate::Error>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                        {
-                            todo!("implement async `execute` method for `IterableMethod` trait")
                         }
                     }
                     #[doc = "Created via [TriggersActions::revert()](struct.TriggersActions.html#method.revert)"]
@@ -18137,7 +16882,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> RevertRequestBuilder<'a> {
-                        #[doc = "When provided, this fingerprint must match the fingerprint of the trigger\nin storage."]
+                        #[doc = "When provided, this fingerprint must match the fingerprint of the trigger in storage."]
                         pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                             self.fingerprint = Some(value.into());
                             self
@@ -18246,11 +16991,11 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -18262,29 +17007,30 @@ pub mod resources {
                             output.push_str(":revert");
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("fingerprint", &self.fingerprint)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("fingerprint", &self.fingerprint)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -18309,7 +17055,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> UpdateRequestBuilder<'a> {
-                        #[doc = "When provided, this fingerprint must match the fingerprint of the trigger\nin storage."]
+                        #[doc = "When provided, this fingerprint must match the fingerprint of the trigger in storage."]
                         pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                             self.fingerprint = Some(value.into());
                             self
@@ -18416,12 +17162,12 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             let req = req.json(&self.request);
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -18432,29 +17178,30 @@ pub mod resources {
                             }
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                            let req = req.query(&[("fingerprint", &self.fingerprint)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                            req = req.query(&[("fingerprint", &self.fingerprint)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -18721,12 +17468,12 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             let req = req.json(&self.request);
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.parent;
@@ -18738,28 +17485,29 @@ pub mod resources {
                             output.push_str("/variables");
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -18828,12 +17576,12 @@ pub mod resources {
                             self
                         }
                         pub async fn execute(self) -> Result<(), crate::Error> {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             req.send().await?.error_for_status()?;
                             Ok(())
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -18844,28 +17592,29 @@ pub mod resources {
                             }
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -18992,11 +17741,11 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -19007,28 +17756,29 @@ pub mod resources {
                             }
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -19102,112 +17852,6 @@ pub mod resources {
                             self.xgafv = Some(value);
                             self
                         }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-                        #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-                        #[doc = r" populated fields in the yielded items will be determined by the"]
-                        #[doc = r" `FieldSelector` implementation."]
-                        pub fn iter_variable<T>(self) -> crate::iter::PageItemIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned
-                                + ::google_field_selector::FieldSelector,
-                        {
-                            let fields = ::google_field_selector::to_string::<T>();
-                            let fields: Option<String> = if fields.is_empty() {
-                                None
-                            } else {
-                                Some(fields)
-                            };
-                            self.iter_variable_with_fields(fields)
-                        }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                        #[doc = r" fields in `#items_type` will be the default fields populated by"]
-                        #[doc = r" the server."]
-                        pub fn iter_variable_with_default_fields(
-                            self,
-                        ) -> crate::iter::PageItemIter<Self, crate::schemas::Variable>
-                        {
-                            self.iter_variable_with_fields(None::<String>)
-                        }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                        #[doc = r" fields in `#items_type` will be all fields available. This should"]
-                        #[doc = r" primarily be used during developement and debugging as fetching"]
-                        #[doc = r" all fields can be expensive both in bandwidth and server"]
-                        #[doc = r" resources."]
-                        pub fn iter_variable_with_all_fields(
-                            self,
-                        ) -> crate::iter::PageItemIter<Self, crate::schemas::Variable>
-                        {
-                            self.iter_variable_with_fields(Some("*"))
-                        }
-                        pub fn iter_variable_with_fields<T, F>(
-                            mut self,
-                            fields: Option<F>,
-                        ) -> crate::iter::PageItemIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                            F: AsRef<str>,
-                        {
-                            self.fields = Some({
-                                let mut selector = concat!("nextPageToken,", "variable").to_owned();
-                                let items_fields =
-                                    fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                                if !items_fields.is_empty() {
-                                    selector.push_str("(");
-                                    selector.push_str(items_fields);
-                                    selector.push_str(")");
-                                }
-                                selector
-                            });
-                            crate::iter::PageItemIter::new(self, "variable")
-                        }
-                        pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned
-                                + ::google_field_selector::FieldSelector,
-                        {
-                            let fields = ::google_field_selector::to_string::<T>();
-                            let fields: Option<String> = if fields.is_empty() {
-                                None
-                            } else {
-                                Some(fields)
-                            };
-                            self.iter_with_fields(fields)
-                        }
-                        pub fn iter_with_default_fields(
-                            self,
-                        ) -> crate::iter::PageIter<Self, crate::schemas::ListVariablesResponse>
-                        {
-                            self.iter_with_fields(None::<&str>)
-                        }
-                        pub fn iter_with_all_fields(
-                            self,
-                        ) -> crate::iter::PageIter<Self, crate::schemas::ListVariablesResponse>
-                        {
-                            self.iter_with_fields(Some("*"))
-                        }
-                        pub fn iter_with_fields<T, F>(
-                            mut self,
-                            fields: Option<F>,
-                        ) -> crate::iter::PageIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                            F: AsRef<str>,
-                        {
-                            let mut fields =
-                                fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                            if !fields.is_empty() {
-                                match fields.chars().rev().nth(0) {
-                                    Some(',') | None => {}
-                                    _ => fields.push_str(","),
-                                }
-                                fields.push_str("nextPageToken");
-                                self.fields = Some(fields);
-                            }
-                            crate::iter::PageIter::new(self)
-                        }
                         #[doc = r" Execute the given operation. The fields requested are"]
                         #[doc = r" determined by the FieldSelector attribute of the return type."]
                         #[doc = r" This allows for flexible and ergonomic partial responses. See"]
@@ -19267,11 +17911,11 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.parent;
@@ -19283,41 +17927,31 @@ pub mod resources {
                             output.push_str("/variables");
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("pageToken", &self.page_token)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
-                        }
-                    }
-                    impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-                        fn set_page_token(&mut self, value: String) {
-                            self.page_token = value.into();
-                        }
-                        fn execute<T>(&mut self) -> Result<T, crate::Error>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                        {
-                            todo!("implement async `execute` method for `IterableMethod` trait")
                         }
                     }
                     #[doc = "Created via [VariablesActions::revert()](struct.VariablesActions.html#method.revert)"]
@@ -19340,7 +17974,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> RevertRequestBuilder<'a> {
-                        #[doc = "When provided, this fingerprint must match the fingerprint of the variable\nin storage."]
+                        #[doc = "When provided, this fingerprint must match the fingerprint of the variable in storage."]
                         pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                             self.fingerprint = Some(value.into());
                             self
@@ -19449,11 +18083,11 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -19465,29 +18099,30 @@ pub mod resources {
                             output.push_str(":revert");
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("fingerprint", &self.fingerprint)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("fingerprint", &self.fingerprint)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -19512,7 +18147,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> UpdateRequestBuilder<'a> {
-                        #[doc = "When provided, this fingerprint must match the fingerprint of the variable\nin storage."]
+                        #[doc = "When provided, this fingerprint must match the fingerprint of the variable in storage."]
                         pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                             self.fingerprint = Some(value.into());
                             self
@@ -19621,12 +18256,12 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             let req = req.json(&self.request);
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -19637,29 +18272,30 @@ pub mod resources {
                             }
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                            let req = req.query(&[("fingerprint", &self.fingerprint)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                            req = req.query(&[("fingerprint", &self.fingerprint)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -19924,12 +18560,12 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             let req = req.json(&self.request);
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.parent;
@@ -19941,28 +18577,29 @@ pub mod resources {
                             output.push_str("/zones");
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -20031,12 +18668,12 @@ pub mod resources {
                             self
                         }
                         pub async fn execute(self) -> Result<(), crate::Error> {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             req.send().await?.error_for_status()?;
                             Ok(())
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -20047,28 +18684,29 @@ pub mod resources {
                             }
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -20193,11 +18831,11 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -20208,28 +18846,29 @@ pub mod resources {
                             }
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -20303,112 +18942,6 @@ pub mod resources {
                             self.xgafv = Some(value);
                             self
                         }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-                        #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-                        #[doc = r" populated fields in the yielded items will be determined by the"]
-                        #[doc = r" `FieldSelector` implementation."]
-                        pub fn iter_zone<T>(self) -> crate::iter::PageItemIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned
-                                + ::google_field_selector::FieldSelector,
-                        {
-                            let fields = ::google_field_selector::to_string::<T>();
-                            let fields: Option<String> = if fields.is_empty() {
-                                None
-                            } else {
-                                Some(fields)
-                            };
-                            self.iter_zone_with_fields(fields)
-                        }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                        #[doc = r" fields in `#items_type` will be the default fields populated by"]
-                        #[doc = r" the server."]
-                        pub fn iter_zone_with_default_fields(
-                            self,
-                        ) -> crate::iter::PageItemIter<Self, crate::schemas::Zone>
-                        {
-                            self.iter_zone_with_fields(None::<String>)
-                        }
-                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                        #[doc = r" fields in `#items_type` will be all fields available. This should"]
-                        #[doc = r" primarily be used during developement and debugging as fetching"]
-                        #[doc = r" all fields can be expensive both in bandwidth and server"]
-                        #[doc = r" resources."]
-                        pub fn iter_zone_with_all_fields(
-                            self,
-                        ) -> crate::iter::PageItemIter<Self, crate::schemas::Zone>
-                        {
-                            self.iter_zone_with_fields(Some("*"))
-                        }
-                        pub fn iter_zone_with_fields<T, F>(
-                            mut self,
-                            fields: Option<F>,
-                        ) -> crate::iter::PageItemIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                            F: AsRef<str>,
-                        {
-                            self.fields = Some({
-                                let mut selector = concat!("nextPageToken,", "zone").to_owned();
-                                let items_fields =
-                                    fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                                if !items_fields.is_empty() {
-                                    selector.push_str("(");
-                                    selector.push_str(items_fields);
-                                    selector.push_str(")");
-                                }
-                                selector
-                            });
-                            crate::iter::PageItemIter::new(self, "zone")
-                        }
-                        pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned
-                                + ::google_field_selector::FieldSelector,
-                        {
-                            let fields = ::google_field_selector::to_string::<T>();
-                            let fields: Option<String> = if fields.is_empty() {
-                                None
-                            } else {
-                                Some(fields)
-                            };
-                            self.iter_with_fields(fields)
-                        }
-                        pub fn iter_with_default_fields(
-                            self,
-                        ) -> crate::iter::PageIter<Self, crate::schemas::ListZonesResponse>
-                        {
-                            self.iter_with_fields(None::<&str>)
-                        }
-                        pub fn iter_with_all_fields(
-                            self,
-                        ) -> crate::iter::PageIter<Self, crate::schemas::ListZonesResponse>
-                        {
-                            self.iter_with_fields(Some("*"))
-                        }
-                        pub fn iter_with_fields<T, F>(
-                            mut self,
-                            fields: Option<F>,
-                        ) -> crate::iter::PageIter<Self, T>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                            F: AsRef<str>,
-                        {
-                            let mut fields =
-                                fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                            if !fields.is_empty() {
-                                match fields.chars().rev().nth(0) {
-                                    Some(',') | None => {}
-                                    _ => fields.push_str(","),
-                                }
-                                fields.push_str("nextPageToken");
-                                self.fields = Some(fields);
-                            }
-                            crate::iter::PageIter::new(self)
-                        }
                         #[doc = r" Execute the given operation. The fields requested are"]
                         #[doc = r" determined by the FieldSelector attribute of the return type."]
                         #[doc = r" This allows for flexible and ergonomic partial responses. See"]
@@ -20468,11 +19001,11 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.parent;
@@ -20484,41 +19017,31 @@ pub mod resources {
                             output.push_str("/zones");
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("pageToken", &self.page_token)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
-                        }
-                    }
-                    impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-                        fn set_page_token(&mut self, value: String) {
-                            self.page_token = value.into();
-                        }
-                        fn execute<T>(&mut self) -> Result<T, crate::Error>
-                        where
-                            T: ::serde::de::DeserializeOwned,
-                        {
-                            todo!("implement async `execute` method for `IterableMethod` trait")
                         }
                     }
                     #[doc = "Created via [ZonesActions::revert()](struct.ZonesActions.html#method.revert)"]
@@ -20541,7 +19064,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> RevertRequestBuilder<'a> {
-                        #[doc = "When provided, this fingerprint must match the fingerprint of the zone in\nstorage."]
+                        #[doc = "When provided, this fingerprint must match the fingerprint of the zone in storage."]
                         pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                             self.fingerprint = Some(value.into());
                             self
@@ -20650,11 +19173,11 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -20666,29 +19189,30 @@ pub mod resources {
                             output.push_str(":revert");
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("fingerprint", &self.fingerprint)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("fingerprint", &self.fingerprint)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -20713,7 +19237,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> UpdateRequestBuilder<'a> {
-                        #[doc = "When provided, this fingerprint must match the fingerprint of the zone in\nstorage."]
+                        #[doc = "When provided, this fingerprint must match the fingerprint of the zone in storage."]
                         pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                             self.fingerprint = Some(value.into());
                             self
@@ -20820,12 +19344,12 @@ pub mod resources {
                         where
                             T: ::serde::de::DeserializeOwned,
                         {
-                            let req = self._request(&self._path())?;
+                            let req = self._request(&self._path()).await?;
                             let req = req.json(&self.request);
                             Ok(req.send().await?.error_for_status()?.json().await?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/".to_owned();
+                            let mut output = "https://tagmanager.googleapis.com/".to_owned();
                             output.push_str("tagmanager/v2/");
                             {
                                 let var_as_str = &self.path;
@@ -20836,29 +19360,30 @@ pub mod resources {
                             }
                             output
                         }
-                        fn _request(
+                        async fn _request(
                             &self,
                             path: &str,
                         ) -> Result<::reqwest::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                            let req = req.query(&[("fingerprint", &self.fingerprint)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
-                                self.auth
-                                    .access_token()
-                                    .map_err(|err| crate::Error::OAuth2(err))?,
-                            );
+                            let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                            req = req.query(&[("fingerprint", &self.fingerprint)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let access_token = self
+                                .auth
+                                .access_token()
+                                .await
+                                .map_err(|err| crate::Error::OAuth2(err))?;
+                            req = req.bearer_auth(access_token);
                             Ok(req)
                         }
                     }
@@ -20899,7 +19424,7 @@ pub mod resources {
                         parent: parent.into(),
                     }
                 }
-                #[doc = "Removes a user from the account, revoking access to it and all of its\ncontainers."]
+                #[doc = "Removes a user from the account, revoking access to it and all of its containers."]
                 pub fn delete(&self, path: impl Into<String>) -> DeleteRequestBuilder {
                     DeleteRequestBuilder {
                         reqwest: &self.reqwest,
@@ -20937,7 +19462,7 @@ pub mod resources {
                         path: path.into(),
                     }
                 }
-                #[doc = "List all users that have access to the account along with Account and\nContainer user access granted to each of them."]
+                #[doc = "List all users that have access to the account along with Account and Container user access granted to each of them."]
                 pub fn list(&self, parent: impl Into<String>) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
@@ -21103,12 +19628,12 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://tagmanager.googleapis.com/".to_owned();
                     output.push_str("tagmanager/v2/");
                     {
                         let var_as_str = &self.parent;
@@ -21120,24 +19645,28 @@ pub mod resources {
                     output.push_str("/user_permissions");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -21206,12 +19735,12 @@ pub mod resources {
                     self
                 }
                 pub async fn execute(self) -> Result<(), crate::Error> {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     req.send().await?.error_for_status()?;
                     Ok(())
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://tagmanager.googleapis.com/".to_owned();
                     output.push_str("tagmanager/v2/");
                     {
                         let var_as_str = &self.path;
@@ -21222,24 +19751,28 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -21363,11 +19896,11 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://tagmanager.googleapis.com/".to_owned();
                     output.push_str("tagmanager/v2/");
                     {
                         let var_as_str = &self.path;
@@ -21378,24 +19911,28 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -21469,108 +20006,6 @@ pub mod resources {
                     self.xgafv = Some(value);
                     self
                 }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-                #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-                #[doc = r" populated fields in the yielded items will be determined by the"]
-                #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_user_permission<T>(self) -> crate::iter::PageItemIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                {
-                    let fields = ::google_field_selector::to_string::<T>();
-                    let fields: Option<String> = if fields.is_empty() {
-                        None
-                    } else {
-                        Some(fields)
-                    };
-                    self.iter_user_permission_with_fields(fields)
-                }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                #[doc = r" fields in `#items_type` will be the default fields populated by"]
-                #[doc = r" the server."]
-                pub fn iter_user_permission_with_default_fields(
-                    self,
-                ) -> crate::iter::PageItemIter<Self, crate::schemas::UserPermission>
-                {
-                    self.iter_user_permission_with_fields(None::<String>)
-                }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                #[doc = r" fields in `#items_type` will be all fields available. This should"]
-                #[doc = r" primarily be used during developement and debugging as fetching"]
-                #[doc = r" all fields can be expensive both in bandwidth and server"]
-                #[doc = r" resources."]
-                pub fn iter_user_permission_with_all_fields(
-                    self,
-                ) -> crate::iter::PageItemIter<Self, crate::schemas::UserPermission>
-                {
-                    self.iter_user_permission_with_fields(Some("*"))
-                }
-                pub fn iter_user_permission_with_fields<T, F>(
-                    mut self,
-                    fields: Option<F>,
-                ) -> crate::iter::PageItemIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                    F: AsRef<str>,
-                {
-                    self.fields = Some({
-                        let mut selector = concat!("nextPageToken,", "userPermission").to_owned();
-                        let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                        if !items_fields.is_empty() {
-                            selector.push_str("(");
-                            selector.push_str(items_fields);
-                            selector.push_str(")");
-                        }
-                        selector
-                    });
-                    crate::iter::PageItemIter::new(self, "userPermission")
-                }
-                pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                {
-                    let fields = ::google_field_selector::to_string::<T>();
-                    let fields: Option<String> = if fields.is_empty() {
-                        None
-                    } else {
-                        Some(fields)
-                    };
-                    self.iter_with_fields(fields)
-                }
-                pub fn iter_with_default_fields(
-                    self,
-                ) -> crate::iter::PageIter<Self, crate::schemas::ListUserPermissionsResponse>
-                {
-                    self.iter_with_fields(None::<&str>)
-                }
-                pub fn iter_with_all_fields(
-                    self,
-                ) -> crate::iter::PageIter<Self, crate::schemas::ListUserPermissionsResponse>
-                {
-                    self.iter_with_fields(Some("*"))
-                }
-                pub fn iter_with_fields<T, F>(
-                    mut self,
-                    fields: Option<F>,
-                ) -> crate::iter::PageIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                    F: AsRef<str>,
-                {
-                    let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                    if !fields.is_empty() {
-                        match fields.chars().rev().nth(0) {
-                            Some(',') | None => {}
-                            _ => fields.push_str(","),
-                        }
-                        fields.push_str("nextPageToken");
-                        self.fields = Some(fields);
-                    }
-                    crate::iter::PageIter::new(self)
-                }
                 #[doc = r" Execute the given operation. The fields requested are"]
                 #[doc = r" determined by the FieldSelector attribute of the return type."]
                 #[doc = r" This allows for flexible and ergonomic partial responses. See"]
@@ -21629,11 +20064,11 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://tagmanager.googleapis.com/".to_owned();
                     output.push_str("tagmanager/v2/");
                     {
                         let var_as_str = &self.parent;
@@ -21645,37 +20080,30 @@ pub mod resources {
                     output.push_str("/user_permissions");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
-                }
-            }
-            impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-                fn set_page_token(&mut self, value: String) {
-                    self.page_token = value.into();
-                }
-                fn execute<T>(&mut self) -> Result<T, crate::Error>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                {
-                    todo!("implement async `execute` method for `IterableMethod` trait")
                 }
             }
             #[doc = "Created via [UserPermissionsActions::update()](struct.UserPermissionsActions.html#method.update)"]
@@ -21799,12 +20227,12 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://tagmanager.googleapis.com/".to_owned();
                     output.push_str("tagmanager/v2/");
                     {
                         let var_as_str = &self.path;
@@ -21815,24 +20243,28 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -21847,6 +20279,7 @@ pub enum Error {
         reqwest_err: ::reqwest::Error,
         body: Option<String>,
     },
+    IO(std::io::Error),
     Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
@@ -21856,6 +20289,7 @@ impl Error {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
             Error::Reqwest { .. } => None,
+            Error::IO(_) => None,
             Error::Other(_) => None,
         }
     }
@@ -21873,6 +20307,7 @@ impl ::std::fmt::Display for Error {
                 }
                 Ok(())
             }
+            Error::IO(err) => write!(f, "IO Error: {}", err),
             Error::Other(err) => write!(f, "Uknown Error: {}", err),
         }
     }
@@ -21892,6 +20327,12 @@ impl From<::reqwest::Error> for Error {
             reqwest_err,
             body: None,
         }
+    }
+}
+
+impl From<std::io::Error> for Error {
+    fn from(err: std::io::Error) -> Error {
+        Error::IO(err)
     }
 }
 #[allow(dead_code)]
@@ -21961,13 +20402,13 @@ mod multipart {
 
     pub(crate) struct Part {
         content_type: ::mime::Mime,
-        body: Box<dyn ::std::io::Read + Send>,
+        body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
     }
 
     impl Part {
         pub(crate) fn new(
             content_type: ::mime::Mime,
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         ) -> Part {
             Part { content_type, body }
         }
@@ -21976,7 +20417,7 @@ mod multipart {
     pub(crate) struct RelatedMultiPartReader {
         state: RelatedMultiPartReaderState,
         boundary: String,
-        next_body: Option<Box<dyn ::std::io::Read + Send>>,
+        next_body: Option<Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>>,
         parts: std::vec::IntoIter<Part>,
     }
 
@@ -21990,13 +20431,18 @@ mod multipart {
             content_type: Vec<u8>,
         },
         WriteBody {
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         },
     }
 
-    impl ::std::io::Read for RelatedMultiPartReader {
-        fn read(&mut self, buf: &mut [u8]) -> ::std::io::Result<usize> {
+    impl futures::io::AsyncRead for RelatedMultiPartReader {
+        fn poll_read(
+            mut self: std::pin::Pin<&mut Self>,
+            ctx: &mut futures::task::Context,
+            buf: &mut [u8],
+        ) -> futures::task::Poll<Result<usize, futures::io::Error>> {
             use RelatedMultiPartReaderState::*;
+
             let mut bytes_written: usize = 0;
             loop {
                 let rem_buf = &mut buf[bytes_written..];
@@ -22044,7 +20490,14 @@ mod multipart {
                         }
                     }
                     WriteBody { body } => {
-                        let written = body.read(rem_buf)?;
+                        let body = std::pin::Pin::new(body);
+                        let written = match futures::io::AsyncRead::poll_read(body, ctx, rem_buf) {
+                            futures::task::Poll::Ready(Ok(n)) => n,
+                            futures::task::Poll::Ready(Err(err)) => {
+                                return futures::task::Poll::Ready(Err(err));
+                            }
+                            futures::task::Poll::Pending => return futures::task::Poll::Pending,
+                        };
                         bytes_written += written;
                         if written == 0 {
                             self.state = WriteBoundary {
@@ -22057,7 +20510,8 @@ mod multipart {
                     }
                 }
             }
-            Ok(bytes_written)
+
+            futures::task::Poll::Ready(Ok(bytes_written))
         }
     }
 
@@ -22096,128 +20550,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-pub mod iter {
-    pub trait IterableMethod {
-        fn set_page_token(&mut self, value: String);
-        fn execute<T>(&mut self) -> Result<T, crate::Error>
-        where
-            T: ::serde::de::DeserializeOwned;
-    }
-
-    pub struct PageIter<M, T> {
-        pub method: M,
-        pub finished: bool,
-        pub _phantom: ::std::marker::PhantomData<T>,
-    }
-
-    impl<M, T> PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M) -> Self {
-            PageIter {
-                method,
-                finished: false,
-                _phantom: ::std::marker::PhantomData,
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, crate::Error>;
-
-        fn next(&mut self) -> Option<Result<T, crate::Error>> {
-            if self.finished {
-                return None;
-            }
-            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
-                match self.method.execute() {
-                    Ok(r) => r,
-                    Err(err) => return Some(Err(err)),
-                };
-            if let Some(next_page_token) = paginated_result
-                .get("nextPageToken")
-                .and_then(|t| t.as_str())
-            {
-                self.method.set_page_token(next_page_token.to_owned());
-            } else {
-                self.finished = true;
-            }
-
-            Some(
-                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
-                    Ok(resp) => Ok(resp),
-                    Err(err) => Err(err.into()),
-                },
-            )
-        }
-    }
-
-    pub struct PageItemIter<M, T> {
-        items_field: &'static str,
-        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
-        items: ::std::vec::IntoIter<T>,
-    }
-
-    impl<M, T> PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
-            PageItemIter {
-                items_field,
-                page_iter: PageIter::new(method),
-                items: Vec::new().into_iter(),
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, crate::Error>;
-
-        fn next(&mut self) -> Option<Result<T, crate::Error>> {
-            loop {
-                if let Some(v) = self.items.next() {
-                    return Some(Ok(v));
-                }
-
-                let next_page = self.page_iter.next();
-                match next_page {
-                    None => return None,
-                    Some(Err(err)) => return Some(Err(err)),
-                    Some(Ok(next_page)) => {
-                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
-                            next_page;
-                        let items_array = match next_page.remove(self.items_field) {
-                            Some(items) => items,
-                            None => {
-                                return Some(Err(crate::Error::Other(
-                                    format!("no {} field found in iter response", self.items_field)
-                                        .into(),
-                                )))
-                            }
-                        };
-                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
-                        match items_vec {
-                            Ok(items) => self.items = items.into_iter(),
-                            Err(err) => return Some(Err(err.into())),
-                        }
-                    }
-                }
-            }
         }
     }
 }

@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("androiddeviceprovisioning1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200512")
+            .version("0.1.0-20210310")
             .about("Automates Android zero-touch enrollment for device resellers, customers, and EMMs.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -44,7 +44,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: get");
         {
-            let mcmd = SubCommand::with_name("get").about("Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.");
+            let mcmd = SubCommand::with_name("get").about("Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.");
             operations0 = operations0.subcommand(mcmd);
         }
         let mut partners0 = SubCommand::with_name("partners")
@@ -54,11 +54,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get, list and patch");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a new configuration. Once created, a customer can apply the\nconfiguration to devices.");
+            let mcmd = SubCommand::with_name("create").about("Creates a new configuration. Once created, a customer can apply the configuration to devices.");
             configurations1 = configurations1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes an unused configuration. The API call fails if the customer has\ndevices with the configuration applied.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes an unused configuration. The API call fails if the customer has devices with the configuration applied.");
             configurations1 = configurations1.subcommand(mcmd);
         }
         {
@@ -78,7 +78,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: apply_configuration, get, list, remove_configuration and unclaim");
         {
-            let mcmd = SubCommand::with_name("apply_configuration").about("Applies a Configuration to the device to register the device for zero-touch\nenrollment. After applying a configuration to a device, the device\nautomatically provisions itself on first boot, or next factory reset.");
+            let mcmd = SubCommand::with_name("apply_configuration").about("Applies a Configuration to the device to register the device for zero-touch enrollment. After applying a configuration to a device, the device automatically provisions itself on first boot, or next factory reset.");
             devices1 = devices1.subcommand(mcmd);
         }
         {
@@ -95,7 +95,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             devices1 = devices1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("unclaim").about("Unclaims a device from a customer and removes it from zero-touch\nenrollment.\n\nAfter removing a device, a customer must contact their reseller to register\nthe device into zero-touch enrollment again.");
+            let mcmd = SubCommand::with_name("unclaim").about("Unclaims a device from a customer and removes it from zero-touch enrollment. After removing a device, a customer must contact their reseller to register the device into zero-touch enrollment again.");
             devices1 = devices1.subcommand(mcmd);
         }
         let mut dpcs1 = SubCommand::with_name("dpcs")
@@ -103,7 +103,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .about("methods: list");
         {
             let mcmd = SubCommand::with_name("list").about(
-                "Lists the DPCs (device policy controllers) that support zero-touch\nenrollment.",
+                "Lists the DPCs (device policy controllers) that support zero-touch enrollment.",
             );
             dpcs1 = dpcs1.subcommand(mcmd);
         }
@@ -111,22 +111,22 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create and list");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a customer for zero-touch enrollment. After the method returns\nsuccessfully, admin and owner roles can manage devices and EMM configs\nby calling API methods or using their zero-touch enrollment portal.\nThe customer receives an email that welcomes them to zero-touch enrollment\nand explains how to sign into the portal.");
+            let mcmd = SubCommand::with_name("create").about("Creates a customer for zero-touch enrollment. After the method returns successfully, admin and owner roles can manage devices and EMM configs by calling API methods or using their zero-touch enrollment portal. The customer receives an email that welcomes them to zero-touch enrollment and explains how to sign into the portal.");
             customers1 = customers1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists the customers that are enrolled to the reseller identified by the\n`partnerId` argument. This list includes customers that the reseller\ncreated and customers that enrolled themselves using the portal.");
+            let mcmd = SubCommand::with_name("list").about("Lists the customers that are enrolled to the reseller identified by the `partnerId` argument. This list includes customers that the reseller created and customers that enrolled themselves using the portal.");
             customers1 = customers1.subcommand(mcmd);
         }
         let mut devices1 = SubCommand::with_name("devices")
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: claim, claim_async, find_by_identifier, find_by_owner, get, metadata, unclaim, unclaim_async and update_metadata_async");
         {
-            let mcmd = SubCommand::with_name("claim").about("Claims a device for a customer and adds it to zero-touch enrollment. If the\ndevice is already claimed by another customer, the call returns an error.");
+            let mcmd = SubCommand::with_name("claim").about("Claims a device for a customer and adds it to zero-touch enrollment. If the device is already claimed by another customer, the call returns an error.");
             devices1 = devices1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("claim_async").about("Claims a batch of devices for a customer asynchronously. Adds the devices\nto zero-touch enrollment. To learn more, read [Long‑running batch\noperations](/zero-touch/guides/how-it-works#operations).");
+            let mcmd = SubCommand::with_name("claim_async").about("Claims a batch of devices for a customer asynchronously. Adds the devices to zero-touch enrollment. To learn more, read [Long‑running batch operations](/zero-touch/guides/how-it-works#operations).");
             devices1 = devices1.subcommand(mcmd);
         }
         {
@@ -135,7 +135,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             devices1 = devices1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("find_by_owner").about("Finds devices claimed for customers. The results only contain devices\nregistered to the reseller that\'s identified by the `partnerId` argument.\nThe customer\'s devices purchased from other resellers don\'t appear in the\nresults.");
+            let mcmd = SubCommand::with_name("find_by_owner").about("Finds devices claimed for customers. The results only contain devices registered to the reseller that\'s identified by the `partnerId` argument. The customer\'s devices purchased from other resellers don\'t appear in the results.");
             devices1 = devices1.subcommand(mcmd);
         }
         {
@@ -149,16 +149,16 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("unclaim").about(
-                "Unclaims a device from a customer and removes it from zero-touch\nenrollment.",
+                "Unclaims a device from a customer and removes it from zero-touch enrollment.",
             );
             devices1 = devices1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("unclaim_async").about("Unclaims a batch of devices for a customer asynchronously. Removes the\ndevices from zero-touch enrollment. To learn more, read [Long‑running batch\noperations](/zero-touch/guides/how-it-works#operations).");
+            let mcmd = SubCommand::with_name("unclaim_async").about("Unclaims a batch of devices for a customer asynchronously. Removes the devices from zero-touch enrollment. To learn more, read [Long‑running batch operations](/zero-touch/guides/how-it-works#operations).");
             devices1 = devices1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update_metadata_async").about("Updates the reseller metadata attached to a batch of devices. This method\nupdates devices asynchronously and returns an `Operation` that can be used\nto track progress. Read [Long‑running batch\noperations](/zero-touch/guides/how-it-works#operations).");
+            let mcmd = SubCommand::with_name("update_metadata_async").about("Updates the reseller metadata attached to a batch of devices. This method updates devices asynchronously and returns an `Operation` that can be used to track progress. Read [Long‑running batch operations](/zero-touch/guides/how-it-works#operations).");
             devices1 = devices1.subcommand(mcmd);
         }
         let mut vendors1 = SubCommand::with_name("vendors")

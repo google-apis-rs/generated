@@ -1,35 +1,69 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/YoLKMCopNCizJ_CWKjyBdDdQP1k\"",
+  "etag": null,
   "discoveryVersion": "v1",
   "id": "deploymentmanager:v2beta",
   "name": "deploymentmanager",
-  "canonicalName": "Deployment Manager V2Beta",
+  "canonicalName": "Deployment Manager",
   "fullyEncodeReservedExpansion": null,
   "version": "v2beta",
-  "revision": "20181207",
-  "title": "Google Cloud Deployment Manager API V2Beta Methods",
-  "description": "The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.",
+  "revision": "20210304",
+  "title": "Cloud Deployment Manager V2 API",
+  "description": "The Google Cloud Deployment Manager v2 API provides services for configuring, deploying, and viewing Google Cloud services and APIs via templates which specify deployments of Cloud resources.",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "icons": {
-    "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
-    "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "documentationLink": "https://developers.google.com/deployment-manager/",
+  "documentationLink": "https://cloud.google.com/deployment-manager",
   "protocol": "rest",
-  "baseUrl": "https://www.googleapis.com/deploymentmanager/v2beta/projects/",
-  "basePath": "/deploymentmanager/v2beta/projects/",
-  "rootUrl": "https://www.googleapis.com/",
-  "servicePath": "deploymentmanager/v2beta/projects/",
-  "batchPath": "batch/deploymentmanager/v2beta",
+  "baseUrl": "https://deploymentmanager.googleapis.com/",
+  "basePath": "",
+  "rootUrl": "https://deploymentmanager.googleapis.com/",
+  "servicePath": "",
+  "batchPath": "batch",
   "version_module": null,
   "packagePath": null,
   "labels": null,
   "features": null,
   "parameters": {
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [
+        "1",
+        "2"
+      ],
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "repeated": false
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
     "alt": {
-      "description": "Data format for the response.",
+      "description": "Data format for response.",
       "default": "json",
       "location": "query",
       "required": false,
@@ -39,11 +73,29 @@
       "maximum": null,
       "pattern": null,
       "enum": [
-        "json"
+        "json",
+        "media",
+        "proto"
       ],
       "enumDescriptions": [
-        "Responses with Content-Type of application/json"
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
       ],
+      "repeated": false
+    },
+    "callback": {
+      "description": "JSONP",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
       "repeated": false
     },
     "fields": {
@@ -103,7 +155,7 @@
       "repeated": false
     },
     "quotaUser": {
-      "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "default": null,
       "location": "query",
       "required": false,
@@ -116,8 +168,22 @@
       "enumDescriptions": [],
       "repeated": false
     },
-    "userIp": {
-      "description": "Deprecated. Please use quotaUser instead.",
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "default": null,
       "location": "query",
       "required": false,
@@ -178,7 +244,7 @@
     },
     "AuditConfig": {
       "id": "AuditConfig",
-      "description": "Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted.\n\nExample Policy with multiple AuditConfigs:\n\n{ \"audit_configs\": [ { \"service\": \"allServices\" \"audit_log_configs\": [ { \"log_type\": \"DATA_READ\", \"exempted_members\": [ \"user:foo@gmail.com\" ] }, { \"log_type\": \"DATA_WRITE\", }, { \"log_type\": \"ADMIN_READ\", } ] }, { \"service\": \"fooservice.googleapis.com\" \"audit_log_configs\": [ { \"log_type\": \"DATA_READ\", }, { \"log_type\": \"DATA_WRITE\", \"exempted_members\": [ \"user:bar@gmail.com\" ] } ] } ] }\n\nFor fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts foo@gmail.com from DATA_READ logging, and bar@gmail.com from DATA_WRITE logging.",
+      "description": "Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { \"audit_configs\": [ { \"service\": \"allServices\", \"audit_log_configs\": [ { \"log_type\": \"DATA_READ\", \"exempted_members\": [ \"user:jose@example.com\" ] }, { \"log_type\": \"DATA_WRITE\" }, { \"log_type\": \"ADMIN_READ\" } ] }, { \"service\": \"sampleservice.googleapis.com\", \"audit_log_configs\": [ { \"log_type\": \"DATA_READ\" }, { \"log_type\": \"DATA_WRITE\", \"exempted_members\": [ \"user:aliya@example.com\" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -194,24 +260,6 @@
           "additionalProperties": null,
           "items": {
             "$ref": "AuditLogConfig"
-          }
-        },
-        "exemptedMembers": {
-          "description": "",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
           }
         },
         "service": {
@@ -230,14 +278,14 @@
     },
     "AuditLogConfig": {
       "id": "AuditLogConfig",
-      "description": "Provides the configuration for logging a type of permissions. Example:\n\n{ \"audit_log_configs\": [ { \"log_type\": \"DATA_READ\", \"exempted_members\": [ \"user:foo@gmail.com\" ] }, { \"log_type\": \"DATA_WRITE\", } ] }\n\nThis enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting foo@gmail.com from DATA_READ logging.",
+      "description": "Provides the configuration for logging a type of permissions. Example: { \"audit_log_configs\": [ { \"log_type\": \"DATA_READ\", \"exempted_members\": [ \"user:jose@example.com\" ] }, { \"log_type\": \"DATA_WRITE\" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "exemptedMembers": {
-          "description": "Specifies the identities that do not cause logging for this type of permission. Follows the same format of [Binding.members][].",
+          "description": "Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -258,30 +306,18 @@
           "description": "The log type that this config enables.",
           "type": "string",
           "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "AuthorizationLoggingOptions": {
-      "id": "AuthorizationLoggingOptions",
-      "description": "Authorization-related information used by Cloud Audit Logging.",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "permissionType": {
-          "description": "The type of the permission that was checked.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
+          "enum": [
+            "LOG_TYPE_UNSPECIFIED",
+            "ADMIN_READ",
+            "DATA_WRITE",
+            "DATA_READ"
+          ],
+          "enumDescriptions": [
+            "Default case. Should never be this.",
+            "Admin reads. Example: CloudIAM getIamPolicy",
+            "Data writes. Example: CloudSQL Users create",
+            "Data reads. Example: CloudSQL Users list"
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -373,11 +409,11 @@
       "enumDescriptions": [],
       "properties": {
         "condition": {
-          "description": "Unimplemented. The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.",
+          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
           "$ref": "Expr"
         },
         "members": {
-          "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@gmail.com` .\n\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.\n\n\n\n* `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example, `google.com` or `example.com`.",
+          "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
           "type": "array",
           "format": null,
           "enum": [],
@@ -473,7 +509,7 @@
           "items": null
         },
         "labels": {
-          "description": "Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])? Label values must be between 0 and 63 characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?",
+          "description": "Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -485,7 +521,7 @@
           }
         },
         "name": {
-          "description": "Name of the composite type, must follow the expression: [a-z]([-a-z0-9_.]{0,61}[a-z0-9])?.",
+          "description": "Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -512,8 +548,18 @@
           "description": null,
           "type": "string",
           "format": null,
-          "enum": [],
-          "enumDescriptions": [],
+          "enum": [
+            "UNKNOWN_STATUS",
+            "DEPRECATED",
+            "EXPERIMENTAL",
+            "SUPPORTED"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            ""
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -528,14 +574,14 @@
     },
     "CompositeTypeLabelEntry": {
       "id": "CompositeTypeLabelEntry",
-      "description": null,
+      "description": "Label object for CompositeTypes",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "key": {
-          "description": null,
+          "description": "Key of the label",
           "type": "string",
           "format": null,
           "enum": [],
@@ -545,7 +591,7 @@
           "items": null
         },
         "value": {
-          "description": null,
+          "description": "Value of the label",
           "type": "string",
           "format": null,
           "enum": [],
@@ -592,89 +638,9 @@
       "additionalProperties": null,
       "items": null
     },
-    "Condition": {
-      "id": "Condition",
-      "description": "A condition to be met.",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "iam": {
-          "description": "Trusted attributes supplied by the IAM system.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "op": {
-          "description": "An operator to apply the subject with.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "svc": {
-          "description": "Trusted attributes discharged by the service.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "sys": {
-          "description": "Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "value": {
-          "description": "DEPRECATED. Use 'values' instead.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "values": {
-          "description": "The objects of the condition. This is mutually exclusive with 'value'.",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
     "ConfigFile": {
       "id": "ConfigFile",
-      "description": "",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
@@ -726,7 +692,7 @@
     },
     "Deployment": {
       "id": "Deployment",
-      "description": "",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
@@ -743,7 +709,7 @@
           "items": null
         },
         "fingerprint": {
-          "description": "Provides a fingerprint to use in requests to modify a deployment, such as update(), stop(), and cancelPreview() requests. A fingerprint is a randomly generated value that must be provided with update(), stop(), and cancelPreview() requests to perform optimistic locking. This ensures optimistic concurrency so that only one request happens at a time.\n\nThe fingerprint is initially generated by Deployment Manager and changes after every request to modify data. To get the latest fingerprint value, perform a get() request to a deployment.",
+          "description": "Provides a fingerprint to use in requests to modify a deployment, such as `update()`, `stop()`, and `cancelPreview()` requests. A fingerprint is a randomly generated value that must be provided with `update()`, `stop()`, and `cancelPreview()` requests to perform optimistic locking. This ensures optimistic concurrency so that only one request happens at a time. The fingerprint is initially generated by Deployment Manager and changes after every request to modify data. To get the latest fingerprint value, perform a `get()` request to a deployment.",
           "type": "string",
           "format": "byte",
           "enum": [],
@@ -773,7 +739,7 @@
           "items": null
         },
         "labels": {
-          "description": "Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])? Label values must be between 0 and 63 characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?",
+          "description": "Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -785,7 +751,7 @@
           }
         },
         "manifest": {
-          "description": "Output only. URL of the manifest representing the last manifest that was successfully deployed.",
+          "description": "Output only. URL of the manifest representing the last manifest that was successfully deployed. If no manifest has been successfully deployed, this field will be absent.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -795,7 +761,7 @@
           "items": null
         },
         "name": {
-          "description": "Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
+          "description": "Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -842,14 +808,14 @@
     },
     "DeploymentLabelEntry": {
       "id": "DeploymentLabelEntry",
-      "description": null,
+      "description": "Label object for Deployments",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "key": {
-          "description": null,
+          "description": "Key of the label",
           "type": "string",
           "format": null,
           "enum": [],
@@ -859,7 +825,7 @@
           "items": null
         },
         "value": {
-          "description": null,
+          "description": "Value of the label",
           "type": "string",
           "format": null,
           "enum": [],
@@ -874,7 +840,7 @@
     },
     "DeploymentUpdate": {
       "id": "DeploymentUpdate",
-      "description": "",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
@@ -891,7 +857,7 @@
           "items": null
         },
         "labels": {
-          "description": "Output only. Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])? Label values must be between 0 and 63 characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?",
+          "description": "Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -918,14 +884,14 @@
     },
     "DeploymentUpdateLabelEntry": {
       "id": "DeploymentUpdateLabelEntry",
-      "description": null,
+      "description": "Label object for DeploymentUpdate",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "key": {
-          "description": null,
+          "description": "Key of the label",
           "type": "string",
           "format": null,
           "enum": [],
@@ -935,7 +901,7 @@
           "items": null
         },
         "value": {
-          "description": null,
+          "description": "Value of the label",
           "type": "string",
           "format": null,
           "enum": [],
@@ -950,14 +916,14 @@
     },
     "DeploymentsCancelPreviewRequest": {
       "id": "DeploymentsCancelPreviewRequest",
-      "description": "",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "fingerprint": {
-          "description": "Specifies a fingerprint for cancelPreview() requests. A fingerprint is a randomly generated value that must be provided in cancelPreview() requests to perform optimistic locking. This ensures optimistic concurrency so that the deployment does not have conflicting requests (e.g. if someone attempts to make a new update request while another user attempts to cancel a preview, this would prevent one of the requests).\n\nThe fingerprint is initially generated by Deployment Manager and changes after every request to modify a deployment. To get the latest fingerprint value, perform a get() request on the deployment.",
+          "description": "Specifies a fingerprint for `cancelPreview()` requests. A fingerprint is a randomly generated value that must be provided in `cancelPreview()` requests to perform optimistic locking. This ensures optimistic concurrency so that the deployment does not have conflicting requests (e.g. if someone attempts to make a new update request while another user attempts to cancel a preview, this would prevent one of the requests). The fingerprint is initially generated by Deployment Manager and changes after every request to modify a deployment. To get the latest fingerprint value, perform a `get()` request on the deployment.",
           "type": "string",
           "format": "byte",
           "enum": [],
@@ -1006,14 +972,14 @@
     },
     "DeploymentsStopRequest": {
       "id": "DeploymentsStopRequest",
-      "description": "",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "fingerprint": {
-          "description": "Specifies a fingerprint for stop() requests. A fingerprint is a randomly generated value that must be provided in stop() requests to perform optimistic locking. This ensures optimistic concurrency so that the deployment does not have conflicting requests (e.g. if someone attempts to make a new update request while another user attempts to stop an ongoing update request, this would prevent a collision).\n\nThe fingerprint is initially generated by Deployment Manager and changes after every request to modify a deployment. To get the latest fingerprint value, perform a get() request on the deployment.",
+          "description": "Specifies a fingerprint for `stop()` requests. A fingerprint is a randomly generated value that must be provided in `stop()` requests to perform optimistic locking. This ensures optimistic concurrency so that the deployment does not have conflicting requests (e.g. if someone attempts to make a new update request while another user attempts to stop an ongoing update request, this would prevent a collision). The fingerprint is initially generated by Deployment Manager and changes after every request to modify a deployment. To get the latest fingerprint value, perform a `get()` request on the deployment.",
           "type": "string",
           "format": "byte",
           "enum": [],
@@ -1028,7 +994,7 @@
     },
     "Diagnostic": {
       "id": "Diagnostic",
-      "description": "",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
@@ -1048,8 +1014,18 @@
           "description": "Level to record this diagnostic.",
           "type": "string",
           "format": null,
-          "enum": [],
-          "enumDescriptions": [],
+          "enum": [
+            "UNKNOWN",
+            "INFORMATION",
+            "WARNING",
+            "ERROR"
+          ],
+          "enumDescriptions": [
+            "",
+            "If level is informational, it only gets displayed as part of the resource.",
+            "If level is warning, will end up in the resource as a warning.",
+            "If level is error, it will indicate an error occurred after finishCondition is set, and this field will populate resource errors and operation errors."
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -1060,14 +1036,14 @@
     },
     "Expr": {
       "id": "Expr",
-      "description": "Represents an expression text. Example:\n\ntitle: \"User account presence\" description: \"Determines whether the request has a user account\" expression: \"size(request.user) > 0\"",
+      "description": "Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \"Summary size limit\" description: \"Determines if a summary is less than 100 chars\" expression: \"document.summary.size() < 100\" Example (Equality): title: \"Requestor is owner\" description: \"Determines if requestor is the document owner\" expression: \"document.owner == request.auth.claims.email\" Example (Logic): title: \"Public documents\" description: \"Determine whether the document should be publicly visible\" expression: \"document.type != 'private' && document.type != 'internal'\" Example (Data Manipulation): title: \"Notification string\" description: \"Create a notification string with a timestamp.\" expression: \"'New message received at ' + string(document.create_time)\" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "description": {
-          "description": "An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.",
+          "description": "Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1077,7 +1053,7 @@
           "items": null
         },
         "expression": {
-          "description": "Textual representation of an expression in Common Expression Language syntax.\n\nThe application context of the containing message determines which well-known feature set of CEL is supported.",
+          "description": "Textual representation of an expression in Common Expression Language syntax.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1087,7 +1063,7 @@
           "items": null
         },
         "location": {
-          "description": "An optional string indicating the location of the expression for error reporting, e.g. a file name and a position in the file.",
+          "description": "Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1097,7 +1073,7 @@
           "items": null
         },
         "title": {
-          "description": "An optional title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.",
+          "description": "Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1150,7 +1126,7 @@
     },
     "ImportFile": {
       "id": "ImportFile",
-      "description": "",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
@@ -1202,8 +1178,20 @@
           "description": "The location where this mapping applies.",
           "type": "string",
           "format": null,
-          "enum": [],
-          "enumDescriptions": [],
+          "enum": [
+            "UNKNOWN",
+            "PATH",
+            "QUERY",
+            "BODY",
+            "HEADER"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -1232,113 +1220,9 @@
       "additionalProperties": null,
       "items": null
     },
-    "LogConfig": {
-      "id": "LogConfig",
-      "description": "Specifies what kind of log the caller must write",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "cloudAudit": {
-          "description": "Cloud audit options.",
-          "$ref": "LogConfigCloudAuditOptions"
-        },
-        "counter": {
-          "description": "Counter options.",
-          "$ref": "LogConfigCounterOptions"
-        },
-        "dataAccess": {
-          "description": "Data access options.",
-          "$ref": "LogConfigDataAccessOptions"
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "LogConfigCloudAuditOptions": {
-      "id": "LogConfigCloudAuditOptions",
-      "description": "Write a Cloud Audit log",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "authorizationLoggingOptions": {
-          "description": "Information used by the Cloud Audit Logging pipeline.",
-          "$ref": "AuthorizationLoggingOptions"
-        },
-        "logName": {
-          "description": "The log_name to populate in the Cloud Audit Record.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "LogConfigCounterOptions": {
-      "id": "LogConfigCounterOptions",
-      "description": "Increment a streamz counter with the specified metric and field names.\n\nMetric names should start with a '/', generally be lowercase-only, and end in \"_count\". Field names should not contain an initial slash. The actual exported metric names will have \"/iam/policy\" prepended.\n\nField names correspond to IAM request parameters and field values are their respective values.\n\nSupported field names: - \"authority\", which is \"[token]\" if IAMContext.token is present, otherwise the value of IAMContext.authority_selector if present, and otherwise a representation of IAMContext.principal; or - \"iam_principal\", a representation of IAMContext.principal even if a token or authority selector is present; or - \"\" (empty string), resulting in a counter with no fields.\n\nExamples: counter { metric: \"/debug_access_count\" field: \"iam_principal\" } ==> increment counter /iam/policy/backend_debug_access_count {iam_principal=[value of IAMContext.principal]}\n\nAt this time we do not support multiple field names (though this may be supported in the future).",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "field": {
-          "description": "The field value to attribute.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "metric": {
-          "description": "The metric to update.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "LogConfigDataAccessOptions": {
-      "id": "LogConfigDataAccessOptions",
-      "description": "Write a Data Access (Gin) log",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "logMode": {
-          "description": "Whether Gin logging should happen in a fail-closed manner at the caller. This is relevant only in the LocalIAM implementation, for now.\n\nNOTE: Logging to Gin in a fail-closed manner is currently unsupported while work is being done to satisfy the requirements of go/345. Currently, setting LOG_FAIL_CLOSED mode will have no effect, but still exists because there is active work being done to support it (b/115874152).",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
     "Manifest": {
       "id": "Manifest",
-      "description": "",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
@@ -1400,8 +1284,28 @@
           "additionalProperties": null,
           "items": null
         },
+        "manifestSizeBytes": {
+          "description": "Output only. The computed size of the fully expanded manifest.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "manifestSizeLimitBytes": {
+          "description": "Output only. The size limit for expanded manifests in the project.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "name": {
-          "description": "Output only.\n\nThe name of the manifest.",
+          "description": "Output only. The name of the manifest.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1460,7 +1364,7 @@
     },
     "Operation": {
       "id": "Operation",
-      "description": "An Operation resource, used to manage asynchronous API requests. (== resource_for v1.globalOperations ==) (== resource_for beta.globalOperations ==) (== resource_for v1.regionOperations ==) (== resource_for beta.regionOperations ==) (== resource_for v1.zoneOperations ==) (== resource_for beta.zoneOperations ==)",
+      "description": "Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1567,7 +1471,7 @@
           "items": null
         },
         "httpErrorMessage": {
-          "description": "[Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as NOT FOUND.",
+          "description": "[Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1577,7 +1481,7 @@
           "items": null
         },
         "httpErrorStatusCode": {
-          "description": "[Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a 404 means the resource was not found.",
+          "description": "[Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1587,7 +1491,7 @@
           "items": null
         },
         "id": {
-          "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",
+          "description": "[Output Only] The unique identifier for the operation. This identifier is defined by the server.",
           "type": "string",
           "format": "uint64",
           "enum": [],
@@ -1607,7 +1511,7 @@
           "items": null
         },
         "kind": {
-          "description": "[Output Only] Type of the resource. Always compute#operation for Operation resources.",
+          "description": "[Output Only] Type of the resource. Always `compute#operation` for Operation resources.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1617,7 +1521,17 @@
           "items": null
         },
         "name": {
-          "description": "[Output Only] Name of the resource.",
+          "description": "[Output Only] Name of the operation.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "operationGroupId": {
+          "description": "[Output Only] An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1627,7 +1541,7 @@
           "items": null
         },
         "operationType": {
-          "description": "[Output Only] The type of operation, such as insert, update, or delete, and so on.",
+          "description": "[Output Only] The type of operation, such as `insert`, `update`, or `delete`, and so on.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1647,7 +1561,7 @@
           "items": null
         },
         "region": {
-          "description": "[Output Only] The URL of the region where the operation resides. Only available when performing regional operations. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.",
+          "description": "[Output Only] The URL of the region where the operation resides. Only applicable when performing regional operations.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1677,11 +1591,19 @@
           "items": null
         },
         "status": {
-          "description": "[Output Only] The status of the operation, which can be one of the following: PENDING, RUNNING, or DONE.",
+          "description": "[Output Only] The status of the operation, which can be one of the following: `PENDING`, `RUNNING`, or `DONE`.",
           "type": "string",
           "format": null,
-          "enum": [],
-          "enumDescriptions": [],
+          "enum": [
+            "PENDING",
+            "RUNNING",
+            "DONE"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -1717,7 +1639,7 @@
           "items": null
         },
         "user": {
-          "description": "[Output Only] User who requested the operation, for example: user@example.com.",
+          "description": "[Output Only] User who requested the operation, for example: `user@example.com`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1744,14 +1666,66 @@
                 "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
                 "type": "string",
                 "format": null,
-                "enum": [],
-                "enumDescriptions": [],
+                "enum": [
+                  "DEPRECATED_RESOURCE_USED",
+                  "NO_RESULTS_ON_PAGE",
+                  "UNREACHABLE",
+                  "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+                  "NEXT_HOP_INSTANCE_NOT_FOUND",
+                  "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+                  "NEXT_HOP_CANNOT_IP_FORWARD",
+                  "NEXT_HOP_NOT_RUNNING",
+                  "INJECTED_KERNELS_DEPRECATED",
+                  "REQUIRED_TOS_AGREEMENT",
+                  "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                  "RESOURCE_NOT_DELETED",
+                  "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+                  "NOT_CRITICAL_ERROR",
+                  "CLEANUP_FAILED",
+                  "FIELD_VALUE_OVERRIDEN",
+                  "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+                  "MISSING_TYPE_DEPENDENCY",
+                  "EXTERNAL_API_WARNING",
+                  "SCHEMA_VALIDATION_IGNORED",
+                  "UNDECLARED_PROPERTIES",
+                  "EXPERIMENTAL_TYPE_USED",
+                  "DEPRECATED_TYPE_USED",
+                  "PARTIAL_SUCCESS",
+                  "LARGE_DEPLOYMENT_WARNING"
+                ],
+                "enumDescriptions": [
+                  "A link to a deprecated resource was created.",
+                  "No results are present on a particular list page.",
+                  "A given scope cannot be reached.",
+                  "The route's nextHopIp address is not assigned to an instance on the network.",
+                  "The route's nextHopInstance URL refers to an instance that does not exist.",
+                  "The route's nextHopInstance URL refers to an instance that is not on the same network as the route.",
+                  "The route's next hop instance cannot ip forward.",
+                  "The route's next hop instance does not have a status of RUNNING.",
+                  "The operation involved use of an injected kernel, which is deprecated.",
+                  "The user attempted to use a resource that requires a TOS they have not accepted.",
+                  "The user created a boot disk that is larger than image size.",
+                  "One or more of the resources set to auto-delete could not be deleted because they were in use.",
+                  "Instance template used in instance group manager is valid as such, but its application does not make a lot of sense, because it allows only single instance in instance group.",
+                  "Error which is not critical. We decided to continue the process despite the mentioned error.",
+                  "Warning about failed cleanup of transient changes made by a failed operation.",
+                  "Warning that value of a field has been overridden. Deprecated unused field.",
+                  "Warning that a resource is in use.",
+                  "A resource depends on a missing type",
+                  "Warning that is present in an external api call",
+                  "When a resource schema validation is ignored.",
+                  "When undeclared properties in the schema are present",
+                  "When deploying and at least one of the resources has a type marked as experimental",
+                  "When deploying and at least one of the resources has a type marked as deprecated",
+                  "Success is reported, but some results may be missing due to errors",
+                  "When deploying a deployment with a exceedingly large number of resources"
+                ],
                 "properties": {},
                 "additionalProperties": null,
                 "items": null
               },
               "data": {
-                "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+                "description": "[Output Only] Metadata about this warning in key: value format. For example: \"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" } ",
                 "type": "array",
                 "format": null,
                 "enum": [],
@@ -1805,7 +1779,7 @@
           }
         },
         "zone": {
-          "description": "[Output Only] The URL of the zone where the operation resides. Only available when performing per-zone operations. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.",
+          "description": "[Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1904,7 +1878,7 @@
     },
     "Policy": {
       "id": "Policy",
-      "description": "Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies for Cloud Platform resources.\n\n\n\nA `Policy` consists of a list of `bindings`. A `binding` binds a list of `members` to a `role`, where the members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of permissions defined by IAM.\n\n**JSON Example**\n\n{ \"bindings\": [ { \"role\": \"roles/owner\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-other-app@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/viewer\", \"members\": [\"user:sean@example.com\"] } ] }\n\n**YAML Example**\n\nbindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-other-app@appspot.gserviceaccount.com role: roles/owner - members: - user:sean@example.com role: roles/viewer\n\n\n\nFor a description of IAM and its features, see the [IAM developer's guide](https://cloud.google.com/iam/docs).",
+      "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1923,7 +1897,7 @@
           }
         },
         "bindings": {
-          "description": "Associates a list of `members` to a `role`. `bindings` with no members will result in an error.",
+          "description": "Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1935,7 +1909,7 @@
           }
         },
         "etag": {
-          "description": "`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten blindly.",
+          "description": "`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.",
           "type": "string",
           "format": "byte",
           "enum": [],
@@ -1944,30 +1918,8 @@
           "additionalProperties": null,
           "items": null
         },
-        "iamOwned": {
-          "description": "",
-          "type": "boolean",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "rules": {
-          "description": "If more than one rule is specified, the rules are applied in the following manner: - All matching LOG rules are always applied. - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will be applied if one or more matching rule requires logging. - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is granted. Logging will be applied if one or more matching rule requires logging. - Otherwise, if no rule applies, permission is denied.",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "Rule"
-          }
-        },
         "version": {
-          "description": "Deprecated.",
+          "description": "Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1982,7 +1934,7 @@
     },
     "PollingOptions": {
       "id": "PollingOptions",
-      "description": "",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
@@ -2046,7 +1998,7 @@
     },
     "Resource": {
       "id": "Resource",
-      "description": "",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
@@ -2117,7 +2069,7 @@
           "items": null
         },
         "type": {
-          "description": "Output only. The type of the resource, for example compute.v1.instance, or cloudfunctions.v1beta1.function.",
+          "description": "Output only. The type of the resource, for example `compute.v1.instance`, or `cloudfunctions.v1beta1.function`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2168,14 +2120,66 @@
                 "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
                 "type": "string",
                 "format": null,
-                "enum": [],
-                "enumDescriptions": [],
+                "enum": [
+                  "DEPRECATED_RESOURCE_USED",
+                  "NO_RESULTS_ON_PAGE",
+                  "UNREACHABLE",
+                  "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+                  "NEXT_HOP_INSTANCE_NOT_FOUND",
+                  "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+                  "NEXT_HOP_CANNOT_IP_FORWARD",
+                  "NEXT_HOP_NOT_RUNNING",
+                  "INJECTED_KERNELS_DEPRECATED",
+                  "REQUIRED_TOS_AGREEMENT",
+                  "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                  "RESOURCE_NOT_DELETED",
+                  "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+                  "NOT_CRITICAL_ERROR",
+                  "CLEANUP_FAILED",
+                  "FIELD_VALUE_OVERRIDEN",
+                  "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+                  "MISSING_TYPE_DEPENDENCY",
+                  "EXTERNAL_API_WARNING",
+                  "SCHEMA_VALIDATION_IGNORED",
+                  "UNDECLARED_PROPERTIES",
+                  "EXPERIMENTAL_TYPE_USED",
+                  "DEPRECATED_TYPE_USED",
+                  "PARTIAL_SUCCESS",
+                  "LARGE_DEPLOYMENT_WARNING"
+                ],
+                "enumDescriptions": [
+                  "A link to a deprecated resource was created.",
+                  "No results are present on a particular list page.",
+                  "A given scope cannot be reached.",
+                  "The route's nextHopIp address is not assigned to an instance on the network.",
+                  "The route's nextHopInstance URL refers to an instance that does not exist.",
+                  "The route's nextHopInstance URL refers to an instance that is not on the same network as the route.",
+                  "The route's next hop instance cannot ip forward.",
+                  "The route's next hop instance does not have a status of RUNNING.",
+                  "The operation involved use of an injected kernel, which is deprecated.",
+                  "The user attempted to use a resource that requires a TOS they have not accepted.",
+                  "The user created a boot disk that is larger than image size.",
+                  "One or more of the resources set to auto-delete could not be deleted because they were in use.",
+                  "Instance template used in instance group manager is valid as such, but its application does not make a lot of sense, because it allows only single instance in instance group.",
+                  "Error which is not critical. We decided to continue the process despite the mentioned error.",
+                  "Warning about failed cleanup of transient changes made by a failed operation.",
+                  "Warning that value of a field has been overridden. Deprecated unused field.",
+                  "Warning that a resource is in use.",
+                  "A resource depends on a missing type",
+                  "Warning that is present in an external api call",
+                  "When a resource schema validation is ignored.",
+                  "When undeclared properties in the schema are present",
+                  "When deploying and at least one of the resources has a type marked as experimental",
+                  "When deploying and at least one of the resources has a type marked as deprecated",
+                  "Success is reported, but some results may be missing due to errors",
+                  "When deploying a deployment with a exceedingly large number of resources"
+                ],
                 "properties": {},
                 "additionalProperties": null,
                 "items": null
               },
               "data": {
-                "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+                "description": "[Output Only] Metadata about this warning in key: value format. For example: \"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" } ",
                 "type": "array",
                 "format": null,
                 "enum": [],
@@ -2256,7 +2260,7 @@
     },
     "ResourceUpdate": {
       "id": "ResourceUpdate",
-      "description": "",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
@@ -2337,11 +2341,25 @@
           "items": null
         },
         "intent": {
-          "description": "Output only. The intent of the resource: PREVIEW, UPDATE, or CANCEL.",
+          "description": "Output only. The intent of the resource: `PREVIEW`, `UPDATE`, or `CANCEL`.",
           "type": "string",
           "format": null,
-          "enum": [],
-          "enumDescriptions": [],
+          "enum": [
+            "CREATE_OR_ACQUIRE",
+            "DELETE",
+            "ACQUIRE",
+            "UPDATE",
+            "ABANDON",
+            "CREATE"
+          ],
+          "enumDescriptions": [
+            "The resource is scheduled to be created, or if it already exists, acquired.",
+            "The resource is scheduled to be deleted.",
+            "The resource is scheduled to be acquired.",
+            "The resource is scheduled to be updated via the UPDATE method.",
+            "The resource is scheduled to be abandoned.",
+            "The resource is scheduled to be created."
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -2370,8 +2388,20 @@
           "description": "Output only. The state of the resource.",
           "type": "string",
           "format": null,
-          "enum": [],
-          "enumDescriptions": [],
+          "enum": [
+            "PENDING",
+            "IN_PROGRESS",
+            "IN_PREVIEW",
+            "FAILED",
+            "ABORTED"
+          ],
+          "enumDescriptions": [
+            "There are changes pending for this resource.",
+            "The service is executing changes on the resource.",
+            "The service is previewing changes on the resource.",
+            "The service has failed to change the resource.",
+            "The service has aborted trying to change the resource."
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -2394,14 +2424,66 @@
                 "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
                 "type": "string",
                 "format": null,
-                "enum": [],
-                "enumDescriptions": [],
+                "enum": [
+                  "DEPRECATED_RESOURCE_USED",
+                  "NO_RESULTS_ON_PAGE",
+                  "UNREACHABLE",
+                  "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+                  "NEXT_HOP_INSTANCE_NOT_FOUND",
+                  "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+                  "NEXT_HOP_CANNOT_IP_FORWARD",
+                  "NEXT_HOP_NOT_RUNNING",
+                  "INJECTED_KERNELS_DEPRECATED",
+                  "REQUIRED_TOS_AGREEMENT",
+                  "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                  "RESOURCE_NOT_DELETED",
+                  "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+                  "NOT_CRITICAL_ERROR",
+                  "CLEANUP_FAILED",
+                  "FIELD_VALUE_OVERRIDEN",
+                  "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+                  "MISSING_TYPE_DEPENDENCY",
+                  "EXTERNAL_API_WARNING",
+                  "SCHEMA_VALIDATION_IGNORED",
+                  "UNDECLARED_PROPERTIES",
+                  "EXPERIMENTAL_TYPE_USED",
+                  "DEPRECATED_TYPE_USED",
+                  "PARTIAL_SUCCESS",
+                  "LARGE_DEPLOYMENT_WARNING"
+                ],
+                "enumDescriptions": [
+                  "A link to a deprecated resource was created.",
+                  "No results are present on a particular list page.",
+                  "A given scope cannot be reached.",
+                  "The route's nextHopIp address is not assigned to an instance on the network.",
+                  "The route's nextHopInstance URL refers to an instance that does not exist.",
+                  "The route's nextHopInstance URL refers to an instance that is not on the same network as the route.",
+                  "The route's next hop instance cannot ip forward.",
+                  "The route's next hop instance does not have a status of RUNNING.",
+                  "The operation involved use of an injected kernel, which is deprecated.",
+                  "The user attempted to use a resource that requires a TOS they have not accepted.",
+                  "The user created a boot disk that is larger than image size.",
+                  "One or more of the resources set to auto-delete could not be deleted because they were in use.",
+                  "Instance template used in instance group manager is valid as such, but its application does not make a lot of sense, because it allows only single instance in instance group.",
+                  "Error which is not critical. We decided to continue the process despite the mentioned error.",
+                  "Warning about failed cleanup of transient changes made by a failed operation.",
+                  "Warning that value of a field has been overridden. Deprecated unused field.",
+                  "Warning that a resource is in use.",
+                  "A resource depends on a missing type",
+                  "Warning that is present in an external api call",
+                  "When a resource schema validation is ignored.",
+                  "When undeclared properties in the schema are present",
+                  "When deploying and at least one of the resources has a type marked as experimental",
+                  "When deploying and at least one of the resources has a type marked as deprecated",
+                  "Success is reported, but some results may be missing due to errors",
+                  "When deploying a deployment with a exceedingly large number of resources"
+                ],
                 "properties": {},
                 "additionalProperties": null,
                 "items": null
               },
               "data": {
-                "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+                "description": "[Output Only] Metadata about this warning in key: value format. For example: \"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" } ",
                 "type": "array",
                 "format": null,
                 "enum": [],
@@ -2492,116 +2574,6 @@
       "additionalProperties": null,
       "items": null
     },
-    "Rule": {
-      "id": "Rule",
-      "description": "A rule to be applied in a Policy.",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "action": {
-          "description": "Required",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "conditions": {
-          "description": "Additional restrictions that must be met. All conditions must pass for the rule to match.",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "Condition"
-          }
-        },
-        "description": {
-          "description": "Human-readable description of the rule.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "ins": {
-          "description": "If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        },
-        "logConfigs": {
-          "description": "The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action.",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "LogConfig"
-          }
-        },
-        "notIns": {
-          "description": "If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        },
-        "permissions": {
-          "description": "A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
     "ServiceAccount": {
       "id": "ServiceAccount",
       "description": "Service Account used as a credential.",
@@ -2626,7 +2598,7 @@
     },
     "TargetConfiguration": {
       "id": "TargetConfiguration",
-      "description": "",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
@@ -2676,8 +2648,16 @@
           "description": "Which interpreter (python or jinja) should be used during expansion.",
           "type": "string",
           "format": null,
-          "enum": [],
-          "enumDescriptions": [],
+          "enum": [
+            "UNKNOWN_INTERPRETER",
+            "PYTHON",
+            "JINJA"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -2819,7 +2799,7 @@
           "items": null
         },
         "labels": {
-          "description": "Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])? Label values must be between 0 and 63 characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?",
+          "description": "Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2887,7 +2867,7 @@
           "items": null
         },
         "kind": {
-          "description": "Output only. Type of the output. Always deploymentManager#TypeInfo for TypeInfo.",
+          "description": "Output only. Type of the output. Always `deploymentManager#TypeInfo` for TypeInfo.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2936,7 +2916,7 @@
     },
     "TypeInfoSchemaInfo": {
       "id": "TypeInfoSchemaInfo",
-      "description": "",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
@@ -2968,14 +2948,14 @@
     },
     "TypeLabelEntry": {
       "id": "TypeLabelEntry",
-      "description": null,
+      "description": "Label object for Types",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "key": {
-          "description": null,
+          "description": "Key of the label",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2985,7 +2965,7 @@
           "items": null
         },
         "value": {
-          "description": null,
+          "description": "Value of the label",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3021,6 +3001,24 @@
         "credential": {
           "description": "Credential used when interacting with this type.",
           "$ref": "Credential"
+        },
+        "customCertificateAuthorityRoots": {
+          "description": "List of up to 2 custom certificate authority roots to use for TLS authentication when making calls on behalf of this type provider. If set, TLS authentication will exclusively use these roots instead of relying on publicly trusted certificate authorities when validating TLS certificate authenticity. The certificates must be in base64-encoded PEM format. The maximum size of each certificate must not exceed 10KB.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
         },
         "description": {
           "description": "An optional textual description of the resource; provided by the client when the resource is created.",
@@ -3063,7 +3061,7 @@
           "items": null
         },
         "labels": {
-          "description": "Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])? Label values must be between 0 and 63 characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?",
+          "description": "Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`",
           "type": "array",
           "format": null,
           "enum": [],
@@ -3075,7 +3073,7 @@
           }
         },
         "name": {
-          "description": "Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
+          "description": "Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3108,14 +3106,14 @@
     },
     "TypeProviderLabelEntry": {
       "id": "TypeProviderLabelEntry",
-      "description": null,
+      "description": "Label object for TypeProviders",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "key": {
-          "description": null,
+          "description": "Key of the label",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3125,7 +3123,7 @@
           "items": null
         },
         "value": {
-          "description": null,
+          "description": "Value of the label",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3174,7 +3172,7 @@
     },
     "TypeProvidersListTypesResponse": {
       "id": "TypeProvidersListTypesResponse",
-      "description": "",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
@@ -3252,8 +3250,18 @@
           "description": "Customize how deployment manager will validate the resource against schema errors.",
           "type": "string",
           "format": null,
-          "enum": [],
-          "enumDescriptions": [],
+          "enum": [
+            "UNKNOWN",
+            "IGNORE",
+            "IGNORE_WITH_WARNINGS",
+            "FAIL"
+          ],
+          "enumDescriptions": [
+            "",
+            "Ignore schema failures.",
+            "Ignore schema failures but display them as warnings.",
+            "Fail the resource if the schema is not valid, this is the default behavior."
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -3262,8 +3270,22 @@
           "description": "Specify what to do with extra properties when executing a request.",
           "type": "string",
           "format": null,
-          "enum": [],
-          "enumDescriptions": [],
+          "enum": [
+            "UNKNOWN",
+            "INCLUDE",
+            "IGNORE",
+            "INCLUDE_WITH_WARNINGS",
+            "IGNORE_WITH_WARNINGS",
+            "FAIL"
+          ],
+          "enumDescriptions": [
+            "",
+            "Always include even if not present on discovery doc.",
+            "Always ignore if not present on discovery doc.",
+            "Include on request, but emit a warning.",
+            "Ignore properties, but emit a warning.",
+            "Always fail if undeclared properties are present."
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -3279,7 +3301,7 @@
       "methods": {
         "delete": {
           "id": "deploymentmanager.compositeTypes.delete",
-          "path": "{project}/global/compositeTypes/{compositeType}",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/compositeTypes/{compositeType}",
           "httpMethod": "DELETE",
           "description": "Deletes a composite type.",
           "parameters": {
@@ -3332,7 +3354,7 @@
         },
         "get": {
           "id": "deploymentmanager.compositeTypes.get",
-          "path": "{project}/global/compositeTypes/{compositeType}",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/compositeTypes/{compositeType}",
           "httpMethod": "GET",
           "description": "Gets information about a specific composite type.",
           "parameters": {
@@ -3387,7 +3409,7 @@
         },
         "insert": {
           "id": "deploymentmanager.compositeTypes.insert",
-          "path": "{project}/global/compositeTypes",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/compositeTypes",
           "httpMethod": "POST",
           "description": "Creates a composite type.",
           "parameters": {
@@ -3427,12 +3449,12 @@
         },
         "list": {
           "id": "deploymentmanager.compositeTypes.list",
-          "path": "{project}/global/compositeTypes",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/compositeTypes",
           "httpMethod": "GET",
           "description": "Lists all composite types for Deployment Manager.",
           "parameters": {
             "filter": {
-              "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
+              "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true) ```",
               "default": null,
               "location": "query",
               "required": false,
@@ -3446,7 +3468,7 @@
               "repeated": false
             },
             "maxResults": {
-              "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+              "description": "The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)",
               "default": "500",
               "location": "query",
               "required": false,
@@ -3460,7 +3482,7 @@
               "repeated": false
             },
             "orderBy": {
-              "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+              "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy=\"creationTimestamp desc\"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.",
               "default": null,
               "location": "query",
               "required": false,
@@ -3474,7 +3496,7 @@
               "repeated": false
             },
             "pageToken": {
-              "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+              "description": "Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.",
               "default": null,
               "location": "query",
               "required": false,
@@ -3523,9 +3545,9 @@
         },
         "patch": {
           "id": "deploymentmanager.compositeTypes.patch",
-          "path": "{project}/global/compositeTypes/{compositeType}",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/compositeTypes/{compositeType}",
           "httpMethod": "PATCH",
-          "description": "Updates a composite type. This method supports patch semantics.",
+          "description": "Patches a composite type.",
           "parameters": {
             "compositeType": {
               "description": "The name of the composite type for this request.",
@@ -3578,7 +3600,7 @@
         },
         "update": {
           "id": "deploymentmanager.compositeTypes.update",
-          "path": "{project}/global/compositeTypes/{compositeType}",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/compositeTypes/{compositeType}",
           "httpMethod": "PUT",
           "description": "Updates a composite type.",
           "parameters": {
@@ -3638,7 +3660,7 @@
       "methods": {
         "cancelPreview": {
           "id": "deploymentmanager.deployments.cancelPreview",
-          "path": "{project}/global/deployments/{deployment}/cancelPreview",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}/cancelPreview",
           "httpMethod": "POST",
           "description": "Cancels and removes the preview currently associated with the deployment.",
           "parameters": {
@@ -3693,7 +3715,7 @@
         },
         "delete": {
           "id": "deploymentmanager.deployments.delete",
-          "path": "{project}/global/deployments/{deployment}",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}",
           "httpMethod": "DELETE",
           "description": "Deletes a deployment and all of the resources in the deployment.",
           "parameters": {
@@ -3708,8 +3730,8 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "ABANDON",
-                "DELETE"
+                "DELETE",
+                "ABANDON"
               ],
               "enumDescriptions": [
                 "",
@@ -3766,7 +3788,7 @@
         },
         "get": {
           "id": "deploymentmanager.deployments.get",
-          "path": "{project}/global/deployments/{deployment}",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}",
           "httpMethod": "GET",
           "description": "Gets information about a specific deployment.",
           "parameters": {
@@ -3821,10 +3843,24 @@
         },
         "getIamPolicy": {
           "id": "deploymentmanager.deployments.getIamPolicy",
-          "path": "{project}/global/deployments/{resource}/getIamPolicy",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/deployments/{resource}/getIamPolicy",
           "httpMethod": "GET",
           "description": "Gets the access control policy for a resource. May be empty if no such policy or resource exists.",
           "parameters": {
+            "optionsRequestedPolicyVersion": {
+              "description": "Requested IAM Policy version.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
             "project": {
               "description": "Project ID for this request.",
               "default": null,
@@ -3874,7 +3910,7 @@
         },
         "insert": {
           "id": "deploymentmanager.deployments.insert",
-          "path": "{project}/global/deployments",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/deployments",
           "httpMethod": "POST",
           "description": "Creates a deployment and all of the resources described by the deployment manifest.",
           "parameters": {
@@ -3889,9 +3925,9 @@
               "maximum": null,
               "pattern": null,
               "enum": [
+                "CREATE_OR_ACQUIRE",
                 "ACQUIRE",
-                "CREATE",
-                "CREATE_OR_ACQUIRE"
+                "CREATE"
               ],
               "enumDescriptions": [
                 "",
@@ -3901,7 +3937,7 @@
               "repeated": false
             },
             "preview": {
-              "description": "If set to true, creates a deployment and creates \"shell\" resources but does not actually instantiate these resources. This allows you to preview what your deployment looks like. After previewing a deployment, you can deploy your resources by making a request with the update() method or you can use the cancelPreview() method to cancel the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.",
+              "description": "If set to true, creates a deployment and creates \"shell\" resources but does not actually instantiate these resources. This allows you to preview what your deployment looks like. After previewing a deployment, you can deploy your resources by making a request with the `update()` method or you can use the `cancelPreview()` method to cancel the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.",
               "default": null,
               "location": "query",
               "required": false,
@@ -3950,12 +3986,12 @@
         },
         "list": {
           "id": "deploymentmanager.deployments.list",
-          "path": "{project}/global/deployments",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/deployments",
           "httpMethod": "GET",
           "description": "Lists all deployments for a given project.",
           "parameters": {
             "filter": {
-              "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
+              "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true) ```",
               "default": null,
               "location": "query",
               "required": false,
@@ -3969,7 +4005,7 @@
               "repeated": false
             },
             "maxResults": {
-              "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+              "description": "The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)",
               "default": "500",
               "location": "query",
               "required": false,
@@ -3983,7 +4019,7 @@
               "repeated": false
             },
             "orderBy": {
-              "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+              "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy=\"creationTimestamp desc\"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.",
               "default": null,
               "location": "query",
               "required": false,
@@ -3997,7 +4033,7 @@
               "repeated": false
             },
             "pageToken": {
-              "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+              "description": "Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.",
               "default": null,
               "location": "query",
               "required": false,
@@ -4046,9 +4082,9 @@
         },
         "patch": {
           "id": "deploymentmanager.deployments.patch",
-          "path": "{project}/global/deployments/{deployment}",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}",
           "httpMethod": "PATCH",
-          "description": "Updates a deployment and all of the resources described by the deployment manifest. This method supports patch semantics.",
+          "description": "Patches a deployment and all of the resources described by the deployment manifest.",
           "parameters": {
             "createPolicy": {
               "description": "Sets the policy to use for creating new resources.",
@@ -4061,9 +4097,9 @@
               "maximum": null,
               "pattern": null,
               "enum": [
+                "CREATE_OR_ACQUIRE",
                 "ACQUIRE",
-                "CREATE",
-                "CREATE_OR_ACQUIRE"
+                "CREATE"
               ],
               "enumDescriptions": [
                 "",
@@ -4083,8 +4119,8 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "ABANDON",
-                "DELETE"
+                "DELETE",
+                "ABANDON"
               ],
               "enumDescriptions": [
                 "",
@@ -4107,7 +4143,7 @@
               "repeated": false
             },
             "preview": {
-              "description": "If set to true, updates the deployment and creates and updates the \"shell\" resources but does not actually alter or instantiate these resources. This allows you to preview what your deployment will look like. You can use this intent to preview how an update would affect your deployment. You must provide a target.config with a configuration if this is set to true. After previewing a deployment, you can deploy your resources by making a request with the update() or you can cancelPreview() to remove the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.",
+              "description": "If set to true, updates the deployment and creates and updates the \"shell\" resources but does not actually alter or instantiate these resources. This allows you to preview what your deployment will look like. You can use this intent to preview how an update would affect your deployment. You must provide a `target.config` with a configuration if this is set to true. After previewing a deployment, you can deploy your resources by making a request with the `update()` or you can `cancelPreview()` to remove the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.",
               "default": "false",
               "location": "query",
               "required": false,
@@ -4157,7 +4193,7 @@
         },
         "setIamPolicy": {
           "id": "deploymentmanager.deployments.setIamPolicy",
-          "path": "{project}/global/deployments/{resource}/setIamPolicy",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/deployments/{resource}/setIamPolicy",
           "httpMethod": "POST",
           "description": "Sets the access control policy on the specified resource. Replaces any existing policy.",
           "parameters": {
@@ -4212,7 +4248,7 @@
         },
         "stop": {
           "id": "deploymentmanager.deployments.stop",
-          "path": "{project}/global/deployments/{deployment}/stop",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}/stop",
           "httpMethod": "POST",
           "description": "Stops an ongoing operation. This does not roll back any work that has already been completed, but prevents any new work from being started.",
           "parameters": {
@@ -4267,7 +4303,7 @@
         },
         "testIamPermissions": {
           "id": "deploymentmanager.deployments.testIamPermissions",
-          "path": "{project}/global/deployments/{resource}/testIamPermissions",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/deployments/{resource}/testIamPermissions",
           "httpMethod": "POST",
           "description": "Returns permissions that a caller has on the specified resource.",
           "parameters": {
@@ -4322,7 +4358,7 @@
         },
         "update": {
           "id": "deploymentmanager.deployments.update",
-          "path": "{project}/global/deployments/{deployment}",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}",
           "httpMethod": "PUT",
           "description": "Updates a deployment and all of the resources described by the deployment manifest.",
           "parameters": {
@@ -4337,9 +4373,9 @@
               "maximum": null,
               "pattern": null,
               "enum": [
+                "CREATE_OR_ACQUIRE",
                 "ACQUIRE",
-                "CREATE",
-                "CREATE_OR_ACQUIRE"
+                "CREATE"
               ],
               "enumDescriptions": [
                 "",
@@ -4359,8 +4395,8 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "ABANDON",
-                "DELETE"
+                "DELETE",
+                "ABANDON"
               ],
               "enumDescriptions": [
                 "",
@@ -4383,7 +4419,7 @@
               "repeated": false
             },
             "preview": {
-              "description": "If set to true, updates the deployment and creates and updates the \"shell\" resources but does not actually alter or instantiate these resources. This allows you to preview what your deployment will look like. You can use this intent to preview how an update would affect your deployment. You must provide a target.config with a configuration if this is set to true. After previewing a deployment, you can deploy your resources by making a request with the update() or you can cancelPreview() to remove the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.",
+              "description": "If set to true, updates the deployment and creates and updates the \"shell\" resources but does not actually alter or instantiate these resources. This allows you to preview what your deployment will look like. You can use this intent to preview how an update would affect your deployment. You must provide a `target.config` with a configuration if this is set to true. After previewing a deployment, you can deploy your resources by making a request with the `update()` or you can `cancelPreview()` to remove the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.",
               "default": "false",
               "location": "query",
               "required": false,
@@ -4438,7 +4474,7 @@
       "methods": {
         "get": {
           "id": "deploymentmanager.manifests.get",
-          "path": "{project}/global/deployments/{deployment}/manifests/{manifest}",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}/manifests/{manifest}",
           "httpMethod": "GET",
           "description": "Gets information about a specific manifest.",
           "parameters": {
@@ -4508,7 +4544,7 @@
         },
         "list": {
           "id": "deploymentmanager.manifests.list",
-          "path": "{project}/global/deployments/{deployment}/manifests",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}/manifests",
           "httpMethod": "GET",
           "description": "Lists all manifests for a given deployment.",
           "parameters": {
@@ -4527,7 +4563,7 @@
               "repeated": false
             },
             "filter": {
-              "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
+              "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true) ```",
               "default": null,
               "location": "query",
               "required": false,
@@ -4541,7 +4577,7 @@
               "repeated": false
             },
             "maxResults": {
-              "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+              "description": "The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)",
               "default": "500",
               "location": "query",
               "required": false,
@@ -4555,7 +4591,7 @@
               "repeated": false
             },
             "orderBy": {
-              "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+              "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy=\"creationTimestamp desc\"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.",
               "default": null,
               "location": "query",
               "required": false,
@@ -4569,7 +4605,7 @@
               "repeated": false
             },
             "pageToken": {
-              "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+              "description": "Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.",
               "default": null,
               "location": "query",
               "required": false,
@@ -4624,7 +4660,7 @@
       "methods": {
         "get": {
           "id": "deploymentmanager.operations.get",
-          "path": "{project}/global/operations/{operation}",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/operations/{operation}",
           "httpMethod": "GET",
           "description": "Gets information about a specific operation.",
           "parameters": {
@@ -4679,12 +4715,12 @@
         },
         "list": {
           "id": "deploymentmanager.operations.list",
-          "path": "{project}/global/operations",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/operations",
           "httpMethod": "GET",
           "description": "Lists all operations for a project.",
           "parameters": {
             "filter": {
-              "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
+              "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true) ```",
               "default": null,
               "location": "query",
               "required": false,
@@ -4698,7 +4734,7 @@
               "repeated": false
             },
             "maxResults": {
-              "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+              "description": "The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)",
               "default": "500",
               "location": "query",
               "required": false,
@@ -4712,7 +4748,7 @@
               "repeated": false
             },
             "orderBy": {
-              "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+              "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy=\"creationTimestamp desc\"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.",
               "default": null,
               "location": "query",
               "required": false,
@@ -4726,7 +4762,7 @@
               "repeated": false
             },
             "pageToken": {
-              "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+              "description": "Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.",
               "default": null,
               "location": "query",
               "required": false,
@@ -4780,7 +4816,7 @@
       "methods": {
         "get": {
           "id": "deploymentmanager.resources.get",
-          "path": "{project}/global/deployments/{deployment}/resources/{resource}",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}/resources/{resource}",
           "httpMethod": "GET",
           "description": "Gets information about a single resource.",
           "parameters": {
@@ -4850,7 +4886,7 @@
         },
         "list": {
           "id": "deploymentmanager.resources.list",
-          "path": "{project}/global/deployments/{deployment}/resources",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}/resources",
           "httpMethod": "GET",
           "description": "Lists all resources in a given deployment.",
           "parameters": {
@@ -4869,7 +4905,7 @@
               "repeated": false
             },
             "filter": {
-              "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
+              "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true) ```",
               "default": null,
               "location": "query",
               "required": false,
@@ -4883,7 +4919,7 @@
               "repeated": false
             },
             "maxResults": {
-              "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+              "description": "The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)",
               "default": "500",
               "location": "query",
               "required": false,
@@ -4897,7 +4933,7 @@
               "repeated": false
             },
             "orderBy": {
-              "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+              "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy=\"creationTimestamp desc\"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.",
               "default": null,
               "location": "query",
               "required": false,
@@ -4911,7 +4947,7 @@
               "repeated": false
             },
             "pageToken": {
-              "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+              "description": "Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.",
               "default": null,
               "location": "query",
               "required": false,
@@ -4966,7 +5002,7 @@
       "methods": {
         "delete": {
           "id": "deploymentmanager.typeProviders.delete",
-          "path": "{project}/global/typeProviders/{typeProvider}",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}",
           "httpMethod": "DELETE",
           "description": "Deletes a type provider.",
           "parameters": {
@@ -5019,7 +5055,7 @@
         },
         "get": {
           "id": "deploymentmanager.typeProviders.get",
-          "path": "{project}/global/typeProviders/{typeProvider}",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}",
           "httpMethod": "GET",
           "description": "Gets information about a specific type provider.",
           "parameters": {
@@ -5074,7 +5110,7 @@
         },
         "getType": {
           "id": "deploymentmanager.typeProviders.getType",
-          "path": "{project}/global/typeProviders/{typeProvider}/types/{type}",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}/types/{type}",
           "httpMethod": "GET",
           "description": "Gets a type info for a type provided by a TypeProvider.",
           "parameters": {
@@ -5144,7 +5180,7 @@
         },
         "insert": {
           "id": "deploymentmanager.typeProviders.insert",
-          "path": "{project}/global/typeProviders",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/typeProviders",
           "httpMethod": "POST",
           "description": "Creates a type provider.",
           "parameters": {
@@ -5184,12 +5220,12 @@
         },
         "list": {
           "id": "deploymentmanager.typeProviders.list",
-          "path": "{project}/global/typeProviders",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/typeProviders",
           "httpMethod": "GET",
           "description": "Lists all resource type providers for Deployment Manager.",
           "parameters": {
             "filter": {
-              "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
+              "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true) ```",
               "default": null,
               "location": "query",
               "required": false,
@@ -5203,7 +5239,7 @@
               "repeated": false
             },
             "maxResults": {
-              "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+              "description": "The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)",
               "default": "500",
               "location": "query",
               "required": false,
@@ -5217,7 +5253,7 @@
               "repeated": false
             },
             "orderBy": {
-              "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+              "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy=\"creationTimestamp desc\"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.",
               "default": null,
               "location": "query",
               "required": false,
@@ -5231,7 +5267,7 @@
               "repeated": false
             },
             "pageToken": {
-              "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+              "description": "Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.",
               "default": null,
               "location": "query",
               "required": false,
@@ -5280,12 +5316,12 @@
         },
         "listTypes": {
           "id": "deploymentmanager.typeProviders.listTypes",
-          "path": "{project}/global/typeProviders/{typeProvider}/types",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}/types",
           "httpMethod": "GET",
           "description": "Lists all the type info for a TypeProvider.",
           "parameters": {
             "filter": {
-              "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
+              "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true) ```",
               "default": null,
               "location": "query",
               "required": false,
@@ -5299,7 +5335,7 @@
               "repeated": false
             },
             "maxResults": {
-              "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+              "description": "The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)",
               "default": "500",
               "location": "query",
               "required": false,
@@ -5313,7 +5349,7 @@
               "repeated": false
             },
             "orderBy": {
-              "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+              "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy=\"creationTimestamp desc\"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.",
               "default": null,
               "location": "query",
               "required": false,
@@ -5327,7 +5363,7 @@
               "repeated": false
             },
             "pageToken": {
-              "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+              "description": "Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.",
               "default": null,
               "location": "query",
               "required": false,
@@ -5391,9 +5427,9 @@
         },
         "patch": {
           "id": "deploymentmanager.typeProviders.patch",
-          "path": "{project}/global/typeProviders/{typeProvider}",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}",
           "httpMethod": "PATCH",
-          "description": "Updates a type provider. This method supports patch semantics.",
+          "description": "Patches a type provider.",
           "parameters": {
             "project": {
               "description": "The project ID for this request.",
@@ -5446,7 +5482,7 @@
         },
         "update": {
           "id": "deploymentmanager.typeProviders.update",
-          "path": "{project}/global/typeProviders/{typeProvider}",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}",
           "httpMethod": "PUT",
           "description": "Updates a type provider.",
           "parameters": {
@@ -5506,12 +5542,12 @@
       "methods": {
         "list": {
           "id": "deploymentmanager.types.list",
-          "path": "{project}/global/types",
+          "path": "deploymentmanager/v2beta/projects/{project}/global/types",
           "httpMethod": "GET",
           "description": "Lists all resource types for Deployment Manager.",
           "parameters": {
             "filter": {
-              "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
+              "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true) ```",
               "default": null,
               "location": "query",
               "required": false,
@@ -5525,7 +5561,7 @@
               "repeated": false
             },
             "maxResults": {
-              "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+              "description": "The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)",
               "default": "500",
               "location": "query",
               "required": false,
@@ -5539,7 +5575,7 @@
               "repeated": false
             },
             "orderBy": {
-              "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+              "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy=\"creationTimestamp desc\"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.",
               "default": null,
               "location": "query",
               "required": false,
@@ -5553,7 +5589,7 @@
               "repeated": false
             },
             "pageToken": {
-              "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+              "description": "Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.",
               "default": null,
               "location": "query",
               "required": false,

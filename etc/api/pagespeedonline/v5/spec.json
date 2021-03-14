@@ -5,11 +5,11 @@
   "id": "pagespeedonline:v5",
   "name": "pagespeedonline",
   "canonicalName": "Pagespeed Insights",
-  "fullyEncodeReservedExpansion": null,
+  "fullyEncodeReservedExpansion": true,
   "version": "v5",
-  "revision": "20200318",
+  "revision": "20210311",
   "title": "PageSpeed Insights API",
-  "description": "The PageSpeed Insights API lets you analyze the performance of your website with a simple API.  It offers tailored suggestions for how you can optimize your site, and lets you easily integrate PageSpeed Insights analysis into your development tools and workflow.\n",
+  "description": "The PageSpeed Insights API lets you analyze the performance of your website with a simple API. It offers tailored suggestions for how you can optimize your site, and lets you easily integrate PageSpeed Insights analysis into your development tools and workflow. ",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "icons": {
@@ -209,7 +209,7 @@
   "schemas": {
     "AuditRefs": {
       "id": "AuditRefs",
-      "description": "A light reference to an audit by id, used to group and weight audits in a\ngiven category.",
+      "description": "A light reference to an audit by id, used to group and weight audits in a given category.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -251,7 +251,7 @@
     },
     "Bucket": {
       "id": "Bucket",
-      "description": "A proportion of data in the total distribution, bucketed by a min/max\npercentage. Each bucket's range is bounded by min <= x < max, In\nmillisecond.",
+      "description": "A proportion of data in the total distribution, bucketed by a min/max percentage. Each bucket's range is bounded by min <= x < max, In millisecond.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -304,7 +304,7 @@
           "$ref": "LighthouseCategoryV5"
         },
         "best-practices": {
-          "description": "The best practices category, containing all best practices related\naudits.",
+          "description": "The best practices category, containing all best practices related audits.",
           "$ref": "LighthouseCategoryV5"
         },
         "performance": {
@@ -312,11 +312,11 @@
           "$ref": "LighthouseCategoryV5"
         },
         "pwa": {
-          "description": "The Progressive-Web-App (PWA) category, containing all pwa related\naudits.",
+          "description": "The Progressive-Web-App (PWA) category, containing all pwa related audits.",
           "$ref": "LighthouseCategoryV5"
         },
         "seo": {
-          "description": "The Search-Engine-Optimization (SEO) category, containing all seo related\naudits.",
+          "description": "The Search-Engine-Optimization (SEO) category, containing all seo related audits.",
           "$ref": "LighthouseCategoryV5"
         }
       },
@@ -364,7 +364,7 @@
       "enumDescriptions": [],
       "properties": {
         "channel": {
-          "description": "How Lighthouse was run, e.g. from the Chrome extension or from the npm\nmodule.",
+          "description": "How Lighthouse was run, e.g. from the Chrome extension or from the npm module.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -374,7 +374,17 @@
           "items": null
         },
         "emulatedFormFactor": {
-          "description": "The form factor the emulation should use.",
+          "description": "The form factor the emulation should use. This field is deprecated, form_factor should be used instead.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "formFactor": {
+          "description": "How Lighthouse should interpret this run in regards to scoring performance metrics and skipping mobile-only tests in desktop.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -458,7 +468,7 @@
       "enumDescriptions": [],
       "properties": {
         "rendererFormattedStrings": {
-          "description": "Internationalized strings that are formatted to the locale in\nconfigSettings.",
+          "description": "Internationalized strings that are formatted to the locale in configSettings.",
           "$ref": "RendererFormattedStrings"
         }
       },
@@ -543,7 +553,7 @@
           "items": null
         },
         "numericValue": {
-          "description": "A numeric value that has a meaning specific to the audit, e.g. the number\nof nodes in the DOM or the timestamp of a specific load event. More\ninformation can be found in the audit details, if present.",
+          "description": "A numeric value that has a meaning specific to the audit, e.g. the number of nodes in the DOM or the timestamp of a specific load event. More information can be found in the audit details, if present.",
           "type": "number",
           "format": "double",
           "enum": [],
@@ -647,7 +657,7 @@
           "items": null
         },
         "score": {
-          "description": "The overall score of the category, the weighted average of all its audits.\n(The category's score, can be null.)",
+          "description": "The overall score of the category, the weighted average of all its audits. (The category's score, can be null.)",
           "type": "any",
           "format": null,
           "enum": [],
@@ -761,7 +771,7 @@
           "items": null
         },
         "runWarnings": {
-          "description": "List of all run warnings in the LHR.  Will always output to at least `[]`.",
+          "description": "List of all run warnings in the LHR. Will always output to at least `[]`.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -779,7 +789,7 @@
           }
         },
         "runtimeError": {
-          "description": "A top-level error message that, if present, indicates a serious enough\nproblem that this Lighthouse result may need to be discarded.",
+          "description": "A top-level error message that, if present, indicates a serious enough problem that this Lighthouse result may need to be discarded.",
           "$ref": "RuntimeError"
         },
         "stackPacks": {
@@ -841,7 +851,7 @@
           "items": null
         },
         "metrics": {
-          "description": "The map of <metrics, data>.",
+          "description": "The map of .",
           "type": "object",
           "format": null,
           "enum": [],
@@ -851,6 +861,16 @@
             "description": null,
             "$ref": "UserPageLoadMetricV5"
           },
+          "items": null
+        },
+        "origin_fallback": {
+          "description": "True if the result is an origin fallback from a page, false otherwise.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
           "items": null
         },
         "overall_category": {
@@ -896,7 +916,7 @@
           "items": null
         },
         "id": {
-          "description": "Canonicalized and final URL for the document, after following page\nredirects (if any).",
+          "description": "Canonicalized and final URL for the document, after following page redirects (if any).",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1036,7 +1056,7 @@
           "items": null
         },
         "lsPerformanceCategoryDescription": {
-          "description": "The disclaimer shown under performance explaning that the network can\nvary.",
+          "description": "The disclaimer shown under performance explaning that the network can vary.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1046,7 +1066,7 @@
           "items": null
         },
         "manualAuditsGroupTitle": {
-          "description": "The heading shown above a list of audits that were not computerd in the\nrun.",
+          "description": "The heading shown above a list of audits that were not computerd in the run.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1066,7 +1086,7 @@
           "items": null
         },
         "opportunityResourceColumnLabel": {
-          "description": "The heading for the estimated page load savings opportunity of an\naudit.",
+          "description": "The heading for the estimated page load savings opportunity of an audit.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1106,7 +1126,7 @@
           "items": null
         },
         "toplevelWarningsMessage": {
-          "description": "The label shown preceding important warnings that may have invalidated\nan entire report.",
+          "description": "The label shown preceding important warnings that may have invalidated an entire report.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1315,7 +1335,7 @@
           "items": null
         },
         "percentile": {
-          "description": "We use this field to store certain percentile value for this metric.\nFor v4, this field contains pc50.\nFor v5, this field contains pc90.",
+          "description": "We use this field to store certain percentile value for this metric. For v4, this field contains pc50. For v5, this field contains pc90.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1337,7 +1357,7 @@
           "id": "pagespeedonline.pagespeedapi.runpagespeed",
           "path": "pagespeedonline/v5/runPagespeed",
           "httpMethod": "GET",
-          "description": "Runs PageSpeed analysis on the page at the specified URL, and returns\nPageSpeed scores, a list of suggestions to make that page faster, and other\ninformation.",
+          "description": "Runs PageSpeed analysis on the page at the specified URL, and returns PageSpeed scores, a list of suggestions to make that page faster, and other information.",
           "parameters": {
             "captchaToken": {
               "description": "The captcha token passed when filling out a captcha.",
@@ -1354,7 +1374,7 @@
               "repeated": false
             },
             "category": {
-              "description": "A Lighthouse category to run; if none are given, only Performance category\nwill be run",
+              "description": "A Lighthouse category to run; if none are given, only Performance category will be run",
               "default": null,
               "location": "query",
               "required": false,
@@ -1371,7 +1391,14 @@
                 "PWA",
                 "SEO"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "Default UNDEFINED category.",
+                "Accessibility (a11y), category pertaining to a website's capacity to be accessible to all users.",
+                "Best Practices, category pertaining to a website's conformance to web best practice.",
+                "Performance, category pertaining to a website's performance.",
+                "Progressive Web App (PWA), category pertaining to a website's ability to be run as a PWA.",
+                "Search Engine Optimization (SEO), category pertaining to a website's ability to be indexed by search engines."
+              ],
               "repeated": true
             },
             "locale": {
@@ -1383,13 +1410,13 @@
               "format": null,
               "minimum": null,
               "maximum": null,
-              "pattern": null,
+              "pattern": "[a-zA-Z]+((_|-)[a-zA-Z]+)?",
               "enum": [],
               "enumDescriptions": [],
               "repeated": false
             },
             "strategy": {
-              "description": "The analysis strategy (desktop or mobile) to use, and desktop is the\ndefault",
+              "description": "The analysis strategy (desktop or mobile) to use, and desktop is the default",
               "default": null,
               "location": "query",
               "required": false,
@@ -1403,19 +1430,23 @@
                 "DESKTOP",
                 "MOBILE"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "UNDEFINED.",
+                "Fetch and analyze the URL for desktop browsers.",
+                "Fetch and analyze the URL for mobile devices."
+              ],
               "repeated": false
             },
             "url": {
-              "description": "The URL to fetch and analyze",
+              "description": "Required. The URL to fetch and analyze",
               "default": null,
               "location": "query",
-              "required": false,
+              "required": true,
               "type": "string",
               "format": null,
               "minimum": null,
               "maximum": null,
-              "pattern": null,
+              "pattern": "(?i)(url:|origin:)?http(s)?://.*",
               "enum": [],
               "enumDescriptions": [],
               "repeated": false
@@ -1449,7 +1480,9 @@
               "repeated": false
             }
           },
-          "parameterOrder": [],
+          "parameterOrder": [
+            "url"
+          ],
           "request": null,
           "response": {
             "$ref": "PagespeedApiPagespeedResponseV5"

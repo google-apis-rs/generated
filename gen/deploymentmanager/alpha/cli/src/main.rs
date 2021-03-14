@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("deploymentmanageralpha")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20181207")
-            .about("The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.")
+            .version("0.1.0-20210304")
+            .about("The Google Cloud Deployment Manager v2 API provides services for configuring, deploying, and viewing Google Cloud services and APIs via templates which specify deployments of Cloud resources.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -55,8 +55,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             composite_types0 = composite_types0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch")
-                .about("Updates a composite type. This method supports patch semantics.");
+            let mcmd = SubCommand::with_name("patch").about("Patches a composite type.");
             composite_types0 = composite_types0.subcommand(mcmd);
         }
         {
@@ -95,7 +94,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             deployments0 = deployments0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates a deployment and all of the resources described by the deployment manifest. This method supports patch semantics.");
+            let mcmd = SubCommand::with_name("patch").about("Patches a deployment and all of the resources described by the deployment manifest.");
             deployments0 = deployments0.subcommand(mcmd);
         }
         {
@@ -185,8 +184,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             type_providers0 = type_providers0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch")
-                .about("Updates a type provider. This method supports patch semantics.");
+            let mcmd = SubCommand::with_name("patch").about("Patches a type provider.");
             type_providers0 = type_providers0.subcommand(mcmd);
         }
         {
@@ -195,33 +193,15 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut types0 = SubCommand::with_name("types")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: delete, get, insert, list, patch and update");
-        {
-            let mcmd = SubCommand::with_name("delete")
-                .about("Deletes a type and all of the resources in the type.");
-            types0 = types0.subcommand(mcmd);
-        }
+            .about("methods: get and list");
         {
             let mcmd =
                 SubCommand::with_name("get").about("Gets information about a specific type.");
             types0 = types0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("insert").about("Creates a type.");
-            types0 = types0.subcommand(mcmd);
-        }
-        {
             let mcmd = SubCommand::with_name("list")
                 .about("Lists all resource types for Deployment Manager.");
-            types0 = types0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("patch")
-                .about("Updates a type. This method supports patch semantics.");
-            types0 = types0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("update").about("Updates a type.");
             types0 = types0.subcommand(mcmd);
         }
         app = app.subcommand(types0);

@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("drive2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200505")
+            .version("0.1.0-20210308")
             .about("Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -166,7 +166,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: copy, delete, empty_trash, export, generate_ids, get, insert, list, patch, touch, trash, untrash, update and watch");
         {
-            let mcmd = SubCommand::with_name("copy").about("Creates a copy of the specified file.");
+            let mcmd = SubCommand::with_name("copy")
+                .about("Creates a copy of the specified file. Folders cannot be copied.");
             files0 = files0.subcommand(mcmd);
         }
         {
@@ -212,11 +213,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             files0 = files0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("trash").about("Moves a file to the trash. The currently authenticated user must own the file or be at least a fileOrganizer on the parent for shared drive files.");
+            let mcmd = SubCommand::with_name("trash").about("Moves a file to the trash. The currently authenticated user must own the file or be at least a fileOrganizer on the parent for shared drive files. Only the owner may trash a file. The trashed item is excluded from all files.list responses returned for any user who does not own the file. However, all users with access to the file can see the trashed item metadata in an API response. All users with access can copy, download, export, and share the file.");
             files0 = files0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("untrash").about("Restores a file from the trash.");
+            let mcmd = SubCommand::with_name("untrash").about("Restores a file from the trash. The currently authenticated user must own the file or be at least a fileOrganizer on the parent for shared drive files. Only the owner may untrash a file.");
             files0 = files0.subcommand(mcmd);
         }
         {

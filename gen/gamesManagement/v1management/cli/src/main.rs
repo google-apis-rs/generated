@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("gamesManagement1_management")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200416")
-            .about("The Management API for Google Play Game Services.")
+            .version("0.1.0-20210304")
+            .about("The Google Play Game Management API allows developers to manage resources from the Google Play Game service.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -97,17 +97,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("unhide").about("Unhide the given player\'s leaderboard scores from the given application. This method is only available to user accounts for your developer console.");
             players0 = players0.subcommand(mcmd);
         }
-        let mut rooms0 = SubCommand::with_name("rooms")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: reset and reset_for_all_players");
-        {
-            let mcmd = SubCommand::with_name("reset").about("Reset all rooms for the currently authenticated player for your application. This method is only accessible to whitelisted tester accounts for your application.");
-            rooms0 = rooms0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("reset_for_all_players").about("Deletes rooms where the only room participants are from whitelisted tester accounts for your application. This method is only available to user accounts for your developer console.");
-            rooms0 = rooms0.subcommand(mcmd);
-        }
         let mut scores0 = SubCommand::with_name("scores")
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: reset, reset_all, reset_all_for_all_players, reset_for_all_players and reset_multiple_for_all_players");
@@ -131,20 +120,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("reset_multiple_for_all_players").about("Resets scores for the leaderboards with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft leaderboards may be reset.");
             scores0 = scores0.subcommand(mcmd);
         }
-        let mut turn_based_matches0 = SubCommand::with_name("turn_based_matches")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: reset and reset_for_all_players");
-        {
-            let mcmd = SubCommand::with_name("reset").about("Reset all turn-based match data for a user. This method is only accessible to whitelisted tester accounts for your application.");
-            turn_based_matches0 = turn_based_matches0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("reset_for_all_players").about("Deletes turn-based matches where the only match participants are from whitelisted tester accounts for your application. This method is only available to user accounts for your developer console.");
-            turn_based_matches0 = turn_based_matches0.subcommand(mcmd);
-        }
-        app = app.subcommand(turn_based_matches0);
         app = app.subcommand(scores0);
-        app = app.subcommand(rooms0);
         app = app.subcommand(players0);
         app = app.subcommand(events0);
         app = app.subcommand(applications0);

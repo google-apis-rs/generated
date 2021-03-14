@@ -7,7 +7,7 @@
   "canonicalName": "Games Configuration",
   "fullyEncodeReservedExpansion": null,
   "version": "v1configuration",
-  "revision": "20200504",
+  "revision": "20210304",
   "title": "Google Play Game Services Publishing API",
   "description": "The Google Play Game Services Publishing API allows developers to configure their games in Game Services.",
   "ownerDomain": "google.com",
@@ -18,9 +18,9 @@
   },
   "documentationLink": "https://developers.google.com/games/",
   "protocol": "rest",
-  "baseUrl": "https://www.googleapis.com/",
+  "baseUrl": "https://gamesconfiguration.googleapis.com/",
   "basePath": "",
-  "rootUrl": "https://www.googleapis.com/",
+  "rootUrl": "https://gamesconfiguration.googleapis.com/",
   "servicePath": "",
   "batchPath": "batch",
   "version_module": null,
@@ -266,7 +266,7 @@
           "items": null
         },
         "kind": {
-          "description": "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesConfiguration#achievementConfiguration`.",
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#achievementConfiguration`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -280,7 +280,7 @@
           "$ref": "AchievementConfigurationDetail"
         },
         "stepsToUnlock": {
-          "description": "Steps to unlock.  Only applicable to incremental achievements.",
+          "description": "Steps to unlock. Only applicable to incremental achievements.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -326,7 +326,7 @@
           "items": null
         },
         "kind": {
-          "description": "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesConfiguration#achievementConfigurationDetail`.",
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#achievementConfigurationDetail`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -384,7 +384,7 @@
           }
         },
         "kind": {
-          "description": "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesConfiguration#achievementConfigurationListResponse`.",
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#achievementConfigurationListResponse`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -416,27 +416,27 @@
       "enumDescriptions": [],
       "properties": {
         "few": {
-          "description": "When the language requires special treatment of \"small\" numbers (as with 2,\n3, and 4 in Czech; or numbers ending 2, 3, or 4 but not 12, 13, or 14 in\nPolish).",
+          "description": "When the language requires special treatment of \"small\" numbers (as with 2, 3, and 4 in Czech; or numbers ending 2, 3, or 4 but not 12, 13, or 14 in Polish).",
           "$ref": "LocalizedStringBundle"
         },
         "many": {
-          "description": "When the language requires special treatment of \"large\" numbers (as with\nnumbers ending 11-99 in Maltese).",
+          "description": "When the language requires special treatment of \"large\" numbers (as with numbers ending 11-99 in Maltese).",
           "$ref": "LocalizedStringBundle"
         },
         "one": {
-          "description": "When the language requires special treatment of numbers like one (as with\nthe number 1 in English and most other languages; in Russian, any number\nending in 1 but not ending in 11 is in this class).",
+          "description": "When the language requires special treatment of numbers like one (as with the number 1 in English and most other languages; in Russian, any number ending in 1 but not ending in 11 is in this class).",
           "$ref": "LocalizedStringBundle"
         },
         "other": {
-          "description": "When the language does not require special treatment of the given quantity\n(as with all numbers in Chinese, or 42 in English).",
+          "description": "When the language does not require special treatment of the given quantity (as with all numbers in Chinese, or 42 in English).",
           "$ref": "LocalizedStringBundle"
         },
         "two": {
-          "description": "When the language requires special treatment of numbers like two (as with 2\nin Welsh, or 102 in Slovenian).",
+          "description": "When the language requires special treatment of numbers like two (as with 2 in Welsh, or 102 in Slovenian).",
           "$ref": "LocalizedStringBundle"
         },
         "zero": {
-          "description": "When the language requires special treatment of the number 0 (as in\nArabic).",
+          "description": "When the language requires special treatment of the number 0 (as in Arabic).",
           "$ref": "LocalizedStringBundle"
         }
       },
@@ -483,7 +483,7 @@
           ],
           "enumDescriptions": [
             "Default value. This value is unused.",
-            "Numbers are formatted to have no digits or fixed number of digits after\nthe decimal point according to locale. An optional custom unit can be\nadded.",
+            "Numbers are formatted to have no digits or fixed number of digits after the decimal point according to locale. An optional custom unit can be added.",
             "Numbers are formatted to hours, minutes and seconds.",
             "Numbers are formatted to currency according to locale."
           ],
@@ -492,7 +492,7 @@
           "items": null
         },
         "suffix": {
-          "description": "An optional suffix for the NUMERIC format type.  These strings follow the\nsame <a\nhref=\"http://developer.android.com/guide/topics/resources/string-resource.html#Plurals\">\nplural rules</a> as all Android string resources.",
+          "description": "An optional suffix for the NUMERIC format type. These strings follow the same plural rules as all Android string resources.",
           "$ref": "GamesNumberAffixConfiguration"
         }
       },
@@ -526,7 +526,7 @@
           "items": null
         },
         "kind": {
-          "description": "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesConfiguration#imageConfiguration`.",
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#imageConfiguration`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -582,7 +582,7 @@
           "items": null
         },
         "kind": {
-          "description": "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesConfiguration#leaderboardConfiguration`.",
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#leaderboardConfiguration`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -666,7 +666,7 @@
           "items": null
         },
         "kind": {
-          "description": "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesConfiguration#leaderboardConfigurationDetail`.",
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#leaderboardConfigurationDetail`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -718,7 +718,7 @@
           }
         },
         "kind": {
-          "description": "Uniquely identifies the type of this resource. Value is always the fixed\nstring\n`gamesConfiguration#leaderboardConfigurationListResponse`.",
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#leaderboardConfigurationListResponse`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -750,7 +750,7 @@
       "enumDescriptions": [],
       "properties": {
         "kind": {
-          "description": "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesConfiguration#localizedString`.",
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#localizedString`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -792,7 +792,7 @@
       "enumDescriptions": [],
       "properties": {
         "kind": {
-          "description": "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesConfiguration#localizedStringBundle`.",
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#localizedStringBundle`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -954,7 +954,7 @@
               "repeated": false
             },
             "maxResults": {
-              "description": "The maximum number of resource configurations to return in the response,\nused for paging. For any response, the actual number of resources returned\nmay be less than the specified `maxResults`.",
+              "description": "The maximum number of resource configurations to return in the response, used for paging. For any response, the actual number of resources returned may be less than the specified `maxResults`.",
               "default": null,
               "location": "query",
               "required": false,
@@ -1063,7 +1063,11 @@
                 "ACHIEVEMENT_ICON",
                 "LEADERBOARD_ICON"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "Default value. This value is unused.",
+                "The icon image for an achievement resource.",
+                "The icon image for a leaderboard resource."
+              ],
               "repeated": false
             },
             "resourceId": {
@@ -1247,7 +1251,7 @@
               "repeated": false
             },
             "maxResults": {
-              "description": "The maximum number of resource configurations to return in the response,\nused for paging. For any response, the actual number of resources returned\nmay be less than the specified `maxResults`.",
+              "description": "The maximum number of resource configurations to return in the response, used for paging. For any response, the actual number of resources returned may be less than the specified `maxResults`.",
               "default": null,
               "location": "query",
               "required": false,

@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("cloudasset1_p4beta1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200508")
+            .version("0.1.0-20210305")
             .about("The cloud asset API manages the history and inventory of cloud resources.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -37,11 +37,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: analyze_iam_policy and export_iam_policy_analysis");
         {
-            let mcmd = SubCommand::with_name("analyze_iam_policy").about("Analyzes IAM policies based on the specified request. Returns\na list of IamPolicyAnalysisResult matching the request.");
+            let mcmd = SubCommand::with_name("analyze_iam_policy").about("Analyzes IAM policies to answer which identities have what accesses on which resources.");
             v_1p_4beta_10 = v_1p_4beta_10.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("export_iam_policy_analysis").about("Exports IAM policy analysis based on the specified request. This API\nimplements the google.longrunning.Operation API allowing you to keep\ntrack of the export. The metadata contains the request to help callers to\nmap responses to requests.");
+            let mcmd = SubCommand::with_name("export_iam_policy_analysis").about("Exports the answers of which identities have what accesses on which resources to a Google Cloud Storage destination. The output format is the JSON format that represents a AnalyzeIamPolicyResponse in the JSON format. This method implements the google.longrunning.Operation, which allows you to keep track of the export. We recommend intervals of at least 2 seconds with exponential retry to poll the export operation result. The metadata contains the request to help callers to map responses to requests.");
             v_1p_4beta_10 = v_1p_4beta_10.subcommand(mcmd);
         }
         app = app.subcommand(v_1p_4beta_10);

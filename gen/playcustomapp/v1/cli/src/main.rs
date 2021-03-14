@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("playcustomapp1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20170622")
-            .about("An API to publish custom Android apps.")
+            .version("0.1.0-20210311")
+            .about("API to create and publish custom Android apps")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -40,8 +40,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create");
         {
-            let mcmd =
-                SubCommand::with_name("create").about("Create and publish a new custom app.");
+            let mcmd = SubCommand::with_name("create").about("Creates a new custom app.");
             custom_apps1 = custom_apps1.subcommand(mcmd);
         }
         accounts0 = accounts0.subcommand(custom_apps1);

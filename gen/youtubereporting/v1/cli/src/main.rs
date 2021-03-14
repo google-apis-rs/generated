@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("youtubereporting1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200512")
+            .version("0.1.0-20210310")
             .about("Schedules reporting jobs containing your YouTube Analytics data and downloads the resulting bulk data reports in the form of CSV files.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -56,7 +56,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: download");
         {
-            let mcmd = SubCommand::with_name("download").about("Method for media download. Download is supported\non the URI `/v1/media/{+name}?alt=media`.");
+            let mcmd = SubCommand::with_name("download").about("Method for media download. Download is supported on the URI `/v1/media/{+name}?alt=media`.");
             media0 = media0.subcommand(mcmd);
         }
         let mut report_types0 = SubCommand::with_name("report_types")
@@ -75,7 +75,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             reports1 = reports1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists reports created by a specific job.\nReturns NOT_FOUND if the job does not exist.");
+            let mcmd = SubCommand::with_name("list").about("Lists reports created by a specific job. Returns NOT_FOUND if the job does not exist.");
             reports1 = reports1.subcommand(mcmd);
         }
         jobs0 = jobs0.subcommand(reports1);

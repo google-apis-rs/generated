@@ -52,7 +52,7 @@ pub mod schemas {
         Fixed,
         #[doc = "Git branch"]
         Movable,
-        #[doc = "OTHER is used to specify non-standard aliases, those not of the kinds\nabove. For example, if a Git repo has a ref named \"refs/foo/bar\", it\nis considered to be of kind OTHER."]
+        #[doc = "OTHER is used to specify non-standard aliases, those not of the kinds above. For example, if a Git repo has a ref named \"refs/foo/bar\", it is considered to be of kind OTHER."]
         Other,
     }
     impl AliasContextKind {
@@ -138,21 +138,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Breakpoint {
-        #[doc = "Action that the agent should perform when the code at the\nbreakpoint location is hit."]
+        #[doc = "Action that the agent should perform when the code at the breakpoint location is hit."]
         #[serde(
             rename = "action",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub action: ::std::option::Option<crate::schemas::BreakpointAction>,
-        #[doc = "The deadline for the breakpoint to stay in CANARY_ACTIVE state. The value\nis meaningless when the breakpoint is not in CANARY_ACTIVE state."]
+        #[doc = "The deadline for the breakpoint to stay in CANARY_ACTIVE state. The value is meaningless when the breakpoint is not in CANARY_ACTIVE state."]
         #[serde(
             rename = "canaryExpireTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub canary_expire_time: ::std::option::Option<String>,
-        #[doc = "Condition that triggers the breakpoint.\nThe condition is a compound boolean expression composed using expressions\nin a programming language at the source location."]
+        #[doc = "Condition that triggers the breakpoint. The condition is a compound boolean expression composed using expressions in a programming language at the source location."]
         #[serde(
             rename = "condition",
             default,
@@ -166,21 +166,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub create_time: ::std::option::Option<String>,
-        #[doc = "Values of evaluated expressions at breakpoint time.\nThe evaluated expressions appear in exactly the same order they\nare listed in the `expressions` field.\nThe `name` field holds the original expression text, the `value` or\n`members` field holds the result of the evaluated expression.\nIf the expression cannot be evaluated, the `status` inside the `Variable`\nwill indicate an error and contain the error text."]
+        #[doc = "Values of evaluated expressions at breakpoint time. The evaluated expressions appear in exactly the same order they are listed in the `expressions` field. The `name` field holds the original expression text, the `value` or `members` field holds the result of the evaluated expression. If the expression cannot be evaluated, the `status` inside the `Variable` will indicate an error and contain the error text."]
         #[serde(
             rename = "evaluatedExpressions",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub evaluated_expressions: ::std::option::Option<Vec<crate::schemas::Variable>>,
-        #[doc = "List of read-only expressions to evaluate at the breakpoint location.\nThe expressions are composed using expressions in the programming language\nat the source location. If the breakpoint action is `LOG`, the evaluated\nexpressions are included in log statements."]
+        #[doc = "List of read-only expressions to evaluate at the breakpoint location. The expressions are composed using expressions in the programming language at the source location. If the breakpoint action is `LOG`, the evaluated expressions are included in log statements."]
         #[serde(
             rename = "expressions",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub expressions: ::std::option::Option<Vec<String>>,
-        #[doc = "Time this breakpoint was finalized as seen by the server in seconds\nresolution."]
+        #[doc = "Time this breakpoint was finalized as seen by the server in seconds resolution."]
         #[serde(
             rename = "finalTime",
             default,
@@ -194,14 +194,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "When true, indicates that this is a final result and the\nbreakpoint state will not change from here on."]
+        #[doc = "When true, indicates that this is a final result and the breakpoint state will not change from here on."]
         #[serde(
             rename = "isFinalState",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_final_state: ::std::option::Option<bool>,
-        #[doc = "A set of custom breakpoint properties, populated by the agent, to be\ndisplayed to the user."]
+        #[doc = "A set of custom breakpoint properties, populated by the agent, to be displayed to the user."]
         #[serde(
             rename = "labels",
             default,
@@ -222,14 +222,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub log_level: ::std::option::Option<crate::schemas::BreakpointLogLevel>,
-        #[doc = "Only relevant when action is `LOG`. Defines the message to log when\nthe breakpoint hits. The message may include parameter placeholders `$0`,\n`$1`, etc. These placeholders are replaced with the evaluated value\nof the appropriate expression. Expressions not referenced in\n`log_message_format` are not logged.\n\nExample: `Message received, id = $0, count = $1` with\n`expressions` = `[ message.id, message.count ]`."]
+        #[doc = "Only relevant when action is `LOG`. Defines the message to log when the breakpoint hits. The message may include parameter placeholders `$0`, `$1`, etc. These placeholders are replaced with the evaluated value of the appropriate expression. Expressions not referenced in `log_message_format` are not logged. Example: `Message received, id = $0, count = $1` with `expressions` = `[ message.id, message.count ]`."]
         #[serde(
             rename = "logMessageFormat",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub log_message_format: ::std::option::Option<String>,
-        #[doc = "The stack at breakpoint time, where stack_frames[0] represents the most\nrecently entered function."]
+        #[doc = "The stack at breakpoint time, where stack_frames[0] represents the most recently entered function."]
         #[serde(
             rename = "stackFrames",
             default,
@@ -243,7 +243,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub state: ::std::option::Option<crate::schemas::BreakpointState>,
-        #[doc = "Breakpoint status.\n\nThe status includes an error flag and a human readable message.\nThis field is usually unset. The message can be either\ninformational or an error message. Regardless, clients should always\ndisplay the text message back to the user.\n\nError status indicates complete failure of the breakpoint.\n\nExample (non-final state): `Still loading symbols...`\n\nExamples (final state):\n\n* `Invalid line number` referring to location\n* `Field f not found in class C` referring to condition"]
+        #[doc = "Breakpoint status. The status includes an error flag and a human readable message. This field is usually unset. The message can be either informational or an error message. Regardless, clients should always display the text message back to the user. Error status indicates complete failure of the breakpoint. Example (non-final state): `Still loading symbols...` Examples (final state): * `Invalid line number` referring to location * `Field f not found in class C` referring to condition"]
         #[serde(
             rename = "status",
             default,
@@ -257,7 +257,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub user_email: ::std::option::Option<String>,
-        #[doc = "The `variable_table` exists to aid with computation, memory and network\ntraffic optimization.  It enables storing a variable once and reference\nit from multiple variables, including variables stored in the\n`variable_table` itself.\nFor example, the same `this` object, which may appear at many levels of\nthe stack, can have all of its data stored once in this table.  The\nstack frame variables then would hold only a reference to it.\n\nThe variable `var_table_index` field is an index into this repeated field.\nThe stored objects are nameless and get their name from the referencing\nvariable. The effective variable is a merge of the referencing variable\nand the referenced variable."]
+        #[doc = "The `variable_table` exists to aid with computation, memory and network traffic optimization. It enables storing a variable once and reference it from multiple variables, including variables stored in the `variable_table` itself. For example, the same `this` object, which may appear at many levels of the stack, can have all of its data stored once in this table. The stack frame variables then would hold only a reference to it. The variable `var_table_index` field is an index into this repeated field. The stored objects are nameless and get their name from the referencing variable. The effective variable is a merge of the referencing variable and the referenced variable."]
         #[serde(
             rename = "variableTable",
             default,
@@ -277,9 +277,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum BreakpointAction {
-        #[doc = "Capture stack frame and variables and update the breakpoint.\nThe data is only captured once. After that the breakpoint is set\nin a final state."]
+        #[doc = "Capture stack frame and variables and update the breakpoint. The data is only captured once. After that the breakpoint is set in a final state."]
         Capture,
-        #[doc = "Log each breakpoint hit. The breakpoint remains active until\ndeleted or expired."]
+        #[doc = "Log each breakpoint hit. The breakpoint remains active until deleted or expired."]
         Log,
     }
     impl BreakpointAction {
@@ -573,7 +573,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CloudWorkspaceId {
-        #[doc = "The unique name of the workspace within the repo.  This is the name\nchosen by the client in the Source API's CreateWorkspace method."]
+        #[doc = "The unique name of the workspace within the repo. This is the name chosen by the client in the Source API's CreateWorkspace method."]
         #[serde(
             rename = "name",
             default,
@@ -611,7 +611,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CloudWorkspaceSourceContext {
-        #[doc = "The ID of the snapshot.\nAn empty snapshot_id refers to the most recent snapshot."]
+        #[doc = "The ID of the snapshot. An empty snapshot_id refers to the most recent snapshot."]
         #[serde(
             rename = "snapshotId",
             default,
@@ -649,7 +649,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Debuggee {
-        #[doc = "Version ID of the agent.\nSchema: `domain/language-platform/vmajor.minor` (for example\n`google.com/java-gcp/v1.1`)."]
+        #[doc = "Version ID of the agent. Schema: `domain/language-platform/vmajor.minor` (for example `google.com/java-gcp/v1.1`)."]
         #[serde(
             rename = "agentVersion",
             default,
@@ -663,14 +663,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub canary_mode: ::std::option::Option<crate::schemas::DebuggeeCanaryMode>,
-        #[doc = "Human readable description of the debuggee.\nIncluding a human-readable project name, environment name and version\ninformation is recommended."]
+        #[doc = "Human readable description of the debuggee. Including a human-readable project name, environment name and version information is recommended."]
         #[serde(
             rename = "description",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "References to the locations and revisions of the source code used in the\ndeployed application."]
+        #[doc = "References to the locations and revisions of the source code used in the deployed application."]
         #[serde(
             rename = "extSourceContexts",
             default,
@@ -684,49 +684,49 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "If set to `true`, indicates that the agent should disable itself and\ndetach from the debuggee."]
+        #[doc = "If set to `true`, indicates that the agent should disable itself and detach from the debuggee."]
         #[serde(
             rename = "isDisabled",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_disabled: ::std::option::Option<bool>,
-        #[doc = "If set to `true`, indicates that Controller service does not detect any\nactivity from the debuggee agents and the application is possibly stopped."]
+        #[doc = "If set to `true`, indicates that Controller service does not detect any activity from the debuggee agents and the application is possibly stopped."]
         #[serde(
             rename = "isInactive",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_inactive: ::std::option::Option<bool>,
-        #[doc = "A set of custom debuggee properties, populated by the agent, to be\ndisplayed to the user."]
+        #[doc = "A set of custom debuggee properties, populated by the agent, to be displayed to the user."]
         #[serde(
             rename = "labels",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Project the debuggee is associated with.\nUse project number or id when registering a Google Cloud Platform project."]
+        #[doc = "Project the debuggee is associated with. Use project number or id when registering a Google Cloud Platform project."]
         #[serde(
             rename = "project",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub project: ::std::option::Option<String>,
-        #[doc = "References to the locations and revisions of the source code used in the\ndeployed application."]
+        #[doc = "References to the locations and revisions of the source code used in the deployed application."]
         #[serde(
             rename = "sourceContexts",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub source_contexts: ::std::option::Option<Vec<crate::schemas::SourceContext>>,
-        #[doc = "Human readable message to be displayed to the user about this debuggee.\nAbsence of this field indicates no status. The message can be either\ninformational or an error status."]
+        #[doc = "Human readable message to be displayed to the user about this debuggee. Absence of this field indicates no status. The message can be either informational or an error status."]
         #[serde(
             rename = "status",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub status: ::std::option::Option<crate::schemas::StatusMessage>,
-        #[doc = "Uniquifier to further distinguish the application.\nIt is possible that different applications might have identical values in\nthe debuggee message, thus, incorrectly identified as a single application\nby the Controller service. This field adds salt to further distinguish the\napplication. Agents should consider seeding this field with value that\nidentifies the code, binary, configuration and environment."]
+        #[doc = "Uniquifier to further distinguish the application. It is possible that different applications might have identical values in the debuggee message, thus, incorrectly identified as a single application by the Controller service. This field adds salt to further distinguish the application. Agents should consider seeding this field with value that identifies the code, binary, configuration and environment."]
         #[serde(
             rename = "uniquifier",
             default,
@@ -746,15 +746,15 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DebuggeeCanaryMode {
-        #[doc = "Always disable breakpoint canary regardless of the value of breakpoint's\ncanary option."]
+        #[doc = "Always disable breakpoint canary regardless of the value of breakpoint's canary option."]
         CanaryModeAlwaysDisabled,
-        #[doc = "Always enable breakpoint canary regardless of the value of breakpoint's\ncanary option."]
+        #[doc = "Always enable breakpoint canary regardless of the value of breakpoint's canary option."]
         CanaryModeAlwaysEnabled,
-        #[doc = "Depends on the breakpoint's canary option. Disable canary by default if\nthe breakpoint's canary option is not specified."]
+        #[doc = "Depends on the breakpoint's canary option. Disable canary by default if the breakpoint's canary option is not specified."]
         CanaryModeDefaultDisabled,
-        #[doc = "Depends on the breakpoint's canary option. Enable canary by default if\nthe breakpoint's canary option is not specified."]
+        #[doc = "Depends on the breakpoint's canary option. Enable canary by default if the breakpoint's canary option is not specified."]
         CanaryModeDefaultEnabled,
-        #[doc = "CANARY_MODE_UNSPECIFIED is equivalent to CANARY_MODE_ALWAYS_DISABLED so\nthat if the debuggee is not configured to use the canary feature, the\nfeature will be disabled."]
+        #[doc = "CANARY_MODE_UNSPECIFIED is equivalent to CANARY_MODE_ALWAYS_DISABLED so that if the debuggee is not configured to use the canary feature, the feature will be disabled."]
         CanaryModeUnspecified,
     }
     impl DebuggeeCanaryMode {
@@ -905,7 +905,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct FormatMessage {
-        #[doc = "Format template for the message. The `format` uses placeholders `$0`,\n`$1`, etc. to reference parameters. `$$` can be used to denote the `$`\ncharacter.\n\nExamples:\n\n* `Failed to load '$0' which helps debug $1 the first time it is loaded.  Again, $0 is very important.`\n* `Please pay $$10 to use $0 instead of $1.`"]
+        #[doc = "Format template for the message. The `format` uses placeholders `$0`, `$1`, etc. to reference parameters. `$$` can be used to denote the `$` character. Examples: * `Failed to load '$0' which helps debug $1 the first time it is loaded. Again, $0 is very important.` * `Please pay $$10 to use $0 instead of $1.`"]
         #[serde(
             rename = "format",
             default,
@@ -957,7 +957,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub alias_name: ::std::option::Option<String>,
-        #[doc = "The full project name within the host. Projects may be nested, so\n\"project/subproject\" is a valid project name.\nThe \"repo name\" is hostURI/project."]
+        #[doc = "The full project name within the host. Projects may be nested, so \"project/subproject\" is a valid project name. The \"repo name\" is hostURI/project."]
         #[serde(
             rename = "gerritProject",
             default,
@@ -1002,7 +1002,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GetBreakpointResponse {
-        #[doc = "Complete breakpoint state.\nThe fields `id` and `location` are guaranteed to be set."]
+        #[doc = "Complete breakpoint state. The fields `id` and `location` are guaranteed to be set."]
         #[serde(
             rename = "breakpoint",
             default,
@@ -1033,7 +1033,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GitSourceContext {
-        #[doc = "Git commit hash.\nrequired."]
+        #[doc = "Git commit hash. required."]
         #[serde(
             rename = "revisionId",
             default,
@@ -1071,21 +1071,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ListActiveBreakpointsResponse {
-        #[doc = "List of all active breakpoints.\nThe fields `id` and `location` are guaranteed to be set on each breakpoint."]
+        #[doc = "List of all active breakpoints. The fields `id` and `location` are guaranteed to be set on each breakpoint."]
         #[serde(
             rename = "breakpoints",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub breakpoints: ::std::option::Option<Vec<crate::schemas::Breakpoint>>,
-        #[doc = "A token that can be used in the next method call to block until\nthe list of breakpoints changes."]
+        #[doc = "A token that can be used in the next method call to block until the list of breakpoints changes."]
         #[serde(
             rename = "nextWaitToken",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub next_wait_token: ::std::option::Option<String>,
-        #[doc = "If set to `true`, indicates that there is no change to the\nlist of active breakpoints and the server-selected timeout has expired.\nThe `breakpoints` field would be empty and should be ignored."]
+        #[doc = "If set to `true`, indicates that there is no change to the list of active breakpoints and the server-selected timeout has expired. The `breakpoints` field would be empty and should be ignored."]
         #[serde(
             rename = "waitExpired",
             default,
@@ -1116,14 +1116,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ListBreakpointsResponse {
-        #[doc = "List of breakpoints matching the request.\nThe fields `id` and `location` are guaranteed to be set on each breakpoint.\nThe fields: `stack_frames`, `evaluated_expressions` and `variable_table`\nare cleared on each breakpoint regardless of its status."]
+        #[doc = "List of breakpoints matching the request. The fields `id` and `location` are guaranteed to be set on each breakpoint. The fields: `stack_frames`, `evaluated_expressions` and `variable_table` are cleared on each breakpoint regardless of its status."]
         #[serde(
             rename = "breakpoints",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub breakpoints: ::std::option::Option<Vec<crate::schemas::Breakpoint>>,
-        #[doc = "A wait token that can be used in the next call to `list` (REST) or\n`ListBreakpoints` (RPC) to block until the list of breakpoints has changes."]
+        #[doc = "A wait token that can be used in the next call to `list` (REST) or `ListBreakpoints` (RPC) to block until the list of breakpoints has changes."]
         #[serde(
             rename = "nextWaitToken",
             default,
@@ -1154,7 +1154,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ListDebuggeesResponse {
-        #[doc = "List of debuggees accessible to the calling user.\nThe fields `debuggee.id` and `description` are guaranteed to be set.\nThe `description` field is a human readable field provided by agents and\ncan be displayed to users."]
+        #[doc = "List of debuggees accessible to the calling user. The fields `debuggee.id` and `description` are guaranteed to be set. The `description` field is a human readable field provided by agents and can be displayed to users."]
         #[serde(
             rename = "debuggees",
             default,
@@ -1223,7 +1223,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RegisterDebuggeeRequest {
-        #[doc = "Required. Debuggee information to register.\nThe fields `project`, `uniquifier`, `description` and `agent_version`\nof the debuggee must be set."]
+        #[doc = "Required. Debuggee information to register. The fields `project`, `uniquifier`, `description` and `agent_version` of the debuggee must be set."]
         #[serde(
             rename = "debuggee",
             default,
@@ -1254,14 +1254,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RegisterDebuggeeResponse {
-        #[doc = "A unique ID generated for the agent.\nEach RegisterDebuggee request will generate a new agent ID."]
+        #[doc = "A unique ID generated for the agent. Each RegisterDebuggee request will generate a new agent ID."]
         #[serde(
             rename = "agentId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub agent_id: ::std::option::Option<String>,
-        #[doc = "Debuggee resource.\nThe field `id` is guaranteed to be set (in addition to the echoed fields).\nIf the field `is_disabled` is set to `true`, the agent should disable\nitself by removing all breakpoints and detaching from the application.\nIt should however continue to poll `RegisterDebuggee` until reenabled."]
+        #[doc = "Debuggee resource. The field `id` is guaranteed to be set (in addition to the echoed fields). If the field `is_disabled` is set to `true`, the agent should disable itself by removing all breakpoints and detaching from the application. It should however continue to poll `RegisterDebuggee` until reenabled."]
         #[serde(
             rename = "debuggee",
             default,
@@ -1330,7 +1330,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SetBreakpointResponse {
-        #[doc = "Breakpoint resource.\nThe field `id` is guaranteed to be set (in addition to the echoed fields)."]
+        #[doc = "Breakpoint resource. The field `id` is guaranteed to be set (in addition to the echoed fields)."]
         #[serde(
             rename = "breakpoint",
             default,
@@ -1413,7 +1413,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SourceLocation {
-        #[doc = "Column within a line. The first column in a line as the value `1`.\nAgents that do not support setting breakpoints on specific columns ignore\nthis field."]
+        #[doc = "Column within a line. The first column in a line as the value `1`. Agents that do not support setting breakpoints on specific columns ignore this field."]
         #[serde(
             rename = "column",
             default,
@@ -1458,7 +1458,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct StackFrame {
-        #[doc = "Set of arguments passed to this function.\nNote that this might not be populated for all stack frames."]
+        #[doc = "Set of arguments passed to this function. Note that this might not be populated for all stack frames."]
         #[serde(
             rename = "arguments",
             default,
@@ -1472,7 +1472,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub function: ::std::option::Option<String>,
-        #[doc = "Set of local variables at the stack frame location.\nNote that this might not be populated for all stack frames."]
+        #[doc = "Set of local variables at the stack frame location. Note that this might not be populated for all stack frames."]
         #[serde(
             rename = "locals",
             default,
@@ -1546,7 +1546,7 @@ pub mod schemas {
     pub enum StatusMessageRefersTo {
         #[doc = "Status applies to the breakpoint and is related to its age."]
         BreakpointAge,
-        #[doc = "Status applies to the breakpoint when the breakpoint failed to exit the\ncanary state."]
+        #[doc = "Status applies to the breakpoint when the breakpoint failed to exit the canary state."]
         BreakpointCanaryFailed,
         #[doc = "Status applies to the breakpoint and is related to its condition."]
         BreakpointCondition,
@@ -1656,7 +1656,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UpdateActiveBreakpointRequest {
-        #[doc = "Required. Updated breakpoint information.\nThe field `id` must be set.\nThe agent must echo all Breakpoint specification fields in the update."]
+        #[doc = "Required. Updated breakpoint information. The field `id` must be set. The agent must echo all Breakpoint specification fields in the update."]
         #[serde(
             rename = "breakpoint",
             default,
@@ -1725,14 +1725,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Variable type (e.g. `MyClass`). If the variable is split with\n`var_table_index`, `type` goes next to `value`. The interpretation of\na type is agent specific. It is recommended to include the dynamic type\nrather than a static type of an object."]
+        #[doc = "Variable type (e.g. `MyClass`). If the variable is split with `var_table_index`, `type` goes next to `value`. The interpretation of a type is agent specific. It is recommended to include the dynamic type rather than a static type of an object."]
         #[serde(
             rename = "type",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<String>,
-        #[doc = "Status associated with the variable. This field will usually stay\nunset. A status of a single variable only applies to that variable or\nexpression. The rest of breakpoint data still remains valid. Variables\nmight be reported in error state even when breakpoint is not in final\nstate.\n\nThe message may refer to variable name with `refers_to` set to\n`VARIABLE_NAME`. Alternatively `refers_to` will be set to `VARIABLE_VALUE`.\nIn either case variable value and members will be unset.\n\nExample of error message applied to name: `Invalid expression syntax`.\n\nExample of information message applied to value: `Not captured`.\n\nExamples of error message applied to value:\n\n* `Malformed string`,\n* `Field f not found in class C`\n* `Null pointer dereference`"]
+        #[doc = "Status associated with the variable. This field will usually stay unset. A status of a single variable only applies to that variable or expression. The rest of breakpoint data still remains valid. Variables might be reported in error state even when breakpoint is not in final state. The message may refer to variable name with `refers_to` set to `VARIABLE_NAME`. Alternatively `refers_to` will be set to `VARIABLE_VALUE`. In either case variable value and members will be unset. Example of error message applied to name: `Invalid expression syntax`. Example of information message applied to value: `Not captured`. Examples of error message applied to value: * `Malformed string`, * `Field f not found in class C` * `Null pointer dereference`"]
         #[serde(
             rename = "status",
             default,
@@ -1746,7 +1746,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub value: ::std::option::Option<String>,
-        #[doc = "Reference to a variable in the shared variable table. More than\none variable can reference the same variable in the table. The\n`var_table_index` field is an index into `variable_table` in Breakpoint."]
+        #[doc = "Reference to a variable in the shared variable table. More than one variable can reference the same variable in the table. The `var_table_index` field is an index into `variable_table` in Breakpoint."]
         #[serde(
             rename = "varTableIndex",
             default,
@@ -1921,17 +1921,17 @@ pub struct Client {
 impl Client {
     pub fn new<A>(auth: A) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client::with_reqwest_client(auth, ::reqwest::Client::builder().build().unwrap())
     }
     pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::Client) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client {
             reqwest,
-            auth: auth.into(),
+            auth: Box::new(auth),
         }
     }
     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
@@ -1981,7 +1981,7 @@ pub mod resources {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Registers the debuggee with the controller service.\n\nAll agents attached to the same application must call this method with\nexactly the same request content to get back the same stable `debuggee_id`.\nAgents should call this method again whenever `google.rpc.Code.NOT_FOUND`\nis returned from any controller method.\n\nThis protocol allows the controller service to disable debuggees, recover\nfrom data loss, or change the `debuggee_id` format. Agents must handle\n`debuggee_id` value changing upon re-registration."]
+                #[doc = "Registers the debuggee with the controller service. All agents attached to the same application must call this method with exactly the same request content to get back the same stable `debuggee_id`. Agents should call this method again whenever `google.rpc.Code.NOT_FOUND` is returned from any controller method. This protocol allows the controller service to disable debuggees, recover from data loss, or change the `debuggee_id` format. Agents must handle `debuggee_id` value changing upon re-registration."]
                 pub fn register(
                     &self,
                     request: crate::schemas::RegisterDebuggeeRequest,
@@ -2136,7 +2136,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -2145,24 +2145,28 @@ pub mod resources {
                     output.push_str("v2/controller/debuggees/register");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -2176,7 +2180,7 @@ pub mod resources {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "Returns the list of all active breakpoints for the debuggee.\n\nThe breakpoint specification (`location`, `condition`, and `expressions`\nfields) is semantically immutable, although the field values may\nchange. For example, an agent may update the location line number\nto reflect the actual line where the breakpoint was set, but this\ndoesn't change the breakpoint semantics.\n\nThis means that an agent does not need to check if a breakpoint has changed\nwhen it encounters the same breakpoint on a successive call.\nMoreover, an agent should remember the breakpoints that are completed\nuntil the controller removes them from the active list to avoid\nsetting those breakpoints again."]
+                    #[doc = "Returns the list of all active breakpoints for the debuggee. The breakpoint specification (`location`, `condition`, and `expressions` fields) is semantically immutable, although the field values may change. For example, an agent may update the location line number to reflect the actual line where the breakpoint was set, but this doesn't change the breakpoint semantics. This means that an agent does not need to check if a breakpoint has changed when it encounters the same breakpoint on a successive call. Moreover, an agent should remember the breakpoints that are completed until the controller removes them from the active list to avoid setting those breakpoints again."]
                     pub fn list(&self, debuggee_id: impl Into<String>) -> ListRequestBuilder {
                         ListRequestBuilder {
                             reqwest: &self.reqwest,
@@ -2198,7 +2202,7 @@ pub mod resources {
                             wait_token: None,
                         }
                     }
-                    #[doc = "Updates the breakpoint state or mutable fields.\nThe entire Breakpoint message must be sent back to the controller service.\n\nUpdates to active breakpoint fields are only allowed if the new value\ndoes not change the breakpoint specification. Updates to the `location`,\n`condition` and `expressions` fields should not alter the breakpoint\nsemantics. These may only make changes such as canonicalizing a value\nor snapping the location to the correct line of code."]
+                    #[doc = "Updates the breakpoint state or mutable fields. The entire Breakpoint message must be sent back to the controller service. Updates to active breakpoint fields are only allowed if the new value does not change the breakpoint specification. Updates to the `location`, `condition` and `expressions` fields should not alter the breakpoint semantics. These may only make changes such as canonicalizing a value or snapping the location to the correct line of code."]
                     pub fn update(
                         &self,
                         request: crate::schemas::UpdateActiveBreakpointRequest,
@@ -2247,17 +2251,17 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
-                    #[doc = "Identifies the agent.\nThis is the ID returned in the RegisterDebuggee response."]
+                    #[doc = "Identifies the agent. This is the ID returned in the RegisterDebuggee response."]
                     pub fn agent_id(mut self, value: impl Into<String>) -> Self {
                         self.agent_id = Some(value.into());
                         self
                     }
-                    #[doc = "If set to `true` (recommended), returns `google.rpc.Code.OK` status and\nsets the `wait_expired` response field to `true` when the server-selected\ntimeout has expired.\n\nIf set to `false` (deprecated), returns `google.rpc.Code.ABORTED` status\nwhen the server-selected timeout has expired."]
+                    #[doc = "If set to `true` (recommended), returns `google.rpc.Code.OK` status and sets the `wait_expired` response field to `true` when the server-selected timeout has expired. If set to `false` (deprecated), returns `google.rpc.Code.ABORTED` status when the server-selected timeout has expired."]
                     pub fn success_on_timeout(mut self, value: bool) -> Self {
                         self.success_on_timeout = Some(value);
                         self
                     }
-                    #[doc = "A token that, if specified, blocks the method call until the list\nof active breakpoints has changed, or a server-selected timeout has\nexpired. The value should be set from the `next_wait_token` field in\nthe last response. The initial value should be set to `\"init\"`."]
+                    #[doc = "A token that, if specified, blocks the method call until the list of active breakpoints has changed, or a server-selected timeout has expired. The value should be set from the `next_wait_token` field in the last response. The initial value should be set to `\"init\"`."]
                     pub fn wait_token(mut self, value: impl Into<String>) -> Self {
                         self.wait_token = Some(value.into());
                         self
@@ -2365,7 +2369,7 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
@@ -2381,30 +2385,31 @@ pub mod resources {
                         output.push_str("/breakpoints");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("agentId", &self.agent_id)]);
-                        let req = req.query(&[("successOnTimeout", &self.success_on_timeout)]);
-                        let req = req.query(&[("waitToken", &self.wait_token)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("agentId", &self.agent_id)]);
+                        req = req.query(&[("successOnTimeout", &self.success_on_timeout)]);
+                        req = req.query(&[("waitToken", &self.wait_token)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -2532,7 +2537,7 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         let req = req.json(&self.request);
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
@@ -2556,27 +2561,28 @@ pub mod resources {
                         }
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -2664,12 +2670,12 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "Required. The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`)."]
+                #[doc = "Required. The client version making the call. Schema: `domain/type/version` (e.g., `google.com/intellij/v1`)."]
                 pub fn client_version(mut self, value: impl Into<String>) -> Self {
                     self.client_version = Some(value.into());
                     self
                 }
-                #[doc = "When set to `true`, the result includes all debuggees. Otherwise, the\nresult includes only debuggees that are active."]
+                #[doc = "When set to `true`, the result includes all debuggees. Otherwise, the result includes only debuggees that are active."]
                 pub fn include_inactive(mut self, value: bool) -> Self {
                     self.include_inactive = Some(value);
                     self
@@ -2780,7 +2786,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
@@ -2788,27 +2794,31 @@ pub mod resources {
                     output.push_str("v2/debugger/debuggees");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("clientVersion", &self.client_version)]);
-                    let req = req.query(&[("includeInactive", &self.include_inactive)]);
-                    let req = req.query(&[("project", &self.project)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("clientVersion", &self.client_version)]);
+                    req = req.query(&[("includeInactive", &self.include_inactive)]);
+                    req = req.query(&[("project", &self.project)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -2816,7 +2826,9 @@ pub mod resources {
                 pub mod params {
                     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                     pub enum ListActionValue {
+                        #[doc = "Capture stack frame and variables and update the breakpoint. The data is only captured once. After that the breakpoint is set in a final state."]
                         Capture,
+                        #[doc = "Log each breakpoint hit. The breakpoint remains active until deleted or expired."]
                         Log,
                     }
                     impl ListActionValue {
@@ -2888,8 +2900,11 @@ pub mod resources {
                     }
                     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                     pub enum SetCanaryOption {
+                        #[doc = "Disable the canary for this breakpoint if the canary_mode of the debuggee is not CANARY_MODE_ALWAYS_ENABLED or CANARY_MODE_ALWAYS_DISABLED."]
                         CanaryOptionTryDisable,
+                        #[doc = "Enable the canary for this breakpoint if the canary_mode of the debuggee is not CANARY_MODE_ALWAYS_ENABLED or CANARY_MODE_ALWAYS_DISABLED."]
                         CanaryOptionTryEnable,
+                        #[doc = "Depends on the canary_mode of the debuggee."]
                         CanaryOptionUnspecified,
                     }
                     impl SetCanaryOption {
@@ -3112,7 +3127,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> DeleteRequestBuilder<'a> {
-                    #[doc = "Required. The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`)."]
+                    #[doc = "Required. The client version making the call. Schema: `domain/type/version` (e.g., `google.com/intellij/v1`)."]
                     pub fn client_version(mut self, value: impl Into<String>) -> Self {
                         self.client_version = Some(value.into());
                         self
@@ -3218,7 +3233,7 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
@@ -3241,28 +3256,29 @@ pub mod resources {
                         }
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                        let req = req.query(&[("clientVersion", &self.client_version)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                        req = req.query(&[("clientVersion", &self.client_version)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -3287,7 +3303,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> GetRequestBuilder<'a> {
-                    #[doc = "Required. The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`)."]
+                    #[doc = "Required. The client version making the call. Schema: `domain/type/version` (e.g., `google.com/intellij/v1`)."]
                     pub fn client_version(mut self, value: impl Into<String>) -> Self {
                         self.client_version = Some(value.into());
                         self
@@ -3395,7 +3411,7 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
@@ -3418,28 +3434,29 @@ pub mod resources {
                         }
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("clientVersion", &self.client_version)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("clientVersion", &self.client_version)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -3478,27 +3495,27 @@ pub mod resources {
                         self.action_value = Some(value);
                         self
                     }
-                    #[doc = "Required. The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`)."]
+                    #[doc = "Required. The client version making the call. Schema: `domain/type/version` (e.g., `google.com/intellij/v1`)."]
                     pub fn client_version(mut self, value: impl Into<String>) -> Self {
                         self.client_version = Some(value.into());
                         self
                     }
-                    #[doc = "When set to `true`, the response includes the list of breakpoints set by\nany user. Otherwise, it includes only breakpoints set by the caller."]
+                    #[doc = "When set to `true`, the response includes the list of breakpoints set by any user. Otherwise, it includes only breakpoints set by the caller."]
                     pub fn include_all_users(mut self, value: bool) -> Self {
                         self.include_all_users = Some(value);
                         self
                     }
-                    #[doc = "When set to `true`, the response includes active and inactive\nbreakpoints. Otherwise, it includes only active breakpoints."]
+                    #[doc = "When set to `true`, the response includes active and inactive breakpoints. Otherwise, it includes only active breakpoints."]
                     pub fn include_inactive(mut self, value: bool) -> Self {
                         self.include_inactive = Some(value);
                         self
                     }
-                    #[doc = "This field is deprecated. The following fields are always stripped out of\nthe result: `stack_frames`, `evaluated_expressions` and `variable_table`."]
+                    #[doc = "This field is deprecated. The following fields are always stripped out of the result: `stack_frames`, `evaluated_expressions` and `variable_table`."]
                     pub fn strip_results(mut self, value: bool) -> Self {
                         self.strip_results = Some(value);
                         self
                     }
-                    #[doc = "A wait token that, if specified, blocks the call until the breakpoints\nlist has changed, or a server selected timeout has expired.  The value\nshould be set from the last response. The error code\n`google.rpc.Code.ABORTED` (RPC) is returned on wait timeout, which\nshould be called again with the same `wait_token`."]
+                    #[doc = "A wait token that, if specified, blocks the call until the breakpoints list has changed, or a server selected timeout has expired. The value should be set from the last response. The error code `google.rpc.Code.ABORTED` (RPC) is returned on wait timeout, which should be called again with the same `wait_token`."]
                     pub fn wait_token(mut self, value: impl Into<String>) -> Self {
                         self.wait_token = Some(value.into());
                         self
@@ -3606,7 +3623,7 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
@@ -3622,33 +3639,34 @@ pub mod resources {
                         output.push_str("/breakpoints");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("action.value", &self.action_value)]);
-                        let req = req.query(&[("clientVersion", &self.client_version)]);
-                        let req = req.query(&[("includeAllUsers", &self.include_all_users)]);
-                        let req = req.query(&[("includeInactive", &self.include_inactive)]);
-                        let req = req.query(&[("stripResults", &self.strip_results)]);
-                        let req = req.query(&[("waitToken", &self.wait_token)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("action.value", &self.action_value)]);
+                        req = req.query(&[("clientVersion", &self.client_version)]);
+                        req = req.query(&[("includeAllUsers", &self.include_all_users)]);
+                        req = req.query(&[("includeInactive", &self.include_inactive)]);
+                        req = req.query(&[("stripResults", &self.strip_results)]);
+                        req = req.query(&[("waitToken", &self.wait_token)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -3684,7 +3702,7 @@ pub mod resources {
                         self.canary_option = Some(value);
                         self
                     }
-                    #[doc = "Required. The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`)."]
+                    #[doc = "Required. The client version making the call. Schema: `domain/type/version` (e.g., `google.com/intellij/v1`)."]
                     pub fn client_version(mut self, value: impl Into<String>) -> Self {
                         self.client_version = Some(value.into());
                         self
@@ -3792,7 +3810,7 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         let req = req.json(&self.request);
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
@@ -3809,29 +3827,30 @@ pub mod resources {
                         output.push_str("/breakpoints/set");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("canaryOption", &self.canary_option)]);
-                        let req = req.query(&[("clientVersion", &self.client_version)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("canaryOption", &self.canary_option)]);
+                        req = req.query(&[("clientVersion", &self.client_version)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -3847,6 +3866,7 @@ pub enum Error {
         reqwest_err: ::reqwest::Error,
         body: Option<String>,
     },
+    IO(std::io::Error),
     Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
@@ -3856,6 +3876,7 @@ impl Error {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
             Error::Reqwest { .. } => None,
+            Error::IO(_) => None,
             Error::Other(_) => None,
         }
     }
@@ -3873,6 +3894,7 @@ impl ::std::fmt::Display for Error {
                 }
                 Ok(())
             }
+            Error::IO(err) => write!(f, "IO Error: {}", err),
             Error::Other(err) => write!(f, "Uknown Error: {}", err),
         }
     }
@@ -3892,6 +3914,12 @@ impl From<::reqwest::Error> for Error {
             reqwest_err,
             body: None,
         }
+    }
+}
+
+impl From<std::io::Error> for Error {
+    fn from(err: std::io::Error) -> Error {
+        Error::IO(err)
     }
 }
 #[allow(dead_code)]
@@ -3961,13 +3989,13 @@ mod multipart {
 
     pub(crate) struct Part {
         content_type: ::mime::Mime,
-        body: Box<dyn ::std::io::Read + Send>,
+        body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
     }
 
     impl Part {
         pub(crate) fn new(
             content_type: ::mime::Mime,
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         ) -> Part {
             Part { content_type, body }
         }
@@ -3976,7 +4004,7 @@ mod multipart {
     pub(crate) struct RelatedMultiPartReader {
         state: RelatedMultiPartReaderState,
         boundary: String,
-        next_body: Option<Box<dyn ::std::io::Read + Send>>,
+        next_body: Option<Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>>,
         parts: std::vec::IntoIter<Part>,
     }
 
@@ -3990,13 +4018,18 @@ mod multipart {
             content_type: Vec<u8>,
         },
         WriteBody {
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         },
     }
 
-    impl ::std::io::Read for RelatedMultiPartReader {
-        fn read(&mut self, buf: &mut [u8]) -> ::std::io::Result<usize> {
+    impl futures::io::AsyncRead for RelatedMultiPartReader {
+        fn poll_read(
+            mut self: std::pin::Pin<&mut Self>,
+            ctx: &mut futures::task::Context,
+            buf: &mut [u8],
+        ) -> futures::task::Poll<Result<usize, futures::io::Error>> {
             use RelatedMultiPartReaderState::*;
+
             let mut bytes_written: usize = 0;
             loop {
                 let rem_buf = &mut buf[bytes_written..];
@@ -4044,7 +4077,14 @@ mod multipart {
                         }
                     }
                     WriteBody { body } => {
-                        let written = body.read(rem_buf)?;
+                        let body = std::pin::Pin::new(body);
+                        let written = match futures::io::AsyncRead::poll_read(body, ctx, rem_buf) {
+                            futures::task::Poll::Ready(Ok(n)) => n,
+                            futures::task::Poll::Ready(Err(err)) => {
+                                return futures::task::Poll::Ready(Err(err));
+                            }
+                            futures::task::Poll::Pending => return futures::task::Poll::Pending,
+                        };
                         bytes_written += written;
                         if written == 0 {
                             self.state = WriteBoundary {
@@ -4057,7 +4097,8 @@ mod multipart {
                     }
                 }
             }
-            Ok(bytes_written)
+
+            futures::task::Poll::Ready(Ok(bytes_written))
         }
     }
 

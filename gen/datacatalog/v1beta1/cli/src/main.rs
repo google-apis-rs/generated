@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("datacatalog1_beta1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200430")
-            .about("A fully managed and highly scalable data discovery and metadata management service.\n")
+            .version("0.1.0-20210305")
+            .about("A fully managed and highly scalable data discovery and metadata management service. ")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -37,14 +37,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: search");
         {
-            let mcmd = SubCommand::with_name("search").about("Searches Data Catalog for multiple resources like entries, tags that\nmatch a query.\n\nThis is a custom method\n(https://cloud.google.com/apis/design/custom_methods) and does not return\nthe complete resource, only the resource identifier and high level\nfields. Clients can subsequentally call `Get` methods.\n\nNote that Data Catalog search queries do not guarantee full recall. Query\nresults that match your query may not be returned, even in subsequent\nresult pages. Also note that results returned (and not returned) can vary\nacross repeated search queries.\n\nSee [Data Catalog Search\nSyntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference)\nfor more information.");
+            let mcmd = SubCommand::with_name("search").about("Searches Data Catalog for multiple resources like entries, tags that match a query. This is a custom method (https://cloud.google.com/apis/design/custom_methods) and does not return the complete resource, only the resource identifier and high level fields. Clients can subsequently call `Get` methods. Note that Data Catalog search queries do not guarantee full recall. Query results that match your query may not be returned, even in subsequent result pages. Also note that results returned (and not returned) can vary across repeated search queries. See [Data Catalog Search Syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference) for more information.");
             catalog0 = catalog0.subcommand(mcmd);
         }
         let mut entries0 = SubCommand::with_name("entries")
             .setting(AppSettings::ColoredHelp)
             .about("methods: lookup");
         {
-            let mcmd = SubCommand::with_name("lookup").about("Get an entry by target resource name. This method allows clients to use\nthe resource name from the source Google Cloud Platform service to get the\nData Catalog Entry.");
+            let mcmd = SubCommand::with_name("lookup").about("Get an entry by target resource name. This method allows clients to use the resource name from the source Google Cloud Platform service to get the Data Catalog Entry.");
             entries0 = entries0.subcommand(mcmd);
         }
         let mut projects0 = SubCommand::with_name("projects")
@@ -57,11 +57,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: create, delete, get, get_iam_policy, list, patch, set_iam_policy and test_iam_permissions");
         {
-            let mcmd = SubCommand::with_name("create").about("A maximum of 10,000 entry groups may be created per organization across all\nlocations.\n\nUsers should enable the Data Catalog API in the project identified by\nthe `parent` parameter (see [Data Catalog Resource Project]\n(https://cloud.google.com/data-catalog/docs/concepts/resource-project) for\nmore information).");
+            let mcmd = SubCommand::with_name("create").about("A maximum of 10,000 entry groups may be created per organization across all locations. Users should enable the Data Catalog API in the project identified by the `parent` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).");
             entry_groups2 = entry_groups2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes an EntryGroup. Only entry groups that do not contain entries can be\ndeleted. Users should enable the Data Catalog API in the project\nidentified by the `name` parameter (see [Data Catalog Resource Project]\n(https://cloud.google.com/data-catalog/docs/concepts/resource-project) for\nmore information).");
+            let mcmd = SubCommand::with_name("delete").about("Deletes an EntryGroup. Only entry groups that do not contain entries can be deleted. Users should enable the Data Catalog API in the project identified by the `name` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).");
             entry_groups2 = entry_groups2.subcommand(mcmd);
         }
         {
@@ -69,7 +69,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             entry_groups2 = entry_groups2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a resource. A `NOT_FOUND` error\nis returned if the resource does not exist. An empty policy is returned\nif the resource exists but does not have a policy set on it.\n\nSupported resources are:\n  - Tag templates.\n  - Entries.\n  - Entry groups.\nNote, this method cannot be used to manage policies for BigQuery, Pub/Sub\nand any external Google Cloud Platform resources synced to Data Catalog.\n\nCallers must have following Google IAM permission\n  - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag\n    templates.\n  - `datacatalog.entries.getIamPolicy` to get policies on entries.\n  - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.");
+            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a resource. A `NOT_FOUND` error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it. Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. Callers must have following Google IAM permission - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag templates. - `datacatalog.entries.getIamPolicy` to get policies on entries. - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.");
             entry_groups2 = entry_groups2.subcommand(mcmd);
         }
         {
@@ -77,26 +77,26 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             entry_groups2 = entry_groups2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates an EntryGroup. The user should enable the Data Catalog API in the\nproject identified by the `entry_group.name` parameter (see [Data Catalog\nResource Project]\n(https://cloud.google.com/data-catalog/docs/concepts/resource-project) for\nmore information).");
+            let mcmd = SubCommand::with_name("patch").about("Updates an EntryGroup. The user should enable the Data Catalog API in the project identified by the `entry_group.name` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).");
             entry_groups2 = entry_groups2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy for a resource. Replaces any existing\npolicy.\nSupported resources are:\n  - Tag templates.\n  - Entries.\n  - Entry groups.\nNote, this method cannot be used to manage policies for BigQuery, Pub/Sub\nand any external Google Cloud Platform resources synced to Data Catalog.\n\nCallers must have following Google IAM permission\n  - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag\n    templates.\n  - `datacatalog.entries.setIamPolicy` to set policies on entries.\n  - `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy for a resource. Replaces any existing policy. Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. Callers must have following Google IAM permission - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag templates. - `datacatalog.entries.setIamPolicy` to set policies on entries. - `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups.");
             entry_groups2 = entry_groups2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns the caller\'s permissions on a resource.\nIf the resource does not exist, an empty set of permissions is returned\n(We don\'t return a `NOT_FOUND` error).\n\nSupported resources are:\n  - Tag templates.\n  - Entries.\n  - Entry groups.\nNote, this method cannot be used to manage policies for BigQuery, Pub/Sub\nand any external Google Cloud Platform resources synced to Data Catalog.\n\nA caller is not required to have Google IAM permission to make this\nrequest.");
+            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns the caller\'s permissions on a resource. If the resource does not exist, an empty set of permissions is returned (We don\'t return a `NOT_FOUND` error). Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. A caller is not required to have Google IAM permission to make this request.");
             entry_groups2 = entry_groups2.subcommand(mcmd);
         }
         let mut tag_templates2 = SubCommand::with_name("tag_templates")
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: create, delete, get, get_iam_policy, patch, set_iam_policy and test_iam_permissions");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a tag template. The user should enable the Data Catalog API in\nthe project identified by the `parent` parameter (see [Data Catalog\nResource\nProject](https://cloud.google.com/data-catalog/docs/concepts/resource-project)\nfor more information).");
+            let mcmd = SubCommand::with_name("create").about("Creates a tag template. The user should enable the Data Catalog API in the project identified by the `parent` parameter (see [Data Catalog Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).");
             tag_templates2 = tag_templates2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a tag template and all tags using the template.\nUsers should enable the Data Catalog API in the project identified by\nthe `name` parameter (see [Data Catalog Resource Project]\n(https://cloud.google.com/data-catalog/docs/concepts/resource-project) for\nmore information).");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a tag template and all tags using the template. Users should enable the Data Catalog API in the project identified by the `name` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).");
             tag_templates2 = tag_templates2.subcommand(mcmd);
         }
         {
@@ -104,19 +104,19 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             tag_templates2 = tag_templates2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a resource. A `NOT_FOUND` error\nis returned if the resource does not exist. An empty policy is returned\nif the resource exists but does not have a policy set on it.\n\nSupported resources are:\n  - Tag templates.\n  - Entries.\n  - Entry groups.\nNote, this method cannot be used to manage policies for BigQuery, Pub/Sub\nand any external Google Cloud Platform resources synced to Data Catalog.\n\nCallers must have following Google IAM permission\n  - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag\n    templates.\n  - `datacatalog.entries.getIamPolicy` to get policies on entries.\n  - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.");
+            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a resource. A `NOT_FOUND` error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it. Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. Callers must have following Google IAM permission - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag templates. - `datacatalog.entries.getIamPolicy` to get policies on entries. - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.");
             tag_templates2 = tag_templates2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates a tag template. This method cannot be used to update the fields of\na template. The tag template fields are represented as separate resources\nand should be updated using their own create/update/delete methods.\nUsers should enable the Data Catalog API in the project identified by\nthe `tag_template.name` parameter (see [Data Catalog Resource Project]\n(https://cloud.google.com/data-catalog/docs/concepts/resource-project) for\nmore information).");
+            let mcmd = SubCommand::with_name("patch").about("Updates a tag template. This method cannot be used to update the fields of a template. The tag template fields are represented as separate resources and should be updated using their own create/update/delete methods. Users should enable the Data Catalog API in the project identified by the `tag_template.name` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).");
             tag_templates2 = tag_templates2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy for a resource. Replaces any existing\npolicy.\nSupported resources are:\n  - Tag templates.\n  - Entries.\n  - Entry groups.\nNote, this method cannot be used to manage policies for BigQuery, Pub/Sub\nand any external Google Cloud Platform resources synced to Data Catalog.\n\nCallers must have following Google IAM permission\n  - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag\n    templates.\n  - `datacatalog.entries.setIamPolicy` to set policies on entries.\n  - `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy for a resource. Replaces any existing policy. Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. Callers must have following Google IAM permission - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag templates. - `datacatalog.entries.setIamPolicy` to set policies on entries. - `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups.");
             tag_templates2 = tag_templates2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns the caller\'s permissions on a resource.\nIf the resource does not exist, an empty set of permissions is returned\n(We don\'t return a `NOT_FOUND` error).\n\nSupported resources are:\n  - Tag templates.\n  - Entries.\n  - Entry groups.\nNote, this method cannot be used to manage policies for BigQuery, Pub/Sub\nand any external Google Cloud Platform resources synced to Data Catalog.\n\nA caller is not required to have Google IAM permission to make this\nrequest.");
+            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns the caller\'s permissions on a resource. If the resource does not exist, an empty set of permissions is returned (We don\'t return a `NOT_FOUND` error). Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. A caller is not required to have Google IAM permission to make this request.");
             tag_templates2 = tag_templates2.subcommand(mcmd);
         }
         let mut taxonomies2 = SubCommand::with_name("taxonomies")
@@ -128,11 +128,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             taxonomies2 = taxonomies2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a taxonomy. This operation will also delete all\npolicy tags in this taxonomy along with their associated policies.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a taxonomy. This operation will also delete all policy tags in this taxonomy along with their associated policies.");
             taxonomies2 = taxonomies2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("export").about("Exports all taxonomies and their policy tags in a project.\n\nThis method generates SerializedTaxonomy protos with nested policy tags\nthat can be used as an input for future ImportTaxonomies calls.");
+            let mcmd = SubCommand::with_name("export").about("Exports all taxonomies and their policy tags in a project. This method generates SerializedTaxonomy protos with nested policy tags that can be used as an input for future ImportTaxonomies calls.");
             taxonomies2 = taxonomies2.subcommand(mcmd);
         }
         {
@@ -145,11 +145,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             taxonomies2 = taxonomies2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("import").about("Imports all taxonomies and their policy tags to a project as new\ntaxonomies.\n\nThis method provides a bulk taxonomy / policy tag creation using nested\nproto structure.");
+            let mcmd = SubCommand::with_name("import").about("Imports all taxonomies and their policy tags to a project as new taxonomies. This method provides a bulk taxonomy / policy tag creation using nested proto structure.");
             taxonomies2 = taxonomies2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists all taxonomies in a project in a particular location that the caller\nhas permission to view.");
+            let mcmd = SubCommand::with_name("list").about("Lists all taxonomies in a project in a particular location that the caller has permission to view.");
             taxonomies2 = taxonomies2.subcommand(mcmd);
         }
         {
@@ -162,18 +162,18 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             taxonomies2 = taxonomies2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns the permissions that a caller has on the specified taxonomy or\npolicy tag.");
+            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns the permissions that a caller has on the specified taxonomy or policy tag.");
             taxonomies2 = taxonomies2.subcommand(mcmd);
         }
         let mut entries3 = SubCommand::with_name("entries")
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: create, delete, get, get_iam_policy, list, patch and test_iam_permissions");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates an entry. Only entries of \'FILESET\' type or user-specified type can\nbe created.\n\nUsers should enable the Data Catalog API in the project identified by\nthe `parent` parameter (see [Data Catalog Resource Project]\n(https://cloud.google.com/data-catalog/docs/concepts/resource-project) for\nmore information).\n\nA maximum of 100,000 entries may be created per entry group.");
+            let mcmd = SubCommand::with_name("create").about("Creates an entry. Only entries of \'FILESET\' type or user-specified type can be created. Users should enable the Data Catalog API in the project identified by the `parent` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information). A maximum of 100,000 entries may be created per entry group.");
             entries3 = entries3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes an existing entry. Only entries created through\nCreateEntry\nmethod can be deleted.\nUsers should enable the Data Catalog API in the project identified by\nthe `name` parameter (see [Data Catalog Resource Project]\n(https://cloud.google.com/data-catalog/docs/concepts/resource-project) for\nmore information).");
+            let mcmd = SubCommand::with_name("delete").about("Deletes an existing entry. Only entries created through CreateEntry method can be deleted. Users should enable the Data Catalog API in the project identified by the `name` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).");
             entries3 = entries3.subcommand(mcmd);
         }
         {
@@ -181,7 +181,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             entries3 = entries3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a resource. A `NOT_FOUND` error\nis returned if the resource does not exist. An empty policy is returned\nif the resource exists but does not have a policy set on it.\n\nSupported resources are:\n  - Tag templates.\n  - Entries.\n  - Entry groups.\nNote, this method cannot be used to manage policies for BigQuery, Pub/Sub\nand any external Google Cloud Platform resources synced to Data Catalog.\n\nCallers must have following Google IAM permission\n  - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag\n    templates.\n  - `datacatalog.entries.getIamPolicy` to get policies on entries.\n  - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.");
+            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a resource. A `NOT_FOUND` error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it. Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. Callers must have following Google IAM permission - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag templates. - `datacatalog.entries.getIamPolicy` to get policies on entries. - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.");
             entries3 = entries3.subcommand(mcmd);
         }
         {
@@ -189,18 +189,18 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             entries3 = entries3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates an existing entry.\nUsers should enable the Data Catalog API in the project identified by\nthe `entry.name` parameter (see [Data Catalog Resource Project]\n(https://cloud.google.com/data-catalog/docs/concepts/resource-project) for\nmore information).");
+            let mcmd = SubCommand::with_name("patch").about("Updates an existing entry. Users should enable the Data Catalog API in the project identified by the `entry.name` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).");
             entries3 = entries3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns the caller\'s permissions on a resource.\nIf the resource does not exist, an empty set of permissions is returned\n(We don\'t return a `NOT_FOUND` error).\n\nSupported resources are:\n  - Tag templates.\n  - Entries.\n  - Entry groups.\nNote, this method cannot be used to manage policies for BigQuery, Pub/Sub\nand any external Google Cloud Platform resources synced to Data Catalog.\n\nA caller is not required to have Google IAM permission to make this\nrequest.");
+            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns the caller\'s permissions on a resource. If the resource does not exist, an empty set of permissions is returned (We don\'t return a `NOT_FOUND` error). Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. A caller is not required to have Google IAM permission to make this request.");
             entries3 = entries3.subcommand(mcmd);
         }
         let mut tags3 = SubCommand::with_name("tags")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, list and patch");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a tag on an Entry.\nNote: The project identified by the `parent` parameter for the\n[tag](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.entryGroups.entries.tags/create#path-parameters)\nand the\n[tag\ntemplate](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.tagTemplates/create#path-parameters)\nused to create the tag must be from the same organization.");
+            let mcmd = SubCommand::with_name("create").about("Creates a tag on an Entry. Note: The project identified by the `parent` parameter for the [tag](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.entryGroups.entries.tags/create#path-parameters) and the [tag template](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.tagTemplates/create#path-parameters) used to create the tag must be from the same organization.");
             tags3 = tags3.subcommand(mcmd);
         }
         {
@@ -219,19 +219,19 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, patch and rename");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a field in a tag template. The user should enable the Data Catalog\nAPI in the project identified by the `parent` parameter (see\n[Data Catalog Resource\nProject](https://cloud.google.com/data-catalog/docs/concepts/resource-project)\nfor more information).");
+            let mcmd = SubCommand::with_name("create").about("Creates a field in a tag template. The user should enable the Data Catalog API in the project identified by the `parent` parameter (see [Data Catalog Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).");
             fields3 = fields3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a field in a tag template and all uses of that field.\nUsers should enable the Data Catalog API in the project identified by\nthe `name` parameter (see [Data Catalog Resource Project]\n(https://cloud.google.com/data-catalog/docs/concepts/resource-project) for\nmore information).");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a field in a tag template and all uses of that field. Users should enable the Data Catalog API in the project identified by the `name` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).");
             fields3 = fields3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates a field in a tag template. This method cannot be used to update the\nfield type. Users should enable the Data Catalog API in the project\nidentified by the `name` parameter (see [Data Catalog Resource Project]\n(https://cloud.google.com/data-catalog/docs/concepts/resource-project) for\nmore information).");
+            let mcmd = SubCommand::with_name("patch").about("Updates a field in a tag template. This method cannot be used to update the field type. Users should enable the Data Catalog API in the project identified by the `name` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).");
             fields3 = fields3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("rename").about("Renames a field in a tag template. The user should enable the Data Catalog\nAPI in the project identified by the `name` parameter (see [Data Catalog\nResource\nProject](https://cloud.google.com/data-catalog/docs/concepts/resource-project)\nfor more information).");
+            let mcmd = SubCommand::with_name("rename").about("Renames a field in a tag template. The user should enable the Data Catalog API in the project identified by the `name` parameter (see [Data Catalog Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).");
             fields3 = fields3.subcommand(mcmd);
         }
         let mut policy_tags3 = SubCommand::with_name("policy_tags")
@@ -270,14 +270,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             policy_tags3 = policy_tags3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns the permissions that a caller has on the specified taxonomy or\npolicy tag.");
+            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns the permissions that a caller has on the specified taxonomy or policy tag.");
             policy_tags3 = policy_tags3.subcommand(mcmd);
         }
         let mut tags4 = SubCommand::with_name("tags")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, list and patch");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a tag on an Entry.\nNote: The project identified by the `parent` parameter for the\n[tag](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.entryGroups.entries.tags/create#path-parameters)\nand the\n[tag\ntemplate](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.tagTemplates/create#path-parameters)\nused to create the tag must be from the same organization.");
+            let mcmd = SubCommand::with_name("create").about("Creates a tag on an Entry. Note: The project identified by the `parent` parameter for the [tag](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.entryGroups.entries.tags/create#path-parameters) and the [tag template](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.tagTemplates/create#path-parameters) used to create the tag must be from the same organization.");
             tags4 = tags4.subcommand(mcmd);
         }
         {
@@ -292,6 +292,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("patch").about("Updates an existing tag.");
             tags4 = tags4.subcommand(mcmd);
         }
+        let mut enum_values4 = SubCommand::with_name("enum_values")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: rename");
+        {
+            let mcmd = SubCommand::with_name("rename").about("Renames an enum value in a tag template. The enum values have to be unique within one enum field. Thus, an enum value cannot be renamed with a name used in any other enum value within the same enum field.");
+            enum_values4 = enum_values4.subcommand(mcmd);
+        }
+        fields3 = fields3.subcommand(enum_values4);
         entries3 = entries3.subcommand(tags4);
         taxonomies2 = taxonomies2.subcommand(policy_tags3);
         tag_templates2 = tag_templates2.subcommand(fields3);

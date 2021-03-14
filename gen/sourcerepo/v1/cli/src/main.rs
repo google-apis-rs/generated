@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("sourcerepo1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200415")
+            .version("0.1.0-20210125")
             .about("Accesses source code repositories hosted by Google.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -50,7 +50,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: create, delete, get, get_iam_policy, list, patch, set_iam_policy, sync and test_iam_permissions");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a repo in the given project with the given name.\n\nIf the named repository already exists, `CreateRepo` returns\n`ALREADY_EXISTS`.");
+            let mcmd = SubCommand::with_name("create").about("Creates a repo in the given project with the given name. If the named repository already exists, `CreateRepo` returns `ALREADY_EXISTS`.");
             repos1 = repos1.subcommand(mcmd);
         }
         {
@@ -62,11 +62,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             repos1 = repos1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset.");
+            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.");
             repos1 = repos1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Returns all repos belonging to a project. The sizes of the repos are\nnot set by ListRepos.  To get the size of a repo, use GetRepo.");
+            let mcmd = SubCommand::with_name("list").about("Returns all repos belonging to a project. The sizes of the repos are not set by ListRepos. To get the size of a repo, use GetRepo.");
             repos1 = repos1.subcommand(mcmd);
         }
         {
@@ -74,15 +74,15 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             repos1 = repos1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any existing policy.");
             repos1 = repos1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("sync").about("Synchronize a connected repo.\n\nThe response contains SyncRepoMetadata in the metadata field.");
+            let mcmd = SubCommand::with_name("sync").about("Synchronize a connected repo. The response contains SyncRepoMetadata in the metadata field.");
             repos1 = repos1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.");
+            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.");
             repos1 = repos1.subcommand(mcmd);
         }
         projects0 = projects0.subcommand(repos1);

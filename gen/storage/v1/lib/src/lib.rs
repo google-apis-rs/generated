@@ -169,6 +169,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub retention_policy: ::std::option::Option<crate::schemas::BucketRetentionPolicy>,
+        #[doc = "Reserved for future use."]
+        #[serde(
+            rename = "satisfiesPZS",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub satisfies_pzs: ::std::option::Option<bool>,
         #[doc = "The URI of this bucket."]
         #[serde(
             rename = "selfLink",
@@ -218,13 +225,6 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub zone_affinity: ::std::option::Option<Vec<String>>,
-        #[doc = "If set, objects placed in this bucket are required to be separated by disaster domain."]
-        #[serde(
-            rename = "zoneSeparation",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub zone_separation: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for Bucket {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -371,6 +371,13 @@ pub mod schemas {
         )]
         pub bucket_policy_only:
             ::std::option::Option<crate::schemas::BucketIamConfigurationBucketPolicyOnly>,
+        #[doc = "The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported."]
+        #[serde(
+            rename = "publicAccessPrevention",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub public_access_prevention: ::std::option::Option<String>,
         #[doc = "The bucket's uniform bucket-level access configuration."]
         #[serde(
             rename = "uniformBucketLevelAccess",
@@ -600,13 +607,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub created_before: ::std::option::Option<::chrono::NaiveDate>,
-        #[doc = "A timestamp in RFC 3339 format. This condition is satisfied when the custom time on an object is before this timestamp."]
+        #[doc = "A date in RFC 3339 format with only the date part (for instance, \"2013-01-15\"). This condition is satisfied when the custom time on an object is before this date in UTC."]
         #[serde(
             rename = "customTimeBefore",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub custom_time_before: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub custom_time_before: ::std::option::Option<::chrono::NaiveDate>,
         #[doc = "Number of days elapsed since the user-specified timestamp set on an object. The condition is satisfied if the days elapsed is at least this number. If no custom timestamp is specified on an object, the condition does not apply."]
         #[serde(
             rename = "daysSinceCustomTime",
@@ -642,13 +649,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub matches_storage_class: ::std::option::Option<Vec<String>>,
-        #[doc = "A timestamp in RFC 3339 format. This condition is satisfied when the noncurrent time on an object is before this timestamp. This condition is relevant only for versioned objects."]
+        #[doc = "A date in RFC 3339 format with only the date part (for instance, \"2013-01-15\"). This condition is satisfied when the noncurrent time on an object is before this date in UTC. This condition is relevant only for versioned objects."]
         #[serde(
             rename = "noncurrentTimeBefore",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub noncurrent_time_before: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub noncurrent_time_before: ::std::option::Option<::chrono::NaiveDate>,
         #[doc = "Relevant only for versioned objects. If the value is N, this condition is satisfied when there are at least N versions (including the live version) newer than this version of the object."]
         #[serde(
             rename = "numNewerVersions",
@@ -1790,7 +1797,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "Cloud KMS Key used to encrypt this object, if the object is encrypted by such a key."]
+        #[doc = "Not currently supported. Specifying the parameter causes the request to fail with status code 400 - Bad Request."]
         #[serde(
             rename = "kmsKeyName",
             default,
@@ -2566,17 +2573,17 @@ pub struct Client {
 impl Client {
     pub fn new<A>(auth: A) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client::with_reqwest_client(auth, ::reqwest::Client::builder().build().unwrap())
     }
     pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::Client) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client {
             reqwest,
-            auth: auth.into(),
+            auth: Box::new(auth),
         }
     }
     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
@@ -2870,22 +2877,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -3025,22 +3032,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -3174,22 +3181,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -3321,22 +3328,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -3478,22 +3485,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -3635,22 +3642,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -4883,27 +4890,27 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
+                req = req.query(&[(
                     "ifMetagenerationNotMatch",
                     &self.if_metageneration_not_match,
                 )]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -5055,28 +5062,28 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
+                req = req.query(&[(
                     "ifMetagenerationNotMatch",
                     &self.if_metageneration_not_match,
                 )]);
-                let req = req.query(&[("projection", &self.projection)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.query(&[("projection", &self.projection)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -5214,26 +5221,26 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[(
                     "optionsRequestedPolicyVersion",
                     &self.options_requested_policy_version,
                 )]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -5387,29 +5394,29 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("project", &self.project)]);
-                let req = req.query(&[("predefinedAcl", &self.predefined_acl)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("project", &self.project)]);
+                req = req.query(&[("predefinedAcl", &self.predefined_acl)]);
+                req = req.query(&[(
                     "predefinedDefaultObjectAcl",
                     &self.predefined_default_object_acl,
                 )]);
-                let req = req.query(&[("projection", &self.projection)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.query(&[("projection", &self.projection)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -5560,27 +5567,27 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("project", &self.project)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("prefix", &self.prefix)]);
-                let req = req.query(&[("projection", &self.projection)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("project", &self.project)]);
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("prefix", &self.prefix)]);
+                req = req.query(&[("projection", &self.projection)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -5713,23 +5720,23 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -5902,33 +5909,33 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
+                req = req.query(&[(
                     "ifMetagenerationNotMatch",
                     &self.if_metageneration_not_match,
                 )]);
-                let req = req.query(&[("predefinedAcl", &self.predefined_acl)]);
-                let req = req.query(&[(
+                req = req.query(&[("predefinedAcl", &self.predefined_acl)]);
+                req = req.query(&[(
                     "predefinedDefaultObjectAcl",
                     &self.predefined_default_object_acl,
                 )]);
-                let req = req.query(&[("projection", &self.projection)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.query(&[("projection", &self.projection)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -6062,22 +6069,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -6210,23 +6217,25 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("permissions", &self.permissions)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.permissions {
+                    req = req.query(&[("permissions", value)]);
+                }
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -6399,33 +6408,33 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
+                req = req.query(&[(
                     "ifMetagenerationNotMatch",
                     &self.if_metageneration_not_match,
                 )]);
-                let req = req.query(&[("predefinedAcl", &self.predefined_acl)]);
-                let req = req.query(&[(
+                req = req.query(&[("predefinedAcl", &self.predefined_acl)]);
+                req = req.query(&[(
                     "predefinedDefaultObjectAcl",
                     &self.predefined_default_object_acl,
                 )]);
-                let req = req.query(&[("projection", &self.projection)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.query(&[("projection", &self.projection)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -6511,20 +6520,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -6755,22 +6764,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -6910,22 +6919,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -7059,22 +7068,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -7218,27 +7227,27 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
+                req = req.query(&[(
                     "ifMetagenerationNotMatch",
                     &self.if_metageneration_not_match,
                 )]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -7380,22 +7389,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -7537,22 +7546,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -7733,22 +7742,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -7888,22 +7897,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -8037,22 +8046,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -8184,22 +8193,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -8464,23 +8473,23 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("generation", &self.generation)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("generation", &self.generation)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -8635,23 +8644,23 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("generation", &self.generation)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("generation", &self.generation)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -8800,23 +8809,23 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("generation", &self.generation)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("generation", &self.generation)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -8963,23 +8972,23 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("generation", &self.generation)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("generation", &self.generation)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -9136,23 +9145,23 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                let req = req.query(&[("generation", &self.generation)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                req = req.query(&[("generation", &self.generation)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -9309,23 +9318,23 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("generation", &self.generation)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("generation", &self.generation)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -11029,27 +11038,26 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req =
-                    req.query(&[("destinationPredefinedAcl", &self.destination_predefined_acl)]);
-                let req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
-                let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
-                let req = req.query(&[("kmsKeyName", &self.kms_key_name)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("destinationPredefinedAcl", &self.destination_predefined_acl)]);
+                req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
+                req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
+                req = req.query(&[("kmsKeyName", &self.kms_key_name)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -11288,48 +11296,46 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("destinationKmsKeyName", &self.destination_kms_key_name)]);
-                let req =
-                    req.query(&[("destinationPredefinedAcl", &self.destination_predefined_acl)]);
-                let req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
-                let req = req.query(&[("ifGenerationNotMatch", &self.if_generation_not_match)]);
-                let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("destinationKmsKeyName", &self.destination_kms_key_name)]);
+                req = req.query(&[("destinationPredefinedAcl", &self.destination_predefined_acl)]);
+                req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
+                req = req.query(&[("ifGenerationNotMatch", &self.if_generation_not_match)]);
+                req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
+                req = req.query(&[(
                     "ifMetagenerationNotMatch",
                     &self.if_metageneration_not_match,
                 )]);
-                let req =
-                    req.query(&[("ifSourceGenerationMatch", &self.if_source_generation_match)]);
-                let req = req.query(&[(
+                req = req.query(&[("ifSourceGenerationMatch", &self.if_source_generation_match)]);
+                req = req.query(&[(
                     "ifSourceGenerationNotMatch",
                     &self.if_source_generation_not_match,
                 )]);
-                let req = req.query(&[(
+                req = req.query(&[(
                     "ifSourceMetagenerationMatch",
                     &self.if_source_metageneration_match,
                 )]);
-                let req = req.query(&[(
+                req = req.query(&[(
                     "ifSourceMetagenerationNotMatch",
                     &self.if_source_metageneration_not_match,
                 )]);
-                let req = req.query(&[("projection", &self.projection)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("sourceGeneration", &self.source_generation)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.query(&[("projection", &self.projection)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("sourceGeneration", &self.source_generation)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -11445,30 +11451,30 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("generation", &self.generation)]);
-                let req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
-                let req = req.query(&[("ifGenerationNotMatch", &self.if_generation_not_match)]);
-                let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("generation", &self.generation)]);
+                req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
+                req = req.query(&[("ifGenerationNotMatch", &self.if_generation_not_match)]);
+                req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
+                req = req.query(&[(
                     "ifMetagenerationNotMatch",
                     &self.if_metageneration_not_match,
                 )]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -11682,31 +11688,31 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("generation", &self.generation)]);
-                let req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
-                let req = req.query(&[("ifGenerationNotMatch", &self.if_generation_not_match)]);
-                let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("generation", &self.generation)]);
+                req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
+                req = req.query(&[("ifGenerationNotMatch", &self.if_generation_not_match)]);
+                req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
+                req = req.query(&[(
                     "ifMetagenerationNotMatch",
                     &self.if_metageneration_not_match,
                 )]);
-                let req = req.query(&[("projection", &self.projection)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.query(&[("projection", &self.projection)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -11853,23 +11859,23 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("generation", &self.generation)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("generation", &self.generation)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -12113,34 +12119,34 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("contentEncoding", &self.content_encoding)]);
-                let req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
-                let req = req.query(&[("ifGenerationNotMatch", &self.if_generation_not_match)]);
-                let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("contentEncoding", &self.content_encoding)]);
+                req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
+                req = req.query(&[("ifGenerationNotMatch", &self.if_generation_not_match)]);
+                req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
+                req = req.query(&[(
                     "ifMetagenerationNotMatch",
                     &self.if_metageneration_not_match,
                 )]);
-                let req = req.query(&[("kmsKeyName", &self.kms_key_name)]);
-                let req = req.query(&[("name", &self.name)]);
-                let req = req.query(&[("predefinedAcl", &self.predefined_acl)]);
-                let req = req.query(&[("projection", &self.projection)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.query(&[("kmsKeyName", &self.kms_key_name)]);
+                req = req.query(&[("name", &self.name)]);
+                req = req.query(&[("predefinedAcl", &self.predefined_acl)]);
+                req = req.query(&[("projection", &self.projection)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -12329,32 +12335,31 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("delimiter", &self.delimiter)]);
-                let req = req.query(&[("endOffset", &self.end_offset)]);
-                let req =
-                    req.query(&[("includeTrailingDelimiter", &self.include_trailing_delimiter)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("prefix", &self.prefix)]);
-                let req = req.query(&[("projection", &self.projection)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("startOffset", &self.start_offset)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("versions", &self.versions)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("delimiter", &self.delimiter)]);
+                req = req.query(&[("endOffset", &self.end_offset)]);
+                req = req.query(&[("includeTrailingDelimiter", &self.include_trailing_delimiter)]);
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("prefix", &self.prefix)]);
+                req = req.query(&[("projection", &self.projection)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("startOffset", &self.start_offset)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("versions", &self.versions)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -12544,32 +12549,32 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                let req = req.query(&[("generation", &self.generation)]);
-                let req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
-                let req = req.query(&[("ifGenerationNotMatch", &self.if_generation_not_match)]);
-                let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                req = req.query(&[("generation", &self.generation)]);
+                req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
+                req = req.query(&[("ifGenerationNotMatch", &self.if_generation_not_match)]);
+                req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
+                req = req.query(&[(
                     "ifMetagenerationNotMatch",
                     &self.if_metageneration_not_match,
                 )]);
-                let req = req.query(&[("predefinedAcl", &self.predefined_acl)]);
-                let req = req.query(&[("projection", &self.projection)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.query(&[("predefinedAcl", &self.predefined_acl)]);
+                req = req.query(&[("projection", &self.projection)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -12820,53 +12825,51 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("destinationKmsKeyName", &self.destination_kms_key_name)]);
-                let req =
-                    req.query(&[("destinationPredefinedAcl", &self.destination_predefined_acl)]);
-                let req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
-                let req = req.query(&[("ifGenerationNotMatch", &self.if_generation_not_match)]);
-                let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("destinationKmsKeyName", &self.destination_kms_key_name)]);
+                req = req.query(&[("destinationPredefinedAcl", &self.destination_predefined_acl)]);
+                req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
+                req = req.query(&[("ifGenerationNotMatch", &self.if_generation_not_match)]);
+                req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
+                req = req.query(&[(
                     "ifMetagenerationNotMatch",
                     &self.if_metageneration_not_match,
                 )]);
-                let req =
-                    req.query(&[("ifSourceGenerationMatch", &self.if_source_generation_match)]);
-                let req = req.query(&[(
+                req = req.query(&[("ifSourceGenerationMatch", &self.if_source_generation_match)]);
+                req = req.query(&[(
                     "ifSourceGenerationNotMatch",
                     &self.if_source_generation_not_match,
                 )]);
-                let req = req.query(&[(
+                req = req.query(&[(
                     "ifSourceMetagenerationMatch",
                     &self.if_source_metageneration_match,
                 )]);
-                let req = req.query(&[(
+                req = req.query(&[(
                     "ifSourceMetagenerationNotMatch",
                     &self.if_source_metageneration_not_match,
                 )]);
-                let req = req.query(&[(
+                req = req.query(&[(
                     "maxBytesRewrittenPerCall",
                     &self.max_bytes_rewritten_per_call,
                 )]);
-                let req = req.query(&[("projection", &self.projection)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("rewriteToken", &self.rewrite_token)]);
-                let req = req.query(&[("sourceGeneration", &self.source_generation)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.query(&[("projection", &self.projection)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("rewriteToken", &self.rewrite_token)]);
+                req = req.query(&[("sourceGeneration", &self.source_generation)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -13015,23 +13018,23 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("generation", &self.generation)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("generation", &self.generation)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -13179,24 +13182,26 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("permissions", &self.permissions)]);
-                let req = req.query(&[("generation", &self.generation)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.permissions {
+                    req = req.query(&[("permissions", value)]);
+                }
+                req = req.query(&[("generation", &self.generation)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -13386,32 +13391,32 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("generation", &self.generation)]);
-                let req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
-                let req = req.query(&[("ifGenerationNotMatch", &self.if_generation_not_match)]);
-                let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("generation", &self.generation)]);
+                req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
+                req = req.query(&[("ifGenerationNotMatch", &self.if_generation_not_match)]);
+                req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
+                req = req.query(&[(
                     "ifMetagenerationNotMatch",
                     &self.if_metageneration_not_match,
                 )]);
-                let req = req.query(&[("predefinedAcl", &self.predefined_acl)]);
-                let req = req.query(&[("projection", &self.projection)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.query(&[("predefinedAcl", &self.predefined_acl)]);
+                req = req.query(&[("projection", &self.projection)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -13602,32 +13607,31 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("delimiter", &self.delimiter)]);
-                let req = req.query(&[("endOffset", &self.end_offset)]);
-                let req =
-                    req.query(&[("includeTrailingDelimiter", &self.include_trailing_delimiter)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("prefix", &self.prefix)]);
-                let req = req.query(&[("projection", &self.projection)]);
-                let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                let req = req.query(&[("startOffset", &self.start_offset)]);
-                let req = req.query(&[("userProject", &self.user_project)]);
-                let req = req.query(&[("versions", &self.versions)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("delimiter", &self.delimiter)]);
+                req = req.query(&[("endOffset", &self.end_offset)]);
+                req = req.query(&[("includeTrailingDelimiter", &self.include_trailing_delimiter)]);
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("prefix", &self.prefix)]);
+                req = req.query(&[("projection", &self.projection)]);
+                req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                req = req.query(&[("startOffset", &self.start_offset)]);
+                req = req.query(&[("userProject", &self.user_project)]);
+                req = req.query(&[("versions", &self.versions)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
                 let access_token = self
                     .auth
                     .access_token()
                     .await
                     .map_err(|err| crate::Error::OAuth2(err))?;
-                let req = req.bearer_auth(access_token);
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -13899,22 +13903,22 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("serviceAccountEmail", &self.service_account_email)]);
-                    let req = req.query(&[("userProject", &self.user_project)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("userIp", &self.user_ip)]);
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("serviceAccountEmail", &self.service_account_email)]);
+                    req = req.query(&[("userProject", &self.user_project)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("userIp", &self.user_ip)]);
                     let access_token = self
                         .auth
                         .access_token()
                         .await
                         .map_err(|err| crate::Error::OAuth2(err))?;
-                    let req = req.bearer_auth(access_token);
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -13994,21 +13998,21 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                    let req = req.query(&[("userProject", &self.user_project)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("userIp", &self.user_ip)]);
+                    let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                    req = req.query(&[("userProject", &self.user_project)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("userIp", &self.user_ip)]);
                     let access_token = self
                         .auth
                         .access_token()
                         .await
                         .map_err(|err| crate::Error::OAuth2(err))?;
-                    let req = req.bearer_auth(access_token);
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -14142,21 +14146,21 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("userProject", &self.user_project)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("userIp", &self.user_ip)]);
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("userProject", &self.user_project)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("userIp", &self.user_ip)]);
                     let access_token = self
                         .auth
                         .access_token()
                         .await
                         .map_err(|err| crate::Error::OAuth2(err))?;
-                    let req = req.bearer_auth(access_token);
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -14306,25 +14310,25 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("maxResults", &self.max_results)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("serviceAccountEmail", &self.service_account_email)]);
-                    let req = req.query(&[("showDeletedKeys", &self.show_deleted_keys)]);
-                    let req = req.query(&[("userProject", &self.user_project)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("userIp", &self.user_ip)]);
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("maxResults", &self.max_results)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("serviceAccountEmail", &self.service_account_email)]);
+                    req = req.query(&[("showDeletedKeys", &self.show_deleted_keys)]);
+                    req = req.query(&[("userProject", &self.user_project)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("userIp", &self.user_ip)]);
                     let access_token = self
                         .auth
                         .access_token()
                         .await
                         .map_err(|err| crate::Error::OAuth2(err))?;
-                    let req = req.bearer_auth(access_token);
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -14460,21 +14464,21 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                    let req = req.query(&[("userProject", &self.user_project)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("userIp", &self.user_ip)]);
+                    let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                    req = req.query(&[("userProject", &self.user_project)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("userIp", &self.user_ip)]);
                     let access_token = self
                         .auth
                         .access_token()
                         .await
                         .map_err(|err| crate::Error::OAuth2(err))?;
-                    let req = req.bearer_auth(access_token);
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -14635,23 +14639,22 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req =
-                        req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
-                    let req = req.query(&[("userProject", &self.user_project)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("userIp", &self.user_ip)]);
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                    req = req.query(&[("userProject", &self.user_project)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("userIp", &self.user_ip)]);
                     let access_token = self
                         .auth
                         .access_token()
                         .await
                         .map_err(|err| crate::Error::OAuth2(err))?;
-                    let req = req.bearer_auth(access_token);
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }

@@ -7,7 +7,7 @@
   "canonicalName": "Vault",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200501",
+  "revision": "20210308",
   "title": "G Suite Vault API",
   "description": "Archiving and eDiscovery for G Suite.",
   "ownerDomain": "google.com",
@@ -210,6 +210,72 @@
     }
   },
   "schemas": {
+    "AccountCount": {
+      "id": "AccountCount",
+      "description": "Count number for each account.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "account": {
+          "description": "Account owner.",
+          "$ref": "UserInfo"
+        },
+        "count": {
+          "description": "The number of artifacts found for this account.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "AccountCountError": {
+      "id": "AccountCountError",
+      "description": "An error that occurred when querying a specific account",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "account": {
+          "description": "Account owner.",
+          "$ref": "UserInfo"
+        },
+        "errorType": {
+          "description": "Account query error.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "ERROR_TYPE_UNSPECIFIED",
+            "WILDCARD_TOO_BROAD",
+            "TOO_MANY_TERMS",
+            "LOCATION_UNAVAILABLE",
+            "UNKNOWN",
+            "DEADLINE_EXCEEDED"
+          ],
+          "enumDescriptions": [
+            "Default.",
+            "Permanent - prefix terms expanded to too many query terms.",
+            "Permanent - query contains too many terms.",
+            "Transient - data in transit between storage replicas, temporarily unavailable.",
+            "Unrecognized error.",
+            "Deadline exceeded when querying the account."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "AccountInfo": {
       "id": "AccountInfo",
       "description": "Accounts to search",
@@ -242,7 +308,7 @@
     },
     "AddHeldAccountResult": {
       "id": "AddHeldAccountResult",
-      "description": "A status detailing the status of each account creation, and the\nHeldAccount, if successful.",
+      "description": "A status detailing the status of each account creation, and the HeldAccount, if successful.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -269,7 +335,7 @@
       "enumDescriptions": [],
       "properties": {
         "accountIds": {
-          "description": "Account IDs to identify which accounts to add. Only account_ids or only\nemails should be specified, but not both.",
+          "description": "Account IDs to identify which accounts to add. Only account_ids or only emails should be specified, but not both.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -287,7 +353,7 @@
           }
         },
         "emails": {
-          "description": "Emails to identify which accounts to add. Only emails or only account_ids\nshould be specified, but not both.",
+          "description": "Emails to identify which accounts to add. Only emails or only account_ids should be specified, but not both.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -334,14 +400,14 @@
     },
     "AddMatterPermissionsRequest": {
       "id": "AddMatterPermissionsRequest",
-      "description": "Add an account with the permission specified. The role cannot be owner.\nIf an account already has a role in the matter, it will be\noverwritten.",
+      "description": "Add an account with the permission specified. The role cannot be owner. If an account already has a role in the matter, it will be overwritten.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "ccMe": {
-          "description": "Only relevant if send_emails is true.\nTrue to CC requestor in the email message.\nFalse to not CC requestor.",
+          "description": "Only relevant if send_emails is true. True to CC requestor in the email message. False to not CC requestor.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -355,7 +421,7 @@
           "$ref": "MatterPermission"
         },
         "sendEmails": {
-          "description": "True to send notification email to the added account.\nFalse to not send notification email.",
+          "description": "True to send notification email to the added account. False to not send notification email.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -365,6 +431,17 @@
           "items": null
         }
       },
+      "additionalProperties": null,
+      "items": null
+    },
+    "CancelOperationRequest": {
+      "id": "CancelOperationRequest",
+      "description": "The request message for Operations.CancelOperation.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {},
       "additionalProperties": null,
       "items": null
     },
@@ -404,7 +481,7 @@
       "enumDescriptions": [],
       "properties": {
         "bucketName": {
-          "description": "The cloud storage bucket name of this export file.\nCan be used in cloud storage JSON/XML API, but not to list the bucket\ncontents. Instead, you can <a\nhref=\"https://cloud.google.com/storage/docs/json_api/v1/objects/get\">\nget individual export files</a> by object name.",
+          "description": "The cloud storage bucket name of this export file. Can be used in cloud storage JSON/XML API, but not to list the bucket contents. Instead, you can get individual export files by object name.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -424,7 +501,7 @@
           "items": null
         },
         "objectName": {
-          "description": "The cloud storage object name of this export file.\nCan be used in cloud storage JSON/XML API.",
+          "description": "The cloud storage object name of this export file. Can be used in cloud storage JSON/XML API.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -488,12 +565,126 @@
           "$ref": "HeldGroupsQuery"
         },
         "hangoutsChatQuery": {
-          "description": "Details pertaining to Hangouts Chat holds. If set, corpus must be\nHangouts Chat.",
+          "description": "Details pertaining to Hangouts Chat holds. If set, corpus must be Hangouts Chat.",
           "$ref": "HeldHangoutsChatQuery"
         },
         "mailQuery": {
           "description": "Details pertaining to mail holds. If set, corpus must be mail.",
           "$ref": "HeldMailQuery"
+        },
+        "voiceQuery": {
+          "description": "Details pertaining to Voice holds. If set, corpus must be Voice.",
+          "$ref": "HeldVoiceQuery"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "CountArtifactsMetadata": {
+      "id": "CountArtifactsMetadata",
+      "description": "Long running operation metadata for CountArtifacts.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "endTime": {
+          "description": "End time of count operation. Available when operation is done.",
+          "type": "string",
+          "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "matterId": {
+          "description": "The matter ID of the associated matter.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "query": {
+          "description": "The search query from the request.",
+          "$ref": "Query"
+        },
+        "startTime": {
+          "description": "Creation time of count operation.",
+          "type": "string",
+          "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "CountArtifactsRequest": {
+      "id": "CountArtifactsRequest",
+      "description": "Count artifacts request.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "query": {
+          "description": "The search query.",
+          "$ref": "Query"
+        },
+        "view": {
+          "description": "Specifies the granularity of the count result returned in response.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "COUNT_RESULT_VIEW_UNSPECIFIED",
+            "TOTAL_COUNT",
+            "ALL"
+          ],
+          "enumDescriptions": [
+            "Default. It works the same as TOTAL_COUNT.",
+            "Response includes: total count, queried accounts count, matching accounts count, non-queryable accounts, queried account errors.",
+            "Response includes additional breakdown of account count."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "CountArtifactsResponse": {
+      "id": "CountArtifactsResponse",
+      "description": "Definition of the response for method CountArtifacts.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "groupsCountResult": {
+          "description": "Count metrics of Groups.",
+          "$ref": "GroupsCountResult"
+        },
+        "mailCountResult": {
+          "description": "Count metrics of Mail.",
+          "$ref": "MailCountResult"
+        },
+        "totalCount": {
+          "description": "Total count of artifacts. For mail and groups, artifacts refers to messages.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -508,7 +699,7 @@
       "enumDescriptions": [],
       "properties": {
         "includeAccessInfo": {
-          "description": "Set to true to include access level information for users\nwith <a\nhref=\"https://support.google.com/vault/answer/6099459#metadata\">indirect\naccess</a> to files.",
+          "description": "Set to true to include access level information for users with indirect access to files.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -550,7 +741,7 @@
           "items": null
         },
         "versionDate": {
-          "description": "Search the versions of the Drive file\nas of the reference date. These timestamps are in GMT and\nrounded down to the given date.",
+          "description": "Search the versions of the Drive file as of the reference date. These timestamps are in GMT and rounded down to the given date.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -565,7 +756,7 @@
     },
     "Empty": {
       "id": "Empty",
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -709,6 +900,10 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "voiceOptions": {
+          "description": "Option available for voice export.",
+          "$ref": "VoiceExportOptions"
         }
       },
       "additionalProperties": null,
@@ -744,6 +939,80 @@
         },
         "totalArtifactCount": {
           "description": "The number of documents to be exported.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GroupsCountResult": {
+      "id": "GroupsCountResult",
+      "description": "Groups specific count metrics.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "accountCountErrors": {
+          "description": "Error occurred when querying these accounts.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "AccountCountError"
+          }
+        },
+        "accountCounts": {
+          "description": "Subtotal count per matching account that have more than zero messages.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "AccountCount"
+          }
+        },
+        "matchingAccountsCount": {
+          "description": "Total number of accounts that can be queried and have more than zero messages.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "nonQueryableAccounts": {
+          "description": "When data scope is HELD_DATA in the request Query, these accounts in the request are not queried because they are not on hold. For other data scope, this field is not set.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "queriedAccountsCount": {
+          "description": "Total number of accounts involved in this count operation.",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -870,14 +1139,14 @@
     },
     "HeldAccount": {
       "id": "HeldAccount",
-      "description": "An account being held in a particular hold. This structure is immutable.\nThis can be either a single user or a google group, depending on the corpus.",
+      "description": "An account being held in a particular hold. This structure is immutable. This can be either a single user or a google group, depending on the corpus.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "accountId": {
-          "description": "The account's ID as provided by the\n<a href=\"https://developers.google.com/admin-sdk/\">Admin SDK</a>.",
+          "description": "The account's ID as provided by the Admin SDK.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -887,7 +1156,7 @@
           "items": null
         },
         "email": {
-          "description": "The primary email address of the account. If used as an input, this takes\nprecedence over account ID.",
+          "description": "The primary email address of the account. If used as an input, this takes precedence over account ID.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -971,7 +1240,7 @@
       "enumDescriptions": [],
       "properties": {
         "endTime": {
-          "description": "The end time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date.",
+          "description": "The end time range for the search query. These timestamps are in GMT and rounded down to the start of the given date.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -981,7 +1250,7 @@
           "items": null
         },
         "startTime": {
-          "description": "The start time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date.",
+          "description": "The start time range for the search query. These timestamps are in GMT and rounded down to the start of the given date.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -1035,7 +1304,7 @@
       "enumDescriptions": [],
       "properties": {
         "endTime": {
-          "description": "The end time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date.",
+          "description": "The end time range for the search query. These timestamps are in GMT and rounded down to the start of the given date.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -1045,7 +1314,7 @@
           "items": null
         },
         "startTime": {
-          "description": "The start time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date.",
+          "description": "The start time range for the search query. These timestamps are in GMT and rounded down to the start of the given date.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -1070,7 +1339,7 @@
     },
     "HeldOrgUnit": {
       "id": "HeldOrgUnit",
-      "description": "A organizational unit being held in a particular hold.\nThis structure is immutable.",
+      "description": "A organizational unit being held in a particular hold. This structure is immutable.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1100,16 +1369,56 @@
       "additionalProperties": null,
       "items": null
     },
+    "HeldVoiceQuery": {
+      "id": "HeldVoiceQuery",
+      "description": "Query options for Voice holds.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "coveredData": {
+          "description": "Data covered by this rule. Should be non-empty. Order does not matter and duplicates will be ignored.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [
+              "COVERED_DATA_UNSPECIFIED",
+              "TEXT_MESSAGES",
+              "VOICEMAILS",
+              "CALL_LOGS"
+            ],
+            "enumDescriptions": [
+              "Covered data unspecified.",
+              "Voice text message will be covered.",
+              "Voicemail will be covered.",
+              "Call logs will be covered."
+            ],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "Hold": {
       "id": "Hold",
-      "description": "Represents a hold within Vault. A hold restricts purging of\nartifacts based on the combination of the query and accounts restrictions.\nA hold can be configured to either apply to an explicitly configured set\nof accounts, or can be applied to all members of an organizational unit.",
+      "description": "Represents a hold within Vault. A hold restricts purging of artifacts based on the combination of the query and accounts restrictions. A hold can be configured to either apply to an explicitly configured set of accounts, or can be applied to all members of an organizational unit.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "accounts": {
-          "description": "If set, the hold applies to the enumerated accounts and org_unit must be\nempty.",
+          "description": "If set, the hold applies to the enumerated accounts and org_unit must be empty.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1129,14 +1438,16 @@
             "DRIVE",
             "MAIL",
             "GROUPS",
-            "HANGOUTS_CHAT"
+            "HANGOUTS_CHAT",
+            "VOICE"
           ],
           "enumDescriptions": [
             "No corpus specified.",
             "Drive.",
             "Mail.",
             "Groups.",
-            "Hangouts Chat."
+            "Hangouts Chat.",
+            "Google Voice."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -1163,11 +1474,11 @@
           "items": null
         },
         "orgUnit": {
-          "description": "If set, the hold applies to all members of the organizational unit and\naccounts must be empty. This property is mutable. For groups holds,\nset the accounts field.",
+          "description": "If set, the hold applies to all members of the organizational unit and accounts must be empty. This property is mutable. For groups holds, set the accounts field.",
           "$ref": "HeldOrgUnit"
         },
         "query": {
-          "description": "The corpus-specific query. If set, the corpusQuery must match corpus\ntype.",
+          "description": "The corpus-specific query. If set, the corpusQuery must match corpus type.",
           "$ref": "CorpusQuery"
         },
         "updateTime": {
@@ -1263,7 +1574,7 @@
           }
         },
         "nextPageToken": {
-          "description": "Page token to retrieve the next page of results in the list.\nIf this is empty, then there are no more holds to list.",
+          "description": "Page token to retrieve the next page of results in the list. If this is empty, then there are no more holds to list.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1310,6 +1621,40 @@
       "additionalProperties": null,
       "items": null
     },
+    "ListOperationsResponse": {
+      "id": "ListOperationsResponse",
+      "description": "The response message for Operations.ListOperations.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "nextPageToken": {
+          "description": "The standard List next-page token.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "operations": {
+          "description": "A list of operations that matches the specified filter in the request.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "Operation"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "ListSavedQueriesResponse": {
       "id": "ListSavedQueriesResponse",
       "description": "Definition of the response for method ListSaveQuery.",
@@ -1319,7 +1664,7 @@
       "enumDescriptions": [],
       "properties": {
         "nextPageToken": {
-          "description": "Page token to retrieve the next page of results in the list.\nIf this is empty, then there are no more saved queries to list.",
+          "description": "Page token to retrieve the next page of results in the list. If this is empty, then there are no more saved queries to list.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1339,6 +1684,80 @@
           "items": {
             "$ref": "SavedQuery"
           }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "MailCountResult": {
+      "id": "MailCountResult",
+      "description": "Mail specific count metrics.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "accountCountErrors": {
+          "description": "Error occurred when querying these accounts.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "AccountCountError"
+          }
+        },
+        "accountCounts": {
+          "description": "Subtotal count per matching account that have more than zero messages.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "AccountCount"
+          }
+        },
+        "matchingAccountsCount": {
+          "description": "Total number of accounts that can be queried and have more than zero messages.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "nonQueryableAccounts": {
+          "description": "When data scope is HELD_DATA in the request Query, these accounts in the request are not queried because they are not on hold. For other data scope, this field is not set.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "queriedAccountsCount": {
+          "description": "Total number of accounts involved in this count operation.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -1425,7 +1844,7 @@
           "items": null
         },
         "matterId": {
-          "description": "The matter ID which is generated by the server.\nShould be blank when creating a new matter.",
+          "description": "The matter ID which is generated by the server. Should be blank when creating a new matter.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1435,7 +1854,7 @@
           "items": null
         },
         "matterPermissions": {
-          "description": "List of users and access to the matter. Currently there is no programmer\ndefined limit on the number of permissions a matter can have.",
+          "description": "List of users and access to the matter. Currently there is no programmer defined limit on the number of permissions a matter can have.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1482,14 +1901,14 @@
     },
     "MatterPermission": {
       "id": "MatterPermission",
-      "description": "Currently each matter only has one owner, and all others are collaborators.\nWhen an account is purged, its corresponding MatterPermission resources\ncease to exist.",
+      "description": "Currently each matter only has one owner, and all others are collaborators. When an account is purged, its corresponding MatterPermission resources cease to exist.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "accountId": {
-          "description": "The account ID, as provided by <a\nhref=\"https://developers.google.com/admin-sdk/\">Admin SDK</a>.",
+          "description": "The account ID, as provided by Admin SDK.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1520,6 +1939,80 @@
       "additionalProperties": null,
       "items": null
     },
+    "Operation": {
+      "id": "Operation",
+      "description": "This resource represents a long-running operation that is the result of a network API call.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "done": {
+          "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "error": {
+          "description": "The error result of the operation in case of failure or cancellation.",
+          "$ref": "Status"
+        },
+        "metadata": {
+          "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        },
+        "name": {
+          "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "response": {
+          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "OrgUnitInfo": {
       "id": "OrgUnitInfo",
       "description": "Org Unit to search",
@@ -1529,7 +2022,7 @@
       "enumDescriptions": [],
       "properties": {
         "orgUnitId": {
-          "description": "Org unit to search, as provided by the\n<a href=\"https://developers.google.com/admin-sdk/directory/\">Admin SDK\nDirectory API</a>.",
+          "description": "Org unit to search, as provided by the Admin SDK Directory API.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1551,7 +2044,7 @@
       "enumDescriptions": [],
       "properties": {
         "accountInfo": {
-          "description": "When 'ACCOUNT' is chosen as search method,\naccount_info needs to be specified.",
+          "description": "When 'ACCOUNT' is chosen as search method, account_info needs to be specified.",
           "$ref": "AccountInfo"
         },
         "corpus": {
@@ -1563,14 +2056,16 @@
             "DRIVE",
             "MAIL",
             "GROUPS",
-            "HANGOUTS_CHAT"
+            "HANGOUTS_CHAT",
+            "VOICE"
           ],
           "enumDescriptions": [
             "No corpus specified.",
             "Drive.",
             "Mail.",
             "Groups.",
-            "Hangouts Chat."
+            "Hangouts Chat.",
+            "Google Voice."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -1601,7 +2096,7 @@
           "$ref": "DriveOptions"
         },
         "endTime": {
-          "description": "The end time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date.",
+          "description": "The end time range for the search query. These timestamps are in GMT and rounded down to the start of the given date.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -1611,7 +2106,7 @@
           "items": null
         },
         "hangoutsChatInfo": {
-          "description": "When 'ROOM' is chosen as search method, hangout_chats_info needs to be\nspecified. (read-only)",
+          "description": "When 'ROOM' is chosen as search method, hangout_chats_info needs to be specified. (read-only)",
           "$ref": "HangoutsChatInfo"
         },
         "hangoutsChatOptions": {
@@ -1623,7 +2118,7 @@
           "$ref": "MailOptions"
         },
         "method": {
-          "description": "The search method to use. This field is similar to the search_method field\nbut is introduced to support shared drives. It supports all\nsearch method types. In case the search_method is TEAM_DRIVE the response\nof this field will be SHARED_DRIVE only.",
+          "description": "The search method to use. This field is similar to the search_method field but is introduced to support shared drives. It supports all search method types. In case the search_method is TEAM_DRIVE the response of this field will be SHARED_DRIVE only.",
           "type": "string",
           "format": null,
           "enum": [
@@ -1636,20 +2131,20 @@
             "SHARED_DRIVE"
           ],
           "enumDescriptions": [
-            "A search method must be specified. If a request does not specify a\nsearch method, it will be rejected.",
+            "A search method must be specified. If a request does not specify a search method, it will be rejected.",
             "Will search all accounts provided in account_info.",
             "Will search all accounts in the OU specified in org_unit_info.",
-            "Will search for all accounts in the Team Drive specified in\nteam_drive_info.",
-            "Will search for all accounts in the organization.\nNo need to set account_info or org_unit_info.",
-            "Will search in the Room specified in\nhangout_chats_info. (read-only)",
-            "Will search for all accounts in the shared drive specified in\nshared_drive_info."
+            "Will search for all accounts in the Team Drive specified in team_drive_info.",
+            "Will search for all accounts in the organization. No need to set account_info or org_unit_info. Not all CORPUS_TYPE support this scope. Supported by MAIL.",
+            "Will search in the Room specified in hangout_chats_info. (read-only)",
+            "Will search for all accounts in the shared drive specified in shared_drive_info."
           ],
           "properties": {},
           "additionalProperties": null,
           "items": null
         },
         "orgUnitInfo": {
-          "description": "When 'ORG_UNIT' is chosen as as search method, org_unit_info needs\nto be specified.",
+          "description": "When 'ORG_UNIT' is chosen as as search method, org_unit_info needs to be specified.",
           "$ref": "OrgUnitInfo"
         },
         "searchMethod": {
@@ -1666,24 +2161,24 @@
             "SHARED_DRIVE"
           ],
           "enumDescriptions": [
-            "A search method must be specified. If a request does not specify a\nsearch method, it will be rejected.",
+            "A search method must be specified. If a request does not specify a search method, it will be rejected.",
             "Will search all accounts provided in account_info.",
             "Will search all accounts in the OU specified in org_unit_info.",
-            "Will search for all accounts in the Team Drive specified in\nteam_drive_info.",
-            "Will search for all accounts in the organization.\nNo need to set account_info or org_unit_info.",
-            "Will search in the Room specified in\nhangout_chats_info. (read-only)",
-            "Will search for all accounts in the shared drive specified in\nshared_drive_info."
+            "Will search for all accounts in the Team Drive specified in team_drive_info.",
+            "Will search for all accounts in the organization. No need to set account_info or org_unit_info. Not all CORPUS_TYPE support this scope. Supported by MAIL.",
+            "Will search in the Room specified in hangout_chats_info. (read-only)",
+            "Will search for all accounts in the shared drive specified in shared_drive_info."
           ],
           "properties": {},
           "additionalProperties": null,
           "items": null
         },
         "sharedDriveInfo": {
-          "description": "When 'SHARED_DRIVE' is chosen as search method, shared_drive_info needs\nto be specified.",
+          "description": "When 'SHARED_DRIVE' is chosen as search method, shared_drive_info needs to be specified.",
           "$ref": "SharedDriveInfo"
         },
         "startTime": {
-          "description": "The start time range for the search query. These timestamps are in GMT and\nrounded down to the start of the given date.",
+          "description": "The start time range for the search query. These timestamps are in GMT and rounded down to the start of the given date.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -1693,11 +2188,11 @@
           "items": null
         },
         "teamDriveInfo": {
-          "description": "When 'TEAM_DRIVE' is chosen as search method, team_drive_info needs to be\nspecified.",
+          "description": "When 'TEAM_DRIVE' is chosen as search method, team_drive_info needs to be specified.",
           "$ref": "TeamDriveInfo"
         },
         "terms": {
-          "description": "The corpus-specific\n<a href=\"https://support.google.com/vault/answer/2474474\">search\noperators</a> used to generate search results.",
+          "description": "The corpus-specific search operators used to generate search results.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1707,7 +2202,7 @@
           "items": null
         },
         "timeZone": {
-          "description": "The time zone name.\nIt should be an IANA TZ name, such as \"America/Los_Angeles\".\nFor more information, see\n<a href=\"https://en.wikipedia.org/wiki/List_of_tz_database_time_zones\">Time\nZone</a>.",
+          "description": "The time zone name. It should be an IANA TZ name, such as \"America/Los_Angeles\". For more information, see Time Zone.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1715,6 +2210,10 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "voiceOptions": {
+          "description": "For voice search, specify more options in this field.",
+          "$ref": "VoiceOptions"
         }
       },
       "additionalProperties": null,
@@ -1759,7 +2258,7 @@
       "enumDescriptions": [],
       "properties": {
         "statuses": {
-          "description": "A list of statuses for deleted accounts. Results have the\nsame order as the request.",
+          "description": "A list of statuses for deleted accounts. Results have the same order as the request.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1832,7 +2331,7 @@
       "enumDescriptions": [],
       "properties": {
         "createTime": {
-          "description": "Output only. The server generated timestamp at which saved query was\ncreated.",
+          "description": "Output only. The server generated timestamp at which saved query was created.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -1852,7 +2351,7 @@
           "items": null
         },
         "matterId": {
-          "description": "Output only. The matter ID of the associated matter.\nThe server does not look at this field during create and always uses matter\nid in the URL.",
+          "description": "Output only. The matter ID of the associated matter. The server does not look at this field during create and always uses matter id in the URL.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1862,7 +2361,7 @@
           "items": null
         },
         "query": {
-          "description": "The underlying Query object which contains all the information of the saved\nquery.",
+          "description": "The underlying Query object which contains all the information of the saved query.",
           "$ref": "Query"
         },
         "savedQueryId": {
@@ -1888,7 +2387,7 @@
       "enumDescriptions": [],
       "properties": {
         "sharedDriveIds": {
-          "description": "List of Shared drive IDs, as provided by <a\nhref=\"https://developers.google.com/drive\">Drive API</a>.",
+          "description": "List of Shared drive IDs, as provided by Drive API.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1911,7 +2410,7 @@
     },
     "Status": {
       "id": "Status",
-      "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors).",
+      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1928,7 +2427,7 @@
           "items": null
         },
         "details": {
-          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
+          "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1955,7 +2454,7 @@
           }
         },
         "message": {
-          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
+          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1977,7 +2476,7 @@
       "enumDescriptions": [],
       "properties": {
         "teamDriveIds": {
-          "description": "List of Team Drive IDs, as provided by <a\nhref=\"https://developers.google.com/drive\">Drive API</a>.",
+          "description": "List of Team Drive IDs, as provided by Drive API.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2036,6 +2535,76 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "VoiceExportOptions": {
+      "id": "VoiceExportOptions",
+      "description": "The options for voice export.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "exportFormat": {
+          "description": "The export format for voice export.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "EXPORT_FORMAT_UNSPECIFIED",
+            "MBOX",
+            "PST"
+          ],
+          "enumDescriptions": [
+            "No export format specified.",
+            "MBOX as export format.",
+            "PST as export format"
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "VoiceOptions": {
+      "id": "VoiceOptions",
+      "description": "Voice search options",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "coveredData": {
+          "description": "Datatypes to search",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [
+              "COVERED_DATA_UNSPECIFIED",
+              "TEXT_MESSAGES",
+              "VOICEMAILS",
+              "CALL_LOGS"
+            ],
+            "enumDescriptions": [
+              "Covered data unspecified.",
+              "Voice text message will be covered.",
+              "Voicemail will be covered.",
+              "Call logs will be covered."
+            ],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
         }
       },
       "additionalProperties": null,
@@ -2269,7 +2838,7 @@
                   "id": "vault.matters.holds.accounts.create",
                   "path": "v1/matters/{matterId}/holds/{holdId}/accounts",
                   "httpMethod": "POST",
-                  "description": "Adds a HeldAccount to a hold. Accounts can only be added to a hold that\nhas no held_org_unit set. Attempting to add an account to an OU-based\nhold will result in an error.",
+                  "description": "Adds a HeldAccount to a hold. Accounts can only be added to a hold that has no held_org_unit set. Attempting to add an account to an OU-based hold will result in an error.",
                   "parameters": {
                     "holdId": {
                       "description": "The hold ID.",
@@ -2323,7 +2892,7 @@
                   "id": "vault.matters.holds.accounts.delete",
                   "path": "v1/matters/{matterId}/holds/{holdId}/accounts/{accountId}",
                   "httpMethod": "DELETE",
-                  "description": "Removes a HeldAccount from a hold. If this request leaves the hold with\nno held accounts, the hold will not apply to any accounts.",
+                  "description": "Removes a HeldAccount from a hold. If this request leaves the hold with no held accounts, the hold will not apply to any accounts.",
                   "parameters": {
                     "accountId": {
                       "description": "The ID of the account to remove from the hold.",
@@ -2390,7 +2959,7 @@
                   "id": "vault.matters.holds.accounts.list",
                   "path": "v1/matters/{matterId}/holds/{holdId}/accounts",
                   "httpMethod": "GET",
-                  "description": "Lists HeldAccounts for a hold. This will only list individually specified\nheld accounts. If the hold is on an OU, then use\n<a href=\"https://developers.google.com/admin-sdk/\">Admin SDK</a>\nto enumerate its members.",
+                  "description": "Lists HeldAccounts for a hold. This will only list individually specified held accounts. If the hold is on an OU, then use Admin SDK to enumerate its members.",
                   "parameters": {
                     "holdId": {
                       "description": "The hold ID.",
@@ -2447,7 +3016,7 @@
               "id": "vault.matters.holds.addHeldAccounts",
               "path": "v1/matters/{matterId}/holds/{holdId}:addHeldAccounts",
               "httpMethod": "POST",
-              "description": "Adds HeldAccounts to a hold. Returns a list of accounts that have been\nsuccessfully added. Accounts can only be added to an existing account-based\nhold.",
+              "description": "Adds HeldAccounts to a hold. Returns a list of accounts that have been successfully added. Accounts can only be added to an existing account-based hold.",
               "parameters": {
                 "holdId": {
                   "description": "The hold ID.",
@@ -2637,7 +3206,11 @@
                     "BASIC_HOLD",
                     "FULL_HOLD"
                   ],
-                  "enumDescriptions": [],
+                  "enumDescriptions": [
+                    "There is no specified view. Defaults to FULL_HOLD.",
+                    "Response includes the id, name, update time, corpus, and query.",
+                    "Full representation of a Hold. Response includes all fields of 'BASIC' and the entities the Hold applies to, such as accounts, or OU."
+                  ],
                   "repeated": false
                 }
               },
@@ -2663,7 +3236,7 @@
               "id": "vault.matters.holds.list",
               "path": "v1/matters/{matterId}/holds",
               "httpMethod": "GET",
-              "description": "Lists holds within a matter. An empty page token in ListHoldsResponse\ndenotes no more holds to list.",
+              "description": "Lists holds within a matter. An empty page token in ListHoldsResponse denotes no more holds to list.",
               "parameters": {
                 "matterId": {
                   "description": "The matter ID.",
@@ -2680,7 +3253,7 @@
                   "repeated": false
                 },
                 "pageSize": {
-                  "description": "The number of holds to return in the response, between 0 and 100 inclusive.\nLeaving this empty, or as 0, is the same as page_size = 100.",
+                  "description": "The number of holds to return in the response, between 0 and 100 inclusive. Leaving this empty, or as 0, is the same as page_size = 100.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -2694,7 +3267,7 @@
                   "repeated": false
                 },
                 "pageToken": {
-                  "description": "The pagination token as returned in the response.\nAn empty token means start from the beginning.",
+                  "description": "The pagination token as returned in the response. An empty token means start from the beginning.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -2722,7 +3295,11 @@
                     "BASIC_HOLD",
                     "FULL_HOLD"
                   ],
-                  "enumDescriptions": [],
+                  "enumDescriptions": [
+                    "There is no specified view. Defaults to FULL_HOLD.",
+                    "Response includes the id, name, update time, corpus, and query.",
+                    "Full representation of a Hold. Response includes all fields of 'BASIC' and the entities the Hold applies to, such as accounts, or OU."
+                  ],
                   "repeated": false
                 }
               },
@@ -2747,7 +3324,7 @@
               "id": "vault.matters.holds.removeHeldAccounts",
               "path": "v1/matters/{matterId}/holds/{holdId}:removeHeldAccounts",
               "httpMethod": "POST",
-              "description": "Removes HeldAccounts from a hold. Returns a list of statuses in the same\norder as the request. If this request leaves the hold with no held\naccounts, the hold will not apply to any accounts.",
+              "description": "Removes HeldAccounts from a hold. Returns a list of statuses in the same order as the request. If this request leaves the hold with no held accounts, the hold will not apply to any accounts.",
               "parameters": {
                 "holdId": {
                   "description": "The hold ID.",
@@ -2801,7 +3378,7 @@
               "id": "vault.matters.holds.update",
               "path": "v1/matters/{matterId}/holds/{holdId}",
               "httpMethod": "PUT",
-              "description": "Updates the OU and/or query parameters of a hold. You cannot add accounts\nto a hold that covers an OU, nor can you add OUs to a hold that covers\nindividual accounts. Accounts listed in the hold will be ignored.",
+              "description": "Updates the OU and/or query parameters of a hold. You cannot add accounts to a hold that covers an OU, nor can you add OUs to a hold that covers individual accounts. Accounts listed in the hold will be ignored.",
               "parameters": {
                 "holdId": {
                   "description": "The ID of the hold.",
@@ -2863,7 +3440,7 @@
               "description": "Creates a saved query.",
               "parameters": {
                 "matterId": {
-                  "description": "The matter ID of the parent matter for which the saved query is to be\ncreated.",
+                  "description": "The matter ID of the parent matter for which the saved query is to be created.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -2902,7 +3479,7 @@
               "description": "Deletes a saved query by Id.",
               "parameters": {
                 "matterId": {
-                  "description": "The matter ID of the parent matter for which the saved query is to be\ndeleted.",
+                  "description": "The matter ID of the parent matter for which the saved query is to be deleted.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -2954,7 +3531,7 @@
               "description": "Retrieves a saved query by Id.",
               "parameters": {
                 "matterId": {
-                  "description": "The matter ID of the parent matter for which the saved query is to be\nretrieved.",
+                  "description": "The matter ID of the parent matter for which the saved query is to be retrieved.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3004,10 +3581,10 @@
               "id": "vault.matters.savedQueries.list",
               "path": "v1/matters/{matterId}/savedQueries",
               "httpMethod": "GET",
-              "description": "Lists saved queries within a matter. An empty page token in\nListSavedQueriesResponse denotes no more saved queries to list.",
+              "description": "Lists saved queries within a matter. An empty page token in ListSavedQueriesResponse denotes no more saved queries to list.",
               "parameters": {
                 "matterId": {
-                  "description": "The matter ID of the parent matter for which the saved queries are to be\nretrieved.",
+                  "description": "The matter ID of the parent matter for which the saved queries are to be retrieved.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3035,7 +3612,7 @@
                   "repeated": false
                 },
                 "pageToken": {
-                  "description": "The pagination token as returned in the previous response.\nAn empty token means start from the beginning.",
+                  "description": "The pagination token as returned in the previous response. An empty token means start from the beginning.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -3148,11 +3725,50 @@
           "supportsMediaUpload": false,
           "mediaUpload": null
         },
+        "count": {
+          "id": "vault.matters.count",
+          "path": "v1/matters/{matterId}:count",
+          "httpMethod": "POST",
+          "description": "Counts the artifacts within the context of a matter and returns a detailed breakdown of metrics.",
+          "parameters": {
+            "matterId": {
+              "description": "The matter ID.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "matterId"
+          ],
+          "request": {
+            "$ref": "CountArtifactsRequest"
+          },
+          "response": {
+            "$ref": "Operation"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/ediscovery"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
         "create": {
           "id": "vault.matters.create",
           "path": "v1/matters",
           "httpMethod": "POST",
-          "description": "Creates a new matter with the given name and description. The initial state\nis open, and the owner is the method caller. Returns the created matter\nwith default view.",
+          "description": "Creates a new matter with the given name and description. The initial state is open, and the owner is the method caller. Returns the created matter with default view.",
           "parameters": {},
           "parameterOrder": [],
           "request": {
@@ -3242,7 +3858,11 @@
                 "BASIC",
                 "FULL"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "There is no specified view.",
+                "Response includes the matter_id, name, description, and state. Default choice.",
+                "Full representation of matter is returned. Everything above and including MatterPermissions list."
+              ],
               "repeated": false
             }
           },
@@ -3270,7 +3890,7 @@
           "description": "Lists matters the user has access to.",
           "parameters": {
             "pageSize": {
-              "description": "The number of matters to return in the response.\nDefault and maximum are 100.",
+              "description": "The number of matters to return in the response. Default and maximum are 100.",
               "default": null,
               "location": "query",
               "required": false,
@@ -3298,7 +3918,7 @@
               "repeated": false
             },
             "state": {
-              "description": "If set, list only matters with that specific state. The default is listing\nmatters of all states.",
+              "description": "If set, list only matters with that specific state. The default is listing matters of all states.",
               "default": null,
               "location": "query",
               "required": false,
@@ -3313,7 +3933,12 @@
                 "CLOSED",
                 "DELETED"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "The matter has no specified state.",
+                "This matter is open.",
+                "This matter is closed.",
+                "This matter is deleted."
+              ],
               "repeated": false
             },
             "view": {
@@ -3331,7 +3956,11 @@
                 "BASIC",
                 "FULL"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "There is no specified view.",
+                "Response includes the matter_id, name, description, and state. Default choice.",
+                "Full representation of matter is returned. Everything above and including MatterPermissions list."
+              ],
               "repeated": false
             }
           },
@@ -3471,7 +4100,7 @@
           "id": "vault.matters.update",
           "path": "v1/matters/{matterId}",
           "httpMethod": "PUT",
-          "description": "Updates the specified matter.\nThis updates only the name and description of the matter, identified by\nmatter ID. Changes to any other fields are ignored.\nReturns the default view of the matter.",
+          "description": "Updates the specified matter. This updates only the name and description of the matter, identified by matter ID. Changes to any other fields are ignored. Returns the default view of the matter.",
           "parameters": {
             "matterId": {
               "description": "The matter ID.",
@@ -3511,11 +4140,48 @@
     "operations": {
       "resources": {},
       "methods": {
+        "cancel": {
+          "id": "vault.operations.cancel",
+          "path": "v1/{+name}:cancel",
+          "httpMethod": "POST",
+          "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+          "parameters": {
+            "name": {
+              "description": "The name of the operation resource to be cancelled.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": "^operations/.*$",
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "request": {
+            "$ref": "CancelOperationRequest"
+          },
+          "response": {
+            "$ref": "Empty"
+          },
+          "scopes": [],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
         "delete": {
           "id": "vault.operations.delete",
           "path": "v1/{+name}",
           "httpMethod": "DELETE",
-          "description": "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.",
+          "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
           "parameters": {
             "name": {
               "description": "The name of the operation resource to be deleted.",
@@ -3538,6 +4204,121 @@
           "request": null,
           "response": {
             "$ref": "Empty"
+          },
+          "scopes": [],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "get": {
+          "id": "vault.operations.get",
+          "path": "v1/{+name}",
+          "httpMethod": "GET",
+          "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+          "parameters": {
+            "name": {
+              "description": "The name of the operation resource.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": "^operations/.*$",
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "Operation"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/ediscovery",
+            "https://www.googleapis.com/auth/ediscovery.readonly"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "list": {
+          "id": "vault.operations.list",
+          "path": "v1/{+name}",
+          "httpMethod": "GET",
+          "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+          "parameters": {
+            "filter": {
+              "description": "The standard list filter.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "name": {
+              "description": "The name of the operation's parent resource.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": "^operations$",
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "pageSize": {
+              "description": "The standard list page size.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "pageToken": {
+              "description": "The standard list page token.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "ListOperationsResponse"
           },
           "scopes": [],
           "supportsMediaDownload": false,

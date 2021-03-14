@@ -7,9 +7,9 @@
   "canonicalName": "Blogger",
   "fullyEncodeReservedExpansion": true,
   "version": "v3",
-  "revision": "20200512",
+  "revision": "20210311",
   "title": "Blogger API v3",
-  "description": "The Blogger API provides access to posts, comments and pages of a\n    Blogger blog.",
+  "description": "The Blogger API provides access to posts, comments and pages of a Blogger blog.",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "icons": {
@@ -538,7 +538,7 @@
           "items": null
         },
         "role": {
-          "description": "Access permissions that the user has for the blog (ADMIN, AUTHOR, or\nREADER).",
+          "description": "Access permissions that the user has for the blog (ADMIN, AUTHOR, or READER).",
           "type": "string",
           "format": null,
           "enum": [
@@ -1050,7 +1050,7 @@
           "items": null
         },
         "title": {
-          "description": "The title of this entity. This is the name displayed in the Admin user\ninterface.",
+          "description": "The title of this entity. This is the name displayed in the Admin user interface.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2069,7 +2069,12 @@
                 "AUTHOR",
                 "ADMIN"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                ""
+              ],
               "repeated": false
             }
           },
@@ -2126,7 +2131,12 @@
                 "AUTHOR",
                 "ADMIN"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                ""
+              ],
               "repeated": false
             }
           },
@@ -2183,7 +2193,12 @@
                 "AUTHOR",
                 "ADMIN"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                ""
+              ],
               "repeated": true
             },
             "status": {
@@ -2200,7 +2215,10 @@
                 "LIVE",
                 "DELETED"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                ""
+              ],
               "repeated": true
             },
             "userId": {
@@ -2233,7 +2251,12 @@
                 "AUTHOR",
                 "ADMIN"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                ""
+              ],
               "repeated": false
             }
           },
@@ -2455,7 +2478,12 @@
                 "AUTHOR",
                 "ADMIN"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                ""
+              ],
               "repeated": false
             }
           },
@@ -2598,7 +2626,12 @@
                 "PENDING",
                 "SPAM"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                ""
+              ],
               "repeated": false
             },
             "view": {
@@ -2617,7 +2650,12 @@
                 "AUTHOR",
                 "ADMIN"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                ""
+              ],
               "repeated": false
             }
           },
@@ -2745,7 +2783,12 @@
                 "PENDING",
                 "SPAM"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                ""
+              ],
               "repeated": true
             }
           },
@@ -2940,7 +2983,11 @@
                 "30DAYS",
                 "7DAYS"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                ""
+              ],
               "repeated": true
             }
           },
@@ -3065,7 +3112,12 @@
                 "AUTHOR",
                 "ADMIN"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                ""
+              ],
               "repeated": false
             }
           },
@@ -3216,7 +3268,10 @@
                 "LIVE",
                 "DRAFT"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                ""
+              ],
               "repeated": true
             },
             "view": {
@@ -3235,7 +3290,12 @@
                 "AUTHOR",
                 "ADMIN"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                ""
+              ],
               "repeated": false
             }
           },
@@ -3702,7 +3762,11 @@
                 "PUBLISHED",
                 "UPDATED"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                ""
+              ],
               "repeated": false
             },
             "pageToken": {
@@ -3748,7 +3812,11 @@
                 "DRAFT",
                 "SCHEDULED"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                ""
+              ],
               "repeated": true
             },
             "userId": {
@@ -3781,7 +3849,12 @@
                 "AUTHOR",
                 "ADMIN"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                ""
+              ],
               "repeated": false
             }
           },
@@ -3950,7 +4023,12 @@
                 "AUTHOR",
                 "ADMIN"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                ""
+              ],
               "repeated": false
             }
           },
@@ -4036,7 +4114,12 @@
                 "AUTHOR",
                 "ADMIN"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                ""
+              ],
               "repeated": false
             }
           },
@@ -4244,7 +4327,11 @@
                 "PUBLISHED",
                 "UPDATED"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                ""
+              ],
               "repeated": false
             },
             "pageToken": {
@@ -4290,7 +4377,11 @@
                 "DRAFT",
                 "SCHEDULED"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                ""
+              ],
               "repeated": true
             },
             "view": {
@@ -4309,7 +4400,12 @@
                 "AUTHOR",
                 "ADMIN"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                ""
+              ],
               "repeated": false
             }
           },
@@ -4621,7 +4717,11 @@
                 "PUBLISHED",
                 "UPDATED"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                ""
+              ],
               "repeated": false
             },
             "q": {

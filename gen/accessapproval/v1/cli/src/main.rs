@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("accessapproval1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200508")
+            .version("0.1.0-20210309")
             .about("An API for controlling access to data by Google personnel.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -37,7 +37,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: delete_access_approval_settings, get_access_approval_settings and update_access_approval_settings");
         {
-            let mcmd = SubCommand::with_name("delete_access_approval_settings").about("Deletes the settings associated with a project, folder, or organization.\nThis will have the effect of disabling Access Approval for the project,\nfolder, or organization, but only if all ancestors also have Access\nApproval disabled. If Access Approval is enabled at a higher level of the\nhierarchy, then Access Approval will still be enabled at this level as\nthe settings are inherited.");
+            let mcmd = SubCommand::with_name("delete_access_approval_settings").about("Deletes the settings associated with a project, folder, or organization. This will have the effect of disabling Access Approval for the project, folder, or organization, but only if all ancestors also have Access Approval disabled. If Access Approval is enabled at a higher level of the hierarchy, then Access Approval will still be enabled at this level as the settings are inherited.");
             folders0 = folders0.subcommand(mcmd);
         }
         {
@@ -46,14 +46,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             folders0 = folders0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update_access_approval_settings").about("Updates the settings associated with a project, folder, or organization.\nSettings to update are determined by the value of field_mask.");
+            let mcmd = SubCommand::with_name("update_access_approval_settings").about("Updates the settings associated with a project, folder, or organization. Settings to update are determined by the value of field_mask.");
             folders0 = folders0.subcommand(mcmd);
         }
         let mut organizations0 = SubCommand::with_name("organizations")
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: delete_access_approval_settings, get_access_approval_settings and update_access_approval_settings");
         {
-            let mcmd = SubCommand::with_name("delete_access_approval_settings").about("Deletes the settings associated with a project, folder, or organization.\nThis will have the effect of disabling Access Approval for the project,\nfolder, or organization, but only if all ancestors also have Access\nApproval disabled. If Access Approval is enabled at a higher level of the\nhierarchy, then Access Approval will still be enabled at this level as\nthe settings are inherited.");
+            let mcmd = SubCommand::with_name("delete_access_approval_settings").about("Deletes the settings associated with a project, folder, or organization. This will have the effect of disabling Access Approval for the project, folder, or organization, but only if all ancestors also have Access Approval disabled. If Access Approval is enabled at a higher level of the hierarchy, then Access Approval will still be enabled at this level as the settings are inherited.");
             organizations0 = organizations0.subcommand(mcmd);
         }
         {
@@ -62,14 +62,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             organizations0 = organizations0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update_access_approval_settings").about("Updates the settings associated with a project, folder, or organization.\nSettings to update are determined by the value of field_mask.");
+            let mcmd = SubCommand::with_name("update_access_approval_settings").about("Updates the settings associated with a project, folder, or organization. Settings to update are determined by the value of field_mask.");
             organizations0 = organizations0.subcommand(mcmd);
         }
         let mut projects0 = SubCommand::with_name("projects")
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: delete_access_approval_settings, get_access_approval_settings and update_access_approval_settings");
         {
-            let mcmd = SubCommand::with_name("delete_access_approval_settings").about("Deletes the settings associated with a project, folder, or organization.\nThis will have the effect of disabling Access Approval for the project,\nfolder, or organization, but only if all ancestors also have Access\nApproval disabled. If Access Approval is enabled at a higher level of the\nhierarchy, then Access Approval will still be enabled at this level as\nthe settings are inherited.");
+            let mcmd = SubCommand::with_name("delete_access_approval_settings").about("Deletes the settings associated with a project, folder, or organization. This will have the effect of disabling Access Approval for the project, folder, or organization, but only if all ancestors also have Access Approval disabled. If Access Approval is enabled at a higher level of the hierarchy, then Access Approval will still be enabled at this level as the settings are inherited.");
             projects0 = projects0.subcommand(mcmd);
         }
         {
@@ -78,18 +78,18 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             projects0 = projects0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update_access_approval_settings").about("Updates the settings associated with a project, folder, or organization.\nSettings to update are determined by the value of field_mask.");
+            let mcmd = SubCommand::with_name("update_access_approval_settings").about("Updates the settings associated with a project, folder, or organization. Settings to update are determined by the value of field_mask.");
             projects0 = projects0.subcommand(mcmd);
         }
         let mut approval_requests1 = SubCommand::with_name("approval_requests")
             .setting(AppSettings::ColoredHelp)
             .about("methods: approve, dismiss, get and list");
         {
-            let mcmd = SubCommand::with_name("approve").about("Approves a request and returns the updated ApprovalRequest.\n\nReturns NOT_FOUND if the request does not exist. Returns\nFAILED_PRECONDITION if the request exists but is not in a pending state.");
+            let mcmd = SubCommand::with_name("approve").about("Approves a request and returns the updated ApprovalRequest. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state.");
             approval_requests1 = approval_requests1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("dismiss").about("Dismisses a request. Returns the updated ApprovalRequest.\n\nNOTE: This does not deny access to the resource if another request has been\nmade and approved. It is equivalent in effect to ignoring the request\naltogether.\n\nReturns NOT_FOUND if the request does not exist.\n\nReturns FAILED_PRECONDITION if the request exists but is not in a pending\nstate.");
+            let mcmd = SubCommand::with_name("dismiss").about("Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not deny access to the resource if another request has been made and approved. It is equivalent in effect to ignoring the request altogether. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state.");
             approval_requests1 = approval_requests1.subcommand(mcmd);
         }
         {
@@ -99,18 +99,18 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             approval_requests1 = approval_requests1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists approval requests associated with a project, folder, or organization.\nApproval requests can be filtered by state (pending, active, dismissed).\nThe order is reverse chronological.");
+            let mcmd = SubCommand::with_name("list").about("Lists approval requests associated with a project, folder, or organization. Approval requests can be filtered by state (pending, active, dismissed). The order is reverse chronological.");
             approval_requests1 = approval_requests1.subcommand(mcmd);
         }
         let mut approval_requests1 = SubCommand::with_name("approval_requests")
             .setting(AppSettings::ColoredHelp)
             .about("methods: approve, dismiss, get and list");
         {
-            let mcmd = SubCommand::with_name("approve").about("Approves a request and returns the updated ApprovalRequest.\n\nReturns NOT_FOUND if the request does not exist. Returns\nFAILED_PRECONDITION if the request exists but is not in a pending state.");
+            let mcmd = SubCommand::with_name("approve").about("Approves a request and returns the updated ApprovalRequest. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state.");
             approval_requests1 = approval_requests1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("dismiss").about("Dismisses a request. Returns the updated ApprovalRequest.\n\nNOTE: This does not deny access to the resource if another request has been\nmade and approved. It is equivalent in effect to ignoring the request\naltogether.\n\nReturns NOT_FOUND if the request does not exist.\n\nReturns FAILED_PRECONDITION if the request exists but is not in a pending\nstate.");
+            let mcmd = SubCommand::with_name("dismiss").about("Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not deny access to the resource if another request has been made and approved. It is equivalent in effect to ignoring the request altogether. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state.");
             approval_requests1 = approval_requests1.subcommand(mcmd);
         }
         {
@@ -120,18 +120,18 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             approval_requests1 = approval_requests1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists approval requests associated with a project, folder, or organization.\nApproval requests can be filtered by state (pending, active, dismissed).\nThe order is reverse chronological.");
+            let mcmd = SubCommand::with_name("list").about("Lists approval requests associated with a project, folder, or organization. Approval requests can be filtered by state (pending, active, dismissed). The order is reverse chronological.");
             approval_requests1 = approval_requests1.subcommand(mcmd);
         }
         let mut approval_requests1 = SubCommand::with_name("approval_requests")
             .setting(AppSettings::ColoredHelp)
             .about("methods: approve, dismiss, get and list");
         {
-            let mcmd = SubCommand::with_name("approve").about("Approves a request and returns the updated ApprovalRequest.\n\nReturns NOT_FOUND if the request does not exist. Returns\nFAILED_PRECONDITION if the request exists but is not in a pending state.");
+            let mcmd = SubCommand::with_name("approve").about("Approves a request and returns the updated ApprovalRequest. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state.");
             approval_requests1 = approval_requests1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("dismiss").about("Dismisses a request. Returns the updated ApprovalRequest.\n\nNOTE: This does not deny access to the resource if another request has been\nmade and approved. It is equivalent in effect to ignoring the request\naltogether.\n\nReturns NOT_FOUND if the request does not exist.\n\nReturns FAILED_PRECONDITION if the request exists but is not in a pending\nstate.");
+            let mcmd = SubCommand::with_name("dismiss").about("Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does not deny access to the resource if another request has been made and approved. It is equivalent in effect to ignoring the request altogether. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state.");
             approval_requests1 = approval_requests1.subcommand(mcmd);
         }
         {
@@ -141,7 +141,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             approval_requests1 = approval_requests1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists approval requests associated with a project, folder, or organization.\nApproval requests can be filtered by state (pending, active, dismissed).\nThe order is reverse chronological.");
+            let mcmd = SubCommand::with_name("list").about("Lists approval requests associated with a project, folder, or organization. Approval requests can be filtered by state (pending, active, dismissed). The order is reverse chronological.");
             approval_requests1 = approval_requests1.subcommand(mcmd);
         }
         projects0 = projects0.subcommand(approval_requests1);

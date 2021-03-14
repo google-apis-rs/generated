@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("content2d1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200508")
-            .about("Manages product items, inventory, and Merchant Center accounts for Google Shopping.")
+            .version("0.1.0-20210303")
+            .about("Manage your product listings and accounts for Google Shopping")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -35,7 +35,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .takes_value(false));
         let mut accounts0 = SubCommand::with_name("accounts")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: authinfo, claimwebsite, custombatch, delete, get, insert, link, list, listlinks and update");
+                        .about("methods: authinfo, claimwebsite, custombatch, delete, get, insert, link, list, listlinks, update and updatelabels");
         {
             let mcmd = SubCommand::with_name("authinfo")
                 .about("Returns information about the authenticated user.");
@@ -79,7 +79,13 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             accounts0 = accounts0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Updates a Merchant Center account.");
+            let mcmd = SubCommand::with_name("update").about("Updates a Merchant Center account. Any fields that are not provided are deleted from the resource.");
+            accounts0 = accounts0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("updatelabels").about(
+                "Updates labels that are assigned to the Merchant Center account by CSS user.",
+            );
             accounts0 = accounts0.subcommand(mcmd);
         }
         let mut accountstatuses0 = SubCommand::with_name("accountstatuses")
@@ -120,9 +126,71 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             accounttax0 = accounttax0.subcommand(mcmd);
         }
         {
-            let mcmd =
-                SubCommand::with_name("update").about("Updates the tax settings of the account.");
+            let mcmd = SubCommand::with_name("update").about("Updates the tax settings of the account. Any fields that are not provided are deleted from the resource.");
             accounttax0 = accounttax0.subcommand(mcmd);
+        }
+        let mut buyongoogleprograms0 = SubCommand::with_name("buyongoogleprograms")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: get and onboard");
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Retrieves a status of BoG program for your Merchant Center account.");
+            buyongoogleprograms0 = buyongoogleprograms0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("onboard").about("Onboards BoG in your Merchant Center account. By using this method, you agree to the [Terms of Service](https://merchants.google.com/mc/termsofservice/transactions/US/latest). Calling this method is only possible if the authenticated account is the same as the merchant id in the request. Calling this method multiple times will only accept Terms of Service if the latest version is not currently signed.");
+            buyongoogleprograms0 = buyongoogleprograms0.subcommand(mcmd);
+        }
+        let mut collections0 = SubCommand::with_name("collections")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get and list");
+        {
+            let mcmd = SubCommand::with_name("create").about("Uploads a collection to your Merchant Center account. If a collection with the same collectionId already exists, this method updates that entry. In each update, the collection is completely replaced by the fields in the body of the update request.");
+            collections0 = collections0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete")
+                .about("Deletes a collection from your Merchant Center account.");
+            collections0 = collections0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Retrieves a collection from your Merchant Center account.");
+            collections0 = collections0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Lists the collections in your Merchant Center account. The response might contain fewer items than specified by page_size. Rely on next_page_token to determine if there are more items to be requested.");
+            collections0 = collections0.subcommand(mcmd);
+        }
+        let mut collectionstatuses0 = SubCommand::with_name("collectionstatuses")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: get and list");
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Gets the status of a collection from your Merchant Center account.");
+            collectionstatuses0 = collectionstatuses0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists the statuses of the collections in your Merchant Center account.");
+            collectionstatuses0 = collectionstatuses0.subcommand(mcmd);
+        }
+        let mut csses0 = SubCommand::with_name("csses")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: get, list and updatelabels");
+        {
+            let mcmd = SubCommand::with_name("get").about("Retrieves a single CSS domain by ID.");
+            csses0 = csses0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists CSS domains affiliated with a CSS group.");
+            csses0 = csses0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("updatelabels")
+                .about("Updates labels that are assigned to a CSS domain by its CSS group.");
+            csses0 = csses0.subcommand(mcmd);
         }
         let mut datafeeds0 = SubCommand::with_name("datafeeds")
             .setting(AppSettings::ColoredHelp)
@@ -137,8 +205,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             datafeeds0 = datafeeds0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("fetchnow")
-                .about("Invokes a fetch for the datafeed in your Merchant Center account.");
+            let mcmd = SubCommand::with_name("fetchnow").about("Invokes a fetch for the datafeed in your Merchant Center account. If you need to call this method more than once per day, we recommend you use the Products service to update your product data.");
             datafeeds0 = datafeeds0.subcommand(mcmd);
         }
         {
@@ -157,8 +224,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             datafeeds0 = datafeeds0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update")
-                .about("Updates a datafeed configuration of your Merchant Center account.");
+            let mcmd = SubCommand::with_name("update").about("Updates a datafeed configuration of your Merchant Center account. Any fields that are not provided are deleted from the resource.");
             datafeeds0 = datafeeds0.subcommand(mcmd);
         }
         let mut datafeedstatuses0 = SubCommand::with_name("datafeedstatuses")
@@ -227,8 +293,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             liasettings0 = liasettings0.subcommand(mcmd);
         }
         {
-            let mcmd =
-                SubCommand::with_name("update").about("Updates the LIA settings of the account.");
+            let mcmd = SubCommand::with_name("update").about("Updates the LIA settings of the account. Any fields that are not provided are deleted from the resource.");
             liasettings0 = liasettings0.subcommand(mcmd);
         }
         let mut localinventory0 = SubCommand::with_name("localinventory")
@@ -242,7 +307,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("insert")
-                .about("Update the local inventory of a product in your Merchant Center account.");
+                .about("Updates the local inventory of a product in your Merchant Center account.");
             localinventory0 = localinventory0.subcommand(mcmd);
         }
         let mut orderinvoices0 = SubCommand::with_name("orderinvoices")
@@ -270,10 +335,15 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut orderreturns0 = SubCommand::with_name("orderreturns")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: acknowledge, get, list and process");
+            .about("methods: acknowledge, createorderreturn, get, list and process");
         {
             let mcmd = SubCommand::with_name("acknowledge")
                 .about("Acks an order return in your Merchant Center account.");
+            orderreturns0 = orderreturns0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("createorderreturn")
+                .about("Create return in your Merchant Center account.");
             orderreturns0 = orderreturns0.subcommand(mcmd);
         }
         {
@@ -293,7 +363,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut orders0 = SubCommand::with_name("orders")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: acknowledge, advancetestorder, cancel, cancellineitem, canceltestorderbycustomer, createtestorder, createtestreturn, get, getbymerchantorderid, gettestordertemplate, instorerefundlineitem, list, rejectreturnlineitem, returnrefundlineitem, setlineitemmetadata, shiplineitems, updatelineitemshippingdetails, updatemerchantorderid and updateshipment");
+                        .about("methods: acknowledge, advancetestorder, cancel, cancellineitem, canceltestorderbycustomer, createtestorder, createtestreturn, get, getbymerchantorderid, gettestordertemplate, instorerefundlineitem, list, refunditem, refundorder, rejectreturnlineitem, returnrefundlineitem, setlineitemmetadata, shiplineitems, updatelineitemshippingdetails, updatemerchantorderid and updateshipment");
         {
             let mcmd =
                 SubCommand::with_name("acknowledge").about("Marks an order as acknowledged.");
@@ -343,7 +413,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             orders0 = orders0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("instorerefundlineitem").about("Deprecated. Notifies that item return and refund was handled directly by merchant outside of Google payments processing (e.g. cash refund done in store).\nNote: We recommend calling the returnrefundlineitem method to refund in-store returns. We will issue the refund directly to the customer. This helps to prevent possible differences arising between merchant and Google transaction records. We also recommend having the point of sale system communicate with Google to ensure that customers do not receive a double refund by first refunding via Google then via an in-store return.");
+            let mcmd = SubCommand::with_name("instorerefundlineitem").about("Deprecated. Notifies that item return and refund was handled directly by merchant outside of Google payments processing (e.g. cash refund done in store). Note: We recommend calling the returnrefundlineitem method to refund in-store returns. We will issue the refund directly to the customer. This helps to prevent possible differences arising between merchant and Google transaction records. We also recommend having the point of sale system communicate with Google to ensure that customers do not receive a double refund by first refunding via Google then via an in-store return.");
             orders0 = orders0.subcommand(mcmd);
         }
         {
@@ -352,12 +422,22 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             orders0 = orders0.subcommand(mcmd);
         }
         {
+            let mcmd = SubCommand::with_name("refunditem")
+                .about("Issues a partial or total refund for items and shipment.");
+            orders0 = orders0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("refundorder")
+                .about("Issues a partial or total refund for an order.");
+            orders0 = orders0.subcommand(mcmd);
+        }
+        {
             let mcmd = SubCommand::with_name("rejectreturnlineitem")
                 .about("Rejects return on an line item.");
             orders0 = orders0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("returnrefundlineitem").about("Returns and refunds a line item. Note that this method can only be called on fully shipped orders.");
+            let mcmd = SubCommand::with_name("returnrefundlineitem").about("Returns and refunds a line item. Note that this method can only be called on fully shipped orders. Please also note that the Orderreturns API is the preferred way to handle returns after you receive a return from a customer. You can use Orderreturns.list or Orderreturns.get to search for the return, and then use Orderreturns.processreturn to issue the refund. If the return cannot be found, then we recommend using this API to issue a refund.");
             orders0 = orders0.subcommand(mcmd);
         }
         {
@@ -383,6 +463,13 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("updateshipment")
                 .about("Updates a shipment\'s status, carrier, and/or tracking ID.");
             orders0 = orders0.subcommand(mcmd);
+        }
+        let mut ordertrackingsignals0 = SubCommand::with_name("ordertrackingsignals")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create");
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates new order tracking signal.");
+            ordertrackingsignals0 = ordertrackingsignals0.subcommand(mcmd);
         }
         let mut pos0 = SubCommand::with_name("pos")
             .setting(AppSettings::ColoredHelp)
@@ -491,6 +578,68 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("insert").about("Update the regional inventory of a product in your Merchant Center account. If a regional inventory with the same region ID already exists, this method updates that entry.");
             regionalinventory0 = regionalinventory0.subcommand(mcmd);
         }
+        let mut regions0 = SubCommand::with_name("regions")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get, list and patch");
+        {
+            let mcmd = SubCommand::with_name("create")
+                .about("Creates a region definition in your Merchant Center account.");
+            regions0 = regions0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete")
+                .about("Deletes a region definition from your Merchant Center account.");
+            regions0 = regions0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Retrieves a region defined in your Merchant Center account.");
+            regions0 = regions0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists the regions in your Merchant Center account.");
+            regions0 = regions0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch")
+                .about("Updates a region definition in your Merchant Center account.");
+            regions0 = regions0.subcommand(mcmd);
+        }
+        let mut reports0 = SubCommand::with_name("reports")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: search");
+        {
+            let mcmd = SubCommand::with_name("search").about("Retrieves merchant performance mertrics matching the search query and optionally segmented by selected dimensions.");
+            reports0 = reports0.subcommand(mcmd);
+        }
+        let mut repricingrules0 = SubCommand::with_name("repricingrules")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get, list and patch");
+        {
+            let mcmd = SubCommand::with_name("create")
+                .about("Creates a repricing rule for your Merchant Center account.");
+            repricingrules0 = repricingrules0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete")
+                .about("Deletes a repricing rule in your Merchant Center account.");
+            repricingrules0 = repricingrules0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Retrieves a repricing rule from your Merchant Center account.");
+            repricingrules0 = repricingrules0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists the repricing rules in your Merchant Center account.");
+            repricingrules0 = repricingrules0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Updates a repricing rule in your Merchant Center account. All mutable fields will be overwritten in each update request. In each update, you must provide all required mutable fields, or an error will be thrown. If you do not provide an optional field in the update request, if that field currently exists, it will be deleted from the rule.");
+            repricingrules0 = repricingrules0.subcommand(mcmd);
+        }
         let mut returnaddress0 = SubCommand::with_name("returnaddress")
             .setting(AppSettings::ColoredHelp)
             .about("methods: custombatch, delete, get, insert and list");
@@ -547,6 +696,29 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .about("Lists the return policies of the Merchant Center account.");
             returnpolicy0 = returnpolicy0.subcommand(mcmd);
         }
+        let mut returnpolicyonline0 = SubCommand::with_name("returnpolicyonline")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get, list and patch");
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates a new return policy.");
+            returnpolicyonline0 = returnpolicyonline0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes an existing return policy.");
+            returnpolicyonline0 = returnpolicyonline0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Gets an existing return policy.");
+            returnpolicyonline0 = returnpolicyonline0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Lists all existing return policies.");
+            returnpolicyonline0 = returnpolicyonline0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Updates an existing return policy.");
+            returnpolicyonline0 = returnpolicyonline0.subcommand(mcmd);
+        }
         let mut settlementreports0 = SubCommand::with_name("settlementreports")
             .setting(AppSettings::ColoredHelp)
             .about("methods: get and list");
@@ -602,20 +774,98 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             shippingsettings0 = shippingsettings0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update")
-                .about("Updates the shipping settings of the account.");
+            let mcmd = SubCommand::with_name("update").about("Updates the shipping settings of the account. Any fields that are not provided are deleted from the resource.");
             shippingsettings0 = shippingsettings0.subcommand(mcmd);
         }
+        let mut credentials1 = SubCommand::with_name("credentials")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create");
+        {
+            let mcmd = SubCommand::with_name("create").about("Uploads credentials for the Merchant Center account. If credentials already exist for this Merchant Center account and purpose, this method updates them.");
+            credentials1 = credentials1.subcommand(mcmd);
+        }
+        let mut labels1 = SubCommand::with_name("labels")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, list and patch");
+        {
+            let mcmd = SubCommand::with_name("create")
+                .about("Creates a new label, not assigned to any account.");
+            labels1 = labels1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about(
+                "Deletes a label and removes it from all accounts to which it was assigned.",
+            );
+            labels1 = labels1.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("list").about("Lists the labels assigned to an account.");
+            labels1 = labels1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Updates a label.");
+            labels1 = labels1.subcommand(mcmd);
+        }
+        let mut returncarrier1 = SubCommand::with_name("returncarrier")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, list and patch");
+        {
+            let mcmd = SubCommand::with_name("create")
+                .about("Links return carrier to a merchant account.");
+            returncarrier1 = returncarrier1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete")
+                .about("Delete a return carrier in the merchant account.");
+            returncarrier1 = returncarrier1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists available return carriers in the merchant account.");
+            returncarrier1 = returncarrier1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch")
+                .about("Updates a return carrier in the merchant account.");
+            returncarrier1 = returncarrier1.subcommand(mcmd);
+        }
+        let mut repricingreports1 = SubCommand::with_name("repricingreports")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: list");
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists the metrics report for a given Repricing product.");
+            repricingreports1 = repricingreports1.subcommand(mcmd);
+        }
+        let mut repricingreports1 = SubCommand::with_name("repricingreports")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: list");
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists the metrics report for a given Repricing rule.");
+            repricingreports1 = repricingreports1.subcommand(mcmd);
+        }
+        repricingrules0 = repricingrules0.subcommand(repricingreports1);
+        productstatuses0 = productstatuses0.subcommand(repricingreports1);
+        accounts0 = accounts0.subcommand(returncarrier1);
+        accounts0 = accounts0.subcommand(labels1);
+        accounts0 = accounts0.subcommand(credentials1);
         app = app.subcommand(shippingsettings0);
         app = app.subcommand(settlementtransactions0);
         app = app.subcommand(settlementreports0);
+        app = app.subcommand(returnpolicyonline0);
         app = app.subcommand(returnpolicy0);
         app = app.subcommand(returnaddress0);
+        app = app.subcommand(repricingrules0);
+        app = app.subcommand(reports0);
+        app = app.subcommand(regions0);
         app = app.subcommand(regionalinventory0);
         app = app.subcommand(pubsubnotificationsettings0);
         app = app.subcommand(productstatuses0);
         app = app.subcommand(products0);
         app = app.subcommand(pos0);
+        app = app.subcommand(ordertrackingsignals0);
         app = app.subcommand(orders0);
         app = app.subcommand(orderreturns0);
         app = app.subcommand(orderreports0);
@@ -624,6 +874,10 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         app = app.subcommand(liasettings0);
         app = app.subcommand(datafeedstatuses0);
         app = app.subcommand(datafeeds0);
+        app = app.subcommand(csses0);
+        app = app.subcommand(collectionstatuses0);
+        app = app.subcommand(collections0);
+        app = app.subcommand(buyongoogleprograms0);
         app = app.subcommand(accounttax0);
         app = app.subcommand(accountstatuses0);
         app = app.subcommand(accounts0);

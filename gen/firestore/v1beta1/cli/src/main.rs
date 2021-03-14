@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("firestore1_beta1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200405")
-            .about("Accesses the NoSQL document database built for automatic scaling, high performance, and ease of application development.\n")
+            .version("0.1.0-20210220")
+            .about("Accesses the NoSQL document database built for automatic scaling, high performance, and ease of application development. ")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -40,18 +40,22 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: export_documents and import_documents");
         {
-            let mcmd = SubCommand::with_name("export_documents").about("Exports a copy of all or a subset of documents from Google Cloud Firestore\nto another storage system, such as Google Cloud Storage. Recent updates to\ndocuments may not be reflected in the export. The export occurs in the\nbackground and its progress can be monitored and managed via the\nOperation resource that is created. The output of an export may only be\nused once the associated operation is done. If an export operation is\ncancelled before completion it may leave partial data behind in Google\nCloud Storage.");
+            let mcmd = SubCommand::with_name("export_documents").about("Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage. Recent updates to documents may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage.");
             databases1 = databases1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("import_documents").about("Imports documents into Google Cloud Firestore. Existing documents with the\nsame name are overwritten. The import occurs in the background and its\nprogress can be monitored and managed via the Operation resource that is\ncreated. If an ImportDocuments operation is cancelled, it is possible\nthat a subset of the data has already been imported to Cloud Firestore.");
+            let mcmd = SubCommand::with_name("import_documents").about("Imports documents into Google Cloud Firestore. Existing documents with the same name are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an ImportDocuments operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Firestore.");
             databases1 = databases1.subcommand(mcmd);
         }
         let mut documents2 = SubCommand::with_name("documents")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: batch_get, begin_transaction, commit, create_document, delete, get, list, list_collection_ids, listen, patch, rollback, run_query and write");
+                        .about("methods: batch_get, batch_write, begin_transaction, commit, create_document, delete, get, list, list_collection_ids, listen, partition_query, patch, rollback, run_query and write");
         {
-            let mcmd = SubCommand::with_name("batch_get").about("Gets multiple documents.\n\nDocuments returned by this method are not guaranteed to be returned in the\nsame order that they were requested.");
+            let mcmd = SubCommand::with_name("batch_get").about("Gets multiple documents. Documents returned by this method are not guaranteed to be returned in the same order that they were requested.");
+            documents2 = documents2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("batch_write").about("Applies a batch of write operations. The BatchWrite method does not apply the write operations atomically and can apply them out of order. Method does not allow more than one write per document. Each write succeeds or fails independently. See the BatchWriteResponse for the success status of each write. If you require an atomically applied set of writes, use Commit instead.");
             documents2 = documents2.subcommand(mcmd);
         }
         {
@@ -90,6 +94,10 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             documents2 = documents2.subcommand(mcmd);
         }
         {
+            let mcmd = SubCommand::with_name("partition_query").about("Partitions a query by returning partition cursors that can be used to run the query in parallel. The returned partition cursors are split points that can be used by RunQuery as starting/end points for the query results.");
+            documents2 = documents2.subcommand(mcmd);
+        }
+        {
             let mcmd = SubCommand::with_name("patch").about("Updates or inserts a document.");
             documents2 = documents2.subcommand(mcmd);
         }
@@ -110,7 +118,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get and list");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates the specified index.\nA newly created index\'s initial state is `CREATING`. On completion of the\nreturned google.longrunning.Operation, the state will be `READY`.\nIf the index already exists, the call will return an `ALREADY_EXISTS`\nstatus.\n\nDuring creation, the process could result in an error, in which case the\nindex will move to the `ERROR` state. The process can be recovered by\nfixing the data that caused the error, removing the index with\ndelete, then re-creating the index with\ncreate.\n\nIndexes with a single field cannot be created.");
+            let mcmd = SubCommand::with_name("create").about("Creates the specified index. A newly created index\'s initial state is `CREATING`. On completion of the returned google.longrunning.Operation, the state will be `READY`. If the index already exists, the call will return an `ALREADY_EXISTS` status. During creation, the process could result in an error, in which case the index will move to the `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the index with delete, then re-creating the index with create. Indexes with a single field cannot be created.");
             indexes2 = indexes2.subcommand(mcmd);
         }
         {

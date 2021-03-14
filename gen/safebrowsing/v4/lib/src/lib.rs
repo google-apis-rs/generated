@@ -9,25 +9,18 @@ pub mod schemas {
         PartialOrd,
         Ord,
         Eq,
+        Copy,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Checksum {
-        #[doc = "The SHA256 hash of the client state; that is, of the sorted list of all\nhashes present in the database."]
-        #[serde(
-            rename = "sha256",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub sha_256: ::std::option::Option<::google_api_bytes::Bytes>,
-    }
-    impl ::google_field_selector::FieldSelector for Checksum {
+    pub struct GoogleProtobufEmpty {}
+    impl ::google_field_selector::FieldSelector for GoogleProtobufEmpty {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for Checksum {
+    impl ::google_field_selector::ToFieldType for GoogleProtobufEmpty {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -44,8 +37,39 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ClientInfo {
-        #[doc = "A client ID that (hopefully) uniquely identifies the client implementation\nof the Safe Browsing API."]
+    pub struct GoogleSecuritySafebrowsingV4Checksum {
+        #[doc = "The SHA256 hash of the client state; that is, of the sorted list of all hashes present in the database."]
+        #[serde(
+            rename = "sha256",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub sha_256: ::std::option::Option<::google_api_bytes::Bytes>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleSecuritySafebrowsingV4Checksum {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleSecuritySafebrowsingV4Checksum {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleSecuritySafebrowsingV4ClientInfo {
+        #[doc = "A client ID that (hopefully) uniquely identifies the client implementation of the Safe Browsing API."]
         #[serde(
             rename = "clientId",
             default,
@@ -60,12 +84,12 @@ pub mod schemas {
         )]
         pub client_version: ::std::option::Option<String>,
     }
-    impl ::google_field_selector::FieldSelector for ClientInfo {
+    impl ::google_field_selector::FieldSelector for GoogleSecuritySafebrowsingV4ClientInfo {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for ClientInfo {
+    impl ::google_field_selector::ToFieldType for GoogleSecuritySafebrowsingV4ClientInfo {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -82,102 +106,104 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Constraints {
-        #[doc = "A client's physical location, expressed as a ISO 31166-1 alpha-2\nregion code."]
-        #[serde(
-            rename = "deviceLocation",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub device_location: ::std::option::Option<String>,
-        #[doc = "Requests the lists for a specific language. Expects ISO 639 alpha-2\nformat."]
-        #[serde(
-            rename = "language",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub language: ::std::option::Option<String>,
-        #[doc = "Sets the maximum number of entries that the client is willing to have\nin the local database for the specified list. This should be a power of\n2 between 2**10 and 2**20. If zero, no database size limit is set."]
-        #[serde(
-            rename = "maxDatabaseEntries",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub max_database_entries: ::std::option::Option<i32>,
-        #[doc = "The maximum size in number of entries. The update will not contain more\nentries than this value.  This should be a power of 2 between 2**10 and\n2**20.  If zero, no update size limit is set."]
-        #[serde(
-            rename = "maxUpdateEntries",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub max_update_entries: ::std::option::Option<i32>,
-        #[doc = "Requests the list for a specific geographic location. If not set the\nserver may pick that value based on the user's IP address. Expects ISO\n3166-1 alpha-2 format."]
-        #[serde(
-            rename = "region",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub region: ::std::option::Option<String>,
-        #[doc = "The compression types supported by the client."]
-        #[serde(
-            rename = "supportedCompressions",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub supported_compressions:
-            ::std::option::Option<Vec<crate::schemas::ConstraintsSupportedCompressionsItems>>,
-    }
-    impl ::google_field_selector::FieldSelector for Constraints {
+    pub struct GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest { # [doc = "The client metadata."] # [serde (rename = "client" , default , skip_serializing_if = "std::option::Option::is_none")] pub client : :: std :: option :: Option < crate :: schemas :: GoogleSecuritySafebrowsingV4ClientInfo > , # [doc = "The requested threat list updates."] # [serde (rename = "listUpdateRequests" , default , skip_serializing_if = "std::option::Option::is_none")] pub list_update_requests : :: std :: option :: Option < Vec < crate :: schemas :: GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest > > , }
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest
+    {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for Constraints {
+    impl ::google_field_selector::ToFieldType
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest { # [doc = "The constraints associated with this request."] # [serde (rename = "constraints" , default , skip_serializing_if = "std::option::Option::is_none")] pub constraints : :: std :: option :: Option < crate :: schemas :: GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints > , # [doc = "The type of platform at risk by entries present in the list."] # [serde (rename = "platformType" , default , skip_serializing_if = "std::option::Option::is_none")] pub platform_type : :: std :: option :: Option < crate :: schemas :: GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType > , # [doc = "The current state of the client for the requested list (the encrypted client state that was received from the last successful list update)."] # [serde (rename = "state" , default , skip_serializing_if = "std::option::Option::is_none")] pub state : :: std :: option :: Option < :: google_api_bytes :: Bytes > , # [doc = "The types of entries present in the list."] # [serde (rename = "threatEntryType" , default , skip_serializing_if = "std::option::Option::is_none")] pub threat_entry_type : :: std :: option :: Option < crate :: schemas :: GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType > , # [doc = "The type of threat posed by entries present in the list."] # [serde (rename = "threatType" , default , skip_serializing_if = "std::option::Option::is_none")] pub threat_type : :: std :: option :: Option < crate :: schemas :: GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType > , }
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest
+    {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ConstraintsSupportedCompressionsItems {
-        CompressionTypeUnspecified,
-        Raw,
-        Rice,
+    pub enum GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType {
+        #[doc = "Threat posed to all defined platforms."]
+        AllPlatforms,
+        #[doc = "Threat posed to Android."]
+        Android,
+        #[doc = "Threat posed to at least one of the defined platforms."]
+        AnyPlatform,
+        #[doc = "Threat posed to Chrome."]
+        Chrome,
+        #[doc = "Threat posed to iOS."]
+        Ios,
+        #[doc = "Threat posed to Linux."]
+        Linux,
+        #[doc = "Threat posed to OS X."]
+        Osx,
+        #[doc = "Unknown platform."]
+        PlatformTypeUnspecified,
+        #[doc = "Threat posed to Windows."]
+        Windows,
     }
-    impl ConstraintsSupportedCompressionsItems {
+    impl GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType {
         pub fn as_str(self) -> &'static str {
-            match self {
-                ConstraintsSupportedCompressionsItems::CompressionTypeUnspecified => {
-                    "COMPRESSION_TYPE_UNSPECIFIED"
-                }
-                ConstraintsSupportedCompressionsItems::Raw => "RAW",
-                ConstraintsSupportedCompressionsItems::Rice => "RICE",
-            }
+            match self { GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: AllPlatforms => "ALL_PLATFORMS" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: Android => "ANDROID" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: AnyPlatform => "ANY_PLATFORM" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: Chrome => "CHROME" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: Ios => "IOS" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: Linux => "LINUX" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: Osx => "OSX" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: PlatformTypeUnspecified => "PLATFORM_TYPE_UNSPECIFIED" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: Windows => "WINDOWS" , }
         }
     }
-    impl ::std::convert::AsRef<str> for ConstraintsSupportedCompressionsItems {
+    impl ::std::convert::AsRef<str>
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType
+    {
         fn as_ref(&self) -> &str {
             self.as_str()
         }
     }
-    impl ::std::str::FromStr for ConstraintsSupportedCompressionsItems {
+    impl ::std::str::FromStr
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType
+    {
         type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ConstraintsSupportedCompressionsItems, ()> {
-            Ok(match s {
-                "COMPRESSION_TYPE_UNSPECIFIED" => {
-                    ConstraintsSupportedCompressionsItems::CompressionTypeUnspecified
-                }
-                "RAW" => ConstraintsSupportedCompressionsItems::Raw,
-                "RICE" => ConstraintsSupportedCompressionsItems::Rice,
-                _ => return Err(()),
-            })
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<
+            GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType,
+            (),
+        > {
+            Ok (match s { "ALL_PLATFORMS" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: AllPlatforms , "ANDROID" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: Android , "ANY_PLATFORM" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: AnyPlatform , "CHROME" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: Chrome , "IOS" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: Ios , "LINUX" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: Linux , "OSX" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: Osx , "PLATFORM_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: PlatformTypeUnspecified , "WINDOWS" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: Windows , _ => return Err (()) , })
         }
     }
-    impl ::std::fmt::Display for ConstraintsSupportedCompressionsItems {
+    impl ::std::fmt::Display
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType
+    {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
-    impl ::serde::Serialize for ConstraintsSupportedCompressionsItems {
+    impl ::serde::Serialize
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType
+    {
         fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
@@ -185,33 +211,160 @@ pub mod schemas {
             serializer.serialize_str(self.as_str())
         }
     }
-    impl<'de> ::serde::Deserialize<'de> for ConstraintsSupportedCompressionsItems {
+    impl<'de> ::serde::Deserialize<'de>
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType
+    {
         fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "COMPRESSION_TYPE_UNSPECIFIED" => {
-                    ConstraintsSupportedCompressionsItems::CompressionTypeUnspecified
-                }
-                "RAW" => ConstraintsSupportedCompressionsItems::Raw,
-                "RICE" => ConstraintsSupportedCompressionsItems::Rice,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
+            Ok (match value { "ALL_PLATFORMS" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: AllPlatforms , "ANDROID" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: Android , "ANY_PLATFORM" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: AnyPlatform , "CHROME" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: Chrome , "IOS" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: Ios , "LINUX" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: Linux , "OSX" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: Osx , "PLATFORM_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: PlatformTypeUnspecified , "WINDOWS" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType :: Windows , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
         }
     }
-    impl ::google_field_selector::FieldSelector for ConstraintsSupportedCompressionsItems {
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType
+    {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for ConstraintsSupportedCompressionsItems {
+    impl ::google_field_selector::ToFieldType
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformType
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType {
+        #[doc = "CERT"]
+        Cert,
+        #[doc = "Chrome extension."]
+        ChromeExtension,
+        #[doc = "An executable program."]
+        Executable,
+        #[doc = "Filename."]
+        Filename,
+        #[doc = "An IP range."]
+        IpRange,
+        #[doc = "Unspecified."]
+        ThreatEntryTypeUnspecified,
+        #[doc = "A URL."]
+        Url,
+    }
+    impl GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType :: Cert => "CERT" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType :: ChromeExtension => "CHROME_EXTENSION" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType :: Executable => "EXECUTABLE" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType :: Filename => "FILENAME" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType :: IpRange => "IP_RANGE" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType :: ThreatEntryTypeUnspecified => "THREAT_ENTRY_TYPE_UNSPECIFIED" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType :: Url => "URL" , }
+        }
+    }
+    impl :: std :: convert :: AsRef < str > for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType { fn as_ref (& self) -> & str { self . as_str () } }
+    impl :: std :: str :: FromStr for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType { type Err = () ; fn from_str (s : & str) -> :: std :: result :: Result < GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType , () > { Ok (match s { "CERT" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType :: Cert , "CHROME_EXTENSION" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType :: ChromeExtension , "EXECUTABLE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType :: Executable , "FILENAME" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType :: Filename , "IP_RANGE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType :: IpRange , "THREAT_ENTRY_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType :: ThreatEntryTypeUnspecified , "URL" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType :: Url , _ => return Err (()) , }) } }
+    impl :: std :: fmt :: Display for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType { fn fmt (& self , f : & mut std :: fmt :: Formatter < '_ >) -> :: std :: fmt :: Result { f . write_str (self . as_str ()) } }
+    impl :: serde :: Serialize for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType { fn serialize < S > (& self , serializer : S) -> :: std :: result :: Result < S :: Ok , S :: Error > where S : :: serde :: ser :: Serializer { serializer . serialize_str (self . as_str ()) } }
+    impl < 'de > :: serde :: Deserialize < 'de > for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType { fn deserialize < D > (deserializer : D) -> :: std :: result :: Result < Self , D :: Error > where D : :: serde :: de :: Deserializer < 'de > , { let value : & 'de str = < & str > :: deserialize (deserializer) ? ; Ok (match value { "CERT" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType :: Cert , "CHROME_EXTENSION" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType :: ChromeExtension , "EXECUTABLE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType :: Executable , "FILENAME" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType :: Filename , "IP_RANGE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType :: IpRange , "THREAT_ENTRY_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType :: ThreatEntryTypeUnspecified , "URL" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType :: Url , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , }) } }
+    impl :: google_field_selector :: FieldSelector for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType { fn fields () -> Vec < :: google_field_selector :: Field > { Vec :: new () } }
+    impl :: google_field_selector :: ToFieldType for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryType { fn field_type () -> :: google_field_selector :: FieldType { :: google_field_selector :: FieldType :: Leaf } }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType {
+        #[doc = "API abuse threat type."]
+        ApiAbuse,
+        #[doc = "List used for offline APK checks in PAM."]
+        ApkMalwareOffline,
+        #[doc = "Client incident threat type."]
+        ClientIncident,
+        #[doc = "Whitelist used when detecting client incident threats. This enum was never launched and should be re-used for the next list."]
+        ClientIncidentWhitelist,
+        #[doc = "Client side download detection whitelist threat type."]
+        CsdDownloadWhitelist,
+        #[doc = "Client side detection whitelist threat type."]
+        CsdWhitelist,
+        #[doc = "Safe list to ship hashes of known safe URL expressions."]
+        HighConfidenceAllowlist,
+        #[doc = "Malicious binary threat type."]
+        MaliciousBinary,
+        #[doc = "Malware threat type."]
+        Malware,
+        #[doc = "Potentially harmful application threat type."]
+        PotentiallyHarmfulApplication,
+        #[doc = "Social engineering threat type."]
+        SocialEngineering,
+        #[doc = "Social engineering threat type for internal use."]
+        SocialEngineeringInternal,
+        #[doc = "Patterns to be used for activating the subresource filter. Interstitial will not be shown for patterns from this list."]
+        SubresourceFilter,
+        #[doc = "Entities that are suspected to present a threat."]
+        Suspicious,
+        #[doc = "Unknown."]
+        ThreatTypeUnspecified,
+        #[doc = "Trick-to-bill threat list."]
+        TrickToBill,
+        #[doc = "Unwanted software threat type."]
+        UnwantedSoftware,
+    }
+    impl GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: ApiAbuse => "API_ABUSE" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: ApkMalwareOffline => "APK_MALWARE_OFFLINE" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: ClientIncident => "CLIENT_INCIDENT" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: ClientIncidentWhitelist => "CLIENT_INCIDENT_WHITELIST" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: CsdDownloadWhitelist => "CSD_DOWNLOAD_WHITELIST" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: CsdWhitelist => "CSD_WHITELIST" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: HighConfidenceAllowlist => "HIGH_CONFIDENCE_ALLOWLIST" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: MaliciousBinary => "MALICIOUS_BINARY" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: Malware => "MALWARE" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: PotentiallyHarmfulApplication => "POTENTIALLY_HARMFUL_APPLICATION" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: SocialEngineering => "SOCIAL_ENGINEERING" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: SocialEngineeringInternal => "SOCIAL_ENGINEERING_INTERNAL" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: SubresourceFilter => "SUBRESOURCE_FILTER" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: Suspicious => "SUSPICIOUS" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: ThreatTypeUnspecified => "THREAT_TYPE_UNSPECIFIED" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: TrickToBill => "TRICK_TO_BILL" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: UnwantedSoftware => "UNWANTED_SOFTWARE" , }
+        }
+    }
+    impl ::std::convert::AsRef<str>
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType
+    {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType
+    {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<
+            GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType,
+            (),
+        > {
+            Ok (match s { "API_ABUSE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: ApiAbuse , "APK_MALWARE_OFFLINE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: ApkMalwareOffline , "CLIENT_INCIDENT" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: ClientIncident , "CLIENT_INCIDENT_WHITELIST" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: ClientIncidentWhitelist , "CSD_DOWNLOAD_WHITELIST" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: CsdDownloadWhitelist , "CSD_WHITELIST" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: CsdWhitelist , "HIGH_CONFIDENCE_ALLOWLIST" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: HighConfidenceAllowlist , "MALICIOUS_BINARY" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: MaliciousBinary , "MALWARE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: Malware , "POTENTIALLY_HARMFUL_APPLICATION" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: PotentiallyHarmfulApplication , "SOCIAL_ENGINEERING" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: SocialEngineering , "SOCIAL_ENGINEERING_INTERNAL" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: SocialEngineeringInternal , "SUBRESOURCE_FILTER" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: SubresourceFilter , "SUSPICIOUS" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: Suspicious , "THREAT_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: ThreatTypeUnspecified , "TRICK_TO_BILL" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: TrickToBill , "UNWANTED_SOFTWARE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: UnwantedSoftware , _ => return Err (()) , })
+        }
+    }
+    impl ::std::fmt::Display
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType
+    {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType
+    {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de>
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType
+    {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok (match value { "API_ABUSE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: ApiAbuse , "APK_MALWARE_OFFLINE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: ApkMalwareOffline , "CLIENT_INCIDENT" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: ClientIncident , "CLIENT_INCIDENT_WHITELIST" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: ClientIncidentWhitelist , "CSD_DOWNLOAD_WHITELIST" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: CsdDownloadWhitelist , "CSD_WHITELIST" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: CsdWhitelist , "HIGH_CONFIDENCE_ALLOWLIST" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: HighConfidenceAllowlist , "MALICIOUS_BINARY" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: MaliciousBinary , "MALWARE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: Malware , "POTENTIALLY_HARMFUL_APPLICATION" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: PotentiallyHarmfulApplication , "SOCIAL_ENGINEERING" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: SocialEngineering , "SOCIAL_ENGINEERING_INTERNAL" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: SocialEngineeringInternal , "SUBRESOURCE_FILTER" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: SubresourceFilter , "SUSPICIOUS" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: Suspicious , "THREAT_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: ThreatTypeUnspecified , "TRICK_TO_BILL" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: TrickToBill , "UNWANTED_SOFTWARE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType :: UnwantedSoftware , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatType
+    {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -224,18 +377,66 @@ pub mod schemas {
         PartialOrd,
         Ord,
         Eq,
-        Copy,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Empty {}
-    impl ::google_field_selector::FieldSelector for Empty {
+    pub struct GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints { # [doc = "A client's physical location, expressed as a ISO 31166-1 alpha-2 region code."] # [serde (rename = "deviceLocation" , default , skip_serializing_if = "std::option::Option::is_none")] pub device_location : :: std :: option :: Option < String > , # [doc = "Requests the lists for a specific language. Expects ISO 639 alpha-2 format."] # [serde (rename = "language" , default , skip_serializing_if = "std::option::Option::is_none")] pub language : :: std :: option :: Option < String > , # [doc = "Sets the maximum number of entries that the client is willing to have in the local database for the specified list. This should be a power of 2 between 2**10 and 2**20. If zero, no database size limit is set."] # [serde (rename = "maxDatabaseEntries" , default , skip_serializing_if = "std::option::Option::is_none")] pub max_database_entries : :: std :: option :: Option < i32 > , # [doc = "The maximum size in number of entries. The update will not contain more entries than this value. This should be a power of 2 between 2**10 and 2**20. If zero, no update size limit is set."] # [serde (rename = "maxUpdateEntries" , default , skip_serializing_if = "std::option::Option::is_none")] pub max_update_entries : :: std :: option :: Option < i32 > , # [doc = "Requests the list for a specific geographic location. If not set the server may pick that value based on the user's IP address. Expects ISO 3166-1 alpha-2 format."] # [serde (rename = "region" , default , skip_serializing_if = "std::option::Option::is_none")] pub region : :: std :: option :: Option < String > , # [doc = "The compression types supported by the client."] # [serde (rename = "supportedCompressions" , default , skip_serializing_if = "std::option::Option::is_none")] pub supported_compressions : :: std :: option :: Option < Vec < crate :: schemas :: GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItems > > , }
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints
+    {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for Empty {
+    impl ::google_field_selector::ToFieldType
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItems
+    {
+        #[doc = "Unknown."]
+        CompressionTypeUnspecified,
+        #[doc = "Raw, uncompressed data."]
+        Raw,
+        #[doc = "Rice-Golomb encoded data."]
+        Rice,
+    }
+    impl GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItems { pub fn as_str (self) -> & 'static str { match self { GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItems :: CompressionTypeUnspecified => "COMPRESSION_TYPE_UNSPECIFIED" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItems :: Raw => "RAW" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItems :: Rice => "RICE" , } } }
+    impl :: std :: convert :: AsRef < str > for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItems { fn as_ref (& self) -> & str { self . as_str () } }
+    impl :: std :: str :: FromStr for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItems { type Err = () ; fn from_str (s : & str) -> :: std :: result :: Result < GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItems , () > { Ok (match s { "COMPRESSION_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItems :: CompressionTypeUnspecified , "RAW" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItems :: Raw , "RICE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItems :: Rice , _ => return Err (()) , }) } }
+    impl :: std :: fmt :: Display for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItems { fn fmt (& self , f : & mut std :: fmt :: Formatter < '_ >) -> :: std :: fmt :: Result { f . write_str (self . as_str ()) } }
+    impl :: serde :: Serialize for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItems { fn serialize < S > (& self , serializer : S) -> :: std :: result :: Result < S :: Ok , S :: Error > where S : :: serde :: ser :: Serializer { serializer . serialize_str (self . as_str ()) } }
+    impl < 'de > :: serde :: Deserialize < 'de > for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItems { fn deserialize < D > (deserializer : D) -> :: std :: result :: Result < Self , D :: Error > where D : :: serde :: de :: Deserializer < 'de > , { let value : & 'de str = < & str > :: deserialize (deserializer) ? ; Ok (match value { "COMPRESSION_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItems :: CompressionTypeUnspecified , "RAW" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItems :: Raw , "RICE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItems :: Rice , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , }) } }
+    impl :: google_field_selector :: FieldSelector for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItems { fn fields () -> Vec < :: google_field_selector :: Field > { Vec :: new () } }
+    impl :: google_field_selector :: ToFieldType for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItems { fn field_type () -> :: google_field_selector :: FieldType { :: google_field_selector :: FieldType :: Leaf } }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse { # [doc = "The list updates requested by the clients. The number of responses here may be less than the number of requests sent by clients. This is the case, for example, if the server has no updates for a particular list."] # [serde (rename = "listUpdateResponses" , default , skip_serializing_if = "std::option::Option::is_none")] pub list_update_responses : :: std :: option :: Option < Vec < crate :: schemas :: GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse > > , # [doc = "The minimum duration the client must wait before issuing any update request. If this field is not set clients may update as soon as they want."] # [serde (rename = "minimumWaitDuration" , default , skip_serializing_if = "std::option::Option::is_none")] pub minimum_wait_duration : :: std :: option :: Option < String > , }
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse
+    {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -252,28 +453,303 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct FetchThreatListUpdatesRequest {
-        #[doc = "The client metadata."]
-        #[serde(
-            rename = "client",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub client: ::std::option::Option<crate::schemas::ClientInfo>,
-        #[doc = "The requested threat list updates."]
-        #[serde(
-            rename = "listUpdateRequests",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub list_update_requests: ::std::option::Option<Vec<crate::schemas::ListUpdateRequest>>,
-    }
-    impl ::google_field_selector::FieldSelector for FetchThreatListUpdatesRequest {
+    pub struct GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse { # [doc = "A set of entries to add to a local threat type's list. Repeated to allow for a combination of compressed and raw data to be sent in a single response."] # [serde (rename = "additions" , default , skip_serializing_if = "std::option::Option::is_none")] pub additions : :: std :: option :: Option < Vec < crate :: schemas :: GoogleSecuritySafebrowsingV4ThreatEntrySet > > , # [doc = "The expected SHA256 hash of the client state; that is, of the sorted list of all hashes present in the database after applying the provided update. If the client state doesn't match the expected state, the client must disregard this update and retry later."] # [serde (rename = "checksum" , default , skip_serializing_if = "std::option::Option::is_none")] pub checksum : :: std :: option :: Option < crate :: schemas :: GoogleSecuritySafebrowsingV4Checksum > , # [doc = "The new client state, in encrypted format. Opaque to clients."] # [serde (rename = "newClientState" , default , skip_serializing_if = "std::option::Option::is_none")] pub new_client_state : :: std :: option :: Option < :: google_api_bytes :: Bytes > , # [doc = "The platform type for which data is returned."] # [serde (rename = "platformType" , default , skip_serializing_if = "std::option::Option::is_none")] pub platform_type : :: std :: option :: Option < crate :: schemas :: GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType > , # [doc = "A set of entries to remove from a local threat type's list. In practice, this field is empty or contains exactly one ThreatEntrySet."] # [serde (rename = "removals" , default , skip_serializing_if = "std::option::Option::is_none")] pub removals : :: std :: option :: Option < Vec < crate :: schemas :: GoogleSecuritySafebrowsingV4ThreatEntrySet > > , # [doc = "The type of response. This may indicate that an action is required by the client when the response is received."] # [serde (rename = "responseType" , default , skip_serializing_if = "std::option::Option::is_none")] pub response_type : :: std :: option :: Option < crate :: schemas :: GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseType > , # [doc = "The format of the threats."] # [serde (rename = "threatEntryType" , default , skip_serializing_if = "std::option::Option::is_none")] pub threat_entry_type : :: std :: option :: Option < crate :: schemas :: GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType > , # [doc = "The threat type for which data is returned."] # [serde (rename = "threatType" , default , skip_serializing_if = "std::option::Option::is_none")] pub threat_type : :: std :: option :: Option < crate :: schemas :: GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType > , }
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse
+    {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for FetchThreatListUpdatesRequest {
+    impl ::google_field_selector::ToFieldType
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType {
+        #[doc = "Threat posed to all defined platforms."]
+        AllPlatforms,
+        #[doc = "Threat posed to Android."]
+        Android,
+        #[doc = "Threat posed to at least one of the defined platforms."]
+        AnyPlatform,
+        #[doc = "Threat posed to Chrome."]
+        Chrome,
+        #[doc = "Threat posed to iOS."]
+        Ios,
+        #[doc = "Threat posed to Linux."]
+        Linux,
+        #[doc = "Threat posed to OS X."]
+        Osx,
+        #[doc = "Unknown platform."]
+        PlatformTypeUnspecified,
+        #[doc = "Threat posed to Windows."]
+        Windows,
+    }
+    impl GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: AllPlatforms => "ALL_PLATFORMS" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: Android => "ANDROID" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: AnyPlatform => "ANY_PLATFORM" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: Chrome => "CHROME" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: Ios => "IOS" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: Linux => "LINUX" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: Osx => "OSX" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: PlatformTypeUnspecified => "PLATFORM_TYPE_UNSPECIFIED" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: Windows => "WINDOWS" , }
+        }
+    }
+    impl ::std::convert::AsRef<str>
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType
+    {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType
+    {
+        type Err = ();        fn from_str (s : & str) -> :: std :: result :: Result < GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType , () >{
+            Ok (match s { "ALL_PLATFORMS" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: AllPlatforms , "ANDROID" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: Android , "ANY_PLATFORM" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: AnyPlatform , "CHROME" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: Chrome , "IOS" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: Ios , "LINUX" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: Linux , "OSX" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: Osx , "PLATFORM_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: PlatformTypeUnspecified , "WINDOWS" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: Windows , _ => return Err (()) , })
+        }
+    }
+    impl ::std::fmt::Display
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType
+    {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType
+    {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de>
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType
+    {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok (match value { "ALL_PLATFORMS" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: AllPlatforms , "ANDROID" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: Android , "ANY_PLATFORM" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: AnyPlatform , "CHROME" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: Chrome , "IOS" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: Ios , "LINUX" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: Linux , "OSX" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: Osx , "PLATFORM_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: PlatformTypeUnspecified , "WINDOWS" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType :: Windows , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformType
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseType {
+        #[doc = "Full updates replace the client's entire local database. This means that either the client was seriously out-of-date or the client is believed to be corrupt."]
+        FullUpdate,
+        #[doc = "Partial updates are applied to the client's existing local database."]
+        PartialUpdate,
+        #[doc = "Unknown."]
+        ResponseTypeUnspecified,
+    }
+    impl GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseType {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseType :: FullUpdate => "FULL_UPDATE" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseType :: PartialUpdate => "PARTIAL_UPDATE" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseType :: ResponseTypeUnspecified => "RESPONSE_TYPE_UNSPECIFIED" , }
+        }
+    }
+    impl ::std::convert::AsRef<str>
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseType
+    {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseType
+    {
+        type Err = ();        fn from_str (s : & str) -> :: std :: result :: Result < GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseType , () >{
+            Ok (match s { "FULL_UPDATE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseType :: FullUpdate , "PARTIAL_UPDATE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseType :: PartialUpdate , "RESPONSE_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseType :: ResponseTypeUnspecified , _ => return Err (()) , })
+        }
+    }
+    impl ::std::fmt::Display
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseType
+    {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseType
+    {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de>
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseType
+    {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok (match value { "FULL_UPDATE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseType :: FullUpdate , "PARTIAL_UPDATE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseType :: PartialUpdate , "RESPONSE_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseType :: ResponseTypeUnspecified , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseType
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseType
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType
+    {
+        #[doc = "CERT"]
+        Cert,
+        #[doc = "Chrome extension."]
+        ChromeExtension,
+        #[doc = "An executable program."]
+        Executable,
+        #[doc = "Filename."]
+        Filename,
+        #[doc = "An IP range."]
+        IpRange,
+        #[doc = "Unspecified."]
+        ThreatEntryTypeUnspecified,
+        #[doc = "A URL."]
+        Url,
+    }
+    impl GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType :: Cert => "CERT" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType :: ChromeExtension => "CHROME_EXTENSION" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType :: Executable => "EXECUTABLE" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType :: Filename => "FILENAME" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType :: IpRange => "IP_RANGE" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType :: ThreatEntryTypeUnspecified => "THREAT_ENTRY_TYPE_UNSPECIFIED" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType :: Url => "URL" , }
+        }
+    }
+    impl :: std :: convert :: AsRef < str > for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType { fn as_ref (& self) -> & str { self . as_str () } }
+    impl :: std :: str :: FromStr for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType { type Err = () ; fn from_str (s : & str) -> :: std :: result :: Result < GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType , () > { Ok (match s { "CERT" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType :: Cert , "CHROME_EXTENSION" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType :: ChromeExtension , "EXECUTABLE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType :: Executable , "FILENAME" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType :: Filename , "IP_RANGE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType :: IpRange , "THREAT_ENTRY_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType :: ThreatEntryTypeUnspecified , "URL" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType :: Url , _ => return Err (()) , }) } }
+    impl :: std :: fmt :: Display for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType { fn fmt (& self , f : & mut std :: fmt :: Formatter < '_ >) -> :: std :: fmt :: Result { f . write_str (self . as_str ()) } }
+    impl :: serde :: Serialize for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType { fn serialize < S > (& self , serializer : S) -> :: std :: result :: Result < S :: Ok , S :: Error > where S : :: serde :: ser :: Serializer { serializer . serialize_str (self . as_str ()) } }
+    impl < 'de > :: serde :: Deserialize < 'de > for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType { fn deserialize < D > (deserializer : D) -> :: std :: result :: Result < Self , D :: Error > where D : :: serde :: de :: Deserializer < 'de > , { let value : & 'de str = < & str > :: deserialize (deserializer) ? ; Ok (match value { "CERT" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType :: Cert , "CHROME_EXTENSION" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType :: ChromeExtension , "EXECUTABLE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType :: Executable , "FILENAME" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType :: Filename , "IP_RANGE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType :: IpRange , "THREAT_ENTRY_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType :: ThreatEntryTypeUnspecified , "URL" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType :: Url , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , }) } }
+    impl :: google_field_selector :: FieldSelector for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType { fn fields () -> Vec < :: google_field_selector :: Field > { Vec :: new () } }
+    impl :: google_field_selector :: ToFieldType for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryType { fn field_type () -> :: google_field_selector :: FieldType { :: google_field_selector :: FieldType :: Leaf } }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType {
+        #[doc = "API abuse threat type."]
+        ApiAbuse,
+        #[doc = "List used for offline APK checks in PAM."]
+        ApkMalwareOffline,
+        #[doc = "Client incident threat type."]
+        ClientIncident,
+        #[doc = "Whitelist used when detecting client incident threats. This enum was never launched and should be re-used for the next list."]
+        ClientIncidentWhitelist,
+        #[doc = "Client side download detection whitelist threat type."]
+        CsdDownloadWhitelist,
+        #[doc = "Client side detection whitelist threat type."]
+        CsdWhitelist,
+        #[doc = "Safe list to ship hashes of known safe URL expressions."]
+        HighConfidenceAllowlist,
+        #[doc = "Malicious binary threat type."]
+        MaliciousBinary,
+        #[doc = "Malware threat type."]
+        Malware,
+        #[doc = "Potentially harmful application threat type."]
+        PotentiallyHarmfulApplication,
+        #[doc = "Social engineering threat type."]
+        SocialEngineering,
+        #[doc = "Social engineering threat type for internal use."]
+        SocialEngineeringInternal,
+        #[doc = "Patterns to be used for activating the subresource filter. Interstitial will not be shown for patterns from this list."]
+        SubresourceFilter,
+        #[doc = "Entities that are suspected to present a threat."]
+        Suspicious,
+        #[doc = "Unknown."]
+        ThreatTypeUnspecified,
+        #[doc = "Trick-to-bill threat list."]
+        TrickToBill,
+        #[doc = "Unwanted software threat type."]
+        UnwantedSoftware,
+    }
+    impl GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: ApiAbuse => "API_ABUSE" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: ApkMalwareOffline => "APK_MALWARE_OFFLINE" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: ClientIncident => "CLIENT_INCIDENT" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: ClientIncidentWhitelist => "CLIENT_INCIDENT_WHITELIST" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: CsdDownloadWhitelist => "CSD_DOWNLOAD_WHITELIST" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: CsdWhitelist => "CSD_WHITELIST" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: HighConfidenceAllowlist => "HIGH_CONFIDENCE_ALLOWLIST" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: MaliciousBinary => "MALICIOUS_BINARY" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: Malware => "MALWARE" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: PotentiallyHarmfulApplication => "POTENTIALLY_HARMFUL_APPLICATION" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: SocialEngineering => "SOCIAL_ENGINEERING" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: SocialEngineeringInternal => "SOCIAL_ENGINEERING_INTERNAL" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: SubresourceFilter => "SUBRESOURCE_FILTER" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: Suspicious => "SUSPICIOUS" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: ThreatTypeUnspecified => "THREAT_TYPE_UNSPECIFIED" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: TrickToBill => "TRICK_TO_BILL" , GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: UnwantedSoftware => "UNWANTED_SOFTWARE" , }
+        }
+    }
+    impl ::std::convert::AsRef<str>
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType
+    {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType
+    {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<
+            GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType,
+            (),
+        > {
+            Ok (match s { "API_ABUSE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: ApiAbuse , "APK_MALWARE_OFFLINE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: ApkMalwareOffline , "CLIENT_INCIDENT" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: ClientIncident , "CLIENT_INCIDENT_WHITELIST" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: ClientIncidentWhitelist , "CSD_DOWNLOAD_WHITELIST" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: CsdDownloadWhitelist , "CSD_WHITELIST" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: CsdWhitelist , "HIGH_CONFIDENCE_ALLOWLIST" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: HighConfidenceAllowlist , "MALICIOUS_BINARY" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: MaliciousBinary , "MALWARE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: Malware , "POTENTIALLY_HARMFUL_APPLICATION" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: PotentiallyHarmfulApplication , "SOCIAL_ENGINEERING" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: SocialEngineering , "SOCIAL_ENGINEERING_INTERNAL" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: SocialEngineeringInternal , "SUBRESOURCE_FILTER" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: SubresourceFilter , "SUSPICIOUS" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: Suspicious , "THREAT_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: ThreatTypeUnspecified , "TRICK_TO_BILL" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: TrickToBill , "UNWANTED_SOFTWARE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: UnwantedSoftware , _ => return Err (()) , })
+        }
+    }
+    impl ::std::fmt::Display
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType
+    {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType
+    {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de>
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType
+    {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok (match value { "API_ABUSE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: ApiAbuse , "APK_MALWARE_OFFLINE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: ApkMalwareOffline , "CLIENT_INCIDENT" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: ClientIncident , "CLIENT_INCIDENT_WHITELIST" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: ClientIncidentWhitelist , "CSD_DOWNLOAD_WHITELIST" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: CsdDownloadWhitelist , "CSD_WHITELIST" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: CsdWhitelist , "HIGH_CONFIDENCE_ALLOWLIST" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: HighConfidenceAllowlist , "MALICIOUS_BINARY" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: MaliciousBinary , "MALWARE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: Malware , "POTENTIALLY_HARMFUL_APPLICATION" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: PotentiallyHarmfulApplication , "SOCIAL_ENGINEERING" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: SocialEngineering , "SOCIAL_ENGINEERING_INTERNAL" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: SocialEngineeringInternal , "SUBRESOURCE_FILTER" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: SubresourceFilter , "SUSPICIOUS" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: Suspicious , "THREAT_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: ThreatTypeUnspecified , "TRICK_TO_BILL" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: TrickToBill , "UNWANTED_SOFTWARE" => GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType :: UnwantedSoftware , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatType
+    {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -290,59 +766,22 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct FetchThreatListUpdatesResponse {
-        #[doc = "The list updates requested by the clients."]
-        #[serde(
-            rename = "listUpdateResponses",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub list_update_responses: ::std::option::Option<Vec<crate::schemas::ListUpdateResponse>>,
-        #[doc = "The minimum duration the client must wait before issuing any update\nrequest. If this field is not set clients may update as soon as they want."]
-        #[serde(
-            rename = "minimumWaitDuration",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub minimum_wait_duration: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for FetchThreatListUpdatesResponse {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for FetchThreatListUpdatesResponse {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct FindFullHashesRequest {
-        #[doc = "Client metadata associated with callers of higher-level APIs built on top\nof the client's implementation."]
+    pub struct GoogleSecuritySafebrowsingV4FindFullHashesRequest {
+        #[doc = "Client metadata associated with callers of higher-level APIs built on top of the client's implementation."]
         #[serde(
             rename = "apiClient",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub api_client: ::std::option::Option<crate::schemas::ClientInfo>,
+        pub api_client:
+            ::std::option::Option<crate::schemas::GoogleSecuritySafebrowsingV4ClientInfo>,
         #[doc = "The client metadata."]
         #[serde(
             rename = "client",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub client: ::std::option::Option<crate::schemas::ClientInfo>,
+        pub client: ::std::option::Option<crate::schemas::GoogleSecuritySafebrowsingV4ClientInfo>,
         #[doc = "The current client states for each of the client's local threat lists."]
         #[serde(
             rename = "clientStates",
@@ -356,14 +795,15 @@ pub mod schemas {
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub threat_info: ::std::option::Option<crate::schemas::ThreatInfo>,
+        pub threat_info:
+            ::std::option::Option<crate::schemas::GoogleSecuritySafebrowsingV4ThreatInfo>,
     }
-    impl ::google_field_selector::FieldSelector for FindFullHashesRequest {
+    impl ::google_field_selector::FieldSelector for GoogleSecuritySafebrowsingV4FindFullHashesRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for FindFullHashesRequest {
+    impl ::google_field_selector::ToFieldType for GoogleSecuritySafebrowsingV4FindFullHashesRequest {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -380,22 +820,23 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct FindFullHashesResponse {
+    pub struct GoogleSecuritySafebrowsingV4FindFullHashesResponse {
         #[doc = "The full hashes that matched the requested prefixes."]
         #[serde(
             rename = "matches",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub matches: ::std::option::Option<Vec<crate::schemas::ThreatMatch>>,
-        #[doc = "The minimum duration the client must wait before issuing any find hashes\nrequest. If this field is not set, clients can issue a request as soon as\nthey want."]
+        pub matches:
+            ::std::option::Option<Vec<crate::schemas::GoogleSecuritySafebrowsingV4ThreatMatch>>,
+        #[doc = "The minimum duration the client must wait before issuing any find hashes request. If this field is not set, clients can issue a request as soon as they want."]
         #[serde(
             rename = "minimumWaitDuration",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub minimum_wait_duration: ::std::option::Option<String>,
-        #[doc = "For requested entities that did not match the threat list, how long to\ncache the response."]
+        #[doc = "For requested entities that did not match the threat list, how long to cache the response."]
         #[serde(
             rename = "negativeCacheDuration",
             default,
@@ -403,12 +844,12 @@ pub mod schemas {
         )]
         pub negative_cache_duration: ::std::option::Option<String>,
     }
-    impl ::google_field_selector::FieldSelector for FindFullHashesResponse {
+    impl ::google_field_selector::FieldSelector for GoogleSecuritySafebrowsingV4FindFullHashesResponse {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for FindFullHashesResponse {
+    impl ::google_field_selector::ToFieldType for GoogleSecuritySafebrowsingV4FindFullHashesResponse {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -425,28 +866,31 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct FindThreatMatchesRequest {
+    pub struct GoogleSecuritySafebrowsingV4FindThreatMatchesRequest {
         #[doc = "The client metadata."]
         #[serde(
             rename = "client",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub client: ::std::option::Option<crate::schemas::ClientInfo>,
+        pub client: ::std::option::Option<crate::schemas::GoogleSecuritySafebrowsingV4ClientInfo>,
         #[doc = "The lists and entries to be checked for matches."]
         #[serde(
             rename = "threatInfo",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub threat_info: ::std::option::Option<crate::schemas::ThreatInfo>,
+        pub threat_info:
+            ::std::option::Option<crate::schemas::GoogleSecuritySafebrowsingV4ThreatInfo>,
     }
-    impl ::google_field_selector::FieldSelector for FindThreatMatchesRequest {
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4FindThreatMatchesRequest
+    {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for FindThreatMatchesRequest {
+    impl ::google_field_selector::ToFieldType for GoogleSecuritySafebrowsingV4FindThreatMatchesRequest {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -463,21 +907,26 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct FindThreatMatchesResponse {
+    pub struct GoogleSecuritySafebrowsingV4FindThreatMatchesResponse {
         #[doc = "The threat list matches."]
         #[serde(
             rename = "matches",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub matches: ::std::option::Option<Vec<crate::schemas::ThreatMatch>>,
+        pub matches:
+            ::std::option::Option<Vec<crate::schemas::GoogleSecuritySafebrowsingV4ThreatMatch>>,
     }
-    impl ::google_field_selector::FieldSelector for FindThreatMatchesResponse {
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4FindThreatMatchesResponse
+    {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for FindThreatMatchesResponse {
+    impl ::google_field_selector::ToFieldType
+        for GoogleSecuritySafebrowsingV4FindThreatMatchesResponse
+    {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -494,21 +943,25 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ListThreatListsResponse {
+    pub struct GoogleSecuritySafebrowsingV4ListThreatListsResponse {
         #[doc = "The lists available for download by the client."]
         #[serde(
             rename = "threatLists",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub threat_lists: ::std::option::Option<Vec<crate::schemas::ThreatListDescriptor>>,
+        pub threat_lists: ::std::option::Option<
+            Vec<crate::schemas::GoogleSecuritySafebrowsingV4ThreatListDescriptor>,
+        >,
     }
-    impl ::google_field_selector::FieldSelector for ListThreatListsResponse {
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4ListThreatListsResponse
+    {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for ListThreatListsResponse {
+    impl ::google_field_selector::ToFieldType for GoogleSecuritySafebrowsingV4ListThreatListsResponse {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -525,422 +978,157 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ListUpdateRequest {
-        #[doc = "The constraints associated with this request."]
+    pub struct GoogleSecuritySafebrowsingV4RawHashes {
+        #[doc = "The number of bytes for each prefix encoded below. This field can be anywhere from 4 (shortest prefix) to 32 (full SHA256 hash)."]
         #[serde(
-            rename = "constraints",
+            rename = "prefixSize",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub constraints: ::std::option::Option<crate::schemas::Constraints>,
-        #[doc = "The type of platform at risk by entries present in the list."]
+        pub prefix_size: ::std::option::Option<i32>,
+        #[doc = "The hashes, in binary format, concatenated into one long string. Hashes are sorted in lexicographic order. For JSON API users, hashes are base64-encoded."]
         #[serde(
-            rename = "platformType",
+            rename = "rawHashes",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub platform_type: ::std::option::Option<crate::schemas::ListUpdateRequestPlatformType>,
-        #[doc = "The current state of the client for the requested list (the encrypted\nclient state that was received from the last successful list update)."]
-        #[serde(
-            rename = "state",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub state: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "The types of entries present in the list."]
-        #[serde(
-            rename = "threatEntryType",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub threat_entry_type:
-            ::std::option::Option<crate::schemas::ListUpdateRequestThreatEntryType>,
-        #[doc = "The type of threat posed by entries present in the list."]
-        #[serde(
-            rename = "threatType",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub threat_type: ::std::option::Option<crate::schemas::ListUpdateRequestThreatType>,
+        pub raw_hashes: ::std::option::Option<::google_api_bytes::Bytes>,
     }
-    impl ::google_field_selector::FieldSelector for ListUpdateRequest {
+    impl ::google_field_selector::FieldSelector for GoogleSecuritySafebrowsingV4RawHashes {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for ListUpdateRequest {
+    impl ::google_field_selector::ToFieldType for GoogleSecuritySafebrowsingV4RawHashes {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
     }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ListUpdateRequestPlatformType {
-        #[doc = "Threat posed to all defined platforms."]
-        AllPlatforms,
-        #[doc = "Threat posed to Android."]
-        Android,
-        #[doc = "Threat posed to at least one of the defined platforms."]
-        AnyPlatform,
-        #[doc = "Threat posed to Chrome."]
-        Chrome,
-        #[doc = "Threat posed to iOS."]
-        Ios,
-        #[doc = "Threat posed to Linux."]
-        Linux,
-        #[doc = "Threat posed to OS X."]
-        Osx,
-        #[doc = "Unknown platform."]
-        PlatformTypeUnspecified,
-        #[doc = "Threat posed to Windows."]
-        Windows,
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleSecuritySafebrowsingV4RawIndices {
+        #[doc = "The indices to remove from a lexicographically-sorted local list."]
+        #[serde(
+            rename = "indices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub indices: ::std::option::Option<Vec<i32>>,
     }
-    impl ListUpdateRequestPlatformType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ListUpdateRequestPlatformType::AllPlatforms => "ALL_PLATFORMS",
-                ListUpdateRequestPlatformType::Android => "ANDROID",
-                ListUpdateRequestPlatformType::AnyPlatform => "ANY_PLATFORM",
-                ListUpdateRequestPlatformType::Chrome => "CHROME",
-                ListUpdateRequestPlatformType::Ios => "IOS",
-                ListUpdateRequestPlatformType::Linux => "LINUX",
-                ListUpdateRequestPlatformType::Osx => "OSX",
-                ListUpdateRequestPlatformType::PlatformTypeUnspecified => {
-                    "PLATFORM_TYPE_UNSPECIFIED"
-                }
-                ListUpdateRequestPlatformType::Windows => "WINDOWS",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for ListUpdateRequestPlatformType {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for ListUpdateRequestPlatformType {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ListUpdateRequestPlatformType, ()> {
-            Ok(match s {
-                "ALL_PLATFORMS" => ListUpdateRequestPlatformType::AllPlatforms,
-                "ANDROID" => ListUpdateRequestPlatformType::Android,
-                "ANY_PLATFORM" => ListUpdateRequestPlatformType::AnyPlatform,
-                "CHROME" => ListUpdateRequestPlatformType::Chrome,
-                "IOS" => ListUpdateRequestPlatformType::Ios,
-                "LINUX" => ListUpdateRequestPlatformType::Linux,
-                "OSX" => ListUpdateRequestPlatformType::Osx,
-                "PLATFORM_TYPE_UNSPECIFIED" => {
-                    ListUpdateRequestPlatformType::PlatformTypeUnspecified
-                }
-                "WINDOWS" => ListUpdateRequestPlatformType::Windows,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for ListUpdateRequestPlatformType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ListUpdateRequestPlatformType {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ListUpdateRequestPlatformType {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "ALL_PLATFORMS" => ListUpdateRequestPlatformType::AllPlatforms,
-                "ANDROID" => ListUpdateRequestPlatformType::Android,
-                "ANY_PLATFORM" => ListUpdateRequestPlatformType::AnyPlatform,
-                "CHROME" => ListUpdateRequestPlatformType::Chrome,
-                "IOS" => ListUpdateRequestPlatformType::Ios,
-                "LINUX" => ListUpdateRequestPlatformType::Linux,
-                "OSX" => ListUpdateRequestPlatformType::Osx,
-                "PLATFORM_TYPE_UNSPECIFIED" => {
-                    ListUpdateRequestPlatformType::PlatformTypeUnspecified
-                }
-                "WINDOWS" => ListUpdateRequestPlatformType::Windows,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for ListUpdateRequestPlatformType {
+    impl ::google_field_selector::FieldSelector for GoogleSecuritySafebrowsingV4RawIndices {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for ListUpdateRequestPlatformType {
+    impl ::google_field_selector::ToFieldType for GoogleSecuritySafebrowsingV4RawIndices {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
     }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ListUpdateRequestThreatEntryType {
-        #[doc = "CERT"]
-        Cert,
-        #[doc = "Chrome extension."]
-        ChromeExtension,
-        #[doc = "An executable program."]
-        Executable,
-        #[doc = "Filename."]
-        Filename,
-        #[doc = "An IP range."]
-        IpRange,
-        #[doc = "Unspecified."]
-        ThreatEntryTypeUnspecified,
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleSecuritySafebrowsingV4RiceDeltaEncoding {
+        #[doc = "The encoded deltas that are encoded using the Golomb-Rice coder."]
+        #[serde(
+            rename = "encodedData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub encoded_data: ::std::option::Option<::google_api_bytes::Bytes>,
+        #[doc = "The offset of the first entry in the encoded data, or, if only a single integer was encoded, that single integer's value. If the field is empty or missing, assume zero."]
+        #[serde(
+            rename = "firstValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub first_value: ::std::option::Option<i64>,
+        #[doc = "The number of entries that are delta encoded in the encoded data. If only a single integer was encoded, this will be zero and the single value will be stored in `first_value`."]
+        #[serde(
+            rename = "numEntries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub num_entries: ::std::option::Option<i32>,
+        #[doc = "The Golomb-Rice parameter, which is a number between 2 and 28. This field is missing (that is, zero) if `num_entries` is zero."]
+        #[serde(
+            rename = "riceParameter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub rice_parameter: ::std::option::Option<i32>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleSecuritySafebrowsingV4RiceDeltaEncoding {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleSecuritySafebrowsingV4RiceDeltaEncoding {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleSecuritySafebrowsingV4ThreatEntry {
+        #[doc = "The digest of an executable in SHA256 format. The API supports both binary and hex digests. For JSON requests, digests are base64-encoded."]
+        #[serde(
+            rename = "digest",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub digest: ::std::option::Option<::google_api_bytes::Bytes>,
+        #[doc = "A hash prefix, consisting of the most significant 4-32 bytes of a SHA256 hash. This field is in binary format. For JSON requests, hashes are base64-encoded."]
+        #[serde(
+            rename = "hash",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub hash: ::std::option::Option<::google_api_bytes::Bytes>,
         #[doc = "A URL."]
-        Url,
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub url: ::std::option::Option<String>,
     }
-    impl ListUpdateRequestThreatEntryType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ListUpdateRequestThreatEntryType::Cert => "CERT",
-                ListUpdateRequestThreatEntryType::ChromeExtension => "CHROME_EXTENSION",
-                ListUpdateRequestThreatEntryType::Executable => "EXECUTABLE",
-                ListUpdateRequestThreatEntryType::Filename => "FILENAME",
-                ListUpdateRequestThreatEntryType::IpRange => "IP_RANGE",
-                ListUpdateRequestThreatEntryType::ThreatEntryTypeUnspecified => {
-                    "THREAT_ENTRY_TYPE_UNSPECIFIED"
-                }
-                ListUpdateRequestThreatEntryType::Url => "URL",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for ListUpdateRequestThreatEntryType {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for ListUpdateRequestThreatEntryType {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ListUpdateRequestThreatEntryType, ()> {
-            Ok(match s {
-                "CERT" => ListUpdateRequestThreatEntryType::Cert,
-                "CHROME_EXTENSION" => ListUpdateRequestThreatEntryType::ChromeExtension,
-                "EXECUTABLE" => ListUpdateRequestThreatEntryType::Executable,
-                "FILENAME" => ListUpdateRequestThreatEntryType::Filename,
-                "IP_RANGE" => ListUpdateRequestThreatEntryType::IpRange,
-                "THREAT_ENTRY_TYPE_UNSPECIFIED" => {
-                    ListUpdateRequestThreatEntryType::ThreatEntryTypeUnspecified
-                }
-                "URL" => ListUpdateRequestThreatEntryType::Url,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for ListUpdateRequestThreatEntryType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ListUpdateRequestThreatEntryType {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ListUpdateRequestThreatEntryType {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "CERT" => ListUpdateRequestThreatEntryType::Cert,
-                "CHROME_EXTENSION" => ListUpdateRequestThreatEntryType::ChromeExtension,
-                "EXECUTABLE" => ListUpdateRequestThreatEntryType::Executable,
-                "FILENAME" => ListUpdateRequestThreatEntryType::Filename,
-                "IP_RANGE" => ListUpdateRequestThreatEntryType::IpRange,
-                "THREAT_ENTRY_TYPE_UNSPECIFIED" => {
-                    ListUpdateRequestThreatEntryType::ThreatEntryTypeUnspecified
-                }
-                "URL" => ListUpdateRequestThreatEntryType::Url,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for ListUpdateRequestThreatEntryType {
+    impl ::google_field_selector::FieldSelector for GoogleSecuritySafebrowsingV4ThreatEntry {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for ListUpdateRequestThreatEntryType {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ListUpdateRequestThreatType {
-        #[doc = "API abuse threat type."]
-        ApiAbuse,
-        #[doc = "List used for offline APK checks in PAM."]
-        ApkMalwareOffline,
-        #[doc = "Client incident threat type."]
-        ClientIncident,
-        #[doc = "Whitelist used when detecting client incident threats.\nThis enum was never launched and should be re-used for the next list."]
-        ClientIncidentWhitelist,
-        #[doc = "Client side download detection whitelist threat type."]
-        CsdDownloadWhitelist,
-        #[doc = "Client side detection whitelist threat type."]
-        CsdWhitelist,
-        #[doc = "Safe list to ship hashes of known safe URL expressions."]
-        HighConfidenceAllowlist,
-        #[doc = "Malicious binary threat type."]
-        MaliciousBinary,
-        #[doc = "Malware threat type."]
-        Malware,
-        #[doc = "Potentially harmful application threat type."]
-        PotentiallyHarmfulApplication,
-        #[doc = "Social engineering threat type."]
-        SocialEngineering,
-        #[doc = "Social engineering threat type for internal use."]
-        SocialEngineeringInternal,
-        #[doc = "Patterns to be used for activating the subresource filter. Interstitial\nwill not be shown for patterns from this list."]
-        SubresourceFilter,
-        #[doc = "Entities that are suspected to present a threat."]
-        Suspicious,
-        #[doc = "Unknown."]
-        ThreatTypeUnspecified,
-        #[doc = "Trick-to-bill threat list."]
-        TrickToBill,
-        #[doc = "Unwanted software threat type."]
-        UnwantedSoftware,
-    }
-    impl ListUpdateRequestThreatType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ListUpdateRequestThreatType::ApiAbuse => "API_ABUSE",
-                ListUpdateRequestThreatType::ApkMalwareOffline => "APK_MALWARE_OFFLINE",
-                ListUpdateRequestThreatType::ClientIncident => "CLIENT_INCIDENT",
-                ListUpdateRequestThreatType::ClientIncidentWhitelist => "CLIENT_INCIDENT_WHITELIST",
-                ListUpdateRequestThreatType::CsdDownloadWhitelist => "CSD_DOWNLOAD_WHITELIST",
-                ListUpdateRequestThreatType::CsdWhitelist => "CSD_WHITELIST",
-                ListUpdateRequestThreatType::HighConfidenceAllowlist => "HIGH_CONFIDENCE_ALLOWLIST",
-                ListUpdateRequestThreatType::MaliciousBinary => "MALICIOUS_BINARY",
-                ListUpdateRequestThreatType::Malware => "MALWARE",
-                ListUpdateRequestThreatType::PotentiallyHarmfulApplication => {
-                    "POTENTIALLY_HARMFUL_APPLICATION"
-                }
-                ListUpdateRequestThreatType::SocialEngineering => "SOCIAL_ENGINEERING",
-                ListUpdateRequestThreatType::SocialEngineeringInternal => {
-                    "SOCIAL_ENGINEERING_INTERNAL"
-                }
-                ListUpdateRequestThreatType::SubresourceFilter => "SUBRESOURCE_FILTER",
-                ListUpdateRequestThreatType::Suspicious => "SUSPICIOUS",
-                ListUpdateRequestThreatType::ThreatTypeUnspecified => "THREAT_TYPE_UNSPECIFIED",
-                ListUpdateRequestThreatType::TrickToBill => "TRICK_TO_BILL",
-                ListUpdateRequestThreatType::UnwantedSoftware => "UNWANTED_SOFTWARE",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for ListUpdateRequestThreatType {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for ListUpdateRequestThreatType {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ListUpdateRequestThreatType, ()> {
-            Ok(match s {
-                "API_ABUSE" => ListUpdateRequestThreatType::ApiAbuse,
-                "APK_MALWARE_OFFLINE" => ListUpdateRequestThreatType::ApkMalwareOffline,
-                "CLIENT_INCIDENT" => ListUpdateRequestThreatType::ClientIncident,
-                "CLIENT_INCIDENT_WHITELIST" => ListUpdateRequestThreatType::ClientIncidentWhitelist,
-                "CSD_DOWNLOAD_WHITELIST" => ListUpdateRequestThreatType::CsdDownloadWhitelist,
-                "CSD_WHITELIST" => ListUpdateRequestThreatType::CsdWhitelist,
-                "HIGH_CONFIDENCE_ALLOWLIST" => ListUpdateRequestThreatType::HighConfidenceAllowlist,
-                "MALICIOUS_BINARY" => ListUpdateRequestThreatType::MaliciousBinary,
-                "MALWARE" => ListUpdateRequestThreatType::Malware,
-                "POTENTIALLY_HARMFUL_APPLICATION" => {
-                    ListUpdateRequestThreatType::PotentiallyHarmfulApplication
-                }
-                "SOCIAL_ENGINEERING" => ListUpdateRequestThreatType::SocialEngineering,
-                "SOCIAL_ENGINEERING_INTERNAL" => {
-                    ListUpdateRequestThreatType::SocialEngineeringInternal
-                }
-                "SUBRESOURCE_FILTER" => ListUpdateRequestThreatType::SubresourceFilter,
-                "SUSPICIOUS" => ListUpdateRequestThreatType::Suspicious,
-                "THREAT_TYPE_UNSPECIFIED" => ListUpdateRequestThreatType::ThreatTypeUnspecified,
-                "TRICK_TO_BILL" => ListUpdateRequestThreatType::TrickToBill,
-                "UNWANTED_SOFTWARE" => ListUpdateRequestThreatType::UnwantedSoftware,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for ListUpdateRequestThreatType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ListUpdateRequestThreatType {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ListUpdateRequestThreatType {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "API_ABUSE" => ListUpdateRequestThreatType::ApiAbuse,
-                "APK_MALWARE_OFFLINE" => ListUpdateRequestThreatType::ApkMalwareOffline,
-                "CLIENT_INCIDENT" => ListUpdateRequestThreatType::ClientIncident,
-                "CLIENT_INCIDENT_WHITELIST" => ListUpdateRequestThreatType::ClientIncidentWhitelist,
-                "CSD_DOWNLOAD_WHITELIST" => ListUpdateRequestThreatType::CsdDownloadWhitelist,
-                "CSD_WHITELIST" => ListUpdateRequestThreatType::CsdWhitelist,
-                "HIGH_CONFIDENCE_ALLOWLIST" => ListUpdateRequestThreatType::HighConfidenceAllowlist,
-                "MALICIOUS_BINARY" => ListUpdateRequestThreatType::MaliciousBinary,
-                "MALWARE" => ListUpdateRequestThreatType::Malware,
-                "POTENTIALLY_HARMFUL_APPLICATION" => {
-                    ListUpdateRequestThreatType::PotentiallyHarmfulApplication
-                }
-                "SOCIAL_ENGINEERING" => ListUpdateRequestThreatType::SocialEngineering,
-                "SOCIAL_ENGINEERING_INTERNAL" => {
-                    ListUpdateRequestThreatType::SocialEngineeringInternal
-                }
-                "SUBRESOURCE_FILTER" => ListUpdateRequestThreatType::SubresourceFilter,
-                "SUSPICIOUS" => ListUpdateRequestThreatType::Suspicious,
-                "THREAT_TYPE_UNSPECIFIED" => ListUpdateRequestThreatType::ThreatTypeUnspecified,
-                "TRICK_TO_BILL" => ListUpdateRequestThreatType::TrickToBill,
-                "UNWANTED_SOFTWARE" => ListUpdateRequestThreatType::UnwantedSoftware,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for ListUpdateRequestThreatType {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ListUpdateRequestThreatType {
+    impl ::google_field_selector::ToFieldType for GoogleSecuritySafebrowsingV4ThreatEntry {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -957,537 +1145,23 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ListUpdateResponse {
-        #[doc = "A set of entries to add to a local threat type's list. Repeated to allow\nfor a combination of compressed and raw data to be sent in a single\nresponse."]
+    pub struct GoogleSecuritySafebrowsingV4ThreatEntryMetadata {
+        #[doc = "The metadata entries."]
         #[serde(
-            rename = "additions",
+            rename = "entries",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub additions: ::std::option::Option<Vec<crate::schemas::ThreatEntrySet>>,
-        #[doc = "The expected SHA256 hash of the client state; that is, of the sorted list\nof all hashes present in the database after applying the provided update.\nIf the client state doesn't match the expected state, the client must\ndisregard this update and retry later."]
-        #[serde(
-            rename = "checksum",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub checksum: ::std::option::Option<crate::schemas::Checksum>,
-        #[doc = "The new client state, in encrypted format. Opaque to clients."]
-        #[serde(
-            rename = "newClientState",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub new_client_state: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "The platform type for which data is returned."]
-        #[serde(
-            rename = "platformType",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub platform_type: ::std::option::Option<crate::schemas::ListUpdateResponsePlatformType>,
-        #[doc = "A set of entries to remove from a local threat type's list. In practice,\nthis field is empty or contains exactly one ThreatEntrySet."]
-        #[serde(
-            rename = "removals",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub removals: ::std::option::Option<Vec<crate::schemas::ThreatEntrySet>>,
-        #[doc = "The type of response. This may indicate that an action is required by the\nclient when the response is received."]
-        #[serde(
-            rename = "responseType",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub response_type: ::std::option::Option<crate::schemas::ListUpdateResponseResponseType>,
-        #[doc = "The format of the threats."]
-        #[serde(
-            rename = "threatEntryType",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub threat_entry_type:
-            ::std::option::Option<crate::schemas::ListUpdateResponseThreatEntryType>,
-        #[doc = "The threat type for which data is returned."]
-        #[serde(
-            rename = "threatType",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub threat_type: ::std::option::Option<crate::schemas::ListUpdateResponseThreatType>,
+        pub entries: ::std::option::Option<
+            Vec<crate::schemas::GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry>,
+        >,
     }
-    impl ::google_field_selector::FieldSelector for ListUpdateResponse {
+    impl ::google_field_selector::FieldSelector for GoogleSecuritySafebrowsingV4ThreatEntryMetadata {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for ListUpdateResponse {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ListUpdateResponsePlatformType {
-        #[doc = "Threat posed to all defined platforms."]
-        AllPlatforms,
-        #[doc = "Threat posed to Android."]
-        Android,
-        #[doc = "Threat posed to at least one of the defined platforms."]
-        AnyPlatform,
-        #[doc = "Threat posed to Chrome."]
-        Chrome,
-        #[doc = "Threat posed to iOS."]
-        Ios,
-        #[doc = "Threat posed to Linux."]
-        Linux,
-        #[doc = "Threat posed to OS X."]
-        Osx,
-        #[doc = "Unknown platform."]
-        PlatformTypeUnspecified,
-        #[doc = "Threat posed to Windows."]
-        Windows,
-    }
-    impl ListUpdateResponsePlatformType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ListUpdateResponsePlatformType::AllPlatforms => "ALL_PLATFORMS",
-                ListUpdateResponsePlatformType::Android => "ANDROID",
-                ListUpdateResponsePlatformType::AnyPlatform => "ANY_PLATFORM",
-                ListUpdateResponsePlatformType::Chrome => "CHROME",
-                ListUpdateResponsePlatformType::Ios => "IOS",
-                ListUpdateResponsePlatformType::Linux => "LINUX",
-                ListUpdateResponsePlatformType::Osx => "OSX",
-                ListUpdateResponsePlatformType::PlatformTypeUnspecified => {
-                    "PLATFORM_TYPE_UNSPECIFIED"
-                }
-                ListUpdateResponsePlatformType::Windows => "WINDOWS",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for ListUpdateResponsePlatformType {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for ListUpdateResponsePlatformType {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ListUpdateResponsePlatformType, ()> {
-            Ok(match s {
-                "ALL_PLATFORMS" => ListUpdateResponsePlatformType::AllPlatforms,
-                "ANDROID" => ListUpdateResponsePlatformType::Android,
-                "ANY_PLATFORM" => ListUpdateResponsePlatformType::AnyPlatform,
-                "CHROME" => ListUpdateResponsePlatformType::Chrome,
-                "IOS" => ListUpdateResponsePlatformType::Ios,
-                "LINUX" => ListUpdateResponsePlatformType::Linux,
-                "OSX" => ListUpdateResponsePlatformType::Osx,
-                "PLATFORM_TYPE_UNSPECIFIED" => {
-                    ListUpdateResponsePlatformType::PlatformTypeUnspecified
-                }
-                "WINDOWS" => ListUpdateResponsePlatformType::Windows,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for ListUpdateResponsePlatformType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ListUpdateResponsePlatformType {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ListUpdateResponsePlatformType {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "ALL_PLATFORMS" => ListUpdateResponsePlatformType::AllPlatforms,
-                "ANDROID" => ListUpdateResponsePlatformType::Android,
-                "ANY_PLATFORM" => ListUpdateResponsePlatformType::AnyPlatform,
-                "CHROME" => ListUpdateResponsePlatformType::Chrome,
-                "IOS" => ListUpdateResponsePlatformType::Ios,
-                "LINUX" => ListUpdateResponsePlatformType::Linux,
-                "OSX" => ListUpdateResponsePlatformType::Osx,
-                "PLATFORM_TYPE_UNSPECIFIED" => {
-                    ListUpdateResponsePlatformType::PlatformTypeUnspecified
-                }
-                "WINDOWS" => ListUpdateResponsePlatformType::Windows,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for ListUpdateResponsePlatformType {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ListUpdateResponsePlatformType {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ListUpdateResponseResponseType {
-        #[doc = "Full updates replace the client's entire local database. This means\nthat either the client was seriously out-of-date or the client is\nbelieved to be corrupt."]
-        FullUpdate,
-        #[doc = "Partial updates are applied to the client's existing local database."]
-        PartialUpdate,
-        #[doc = "Unknown."]
-        ResponseTypeUnspecified,
-    }
-    impl ListUpdateResponseResponseType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ListUpdateResponseResponseType::FullUpdate => "FULL_UPDATE",
-                ListUpdateResponseResponseType::PartialUpdate => "PARTIAL_UPDATE",
-                ListUpdateResponseResponseType::ResponseTypeUnspecified => {
-                    "RESPONSE_TYPE_UNSPECIFIED"
-                }
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for ListUpdateResponseResponseType {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for ListUpdateResponseResponseType {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ListUpdateResponseResponseType, ()> {
-            Ok(match s {
-                "FULL_UPDATE" => ListUpdateResponseResponseType::FullUpdate,
-                "PARTIAL_UPDATE" => ListUpdateResponseResponseType::PartialUpdate,
-                "RESPONSE_TYPE_UNSPECIFIED" => {
-                    ListUpdateResponseResponseType::ResponseTypeUnspecified
-                }
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for ListUpdateResponseResponseType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ListUpdateResponseResponseType {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ListUpdateResponseResponseType {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "FULL_UPDATE" => ListUpdateResponseResponseType::FullUpdate,
-                "PARTIAL_UPDATE" => ListUpdateResponseResponseType::PartialUpdate,
-                "RESPONSE_TYPE_UNSPECIFIED" => {
-                    ListUpdateResponseResponseType::ResponseTypeUnspecified
-                }
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for ListUpdateResponseResponseType {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ListUpdateResponseResponseType {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ListUpdateResponseThreatEntryType {
-        #[doc = "CERT"]
-        Cert,
-        #[doc = "Chrome extension."]
-        ChromeExtension,
-        #[doc = "An executable program."]
-        Executable,
-        #[doc = "Filename."]
-        Filename,
-        #[doc = "An IP range."]
-        IpRange,
-        #[doc = "Unspecified."]
-        ThreatEntryTypeUnspecified,
-        #[doc = "A URL."]
-        Url,
-    }
-    impl ListUpdateResponseThreatEntryType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ListUpdateResponseThreatEntryType::Cert => "CERT",
-                ListUpdateResponseThreatEntryType::ChromeExtension => "CHROME_EXTENSION",
-                ListUpdateResponseThreatEntryType::Executable => "EXECUTABLE",
-                ListUpdateResponseThreatEntryType::Filename => "FILENAME",
-                ListUpdateResponseThreatEntryType::IpRange => "IP_RANGE",
-                ListUpdateResponseThreatEntryType::ThreatEntryTypeUnspecified => {
-                    "THREAT_ENTRY_TYPE_UNSPECIFIED"
-                }
-                ListUpdateResponseThreatEntryType::Url => "URL",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for ListUpdateResponseThreatEntryType {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for ListUpdateResponseThreatEntryType {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ListUpdateResponseThreatEntryType, ()> {
-            Ok(match s {
-                "CERT" => ListUpdateResponseThreatEntryType::Cert,
-                "CHROME_EXTENSION" => ListUpdateResponseThreatEntryType::ChromeExtension,
-                "EXECUTABLE" => ListUpdateResponseThreatEntryType::Executable,
-                "FILENAME" => ListUpdateResponseThreatEntryType::Filename,
-                "IP_RANGE" => ListUpdateResponseThreatEntryType::IpRange,
-                "THREAT_ENTRY_TYPE_UNSPECIFIED" => {
-                    ListUpdateResponseThreatEntryType::ThreatEntryTypeUnspecified
-                }
-                "URL" => ListUpdateResponseThreatEntryType::Url,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for ListUpdateResponseThreatEntryType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ListUpdateResponseThreatEntryType {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ListUpdateResponseThreatEntryType {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "CERT" => ListUpdateResponseThreatEntryType::Cert,
-                "CHROME_EXTENSION" => ListUpdateResponseThreatEntryType::ChromeExtension,
-                "EXECUTABLE" => ListUpdateResponseThreatEntryType::Executable,
-                "FILENAME" => ListUpdateResponseThreatEntryType::Filename,
-                "IP_RANGE" => ListUpdateResponseThreatEntryType::IpRange,
-                "THREAT_ENTRY_TYPE_UNSPECIFIED" => {
-                    ListUpdateResponseThreatEntryType::ThreatEntryTypeUnspecified
-                }
-                "URL" => ListUpdateResponseThreatEntryType::Url,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for ListUpdateResponseThreatEntryType {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ListUpdateResponseThreatEntryType {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ListUpdateResponseThreatType {
-        #[doc = "API abuse threat type."]
-        ApiAbuse,
-        #[doc = "List used for offline APK checks in PAM."]
-        ApkMalwareOffline,
-        #[doc = "Client incident threat type."]
-        ClientIncident,
-        #[doc = "Whitelist used when detecting client incident threats.\nThis enum was never launched and should be re-used for the next list."]
-        ClientIncidentWhitelist,
-        #[doc = "Client side download detection whitelist threat type."]
-        CsdDownloadWhitelist,
-        #[doc = "Client side detection whitelist threat type."]
-        CsdWhitelist,
-        #[doc = "Safe list to ship hashes of known safe URL expressions."]
-        HighConfidenceAllowlist,
-        #[doc = "Malicious binary threat type."]
-        MaliciousBinary,
-        #[doc = "Malware threat type."]
-        Malware,
-        #[doc = "Potentially harmful application threat type."]
-        PotentiallyHarmfulApplication,
-        #[doc = "Social engineering threat type."]
-        SocialEngineering,
-        #[doc = "Social engineering threat type for internal use."]
-        SocialEngineeringInternal,
-        #[doc = "Patterns to be used for activating the subresource filter. Interstitial\nwill not be shown for patterns from this list."]
-        SubresourceFilter,
-        #[doc = "Entities that are suspected to present a threat."]
-        Suspicious,
-        #[doc = "Unknown."]
-        ThreatTypeUnspecified,
-        #[doc = "Trick-to-bill threat list."]
-        TrickToBill,
-        #[doc = "Unwanted software threat type."]
-        UnwantedSoftware,
-    }
-    impl ListUpdateResponseThreatType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ListUpdateResponseThreatType::ApiAbuse => "API_ABUSE",
-                ListUpdateResponseThreatType::ApkMalwareOffline => "APK_MALWARE_OFFLINE",
-                ListUpdateResponseThreatType::ClientIncident => "CLIENT_INCIDENT",
-                ListUpdateResponseThreatType::ClientIncidentWhitelist => {
-                    "CLIENT_INCIDENT_WHITELIST"
-                }
-                ListUpdateResponseThreatType::CsdDownloadWhitelist => "CSD_DOWNLOAD_WHITELIST",
-                ListUpdateResponseThreatType::CsdWhitelist => "CSD_WHITELIST",
-                ListUpdateResponseThreatType::HighConfidenceAllowlist => {
-                    "HIGH_CONFIDENCE_ALLOWLIST"
-                }
-                ListUpdateResponseThreatType::MaliciousBinary => "MALICIOUS_BINARY",
-                ListUpdateResponseThreatType::Malware => "MALWARE",
-                ListUpdateResponseThreatType::PotentiallyHarmfulApplication => {
-                    "POTENTIALLY_HARMFUL_APPLICATION"
-                }
-                ListUpdateResponseThreatType::SocialEngineering => "SOCIAL_ENGINEERING",
-                ListUpdateResponseThreatType::SocialEngineeringInternal => {
-                    "SOCIAL_ENGINEERING_INTERNAL"
-                }
-                ListUpdateResponseThreatType::SubresourceFilter => "SUBRESOURCE_FILTER",
-                ListUpdateResponseThreatType::Suspicious => "SUSPICIOUS",
-                ListUpdateResponseThreatType::ThreatTypeUnspecified => "THREAT_TYPE_UNSPECIFIED",
-                ListUpdateResponseThreatType::TrickToBill => "TRICK_TO_BILL",
-                ListUpdateResponseThreatType::UnwantedSoftware => "UNWANTED_SOFTWARE",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for ListUpdateResponseThreatType {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for ListUpdateResponseThreatType {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ListUpdateResponseThreatType, ()> {
-            Ok(match s {
-                "API_ABUSE" => ListUpdateResponseThreatType::ApiAbuse,
-                "APK_MALWARE_OFFLINE" => ListUpdateResponseThreatType::ApkMalwareOffline,
-                "CLIENT_INCIDENT" => ListUpdateResponseThreatType::ClientIncident,
-                "CLIENT_INCIDENT_WHITELIST" => {
-                    ListUpdateResponseThreatType::ClientIncidentWhitelist
-                }
-                "CSD_DOWNLOAD_WHITELIST" => ListUpdateResponseThreatType::CsdDownloadWhitelist,
-                "CSD_WHITELIST" => ListUpdateResponseThreatType::CsdWhitelist,
-                "HIGH_CONFIDENCE_ALLOWLIST" => {
-                    ListUpdateResponseThreatType::HighConfidenceAllowlist
-                }
-                "MALICIOUS_BINARY" => ListUpdateResponseThreatType::MaliciousBinary,
-                "MALWARE" => ListUpdateResponseThreatType::Malware,
-                "POTENTIALLY_HARMFUL_APPLICATION" => {
-                    ListUpdateResponseThreatType::PotentiallyHarmfulApplication
-                }
-                "SOCIAL_ENGINEERING" => ListUpdateResponseThreatType::SocialEngineering,
-                "SOCIAL_ENGINEERING_INTERNAL" => {
-                    ListUpdateResponseThreatType::SocialEngineeringInternal
-                }
-                "SUBRESOURCE_FILTER" => ListUpdateResponseThreatType::SubresourceFilter,
-                "SUSPICIOUS" => ListUpdateResponseThreatType::Suspicious,
-                "THREAT_TYPE_UNSPECIFIED" => ListUpdateResponseThreatType::ThreatTypeUnspecified,
-                "TRICK_TO_BILL" => ListUpdateResponseThreatType::TrickToBill,
-                "UNWANTED_SOFTWARE" => ListUpdateResponseThreatType::UnwantedSoftware,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for ListUpdateResponseThreatType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ListUpdateResponseThreatType {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ListUpdateResponseThreatType {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "API_ABUSE" => ListUpdateResponseThreatType::ApiAbuse,
-                "APK_MALWARE_OFFLINE" => ListUpdateResponseThreatType::ApkMalwareOffline,
-                "CLIENT_INCIDENT" => ListUpdateResponseThreatType::ClientIncident,
-                "CLIENT_INCIDENT_WHITELIST" => {
-                    ListUpdateResponseThreatType::ClientIncidentWhitelist
-                }
-                "CSD_DOWNLOAD_WHITELIST" => ListUpdateResponseThreatType::CsdDownloadWhitelist,
-                "CSD_WHITELIST" => ListUpdateResponseThreatType::CsdWhitelist,
-                "HIGH_CONFIDENCE_ALLOWLIST" => {
-                    ListUpdateResponseThreatType::HighConfidenceAllowlist
-                }
-                "MALICIOUS_BINARY" => ListUpdateResponseThreatType::MaliciousBinary,
-                "MALWARE" => ListUpdateResponseThreatType::Malware,
-                "POTENTIALLY_HARMFUL_APPLICATION" => {
-                    ListUpdateResponseThreatType::PotentiallyHarmfulApplication
-                }
-                "SOCIAL_ENGINEERING" => ListUpdateResponseThreatType::SocialEngineering,
-                "SOCIAL_ENGINEERING_INTERNAL" => {
-                    ListUpdateResponseThreatType::SocialEngineeringInternal
-                }
-                "SUBRESOURCE_FILTER" => ListUpdateResponseThreatType::SubresourceFilter,
-                "SUSPICIOUS" => ListUpdateResponseThreatType::Suspicious,
-                "THREAT_TYPE_UNSPECIFIED" => ListUpdateResponseThreatType::ThreatTypeUnspecified,
-                "TRICK_TO_BILL" => ListUpdateResponseThreatType::TrickToBill,
-                "UNWANTED_SOFTWARE" => ListUpdateResponseThreatType::UnwantedSoftware,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for ListUpdateResponseThreatType {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ListUpdateResponseThreatType {
+    impl ::google_field_selector::ToFieldType for GoogleSecuritySafebrowsingV4ThreatEntryMetadata {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1504,7 +1178,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct MetadataEntry {
+    pub struct GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry {
         #[doc = "The metadata entry key. For JSON requests, the key is base64-encoded."]
         #[serde(
             rename = "key",
@@ -1520,12 +1194,16 @@ pub mod schemas {
         )]
         pub value: ::std::option::Option<::google_api_bytes::Bytes>,
     }
-    impl ::google_field_selector::FieldSelector for MetadataEntry {
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry
+    {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for MetadataEntry {
+    impl ::google_field_selector::ToFieldType
+        for GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry
+    {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1542,253 +1220,61 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct RawHashes {
-        #[doc = "The number of bytes for each prefix encoded below.  This field can be\nanywhere from 4 (shortest prefix) to 32 (full SHA256 hash)."]
-        #[serde(
-            rename = "prefixSize",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub prefix_size: ::std::option::Option<i32>,
-        #[doc = "The hashes, in binary format, concatenated into one long string. Hashes are\nsorted in lexicographic order. For JSON API users, hashes are\nbase64-encoded."]
-        #[serde(
-            rename = "rawHashes",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub raw_hashes: ::std::option::Option<::google_api_bytes::Bytes>,
-    }
-    impl ::google_field_selector::FieldSelector for RawHashes {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for RawHashes {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct RawIndices {
-        #[doc = "The indices to remove from a lexicographically-sorted local list."]
-        #[serde(
-            rename = "indices",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub indices: ::std::option::Option<Vec<i32>>,
-    }
-    impl ::google_field_selector::FieldSelector for RawIndices {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for RawIndices {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct RiceDeltaEncoding {
-        #[doc = "The encoded deltas that are encoded using the Golomb-Rice coder."]
-        #[serde(
-            rename = "encodedData",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub encoded_data: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "The offset of the first entry in the encoded data, or, if only a single\ninteger was encoded, that single integer's value. If the field is empty or\nmissing, assume zero."]
-        #[serde(
-            rename = "firstValue",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub first_value: ::std::option::Option<i64>,
-        #[doc = "The number of entries that are delta encoded in the encoded data. If only a\nsingle integer was encoded, this will be zero and the single value will be\nstored in `first_value`."]
-        #[serde(
-            rename = "numEntries",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub num_entries: ::std::option::Option<i32>,
-        #[doc = "The Golomb-Rice parameter, which is a number between 2 and 28. This field\nis missing (that is, zero) if `num_entries` is zero."]
-        #[serde(
-            rename = "riceParameter",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub rice_parameter: ::std::option::Option<i32>,
-    }
-    impl ::google_field_selector::FieldSelector for RiceDeltaEncoding {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for RiceDeltaEncoding {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ThreatEntry {
-        #[doc = "The digest of an executable in SHA256 format. The API supports both\nbinary and hex digests. For JSON requests, digests are base64-encoded."]
-        #[serde(
-            rename = "digest",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub digest: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "A hash prefix, consisting of the most significant 4-32 bytes of a SHA256\nhash. This field is in binary format. For JSON requests, hashes are\nbase64-encoded."]
-        #[serde(
-            rename = "hash",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub hash: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "A URL."]
-        #[serde(
-            rename = "url",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub url: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for ThreatEntry {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ThreatEntry {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ThreatEntryMetadata {
-        #[doc = "The metadata entries."]
-        #[serde(
-            rename = "entries",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub entries: ::std::option::Option<Vec<crate::schemas::MetadataEntry>>,
-    }
-    impl ::google_field_selector::FieldSelector for ThreatEntryMetadata {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ThreatEntryMetadata {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ThreatEntrySet {
+    pub struct GoogleSecuritySafebrowsingV4ThreatEntrySet {
         #[doc = "The compression type for the entries in this set."]
         #[serde(
             rename = "compressionType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub compression_type: ::std::option::Option<crate::schemas::ThreatEntrySetCompressionType>,
+        pub compression_type: ::std::option::Option<
+            crate::schemas::GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionType,
+        >,
         #[doc = "The raw SHA256-formatted entries."]
         #[serde(
             rename = "rawHashes",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub raw_hashes: ::std::option::Option<crate::schemas::RawHashes>,
+        pub raw_hashes:
+            ::std::option::Option<crate::schemas::GoogleSecuritySafebrowsingV4RawHashes>,
         #[doc = "The raw removal indices for a local list."]
         #[serde(
             rename = "rawIndices",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub raw_indices: ::std::option::Option<crate::schemas::RawIndices>,
-        #[doc = "The encoded 4-byte prefixes of SHA256-formatted entries, using a\nGolomb-Rice encoding. The hashes are converted to uint32, sorted in\nascending order, then delta encoded and stored as encoded_data."]
+        pub raw_indices:
+            ::std::option::Option<crate::schemas::GoogleSecuritySafebrowsingV4RawIndices>,
+        #[doc = "The encoded 4-byte prefixes of SHA256-formatted entries, using a Golomb-Rice encoding. The hashes are converted to uint32, sorted in ascending order, then delta encoded and stored as encoded_data."]
         #[serde(
             rename = "riceHashes",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub rice_hashes: ::std::option::Option<crate::schemas::RiceDeltaEncoding>,
-        #[doc = "The encoded local, lexicographically-sorted list indices, using a\nGolomb-Rice encoding. Used for sending compressed removal indices. The\nremoval indices (uint32) are sorted in ascending order, then delta encoded\nand stored as encoded_data."]
+        pub rice_hashes:
+            ::std::option::Option<crate::schemas::GoogleSecuritySafebrowsingV4RiceDeltaEncoding>,
+        #[doc = "The encoded local, lexicographically-sorted list indices, using a Golomb-Rice encoding. Used for sending compressed removal indices. The removal indices (uint32) are sorted in ascending order, then delta encoded and stored as encoded_data."]
         #[serde(
             rename = "riceIndices",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub rice_indices: ::std::option::Option<crate::schemas::RiceDeltaEncoding>,
+        pub rice_indices:
+            ::std::option::Option<crate::schemas::GoogleSecuritySafebrowsingV4RiceDeltaEncoding>,
     }
-    impl ::google_field_selector::FieldSelector for ThreatEntrySet {
+    impl ::google_field_selector::FieldSelector for GoogleSecuritySafebrowsingV4ThreatEntrySet {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for ThreatEntrySet {
+    impl ::google_field_selector::ToFieldType for GoogleSecuritySafebrowsingV4ThreatEntrySet {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ThreatEntrySetCompressionType {
+    pub enum GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionType {
         #[doc = "Unknown."]
         CompressionTypeUnspecified,
         #[doc = "Raw, uncompressed data."]
@@ -1796,41 +1282,31 @@ pub mod schemas {
         #[doc = "Rice-Golomb encoded data."]
         Rice,
     }
-    impl ThreatEntrySetCompressionType {
+    impl GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionType {
         pub fn as_str(self) -> &'static str {
-            match self {
-                ThreatEntrySetCompressionType::CompressionTypeUnspecified => {
-                    "COMPRESSION_TYPE_UNSPECIFIED"
-                }
-                ThreatEntrySetCompressionType::Raw => "RAW",
-                ThreatEntrySetCompressionType::Rice => "RICE",
-            }
+            match self { GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionType :: CompressionTypeUnspecified => "COMPRESSION_TYPE_UNSPECIFIED" , GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionType :: Raw => "RAW" , GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionType :: Rice => "RICE" , }
         }
     }
-    impl ::std::convert::AsRef<str> for ThreatEntrySetCompressionType {
+    impl ::std::convert::AsRef<str> for GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionType {
         fn as_ref(&self) -> &str {
             self.as_str()
         }
     }
-    impl ::std::str::FromStr for ThreatEntrySetCompressionType {
+    impl ::std::str::FromStr for GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionType {
         type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ThreatEntrySetCompressionType, ()> {
-            Ok(match s {
-                "COMPRESSION_TYPE_UNSPECIFIED" => {
-                    ThreatEntrySetCompressionType::CompressionTypeUnspecified
-                }
-                "RAW" => ThreatEntrySetCompressionType::Raw,
-                "RICE" => ThreatEntrySetCompressionType::Rice,
-                _ => return Err(()),
-            })
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionType, ()>
+        {
+            Ok (match s { "COMPRESSION_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionType :: CompressionTypeUnspecified , "RAW" => GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionType :: Raw , "RICE" => GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionType :: Rice , _ => return Err (()) , })
         }
     }
-    impl ::std::fmt::Display for ThreatEntrySetCompressionType {
+    impl ::std::fmt::Display for GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
-    impl ::serde::Serialize for ThreatEntrySetCompressionType {
+    impl ::serde::Serialize for GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionType {
         fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
@@ -1838,33 +1314,25 @@ pub mod schemas {
             serializer.serialize_str(self.as_str())
         }
     }
-    impl<'de> ::serde::Deserialize<'de> for ThreatEntrySetCompressionType {
+    impl<'de> ::serde::Deserialize<'de> for GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionType {
         fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "COMPRESSION_TYPE_UNSPECIFIED" => {
-                    ThreatEntrySetCompressionType::CompressionTypeUnspecified
-                }
-                "RAW" => ThreatEntrySetCompressionType::Raw,
-                "RICE" => ThreatEntrySetCompressionType::Rice,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
+            Ok (match value { "COMPRESSION_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionType :: CompressionTypeUnspecified , "RAW" => GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionType :: Raw , "RICE" => GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionType :: Rice , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
         }
     }
-    impl ::google_field_selector::FieldSelector for ThreatEntrySetCompressionType {
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionType
+    {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for ThreatEntrySetCompressionType {
+    impl ::google_field_selector::ToFieldType
+        for GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionType
+    {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1881,62 +1349,69 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ThreatHit {
+    pub struct GoogleSecuritySafebrowsingV4ThreatHit {
         #[doc = "Client-reported identification."]
         #[serde(
             rename = "clientInfo",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub client_info: ::std::option::Option<crate::schemas::ClientInfo>,
-        #[doc = "The threat entry responsible for the hit. Full hash should be reported for\nhash-based hits."]
+        pub client_info:
+            ::std::option::Option<crate::schemas::GoogleSecuritySafebrowsingV4ClientInfo>,
+        #[doc = "The threat entry responsible for the hit. Full hash should be reported for hash-based hits."]
         #[serde(
             rename = "entry",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub entry: ::std::option::Option<crate::schemas::ThreatEntry>,
+        pub entry: ::std::option::Option<crate::schemas::GoogleSecuritySafebrowsingV4ThreatEntry>,
         #[doc = "The platform type reported."]
         #[serde(
             rename = "platformType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub platform_type: ::std::option::Option<crate::schemas::ThreatHitPlatformType>,
+        pub platform_type: ::std::option::Option<
+            crate::schemas::GoogleSecuritySafebrowsingV4ThreatHitPlatformType,
+        >,
         #[doc = "The resources related to the threat hit."]
         #[serde(
             rename = "resources",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub resources: ::std::option::Option<Vec<crate::schemas::ThreatSource>>,
+        pub resources: ::std::option::Option<
+            Vec<crate::schemas::GoogleSecuritySafebrowsingV4ThreatHitThreatSource>,
+        >,
         #[doc = "The threat type reported."]
         #[serde(
             rename = "threatType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub threat_type: ::std::option::Option<crate::schemas::ThreatHitThreatType>,
+        pub threat_type:
+            ::std::option::Option<crate::schemas::GoogleSecuritySafebrowsingV4ThreatHitThreatType>,
         #[doc = "Details about the user that encountered the threat."]
         #[serde(
             rename = "userInfo",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub user_info: ::std::option::Option<crate::schemas::UserInfo>,
+        pub user_info:
+            ::std::option::Option<crate::schemas::GoogleSecuritySafebrowsingV4ThreatHitUserInfo>,
     }
-    impl ::google_field_selector::FieldSelector for ThreatHit {
+    impl ::google_field_selector::FieldSelector for GoogleSecuritySafebrowsingV4ThreatHit {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for ThreatHit {
+    impl ::google_field_selector::ToFieldType for GoogleSecuritySafebrowsingV4ThreatHit {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ThreatHitPlatformType {
+    pub enum GoogleSecuritySafebrowsingV4ThreatHitPlatformType {
         #[doc = "Threat posed to all defined platforms."]
         AllPlatforms,
         #[doc = "Threat posed to Android."]
@@ -1956,49 +1431,55 @@ pub mod schemas {
         #[doc = "Threat posed to Windows."]
         Windows,
     }
-    impl ThreatHitPlatformType {
+    impl GoogleSecuritySafebrowsingV4ThreatHitPlatformType {
         pub fn as_str(self) -> &'static str {
             match self {
-                ThreatHitPlatformType::AllPlatforms => "ALL_PLATFORMS",
-                ThreatHitPlatformType::Android => "ANDROID",
-                ThreatHitPlatformType::AnyPlatform => "ANY_PLATFORM",
-                ThreatHitPlatformType::Chrome => "CHROME",
-                ThreatHitPlatformType::Ios => "IOS",
-                ThreatHitPlatformType::Linux => "LINUX",
-                ThreatHitPlatformType::Osx => "OSX",
-                ThreatHitPlatformType::PlatformTypeUnspecified => "PLATFORM_TYPE_UNSPECIFIED",
-                ThreatHitPlatformType::Windows => "WINDOWS",
+                GoogleSecuritySafebrowsingV4ThreatHitPlatformType::AllPlatforms => "ALL_PLATFORMS",
+                GoogleSecuritySafebrowsingV4ThreatHitPlatformType::Android => "ANDROID",
+                GoogleSecuritySafebrowsingV4ThreatHitPlatformType::AnyPlatform => "ANY_PLATFORM",
+                GoogleSecuritySafebrowsingV4ThreatHitPlatformType::Chrome => "CHROME",
+                GoogleSecuritySafebrowsingV4ThreatHitPlatformType::Ios => "IOS",
+                GoogleSecuritySafebrowsingV4ThreatHitPlatformType::Linux => "LINUX",
+                GoogleSecuritySafebrowsingV4ThreatHitPlatformType::Osx => "OSX",
+                GoogleSecuritySafebrowsingV4ThreatHitPlatformType::PlatformTypeUnspecified => {
+                    "PLATFORM_TYPE_UNSPECIFIED"
+                }
+                GoogleSecuritySafebrowsingV4ThreatHitPlatformType::Windows => "WINDOWS",
             }
         }
     }
-    impl ::std::convert::AsRef<str> for ThreatHitPlatformType {
+    impl ::std::convert::AsRef<str> for GoogleSecuritySafebrowsingV4ThreatHitPlatformType {
         fn as_ref(&self) -> &str {
             self.as_str()
         }
     }
-    impl ::std::str::FromStr for ThreatHitPlatformType {
+    impl ::std::str::FromStr for GoogleSecuritySafebrowsingV4ThreatHitPlatformType {
         type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ThreatHitPlatformType, ()> {
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleSecuritySafebrowsingV4ThreatHitPlatformType, ()> {
             Ok(match s {
-                "ALL_PLATFORMS" => ThreatHitPlatformType::AllPlatforms,
-                "ANDROID" => ThreatHitPlatformType::Android,
-                "ANY_PLATFORM" => ThreatHitPlatformType::AnyPlatform,
-                "CHROME" => ThreatHitPlatformType::Chrome,
-                "IOS" => ThreatHitPlatformType::Ios,
-                "LINUX" => ThreatHitPlatformType::Linux,
-                "OSX" => ThreatHitPlatformType::Osx,
-                "PLATFORM_TYPE_UNSPECIFIED" => ThreatHitPlatformType::PlatformTypeUnspecified,
-                "WINDOWS" => ThreatHitPlatformType::Windows,
+                "ALL_PLATFORMS" => GoogleSecuritySafebrowsingV4ThreatHitPlatformType::AllPlatforms,
+                "ANDROID" => GoogleSecuritySafebrowsingV4ThreatHitPlatformType::Android,
+                "ANY_PLATFORM" => GoogleSecuritySafebrowsingV4ThreatHitPlatformType::AnyPlatform,
+                "CHROME" => GoogleSecuritySafebrowsingV4ThreatHitPlatformType::Chrome,
+                "IOS" => GoogleSecuritySafebrowsingV4ThreatHitPlatformType::Ios,
+                "LINUX" => GoogleSecuritySafebrowsingV4ThreatHitPlatformType::Linux,
+                "OSX" => GoogleSecuritySafebrowsingV4ThreatHitPlatformType::Osx,
+                "PLATFORM_TYPE_UNSPECIFIED" => {
+                    GoogleSecuritySafebrowsingV4ThreatHitPlatformType::PlatformTypeUnspecified
+                }
+                "WINDOWS" => GoogleSecuritySafebrowsingV4ThreatHitPlatformType::Windows,
                 _ => return Err(()),
             })
         }
     }
-    impl ::std::fmt::Display for ThreatHitPlatformType {
+    impl ::std::fmt::Display for GoogleSecuritySafebrowsingV4ThreatHitPlatformType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
-    impl ::serde::Serialize for ThreatHitPlatformType {
+    impl ::serde::Serialize for GoogleSecuritySafebrowsingV4ThreatHitPlatformType {
         fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
@@ -2006,22 +1487,24 @@ pub mod schemas {
             serializer.serialize_str(self.as_str())
         }
     }
-    impl<'de> ::serde::Deserialize<'de> for ThreatHitPlatformType {
+    impl<'de> ::serde::Deserialize<'de> for GoogleSecuritySafebrowsingV4ThreatHitPlatformType {
         fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "ALL_PLATFORMS" => ThreatHitPlatformType::AllPlatforms,
-                "ANDROID" => ThreatHitPlatformType::Android,
-                "ANY_PLATFORM" => ThreatHitPlatformType::AnyPlatform,
-                "CHROME" => ThreatHitPlatformType::Chrome,
-                "IOS" => ThreatHitPlatformType::Ios,
-                "LINUX" => ThreatHitPlatformType::Linux,
-                "OSX" => ThreatHitPlatformType::Osx,
-                "PLATFORM_TYPE_UNSPECIFIED" => ThreatHitPlatformType::PlatformTypeUnspecified,
-                "WINDOWS" => ThreatHitPlatformType::Windows,
+                "ALL_PLATFORMS" => GoogleSecuritySafebrowsingV4ThreatHitPlatformType::AllPlatforms,
+                "ANDROID" => GoogleSecuritySafebrowsingV4ThreatHitPlatformType::Android,
+                "ANY_PLATFORM" => GoogleSecuritySafebrowsingV4ThreatHitPlatformType::AnyPlatform,
+                "CHROME" => GoogleSecuritySafebrowsingV4ThreatHitPlatformType::Chrome,
+                "IOS" => GoogleSecuritySafebrowsingV4ThreatHitPlatformType::Ios,
+                "LINUX" => GoogleSecuritySafebrowsingV4ThreatHitPlatformType::Linux,
+                "OSX" => GoogleSecuritySafebrowsingV4ThreatHitPlatformType::Osx,
+                "PLATFORM_TYPE_UNSPECIFIED" => {
+                    GoogleSecuritySafebrowsingV4ThreatHitPlatformType::PlatformTypeUnspecified
+                }
+                "WINDOWS" => GoogleSecuritySafebrowsingV4ThreatHitPlatformType::Windows,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2031,25 +1514,25 @@ pub mod schemas {
             })
         }
     }
-    impl ::google_field_selector::FieldSelector for ThreatHitPlatformType {
+    impl ::google_field_selector::FieldSelector for GoogleSecuritySafebrowsingV4ThreatHitPlatformType {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for ThreatHitPlatformType {
+    impl ::google_field_selector::ToFieldType for GoogleSecuritySafebrowsingV4ThreatHitPlatformType {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ThreatHitThreatType {
+    pub enum GoogleSecuritySafebrowsingV4ThreatHitThreatType {
         #[doc = "API abuse threat type."]
         ApiAbuse,
         #[doc = "List used for offline APK checks in PAM."]
         ApkMalwareOffline,
         #[doc = "Client incident threat type."]
         ClientIncident,
-        #[doc = "Whitelist used when detecting client incident threats.\nThis enum was never launched and should be re-used for the next list."]
+        #[doc = "Whitelist used when detecting client incident threats. This enum was never launched and should be re-used for the next list."]
         ClientIncidentWhitelist,
         #[doc = "Client side download detection whitelist threat type."]
         CsdDownloadWhitelist,
@@ -2067,7 +1550,7 @@ pub mod schemas {
         SocialEngineering,
         #[doc = "Social engineering threat type for internal use."]
         SocialEngineeringInternal,
-        #[doc = "Patterns to be used for activating the subresource filter. Interstitial\nwill not be shown for patterns from this list."]
+        #[doc = "Patterns to be used for activating the subresource filter. Interstitial will not be shown for patterns from this list."]
         SubresourceFilter,
         #[doc = "Entities that are suspected to present a threat."]
         Suspicious,
@@ -2078,886 +1561,115 @@ pub mod schemas {
         #[doc = "Unwanted software threat type."]
         UnwantedSoftware,
     }
-    impl ThreatHitThreatType {
+    impl GoogleSecuritySafebrowsingV4ThreatHitThreatType {
         pub fn as_str(self) -> &'static str {
             match self {
-                ThreatHitThreatType::ApiAbuse => "API_ABUSE",
-                ThreatHitThreatType::ApkMalwareOffline => "APK_MALWARE_OFFLINE",
-                ThreatHitThreatType::ClientIncident => "CLIENT_INCIDENT",
-                ThreatHitThreatType::ClientIncidentWhitelist => "CLIENT_INCIDENT_WHITELIST",
-                ThreatHitThreatType::CsdDownloadWhitelist => "CSD_DOWNLOAD_WHITELIST",
-                ThreatHitThreatType::CsdWhitelist => "CSD_WHITELIST",
-                ThreatHitThreatType::HighConfidenceAllowlist => "HIGH_CONFIDENCE_ALLOWLIST",
-                ThreatHitThreatType::MaliciousBinary => "MALICIOUS_BINARY",
-                ThreatHitThreatType::Malware => "MALWARE",
-                ThreatHitThreatType::PotentiallyHarmfulApplication => {
-                    "POTENTIALLY_HARMFUL_APPLICATION"
+                GoogleSecuritySafebrowsingV4ThreatHitThreatType::ApiAbuse => "API_ABUSE",
+                GoogleSecuritySafebrowsingV4ThreatHitThreatType::ApkMalwareOffline => {
+                    "APK_MALWARE_OFFLINE"
                 }
-                ThreatHitThreatType::SocialEngineering => "SOCIAL_ENGINEERING",
-                ThreatHitThreatType::SocialEngineeringInternal => "SOCIAL_ENGINEERING_INTERNAL",
-                ThreatHitThreatType::SubresourceFilter => "SUBRESOURCE_FILTER",
-                ThreatHitThreatType::Suspicious => "SUSPICIOUS",
-                ThreatHitThreatType::ThreatTypeUnspecified => "THREAT_TYPE_UNSPECIFIED",
-                ThreatHitThreatType::TrickToBill => "TRICK_TO_BILL",
-                ThreatHitThreatType::UnwantedSoftware => "UNWANTED_SOFTWARE",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for ThreatHitThreatType {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for ThreatHitThreatType {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ThreatHitThreatType, ()> {
-            Ok(match s {
-                "API_ABUSE" => ThreatHitThreatType::ApiAbuse,
-                "APK_MALWARE_OFFLINE" => ThreatHitThreatType::ApkMalwareOffline,
-                "CLIENT_INCIDENT" => ThreatHitThreatType::ClientIncident,
-                "CLIENT_INCIDENT_WHITELIST" => ThreatHitThreatType::ClientIncidentWhitelist,
-                "CSD_DOWNLOAD_WHITELIST" => ThreatHitThreatType::CsdDownloadWhitelist,
-                "CSD_WHITELIST" => ThreatHitThreatType::CsdWhitelist,
-                "HIGH_CONFIDENCE_ALLOWLIST" => ThreatHitThreatType::HighConfidenceAllowlist,
-                "MALICIOUS_BINARY" => ThreatHitThreatType::MaliciousBinary,
-                "MALWARE" => ThreatHitThreatType::Malware,
-                "POTENTIALLY_HARMFUL_APPLICATION" => {
-                    ThreatHitThreatType::PotentiallyHarmfulApplication
+                GoogleSecuritySafebrowsingV4ThreatHitThreatType::ClientIncident => {
+                    "CLIENT_INCIDENT"
                 }
-                "SOCIAL_ENGINEERING" => ThreatHitThreatType::SocialEngineering,
-                "SOCIAL_ENGINEERING_INTERNAL" => ThreatHitThreatType::SocialEngineeringInternal,
-                "SUBRESOURCE_FILTER" => ThreatHitThreatType::SubresourceFilter,
-                "SUSPICIOUS" => ThreatHitThreatType::Suspicious,
-                "THREAT_TYPE_UNSPECIFIED" => ThreatHitThreatType::ThreatTypeUnspecified,
-                "TRICK_TO_BILL" => ThreatHitThreatType::TrickToBill,
-                "UNWANTED_SOFTWARE" => ThreatHitThreatType::UnwantedSoftware,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for ThreatHitThreatType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ThreatHitThreatType {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ThreatHitThreatType {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "API_ABUSE" => ThreatHitThreatType::ApiAbuse,
-                "APK_MALWARE_OFFLINE" => ThreatHitThreatType::ApkMalwareOffline,
-                "CLIENT_INCIDENT" => ThreatHitThreatType::ClientIncident,
-                "CLIENT_INCIDENT_WHITELIST" => ThreatHitThreatType::ClientIncidentWhitelist,
-                "CSD_DOWNLOAD_WHITELIST" => ThreatHitThreatType::CsdDownloadWhitelist,
-                "CSD_WHITELIST" => ThreatHitThreatType::CsdWhitelist,
-                "HIGH_CONFIDENCE_ALLOWLIST" => ThreatHitThreatType::HighConfidenceAllowlist,
-                "MALICIOUS_BINARY" => ThreatHitThreatType::MaliciousBinary,
-                "MALWARE" => ThreatHitThreatType::Malware,
-                "POTENTIALLY_HARMFUL_APPLICATION" => {
-                    ThreatHitThreatType::PotentiallyHarmfulApplication
-                }
-                "SOCIAL_ENGINEERING" => ThreatHitThreatType::SocialEngineering,
-                "SOCIAL_ENGINEERING_INTERNAL" => ThreatHitThreatType::SocialEngineeringInternal,
-                "SUBRESOURCE_FILTER" => ThreatHitThreatType::SubresourceFilter,
-                "SUSPICIOUS" => ThreatHitThreatType::Suspicious,
-                "THREAT_TYPE_UNSPECIFIED" => ThreatHitThreatType::ThreatTypeUnspecified,
-                "TRICK_TO_BILL" => ThreatHitThreatType::TrickToBill,
-                "UNWANTED_SOFTWARE" => ThreatHitThreatType::UnwantedSoftware,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for ThreatHitThreatType {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ThreatHitThreatType {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ThreatInfo {
-        #[doc = "The platform types to be checked."]
-        #[serde(
-            rename = "platformTypes",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub platform_types:
-            ::std::option::Option<Vec<crate::schemas::ThreatInfoPlatformTypesItems>>,
-        #[doc = "The threat entries to be checked."]
-        #[serde(
-            rename = "threatEntries",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub threat_entries: ::std::option::Option<Vec<crate::schemas::ThreatEntry>>,
-        #[doc = "The entry types to be checked."]
-        #[serde(
-            rename = "threatEntryTypes",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub threat_entry_types:
-            ::std::option::Option<Vec<crate::schemas::ThreatInfoThreatEntryTypesItems>>,
-        #[doc = "The threat types to be checked."]
-        #[serde(
-            rename = "threatTypes",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub threat_types: ::std::option::Option<Vec<crate::schemas::ThreatInfoThreatTypesItems>>,
-    }
-    impl ::google_field_selector::FieldSelector for ThreatInfo {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ThreatInfo {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ThreatInfoPlatformTypesItems {
-        AllPlatforms,
-        Android,
-        AnyPlatform,
-        Chrome,
-        Ios,
-        Linux,
-        Osx,
-        PlatformTypeUnspecified,
-        Windows,
-    }
-    impl ThreatInfoPlatformTypesItems {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ThreatInfoPlatformTypesItems::AllPlatforms => "ALL_PLATFORMS",
-                ThreatInfoPlatformTypesItems::Android => "ANDROID",
-                ThreatInfoPlatformTypesItems::AnyPlatform => "ANY_PLATFORM",
-                ThreatInfoPlatformTypesItems::Chrome => "CHROME",
-                ThreatInfoPlatformTypesItems::Ios => "IOS",
-                ThreatInfoPlatformTypesItems::Linux => "LINUX",
-                ThreatInfoPlatformTypesItems::Osx => "OSX",
-                ThreatInfoPlatformTypesItems::PlatformTypeUnspecified => {
-                    "PLATFORM_TYPE_UNSPECIFIED"
-                }
-                ThreatInfoPlatformTypesItems::Windows => "WINDOWS",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for ThreatInfoPlatformTypesItems {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for ThreatInfoPlatformTypesItems {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ThreatInfoPlatformTypesItems, ()> {
-            Ok(match s {
-                "ALL_PLATFORMS" => ThreatInfoPlatformTypesItems::AllPlatforms,
-                "ANDROID" => ThreatInfoPlatformTypesItems::Android,
-                "ANY_PLATFORM" => ThreatInfoPlatformTypesItems::AnyPlatform,
-                "CHROME" => ThreatInfoPlatformTypesItems::Chrome,
-                "IOS" => ThreatInfoPlatformTypesItems::Ios,
-                "LINUX" => ThreatInfoPlatformTypesItems::Linux,
-                "OSX" => ThreatInfoPlatformTypesItems::Osx,
-                "PLATFORM_TYPE_UNSPECIFIED" => {
-                    ThreatInfoPlatformTypesItems::PlatformTypeUnspecified
-                }
-                "WINDOWS" => ThreatInfoPlatformTypesItems::Windows,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for ThreatInfoPlatformTypesItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ThreatInfoPlatformTypesItems {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ThreatInfoPlatformTypesItems {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "ALL_PLATFORMS" => ThreatInfoPlatformTypesItems::AllPlatforms,
-                "ANDROID" => ThreatInfoPlatformTypesItems::Android,
-                "ANY_PLATFORM" => ThreatInfoPlatformTypesItems::AnyPlatform,
-                "CHROME" => ThreatInfoPlatformTypesItems::Chrome,
-                "IOS" => ThreatInfoPlatformTypesItems::Ios,
-                "LINUX" => ThreatInfoPlatformTypesItems::Linux,
-                "OSX" => ThreatInfoPlatformTypesItems::Osx,
-                "PLATFORM_TYPE_UNSPECIFIED" => {
-                    ThreatInfoPlatformTypesItems::PlatformTypeUnspecified
-                }
-                "WINDOWS" => ThreatInfoPlatformTypesItems::Windows,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for ThreatInfoPlatformTypesItems {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ThreatInfoPlatformTypesItems {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ThreatInfoThreatEntryTypesItems {
-        Cert,
-        ChromeExtension,
-        Executable,
-        Filename,
-        IpRange,
-        ThreatEntryTypeUnspecified,
-        Url,
-    }
-    impl ThreatInfoThreatEntryTypesItems {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ThreatInfoThreatEntryTypesItems::Cert => "CERT",
-                ThreatInfoThreatEntryTypesItems::ChromeExtension => "CHROME_EXTENSION",
-                ThreatInfoThreatEntryTypesItems::Executable => "EXECUTABLE",
-                ThreatInfoThreatEntryTypesItems::Filename => "FILENAME",
-                ThreatInfoThreatEntryTypesItems::IpRange => "IP_RANGE",
-                ThreatInfoThreatEntryTypesItems::ThreatEntryTypeUnspecified => {
-                    "THREAT_ENTRY_TYPE_UNSPECIFIED"
-                }
-                ThreatInfoThreatEntryTypesItems::Url => "URL",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for ThreatInfoThreatEntryTypesItems {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for ThreatInfoThreatEntryTypesItems {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ThreatInfoThreatEntryTypesItems, ()> {
-            Ok(match s {
-                "CERT" => ThreatInfoThreatEntryTypesItems::Cert,
-                "CHROME_EXTENSION" => ThreatInfoThreatEntryTypesItems::ChromeExtension,
-                "EXECUTABLE" => ThreatInfoThreatEntryTypesItems::Executable,
-                "FILENAME" => ThreatInfoThreatEntryTypesItems::Filename,
-                "IP_RANGE" => ThreatInfoThreatEntryTypesItems::IpRange,
-                "THREAT_ENTRY_TYPE_UNSPECIFIED" => {
-                    ThreatInfoThreatEntryTypesItems::ThreatEntryTypeUnspecified
-                }
-                "URL" => ThreatInfoThreatEntryTypesItems::Url,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for ThreatInfoThreatEntryTypesItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ThreatInfoThreatEntryTypesItems {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ThreatInfoThreatEntryTypesItems {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "CERT" => ThreatInfoThreatEntryTypesItems::Cert,
-                "CHROME_EXTENSION" => ThreatInfoThreatEntryTypesItems::ChromeExtension,
-                "EXECUTABLE" => ThreatInfoThreatEntryTypesItems::Executable,
-                "FILENAME" => ThreatInfoThreatEntryTypesItems::Filename,
-                "IP_RANGE" => ThreatInfoThreatEntryTypesItems::IpRange,
-                "THREAT_ENTRY_TYPE_UNSPECIFIED" => {
-                    ThreatInfoThreatEntryTypesItems::ThreatEntryTypeUnspecified
-                }
-                "URL" => ThreatInfoThreatEntryTypesItems::Url,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for ThreatInfoThreatEntryTypesItems {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ThreatInfoThreatEntryTypesItems {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ThreatInfoThreatTypesItems {
-        ApiAbuse,
-        ApkMalwareOffline,
-        ClientIncident,
-        ClientIncidentWhitelist,
-        CsdDownloadWhitelist,
-        CsdWhitelist,
-        HighConfidenceAllowlist,
-        MaliciousBinary,
-        Malware,
-        PotentiallyHarmfulApplication,
-        SocialEngineering,
-        SocialEngineeringInternal,
-        SubresourceFilter,
-        Suspicious,
-        ThreatTypeUnspecified,
-        TrickToBill,
-        UnwantedSoftware,
-    }
-    impl ThreatInfoThreatTypesItems {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ThreatInfoThreatTypesItems::ApiAbuse => "API_ABUSE",
-                ThreatInfoThreatTypesItems::ApkMalwareOffline => "APK_MALWARE_OFFLINE",
-                ThreatInfoThreatTypesItems::ClientIncident => "CLIENT_INCIDENT",
-                ThreatInfoThreatTypesItems::ClientIncidentWhitelist => "CLIENT_INCIDENT_WHITELIST",
-                ThreatInfoThreatTypesItems::CsdDownloadWhitelist => "CSD_DOWNLOAD_WHITELIST",
-                ThreatInfoThreatTypesItems::CsdWhitelist => "CSD_WHITELIST",
-                ThreatInfoThreatTypesItems::HighConfidenceAllowlist => "HIGH_CONFIDENCE_ALLOWLIST",
-                ThreatInfoThreatTypesItems::MaliciousBinary => "MALICIOUS_BINARY",
-                ThreatInfoThreatTypesItems::Malware => "MALWARE",
-                ThreatInfoThreatTypesItems::PotentiallyHarmfulApplication => {
-                    "POTENTIALLY_HARMFUL_APPLICATION"
-                }
-                ThreatInfoThreatTypesItems::SocialEngineering => "SOCIAL_ENGINEERING",
-                ThreatInfoThreatTypesItems::SocialEngineeringInternal => {
-                    "SOCIAL_ENGINEERING_INTERNAL"
-                }
-                ThreatInfoThreatTypesItems::SubresourceFilter => "SUBRESOURCE_FILTER",
-                ThreatInfoThreatTypesItems::Suspicious => "SUSPICIOUS",
-                ThreatInfoThreatTypesItems::ThreatTypeUnspecified => "THREAT_TYPE_UNSPECIFIED",
-                ThreatInfoThreatTypesItems::TrickToBill => "TRICK_TO_BILL",
-                ThreatInfoThreatTypesItems::UnwantedSoftware => "UNWANTED_SOFTWARE",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for ThreatInfoThreatTypesItems {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for ThreatInfoThreatTypesItems {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ThreatInfoThreatTypesItems, ()> {
-            Ok(match s {
-                "API_ABUSE" => ThreatInfoThreatTypesItems::ApiAbuse,
-                "APK_MALWARE_OFFLINE" => ThreatInfoThreatTypesItems::ApkMalwareOffline,
-                "CLIENT_INCIDENT" => ThreatInfoThreatTypesItems::ClientIncident,
-                "CLIENT_INCIDENT_WHITELIST" => ThreatInfoThreatTypesItems::ClientIncidentWhitelist,
-                "CSD_DOWNLOAD_WHITELIST" => ThreatInfoThreatTypesItems::CsdDownloadWhitelist,
-                "CSD_WHITELIST" => ThreatInfoThreatTypesItems::CsdWhitelist,
-                "HIGH_CONFIDENCE_ALLOWLIST" => ThreatInfoThreatTypesItems::HighConfidenceAllowlist,
-                "MALICIOUS_BINARY" => ThreatInfoThreatTypesItems::MaliciousBinary,
-                "MALWARE" => ThreatInfoThreatTypesItems::Malware,
-                "POTENTIALLY_HARMFUL_APPLICATION" => {
-                    ThreatInfoThreatTypesItems::PotentiallyHarmfulApplication
-                }
-                "SOCIAL_ENGINEERING" => ThreatInfoThreatTypesItems::SocialEngineering,
-                "SOCIAL_ENGINEERING_INTERNAL" => {
-                    ThreatInfoThreatTypesItems::SocialEngineeringInternal
-                }
-                "SUBRESOURCE_FILTER" => ThreatInfoThreatTypesItems::SubresourceFilter,
-                "SUSPICIOUS" => ThreatInfoThreatTypesItems::Suspicious,
-                "THREAT_TYPE_UNSPECIFIED" => ThreatInfoThreatTypesItems::ThreatTypeUnspecified,
-                "TRICK_TO_BILL" => ThreatInfoThreatTypesItems::TrickToBill,
-                "UNWANTED_SOFTWARE" => ThreatInfoThreatTypesItems::UnwantedSoftware,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for ThreatInfoThreatTypesItems {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ThreatInfoThreatTypesItems {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ThreatInfoThreatTypesItems {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "API_ABUSE" => ThreatInfoThreatTypesItems::ApiAbuse,
-                "APK_MALWARE_OFFLINE" => ThreatInfoThreatTypesItems::ApkMalwareOffline,
-                "CLIENT_INCIDENT" => ThreatInfoThreatTypesItems::ClientIncident,
-                "CLIENT_INCIDENT_WHITELIST" => ThreatInfoThreatTypesItems::ClientIncidentWhitelist,
-                "CSD_DOWNLOAD_WHITELIST" => ThreatInfoThreatTypesItems::CsdDownloadWhitelist,
-                "CSD_WHITELIST" => ThreatInfoThreatTypesItems::CsdWhitelist,
-                "HIGH_CONFIDENCE_ALLOWLIST" => ThreatInfoThreatTypesItems::HighConfidenceAllowlist,
-                "MALICIOUS_BINARY" => ThreatInfoThreatTypesItems::MaliciousBinary,
-                "MALWARE" => ThreatInfoThreatTypesItems::Malware,
-                "POTENTIALLY_HARMFUL_APPLICATION" => {
-                    ThreatInfoThreatTypesItems::PotentiallyHarmfulApplication
-                }
-                "SOCIAL_ENGINEERING" => ThreatInfoThreatTypesItems::SocialEngineering,
-                "SOCIAL_ENGINEERING_INTERNAL" => {
-                    ThreatInfoThreatTypesItems::SocialEngineeringInternal
-                }
-                "SUBRESOURCE_FILTER" => ThreatInfoThreatTypesItems::SubresourceFilter,
-                "SUSPICIOUS" => ThreatInfoThreatTypesItems::Suspicious,
-                "THREAT_TYPE_UNSPECIFIED" => ThreatInfoThreatTypesItems::ThreatTypeUnspecified,
-                "TRICK_TO_BILL" => ThreatInfoThreatTypesItems::TrickToBill,
-                "UNWANTED_SOFTWARE" => ThreatInfoThreatTypesItems::UnwantedSoftware,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for ThreatInfoThreatTypesItems {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ThreatInfoThreatTypesItems {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ThreatListDescriptor {
-        #[doc = "The platform type targeted by the list's entries."]
-        #[serde(
-            rename = "platformType",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub platform_type: ::std::option::Option<crate::schemas::ThreatListDescriptorPlatformType>,
-        #[doc = "The entry types contained in the list."]
-        #[serde(
-            rename = "threatEntryType",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub threat_entry_type:
-            ::std::option::Option<crate::schemas::ThreatListDescriptorThreatEntryType>,
-        #[doc = "The threat type posed by the list's entries."]
-        #[serde(
-            rename = "threatType",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub threat_type: ::std::option::Option<crate::schemas::ThreatListDescriptorThreatType>,
-    }
-    impl ::google_field_selector::FieldSelector for ThreatListDescriptor {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ThreatListDescriptor {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ThreatListDescriptorPlatformType {
-        #[doc = "Threat posed to all defined platforms."]
-        AllPlatforms,
-        #[doc = "Threat posed to Android."]
-        Android,
-        #[doc = "Threat posed to at least one of the defined platforms."]
-        AnyPlatform,
-        #[doc = "Threat posed to Chrome."]
-        Chrome,
-        #[doc = "Threat posed to iOS."]
-        Ios,
-        #[doc = "Threat posed to Linux."]
-        Linux,
-        #[doc = "Threat posed to OS X."]
-        Osx,
-        #[doc = "Unknown platform."]
-        PlatformTypeUnspecified,
-        #[doc = "Threat posed to Windows."]
-        Windows,
-    }
-    impl ThreatListDescriptorPlatformType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ThreatListDescriptorPlatformType::AllPlatforms => "ALL_PLATFORMS",
-                ThreatListDescriptorPlatformType::Android => "ANDROID",
-                ThreatListDescriptorPlatformType::AnyPlatform => "ANY_PLATFORM",
-                ThreatListDescriptorPlatformType::Chrome => "CHROME",
-                ThreatListDescriptorPlatformType::Ios => "IOS",
-                ThreatListDescriptorPlatformType::Linux => "LINUX",
-                ThreatListDescriptorPlatformType::Osx => "OSX",
-                ThreatListDescriptorPlatformType::PlatformTypeUnspecified => {
-                    "PLATFORM_TYPE_UNSPECIFIED"
-                }
-                ThreatListDescriptorPlatformType::Windows => "WINDOWS",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for ThreatListDescriptorPlatformType {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for ThreatListDescriptorPlatformType {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ThreatListDescriptorPlatformType, ()> {
-            Ok(match s {
-                "ALL_PLATFORMS" => ThreatListDescriptorPlatformType::AllPlatforms,
-                "ANDROID" => ThreatListDescriptorPlatformType::Android,
-                "ANY_PLATFORM" => ThreatListDescriptorPlatformType::AnyPlatform,
-                "CHROME" => ThreatListDescriptorPlatformType::Chrome,
-                "IOS" => ThreatListDescriptorPlatformType::Ios,
-                "LINUX" => ThreatListDescriptorPlatformType::Linux,
-                "OSX" => ThreatListDescriptorPlatformType::Osx,
-                "PLATFORM_TYPE_UNSPECIFIED" => {
-                    ThreatListDescriptorPlatformType::PlatformTypeUnspecified
-                }
-                "WINDOWS" => ThreatListDescriptorPlatformType::Windows,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for ThreatListDescriptorPlatformType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ThreatListDescriptorPlatformType {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ThreatListDescriptorPlatformType {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "ALL_PLATFORMS" => ThreatListDescriptorPlatformType::AllPlatforms,
-                "ANDROID" => ThreatListDescriptorPlatformType::Android,
-                "ANY_PLATFORM" => ThreatListDescriptorPlatformType::AnyPlatform,
-                "CHROME" => ThreatListDescriptorPlatformType::Chrome,
-                "IOS" => ThreatListDescriptorPlatformType::Ios,
-                "LINUX" => ThreatListDescriptorPlatformType::Linux,
-                "OSX" => ThreatListDescriptorPlatformType::Osx,
-                "PLATFORM_TYPE_UNSPECIFIED" => {
-                    ThreatListDescriptorPlatformType::PlatformTypeUnspecified
-                }
-                "WINDOWS" => ThreatListDescriptorPlatformType::Windows,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for ThreatListDescriptorPlatformType {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ThreatListDescriptorPlatformType {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ThreatListDescriptorThreatEntryType {
-        #[doc = "CERT"]
-        Cert,
-        #[doc = "Chrome extension."]
-        ChromeExtension,
-        #[doc = "An executable program."]
-        Executable,
-        #[doc = "Filename."]
-        Filename,
-        #[doc = "An IP range."]
-        IpRange,
-        #[doc = "Unspecified."]
-        ThreatEntryTypeUnspecified,
-        #[doc = "A URL."]
-        Url,
-    }
-    impl ThreatListDescriptorThreatEntryType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ThreatListDescriptorThreatEntryType::Cert => "CERT",
-                ThreatListDescriptorThreatEntryType::ChromeExtension => "CHROME_EXTENSION",
-                ThreatListDescriptorThreatEntryType::Executable => "EXECUTABLE",
-                ThreatListDescriptorThreatEntryType::Filename => "FILENAME",
-                ThreatListDescriptorThreatEntryType::IpRange => "IP_RANGE",
-                ThreatListDescriptorThreatEntryType::ThreatEntryTypeUnspecified => {
-                    "THREAT_ENTRY_TYPE_UNSPECIFIED"
-                }
-                ThreatListDescriptorThreatEntryType::Url => "URL",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for ThreatListDescriptorThreatEntryType {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for ThreatListDescriptorThreatEntryType {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ThreatListDescriptorThreatEntryType, ()> {
-            Ok(match s {
-                "CERT" => ThreatListDescriptorThreatEntryType::Cert,
-                "CHROME_EXTENSION" => ThreatListDescriptorThreatEntryType::ChromeExtension,
-                "EXECUTABLE" => ThreatListDescriptorThreatEntryType::Executable,
-                "FILENAME" => ThreatListDescriptorThreatEntryType::Filename,
-                "IP_RANGE" => ThreatListDescriptorThreatEntryType::IpRange,
-                "THREAT_ENTRY_TYPE_UNSPECIFIED" => {
-                    ThreatListDescriptorThreatEntryType::ThreatEntryTypeUnspecified
-                }
-                "URL" => ThreatListDescriptorThreatEntryType::Url,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for ThreatListDescriptorThreatEntryType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ThreatListDescriptorThreatEntryType {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ThreatListDescriptorThreatEntryType {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "CERT" => ThreatListDescriptorThreatEntryType::Cert,
-                "CHROME_EXTENSION" => ThreatListDescriptorThreatEntryType::ChromeExtension,
-                "EXECUTABLE" => ThreatListDescriptorThreatEntryType::Executable,
-                "FILENAME" => ThreatListDescriptorThreatEntryType::Filename,
-                "IP_RANGE" => ThreatListDescriptorThreatEntryType::IpRange,
-                "THREAT_ENTRY_TYPE_UNSPECIFIED" => {
-                    ThreatListDescriptorThreatEntryType::ThreatEntryTypeUnspecified
-                }
-                "URL" => ThreatListDescriptorThreatEntryType::Url,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for ThreatListDescriptorThreatEntryType {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ThreatListDescriptorThreatEntryType {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ThreatListDescriptorThreatType {
-        #[doc = "API abuse threat type."]
-        ApiAbuse,
-        #[doc = "List used for offline APK checks in PAM."]
-        ApkMalwareOffline,
-        #[doc = "Client incident threat type."]
-        ClientIncident,
-        #[doc = "Whitelist used when detecting client incident threats.\nThis enum was never launched and should be re-used for the next list."]
-        ClientIncidentWhitelist,
-        #[doc = "Client side download detection whitelist threat type."]
-        CsdDownloadWhitelist,
-        #[doc = "Client side detection whitelist threat type."]
-        CsdWhitelist,
-        #[doc = "Safe list to ship hashes of known safe URL expressions."]
-        HighConfidenceAllowlist,
-        #[doc = "Malicious binary threat type."]
-        MaliciousBinary,
-        #[doc = "Malware threat type."]
-        Malware,
-        #[doc = "Potentially harmful application threat type."]
-        PotentiallyHarmfulApplication,
-        #[doc = "Social engineering threat type."]
-        SocialEngineering,
-        #[doc = "Social engineering threat type for internal use."]
-        SocialEngineeringInternal,
-        #[doc = "Patterns to be used for activating the subresource filter. Interstitial\nwill not be shown for patterns from this list."]
-        SubresourceFilter,
-        #[doc = "Entities that are suspected to present a threat."]
-        Suspicious,
-        #[doc = "Unknown."]
-        ThreatTypeUnspecified,
-        #[doc = "Trick-to-bill threat list."]
-        TrickToBill,
-        #[doc = "Unwanted software threat type."]
-        UnwantedSoftware,
-    }
-    impl ThreatListDescriptorThreatType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ThreatListDescriptorThreatType::ApiAbuse => "API_ABUSE",
-                ThreatListDescriptorThreatType::ApkMalwareOffline => "APK_MALWARE_OFFLINE",
-                ThreatListDescriptorThreatType::ClientIncident => "CLIENT_INCIDENT",
-                ThreatListDescriptorThreatType::ClientIncidentWhitelist => {
+                GoogleSecuritySafebrowsingV4ThreatHitThreatType::ClientIncidentWhitelist => {
                     "CLIENT_INCIDENT_WHITELIST"
                 }
-                ThreatListDescriptorThreatType::CsdDownloadWhitelist => "CSD_DOWNLOAD_WHITELIST",
-                ThreatListDescriptorThreatType::CsdWhitelist => "CSD_WHITELIST",
-                ThreatListDescriptorThreatType::HighConfidenceAllowlist => {
+                GoogleSecuritySafebrowsingV4ThreatHitThreatType::CsdDownloadWhitelist => {
+                    "CSD_DOWNLOAD_WHITELIST"
+                }
+                GoogleSecuritySafebrowsingV4ThreatHitThreatType::CsdWhitelist => "CSD_WHITELIST",
+                GoogleSecuritySafebrowsingV4ThreatHitThreatType::HighConfidenceAllowlist => {
                     "HIGH_CONFIDENCE_ALLOWLIST"
                 }
-                ThreatListDescriptorThreatType::MaliciousBinary => "MALICIOUS_BINARY",
-                ThreatListDescriptorThreatType::Malware => "MALWARE",
-                ThreatListDescriptorThreatType::PotentiallyHarmfulApplication => {
+                GoogleSecuritySafebrowsingV4ThreatHitThreatType::MaliciousBinary => {
+                    "MALICIOUS_BINARY"
+                }
+                GoogleSecuritySafebrowsingV4ThreatHitThreatType::Malware => "MALWARE",
+                GoogleSecuritySafebrowsingV4ThreatHitThreatType::PotentiallyHarmfulApplication => {
                     "POTENTIALLY_HARMFUL_APPLICATION"
                 }
-                ThreatListDescriptorThreatType::SocialEngineering => "SOCIAL_ENGINEERING",
-                ThreatListDescriptorThreatType::SocialEngineeringInternal => {
+                GoogleSecuritySafebrowsingV4ThreatHitThreatType::SocialEngineering => {
+                    "SOCIAL_ENGINEERING"
+                }
+                GoogleSecuritySafebrowsingV4ThreatHitThreatType::SocialEngineeringInternal => {
                     "SOCIAL_ENGINEERING_INTERNAL"
                 }
-                ThreatListDescriptorThreatType::SubresourceFilter => "SUBRESOURCE_FILTER",
-                ThreatListDescriptorThreatType::Suspicious => "SUSPICIOUS",
-                ThreatListDescriptorThreatType::ThreatTypeUnspecified => "THREAT_TYPE_UNSPECIFIED",
-                ThreatListDescriptorThreatType::TrickToBill => "TRICK_TO_BILL",
-                ThreatListDescriptorThreatType::UnwantedSoftware => "UNWANTED_SOFTWARE",
+                GoogleSecuritySafebrowsingV4ThreatHitThreatType::SubresourceFilter => {
+                    "SUBRESOURCE_FILTER"
+                }
+                GoogleSecuritySafebrowsingV4ThreatHitThreatType::Suspicious => "SUSPICIOUS",
+                GoogleSecuritySafebrowsingV4ThreatHitThreatType::ThreatTypeUnspecified => {
+                    "THREAT_TYPE_UNSPECIFIED"
+                }
+                GoogleSecuritySafebrowsingV4ThreatHitThreatType::TrickToBill => "TRICK_TO_BILL",
+                GoogleSecuritySafebrowsingV4ThreatHitThreatType::UnwantedSoftware => {
+                    "UNWANTED_SOFTWARE"
+                }
             }
         }
     }
-    impl ::std::convert::AsRef<str> for ThreatListDescriptorThreatType {
+    impl ::std::convert::AsRef<str> for GoogleSecuritySafebrowsingV4ThreatHitThreatType {
         fn as_ref(&self) -> &str {
             self.as_str()
         }
     }
-    impl ::std::str::FromStr for ThreatListDescriptorThreatType {
+    impl ::std::str::FromStr for GoogleSecuritySafebrowsingV4ThreatHitThreatType {
         type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ThreatListDescriptorThreatType, ()> {
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleSecuritySafebrowsingV4ThreatHitThreatType, ()> {
             Ok(match s {
-                "API_ABUSE" => ThreatListDescriptorThreatType::ApiAbuse,
-                "APK_MALWARE_OFFLINE" => ThreatListDescriptorThreatType::ApkMalwareOffline,
-                "CLIENT_INCIDENT" => ThreatListDescriptorThreatType::ClientIncident,
+                "API_ABUSE" => GoogleSecuritySafebrowsingV4ThreatHitThreatType::ApiAbuse,
+                "APK_MALWARE_OFFLINE" => {
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::ApkMalwareOffline
+                }
+                "CLIENT_INCIDENT" => {
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::ClientIncident
+                }
                 "CLIENT_INCIDENT_WHITELIST" => {
-                    ThreatListDescriptorThreatType::ClientIncidentWhitelist
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::ClientIncidentWhitelist
                 }
-                "CSD_DOWNLOAD_WHITELIST" => ThreatListDescriptorThreatType::CsdDownloadWhitelist,
-                "CSD_WHITELIST" => ThreatListDescriptorThreatType::CsdWhitelist,
+                "CSD_DOWNLOAD_WHITELIST" => {
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::CsdDownloadWhitelist
+                }
+                "CSD_WHITELIST" => GoogleSecuritySafebrowsingV4ThreatHitThreatType::CsdWhitelist,
                 "HIGH_CONFIDENCE_ALLOWLIST" => {
-                    ThreatListDescriptorThreatType::HighConfidenceAllowlist
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::HighConfidenceAllowlist
                 }
-                "MALICIOUS_BINARY" => ThreatListDescriptorThreatType::MaliciousBinary,
-                "MALWARE" => ThreatListDescriptorThreatType::Malware,
+                "MALICIOUS_BINARY" => {
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::MaliciousBinary
+                }
+                "MALWARE" => GoogleSecuritySafebrowsingV4ThreatHitThreatType::Malware,
                 "POTENTIALLY_HARMFUL_APPLICATION" => {
-                    ThreatListDescriptorThreatType::PotentiallyHarmfulApplication
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::PotentiallyHarmfulApplication
                 }
-                "SOCIAL_ENGINEERING" => ThreatListDescriptorThreatType::SocialEngineering,
+                "SOCIAL_ENGINEERING" => {
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::SocialEngineering
+                }
                 "SOCIAL_ENGINEERING_INTERNAL" => {
-                    ThreatListDescriptorThreatType::SocialEngineeringInternal
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::SocialEngineeringInternal
                 }
-                "SUBRESOURCE_FILTER" => ThreatListDescriptorThreatType::SubresourceFilter,
-                "SUSPICIOUS" => ThreatListDescriptorThreatType::Suspicious,
-                "THREAT_TYPE_UNSPECIFIED" => ThreatListDescriptorThreatType::ThreatTypeUnspecified,
-                "TRICK_TO_BILL" => ThreatListDescriptorThreatType::TrickToBill,
-                "UNWANTED_SOFTWARE" => ThreatListDescriptorThreatType::UnwantedSoftware,
+                "SUBRESOURCE_FILTER" => {
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::SubresourceFilter
+                }
+                "SUSPICIOUS" => GoogleSecuritySafebrowsingV4ThreatHitThreatType::Suspicious,
+                "THREAT_TYPE_UNSPECIFIED" => {
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::ThreatTypeUnspecified
+                }
+                "TRICK_TO_BILL" => GoogleSecuritySafebrowsingV4ThreatHitThreatType::TrickToBill,
+                "UNWANTED_SOFTWARE" => {
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::UnwantedSoftware
+                }
                 _ => return Err(()),
             })
         }
     }
-    impl ::std::fmt::Display for ThreatListDescriptorThreatType {
+    impl ::std::fmt::Display for GoogleSecuritySafebrowsingV4ThreatHitThreatType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
-    impl ::serde::Serialize for ThreatListDescriptorThreatType {
+    impl ::serde::Serialize for GoogleSecuritySafebrowsingV4ThreatHitThreatType {
         fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
@@ -2965,38 +1677,54 @@ pub mod schemas {
             serializer.serialize_str(self.as_str())
         }
     }
-    impl<'de> ::serde::Deserialize<'de> for ThreatListDescriptorThreatType {
+    impl<'de> ::serde::Deserialize<'de> for GoogleSecuritySafebrowsingV4ThreatHitThreatType {
         fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "API_ABUSE" => ThreatListDescriptorThreatType::ApiAbuse,
-                "APK_MALWARE_OFFLINE" => ThreatListDescriptorThreatType::ApkMalwareOffline,
-                "CLIENT_INCIDENT" => ThreatListDescriptorThreatType::ClientIncident,
+                "API_ABUSE" => GoogleSecuritySafebrowsingV4ThreatHitThreatType::ApiAbuse,
+                "APK_MALWARE_OFFLINE" => {
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::ApkMalwareOffline
+                }
+                "CLIENT_INCIDENT" => {
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::ClientIncident
+                }
                 "CLIENT_INCIDENT_WHITELIST" => {
-                    ThreatListDescriptorThreatType::ClientIncidentWhitelist
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::ClientIncidentWhitelist
                 }
-                "CSD_DOWNLOAD_WHITELIST" => ThreatListDescriptorThreatType::CsdDownloadWhitelist,
-                "CSD_WHITELIST" => ThreatListDescriptorThreatType::CsdWhitelist,
+                "CSD_DOWNLOAD_WHITELIST" => {
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::CsdDownloadWhitelist
+                }
+                "CSD_WHITELIST" => GoogleSecuritySafebrowsingV4ThreatHitThreatType::CsdWhitelist,
                 "HIGH_CONFIDENCE_ALLOWLIST" => {
-                    ThreatListDescriptorThreatType::HighConfidenceAllowlist
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::HighConfidenceAllowlist
                 }
-                "MALICIOUS_BINARY" => ThreatListDescriptorThreatType::MaliciousBinary,
-                "MALWARE" => ThreatListDescriptorThreatType::Malware,
+                "MALICIOUS_BINARY" => {
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::MaliciousBinary
+                }
+                "MALWARE" => GoogleSecuritySafebrowsingV4ThreatHitThreatType::Malware,
                 "POTENTIALLY_HARMFUL_APPLICATION" => {
-                    ThreatListDescriptorThreatType::PotentiallyHarmfulApplication
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::PotentiallyHarmfulApplication
                 }
-                "SOCIAL_ENGINEERING" => ThreatListDescriptorThreatType::SocialEngineering,
+                "SOCIAL_ENGINEERING" => {
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::SocialEngineering
+                }
                 "SOCIAL_ENGINEERING_INTERNAL" => {
-                    ThreatListDescriptorThreatType::SocialEngineeringInternal
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::SocialEngineeringInternal
                 }
-                "SUBRESOURCE_FILTER" => ThreatListDescriptorThreatType::SubresourceFilter,
-                "SUSPICIOUS" => ThreatListDescriptorThreatType::Suspicious,
-                "THREAT_TYPE_UNSPECIFIED" => ThreatListDescriptorThreatType::ThreatTypeUnspecified,
-                "TRICK_TO_BILL" => ThreatListDescriptorThreatType::TrickToBill,
-                "UNWANTED_SOFTWARE" => ThreatListDescriptorThreatType::UnwantedSoftware,
+                "SUBRESOURCE_FILTER" => {
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::SubresourceFilter
+                }
+                "SUSPICIOUS" => GoogleSecuritySafebrowsingV4ThreatHitThreatType::Suspicious,
+                "THREAT_TYPE_UNSPECIFIED" => {
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::ThreatTypeUnspecified
+                }
+                "TRICK_TO_BILL" => GoogleSecuritySafebrowsingV4ThreatHitThreatType::TrickToBill,
+                "UNWANTED_SOFTWARE" => {
+                    GoogleSecuritySafebrowsingV4ThreatHitThreatType::UnwantedSoftware
+                }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3006,12 +1734,12 @@ pub mod schemas {
             })
         }
     }
-    impl ::google_field_selector::FieldSelector for ThreatListDescriptorThreatType {
+    impl ::google_field_selector::FieldSelector for GoogleSecuritySafebrowsingV4ThreatHitThreatType {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for ThreatListDescriptorThreatType {
+    impl ::google_field_selector::ToFieldType for GoogleSecuritySafebrowsingV4ThreatHitThreatType {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -3028,440 +1756,16 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ThreatMatch {
-        #[doc = "The cache lifetime for the returned match. Clients must not cache this\nresponse for more than this duration to avoid false positives."]
-        #[serde(
-            rename = "cacheDuration",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub cache_duration: ::std::option::Option<String>,
-        #[doc = "The platform type matching this threat."]
-        #[serde(
-            rename = "platformType",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub platform_type: ::std::option::Option<crate::schemas::ThreatMatchPlatformType>,
-        #[doc = "The threat matching this threat."]
-        #[serde(
-            rename = "threat",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub threat: ::std::option::Option<crate::schemas::ThreatEntry>,
-        #[doc = "Optional metadata associated with this threat."]
-        #[serde(
-            rename = "threatEntryMetadata",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub threat_entry_metadata: ::std::option::Option<crate::schemas::ThreatEntryMetadata>,
-        #[doc = "The threat entry type matching this threat."]
-        #[serde(
-            rename = "threatEntryType",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub threat_entry_type: ::std::option::Option<crate::schemas::ThreatMatchThreatEntryType>,
-        #[doc = "The threat type matching this threat."]
-        #[serde(
-            rename = "threatType",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub threat_type: ::std::option::Option<crate::schemas::ThreatMatchThreatType>,
-    }
-    impl ::google_field_selector::FieldSelector for ThreatMatch {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ThreatMatch {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ThreatMatchPlatformType {
-        #[doc = "Threat posed to all defined platforms."]
-        AllPlatforms,
-        #[doc = "Threat posed to Android."]
-        Android,
-        #[doc = "Threat posed to at least one of the defined platforms."]
-        AnyPlatform,
-        #[doc = "Threat posed to Chrome."]
-        Chrome,
-        #[doc = "Threat posed to iOS."]
-        Ios,
-        #[doc = "Threat posed to Linux."]
-        Linux,
-        #[doc = "Threat posed to OS X."]
-        Osx,
-        #[doc = "Unknown platform."]
-        PlatformTypeUnspecified,
-        #[doc = "Threat posed to Windows."]
-        Windows,
-    }
-    impl ThreatMatchPlatformType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ThreatMatchPlatformType::AllPlatforms => "ALL_PLATFORMS",
-                ThreatMatchPlatformType::Android => "ANDROID",
-                ThreatMatchPlatformType::AnyPlatform => "ANY_PLATFORM",
-                ThreatMatchPlatformType::Chrome => "CHROME",
-                ThreatMatchPlatformType::Ios => "IOS",
-                ThreatMatchPlatformType::Linux => "LINUX",
-                ThreatMatchPlatformType::Osx => "OSX",
-                ThreatMatchPlatformType::PlatformTypeUnspecified => "PLATFORM_TYPE_UNSPECIFIED",
-                ThreatMatchPlatformType::Windows => "WINDOWS",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for ThreatMatchPlatformType {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for ThreatMatchPlatformType {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ThreatMatchPlatformType, ()> {
-            Ok(match s {
-                "ALL_PLATFORMS" => ThreatMatchPlatformType::AllPlatforms,
-                "ANDROID" => ThreatMatchPlatformType::Android,
-                "ANY_PLATFORM" => ThreatMatchPlatformType::AnyPlatform,
-                "CHROME" => ThreatMatchPlatformType::Chrome,
-                "IOS" => ThreatMatchPlatformType::Ios,
-                "LINUX" => ThreatMatchPlatformType::Linux,
-                "OSX" => ThreatMatchPlatformType::Osx,
-                "PLATFORM_TYPE_UNSPECIFIED" => ThreatMatchPlatformType::PlatformTypeUnspecified,
-                "WINDOWS" => ThreatMatchPlatformType::Windows,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for ThreatMatchPlatformType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ThreatMatchPlatformType {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ThreatMatchPlatformType {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "ALL_PLATFORMS" => ThreatMatchPlatformType::AllPlatforms,
-                "ANDROID" => ThreatMatchPlatformType::Android,
-                "ANY_PLATFORM" => ThreatMatchPlatformType::AnyPlatform,
-                "CHROME" => ThreatMatchPlatformType::Chrome,
-                "IOS" => ThreatMatchPlatformType::Ios,
-                "LINUX" => ThreatMatchPlatformType::Linux,
-                "OSX" => ThreatMatchPlatformType::Osx,
-                "PLATFORM_TYPE_UNSPECIFIED" => ThreatMatchPlatformType::PlatformTypeUnspecified,
-                "WINDOWS" => ThreatMatchPlatformType::Windows,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for ThreatMatchPlatformType {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ThreatMatchPlatformType {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ThreatMatchThreatEntryType {
-        #[doc = "CERT"]
-        Cert,
-        #[doc = "Chrome extension."]
-        ChromeExtension,
-        #[doc = "An executable program."]
-        Executable,
-        #[doc = "Filename."]
-        Filename,
-        #[doc = "An IP range."]
-        IpRange,
-        #[doc = "Unspecified."]
-        ThreatEntryTypeUnspecified,
-        #[doc = "A URL."]
-        Url,
-    }
-    impl ThreatMatchThreatEntryType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ThreatMatchThreatEntryType::Cert => "CERT",
-                ThreatMatchThreatEntryType::ChromeExtension => "CHROME_EXTENSION",
-                ThreatMatchThreatEntryType::Executable => "EXECUTABLE",
-                ThreatMatchThreatEntryType::Filename => "FILENAME",
-                ThreatMatchThreatEntryType::IpRange => "IP_RANGE",
-                ThreatMatchThreatEntryType::ThreatEntryTypeUnspecified => {
-                    "THREAT_ENTRY_TYPE_UNSPECIFIED"
-                }
-                ThreatMatchThreatEntryType::Url => "URL",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for ThreatMatchThreatEntryType {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for ThreatMatchThreatEntryType {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ThreatMatchThreatEntryType, ()> {
-            Ok(match s {
-                "CERT" => ThreatMatchThreatEntryType::Cert,
-                "CHROME_EXTENSION" => ThreatMatchThreatEntryType::ChromeExtension,
-                "EXECUTABLE" => ThreatMatchThreatEntryType::Executable,
-                "FILENAME" => ThreatMatchThreatEntryType::Filename,
-                "IP_RANGE" => ThreatMatchThreatEntryType::IpRange,
-                "THREAT_ENTRY_TYPE_UNSPECIFIED" => {
-                    ThreatMatchThreatEntryType::ThreatEntryTypeUnspecified
-                }
-                "URL" => ThreatMatchThreatEntryType::Url,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for ThreatMatchThreatEntryType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ThreatMatchThreatEntryType {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ThreatMatchThreatEntryType {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "CERT" => ThreatMatchThreatEntryType::Cert,
-                "CHROME_EXTENSION" => ThreatMatchThreatEntryType::ChromeExtension,
-                "EXECUTABLE" => ThreatMatchThreatEntryType::Executable,
-                "FILENAME" => ThreatMatchThreatEntryType::Filename,
-                "IP_RANGE" => ThreatMatchThreatEntryType::IpRange,
-                "THREAT_ENTRY_TYPE_UNSPECIFIED" => {
-                    ThreatMatchThreatEntryType::ThreatEntryTypeUnspecified
-                }
-                "URL" => ThreatMatchThreatEntryType::Url,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for ThreatMatchThreatEntryType {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ThreatMatchThreatEntryType {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ThreatMatchThreatType {
-        #[doc = "API abuse threat type."]
-        ApiAbuse,
-        #[doc = "List used for offline APK checks in PAM."]
-        ApkMalwareOffline,
-        #[doc = "Client incident threat type."]
-        ClientIncident,
-        #[doc = "Whitelist used when detecting client incident threats.\nThis enum was never launched and should be re-used for the next list."]
-        ClientIncidentWhitelist,
-        #[doc = "Client side download detection whitelist threat type."]
-        CsdDownloadWhitelist,
-        #[doc = "Client side detection whitelist threat type."]
-        CsdWhitelist,
-        #[doc = "Safe list to ship hashes of known safe URL expressions."]
-        HighConfidenceAllowlist,
-        #[doc = "Malicious binary threat type."]
-        MaliciousBinary,
-        #[doc = "Malware threat type."]
-        Malware,
-        #[doc = "Potentially harmful application threat type."]
-        PotentiallyHarmfulApplication,
-        #[doc = "Social engineering threat type."]
-        SocialEngineering,
-        #[doc = "Social engineering threat type for internal use."]
-        SocialEngineeringInternal,
-        #[doc = "Patterns to be used for activating the subresource filter. Interstitial\nwill not be shown for patterns from this list."]
-        SubresourceFilter,
-        #[doc = "Entities that are suspected to present a threat."]
-        Suspicious,
-        #[doc = "Unknown."]
-        ThreatTypeUnspecified,
-        #[doc = "Trick-to-bill threat list."]
-        TrickToBill,
-        #[doc = "Unwanted software threat type."]
-        UnwantedSoftware,
-    }
-    impl ThreatMatchThreatType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ThreatMatchThreatType::ApiAbuse => "API_ABUSE",
-                ThreatMatchThreatType::ApkMalwareOffline => "APK_MALWARE_OFFLINE",
-                ThreatMatchThreatType::ClientIncident => "CLIENT_INCIDENT",
-                ThreatMatchThreatType::ClientIncidentWhitelist => "CLIENT_INCIDENT_WHITELIST",
-                ThreatMatchThreatType::CsdDownloadWhitelist => "CSD_DOWNLOAD_WHITELIST",
-                ThreatMatchThreatType::CsdWhitelist => "CSD_WHITELIST",
-                ThreatMatchThreatType::HighConfidenceAllowlist => "HIGH_CONFIDENCE_ALLOWLIST",
-                ThreatMatchThreatType::MaliciousBinary => "MALICIOUS_BINARY",
-                ThreatMatchThreatType::Malware => "MALWARE",
-                ThreatMatchThreatType::PotentiallyHarmfulApplication => {
-                    "POTENTIALLY_HARMFUL_APPLICATION"
-                }
-                ThreatMatchThreatType::SocialEngineering => "SOCIAL_ENGINEERING",
-                ThreatMatchThreatType::SocialEngineeringInternal => "SOCIAL_ENGINEERING_INTERNAL",
-                ThreatMatchThreatType::SubresourceFilter => "SUBRESOURCE_FILTER",
-                ThreatMatchThreatType::Suspicious => "SUSPICIOUS",
-                ThreatMatchThreatType::ThreatTypeUnspecified => "THREAT_TYPE_UNSPECIFIED",
-                ThreatMatchThreatType::TrickToBill => "TRICK_TO_BILL",
-                ThreatMatchThreatType::UnwantedSoftware => "UNWANTED_SOFTWARE",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for ThreatMatchThreatType {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for ThreatMatchThreatType {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ThreatMatchThreatType, ()> {
-            Ok(match s {
-                "API_ABUSE" => ThreatMatchThreatType::ApiAbuse,
-                "APK_MALWARE_OFFLINE" => ThreatMatchThreatType::ApkMalwareOffline,
-                "CLIENT_INCIDENT" => ThreatMatchThreatType::ClientIncident,
-                "CLIENT_INCIDENT_WHITELIST" => ThreatMatchThreatType::ClientIncidentWhitelist,
-                "CSD_DOWNLOAD_WHITELIST" => ThreatMatchThreatType::CsdDownloadWhitelist,
-                "CSD_WHITELIST" => ThreatMatchThreatType::CsdWhitelist,
-                "HIGH_CONFIDENCE_ALLOWLIST" => ThreatMatchThreatType::HighConfidenceAllowlist,
-                "MALICIOUS_BINARY" => ThreatMatchThreatType::MaliciousBinary,
-                "MALWARE" => ThreatMatchThreatType::Malware,
-                "POTENTIALLY_HARMFUL_APPLICATION" => {
-                    ThreatMatchThreatType::PotentiallyHarmfulApplication
-                }
-                "SOCIAL_ENGINEERING" => ThreatMatchThreatType::SocialEngineering,
-                "SOCIAL_ENGINEERING_INTERNAL" => ThreatMatchThreatType::SocialEngineeringInternal,
-                "SUBRESOURCE_FILTER" => ThreatMatchThreatType::SubresourceFilter,
-                "SUSPICIOUS" => ThreatMatchThreatType::Suspicious,
-                "THREAT_TYPE_UNSPECIFIED" => ThreatMatchThreatType::ThreatTypeUnspecified,
-                "TRICK_TO_BILL" => ThreatMatchThreatType::TrickToBill,
-                "UNWANTED_SOFTWARE" => ThreatMatchThreatType::UnwantedSoftware,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for ThreatMatchThreatType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ThreatMatchThreatType {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ThreatMatchThreatType {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "API_ABUSE" => ThreatMatchThreatType::ApiAbuse,
-                "APK_MALWARE_OFFLINE" => ThreatMatchThreatType::ApkMalwareOffline,
-                "CLIENT_INCIDENT" => ThreatMatchThreatType::ClientIncident,
-                "CLIENT_INCIDENT_WHITELIST" => ThreatMatchThreatType::ClientIncidentWhitelist,
-                "CSD_DOWNLOAD_WHITELIST" => ThreatMatchThreatType::CsdDownloadWhitelist,
-                "CSD_WHITELIST" => ThreatMatchThreatType::CsdWhitelist,
-                "HIGH_CONFIDENCE_ALLOWLIST" => ThreatMatchThreatType::HighConfidenceAllowlist,
-                "MALICIOUS_BINARY" => ThreatMatchThreatType::MaliciousBinary,
-                "MALWARE" => ThreatMatchThreatType::Malware,
-                "POTENTIALLY_HARMFUL_APPLICATION" => {
-                    ThreatMatchThreatType::PotentiallyHarmfulApplication
-                }
-                "SOCIAL_ENGINEERING" => ThreatMatchThreatType::SocialEngineering,
-                "SOCIAL_ENGINEERING_INTERNAL" => ThreatMatchThreatType::SocialEngineeringInternal,
-                "SUBRESOURCE_FILTER" => ThreatMatchThreatType::SubresourceFilter,
-                "SUSPICIOUS" => ThreatMatchThreatType::Suspicious,
-                "THREAT_TYPE_UNSPECIFIED" => ThreatMatchThreatType::ThreatTypeUnspecified,
-                "TRICK_TO_BILL" => ThreatMatchThreatType::TrickToBill,
-                "UNWANTED_SOFTWARE" => ThreatMatchThreatType::UnwantedSoftware,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for ThreatMatchThreatType {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ThreatMatchThreatType {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ThreatSource {
+    pub struct GoogleSecuritySafebrowsingV4ThreatHitThreatSource {
         #[doc = "The type of source reported."]
         #[serde(
             rename = "type",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub r#type: ::std::option::Option<crate::schemas::ThreatSourceType>,
+        pub r#type: ::std::option::Option<
+            crate::schemas::GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType,
+        >,
         #[doc = "Referrer of the resource. Only set if the referrer is available."]
         #[serde(
             rename = "referrer",
@@ -3484,64 +1788,54 @@ pub mod schemas {
         )]
         pub url: ::std::option::Option<String>,
     }
-    impl ::google_field_selector::FieldSelector for ThreatSource {
+    impl ::google_field_selector::FieldSelector for GoogleSecuritySafebrowsingV4ThreatHitThreatSource {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for ThreatSource {
+    impl ::google_field_selector::ToFieldType for GoogleSecuritySafebrowsingV4ThreatHitThreatSource {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ThreatSourceType {
-        #[doc = "The URL that matched the threat list (for which GetFullHash returned a\nvalid hash)."]
+    pub enum GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType {
+        #[doc = "The URL that matched the threat list (for which GetFullHash returned a valid hash)."]
         MatchingUrl,
         #[doc = "A redirect URL that was fetched before hitting the final TAB_URL."]
         TabRedirect,
         #[doc = "A resource loaded within the final TAB_URL."]
         TabResource,
-        #[doc = "The final top-level URL of the tab that the client was browsing when the\nmatch occurred."]
+        #[doc = "The final top-level URL of the tab that the client was browsing when the match occurred."]
         TabUrl,
         #[doc = "Unknown."]
         ThreatSourceTypeUnspecified,
     }
-    impl ThreatSourceType {
+    impl GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType {
         pub fn as_str(self) -> &'static str {
-            match self {
-                ThreatSourceType::MatchingUrl => "MATCHING_URL",
-                ThreatSourceType::TabRedirect => "TAB_REDIRECT",
-                ThreatSourceType::TabResource => "TAB_RESOURCE",
-                ThreatSourceType::TabUrl => "TAB_URL",
-                ThreatSourceType::ThreatSourceTypeUnspecified => "THREAT_SOURCE_TYPE_UNSPECIFIED",
-            }
+            match self { GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType :: MatchingUrl => "MATCHING_URL" , GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType :: TabRedirect => "TAB_REDIRECT" , GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType :: TabResource => "TAB_RESOURCE" , GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType :: TabUrl => "TAB_URL" , GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType :: ThreatSourceTypeUnspecified => "THREAT_SOURCE_TYPE_UNSPECIFIED" , }
         }
     }
-    impl ::std::convert::AsRef<str> for ThreatSourceType {
+    impl ::std::convert::AsRef<str> for GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType {
         fn as_ref(&self) -> &str {
             self.as_str()
         }
     }
-    impl ::std::str::FromStr for ThreatSourceType {
+    impl ::std::str::FromStr for GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType {
         type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ThreatSourceType, ()> {
-            Ok(match s {
-                "MATCHING_URL" => ThreatSourceType::MatchingUrl,
-                "TAB_REDIRECT" => ThreatSourceType::TabRedirect,
-                "TAB_RESOURCE" => ThreatSourceType::TabResource,
-                "TAB_URL" => ThreatSourceType::TabUrl,
-                "THREAT_SOURCE_TYPE_UNSPECIFIED" => ThreatSourceType::ThreatSourceTypeUnspecified,
-                _ => return Err(()),
-            })
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType, ()>
+        {
+            Ok (match s { "MATCHING_URL" => GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType :: MatchingUrl , "TAB_REDIRECT" => GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType :: TabRedirect , "TAB_RESOURCE" => GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType :: TabResource , "TAB_URL" => GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType :: TabUrl , "THREAT_SOURCE_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType :: ThreatSourceTypeUnspecified , _ => return Err (()) , })
         }
     }
-    impl ::std::fmt::Display for ThreatSourceType {
+    impl ::std::fmt::Display for GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
             f.write_str(self.as_str())
         }
     }
-    impl ::serde::Serialize for ThreatSourceType {
+    impl ::serde::Serialize for GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType {
         fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
         where
             S: ::serde::ser::Serializer,
@@ -3549,33 +1843,25 @@ pub mod schemas {
             serializer.serialize_str(self.as_str())
         }
     }
-    impl<'de> ::serde::Deserialize<'de> for ThreatSourceType {
+    impl<'de> ::serde::Deserialize<'de> for GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType {
         fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
         where
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "MATCHING_URL" => ThreatSourceType::MatchingUrl,
-                "TAB_REDIRECT" => ThreatSourceType::TabRedirect,
-                "TAB_RESOURCE" => ThreatSourceType::TabResource,
-                "TAB_URL" => ThreatSourceType::TabUrl,
-                "THREAT_SOURCE_TYPE_UNSPECIFIED" => ThreatSourceType::ThreatSourceTypeUnspecified,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
+            Ok (match value { "MATCHING_URL" => GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType :: MatchingUrl , "TAB_REDIRECT" => GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType :: TabRedirect , "TAB_RESOURCE" => GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType :: TabResource , "TAB_URL" => GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType :: TabUrl , "THREAT_SOURCE_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType :: ThreatSourceTypeUnspecified , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
         }
     }
-    impl ::google_field_selector::FieldSelector for ThreatSourceType {
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType
+    {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for ThreatSourceType {
+    impl ::google_field_selector::ToFieldType
+        for GoogleSecuritySafebrowsingV4ThreatHitThreatSourceType
+    {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -3592,7 +1878,7 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct UserInfo {
+    pub struct GoogleSecuritySafebrowsingV4ThreatHitUserInfo {
         #[doc = "The UN M.49 region code associated with the user's location."]
         #[serde(
             rename = "regionCode",
@@ -3608,12 +1894,1058 @@ pub mod schemas {
         )]
         pub user_id: ::std::option::Option<::google_api_bytes::Bytes>,
     }
-    impl ::google_field_selector::FieldSelector for UserInfo {
+    impl ::google_field_selector::FieldSelector for GoogleSecuritySafebrowsingV4ThreatHitUserInfo {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for UserInfo {
+    impl ::google_field_selector::ToFieldType for GoogleSecuritySafebrowsingV4ThreatHitUserInfo {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleSecuritySafebrowsingV4ThreatInfo {
+        #[doc = "The platform types to be checked."]
+        #[serde(
+            rename = "platformTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub platform_types: ::std::option::Option<
+            Vec<crate::schemas::GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems>,
+        >,
+        #[doc = "The threat entries to be checked."]
+        #[serde(
+            rename = "threatEntries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub threat_entries:
+            ::std::option::Option<Vec<crate::schemas::GoogleSecuritySafebrowsingV4ThreatEntry>>,
+        #[doc = "The entry types to be checked."]
+        #[serde(
+            rename = "threatEntryTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub threat_entry_types: ::std::option::Option<
+            Vec<crate::schemas::GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems>,
+        >,
+        #[doc = "The threat types to be checked."]
+        #[serde(
+            rename = "threatTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub threat_types: ::std::option::Option<
+            Vec<crate::schemas::GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems>,
+        >,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleSecuritySafebrowsingV4ThreatInfo {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleSecuritySafebrowsingV4ThreatInfo {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems {
+        #[doc = "Threat posed to all defined platforms."]
+        AllPlatforms,
+        #[doc = "Threat posed to Android."]
+        Android,
+        #[doc = "Threat posed to at least one of the defined platforms."]
+        AnyPlatform,
+        #[doc = "Threat posed to Chrome."]
+        Chrome,
+        #[doc = "Threat posed to iOS."]
+        Ios,
+        #[doc = "Threat posed to Linux."]
+        Linux,
+        #[doc = "Threat posed to OS X."]
+        Osx,
+        #[doc = "Unknown platform."]
+        PlatformTypeUnspecified,
+        #[doc = "Threat posed to Windows."]
+        Windows,
+    }
+    impl GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: AllPlatforms => "ALL_PLATFORMS" , GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: Android => "ANDROID" , GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: AnyPlatform => "ANY_PLATFORM" , GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: Chrome => "CHROME" , GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: Ios => "IOS" , GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: Linux => "LINUX" , GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: Osx => "OSX" , GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: PlatformTypeUnspecified => "PLATFORM_TYPE_UNSPECIFIED" , GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: Windows => "WINDOWS" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems, ()>
+        {
+            Ok (match s { "ALL_PLATFORMS" => GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: AllPlatforms , "ANDROID" => GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: Android , "ANY_PLATFORM" => GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: AnyPlatform , "CHROME" => GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: Chrome , "IOS" => GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: Ios , "LINUX" => GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: Linux , "OSX" => GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: Osx , "PLATFORM_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: PlatformTypeUnspecified , "WINDOWS" => GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: Windows , _ => return Err (()) , })
+        }
+    }
+    impl ::std::fmt::Display for GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok (match value { "ALL_PLATFORMS" => GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: AllPlatforms , "ANDROID" => GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: Android , "ANY_PLATFORM" => GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: AnyPlatform , "CHROME" => GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: Chrome , "IOS" => GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: Ios , "LINUX" => GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: Linux , "OSX" => GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: Osx , "PLATFORM_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: PlatformTypeUnspecified , "WINDOWS" => GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems :: Windows , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItems
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems {
+        #[doc = "CERT"]
+        Cert,
+        #[doc = "Chrome extension."]
+        ChromeExtension,
+        #[doc = "An executable program."]
+        Executable,
+        #[doc = "Filename."]
+        Filename,
+        #[doc = "An IP range."]
+        IpRange,
+        #[doc = "Unspecified."]
+        ThreatEntryTypeUnspecified,
+        #[doc = "A URL."]
+        Url,
+    }
+    impl GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems :: Cert => "CERT" , GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems :: ChromeExtension => "CHROME_EXTENSION" , GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems :: Executable => "EXECUTABLE" , GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems :: Filename => "FILENAME" , GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems :: IpRange => "IP_RANGE" , GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems :: ThreatEntryTypeUnspecified => "THREAT_ENTRY_TYPE_UNSPECIFIED" , GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems :: Url => "URL" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems, ()>
+        {
+            Ok (match s { "CERT" => GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems :: Cert , "CHROME_EXTENSION" => GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems :: ChromeExtension , "EXECUTABLE" => GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems :: Executable , "FILENAME" => GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems :: Filename , "IP_RANGE" => GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems :: IpRange , "THREAT_ENTRY_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems :: ThreatEntryTypeUnspecified , "URL" => GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems :: Url , _ => return Err (()) , })
+        }
+    }
+    impl ::std::fmt::Display for GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de>
+        for GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems
+    {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok (match value { "CERT" => GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems :: Cert , "CHROME_EXTENSION" => GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems :: ChromeExtension , "EXECUTABLE" => GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems :: Executable , "FILENAME" => GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems :: Filename , "IP_RANGE" => GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems :: IpRange , "THREAT_ENTRY_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems :: ThreatEntryTypeUnspecified , "URL" => GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems :: Url , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItems
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems {
+        #[doc = "API abuse threat type."]
+        ApiAbuse,
+        #[doc = "List used for offline APK checks in PAM."]
+        ApkMalwareOffline,
+        #[doc = "Client incident threat type."]
+        ClientIncident,
+        #[doc = "Whitelist used when detecting client incident threats. This enum was never launched and should be re-used for the next list."]
+        ClientIncidentWhitelist,
+        #[doc = "Client side download detection whitelist threat type."]
+        CsdDownloadWhitelist,
+        #[doc = "Client side detection whitelist threat type."]
+        CsdWhitelist,
+        #[doc = "Safe list to ship hashes of known safe URL expressions."]
+        HighConfidenceAllowlist,
+        #[doc = "Malicious binary threat type."]
+        MaliciousBinary,
+        #[doc = "Malware threat type."]
+        Malware,
+        #[doc = "Potentially harmful application threat type."]
+        PotentiallyHarmfulApplication,
+        #[doc = "Social engineering threat type."]
+        SocialEngineering,
+        #[doc = "Social engineering threat type for internal use."]
+        SocialEngineeringInternal,
+        #[doc = "Patterns to be used for activating the subresource filter. Interstitial will not be shown for patterns from this list."]
+        SubresourceFilter,
+        #[doc = "Entities that are suspected to present a threat."]
+        Suspicious,
+        #[doc = "Unknown."]
+        ThreatTypeUnspecified,
+        #[doc = "Trick-to-bill threat list."]
+        TrickToBill,
+        #[doc = "Unwanted software threat type."]
+        UnwantedSoftware,
+    }
+    impl GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: ApiAbuse => "API_ABUSE" , GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: ApkMalwareOffline => "APK_MALWARE_OFFLINE" , GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: ClientIncident => "CLIENT_INCIDENT" , GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: ClientIncidentWhitelist => "CLIENT_INCIDENT_WHITELIST" , GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: CsdDownloadWhitelist => "CSD_DOWNLOAD_WHITELIST" , GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: CsdWhitelist => "CSD_WHITELIST" , GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: HighConfidenceAllowlist => "HIGH_CONFIDENCE_ALLOWLIST" , GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: MaliciousBinary => "MALICIOUS_BINARY" , GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: Malware => "MALWARE" , GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: PotentiallyHarmfulApplication => "POTENTIALLY_HARMFUL_APPLICATION" , GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: SocialEngineering => "SOCIAL_ENGINEERING" , GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: SocialEngineeringInternal => "SOCIAL_ENGINEERING_INTERNAL" , GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: SubresourceFilter => "SUBRESOURCE_FILTER" , GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: Suspicious => "SUSPICIOUS" , GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: ThreatTypeUnspecified => "THREAT_TYPE_UNSPECIFIED" , GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: TrickToBill => "TRICK_TO_BILL" , GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: UnwantedSoftware => "UNWANTED_SOFTWARE" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems, ()>
+        {
+            Ok (match s { "API_ABUSE" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: ApiAbuse , "APK_MALWARE_OFFLINE" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: ApkMalwareOffline , "CLIENT_INCIDENT" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: ClientIncident , "CLIENT_INCIDENT_WHITELIST" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: ClientIncidentWhitelist , "CSD_DOWNLOAD_WHITELIST" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: CsdDownloadWhitelist , "CSD_WHITELIST" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: CsdWhitelist , "HIGH_CONFIDENCE_ALLOWLIST" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: HighConfidenceAllowlist , "MALICIOUS_BINARY" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: MaliciousBinary , "MALWARE" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: Malware , "POTENTIALLY_HARMFUL_APPLICATION" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: PotentiallyHarmfulApplication , "SOCIAL_ENGINEERING" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: SocialEngineering , "SOCIAL_ENGINEERING_INTERNAL" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: SocialEngineeringInternal , "SUBRESOURCE_FILTER" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: SubresourceFilter , "SUSPICIOUS" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: Suspicious , "THREAT_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: ThreatTypeUnspecified , "TRICK_TO_BILL" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: TrickToBill , "UNWANTED_SOFTWARE" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: UnwantedSoftware , _ => return Err (()) , })
+        }
+    }
+    impl ::std::fmt::Display for GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok (match value { "API_ABUSE" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: ApiAbuse , "APK_MALWARE_OFFLINE" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: ApkMalwareOffline , "CLIENT_INCIDENT" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: ClientIncident , "CLIENT_INCIDENT_WHITELIST" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: ClientIncidentWhitelist , "CSD_DOWNLOAD_WHITELIST" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: CsdDownloadWhitelist , "CSD_WHITELIST" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: CsdWhitelist , "HIGH_CONFIDENCE_ALLOWLIST" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: HighConfidenceAllowlist , "MALICIOUS_BINARY" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: MaliciousBinary , "MALWARE" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: Malware , "POTENTIALLY_HARMFUL_APPLICATION" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: PotentiallyHarmfulApplication , "SOCIAL_ENGINEERING" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: SocialEngineering , "SOCIAL_ENGINEERING_INTERNAL" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: SocialEngineeringInternal , "SUBRESOURCE_FILTER" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: SubresourceFilter , "SUSPICIOUS" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: Suspicious , "THREAT_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: ThreatTypeUnspecified , "TRICK_TO_BILL" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: TrickToBill , "UNWANTED_SOFTWARE" => GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems :: UnwantedSoftware , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItems
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleSecuritySafebrowsingV4ThreatListDescriptor {
+        #[doc = "The platform type targeted by the list's entries."]
+        #[serde(
+            rename = "platformType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub platform_type: ::std::option::Option<
+            crate::schemas::GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType,
+        >,
+        #[doc = "The entry types contained in the list."]
+        #[serde(
+            rename = "threatEntryType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub threat_entry_type: ::std::option::Option<
+            crate::schemas::GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType,
+        >,
+        #[doc = "The threat type posed by the list's entries."]
+        #[serde(
+            rename = "threatType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub threat_type: ::std::option::Option<
+            crate::schemas::GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType,
+        >,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleSecuritySafebrowsingV4ThreatListDescriptor {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleSecuritySafebrowsingV4ThreatListDescriptor {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType {
+        #[doc = "Threat posed to all defined platforms."]
+        AllPlatforms,
+        #[doc = "Threat posed to Android."]
+        Android,
+        #[doc = "Threat posed to at least one of the defined platforms."]
+        AnyPlatform,
+        #[doc = "Threat posed to Chrome."]
+        Chrome,
+        #[doc = "Threat posed to iOS."]
+        Ios,
+        #[doc = "Threat posed to Linux."]
+        Linux,
+        #[doc = "Threat posed to OS X."]
+        Osx,
+        #[doc = "Unknown platform."]
+        PlatformTypeUnspecified,
+        #[doc = "Threat posed to Windows."]
+        Windows,
+    }
+    impl GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: AllPlatforms => "ALL_PLATFORMS" , GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: Android => "ANDROID" , GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: AnyPlatform => "ANY_PLATFORM" , GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: Chrome => "CHROME" , GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: Ios => "IOS" , GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: Linux => "LINUX" , GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: Osx => "OSX" , GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: PlatformTypeUnspecified => "PLATFORM_TYPE_UNSPECIFIED" , GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: Windows => "WINDOWS" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType, ()>
+        {
+            Ok (match s { "ALL_PLATFORMS" => GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: AllPlatforms , "ANDROID" => GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: Android , "ANY_PLATFORM" => GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: AnyPlatform , "CHROME" => GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: Chrome , "IOS" => GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: Ios , "LINUX" => GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: Linux , "OSX" => GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: Osx , "PLATFORM_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: PlatformTypeUnspecified , "WINDOWS" => GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: Windows , _ => return Err (()) , })
+        }
+    }
+    impl ::std::fmt::Display for GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de>
+        for GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType
+    {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok (match value { "ALL_PLATFORMS" => GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: AllPlatforms , "ANDROID" => GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: Android , "ANY_PLATFORM" => GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: AnyPlatform , "CHROME" => GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: Chrome , "IOS" => GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: Ios , "LINUX" => GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: Linux , "OSX" => GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: Osx , "PLATFORM_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: PlatformTypeUnspecified , "WINDOWS" => GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType :: Windows , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformType
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType {
+        #[doc = "CERT"]
+        Cert,
+        #[doc = "Chrome extension."]
+        ChromeExtension,
+        #[doc = "An executable program."]
+        Executable,
+        #[doc = "Filename."]
+        Filename,
+        #[doc = "An IP range."]
+        IpRange,
+        #[doc = "Unspecified."]
+        ThreatEntryTypeUnspecified,
+        #[doc = "A URL."]
+        Url,
+    }
+    impl GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType :: Cert => "CERT" , GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType :: ChromeExtension => "CHROME_EXTENSION" , GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType :: Executable => "EXECUTABLE" , GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType :: Filename => "FILENAME" , GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType :: IpRange => "IP_RANGE" , GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType :: ThreatEntryTypeUnspecified => "THREAT_ENTRY_TYPE_UNSPECIFIED" , GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType :: Url => "URL" , }
+        }
+    }
+    impl ::std::convert::AsRef<str>
+        for GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType
+    {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<
+            GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType,
+            (),
+        > {
+            Ok (match s { "CERT" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType :: Cert , "CHROME_EXTENSION" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType :: ChromeExtension , "EXECUTABLE" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType :: Executable , "FILENAME" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType :: Filename , "IP_RANGE" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType :: IpRange , "THREAT_ENTRY_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType :: ThreatEntryTypeUnspecified , "URL" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType :: Url , _ => return Err (()) , })
+        }
+    }
+    impl ::std::fmt::Display for GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de>
+        for GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType
+    {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok (match value { "CERT" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType :: Cert , "CHROME_EXTENSION" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType :: ChromeExtension , "EXECUTABLE" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType :: Executable , "FILENAME" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType :: Filename , "IP_RANGE" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType :: IpRange , "THREAT_ENTRY_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType :: ThreatEntryTypeUnspecified , "URL" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType :: Url , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryType
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType {
+        #[doc = "API abuse threat type."]
+        ApiAbuse,
+        #[doc = "List used for offline APK checks in PAM."]
+        ApkMalwareOffline,
+        #[doc = "Client incident threat type."]
+        ClientIncident,
+        #[doc = "Whitelist used when detecting client incident threats. This enum was never launched and should be re-used for the next list."]
+        ClientIncidentWhitelist,
+        #[doc = "Client side download detection whitelist threat type."]
+        CsdDownloadWhitelist,
+        #[doc = "Client side detection whitelist threat type."]
+        CsdWhitelist,
+        #[doc = "Safe list to ship hashes of known safe URL expressions."]
+        HighConfidenceAllowlist,
+        #[doc = "Malicious binary threat type."]
+        MaliciousBinary,
+        #[doc = "Malware threat type."]
+        Malware,
+        #[doc = "Potentially harmful application threat type."]
+        PotentiallyHarmfulApplication,
+        #[doc = "Social engineering threat type."]
+        SocialEngineering,
+        #[doc = "Social engineering threat type for internal use."]
+        SocialEngineeringInternal,
+        #[doc = "Patterns to be used for activating the subresource filter. Interstitial will not be shown for patterns from this list."]
+        SubresourceFilter,
+        #[doc = "Entities that are suspected to present a threat."]
+        Suspicious,
+        #[doc = "Unknown."]
+        ThreatTypeUnspecified,
+        #[doc = "Trick-to-bill threat list."]
+        TrickToBill,
+        #[doc = "Unwanted software threat type."]
+        UnwantedSoftware,
+    }
+    impl GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: ApiAbuse => "API_ABUSE" , GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: ApkMalwareOffline => "APK_MALWARE_OFFLINE" , GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: ClientIncident => "CLIENT_INCIDENT" , GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: ClientIncidentWhitelist => "CLIENT_INCIDENT_WHITELIST" , GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: CsdDownloadWhitelist => "CSD_DOWNLOAD_WHITELIST" , GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: CsdWhitelist => "CSD_WHITELIST" , GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: HighConfidenceAllowlist => "HIGH_CONFIDENCE_ALLOWLIST" , GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: MaliciousBinary => "MALICIOUS_BINARY" , GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: Malware => "MALWARE" , GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: PotentiallyHarmfulApplication => "POTENTIALLY_HARMFUL_APPLICATION" , GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: SocialEngineering => "SOCIAL_ENGINEERING" , GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: SocialEngineeringInternal => "SOCIAL_ENGINEERING_INTERNAL" , GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: SubresourceFilter => "SUBRESOURCE_FILTER" , GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: Suspicious => "SUSPICIOUS" , GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: ThreatTypeUnspecified => "THREAT_TYPE_UNSPECIFIED" , GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: TrickToBill => "TRICK_TO_BILL" , GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: UnwantedSoftware => "UNWANTED_SOFTWARE" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType, ()>
+        {
+            Ok (match s { "API_ABUSE" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: ApiAbuse , "APK_MALWARE_OFFLINE" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: ApkMalwareOffline , "CLIENT_INCIDENT" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: ClientIncident , "CLIENT_INCIDENT_WHITELIST" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: ClientIncidentWhitelist , "CSD_DOWNLOAD_WHITELIST" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: CsdDownloadWhitelist , "CSD_WHITELIST" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: CsdWhitelist , "HIGH_CONFIDENCE_ALLOWLIST" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: HighConfidenceAllowlist , "MALICIOUS_BINARY" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: MaliciousBinary , "MALWARE" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: Malware , "POTENTIALLY_HARMFUL_APPLICATION" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: PotentiallyHarmfulApplication , "SOCIAL_ENGINEERING" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: SocialEngineering , "SOCIAL_ENGINEERING_INTERNAL" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: SocialEngineeringInternal , "SUBRESOURCE_FILTER" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: SubresourceFilter , "SUSPICIOUS" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: Suspicious , "THREAT_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: ThreatTypeUnspecified , "TRICK_TO_BILL" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: TrickToBill , "UNWANTED_SOFTWARE" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: UnwantedSoftware , _ => return Err (()) , })
+        }
+    }
+    impl ::std::fmt::Display for GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok (match value { "API_ABUSE" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: ApiAbuse , "APK_MALWARE_OFFLINE" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: ApkMalwareOffline , "CLIENT_INCIDENT" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: ClientIncident , "CLIENT_INCIDENT_WHITELIST" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: ClientIncidentWhitelist , "CSD_DOWNLOAD_WHITELIST" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: CsdDownloadWhitelist , "CSD_WHITELIST" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: CsdWhitelist , "HIGH_CONFIDENCE_ALLOWLIST" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: HighConfidenceAllowlist , "MALICIOUS_BINARY" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: MaliciousBinary , "MALWARE" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: Malware , "POTENTIALLY_HARMFUL_APPLICATION" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: PotentiallyHarmfulApplication , "SOCIAL_ENGINEERING" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: SocialEngineering , "SOCIAL_ENGINEERING_INTERNAL" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: SocialEngineeringInternal , "SUBRESOURCE_FILTER" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: SubresourceFilter , "SUSPICIOUS" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: Suspicious , "THREAT_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: ThreatTypeUnspecified , "TRICK_TO_BILL" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: TrickToBill , "UNWANTED_SOFTWARE" => GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType :: UnwantedSoftware , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatType
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleSecuritySafebrowsingV4ThreatMatch {
+        #[doc = "The cache lifetime for the returned match. Clients must not cache this response for more than this duration to avoid false positives."]
+        #[serde(
+            rename = "cacheDuration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cache_duration: ::std::option::Option<String>,
+        #[doc = "The platform type matching this threat."]
+        #[serde(
+            rename = "platformType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub platform_type: ::std::option::Option<
+            crate::schemas::GoogleSecuritySafebrowsingV4ThreatMatchPlatformType,
+        >,
+        #[doc = "The threat matching this threat."]
+        #[serde(
+            rename = "threat",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub threat: ::std::option::Option<crate::schemas::GoogleSecuritySafebrowsingV4ThreatEntry>,
+        #[doc = "Optional metadata associated with this threat."]
+        #[serde(
+            rename = "threatEntryMetadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub threat_entry_metadata:
+            ::std::option::Option<crate::schemas::GoogleSecuritySafebrowsingV4ThreatEntryMetadata>,
+        #[doc = "The threat entry type matching this threat."]
+        #[serde(
+            rename = "threatEntryType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub threat_entry_type: ::std::option::Option<
+            crate::schemas::GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType,
+        >,
+        #[doc = "The threat type matching this threat."]
+        #[serde(
+            rename = "threatType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub threat_type: ::std::option::Option<
+            crate::schemas::GoogleSecuritySafebrowsingV4ThreatMatchThreatType,
+        >,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleSecuritySafebrowsingV4ThreatMatch {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleSecuritySafebrowsingV4ThreatMatch {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleSecuritySafebrowsingV4ThreatMatchPlatformType {
+        #[doc = "Threat posed to all defined platforms."]
+        AllPlatforms,
+        #[doc = "Threat posed to Android."]
+        Android,
+        #[doc = "Threat posed to at least one of the defined platforms."]
+        AnyPlatform,
+        #[doc = "Threat posed to Chrome."]
+        Chrome,
+        #[doc = "Threat posed to iOS."]
+        Ios,
+        #[doc = "Threat posed to Linux."]
+        Linux,
+        #[doc = "Threat posed to OS X."]
+        Osx,
+        #[doc = "Unknown platform."]
+        PlatformTypeUnspecified,
+        #[doc = "Threat posed to Windows."]
+        Windows,
+    }
+    impl GoogleSecuritySafebrowsingV4ThreatMatchPlatformType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::AllPlatforms => {
+                    "ALL_PLATFORMS"
+                }
+                GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::Android => "ANDROID",
+                GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::AnyPlatform => "ANY_PLATFORM",
+                GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::Chrome => "CHROME",
+                GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::Ios => "IOS",
+                GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::Linux => "LINUX",
+                GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::Osx => "OSX",
+                GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::PlatformTypeUnspecified => {
+                    "PLATFORM_TYPE_UNSPECIFIED"
+                }
+                GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::Windows => "WINDOWS",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleSecuritySafebrowsingV4ThreatMatchPlatformType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleSecuritySafebrowsingV4ThreatMatchPlatformType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleSecuritySafebrowsingV4ThreatMatchPlatformType, ()>
+        {
+            Ok(match s {
+                "ALL_PLATFORMS" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::AllPlatforms
+                }
+                "ANDROID" => GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::Android,
+                "ANY_PLATFORM" => GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::AnyPlatform,
+                "CHROME" => GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::Chrome,
+                "IOS" => GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::Ios,
+                "LINUX" => GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::Linux,
+                "OSX" => GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::Osx,
+                "PLATFORM_TYPE_UNSPECIFIED" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::PlatformTypeUnspecified
+                }
+                "WINDOWS" => GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::Windows,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for GoogleSecuritySafebrowsingV4ThreatMatchPlatformType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleSecuritySafebrowsingV4ThreatMatchPlatformType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for GoogleSecuritySafebrowsingV4ThreatMatchPlatformType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ALL_PLATFORMS" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::AllPlatforms
+                }
+                "ANDROID" => GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::Android,
+                "ANY_PLATFORM" => GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::AnyPlatform,
+                "CHROME" => GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::Chrome,
+                "IOS" => GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::Ios,
+                "LINUX" => GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::Linux,
+                "OSX" => GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::Osx,
+                "PLATFORM_TYPE_UNSPECIFIED" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::PlatformTypeUnspecified
+                }
+                "WINDOWS" => GoogleSecuritySafebrowsingV4ThreatMatchPlatformType::Windows,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4ThreatMatchPlatformType
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleSecuritySafebrowsingV4ThreatMatchPlatformType {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType {
+        #[doc = "CERT"]
+        Cert,
+        #[doc = "Chrome extension."]
+        ChromeExtension,
+        #[doc = "An executable program."]
+        Executable,
+        #[doc = "Filename."]
+        Filename,
+        #[doc = "An IP range."]
+        IpRange,
+        #[doc = "Unspecified."]
+        ThreatEntryTypeUnspecified,
+        #[doc = "A URL."]
+        Url,
+    }
+    impl GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType :: Cert => "CERT" , GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType :: ChromeExtension => "CHROME_EXTENSION" , GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType :: Executable => "EXECUTABLE" , GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType :: Filename => "FILENAME" , GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType :: IpRange => "IP_RANGE" , GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType :: ThreatEntryTypeUnspecified => "THREAT_ENTRY_TYPE_UNSPECIFIED" , GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType :: Url => "URL" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType, ()>
+        {
+            Ok (match s { "CERT" => GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType :: Cert , "CHROME_EXTENSION" => GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType :: ChromeExtension , "EXECUTABLE" => GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType :: Executable , "FILENAME" => GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType :: Filename , "IP_RANGE" => GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType :: IpRange , "THREAT_ENTRY_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType :: ThreatEntryTypeUnspecified , "URL" => GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType :: Url , _ => return Err (()) , })
+        }
+    }
+    impl ::std::fmt::Display for GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok (match value { "CERT" => GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType :: Cert , "CHROME_EXTENSION" => GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType :: ChromeExtension , "EXECUTABLE" => GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType :: Executable , "FILENAME" => GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType :: Filename , "IP_RANGE" => GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType :: IpRange , "THREAT_ENTRY_TYPE_UNSPECIFIED" => GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType :: ThreatEntryTypeUnspecified , "URL" => GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType :: Url , _ => return Err (:: serde :: de :: Error :: custom (format ! ("invalid enum for #name: {}" , value))) , })
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryType
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleSecuritySafebrowsingV4ThreatMatchThreatType {
+        #[doc = "API abuse threat type."]
+        ApiAbuse,
+        #[doc = "List used for offline APK checks in PAM."]
+        ApkMalwareOffline,
+        #[doc = "Client incident threat type."]
+        ClientIncident,
+        #[doc = "Whitelist used when detecting client incident threats. This enum was never launched and should be re-used for the next list."]
+        ClientIncidentWhitelist,
+        #[doc = "Client side download detection whitelist threat type."]
+        CsdDownloadWhitelist,
+        #[doc = "Client side detection whitelist threat type."]
+        CsdWhitelist,
+        #[doc = "Safe list to ship hashes of known safe URL expressions."]
+        HighConfidenceAllowlist,
+        #[doc = "Malicious binary threat type."]
+        MaliciousBinary,
+        #[doc = "Malware threat type."]
+        Malware,
+        #[doc = "Potentially harmful application threat type."]
+        PotentiallyHarmfulApplication,
+        #[doc = "Social engineering threat type."]
+        SocialEngineering,
+        #[doc = "Social engineering threat type for internal use."]
+        SocialEngineeringInternal,
+        #[doc = "Patterns to be used for activating the subresource filter. Interstitial will not be shown for patterns from this list."]
+        SubresourceFilter,
+        #[doc = "Entities that are suspected to present a threat."]
+        Suspicious,
+        #[doc = "Unknown."]
+        ThreatTypeUnspecified,
+        #[doc = "Trick-to-bill threat list."]
+        TrickToBill,
+        #[doc = "Unwanted software threat type."]
+        UnwantedSoftware,
+    }
+    impl GoogleSecuritySafebrowsingV4ThreatMatchThreatType {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleSecuritySafebrowsingV4ThreatMatchThreatType :: ApiAbuse => "API_ABUSE" , GoogleSecuritySafebrowsingV4ThreatMatchThreatType :: ApkMalwareOffline => "APK_MALWARE_OFFLINE" , GoogleSecuritySafebrowsingV4ThreatMatchThreatType :: ClientIncident => "CLIENT_INCIDENT" , GoogleSecuritySafebrowsingV4ThreatMatchThreatType :: ClientIncidentWhitelist => "CLIENT_INCIDENT_WHITELIST" , GoogleSecuritySafebrowsingV4ThreatMatchThreatType :: CsdDownloadWhitelist => "CSD_DOWNLOAD_WHITELIST" , GoogleSecuritySafebrowsingV4ThreatMatchThreatType :: CsdWhitelist => "CSD_WHITELIST" , GoogleSecuritySafebrowsingV4ThreatMatchThreatType :: HighConfidenceAllowlist => "HIGH_CONFIDENCE_ALLOWLIST" , GoogleSecuritySafebrowsingV4ThreatMatchThreatType :: MaliciousBinary => "MALICIOUS_BINARY" , GoogleSecuritySafebrowsingV4ThreatMatchThreatType :: Malware => "MALWARE" , GoogleSecuritySafebrowsingV4ThreatMatchThreatType :: PotentiallyHarmfulApplication => "POTENTIALLY_HARMFUL_APPLICATION" , GoogleSecuritySafebrowsingV4ThreatMatchThreatType :: SocialEngineering => "SOCIAL_ENGINEERING" , GoogleSecuritySafebrowsingV4ThreatMatchThreatType :: SocialEngineeringInternal => "SOCIAL_ENGINEERING_INTERNAL" , GoogleSecuritySafebrowsingV4ThreatMatchThreatType :: SubresourceFilter => "SUBRESOURCE_FILTER" , GoogleSecuritySafebrowsingV4ThreatMatchThreatType :: Suspicious => "SUSPICIOUS" , GoogleSecuritySafebrowsingV4ThreatMatchThreatType :: ThreatTypeUnspecified => "THREAT_TYPE_UNSPECIFIED" , GoogleSecuritySafebrowsingV4ThreatMatchThreatType :: TrickToBill => "TRICK_TO_BILL" , GoogleSecuritySafebrowsingV4ThreatMatchThreatType :: UnwantedSoftware => "UNWANTED_SOFTWARE" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleSecuritySafebrowsingV4ThreatMatchThreatType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleSecuritySafebrowsingV4ThreatMatchThreatType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleSecuritySafebrowsingV4ThreatMatchThreatType, ()> {
+            Ok(match s {
+                "API_ABUSE" => GoogleSecuritySafebrowsingV4ThreatMatchThreatType::ApiAbuse,
+                "APK_MALWARE_OFFLINE" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::ApkMalwareOffline
+                }
+                "CLIENT_INCIDENT" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::ClientIncident
+                }
+                "CLIENT_INCIDENT_WHITELIST" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::ClientIncidentWhitelist
+                }
+                "CSD_DOWNLOAD_WHITELIST" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::CsdDownloadWhitelist
+                }
+                "CSD_WHITELIST" => GoogleSecuritySafebrowsingV4ThreatMatchThreatType::CsdWhitelist,
+                "HIGH_CONFIDENCE_ALLOWLIST" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::HighConfidenceAllowlist
+                }
+                "MALICIOUS_BINARY" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::MaliciousBinary
+                }
+                "MALWARE" => GoogleSecuritySafebrowsingV4ThreatMatchThreatType::Malware,
+                "POTENTIALLY_HARMFUL_APPLICATION" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::PotentiallyHarmfulApplication
+                }
+                "SOCIAL_ENGINEERING" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::SocialEngineering
+                }
+                "SOCIAL_ENGINEERING_INTERNAL" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::SocialEngineeringInternal
+                }
+                "SUBRESOURCE_FILTER" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::SubresourceFilter
+                }
+                "SUSPICIOUS" => GoogleSecuritySafebrowsingV4ThreatMatchThreatType::Suspicious,
+                "THREAT_TYPE_UNSPECIFIED" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::ThreatTypeUnspecified
+                }
+                "TRICK_TO_BILL" => GoogleSecuritySafebrowsingV4ThreatMatchThreatType::TrickToBill,
+                "UNWANTED_SOFTWARE" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::UnwantedSoftware
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for GoogleSecuritySafebrowsingV4ThreatMatchThreatType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleSecuritySafebrowsingV4ThreatMatchThreatType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for GoogleSecuritySafebrowsingV4ThreatMatchThreatType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "API_ABUSE" => GoogleSecuritySafebrowsingV4ThreatMatchThreatType::ApiAbuse,
+                "APK_MALWARE_OFFLINE" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::ApkMalwareOffline
+                }
+                "CLIENT_INCIDENT" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::ClientIncident
+                }
+                "CLIENT_INCIDENT_WHITELIST" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::ClientIncidentWhitelist
+                }
+                "CSD_DOWNLOAD_WHITELIST" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::CsdDownloadWhitelist
+                }
+                "CSD_WHITELIST" => GoogleSecuritySafebrowsingV4ThreatMatchThreatType::CsdWhitelist,
+                "HIGH_CONFIDENCE_ALLOWLIST" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::HighConfidenceAllowlist
+                }
+                "MALICIOUS_BINARY" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::MaliciousBinary
+                }
+                "MALWARE" => GoogleSecuritySafebrowsingV4ThreatMatchThreatType::Malware,
+                "POTENTIALLY_HARMFUL_APPLICATION" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::PotentiallyHarmfulApplication
+                }
+                "SOCIAL_ENGINEERING" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::SocialEngineering
+                }
+                "SOCIAL_ENGINEERING_INTERNAL" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::SocialEngineeringInternal
+                }
+                "SUBRESOURCE_FILTER" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::SubresourceFilter
+                }
+                "SUSPICIOUS" => GoogleSecuritySafebrowsingV4ThreatMatchThreatType::Suspicious,
+                "THREAT_TYPE_UNSPECIFIED" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::ThreatTypeUnspecified
+                }
+                "TRICK_TO_BILL" => GoogleSecuritySafebrowsingV4ThreatMatchThreatType::TrickToBill,
+                "UNWANTED_SOFTWARE" => {
+                    GoogleSecuritySafebrowsingV4ThreatMatchThreatType::UnwantedSoftware
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for GoogleSecuritySafebrowsingV4ThreatMatchThreatType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleSecuritySafebrowsingV4ThreatMatchThreatType {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -3775,17 +3107,17 @@ pub struct Client {
 impl Client {
     pub fn new<A>(auth: A) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client::with_reqwest_client(auth, ::reqwest::Client::builder().build().unwrap())
     }
     pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::Client) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client {
             reqwest,
-            auth: auth.into(),
+            auth: Box::new(auth),
         }
     }
     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
@@ -3899,7 +3231,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetRequestBuilder<'a> {
-            #[doc = "A client ID that (hopefully) uniquely identifies the client implementation\nof the Safe Browsing API."]
+            #[doc = "A client ID that (hopefully) uniquely identifies the client implementation of the Safe Browsing API."]
             pub fn client_id(mut self, value: impl Into<String>) -> Self {
                 self.client_id = Some(value.into());
                 self
@@ -3980,7 +3312,10 @@ pub mod resources {
             #[doc = r" the response resource."]
             pub async fn execute_with_default_fields(
                 self,
-            ) -> Result<crate::schemas::FindFullHashesResponse, crate::Error> {
+            ) -> Result<
+                crate::schemas::GoogleSecuritySafebrowsingV4FindFullHashesResponse,
+                crate::Error,
+            > {
                 self.execute_with_fields(None::<&str>).await
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
@@ -3989,7 +3324,10 @@ pub mod resources {
             #[doc = r" development or debugging."]
             pub async fn execute_with_all_fields(
                 self,
-            ) -> Result<crate::schemas::FindFullHashesResponse, crate::Error> {
+            ) -> Result<
+                crate::schemas::GoogleSecuritySafebrowsingV4FindFullHashesResponse,
+                crate::Error,
+            > {
                 self.execute_with_fields(Some("*")).await
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
@@ -4010,7 +3348,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -4026,26 +3364,30 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("clientId", &self.client_id)]);
-                let req = req.query(&[("clientVersion", &self.client_version)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("clientId", &self.client_id)]);
+                req = req.query(&[("clientVersion", &self.client_version)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -4103,7 +3445,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetRequestBuilder<'a> {
-            #[doc = "A client ID that uniquely identifies the client implementation of the Safe\nBrowsing API."]
+            #[doc = "A client ID that uniquely identifies the client implementation of the Safe Browsing API."]
             pub fn client_id(mut self, value: impl Into<String>) -> Self {
                 self.client_id = Some(value.into());
                 self
@@ -4184,7 +3526,10 @@ pub mod resources {
             #[doc = r" the response resource."]
             pub async fn execute_with_default_fields(
                 self,
-            ) -> Result<crate::schemas::FetchThreatListUpdatesResponse, crate::Error> {
+            ) -> Result<
+                crate::schemas::GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse,
+                crate::Error,
+            > {
                 self.execute_with_fields(None::<&str>).await
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
@@ -4193,7 +3538,10 @@ pub mod resources {
             #[doc = r" development or debugging."]
             pub async fn execute_with_all_fields(
                 self,
-            ) -> Result<crate::schemas::FetchThreatListUpdatesResponse, crate::Error> {
+            ) -> Result<
+                crate::schemas::GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse,
+                crate::Error,
+            > {
                 self.execute_with_fields(Some("*")).await
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
@@ -4214,7 +3562,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -4230,26 +3578,30 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("clientId", &self.client_id)]);
-                let req = req.query(&[("clientVersion", &self.client_version)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("clientId", &self.client_id)]);
+                req = req.query(&[("clientVersion", &self.client_version)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -4267,7 +3619,7 @@ pub mod resources {
             #[doc = "Finds the full hashes that match the requested hash prefixes."]
             pub fn find(
                 &self,
-                request: crate::schemas::FindFullHashesRequest,
+                request: crate::schemas::GoogleSecuritySafebrowsingV4FindFullHashesRequest,
             ) -> FindRequestBuilder {
                 FindRequestBuilder {
                     reqwest: &self.reqwest,
@@ -4292,7 +3644,7 @@ pub mod resources {
         pub struct FindRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            request: crate::schemas::FindFullHashesRequest,
+            request: crate::schemas::GoogleSecuritySafebrowsingV4FindFullHashesRequest,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
@@ -4377,7 +3729,10 @@ pub mod resources {
             #[doc = r" the response resource."]
             pub async fn execute_with_default_fields(
                 self,
-            ) -> Result<crate::schemas::FindFullHashesResponse, crate::Error> {
+            ) -> Result<
+                crate::schemas::GoogleSecuritySafebrowsingV4FindFullHashesResponse,
+                crate::Error,
+            > {
                 self.execute_with_fields(None::<&str>).await
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
@@ -4386,7 +3741,10 @@ pub mod resources {
             #[doc = r" development or debugging."]
             pub async fn execute_with_all_fields(
                 self,
-            ) -> Result<crate::schemas::FindFullHashesResponse, crate::Error> {
+            ) -> Result<
+                crate::schemas::GoogleSecuritySafebrowsingV4FindFullHashesResponse,
+                crate::Error,
+            > {
                 self.execute_with_fields(Some("*")).await
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
@@ -4407,7 +3765,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -4416,24 +3774,28 @@ pub mod resources {
                 output.push_str("v4/fullHashes:find");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -4448,8 +3810,11 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Reports a Safe Browsing threat list hit to Google. Only projects with\nTRUSTED_REPORTER visibility can use this method."]
-            pub fn create(&self, request: crate::schemas::ThreatHit) -> CreateRequestBuilder {
+            #[doc = "Reports a Safe Browsing threat list hit to Google. Only projects with TRUSTED_REPORTER visibility can use this method."]
+            pub fn create(
+                &self,
+                request: crate::schemas::GoogleSecuritySafebrowsingV4ThreatHit,
+            ) -> CreateRequestBuilder {
                 CreateRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
@@ -4473,7 +3838,7 @@ pub mod resources {
         pub struct CreateRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            request: crate::schemas::ThreatHit,
+            request: crate::schemas::GoogleSecuritySafebrowsingV4ThreatHit,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
@@ -4558,7 +3923,7 @@ pub mod resources {
             #[doc = r" the response resource."]
             pub async fn execute_with_default_fields(
                 self,
-            ) -> Result<crate::schemas::Empty, crate::Error> {
+            ) -> Result<crate::schemas::GoogleProtobufEmpty, crate::Error> {
                 self.execute_with_fields(None::<&str>).await
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
@@ -4567,7 +3932,7 @@ pub mod resources {
             #[doc = r" development or debugging."]
             pub async fn execute_with_all_fields(
                 self,
-            ) -> Result<crate::schemas::Empty, crate::Error> {
+            ) -> Result<crate::schemas::GoogleProtobufEmpty, crate::Error> {
                 self.execute_with_fields(Some("*")).await
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
@@ -4588,7 +3953,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -4597,24 +3962,28 @@ pub mod resources {
                 output.push_str("v4/threatHits");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -4629,10 +3998,10 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Fetches the most recent threat list updates. A client can request updates\nfor multiple lists at once."]
+            #[doc = "Fetches the most recent threat list updates. A client can request updates for multiple lists at once."]
             pub fn fetch(
                 &self,
-                request: crate::schemas::FetchThreatListUpdatesRequest,
+                request: crate::schemas::GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest,
             ) -> FetchRequestBuilder {
                 FetchRequestBuilder {
                     reqwest: &self.reqwest,
@@ -4657,7 +4026,7 @@ pub mod resources {
         pub struct FetchRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            request: crate::schemas::FetchThreatListUpdatesRequest,
+            request: crate::schemas::GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
@@ -4742,7 +4111,10 @@ pub mod resources {
             #[doc = r" the response resource."]
             pub async fn execute_with_default_fields(
                 self,
-            ) -> Result<crate::schemas::FetchThreatListUpdatesResponse, crate::Error> {
+            ) -> Result<
+                crate::schemas::GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse,
+                crate::Error,
+            > {
                 self.execute_with_fields(None::<&str>).await
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
@@ -4751,7 +4123,10 @@ pub mod resources {
             #[doc = r" development or debugging."]
             pub async fn execute_with_all_fields(
                 self,
-            ) -> Result<crate::schemas::FetchThreatListUpdatesResponse, crate::Error> {
+            ) -> Result<
+                crate::schemas::GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse,
+                crate::Error,
+            > {
                 self.execute_with_fields(Some("*")).await
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
@@ -4772,7 +4147,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -4781,24 +4156,28 @@ pub mod resources {
                 output.push_str("v4/threatListUpdates:fetch");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -4921,7 +4300,10 @@ pub mod resources {
             #[doc = r" the response resource."]
             pub async fn execute_with_default_fields(
                 self,
-            ) -> Result<crate::schemas::ListThreatListsResponse, crate::Error> {
+            ) -> Result<
+                crate::schemas::GoogleSecuritySafebrowsingV4ListThreatListsResponse,
+                crate::Error,
+            > {
                 self.execute_with_fields(None::<&str>).await
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
@@ -4930,7 +4312,10 @@ pub mod resources {
             #[doc = r" development or debugging."]
             pub async fn execute_with_all_fields(
                 self,
-            ) -> Result<crate::schemas::ListThreatListsResponse, crate::Error> {
+            ) -> Result<
+                crate::schemas::GoogleSecuritySafebrowsingV4ListThreatListsResponse,
+                crate::Error,
+            > {
                 self.execute_with_fields(Some("*")).await
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
@@ -4951,7 +4336,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -4959,24 +4344,28 @@ pub mod resources {
                 output.push_str("v4/threatLists");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -4994,7 +4383,7 @@ pub mod resources {
             #[doc = "Finds the threat entries that match the Safe Browsing lists."]
             pub fn find(
                 &self,
-                request: crate::schemas::FindThreatMatchesRequest,
+                request: crate::schemas::GoogleSecuritySafebrowsingV4FindThreatMatchesRequest,
             ) -> FindRequestBuilder {
                 FindRequestBuilder {
                     reqwest: &self.reqwest,
@@ -5019,7 +4408,7 @@ pub mod resources {
         pub struct FindRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            request: crate::schemas::FindThreatMatchesRequest,
+            request: crate::schemas::GoogleSecuritySafebrowsingV4FindThreatMatchesRequest,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
@@ -5104,7 +4493,10 @@ pub mod resources {
             #[doc = r" the response resource."]
             pub async fn execute_with_default_fields(
                 self,
-            ) -> Result<crate::schemas::FindThreatMatchesResponse, crate::Error> {
+            ) -> Result<
+                crate::schemas::GoogleSecuritySafebrowsingV4FindThreatMatchesResponse,
+                crate::Error,
+            > {
                 self.execute_with_fields(None::<&str>).await
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
@@ -5113,7 +4505,10 @@ pub mod resources {
             #[doc = r" development or debugging."]
             pub async fn execute_with_all_fields(
                 self,
-            ) -> Result<crate::schemas::FindThreatMatchesResponse, crate::Error> {
+            ) -> Result<
+                crate::schemas::GoogleSecuritySafebrowsingV4FindThreatMatchesResponse,
+                crate::Error,
+            > {
                 self.execute_with_fields(Some("*")).await
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
@@ -5134,7 +4529,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -5143,24 +4538,28 @@ pub mod resources {
                 output.push_str("v4/threatMatches:find");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -5174,6 +4573,7 @@ pub enum Error {
         reqwest_err: ::reqwest::Error,
         body: Option<String>,
     },
+    IO(std::io::Error),
     Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
@@ -5183,6 +4583,7 @@ impl Error {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
             Error::Reqwest { .. } => None,
+            Error::IO(_) => None,
             Error::Other(_) => None,
         }
     }
@@ -5200,6 +4601,7 @@ impl ::std::fmt::Display for Error {
                 }
                 Ok(())
             }
+            Error::IO(err) => write!(f, "IO Error: {}", err),
             Error::Other(err) => write!(f, "Uknown Error: {}", err),
         }
     }
@@ -5219,6 +4621,12 @@ impl From<::reqwest::Error> for Error {
             reqwest_err,
             body: None,
         }
+    }
+}
+
+impl From<std::io::Error> for Error {
+    fn from(err: std::io::Error) -> Error {
+        Error::IO(err)
     }
 }
 #[allow(dead_code)]
@@ -5288,13 +4696,13 @@ mod multipart {
 
     pub(crate) struct Part {
         content_type: ::mime::Mime,
-        body: Box<dyn ::std::io::Read + Send>,
+        body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
     }
 
     impl Part {
         pub(crate) fn new(
             content_type: ::mime::Mime,
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         ) -> Part {
             Part { content_type, body }
         }
@@ -5303,7 +4711,7 @@ mod multipart {
     pub(crate) struct RelatedMultiPartReader {
         state: RelatedMultiPartReaderState,
         boundary: String,
-        next_body: Option<Box<dyn ::std::io::Read + Send>>,
+        next_body: Option<Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>>,
         parts: std::vec::IntoIter<Part>,
     }
 
@@ -5317,13 +4725,18 @@ mod multipart {
             content_type: Vec<u8>,
         },
         WriteBody {
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         },
     }
 
-    impl ::std::io::Read for RelatedMultiPartReader {
-        fn read(&mut self, buf: &mut [u8]) -> ::std::io::Result<usize> {
+    impl futures::io::AsyncRead for RelatedMultiPartReader {
+        fn poll_read(
+            mut self: std::pin::Pin<&mut Self>,
+            ctx: &mut futures::task::Context,
+            buf: &mut [u8],
+        ) -> futures::task::Poll<Result<usize, futures::io::Error>> {
             use RelatedMultiPartReaderState::*;
+
             let mut bytes_written: usize = 0;
             loop {
                 let rem_buf = &mut buf[bytes_written..];
@@ -5371,7 +4784,14 @@ mod multipart {
                         }
                     }
                     WriteBody { body } => {
-                        let written = body.read(rem_buf)?;
+                        let body = std::pin::Pin::new(body);
+                        let written = match futures::io::AsyncRead::poll_read(body, ctx, rem_buf) {
+                            futures::task::Poll::Ready(Ok(n)) => n,
+                            futures::task::Poll::Ready(Err(err)) => {
+                                return futures::task::Poll::Ready(Err(err));
+                            }
+                            futures::task::Poll::Pending => return futures::task::Poll::Pending,
+                        };
                         bytes_written += written;
                         if written == 0 {
                             self.state = WriteBoundary {
@@ -5384,7 +4804,8 @@ mod multipart {
                     }
                 }
             }
-            Ok(bytes_written)
+
+            futures::task::Poll::Ready(Ok(bytes_written))
         }
     }
 

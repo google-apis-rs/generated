@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("firebaseml1_beta2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200512")
+            .version("0.1.0-20210311")
             .about("Access custom machine learning models hosted via Firebase ML.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -38,13 +38,17 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .about("sub-resources: models and operations");
         let mut models1 = SubCommand::with_name("models")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: create, delete, get, list and patch");
+            .about("methods: create, delete, download, get, list and patch");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a model in Firebase ML.\nThe longrunning operation will eventually return a Model");
+            let mcmd = SubCommand::with_name("create").about("Creates a model in Firebase ML. The longrunning operation will eventually return a Model");
             models1 = models1.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("delete").about("Deletes a model");
+            models1 = models1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("download").about("Gets Download information for a model. This is meant for downloading model resources onto devices. It gives very limited information about the model.");
             models1 = models1.subcommand(mcmd);
         }
         {
@@ -65,7 +69,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: get");
         {
-            let mcmd = SubCommand::with_name("get").about("Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.");
+            let mcmd = SubCommand::with_name("get").about("Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.");
             operations1 = operations1.subcommand(mcmd);
         }
         projects0 = projects0.subcommand(operations1);

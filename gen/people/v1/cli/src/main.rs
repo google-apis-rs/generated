@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("people1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200512")
+            .version("0.1.0-20210311")
             .about("Provides access to information about profiles and contacts.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -37,7 +37,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: batch_get, create, delete, get, list and update");
         {
-            let mcmd = SubCommand::with_name("batch_get").about("Get a list of contact groups owned by the authenticated user by specifying\na list of contact group resource names.");
+            let mcmd = SubCommand::with_name("batch_get").about("Get a list of contact groups owned by the authenticated user by specifying a list of contact group resource names.");
             contact_groups0 = contact_groups0.subcommand(mcmd);
         }
         {
@@ -46,29 +46,45 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             contact_groups0 = contact_groups0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Delete an existing contact group owned by the authenticated user by\nspecifying a contact group resource name.");
+            let mcmd = SubCommand::with_name("delete").about("Delete an existing contact group owned by the authenticated user by specifying a contact group resource name.");
             contact_groups0 = contact_groups0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Get a specific contact group owned by the authenticated user by specifying\na contact group resource name.");
+            let mcmd = SubCommand::with_name("get").about("Get a specific contact group owned by the authenticated user by specifying a contact group resource name.");
             contact_groups0 = contact_groups0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("List all contact groups owned by the authenticated user. Members of the\ncontact groups are not populated.");
+            let mcmd = SubCommand::with_name("list").about("List all contact groups owned by the authenticated user. Members of the contact groups are not populated.");
             contact_groups0 = contact_groups0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("update").about(
-                "Update the name of an existing contact group owned by the authenticated\nuser.",
+                "Update the name of an existing contact group owned by the authenticated user.",
             );
             contact_groups0 = contact_groups0.subcommand(mcmd);
         }
+        let mut other_contacts0 = SubCommand::with_name("other_contacts")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: copy_other_contact_to_my_contacts_group, list and search");
+        {
+            let mcmd = SubCommand::with_name("copy_other_contact_to_my_contacts_group").about(
+                "Copies an \"Other contact\" to a new contact in the user\'s \"myContacts\" group",
+            );
+            other_contacts0 = other_contacts0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("List all \"Other contacts\", that is contacts that are not in a contact group. \"Other contacts\" are typically auto created contacts from interactions.");
+            other_contacts0 = other_contacts0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("search").about("Provides a list of contacts in the authenticated user\'s other contacts that matches the search query.");
+            other_contacts0 = other_contacts0.subcommand(mcmd);
+        }
         let mut people0 = SubCommand::with_name("people")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: create_contact, delete_contact, delete_contact_photo, get, get_batch_get, update_contact and update_contact_photo");
+                        .about("methods: create_contact, delete_contact, delete_contact_photo, get, get_batch_get, list_directory_people, search_contacts, search_directory_people, update_contact and update_contact_photo");
         {
-            let mcmd = SubCommand::with_name("create_contact")
-                .about("Create a new contact and return the person resource for that contact.");
+            let mcmd = SubCommand::with_name("create_contact").about("Create a new contact and return the person resource for that contact. The request returns a 400 error if more than one field is specified on a field that is a singleton for contact sources: * biographies * birthdays * genders * names");
             people0 = people0.subcommand(mcmd);
         }
         {
@@ -82,15 +98,27 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             people0 = people0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Provides information about a person by specifying a resource name. Use\n`people/me` to indicate the authenticated user.\n\nThe request throws a 400 error if \'personFields\' is not specified.");
+            let mcmd = SubCommand::with_name("get").about("Provides information about a person by specifying a resource name. Use `people/me` to indicate the authenticated user. The request returns a 400 error if \'personFields\' is not specified.");
             people0 = people0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_batch_get").about("Provides information about a list of specific people by specifying a list\nof requested resource names. Use `people/me` to indicate the authenticated\nuser.\n\nThe request throws a 400 error if \'personFields\' is not specified.");
+            let mcmd = SubCommand::with_name("get_batch_get").about("Provides information about a list of specific people by specifying a list of requested resource names. Use `people/me` to indicate the authenticated user. The request returns a 400 error if \'personFields\' is not specified.");
             people0 = people0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update_contact").about("Update contact data for an existing contact person. Any non-contact data\nwill not be modified.\n\nThe request throws a 400 error if `updatePersonFields` is not specified.\n\nThe request throws a 400 error if `person.metadata.sources` is not\nspecified for the contact to be updated.\n\nThe request throws a 400 error with an error with reason\n`\"failedPrecondition\"` if `person.metadata.sources.etag` is different than\nthe contact\'s etag, which indicates the contact has changed since its data\nwas read. Clients should get the latest person and re-apply their updates\nto the latest person.");
+            let mcmd = SubCommand::with_name("list_directory_people").about("Provides a list of domain profiles and domain contacts in the authenticated user\'s domain directory.");
+            people0 = people0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("search_contacts").about("Provides a list of contacts in the authenticated user\'s grouped contacts that matches the search query.");
+            people0 = people0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("search_directory_people").about("Provides a list of domain profiles and domain contacts in the authenticated user\'s domain directory that match the search query.");
+            people0 = people0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("update_contact").about("Update contact data for an existing contact person. Any non-contact data will not be modified. Any non-contact data in the person to update will be ignored. All fields specified in the `update_mask` will be replaced. The server returns a 400 error if `person.metadata.sources` is not specified for the contact to be updated or if there is no contact source. The server returns a 400 error with reason `\"failedPrecondition\"` if `person.metadata.sources.etag` is different than the contact\'s etag, which indicates the contact has changed since its data was read. Clients should get the latest person and merge their updates into the latest person. The server returns a 400 error if `memberships` are being updated and there are no contact group memberships specified on the person. The server returns a 400 error if more than one field is specified on a field that is a singleton for contact sources: * biographies * birthdays * genders * names");
             people0 = people0.subcommand(mcmd);
         }
         {
@@ -102,19 +130,20 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: modify");
         {
-            let mcmd = SubCommand::with_name("modify").about("Modify the members of a contact group owned by the authenticated user.\n\nThe only system contact groups that can have members added are\n`contactGroups/myContacts` and `contactGroups/starred`. Other system\ncontact groups are deprecated and can only have contacts removed.");
+            let mcmd = SubCommand::with_name("modify").about("Modify the members of a contact group owned by the authenticated user. The only system contact groups that can have members added are `contactGroups/myContacts` and `contactGroups/starred`. Other system contact groups are deprecated and can only have contacts removed.");
             members1 = members1.subcommand(mcmd);
         }
         let mut connections1 = SubCommand::with_name("connections")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("Provides a list of the authenticated user\'s contacts merged with any\nconnected profiles.\n\nThe request throws a 400 error if \'personFields\' is not specified.");
+            let mcmd = SubCommand::with_name("list").about("Provides a list of the authenticated user\'s contacts. The request returns a 400 error if `personFields` is not specified. The request returns a 410 error if `sync_token` is specified and is expired. Sync tokens expire after 7 days to prevent data drift between clients and the server. To handle a sync token expired error, a request should be sent without `sync_token` to get all contacts.");
             connections1 = connections1.subcommand(mcmd);
         }
         people0 = people0.subcommand(connections1);
         contact_groups0 = contact_groups0.subcommand(members1);
         app = app.subcommand(people0);
+        app = app.subcommand(other_contacts0);
         app = app.subcommand(contact_groups0);
 
         Self { app }

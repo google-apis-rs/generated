@@ -85,7 +85,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub accessibility: ::std::option::Option<crate::schemas::LighthouseCategoryV5>,
-        #[doc = "The best practices category, containing all best practices related\naudits."]
+        #[doc = "The best practices category, containing all best practices related audits."]
         #[serde(
             rename = "best-practices",
             default,
@@ -99,14 +99,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub performance: ::std::option::Option<crate::schemas::LighthouseCategoryV5>,
-        #[doc = "The Progressive-Web-App (PWA) category, containing all pwa related\naudits."]
+        #[doc = "The Progressive-Web-App (PWA) category, containing all pwa related audits."]
         #[serde(
             rename = "pwa",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub pwa: ::std::option::Option<crate::schemas::LighthouseCategoryV5>,
-        #[doc = "The Search-Engine-Optimization (SEO) category, containing all seo related\naudits."]
+        #[doc = "The Search-Engine-Optimization (SEO) category, containing all seo related audits."]
         #[serde(
             rename = "seo",
             default,
@@ -164,20 +164,27 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ConfigSettings {
-        #[doc = "How Lighthouse was run, e.g. from the Chrome extension or from the npm\nmodule."]
+        #[doc = "How Lighthouse was run, e.g. from the Chrome extension or from the npm module."]
         #[serde(
             rename = "channel",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub channel: ::std::option::Option<String>,
-        #[doc = "The form factor the emulation should use."]
+        #[doc = "The form factor the emulation should use. This field is deprecated, form_factor should be used instead."]
         #[serde(
             rename = "emulatedFormFactor",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub emulated_form_factor: ::std::option::Option<String>,
+        #[doc = "How Lighthouse should interpret this run in regards to scoring performance metrics and skipping mobile-only tests in desktop."]
+        #[serde(
+            rename = "formFactor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub form_factor: ::std::option::Option<String>,
         #[doc = "The locale setting."]
         #[serde(
             rename = "locale",
@@ -252,7 +259,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct I18N {
-        #[doc = "Internationalized strings that are formatted to the locale in\nconfigSettings."]
+        #[doc = "Internationalized strings that are formatted to the locale in configSettings."]
         #[serde(
             rename = "rendererFormattedStrings",
             default,
@@ -316,7 +323,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "A numeric value that has a meaning specific to the audit, e.g. the number\nof nodes in the DOM or the timestamp of a specific load event. More\ninformation can be found in the audit details, if present."]
+        #[doc = "A numeric value that has a meaning specific to the audit, e.g. the number of nodes in the DOM or the timestamp of a specific load event. More information can be found in the audit details, if present."]
         #[serde(
             rename = "numericValue",
             default,
@@ -392,7 +399,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub manual_description: ::std::option::Option<String>,
-        #[doc = "The overall score of the category, the weighted average of all its audits.\n(The category's score, can be null.)"]
+        #[doc = "The overall score of the category, the weighted average of all its audits. (The category's score, can be null.)"]
         #[serde(
             rename = "score",
             default,
@@ -493,14 +500,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub requested_url: ::std::option::Option<String>,
-        #[doc = "List of all run warnings in the LHR.  Will always output to at least `[]`."]
+        #[doc = "List of all run warnings in the LHR. Will always output to at least `[]`."]
         #[serde(
             rename = "runWarnings",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub run_warnings: ::std::option::Option<Vec<::serde_json::Value>>,
-        #[doc = "A top-level error message that, if present, indicates a serious enough\nproblem that this Lighthouse result may need to be discarded."]
+        #[doc = "A top-level error message that, if present, indicates a serious enough problem that this Lighthouse result may need to be discarded."]
         #[serde(
             rename = "runtimeError",
             default,
@@ -557,7 +564,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub initial_url: ::std::option::Option<String>,
-        #[doc = "The map of <metrics, data>."]
+        #[doc = "The map of ."]
         #[serde(
             rename = "metrics",
             default,
@@ -566,6 +573,13 @@ pub mod schemas {
         pub metrics: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::UserPageLoadMetricV5>,
         >,
+        #[doc = "True if the result is an origin fallback from a page, false otherwise."]
+        #[serde(
+            rename = "origin_fallback",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub origin_fallback: ::std::option::Option<bool>,
         #[doc = "The human readable speed \"category\" of the id."]
         #[serde(
             rename = "overall_category",
@@ -600,7 +614,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub captcha_result: ::std::option::Option<String>,
-        #[doc = "Canonicalized and final URL for the document, after following page\nredirects (if any)."]
+        #[doc = "Canonicalized and final URL for the document, after following page redirects (if any)."]
         #[serde(
             rename = "id",
             default,
@@ -748,14 +762,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub lab_data_title: ::std::option::Option<String>,
-        #[doc = "The disclaimer shown under performance explaning that the network can\nvary."]
+        #[doc = "The disclaimer shown under performance explaning that the network can vary."]
         #[serde(
             rename = "lsPerformanceCategoryDescription",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ls_performance_category_description: ::std::option::Option<String>,
-        #[doc = "The heading shown above a list of audits that were not computerd in the\nrun."]
+        #[doc = "The heading shown above a list of audits that were not computerd in the run."]
         #[serde(
             rename = "manualAuditsGroupTitle",
             default,
@@ -769,7 +783,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub not_applicable_audits_group_title: ::std::option::Option<String>,
-        #[doc = "The heading for the estimated page load savings opportunity of an\naudit."]
+        #[doc = "The heading for the estimated page load savings opportunity of an audit."]
         #[serde(
             rename = "opportunityResourceColumnLabel",
             default,
@@ -797,7 +811,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub scorescale_label: ::std::option::Option<String>,
-        #[doc = "The label shown preceding important warnings that may have invalidated\nan entire report."]
+        #[doc = "The label shown preceding important warnings that may have invalidated an entire report."]
         #[serde(
             rename = "toplevelWarningsMessage",
             default,
@@ -980,7 +994,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metric_id: ::std::option::Option<String>,
-        #[doc = "We use this field to store certain percentile value for this metric.\nFor v4, this field contains pc50.\nFor v5, this field contains pc90."]
+        #[doc = "We use this field to store certain percentile value for this metric. For v4, this field contains pc50. For v5, this field contains pc90."]
         #[serde(
             rename = "percentile",
             default,
@@ -1155,17 +1169,17 @@ pub struct Client {
 impl Client {
     pub fn new<A>(auth: A) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client::with_reqwest_client(auth, ::reqwest::Client::builder().build().unwrap())
     }
     pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::Client) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client {
             reqwest,
-            auth: auth.into(),
+            auth: Box::new(auth),
         }
     }
     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
@@ -1184,11 +1198,17 @@ pub mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum RunpagespeedCategoryItems {
+                #[doc = "Accessibility (a11y), category pertaining to a website's capacity to be accessible to all users."]
                 Accessibility,
+                #[doc = "Best Practices, category pertaining to a website's conformance to web best practice."]
                 BestPractices,
+                #[doc = "Default UNDEFINED category."]
                 CategoryUnspecified,
+                #[doc = "Performance, category pertaining to a website's performance."]
                 Performance,
+                #[doc = "Progressive Web App (PWA), category pertaining to a website's ability to be run as a PWA."]
                 Pwa,
+                #[doc = "Search Engine Optimization (SEO), category pertaining to a website's ability to be indexed by search engines."]
                 Seo,
             }
             impl RunpagespeedCategoryItems {
@@ -1269,8 +1289,11 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum RunpagespeedStrategy {
+                #[doc = "Fetch and analyze the URL for desktop browsers."]
                 Desktop,
+                #[doc = "Fetch and analyze the URL for mobile devices."]
                 Mobile,
+                #[doc = "UNDEFINED."]
                 StrategyUnspecified,
             }
             impl RunpagespeedStrategy {
@@ -1349,8 +1372,8 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Runs PageSpeed analysis on the page at the specified URL, and returns\nPageSpeed scores, a list of suggestions to make that page faster, and other\ninformation."]
-            pub fn runpagespeed(&self) -> RunpagespeedRequestBuilder {
+            #[doc = "Runs PageSpeed analysis on the page at the specified URL, and returns PageSpeed scores, a list of suggestions to make that page faster, and other information."]
+            pub fn runpagespeed(&self, url: impl Into<String>) -> RunpagespeedRequestBuilder {
                 RunpagespeedRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
@@ -1365,11 +1388,11 @@ pub mod resources {
                     upload_protocol: None,
                     upload_type: None,
                     xgafv: None,
+                    url: url.into(),
                     captcha_token: None,
                     category: None,
                     locale: None,
                     strategy: None,
-                    url: None,
                     utm_campaign: None,
                     utm_source: None,
                 }
@@ -1380,12 +1403,12 @@ pub mod resources {
         pub struct RunpagespeedRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            url: String,
             captcha_token: Option<String>,
             category:
                 Option<Vec<crate::resources::pagespeedapi::params::RunpagespeedCategoryItems>>,
             locale: Option<String>,
             strategy: Option<crate::resources::pagespeedapi::params::RunpagespeedStrategy>,
-            url: Option<String>,
             utm_campaign: Option<String>,
             utm_source: Option<String>,
             access_token: Option<String>,
@@ -1406,7 +1429,7 @@ pub mod resources {
                 self.captcha_token = Some(value.into());
                 self
             }
-            #[doc = "A Lighthouse category to run; if none are given, only Performance category\nwill be run"]
+            #[doc = "A Lighthouse category to run; if none are given, only Performance category will be run"]
             pub fn category(
                 mut self,
                 value: impl Into<Vec<crate::resources::pagespeedapi::params::RunpagespeedCategoryItems>>,
@@ -1419,17 +1442,12 @@ pub mod resources {
                 self.locale = Some(value.into());
                 self
             }
-            #[doc = "The analysis strategy (desktop or mobile) to use, and desktop is the\ndefault"]
+            #[doc = "The analysis strategy (desktop or mobile) to use, and desktop is the default"]
             pub fn strategy(
                 mut self,
                 value: crate::resources::pagespeedapi::params::RunpagespeedStrategy,
             ) -> Self {
                 self.strategy = Some(value);
-                self
-            }
-            #[doc = "The URL to fetch and analyze"]
-            pub fn url(mut self, value: impl Into<String>) -> Self {
-                self.url = Some(value.into());
                 self
             }
             #[doc = "Campaign name for analytics."]
@@ -1543,7 +1561,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -1551,31 +1569,37 @@ pub mod resources {
                 output.push_str("pagespeedonline/v5/runPagespeed");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("captchaToken", &self.captcha_token)]);
-                let req = req.query(&[("category", &self.category)]);
-                let req = req.query(&[("locale", &self.locale)]);
-                let req = req.query(&[("strategy", &self.strategy)]);
-                let req = req.query(&[("url", &self.url)]);
-                let req = req.query(&[("utm_campaign", &self.utm_campaign)]);
-                let req = req.query(&[("utm_source", &self.utm_source)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("url", &self.url)]);
+                req = req.query(&[("captchaToken", &self.captcha_token)]);
+                for value in self.category.iter().flatten() {
+                    req = req.query(&[("category", value)]);
+                }
+                req = req.query(&[("locale", &self.locale)]);
+                req = req.query(&[("strategy", &self.strategy)]);
+                req = req.query(&[("utm_campaign", &self.utm_campaign)]);
+                req = req.query(&[("utm_source", &self.utm_source)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -1589,6 +1613,7 @@ pub enum Error {
         reqwest_err: ::reqwest::Error,
         body: Option<String>,
     },
+    IO(std::io::Error),
     Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
@@ -1598,6 +1623,7 @@ impl Error {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
             Error::Reqwest { .. } => None,
+            Error::IO(_) => None,
             Error::Other(_) => None,
         }
     }
@@ -1615,6 +1641,7 @@ impl ::std::fmt::Display for Error {
                 }
                 Ok(())
             }
+            Error::IO(err) => write!(f, "IO Error: {}", err),
             Error::Other(err) => write!(f, "Uknown Error: {}", err),
         }
     }
@@ -1634,6 +1661,12 @@ impl From<::reqwest::Error> for Error {
             reqwest_err,
             body: None,
         }
+    }
+}
+
+impl From<std::io::Error> for Error {
+    fn from(err: std::io::Error) -> Error {
+        Error::IO(err)
     }
 }
 #[allow(dead_code)]
@@ -1703,13 +1736,13 @@ mod multipart {
 
     pub(crate) struct Part {
         content_type: ::mime::Mime,
-        body: Box<dyn ::std::io::Read + Send>,
+        body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
     }
 
     impl Part {
         pub(crate) fn new(
             content_type: ::mime::Mime,
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         ) -> Part {
             Part { content_type, body }
         }
@@ -1718,7 +1751,7 @@ mod multipart {
     pub(crate) struct RelatedMultiPartReader {
         state: RelatedMultiPartReaderState,
         boundary: String,
-        next_body: Option<Box<dyn ::std::io::Read + Send>>,
+        next_body: Option<Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>>,
         parts: std::vec::IntoIter<Part>,
     }
 
@@ -1732,13 +1765,18 @@ mod multipart {
             content_type: Vec<u8>,
         },
         WriteBody {
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         },
     }
 
-    impl ::std::io::Read for RelatedMultiPartReader {
-        fn read(&mut self, buf: &mut [u8]) -> ::std::io::Result<usize> {
+    impl futures::io::AsyncRead for RelatedMultiPartReader {
+        fn poll_read(
+            mut self: std::pin::Pin<&mut Self>,
+            ctx: &mut futures::task::Context,
+            buf: &mut [u8],
+        ) -> futures::task::Poll<Result<usize, futures::io::Error>> {
             use RelatedMultiPartReaderState::*;
+
             let mut bytes_written: usize = 0;
             loop {
                 let rem_buf = &mut buf[bytes_written..];
@@ -1786,7 +1824,14 @@ mod multipart {
                         }
                     }
                     WriteBody { body } => {
-                        let written = body.read(rem_buf)?;
+                        let body = std::pin::Pin::new(body);
+                        let written = match futures::io::AsyncRead::poll_read(body, ctx, rem_buf) {
+                            futures::task::Poll::Ready(Ok(n)) => n,
+                            futures::task::Poll::Ready(Err(err)) => {
+                                return futures::task::Poll::Ready(Err(err));
+                            }
+                            futures::task::Poll::Pending => return futures::task::Poll::Pending,
+                        };
                         bytes_written += written;
                         if written == 0 {
                             self.state = WriteBoundary {
@@ -1799,7 +1844,8 @@ mod multipart {
                     }
                 }
             }
-            Ok(bytes_written)
+
+            futures::task::Poll::Ready(Ok(bytes_written))
         }
     }
 

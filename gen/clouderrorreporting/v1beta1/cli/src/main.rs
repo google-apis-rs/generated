@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("clouderrorreporting1_beta1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200415")
-            .about("Groups and counts similar errors from cloud services and applications, reports new errors, and provides access to error groups and their associated errors.\n")
+            .version("0.1.0-20210303")
+            .about("Groups and counts similar errors from cloud services and applications, reports new errors, and provides access to error groups and their associated errors. ")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -49,7 +49,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             events1 = events1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("report").about("Report an individual error event.\n\nThis endpoint accepts **either** an OAuth token,\n**or** an [API key](https://support.google.com/cloud/answer/6158862)\nfor authentication. To use an API key, append it to the URL as the value of\na `key` parameter. For example:\n\n`POST\nhttps://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456`");
+            let mcmd = SubCommand::with_name("report").about("Report an individual error event and record the event to a log. This endpoint accepts **either** an OAuth token, **or** an [API key](https://support.google.com/cloud/answer/6158862) for authentication. To use an API key, append it to the URL as the value of a `key` parameter. For example: `POST https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456` **Note:** [Error Reporting](/error-reporting) is a global service built on Cloud Logging and doesn\'t analyze logs stored in regional log buckets or logs routed to other Google Cloud projects. For more information, see [Using Error Reporting with regionalized logs](/error-reporting/docs/regionalization).");
             events1 = events1.subcommand(mcmd);
         }
         let mut group_stats1 = SubCommand::with_name("group_stats")
@@ -68,7 +68,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("update").about(
-                "Replace the data for the specified group.\nFails if the group does not exist.",
+                "Replace the data for the specified group. Fails if the group does not exist.",
             );
             groups1 = groups1.subcommand(mcmd);
         }

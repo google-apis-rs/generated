@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("admob1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200513")
-            .about("The Google AdMob API lets you programmatically get reports on earnings.\n")
+            .version("0.1.0-20210311")
+            .about("The AdMob API allows publishers to programmatically get information about their AdMob account. ")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -42,25 +42,21 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             accounts0 = accounts0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists the AdMob publisher account accessible with the client credential.\nCurrently, all credentials have access to at most one AdMob account.");
+            let mcmd = SubCommand::with_name("list").about("Lists the AdMob publisher account that was most recently signed in to from the AdMob UI. For more information, see https://support.google.com/admob/answer/10243672.");
             accounts0 = accounts0.subcommand(mcmd);
         }
         let mut mediation_report1 = SubCommand::with_name("mediation_report")
             .setting(AppSettings::ColoredHelp)
             .about("methods: generate");
         {
-            let mcmd = SubCommand::with_name("generate").about(
-                "Generates an AdMob Mediation report based on the provided report\nspecification.",
-            );
+            let mcmd = SubCommand::with_name("generate").about("Generates an AdMob Mediation report based on the provided report specification. Returns result of a server-side streaming RPC. The result is returned in a sequence of responses.");
             mediation_report1 = mediation_report1.subcommand(mcmd);
         }
         let mut network_report1 = SubCommand::with_name("network_report")
             .setting(AppSettings::ColoredHelp)
             .about("methods: generate");
         {
-            let mcmd = SubCommand::with_name("generate").about(
-                "Generates an AdMob Network report based on the provided report\nspecification.",
-            );
+            let mcmd = SubCommand::with_name("generate").about("Generates an AdMob Network report based on the provided report specification. Returns result of a server-side streaming RPC. The result is returned in a sequence of responses.");
             network_report1 = network_report1.subcommand(mcmd);
         }
         accounts0 = accounts0.subcommand(network_report1);

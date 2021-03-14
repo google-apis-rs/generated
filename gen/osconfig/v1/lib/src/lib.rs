@@ -24,14 +24,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub excludes: ::std::option::Option<Vec<String>>,
-        #[doc = "An exclusive list of packages to be updated. These are the only packages\nthat will be updated. If these packages are not installed, they will be\nignored. This field cannot be specified with any other patch configuration\nfields."]
+        #[doc = "An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field cannot be specified with any other patch configuration fields."]
         #[serde(
             rename = "exclusivePackages",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub exclusive_packages: ::std::option::Option<Vec<String>>,
-        #[doc = "By changing the type to DIST, the patching is performed\nusing `apt-get dist-upgrade` instead."]
+        #[doc = "By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead."]
         #[serde(
             rename = "type",
             default,
@@ -224,7 +224,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ExecStepConfig {
-        #[doc = "Defaults to [0]. A list of possible return values that the\nexecution can return to indicate a success."]
+        #[doc = "Defaults to [0]. A list of possible return values that the execution can return to indicate a success."]
         #[serde(
             rename = "allowedSuccessCodes",
             default,
@@ -238,7 +238,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub gcs_object: ::std::option::Option<crate::schemas::GcsObject>,
-        #[doc = "The script interpreter to use to run the script. If no interpreter is\nspecified the script will be executed directly, which will likely\nonly succeed for scripts with [shebang lines]\n(https://en.wikipedia.org/wiki/Shebang_(Unix))."]
+        #[doc = "The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_(Unix))."]
         #[serde(
             rename = "interpreter",
             default,
@@ -265,11 +265,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ExecStepConfigInterpreter {
-        #[doc = "Invalid for a Windows ExecStepConfig. For a Linux ExecStepConfig, the\ninterpreter will be parsed from the shebang line of the script if\nunspecified."]
+        #[doc = "Invalid for a Windows ExecStepConfig. For a Linux ExecStepConfig, the interpreter will be parsed from the shebang line of the script if unspecified."]
         InterpreterUnspecified,
-        #[doc = "Indicates that the file is run with PowerShell flags\n`-NonInteractive`, `-NoProfile`, and `-ExecutionPolicy Bypass`."]
+        #[doc = "Indicates that the file is run with PowerShell flags `-NonInteractive`, `-NoProfile`, and `-ExecutionPolicy Bypass`."]
         Powershell,
-        #[doc = "Indicates that the script is run with `/bin/sh` on Linux and `cmd`\non Windows."]
+        #[doc = "Indicates that the script is run with `/bin/sh` on Linux and `cmd` on Windows."]
         Shell,
     }
     impl ExecStepConfigInterpreter {
@@ -352,7 +352,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ExecutePatchJobRequest {
-        #[doc = "Description of the patch job. Length of the description is limited\nto 1024 characters."]
+        #[doc = "Description of the patch job. Length of the description is limited to 1024 characters."]
         #[serde(
             rename = "description",
             default,
@@ -366,34 +366,41 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "If this patch is a dry-run only, instances are contacted but\nwill do nothing."]
+        #[doc = "If this patch is a dry-run only, instances are contacted but will do nothing."]
         #[serde(
             rename = "dryRun",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub dry_run: ::std::option::Option<bool>,
-        #[doc = "Duration of the patch job. After the duration ends, the patch job\ntimes out."]
+        #[doc = "Duration of the patch job. After the duration ends, the patch job times out."]
         #[serde(
             rename = "duration",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub duration: ::std::option::Option<String>,
-        #[doc = "Required. Instances to patch, either explicitly or filtered by some criteria such\nas zone or labels."]
+        #[doc = "Required. Instances to patch, either explicitly or filtered by some criteria such as zone or labels."]
         #[serde(
             rename = "instanceFilter",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub instance_filter: ::std::option::Option<crate::schemas::PatchInstanceFilter>,
-        #[doc = "Patch configuration being applied. If omitted, instances are\npatched using the default configurations."]
+        #[doc = "Patch configuration being applied. If omitted, instances are patched using the default configurations."]
         #[serde(
             rename = "patchConfig",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub patch_config: ::std::option::Option<crate::schemas::PatchConfig>,
+        #[doc = "Rollout strategy of the patch job."]
+        #[serde(
+            rename = "rollout",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub rollout: ::std::option::Option<crate::schemas::PatchRollout>,
     }
     impl ::google_field_selector::FieldSelector for ExecutePatchJobRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -401,6 +408,44 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for ExecutePatchJobRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FixedOrPercent {
+        #[doc = "Specifies a fixed value."]
+        #[serde(
+            rename = "fixed",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub fixed: ::std::option::Option<i32>,
+        #[doc = "Specifies the relative value defined as a percentage, which will be multiplied by a reference value."]
+        #[serde(
+            rename = "percent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub percent: ::std::option::Option<i32>,
+    }
+    impl ::google_field_selector::FieldSelector for FixedOrPercent {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for FixedOrPercent {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -425,7 +470,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bucket: ::std::option::Option<String>,
-        #[doc = "Required. Generation number of the Cloud Storage object. This is used to\nensure that the ExecStep specified by this PatchJob does not change."]
+        #[doc = "Required. Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change."]
         #[serde(
             rename = "generationNumber",
             default,
@@ -487,8 +532,705 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct Inventory {
+        #[doc = "Inventory items related to the VM keyed by an opaque unique identifier for each inventory item. The identifier is unique to each distinct and addressable inventory item and will change, when there is a new package version."]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub items: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::InventoryItem>,
+        >,
+        #[doc = "Base level operating system information for the VM."]
+        #[serde(
+            rename = "osInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub os_info: ::std::option::Option<crate::schemas::InventoryOsInfo>,
+    }
+    impl ::google_field_selector::FieldSelector for Inventory {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Inventory {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct InventoryItem {
+        #[doc = "Software package available to be installed on the VM instance."]
+        #[serde(
+            rename = "availablePackage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub available_package: ::std::option::Option<crate::schemas::InventorySoftwarePackage>,
+        #[doc = "When this inventory item was first detected."]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Identifier for this item, unique across items for this VM."]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub id: ::std::option::Option<String>,
+        #[doc = "Software package present on the VM instance."]
+        #[serde(
+            rename = "installedPackage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub installed_package: ::std::option::Option<crate::schemas::InventorySoftwarePackage>,
+        #[doc = "The origin of this inventory item."]
+        #[serde(
+            rename = "originType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub origin_type: ::std::option::Option<crate::schemas::InventoryItemOriginType>,
+        #[doc = "The specific type of inventory, correlating to its specific details."]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub r#type: ::std::option::Option<crate::schemas::InventoryItemType>,
+        #[doc = "When this inventory item was last modified."]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub update_time: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for InventoryItem {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for InventoryItem {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum InventoryItemOriginType {
+        #[doc = "This inventory item was discovered as the result of the agent reporting inventory via the reporting API."]
+        InventoryReport,
+        #[doc = "Invalid. An origin type must be specified."]
+        OriginTypeUnspecified,
+    }
+    impl InventoryItemOriginType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                InventoryItemOriginType::InventoryReport => "INVENTORY_REPORT",
+                InventoryItemOriginType::OriginTypeUnspecified => "ORIGIN_TYPE_UNSPECIFIED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for InventoryItemOriginType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for InventoryItemOriginType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<InventoryItemOriginType, ()> {
+            Ok(match s {
+                "INVENTORY_REPORT" => InventoryItemOriginType::InventoryReport,
+                "ORIGIN_TYPE_UNSPECIFIED" => InventoryItemOriginType::OriginTypeUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for InventoryItemOriginType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for InventoryItemOriginType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for InventoryItemOriginType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "INVENTORY_REPORT" => InventoryItemOriginType::InventoryReport,
+                "ORIGIN_TYPE_UNSPECIFIED" => InventoryItemOriginType::OriginTypeUnspecified,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for InventoryItemOriginType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for InventoryItemOriginType {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum InventoryItemType {
+        #[doc = "This represents an update that is available for a package."]
+        AvailablePackage,
+        #[doc = "This represents a package that is installed on the VM."]
+        InstalledPackage,
+        #[doc = "Invalid. An type must be specified."]
+        TypeUnspecified,
+    }
+    impl InventoryItemType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                InventoryItemType::AvailablePackage => "AVAILABLE_PACKAGE",
+                InventoryItemType::InstalledPackage => "INSTALLED_PACKAGE",
+                InventoryItemType::TypeUnspecified => "TYPE_UNSPECIFIED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for InventoryItemType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for InventoryItemType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<InventoryItemType, ()> {
+            Ok(match s {
+                "AVAILABLE_PACKAGE" => InventoryItemType::AvailablePackage,
+                "INSTALLED_PACKAGE" => InventoryItemType::InstalledPackage,
+                "TYPE_UNSPECIFIED" => InventoryItemType::TypeUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for InventoryItemType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for InventoryItemType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for InventoryItemType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "AVAILABLE_PACKAGE" => InventoryItemType::AvailablePackage,
+                "INSTALLED_PACKAGE" => InventoryItemType::InstalledPackage,
+                "TYPE_UNSPECIFIED" => InventoryItemType::TypeUnspecified,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for InventoryItemType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for InventoryItemType {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct InventoryOsInfo {
+        #[doc = "The system architecture of the operating system."]
+        #[serde(
+            rename = "architecture",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub architecture: ::std::option::Option<String>,
+        #[doc = "The VM hostname."]
+        #[serde(
+            rename = "hostname",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub hostname: ::std::option::Option<String>,
+        #[doc = "The kernel release of the operating system."]
+        #[serde(
+            rename = "kernelRelease",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub kernel_release: ::std::option::Option<String>,
+        #[doc = "The kernel version of the operating system."]
+        #[serde(
+            rename = "kernelVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub kernel_version: ::std::option::Option<String>,
+        #[doc = "The operating system long name. For example 'Debian GNU/Linux 9' or 'Microsoft Window Server 2019 Datacenter'."]
+        #[serde(
+            rename = "longName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub long_name: ::std::option::Option<String>,
+        #[doc = "The current version of the OS Config agent running on the VM."]
+        #[serde(
+            rename = "osconfigAgentVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub osconfig_agent_version: ::std::option::Option<String>,
+        #[doc = "The operating system short name. For example, 'windows' or 'debian'."]
+        #[serde(
+            rename = "shortName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub short_name: ::std::option::Option<String>,
+        #[doc = "The version of the operating system."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for InventoryOsInfo {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for InventoryOsInfo {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct InventorySoftwarePackage {
+        #[doc = "Details of an APT package. For details about the apt package manager, see https://wiki.debian.org/Apt."]
+        #[serde(
+            rename = "aptPackage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub apt_package: ::std::option::Option<crate::schemas::InventoryVersionedPackage>,
+        #[doc = "Details of a COS package."]
+        #[serde(
+            rename = "cosPackage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cos_package: ::std::option::Option<crate::schemas::InventoryVersionedPackage>,
+        #[doc = "Details of a Googet package. For details about the googet package manager, see https://github.com/google/googet."]
+        #[serde(
+            rename = "googetPackage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub googet_package: ::std::option::Option<crate::schemas::InventoryVersionedPackage>,
+        #[doc = "Details of a Windows Quick Fix engineering package. See https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-quickfixengineering for info in Windows Quick Fix Engineering."]
+        #[serde(
+            rename = "qfePackage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub qfe_package:
+            ::std::option::Option<crate::schemas::InventoryWindowsQuickFixEngineeringPackage>,
+        #[doc = "Details of a Windows Update package. See https://docs.microsoft.com/en-us/windows/win32/api/_wua/ for information about Windows Update."]
+        #[serde(
+            rename = "wuaPackage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub wua_package: ::std::option::Option<crate::schemas::InventoryWindowsUpdatePackage>,
+        #[doc = "Yum package info. For details about the yum package manager, see https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/ch-yum."]
+        #[serde(
+            rename = "yumPackage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub yum_package: ::std::option::Option<crate::schemas::InventoryVersionedPackage>,
+        #[doc = "Details of a Zypper package. For details about the Zypper package manager, see https://en.opensuse.org/SDB:Zypper_manual."]
+        #[serde(
+            rename = "zypperPackage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub zypper_package: ::std::option::Option<crate::schemas::InventoryVersionedPackage>,
+        #[doc = "Details of a Zypper patch. For details about the Zypper package manager, see https://en.opensuse.org/SDB:Zypper_manual."]
+        #[serde(
+            rename = "zypperPatch",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub zypper_patch: ::std::option::Option<crate::schemas::InventoryZypperPatch>,
+    }
+    impl ::google_field_selector::FieldSelector for InventorySoftwarePackage {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for InventorySoftwarePackage {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct InventoryVersionedPackage {
+        #[doc = "The system architecture this package is intended for."]
+        #[serde(
+            rename = "architecture",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub architecture: ::std::option::Option<String>,
+        #[doc = "The name of the package."]
+        #[serde(
+            rename = "packageName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub package_name: ::std::option::Option<String>,
+        #[doc = "The version of the package."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for InventoryVersionedPackage {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for InventoryVersionedPackage {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct InventoryWindowsQuickFixEngineeringPackage {
+        #[doc = "A short textual description of the QFE update."]
+        #[serde(
+            rename = "caption",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub caption: ::std::option::Option<String>,
+        #[doc = "A textual description of the QFE update."]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Unique identifier associated with a particular QFE update."]
+        #[serde(
+            rename = "hotFixId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub hot_fix_id: ::std::option::Option<String>,
+        #[doc = "Date that the QFE update was installed. Mapped from installed_on field."]
+        #[serde(
+            rename = "installTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub install_time: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for InventoryWindowsQuickFixEngineeringPackage {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for InventoryWindowsQuickFixEngineeringPackage {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct InventoryWindowsUpdatePackage {
+        #[doc = "The categories that are associated with this update package."]
+        #[serde(
+            rename = "categories",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub categories: ::std::option::Option<
+            Vec<crate::schemas::InventoryWindowsUpdatePackageWindowsUpdateCategory>,
+        >,
+        #[doc = "The localized description of the update package."]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub description: ::std::option::Option<String>,
+        #[doc = "A collection of Microsoft Knowledge Base article IDs that are associated with the update package."]
+        #[serde(
+            rename = "kbArticleIds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub kb_article_ids: ::std::option::Option<Vec<String>>,
+        #[doc = "The last published date of the update, in (UTC) date and time."]
+        #[serde(
+            rename = "lastDeploymentChangeTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub last_deployment_change_time: ::std::option::Option<String>,
+        #[doc = "A collection of URLs that provide more information about the update package."]
+        #[serde(
+            rename = "moreInfoUrls",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub more_info_urls: ::std::option::Option<Vec<String>>,
+        #[doc = "The revision number of this update package."]
+        #[serde(
+            rename = "revisionNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub revision_number: ::std::option::Option<i32>,
+        #[doc = "A hyperlink to the language-specific support information for the update."]
+        #[serde(
+            rename = "supportUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub support_url: ::std::option::Option<String>,
+        #[doc = "The localized title of the update package."]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub title: ::std::option::Option<String>,
+        #[doc = "Gets the identifier of an update package. Stays the same across revisions."]
+        #[serde(
+            rename = "updateId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub update_id: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for InventoryWindowsUpdatePackage {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for InventoryWindowsUpdatePackage {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct InventoryWindowsUpdatePackageWindowsUpdateCategory {
+        #[doc = "The identifier of the windows update category."]
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub id: ::std::option::Option<String>,
+        #[doc = "The name of the windows update category."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for InventoryWindowsUpdatePackageWindowsUpdateCategory {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for InventoryWindowsUpdatePackageWindowsUpdateCategory {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct InventoryZypperPatch {
+        #[doc = "The category of the patch."]
+        #[serde(
+            rename = "category",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub category: ::std::option::Option<String>,
+        #[doc = "The name of the patch."]
+        #[serde(
+            rename = "patchName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub patch_name: ::std::option::Option<String>,
+        #[doc = "The severity specified for this patch"]
+        #[serde(
+            rename = "severity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub severity: ::std::option::Option<String>,
+        #[doc = "Any summary information provided about this patch."]
+        #[serde(
+            rename = "summary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub summary: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for InventoryZypperPatch {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for InventoryZypperPatch {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct ListPatchDeploymentsResponse {
-        #[doc = "A pagination token that can be used to get the next page of patch\ndeployments."]
+        #[doc = "A pagination token that can be used to get the next page of patch deployments."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -594,7 +1336,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct MonthlySchedule {
-        #[doc = "Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1\nindicates the last day of the month.\nMonths without the target day will be skipped. For example, a schedule to\nrun \"every month on the 31st\" will not run in February, April, June, etc."]
+        #[doc = "Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run \"every month on the 31st\" will not run in February, April, June, etc."]
         #[serde(
             rename = "monthDay",
             default,
@@ -663,14 +1405,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PatchConfig {
-        #[doc = "Apt update settings. Use this setting to override the default `apt` patch\nrules."]
+        #[doc = "Apt update settings. Use this setting to override the default `apt` patch rules."]
         #[serde(
             rename = "apt",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub apt: ::std::option::Option<crate::schemas::AptSettings>,
-        #[doc = "Goo update settings. Use this setting to override the default `goo` patch\nrules."]
+        #[doc = "Goo update settings. Use this setting to override the default `goo` patch rules."]
         #[serde(
             rename = "goo",
             default,
@@ -705,14 +1447,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub windows_update: ::std::option::Option<crate::schemas::WindowsUpdateSettings>,
-        #[doc = "Yum update settings. Use this setting to override the default `yum` patch\nrules."]
+        #[doc = "Yum update settings. Use this setting to override the default `yum` patch rules."]
         #[serde(
             rename = "yum",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub yum: ::std::option::Option<crate::schemas::YumSettings>,
-        #[doc = "Zypper update settings. Use this setting to override the default `zypper`\npatch rules."]
+        #[doc = "Zypper update settings. Use this setting to override the default `zypper` patch rules."]
         #[serde(
             rename = "zypper",
             default,
@@ -734,7 +1476,7 @@ pub mod schemas {
     pub enum PatchConfigRebootConfig {
         #[doc = "Always reboot the machine after the update completes."]
         Always,
-        #[doc = "The agent decides if a reboot is necessary by checking signals such as\nregistry keys on Windows or `/var/run/reboot-required` on APT based\nsystems. On RPM based systems, a set of core system package install times\nare compared with system boot time."]
+        #[doc = "The agent decides if a reboot is necessary by checking signals such as registry keys on Windows or `/var/run/reboot-required` on APT based systems. On RPM based systems, a set of core system package install times are compared with system boot time."]
         Default,
         #[doc = "Never reboot the machine after the update completes."]
         Never,
@@ -824,14 +1566,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PatchDeployment {
-        #[doc = "Output only. Time the patch deployment was created. Timestamp is in\n[RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format."]
+        #[doc = "Output only. Time the patch deployment was created. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format."]
         #[serde(
             rename = "createTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub create_time: ::std::option::Option<String>,
-        #[doc = "Optional. Description of the patch deployment. Length of the description is limited\nto 1024 characters."]
+        #[doc = "Optional. Description of the patch deployment. Length of the description is limited to 1024 characters."]
         #[serde(
             rename = "description",
             default,
@@ -852,14 +1594,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub instance_filter: ::std::option::Option<crate::schemas::PatchInstanceFilter>,
-        #[doc = "Output only. The last time a patch job was started by this deployment.\nTimestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text\nformat."]
+        #[doc = "Output only. The last time a patch job was started by this deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format."]
         #[serde(
             rename = "lastExecuteTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub last_execute_time: ::std::option::Option<String>,
-        #[doc = "Unique name for the patch deployment resource in a project. The patch\ndeployment name is in the form:\n`projects/{project_id}/patchDeployments/{patch_deployment_id}`.\nThis field is ignored when you create a new patch deployment."]
+        #[doc = "Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment."]
         #[serde(
             rename = "name",
             default,
@@ -887,7 +1629,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub recurring_schedule: ::std::option::Option<crate::schemas::RecurringSchedule>,
-        #[doc = "Output only. Time the patch deployment was last updated. Timestamp is in\n[RFC3339](\"https://www.ietf.org/rfc/rfc3339.txt) text format."]
+        #[doc = "Optional. Rollout strategy of the patch job."]
+        #[serde(
+            rename = "rollout",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub rollout: ::std::option::Option<crate::schemas::PatchRollout>,
+        #[doc = "Output only. Time the patch deployment was last updated. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format."]
         #[serde(
             rename = "updateTime",
             default,
@@ -918,35 +1667,35 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PatchInstanceFilter {
-        #[doc = "Target all VM instances in the project. If true, no other criteria is\npermitted."]
+        #[doc = "Target all VM instances in the project. If true, no other criteria is permitted."]
         #[serde(
             rename = "all",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub all: ::std::option::Option<bool>,
-        #[doc = "Targets VM instances matching ANY of these GroupLabels. This allows\ntargeting of disparate groups of VM instances."]
+        #[doc = "Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances."]
         #[serde(
             rename = "groupLabels",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub group_labels: ::std::option::Option<Vec<crate::schemas::PatchInstanceFilterGroupLabel>>,
-        #[doc = "Targets VMs whose name starts with one of these prefixes. Similar to\nlabels, this is another way to group VMs when targeting configs, for\nexample prefix=\"prod-\"."]
+        #[doc = "Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group VMs when targeting configs, for example prefix=\"prod-\"."]
         #[serde(
             rename = "instanceNamePrefixes",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub instance_name_prefixes: ::std::option::Option<Vec<String>>,
-        #[doc = "Targets any of the VM instances specified. Instances are specified by their\nURI in the form `zones/[ZONE]/instances/[INSTANCE_NAME], `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`"]
+        #[doc = "Targets any of the VM instances specified. Instances are specified by their URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`, `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`"]
         #[serde(
             rename = "instances",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub instances: ::std::option::Option<Vec<String>>,
-        #[doc = "Targets VM instances in ANY of these zones. Leave empty to target VM\ninstances in any zone."]
+        #[doc = "Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone."]
         #[serde(
             rename = "zones",
             default,
@@ -977,7 +1726,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PatchInstanceFilterGroupLabel {
-        #[doc = "Compute Engine instance labels that must be present for a VM\ninstance to be targeted by this filter."]
+        #[doc = "Compute Engine instance labels that must be present for a VM instance to be targeted by this filter."]
         #[serde(
             rename = "labels",
             default,
@@ -1006,7 +1755,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub create_time: ::std::option::Option<String>,
-        #[doc = "Description of the patch job. Length of the description is limited\nto 1024 characters."]
+        #[doc = "Description of the patch job. Length of the description is limited to 1024 characters."]
         #[serde(
             rename = "description",
             default,
@@ -1020,21 +1769,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "If this patch job is a dry run, the agent reports that it has\nfinished without running any updates on the VM instance."]
+        #[doc = "If this patch job is a dry run, the agent reports that it has finished without running any updates on the VM instance."]
         #[serde(
             rename = "dryRun",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub dry_run: ::std::option::Option<bool>,
-        #[doc = "Duration of the patch job. After the duration ends, the\npatch job times out."]
+        #[doc = "Duration of the patch job. After the duration ends, the patch job times out."]
         #[serde(
             rename = "duration",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub duration: ::std::option::Option<String>,
-        #[doc = "If this patch job failed, this message provides information about the\nfailure."]
+        #[doc = "If this patch job failed, this message provides information about the failure."]
         #[serde(
             rename = "errorMessage",
             default,
@@ -1056,7 +1805,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub instance_filter: ::std::option::Option<crate::schemas::PatchInstanceFilter>,
-        #[doc = "Unique identifier for this patch job in the form\n`projects/*/patchJobs/*`"]
+        #[doc = "Unique identifier for this patch job in the form `projects/*/patchJobs/*`"]
         #[serde(
             rename = "name",
             default,
@@ -1077,14 +1826,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub patch_deployment: ::std::option::Option<String>,
-        #[doc = "Reflects the overall progress of the patch job in the range of\n0.0 being no progress to 100.0 being complete."]
+        #[doc = "Reflects the overall progress of the patch job in the range of 0.0 being no progress to 100.0 being complete."]
         #[serde(
             rename = "percentComplete",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub percent_complete: ::std::option::Option<f64>,
-        #[doc = "The current state of the PatchJob ."]
+        #[doc = "Rollout strategy being applied."]
+        #[serde(
+            rename = "rollout",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub rollout: ::std::option::Option<crate::schemas::PatchRollout>,
+        #[doc = "The current state of the PatchJob."]
         #[serde(
             rename = "state",
             default,
@@ -1238,7 +1994,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub failure_reason: ::std::option::Option<String>,
-        #[doc = "The unique identifier for the instance. This identifier is\ndefined by the server."]
+        #[doc = "The unique identifier for the instance. This identifier is defined by the server."]
         #[serde(
             rename = "instanceSystemId",
             default,
@@ -1282,7 +2038,7 @@ pub mod schemas {
         Failed,
         #[doc = "Instance is inactive and cannot be patched."]
         Inactive,
-        #[doc = "The service could not detect the presence of the agent. Check to ensure\nthat the agent is installed, running, and able to communicate with the\nservice."]
+        #[doc = "The service could not detect the presence of the agent. Check to ensure that the agent is installed, running, and able to communicate with the service."]
         NoAgentDetected,
         #[doc = "The instance is notified that it should be patched."]
         Notified,
@@ -1470,7 +2226,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub inactive_instance_count: ::std::option::Option<i64>,
-        #[doc = "Number of instances that do not appear to be running the agent. Check to\nensure that the agent is installed, running, and able to communicate with\nthe service."]
+        #[doc = "Number of instances that do not appear to be running the agent. Check to ensure that the agent is installed, running, and able to communicate with the service."]
         #[serde(
             rename = "noAgentDetectedInstanceCount",
             default,
@@ -1573,8 +2329,122 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct PatchRollout {
+        #[doc = "The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget. For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone. For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops."]
+        #[serde(
+            rename = "disruptionBudget",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub disruption_budget: ::std::option::Option<crate::schemas::FixedOrPercent>,
+        #[doc = "Mode of the patch rollout."]
+        #[serde(
+            rename = "mode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub mode: ::std::option::Option<crate::schemas::PatchRolloutMode>,
+    }
+    impl ::google_field_selector::FieldSelector for PatchRollout {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PatchRollout {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum PatchRolloutMode {
+        #[doc = "Patches are applied to VMs in all zones at the same time."]
+        ConcurrentZones,
+        #[doc = "Mode must be specified."]
+        ModeUnspecified,
+        #[doc = "Patches are applied one zone at a time. The patch job begins in the region with the lowest number of targeted VMs. Within the region, patching begins in the zone with the lowest number of targeted VMs. If multiple regions (or zones within a region) have the same number of targeted VMs, a tie-breaker is achieved by sorting the regions or zones in alphabetical order."]
+        ZoneByZone,
+    }
+    impl PatchRolloutMode {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                PatchRolloutMode::ConcurrentZones => "CONCURRENT_ZONES",
+                PatchRolloutMode::ModeUnspecified => "MODE_UNSPECIFIED",
+                PatchRolloutMode::ZoneByZone => "ZONE_BY_ZONE",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PatchRolloutMode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PatchRolloutMode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PatchRolloutMode, ()> {
+            Ok(match s {
+                "CONCURRENT_ZONES" => PatchRolloutMode::ConcurrentZones,
+                "MODE_UNSPECIFIED" => PatchRolloutMode::ModeUnspecified,
+                "ZONE_BY_ZONE" => PatchRolloutMode::ZoneByZone,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for PatchRolloutMode {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for PatchRolloutMode {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for PatchRolloutMode {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "CONCURRENT_ZONES" => PatchRolloutMode::ConcurrentZones,
+                "MODE_UNSPECIFIED" => PatchRolloutMode::ModeUnspecified,
+                "ZONE_BY_ZONE" => PatchRolloutMode::ZoneByZone,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for PatchRolloutMode {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PatchRolloutMode {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct RecurringSchedule {
-        #[doc = "Optional. The end time at which a recurring patch deployment schedule is no longer\nactive."]
+        #[doc = "Optional. The end time at which a recurring patch deployment schedule is no longer active."]
         #[serde(
             rename = "endTime",
             default,
@@ -1609,7 +2479,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub next_execute_time: ::std::option::Option<String>,
-        #[doc = "Optional. The time that the recurring schedule becomes effective.\nDefaults to `create_time` of the patch deployment."]
+        #[doc = "Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment."]
         #[serde(
             rename = "startTime",
             default,
@@ -1623,7 +2493,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub time_of_day: ::std::option::Option<crate::schemas::TimeOfDay>,
-        #[doc = "Required. Defines the time zone that `time_of_day` is relative to.\nThe rules for daylight saving time are determined by the chosen time zone."]
+        #[doc = "Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone."]
         #[serde(
             rename = "timeZone",
             default,
@@ -1652,9 +2522,9 @@ pub mod schemas {
     pub enum RecurringScheduleFrequency {
         #[doc = "Invalid. A frequency must be specified."]
         FrequencyUnspecified,
-        #[doc = "Indicates that the frequency should be expressed in terms of\nmonths."]
+        #[doc = "Indicates that the frequency should be expressed in terms of months."]
         Monthly,
-        #[doc = "Indicates that the frequency should be expressed in terms of\nweeks."]
+        #[doc = "Indicates that the frequency should be expressed in terms of weeks."]
         Weekly,
     }
     impl RecurringScheduleFrequency {
@@ -1737,7 +2607,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TimeOfDay {
-        #[doc = "Hours of day in 24 hour format. Should be from 0 to 23. An API may choose\nto allow the value \"24:00:00\" for scenarios like business closing time."]
+        #[doc = "Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value \"24:00:00\" for scenarios like business closing time."]
         #[serde(
             rename = "hours",
             default,
@@ -1758,7 +2628,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub nanos: ::std::option::Option<i32>,
-        #[doc = "Seconds of minutes of the time. Must normally be from 0 to 59. An API may\nallow the value 60 if it allows leap-seconds."]
+        #[doc = "Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds."]
         #[serde(
             rename = "seconds",
             default,
@@ -1834,7 +2704,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub day_of_week: ::std::option::Option<crate::schemas::WeekDayOfMonthDayOfWeek>,
-        #[doc = "Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1\nindicates the last week of the month."]
+        #[doc = "Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month."]
         #[serde(
             rename = "weekOrdinal",
             default,
@@ -2098,7 +2968,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct WindowsUpdateSettings {
-        #[doc = "Only apply updates of these windows update classifications. If empty, all\nupdates are applied."]
+        #[doc = "Only apply updates of these windows update classifications. If empty, all updates are applied."]
         #[serde(
             rename = "classifications",
             default,
@@ -2113,7 +2983,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub excludes: ::std::option::Option<Vec<String>>,
-        #[doc = "An exclusive list of kbs to be updated. These are the only patches\nthat will be updated. This field must not be used with other\npatch configurations."]
+        #[doc = "An exclusive list of kbs to be updated. These are the only patches that will be updated. This field must not be used with other patch configurations."]
         #[serde(
             rename = "exclusivePatches",
             default,
@@ -2133,15 +3003,25 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum WindowsUpdateSettingsClassificationsItems {
+        #[doc = "Invalid. If classifications are included, they must be specified."]
         ClassificationUnspecified,
+        #[doc = "\"A widely released fix for a specific problem that addresses a critical, non-security-related bug.\" [1]"]
         Critical,
+        #[doc = "\"A widely released and frequent software update that contains additions to a product's definition database. Definition databases are often used to detect objects that have specific attributes, such as malicious code, phishing websites, or junk mail.\" [1]"]
         Definition,
+        #[doc = "\"Software that controls the input and output of a device.\" [1]"]
         Driver,
+        #[doc = "\"New product functionality that is first distributed outside the context of a product release and that is typically included in the next full product release.\" [1]"]
         FeaturePack,
+        #[doc = "\"A widely released fix for a product-specific, security-related vulnerability. Security vulnerabilities are rated by their severity. The severity rating is indicated in the Microsoft security bulletin as critical, important, moderate, or low.\" [1]"]
         Security,
+        #[doc = "\"A tested, cumulative set of all hotfixes, security updates, critical updates, and updates. Additionally, service packs may contain additional fixes for problems that are found internally since the release of the product. Service packs my also contain a limited number of customer-requested design changes or features.\" [1]"]
         ServicePack,
+        #[doc = "\"A utility or feature that helps complete a task or set of tasks.\" [1]"]
         Tool,
+        #[doc = "\"A widely released fix for a specific problem. An update addresses a noncritical, non-security-related bug.\" [1]"]
         Update,
+        #[doc = "\"A tested, cumulative set of hotfixes, security updates, critical updates, and updates that are packaged together for easy deployment. A rollup generally targets a specific area, such as security, or a component of a product, such as Internet Information Services (IIS).\" [1]"]
         UpdateRollup,
     }
     impl WindowsUpdateSettingsClassificationsItems {
@@ -2253,14 +3133,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct YumSettings {
-        #[doc = "List of packages to exclude from update. These packages are excluded by\nusing the yum `--exclude` flag."]
+        #[doc = "List of packages to exclude from update. These packages are excluded by using the yum `--exclude` flag."]
         #[serde(
             rename = "excludes",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub excludes: ::std::option::Option<Vec<String>>,
-        #[doc = "An exclusive list of packages to be updated. These are the only packages\nthat will be updated. If these packages are not installed, they will be\nignored. This field must not be specified with any other patch\nconfiguration fields."]
+        #[doc = "An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field must not be specified with any other patch configuration fields."]
         #[serde(
             rename = "exclusivePackages",
             default,
@@ -2274,7 +3154,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub minimal: ::std::option::Option<bool>,
-        #[doc = "Adds the `--security` flag to `yum update`. Not supported on\nall platforms."]
+        #[doc = "Adds the `--security` flag to `yum update`. Not supported on all platforms."]
         #[serde(
             rename = "security",
             default,
@@ -2305,7 +3185,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ZypperSettings {
-        #[doc = "Install only patches with these categories.\nCommon categories include security, recommended, and feature."]
+        #[doc = "Install only patches with these categories. Common categories include security, recommended, and feature."]
         #[serde(
             rename = "categories",
             default,
@@ -2319,14 +3199,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub excludes: ::std::option::Option<Vec<String>>,
-        #[doc = "An exclusive list of patches to be updated. These are the only patches\nthat will be installed using 'zypper patch patch:<patch_name>' command.\nThis field must not be used with any other patch configuration fields."]
+        #[doc = "An exclusive list of patches to be updated. These are the only patches that will be installed using 'zypper patch patch:' command. This field must not be used with any other patch configuration fields."]
         #[serde(
             rename = "exclusivePatches",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub exclusive_patches: ::std::option::Option<Vec<String>>,
-        #[doc = "Install only patches with these severities.\nCommon severities include critical, important, moderate, and low."]
+        #[doc = "Install only patches with these severities. Common severities include critical, important, moderate, and low."]
         #[serde(
             rename = "severities",
             default,
@@ -2515,17 +3395,17 @@ pub struct Client {
 impl Client {
     pub fn new<A>(auth: A) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client::with_reqwest_client(auth, ::reqwest::Client::builder().build().unwrap())
     }
     pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::Client) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client {
             reqwest,
-            auth: auth.into(),
+            auth: Box::new(auth),
         }
     }
     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
@@ -2684,7 +3564,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> CreateRequestBuilder<'a> {
-                #[doc = "Required. A name for the patch deployment in the project. When creating a name\nthe following rules apply:\n\n* Must contain only lowercase letters, numbers, and hyphens.\n* Must start with a letter.\n* Must be between 1-63 characters.\n* Must end with a number or a letter.\n* Must be unique within the project."]
+                #[doc = "Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project."]
                 pub fn patch_deployment_id(mut self, value: impl Into<String>) -> Self {
                     self.patch_deployment_id = Some(value.into());
                     self
@@ -2790,7 +3670,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -2807,25 +3687,29 @@ pub mod resources {
                     output.push_str("/patchDeployments");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("patchDeploymentId", &self.patch_deployment_id)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("patchDeploymentId", &self.patch_deployment_id)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -2949,7 +3833,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
@@ -2964,24 +3848,28 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -3105,7 +3993,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
@@ -3120,24 +4008,28 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -3167,7 +4059,7 @@ pub mod resources {
                     self.page_size = Some(value);
                     self
                 }
-                #[doc = "Optional. A pagination token returned from a previous call to ListPatchDeployments\nthat indicates where this listing should continue from."]
+                #[doc = "Optional. A pagination token returned from a previous call to ListPatchDeployments that indicates where this listing should continue from."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
                     self
@@ -3216,108 +4108,6 @@ pub mod resources {
                 pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
                     self.xgafv = Some(value);
                     self
-                }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-                #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-                #[doc = r" populated fields in the yielded items will be determined by the"]
-                #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_patch_deployments<T>(self) -> crate::iter::PageItemIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                {
-                    let fields = ::google_field_selector::to_string::<T>();
-                    let fields: Option<String> = if fields.is_empty() {
-                        None
-                    } else {
-                        Some(fields)
-                    };
-                    self.iter_patch_deployments_with_fields(fields)
-                }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                #[doc = r" fields in `#items_type` will be the default fields populated by"]
-                #[doc = r" the server."]
-                pub fn iter_patch_deployments_with_default_fields(
-                    self,
-                ) -> crate::iter::PageItemIter<Self, crate::schemas::PatchDeployment>
-                {
-                    self.iter_patch_deployments_with_fields(None::<String>)
-                }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                #[doc = r" fields in `#items_type` will be all fields available. This should"]
-                #[doc = r" primarily be used during developement and debugging as fetching"]
-                #[doc = r" all fields can be expensive both in bandwidth and server"]
-                #[doc = r" resources."]
-                pub fn iter_patch_deployments_with_all_fields(
-                    self,
-                ) -> crate::iter::PageItemIter<Self, crate::schemas::PatchDeployment>
-                {
-                    self.iter_patch_deployments_with_fields(Some("*"))
-                }
-                pub fn iter_patch_deployments_with_fields<T, F>(
-                    mut self,
-                    fields: Option<F>,
-                ) -> crate::iter::PageItemIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                    F: AsRef<str>,
-                {
-                    self.fields = Some({
-                        let mut selector = concat!("nextPageToken,", "patchDeployments").to_owned();
-                        let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                        if !items_fields.is_empty() {
-                            selector.push_str("(");
-                            selector.push_str(items_fields);
-                            selector.push_str(")");
-                        }
-                        selector
-                    });
-                    crate::iter::PageItemIter::new(self, "patchDeployments")
-                }
-                pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                {
-                    let fields = ::google_field_selector::to_string::<T>();
-                    let fields: Option<String> = if fields.is_empty() {
-                        None
-                    } else {
-                        Some(fields)
-                    };
-                    self.iter_with_fields(fields)
-                }
-                pub fn iter_with_default_fields(
-                    self,
-                ) -> crate::iter::PageIter<Self, crate::schemas::ListPatchDeploymentsResponse>
-                {
-                    self.iter_with_fields(None::<&str>)
-                }
-                pub fn iter_with_all_fields(
-                    self,
-                ) -> crate::iter::PageIter<Self, crate::schemas::ListPatchDeploymentsResponse>
-                {
-                    self.iter_with_fields(Some("*"))
-                }
-                pub fn iter_with_fields<T, F>(
-                    mut self,
-                    fields: Option<F>,
-                ) -> crate::iter::PageIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                    F: AsRef<str>,
-                {
-                    let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                    if !fields.is_empty() {
-                        match fields.chars().rev().nth(0) {
-                            Some(',') | None => {}
-                            _ => fields.push_str(","),
-                        }
-                        fields.push_str("nextPageToken");
-                        self.fields = Some(fields);
-                    }
-                    crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
                 #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -3377,7 +4167,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
@@ -3393,38 +4183,31 @@ pub mod resources {
                     output.push_str("/patchDeployments");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
-                }
-            }
-            impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-                fn set_page_token(&mut self, value: String) {
-                    self.page_token = value.into();
-                }
-                fn execute<T>(&mut self) -> Result<T, crate::Error>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                {
-                    todo!("implement async `execute` method for `IterableMethod` trait")
                 }
             }
         }
@@ -3438,7 +4221,7 @@ pub mod resources {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Cancel a patch job. The patch job must be active. Canceled patch jobs\ncannot be restarted."]
+                #[doc = "Cancel a patch job. The patch job must be active. Canceled patch jobs cannot be restarted."]
                 pub fn cancel(
                     &self,
                     request: crate::schemas::CancelPatchJobRequest,
@@ -3486,7 +4269,7 @@ pub mod resources {
                         parent: parent.into(),
                     }
                 }
-                #[doc = "Get the patch job. This can be used to track the progress of an\nongoing patch job or review the details of completed jobs."]
+                #[doc = "Get the patch job. This can be used to track the progress of an ongoing patch job or review the details of completed jobs."]
                 pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder {
                     GetRequestBuilder {
                         reqwest: &self.reqwest,
@@ -3532,7 +4315,7 @@ pub mod resources {
                     &self,
                 ) -> crate::resources::projects::patch_jobs::instance_details::InstanceDetailsActions
                 {
-                    crate :: resources :: projects :: patch_jobs :: instance_details :: InstanceDetailsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
+                    crate :: resources :: projects :: patch_jobs :: instance_details :: InstanceDetailsActions { reqwest : & self . reqwest , auth : self . auth_ref () , }
                 }
             }
             #[doc = "Created via [PatchJobsActions::cancel()](struct.PatchJobsActions.html#method.cancel)"]
@@ -3656,7 +4439,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -3673,24 +4456,28 @@ pub mod resources {
                     output.push_str(":cancel");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -3815,7 +4602,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -3832,24 +4619,28 @@ pub mod resources {
                     output.push_str("/patchJobs:execute");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -3973,7 +4764,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
@@ -3988,24 +4779,28 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -4031,7 +4826,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "If provided, this field specifies the criteria that must be met by patch\njobs to be included in the response.\nCurrently, filtering is only available on the patch_deployment field."]
+                #[doc = "If provided, this field specifies the criteria that must be met by patch jobs to be included in the response. Currently, filtering is only available on the patch_deployment field."]
                 pub fn filter(mut self, value: impl Into<String>) -> Self {
                     self.filter = Some(value.into());
                     self
@@ -4041,7 +4836,7 @@ pub mod resources {
                     self.page_size = Some(value);
                     self
                 }
-                #[doc = "A pagination token returned from a previous call\nthat indicates where this listing should continue from."]
+                #[doc = "A pagination token returned from a previous call that indicates where this listing should continue from."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
                     self
@@ -4090,106 +4885,6 @@ pub mod resources {
                 pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
                     self.xgafv = Some(value);
                     self
-                }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-                #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-                #[doc = r" populated fields in the yielded items will be determined by the"]
-                #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_patch_jobs<T>(self) -> crate::iter::PageItemIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                {
-                    let fields = ::google_field_selector::to_string::<T>();
-                    let fields: Option<String> = if fields.is_empty() {
-                        None
-                    } else {
-                        Some(fields)
-                    };
-                    self.iter_patch_jobs_with_fields(fields)
-                }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                #[doc = r" fields in `#items_type` will be the default fields populated by"]
-                #[doc = r" the server."]
-                pub fn iter_patch_jobs_with_default_fields(
-                    self,
-                ) -> crate::iter::PageItemIter<Self, crate::schemas::PatchJob> {
-                    self.iter_patch_jobs_with_fields(None::<String>)
-                }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                #[doc = r" fields in `#items_type` will be all fields available. This should"]
-                #[doc = r" primarily be used during developement and debugging as fetching"]
-                #[doc = r" all fields can be expensive both in bandwidth and server"]
-                #[doc = r" resources."]
-                pub fn iter_patch_jobs_with_all_fields(
-                    self,
-                ) -> crate::iter::PageItemIter<Self, crate::schemas::PatchJob> {
-                    self.iter_patch_jobs_with_fields(Some("*"))
-                }
-                pub fn iter_patch_jobs_with_fields<T, F>(
-                    mut self,
-                    fields: Option<F>,
-                ) -> crate::iter::PageItemIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                    F: AsRef<str>,
-                {
-                    self.fields = Some({
-                        let mut selector = concat!("nextPageToken,", "patchJobs").to_owned();
-                        let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                        if !items_fields.is_empty() {
-                            selector.push_str("(");
-                            selector.push_str(items_fields);
-                            selector.push_str(")");
-                        }
-                        selector
-                    });
-                    crate::iter::PageItemIter::new(self, "patchJobs")
-                }
-                pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                {
-                    let fields = ::google_field_selector::to_string::<T>();
-                    let fields: Option<String> = if fields.is_empty() {
-                        None
-                    } else {
-                        Some(fields)
-                    };
-                    self.iter_with_fields(fields)
-                }
-                pub fn iter_with_default_fields(
-                    self,
-                ) -> crate::iter::PageIter<Self, crate::schemas::ListPatchJobsResponse>
-                {
-                    self.iter_with_fields(None::<&str>)
-                }
-                pub fn iter_with_all_fields(
-                    self,
-                ) -> crate::iter::PageIter<Self, crate::schemas::ListPatchJobsResponse>
-                {
-                    self.iter_with_fields(Some("*"))
-                }
-                pub fn iter_with_fields<T, F>(
-                    mut self,
-                    fields: Option<F>,
-                ) -> crate::iter::PageIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                    F: AsRef<str>,
-                {
-                    let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                    if !fields.is_empty() {
-                        match fields.chars().rev().nth(0) {
-                            Some(',') | None => {}
-                            _ => fields.push_str(","),
-                        }
-                        fields.push_str("nextPageToken");
-                        self.fields = Some(fields);
-                    }
-                    crate::iter::PageIter::new(self)
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
                 #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -4247,7 +4942,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
@@ -4263,39 +4958,32 @@ pub mod resources {
                     output.push_str("/patchJobs");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("filter", &self.filter)]);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("filter", &self.filter)]);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    req = req.bearer_auth(access_token);
                     Ok(req)
-                }
-            }
-            impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-                fn set_page_token(&mut self, value: String) {
-                    self.page_token = value.into();
-                }
-                fn execute<T>(&mut self) -> Result<T, crate::Error>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                {
-                    todo!("implement async `execute` method for `IterableMethod` trait")
                 }
             }
             pub mod instance_details {
@@ -4353,17 +5041,17 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
-                    #[doc = "A filter expression that filters results listed in the response. This\nfield supports filtering results by instance zone, name, state, or\n`failure_reason`."]
+                    #[doc = "A filter expression that filters results listed in the response. This field supports filtering results by instance zone, name, state, or `failure_reason`."]
                     pub fn filter(mut self, value: impl Into<String>) -> Self {
                         self.filter = Some(value.into());
                         self
                     }
-                    #[doc = "The maximum number of instance details records to return.  Default is 100."]
+                    #[doc = "The maximum number of instance details records to return. Default is 100."]
                     pub fn page_size(mut self, value: i32) -> Self {
                         self.page_size = Some(value);
                         self
                     }
-                    #[doc = "A pagination token returned from a previous call\nthat indicates where this listing should continue from."]
+                    #[doc = "A pagination token returned from a previous call that indicates where this listing should continue from."]
                     pub fn page_token(mut self, value: impl Into<String>) -> Self {
                         self.page_token = Some(value.into());
                         self
@@ -4412,116 +5100,6 @@ pub mod resources {
                     pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
                         self.xgafv = Some(value);
                         self
-                    }
-                    #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                    #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-                    #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-                    #[doc = r" populated fields in the yielded items will be determined by the"]
-                    #[doc = r" `FieldSelector` implementation."]
-                    pub fn iter_patch_job_instance_details<T>(
-                        self,
-                    ) -> crate::iter::PageItemIter<Self, T>
-                    where
-                        T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                    {
-                        let fields = ::google_field_selector::to_string::<T>();
-                        let fields: Option<String> = if fields.is_empty() {
-                            None
-                        } else {
-                            Some(fields)
-                        };
-                        self.iter_patch_job_instance_details_with_fields(fields)
-                    }
-                    #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                    #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                    #[doc = r" fields in `#items_type` will be the default fields populated by"]
-                    #[doc = r" the server."]
-                    pub fn iter_patch_job_instance_details_with_default_fields(
-                        self,
-                    ) -> crate::iter::PageItemIter<Self, crate::schemas::PatchJobInstanceDetails>
-                    {
-                        self.iter_patch_job_instance_details_with_fields(None::<String>)
-                    }
-                    #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                    #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                    #[doc = r" fields in `#items_type` will be all fields available. This should"]
-                    #[doc = r" primarily be used during developement and debugging as fetching"]
-                    #[doc = r" all fields can be expensive both in bandwidth and server"]
-                    #[doc = r" resources."]
-                    pub fn iter_patch_job_instance_details_with_all_fields(
-                        self,
-                    ) -> crate::iter::PageItemIter<Self, crate::schemas::PatchJobInstanceDetails>
-                    {
-                        self.iter_patch_job_instance_details_with_fields(Some("*"))
-                    }
-                    pub fn iter_patch_job_instance_details_with_fields<T, F>(
-                        mut self,
-                        fields: Option<F>,
-                    ) -> crate::iter::PageItemIter<Self, T>
-                    where
-                        T: ::serde::de::DeserializeOwned,
-                        F: AsRef<str>,
-                    {
-                        self.fields = Some({
-                            let mut selector =
-                                concat!("nextPageToken,", "patchJobInstanceDetails").to_owned();
-                            let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                            if !items_fields.is_empty() {
-                                selector.push_str("(");
-                                selector.push_str(items_fields);
-                                selector.push_str(")");
-                            }
-                            selector
-                        });
-                        crate::iter::PageItemIter::new(self, "patchJobInstanceDetails")
-                    }
-                    pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-                    where
-                        T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                    {
-                        let fields = ::google_field_selector::to_string::<T>();
-                        let fields: Option<String> = if fields.is_empty() {
-                            None
-                        } else {
-                            Some(fields)
-                        };
-                        self.iter_with_fields(fields)
-                    }
-                    pub fn iter_with_default_fields(
-                        self,
-                    ) -> crate::iter::PageIter<
-                        Self,
-                        crate::schemas::ListPatchJobInstanceDetailsResponse,
-                    > {
-                        self.iter_with_fields(None::<&str>)
-                    }
-                    pub fn iter_with_all_fields(
-                        self,
-                    ) -> crate::iter::PageIter<
-                        Self,
-                        crate::schemas::ListPatchJobInstanceDetailsResponse,
-                    > {
-                        self.iter_with_fields(Some("*"))
-                    }
-                    pub fn iter_with_fields<T, F>(
-                        mut self,
-                        fields: Option<F>,
-                    ) -> crate::iter::PageIter<Self, T>
-                    where
-                        T: ::serde::de::DeserializeOwned,
-                        F: AsRef<str>,
-                    {
-                        let mut fields =
-                            fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                        if !fields.is_empty() {
-                            match fields.chars().rev().nth(0) {
-                                Some(',') | None => {}
-                                _ => fields.push_str(","),
-                            }
-                            fields.push_str("nextPageToken");
-                            self.fields = Some(fields);
-                        }
-                        crate::iter::PageIter::new(self)
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
                     #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -4581,7 +5159,7 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
@@ -4597,42 +5175,32 @@ pub mod resources {
                         output.push_str("/instanceDetails");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("filter", &self.filter)]);
-                        let req = req.query(&[("pageSize", &self.page_size)]);
-                        let req = req.query(&[("pageToken", &self.page_token)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("filter", &self.filter)]);
+                        req = req.query(&[("pageSize", &self.page_size)]);
+                        req = req.query(&[("pageToken", &self.page_token)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        req = req.bearer_auth(access_token);
                         Ok(req)
-                    }
-                }
-                impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-                    fn set_page_token(&mut self, value: String) {
-                        self.page_token = value.into();
-                    }
-                    fn execute<T>(&mut self) -> Result<T, crate::Error>
-                    where
-                        T: ::serde::de::DeserializeOwned,
-                    {
-                        todo!("implement async `execute` method for `IterableMethod` trait")
                     }
                 }
             }
@@ -4647,6 +5215,7 @@ pub enum Error {
         reqwest_err: ::reqwest::Error,
         body: Option<String>,
     },
+    IO(std::io::Error),
     Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
@@ -4656,6 +5225,7 @@ impl Error {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
             Error::Reqwest { .. } => None,
+            Error::IO(_) => None,
             Error::Other(_) => None,
         }
     }
@@ -4673,6 +5243,7 @@ impl ::std::fmt::Display for Error {
                 }
                 Ok(())
             }
+            Error::IO(err) => write!(f, "IO Error: {}", err),
             Error::Other(err) => write!(f, "Uknown Error: {}", err),
         }
     }
@@ -4692,6 +5263,12 @@ impl From<::reqwest::Error> for Error {
             reqwest_err,
             body: None,
         }
+    }
+}
+
+impl From<std::io::Error> for Error {
+    fn from(err: std::io::Error) -> Error {
+        Error::IO(err)
     }
 }
 #[allow(dead_code)]
@@ -4761,13 +5338,13 @@ mod multipart {
 
     pub(crate) struct Part {
         content_type: ::mime::Mime,
-        body: Box<dyn ::std::io::Read + Send>,
+        body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
     }
 
     impl Part {
         pub(crate) fn new(
             content_type: ::mime::Mime,
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         ) -> Part {
             Part { content_type, body }
         }
@@ -4776,7 +5353,7 @@ mod multipart {
     pub(crate) struct RelatedMultiPartReader {
         state: RelatedMultiPartReaderState,
         boundary: String,
-        next_body: Option<Box<dyn ::std::io::Read + Send>>,
+        next_body: Option<Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>>,
         parts: std::vec::IntoIter<Part>,
     }
 
@@ -4790,13 +5367,18 @@ mod multipart {
             content_type: Vec<u8>,
         },
         WriteBody {
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         },
     }
 
-    impl ::std::io::Read for RelatedMultiPartReader {
-        fn read(&mut self, buf: &mut [u8]) -> ::std::io::Result<usize> {
+    impl futures::io::AsyncRead for RelatedMultiPartReader {
+        fn poll_read(
+            mut self: std::pin::Pin<&mut Self>,
+            ctx: &mut futures::task::Context,
+            buf: &mut [u8],
+        ) -> futures::task::Poll<Result<usize, futures::io::Error>> {
             use RelatedMultiPartReaderState::*;
+
             let mut bytes_written: usize = 0;
             loop {
                 let rem_buf = &mut buf[bytes_written..];
@@ -4844,7 +5426,14 @@ mod multipart {
                         }
                     }
                     WriteBody { body } => {
-                        let written = body.read(rem_buf)?;
+                        let body = std::pin::Pin::new(body);
+                        let written = match futures::io::AsyncRead::poll_read(body, ctx, rem_buf) {
+                            futures::task::Poll::Ready(Ok(n)) => n,
+                            futures::task::Poll::Ready(Err(err)) => {
+                                return futures::task::Poll::Ready(Err(err));
+                            }
+                            futures::task::Poll::Pending => return futures::task::Poll::Pending,
+                        };
                         bytes_written += written;
                         if written == 0 {
                             self.state = WriteBoundary {
@@ -4857,7 +5446,8 @@ mod multipart {
                     }
                 }
             }
-            Ok(bytes_written)
+
+            futures::task::Poll::Ready(Ok(bytes_written))
         }
     }
 
@@ -4896,128 +5486,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-pub mod iter {
-    pub trait IterableMethod {
-        fn set_page_token(&mut self, value: String);
-        fn execute<T>(&mut self) -> Result<T, crate::Error>
-        where
-            T: ::serde::de::DeserializeOwned;
-    }
-
-    pub struct PageIter<M, T> {
-        pub method: M,
-        pub finished: bool,
-        pub _phantom: ::std::marker::PhantomData<T>,
-    }
-
-    impl<M, T> PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M) -> Self {
-            PageIter {
-                method,
-                finished: false,
-                _phantom: ::std::marker::PhantomData,
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, crate::Error>;
-
-        fn next(&mut self) -> Option<Result<T, crate::Error>> {
-            if self.finished {
-                return None;
-            }
-            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
-                match self.method.execute() {
-                    Ok(r) => r,
-                    Err(err) => return Some(Err(err)),
-                };
-            if let Some(next_page_token) = paginated_result
-                .get("nextPageToken")
-                .and_then(|t| t.as_str())
-            {
-                self.method.set_page_token(next_page_token.to_owned());
-            } else {
-                self.finished = true;
-            }
-
-            Some(
-                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
-                    Ok(resp) => Ok(resp),
-                    Err(err) => Err(err.into()),
-                },
-            )
-        }
-    }
-
-    pub struct PageItemIter<M, T> {
-        items_field: &'static str,
-        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
-        items: ::std::vec::IntoIter<T>,
-    }
-
-    impl<M, T> PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
-            PageItemIter {
-                items_field,
-                page_iter: PageIter::new(method),
-                items: Vec::new().into_iter(),
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, crate::Error>;
-
-        fn next(&mut self) -> Option<Result<T, crate::Error>> {
-            loop {
-                if let Some(v) = self.items.next() {
-                    return Some(Ok(v));
-                }
-
-                let next_page = self.page_iter.next();
-                match next_page {
-                    None => return None,
-                    Some(Err(err)) => return Some(Err(err)),
-                    Some(Ok(next_page)) => {
-                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
-                            next_page;
-                        let items_array = match next_page.remove(self.items_field) {
-                            Some(items) => items,
-                            None => {
-                                return Some(Err(crate::Error::Other(
-                                    format!("no {} field found in iter response", self.items_field)
-                                        .into(),
-                                )))
-                            }
-                        };
-                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
-                        match items_vec {
-                            Ok(items) => self.items = items.into_iter(),
-                            Err(err) => return Some(Err(err.into())),
-                        }
-                    }
-                }
-            }
         }
     }
 }

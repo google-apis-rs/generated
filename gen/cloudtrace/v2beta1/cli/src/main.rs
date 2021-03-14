@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("cloudtrace2_beta1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200504")
-            .about("Sends application trace data to Cloud Trace for viewing. Trace data is collected for all App Engine applications by default. Trace data from other applications can be provided using this API. This library is used to interact with the Cloud Trace API directly. If you are looking to instrument your application for Cloud Trace, we recommend using OpenCensus.\n")
+            .version("0.1.0-20210303")
+            .about("Sends application trace data to Cloud Trace for viewing. Trace data is collected for all App Engine applications by default. Trace data from other applications can be provided using this API. This library is used to interact with the Cloud Trace API directly. If you are looking to instrument your application for Cloud Trace, we recommend using OpenCensus. ")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -40,7 +40,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get, list and patch");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a sink that exports trace spans to a destination.  The\nexport of newly-ingested traces begins immediately, unless the sink\'s\n`writer_identity` is not permitted to write to the destination.  A sink can\nexport traces only from the resource owning the sink (the \'parent\').");
+            let mcmd = SubCommand::with_name("create").about("Creates a sink that exports trace spans to a destination. The export of newly-ingested traces begins immediately, unless the sink\'s `writer_identity` is not permitted to write to the destination. A sink can export traces only from the resource owning the sink (the \'parent\').");
             trace_sinks1 = trace_sinks1.subcommand(mcmd);
         }
         {
@@ -58,7 +58,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             trace_sinks1 = trace_sinks1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates a sink.  This method updates fields in the existing sink according\nto the provided update mask. The sink\'s name cannot be changed nor any\noutput-only fields (e.g. the writer_identity).");
+            let mcmd = SubCommand::with_name("patch").about("Updates a sink. This method updates fields in the existing sink according to the provided update mask. The sink\'s name cannot be changed nor any output-only fields (e.g. the writer_identity).");
             trace_sinks1 = trace_sinks1.subcommand(mcmd);
         }
         projects0 = projects0.subcommand(trace_sinks1);

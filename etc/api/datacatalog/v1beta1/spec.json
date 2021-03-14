@@ -7,9 +7,9 @@
   "canonicalName": "Data Catalog",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20200430",
+  "revision": "20210305",
   "title": "Google Cloud Data Catalog API",
-  "description": "A fully managed and highly scalable data discovery and metadata management service.\n",
+  "description": "A fully managed and highly scalable data discovery and metadata management service. ",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "icons": {
@@ -216,11 +216,11 @@
       "enumDescriptions": [],
       "properties": {
         "condition": {
-          "description": "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently.",
+          "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
           "$ref": "Expr"
         },
         "members": {
-          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@example.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n* `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique\n   identifier) representing a user that has been recently deleted. For\n   example, `alice@example.com?uid=123456789012345678901`. If the user is\n   recovered, this value reverts to `user:{emailid}` and the recovered user\n   retains the role in the binding.\n\n* `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus\n   unique identifier) representing a service account that has been recently\n   deleted. For example,\n   `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.\n   If the service account is undeleted, this value reverts to\n   `serviceAccount:{emailid}` and the undeleted service account retains the\n   role in the binding.\n\n* `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique\n   identifier) representing a Google group that has been recently\n   deleted. For example, `admins@example.com?uid=123456789012345678901`. If\n   the group is recovered, this value reverts to `group:{emailid}` and the\n   recovered group retains the role in the binding.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
+          "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
           "type": "array",
           "format": null,
           "enum": [],
@@ -238,7 +238,7 @@
           }
         },
         "role": {
-          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
+          "description": "Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -253,7 +253,7 @@
     },
     "Empty": {
       "id": "Empty",
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -264,14 +264,14 @@
     },
     "Expr": {
       "id": "Expr",
-      "description": "Represents a textual expression in the Common Expression Language (CEL)\nsyntax. CEL is a C-like expression language. The syntax and semantics of CEL\nare documented at https://github.com/google/cel-spec.\n\nExample (Comparison):\n\n    title: \"Summary size limit\"\n    description: \"Determines if a summary is less than 100 chars\"\n    expression: \"document.summary.size() < 100\"\n\nExample (Equality):\n\n    title: \"Requestor is owner\"\n    description: \"Determines if requestor is the document owner\"\n    expression: \"document.owner == request.auth.claims.email\"\n\nExample (Logic):\n\n    title: \"Public documents\"\n    description: \"Determine whether the document should be publicly visible\"\n    expression: \"document.type != 'private' && document.type != 'internal'\"\n\nExample (Data Manipulation):\n\n    title: \"Notification string\"\n    description: \"Create a notification string with a timestamp.\"\n    expression: \"'New message received at ' + string(document.create_time)\"\n\nThe exact variables and functions that may be referenced within an expression\nare determined by the service that evaluates it. See the service\ndocumentation for additional information.",
+      "description": "Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \"Summary size limit\" description: \"Determines if a summary is less than 100 chars\" expression: \"document.summary.size() < 100\" Example (Equality): title: \"Requestor is owner\" description: \"Determines if requestor is the document owner\" expression: \"document.owner == request.auth.claims.email\" Example (Logic): title: \"Public documents\" description: \"Determine whether the document should be publicly visible\" expression: \"document.type != 'private' && document.type != 'internal'\" Example (Data Manipulation): title: \"Notification string\" description: \"Create a notification string with a timestamp.\" expression: \"'New message received at ' + string(document.create_time)\" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "description": {
-          "description": "Optional. Description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI.",
+          "description": "Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -281,7 +281,7 @@
           "items": null
         },
         "expression": {
-          "description": "Textual representation of an expression in Common Expression Language\nsyntax.",
+          "description": "Textual representation of an expression in Common Expression Language syntax.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -291,7 +291,7 @@
           "items": null
         },
         "location": {
-          "description": "Optional. String indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file.",
+          "description": "Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -301,7 +301,7 @@
           "items": null
         },
         "title": {
-          "description": "Optional. Title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
+          "description": "Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -323,7 +323,7 @@
       "enumDescriptions": [],
       "properties": {
         "options": {
-          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`.",
+          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`.",
           "$ref": "GetPolicyOptions"
         }
       },
@@ -339,7 +339,7 @@
       "enumDescriptions": [],
       "properties": {
         "requestedPolicyVersion": {
-          "description": "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset.",
+          "description": "Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional bindings must specify version 3. Policies without any conditional bindings may specify any valid value or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -354,14 +354,14 @@
     },
     "GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec": {
       "id": "GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec",
-      "description": "Spec for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`.\nContext:\nhttps://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding",
+      "description": "Spec for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`. Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "dataset": {
-          "description": "Output only. The Data Catalog resource name of the dataset entry the current table\nbelongs to, for example,\n`projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}`.",
+          "description": "Output only. The Data Catalog resource name of the dataset entry the current table belongs to, for example, `projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -381,7 +381,7 @@
           "items": null
         },
         "tablePrefix": {
-          "description": "Output only. The table name prefix of the shards. The name of any given shard is\n`[table_prefix]YYYYMMDD`, for example, for shard `MyTable20180101`, the\n`table_prefix` is `MyTable`.",
+          "description": "Output only. The table name prefix of the shards. The name of any given shard is `[table_prefix]YYYYMMDD`, for example, for shard `MyTable20180101`, the `table_prefix` is `MyTable`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -409,23 +409,25 @@
           "enum": [
             "TABLE_SOURCE_TYPE_UNSPECIFIED",
             "BIGQUERY_VIEW",
-            "BIGQUERY_TABLE"
+            "BIGQUERY_TABLE",
+            "BIGQUERY_MATERIALIZED_VIEW"
           ],
           "enumDescriptions": [
             "Default unknown type.",
             "Table view.",
-            "BigQuery native table."
+            "BigQuery native table.",
+            "BigQuery materialized view."
           ],
           "properties": {},
           "additionalProperties": null,
           "items": null
         },
         "tableSpec": {
-          "description": "Spec of a BigQuery table. This field should only be populated if\n`table_source_type` is `BIGQUERY_TABLE`.",
+          "description": "Spec of a BigQuery table. This field should only be populated if `table_source_type` is `BIGQUERY_TABLE`.",
           "$ref": "GoogleCloudDatacatalogV1beta1TableSpec"
         },
         "viewSpec": {
-          "description": "Table view specification. This field should only be populated if\n`table_source_type` is `BIGQUERY_VIEW`.",
+          "description": "Table view specification. This field should only be populated if `table_source_type` is `BIGQUERY_VIEW`.",
           "$ref": "GoogleCloudDatacatalogV1beta1ViewSpec"
         }
       },
@@ -434,7 +436,7 @@
     },
     "GoogleCloudDatacatalogV1beta1ColumnSchema": {
       "id": "GoogleCloudDatacatalogV1beta1ColumnSchema",
-      "description": "Representation of a column within a schema. Columns could be nested inside\nother columns.",
+      "description": "Representation of a column within a schema. Columns could be nested inside other columns.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -461,7 +463,7 @@
           "items": null
         },
         "mode": {
-          "description": "Optional. A column's mode indicates whether the values in this column are required,\nnullable, etc. Only `NULLABLE`, `REQUIRED` and `REPEATED` are supported.\nDefault mode is `NULLABLE`.",
+          "description": "Optional. A column's mode indicates whether the values in this column are required, nullable, etc. Only `NULLABLE`, `REQUIRED` and `REPEATED` are supported. Default mode is `NULLABLE`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -498,22 +500,22 @@
     },
     "GoogleCloudDatacatalogV1beta1Entry": {
       "id": "GoogleCloudDatacatalogV1beta1Entry",
-      "description": "Entry Metadata. \nA Data Catalog Entry resource represents another resource in Google\nCloud Platform (such as a BigQuery dataset or a Pub/Sub topic), or\noutside of Google Cloud Platform. Clients can use the `linked_resource` field\nin the Entry resource to refer to the original resource ID of the source\nsystem.\n\nAn Entry resource contains resource details, such as its schema. An Entry can\nalso be used to attach flexible metadata, such as a\nTag.",
+      "description": "Entry Metadata. A Data Catalog Entry resource represents another resource in Google Cloud Platform (such as a BigQuery dataset or a Pub/Sub topic), or outside of Google Cloud Platform. Clients can use the `linked_resource` field in the Entry resource to refer to the original resource ID of the source system. An Entry resource contains resource details, such as its schema. An Entry can also be used to attach flexible metadata, such as a Tag.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "bigqueryDateShardedSpec": {
-          "description": "Specification for a group of BigQuery tables with name pattern\n`[prefix]YYYYMMDD`. Context:\nhttps://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.",
+          "description": "Specification for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`. Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.",
           "$ref": "GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec"
         },
         "bigqueryTableSpec": {
-          "description": "Specification that applies to a BigQuery table. This is only valid on\nentries of type `TABLE`.",
+          "description": "Specification that applies to a BigQuery table. This is only valid on entries of type `TABLE`.",
           "$ref": "GoogleCloudDatacatalogV1beta1BigQueryTableSpec"
         },
         "description": {
-          "description": "Entry description, which can consist of several sentences or paragraphs\nthat describe entry contents. Default value is an empty string.",
+          "description": "Entry description, which can consist of several sentences or paragraphs that describe entry contents. Default value is an empty string.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -523,7 +525,7 @@
           "items": null
         },
         "displayName": {
-          "description": "Display information such as title and description. A short name to identify\nthe entry, for example, \"Analytics Data - Jan 2011\". Default value is an\nempty string.",
+          "description": "Display information such as title and description. A short name to identify the entry, for example, \"Analytics Data - Jan 2011\". Default value is an empty string.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -533,11 +535,11 @@
           "items": null
         },
         "gcsFilesetSpec": {
-          "description": "Specification that applies to a Cloud Storage fileset. This is only valid\non entries of type FILESET.",
+          "description": "Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.",
           "$ref": "GoogleCloudDatacatalogV1beta1GcsFilesetSpec"
         },
         "integratedSystem": {
-          "description": "Output only. This field indicates the entry's source system that Data Catalog\nintegrates with, such as BigQuery or Pub/Sub.",
+          "description": "Output only. This field indicates the entry's source system that Data Catalog integrates with, such as BigQuery or Pub/Sub.",
           "type": "string",
           "format": null,
           "enum": [
@@ -555,7 +557,7 @@
           "items": null
         },
         "linkedResource": {
-          "description": "The resource this metadata entry refers to.\n\nFor Google Cloud Platform resources, `linked_resource` is the [full name of\nthe\nresource](https://cloud.google.com/apis/design/resource_names#full_resource_name).\nFor example, the `linked_resource` for a table resource from BigQuery is:\n\n* //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId\n\nOutput only when Entry is of type in the EntryType enum. For entries with\nuser_specified_type, this field is optional and defaults to an empty\nstring.",
+          "description": "The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -565,7 +567,7 @@
           "items": null
         },
         "name": {
-          "description": "The Data Catalog resource name of the entry in URL format. Example:\n\n* projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}\n\nNote that this Entry and its child resources may not actually be stored in\nthe location in this name.",
+          "description": "Output only. The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -579,11 +581,11 @@
           "$ref": "GoogleCloudDatacatalogV1beta1Schema"
         },
         "sourceSystemTimestamps": {
-          "description": "Output only. Timestamps about the underlying resource, not about this Data Catalog\nentry. Output only when Entry is of type in the EntryType enum. For entries\nwith user_specified_type, this field is optional and defaults to an empty\ntimestamp.",
+          "description": "Output only. Timestamps about the underlying resource, not about this Data Catalog entry. Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty timestamp.",
           "$ref": "GoogleCloudDatacatalogV1beta1SystemTimestamps"
         },
         "type": {
-          "description": "The type of the entry.\nOnly used for Entries with types in the EntryType enum.",
+          "description": "The type of the entry. Only used for Entries with types in the EntryType enum.",
           "type": "string",
           "format": null,
           "enum": [
@@ -595,17 +597,17 @@
           ],
           "enumDescriptions": [
             "Default unknown type.",
-            "Output only. The type of entry that has a GoogleSQL schema, including\nlogical views.",
-            "Output only. The type of models.\nhttps://cloud.google.com/bigquery-ml/docs/bigqueryml-intro",
-            "Output only. An entry type which is used for streaming entries. Example:\nPub/Sub topic.",
-            "An entry type which is a set of files or objects. Example:\nCloud Storage fileset."
+            "Output only. The type of entry that has a GoogleSQL schema, including logical views.",
+            "Output only. The type of models. https://cloud.google.com/bigquery-ml/docs/bigqueryml-intro",
+            "Output only. An entry type which is used for streaming entries. Example: Pub/Sub topic.",
+            "An entry type which is a set of files or objects. Example: Cloud Storage fileset."
           ],
           "properties": {},
           "additionalProperties": null,
           "items": null
         },
         "userSpecifiedSystem": {
-          "description": "This field indicates the entry's source system that Data Catalog does not\nintegrate with. `user_specified_system` strings must begin with a letter\nor underscore and can only contain letters, numbers, and underscores; are\ncase insensitive; must be at least 1 character and at most 64 characters\nlong.",
+          "description": "This field indicates the entry's source system that Data Catalog does not integrate with. `user_specified_system` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -615,7 +617,7 @@
           "items": null
         },
         "userSpecifiedType": {
-          "description": "Entry type if it does not fit any of the input-allowed values listed in\n`EntryType` enum above. When creating an entry, users should check the\nenum values first, if nothing matches the entry to be created, then\nprovide a custom value, for example \"my_special_type\".\n`user_specified_type` strings must begin with a letter or underscore and\ncan only contain letters, numbers, and underscores; are case insensitive;\nmust be at least 1 character and at most 64 characters long.\n\nCurrently, only FILESET enum value is allowed. All other entries created\nthrough Data Catalog must use `user_specified_type`.",
+          "description": "Entry type if it does not fit any of the input-allowed values listed in `EntryType` enum above. When creating an entry, users should check the enum values first, if nothing matches the entry to be created, then provide a custom value, for example \"my_special_type\". `user_specified_type` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long. Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use `user_specified_type`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -630,7 +632,7 @@
     },
     "GoogleCloudDatacatalogV1beta1EntryGroup": {
       "id": "GoogleCloudDatacatalogV1beta1EntryGroup",
-      "description": "EntryGroup Metadata. \nAn EntryGroup resource represents a logical grouping of zero or more\nData Catalog Entry resources.",
+      "description": "EntryGroup Metadata. An EntryGroup resource represents a logical grouping of zero or more Data Catalog Entry resources.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -641,7 +643,7 @@
           "$ref": "GoogleCloudDatacatalogV1beta1SystemTimestamps"
         },
         "description": {
-          "description": "Entry group description, which can consist of several sentences or\nparagraphs that describe entry group contents. Default value is an empty\nstring.",
+          "description": "Entry group description, which can consist of several sentences or paragraphs that describe entry group contents. Default value is an empty string.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -651,7 +653,7 @@
           "items": null
         },
         "displayName": {
-          "description": "A short name to identify the entry group, for example,\n\"analytics data - jan 2011\". Default value is an empty string.",
+          "description": "A short name to identify the entry group, for example, \"analytics data - jan 2011\". Default value is an empty string.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -661,7 +663,7 @@
           "items": null
         },
         "name": {
-          "description": "The resource name of the entry group in URL format. Example:\n\n* projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}\n\nNote that this EntryGroup and its child resources may not actually be\nstored in the location in this name.",
+          "description": "The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -676,7 +678,7 @@
     },
     "GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse": {
       "id": "GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse",
-      "description": "Response message for\nExportTaxonomies.",
+      "description": "Response message for ExportTaxonomies.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -745,7 +747,7 @@
       "enumDescriptions": [],
       "properties": {
         "allowedValues": {
-          "description": "Required on create; optional on update. The set of allowed values for\nthis enum. This set must not be empty, the display names of the values in\nthis set must not be empty and the display names of the values must be\ncase-insensitively unique within this set. Currently, enum values can\nonly be added to the list of allowed values. Deletion and renaming of\nenum values are not supported. Can have up to 500 allowed values.",
+          "description": null,
           "type": "array",
           "format": null,
           "enum": [],
@@ -827,7 +829,7 @@
       "enumDescriptions": [],
       "properties": {
         "filePatterns": {
-          "description": "Required. Patterns to identify a set of files in Google Cloud Storage. See [Cloud\nStorage documentation](/storage/docs/gsutil/addlhelp/WildcardNames) for\nmore information. Note that bucket wildcards are currently not supported.\n\nExamples of valid file_patterns:\n\n * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir`\n                             directory.\n * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir`\n                              spanning all subdirectories.\n * `gs://bucket_name/file*`: matches files prefixed by `file` in\n                             `bucket_name`\n * `gs://bucket_name/??.txt`: matches files with two characters followed by\n                              `.txt` in `bucket_name`\n * `gs://bucket_name/[aeiou].txt`: matches files that contain a single\n                                   vowel character followed by `.txt` in\n                                   `bucket_name`\n * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ...\n                                 or `m` followed by `.txt` in `bucket_name`\n * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match\n                             `a/*/b` pattern, such as `a/c/b`, `a/d/b`\n * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt`\n\nYou can combine wildcards to provide more powerful matches, for example:\n\n * `gs://bucket_name/[a-m]??.j*g`",
+          "description": "Required. Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`",
           "type": "array",
           "format": null,
           "enum": [],
@@ -845,7 +847,7 @@
           }
         },
         "sampleGcsFileSpecs": {
-          "description": "Output only. Sample files contained in this fileset, not all files contained in this\nfileset are represented here.",
+          "description": "Output only. Sample files contained in this fileset, not all files contained in this fileset are represented here.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -862,7 +864,7 @@
     },
     "GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest": {
       "id": "GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest",
-      "description": "Request message for\nImportTaxonomies.",
+      "description": "Request message for ImportTaxonomies.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -878,7 +880,7 @@
     },
     "GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse": {
       "id": "GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse",
-      "description": "Response message for\nImportTaxonomies.",
+      "description": "Response message for ImportTaxonomies.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -926,7 +928,7 @@
     },
     "GoogleCloudDatacatalogV1beta1ListEntriesResponse": {
       "id": "GoogleCloudDatacatalogV1beta1ListEntriesResponse",
-      "description": "Response message for\nListEntries.",
+      "description": "Response message for ListEntries.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -945,7 +947,7 @@
           }
         },
         "nextPageToken": {
-          "description": "Token to retrieve the next page of results. It is set to empty if no items\nremain in results.",
+          "description": "Token to retrieve the next page of results. It is set to empty if no items remain in results.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -960,7 +962,7 @@
     },
     "GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse": {
       "id": "GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse",
-      "description": "Response message for\nListEntryGroups.",
+      "description": "Response message for ListEntryGroups.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -979,7 +981,7 @@
           }
         },
         "nextPageToken": {
-          "description": "Token to retrieve the next page of results. It is set to empty if no items\nremain in results.",
+          "description": "Token to retrieve the next page of results. It is set to empty if no items remain in results.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -994,14 +996,14 @@
     },
     "GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse": {
       "id": "GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse",
-      "description": "Response message for\nListPolicyTags.",
+      "description": "Response message for ListPolicyTags.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "nextPageToken": {
-          "description": "Token used to retrieve the next page of results, or empty if there are no\nmore results in the list.",
+          "description": "Token used to retrieve the next page of results, or empty if there are no more results in the list.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1028,14 +1030,14 @@
     },
     "GoogleCloudDatacatalogV1beta1ListTagsResponse": {
       "id": "GoogleCloudDatacatalogV1beta1ListTagsResponse",
-      "description": "Response message for\nListTags.",
+      "description": "Response message for ListTags.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "nextPageToken": {
-          "description": "Token to retrieve the next page of results. It is set to empty if no items\nremain in results.",
+          "description": "Token to retrieve the next page of results. It is set to empty if no items remain in results.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1062,14 +1064,14 @@
     },
     "GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse": {
       "id": "GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse",
-      "description": "Response message for\nListTaxonomies.",
+      "description": "Response message for ListTaxonomies.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "nextPageToken": {
-          "description": "Token used to retrieve the next page of results, or empty if there are no\nmore results in the list.",
+          "description": "Token used to retrieve the next page of results, or empty if there are no more results in the list.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1096,7 +1098,7 @@
     },
     "GoogleCloudDatacatalogV1beta1PolicyTag": {
       "id": "GoogleCloudDatacatalogV1beta1PolicyTag",
-      "description": "Denotes one policy tag in a taxonomy (e.g. ssn). Policy Tags can be defined\nin a hierarchy. For example, consider the following hierarchy:\nGeolocation -&gt; (LatLong, City, ZipCode). PolicyTag \"Geolocation\"\ncontains three child policy tags: \"LatLong\", \"City\", and \"ZipCode\".",
+      "description": "Denotes one policy tag in a taxonomy (e.g. ssn). Policy Tags can be defined in a hierarchy. For example, consider the following hierarchy: Geolocation -> (LatLong, City, ZipCode). PolicyTag \"Geolocation\" contains three child policy tags: \"LatLong\", \"City\", and \"ZipCode\".",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1121,7 +1123,7 @@
           }
         },
         "description": {
-          "description": "Description of this policy tag. It must: contain only unicode characters,\ntabs, newlines, carriage returns and page breaks; and be at most 2000 bytes\nlong when encoded in UTF-8. If not set, defaults to an empty description.\nIf not set, defaults to an empty description.",
+          "description": "Description of this policy tag. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description. If not set, defaults to an empty description.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1131,7 +1133,7 @@
           "items": null
         },
         "displayName": {
-          "description": "Required. User defined name of this policy tag. It must: be unique within the parent\ntaxonomy; contain only unicode letters, numbers, underscores, dashes and\nspaces; not start or end with spaces; and be at most 200 bytes long when\nencoded in UTF-8.",
+          "description": "Required. User defined name of this policy tag. It must: be unique within the parent taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1141,7 +1143,7 @@
           "items": null
         },
         "name": {
-          "description": "Output only. Resource name of this policy tag, whose format is:\n\"projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}\".",
+          "description": "Output only. Resource name of this policy tag, whose format is: \"projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}\".",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1151,7 +1153,29 @@
           "items": null
         },
         "parentPolicyTag": {
-          "description": "Resource name of this policy tag's parent policy tag (e.g. for the\n\"LatLong\" policy tag in the example above, this field contains the\nresource name of the \"Geolocation\" policy tag). If empty, it means this\npolicy tag is a top level policy tag (e.g. this field is empty for the\n\"Geolocation\" policy tag in the example above). If not set, defaults to an\nempty string.",
+          "description": "Resource name of this policy tag's parent policy tag (e.g. for the \"LatLong\" policy tag in the example above, this field contains the resource name of the \"Geolocation\" policy tag). If empty, it means this policy tag is a top level policy tag (e.g. this field is empty for the \"Geolocation\" policy tag in the example above). If not set, defaults to an empty string.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest": {
+      "id": "GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest",
+      "description": "Request message for RenameTagTemplateFieldEnumValue.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "newEnumValueDisplayName": {
+          "description": "Required. The new display name of the enum value. For example, `my_new_enum_value`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1166,7 +1190,7 @@
     },
     "GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest": {
       "id": "GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest",
-      "description": "Request message for\nRenameTagTemplateField.",
+      "description": "Request message for RenameTagTemplateField.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1195,7 +1219,7 @@
       "enumDescriptions": [],
       "properties": {
         "columns": {
-          "description": "Required. Schema of columns. A maximum of 10,000 columns and sub-columns can be\nspecified.",
+          "description": "Required. Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1212,14 +1236,14 @@
     },
     "GoogleCloudDatacatalogV1beta1SearchCatalogRequest": {
       "id": "GoogleCloudDatacatalogV1beta1SearchCatalogRequest",
-      "description": "Request message for\nSearchCatalog.",
+      "description": "Request message for SearchCatalog.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "orderBy": {
-          "description": "Specifies the ordering of results, currently supported case-sensitive\nchoices are:\n\n  * `relevance`, only supports descending\n  * `last_modified_timestamp [asc|desc]`, defaults to descending if not\n    specified\n\nIf not specified, defaults to `relevance` descending.",
+          "description": "Specifies the ordering of results, currently supported case-sensitive choices are: * `relevance`, only supports descending * `last_modified_timestamp [asc|desc]`, defaults to descending if not specified If not specified, defaults to `relevance` descending.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1229,7 +1253,7 @@
           "items": null
         },
         "pageSize": {
-          "description": "Number of results in the search page. If <=0 then defaults to 10. Max limit\nfor page_size is 1000. Throws an invalid argument for page_size > 1000.",
+          "description": "Number of results in the search page. If <=0 then defaults to 10. Max limit for page_size is 1000. Throws an invalid argument for page_size > 1000.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1239,7 +1263,7 @@
           "items": null
         },
         "pageToken": {
-          "description": "Optional. Pagination token returned in an earlier\nSearchCatalogResponse.next_page_token, which\nindicates that this is a continuation of a prior\nSearchCatalogRequest\ncall, and that the system should return the next page of data. If empty,\nthe first page is returned.",
+          "description": "Optional. Pagination token returned in an earlier SearchCatalogResponse.next_page_token, which indicates that this is a continuation of a prior SearchCatalogRequest call, and that the system should return the next page of data. If empty, the first page is returned.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1249,7 +1273,7 @@
           "items": null
         },
         "query": {
-          "description": "Required. The query string in search query syntax. The query must be non-empty.\n\nQuery strings can be simple as \"x\" or more qualified as:\n\n* name:x\n* column:x\n* description:y\n\nNote: Query tokens need to have a minimum of 3 characters for substring\nmatching to work correctly. See [Data Catalog Search\nSyntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference)\nfor more information.",
+          "description": "Optional. The query string in search query syntax. An empty query string will result in all data assets (in the specified scope) that the user has access to. Query strings can be simple as \"x\" or more qualified as: * name:x * column:x * description:y Note: Query tokens need to have a minimum of 3 characters for substring matching to work correctly. See [Data Catalog Search Syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference) for more information.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1259,7 +1283,7 @@
           "items": null
         },
         "scope": {
-          "description": "Required. The scope of this search request. A `scope` that has empty\n`include_org_ids`, `include_project_ids` AND false\n`include_gcp_public_datasets` is considered invalid. Data Catalog will\nreturn an error in such a case.",
+          "description": "Required. The scope of this search request. A `scope` that has empty `include_org_ids`, `include_project_ids` AND false `include_gcp_public_datasets` is considered invalid. Data Catalog will return an error in such a case.",
           "$ref": "GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope"
         }
       },
@@ -1275,7 +1299,7 @@
       "enumDescriptions": [],
       "properties": {
         "includeGcpPublicDatasets": {
-          "description": "If `true`, include Google Cloud Platform (GCP) public datasets in the\nsearch results. Info on GCP public datasets is available at\nhttps://cloud.google.com/public-datasets/. By default, GCP public\ndatasets are excluded.",
+          "description": "If `true`, include Google Cloud Platform (GCP) public datasets in the search results. Info on GCP public datasets is available at https://cloud.google.com/public-datasets/. By default, GCP public datasets are excluded.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -1285,7 +1309,7 @@
           "items": null
         },
         "includeOrgIds": {
-          "description": "The list of organization IDs to search within. To find your organization\nID, follow instructions in\nhttps://cloud.google.com/resource-manager/docs/creating-managing-organization.",
+          "description": "The list of organization IDs to search within. To find your organization ID, follow instructions in https://cloud.google.com/resource-manager/docs/creating-managing-organization.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1303,7 +1327,7 @@
           }
         },
         "includeProjectIds": {
-          "description": "The list of project IDs to search within. To learn more about the\ndistinction between project names/IDs/numbers, go to\nhttps://cloud.google.com/docs/overview/#projects.",
+          "description": "The list of project IDs to search within. To learn more about the distinction between project names/IDs/numbers, go to https://cloud.google.com/docs/overview/#projects.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1321,7 +1345,7 @@
           }
         },
         "restrictedLocations": {
-          "description": "Optional. The list of locations to search within.\n1. If empty, search will be performed in all locations;\n2. If any of the locations are NOT in the valid locations list, error\nwill be returned;\n3. Otherwise, search only the given locations for matching results.\nTypical usage is to leave this field empty. When a location is\nunreachable as returned in the `SearchCatalogResponse.unreachable` field,\nusers can repeat the search request with this parameter set to get\nadditional information on the error.\n\nValid locations:\n * asia-east1\n * asia-east2\n * asia-northeast1\n * asia-northeast2\n * asia-northeast3\n * asia-south1\n * asia-southeast1\n * australia-southeast1\n * eu\n * europe-north1\n * europe-west1\n * europe-west2\n * europe-west3\n * europe-west4\n * europe-west6\n * global\n * northamerica-northeast1\n * southamerica-east1\n * us\n * us-central1\n * us-east1\n * us-east4\n * us-west1\n * us-west2",
+          "description": "Optional. The list of locations to search within. 1. If empty, search will be performed in all locations; 2. If any of the locations are NOT in the valid locations list, error will be returned; 3. Otherwise, search only the given locations for matching results. Typical usage is to leave this field empty. When a location is unreachable as returned in the `SearchCatalogResponse.unreachable` field, users can repeat the search request with this parameter set to get additional information on the error. Valid locations: * asia-east1 * asia-east2 * asia-northeast1 * asia-northeast2 * asia-northeast3 * asia-south1 * asia-southeast1 * australia-southeast1 * eu * europe-north1 * europe-west1 * europe-west2 * europe-west3 * europe-west4 * europe-west6 * global * northamerica-northeast1 * southamerica-east1 * us * us-central1 * us-east1 * us-east4 * us-west1 * us-west2",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1344,7 +1368,7 @@
     },
     "GoogleCloudDatacatalogV1beta1SearchCatalogResponse": {
       "id": "GoogleCloudDatacatalogV1beta1SearchCatalogResponse",
-      "description": "Response message for\nSearchCatalog.",
+      "description": "Response message for SearchCatalog.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1373,7 +1397,7 @@
           }
         },
         "unreachable": {
-          "description": "Unreachable locations. Search result does not include data from those\nlocations. Users can get additional information on the error by repeating\nthe search request with a more restrictive parameter -- setting the value\nfor `SearchDataCatalogRequest.scope.include_locations`.",
+          "description": "Unreachable locations. Search result does not include data from those locations. Users can get additional information on the error by repeating the search request with a more restrictive parameter -- setting the value for `SearchDataCatalogRequest.scope.restricted_locations`.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1396,14 +1420,14 @@
     },
     "GoogleCloudDatacatalogV1beta1SearchCatalogResult": {
       "id": "GoogleCloudDatacatalogV1beta1SearchCatalogResult",
-      "description": "A result that appears in the response of a search request. Each result\ncaptures details of one entry that matches the search.",
+      "description": "A result that appears in the response of a search request. Each result captures details of one entry that matches the search.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "linkedResource": {
-          "description": "The full name of the cloud resource the entry belongs to. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name.\nExample:\n\n * `//bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId`",
+          "description": "The full name of the cloud resource the entry belongs to. See: https://cloud.google.com/apis/design/resource_names#full_resource_name. Example: * `//bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId`",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1412,8 +1436,18 @@
           "additionalProperties": null,
           "items": null
         },
+        "modifyTime": {
+          "description": "Last-modified timestamp of the entry from the managing system.",
+          "type": "string",
+          "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "relativeResourceName": {
-          "description": "The relative resource name of the resource in URL format.\nExamples:\n\n * `projects/{project_id}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}`\n * `projects/{project_id}/tagTemplates/{tag_template_id}`",
+          "description": "The relative resource name of the resource in URL format. Examples: * `projects/{project_id}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}` * `projects/{project_id}/tagTemplates/{tag_template_id}`",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1423,7 +1457,7 @@
           "items": null
         },
         "searchResultSubtype": {
-          "description": "Sub-type of the search result. This is a dot-delimited description of the\nresource's full type, and is the same as the value callers would provide in\nthe \"type\" search facet.  Examples: `entry.table`, `entry.dataStream`,\n`tagTemplate`.",
+          "description": "Sub-type of the search result. This is a dot-delimited description of the resource's full type, and is the same as the value callers would provide in the \"type\" search facet. Examples: `entry.table`, `entry.dataStream`, `tagTemplate`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1433,7 +1467,7 @@
           "items": null
         },
         "searchResultType": {
-          "description": "Type of the search result. This field can be used to determine which Get\nmethod to call to fetch the full resource.",
+          "description": "Type of the search result. This field can be used to determine which Get method to call to fetch the full resource.",
           "type": "string",
           "format": null,
           "enum": [
@@ -1477,7 +1511,7 @@
           }
         },
         "description": {
-          "description": "Description of the serialized policy tag. The length of the\ndescription is limited to 2000 bytes when encoded in UTF-8. If not set,\ndefaults to an empty description.",
+          "description": "Description of the serialized policy tag. The length of the description is limited to 2000 bytes when encoded in UTF-8. If not set, defaults to an empty description.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1497,7 +1531,7 @@
           "items": null
         },
         "policyTag": {
-          "description": "Resource name of the policy tag.\n\nThis field will be ignored when calling ImportTaxonomies.",
+          "description": "Resource name of the policy tag. This field will be ignored when calling ImportTaxonomies.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1512,14 +1546,38 @@
     },
     "GoogleCloudDatacatalogV1beta1SerializedTaxonomy": {
       "id": "GoogleCloudDatacatalogV1beta1SerializedTaxonomy",
-      "description": "Message capturing a taxonomy and its policy tag hierarchy as a nested proto.\nUsed for taxonomy import/export and mutation.",
+      "description": "Message capturing a taxonomy and its policy tag hierarchy as a nested proto. Used for taxonomy import/export and mutation.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "activatedPolicyTypes": {
+          "description": "A list of policy types that are activated for a taxonomy.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [
+              "POLICY_TYPE_UNSPECIFIED",
+              "FINE_GRAINED_ACCESS_CONTROL"
+            ],
+            "enumDescriptions": [
+              "Unspecified policy type.",
+              "Fine grained access control policy, which enables access control on tagged resources."
+            ],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
         "description": {
-          "description": "Description of the serialized taxonomy. The length of the\ndescription is limited to 2000 bytes when encoded in UTF-8. If not set,\ndefaults to an empty description.",
+          "description": "Description of the serialized taxonomy. The length of the description is limited to 2000 bytes when encoded in UTF-8. If not set, defaults to an empty description.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1573,7 +1631,7 @@
           "items": null
         },
         "expireTime": {
-          "description": "Output only. The expiration time of the resource within the given system.\nCurrently only apllicable to BigQuery resources.",
+          "description": "Output only. The expiration time of the resource within the given system. Currently only apllicable to BigQuery resources.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -1605,7 +1663,7 @@
       "enumDescriptions": [],
       "properties": {
         "groupedEntry": {
-          "description": "Output only. If the table is a dated shard, i.e., with name pattern `[prefix]YYYYMMDD`,\n`grouped_entry` is the Data Catalog resource name of the date sharded\ngrouped entry, for example,\n`projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}`.\nOtherwise, `grouped_entry` is empty.",
+          "description": "Output only. If the table is a dated shard, i.e., with name pattern `[prefix]YYYYMMDD`, `grouped_entry` is the Data Catalog resource name of the date sharded grouped entry, for example, `projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}`. Otherwise, `grouped_entry` is empty.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1620,14 +1678,14 @@
     },
     "GoogleCloudDatacatalogV1beta1Tag": {
       "id": "GoogleCloudDatacatalogV1beta1Tag",
-      "description": "Tags are used to attach custom metadata to Data Catalog resources. Tags\nconform to the specifications within their tag template.\n\nSee [Data Catalog\nIAM](https://cloud.google.com/data-catalog/docs/concepts/iam) for information\non the permissions needed to create or view tags.",
+      "description": "Tags are used to attach custom metadata to Data Catalog resources. Tags conform to the specifications within their tag template. See [Data Catalog IAM](https://cloud.google.com/data-catalog/docs/concepts/iam) for information on the permissions needed to create or view tags.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "column": {
-          "description": "Resources like Entry can have schemas associated with them. This scope\nallows users to attach tags to an individual column based on that schema.\n\nFor attaching a tag to a nested column, use `.` to separate the column\nnames. Example:\n\n* `outer_column.inner_column`",
+          "description": "Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an individual column based on that schema. For attaching a tag to a nested column, use `.` to separate the column names. Example: * `outer_column.inner_column`",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1637,7 +1695,7 @@
           "items": null
         },
         "fields": {
-          "description": "Required. This maps the ID of a tag field to the value of and additional information\nabout that field. Valid field IDs are defined by the tag's template. A tag\nmust have at least 1 field and at most 500 fields.",
+          "description": "Required. This maps the ID of a tag field to the value of and additional information about that field. Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -1650,7 +1708,7 @@
           "items": null
         },
         "name": {
-          "description": "The resource name of the tag in URL format. Example:\n\n* projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id}\n\nwhere `tag_id` is a system-generated identifier.\nNote that this Tag may not actually be stored in the location in this name.",
+          "description": "The resource name of the tag in URL format. Example: * projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id} where `tag_id` is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1660,7 +1718,7 @@
           "items": null
         },
         "template": {
-          "description": "Required. The resource name of the tag template that this tag uses. Example:\n\n* projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}\n\nThis field cannot be modified after creation.",
+          "description": "Required. The resource name of the tag template that this tag uses. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} This field cannot be modified after creation.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1685,7 +1743,7 @@
     },
     "GoogleCloudDatacatalogV1beta1TagField": {
       "id": "GoogleCloudDatacatalogV1beta1TagField",
-      "description": "Contains the value and supporting information for a field within\na Tag.",
+      "description": "Contains the value and supporting information for a field within a Tag.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1722,11 +1780,11 @@
           "items": null
         },
         "enumValue": {
-          "description": "Holds the value for a tag field with enum type. This value must be\none of the allowed values in the definition of this enum.",
+          "description": "Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.",
           "$ref": "GoogleCloudDatacatalogV1beta1TagFieldEnumValue"
         },
         "order": {
-          "description": "Output only. The order of this field with respect to other fields in this tag. It can be\nset in Tag. For\nexample, a higher value can indicate a more important field. The value can\nbe negative. Multiple fields can have the same order, and field orders\nwithin a tag do not have to be sequential.",
+          "description": "Output only. The order of this field with respect to other fields in this tag. It can be set in Tag. For example, a higher value can indicate a more important field. The value can be negative. Multiple fields can have the same order, and field orders within a tag do not have to be sequential.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1783,7 +1841,7 @@
     },
     "GoogleCloudDatacatalogV1beta1TagTemplate": {
       "id": "GoogleCloudDatacatalogV1beta1TagTemplate",
-      "description": "A tag template defines a tag, which can have one or more typed fields.\nThe template is used to create and attach the tag to GCP resources.\n[Tag template\nroles](https://cloud.google.com/iam/docs/understanding-roles#data-catalog-roles)\nprovide permissions to create, edit, and use the template. See, for example,\nthe [TagTemplate\nUser](https://cloud.google.com/data-catalog/docs/how-to/template-user) role,\nwhich includes permission to use the tag template to tag resources.",
+      "description": "A tag template defines a tag, which can have one or more typed fields. The template is used to create and attach the tag to GCP resources. [Tag template roles](https://cloud.google.com/iam/docs/understanding-roles#data-catalog-roles) provide permissions to create, edit, and use the template. See, for example, the [TagTemplate User](https://cloud.google.com/data-catalog/docs/how-to/template-user) role, which includes permission to use the tag template to tag resources.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1800,7 +1858,7 @@
           "items": null
         },
         "fields": {
-          "description": "Required. Map of tag template field IDs to the settings for the field.\nThis map is an exhaustive list of the allowed fields. This map must contain\nat least one field and at most 500 fields.\n\nThe keys to this map are tag template field IDs. Field IDs can contain\nletters (both uppercase and lowercase), numbers (0-9) and underscores (_).\nField IDs must be at least 1 character long and at most\n64 characters long. Field IDs must start with a letter or underscore.",
+          "description": "Required. Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -1813,7 +1871,7 @@
           "items": null
         },
         "name": {
-          "description": "The resource name of the tag template in URL format. Example:\n\n* projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}\n\nNote that this TagTemplate and its child resources may not actually be\nstored in the location in this name.",
+          "description": "The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1834,6 +1892,16 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "description": {
+          "description": "The description for this field. Defaults to an empty string.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "displayName": {
           "description": "The display name for this field. Defaults to an empty string.",
           "type": "string",
@@ -1855,7 +1923,7 @@
           "items": null
         },
         "name": {
-          "description": "Output only. The resource name of the tag template field in URL format. Example:\n\n* projects/{project_id}/locations/{location}/tagTemplates/{tag_template}/fields/{field}\n\nNote that this TagTemplateField may not actually be stored in the location\nin this name.",
+          "description": "Output only. The resource name of the tag template field in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template}/fields/{field} Note that this TagTemplateField may not actually be stored in the location in this name.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1865,7 +1933,7 @@
           "items": null
         },
         "order": {
-          "description": "The order of this field with respect to other fields in this tag\ntemplate.  A higher value indicates a more important field. The value can\nbe negative. Multiple fields can have the same order, and field orders\nwithin a tag do not have to be sequential.",
+          "description": "The order of this field with respect to other fields in this tag template. A higher value indicates a more important field. The value can be negative. Multiple fields can have the same order, and field orders within a tag do not have to be sequential.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1884,21 +1952,18 @@
     },
     "GoogleCloudDatacatalogV1beta1Taxonomy": {
       "id": "GoogleCloudDatacatalogV1beta1Taxonomy",
-      "description": "A taxonomy is a collection of policy tags that classify data along a common\naxis. For instance a data *sensitivity* taxonomy could contain policy tags\ndenoting PII such as age, zipcode, and SSN. A data *origin* taxonomy could\ncontain policy tags to distinguish user data, employee data, partner data,\npublic data.",
+      "description": "A taxonomy is a collection of policy tags that classify data along a common axis. For instance a data *sensitivity* taxonomy could contain policy tags denoting PII such as age, zipcode, and SSN. A data *origin* taxonomy could contain policy tags to distinguish user data, employee data, partner data, public data.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "activatedPolicyTypes": {
-          "description": "Optional. A list of policy types that are activated for this taxonomy. If not set,\ndefaults to an empty list.",
+          "description": "Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list.",
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [
-            "Unspecified policy type.",
-            "Fine grained access control policy, which enables access control on\ntagged resources."
-          ],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": {
@@ -1908,14 +1973,17 @@
               "POLICY_TYPE_UNSPECIFIED",
               "FINE_GRAINED_ACCESS_CONTROL"
             ],
-            "enumDescriptions": [],
+            "enumDescriptions": [
+              "Unspecified policy type.",
+              "Fine grained access control policy, which enables access control on tagged resources."
+            ],
             "properties": {},
             "additionalProperties": null,
             "items": null
           }
         },
         "description": {
-          "description": "Optional. Description of this taxonomy. It must: contain only unicode characters,\ntabs, newlines, carriage returns and page breaks; and be at most 2000 bytes\nlong when encoded in UTF-8. If not set, defaults to an empty description.",
+          "description": "Optional. Description of this taxonomy. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1925,7 +1993,7 @@
           "items": null
         },
         "displayName": {
-          "description": "Required. User defined name of this taxonomy. It must: contain only unicode letters,\nnumbers, underscores, dashes and spaces; not start or end with spaces; and\nbe at most 200 bytes long when encoded in UTF-8.",
+          "description": "Required. User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1935,7 +2003,7 @@
           "items": null
         },
         "name": {
-          "description": "Output only. Resource name of this taxonomy, whose format is:\n\"projects/{project_number}/locations/{location_id}/taxonomies/{id}\".",
+          "description": "Output only. Resource name of this taxonomy, whose format is: \"projects/{project_number}/locations/{location_id}/taxonomies/{id}\".",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1943,6 +2011,20 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "policyTagCount": {
+          "description": "Output only. Number of policy tags contained in this taxonomy.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "taxonomyTimestamps": {
+          "description": "Output only. Timestamps about this taxonomy. Only create_time and update_time are used.",
+          "$ref": "GoogleCloudDatacatalogV1beta1SystemTimestamps"
         }
       },
       "additionalProperties": null,
@@ -1972,14 +2054,14 @@
     },
     "Policy": {
       "id": "Policy",
-      "description": "An Identity and Access Management (IAM) policy, which specifies access\ncontrols for Google Cloud resources.\n\n\nA `Policy` is a collection of `bindings`. A `binding` binds one or more\n`members` to a single `role`. Members can be user accounts, service accounts,\nGoogle groups, and domains (such as G Suite). A `role` is a named list of\npermissions; each `role` can be an IAM predefined role or a user-created\ncustom role.\n\nOptionally, a `binding` can specify a `condition`, which is a logical\nexpression that allows access to a resource only if the expression evaluates\nto `true`. A condition can add constraints based on attributes of the\nrequest, the resource, or both.\n\n**JSON example:**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/resourcemanager.organizationAdmin\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-project-id@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/resourcemanager.organizationViewer\",\n          \"members\": [\"user:eve@example.com\"],\n          \"condition\": {\n            \"title\": \"expirable access\",\n            \"description\": \"Does not grant access after Sep 2020\",\n            \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\",\n          }\n        }\n      ],\n      \"etag\": \"BwWWja0YfJA=\",\n      \"version\": 3\n    }\n\n**YAML example:**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-project-id@appspot.gserviceaccount.com\n      role: roles/resourcemanager.organizationAdmin\n    - members:\n      - user:eve@example.com\n      role: roles/resourcemanager.organizationViewer\n      condition:\n        title: expirable access\n        description: Does not grant access after Sep 2020\n        expression: request.time < timestamp('2020-10-01T00:00:00.000Z')\n    - etag: BwWWja0YfJA=\n    - version: 3\n\nFor a description of IAM and its features, see the\n[IAM documentation](https://cloud.google.com/iam/docs/).",
+      "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "bindings": {
-          "description": "Associates a list of `members` to a `role`. Optionally, may specify a\n`condition` that determines how and when the `bindings` are applied. Each\nof the `bindings` must contain at least one member.",
+          "description": "Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1991,7 +2073,7 @@
           }
         },
         "etag": {
-          "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.",
+          "description": "`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.",
           "type": "string",
           "format": "byte",
           "enum": [],
@@ -2001,7 +2083,7 @@
           "items": null
         },
         "version": {
-          "description": "Specifies the format of the policy.\n\nValid values are `0`, `1`, and `3`. Requests that specify an invalid value\nare rejected.\n\nAny operation that affects conditional role bindings must specify version\n`3`. This requirement applies to the following operations:\n\n* Getting a policy that includes a conditional role binding\n* Adding a conditional role binding to a policy\n* Changing a conditional role binding in a policy\n* Removing any role binding, with or without a condition, from a policy\n  that includes conditions\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.\n\nIf a policy does not include any conditions, operations on that policy may\nspecify any valid version or leave the field unset.",
+          "description": "Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -2023,7 +2105,7 @@
       "enumDescriptions": [],
       "properties": {
         "policy": {
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them.",
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them.",
           "$ref": "Policy"
         }
       },
@@ -2039,7 +2121,7 @@
       "enumDescriptions": [],
       "properties": {
         "permissions": {
-          "description": "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).",
+          "description": "The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or 'storage.*') are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2069,7 +2151,7 @@
       "enumDescriptions": [],
       "properties": {
         "permissions": {
-          "description": "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed.",
+          "description": "A subset of `TestPermissionsRequest.permissions` that the caller is allowed.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2099,7 +2181,7 @@
           "id": "datacatalog.catalog.search",
           "path": "v1beta1/catalog:search",
           "httpMethod": "POST",
-          "description": "Searches Data Catalog for multiple resources like entries, tags that\nmatch a query.\n\nThis is a custom method\n(https://cloud.google.com/apis/design/custom_methods) and does not return\nthe complete resource, only the resource identifier and high level\nfields. Clients can subsequentally call `Get` methods.\n\nNote that Data Catalog search queries do not guarantee full recall. Query\nresults that match your query may not be returned, even in subsequent\nresult pages. Also note that results returned (and not returned) can vary\nacross repeated search queries.\n\nSee [Data Catalog Search\nSyntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference)\nfor more information.",
+          "description": "Searches Data Catalog for multiple resources like entries, tags that match a query. This is a custom method (https://cloud.google.com/apis/design/custom_methods) and does not return the complete resource, only the resource identifier and high level fields. Clients can subsequently call `Get` methods. Note that Data Catalog search queries do not guarantee full recall. Query results that match your query may not be returned, even in subsequent result pages. Also note that results returned (and not returned) can vary across repeated search queries. See [Data Catalog Search Syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference) for more information.",
           "parameters": {},
           "parameterOrder": [],
           "request": {
@@ -2126,10 +2208,10 @@
           "id": "datacatalog.entries.lookup",
           "path": "v1beta1/entries:lookup",
           "httpMethod": "GET",
-          "description": "Get an entry by target resource name. This method allows clients to use\nthe resource name from the source Google Cloud Platform service to get the\nData Catalog Entry.",
+          "description": "Get an entry by target resource name. This method allows clients to use the resource name from the source Google Cloud Platform service to get the Data Catalog Entry.",
           "parameters": {
             "linkedResource": {
-              "description": "The full name of the Google Cloud Platform resource the Data Catalog\nentry represents. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name.\nFull names are case-sensitive.\n\nExamples:\n\n * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId\n * //pubsub.googleapis.com/projects/projectId/topics/topicId",
+              "description": "The full name of the Google Cloud Platform resource the Data Catalog entry represents. See: https://cloud.google.com/apis/design/resource_names#full_resource_name. Full names are case-sensitive. Examples: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId * //pubsub.googleapis.com/projects/projectId/topics/topicId",
               "default": null,
               "location": "query",
               "required": false,
@@ -2143,7 +2225,7 @@
               "repeated": false
             },
             "sqlResource": {
-              "description": "The SQL name of the entry. SQL names are case-sensitive.\n\nExamples:\n\n  * `pubsub.project_id.topic_id`\n  * ``pubsub.project_id.`topic.id.with.dots` ``\n  * `bigquery.table.project_id.dataset_id.table_id`\n  * `bigquery.dataset.project_id.dataset_id`\n  * `datacatalog.entry.project_id.location_id.entry_group_id.entry_id`\n\n`*_id`s shoud satisfy the standard SQL rules for identifiers.\nhttps://cloud.google.com/bigquery/docs/reference/standard-sql/lexical.",
+              "description": "The SQL name of the entry. SQL names are case-sensitive. Examples: * `pubsub.project_id.topic_id` * ``pubsub.project_id.`topic.id.with.dots` `` * `bigquery.table.project_id.dataset_id.table_id` * `bigquery.dataset.project_id.dataset_id` * `datacatalog.entry.project_id.location_id.entry_group_id.entry_id` `*_id`s shoud satisfy the standard SQL rules for identifiers. https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical.",
               "default": null,
               "location": "query",
               "required": false,
@@ -2188,10 +2270,10 @@
                           "id": "datacatalog.projects.locations.entryGroups.entries.tags.create",
                           "path": "v1beta1/{+parent}/tags",
                           "httpMethod": "POST",
-                          "description": "Creates a tag on an Entry.\nNote: The project identified by the `parent` parameter for the\n[tag](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.entryGroups.entries.tags/create#path-parameters)\nand the\n[tag\ntemplate](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.tagTemplates/create#path-parameters)\nused to create the tag must be from the same organization.",
+                          "description": "Creates a tag on an Entry. Note: The project identified by the `parent` parameter for the [tag](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.entryGroups.entries.tags/create#path-parameters) and the [tag template](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.tagTemplates/create#path-parameters) used to create the tag must be from the same organization.",
                           "parameters": {
                             "parent": {
-                              "description": "Required. The name of the resource to attach this tag to. Tags can be attached to\nEntries. Example:\n\n* projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}\n\nNote that this Tag and its child resources may not actually be stored in\nthe location in this name.",
+                              "description": "Required. The name of the resource to attach this tag to. Tags can be attached to Entries. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Tag and its child resources may not actually be stored in the location in this name.",
                               "default": null,
                               "location": "path",
                               "required": true,
@@ -2230,7 +2312,7 @@
                           "description": "Deletes a tag.",
                           "parameters": {
                             "name": {
-                              "description": "Required. The name of the tag to delete. Example:\n\n* projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id}",
+                              "description": "Required. The name of the tag to delete. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id}",
                               "default": null,
                               "location": "path",
                               "required": true,
@@ -2281,7 +2363,7 @@
                               "repeated": false
                             },
                             "pageToken": {
-                              "description": "Token that specifies which page is requested. If empty, the first page is\nreturned.",
+                              "description": "Token that specifies which page is requested. If empty, the first page is returned.",
                               "default": null,
                               "location": "query",
                               "required": false,
@@ -2295,7 +2377,7 @@
                               "repeated": false
                             },
                             "parent": {
-                              "description": "Required. The name of the Data Catalog resource to list the tags of. The resource\ncould be an Entry or an\nEntryGroup.\n\nExamples:\n\n* projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}\n* projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}",
+                              "description": "Required. The name of the Data Catalog resource to list the tags of. The resource could be an Entry or an EntryGroup. Examples: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}",
                               "default": null,
                               "location": "path",
                               "required": true,
@@ -2332,7 +2414,7 @@
                           "description": "Updates an existing tag.",
                           "parameters": {
                             "name": {
-                              "description": "The resource name of the tag in URL format. Example:\n\n* projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id}\n\nwhere `tag_id` is a system-generated identifier.\nNote that this Tag may not actually be stored in the location in this name.",
+                              "description": "The resource name of the tag in URL format. Example: * projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id} where `tag_id` is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.",
                               "default": null,
                               "location": "path",
                               "required": true,
@@ -2346,7 +2428,7 @@
                               "repeated": false
                             },
                             "updateMask": {
-                              "description": "The fields to update on the Tag. If absent or empty, all modifiable fields\nare updated. Currently the only modifiable field is the field `fields`.",
+                              "description": "Note: Currently, this parameter can only take `\"fields\"` as value. Names of fields whose values to overwrite on a tag. Currently, a tag has the only modifiable field with the name `fields`. In general, if this parameter is absent or empty, all modifiable fields are overwritten. If such fields are non-required and omitted in the request body, their values are emptied.",
                               "default": null,
                               "location": "query",
                               "required": false,
@@ -2386,7 +2468,7 @@
                       "id": "datacatalog.projects.locations.entryGroups.entries.create",
                       "path": "v1beta1/{+parent}/entries",
                       "httpMethod": "POST",
-                      "description": "Creates an entry. Only entries of 'FILESET' type or user-specified type can\nbe created.\n\nUsers should enable the Data Catalog API in the project identified by\nthe `parent` parameter (see [Data Catalog Resource Project]\n(https://cloud.google.com/data-catalog/docs/concepts/resource-project) for\nmore information).\n\nA maximum of 100,000 entries may be created per entry group.",
+                      "description": "Creates an entry. Only entries of 'FILESET' type or user-specified type can be created. Users should enable the Data Catalog API in the project identified by the `parent` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information). A maximum of 100,000 entries may be created per entry group.",
                       "parameters": {
                         "entryId": {
                           "description": "Required. The id of the entry to create.",
@@ -2403,7 +2485,7 @@
                           "repeated": false
                         },
                         "parent": {
-                          "description": "Required. The name of the entry group this entry is in. Example:\n\n* projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}\n\nNote that this Entry and its child resources may not actually be stored in\nthe location in this name.",
+                          "description": "Required. The name of the entry group this entry is in. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this Entry and its child resources may not actually be stored in the location in this name.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -2439,10 +2521,10 @@
                       "id": "datacatalog.projects.locations.entryGroups.entries.delete",
                       "path": "v1beta1/{+name}",
                       "httpMethod": "DELETE",
-                      "description": "Deletes an existing entry. Only entries created through\nCreateEntry\nmethod can be deleted.\nUsers should enable the Data Catalog API in the project identified by\nthe `name` parameter (see [Data Catalog Resource Project]\n(https://cloud.google.com/data-catalog/docs/concepts/resource-project) for\nmore information).",
+                      "description": "Deletes an existing entry. Only entries created through CreateEntry method can be deleted. Users should enable the Data Catalog API in the project identified by the `name` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).",
                       "parameters": {
                         "name": {
-                          "description": "Required. The name of the entry. Example:\n\n* projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}",
+                          "description": "Required. The name of the entry. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -2479,7 +2561,7 @@
                       "description": "Gets an entry.",
                       "parameters": {
                         "name": {
-                          "description": "Required. The name of the entry. Example:\n\n* projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}",
+                          "description": "Required. The name of the entry. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -2513,10 +2595,10 @@
                       "id": "datacatalog.projects.locations.entryGroups.entries.getIamPolicy",
                       "path": "v1beta1/{+resource}:getIamPolicy",
                       "httpMethod": "POST",
-                      "description": "Gets the access control policy for a resource. A `NOT_FOUND` error\nis returned if the resource does not exist. An empty policy is returned\nif the resource exists but does not have a policy set on it.\n\nSupported resources are:\n  - Tag templates.\n  - Entries.\n  - Entry groups.\nNote, this method cannot be used to manage policies for BigQuery, Pub/Sub\nand any external Google Cloud Platform resources synced to Data Catalog.\n\nCallers must have following Google IAM permission\n  - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag\n    templates.\n  - `datacatalog.entries.getIamPolicy` to get policies on entries.\n  - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.",
+                      "description": "Gets the access control policy for a resource. A `NOT_FOUND` error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it. Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. Callers must have following Google IAM permission - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag templates. - `datacatalog.entries.getIamPolicy` to get policies on entries. - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.",
                       "parameters": {
                         "resource": {
-                          "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                          "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -2555,7 +2637,7 @@
                       "description": "Lists entries.",
                       "parameters": {
                         "pageSize": {
-                          "description": "The maximum number of items to return. Default is 10. Max limit is 1000.\nThrows an invalid argument for `page_size > 1000`.",
+                          "description": "The maximum number of items to return. Default is 10. Max limit is 1000. Throws an invalid argument for `page_size > 1000`.",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -2569,7 +2651,7 @@
                           "repeated": false
                         },
                         "pageToken": {
-                          "description": "Token that specifies which page is requested. If empty, the first page is\nreturned.",
+                          "description": "Token that specifies which page is requested. If empty, the first page is returned.",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -2583,7 +2665,7 @@
                           "repeated": false
                         },
                         "parent": {
-                          "description": "Required. The name of the entry group that contains the entries, which can\nbe provided in URL format. Example:\n\n* projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}",
+                          "description": "Required. The name of the entry group that contains the entries, which can be provided in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -2597,7 +2679,7 @@
                           "repeated": false
                         },
                         "readMask": {
-                          "description": "The fields to return for each Entry. If not set or empty, all\nfields are returned.\nFor example, setting read_mask to contain only one path \"name\" will cause\nListEntries to return a list of Entries with only \"name\" field.",
+                          "description": "The fields to return for each Entry. If not set or empty, all fields are returned. For example, setting read_mask to contain only one path \"name\" will cause ListEntries to return a list of Entries with only \"name\" field.",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -2631,10 +2713,10 @@
                       "id": "datacatalog.projects.locations.entryGroups.entries.patch",
                       "path": "v1beta1/{+name}",
                       "httpMethod": "PATCH",
-                      "description": "Updates an existing entry.\nUsers should enable the Data Catalog API in the project identified by\nthe `entry.name` parameter (see [Data Catalog Resource Project]\n(https://cloud.google.com/data-catalog/docs/concepts/resource-project) for\nmore information).",
+                      "description": "Updates an existing entry. Users should enable the Data Catalog API in the project identified by the `entry.name` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).",
                       "parameters": {
                         "name": {
-                          "description": "The Data Catalog resource name of the entry in URL format. Example:\n\n* projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}\n\nNote that this Entry and its child resources may not actually be stored in\nthe location in this name.",
+                          "description": "Output only. The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -2648,7 +2730,7 @@
                           "repeated": false
                         },
                         "updateMask": {
-                          "description": "The fields to update on the entry. If absent or empty, all modifiable\nfields are updated.\n\nThe following fields are modifiable:\n* For entries with type `DATA_STREAM`:\n   * `schema`\n* For entries with type `FILESET`\n   * `schema`\n   * `display_name`\n   * `description`\n   * `gcs_fileset_spec`\n   * `gcs_fileset_spec.file_patterns`\n* For entries with `user_specified_type`\n   * `schema`\n   * `display_name`\n   * `description`\n   * user_specified_type\n   * user_specified_system\n   * linked_resource\n   * source_system_timestamps",
+                          "description": "Names of fields whose values to overwrite on an entry. If this parameter is absent or empty, all modifiable fields are overwritten. If such fields are non-required and omitted in the request body, their values are emptied. The following fields are modifiable: * For entries with type `DATA_STREAM`: * `schema` * For entries with type `FILESET`: * `schema` * `display_name` * `description` * `gcs_fileset_spec` * `gcs_fileset_spec.file_patterns` * For entries with `user_specified_type`: * `schema` * `display_name` * `description` * `user_specified_type` * `user_specified_system` * `linked_resource` * `source_system_timestamps`",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -2684,10 +2766,10 @@
                       "id": "datacatalog.projects.locations.entryGroups.entries.testIamPermissions",
                       "path": "v1beta1/{+resource}:testIamPermissions",
                       "httpMethod": "POST",
-                      "description": "Returns the caller's permissions on a resource.\nIf the resource does not exist, an empty set of permissions is returned\n(We don't return a `NOT_FOUND` error).\n\nSupported resources are:\n  - Tag templates.\n  - Entries.\n  - Entry groups.\nNote, this method cannot be used to manage policies for BigQuery, Pub/Sub\nand any external Google Cloud Platform resources synced to Data Catalog.\n\nA caller is not required to have Google IAM permission to make this\nrequest.",
+                      "description": "Returns the caller's permissions on a resource. If the resource does not exist, an empty set of permissions is returned (We don't return a `NOT_FOUND` error). Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. A caller is not required to have Google IAM permission to make this request.",
                       "parameters": {
                         "resource": {
-                          "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                          "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -2728,10 +2810,10 @@
                       "id": "datacatalog.projects.locations.entryGroups.tags.create",
                       "path": "v1beta1/{+parent}/tags",
                       "httpMethod": "POST",
-                      "description": "Creates a tag on an Entry.\nNote: The project identified by the `parent` parameter for the\n[tag](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.entryGroups.entries.tags/create#path-parameters)\nand the\n[tag\ntemplate](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.tagTemplates/create#path-parameters)\nused to create the tag must be from the same organization.",
+                      "description": "Creates a tag on an Entry. Note: The project identified by the `parent` parameter for the [tag](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.entryGroups.entries.tags/create#path-parameters) and the [tag template](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.tagTemplates/create#path-parameters) used to create the tag must be from the same organization.",
                       "parameters": {
                         "parent": {
-                          "description": "Required. The name of the resource to attach this tag to. Tags can be attached to\nEntries. Example:\n\n* projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}\n\nNote that this Tag and its child resources may not actually be stored in\nthe location in this name.",
+                          "description": "Required. The name of the resource to attach this tag to. Tags can be attached to Entries. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Tag and its child resources may not actually be stored in the location in this name.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -2770,7 +2852,7 @@
                       "description": "Deletes a tag.",
                       "parameters": {
                         "name": {
-                          "description": "Required. The name of the tag to delete. Example:\n\n* projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id}",
+                          "description": "Required. The name of the tag to delete. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id}",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -2821,7 +2903,7 @@
                           "repeated": false
                         },
                         "pageToken": {
-                          "description": "Token that specifies which page is requested. If empty, the first page is\nreturned.",
+                          "description": "Token that specifies which page is requested. If empty, the first page is returned.",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -2835,7 +2917,7 @@
                           "repeated": false
                         },
                         "parent": {
-                          "description": "Required. The name of the Data Catalog resource to list the tags of. The resource\ncould be an Entry or an\nEntryGroup.\n\nExamples:\n\n* projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}\n* projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}",
+                          "description": "Required. The name of the Data Catalog resource to list the tags of. The resource could be an Entry or an EntryGroup. Examples: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -2872,7 +2954,7 @@
                       "description": "Updates an existing tag.",
                       "parameters": {
                         "name": {
-                          "description": "The resource name of the tag in URL format. Example:\n\n* projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id}\n\nwhere `tag_id` is a system-generated identifier.\nNote that this Tag may not actually be stored in the location in this name.",
+                          "description": "The resource name of the tag in URL format. Example: * projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id} where `tag_id` is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -2886,7 +2968,7 @@
                           "repeated": false
                         },
                         "updateMask": {
-                          "description": "The fields to update on the Tag. If absent or empty, all modifiable fields\nare updated. Currently the only modifiable field is the field `fields`.",
+                          "description": "Note: Currently, this parameter can only take `\"fields\"` as value. Names of fields whose values to overwrite on a tag. Currently, a tag has the only modifiable field with the name `fields`. In general, if this parameter is absent or empty, all modifiable fields are overwritten. If such fields are non-required and omitted in the request body, their values are emptied.",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -2926,10 +3008,10 @@
                   "id": "datacatalog.projects.locations.entryGroups.create",
                   "path": "v1beta1/{+parent}/entryGroups",
                   "httpMethod": "POST",
-                  "description": "A maximum of 10,000 entry groups may be created per organization across all\nlocations.\n\nUsers should enable the Data Catalog API in the project identified by\nthe `parent` parameter (see [Data Catalog Resource Project]\n(https://cloud.google.com/data-catalog/docs/concepts/resource-project) for\nmore information).",
+                  "description": "A maximum of 10,000 entry groups may be created per organization across all locations. Users should enable the Data Catalog API in the project identified by the `parent` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).",
                   "parameters": {
                     "entryGroupId": {
-                      "description": "Required. The id of the entry group to create.\nThe id must begin with a letter or underscore, contain only English\nletters, numbers and underscores, and be at most 64 characters.",
+                      "description": "Required. The id of the entry group to create. The id must begin with a letter or underscore, contain only English letters, numbers and underscores, and be at most 64 characters.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -2943,7 +3025,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "Required. The name of the project this entry group is in. Example:\n\n* projects/{project_id}/locations/{location}\n\nNote that this EntryGroup and its child resources may not actually be\nstored in the location in this name.",
+                      "description": "Required. The name of the project this entry group is in. Example: * projects/{project_id}/locations/{location} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -2979,7 +3061,7 @@
                   "id": "datacatalog.projects.locations.entryGroups.delete",
                   "path": "v1beta1/{+name}",
                   "httpMethod": "DELETE",
-                  "description": "Deletes an EntryGroup. Only entry groups that do not contain entries can be\ndeleted. Users should enable the Data Catalog API in the project\nidentified by the `name` parameter (see [Data Catalog Resource Project]\n(https://cloud.google.com/data-catalog/docs/concepts/resource-project) for\nmore information).",
+                  "description": "Deletes an EntryGroup. Only entry groups that do not contain entries can be deleted. Users should enable the Data Catalog API in the project identified by the `name` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).",
                   "parameters": {
                     "force": {
                       "description": "Optional. If true, deletes all entries in the entry group.",
@@ -2996,7 +3078,7 @@
                       "repeated": false
                     },
                     "name": {
-                      "description": "Required. The name of the entry group. For example,\n`projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}`.",
+                      "description": "Required. The name of the entry group. For example, `projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -3033,7 +3115,7 @@
                   "description": "Gets an EntryGroup.",
                   "parameters": {
                     "name": {
-                      "description": "Required. The name of the entry group. For example,\n`projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}`.",
+                      "description": "Required. The name of the entry group. For example, `projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -3081,10 +3163,10 @@
                   "id": "datacatalog.projects.locations.entryGroups.getIamPolicy",
                   "path": "v1beta1/{+resource}:getIamPolicy",
                   "httpMethod": "POST",
-                  "description": "Gets the access control policy for a resource. A `NOT_FOUND` error\nis returned if the resource does not exist. An empty policy is returned\nif the resource exists but does not have a policy set on it.\n\nSupported resources are:\n  - Tag templates.\n  - Entries.\n  - Entry groups.\nNote, this method cannot be used to manage policies for BigQuery, Pub/Sub\nand any external Google Cloud Platform resources synced to Data Catalog.\n\nCallers must have following Google IAM permission\n  - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag\n    templates.\n  - `datacatalog.entries.getIamPolicy` to get policies on entries.\n  - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.",
+                  "description": "Gets the access control policy for a resource. A `NOT_FOUND` error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it. Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. Callers must have following Google IAM permission - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag templates. - `datacatalog.entries.getIamPolicy` to get policies on entries. - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.",
                   "parameters": {
                     "resource": {
-                      "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                      "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -3123,7 +3205,7 @@
                   "description": "Lists entry groups.",
                   "parameters": {
                     "pageSize": {
-                      "description": "Optional. The maximum number of items to return. Default is 10. Max limit is 1000.\nThrows an invalid argument for `page_size > 1000`.",
+                      "description": "Optional. The maximum number of items to return. Default is 10. Max limit is 1000. Throws an invalid argument for `page_size > 1000`.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -3137,7 +3219,7 @@
                       "repeated": false
                     },
                     "pageToken": {
-                      "description": "Optional. Token that specifies which page is requested. If empty, the first page is\nreturned.",
+                      "description": "Optional. Token that specifies which page is requested. If empty, the first page is returned.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -3151,7 +3233,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "Required. The name of the location that contains the entry groups, which can be\nprovided in URL format. Example:\n\n* projects/{project_id}/locations/{location}",
+                      "description": "Required. The name of the location that contains the entry groups, which can be provided in URL format. Example: * projects/{project_id}/locations/{location}",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -3185,10 +3267,10 @@
                   "id": "datacatalog.projects.locations.entryGroups.patch",
                   "path": "v1beta1/{+name}",
                   "httpMethod": "PATCH",
-                  "description": "Updates an EntryGroup. The user should enable the Data Catalog API in the\nproject identified by the `entry_group.name` parameter (see [Data Catalog\nResource Project]\n(https://cloud.google.com/data-catalog/docs/concepts/resource-project) for\nmore information).",
+                  "description": "Updates an EntryGroup. The user should enable the Data Catalog API in the project identified by the `entry_group.name` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).",
                   "parameters": {
                     "name": {
-                      "description": "The resource name of the entry group in URL format. Example:\n\n* projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}\n\nNote that this EntryGroup and its child resources may not actually be\nstored in the location in this name.",
+                      "description": "The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -3202,7 +3284,7 @@
                       "repeated": false
                     },
                     "updateMask": {
-                      "description": "The fields to update on the entry group. If absent or empty, all modifiable\nfields are updated.",
+                      "description": "Names of fields whose values to overwrite on an entry group. If this parameter is absent or empty, all modifiable fields are overwritten. If such fields are non-required and omitted in the request body, their values are emptied.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -3238,10 +3320,10 @@
                   "id": "datacatalog.projects.locations.entryGroups.setIamPolicy",
                   "path": "v1beta1/{+resource}:setIamPolicy",
                   "httpMethod": "POST",
-                  "description": "Sets the access control policy for a resource. Replaces any existing\npolicy.\nSupported resources are:\n  - Tag templates.\n  - Entries.\n  - Entry groups.\nNote, this method cannot be used to manage policies for BigQuery, Pub/Sub\nand any external Google Cloud Platform resources synced to Data Catalog.\n\nCallers must have following Google IAM permission\n  - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag\n    templates.\n  - `datacatalog.entries.setIamPolicy` to set policies on entries.\n  - `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups.",
+                  "description": "Sets the access control policy for a resource. Replaces any existing policy. Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. Callers must have following Google IAM permission - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag templates. - `datacatalog.entries.setIamPolicy` to set policies on entries. - `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups.",
                   "parameters": {
                     "resource": {
-                      "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
+                      "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -3277,10 +3359,10 @@
                   "id": "datacatalog.projects.locations.entryGroups.testIamPermissions",
                   "path": "v1beta1/{+resource}:testIamPermissions",
                   "httpMethod": "POST",
-                  "description": "Returns the caller's permissions on a resource.\nIf the resource does not exist, an empty set of permissions is returned\n(We don't return a `NOT_FOUND` error).\n\nSupported resources are:\n  - Tag templates.\n  - Entries.\n  - Entry groups.\nNote, this method cannot be used to manage policies for BigQuery, Pub/Sub\nand any external Google Cloud Platform resources synced to Data Catalog.\n\nA caller is not required to have Google IAM permission to make this\nrequest.",
+                  "description": "Returns the caller's permissions on a resource. If the resource does not exist, an empty set of permissions is returned (We don't return a `NOT_FOUND` error). Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. A caller is not required to have Google IAM permission to make this request.",
                   "parameters": {
                     "resource": {
-                      "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                      "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -3317,16 +3399,61 @@
             "tagTemplates": {
               "resources": {
                 "fields": {
-                  "resources": {},
+                  "resources": {
+                    "enumValues": {
+                      "resources": {},
+                      "methods": {
+                        "rename": {
+                          "id": "datacatalog.projects.locations.tagTemplates.fields.enumValues.rename",
+                          "path": "v1beta1/{+name}:rename",
+                          "httpMethod": "POST",
+                          "description": "Renames an enum value in a tag template. The enum values have to be unique within one enum field. Thus, an enum value cannot be renamed with a name used in any other enum value within the same enum field.",
+                          "parameters": {
+                            "name": {
+                              "description": "Required. The name of the enum field value. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}/fields/{tag_template_field_id}/enumValues/{enum_value_display_name}",
+                              "default": null,
+                              "location": "path",
+                              "required": true,
+                              "type": "string",
+                              "format": null,
+                              "minimum": null,
+                              "maximum": null,
+                              "pattern": "^projects/[^/]+/locations/[^/]+/tagTemplates/[^/]+/fields/[^/]+/enumValues/[^/]+$",
+                              "enum": [],
+                              "enumDescriptions": [],
+                              "repeated": false
+                            }
+                          },
+                          "parameterOrder": [
+                            "name"
+                          ],
+                          "request": {
+                            "$ref": "GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest"
+                          },
+                          "response": {
+                            "$ref": "GoogleCloudDatacatalogV1beta1TagTemplateField"
+                          },
+                          "scopes": [
+                            "https://www.googleapis.com/auth/cloud-platform"
+                          ],
+                          "supportsMediaDownload": false,
+                          "useMediaDownloadService": false,
+                          "supportsSubscription": false,
+                          "supportsMediaUpload": false,
+                          "mediaUpload": null
+                        }
+                      }
+                    }
+                  },
                   "methods": {
                     "create": {
                       "id": "datacatalog.projects.locations.tagTemplates.fields.create",
                       "path": "v1beta1/{+parent}/fields",
                       "httpMethod": "POST",
-                      "description": "Creates a field in a tag template. The user should enable the Data Catalog\nAPI in the project identified by the `parent` parameter (see\n[Data Catalog Resource\nProject](https://cloud.google.com/data-catalog/docs/concepts/resource-project)\nfor more information).",
+                      "description": "Creates a field in a tag template. The user should enable the Data Catalog API in the project identified by the `parent` parameter (see [Data Catalog Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).",
                       "parameters": {
                         "parent": {
-                          "description": "Required. The name of the project and the template location\n[region](https://cloud.google.com/data-catalog/docs/concepts/regions).\n\nExample:\n\n* projects/{project_id}/locations/us-central1/tagTemplates/{tag_template_id}",
+                          "description": "Required. The name of the project and the template location [region](https://cloud.google.com/data-catalog/docs/concepts/regions). Example: * projects/{project_id}/locations/us-central1/tagTemplates/{tag_template_id}",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -3340,7 +3467,7 @@
                           "repeated": false
                         },
                         "tagTemplateFieldId": {
-                          "description": "Required. The ID of the tag template field to create.\nField ids can contain letters (both uppercase and lowercase), numbers\n(0-9), underscores (_) and dashes (-). Field IDs must be at least 1\ncharacter long and at most 128 characters long. Field IDs must also be\nunique within their template.",
+                          "description": "Required. The ID of the tag template field to create. Field ids can contain letters (both uppercase and lowercase), numbers (0-9), underscores (_) and dashes (-). Field IDs must be at least 1 character long and at most 128 characters long. Field IDs must also be unique within their template.",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -3376,10 +3503,10 @@
                       "id": "datacatalog.projects.locations.tagTemplates.fields.delete",
                       "path": "v1beta1/{+name}",
                       "httpMethod": "DELETE",
-                      "description": "Deletes a field in a tag template and all uses of that field.\nUsers should enable the Data Catalog API in the project identified by\nthe `name` parameter (see [Data Catalog Resource Project]\n(https://cloud.google.com/data-catalog/docs/concepts/resource-project) for\nmore information).",
+                      "description": "Deletes a field in a tag template and all uses of that field. Users should enable the Data Catalog API in the project identified by the `name` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).",
                       "parameters": {
                         "force": {
-                          "description": "Required. Currently, this field must always be set to `true`.\nThis confirms the deletion of this field from any tags using this field.\n`force = false` will be supported in the future.",
+                          "description": "Required. Currently, this field must always be set to `true`. This confirms the deletion of this field from any tags using this field. `force = false` will be supported in the future.",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -3393,7 +3520,7 @@
                           "repeated": false
                         },
                         "name": {
-                          "description": "Required. The name of the tag template field to delete. Example:\n\n* projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}/fields/{tag_template_field_id}",
+                          "description": "Required. The name of the tag template field to delete. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}/fields/{tag_template_field_id}",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -3427,10 +3554,10 @@
                       "id": "datacatalog.projects.locations.tagTemplates.fields.patch",
                       "path": "v1beta1/{+name}",
                       "httpMethod": "PATCH",
-                      "description": "Updates a field in a tag template. This method cannot be used to update the\nfield type. Users should enable the Data Catalog API in the project\nidentified by the `name` parameter (see [Data Catalog Resource Project]\n(https://cloud.google.com/data-catalog/docs/concepts/resource-project) for\nmore information).",
+                      "description": "Updates a field in a tag template. This method cannot be used to update the field type. Users should enable the Data Catalog API in the project identified by the `name` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).",
                       "parameters": {
                         "name": {
-                          "description": "Required. The name of the tag template field. Example:\n\n* projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}/fields/{tag_template_field_id}",
+                          "description": "Required. The name of the tag template field. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}/fields/{tag_template_field_id}",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -3444,7 +3571,7 @@
                           "repeated": false
                         },
                         "updateMask": {
-                          "description": "Optional. The field mask specifies the parts of the template to be updated.\nAllowed fields:\n\n  * `display_name`\n  * `type.enum_type`\n  * `is_required`\n\nIf `update_mask` is not set or empty, all of the allowed fields above will\nbe updated.\n\nWhen updating an enum type, the provided values will be merged with the\nexisting values. Therefore, enum values can only be added, existing enum\nvalues cannot be deleted nor renamed. Updating a template field from\noptional to required is NOT allowed.",
+                          "description": "Optional. Names of fields whose values to overwrite on an individual field of a tag template. The following fields are modifiable: * `display_name` * `type.enum_type` * `is_required` If this parameter is absent or empty, all modifiable fields are overwritten. If such fields are non-required and omitted in the request body, their values are emptied with one exception: when updating an enum type, the provided values are merged with the existing values. Therefore, enum values can only be added, existing enum values cannot be deleted or renamed. Additionally, updating a template field from optional to required is *not* allowed.",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -3480,10 +3607,10 @@
                       "id": "datacatalog.projects.locations.tagTemplates.fields.rename",
                       "path": "v1beta1/{+name}:rename",
                       "httpMethod": "POST",
-                      "description": "Renames a field in a tag template. The user should enable the Data Catalog\nAPI in the project identified by the `name` parameter (see [Data Catalog\nResource\nProject](https://cloud.google.com/data-catalog/docs/concepts/resource-project)\nfor more information).",
+                      "description": "Renames a field in a tag template. The user should enable the Data Catalog API in the project identified by the `name` parameter (see [Data Catalog Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).",
                       "parameters": {
                         "name": {
-                          "description": "Required. The name of the tag template. Example:\n\n* projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}/fields/{tag_template_field_id}",
+                          "description": "Required. The name of the tag template. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}/fields/{tag_template_field_id}",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -3523,10 +3650,10 @@
                   "id": "datacatalog.projects.locations.tagTemplates.create",
                   "path": "v1beta1/{+parent}/tagTemplates",
                   "httpMethod": "POST",
-                  "description": "Creates a tag template. The user should enable the Data Catalog API in\nthe project identified by the `parent` parameter (see [Data Catalog\nResource\nProject](https://cloud.google.com/data-catalog/docs/concepts/resource-project)\nfor more information).",
+                  "description": "Creates a tag template. The user should enable the Data Catalog API in the project identified by the `parent` parameter (see [Data Catalog Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).",
                   "parameters": {
                     "parent": {
-                      "description": "Required. The name of the project and the template location\n[region](https://cloud.google.com/data-catalog/docs/concepts/regions.\n\nExample:\n\n* projects/{project_id}/locations/us-central1",
+                      "description": "Required. The name of the project and the template location [region](https://cloud.google.com/data-catalog/docs/concepts/regions. Example: * projects/{project_id}/locations/us-central1",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -3576,10 +3703,10 @@
                   "id": "datacatalog.projects.locations.tagTemplates.delete",
                   "path": "v1beta1/{+name}",
                   "httpMethod": "DELETE",
-                  "description": "Deletes a tag template and all tags using the template.\nUsers should enable the Data Catalog API in the project identified by\nthe `name` parameter (see [Data Catalog Resource Project]\n(https://cloud.google.com/data-catalog/docs/concepts/resource-project) for\nmore information).",
+                  "description": "Deletes a tag template and all tags using the template. Users should enable the Data Catalog API in the project identified by the `name` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).",
                   "parameters": {
                     "force": {
-                      "description": "Required. Currently, this field must always be set to `true`.\nThis confirms the deletion of any possible tags using this template.\n`force = false` will be supported in the future.",
+                      "description": "Required. Currently, this field must always be set to `true`. This confirms the deletion of any possible tags using this template. `force = false` will be supported in the future.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -3593,7 +3720,7 @@
                       "repeated": false
                     },
                     "name": {
-                      "description": "Required. The name of the tag template to delete. Example:\n\n* projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}",
+                      "description": "Required. The name of the tag template to delete. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -3630,7 +3757,7 @@
                   "description": "Gets a tag template.",
                   "parameters": {
                     "name": {
-                      "description": "Required. The name of the tag template. Example:\n\n* projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}",
+                      "description": "Required. The name of the tag template. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -3664,10 +3791,10 @@
                   "id": "datacatalog.projects.locations.tagTemplates.getIamPolicy",
                   "path": "v1beta1/{+resource}:getIamPolicy",
                   "httpMethod": "POST",
-                  "description": "Gets the access control policy for a resource. A `NOT_FOUND` error\nis returned if the resource does not exist. An empty policy is returned\nif the resource exists but does not have a policy set on it.\n\nSupported resources are:\n  - Tag templates.\n  - Entries.\n  - Entry groups.\nNote, this method cannot be used to manage policies for BigQuery, Pub/Sub\nand any external Google Cloud Platform resources synced to Data Catalog.\n\nCallers must have following Google IAM permission\n  - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag\n    templates.\n  - `datacatalog.entries.getIamPolicy` to get policies on entries.\n  - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.",
+                  "description": "Gets the access control policy for a resource. A `NOT_FOUND` error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it. Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. Callers must have following Google IAM permission - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag templates. - `datacatalog.entries.getIamPolicy` to get policies on entries. - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.",
                   "parameters": {
                     "resource": {
-                      "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                      "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -3703,10 +3830,10 @@
                   "id": "datacatalog.projects.locations.tagTemplates.patch",
                   "path": "v1beta1/{+name}",
                   "httpMethod": "PATCH",
-                  "description": "Updates a tag template. This method cannot be used to update the fields of\na template. The tag template fields are represented as separate resources\nand should be updated using their own create/update/delete methods.\nUsers should enable the Data Catalog API in the project identified by\nthe `tag_template.name` parameter (see [Data Catalog Resource Project]\n(https://cloud.google.com/data-catalog/docs/concepts/resource-project) for\nmore information).",
+                  "description": "Updates a tag template. This method cannot be used to update the fields of a template. The tag template fields are represented as separate resources and should be updated using their own create/update/delete methods. Users should enable the Data Catalog API in the project identified by the `tag_template.name` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).",
                   "parameters": {
                     "name": {
-                      "description": "The resource name of the tag template in URL format. Example:\n\n* projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}\n\nNote that this TagTemplate and its child resources may not actually be\nstored in the location in this name.",
+                      "description": "The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -3720,7 +3847,7 @@
                       "repeated": false
                     },
                     "updateMask": {
-                      "description": "The field mask specifies the parts of the template to overwrite.\n\nAllowed fields:\n\n  * `display_name`\n\nIf absent or empty, all of the allowed fields above will be updated.",
+                      "description": "Names of fields whose values to overwrite on a tag template. Currently, only `display_name` can be overwritten. In general, if this parameter is absent or empty, all modifiable fields are overwritten. If such fields are non-required and omitted in the request body, their values are emptied.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -3756,10 +3883,10 @@
                   "id": "datacatalog.projects.locations.tagTemplates.setIamPolicy",
                   "path": "v1beta1/{+resource}:setIamPolicy",
                   "httpMethod": "POST",
-                  "description": "Sets the access control policy for a resource. Replaces any existing\npolicy.\nSupported resources are:\n  - Tag templates.\n  - Entries.\n  - Entry groups.\nNote, this method cannot be used to manage policies for BigQuery, Pub/Sub\nand any external Google Cloud Platform resources synced to Data Catalog.\n\nCallers must have following Google IAM permission\n  - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag\n    templates.\n  - `datacatalog.entries.setIamPolicy` to set policies on entries.\n  - `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups.",
+                  "description": "Sets the access control policy for a resource. Replaces any existing policy. Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. Callers must have following Google IAM permission - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag templates. - `datacatalog.entries.setIamPolicy` to set policies on entries. - `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups.",
                   "parameters": {
                     "resource": {
-                      "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
+                      "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -3795,10 +3922,10 @@
                   "id": "datacatalog.projects.locations.tagTemplates.testIamPermissions",
                   "path": "v1beta1/{+resource}:testIamPermissions",
                   "httpMethod": "POST",
-                  "description": "Returns the caller's permissions on a resource.\nIf the resource does not exist, an empty set of permissions is returned\n(We don't return a `NOT_FOUND` error).\n\nSupported resources are:\n  - Tag templates.\n  - Entries.\n  - Entry groups.\nNote, this method cannot be used to manage policies for BigQuery, Pub/Sub\nand any external Google Cloud Platform resources synced to Data Catalog.\n\nA caller is not required to have Google IAM permission to make this\nrequest.",
+                  "description": "Returns the caller's permissions on a resource. If the resource does not exist, an empty set of permissions is returned (We don't return a `NOT_FOUND` error). Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. A caller is not required to have Google IAM permission to make this request.",
                   "parameters": {
                     "resource": {
-                      "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                      "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -3883,7 +4010,7 @@
                       "description": "Deletes a policy tag. Also deletes all of its descendant policy tags.",
                       "parameters": {
                         "name": {
-                          "description": "Required. Resource name of the policy tag to be deleted. All of its descendant\npolicy tags will also be deleted.",
+                          "description": "Required. Resource name of the policy tag to be deleted. All of its descendant policy tags will also be deleted.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -3957,7 +4084,7 @@
                       "description": "Gets the IAM policy for a taxonomy or a policy tag.",
                       "parameters": {
                         "resource": {
-                          "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                          "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -3996,7 +4123,7 @@
                       "description": "Lists all policy tags in a taxonomy.",
                       "parameters": {
                         "pageSize": {
-                          "description": "The maximum number of items to return. Must be a value between 1 and 1000.\nIf not set, defaults to 50.",
+                          "description": "The maximum number of items to return. Must be a value between 1 and 1000. If not set, defaults to 50.",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -4010,7 +4137,7 @@
                           "repeated": false
                         },
                         "pageToken": {
-                          "description": "The next_page_token value returned from a previous List request, if any. If\nnot set, defaults to an empty string.",
+                          "description": "The next_page_token value returned from a previous List request, if any. If not set, defaults to an empty string.",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -4061,7 +4188,7 @@
                       "description": "Updates a policy tag.",
                       "parameters": {
                         "name": {
-                          "description": "Output only. Resource name of this policy tag, whose format is:\n\"projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}\".",
+                          "description": "Output only. Resource name of this policy tag, whose format is: \"projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}\".",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -4075,7 +4202,7 @@
                           "repeated": false
                         },
                         "updateMask": {
-                          "description": "The update mask applies to the resource. Only display_name, description and\nparent_policy_tag can be updated and thus can be listed in the mask. If\nupdate_mask is not provided, all allowed fields (i.e. display_name,\ndescription and parent) will be updated. For more information including the\n`FieldMask` definition, see\nhttps://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask\nIf not set, defaults to all of the fields that are allowed to update.",
+                          "description": "The update mask applies to the resource. Only display_name, description and parent_policy_tag can be updated and thus can be listed in the mask. If update_mask is not provided, all allowed fields (i.e. display_name, description and parent) will be updated. For more information including the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If not set, defaults to all of the fields that are allowed to update.",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -4114,7 +4241,7 @@
                       "description": "Sets the IAM policy for a taxonomy or a policy tag.",
                       "parameters": {
                         "resource": {
-                          "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
+                          "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -4150,10 +4277,10 @@
                       "id": "datacatalog.projects.locations.taxonomies.policyTags.testIamPermissions",
                       "path": "v1beta1/{+resource}:testIamPermissions",
                       "httpMethod": "POST",
-                      "description": "Returns the permissions that a caller has on the specified taxonomy or\npolicy tag.",
+                      "description": "Returns the permissions that a caller has on the specified taxonomy or policy tag.",
                       "parameters": {
                         "resource": {
-                          "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                          "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -4232,10 +4359,10 @@
                   "id": "datacatalog.projects.locations.taxonomies.delete",
                   "path": "v1beta1/{+name}",
                   "httpMethod": "DELETE",
-                  "description": "Deletes a taxonomy. This operation will also delete all\npolicy tags in this taxonomy along with their associated policies.",
+                  "description": "Deletes a taxonomy. This operation will also delete all policy tags in this taxonomy along with their associated policies.",
                   "parameters": {
                     "name": {
-                      "description": "Required. Resource name of the taxonomy to be deleted. All policy tags in\nthis taxonomy will also be deleted.",
+                      "description": "Required. Resource name of the taxonomy to be deleted. All policy tags in this taxonomy will also be deleted.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -4269,10 +4396,10 @@
                   "id": "datacatalog.projects.locations.taxonomies.export",
                   "path": "v1beta1/{+parent}/taxonomies:export",
                   "httpMethod": "GET",
-                  "description": "Exports all taxonomies and their policy tags in a project.\n\nThis method generates SerializedTaxonomy protos with nested policy tags\nthat can be used as an input for future ImportTaxonomies calls.",
+                  "description": "Exports all taxonomies and their policy tags in a project. This method generates SerializedTaxonomy protos with nested policy tags that can be used as an input for future ImportTaxonomies calls.",
                   "parameters": {
                     "parent": {
-                      "description": "Required. Resource name of the project that taxonomies to be exported\nwill share.",
+                      "description": "Required. Resource name of the project that taxonomies to be exported will share.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -4374,7 +4501,7 @@
                   "description": "Gets the IAM policy for a taxonomy or a policy tag.",
                   "parameters": {
                     "resource": {
-                      "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                      "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -4410,7 +4537,7 @@
                   "id": "datacatalog.projects.locations.taxonomies.import",
                   "path": "v1beta1/{+parent}/taxonomies:import",
                   "httpMethod": "POST",
-                  "description": "Imports all taxonomies and their policy tags to a project as new\ntaxonomies.\n\nThis method provides a bulk taxonomy / policy tag creation using nested\nproto structure.",
+                  "description": "Imports all taxonomies and their policy tags to a project as new taxonomies. This method provides a bulk taxonomy / policy tag creation using nested proto structure.",
                   "parameters": {
                     "parent": {
                       "description": "Required. Resource name of project that the imported taxonomies will belong to.",
@@ -4449,10 +4576,10 @@
                   "id": "datacatalog.projects.locations.taxonomies.list",
                   "path": "v1beta1/{+parent}/taxonomies",
                   "httpMethod": "GET",
-                  "description": "Lists all taxonomies in a project in a particular location that the caller\nhas permission to view.",
+                  "description": "Lists all taxonomies in a project in a particular location that the caller has permission to view.",
                   "parameters": {
                     "pageSize": {
-                      "description": "The maximum number of items to return. Must be a value between 1 and 1000.\nIf not set, defaults to 50.",
+                      "description": "The maximum number of items to return. Must be a value between 1 and 1000. If not set, defaults to 50.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -4466,7 +4593,7 @@
                       "repeated": false
                     },
                     "pageToken": {
-                      "description": "The next_page_token value returned from a previous list request, if any. If\nnot set, defaults to an empty string.",
+                      "description": "The next_page_token value returned from a previous list request, if any. If not set, defaults to an empty string.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -4517,7 +4644,7 @@
                   "description": "Updates a taxonomy.",
                   "parameters": {
                     "name": {
-                      "description": "Output only. Resource name of this taxonomy, whose format is:\n\"projects/{project_number}/locations/{location_id}/taxonomies/{id}\".",
+                      "description": "Output only. Resource name of this taxonomy, whose format is: \"projects/{project_number}/locations/{location_id}/taxonomies/{id}\".",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -4531,7 +4658,7 @@
                       "repeated": false
                     },
                     "updateMask": {
-                      "description": "The update mask applies to the resource. For the `FieldMask` definition,\nsee\nhttps://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask\nIf not set, defaults to all of the fields that are allowed to update.",
+                      "description": "The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If not set, defaults to all of the fields that are allowed to update.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -4570,7 +4697,7 @@
                   "description": "Sets the IAM policy for a taxonomy or a policy tag.",
                   "parameters": {
                     "resource": {
-                      "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
+                      "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -4606,10 +4733,10 @@
                   "id": "datacatalog.projects.locations.taxonomies.testIamPermissions",
                   "path": "v1beta1/{+resource}:testIamPermissions",
                   "httpMethod": "POST",
-                  "description": "Returns the permissions that a caller has on the specified taxonomy or\npolicy tag.",
+                  "description": "Returns the permissions that a caller has on the specified taxonomy or policy tag.",
                   "parameters": {
                     "resource": {
-                      "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                      "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
                       "default": null,
                       "location": "path",
                       "required": true,

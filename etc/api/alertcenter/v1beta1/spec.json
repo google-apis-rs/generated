@@ -7,8 +7,8 @@
   "canonicalName": "AlertCenter",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20200509",
-  "title": "G Suite Alert Center API",
+  "revision": "20210303",
+  "title": "Google Workspace Alert Center API",
   "description": "Manages alerts on issues affecting your domain.",
   "ownerDomain": "google.com",
   "ownerName": "Google",
@@ -226,16 +226,27 @@
           "items": null
         },
         "loginDetails": {
-          "description": "Optional. Details of the login action associated with the warning event.\nThis is only available for:\n\n* Suspicious login\n* Suspicious login (less secure app)\n* Suspicious programmatic login\n* User suspended (suspicious activity)",
+          "description": "Optional. Details of the login action associated with the warning event. This is only available for: * Suspicious login * Suspicious login (less secure app) * Suspicious programmatic login * User suspended (suspicious activity)",
           "$ref": "LoginDetails"
         }
       },
       "additionalProperties": null,
       "items": null
     },
+    "ActionInfo": {
+      "id": "ActionInfo",
+      "description": "Metadata related to the action.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {},
+      "additionalProperties": null,
+      "items": null
+    },
     "ActivityRule": {
       "id": "ActivityRule",
-      "description": "Alerts from G Suite Security Center rules service configured by admin.",
+      "description": "Alerts from Google Workspace Security Center rules service configured by an admin.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -310,7 +321,7 @@
           "items": null
         },
         "supersededAlerts": {
-          "description": "List of alert IDs superseded by this alert. It is used to indicate that\nthis alert is essentially extension of superseded alerts and we found the\nrelationship after creating these alerts.",
+          "description": "List of alert IDs superseded by this alert. It is used to indicate that this alert is essentially extension of superseded alerts and we found the relationship after creating these alerts.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -328,7 +339,7 @@
           }
         },
         "supersedingAlert": {
-          "description": "Alert ID superseding this alert. It is used to indicate that superseding\nalert is essentially extension of this alert and we found the relationship\nafter creating both alerts.",
+          "description": "Alert ID superseding this alert. It is used to indicate that superseding alert is essentially extension of this alert and we found the relationship after creating both alerts.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -348,7 +359,7 @@
           "items": null
         },
         "triggerSource": {
-          "description": "The trigger sources for this rule.\n\n* GMAIL_EVENTS\n* DEVICE_EVENTS\n* USER_EVENTS",
+          "description": "The trigger sources for this rule. * GMAIL_EVENTS * DEVICE_EVENTS * USER_EVENTS",
           "type": "string",
           "format": null,
           "enum": [],
@@ -420,7 +431,7 @@
           "items": null
         },
         "data": {
-          "description": "Optional. The data associated with this alert, for example\ngoogle.apps.alertcenter.type.DeviceCompromised.",
+          "description": "Optional. The data associated with this alert, for example google.apps.alertcenter.type.DeviceCompromised.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -449,7 +460,7 @@
           "items": null
         },
         "endTime": {
-          "description": "Optional. The time the event that caused this alert ceased being active.\nIf provided, the end time must not be earlier than the start time.\nIf not provided, it indicates an ongoing alert.",
+          "description": "Optional. The time the event that caused this alert ceased being active. If provided, the end time must not be earlier than the start time. If not provided, it indicates an ongoing alert.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -459,7 +470,7 @@
           "items": null
         },
         "etag": {
-          "description": "Optional. `etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of an alert from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform alert updates in order to avoid race\nconditions: An `etag` is returned in the response which contains alerts,\nand systems are expected to put that etag in the request to update alert to\nensure that their change will be applied to the same version of the alert.\n\nIf no `etag` is provided in the call to update alert, then the existing\nalert is overwritten blindly.",
+          "description": "Optional. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of an alert from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform alert updates in order to avoid race conditions: An `etag` is returned in the response which contains alerts, and systems are expected to put that etag in the request to update alert to ensure that their change will be applied to the same version of the alert. If no `etag` is provided in the call to update alert, then the existing alert is overwritten blindly.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -473,7 +484,7 @@
           "$ref": "AlertMetadata"
         },
         "securityInvestigationToolLink": {
-          "description": "Output only. An optional\n[Security Investigation Tool](https://support.google.com/a/answer/7575955)\nquery for this alert.",
+          "description": "Output only. An optional [Security Investigation Tool](https://support.google.com/a/answer/7575955) query for this alert.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -483,7 +494,7 @@
           "items": null
         },
         "source": {
-          "description": "Required. A unique identifier for the system that reported the alert.\nThis is output only after alert is created.\n\nSupported sources are any of the following:\n\n* Google Operations\n* Mobile device management\n* Gmail phishing\n* Domain wide takeout\n* State sponsored attack\n* Google identity",
+          "description": "Required. A unique identifier for the system that reported the alert. This is output only after alert is created. Supported sources are any of the following: * Google Operations * Mobile device management * Gmail phishing * Domain wide takeout * State sponsored attack * Google identity",
           "type": "string",
           "format": null,
           "enum": [],
@@ -493,7 +504,7 @@
           "items": null
         },
         "startTime": {
-          "description": "Required. The time the event that caused this alert was started or\ndetected.",
+          "description": "Required. The time the event that caused this alert was started or detected.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -503,7 +514,7 @@
           "items": null
         },
         "type": {
-          "description": "Required. The type of the alert.\nThis is output only after alert is created.\nFor a list of available alert types see\n[G Suite Alert types](/admin-sdk/alertcenter/reference/alert-types).",
+          "description": "Required. The type of the alert. This is output only after alert is created. For a list of available alert types see [Google Workspace Alert types](/admin-sdk/alertcenter/reference/alert-types).",
           "type": "string",
           "format": null,
           "enum": [],
@@ -647,7 +658,7 @@
           "items": null
         },
         "etag": {
-          "description": "Optional. `etag` is used for optimistic concurrency control as a way to\nhelp prevent simultaneous updates of an alert metadata from overwriting\neach other. It is strongly suggested that systems make use of the `etag` in\nthe read-modify-write cycle to perform metatdata updates in order to avoid\nrace conditions: An `etag` is returned in the response which contains alert\nmetadata, and systems are expected to put that etag in the request to\nupdate alert metadata to ensure that their change will be applied to the\nsame version of the alert metadata.\n\nIf no `etag` is provided in the call to update alert metadata, then the\nexisting alert metadata is overwritten blindly.",
+          "description": "Optional. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of an alert metadata from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform metatdata updates in order to avoid race conditions: An `etag` is returned in the response which contains alert metadata, and systems are expected to put that etag in the request to update alert metadata to ensure that their change will be applied to the same version of the alert metadata. If no `etag` is provided in the call to update alert metadata, then the existing alert metadata is overwritten blindly.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -657,7 +668,7 @@
           "items": null
         },
         "severity": {
-          "description": "The severity value of the alert. Alert Center will set this field at alert\ncreation time, default's to an empty string when it could not be\ndetermined.\nThe supported values for update actions on this field are the following:\n\n* HIGH\n* MEDIUM\n* LOW",
+          "description": "The severity value of the alert. Alert Center will set this field at alert creation time, default's to an empty string when it could not be determined. The supported values for update actions on this field are the following: * HIGH * MEDIUM * LOW",
           "type": "string",
           "format": null,
           "enum": [],
@@ -667,7 +678,7 @@
           "items": null
         },
         "status": {
-          "description": "The current status of the alert.\nThe supported values are the following:\n\n* NOT_STARTED\n* IN_PROGRESS\n* CLOSED",
+          "description": "The current status of the alert. The supported values are the following: * NOT_STARTED * IN_PROGRESS * CLOSED",
           "type": "string",
           "format": null,
           "enum": [],
@@ -732,7 +743,7 @@
     },
     "BadWhitelist": {
       "id": "BadWhitelist",
-      "description": "Alert for setting the domain or IP that malicious email comes from as\nwhitelisted domain or IP in Gmail advanced settings.",
+      "description": "Alert for setting the domain or IP that malicious email comes from as whitelisted domain or IP in Gmail advanced settings.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -759,7 +770,7 @@
           }
         },
         "sourceIp": {
-          "description": "The source IP address of the malicious email, for example,\n`127.0.0.1`.",
+          "description": "The source IP address of the malicious email, for example, `127.0.0.1`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -799,7 +810,7 @@
           }
         },
         "customerId": {
-          "description": "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alerts are associated with.",
+          "description": "Optional. The unique identifier of the Google Workspace organization account of the customer the alerts are associated with.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -882,7 +893,7 @@
           }
         },
         "customerId": {
-          "description": "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alerts are associated with.",
+          "description": "Optional. The unique identifier of the Google Workspace organization account of the customer the alerts are associated with.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -940,14 +951,14 @@
     },
     "CloudPubsubTopic": {
       "id": "CloudPubsubTopic",
-      "description": "A reference to a Cloud Pubsub topic.\n\nTo register for notifications, the owner of the topic must grant\n`alerts-api-push-notifications@system.gserviceaccount.com` the\n `projects.topics.publish` permission.",
+      "description": "A reference to a Cloud Pubsub topic. To register for notifications, the owner of the topic must grant `alerts-api-push-notifications@system.gserviceaccount.com` the `projects.topics.publish` permission.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "payloadFormat": {
-          "description": "Optional. The format of the payload that would be sent.\nIf not specified the format will be JSON.",
+          "description": "Optional. The format of the payload that would be sent. If not specified the format will be JSON.",
           "type": "string",
           "format": null,
           "enum": [
@@ -963,7 +974,7 @@
           "items": null
         },
         "topicName": {
-          "description": "The `name` field of a Cloud Pubsub [Topic]\n(https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic).",
+          "description": "The `name` field of a Cloud Pubsub [Topic] (https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic).",
           "type": "string",
           "format": null,
           "enum": [],
@@ -978,14 +989,14 @@
     },
     "Csv": {
       "id": "Csv",
-      "description": "A representation of a CSV file attachment, as a list of column headers and\na list of data rows.",
+      "description": "A representation of a CSV file attachment, as a list of column headers and a list of data rows.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "dataRows": {
-          "description": "The list of data rows in a CSV file, as string arrays rather than as a\nsingle comma-separated string.",
+          "description": "The list of data rows in a CSV file, as string arrays rather than as a single comma-separated string.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1027,7 +1038,7 @@
       "enumDescriptions": [],
       "properties": {
         "entries": {
-          "description": "The data entries in a CSV file row, as a string array rather than a\nsingle comma-separated string.",
+          "description": "The data entries in a CSV file row, as a string array rather than a single comma-separated string.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1091,7 +1102,7 @@
       "enumDescriptions": [],
       "properties": {
         "deviceCompromisedState": {
-          "description": "The device compromised state. Possible values are \"`Compromised`\" or\n\"`Not Compromised`\".",
+          "description": "The device compromised state. Possible values are \"`Compromised`\" or \"`Not Compromised`\".",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1173,7 +1184,7 @@
       "enumDescriptions": [],
       "properties": {
         "ruleViolationInfo": {
-          "description": "Details about the violated DLP rule.\n\nAdmins can use the predefined detectors provided by Google Cloud DLP\nhttps://cloud.google.com/dlp/ when setting up a DLP rule. Matched Cloud DLP\ndetectors in this violation if any will be captured in the\nMatchInfo.predefined_detector.",
+          "description": "Details about the violated DLP rule. Admins can use the predefined detectors provided by Google Cloud DLP https://cloud.google.com/dlp/ when setting up a DLP rule. Matched Cloud DLP detectors in this violation if any will be captured in the MatchInfo.predefined_detector.",
           "$ref": "RuleViolationInfo"
         }
       },
@@ -1204,7 +1215,7 @@
     },
     "DomainWideTakeoutInitiated": {
       "id": "DomainWideTakeoutInitiated",
-      "description": "A takeout operation for the entire domain was initiated by an admin. Derived\nfrom audit logs.",
+      "description": "A takeout operation for the entire domain was initiated by an admin. Derived from audit logs.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1236,7 +1247,7 @@
     },
     "Empty": {
       "id": "Empty",
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1347,14 +1358,14 @@
     },
     "GoogleOperations": {
       "id": "GoogleOperations",
-      "description": "An incident reported by Google Operations for a G Suite application.",
+      "description": "An incident reported by Google Operations for a Google Workspace application.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "affectedUserEmails": {
-          "description": "The list of emails which correspond to the users directly affected by the\nincident.",
+          "description": "The list of emails which correspond to the users directly affected by the incident.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1372,11 +1383,21 @@
           }
         },
         "attachmentData": {
-          "description": "Optional. Application-specific data for an incident, provided when the\nG Suite application which reported the incident cannot be completely\nrestored to a valid state.",
+          "description": "Optional. Application-specific data for an incident, provided when the Google Workspace application which reported the incident cannot be completely restored to a valid state.",
           "$ref": "Attachment"
         },
         "description": {
           "description": "A detailed, freeform incident description.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "header": {
+          "description": "A header to display above the incident message. Typically used to attach a localized notice on the timeline for followup comms translations.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1408,7 +1429,7 @@
       "enumDescriptions": [],
       "properties": {
         "feedback": {
-          "description": "The list of alert feedback.\nFeedback entries for each alert are ordered by creation time descending.",
+          "description": "The list of alert feedback. Feedback entries for each alert are ordered by creation time descending.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1444,7 +1465,7 @@
           }
         },
         "nextPageToken": {
-          "description": "The token for the next page. If not empty, indicates that there may be more\nalerts that match the listing request; this value can be used in a\nsubsequent ListAlertsRequest to get alerts continuing from last result\nof the current list call.",
+          "description": "The token for the next page. If not empty, indicates that there may be more alerts that match the listing request; this value can be used in a subsequent ListAlertsRequest to get alerts continuing from last result of the current list call.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1466,7 +1487,7 @@
       "enumDescriptions": [],
       "properties": {
         "ipAddress": {
-          "description": "Optional. The human-readable IP address (for example,\n`11.22.33.44`) that is associated with the warning event.",
+          "description": "Optional. The human-readable IP address (for example, `11.22.33.44`) that is associated with the warning event.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1476,7 +1497,7 @@
           "items": null
         },
         "loginTime": {
-          "description": "Optional. The successful login time that is associated with the warning\nevent. This isn't present for blocked login attempts.",
+          "description": "Optional. The successful login time that is associated with the warning event. This isn't present for blocked login attempts.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -1491,7 +1512,7 @@
     },
     "MailPhishing": {
       "id": "MailPhishing",
-      "description": "Proto for all phishing alerts with common payload.\nSupported types are any of the following:\n\n* User reported phishing\n* User reported spam spike\n* Suspicious message reported\n* Phishing reclassification\n* Malware reclassification\n* Gmail potential employee spoofing",
+      "description": "Proto for all phishing alerts with common payload. Supported types are any of the following: * User reported phishing * User reported spam spike * Suspicious message reported * Phishing reclassification * Malware reclassification * Gmail potential employee spoofing",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1607,7 +1628,7 @@
     },
     "Notification": {
       "id": "Notification",
-      "description": "Settings for callback notifications.\nFor more details see [G Suite Alert\nNotification](/admin-sdk/alertcenter/guides/notifications).",
+      "description": "Settings for callback notifications. For more details see [Google Workspace Alert Notification](/admin-sdk/alertcenter/guides/notifications).",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1623,7 +1644,7 @@
     },
     "PhishingSpike": {
       "id": "PhishingSpike",
-      "description": "Alert for a spike in user reported phishing.\n<aside class=\"warning\"><b>Warning</b>: This type has been deprecated. Use\n[MailPhishing](/admin-sdk/alertcenter/reference/rest/v1beta1/MailPhishing)\ninstead.</aside>",
+      "description": "Alert for a spike in user reported phishing. *Warning*: This type has been deprecated. Use [MailPhishing](/admin-sdk/alertcenter/reference/rest/v1beta1/MailPhishing) instead.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1694,7 +1715,7 @@
       "enumDescriptions": [],
       "properties": {
         "appDeveloperEmail": {
-          "description": "List of app developers who triggered notifications for above\napplication.",
+          "description": "List of app developers who triggered notifications for above application.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1722,7 +1743,7 @@
           "items": null
         },
         "numberOfRequests": {
-          "description": "Required. Number of requests sent for this application to set up default\nSQL instance.",
+          "description": "Required. Number of requests sent for this application to set up default SQL instance.",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -1801,7 +1822,7 @@
     },
     "RuleViolationInfo": {
       "id": "RuleViolationInfo",
-      "description": "Common alert information about violated rules that are configured by G Suite\nadministrators.",
+      "description": "Common alert information about violated rules that are configured by Google Workspace administrators.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1836,7 +1857,7 @@
           }
         },
         "recipients": {
-          "description": "Resource recipients.\n\nFor Drive, they are grantees that the Drive file was shared with at the\ntime of rule triggering. Valid values include user emails, group emails,\ndomains, or 'anyone' if the file was publicly accessible. If the file was\nprivate the recipients list will be empty.\n\nFor Gmail, they are emails of the users or groups that the Gmail message\nwas sent to.",
+          "description": "Resource recipients. For Drive, they are grantees that the Drive file was shared with at the time of rule triggering. Valid values include user emails, group emails, domains, or 'anyone' if the file was publicly accessible. If the file was private the recipients list will be empty. For Gmail, they are emails of the users or groups that the Gmail message was sent to.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1866,12 +1887,7 @@
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [
-            "Action type is unspecified.",
-            "Block sharing a file externally.",
-            "Show a warning message when sharing a file externally.",
-            "Send alert."
-          ],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": {
@@ -1881,9 +1897,18 @@
               "ACTION_TYPE_UNSPECIFIED",
               "DRIVE_BLOCK_EXTERNAL_SHARING",
               "DRIVE_WARN_ON_EXTERNAL_SHARING",
-              "ALERT"
+              "ALERT",
+              "RULE_ACTIVATE",
+              "RULE_DEACTIVATE"
             ],
-            "enumDescriptions": [],
+            "enumDescriptions": [
+              "Action type is unspecified.",
+              "Block sharing a file externally.",
+              "Show a warning message when sharing a file externally.",
+              "Send alert.",
+              "Activate Rule Action",
+              "Deactivate Rule Action"
+            ],
             "properties": {},
             "additionalProperties": null,
             "items": null
@@ -1905,17 +1930,24 @@
           "additionalProperties": null,
           "items": null
         },
+        "triggeredActionInfo": {
+          "description": "Metadata related to the triggered actions.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "ActionInfo"
+          }
+        },
         "triggeredActionTypes": {
           "description": "Actions applied as a consequence of the rule being triggered.",
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [
-            "Action type is unspecified.",
-            "Block sharing a file externally.",
-            "Show a warning message when sharing a file externally.",
-            "Send alert."
-          ],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": {
@@ -1925,16 +1957,25 @@
               "ACTION_TYPE_UNSPECIFIED",
               "DRIVE_BLOCK_EXTERNAL_SHARING",
               "DRIVE_WARN_ON_EXTERNAL_SHARING",
-              "ALERT"
+              "ALERT",
+              "RULE_ACTIVATE",
+              "RULE_DEACTIVATE"
             ],
-            "enumDescriptions": [],
+            "enumDescriptions": [
+              "Action type is unspecified.",
+              "Block sharing a file externally.",
+              "Show a warning message when sharing a file externally.",
+              "Send alert.",
+              "Activate Rule Action",
+              "Deactivate Rule Action"
+            ],
             "properties": {},
             "additionalProperties": null,
             "items": null
           }
         },
         "triggeringUserEmail": {
-          "description": "Email of the user who caused the violation. Value could be empty if not\napplicable, for example, a violation found by drive continuous scan.",
+          "description": "Email of the user who caused the violation. Value could be empty if not applicable, for example, a violation found by drive continuous scan.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1995,7 +2036,7 @@
     },
     "Status": {
       "id": "Status",
-      "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors).",
+      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
       "type": "object",
       "format": null,
       "enum": [],
@@ -2012,7 +2053,7 @@
           "items": null
         },
         "details": {
-          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
+          "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2039,7 +2080,7 @@
           }
         },
         "message": {
-          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
+          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2197,7 +2238,7 @@
       "enumDescriptions": [],
       "properties": {
         "customerId": {
-          "description": "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alert is associated with.\nInferred from the caller identity if not provided.",
+          "description": "Optional. The unique identifier of the Google Workspace organization account of the customer the alert is associated with. Inferred from the caller identity if not provided.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2285,7 +2326,7 @@
               "id": "alertcenter.alerts.feedback.create",
               "path": "v1beta1/alerts/{alertId}/feedback",
               "httpMethod": "POST",
-              "description": "Creates new feedback for an alert. Attempting to create a feedback for\na non-existent alert returns `NOT_FOUND` error. Attempting to create a\nfeedback for an alert that is marked for deletion returns\n`FAILED_PRECONDITION' error.",
+              "description": "Creates new feedback for an alert. Attempting to create a feedback for a non-existent alert returns `NOT_FOUND` error. Attempting to create a feedback for an alert that is marked for deletion returns `FAILED_PRECONDITION' error.",
               "parameters": {
                 "alertId": {
                   "description": "Required. The identifier of the alert this feedback belongs to.",
@@ -2302,7 +2343,7 @@
                   "repeated": false
                 },
                 "customerId": {
-                  "description": "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alert is associated with.\nInferred from the caller identity if not provided.",
+                  "description": "Optional. The unique identifier of the Google Workspace organization account of the customer the alert is associated with. Inferred from the caller identity if not provided.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -2338,10 +2379,10 @@
               "id": "alertcenter.alerts.feedback.list",
               "path": "v1beta1/alerts/{alertId}/feedback",
               "httpMethod": "GET",
-              "description": "Lists all the feedback for an alert. Attempting to list feedbacks for\na non-existent alert returns `NOT_FOUND` error.",
+              "description": "Lists all the feedback for an alert. Attempting to list feedbacks for a non-existent alert returns `NOT_FOUND` error.",
               "parameters": {
                 "alertId": {
-                  "description": "Required. The alert identifier.\nThe \"-\" wildcard could be used to represent all alerts.",
+                  "description": "Required. The alert identifier. The \"-\" wildcard could be used to represent all alerts.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -2355,7 +2396,7 @@
                   "repeated": false
                 },
                 "customerId": {
-                  "description": "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alert feedback are associated with.\nInferred from the caller identity if not provided.",
+                  "description": "Optional. The unique identifier of the Google Workspace organization account of the customer the alert feedback are associated with. Inferred from the caller identity if not provided.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -2369,7 +2410,7 @@
                   "repeated": false
                 },
                 "filter": {
-                  "description": "Optional. A query string for filtering alert feedback results.\nFor more details, see [Query\nfilters](/admin-sdk/alertcenter/guides/query-filters) and [Supported\nquery filter\nfields](/admin-sdk/alertcenter/reference/filter-fields#alerts.feedback.list).",
+                  "description": "Optional. A query string for filtering alert feedback results. For more details, see [Query filters](/admin-sdk/alertcenter/guides/query-filters) and [Supported query filter fields](/admin-sdk/alertcenter/reference/filter-fields#alerts.feedback.list).",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -2451,7 +2492,7 @@
           "id": "alertcenter.alerts.delete",
           "path": "v1beta1/alerts/{alertId}",
           "httpMethod": "DELETE",
-          "description": "Marks the specified alert for deletion. An alert that has been marked for\ndeletion is removed from Alert Center after 30 days.\nMarking an alert for deletion has no effect on an alert which has\nalready been marked for deletion. Attempting to mark a nonexistent alert\nfor deletion results in a `NOT_FOUND` error.",
+          "description": "Marks the specified alert for deletion. An alert that has been marked for deletion is removed from Alert Center after 30 days. Marking an alert for deletion has no effect on an alert which has already been marked for deletion. Attempting to mark a nonexistent alert for deletion results in a `NOT_FOUND` error.",
           "parameters": {
             "alertId": {
               "description": "Required. The identifier of the alert to delete.",
@@ -2468,7 +2509,7 @@
               "repeated": false
             },
             "customerId": {
-              "description": "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alert is associated with.\nInferred from the caller identity if not provided.",
+              "description": "Optional. The unique identifier of the Google Workspace organization account of the customer the alert is associated with. Inferred from the caller identity if not provided.",
               "default": null,
               "location": "query",
               "required": false,
@@ -2502,7 +2543,7 @@
           "id": "alertcenter.alerts.get",
           "path": "v1beta1/alerts/{alertId}",
           "httpMethod": "GET",
-          "description": "Gets the specified alert. Attempting to get a nonexistent alert returns\n`NOT_FOUND` error.",
+          "description": "Gets the specified alert. Attempting to get a nonexistent alert returns `NOT_FOUND` error.",
           "parameters": {
             "alertId": {
               "description": "Required. The identifier of the alert to retrieve.",
@@ -2519,7 +2560,7 @@
               "repeated": false
             },
             "customerId": {
-              "description": "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alert is associated with.\nInferred from the caller identity if not provided.",
+              "description": "Optional. The unique identifier of the Google Workspace organization account of the customer the alert is associated with. Inferred from the caller identity if not provided.",
               "default": null,
               "location": "query",
               "required": false,
@@ -2553,7 +2594,7 @@
           "id": "alertcenter.alerts.getMetadata",
           "path": "v1beta1/alerts/{alertId}/metadata",
           "httpMethod": "GET",
-          "description": "Returns the metadata of an alert. Attempting to get metadata for\na non-existent alert returns `NOT_FOUND` error.",
+          "description": "Returns the metadata of an alert. Attempting to get metadata for a non-existent alert returns `NOT_FOUND` error.",
           "parameters": {
             "alertId": {
               "description": "Required. The identifier of the alert this metadata belongs to.",
@@ -2570,7 +2611,7 @@
               "repeated": false
             },
             "customerId": {
-              "description": "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alert metadata is associated with.\nInferred from the caller identity if not provided.",
+              "description": "Optional. The unique identifier of the Google Workspace organization account of the customer the alert metadata is associated with. Inferred from the caller identity if not provided.",
               "default": null,
               "location": "query",
               "required": false,
@@ -2607,7 +2648,7 @@
           "description": "Lists the alerts.",
           "parameters": {
             "customerId": {
-              "description": "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alerts are associated with.\nInferred from the caller identity if not provided.",
+              "description": "Optional. The unique identifier of the Google Workspace organization account of the customer the alerts are associated with. Inferred from the caller identity if not provided.",
               "default": null,
               "location": "query",
               "required": false,
@@ -2621,7 +2662,7 @@
               "repeated": false
             },
             "filter": {
-              "description": "Optional. A query string for filtering alert results.\nFor more details, see [Query\nfilters](/admin-sdk/alertcenter/guides/query-filters) and [Supported\nquery filter\nfields](/admin-sdk/alertcenter/reference/filter-fields#alerts.list).",
+              "description": "Optional. A query string for filtering alert results. For more details, see [Query filters](/admin-sdk/alertcenter/guides/query-filters) and [Supported query filter fields](/admin-sdk/alertcenter/reference/filter-fields#alerts.list).",
               "default": null,
               "location": "query",
               "required": false,
@@ -2635,7 +2676,7 @@
               "repeated": false
             },
             "orderBy": {
-              "description": "Optional. The sort order of the list results.\nIf not specified results may be returned in arbitrary order.\nYou can sort the results in descending order based on the creation\ntimestamp using `order_by=\"create_time desc\"`.\nCurrently, supported sorting are `create_time asc`, `create_time desc`,\n`update_time desc`",
+              "description": "Optional. The sort order of the list results. If not specified results may be returned in arbitrary order. You can sort the results in descending order based on the creation timestamp using `order_by=\"create_time desc\"`. Currently, supported sorting are `create_time asc`, `create_time desc`, `update_time desc`",
               "default": null,
               "location": "query",
               "required": false,
@@ -2649,7 +2690,7 @@
               "repeated": false
             },
             "pageSize": {
-              "description": "Optional. The requested page size. Server may return fewer items than\nrequested. If unspecified, server picks an appropriate default.",
+              "description": "Optional. The requested page size. Server may return fewer items than requested. If unspecified, server picks an appropriate default.",
               "default": null,
               "location": "query",
               "required": false,
@@ -2663,7 +2704,7 @@
               "repeated": false
             },
             "pageToken": {
-              "description": "Optional. A token identifying a page of results the server should return.\nIf empty, a new iteration is started. To continue an iteration, pass in\nthe value from the previous ListAlertsResponse's\nnext_page_token field.",
+              "description": "Optional. A token identifying a page of results the server should return. If empty, a new iteration is started. To continue an iteration, pass in the value from the previous ListAlertsResponse's next_page_token field.",
               "default": null,
               "location": "query",
               "required": false,
@@ -2695,7 +2736,7 @@
           "id": "alertcenter.alerts.undelete",
           "path": "v1beta1/alerts/{alertId}:undelete",
           "httpMethod": "POST",
-          "description": "Restores, or \"undeletes\", an alert that was marked for deletion within the\npast 30 days. Attempting to undelete an alert which was marked for deletion\nover 30 days ago (which has been removed from the Alert Center database) or\na nonexistent alert returns a `NOT_FOUND` error. Attempting to\nundelete an alert which has not been marked for deletion has no effect.",
+          "description": "Restores, or \"undeletes\", an alert that was marked for deletion within the past 30 days. Attempting to undelete an alert which was marked for deletion over 30 days ago (which has been removed from the Alert Center database) or a nonexistent alert returns a `NOT_FOUND` error. Attempting to undelete an alert which has not been marked for deletion has no effect.",
           "parameters": {
             "alertId": {
               "description": "Required. The identifier of the alert to undelete.",
@@ -2742,7 +2783,7 @@
           "description": "Returns customer-level settings.",
           "parameters": {
             "customerId": {
-              "description": "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alert settings are associated with.\nInferred from the caller identity if not provided.",
+              "description": "Optional. The unique identifier of the Google Workspace organization account of the customer the alert settings are associated with. Inferred from the caller identity if not provided.",
               "default": null,
               "location": "query",
               "required": false,
@@ -2777,7 +2818,7 @@
           "description": "Updates the customer-level settings.",
           "parameters": {
             "customerId": {
-              "description": "Optional. The unique identifier of the G Suite organization account of the\ncustomer the alert settings are associated with.\nInferred from the caller identity if not provided.",
+              "description": "Optional. The unique identifier of the Google Workspace organization account of the customer the alert settings are associated with. Inferred from the caller identity if not provided.",
               "default": null,
               "location": "query",
               "required": false,

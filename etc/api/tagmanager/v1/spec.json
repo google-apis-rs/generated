@@ -7,9 +7,9 @@
   "canonicalName": "Tag Manager",
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20200506",
+  "revision": "20210310",
   "title": "Tag Manager API",
-  "description": "This API allows clients to access and modify container and tag\n     configuration.",
+  "description": "This API allows clients to access and modify container and tag configuration.",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "icons": {
@@ -18,11 +18,11 @@
   },
   "documentationLink": "https://developers.google.com/tag-manager",
   "protocol": "rest",
-  "baseUrl": "https://www.googleapis.com/",
+  "baseUrl": "https://tagmanager.googleapis.com/",
   "basePath": "",
-  "rootUrl": "https://www.googleapis.com/",
+  "rootUrl": "https://tagmanager.googleapis.com/",
   "servicePath": "",
-  "batchPath": "batch/tagmanager/v1",
+  "batchPath": "batch",
   "version_module": null,
   "packagePath": null,
   "labels": null,
@@ -244,7 +244,7 @@
           "items": null
         },
         "fingerprint": {
-          "description": "The fingerprint of the GTM Account as computed at storage time.\nThis value is recomputed whenever the account is modified.",
+          "description": "The fingerprint of the GTM Account as computed at storage time. This value is recomputed whenever the account is modified.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -254,7 +254,7 @@
           "items": null
         },
         "name": {
-          "description": "Account display name.\n@mutable tagmanager.accounts.create\n@mutable tagmanager.accounts.update",
+          "description": "Account display name. @mutable tagmanager.accounts.create @mutable tagmanager.accounts.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -264,7 +264,7 @@
           "items": null
         },
         "shareData": {
-          "description": "Whether the account shares data anonymously with Google and others.\n@mutable tagmanager.accounts.create\n@mutable tagmanager.accounts.update",
+          "description": "Whether the account shares data anonymously with Google and others. @mutable tagmanager.accounts.create @mutable tagmanager.accounts.update",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -286,18 +286,11 @@
       "enumDescriptions": [],
       "properties": {
         "permission": {
-          "description": "List of Account permissions.\nValid account permissions are <code>read</code> and <code>manage</code>.\n@mutable tagmanager.accounts.permissions.create\n@mutable tagmanager.accounts.permissions.update",
+          "description": "List of Account permissions. Valid account permissions are read and manage. @mutable tagmanager.accounts.permissions.create @mutable tagmanager.accounts.permissions.update",
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": {
@@ -311,7 +304,14 @@
               "manage",
               "editWorkspace"
             ],
-            "enumDescriptions": [],
+            "enumDescriptions": [
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
             "properties": {},
             "additionalProperties": null,
             "items": null
@@ -330,7 +330,7 @@
       "enumDescriptions": [],
       "properties": {
         "parameter": {
-          "description": "A list of named parameters (key/value), depending on the condition's type.\nNotes:<ul>\n<li>For binary operators, include parameters named <code>arg0</code> and\n   <code>arg1</code> for specifying the left and right operands,\n   respectively.</li>\n<li>At this time, the left operand (<code>arg0</code>) must be a reference\n    to a variable.</li>\n<li>For case-insensitive Regex matching, include a boolean parameter named\n    <code>ignore_case</code> that is set to <code>true</code>.\n    If not specified or set to any other value, the matching will be case\n    sensitive.</li>\n<li>To negate an operator, include a boolean parameter named\n    <code>negate</code> boolean parameter that is set to <code>true</code>.\n    </li>\n</ul>\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "A list of named parameters (key/value), depending on the condition's type. Notes: - For binary operators, include parameters named arg0 and arg1 for specifying the left and right operands, respectively. - At this time, the left operand (arg0) must be a reference to a variable. - For case-insensitive Regex matching, include a boolean parameter named ignore_case that is set to true. If not specified or set to any other value, the matching will be case sensitive. - To negate an operator, include a boolean parameter named negate boolean parameter that is set to true. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "type": "array",
           "format": null,
           "enum": [],
@@ -342,7 +342,7 @@
           }
         },
         "type": {
-          "description": "The type of operator for this condition.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "The type of operator for this condition. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "type": "string",
           "format": null,
           "enum": [
@@ -408,7 +408,7 @@
           "items": null
         },
         "domainName": {
-          "description": "Optional list of domain names associated with the Container.\n@mutable tagmanager.accounts.containers.create\n@mutable tagmanager.accounts.containers.update",
+          "description": "Optional list of domain names associated with the Container. @mutable tagmanager.accounts.containers.create @mutable tagmanager.accounts.containers.update",
           "type": "array",
           "format": null,
           "enum": [],
@@ -426,117 +426,11 @@
           }
         },
         "enabledBuiltInVariable": {
-          "description": "List of enabled built-in variables. Valid values include: <code>pageUrl,\npageHostname, pagePath, referrer, event, clickElement, clickClasses,\nclickId, clickTarget, clickUrl, clickText, formElement, formClasses,\nformId, formTarget, formUrl, formText, errorMessage, errorUrl, errorLine,\nnewHistoryFragment, oldHistoryFragment, newHistoryState, oldHistoryState,\nhistorySource, containerVersion, debugMode, randomNumber,\ncontainerId</code>.\n@mutable tagmanager.accounts.containers.create\n@mutable tagmanager.accounts.containers.update",
+          "description": "List of enabled built-in variables. Valid values include: pageUrl, pageHostname, pagePath, referrer, event, clickElement, clickClasses, clickId, clickTarget, clickUrl, clickText, formElement, formClasses, formId, formTarget, formUrl, formText, errorMessage, errorUrl, errorLine, newHistoryFragment, oldHistoryFragment, newHistoryState, oldHistoryState, historySource, containerVersion, debugMode, randomNumber, containerId. @mutable tagmanager.accounts.containers.create @mutable tagmanager.accounts.containers.update",
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "For web or mobile.",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "For web or mobile.",
-            "",
-            "For web or mobile.",
-            "For web or mobile.",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": {
@@ -649,14 +543,120 @@
               "elementVisibilityFirstTime",
               "elementVisibilityRecentTime"
             ],
-            "enumDescriptions": [],
+            "enumDescriptions": [
+              "",
+              "",
+              "",
+              "",
+              "For web or mobile.",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "For web or mobile.",
+              "",
+              "For web or mobile.",
+              "For web or mobile.",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
             "properties": {},
             "additionalProperties": null,
             "items": null
           }
         },
         "fingerprint": {
-          "description": "The fingerprint of the GTM Container as computed at storage time.  This\nvalue is recomputed whenever the account is modified.",
+          "description": "The fingerprint of the GTM Container as computed at storage time. This value is recomputed whenever the account is modified.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -666,7 +666,7 @@
           "items": null
         },
         "name": {
-          "description": "Container display name.\n@mutable tagmanager.accounts.containers.create\n@mutable tagmanager.accounts.containers.update",
+          "description": "Container display name. @mutable tagmanager.accounts.containers.create @mutable tagmanager.accounts.containers.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -676,7 +676,7 @@
           "items": null
         },
         "notes": {
-          "description": "Container Notes.\n@mutable tagmanager.accounts.containers.create\n@mutable tagmanager.accounts.containers.update",
+          "description": "Container Notes. @mutable tagmanager.accounts.containers.create @mutable tagmanager.accounts.containers.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -696,7 +696,7 @@
           "items": null
         },
         "timeZoneCountryId": {
-          "description": "Container Country ID.\n@mutable tagmanager.accounts.containers.create\n@mutable tagmanager.accounts.containers.update",
+          "description": "Container Country ID. @mutable tagmanager.accounts.containers.create @mutable tagmanager.accounts.containers.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -706,7 +706,7 @@
           "items": null
         },
         "timeZoneId": {
-          "description": "Container Time Zone ID.\n@mutable tagmanager.accounts.containers.create\n@mutable tagmanager.accounts.containers.update",
+          "description": "Container Time Zone ID. @mutable tagmanager.accounts.containers.create @mutable tagmanager.accounts.containers.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -716,18 +716,11 @@
           "items": null
         },
         "usageContext": {
-          "description": "List of Usage Contexts for the Container. Valid values include: <code>web,\nandroid, ios</code>.\n@mutable tagmanager.accounts.containers.create\n@mutable tagmanager.accounts.containers.update",
+          "description": "List of Usage Contexts for the Container. Valid values include: web, android, ios. @mutable tagmanager.accounts.containers.create @mutable tagmanager.accounts.containers.update",
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": {
@@ -741,7 +734,14 @@
               "iosSdk5",
               "amp"
             ],
-            "enumDescriptions": [],
+            "enumDescriptions": [
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
             "properties": {},
             "additionalProperties": null,
             "items": null
@@ -760,7 +760,7 @@
       "enumDescriptions": [],
       "properties": {
         "containerId": {
-          "description": "GTM Container ID.\n@mutable tagmanager.accounts.permissions.create\n@mutable tagmanager.accounts.permissions.update",
+          "description": "GTM Container ID. @mutable tagmanager.accounts.permissions.create @mutable tagmanager.accounts.permissions.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -770,18 +770,11 @@
           "items": null
         },
         "permission": {
-          "description": "List of Container permissions.\nValid container permissions are: <code>read, edit, delete, publish</code>.\n@mutable tagmanager.accounts.permissions.create\n@mutable tagmanager.accounts.permissions.update",
+          "description": "List of Container permissions. Valid container permissions are: read, edit, delete, publish. @mutable tagmanager.accounts.permissions.create @mutable tagmanager.accounts.permissions.update",
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": {
@@ -795,7 +788,14 @@
               "manage",
               "editWorkspace"
             ],
-            "enumDescriptions": [],
+            "enumDescriptions": [
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
             "properties": {},
             "additionalProperties": null,
             "items": null
@@ -858,7 +858,7 @@
           "items": null
         },
         "fingerprint": {
-          "description": "The fingerprint of the GTM Container Version as computed at\nstorage time. This value is recomputed whenever the container version is\nmodified.",
+          "description": "The fingerprint of the GTM Container Version as computed at storage time. This value is recomputed whenever the container version is modified.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -892,7 +892,7 @@
           }
         },
         "name": {
-          "description": "Container version display name.\n@mutable tagmanager.accounts.containers.versions.update",
+          "description": "Container version display name. @mutable tagmanager.accounts.containers.versions.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -902,7 +902,7 @@
           "items": null
         },
         "notes": {
-          "description": "User notes on how to apply this container version in the\ncontainer.\n@mutable tagmanager.accounts.containers.versions.update",
+          "description": "User notes on how to apply this container version in the container. @mutable tagmanager.accounts.containers.versions.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1104,7 +1104,7 @@
           "items": null
         },
         "quickPreview": {
-          "description": "The creation of this version may be for quick preview and\nshouldn't be saved.",
+          "description": "The creation of this version may be for quick preview and shouldn't be saved.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -1145,7 +1145,7 @@
     },
     "Environment": {
       "id": "Environment",
-      "description": "Represents a Google Tag Manager Environment. Note that a user can create,\ndelete and update environments of type USER, but can only update the\nenable_debug and url fields of environments of other types.",
+      "description": "Represents a Google Tag Manager Environment. Note that a user can create, delete and update environments of type USER, but can only update the enable_debug and url fields of environments of other types.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1202,7 +1202,7 @@
           "items": null
         },
         "description": {
-          "description": "The environment description. Can be set or changed only on USER type\nenvironments.\n@mutable tagmanager.accounts.containers.environments.create\n@mutable tagmanager.accounts.containers.environments.update",
+          "description": "The environment description. Can be set or changed only on USER type environments. @mutable tagmanager.accounts.containers.environments.create @mutable tagmanager.accounts.containers.environments.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1212,7 +1212,7 @@
           "items": null
         },
         "enableDebug": {
-          "description": "Whether or not to enable debug by default on for the environment.\n@mutable tagmanager.accounts.containers.environments.create\n@mutable tagmanager.accounts.containers.environments.update",
+          "description": "Whether or not to enable debug by default on for the environment. @mutable tagmanager.accounts.containers.environments.create @mutable tagmanager.accounts.containers.environments.update",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -1232,7 +1232,7 @@
           "items": null
         },
         "fingerprint": {
-          "description": "The fingerprint of the GTM environment as computed at storage time.\nThis value is recomputed whenever the environment is modified.",
+          "description": "The fingerprint of the GTM environment as computed at storage time. This value is recomputed whenever the environment is modified.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1242,7 +1242,7 @@
           "items": null
         },
         "name": {
-          "description": "The environment display name. Can be set or changed only on USER type\nenvironments.\n@mutable tagmanager.accounts.containers.environments.create\n@mutable tagmanager.accounts.containers.environments.update",
+          "description": "The environment display name. Can be set or changed only on USER type environments. @mutable tagmanager.accounts.containers.environments.create @mutable tagmanager.accounts.containers.environments.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1263,16 +1263,16 @@
           ],
           "enumDescriptions": [
             "Used for user defined environments.",
-            "Used for Live environment, which points to the live published container\nversion.",
-            "Used for Latest environment, which points to the latest created container\nversion.",
-            "Used for Draft environment, which points to the single draft in\nthe container."
+            "Used for Live environment, which points to the live published container version.",
+            "Used for Latest environment, which points to the latest created container version.",
+            "Used for Draft environment, which points to the single draft in the container."
           ],
           "properties": {},
           "additionalProperties": null,
           "items": null
         },
         "url": {
-          "description": "Default preview page url for the environment.\n@mutable tagmanager.accounts.containers.environments.create\n@mutable tagmanager.accounts.containers.environments.update",
+          "description": "Default preview page url for the environment. @mutable tagmanager.accounts.containers.environments.create @mutable tagmanager.accounts.containers.environments.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1314,7 +1314,7 @@
           "items": null
         },
         "fingerprint": {
-          "description": "The fingerprint of the GTM Folder as computed at storage time.\nThis value is recomputed whenever the folder is modified.",
+          "description": "The fingerprint of the GTM Folder as computed at storage time. This value is recomputed whenever the folder is modified.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1334,7 +1334,7 @@
           "items": null
         },
         "name": {
-          "description": "Folder display name.\n@mutable tagmanager.accounts.containers.folders.create\n@mutable tagmanager.accounts.containers.folders.update",
+          "description": "Folder display name. @mutable tagmanager.accounts.containers.folders.create @mutable tagmanager.accounts.containers.folders.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1652,7 +1652,7 @@
           "items": null
         },
         "disablingRuleId": {
-          "description": "For mobile containers only: A list of rule IDs for disabling conditional\nmacros; the macro is enabled if one of the enabling rules is true while all\nthe disabling rules are false. Treated as an unordered set.\n@mutable tagmanager.accounts.containers.macros.create\n@mutable tagmanager.accounts.containers.macros.update",
+          "description": "For mobile containers only: A list of rule IDs for disabling conditional macros; the macro is enabled if one of the enabling rules is true while all the disabling rules are false. Treated as an unordered set. @mutable tagmanager.accounts.containers.macros.create @mutable tagmanager.accounts.containers.macros.update",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1670,7 +1670,7 @@
           }
         },
         "enablingRuleId": {
-          "description": "For mobile containers only: A list of rule IDs for enabling conditional\nmacros; the macro is enabled if one of the enabling rules is true while all\nthe disabling rules are false. Treated as an unordered set.\n@mutable tagmanager.accounts.containers.macros.create\n@mutable tagmanager.accounts.containers.macros.update",
+          "description": "For mobile containers only: A list of rule IDs for enabling conditional macros; the macro is enabled if one of the enabling rules is true while all the disabling rules are false. Treated as an unordered set. @mutable tagmanager.accounts.containers.macros.create @mutable tagmanager.accounts.containers.macros.update",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1688,7 +1688,7 @@
           }
         },
         "fingerprint": {
-          "description": "The fingerprint of the GTM Macro as computed at storage time.\nThis value is recomputed whenever the macro is modified.",
+          "description": "The fingerprint of the GTM Macro as computed at storage time. This value is recomputed whenever the macro is modified.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1708,7 +1708,7 @@
           "items": null
         },
         "name": {
-          "description": "Macro display name.\n@mutable tagmanager.accounts.containers.macros.create\n@mutable tagmanager.accounts.containers.macros.update",
+          "description": "Macro display name. @mutable tagmanager.accounts.containers.macros.create @mutable tagmanager.accounts.containers.macros.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1718,7 +1718,7 @@
           "items": null
         },
         "notes": {
-          "description": "User notes on how to apply this macro in the container.\n@mutable tagmanager.accounts.containers.macros.create\n@mutable tagmanager.accounts.containers.macros.update",
+          "description": "User notes on how to apply this macro in the container. @mutable tagmanager.accounts.containers.macros.create @mutable tagmanager.accounts.containers.macros.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1728,7 +1728,7 @@
           "items": null
         },
         "parameter": {
-          "description": "The macro's parameters.\n@mutable tagmanager.accounts.containers.macros.create\n@mutable tagmanager.accounts.containers.macros.update",
+          "description": "The macro's parameters. @mutable tagmanager.accounts.containers.macros.create @mutable tagmanager.accounts.containers.macros.update",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1750,7 +1750,7 @@
           "items": null
         },
         "scheduleEndMs": {
-          "description": "The end timestamp in milliseconds to schedule a macro.\n@mutable tagmanager.accounts.containers.macros.create\n@mutable tagmanager.accounts.containers.macros.update",
+          "description": "The end timestamp in milliseconds to schedule a macro. @mutable tagmanager.accounts.containers.macros.create @mutable tagmanager.accounts.containers.macros.update",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -1760,7 +1760,7 @@
           "items": null
         },
         "scheduleStartMs": {
-          "description": "The start timestamp in milliseconds to schedule a macro.\n@mutable tagmanager.accounts.containers.macros.create\n@mutable tagmanager.accounts.containers.macros.update",
+          "description": "The start timestamp in milliseconds to schedule a macro. @mutable tagmanager.accounts.containers.macros.create @mutable tagmanager.accounts.containers.macros.update",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -1770,7 +1770,7 @@
           "items": null
         },
         "type": {
-          "description": "GTM Macro Type.\n@mutable tagmanager.accounts.containers.macros.create\n@mutable tagmanager.accounts.containers.macros.update",
+          "description": "GTM Macro Type. @mutable tagmanager.accounts.containers.macros.create @mutable tagmanager.accounts.containers.macros.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1792,7 +1792,7 @@
       "enumDescriptions": [],
       "properties": {
         "key": {
-          "description": "The named key that uniquely identifies a parameter.  Required for top-level\nparameters, as well as map values.  Ignored for list values.\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update",
+          "description": "The named key that uniquely identifies a parameter. Required for top-level parameters, as well as map values. Ignored for list values. @mutable tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1802,7 +1802,7 @@
           "items": null
         },
         "list": {
-          "description": "This list parameter's parameters (keys will be ignored).\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update",
+          "description": "This list parameter's parameters (keys will be ignored). @mutable tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1814,7 +1814,7 @@
           }
         },
         "map": {
-          "description": "This map parameter's parameters (must have keys; keys must be unique).\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update",
+          "description": "This map parameter's parameters (must have keys; keys must be unique). @mutable tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1826,7 +1826,7 @@
           }
         },
         "type": {
-          "description": "The parameter type.  Valid values are:<ul>\n<li><code>boolean</code>: The value represents a boolean, represented as\n    'true' or 'false'</li>\n<li><code>integer</code>: The value represents a 64-bit signed integer\n    value, in base 10</li>\n<li><code>list</code>: A list of parameters should be specified</li>\n<li><code>map</code>: A map of parameters should be specified</li>\n<li><code>template</code>: The value represents any text; this can include\n    variable references (even variable references that might return\n    non-string types)</li>\n<li><code>trigger_reference</code>: The value represents a trigger,\n    represented as the trigger id</li>\n<li><code>tag_reference</code>: The value represents a tag, represented as\n    the tag name</li>\n</ul>\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update",
+          "description": "The parameter type. Valid values are: - boolean: The value represents a boolean, represented as 'true' or 'false' - integer: The value represents a 64-bit signed integer value, in base 10 - list: A list of parameters should be specified - map: A map of parameters should be specified - template: The value represents any text; this can include variable references (even variable references that might return non-string types) - trigger_reference: The value represents a trigger, represented as the trigger id - tag_reference: The value represents a tag, represented as the tag name @mutable tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update",
           "type": "string",
           "format": null,
           "enum": [
@@ -1852,7 +1852,7 @@
           "items": null
         },
         "value": {
-          "description": "A parameter's value (may contain variable references such as\n\"{{myVariable}}\")\nas appropriate to the specified type.\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update",
+          "description": "A parameter's value (may contain variable references such as \"{{myVariable}}\") as appropriate to the specified type. @mutable tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1910,7 +1910,7 @@
           "items": null
         },
         "condition": {
-          "description": "The list of conditions that make up this rule (implicit AND between them).\n@mutable tagmanager.accounts.containers.rules.create\n@mutable tagmanager.accounts.containers.rules.update",
+          "description": "The list of conditions that make up this rule (implicit AND between them). @mutable tagmanager.accounts.containers.rules.create @mutable tagmanager.accounts.containers.rules.update",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1932,7 +1932,7 @@
           "items": null
         },
         "fingerprint": {
-          "description": "The fingerprint of the GTM Rule as computed at storage time.\nThis value is recomputed whenever the rule is modified.",
+          "description": "The fingerprint of the GTM Rule as computed at storage time. This value is recomputed whenever the rule is modified.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1942,7 +1942,7 @@
           "items": null
         },
         "name": {
-          "description": "Rule display name.\n@mutable tagmanager.accounts.containers.rules.create\n@mutable tagmanager.accounts.containers.rules.update",
+          "description": "Rule display name. @mutable tagmanager.accounts.containers.rules.create @mutable tagmanager.accounts.containers.rules.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1952,7 +1952,7 @@
           "items": null
         },
         "notes": {
-          "description": "User notes on how to apply this rule in the container.\n@mutable tagmanager.accounts.containers.rules.create\n@mutable tagmanager.accounts.containers.rules.update",
+          "description": "User notes on how to apply this rule in the container. @mutable tagmanager.accounts.containers.rules.create @mutable tagmanager.accounts.containers.rules.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1984,7 +1984,7 @@
       "enumDescriptions": [],
       "properties": {
         "stopOnSetupFailure": {
-          "description": "If true, fire the main tag if and only if the setup tag fires\nsuccessfully.\nIf false, fire the main tag regardless of setup tag firing status.",
+          "description": "If true, fire the main tag if and only if the setup tag fires successfully. If false, fire the main tag regardless of setup tag firing status.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -2026,7 +2026,7 @@
           "items": null
         },
         "blockingRuleId": {
-          "description": "Blocking rule IDs. If any of the listed rules evaluate to true, the tag\n    will not fire.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update",
+          "description": "Blocking rule IDs. If any of the listed rules evaluate to true, the tag will not fire. @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2044,7 +2044,7 @@
           }
         },
         "blockingTriggerId": {
-          "description": "Blocking trigger IDs. If any of the listed triggers evaluate to true, the\ntag\n    will not fire.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update",
+          "description": "Blocking trigger IDs. If any of the listed triggers evaluate to true, the tag will not fire. @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2072,7 +2072,7 @@
           "items": null
         },
         "fingerprint": {
-          "description": "The fingerprint of the GTM Tag as computed at storage time.\nThis value is recomputed whenever the tag is modified.",
+          "description": "The fingerprint of the GTM Tag as computed at storage time. This value is recomputed whenever the tag is modified.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2082,7 +2082,7 @@
           "items": null
         },
         "firingRuleId": {
-          "description": "Firing rule IDs. A tag will fire when any of the listed rules are true and\n    all of its <code>blockingRuleIds</code> (if any specified) are false.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update",
+          "description": "Firing rule IDs. A tag will fire when any of the listed rules are true and all of its blockingRuleIds (if any specified) are false. @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2100,7 +2100,7 @@
           }
         },
         "firingTriggerId": {
-          "description": "Firing trigger IDs. A tag will fire when any of the listed triggers are\ntrue and all of its <code>blockingTriggerIds</code> (if any specified) are\nfalse.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update",
+          "description": "Firing trigger IDs. A tag will fire when any of the listed triggers are true and all of its blockingTriggerIds (if any specified) are false. @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2118,7 +2118,7 @@
           }
         },
         "liveOnly": {
-          "description": "If set to true, this tag will only fire in the live environment (e.g. not\nin preview or debug mode).\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update",
+          "description": "If set to true, this tag will only fire in the live environment (e.g. not in preview or debug mode). @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -2128,7 +2128,7 @@
           "items": null
         },
         "name": {
-          "description": "Tag display name.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update",
+          "description": "Tag display name. @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2138,7 +2138,7 @@
           "items": null
         },
         "notes": {
-          "description": "User notes on how to apply this tag in the container.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update",
+          "description": "User notes on how to apply this tag in the container. @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2148,7 +2148,7 @@
           "items": null
         },
         "parameter": {
-          "description": "The tag's parameters.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update",
+          "description": "The tag's parameters. @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2170,7 +2170,7 @@
           "items": null
         },
         "paused": {
-          "description": "True if the tag is paused.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update",
+          "description": "True if the tag is paused. @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -2180,11 +2180,11 @@
           "items": null
         },
         "priority": {
-          "description": "User defined numeric priority of the tag. Tags are fired asynchronously in\norder of priority. Tags with higher numeric value fire first. A tag's\npriority can be a positive or negative value. The default value is 0.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update",
+          "description": "User defined numeric priority of the tag. Tags are fired asynchronously in order of priority. Tags with higher numeric value fire first. A tag's priority can be a positive or negative value. The default value is 0. @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update",
           "$ref": "Parameter"
         },
         "scheduleEndMs": {
-          "description": "The end timestamp in milliseconds to schedule a tag.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update",
+          "description": "The end timestamp in milliseconds to schedule a tag. @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -2194,7 +2194,7 @@
           "items": null
         },
         "scheduleStartMs": {
-          "description": "The start timestamp in milliseconds to schedule a tag.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update",
+          "description": "The start timestamp in milliseconds to schedule a tag. @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -2226,7 +2226,7 @@
           ],
           "enumDescriptions": [
             "Tag can be fired multiple times per event.",
-            "Tag can only be fired per event but can be fired multiple times per load\n(e.g., app load or page load).",
+            "Tag can only be fired per event but can be fired multiple times per load (e.g., app load or page load).",
             "Tag can only be fired per load (e.g., app load or page load)."
           ],
           "properties": {},
@@ -2256,7 +2256,7 @@
           }
         },
         "type": {
-          "description": "GTM Tag Type.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update",
+          "description": "GTM Tag Type. @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2278,7 +2278,7 @@
       "enumDescriptions": [],
       "properties": {
         "stopTeardownOnFailure": {
-          "description": "If true, fire the teardown tag if and only if the main tag fires\nsuccessfully.\nIf false, fire the teardown tag regardless of main tag firing status.",
+          "description": "If true, fire the teardown tag if and only if the main tag fires successfully. If false, fire the teardown tag regardless of main tag firing status.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -2320,7 +2320,7 @@
           "items": null
         },
         "autoEventFilter": {
-          "description": "Used in the case of auto event tracking.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "Used in the case of auto event tracking. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2332,7 +2332,7 @@
           }
         },
         "checkValidation": {
-          "description": "Whether or not we should only fire tags if the form submit or link click\nevent is not cancelled by some other event handler (e.g. because of\nvalidation). Only valid for Form Submission and Link Click triggers.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "Whether or not we should only fire tags if the form submit or link click event is not cancelled by some other event handler (e.g. because of validation). Only valid for Form Submission and Link Click triggers. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "$ref": "Parameter"
         },
         "containerId": {
@@ -2346,11 +2346,11 @@
           "items": null
         },
         "continuousTimeMinMilliseconds": {
-          "description": "A visibility trigger minimum continuous visible time (in milliseconds).\nOnly valid for AMP Visibility trigger.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "A visibility trigger minimum continuous visible time (in milliseconds). Only valid for AMP Visibility trigger. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "$ref": "Parameter"
         },
         "customEventFilter": {
-          "description": "Used in the case of custom event, which is fired iff all Conditions are\ntrue.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "Used in the case of custom event, which is fired iff all Conditions are true. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2362,11 +2362,11 @@
           }
         },
         "eventName": {
-          "description": "Name of the GTM event that is fired. Only valid for Timer triggers.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "Name of the GTM event that is fired. Only valid for Timer triggers. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "$ref": "Parameter"
         },
         "filter": {
-          "description": "The trigger will only fire iff all Conditions are true.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "The trigger will only fire iff all Conditions are true. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2378,7 +2378,7 @@
           }
         },
         "fingerprint": {
-          "description": "The fingerprint of the GTM Trigger as computed at storage time.\nThis value is recomputed whenever the trigger is modified.",
+          "description": "The fingerprint of the GTM Trigger as computed at storage time. This value is recomputed whenever the trigger is modified.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2388,27 +2388,27 @@
           "items": null
         },
         "horizontalScrollPercentageList": {
-          "description": "List of integer percentage values for scroll triggers. The trigger will\nfire when each percentage is reached when the view is scrolled\nhorizontally. Only valid for AMP scroll triggers.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled horizontally. Only valid for AMP scroll triggers. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "$ref": "Parameter"
         },
         "interval": {
-          "description": "Time between triggering recurring Timer Events (in milliseconds). Only\nvalid for Timer triggers.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer triggers. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "$ref": "Parameter"
         },
         "intervalSeconds": {
-          "description": "Time between Timer Events to fire (in seconds). Only valid for AMP Timer\ntrigger.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "$ref": "Parameter"
         },
         "limit": {
-          "description": "Limit of the number of GTM events this Timer Trigger will fire. If no limit\nis set, we will continue to fire GTM events until the user leaves the page.\nOnly valid for Timer triggers.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "Limit of the number of GTM events this Timer Trigger will fire. If no limit is set, we will continue to fire GTM events until the user leaves the page. Only valid for Timer triggers. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "$ref": "Parameter"
         },
         "maxTimerLengthSeconds": {
-          "description": "Max time to fire Timer Events (in seconds). Only valid for AMP Timer\ntrigger.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "Max time to fire Timer Events (in seconds). Only valid for AMP Timer trigger. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "$ref": "Parameter"
         },
         "name": {
-          "description": "Trigger display name.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "Trigger display name. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2418,7 +2418,7 @@
           "items": null
         },
         "parameter": {
-          "description": "Additional parameters.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update",
+          "description": "Additional parameters. @mutable tagmanager.accounts.containers.workspaces.triggers.create @mutable tagmanager.accounts.containers.workspaces.triggers.update",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2440,11 +2440,11 @@
           "items": null
         },
         "selector": {
-          "description": "A click trigger CSS selector (i.e. \"a\", \"button\" etc.). Only valid for AMP\nClick trigger.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "A click trigger CSS selector (i.e. \"a\", \"button\" etc.). Only valid for AMP Click trigger. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "$ref": "Parameter"
         },
         "totalTimeMinMilliseconds": {
-          "description": "A visibility trigger minimum total visible time (in milliseconds).\nOnly valid for AMP Visibility trigger.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "A visibility trigger minimum total visible time (in milliseconds). Only valid for AMP Visibility trigger. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "$ref": "Parameter"
         },
         "triggerId": {
@@ -2458,7 +2458,7 @@
           "items": null
         },
         "type": {
-          "description": "Defines the data layer event that causes this trigger.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "Defines the data layer event that causes this trigger. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "type": "string",
           "format": null,
           "enum": [
@@ -2508,31 +2508,31 @@
           "items": null
         },
         "uniqueTriggerId": {
-          "description": "Globally unique id of the trigger that auto-generates this (a Form Submit,\nLink Click or Timer listener) if any. Used to make incompatible auto-events\nwork together with trigger filtering based on trigger ids. This value is\npopulated during output generation since the tags implied by triggers don't\nexist until then. Only valid for Form Submit, Link Click and Timer\ntriggers.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "Globally unique id of the trigger that auto-generates this (a Form Submit, Link Click or Timer listener) if any. Used to make incompatible auto-events work together with trigger filtering based on trigger ids. This value is populated during output generation since the tags implied by triggers don't exist until then. Only valid for Form Submit, Link Click and Timer triggers. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "$ref": "Parameter"
         },
         "verticalScrollPercentageList": {
-          "description": "List of integer percentage values for scroll triggers. The trigger will\nfire when each percentage is reached when the view is scrolled vertically.\nOnly valid for AMP scroll triggers.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled vertically. Only valid for AMP scroll triggers. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "$ref": "Parameter"
         },
         "visibilitySelector": {
-          "description": "A visibility trigger CSS selector (i.e. \"#id\"). Only valid for AMP\nVisibility trigger.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "A visibility trigger CSS selector (i.e. \"#id\"). Only valid for AMP Visibility trigger. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "$ref": "Parameter"
         },
         "visiblePercentageMax": {
-          "description": "A visibility trigger maximum percent visibility. Only valid for AMP\nVisibility trigger.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "A visibility trigger maximum percent visibility. Only valid for AMP Visibility trigger. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "$ref": "Parameter"
         },
         "visiblePercentageMin": {
-          "description": "A visibility trigger minimum percent visibility. Only valid for AMP\nVisibility trigger.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "A visibility trigger minimum percent visibility. Only valid for AMP Visibility trigger. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "$ref": "Parameter"
         },
         "waitForTags": {
-          "description": "Whether or not we should delay the form submissions or link opening\nuntil all of the tags have fired (by preventing the default\naction and later simulating the default action). Only valid for\nForm Submission and Link Click triggers.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "Whether or not we should delay the form submissions or link opening until all of the tags have fired (by preventing the default action and later simulating the default action). Only valid for Form Submission and Link Click triggers. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "$ref": "Parameter"
         },
         "waitForTagsTimeout": {
-          "description": "How long to wait (in milliseconds) for tags to fire when 'waits_for_tags'\nabove evaluates to <code>true</code>.  Only valid for Form Submission and\nLink Click triggers.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update",
+          "description": "How long to wait (in milliseconds) for tags to fire when 'waits_for_tags' above evaluates to true. Only valid for Form Submission and Link Click triggers. @mutable tagmanager.accounts.containers.triggers.create @mutable tagmanager.accounts.containers.triggers.update",
           "$ref": "Parameter"
         }
       },
@@ -2548,7 +2548,7 @@
       "enumDescriptions": [],
       "properties": {
         "accountAccess": {
-          "description": "GTM Account access permissions.\n@mutable tagmanager.accounts.permissions.create\n@mutable tagmanager.accounts.permissions.update",
+          "description": "GTM Account access permissions. @mutable tagmanager.accounts.permissions.create @mutable tagmanager.accounts.permissions.update",
           "$ref": "AccountAccess"
         },
         "accountId": {
@@ -2562,7 +2562,7 @@
           "items": null
         },
         "containerAccess": {
-          "description": "GTM Container access permissions.\n@mutable tagmanager.accounts.permissions.create\n@mutable tagmanager.accounts.permissions.update",
+          "description": "GTM Container access permissions. @mutable tagmanager.accounts.permissions.create @mutable tagmanager.accounts.permissions.update",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2574,7 +2574,7 @@
           }
         },
         "emailAddress": {
-          "description": "User's email address.\n@mutable tagmanager.accounts.permissions.create",
+          "description": "User's email address. @mutable tagmanager.accounts.permissions.create",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2626,7 +2626,7 @@
           "items": null
         },
         "disablingTriggerId": {
-          "description": "For mobile containers only: A list of trigger IDs for disabling conditional\nvariables; the variable is enabled if one of the enabling trigger is true\nwhile all the disabling trigger are false. Treated as an unordered set.\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update",
+          "description": "For mobile containers only: A list of trigger IDs for disabling conditional variables; the variable is enabled if one of the enabling trigger is true while all the disabling trigger are false. Treated as an unordered set. @mutable tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2644,7 +2644,7 @@
           }
         },
         "enablingTriggerId": {
-          "description": "For mobile containers only: A list of trigger IDs for enabling conditional\nvariables; the variable is enabled if one of the enabling triggers is true\nwhile all the disabling triggers are false. Treated as an unordered set.\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update",
+          "description": "For mobile containers only: A list of trigger IDs for enabling conditional variables; the variable is enabled if one of the enabling triggers is true while all the disabling triggers are false. Treated as an unordered set. @mutable tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2662,7 +2662,7 @@
           }
         },
         "fingerprint": {
-          "description": "The fingerprint of the GTM Variable as computed at storage time.\nThis value is recomputed whenever the variable is modified.",
+          "description": "The fingerprint of the GTM Variable as computed at storage time. This value is recomputed whenever the variable is modified.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2672,7 +2672,7 @@
           "items": null
         },
         "name": {
-          "description": "Variable display name.\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update",
+          "description": "Variable display name. @mutable tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2682,7 +2682,7 @@
           "items": null
         },
         "notes": {
-          "description": "User notes on how to apply this variable in the container.\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update",
+          "description": "User notes on how to apply this variable in the container. @mutable tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2692,7 +2692,7 @@
           "items": null
         },
         "parameter": {
-          "description": "The variable's parameters.\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update",
+          "description": "The variable's parameters. @mutable tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2714,7 +2714,7 @@
           "items": null
         },
         "scheduleEndMs": {
-          "description": "The end timestamp in milliseconds to schedule a variable.\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update",
+          "description": "The end timestamp in milliseconds to schedule a variable. @mutable tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -2724,7 +2724,7 @@
           "items": null
         },
         "scheduleStartMs": {
-          "description": "The start timestamp in milliseconds to schedule a variable.\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update",
+          "description": "The start timestamp in milliseconds to schedule a variable. @mutable tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -2734,7 +2734,7 @@
           "items": null
         },
         "type": {
-          "description": "GTM Variable Type.\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update",
+          "description": "GTM Variable Type. @mutable tagmanager.accounts.containers.variables.create @mutable tagmanager.accounts.containers.variables.update",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3055,7 +3055,7 @@
                       "repeated": false
                     },
                     "fingerprint": {
-                      "description": "When provided, this fingerprint must match the fingerprint of the\nenvironment in storage.",
+                      "description": "When provided, this fingerprint must match the fingerprint of the environment in storage.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -3443,7 +3443,7 @@
                       "repeated": false
                     },
                     "fingerprint": {
-                      "description": "When provided, this fingerprint must match the fingerprint of the folder in\nstorage.",
+                      "description": "When provided, this fingerprint must match the fingerprint of the folder in storage.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -3959,7 +3959,7 @@
                       "repeated": false
                     },
                     "fingerprint": {
-                      "description": "When provided, this fingerprint must match the fingerprint of the tag in\nstorage.",
+                      "description": "When provided, this fingerprint must match the fingerprint of the tag in storage.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -4287,7 +4287,7 @@
                       "repeated": false
                     },
                     "fingerprint": {
-                      "description": "When provided, this fingerprint must match the fingerprint of the trigger\nin storage.",
+                      "description": "When provided, this fingerprint must match the fingerprint of the trigger in storage.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -4615,7 +4615,7 @@
                       "repeated": false
                     },
                     "fingerprint": {
-                      "description": "When provided, this fingerprint must match the fingerprint of the variable\nin storage.",
+                      "description": "When provided, this fingerprint must match the fingerprint of the variable in storage.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -4822,7 +4822,7 @@
                       "repeated": false
                     },
                     "containerVersionId": {
-                      "description": "The GTM Container Version ID. Specify <code>published</code> to retrieve\nthe currently published version.",
+                      "description": "The GTM Container Version ID. Specify published to retrieve the currently published version.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -4987,7 +4987,7 @@
                       "repeated": false
                     },
                     "fingerprint": {
-                      "description": "When provided, this fingerprint must match the fingerprint of the\ncontainer version in storage.",
+                      "description": "When provided, this fingerprint must match the fingerprint of the container version in storage.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -5023,7 +5023,7 @@
                   "id": "tagmanager.accounts.containers.versions.restore",
                   "path": "tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/restore",
                   "httpMethod": "POST",
-                  "description": "Restores a Container Version. This will overwrite the container's current\nconfiguration (including its variables, triggers and tags). The operation\nwill not have any effect on the version that is being served (i.e. the\npublished version).",
+                  "description": "Restores a Container Version. This will overwrite the container's current configuration (including its variables, triggers and tags). The operation will not have any effect on the version that is being served (i.e. the published version).",
                   "parameters": {
                     "accountId": {
                       "description": "The GTM Account ID.",
@@ -5202,7 +5202,7 @@
                       "repeated": false
                     },
                     "fingerprint": {
-                      "description": "When provided, this fingerprint must match the fingerprint of the\ncontainer version in storage.",
+                      "description": "When provided, this fingerprint must match the fingerprint of the container version in storage.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -5455,7 +5455,7 @@
                   "repeated": false
                 },
                 "fingerprint": {
-                  "description": "When provided, this fingerprint must match the fingerprint of the\ncontainer in storage.",
+                  "description": "When provided, this fingerprint must match the fingerprint of the container in storage.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -5536,7 +5536,7 @@
               "id": "tagmanager.accounts.permissions.delete",
               "path": "tagmanager/v1/accounts/{accountId}/permissions/{permissionId}",
               "httpMethod": "DELETE",
-              "description": "Removes a user from the account, revoking access to it and all of its\ncontainers.",
+              "description": "Removes a user from the account, revoking access to it and all of its containers.",
               "parameters": {
                 "accountId": {
                   "description": "The GTM Account ID.",
@@ -5638,7 +5638,7 @@
               "id": "tagmanager.accounts.permissions.list",
               "path": "tagmanager/v1/accounts/{accountId}/permissions",
               "httpMethod": "GET",
-              "description": "List all users that have access to the account along with Account and\nContainer Permissions granted to each of them.",
+              "description": "List all users that have access to the account along with Account and Container Permissions granted to each of them.",
               "parameters": {
                 "accountId": {
                   "description": "The GTM Account ID.",
@@ -5811,7 +5811,7 @@
               "repeated": false
             },
             "fingerprint": {
-              "description": "When provided, this fingerprint must match the fingerprint of the account\nin storage.",
+              "description": "When provided, this fingerprint must match the fingerprint of the account in storage.",
               "default": null,
               "location": "query",
               "required": false,

@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("firebaserules1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200430")
-            .about("Creates and manages rules that determine when a Firebase Rules-enabled service should permit a request.\n")
+            .version("0.1.0-20210126")
+            .about("Creates and manages rules that determine when a Firebase Rules-enabled service should permit a request. ")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -37,14 +37,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: test");
         {
-            let mcmd = SubCommand::with_name("test").about("Test `Source` for syntactic and semantic correctness. Issues present, if\nany, will be returned to the caller with a description, severity, and\nsource location.\n\nThe test method may be executed with `Source` or a `Ruleset` name.\nPassing `Source` is useful for unit testing new rules. Passing a `Ruleset`\nname is useful for regression testing an existing rule.\n\nThe following is an example of `Source` that permits users to upload images\nto a bucket bearing their user id and matching the correct metadata:\n\n_*Example*_\n\n    // Users are allowed to subscribe and unsubscribe to the blog.\n    service firebase.storage {\n      match /users/{userId}/images/{imageName} {\n          allow write: if userId == request.auth.uid\n              && (imageName.matches(\'*.png$\')\n              || imageName.matches(\'*.jpg$\'))\n              && resource.mimeType.matches(\'^image/\')\n      }\n    }");
+            let mcmd = SubCommand::with_name("test").about("Test `Source` for syntactic and semantic correctness. Issues present, if any, will be returned to the caller with a description, severity, and source location. The test method may be executed with `Source` or a `Ruleset` name. Passing `Source` is useful for unit testing new rules. Passing a `Ruleset` name is useful for regression testing an existing rule. The following is an example of `Source` that permits users to upload images to a bucket bearing their user id and matching the correct metadata: _*Example*_ // Users are allowed to subscribe and unsubscribe to the blog. service firebase.storage { match /users/{userId}/images/{imageName} { allow write: if userId == request.auth.uid && (imageName.matches(\'*.png$\') || imageName.matches(\'*.jpg$\')) && resource.mimeType.matches(\'^image/\') } }");
             projects0 = projects0.subcommand(mcmd);
         }
         let mut releases1 = SubCommand::with_name("releases")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get, get_executable, list and patch");
         {
-            let mcmd = SubCommand::with_name("create").about("Create a `Release`.\n\nRelease names should reflect the developer\'s deployment practices. For\nexample, the release name may include the environment name, application\nname, application version, or any other name meaningful to the developer.\nOnce a `Release` refers to a `Ruleset`, the rules can be enforced by\nFirebase Rules-enabled services.\n\nMore than one `Release` may be \'live\' concurrently. Consider the following\nthree `Release` names for `projects/foo` and the `Ruleset` to which they\nrefer.\n\nRelease Name                    | Ruleset Name\n--------------------------------|-------------\nprojects/foo/releases/prod      | projects/foo/rulesets/uuid123\nprojects/foo/releases/prod/beta | projects/foo/rulesets/uuid123\nprojects/foo/releases/prod/v23  | projects/foo/rulesets/uuid456\n\nThe table reflects the `Ruleset` rollout in progress. The `prod` and\n`prod/beta` releases refer to the same `Ruleset`. However, `prod/v23`\nrefers to a new `Ruleset`. The `Ruleset` reference for a `Release` may be\nupdated using the UpdateRelease method.");
+            let mcmd = SubCommand::with_name("create").about("Create a `Release`. Release names should reflect the developer\'s deployment practices. For example, the release name may include the environment name, application name, application version, or any other name meaningful to the developer. Once a `Release` refers to a `Ruleset`, the rules can be enforced by Firebase Rules-enabled services. More than one `Release` may be \'live\' concurrently. Consider the following three `Release` names for `projects/foo` and the `Ruleset` to which they refer. Release Name | Ruleset Name --------------------------------|------------- projects/foo/releases/prod | projects/foo/rulesets/uuid123 projects/foo/releases/prod/beta | projects/foo/rulesets/uuid123 projects/foo/releases/prod/v23 | projects/foo/rulesets/uuid456 The table reflects the `Ruleset` rollout in progress. The `prod` and `prod/beta` releases refer to the same `Ruleset`. However, `prod/v23` refers to a new `Ruleset`. The `Ruleset` reference for a `Release` may be updated using the UpdateRelease method.");
             releases1 = releases1.subcommand(mcmd);
         }
         {
@@ -62,22 +62,22 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             releases1 = releases1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("List the `Release` values for a project. This list may optionally be\nfiltered by `Release` name, `Ruleset` name, `TestSuite` name, or any\ncombination thereof.");
+            let mcmd = SubCommand::with_name("list").about("List the `Release` values for a project. This list may optionally be filtered by `Release` name, `Ruleset` name, `TestSuite` name, or any combination thereof.");
             releases1 = releases1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Update a `Release` via PATCH.\n\nOnly updates to the `ruleset_name` and `test_suite_name` fields will be\nhonored. `Release` rename is not supported. To create a `Release` use the\nCreateRelease method.");
+            let mcmd = SubCommand::with_name("patch").about("Update a `Release` via PATCH. Only updates to the `ruleset_name` and `test_suite_name` fields will be honored. `Release` rename is not supported. To create a `Release` use the CreateRelease method.");
             releases1 = releases1.subcommand(mcmd);
         }
         let mut rulesets1 = SubCommand::with_name("rulesets")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get and list");
         {
-            let mcmd = SubCommand::with_name("create").about("Create a `Ruleset` from `Source`.\n\nThe `Ruleset` is given a unique generated name which is returned to the\ncaller. `Source` containing syntactic or semantics errors will result in an\nerror response indicating the first error encountered. For a detailed view\nof `Source` issues, use TestRuleset.");
+            let mcmd = SubCommand::with_name("create").about("Create a `Ruleset` from `Source`. The `Ruleset` is given a unique generated name which is returned to the caller. `Source` containing syntactic or semantics errors will result in an error response indicating the first error encountered. For a detailed view of `Source` issues, use TestRuleset.");
             rulesets1 = rulesets1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Delete a `Ruleset` by resource name.\n\nIf the `Ruleset` is referenced by a `Release` the operation will fail.");
+            let mcmd = SubCommand::with_name("delete").about("Delete a `Ruleset` by resource name. If the `Ruleset` is referenced by a `Release` the operation will fail.");
             rulesets1 = rulesets1.subcommand(mcmd);
         }
         {
@@ -86,7 +86,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             rulesets1 = rulesets1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("List `Ruleset` metadata only and optionally filter the results by `Ruleset`\nname.\n\nThe full `Source` contents of a `Ruleset` may be retrieved with\nGetRuleset.");
+            let mcmd = SubCommand::with_name("list").about("List `Ruleset` metadata only and optionally filter the results by `Ruleset` name. The full `Source` contents of a `Ruleset` may be retrieved with GetRuleset.");
             rulesets1 = rulesets1.subcommand(mcmd);
         }
         projects0 = projects0.subcommand(rulesets1);

@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("monitoring3")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200509")
+            .version("0.1.0-20210307")
             .about("Manages your Cloud Monitoring data and configurations. Most projects must be associated with a Workspace, with a few exceptions as noted on the individual method pages. The table entries below are presented in alphabetical order, not in order of common use. For explanations of the concepts found in the table entries, read the Cloud Monitoring documentation.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -33,6 +33,12 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .help("Provide more output to aid with debugging")
                 .multiple(false)
                 .takes_value(false));
+        let mut folders0 = SubCommand::with_name("folders")
+            .setting(AppSettings::ColoredHelp)
+            .about("sub-resources: time_series");
+        let mut organizations0 = SubCommand::with_name("organizations")
+            .setting(AppSettings::ColoredHelp)
+            .about("sub-resources: time_series");
         let mut projects0 = SubCommand::with_name("projects")
                         .setting(AppSettings::ColoredHelp)
                         .about("sub-resources: alert_policies, collectd_time_series, groups, metric_descriptors, monitored_resource_descriptors, notification_channel_descriptors, notification_channels, time_series and uptime_check_configs");
@@ -67,6 +73,24 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .about("Returns the list of IP addresses that checkers run from");
             uptime_check_ips0 = uptime_check_ips0.subcommand(mcmd);
         }
+        let mut time_series1 = SubCommand::with_name("time_series")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: list");
+        {
+            let mcmd = SubCommand::with_name("list").about(
+                "Lists time series that match a filter. This method does not require a Workspace.",
+            );
+            time_series1 = time_series1.subcommand(mcmd);
+        }
+        let mut time_series1 = SubCommand::with_name("time_series")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: list");
+        {
+            let mcmd = SubCommand::with_name("list").about(
+                "Lists time series that match a filter. This method does not require a Workspace.",
+            );
+            time_series1 = time_series1.subcommand(mcmd);
+        }
         let mut alert_policies1 = SubCommand::with_name("alert_policies")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get, list and patch");
@@ -95,7 +119,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create");
         {
-            let mcmd = SubCommand::with_name("create").about("Stackdriver Monitoring Agent only: Creates a new time series.<aside class=\"caution\">This method is only for use by the Stackdriver Monitoring Agent. Use projects.timeSeries.create instead.</aside>");
+            let mcmd = SubCommand::with_name("create").about("Stackdriver Monitoring Agent only: Creates a new time series.This method is only for use by the Stackdriver Monitoring Agent. Use projects.timeSeries.create instead.");
             collectd_time_series1 = collectd_time_series1.subcommand(mcmd);
         }
         let mut groups1 = SubCommand::with_name("groups")
@@ -292,9 +316,13 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         projects0 = projects0.subcommand(groups1);
         projects0 = projects0.subcommand(collectd_time_series1);
         projects0 = projects0.subcommand(alert_policies1);
+        organizations0 = organizations0.subcommand(time_series1);
+        folders0 = folders0.subcommand(time_series1);
         app = app.subcommand(uptime_check_ips0);
         app = app.subcommand(services0);
         app = app.subcommand(projects0);
+        app = app.subcommand(organizations0);
+        app = app.subcommand(folders0);
 
         Self { app }
     }

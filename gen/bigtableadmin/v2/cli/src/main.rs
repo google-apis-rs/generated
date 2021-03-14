@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("bigtableadmin2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200424")
+            .version("0.1.0-20210301")
             .about("Administer your Cloud Bigtable tables and instances.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -37,15 +37,15 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: cancel, delete and get");
         {
-            let mcmd = SubCommand::with_name("cancel").about("Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn\'t support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.");
+            let mcmd = SubCommand::with_name("cancel").about("Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn\'t support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.");
             operations0 = operations0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn\'t support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn\'t support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.");
             operations0 = operations0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.");
+            let mcmd = SubCommand::with_name("get").about("Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.");
             operations0 = operations0.subcommand(mcmd);
         }
         let mut projects0 = SubCommand::with_name("projects")
@@ -71,7 +71,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instances1 = instances1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for an instance resource. Returns an empty\npolicy if an instance exists but does not have a policy set.");
+            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for an instance resource. Returns an empty policy if an instance exists but does not have a policy set.");
             instances1 = instances1.subcommand(mcmd);
         }
         {
@@ -80,11 +80,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instances1 = instances1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("partial_update_instance").about("Partially updates an instance within a project. This method can modify all\nfields of an Instance and is the preferred way to update an Instance.");
+            let mcmd = SubCommand::with_name("partial_update_instance").about("Partially updates an instance within a project. This method can modify all fields of an Instance and is the preferred way to update an Instance.");
             instances1 = instances1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on an instance resource. Replaces any\nexisting policy.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on an instance resource. Replaces any existing policy.");
             instances1 = instances1.subcommand(mcmd);
         }
         {
@@ -94,7 +94,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instances1 = instances1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Updates an instance within a project. This method updates only the display\nname and type for an Instance. To update other Instance properties, such as\nlabels, use PartialUpdateInstance.");
+            let mcmd = SubCommand::with_name("update").about("Updates an instance within a project. This method updates only the display name and type for an Instance. To update other Instance properties, such as labels, use PartialUpdateInstance.");
             instances1 = instances1.subcommand(mcmd);
         }
         let mut locations1 = SubCommand::with_name("locations")
@@ -113,7 +113,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("Lists operations that match the specified filter in the request. If the\nserver doesn\'t support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id.");
+            let mcmd = SubCommand::with_name("list").about("Lists operations that match the specified filter in the request. If the server doesn\'t support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.");
             operations2 = operations2.subcommand(mcmd);
         }
         let mut app_profiles2 = SubCommand::with_name("app_profiles")
@@ -171,13 +171,13 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut tables2 = SubCommand::with_name("tables")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: check_consistency, create, delete, drop_row_range, generate_consistency_token, get, get_iam_policy, list, modify_column_families, set_iam_policy and test_iam_permissions");
+                        .about("methods: check_consistency, create, delete, drop_row_range, generate_consistency_token, get, get_iam_policy, list, modify_column_families, restore, set_iam_policy and test_iam_permissions");
         {
-            let mcmd = SubCommand::with_name("check_consistency").about("Checks replication consistency based on a consistency token, that is, if\nreplication has caught up based on the conditions specified in the token\nand the check request.");
+            let mcmd = SubCommand::with_name("check_consistency").about("Checks replication consistency based on a consistency token, that is, if replication has caught up based on the conditions specified in the token and the check request.");
             tables2 = tables2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a new table in the specified instance.\nThe table can be created with a full set of initial column families,\nspecified in the request.");
+            let mcmd = SubCommand::with_name("create").about("Creates a new table in the specified instance. The table can be created with a full set of initial column families, specified in the request.");
             tables2 = tables2.subcommand(mcmd);
         }
         {
@@ -186,11 +186,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             tables2 = tables2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("drop_row_range").about("Permanently drop/delete a row range from a specified table. The request can\nspecify whether to delete all rows in a table, or only those that match a\nparticular prefix.");
+            let mcmd = SubCommand::with_name("drop_row_range").about("Permanently drop/delete a row range from a specified table. The request can specify whether to delete all rows in a table, or only those that match a particular prefix.");
             tables2 = tables2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("generate_consistency_token").about("Generates a consistency token for a Table, which can be used in\nCheckConsistency to check whether mutations to the table that finished\nbefore this call started have been replicated. The tokens will be available\nfor 90 days.");
+            let mcmd = SubCommand::with_name("generate_consistency_token").about("Generates a consistency token for a Table, which can be used in CheckConsistency to check whether mutations to the table that finished before this call started have been replicated. The tokens will be available for 90 days.");
             tables2 = tables2.subcommand(mcmd);
         }
         {
@@ -199,7 +199,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             tables2 = tables2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a Table resource.\nReturns an empty policy if the resource exists but does not have a policy\nset.");
+            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a Table resource. Returns an empty policy if the resource exists but does not have a policy set.");
             tables2 = tables2.subcommand(mcmd);
         }
         {
@@ -208,11 +208,17 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             tables2 = tables2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("modify_column_families").about("Performs a series of column family modifications on the specified table.\nEither all or none of the modifications will occur before this method\nreturns, but data requests received prior to that point may see a table\nwhere only some modifications have taken effect.");
+            let mcmd = SubCommand::with_name("modify_column_families").about("Performs a series of column family modifications on the specified table. Either all or none of the modifications will occur before this method returns, but data requests received prior to that point may see a table where only some modifications have taken effect.");
             tables2 = tables2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on a Table resource.\nReplaces any existing policy.");
+            let mcmd = SubCommand::with_name("restore").about("Create a new table by restoring from a completed backup. The new table must be in the same instance as the instance containing the backup. The returned table long-running operation can be used to track the progress of the operation, and to cancel it. The metadata field type is RestoreTableMetadata. The response type is Table, if successful.");
+            tables2 = tables2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("set_iam_policy").about(
+                "Sets the access control policy on a Table resource. Replaces any existing policy.",
+            );
             tables2 = tables2.subcommand(mcmd);
         }
         {
@@ -221,14 +227,40 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             tables2 = tables2.subcommand(mcmd);
         }
         let mut backups3 = SubCommand::with_name("backups")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: get_iam_policy, set_iam_policy and test_iam_permissions");
+                        .setting(AppSettings::ColoredHelp)
+                        .about("methods: create, delete, get, get_iam_policy, list, patch, set_iam_policy and test_iam_permissions");
         {
-            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a Table resource.\nReturns an empty policy if the resource exists but does not have a policy\nset.");
+            let mcmd = SubCommand::with_name("create").about("Starts creating a new Cloud Bigtable Backup. The returned backup long-running operation can be used to track creation of the backup. The metadata field type is CreateBackupMetadata. The response field type is Backup, if successful. Cancelling the returned operation will stop the creation and delete the backup.");
             backups3 = backups3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on a Table resource.\nReplaces any existing policy.");
+            let mcmd = SubCommand::with_name("delete")
+                .about("Deletes a pending or completed Cloud Bigtable backup.");
+            backups3 = backups3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Gets metadata on a pending or completed Cloud Bigtable Backup.");
+            backups3 = backups3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a Table resource. Returns an empty policy if the resource exists but does not have a policy set.");
+            backups3 = backups3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists Cloud Bigtable backups. Returns both completed and pending backups.");
+            backups3 = backups3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch")
+                .about("Updates a pending or completed Cloud Bigtable Backup.");
+            backups3 = backups3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("set_iam_policy").about(
+                "Sets the access control policy on a Table resource. Replaces any existing policy.",
+            );
             backups3 = backups3.subcommand(mcmd);
         }
         {

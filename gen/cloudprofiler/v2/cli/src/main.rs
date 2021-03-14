@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("cloudprofiler2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200504")
+            .version("0.1.0-20210308")
             .about("Manages continuous profiling information.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -40,15 +40,15 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, create_offline and patch");
         {
-            let mcmd = SubCommand::with_name("create").about("CreateProfile creates a new profile resource in the online mode.\n\nThe server ensures that the new profiles are created at a constant rate per\ndeployment, so the creation request may hang for some time until the next\nprofile session is available.\n\nThe request may fail with ABORTED error if the creation is not available\nwithin ~1m, the response will indicate the duration of the backoff the\nclient should take before attempting creating a profile again. The backoff\nduration is returned in google.rpc.RetryInfo extension on the response\nstatus. To a gRPC client, the extension will be return as a\nbinary-serialized proto in the trailing metadata item named\n\"google.rpc.retryinfo-bin\".");
+            let mcmd = SubCommand::with_name("create").about("CreateProfile creates a new profile resource in the online mode. The server ensures that the new profiles are created at a constant rate per deployment, so the creation request may hang for some time until the next profile session is available. The request may fail with ABORTED error if the creation is not available within ~1m, the response will indicate the duration of the backoff the client should take before attempting creating a profile again. The backoff duration is returned in google.rpc.RetryInfo extension on the response status. To a gRPC client, the extension will be return as a binary-serialized proto in the trailing metadata item named \"google.rpc.retryinfo-bin\".");
             profiles1 = profiles1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("create_offline").about("CreateOfflineProfile creates a new profile resource in the offline mode.\nThe client provides the profile to create along with the profile bytes, the\nserver records it.");
+            let mcmd = SubCommand::with_name("create_offline").about("CreateOfflineProfile creates a new profile resource in the offline mode. The client provides the profile to create along with the profile bytes, the server records it.");
             profiles1 = profiles1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("UpdateProfile updates the profile bytes and labels on the profile resource\ncreated in the online mode. Updating the bytes for profiles created in the\noffline mode is currently not supported: the profile content must be\nprovided at the time of the profile creation.");
+            let mcmd = SubCommand::with_name("patch").about("UpdateProfile updates the profile bytes and labels on the profile resource created in the online mode. Updating the bytes for profiles created in the offline mode is currently not supported: the profile content must be provided at the time of the profile creation.");
             profiles1 = profiles1.subcommand(mcmd);
         }
         projects0 = projects0.subcommand(profiles1);
