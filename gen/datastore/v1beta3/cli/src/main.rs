@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("datastore1_beta3")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200524")
-            .about("Accesses the schemaless NoSQL database to provide fully managed, robust, scalable storage for your application.\n")
+            .version("0.1.0-20210220")
+            .about("Accesses the schemaless NoSQL database to provide fully managed, robust, scalable storage for your application. ")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -37,7 +37,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: allocate_ids, begin_transaction, commit, lookup, reserve_ids, rollback and run_query");
         {
-            let mcmd = SubCommand::with_name("allocate_ids").about("Allocates IDs for the given keys, which is useful for referencing an entity\nbefore it is inserted.");
+            let mcmd = SubCommand::with_name("allocate_ids").about("Allocates IDs for the given keys, which is useful for referencing an entity before it is inserted.");
             projects0 = projects0.subcommand(mcmd);
         }
         {
@@ -47,7 +47,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("commit").about(
-                "Commits a transaction, optionally creating, deleting or modifying some\nentities.",
+                "Commits a transaction, optionally creating, deleting or modifying some entities.",
             );
             projects0 = projects0.subcommand(mcmd);
         }
@@ -57,7 +57,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("reserve_ids").about(
-                "Prevents the supplied keys\' IDs from being auto-allocated by Cloud\nDatastore.",
+                "Prevents the supplied keys\' IDs from being auto-allocated by Cloud Datastore.",
             );
             projects0 = projects0.subcommand(mcmd);
         }

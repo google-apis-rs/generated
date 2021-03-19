@@ -87,14 +87,14 @@ pub mod schemas {
         )]
         pub managed_configurations:
             ::std::option::Option<crate::schemas::AdministratorWebTokenSpecManagedConfigurations>,
-        #[doc = "The URI of the parent frame hosting the iframe. To prevent XSS, the iframe\nmay not be hosted at other URIs. This URI must be https.\nUse whitespaces to separate multiple parent URIs."]
+        #[doc = "The URI of the parent frame hosting the iframe. To prevent XSS, the iframe may not be hosted at other URIs. This URI must be https. Use whitespaces to separate multiple parent URIs."]
         #[serde(
             rename = "parent",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub parent: ::std::option::Option<String>,
-        #[doc = "Deprecated. Use <code>PlaySearch.approveApps</code>."]
+        #[doc = "Deprecated. Use PlaySearch.approveApps."]
         #[serde(
             rename = "permission",
             default,
@@ -145,16 +145,19 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AdministratorWebTokenSpecPermissionItems {
+        #[doc = "Permission to approve and unapprove apps."]
         ApproveApps,
+        #[doc = "Permission to manage app restrictions."]
         ManageMcm,
+        #[doc = "Unknown permission."]
         Unknown,
     }
     impl AdministratorWebTokenSpecPermissionItems {
         pub fn as_str(self) -> &'static str {
             match self {
-                AdministratorWebTokenSpecPermissionItems::ApproveApps => "APPROVE_APPS",
-                AdministratorWebTokenSpecPermissionItems::ManageMcm => "MANAGE_MCM",
-                AdministratorWebTokenSpecPermissionItems::Unknown => "UNKNOWN",
+                AdministratorWebTokenSpecPermissionItems::ApproveApps => "approveApps",
+                AdministratorWebTokenSpecPermissionItems::ManageMcm => "manageMcm",
+                AdministratorWebTokenSpecPermissionItems::Unknown => "unknown",
             }
         }
     }
@@ -169,9 +172,9 @@ pub mod schemas {
             s: &str,
         ) -> ::std::result::Result<AdministratorWebTokenSpecPermissionItems, ()> {
             Ok(match s {
-                "APPROVE_APPS" => AdministratorWebTokenSpecPermissionItems::ApproveApps,
-                "MANAGE_MCM" => AdministratorWebTokenSpecPermissionItems::ManageMcm,
-                "UNKNOWN" => AdministratorWebTokenSpecPermissionItems::Unknown,
+                "approveApps" => AdministratorWebTokenSpecPermissionItems::ApproveApps,
+                "manageMcm" => AdministratorWebTokenSpecPermissionItems::ManageMcm,
+                "unknown" => AdministratorWebTokenSpecPermissionItems::Unknown,
                 _ => return Err(()),
             })
         }
@@ -196,9 +199,9 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "APPROVE_APPS" => AdministratorWebTokenSpecPermissionItems::ApproveApps,
-                "MANAGE_MCM" => AdministratorWebTokenSpecPermissionItems::ManageMcm,
-                "UNKNOWN" => AdministratorWebTokenSpecPermissionItems::Unknown,
+                "approveApps" => AdministratorWebTokenSpecPermissionItems::ApproveApps,
+                "manageMcm" => AdministratorWebTokenSpecPermissionItems::ManageMcm,
+                "unknown" => AdministratorWebTokenSpecPermissionItems::Unknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -262,7 +265,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AdministratorWebTokenSpecPlaySearch {
-        #[doc = "Allow access to the iframe in <a\nhref=\"https://developers.google.com/android/work/play/emm-api/managed-play-iframe#render\">approve\nmode</a>. Default is false."]
+        #[doc = "Allow access to the iframe in approve mode. Default is false."]
         #[serde(
             rename = "approveApps",
             default,
@@ -432,7 +435,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AppRestrictionsSchemaChangeEvent {
-        #[doc = "The id of the product (e.g. \"app:com.google.android.gm\") for which the\napp restriction schema changed. This field will always be present."]
+        #[doc = "The id of the product (e.g. \"app:com.google.android.gm\") for which the app restriction schema changed. This field will always be present."]
         #[serde(
             rename = "productId",
             default,
@@ -463,7 +466,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AppRestrictionsSchemaRestriction {
-        #[doc = "The default value of the restriction. <code>bundle</code> and\n<code>bundleArray</code> restrictions never have a default value."]
+        #[doc = "The default value of the restriction. bundle and bundleArray restrictions never have a default value."]
         #[serde(
             rename = "defaultValue",
             default,
@@ -471,35 +474,35 @@ pub mod schemas {
         )]
         pub default_value:
             ::std::option::Option<crate::schemas::AppRestrictionsSchemaRestrictionRestrictionValue>,
-        #[doc = "A longer description of the restriction, giving more detail of what it\naffects."]
+        #[doc = "A longer description of the restriction, giving more detail of what it affects."]
         #[serde(
             rename = "description",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "For <code>choice</code> or <code>multiselect</code> restrictions, the list\nof possible entries' human-readable names."]
+        #[doc = "For choice or multiselect restrictions, the list of possible entries' human-readable names."]
         #[serde(
             rename = "entry",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub entry: ::std::option::Option<Vec<String>>,
-        #[doc = "For <code>choice</code> or <code>multiselect</code> restrictions, the list\nof possible entries' machine-readable values. These values should be used\nin the configuration, either as a single <code>string</code> value for a\n<code>choice</code> restriction or in a <code>stringArray</code> for a\n<code>multiselect</code> restriction."]
+        #[doc = "For choice or multiselect restrictions, the list of possible entries' machine-readable values. These values should be used in the configuration, either as a single string value for a choice restriction or in a stringArray for a multiselect restriction."]
         #[serde(
             rename = "entryValue",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub entry_value: ::std::option::Option<Vec<String>>,
-        #[doc = "The unique key that the product uses to identify the restriction,\ne.g. \"com.google.android.gm.fieldname\"."]
+        #[doc = "The unique key that the product uses to identify the restriction, e.g. \"com.google.android.gm.fieldname\"."]
         #[serde(
             rename = "key",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub key: ::std::option::Option<String>,
-        #[doc = "For <code>bundle</code> or <code>bundleArray</code> restrictions, the list\nof nested restrictions. A <code>bundle</code> restriction is always nested\nwithin a <code>bundleArray</code> restriction, and a\n<code>bundleArray</code> restriction is at most two levels deep."]
+        #[doc = "For bundle or bundleArray restrictions, the list of nested restrictions. A bundle restriction is always nested within a bundleArray restriction, and a bundleArray restriction is at most two levels deep."]
         #[serde(
             rename = "nestedRestriction",
             default,
@@ -543,7 +546,7 @@ pub mod schemas {
         BundleArray,
         #[doc = "A choice of one item from a set."]
         Choice,
-        #[doc = "A hidden restriction of string type (the default value can be used\nto pass along information that cannot be modified, such as a version\ncode)."]
+        #[doc = "A hidden restriction of string type (the default value can be used to pass along information that cannot be modified, such as a version code)."]
         Hidden,
         #[doc = "A restriction of integer type."]
         Integer,
@@ -555,14 +558,14 @@ pub mod schemas {
     impl AppRestrictionsSchemaRestrictionRestrictionType {
         pub fn as_str(self) -> &'static str {
             match self {
-                AppRestrictionsSchemaRestrictionRestrictionType::Bool => "BOOL",
-                AppRestrictionsSchemaRestrictionRestrictionType::Bundle => "BUNDLE",
-                AppRestrictionsSchemaRestrictionRestrictionType::BundleArray => "BUNDLE_ARRAY",
-                AppRestrictionsSchemaRestrictionRestrictionType::Choice => "CHOICE",
-                AppRestrictionsSchemaRestrictionRestrictionType::Hidden => "HIDDEN",
-                AppRestrictionsSchemaRestrictionRestrictionType::Integer => "INTEGER",
-                AppRestrictionsSchemaRestrictionRestrictionType::Multiselect => "MULTISELECT",
-                AppRestrictionsSchemaRestrictionRestrictionType::String => "STRING",
+                AppRestrictionsSchemaRestrictionRestrictionType::Bool => "bool",
+                AppRestrictionsSchemaRestrictionRestrictionType::Bundle => "bundle",
+                AppRestrictionsSchemaRestrictionRestrictionType::BundleArray => "bundleArray",
+                AppRestrictionsSchemaRestrictionRestrictionType::Choice => "choice",
+                AppRestrictionsSchemaRestrictionRestrictionType::Hidden => "hidden",
+                AppRestrictionsSchemaRestrictionRestrictionType::Integer => "integer",
+                AppRestrictionsSchemaRestrictionRestrictionType::Multiselect => "multiselect",
+                AppRestrictionsSchemaRestrictionRestrictionType::String => "string",
             }
         }
     }
@@ -577,14 +580,14 @@ pub mod schemas {
             s: &str,
         ) -> ::std::result::Result<AppRestrictionsSchemaRestrictionRestrictionType, ()> {
             Ok(match s {
-                "BOOL" => AppRestrictionsSchemaRestrictionRestrictionType::Bool,
-                "BUNDLE" => AppRestrictionsSchemaRestrictionRestrictionType::Bundle,
-                "BUNDLE_ARRAY" => AppRestrictionsSchemaRestrictionRestrictionType::BundleArray,
-                "CHOICE" => AppRestrictionsSchemaRestrictionRestrictionType::Choice,
-                "HIDDEN" => AppRestrictionsSchemaRestrictionRestrictionType::Hidden,
-                "INTEGER" => AppRestrictionsSchemaRestrictionRestrictionType::Integer,
-                "MULTISELECT" => AppRestrictionsSchemaRestrictionRestrictionType::Multiselect,
-                "STRING" => AppRestrictionsSchemaRestrictionRestrictionType::String,
+                "bool" => AppRestrictionsSchemaRestrictionRestrictionType::Bool,
+                "bundle" => AppRestrictionsSchemaRestrictionRestrictionType::Bundle,
+                "bundleArray" => AppRestrictionsSchemaRestrictionRestrictionType::BundleArray,
+                "choice" => AppRestrictionsSchemaRestrictionRestrictionType::Choice,
+                "hidden" => AppRestrictionsSchemaRestrictionRestrictionType::Hidden,
+                "integer" => AppRestrictionsSchemaRestrictionRestrictionType::Integer,
+                "multiselect" => AppRestrictionsSchemaRestrictionRestrictionType::Multiselect,
+                "string" => AppRestrictionsSchemaRestrictionRestrictionType::String,
                 _ => return Err(()),
             })
         }
@@ -609,14 +612,14 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "BOOL" => AppRestrictionsSchemaRestrictionRestrictionType::Bool,
-                "BUNDLE" => AppRestrictionsSchemaRestrictionRestrictionType::Bundle,
-                "BUNDLE_ARRAY" => AppRestrictionsSchemaRestrictionRestrictionType::BundleArray,
-                "CHOICE" => AppRestrictionsSchemaRestrictionRestrictionType::Choice,
-                "HIDDEN" => AppRestrictionsSchemaRestrictionRestrictionType::Hidden,
-                "INTEGER" => AppRestrictionsSchemaRestrictionRestrictionType::Integer,
-                "MULTISELECT" => AppRestrictionsSchemaRestrictionRestrictionType::Multiselect,
-                "STRING" => AppRestrictionsSchemaRestrictionRestrictionType::String,
+                "bool" => AppRestrictionsSchemaRestrictionRestrictionType::Bool,
+                "bundle" => AppRestrictionsSchemaRestrictionRestrictionType::Bundle,
+                "bundleArray" => AppRestrictionsSchemaRestrictionRestrictionType::BundleArray,
+                "choice" => AppRestrictionsSchemaRestrictionRestrictionType::Choice,
+                "hidden" => AppRestrictionsSchemaRestrictionRestrictionType::Hidden,
+                "integer" => AppRestrictionsSchemaRestrictionRestrictionType::Integer,
+                "multiselect" => AppRestrictionsSchemaRestrictionRestrictionType::Multiselect,
+                "string" => AppRestrictionsSchemaRestrictionRestrictionType::String,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -672,14 +675,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub value_integer: ::std::option::Option<i32>,
-        #[doc = "The list of string values - this will only be present if type is\nmultiselect."]
+        #[doc = "The list of string values - this will only be present if type is multiselect."]
         #[serde(
             rename = "valueMultiselect",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub value_multiselect: ::std::option::Option<Vec<String>>,
-        #[doc = "The string value - this will be present for types string, choice and\nhidden."]
+        #[doc = "The string value - this will be present for types string, choice and hidden."]
         #[serde(
             rename = "valueString",
             default,
@@ -707,7 +710,7 @@ pub mod schemas {
         BundleArray,
         #[doc = "A choice of one item from a set."]
         Choice,
-        #[doc = "A hidden restriction of string type (the default value can be used\nto pass along information that cannot be modified, such as a version\ncode)."]
+        #[doc = "A hidden restriction of string type (the default value can be used to pass along information that cannot be modified, such as a version code)."]
         Hidden,
         #[doc = "A restriction of integer type."]
         Integer,
@@ -719,14 +722,14 @@ pub mod schemas {
     impl AppRestrictionsSchemaRestrictionRestrictionValueType {
         pub fn as_str(self) -> &'static str {
             match self {
-                AppRestrictionsSchemaRestrictionRestrictionValueType::Bool => "BOOL",
-                AppRestrictionsSchemaRestrictionRestrictionValueType::Bundle => "BUNDLE",
-                AppRestrictionsSchemaRestrictionRestrictionValueType::BundleArray => "BUNDLE_ARRAY",
-                AppRestrictionsSchemaRestrictionRestrictionValueType::Choice => "CHOICE",
-                AppRestrictionsSchemaRestrictionRestrictionValueType::Hidden => "HIDDEN",
-                AppRestrictionsSchemaRestrictionRestrictionValueType::Integer => "INTEGER",
-                AppRestrictionsSchemaRestrictionRestrictionValueType::Multiselect => "MULTISELECT",
-                AppRestrictionsSchemaRestrictionRestrictionValueType::String => "STRING",
+                AppRestrictionsSchemaRestrictionRestrictionValueType::Bool => "bool",
+                AppRestrictionsSchemaRestrictionRestrictionValueType::Bundle => "bundle",
+                AppRestrictionsSchemaRestrictionRestrictionValueType::BundleArray => "bundleArray",
+                AppRestrictionsSchemaRestrictionRestrictionValueType::Choice => "choice",
+                AppRestrictionsSchemaRestrictionRestrictionValueType::Hidden => "hidden",
+                AppRestrictionsSchemaRestrictionRestrictionValueType::Integer => "integer",
+                AppRestrictionsSchemaRestrictionRestrictionValueType::Multiselect => "multiselect",
+                AppRestrictionsSchemaRestrictionRestrictionValueType::String => "string",
             }
         }
     }
@@ -742,14 +745,14 @@ pub mod schemas {
         ) -> ::std::result::Result<AppRestrictionsSchemaRestrictionRestrictionValueType, ()>
         {
             Ok(match s {
-                "BOOL" => AppRestrictionsSchemaRestrictionRestrictionValueType::Bool,
-                "BUNDLE" => AppRestrictionsSchemaRestrictionRestrictionValueType::Bundle,
-                "BUNDLE_ARRAY" => AppRestrictionsSchemaRestrictionRestrictionValueType::BundleArray,
-                "CHOICE" => AppRestrictionsSchemaRestrictionRestrictionValueType::Choice,
-                "HIDDEN" => AppRestrictionsSchemaRestrictionRestrictionValueType::Hidden,
-                "INTEGER" => AppRestrictionsSchemaRestrictionRestrictionValueType::Integer,
-                "MULTISELECT" => AppRestrictionsSchemaRestrictionRestrictionValueType::Multiselect,
-                "STRING" => AppRestrictionsSchemaRestrictionRestrictionValueType::String,
+                "bool" => AppRestrictionsSchemaRestrictionRestrictionValueType::Bool,
+                "bundle" => AppRestrictionsSchemaRestrictionRestrictionValueType::Bundle,
+                "bundleArray" => AppRestrictionsSchemaRestrictionRestrictionValueType::BundleArray,
+                "choice" => AppRestrictionsSchemaRestrictionRestrictionValueType::Choice,
+                "hidden" => AppRestrictionsSchemaRestrictionRestrictionValueType::Hidden,
+                "integer" => AppRestrictionsSchemaRestrictionRestrictionValueType::Integer,
+                "multiselect" => AppRestrictionsSchemaRestrictionRestrictionValueType::Multiselect,
+                "string" => AppRestrictionsSchemaRestrictionRestrictionValueType::String,
                 _ => return Err(()),
             })
         }
@@ -774,14 +777,14 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "BOOL" => AppRestrictionsSchemaRestrictionRestrictionValueType::Bool,
-                "BUNDLE" => AppRestrictionsSchemaRestrictionRestrictionValueType::Bundle,
-                "BUNDLE_ARRAY" => AppRestrictionsSchemaRestrictionRestrictionValueType::BundleArray,
-                "CHOICE" => AppRestrictionsSchemaRestrictionRestrictionValueType::Choice,
-                "HIDDEN" => AppRestrictionsSchemaRestrictionRestrictionValueType::Hidden,
-                "INTEGER" => AppRestrictionsSchemaRestrictionRestrictionValueType::Integer,
-                "MULTISELECT" => AppRestrictionsSchemaRestrictionRestrictionValueType::Multiselect,
-                "STRING" => AppRestrictionsSchemaRestrictionRestrictionValueType::String,
+                "bool" => AppRestrictionsSchemaRestrictionRestrictionValueType::Bool,
+                "bundle" => AppRestrictionsSchemaRestrictionRestrictionValueType::Bundle,
+                "bundleArray" => AppRestrictionsSchemaRestrictionRestrictionValueType::BundleArray,
+                "choice" => AppRestrictionsSchemaRestrictionRestrictionValueType::Choice,
+                "hidden" => AppRestrictionsSchemaRestrictionRestrictionValueType::Hidden,
+                "integer" => AppRestrictionsSchemaRestrictionRestrictionValueType::Integer,
+                "multiselect" => AppRestrictionsSchemaRestrictionRestrictionValueType::Multiselect,
+                "string" => AppRestrictionsSchemaRestrictionRestrictionValueType::String,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -816,14 +819,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AppState {
-        #[doc = "List of keyed app states.\nThis field will always be present."]
+        #[doc = "List of keyed app states. This field will always be present."]
         #[serde(
             rename = "keyedAppState",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub keyed_app_state: ::std::option::Option<Vec<crate::schemas::KeyedAppState>>,
-        #[doc = "The package name of the app.\nThis field will always be present."]
+        #[doc = "The package name of the app. This field will always be present."]
         #[serde(
             rename = "packageName",
             default,
@@ -854,7 +857,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AppUpdateEvent {
-        #[doc = "The id of the product (e.g. \"app:com.google.android.gm\") that was updated.\nThis field will always be present."]
+        #[doc = "The id of the product (e.g. \"app:com.google.android.gm\") that was updated. This field will always be present."]
         #[serde(
             rename = "productId",
             default,
@@ -892,14 +895,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_production: ::std::option::Option<bool>,
-        #[doc = "Deprecated, use <code>trackId</code> instead."]
+        #[doc = "Deprecated, use trackId instead."]
         #[serde(
             rename = "track",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub track: ::std::option::Option<crate::schemas::AppVersionTrack>,
-        #[doc = "Track ids that the app version is published in. Replaces the\n<code>track</code> field (deprecated), but doesn't include the production\ntrack (see <code>isProduction</code> instead)."]
+        #[doc = "Track ids that the app version is published in. Replaces the track field (deprecated), but doesn't include the production track (see isProduction instead)."]
         #[serde(
             rename = "trackId",
             default,
@@ -913,7 +916,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub version_code: ::std::option::Option<i32>,
-        #[doc = "The string used in the Play store by the app developer to identify\nthe version.\nThe string is not necessarily unique or localized (for example, the string\ncould be \"1.4\")."]
+        #[doc = "The string used in the Play store by the app developer to identify the version. The string is not necessarily unique or localized (for example, the string could be \"1.4\")."]
         #[serde(
             rename = "versionString",
             default,
@@ -941,10 +944,10 @@ pub mod schemas {
     impl AppVersionTrack {
         pub fn as_str(self) -> &'static str {
             match self {
-                AppVersionTrack::Alpha => "ALPHA",
-                AppVersionTrack::AppTrackUnspecified => "APP_TRACK_UNSPECIFIED",
-                AppVersionTrack::Beta => "BETA",
-                AppVersionTrack::Production => "PRODUCTION",
+                AppVersionTrack::Alpha => "alpha",
+                AppVersionTrack::AppTrackUnspecified => "appTrackUnspecified",
+                AppVersionTrack::Beta => "beta",
+                AppVersionTrack::Production => "production",
             }
         }
     }
@@ -957,10 +960,10 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<AppVersionTrack, ()> {
             Ok(match s {
-                "ALPHA" => AppVersionTrack::Alpha,
-                "APP_TRACK_UNSPECIFIED" => AppVersionTrack::AppTrackUnspecified,
-                "BETA" => AppVersionTrack::Beta,
-                "PRODUCTION" => AppVersionTrack::Production,
+                "alpha" => AppVersionTrack::Alpha,
+                "appTrackUnspecified" => AppVersionTrack::AppTrackUnspecified,
+                "beta" => AppVersionTrack::Beta,
+                "production" => AppVersionTrack::Production,
                 _ => return Err(()),
             })
         }
@@ -985,10 +988,10 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "ALPHA" => AppVersionTrack::Alpha,
-                "APP_TRACK_UNSPECIFIED" => AppVersionTrack::AppTrackUnspecified,
-                "BETA" => AppVersionTrack::Beta,
-                "PRODUCTION" => AppVersionTrack::Production,
+                "alpha" => AppVersionTrack::Alpha,
+                "appTrackUnspecified" => AppVersionTrack::AppTrackUnspecified,
+                "beta" => AppVersionTrack::Beta,
+                "production" => AppVersionTrack::Production,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1021,7 +1024,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ApprovalUrlInfo {
-        #[doc = "A URL that displays a product's permissions and that can also be used to\napprove the product with the <code>Products.approve</code> call."]
+        #[doc = "A URL that displays a product's permissions and that can also be used to approve the product with the Products.approve call."]
         #[serde(
             rename = "approvalUrl",
             default,
@@ -1052,7 +1055,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AuthenticationToken {
-        #[doc = "The authentication token to be passed to the device policy client on the\ndevice where it can be used to provision the account for which this token\nwas generated."]
+        #[doc = "The authentication token to be passed to the device policy client on the device where it can be used to provision the account for which this token was generated."]
         #[serde(
             rename = "token",
             default,
@@ -1128,7 +1131,7 @@ pub mod schemas {
     }
     impl AutoInstallConstraintChargingStateConstraint {
         pub fn as_str(self) -> &'static str {
-            match self { AutoInstallConstraintChargingStateConstraint :: ChargingNotRequired => "CHARGING_NOT_REQUIRED" , AutoInstallConstraintChargingStateConstraint :: ChargingRequired => "CHARGING_REQUIRED" , AutoInstallConstraintChargingStateConstraint :: ChargingStateConstraintUnspecified => "CHARGING_STATE_CONSTRAINT_UNSPECIFIED" , }
+            match self { AutoInstallConstraintChargingStateConstraint :: ChargingNotRequired => "chargingNotRequired" , AutoInstallConstraintChargingStateConstraint :: ChargingRequired => "chargingRequired" , AutoInstallConstraintChargingStateConstraint :: ChargingStateConstraintUnspecified => "chargingStateConstraintUnspecified" , }
         }
     }
     impl ::std::convert::AsRef<str> for AutoInstallConstraintChargingStateConstraint {
@@ -1142,13 +1145,13 @@ pub mod schemas {
             s: &str,
         ) -> ::std::result::Result<AutoInstallConstraintChargingStateConstraint, ()> {
             Ok(match s {
-                "CHARGING_NOT_REQUIRED" => {
+                "chargingNotRequired" => {
                     AutoInstallConstraintChargingStateConstraint::ChargingNotRequired
                 }
-                "CHARGING_REQUIRED" => {
+                "chargingRequired" => {
                     AutoInstallConstraintChargingStateConstraint::ChargingRequired
                 }
-                "CHARGING_STATE_CONSTRAINT_UNSPECIFIED" => {
+                "chargingStateConstraintUnspecified" => {
                     AutoInstallConstraintChargingStateConstraint::ChargingStateConstraintUnspecified
                 }
                 _ => return Err(()),
@@ -1175,13 +1178,13 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "CHARGING_NOT_REQUIRED" => {
+                "chargingNotRequired" => {
                     AutoInstallConstraintChargingStateConstraint::ChargingNotRequired
                 }
-                "CHARGING_REQUIRED" => {
+                "chargingRequired" => {
                     AutoInstallConstraintChargingStateConstraint::ChargingRequired
                 }
-                "CHARGING_STATE_CONSTRAINT_UNSPECIFIED" => {
+                "chargingStateConstraintUnspecified" => {
                     AutoInstallConstraintChargingStateConstraint::ChargingStateConstraintUnspecified
                 }
                 _ => {
@@ -1205,7 +1208,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AutoInstallConstraintDeviceIdleStateConstraint {
-        #[doc = "Device doesn't have to be idle, app can be installed while the user is\ninteracting with the device."]
+        #[doc = "Device doesn't have to be idle, app can be installed while the user is interacting with the device."]
         DeviceIdleNotRequired,
         #[doc = "Device has to be idle."]
         DeviceIdleRequired,
@@ -1213,7 +1216,7 @@ pub mod schemas {
     }
     impl AutoInstallConstraintDeviceIdleStateConstraint {
         pub fn as_str(self) -> &'static str {
-            match self { AutoInstallConstraintDeviceIdleStateConstraint :: DeviceIdleNotRequired => "DEVICE_IDLE_NOT_REQUIRED" , AutoInstallConstraintDeviceIdleStateConstraint :: DeviceIdleRequired => "DEVICE_IDLE_REQUIRED" , AutoInstallConstraintDeviceIdleStateConstraint :: DeviceIdleStateConstraintUnspecified => "DEVICE_IDLE_STATE_CONSTRAINT_UNSPECIFIED" , }
+            match self { AutoInstallConstraintDeviceIdleStateConstraint :: DeviceIdleNotRequired => "deviceIdleNotRequired" , AutoInstallConstraintDeviceIdleStateConstraint :: DeviceIdleRequired => "deviceIdleRequired" , AutoInstallConstraintDeviceIdleStateConstraint :: DeviceIdleStateConstraintUnspecified => "deviceIdleStateConstraintUnspecified" , }
         }
     }
     impl ::std::convert::AsRef<str> for AutoInstallConstraintDeviceIdleStateConstraint {
@@ -1226,7 +1229,7 @@ pub mod schemas {
         fn from_str(
             s: &str,
         ) -> ::std::result::Result<AutoInstallConstraintDeviceIdleStateConstraint, ()> {
-            Ok ( match s { "DEVICE_IDLE_NOT_REQUIRED" => AutoInstallConstraintDeviceIdleStateConstraint :: DeviceIdleNotRequired , "DEVICE_IDLE_REQUIRED" => AutoInstallConstraintDeviceIdleStateConstraint :: DeviceIdleRequired , "DEVICE_IDLE_STATE_CONSTRAINT_UNSPECIFIED" => AutoInstallConstraintDeviceIdleStateConstraint :: DeviceIdleStateConstraintUnspecified , _ => return Err ( ( ) ) , } )
+            Ok ( match s { "deviceIdleNotRequired" => AutoInstallConstraintDeviceIdleStateConstraint :: DeviceIdleNotRequired , "deviceIdleRequired" => AutoInstallConstraintDeviceIdleStateConstraint :: DeviceIdleRequired , "deviceIdleStateConstraintUnspecified" => AutoInstallConstraintDeviceIdleStateConstraint :: DeviceIdleStateConstraintUnspecified , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display for AutoInstallConstraintDeviceIdleStateConstraint {
@@ -1248,7 +1251,7 @@ pub mod schemas {
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "DEVICE_IDLE_NOT_REQUIRED" => AutoInstallConstraintDeviceIdleStateConstraint :: DeviceIdleNotRequired , "DEVICE_IDLE_REQUIRED" => AutoInstallConstraintDeviceIdleStateConstraint :: DeviceIdleRequired , "DEVICE_IDLE_STATE_CONSTRAINT_UNSPECIFIED" => AutoInstallConstraintDeviceIdleStateConstraint :: DeviceIdleStateConstraintUnspecified , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "deviceIdleNotRequired" => AutoInstallConstraintDeviceIdleStateConstraint :: DeviceIdleNotRequired , "deviceIdleRequired" => AutoInstallConstraintDeviceIdleStateConstraint :: DeviceIdleRequired , "deviceIdleStateConstraintUnspecified" => AutoInstallConstraintDeviceIdleStateConstraint :: DeviceIdleStateConstraintUnspecified , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::google_field_selector::FieldSelector for AutoInstallConstraintDeviceIdleStateConstraint {
@@ -1272,11 +1275,11 @@ pub mod schemas {
     impl AutoInstallConstraintNetworkTypeConstraint {
         pub fn as_str(self) -> &'static str {
             match self {
-                AutoInstallConstraintNetworkTypeConstraint::AnyNetwork => "ANY_NETWORK",
+                AutoInstallConstraintNetworkTypeConstraint::AnyNetwork => "anyNetwork",
                 AutoInstallConstraintNetworkTypeConstraint::NetworkTypeConstraintUnspecified => {
-                    "NETWORK_TYPE_CONSTRAINT_UNSPECIFIED"
+                    "networkTypeConstraintUnspecified"
                 }
-                AutoInstallConstraintNetworkTypeConstraint::UnmeteredNetwork => "UNMETERED_NETWORK",
+                AutoInstallConstraintNetworkTypeConstraint::UnmeteredNetwork => "unmeteredNetwork",
             }
         }
     }
@@ -1291,11 +1294,11 @@ pub mod schemas {
             s: &str,
         ) -> ::std::result::Result<AutoInstallConstraintNetworkTypeConstraint, ()> {
             Ok(match s {
-                "ANY_NETWORK" => AutoInstallConstraintNetworkTypeConstraint::AnyNetwork,
-                "NETWORK_TYPE_CONSTRAINT_UNSPECIFIED" => {
+                "anyNetwork" => AutoInstallConstraintNetworkTypeConstraint::AnyNetwork,
+                "networkTypeConstraintUnspecified" => {
                     AutoInstallConstraintNetworkTypeConstraint::NetworkTypeConstraintUnspecified
                 }
-                "UNMETERED_NETWORK" => AutoInstallConstraintNetworkTypeConstraint::UnmeteredNetwork,
+                "unmeteredNetwork" => AutoInstallConstraintNetworkTypeConstraint::UnmeteredNetwork,
                 _ => return Err(()),
             })
         }
@@ -1320,11 +1323,11 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "ANY_NETWORK" => AutoInstallConstraintNetworkTypeConstraint::AnyNetwork,
-                "NETWORK_TYPE_CONSTRAINT_UNSPECIFIED" => {
+                "anyNetwork" => AutoInstallConstraintNetworkTypeConstraint::AnyNetwork,
+                "networkTypeConstraintUnspecified" => {
                     AutoInstallConstraintNetworkTypeConstraint::NetworkTypeConstraintUnspecified
                 }
-                "UNMETERED_NETWORK" => AutoInstallConstraintNetworkTypeConstraint::UnmeteredNetwork,
+                "unmeteredNetwork" => AutoInstallConstraintNetworkTypeConstraint::UnmeteredNetwork,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1357,7 +1360,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AutoInstallPolicy {
-        #[doc = "The constraints for auto-installing the app. You can specify a maximum of\none constraint."]
+        #[doc = "The constraints for auto-installing the app. You can specify a maximum of one constraint."]
         #[serde(
             rename = "autoInstallConstraint",
             default,
@@ -1373,14 +1376,14 @@ pub mod schemas {
         )]
         pub auto_install_mode:
             ::std::option::Option<crate::schemas::AutoInstallPolicyAutoInstallMode>,
-        #[doc = "The priority of the install, as an unsigned integer. A lower number means\nhigher priority."]
+        #[doc = "The priority of the install, as an unsigned integer. A lower number means higher priority."]
         #[serde(
             rename = "autoInstallPriority",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub auto_install_priority: ::std::option::Option<i32>,
-        #[doc = "The minimum version of the app. If a lower version of the app is installed,\nthen the app will be auto-updated according to the auto-install\nconstraints, instead of waiting for the regular auto-update. You can set a\nminimum version code for at most 20 apps per device."]
+        #[doc = "The minimum version of the app. If a lower version of the app is installed, then the app will be auto-updated according to the auto-install constraints, instead of waiting for the regular auto-update. You can set a minimum version code for at most 20 apps per device."]
         #[serde(
             rename = "minimumVersionCode",
             default,
@@ -1401,22 +1404,22 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AutoInstallPolicyAutoInstallMode {
         AutoInstallModeUnspecified,
-        #[doc = "The product is automatically installed once, if the user uninstalls the\nproduct it will not be installed again."]
+        #[doc = "The product is automatically installed once, if the user uninstalls the product it will not be installed again."]
         AutoInstallOnce,
-        #[doc = "The product is not installed automatically, the user needs to install it\nfrom the Play Store."]
+        #[doc = "The product is not installed automatically, the user needs to install it from the Play Store."]
         DoNotAutoInstall,
-        #[doc = "The product is automatically installed, if the user uninstalls the\nproduct it will be installed again. On managed devices the DPC should\nblock uninstall."]
+        #[doc = "The product is automatically installed, if the user uninstalls the product it will be installed again. On managed devices the DPC should block uninstall."]
         ForceAutoInstall,
     }
     impl AutoInstallPolicyAutoInstallMode {
         pub fn as_str(self) -> &'static str {
             match self {
                 AutoInstallPolicyAutoInstallMode::AutoInstallModeUnspecified => {
-                    "AUTO_INSTALL_MODE_UNSPECIFIED"
+                    "autoInstallModeUnspecified"
                 }
-                AutoInstallPolicyAutoInstallMode::AutoInstallOnce => "AUTO_INSTALL_ONCE",
-                AutoInstallPolicyAutoInstallMode::DoNotAutoInstall => "DO_NOT_AUTO_INSTALL",
-                AutoInstallPolicyAutoInstallMode::ForceAutoInstall => "FORCE_AUTO_INSTALL",
+                AutoInstallPolicyAutoInstallMode::AutoInstallOnce => "autoInstallOnce",
+                AutoInstallPolicyAutoInstallMode::DoNotAutoInstall => "doNotAutoInstall",
+                AutoInstallPolicyAutoInstallMode::ForceAutoInstall => "forceAutoInstall",
             }
         }
     }
@@ -1429,12 +1432,12 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<AutoInstallPolicyAutoInstallMode, ()> {
             Ok(match s {
-                "AUTO_INSTALL_MODE_UNSPECIFIED" => {
+                "autoInstallModeUnspecified" => {
                     AutoInstallPolicyAutoInstallMode::AutoInstallModeUnspecified
                 }
-                "AUTO_INSTALL_ONCE" => AutoInstallPolicyAutoInstallMode::AutoInstallOnce,
-                "DO_NOT_AUTO_INSTALL" => AutoInstallPolicyAutoInstallMode::DoNotAutoInstall,
-                "FORCE_AUTO_INSTALL" => AutoInstallPolicyAutoInstallMode::ForceAutoInstall,
+                "autoInstallOnce" => AutoInstallPolicyAutoInstallMode::AutoInstallOnce,
+                "doNotAutoInstall" => AutoInstallPolicyAutoInstallMode::DoNotAutoInstall,
+                "forceAutoInstall" => AutoInstallPolicyAutoInstallMode::ForceAutoInstall,
                 _ => return Err(()),
             })
         }
@@ -1459,12 +1462,12 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "AUTO_INSTALL_MODE_UNSPECIFIED" => {
+                "autoInstallModeUnspecified" => {
                     AutoInstallPolicyAutoInstallMode::AutoInstallModeUnspecified
                 }
-                "AUTO_INSTALL_ONCE" => AutoInstallPolicyAutoInstallMode::AutoInstallOnce,
-                "DO_NOT_AUTO_INSTALL" => AutoInstallPolicyAutoInstallMode::DoNotAutoInstall,
-                "FORCE_AUTO_INSTALL" => AutoInstallPolicyAutoInstallMode::ForceAutoInstall,
+                "autoInstallOnce" => AutoInstallPolicyAutoInstallMode::AutoInstallOnce,
+                "doNotAutoInstall" => AutoInstallPolicyAutoInstallMode::DoNotAutoInstall,
+                "forceAutoInstall" => AutoInstallPolicyAutoInstallMode::ForceAutoInstall,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1535,14 +1538,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Device {
-        #[doc = "The Google Play Services Android ID for the device encoded as\na lowercase hex string. For example,\n<code>\"123456789abcdef0\"</code>."]
+        #[doc = "The Google Play Services Android ID for the device encoded as a lowercase hex string. For example, \"123456789abcdef0\"."]
         #[serde(
             rename = "androidId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub android_id: ::std::option::Option<String>,
-        #[doc = "Identifies the extent to which the device is controlled by a managed\nGoogle Play EMM in various deployment configurations. <br><br>\nPossible values include:\n\n<ul><li>\"<code>managedDevice</code>\", a device that has the EMM's device\npolicy controller (DPC) as the device owner.</li>\n<li>\"<code>managedProfile</code>\", a device that has a profile managed\nby the DPC (DPC is profile owner) in addition to a separate, personal\nprofile that is unavailable to the DPC.</li>\n<li>\"<code>containerApp</code>\", no longer used (deprecated).</li>\n<li>\"<code>unmanagedProfile</code>\", a device that has been allowed (by the\ndomain's admin, using the Admin Console to enable the privilege) to use\nmanaged Google Play, but the profile is itself\nnot owned by a DPC.</li></ul>"]
+        #[doc = "Identifies the extent to which the device is controlled by a managed Google Play EMM in various deployment configurations. Possible values include: - \"managedDevice\", a device that has the EMM's device policy controller (DPC) as the device owner. - \"managedProfile\", a device that has a profile managed by the DPC (DPC is profile owner) in addition to a separate, personal profile that is unavailable to the DPC. - \"containerApp\", no longer used (deprecated). - \"unmanagedProfile\", a device that has been allowed (by the domain's admin, using the Admin Console to enable the privilege) to use managed Google Play, but the profile is itself not owned by a DPC. "]
         #[serde(
             rename = "managementType",
             default,
@@ -1584,10 +1587,10 @@ pub mod schemas {
     impl DeviceManagementType {
         pub fn as_str(self) -> &'static str {
             match self {
-                DeviceManagementType::ContainerApp => "CONTAINER_APP",
-                DeviceManagementType::ManagedDevice => "MANAGED_DEVICE",
-                DeviceManagementType::ManagedProfile => "MANAGED_PROFILE",
-                DeviceManagementType::UnmanagedProfile => "UNMANAGED_PROFILE",
+                DeviceManagementType::ContainerApp => "containerApp",
+                DeviceManagementType::ManagedDevice => "managedDevice",
+                DeviceManagementType::ManagedProfile => "managedProfile",
+                DeviceManagementType::UnmanagedProfile => "unmanagedProfile",
             }
         }
     }
@@ -1600,10 +1603,10 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<DeviceManagementType, ()> {
             Ok(match s {
-                "CONTAINER_APP" => DeviceManagementType::ContainerApp,
-                "MANAGED_DEVICE" => DeviceManagementType::ManagedDevice,
-                "MANAGED_PROFILE" => DeviceManagementType::ManagedProfile,
-                "UNMANAGED_PROFILE" => DeviceManagementType::UnmanagedProfile,
+                "containerApp" => DeviceManagementType::ContainerApp,
+                "managedDevice" => DeviceManagementType::ManagedDevice,
+                "managedProfile" => DeviceManagementType::ManagedProfile,
+                "unmanagedProfile" => DeviceManagementType::UnmanagedProfile,
                 _ => return Err(()),
             })
         }
@@ -1628,10 +1631,10 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "CONTAINER_APP" => DeviceManagementType::ContainerApp,
-                "MANAGED_DEVICE" => DeviceManagementType::ManagedDevice,
-                "MANAGED_PROFILE" => DeviceManagementType::ManagedProfile,
-                "UNMANAGED_PROFILE" => DeviceManagementType::UnmanagedProfile,
+                "containerApp" => DeviceManagementType::ContainerApp,
+                "managedDevice" => DeviceManagementType::ManagedDevice,
+                "managedProfile" => DeviceManagementType::ManagedProfile,
+                "unmanagedProfile" => DeviceManagementType::UnmanagedProfile,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1664,14 +1667,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DeviceReport {
-        #[doc = "List of app states set by managed apps on the device. App states are\ndefined by the app's developers.\nThis field will always be present."]
+        #[doc = "List of app states set by managed apps on the device. App states are defined by the app's developers. This field will always be present."]
         #[serde(
             rename = "appState",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub app_state: ::std::option::Option<Vec<crate::schemas::AppState>>,
-        #[doc = "The timestamp of the last report update in milliseconds since epoch.\nThis field will always be present."]
+        #[doc = "The timestamp of the last report update in milliseconds since epoch. This field will always be present."]
         #[serde(
             rename = "lastUpdatedTimestampMillis",
             default,
@@ -1703,21 +1706,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DeviceReportUpdateEvent {
-        #[doc = "The Android ID of the device.\nThis field will always be present."]
+        #[doc = "The Android ID of the device. This field will always be present."]
         #[serde(
             rename = "deviceId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub device_id: ::std::option::Option<String>,
-        #[doc = "The device report updated with the latest app states.\nThis field will always be present."]
+        #[doc = "The device report updated with the latest app states. This field will always be present."]
         #[serde(
             rename = "report",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub report: ::std::option::Option<crate::schemas::DeviceReport>,
-        #[doc = "The ID of the user.\nThis field will always be present."]
+        #[doc = "The ID of the user. This field will always be present."]
         #[serde(
             rename = "userId",
             default,
@@ -1748,7 +1751,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DeviceState {
-        #[doc = "The state of the Google account on the device. \"enabled\" indicates that\nthe Google account on the device can be used to access Google services\n(including Google Play), while \"disabled\" means that it cannot.\nA new device is initially in the \"disabled\" state."]
+        #[doc = "The state of the Google account on the device. \"enabled\" indicates that the Google account on the device can be used to access Google services (including Google Play), while \"disabled\" means that it cannot. A new device is initially in the \"disabled\" state."]
         #[serde(
             rename = "accountState",
             default,
@@ -1774,8 +1777,8 @@ pub mod schemas {
     impl DeviceStateAccountState {
         pub fn as_str(self) -> &'static str {
             match self {
-                DeviceStateAccountState::Disabled => "DISABLED",
-                DeviceStateAccountState::Enabled => "ENABLED",
+                DeviceStateAccountState::Disabled => "disabled",
+                DeviceStateAccountState::Enabled => "enabled",
             }
         }
     }
@@ -1788,8 +1791,8 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<DeviceStateAccountState, ()> {
             Ok(match s {
-                "DISABLED" => DeviceStateAccountState::Disabled,
-                "ENABLED" => DeviceStateAccountState::Enabled,
+                "disabled" => DeviceStateAccountState::Disabled,
+                "enabled" => DeviceStateAccountState::Enabled,
                 _ => return Err(()),
             })
         }
@@ -1814,8 +1817,8 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "DISABLED" => DeviceStateAccountState::Disabled,
-                "ENABLED" => DeviceStateAccountState::Enabled,
+                "disabled" => DeviceStateAccountState::Disabled,
+                "enabled" => DeviceStateAccountState::Enabled,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1879,7 +1882,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Enterprise {
-        #[doc = "Admins of the enterprise. This is only supported for enterprises\ncreated via the EMM-initiated flow."]
+        #[doc = "Admins of the enterprise. This is only supported for enterprises created via the EMM-initiated flow."]
         #[serde(
             rename = "administrator",
             default,
@@ -2000,7 +2003,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub message_id: ::std::option::Option<String>,
-        #[doc = "The name of the Cloud Pub/Sub topic to which notifications for this\nenterprise's enrolled account will be sent."]
+        #[doc = "The name of the Cloud Pub/Sub topic to which notifications for this enterprise's enrolled account will be sent."]
         #[serde(
             rename = "topicName",
             default,
@@ -2031,14 +2034,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Entitlement {
-        #[doc = "The ID of the product that the entitlement is for. For example,\n<code>\"app:com.google.android.gm\"</code>."]
+        #[doc = "The ID of the product that the entitlement is for. For example, \"app:com.google.android.gm\"."]
         #[serde(
             rename = "productId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub product_id: ::std::option::Option<String>,
-        #[doc = "The reason for the entitlement. For example, <code class=\"\">\"free\"</code>\nfor free apps. This property is temporary: it will be replaced by the <code\nclass=\"\">acquisition kind</code> field of group licenses."]
+        #[doc = "The reason for the entitlement. For example, \"free\" for free apps. This property is temporary: it will be replaced by the acquisition kind field of group licenses."]
         #[serde(
             rename = "reason",
             default,
@@ -2065,9 +2068,9 @@ pub mod schemas {
     impl EntitlementReason {
         pub fn as_str(self) -> &'static str {
             match self {
-                EntitlementReason::Free => "FREE",
-                EntitlementReason::GroupLicense => "GROUP_LICENSE",
-                EntitlementReason::UserPurchase => "USER_PURCHASE",
+                EntitlementReason::Free => "free",
+                EntitlementReason::GroupLicense => "groupLicense",
+                EntitlementReason::UserPurchase => "userPurchase",
             }
         }
     }
@@ -2080,9 +2083,9 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<EntitlementReason, ()> {
             Ok(match s {
-                "FREE" => EntitlementReason::Free,
-                "GROUP_LICENSE" => EntitlementReason::GroupLicense,
-                "USER_PURCHASE" => EntitlementReason::UserPurchase,
+                "free" => EntitlementReason::Free,
+                "groupLicense" => EntitlementReason::GroupLicense,
+                "userPurchase" => EntitlementReason::UserPurchase,
                 _ => return Err(()),
             })
         }
@@ -2107,9 +2110,9 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "FREE" => EntitlementReason::Free,
-                "GROUP_LICENSE" => EntitlementReason::GroupLicense,
-                "USER_PURCHASE" => EntitlementReason::UserPurchase,
+                "free" => EntitlementReason::Free,
+                "groupLicense" => EntitlementReason::GroupLicense,
+                "userPurchase" => EntitlementReason::UserPurchase,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2142,7 +2145,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct EntitlementsListResponse {
-        #[doc = "An entitlement of a user to a product (e.g. an app).\nFor example, a free app that they have installed, or a paid app that they\nhave been allocated a license to."]
+        #[doc = "An entitlement of a user to a product (e.g. an app). For example, a free app that they have installed, or a paid app that they have been allocated a license to."]
         #[serde(
             rename = "entitlement",
             default,
@@ -2173,42 +2176,42 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GroupLicense {
-        #[doc = "How this group license was acquired. <code>\"bulkPurchase\"</code>\nmeans that this Grouplicenses resource was created because the enterprise\npurchased licenses for this product; otherwise, the value is\n<code>\"free\"</code> (for free products)."]
+        #[doc = "How this group license was acquired. \"bulkPurchase\" means that this Grouplicenses resource was created because the enterprise purchased licenses for this product; otherwise, the value is \"free\" (for free products)."]
         #[serde(
             rename = "acquisitionKind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub acquisition_kind: ::std::option::Option<crate::schemas::GroupLicenseAcquisitionKind>,
-        #[doc = "Whether the product to which this group license relates is currently\napproved by the enterprise. Products are approved when a group license is\nfirst created, but this approval may be revoked by an enterprise admin via\nGoogle Play. Unapproved products will not be visible to end users in\ncollections, and new entitlements to them should not normally be created."]
+        #[doc = "Whether the product to which this group license relates is currently approved by the enterprise. Products are approved when a group license is first created, but this approval may be revoked by an enterprise admin via Google Play. Unapproved products will not be visible to end users in collections, and new entitlements to them should not normally be created."]
         #[serde(
             rename = "approval",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub approval: ::std::option::Option<crate::schemas::GroupLicenseApproval>,
-        #[doc = "The total number of provisioned licenses for this product.\nReturned by read operations, but ignored in write operations."]
+        #[doc = "The total number of provisioned licenses for this product. Returned by read operations, but ignored in write operations."]
         #[serde(
             rename = "numProvisioned",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub num_provisioned: ::std::option::Option<i32>,
-        #[doc = "The number of purchased licenses (possibly in multiple purchases).\nIf this field is omitted, then there is no limit on the number of licenses\nthat can be provisioned (for example, if the acquisition kind is\n<code>\"free\"</code>)."]
+        #[doc = "The number of purchased licenses (possibly in multiple purchases). If this field is omitted, then there is no limit on the number of licenses that can be provisioned (for example, if the acquisition kind is \"free\")."]
         #[serde(
             rename = "numPurchased",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub num_purchased: ::std::option::Option<i32>,
-        #[doc = "The permission approval status of the product. This field\nis only set if the product is approved. Possible states are:<ul>\n\n<li>\"<code>currentApproved</code>\", the current set\nof permissions is approved, but additional permissions will require the\nadministrator to reapprove the product (If the product was approved\nwithout specifying the approved permissions setting, then this is the\ndefault behavior.),</li>\n<li>\"<code>needsReapproval</code>\", the product has unapproved permissions.\nNo additional product licenses can be assigned until the product is\nreapproved,</li>\n<li>\"<code>allCurrentAndFutureApproved</code>\",\nthe current permissions are approved and any future permission updates\nwill be automatically approved without administrator review.</li></ul>"]
+        #[doc = "The permission approval status of the product. This field is only set if the product is approved. Possible states are: - \"currentApproved\", the current set of permissions is approved, but additional permissions will require the administrator to reapprove the product (If the product was approved without specifying the approved permissions setting, then this is the default behavior.), - \"needsReapproval\", the product has unapproved permissions. No additional product licenses can be assigned until the product is reapproved, - \"allCurrentAndFutureApproved\", the current permissions are approved and any future permission updates will be automatically approved without administrator review. "]
         #[serde(
             rename = "permissions",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub permissions: ::std::option::Option<crate::schemas::GroupLicensePermissions>,
-        #[doc = "The ID of the product that the license is for. For example,\n<code>\"app:com.google.android.gm\"</code>."]
+        #[doc = "The ID of the product that the license is for. For example, \"app:com.google.android.gm\"."]
         #[serde(
             rename = "productId",
             default,
@@ -2234,8 +2237,8 @@ pub mod schemas {
     impl GroupLicenseAcquisitionKind {
         pub fn as_str(self) -> &'static str {
             match self {
-                GroupLicenseAcquisitionKind::BulkPurchase => "BULK_PURCHASE",
-                GroupLicenseAcquisitionKind::Free => "FREE",
+                GroupLicenseAcquisitionKind::BulkPurchase => "bulkPurchase",
+                GroupLicenseAcquisitionKind::Free => "free",
             }
         }
     }
@@ -2248,8 +2251,8 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<GroupLicenseAcquisitionKind, ()> {
             Ok(match s {
-                "BULK_PURCHASE" => GroupLicenseAcquisitionKind::BulkPurchase,
-                "FREE" => GroupLicenseAcquisitionKind::Free,
+                "bulkPurchase" => GroupLicenseAcquisitionKind::BulkPurchase,
+                "free" => GroupLicenseAcquisitionKind::Free,
                 _ => return Err(()),
             })
         }
@@ -2274,8 +2277,8 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "BULK_PURCHASE" => GroupLicenseAcquisitionKind::BulkPurchase,
-                "FREE" => GroupLicenseAcquisitionKind::Free,
+                "bulkPurchase" => GroupLicenseAcquisitionKind::BulkPurchase,
+                "free" => GroupLicenseAcquisitionKind::Free,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2303,8 +2306,8 @@ pub mod schemas {
     impl GroupLicenseApproval {
         pub fn as_str(self) -> &'static str {
             match self {
-                GroupLicenseApproval::Approved => "APPROVED",
-                GroupLicenseApproval::Unapproved => "UNAPPROVED",
+                GroupLicenseApproval::Approved => "approved",
+                GroupLicenseApproval::Unapproved => "unapproved",
             }
         }
     }
@@ -2317,8 +2320,8 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<GroupLicenseApproval, ()> {
             Ok(match s {
-                "APPROVED" => GroupLicenseApproval::Approved,
-                "UNAPPROVED" => GroupLicenseApproval::Unapproved,
+                "approved" => GroupLicenseApproval::Approved,
+                "unapproved" => GroupLicenseApproval::Unapproved,
                 _ => return Err(()),
             })
         }
@@ -2343,8 +2346,8 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "APPROVED" => GroupLicenseApproval::Approved,
-                "UNAPPROVED" => GroupLicenseApproval::Unapproved,
+                "approved" => GroupLicenseApproval::Approved,
+                "unapproved" => GroupLicenseApproval::Unapproved,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2374,10 +2377,10 @@ pub mod schemas {
         pub fn as_str(self) -> &'static str {
             match self {
                 GroupLicensePermissions::AllCurrentAndFutureApproved => {
-                    "ALL_CURRENT_AND_FUTURE_APPROVED"
+                    "allCurrentAndFutureApproved"
                 }
-                GroupLicensePermissions::CurrentApproved => "CURRENT_APPROVED",
-                GroupLicensePermissions::NeedsReapproval => "NEEDS_REAPPROVAL",
+                GroupLicensePermissions::CurrentApproved => "currentApproved",
+                GroupLicensePermissions::NeedsReapproval => "needsReapproval",
             }
         }
     }
@@ -2390,11 +2393,11 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<GroupLicensePermissions, ()> {
             Ok(match s {
-                "ALL_CURRENT_AND_FUTURE_APPROVED" => {
+                "allCurrentAndFutureApproved" => {
                     GroupLicensePermissions::AllCurrentAndFutureApproved
                 }
-                "CURRENT_APPROVED" => GroupLicensePermissions::CurrentApproved,
-                "NEEDS_REAPPROVAL" => GroupLicensePermissions::NeedsReapproval,
+                "currentApproved" => GroupLicensePermissions::CurrentApproved,
+                "needsReapproval" => GroupLicensePermissions::NeedsReapproval,
                 _ => return Err(()),
             })
         }
@@ -2419,11 +2422,11 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "ALL_CURRENT_AND_FUTURE_APPROVED" => {
+                "allCurrentAndFutureApproved" => {
                     GroupLicensePermissions::AllCurrentAndFutureApproved
                 }
-                "CURRENT_APPROVED" => GroupLicensePermissions::CurrentApproved,
-                "NEEDS_REAPPROVAL" => GroupLicensePermissions::NeedsReapproval,
+                "currentApproved" => GroupLicensePermissions::CurrentApproved,
+                "needsReapproval" => GroupLicensePermissions::NeedsReapproval,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2518,21 +2521,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Install {
-        #[doc = "Install state. The state <code>\"installPending\"</code>\nmeans that an install request has recently been made and download to the\ndevice is in progress. The state <code>\"installed\"</code>\nmeans that the app has been installed. This field is read-only."]
+        #[doc = "Install state. The state \"installPending\" means that an install request has recently been made and download to the device is in progress. The state \"installed\" means that the app has been installed. This field is read-only."]
         #[serde(
             rename = "installState",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub install_state: ::std::option::Option<crate::schemas::InstallInstallState>,
-        #[doc = "The ID of the product that the install is for. For example,\n<code>\"app:com.google.android.gm\"</code>."]
+        #[doc = "The ID of the product that the install is for. For example, \"app:com.google.android.gm\"."]
         #[serde(
             rename = "productId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub product_id: ::std::option::Option<String>,
-        #[doc = "The version of the installed product. Guaranteed to be set only if the\ninstall state is <code>\"installed\"</code>."]
+        #[doc = "The version of the installed product. Guaranteed to be set only if the install state is \"installed\"."]
         #[serde(
             rename = "versionCode",
             default,
@@ -2558,8 +2561,8 @@ pub mod schemas {
     impl InstallInstallState {
         pub fn as_str(self) -> &'static str {
             match self {
-                InstallInstallState::InstallPending => "INSTALL_PENDING",
-                InstallInstallState::Installed => "INSTALLED",
+                InstallInstallState::InstallPending => "installPending",
+                InstallInstallState::Installed => "installed",
             }
         }
     }
@@ -2572,8 +2575,8 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<InstallInstallState, ()> {
             Ok(match s {
-                "INSTALL_PENDING" => InstallInstallState::InstallPending,
-                "INSTALLED" => InstallInstallState::Installed,
+                "installPending" => InstallInstallState::InstallPending,
+                "installed" => InstallInstallState::Installed,
                 _ => return Err(()),
             })
         }
@@ -2598,8 +2601,8 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "INSTALL_PENDING" => InstallInstallState::InstallPending,
-                "INSTALLED" => InstallInstallState::Installed,
+                "installPending" => InstallInstallState::InstallPending,
+                "installed" => InstallInstallState::Installed,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2632,7 +2635,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct InstallFailureEvent {
-        #[doc = "The Android ID of the device.\nThis field will always be present."]
+        #[doc = "The Android ID of the device. This field will always be present."]
         #[serde(
             rename = "deviceId",
             default,
@@ -2646,21 +2649,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub failure_details: ::std::option::Option<String>,
-        #[doc = "The reason for the installation failure.\nThis field will always be present."]
+        #[doc = "The reason for the installation failure. This field will always be present."]
         #[serde(
             rename = "failureReason",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub failure_reason: ::std::option::Option<crate::schemas::InstallFailureEventFailureReason>,
-        #[doc = "The id of the product (e.g. \"app:com.google.android.gm\") for which the\ninstall failure event occured. This field will always be present."]
+        #[doc = "The id of the product (e.g. \"app:com.google.android.gm\") for which the install failure event occured. This field will always be present."]
         #[serde(
             rename = "productId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub product_id: ::std::option::Option<String>,
-        #[doc = "The ID of the user.\nThis field will always be present."]
+        #[doc = "The ID of the user. This field will always be present."]
         #[serde(
             rename = "userId",
             default,
@@ -2680,7 +2683,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum InstallFailureEventFailureReason {
-        #[doc = "Used when the installation timed out. This can cover a number of\nsituations, for example when the device did not have connectivity\nat any point during the retry period, or if the device is OOM."]
+        #[doc = "Used when the installation timed out. This can cover a number of situations, for example when the device did not have connectivity at any point during the retry period, or if the device is OOM."]
         Timeout,
         #[doc = "Used whenever no better reason for failure can be provided."]
         Unknown,
@@ -2688,8 +2691,8 @@ pub mod schemas {
     impl InstallFailureEventFailureReason {
         pub fn as_str(self) -> &'static str {
             match self {
-                InstallFailureEventFailureReason::Timeout => "TIMEOUT",
-                InstallFailureEventFailureReason::Unknown => "UNKNOWN",
+                InstallFailureEventFailureReason::Timeout => "timeout",
+                InstallFailureEventFailureReason::Unknown => "unknown",
             }
         }
     }
@@ -2702,8 +2705,8 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<InstallFailureEventFailureReason, ()> {
             Ok(match s {
-                "TIMEOUT" => InstallFailureEventFailureReason::Timeout,
-                "UNKNOWN" => InstallFailureEventFailureReason::Unknown,
+                "timeout" => InstallFailureEventFailureReason::Timeout,
+                "unknown" => InstallFailureEventFailureReason::Unknown,
                 _ => return Err(()),
             })
         }
@@ -2728,8 +2731,8 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "TIMEOUT" => InstallFailureEventFailureReason::Timeout,
-                "UNKNOWN" => InstallFailureEventFailureReason::Unknown,
+                "timeout" => InstallFailureEventFailureReason::Timeout,
+                "unknown" => InstallFailureEventFailureReason::Unknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2762,7 +2765,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct InstallsListResponse {
-        #[doc = "An installation of an app for a user on a specific device.\nThe existence of an install implies that the user must have an\nentitlement to the app."]
+        #[doc = "An installation of an app for a user on a specific device. The existence of an install implies that the user must have an entitlement to the app."]
         #[serde(
             rename = "install",
             default,
@@ -2793,35 +2796,35 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct KeyedAppState {
-        #[doc = "Additional field intended for machine-readable data. For example, a number\nor JSON object. To prevent XSS, we recommend removing any HTML from the\ndata before displaying it."]
+        #[doc = "Additional field intended for machine-readable data. For example, a number or JSON object. To prevent XSS, we recommend removing any HTML from the data before displaying it."]
         #[serde(
             rename = "data",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub data: ::std::option::Option<String>,
-        #[doc = "Key indicating what the app is providing a state for. The content of the\nkey is set by the app's developer. To prevent XSS, we recommend removing\nany HTML from the key before displaying it.\nThis field will always be present."]
+        #[doc = "Key indicating what the app is providing a state for. The content of the key is set by the app's developer. To prevent XSS, we recommend removing any HTML from the key before displaying it. This field will always be present."]
         #[serde(
             rename = "key",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub key: ::std::option::Option<String>,
-        #[doc = "Free-form, human-readable message describing the app state. For example,\nan error message. To prevent XSS, we recommend removing any HTML from the\nmessage before displaying it."]
+        #[doc = "Free-form, human-readable message describing the app state. For example, an error message. To prevent XSS, we recommend removing any HTML from the message before displaying it."]
         #[serde(
             rename = "message",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub message: ::std::option::Option<String>,
-        #[doc = "Severity of the app state.\nThis field will always be present."]
+        #[doc = "Severity of the app state. This field will always be present."]
         #[serde(
             rename = "severity",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub severity: ::std::option::Option<crate::schemas::KeyedAppStateSeverity>,
-        #[doc = "Timestamp of when the app set the state in milliseconds since epoch.\nThis field will always be present."]
+        #[doc = "Timestamp of when the app set the state in milliseconds since epoch. This field will always be present."]
         #[serde(
             rename = "stateTimestampMillis",
             default,
@@ -2849,9 +2852,9 @@ pub mod schemas {
     impl KeyedAppStateSeverity {
         pub fn as_str(self) -> &'static str {
             match self {
-                KeyedAppStateSeverity::SeverityError => "SEVERITY_ERROR",
-                KeyedAppStateSeverity::SeverityInfo => "SEVERITY_INFO",
-                KeyedAppStateSeverity::SeverityUnknown => "SEVERITY_UNKNOWN",
+                KeyedAppStateSeverity::SeverityError => "severityError",
+                KeyedAppStateSeverity::SeverityInfo => "severityInfo",
+                KeyedAppStateSeverity::SeverityUnknown => "severityUnknown",
             }
         }
     }
@@ -2864,9 +2867,9 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<KeyedAppStateSeverity, ()> {
             Ok(match s {
-                "SEVERITY_ERROR" => KeyedAppStateSeverity::SeverityError,
-                "SEVERITY_INFO" => KeyedAppStateSeverity::SeverityInfo,
-                "SEVERITY_UNKNOWN" => KeyedAppStateSeverity::SeverityUnknown,
+                "severityError" => KeyedAppStateSeverity::SeverityError,
+                "severityInfo" => KeyedAppStateSeverity::SeverityInfo,
+                "severityUnknown" => KeyedAppStateSeverity::SeverityUnknown,
                 _ => return Err(()),
             })
         }
@@ -2891,9 +2894,9 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "SEVERITY_ERROR" => KeyedAppStateSeverity::SeverityError,
-                "SEVERITY_INFO" => KeyedAppStateSeverity::SeverityInfo,
-                "SEVERITY_UNKNOWN" => KeyedAppStateSeverity::SeverityUnknown,
+                "severityError" => KeyedAppStateSeverity::SeverityError,
+                "severityInfo" => KeyedAppStateSeverity::SeverityInfo,
+                "severityUnknown" => KeyedAppStateSeverity::SeverityUnknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2964,7 +2967,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct MaintenanceWindow {
-        #[doc = "Duration of the maintenance window, in milliseconds. The duration must be\nbetween 30 minutes and 24 hours (inclusive)."]
+        #[doc = "Duration of the maintenance window, in milliseconds. The duration must be between 30 minutes and 24 hours (inclusive)."]
         #[serde(
             rename = "durationMs",
             default,
@@ -2972,7 +2975,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub duration_ms: ::std::option::Option<i64>,
-        #[doc = "Start time of the maintenance window, in milliseconds after midnight on the\ndevice. Windows can span midnight."]
+        #[doc = "Start time of the maintenance window, in milliseconds after midnight on the device. Windows can span midnight."]
         #[serde(
             rename = "startTimeAfterMidnightMs",
             default,
@@ -3004,7 +3007,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ManagedConfiguration {
-        #[doc = "Contains the ID of the managed configuration profile and the set of\nconfiguration variables (if any) defined for the user."]
+        #[doc = "Contains the ID of the managed configuration profile and the set of configuration variables (if any) defined for the user."]
         #[serde(
             rename = "configurationVariables",
             default,
@@ -3025,7 +3028,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub managed_property: ::std::option::Option<Vec<crate::schemas::ManagedProperty>>,
-        #[doc = "The ID of the product that the managed configuration is for, e.g.\n\"app:com.google.android.gm\"."]
+        #[doc = "The ID of the product that the managed configuration is for, e.g. \"app:com.google.android.gm\"."]
         #[serde(
             rename = "productId",
             default,
@@ -3120,7 +3123,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ManagedConfigurationsSettings {
-        #[doc = "The last updated time of the managed configuration settings in\nmilliseconds since 1970-01-01T00:00:00Z."]
+        #[doc = "The last updated time of the managed configuration settings in milliseconds since 1970-01-01T00:00:00Z."]
         #[serde(
             rename = "lastUpdatedTimestampMillis",
             default,
@@ -3166,7 +3169,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ManagedConfigurationsSettingsListResponse {
-        #[doc = "A managed configurations settings for an app that may be assigned to a\ngroup of users in an enterprise."]
+        #[doc = "A managed configurations settings for an app that may be assigned to a group of users in an enterprise."]
         #[serde(
             rename = "managedConfigurationsSettings",
             default,
@@ -3205,42 +3208,42 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub key: ::std::option::Option<String>,
-        #[doc = "The boolean value - this will only be present if type of the property is\nbool."]
+        #[doc = "The boolean value - this will only be present if type of the property is bool."]
         #[serde(
             rename = "valueBool",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub value_bool: ::std::option::Option<bool>,
-        #[doc = "The bundle of managed properties - this will only be present if type of the\nproperty is bundle."]
+        #[doc = "The bundle of managed properties - this will only be present if type of the property is bundle."]
         #[serde(
             rename = "valueBundle",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub value_bundle: ::std::option::Option<crate::schemas::ManagedPropertyBundle>,
-        #[doc = "The list of bundles of properties - this will only be present if type of\nthe property is bundle_array."]
+        #[doc = "The list of bundles of properties - this will only be present if type of the property is bundle_array."]
         #[serde(
             rename = "valueBundleArray",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub value_bundle_array: ::std::option::Option<Vec<crate::schemas::ManagedPropertyBundle>>,
-        #[doc = "The integer value - this will only be present if type of the property is\ninteger."]
+        #[doc = "The integer value - this will only be present if type of the property is integer."]
         #[serde(
             rename = "valueInteger",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub value_integer: ::std::option::Option<i32>,
-        #[doc = "The string value - this will only be present if type of the property is\nstring, choice or hidden."]
+        #[doc = "The string value - this will only be present if type of the property is string, choice or hidden."]
         #[serde(
             rename = "valueString",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub value_string: ::std::option::Option<String>,
-        #[doc = "The list of string values - this will only be present if type of the\nproperty is multiselect."]
+        #[doc = "The list of string values - this will only be present if type of the property is multiselect."]
         #[serde(
             rename = "valueStringArray",
             default,
@@ -3302,7 +3305,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct NewDeviceEvent {
-        #[doc = "The Android ID of the device.\nThis field will always be present."]
+        #[doc = "The Android ID of the device. This field will always be present."]
         #[serde(
             rename = "deviceId",
             default,
@@ -3316,14 +3319,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub dpc_package_name: ::std::option::Option<String>,
-        #[doc = "Identifies the extent to which the device is controlled by an Android\nEMM in various deployment configurations. <br><br>\nPossible values include:\n\n<ul><li>\"<code>managedDevice</code>\", a device where the DPC is set as\ndevice owner,</li>\n<li>\"<code>managedProfile</code>\", a device where the DPC is set as profile\nowner.</li></ul>"]
+        #[doc = "Identifies the extent to which the device is controlled by an Android EMM in various deployment configurations. Possible values include: - \"managedDevice\", a device where the DPC is set as device owner, - \"managedProfile\", a device where the DPC is set as profile owner. "]
         #[serde(
             rename = "managementType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub management_type: ::std::option::Option<crate::schemas::NewDeviceEventManagementType>,
-        #[doc = "The ID of the user.\nThis field will always be present."]
+        #[doc = "The ID of the user. This field will always be present."]
         #[serde(
             rename = "userId",
             default,
@@ -3349,8 +3352,8 @@ pub mod schemas {
     impl NewDeviceEventManagementType {
         pub fn as_str(self) -> &'static str {
             match self {
-                NewDeviceEventManagementType::ManagedDevice => "MANAGED_DEVICE",
-                NewDeviceEventManagementType::ManagedProfile => "MANAGED_PROFILE",
+                NewDeviceEventManagementType::ManagedDevice => "managedDevice",
+                NewDeviceEventManagementType::ManagedProfile => "managedProfile",
             }
         }
     }
@@ -3363,8 +3366,8 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<NewDeviceEventManagementType, ()> {
             Ok(match s {
-                "MANAGED_DEVICE" => NewDeviceEventManagementType::ManagedDevice,
-                "MANAGED_PROFILE" => NewDeviceEventManagementType::ManagedProfile,
+                "managedDevice" => NewDeviceEventManagementType::ManagedDevice,
+                "managedProfile" => NewDeviceEventManagementType::ManagedProfile,
                 _ => return Err(()),
             })
         }
@@ -3389,8 +3392,8 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "MANAGED_DEVICE" => NewDeviceEventManagementType::ManagedDevice,
-                "MANAGED_PROFILE" => NewDeviceEventManagementType::ManagedProfile,
+                "managedDevice" => NewDeviceEventManagementType::ManagedDevice,
+                "managedProfile" => NewDeviceEventManagementType::ManagedProfile,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3423,21 +3426,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct NewPermissionsEvent {
-        #[doc = "The set of permissions that the enterprise admin has already approved for\nthis application.\nUse Permissions.Get on the EMM API to retrieve details about these\npermissions."]
+        #[doc = "The set of permissions that the enterprise admin has already approved for this application. Use Permissions.Get on the EMM API to retrieve details about these permissions."]
         #[serde(
             rename = "approvedPermissions",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub approved_permissions: ::std::option::Option<Vec<String>>,
-        #[doc = "The id of the product (e.g. \"app:com.google.android.gm\") for which new\npermissions were added. This field will always be present."]
+        #[doc = "The id of the product (e.g. \"app:com.google.android.gm\") for which new permissions were added. This field will always be present."]
         #[serde(
             rename = "productId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub product_id: ::std::option::Option<String>,
-        #[doc = "The set of permissions that the app is currently requesting.\nUse Permissions.Get on the EMM API to retrieve details about these\npermissions."]
+        #[doc = "The set of permissions that the app is currently requesting. Use Permissions.Get on the EMM API to retrieve details about these permissions."]
         #[serde(
             rename = "requestedPermissions",
             default,
@@ -3491,7 +3494,7 @@ pub mod schemas {
         )]
         pub device_report_update_event:
             ::std::option::Option<crate::schemas::DeviceReportUpdateEvent>,
-        #[doc = "The ID of the enterprise for which the notification is sent.\nThis will always be present."]
+        #[doc = "The ID of the enterprise for which the notification is sent. This will always be present."]
         #[serde(
             rename = "enterpriseId",
             default,
@@ -3541,7 +3544,7 @@ pub mod schemas {
         )]
         pub product_availability_change_event:
             ::std::option::Option<crate::schemas::ProductAvailabilityChangeEvent>,
-        #[doc = "The time when the notification was published in\nmilliseconds since 1970-01-01T00:00:00Z.\nThis will always be present."]
+        #[doc = "The time when the notification was published in milliseconds since 1970-01-01T00:00:00Z. This will always be present."]
         #[serde(
             rename = "timestampMillis",
             default,
@@ -3586,19 +3589,19 @@ pub mod schemas {
         pub fn as_str(self) -> &'static str {
             match self {
                 NotificationNotificationType::AppRestricionsSchemaChange => {
-                    "APP_RESTRICIONS_SCHEMA_CHANGE"
+                    "appRestricionsSchemaChange"
                 }
-                NotificationNotificationType::AppUpdate => "APP_UPDATE",
-                NotificationNotificationType::DeviceReportUpdate => "DEVICE_REPORT_UPDATE",
-                NotificationNotificationType::InstallFailure => "INSTALL_FAILURE",
-                NotificationNotificationType::NewDevice => "NEW_DEVICE",
-                NotificationNotificationType::NewPermissions => "NEW_PERMISSIONS",
-                NotificationNotificationType::ProductApproval => "PRODUCT_APPROVAL",
+                NotificationNotificationType::AppUpdate => "appUpdate",
+                NotificationNotificationType::DeviceReportUpdate => "deviceReportUpdate",
+                NotificationNotificationType::InstallFailure => "installFailure",
+                NotificationNotificationType::NewDevice => "newDevice",
+                NotificationNotificationType::NewPermissions => "newPermissions",
+                NotificationNotificationType::ProductApproval => "productApproval",
                 NotificationNotificationType::ProductAvailabilityChange => {
-                    "PRODUCT_AVAILABILITY_CHANGE"
+                    "productAvailabilityChange"
                 }
-                NotificationNotificationType::TestNotification => "TEST_NOTIFICATION",
-                NotificationNotificationType::Unknown => "UNKNOWN",
+                NotificationNotificationType::TestNotification => "testNotification",
+                NotificationNotificationType::Unknown => "unknown",
             }
         }
     }
@@ -3611,20 +3614,20 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<NotificationNotificationType, ()> {
             Ok(match s {
-                "APP_RESTRICIONS_SCHEMA_CHANGE" => {
+                "appRestricionsSchemaChange" => {
                     NotificationNotificationType::AppRestricionsSchemaChange
                 }
-                "APP_UPDATE" => NotificationNotificationType::AppUpdate,
-                "DEVICE_REPORT_UPDATE" => NotificationNotificationType::DeviceReportUpdate,
-                "INSTALL_FAILURE" => NotificationNotificationType::InstallFailure,
-                "NEW_DEVICE" => NotificationNotificationType::NewDevice,
-                "NEW_PERMISSIONS" => NotificationNotificationType::NewPermissions,
-                "PRODUCT_APPROVAL" => NotificationNotificationType::ProductApproval,
-                "PRODUCT_AVAILABILITY_CHANGE" => {
+                "appUpdate" => NotificationNotificationType::AppUpdate,
+                "deviceReportUpdate" => NotificationNotificationType::DeviceReportUpdate,
+                "installFailure" => NotificationNotificationType::InstallFailure,
+                "newDevice" => NotificationNotificationType::NewDevice,
+                "newPermissions" => NotificationNotificationType::NewPermissions,
+                "productApproval" => NotificationNotificationType::ProductApproval,
+                "productAvailabilityChange" => {
                     NotificationNotificationType::ProductAvailabilityChange
                 }
-                "TEST_NOTIFICATION" => NotificationNotificationType::TestNotification,
-                "UNKNOWN" => NotificationNotificationType::Unknown,
+                "testNotification" => NotificationNotificationType::TestNotification,
+                "unknown" => NotificationNotificationType::Unknown,
                 _ => return Err(()),
             })
         }
@@ -3649,20 +3652,20 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "APP_RESTRICIONS_SCHEMA_CHANGE" => {
+                "appRestricionsSchemaChange" => {
                     NotificationNotificationType::AppRestricionsSchemaChange
                 }
-                "APP_UPDATE" => NotificationNotificationType::AppUpdate,
-                "DEVICE_REPORT_UPDATE" => NotificationNotificationType::DeviceReportUpdate,
-                "INSTALL_FAILURE" => NotificationNotificationType::InstallFailure,
-                "NEW_DEVICE" => NotificationNotificationType::NewDevice,
-                "NEW_PERMISSIONS" => NotificationNotificationType::NewPermissions,
-                "PRODUCT_APPROVAL" => NotificationNotificationType::ProductApproval,
-                "PRODUCT_AVAILABILITY_CHANGE" => {
+                "appUpdate" => NotificationNotificationType::AppUpdate,
+                "deviceReportUpdate" => NotificationNotificationType::DeviceReportUpdate,
+                "installFailure" => NotificationNotificationType::InstallFailure,
+                "newDevice" => NotificationNotificationType::NewDevice,
+                "newPermissions" => NotificationNotificationType::NewPermissions,
+                "productApproval" => NotificationNotificationType::ProductApproval,
+                "productAvailabilityChange" => {
                     NotificationNotificationType::ProductAvailabilityChange
                 }
-                "TEST_NOTIFICATION" => NotificationNotificationType::TestNotification,
-                "UNKNOWN" => NotificationNotificationType::Unknown,
+                "testNotification" => NotificationNotificationType::TestNotification,
+                "unknown" => NotificationNotificationType::Unknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3702,7 +3705,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub notification: ::std::option::Option<Vec<crate::schemas::Notification>>,
-        #[doc = "The notification set ID, required to mark the notification as\nreceived with the Enterprises.AcknowledgeNotification API.\nThis will be omitted if no notifications are present."]
+        #[doc = "The notification set ID, required to mark the notification as received with the Enterprises.AcknowledgeNotification API. This will be omitted if no notifications are present."]
         #[serde(
             rename = "notificationSetId",
             default,
@@ -3733,7 +3736,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PageInfo {
-        #[doc = "Maximum number of results returned in one page.\n! The number of results included in the API response."]
+        #[doc = "Maximum number of results returned in one page. ! The number of results included in the API response."]
         #[serde(
             rename = "resultPerPage",
             default,
@@ -3747,7 +3750,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub start_index: ::std::option::Option<i32>,
-        #[doc = "Total number of results available on the backend\n! The total number of results in the result set."]
+        #[doc = "Total number of results available on the backend ! The total number of results in the result set."]
         #[serde(
             rename = "totalResults",
             default,
@@ -3778,7 +3781,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Permission {
-        #[doc = "A longer description of the Permissions resource, giving more details of\nwhat it affects."]
+        #[doc = "A longer description of the Permissions resource, giving more details of what it affects."]
         #[serde(
             rename = "description",
             default,
@@ -3823,28 +3826,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Policy {
-        #[doc = "The auto-update policy for apps installed on the device. \"choiceToTheUser\"\nallows the device's user to configure the app update policy. \"always\"\nenables auto updates. \"never\" disables auto updates. \"wifiOnly\" enables\nauto updates only when the device is connected to wifi."]
+        #[doc = "The auto-update policy for apps installed on the device. \"choiceToTheUser\" allows the device's user to configure the app update policy. \"always\" enables auto updates. \"never\" disables auto updates. \"wifiOnly\" enables auto updates only when the device is connected to wifi."]
         #[serde(
             rename = "autoUpdatePolicy",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub auto_update_policy: ::std::option::Option<crate::schemas::PolicyAutoUpdatePolicy>,
-        #[doc = "Whether the device reports app states to the EMM. The default value is\n\"deviceReportDisabled\"."]
+        #[doc = "Whether the device reports app states to the EMM. The default value is \"deviceReportDisabled\"."]
         #[serde(
             rename = "deviceReportPolicy",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub device_report_policy: ::std::option::Option<crate::schemas::PolicyDeviceReportPolicy>,
-        #[doc = "The maintenance window defining when apps running in the foreground should\nbe updated."]
+        #[doc = "The maintenance window defining when apps running in the foreground should be updated."]
         #[serde(
             rename = "maintenanceWindow",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub maintenance_window: ::std::option::Option<crate::schemas::MaintenanceWindow>,
-        #[doc = "The availability granted to the device for the specified products. \"all\"\ngives the device access to all products, regardless of approval status.\n\"all\" does not enable automatic visibility of \"alpha\" or \"beta\" tracks.\n\"whitelist\" grants the device access the products specified in\nproductPolicy[]. Only products that are approved or products that were\npreviously approved (products with revoked approval) by the enterprise can\nbe whitelisted. If no value is provided, the availability set at the user\nlevel is applied by default."]
+        #[doc = "The availability granted to the device for the specified products. \"all\" gives the device access to all products, regardless of approval status. \"all\" does not enable automatic visibility of \"alpha\" or \"beta\" tracks. \"whitelist\" grants the device access the products specified in productPolicy[]. Only products that are approved or products that were previously approved (products with revoked approval) by the enterprise can be whitelisted. If no value is provided, the availability set at the user level is applied by default."]
         #[serde(
             rename = "productAvailabilityPolicy",
             default,
@@ -3852,7 +3855,7 @@ pub mod schemas {
         )]
         pub product_availability_policy:
             ::std::option::Option<crate::schemas::PolicyProductAvailabilityPolicy>,
-        #[doc = "The list of product policies. The <code>productAvailabilityPolicy</code>\nneeds to be set to <code>WHITELIST</code> or <code>ALL</code> for the\nproduct policies to be applied."]
+        #[doc = "The list of product policies. The productAvailabilityPolicy needs to be set to WHITELIST or ALL for the product policies to be applied."]
         #[serde(
             rename = "productPolicy",
             default,
@@ -3886,13 +3889,13 @@ pub mod schemas {
     impl PolicyAutoUpdatePolicy {
         pub fn as_str(self) -> &'static str {
             match self {
-                PolicyAutoUpdatePolicy::Always => "ALWAYS",
+                PolicyAutoUpdatePolicy::Always => "always",
                 PolicyAutoUpdatePolicy::AutoUpdatePolicyUnspecified => {
-                    "AUTO_UPDATE_POLICY_UNSPECIFIED"
+                    "autoUpdatePolicyUnspecified"
                 }
-                PolicyAutoUpdatePolicy::ChoiceToTheUser => "CHOICE_TO_THE_USER",
-                PolicyAutoUpdatePolicy::Never => "NEVER",
-                PolicyAutoUpdatePolicy::WifiOnly => "WIFI_ONLY",
+                PolicyAutoUpdatePolicy::ChoiceToTheUser => "choiceToTheUser",
+                PolicyAutoUpdatePolicy::Never => "never",
+                PolicyAutoUpdatePolicy::WifiOnly => "wifiOnly",
             }
         }
     }
@@ -3905,13 +3908,13 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<PolicyAutoUpdatePolicy, ()> {
             Ok(match s {
-                "ALWAYS" => PolicyAutoUpdatePolicy::Always,
-                "AUTO_UPDATE_POLICY_UNSPECIFIED" => {
+                "always" => PolicyAutoUpdatePolicy::Always,
+                "autoUpdatePolicyUnspecified" => {
                     PolicyAutoUpdatePolicy::AutoUpdatePolicyUnspecified
                 }
-                "CHOICE_TO_THE_USER" => PolicyAutoUpdatePolicy::ChoiceToTheUser,
-                "NEVER" => PolicyAutoUpdatePolicy::Never,
-                "WIFI_ONLY" => PolicyAutoUpdatePolicy::WifiOnly,
+                "choiceToTheUser" => PolicyAutoUpdatePolicy::ChoiceToTheUser,
+                "never" => PolicyAutoUpdatePolicy::Never,
+                "wifiOnly" => PolicyAutoUpdatePolicy::WifiOnly,
                 _ => return Err(()),
             })
         }
@@ -3936,13 +3939,13 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "ALWAYS" => PolicyAutoUpdatePolicy::Always,
-                "AUTO_UPDATE_POLICY_UNSPECIFIED" => {
+                "always" => PolicyAutoUpdatePolicy::Always,
+                "autoUpdatePolicyUnspecified" => {
                     PolicyAutoUpdatePolicy::AutoUpdatePolicyUnspecified
                 }
-                "CHOICE_TO_THE_USER" => PolicyAutoUpdatePolicy::ChoiceToTheUser,
-                "NEVER" => PolicyAutoUpdatePolicy::Never,
-                "WIFI_ONLY" => PolicyAutoUpdatePolicy::WifiOnly,
+                "choiceToTheUser" => PolicyAutoUpdatePolicy::ChoiceToTheUser,
+                "never" => PolicyAutoUpdatePolicy::Never,
+                "wifiOnly" => PolicyAutoUpdatePolicy::WifiOnly,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3974,10 +3977,10 @@ pub mod schemas {
     impl PolicyDeviceReportPolicy {
         pub fn as_str(self) -> &'static str {
             match self {
-                PolicyDeviceReportPolicy::DeviceReportDisabled => "DEVICE_REPORT_DISABLED",
-                PolicyDeviceReportPolicy::DeviceReportEnabled => "DEVICE_REPORT_ENABLED",
+                PolicyDeviceReportPolicy::DeviceReportDisabled => "deviceReportDisabled",
+                PolicyDeviceReportPolicy::DeviceReportEnabled => "deviceReportEnabled",
                 PolicyDeviceReportPolicy::DeviceReportPolicyUnspecified => {
-                    "DEVICE_REPORT_POLICY_UNSPECIFIED"
+                    "deviceReportPolicyUnspecified"
                 }
             }
         }
@@ -3991,9 +3994,9 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<PolicyDeviceReportPolicy, ()> {
             Ok(match s {
-                "DEVICE_REPORT_DISABLED" => PolicyDeviceReportPolicy::DeviceReportDisabled,
-                "DEVICE_REPORT_ENABLED" => PolicyDeviceReportPolicy::DeviceReportEnabled,
-                "DEVICE_REPORT_POLICY_UNSPECIFIED" => {
+                "deviceReportDisabled" => PolicyDeviceReportPolicy::DeviceReportDisabled,
+                "deviceReportEnabled" => PolicyDeviceReportPolicy::DeviceReportEnabled,
+                "deviceReportPolicyUnspecified" => {
                     PolicyDeviceReportPolicy::DeviceReportPolicyUnspecified
                 }
                 _ => return Err(()),
@@ -4020,9 +4023,9 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "DEVICE_REPORT_DISABLED" => PolicyDeviceReportPolicy::DeviceReportDisabled,
-                "DEVICE_REPORT_ENABLED" => PolicyDeviceReportPolicy::DeviceReportEnabled,
-                "DEVICE_REPORT_POLICY_UNSPECIFIED" => {
+                "deviceReportDisabled" => PolicyDeviceReportPolicy::DeviceReportDisabled,
+                "deviceReportEnabled" => PolicyDeviceReportPolicy::DeviceReportEnabled,
+                "deviceReportPolicyUnspecified" => {
                     PolicyDeviceReportPolicy::DeviceReportPolicyUnspecified
                 }
                 _ => {
@@ -4046,21 +4049,21 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PolicyProductAvailabilityPolicy {
-        #[doc = "All products are available except those explicitly marked as\nunavailable in the product availability policy."]
+        #[doc = "All products are available except those explicitly marked as unavailable in the product availability policy."]
         All,
         #[doc = "Unspecified, applies the user available product set by default."]
         ProductAvailabilityPolicyUnspecified,
-        #[doc = "The approved products with product availability set to AVAILABLE\nin the product policy are available."]
+        #[doc = "The approved products with product availability set to AVAILABLE in the product policy are available."]
         Whitelist,
     }
     impl PolicyProductAvailabilityPolicy {
         pub fn as_str(self) -> &'static str {
             match self {
-                PolicyProductAvailabilityPolicy::All => "ALL",
+                PolicyProductAvailabilityPolicy::All => "all",
                 PolicyProductAvailabilityPolicy::ProductAvailabilityPolicyUnspecified => {
-                    "PRODUCT_AVAILABILITY_POLICY_UNSPECIFIED"
+                    "productAvailabilityPolicyUnspecified"
                 }
-                PolicyProductAvailabilityPolicy::Whitelist => "WHITELIST",
+                PolicyProductAvailabilityPolicy::Whitelist => "whitelist",
             }
         }
     }
@@ -4073,11 +4076,11 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<PolicyProductAvailabilityPolicy, ()> {
             Ok(match s {
-                "ALL" => PolicyProductAvailabilityPolicy::All,
-                "PRODUCT_AVAILABILITY_POLICY_UNSPECIFIED" => {
+                "all" => PolicyProductAvailabilityPolicy::All,
+                "productAvailabilityPolicyUnspecified" => {
                     PolicyProductAvailabilityPolicy::ProductAvailabilityPolicyUnspecified
                 }
-                "WHITELIST" => PolicyProductAvailabilityPolicy::Whitelist,
+                "whitelist" => PolicyProductAvailabilityPolicy::Whitelist,
                 _ => return Err(()),
             })
         }
@@ -4102,11 +4105,11 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "ALL" => PolicyProductAvailabilityPolicy::All,
-                "PRODUCT_AVAILABILITY_POLICY_UNSPECIFIED" => {
+                "all" => PolicyProductAvailabilityPolicy::All,
+                "productAvailabilityPolicyUnspecified" => {
                     PolicyProductAvailabilityPolicy::ProductAvailabilityPolicyUnspecified
                 }
-                "WHITELIST" => PolicyProductAvailabilityPolicy::Whitelist,
+                "whitelist" => PolicyProductAvailabilityPolicy::Whitelist,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4167,7 +4170,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub available_countries: ::std::option::Option<Vec<String>>,
-        #[doc = "Deprecated, use <code>appTracks</code> instead."]
+        #[doc = "Deprecated, use appTracks instead."]
         #[serde(
             rename = "availableTracks",
             default,
@@ -4203,7 +4206,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub details_url: ::std::option::Option<String>,
-        #[doc = "How and to whom the package is made available.\nThe value <code>publicGoogleHosted</code> means that the package is\navailable through the Play store and not restricted to a specific\nenterprise. The value <code>privateGoogleHosted</code> means that the\npackage is a private app (restricted to an enterprise) but hosted by\nGoogle. The value <code>privateSelfHosted</code> means that the package is\na private app (restricted to an enterprise) and is privately hosted."]
+        #[doc = "How and to whom the package is made available. The value publicGoogleHosted means that the package is available through the Play store and not restricted to a specific enterprise. The value privateGoogleHosted means that the package is a private app (restricted to an enterprise) but hosted by Google. The value privateSelfHosted means that the package is a private app (restricted to an enterprise) and is privately hosted."]
         #[serde(
             rename = "distributionChannel",
             default,
@@ -4217,14 +4220,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub features: ::std::option::Option<Vec<crate::schemas::ProductFeaturesItems>>,
-        #[doc = "A link to an image that can be used as an icon for the product.\nThis image is suitable for use at up to 512px x 512px."]
+        #[doc = "A link to an image that can be used as an icon for the product. This image is suitable for use at up to 512px x 512px."]
         #[serde(
             rename = "iconUrl",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub icon_url: ::std::option::Option<String>,
-        #[doc = "The approximate time (within 7 days) the app was last published, expressed\nin milliseconds since epoch."]
+        #[doc = "The approximate time (within 7 days) the app was last published, expressed in milliseconds since epoch."]
         #[serde(
             rename = "lastUpdatedTimestampMillis",
             default,
@@ -4246,14 +4249,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub permissions: ::std::option::Option<Vec<crate::schemas::ProductPermission>>,
-        #[doc = "A string of the form <code><em>app:<package name></em></code>. For\nexample, <code>app:com.google.android.gm</code> represents the Gmail app."]
+        #[doc = "A string of the form *app:<package name>*. For example, app:com.google.android.gm represents the Gmail app."]
         #[serde(
             rename = "productId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub product_id: ::std::option::Option<String>,
-        #[doc = "Whether this product is free, free with in-app purchases, or paid.\nIf the pricing is unknown, this means the product is not generally\navailable anymore (even though it might still be available to\npeople who own it)."]
+        #[doc = "Whether this product is free, free with in-app purchases, or paid. If the pricing is unknown, this means the product is not generally available anymore (even though it might still be available to people who own it)."]
         #[serde(
             rename = "productPricing",
             default,
@@ -4288,7 +4291,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub signing_certificate: ::std::option::Option<crate::schemas::ProductSigningCertificate>,
-        #[doc = "A link to a smaller image that can be used as an icon for the product.\nThis image is suitable for use at up to 128px x 128px."]
+        #[doc = "A link to a smaller image that can be used as an icon for the product. This image is suitable for use at up to 128px x 128px."]
         #[serde(
             rename = "smallIconUrl",
             default,
@@ -4302,7 +4305,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub title: ::std::option::Option<String>,
-        #[doc = "A link to the managed Google Play details page for the product,\nfor use by an Enterprise admin."]
+        #[doc = "A link to the managed Google Play details page for the product, for use by an Enterprise admin."]
         #[serde(
             rename = "workDetailsUrl",
             default,
@@ -4330,10 +4333,10 @@ pub mod schemas {
     impl ProductAvailableTracksItems {
         pub fn as_str(self) -> &'static str {
             match self {
-                ProductAvailableTracksItems::Alpha => "ALPHA",
-                ProductAvailableTracksItems::AppTrackUnspecified => "APP_TRACK_UNSPECIFIED",
-                ProductAvailableTracksItems::Beta => "BETA",
-                ProductAvailableTracksItems::Production => "PRODUCTION",
+                ProductAvailableTracksItems::Alpha => "alpha",
+                ProductAvailableTracksItems::AppTrackUnspecified => "appTrackUnspecified",
+                ProductAvailableTracksItems::Beta => "beta",
+                ProductAvailableTracksItems::Production => "production",
             }
         }
     }
@@ -4346,10 +4349,10 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<ProductAvailableTracksItems, ()> {
             Ok(match s {
-                "ALPHA" => ProductAvailableTracksItems::Alpha,
-                "APP_TRACK_UNSPECIFIED" => ProductAvailableTracksItems::AppTrackUnspecified,
-                "BETA" => ProductAvailableTracksItems::Beta,
-                "PRODUCTION" => ProductAvailableTracksItems::Production,
+                "alpha" => ProductAvailableTracksItems::Alpha,
+                "appTrackUnspecified" => ProductAvailableTracksItems::AppTrackUnspecified,
+                "beta" => ProductAvailableTracksItems::Beta,
+                "production" => ProductAvailableTracksItems::Production,
                 _ => return Err(()),
             })
         }
@@ -4374,10 +4377,10 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "ALPHA" => ProductAvailableTracksItems::Alpha,
-                "APP_TRACK_UNSPECIFIED" => ProductAvailableTracksItems::AppTrackUnspecified,
-                "BETA" => ProductAvailableTracksItems::Beta,
-                "PRODUCTION" => ProductAvailableTracksItems::Production,
+                "alpha" => ProductAvailableTracksItems::Alpha,
+                "appTrackUnspecified" => ProductAvailableTracksItems::AppTrackUnspecified,
+                "beta" => ProductAvailableTracksItems::Beta,
+                "production" => ProductAvailableTracksItems::Production,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4408,11 +4411,11 @@ pub mod schemas {
     impl ProductContentRating {
         pub fn as_str(self) -> &'static str {
             match self {
-                ProductContentRating::All => "ALL",
-                ProductContentRating::Mature => "MATURE",
-                ProductContentRating::PreTeen => "PRE_TEEN",
-                ProductContentRating::RatingUnknown => "RATING_UNKNOWN",
-                ProductContentRating::Teen => "TEEN",
+                ProductContentRating::All => "all",
+                ProductContentRating::Mature => "mature",
+                ProductContentRating::PreTeen => "preTeen",
+                ProductContentRating::RatingUnknown => "ratingUnknown",
+                ProductContentRating::Teen => "teen",
             }
         }
     }
@@ -4425,11 +4428,11 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<ProductContentRating, ()> {
             Ok(match s {
-                "ALL" => ProductContentRating::All,
-                "MATURE" => ProductContentRating::Mature,
-                "PRE_TEEN" => ProductContentRating::PreTeen,
-                "RATING_UNKNOWN" => ProductContentRating::RatingUnknown,
-                "TEEN" => ProductContentRating::Teen,
+                "all" => ProductContentRating::All,
+                "mature" => ProductContentRating::Mature,
+                "preTeen" => ProductContentRating::PreTeen,
+                "ratingUnknown" => ProductContentRating::RatingUnknown,
+                "teen" => ProductContentRating::Teen,
                 _ => return Err(()),
             })
         }
@@ -4454,11 +4457,11 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "ALL" => ProductContentRating::All,
-                "MATURE" => ProductContentRating::Mature,
-                "PRE_TEEN" => ProductContentRating::PreTeen,
-                "RATING_UNKNOWN" => ProductContentRating::RatingUnknown,
-                "TEEN" => ProductContentRating::Teen,
+                "all" => ProductContentRating::All,
+                "mature" => ProductContentRating::Mature,
+                "preTeen" => ProductContentRating::PreTeen,
+                "ratingUnknown" => ProductContentRating::RatingUnknown,
+                "teen" => ProductContentRating::Teen,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4487,9 +4490,9 @@ pub mod schemas {
     impl ProductDistributionChannel {
         pub fn as_str(self) -> &'static str {
             match self {
-                ProductDistributionChannel::PrivateGoogleHosted => "PRIVATE_GOOGLE_HOSTED",
-                ProductDistributionChannel::PrivateSelfHosted => "PRIVATE_SELF_HOSTED",
-                ProductDistributionChannel::PublicGoogleHosted => "PUBLIC_GOOGLE_HOSTED",
+                ProductDistributionChannel::PrivateGoogleHosted => "privateGoogleHosted",
+                ProductDistributionChannel::PrivateSelfHosted => "privateSelfHosted",
+                ProductDistributionChannel::PublicGoogleHosted => "publicGoogleHosted",
             }
         }
     }
@@ -4502,9 +4505,9 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<ProductDistributionChannel, ()> {
             Ok(match s {
-                "PRIVATE_GOOGLE_HOSTED" => ProductDistributionChannel::PrivateGoogleHosted,
-                "PRIVATE_SELF_HOSTED" => ProductDistributionChannel::PrivateSelfHosted,
-                "PUBLIC_GOOGLE_HOSTED" => ProductDistributionChannel::PublicGoogleHosted,
+                "privateGoogleHosted" => ProductDistributionChannel::PrivateGoogleHosted,
+                "privateSelfHosted" => ProductDistributionChannel::PrivateSelfHosted,
+                "publicGoogleHosted" => ProductDistributionChannel::PublicGoogleHosted,
                 _ => return Err(()),
             })
         }
@@ -4529,9 +4532,9 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "PRIVATE_GOOGLE_HOSTED" => ProductDistributionChannel::PrivateGoogleHosted,
-                "PRIVATE_SELF_HOSTED" => ProductDistributionChannel::PrivateSelfHosted,
-                "PUBLIC_GOOGLE_HOSTED" => ProductDistributionChannel::PublicGoogleHosted,
+                "privateGoogleHosted" => ProductDistributionChannel::PrivateGoogleHosted,
+                "privateSelfHosted" => ProductDistributionChannel::PrivateSelfHosted,
+                "publicGoogleHosted" => ProductDistributionChannel::PublicGoogleHosted,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4554,13 +4557,14 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ProductFeaturesItems {
         FeatureUnknown,
+        #[doc = "The app is a VPN."]
         VpnApp,
     }
     impl ProductFeaturesItems {
         pub fn as_str(self) -> &'static str {
             match self {
-                ProductFeaturesItems::FeatureUnknown => "FEATURE_UNKNOWN",
-                ProductFeaturesItems::VpnApp => "VPN_APP",
+                ProductFeaturesItems::FeatureUnknown => "featureUnknown",
+                ProductFeaturesItems::VpnApp => "vpnApp",
             }
         }
     }
@@ -4573,8 +4577,8 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<ProductFeaturesItems, ()> {
             Ok(match s {
-                "FEATURE_UNKNOWN" => ProductFeaturesItems::FeatureUnknown,
-                "VPN_APP" => ProductFeaturesItems::VpnApp,
+                "featureUnknown" => ProductFeaturesItems::FeatureUnknown,
+                "vpnApp" => ProductFeaturesItems::VpnApp,
                 _ => return Err(()),
             })
         }
@@ -4599,8 +4603,8 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "FEATURE_UNKNOWN" => ProductFeaturesItems::FeatureUnknown,
-                "VPN_APP" => ProductFeaturesItems::VpnApp,
+                "featureUnknown" => ProductFeaturesItems::FeatureUnknown,
+                "vpnApp" => ProductFeaturesItems::VpnApp,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4628,16 +4632,16 @@ pub mod schemas {
         FreeWithInAppPurchase,
         #[doc = "The product is paid."]
         Paid,
-        #[doc = "Unknown pricing, used to denote an approved product that is not\ngenerally available."]
+        #[doc = "Unknown pricing, used to denote an approved product that is not generally available."]
         Unknown,
     }
     impl ProductProductPricing {
         pub fn as_str(self) -> &'static str {
             match self {
-                ProductProductPricing::Free => "FREE",
-                ProductProductPricing::FreeWithInAppPurchase => "FREE_WITH_IN_APP_PURCHASE",
-                ProductProductPricing::Paid => "PAID",
-                ProductProductPricing::Unknown => "UNKNOWN",
+                ProductProductPricing::Free => "free",
+                ProductProductPricing::FreeWithInAppPurchase => "freeWithInAppPurchase",
+                ProductProductPricing::Paid => "paid",
+                ProductProductPricing::Unknown => "unknown",
             }
         }
     }
@@ -4650,10 +4654,10 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<ProductProductPricing, ()> {
             Ok(match s {
-                "FREE" => ProductProductPricing::Free,
-                "FREE_WITH_IN_APP_PURCHASE" => ProductProductPricing::FreeWithInAppPurchase,
-                "PAID" => ProductProductPricing::Paid,
-                "UNKNOWN" => ProductProductPricing::Unknown,
+                "free" => ProductProductPricing::Free,
+                "freeWithInAppPurchase" => ProductProductPricing::FreeWithInAppPurchase,
+                "paid" => ProductProductPricing::Paid,
+                "unknown" => ProductProductPricing::Unknown,
                 _ => return Err(()),
             })
         }
@@ -4678,10 +4682,10 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "FREE" => ProductProductPricing::Free,
-                "FREE_WITH_IN_APP_PURCHASE" => ProductProductPricing::FreeWithInAppPurchase,
-                "PAID" => ProductProductPricing::Paid,
-                "UNKNOWN" => ProductProductPricing::Unknown,
+                "free" => ProductProductPricing::Free,
+                "freeWithInAppPurchase" => ProductProductPricing::FreeWithInAppPurchase,
+                "paid" => ProductProductPricing::Paid,
+                "unknown" => ProductProductPricing::Unknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4714,14 +4718,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ProductApprovalEvent {
-        #[doc = "Whether the product was approved or unapproved.\nThis field will always be present."]
+        #[doc = "Whether the product was approved or unapproved. This field will always be present."]
         #[serde(
             rename = "approved",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub approved: ::std::option::Option<crate::schemas::ProductApprovalEventApproved>,
-        #[doc = "The id of the product (e.g. \"app:com.google.android.gm\") for which the\napproval status has changed. This field will always be present."]
+        #[doc = "The id of the product (e.g. \"app:com.google.android.gm\") for which the approval status has changed. This field will always be present."]
         #[serde(
             rename = "productId",
             default,
@@ -4751,9 +4755,9 @@ pub mod schemas {
     impl ProductApprovalEventApproved {
         pub fn as_str(self) -> &'static str {
             match self {
-                ProductApprovalEventApproved::Approved => "APPROVED",
-                ProductApprovalEventApproved::Unapproved => "UNAPPROVED",
-                ProductApprovalEventApproved::Unknown => "UNKNOWN",
+                ProductApprovalEventApproved::Approved => "approved",
+                ProductApprovalEventApproved::Unapproved => "unapproved",
+                ProductApprovalEventApproved::Unknown => "unknown",
             }
         }
     }
@@ -4766,9 +4770,9 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<ProductApprovalEventApproved, ()> {
             Ok(match s {
-                "APPROVED" => ProductApprovalEventApproved::Approved,
-                "UNAPPROVED" => ProductApprovalEventApproved::Unapproved,
-                "UNKNOWN" => ProductApprovalEventApproved::Unknown,
+                "approved" => ProductApprovalEventApproved::Approved,
+                "unapproved" => ProductApprovalEventApproved::Unapproved,
+                "unknown" => ProductApprovalEventApproved::Unknown,
                 _ => return Err(()),
             })
         }
@@ -4793,9 +4797,9 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "APPROVED" => ProductApprovalEventApproved::Approved,
-                "UNAPPROVED" => ProductApprovalEventApproved::Unapproved,
-                "UNKNOWN" => ProductApprovalEventApproved::Unknown,
+                "approved" => ProductApprovalEventApproved::Approved,
+                "unapproved" => ProductApprovalEventApproved::Unapproved,
+                "unknown" => ProductApprovalEventApproved::Unknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4828,7 +4832,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ProductAvailabilityChangeEvent {
-        #[doc = "The new state of the product.\nThis field will always be present."]
+        #[doc = "The new state of the product. This field will always be present."]
         #[serde(
             rename = "availabilityStatus",
             default,
@@ -4836,7 +4840,7 @@ pub mod schemas {
         )]
         pub availability_status:
             ::std::option::Option<crate::schemas::ProductAvailabilityChangeEventAvailabilityStatus>,
-        #[doc = "The id of the product (e.g. \"app:com.google.android.gm\") for which the\nproduct availability changed. This field will always be present."]
+        #[doc = "The id of the product (e.g. \"app:com.google.android.gm\") for which the product availability changed. This field will always be present."]
         #[serde(
             rename = "productId",
             default,
@@ -4868,10 +4872,10 @@ pub mod schemas {
     impl ProductAvailabilityChangeEventAvailabilityStatus {
         pub fn as_str(self) -> &'static str {
             match self {
-                ProductAvailabilityChangeEventAvailabilityStatus::Available => "AVAILABLE",
-                ProductAvailabilityChangeEventAvailabilityStatus::Removed => "REMOVED",
-                ProductAvailabilityChangeEventAvailabilityStatus::Unknown => "UNKNOWN",
-                ProductAvailabilityChangeEventAvailabilityStatus::Unpublished => "UNPUBLISHED",
+                ProductAvailabilityChangeEventAvailabilityStatus::Available => "available",
+                ProductAvailabilityChangeEventAvailabilityStatus::Removed => "removed",
+                ProductAvailabilityChangeEventAvailabilityStatus::Unknown => "unknown",
+                ProductAvailabilityChangeEventAvailabilityStatus::Unpublished => "unpublished",
             }
         }
     }
@@ -4886,10 +4890,10 @@ pub mod schemas {
             s: &str,
         ) -> ::std::result::Result<ProductAvailabilityChangeEventAvailabilityStatus, ()> {
             Ok(match s {
-                "AVAILABLE" => ProductAvailabilityChangeEventAvailabilityStatus::Available,
-                "REMOVED" => ProductAvailabilityChangeEventAvailabilityStatus::Removed,
-                "UNKNOWN" => ProductAvailabilityChangeEventAvailabilityStatus::Unknown,
-                "UNPUBLISHED" => ProductAvailabilityChangeEventAvailabilityStatus::Unpublished,
+                "available" => ProductAvailabilityChangeEventAvailabilityStatus::Available,
+                "removed" => ProductAvailabilityChangeEventAvailabilityStatus::Removed,
+                "unknown" => ProductAvailabilityChangeEventAvailabilityStatus::Unknown,
+                "unpublished" => ProductAvailabilityChangeEventAvailabilityStatus::Unpublished,
                 _ => return Err(()),
             })
         }
@@ -4914,10 +4918,10 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "AVAILABLE" => ProductAvailabilityChangeEventAvailabilityStatus::Available,
-                "REMOVED" => ProductAvailabilityChangeEventAvailabilityStatus::Removed,
-                "UNKNOWN" => ProductAvailabilityChangeEventAvailabilityStatus::Unknown,
-                "UNPUBLISHED" => ProductAvailabilityChangeEventAvailabilityStatus::Unpublished,
+                "available" => ProductAvailabilityChangeEventAvailabilityStatus::Available,
+                "removed" => ProductAvailabilityChangeEventAvailabilityStatus::Removed,
+                "unknown" => ProductAvailabilityChangeEventAvailabilityStatus::Unknown,
+                "unpublished" => ProductAvailabilityChangeEventAvailabilityStatus::Unpublished,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -4979,14 +4983,14 @@ pub mod schemas {
     pub enum ProductPermissionState {
         #[doc = "The permission has been accepted by the enterprise."]
         Accepted,
-        #[doc = "The permission is required by the app but has not yet been accepted by\nthe enterprise."]
+        #[doc = "The permission is required by the app but has not yet been accepted by the enterprise."]
         Required,
     }
     impl ProductPermissionState {
         pub fn as_str(self) -> &'static str {
             match self {
-                ProductPermissionState::Accepted => "ACCEPTED",
-                ProductPermissionState::Required => "REQUIRED",
+                ProductPermissionState::Accepted => "accepted",
+                ProductPermissionState::Required => "required",
             }
         }
     }
@@ -4999,8 +5003,8 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<ProductPermissionState, ()> {
             Ok(match s {
-                "ACCEPTED" => ProductPermissionState::Accepted,
-                "REQUIRED" => ProductPermissionState::Required,
+                "accepted" => ProductPermissionState::Accepted,
+                "required" => ProductPermissionState::Required,
                 _ => return Err(()),
             })
         }
@@ -5025,8 +5029,8 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "ACCEPTED" => ProductPermissionState::Accepted,
-                "REQUIRED" => ProductPermissionState::Required,
+                "accepted" => ProductPermissionState::Accepted,
+                "required" => ProductPermissionState::Required,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -5066,7 +5070,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub permission: ::std::option::Option<Vec<crate::schemas::ProductPermission>>,
-        #[doc = "The ID of the app that the permissions relate to, e.g.\n\"app:com.google.android.gm\"."]
+        #[doc = "The ID of the app that the permissions relate to, e.g. \"app:com.google.android.gm\"."]
         #[serde(
             rename = "productId",
             default,
@@ -5104,6 +5108,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub auto_install_policy: ::std::option::Option<crate::schemas::AutoInstallPolicy>,
+        #[doc = "The auto-update mode for the product."]
+        #[serde(
+            rename = "autoUpdateMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub auto_update_mode: ::std::option::Option<crate::schemas::ProductPolicyAutoUpdateMode>,
         #[doc = "The managed configuration for the product."]
         #[serde(
             rename = "managedConfiguration",
@@ -5111,21 +5122,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub managed_configuration: ::std::option::Option<crate::schemas::ManagedConfiguration>,
-        #[doc = "The ID of the product. For example,\n<code>\"app:com.google.android.gm\"</code>."]
+        #[doc = "The ID of the product. For example, \"app:com.google.android.gm\"."]
         #[serde(
             rename = "productId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub product_id: ::std::option::Option<String>,
-        #[doc = "Grants the device visibility to the specified product release track(s),\nidentified by <code>trackIds</code>. The list of release tracks of a\nproduct can be obtained by calling Products.Get."]
+        #[doc = "Grants the device visibility to the specified product release track(s), identified by trackIds. The list of release tracks of a product can be obtained by calling Products.Get."]
         #[serde(
             rename = "trackIds",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub track_ids: ::std::option::Option<Vec<String>>,
-        #[doc = "Deprecated. Use <code>trackIds</code> instead."]
+        #[doc = "Deprecated. Use trackIds instead."]
         #[serde(
             rename = "tracks",
             default,
@@ -5144,6 +5155,93 @@ pub mod schemas {
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ProductPolicyAutoUpdateMode {
+        #[doc = "The app is automatically updated with low priority to minimize the impact on the user. The app is updated when the following constraints are met: * The device is not actively used * The device is connected to a Wi-Fi network. * The device is charging * If the system update policy is set to `WINDOWED`: the local time of the device is within the daily maintenance window The device is notified about a new update within 24 hours after it is published by the developer, after which the app is updated the next time the constraints above are met."]
+        AutoUpdateDefault,
+        #[doc = "The app is updated as soon as possible. No constraints are applied. The device is notified immediately about a new app update after it is published by the developer."]
+        AutoUpdateHighPriority,
+        #[doc = "Unspecified. Defaults to AUTO_UPDATE_DEFAULT."]
+        AutoUpdateModeUnspecified,
+        #[doc = "The app is not automatically updated for a maximum of 90 days after the app becomes out of date. 90 days after the app becomes out of date, the latest available version is installed automatically with low priority (see AUTO_UPDATE_DEFAULT). After the app is updated it is not automatically updated again until 90 days after it becomes out of date again. The user can still manually update the app from the Play Store at any time."]
+        AutoUpdatePostponed,
+    }
+    impl ProductPolicyAutoUpdateMode {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ProductPolicyAutoUpdateMode::AutoUpdateDefault => "autoUpdateDefault",
+                ProductPolicyAutoUpdateMode::AutoUpdateHighPriority => "autoUpdateHighPriority",
+                ProductPolicyAutoUpdateMode::AutoUpdateModeUnspecified => {
+                    "autoUpdateModeUnspecified"
+                }
+                ProductPolicyAutoUpdateMode::AutoUpdatePostponed => "autoUpdatePostponed",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ProductPolicyAutoUpdateMode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ProductPolicyAutoUpdateMode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ProductPolicyAutoUpdateMode, ()> {
+            Ok(match s {
+                "autoUpdateDefault" => ProductPolicyAutoUpdateMode::AutoUpdateDefault,
+                "autoUpdateHighPriority" => ProductPolicyAutoUpdateMode::AutoUpdateHighPriority,
+                "autoUpdateModeUnspecified" => {
+                    ProductPolicyAutoUpdateMode::AutoUpdateModeUnspecified
+                }
+                "autoUpdatePostponed" => ProductPolicyAutoUpdateMode::AutoUpdatePostponed,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for ProductPolicyAutoUpdateMode {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ProductPolicyAutoUpdateMode {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ProductPolicyAutoUpdateMode {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "autoUpdateDefault" => ProductPolicyAutoUpdateMode::AutoUpdateDefault,
+                "autoUpdateHighPriority" => ProductPolicyAutoUpdateMode::AutoUpdateHighPriority,
+                "autoUpdateModeUnspecified" => {
+                    ProductPolicyAutoUpdateMode::AutoUpdateModeUnspecified
+                }
+                "autoUpdatePostponed" => ProductPolicyAutoUpdateMode::AutoUpdatePostponed,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for ProductPolicyAutoUpdateMode {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ProductPolicyAutoUpdateMode {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ProductPolicyTracksItems {
         Alpha,
         AppTrackUnspecified,
@@ -5153,10 +5251,10 @@ pub mod schemas {
     impl ProductPolicyTracksItems {
         pub fn as_str(self) -> &'static str {
             match self {
-                ProductPolicyTracksItems::Alpha => "ALPHA",
-                ProductPolicyTracksItems::AppTrackUnspecified => "APP_TRACK_UNSPECIFIED",
-                ProductPolicyTracksItems::Beta => "BETA",
-                ProductPolicyTracksItems::Production => "PRODUCTION",
+                ProductPolicyTracksItems::Alpha => "alpha",
+                ProductPolicyTracksItems::AppTrackUnspecified => "appTrackUnspecified",
+                ProductPolicyTracksItems::Beta => "beta",
+                ProductPolicyTracksItems::Production => "production",
             }
         }
     }
@@ -5169,10 +5267,10 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<ProductPolicyTracksItems, ()> {
             Ok(match s {
-                "ALPHA" => ProductPolicyTracksItems::Alpha,
-                "APP_TRACK_UNSPECIFIED" => ProductPolicyTracksItems::AppTrackUnspecified,
-                "BETA" => ProductPolicyTracksItems::Beta,
-                "PRODUCTION" => ProductPolicyTracksItems::Production,
+                "alpha" => ProductPolicyTracksItems::Alpha,
+                "appTrackUnspecified" => ProductPolicyTracksItems::AppTrackUnspecified,
+                "beta" => ProductPolicyTracksItems::Beta,
+                "production" => ProductPolicyTracksItems::Production,
                 _ => return Err(()),
             })
         }
@@ -5197,10 +5295,10 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "ALPHA" => ProductPolicyTracksItems::Alpha,
-                "APP_TRACK_UNSPECIFIED" => ProductPolicyTracksItems::AppTrackUnspecified,
-                "BETA" => ProductPolicyTracksItems::Beta,
-                "PRODUCTION" => ProductPolicyTracksItems::Production,
+                "alpha" => ProductPolicyTracksItems::Alpha,
+                "appTrackUnspecified" => ProductPolicyTracksItems::AppTrackUnspecified,
+                "beta" => ProductPolicyTracksItems::Beta,
+                "production" => ProductPolicyTracksItems::Production,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -5240,7 +5338,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub product_id: ::std::option::Option<Vec<String>>,
-        #[doc = "The interpretation of this product set. \"unknown\" should never be sent and\nis ignored if received. \"whitelist\" means that the user is entitled to\naccess the product set. \"includeAll\" means that all products are\naccessible, including products that are approved, products with revoked\napproval, and products that have never been approved. \"allApproved\" means\nthat the user is entitled to access all products that are approved for the\nenterprise. If the value is \"allApproved\" or \"includeAll\", the productId\nfield is ignored. If no value is provided, it is interpreted as\n\"whitelist\" for backwards compatibility.\nFurther \"allApproved\" or \"includeAll\" does not enable automatic\nvisibility of \"alpha\" or \"beta\" tracks for Android app. Use\nProductVisibility to enable \"alpha\" or \"beta\" tracks per user."]
+        #[doc = "The interpretation of this product set. \"unknown\" should never be sent and is ignored if received. \"whitelist\" means that the user is entitled to access the product set. \"includeAll\" means that all products are accessible, including products that are approved, products with revoked approval, and products that have never been approved. \"allApproved\" means that the user is entitled to access all products that are approved for the enterprise. If the value is \"allApproved\" or \"includeAll\", the productId field is ignored. If no value is provided, it is interpreted as \"whitelist\" for backwards compatibility. Further \"allApproved\" or \"includeAll\" does not enable automatic visibility of \"alpha\" or \"beta\" tracks for Android app. Use ProductVisibility to enable \"alpha\" or \"beta\" tracks per user."]
         #[serde(
             rename = "productSetBehavior",
             default,
@@ -5248,7 +5346,7 @@ pub mod schemas {
         )]
         pub product_set_behavior:
             ::std::option::Option<crate::schemas::ProductSetProductSetBehavior>,
-        #[doc = "Additional list of product IDs making up the product set.\nUnlike the productID array, in this list It's possible to specify\nwhich tracks (alpha, beta, production) of a product are visible to the\nuser. See ProductVisibility and its fields for more information. Specifying\nthe same product ID both here and in the productId array is not allowed and\nit will result in an error."]
+        #[doc = "Additional list of product IDs making up the product set. Unlike the productID array, in this list It's possible to specify which tracks (alpha, beta, production) of a product are visible to the user. See ProductVisibility and its fields for more information. Specifying the same product ID both here and in the productId array is not allowed and it will result in an error."]
         #[serde(
             rename = "productVisibility",
             default,
@@ -5268,9 +5366,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ProductSetProductSetBehavior {
-        #[doc = "This product set represents all approved products.\nFor Android app it represents only \"production\" track.\n(The value of the product_id field is therefore ignored)."]
+        #[doc = "This product set represents all approved products. For Android app it represents only \"production\" track. (The value of the product_id field is therefore ignored)."]
         AllApproved,
-        #[doc = "This product set represents all products.\nFor Android app it represents only \"production\" track.\n(The value of the productId field is therefore ignored)."]
+        #[doc = "This product set represents all products. For Android app it represents only \"production\" track. (The value of the productId field is therefore ignored)."]
         IncludeAll,
         #[doc = "This value should never be sent and ignored if received."]
         Unknown,
@@ -5280,10 +5378,10 @@ pub mod schemas {
     impl ProductSetProductSetBehavior {
         pub fn as_str(self) -> &'static str {
             match self {
-                ProductSetProductSetBehavior::AllApproved => "ALL_APPROVED",
-                ProductSetProductSetBehavior::IncludeAll => "INCLUDE_ALL",
-                ProductSetProductSetBehavior::Unknown => "UNKNOWN",
-                ProductSetProductSetBehavior::Whitelist => "WHITELIST",
+                ProductSetProductSetBehavior::AllApproved => "allApproved",
+                ProductSetProductSetBehavior::IncludeAll => "includeAll",
+                ProductSetProductSetBehavior::Unknown => "unknown",
+                ProductSetProductSetBehavior::Whitelist => "whitelist",
             }
         }
     }
@@ -5296,10 +5394,10 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<ProductSetProductSetBehavior, ()> {
             Ok(match s {
-                "ALL_APPROVED" => ProductSetProductSetBehavior::AllApproved,
-                "INCLUDE_ALL" => ProductSetProductSetBehavior::IncludeAll,
-                "UNKNOWN" => ProductSetProductSetBehavior::Unknown,
-                "WHITELIST" => ProductSetProductSetBehavior::Whitelist,
+                "allApproved" => ProductSetProductSetBehavior::AllApproved,
+                "includeAll" => ProductSetProductSetBehavior::IncludeAll,
+                "unknown" => ProductSetProductSetBehavior::Unknown,
+                "whitelist" => ProductSetProductSetBehavior::Whitelist,
                 _ => return Err(()),
             })
         }
@@ -5324,10 +5422,10 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "ALL_APPROVED" => ProductSetProductSetBehavior::AllApproved,
-                "INCLUDE_ALL" => ProductSetProductSetBehavior::IncludeAll,
-                "UNKNOWN" => ProductSetProductSetBehavior::Unknown,
-                "WHITELIST" => ProductSetProductSetBehavior::Whitelist,
+                "allApproved" => ProductSetProductSetBehavior::AllApproved,
+                "includeAll" => ProductSetProductSetBehavior::IncludeAll,
+                "unknown" => ProductSetProductSetBehavior::Unknown,
+                "whitelist" => ProductSetProductSetBehavior::Whitelist,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -5360,7 +5458,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ProductSigningCertificate {
-        #[doc = "The base64 urlsafe encoded SHA1 hash of the certificate. (This field is\ndeprecated in favor of SHA2-256. It should not be used and may be\nremoved at any time.)"]
+        #[doc = "The base64 urlsafe encoded SHA1 hash of the certificate. (This field is deprecated in favor of SHA2-256. It should not be used and may be removed at any time.)"]
         #[serde(
             rename = "certificateHashSha1",
             default,
@@ -5398,21 +5496,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ProductVisibility {
-        #[doc = "The product ID to make visible to the user.\nRequired for each item in the productVisibility list."]
+        #[doc = "The product ID to make visible to the user. Required for each item in the productVisibility list."]
         #[serde(
             rename = "productId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub product_id: ::std::option::Option<String>,
-        #[doc = "Grants the user visibility to the specified product track(s), identified by\n<code>trackIds</code>."]
+        #[doc = "Grants the user visibility to the specified product track(s), identified by trackIds."]
         #[serde(
             rename = "trackIds",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub track_ids: ::std::option::Option<Vec<String>>,
-        #[doc = "Deprecated. Use <code>trackIds</code> instead."]
+        #[doc = "Deprecated. Use trackIds instead."]
         #[serde(
             rename = "tracks",
             default,
@@ -5440,10 +5538,10 @@ pub mod schemas {
     impl ProductVisibilityTracksItems {
         pub fn as_str(self) -> &'static str {
             match self {
-                ProductVisibilityTracksItems::Alpha => "ALPHA",
-                ProductVisibilityTracksItems::AppTrackUnspecified => "APP_TRACK_UNSPECIFIED",
-                ProductVisibilityTracksItems::Beta => "BETA",
-                ProductVisibilityTracksItems::Production => "PRODUCTION",
+                ProductVisibilityTracksItems::Alpha => "alpha",
+                ProductVisibilityTracksItems::AppTrackUnspecified => "appTrackUnspecified",
+                ProductVisibilityTracksItems::Beta => "beta",
+                ProductVisibilityTracksItems::Production => "production",
             }
         }
     }
@@ -5456,10 +5554,10 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<ProductVisibilityTracksItems, ()> {
             Ok(match s {
-                "ALPHA" => ProductVisibilityTracksItems::Alpha,
-                "APP_TRACK_UNSPECIFIED" => ProductVisibilityTracksItems::AppTrackUnspecified,
-                "BETA" => ProductVisibilityTracksItems::Beta,
-                "PRODUCTION" => ProductVisibilityTracksItems::Production,
+                "alpha" => ProductVisibilityTracksItems::Alpha,
+                "appTrackUnspecified" => ProductVisibilityTracksItems::AppTrackUnspecified,
+                "beta" => ProductVisibilityTracksItems::Beta,
+                "production" => ProductVisibilityTracksItems::Production,
                 _ => return Err(()),
             })
         }
@@ -5484,10 +5582,10 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "ALPHA" => ProductVisibilityTracksItems::Alpha,
-                "APP_TRACK_UNSPECIFIED" => ProductVisibilityTracksItems::AppTrackUnspecified,
-                "BETA" => ProductVisibilityTracksItems::Beta,
-                "PRODUCTION" => ProductVisibilityTracksItems::Production,
+                "alpha" => ProductVisibilityTracksItems::Alpha,
+                "appTrackUnspecified" => ProductVisibilityTracksItems::AppTrackUnspecified,
+                "beta" => ProductVisibilityTracksItems::Beta,
+                "production" => ProductVisibilityTracksItems::Production,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -5520,14 +5618,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ProductsApproveRequest {
-        #[doc = "The approval URL that was shown to the user. Only the permissions shown\nto the user with that URL will be accepted, which may not be\nthe product's entire set of permissions. For example, the URL may only\ndisplay new permissions from an update after the product was approved,\nor not include new permissions if the product was updated since the URL\nwas generated."]
+        #[doc = "The approval URL that was shown to the user. Only the permissions shown to the user with that URL will be accepted, which may not be the product's entire set of permissions. For example, the URL may only display new permissions from an update after the product was approved, or not include new permissions if the product was updated since the URL was generated."]
         #[serde(
             rename = "approvalUrlInfo",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub approval_url_info: ::std::option::Option<crate::schemas::ApprovalUrlInfo>,
-        #[doc = "Sets how new permission requests for the product are handled.\n\"allPermissions\" automatically approves all current and future\npermissions for the product. \"currentPermissionsOnly\" approves the\ncurrent set of permissions for the product, but any future permissions\nadded through updates will require manual reapproval. If not specified,\nonly the current set of permissions will be approved."]
+        #[doc = "Sets how new permission requests for the product are handled. \"allPermissions\" automatically approves all current and future permissions for the product. \"currentPermissionsOnly\" approves the current set of permissions for the product, but any future permissions added through updates will require manual reapproval. If not specified, only the current set of permissions will be approved."]
         #[serde(
             rename = "approvedPermissions",
             default,
@@ -5548,17 +5646,17 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ProductsApproveRequestApprovedPermissions {
-        #[doc = "All current and future permissions the app requires are automatically\napproved."]
+        #[doc = "All current and future permissions the app requires are automatically approved."]
         AllPermissions,
-        #[doc = "Approve only the permissions the product requires at approval time.\nIf an update requires additional permissions, the app will not be updated\non devices associated with enterprise users until the additional\npermissions are approved."]
+        #[doc = "Approve only the permissions the product requires at approval time. If an update requires additional permissions, the app will not be updated on devices associated with enterprise users until the additional permissions are approved."]
         CurrentPermissionsOnly,
     }
     impl ProductsApproveRequestApprovedPermissions {
         pub fn as_str(self) -> &'static str {
             match self {
-                ProductsApproveRequestApprovedPermissions::AllPermissions => "ALL_PERMISSIONS",
+                ProductsApproveRequestApprovedPermissions::AllPermissions => "allPermissions",
                 ProductsApproveRequestApprovedPermissions::CurrentPermissionsOnly => {
-                    "CURRENT_PERMISSIONS_ONLY"
+                    "currentPermissionsOnly"
                 }
             }
         }
@@ -5574,8 +5672,8 @@ pub mod schemas {
             s: &str,
         ) -> ::std::result::Result<ProductsApproveRequestApprovedPermissions, ()> {
             Ok(match s {
-                "ALL_PERMISSIONS" => ProductsApproveRequestApprovedPermissions::AllPermissions,
-                "CURRENT_PERMISSIONS_ONLY" => {
+                "allPermissions" => ProductsApproveRequestApprovedPermissions::AllPermissions,
+                "currentPermissionsOnly" => {
                     ProductsApproveRequestApprovedPermissions::CurrentPermissionsOnly
                 }
                 _ => return Err(()),
@@ -5602,8 +5700,8 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "ALL_PERMISSIONS" => ProductsApproveRequestApprovedPermissions::AllPermissions,
-                "CURRENT_PERMISSIONS_ONLY" => {
+                "allPermissions" => ProductsApproveRequestApprovedPermissions::AllPermissions,
+                "currentPermissionsOnly" => {
                     ProductsApproveRequestApprovedPermissions::CurrentPermissionsOnly
                 }
                 _ => {
@@ -5638,7 +5736,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ProductsGenerateApprovalUrlResponse {
-        #[doc = "A URL that can be rendered in an iframe to display the permissions (if\nany) of a product.\nThis URL can be used to approve the product only once and only within 24\nhours of being generated, using the <code>Products.approve</code> call.\nIf the product is currently unapproved and has no permissions, this\nURL will point to an empty page.\nIf the product is currently approved, a URL will only be generated if\nthat product has added permissions since it was last approved, and the\nURL will only display those new permissions that have not yet been\naccepted."]
+        #[doc = "A URL that can be rendered in an iframe to display the permissions (if any) of a product. This URL can be used to approve the product only once and only within 24 hours of being generated, using the Products.approve call. If the product is currently unapproved and has no permissions, this URL will point to an empty page. If the product is currently approved, a URL will only be generated if that product has added permissions since it was last approved, and the URL will only display those new permissions that have not yet been accepted."]
         #[serde(
             rename = "url",
             default,
@@ -5676,7 +5774,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
-        #[doc = "Information about a product (e.g. an app) in the Google Play store, for\ndisplay to an enterprise admin."]
+        #[doc = "Information about a product (e.g. an app) in the Google Play store, for display to an enterprise admin."]
         #[serde(
             rename = "product",
             default,
@@ -5721,7 +5819,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub key: ::std::option::Option<crate::schemas::ServiceAccountKey>,
-        #[doc = "The account name of the service account, in the form of an email address.\nAssigned by the server."]
+        #[doc = "The account name of the service account, in the form of an email address. Assigned by the server."]
         #[serde(
             rename = "name",
             default,
@@ -5752,21 +5850,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ServiceAccountKey {
-        #[doc = "The body of the private key credentials file, in string format. This\nis only populated when the ServiceAccountKey is created, and is not stored\nby Google."]
+        #[doc = "The body of the private key credentials file, in string format. This is only populated when the ServiceAccountKey is created, and is not stored by Google."]
         #[serde(
             rename = "data",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub data: ::std::option::Option<String>,
-        #[doc = "An opaque, unique identifier for this ServiceAccountKey.\nAssigned by the server."]
+        #[doc = "An opaque, unique identifier for this ServiceAccountKey. Assigned by the server."]
         #[serde(
             rename = "id",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Public key data for the credentials file. This is an X.509 cert. If you are\nusing the <code>googleCredentials</code> key type, this is identical to the\ncert that can be retrieved by using the X.509 cert url inside of the\ncredentials file."]
+        #[doc = "Public key data for the credentials file. This is an X.509 cert. If you are using the googleCredentials key type, this is identical to the cert that can be retrieved by using the X.509 cert url inside of the credentials file."]
         #[serde(
             rename = "publicData",
             default,
@@ -5795,14 +5893,14 @@ pub mod schemas {
     pub enum ServiceAccountKeyType {
         #[doc = "Google Credentials File format."]
         GoogleCredentials,
-        #[doc = "PKCS12 format. The password for the PKCS12 file is 'notasecret'.\nFor more information, see https://tools.ietf.org/html/rfc7292.\nThe data for keys of this type are base64 encoded according to RFC 4648\nSection 4. See http://tools.ietf.org/html/rfc4648#section-4."]
+        #[doc = "PKCS12 format. The password for the PKCS12 file is 'notasecret'. For more information, see https://tools.ietf.org/html/rfc7292. The data for keys of this type are base64 encoded according to RFC 4648 Section 4. See http://tools.ietf.org/html/rfc4648#section-4."]
         Pkcs12,
     }
     impl ServiceAccountKeyType {
         pub fn as_str(self) -> &'static str {
             match self {
-                ServiceAccountKeyType::GoogleCredentials => "GOOGLE_CREDENTIALS",
-                ServiceAccountKeyType::Pkcs12 => "PKCS12",
+                ServiceAccountKeyType::GoogleCredentials => "googleCredentials",
+                ServiceAccountKeyType::Pkcs12 => "pkcs12",
             }
         }
     }
@@ -5815,8 +5913,8 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<ServiceAccountKeyType, ()> {
             Ok(match s {
-                "GOOGLE_CREDENTIALS" => ServiceAccountKeyType::GoogleCredentials,
-                "PKCS12" => ServiceAccountKeyType::Pkcs12,
+                "googleCredentials" => ServiceAccountKeyType::GoogleCredentials,
+                "pkcs12" => ServiceAccountKeyType::Pkcs12,
                 _ => return Err(()),
             })
         }
@@ -5841,8 +5939,8 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "GOOGLE_CREDENTIALS" => ServiceAccountKeyType::GoogleCredentials,
-                "PKCS12" => ServiceAccountKeyType::Pkcs12,
+                "googleCredentials" => ServiceAccountKeyType::GoogleCredentials,
+                "pkcs12" => ServiceAccountKeyType::Pkcs12,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -5906,7 +6004,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SignupInfo {
-        #[doc = "An opaque token that will be required, along with the Enterprise Token,\nfor obtaining the enterprise resource from CompleteSignup."]
+        #[doc = "An opaque token that will be required, along with the Enterprise Token, for obtaining the enterprise resource from CompleteSignup."]
         #[serde(
             rename = "completionToken",
             default,
@@ -5920,7 +6018,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "A URL under which the Admin can sign up for an enterprise.\nThe page pointed to cannot be rendered in an iframe."]
+        #[doc = "A URL under which the Admin can sign up for an enterprise. The page pointed to cannot be rendered in an iframe."]
         #[serde(
             rename = "url",
             default,
@@ -5958,21 +6056,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Ordered list of localized strings giving the name of this page.\nThe text displayed is the one that best matches the user locale,\nor the first entry if there is no good match. There needs to be\nat least one entry."]
+        #[doc = "Ordered list of localized strings giving the name of this page. The text displayed is the one that best matches the user locale, or the first entry if there is no good match. There needs to be at least one entry."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<Vec<crate::schemas::LocalizedText>>,
-        #[doc = "String (US-ASCII only) used to determine order of this cluster within the\nparent page's elements. Page elements are sorted in lexicographic order\nof this field.\nDuplicated values are allowed, but ordering between elements with\nduplicate order is undefined.\n\nThe value of this field is never visible to a user, it is used solely\nfor the purpose of defining an ordering. Maximum length is 256\ncharacters."]
+        #[doc = "String (US-ASCII only) used to determine order of this cluster within the parent page's elements. Page elements are sorted in lexicographic order of this field. Duplicated values are allowed, but ordering between elements with duplicate order is undefined. The value of this field is never visible to a user, it is used solely for the purpose of defining an ordering. Maximum length is 256 characters."]
         #[serde(
             rename = "orderInPage",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub order_in_page: ::std::option::Option<String>,
-        #[doc = "List of products in the order they are displayed in the cluster. There\nshould not be duplicates within a cluster."]
+        #[doc = "List of products in the order they are displayed in the cluster. There should not be duplicates within a cluster."]
         #[serde(
             rename = "productId",
             default,
@@ -6003,14 +6101,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct StoreLayout {
-        #[doc = "The ID of the store page to be used as the homepage. The homepage is the\nfirst page shown in the managed Google Play Store.\n\nNot specifying a homepage is equivalent to setting the store layout\ntype to \"basic\"."]
+        #[doc = "The ID of the store page to be used as the homepage. The homepage is the first page shown in the managed Google Play Store. Not specifying a homepage is equivalent to setting the store layout type to \"basic\"."]
         #[serde(
             rename = "homepageId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub homepage_id: ::std::option::Option<String>,
-        #[doc = "The store layout type. By default, this value is set to \"basic\"\nif the homepageId field is not set, and to \"custom\" otherwise.\nIf set to \"basic\", the layout will consist of all approved apps that\nhave been whitelisted for the user."]
+        #[doc = "The store layout type. By default, this value is set to \"basic\" if the homepageId field is not set, and to \"custom\" otherwise. If set to \"basic\", the layout will consist of all approved apps that have been whitelisted for the user."]
         #[serde(
             rename = "storeLayoutType",
             default,
@@ -6037,9 +6135,9 @@ pub mod schemas {
     impl StoreLayoutStoreLayoutType {
         pub fn as_str(self) -> &'static str {
             match self {
-                StoreLayoutStoreLayoutType::Basic => "BASIC",
-                StoreLayoutStoreLayoutType::Custom => "CUSTOM",
-                StoreLayoutStoreLayoutType::Unknown => "UNKNOWN",
+                StoreLayoutStoreLayoutType::Basic => "basic",
+                StoreLayoutStoreLayoutType::Custom => "custom",
+                StoreLayoutStoreLayoutType::Unknown => "unknown",
             }
         }
     }
@@ -6052,9 +6150,9 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<StoreLayoutStoreLayoutType, ()> {
             Ok(match s {
-                "BASIC" => StoreLayoutStoreLayoutType::Basic,
-                "CUSTOM" => StoreLayoutStoreLayoutType::Custom,
-                "UNKNOWN" => StoreLayoutStoreLayoutType::Unknown,
+                "basic" => StoreLayoutStoreLayoutType::Basic,
+                "custom" => StoreLayoutStoreLayoutType::Custom,
+                "unknown" => StoreLayoutStoreLayoutType::Unknown,
                 _ => return Err(()),
             })
         }
@@ -6079,9 +6177,9 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "BASIC" => StoreLayoutStoreLayoutType::Basic,
-                "CUSTOM" => StoreLayoutStoreLayoutType::Custom,
-                "UNKNOWN" => StoreLayoutStoreLayoutType::Unknown,
+                "basic" => StoreLayoutStoreLayoutType::Basic,
+                "custom" => StoreLayoutStoreLayoutType::Custom,
+                "unknown" => StoreLayoutStoreLayoutType::Unknown,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -6183,14 +6281,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Ordered list of pages a user should be able to reach from this page.\nThe list can't include this page.\nIt is recommended that the basic pages are created first,\nbefore adding the links between pages.\n\nThe API doesn't verify that the pages exist or the pages are reachable."]
+        #[doc = "Ordered list of pages a user should be able to reach from this page. The list can't include this page. It is recommended that the basic pages are created first, before adding the links between pages. The API doesn't verify that the pages exist or the pages are reachable."]
         #[serde(
             rename = "link",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub link: ::std::option::Option<Vec<String>>,
-        #[doc = "Ordered list of localized strings giving the name of this page.\nThe text displayed is the one that best matches the user locale,\nor the first entry if there is no good match. There needs to be\nat least one entry."]
+        #[doc = "Ordered list of localized strings giving the name of this page. The text displayed is the one that best matches the user locale, or the first entry if there is no good match. There needs to be at least one entry."]
         #[serde(
             rename = "name",
             default,
@@ -6221,7 +6319,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TokenPagination {
-        #[doc = "Tokens to pass to the standard list field 'page_token'. Whenever available,\ntokens are preferred over manipulating start_index."]
+        #[doc = "Tokens to pass to the standard list field 'page_token'. Whenever available, tokens are preferred over manipulating start_index."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -6258,14 +6356,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TrackInfo {
-        #[doc = "A modifiable name for a track. This is the visible name in the play\ndeveloper console."]
+        #[doc = "A modifiable name for a track. This is the visible name in the play developer console."]
         #[serde(
             rename = "trackAlias",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub track_alias: ::std::option::Option<String>,
-        #[doc = "Unmodifiable, unique track identifier. This identifier is the\nreleaseTrackId in the url of the play developer console page that displays\nthe track information."]
+        #[doc = "Unmodifiable, unique track identifier. This identifier is the releaseTrackId in the url of the play developer console page that displays the track information."]
         #[serde(
             rename = "trackId",
             default,
@@ -6296,21 +6394,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct User {
-        #[doc = "A unique identifier you create for this user, such as \"user342\" or\n\"asset#44418\". Do not use personally identifiable information (PII) for\nthis property. Must always be set for EMM-managed users.\nNot set for Google-managed users."]
+        #[doc = "A unique identifier you create for this user, such as \"user342\" or \"asset#44418\". Do not use personally identifiable information (PII) for this property. Must always be set for EMM-managed users. Not set for Google-managed users."]
         #[serde(
             rename = "accountIdentifier",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub account_identifier: ::std::option::Option<String>,
-        #[doc = "The type of account that this user represents. A <code>userAccount</code>\ncan be installed on multiple devices, but a <code>deviceAccount</code> is\nspecific to a single device. An EMM-managed user (<code>emmManaged</code>)\ncan be either type (<code>userAccount</code>, <code>deviceAccount</code>),\nbut a Google-managed user (<code>googleManaged</code>) is always a\n<code>userAccount</code>."]
+        #[doc = "The type of account that this user represents. A userAccount can be installed on multiple devices, but a deviceAccount is specific to a single device. An EMM-managed user (emmManaged) can be either type (userAccount, deviceAccount), but a Google-managed user (googleManaged) is always a userAccount."]
         #[serde(
             rename = "accountType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub account_type: ::std::option::Option<crate::schemas::UserAccountType>,
-        #[doc = "The name that will appear in user interfaces. Setting this property is\noptional when creating EMM-managed users. If you do set this property,\nuse something generic about the organization (such as \"Example, Inc.\") or\nyour name (as EMM).\nNot used for Google-managed user accounts.\n@mutable androidenterprise.users.update"]
+        #[doc = "The name that will appear in user interfaces. Setting this property is optional when creating EMM-managed users. If you do set this property, use something generic about the organization (such as \"Example, Inc.\") or your name (as EMM). Not used for Google-managed user accounts. @mutable androidenterprise.users.update"]
         #[serde(
             rename = "displayName",
             default,
@@ -6324,14 +6422,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "The entity that manages the user.  With <code>googleManaged</code> users,\nthe source of truth is Google so EMMs have to make sure a Google Account\nexists for the user.  With <code>emmManaged</code> users, the\nEMM is in charge."]
+        #[doc = "The entity that manages the user. With googleManaged users, the source of truth is Google so EMMs have to make sure a Google Account exists for the user. With emmManaged users, the EMM is in charge."]
         #[serde(
             rename = "managementType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub management_type: ::std::option::Option<crate::schemas::UserManagementType>,
-        #[doc = "The user's primary email address, for example, \"jsmith@example.com\".\nWill always be set for Google managed users and not set for EMM managed\nusers."]
+        #[doc = "The user's primary email address, for example, \"jsmith@example.com\". Will always be set for Google managed users and not set for EMM managed users."]
         #[serde(
             rename = "primaryEmail",
             default,
@@ -6357,8 +6455,8 @@ pub mod schemas {
     impl UserAccountType {
         pub fn as_str(self) -> &'static str {
             match self {
-                UserAccountType::DeviceAccount => "DEVICE_ACCOUNT",
-                UserAccountType::UserAccount => "USER_ACCOUNT",
+                UserAccountType::DeviceAccount => "deviceAccount",
+                UserAccountType::UserAccount => "userAccount",
             }
         }
     }
@@ -6371,8 +6469,8 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<UserAccountType, ()> {
             Ok(match s {
-                "DEVICE_ACCOUNT" => UserAccountType::DeviceAccount,
-                "USER_ACCOUNT" => UserAccountType::UserAccount,
+                "deviceAccount" => UserAccountType::DeviceAccount,
+                "userAccount" => UserAccountType::UserAccount,
                 _ => return Err(()),
             })
         }
@@ -6397,8 +6495,8 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "DEVICE_ACCOUNT" => UserAccountType::DeviceAccount,
-                "USER_ACCOUNT" => UserAccountType::UserAccount,
+                "deviceAccount" => UserAccountType::DeviceAccount,
+                "userAccount" => UserAccountType::UserAccount,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -6426,8 +6524,8 @@ pub mod schemas {
     impl UserManagementType {
         pub fn as_str(self) -> &'static str {
             match self {
-                UserManagementType::EmmManaged => "EMM_MANAGED",
-                UserManagementType::GoogleManaged => "GOOGLE_MANAGED",
+                UserManagementType::EmmManaged => "emmManaged",
+                UserManagementType::GoogleManaged => "googleManaged",
             }
         }
     }
@@ -6440,8 +6538,8 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<UserManagementType, ()> {
             Ok(match s {
-                "EMM_MANAGED" => UserManagementType::EmmManaged,
-                "GOOGLE_MANAGED" => UserManagementType::GoogleManaged,
+                "emmManaged" => UserManagementType::EmmManaged,
+                "googleManaged" => UserManagementType::GoogleManaged,
                 _ => return Err(()),
             })
         }
@@ -6466,8 +6564,8 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "EMM_MANAGED" => UserManagementType::EmmManaged,
-                "GOOGLE_MANAGED" => UserManagementType::GoogleManaged,
+                "emmManaged" => UserManagementType::EmmManaged,
+                "googleManaged" => UserManagementType::GoogleManaged,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -6569,14 +6667,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct WebApp {
-        #[doc = "The display mode of the web app. <br><br>\nPossible values include:\n\n<ul><li>\"<code>minimalUi</code>\", the device's status bar, navigation bar,\nthe app's URL, and a refresh button are visible when the app is open. For\nHTTP URLs, you can only select this option.\n<li>\"<code>standalone</code>\", the device's status bar and navigation\nbar are visible when the app is open.\n<li>\"<code>fullScreen</code>\", the app opens in full screen mode, hiding\nthe device's status and navigation bars.  All browser UI elements, page\nURL, system status bar and back button are not visible, and the web app\ntakes up the entirety of the available display area.\n</ul>"]
+        #[doc = "The display mode of the web app. Possible values include: - \"minimalUi\", the device's status bar, navigation bar, the app's URL, and a refresh button are visible when the app is open. For HTTP URLs, you can only select this option. - \"standalone\", the device's status bar and navigation bar are visible when the app is open. - \"fullScreen\", the app opens in full screen mode, hiding the device's status and navigation bars. All browser UI elements, page URL, system status bar and back button are not visible, and the web app takes up the entirety of the available display area. "]
         #[serde(
             rename = "displayMode",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_mode: ::std::option::Option<crate::schemas::WebAppDisplayMode>,
-        #[doc = "A list of icons representing this website. If absent, a default icon (for\ncreate) or the current icon (for update) will be used."]
+        #[doc = "A list of icons representing this website. If absent, a default icon (for create) or the current icon (for update) will be used."]
         #[serde(
             rename = "icons",
             default,
@@ -6590,21 +6688,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_published: ::std::option::Option<bool>,
-        #[doc = "The start URL, i.e. the URL that should load when the user opens the\napplication."]
+        #[doc = "The start URL, i.e. the URL that should load when the user opens the application."]
         #[serde(
             rename = "startUrl",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub start_url: ::std::option::Option<String>,
-        #[doc = "The title of the web app as displayed to the user (e.g., amongst a list of\nother applications, or as a label for an icon)."]
+        #[doc = "The title of the web app as displayed to the user (e.g., amongst a list of other applications, or as a label for an icon)."]
         #[serde(
             rename = "title",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub title: ::std::option::Option<String>,
-        #[doc = "The current version of the app.\n\n<p>Note that the version can automatically increase during the lifetime of\nthe web app, while Google does internal housekeeping to keep the web app\nup-to-date."]
+        #[doc = "The current version of the app. Note that the version can automatically increase during the lifetime of the web app, while Google does internal housekeeping to keep the web app up-to-date."]
         #[serde(
             rename = "versionCode",
             default,
@@ -6612,7 +6710,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub version_code: ::std::option::Option<i64>,
-        #[doc = "The ID of the application.  A string of the form\n<code>\"app:<package name>\"</code> where the package name\nalways starts with the prefix\n<code>\"com.google.enterprise.webapp.\"</code> followed by a\nrandom id."]
+        #[doc = "The ID of the application. A string of the form \"app:<package name>\" where the package name always starts with the prefix \"com.google.enterprise.webapp.\" followed by a random id."]
         #[serde(
             rename = "webAppId",
             default,
@@ -6633,20 +6731,20 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum WebAppDisplayMode {
         DisplayModeUnspecified,
-        #[doc = "Opens the web app in full screen without any visible controls. The\nbrowser UI elements, page URL, system status bar and back button are not\nvisible, and the web app takes up the entirety of the available display\narea."]
+        #[doc = "Opens the web app in full screen without any visible controls. The browser UI elements, page URL, system status bar and back button are not visible, and the web app takes up the entirety of the available display area."]
         FullScreen,
-        #[doc = "Opens the web app with a minimal set of browser UI elements for\ncontrolling navigation and viewing the page URL."]
+        #[doc = "Opens the web app with a minimal set of browser UI elements for controlling navigation and viewing the page URL."]
         MinimalUi,
-        #[doc = "Opens the web app to look and feel like a standalone native application.\nThe browser UI elements and page URL are not visible, however the system\nstatus bar and back button are visible."]
+        #[doc = "Opens the web app to look and feel like a standalone native application. The browser UI elements and page URL are not visible, however the system status bar and back button are visible."]
         Standalone,
     }
     impl WebAppDisplayMode {
         pub fn as_str(self) -> &'static str {
             match self {
-                WebAppDisplayMode::DisplayModeUnspecified => "DISPLAY_MODE_UNSPECIFIED",
-                WebAppDisplayMode::FullScreen => "FULL_SCREEN",
-                WebAppDisplayMode::MinimalUi => "MINIMAL_UI",
-                WebAppDisplayMode::Standalone => "STANDALONE",
+                WebAppDisplayMode::DisplayModeUnspecified => "displayModeUnspecified",
+                WebAppDisplayMode::FullScreen => "fullScreen",
+                WebAppDisplayMode::MinimalUi => "minimalUi",
+                WebAppDisplayMode::Standalone => "standalone",
             }
         }
     }
@@ -6659,10 +6757,10 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<WebAppDisplayMode, ()> {
             Ok(match s {
-                "DISPLAY_MODE_UNSPECIFIED" => WebAppDisplayMode::DisplayModeUnspecified,
-                "FULL_SCREEN" => WebAppDisplayMode::FullScreen,
-                "MINIMAL_UI" => WebAppDisplayMode::MinimalUi,
-                "STANDALONE" => WebAppDisplayMode::Standalone,
+                "displayModeUnspecified" => WebAppDisplayMode::DisplayModeUnspecified,
+                "fullScreen" => WebAppDisplayMode::FullScreen,
+                "minimalUi" => WebAppDisplayMode::MinimalUi,
+                "standalone" => WebAppDisplayMode::Standalone,
                 _ => return Err(()),
             })
         }
@@ -6687,10 +6785,10 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
-                "DISPLAY_MODE_UNSPECIFIED" => WebAppDisplayMode::DisplayModeUnspecified,
-                "FULL_SCREEN" => WebAppDisplayMode::FullScreen,
-                "MINIMAL_UI" => WebAppDisplayMode::MinimalUi,
-                "STANDALONE" => WebAppDisplayMode::Standalone,
+                "displayModeUnspecified" => WebAppDisplayMode::DisplayModeUnspecified,
+                "fullScreen" => WebAppDisplayMode::FullScreen,
+                "minimalUi" => WebAppDisplayMode::MinimalUi,
+                "standalone" => WebAppDisplayMode::Standalone,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -6723,7 +6821,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct WebAppIcon {
-        #[doc = "The actual bytes of the image in a base64url encoded string (c.f. RFC4648,\nsection 5 \"Base 64 Encoding with URL and Filename Safe Alphabet\").\n\n<ul>\n<li>The image type can be png or jpg.\n<li>The image should ideally be square.\n<li>The image should ideally have a size of 512x512.\n</ul>"]
+        #[doc = "The actual bytes of the image in a base64url encoded string (c.f. RFC4648, section 5 \"Base 64 Encoding with URL and Filename Safe Alphabet\"). - The image type can be png or jpg. - The image should ideally be square. - The image should ideally have a size of 512x512. "]
         #[serde(
             rename = "imageData",
             default,
@@ -7088,7 +7186,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Uploads a report containing any changes in app states on the device since\nthe last report was generated. You can call this method up to 3 times every\n24 hours for a given device.\nIf you exceed the quota, then the Google Play EMM API returns <code>HTTP\n429 Too Many Requests</code>."]
+            #[doc = "Uploads a report containing any changes in app states on the device since the last report was generated. You can call this method up to 3 times every 24 hours for a given device. If you exceed the quota, then the Google Play EMM API returns HTTP 429 Too Many Requests."]
             pub fn force_report_upload(
                 &self,
                 enterprise_id: impl Into<String>,
@@ -7140,7 +7238,7 @@ pub mod resources {
                     device_id: device_id.into(),
                 }
             }
-            #[doc = "Retrieves whether a device's access to Google services is enabled or\ndisabled.\nThe device state takes effect only if enforcing EMM policies on Android\ndevices is enabled in the Google Admin Console.\nOtherwise, the device state is ignored and all devices are allowed access\nto Google services.\nThis is only supported for Google-managed users."]
+            #[doc = "Retrieves whether a device's access to Google services is enabled or disabled. The device state takes effect only if enforcing EMM policies on Android devices is enabled in the Google Admin Console. Otherwise, the device state is ignored and all devices are allowed access to Google services. This is only supported for Google-managed users."]
             pub fn get_state(
                 &self,
                 enterprise_id: impl Into<String>,
@@ -7190,7 +7288,7 @@ pub mod resources {
                     user_id: user_id.into(),
                 }
             }
-            #[doc = "Sets whether a device's access to Google services is enabled or disabled.\nThe device state takes effect only if enforcing EMM policies on Android\ndevices is enabled in the Google Admin Console.\nOtherwise, the device state is ignored and all devices are allowed access\nto Google services.\nThis is only supported for Google-managed users."]
+            #[doc = "Sets whether a device's access to Google services is enabled or disabled. The device state takes effect only if enforcing EMM policies on Android devices is enabled in the Google Admin Console. Otherwise, the device state is ignored and all devices are allowed access to Google services. This is only supported for Google-managed users."]
             pub fn set_state(
                 &self,
                 request: crate::schemas::DeviceState,
@@ -7218,7 +7316,7 @@ pub mod resources {
                     device_id: device_id.into(),
                 }
             }
-            #[doc = "Updates the device policy"]
+            #[doc = "Updates the device policy. To ensure the policy is properly enforced, you need to prevent unmanaged accounts from accessing Google Play by setting the allowed_accounts in the managed configuration for the Google Play package. See restrict accounts in Google Play."]
             pub fn update(
                 &self,
                 request: crate::schemas::Device,
@@ -7320,7 +7418,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -7352,19 +7450,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -7493,7 +7591,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -7524,19 +7622,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -7667,7 +7765,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -7699,19 +7797,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -7841,7 +7939,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -7865,19 +7963,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -8010,7 +8108,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -8042,19 +8140,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -8085,7 +8183,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> UpdateRequestBuilder<'a> {
-            #[doc = "Mask that identifies which fields to update. If not set, all modifiable\nfields will be modified.\n\nWhen set in a query parameter, this field should be specified as\n<code>updateMask=<field1>,<field2>,...</code>"]
+            #[doc = "Mask that identifies which fields to update. If not set, all modifiable fields will be modified. When set in a query parameter, this field should be specified as updateMask=<field1>,<field2>,..."]
             pub fn update_mask(mut self, value: impl Into<String>) -> Self {
                 self.update_mask = Some(value.into());
                 self
@@ -8191,7 +8289,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -8222,20 +8320,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("updateMask", &self.update_mask)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("updateMask", &self.update_mask)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -8248,14 +8346,16 @@ pub mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum GetServiceAccountKeyType {
+                #[doc = "Google Credentials File format."]
                 GoogleCredentials,
+                #[doc = "PKCS12 format. The password for the PKCS12 file is 'notasecret'. For more information, see https://tools.ietf.org/html/rfc7292. The data for keys of this type are base64 encoded according to RFC 4648 Section 4. See http://tools.ietf.org/html/rfc4648#section-4."]
                 Pkcs12,
             }
             impl GetServiceAccountKeyType {
                 pub fn as_str(self) -> &'static str {
                     match self {
-                        GetServiceAccountKeyType::GoogleCredentials => "GOOGLE_CREDENTIALS",
-                        GetServiceAccountKeyType::Pkcs12 => "PKCS12",
+                        GetServiceAccountKeyType::GoogleCredentials => "googleCredentials",
+                        GetServiceAccountKeyType::Pkcs12 => "pkcs12",
                     }
                 }
             }
@@ -8268,8 +8368,8 @@ pub mod resources {
                 type Err = ();
                 fn from_str(s: &str) -> ::std::result::Result<GetServiceAccountKeyType, ()> {
                     Ok(match s {
-                        "GOOGLE_CREDENTIALS" => GetServiceAccountKeyType::GoogleCredentials,
-                        "PKCS12" => GetServiceAccountKeyType::Pkcs12,
+                        "googleCredentials" => GetServiceAccountKeyType::GoogleCredentials,
+                        "pkcs12" => GetServiceAccountKeyType::Pkcs12,
                         _ => return Err(()),
                     })
                 }
@@ -8294,8 +8394,8 @@ pub mod resources {
                 {
                     let value: &'de str = <&str>::deserialize(deserializer)?;
                     Ok(match value {
-                        "GOOGLE_CREDENTIALS" => GetServiceAccountKeyType::GoogleCredentials,
-                        "PKCS12" => GetServiceAccountKeyType::Pkcs12,
+                        "googleCredentials" => GetServiceAccountKeyType::GoogleCredentials,
+                        "pkcs12" => GetServiceAccountKeyType::Pkcs12,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -8317,15 +8417,17 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum PullNotificationSetRequestMode {
+                #[doc = "Returns immediately whether notifications are present or not."]
                 ReturnImmediately,
+                #[doc = "Wait until one or more notifications are present."]
                 WaitForNotifications,
             }
             impl PullNotificationSetRequestMode {
                 pub fn as_str(self) -> &'static str {
                     match self {
-                        PullNotificationSetRequestMode::ReturnImmediately => "RETURN_IMMEDIATELY",
+                        PullNotificationSetRequestMode::ReturnImmediately => "returnImmediately",
                         PullNotificationSetRequestMode::WaitForNotifications => {
-                            "WAIT_FOR_NOTIFICATIONS"
+                            "waitForNotifications"
                         }
                     }
                 }
@@ -8339,8 +8441,8 @@ pub mod resources {
                 type Err = ();
                 fn from_str(s: &str) -> ::std::result::Result<PullNotificationSetRequestMode, ()> {
                     Ok(match s {
-                        "RETURN_IMMEDIATELY" => PullNotificationSetRequestMode::ReturnImmediately,
-                        "WAIT_FOR_NOTIFICATIONS" => {
+                        "returnImmediately" => PullNotificationSetRequestMode::ReturnImmediately,
+                        "waitForNotifications" => {
                             PullNotificationSetRequestMode::WaitForNotifications
                         }
                         _ => return Err(()),
@@ -8367,8 +8469,8 @@ pub mod resources {
                 {
                     let value: &'de str = <&str>::deserialize(deserializer)?;
                     Ok(match value {
-                        "RETURN_IMMEDIATELY" => PullNotificationSetRequestMode::ReturnImmediately,
-                        "WAIT_FOR_NOTIFICATIONS" => {
+                        "returnImmediately" => PullNotificationSetRequestMode::ReturnImmediately,
+                        "waitForNotifications" => {
                             PullNotificationSetRequestMode::WaitForNotifications
                         }
                         _ => {
@@ -8399,7 +8501,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Acknowledges notifications that were received from\nEnterprises.PullNotificationSet to prevent subsequent calls from returning\nthe same notifications."]
+            #[doc = "Acknowledges notifications that were received from Enterprises.PullNotificationSet to prevent subsequent calls from returning the same notifications."]
             pub fn acknowledge_notification_set(&self) -> AcknowledgeNotificationSetRequestBuilder {
                 AcknowledgeNotificationSetRequestBuilder {
                     reqwest: &self.reqwest,
@@ -8418,7 +8520,7 @@ pub mod resources {
                     notification_set_id: None,
                 }
             }
-            #[doc = "Completes the signup flow, by specifying the Completion token and\nEnterprise token.\nThis request must not be called multiple times for a given Enterprise\nToken."]
+            #[doc = "Completes the signup flow, by specifying the Completion token and Enterprise token. This request must not be called multiple times for a given Enterprise Token."]
             pub fn complete_signup(&self) -> CompleteSignupRequestBuilder {
                 CompleteSignupRequestBuilder {
                     reqwest: &self.reqwest,
@@ -8438,7 +8540,7 @@ pub mod resources {
                     enterprise_token: None,
                 }
             }
-            #[doc = "Returns a unique token to access an embeddable UI. To generate a\nweb UI, pass the generated token into the managed Google Play javascript\nAPI. Each token may only be used to start one UI session. See the\njavascript API documentation for further information."]
+            #[doc = "Returns a unique token to access an embeddable UI. To generate a web UI, pass the generated token into the managed Google Play javascript API. Each token may only be used to start one UI session. See the javascript API documentation for further information."]
             pub fn create_web_token(
                 &self,
                 request: crate::schemas::AdministratorWebTokenSpec,
@@ -8524,7 +8626,7 @@ pub mod resources {
                     enterprise_id: enterprise_id.into(),
                 }
             }
-            #[doc = "Returns a service account and credentials. The service account\ncan be bound to the enterprise by calling setAccount. The service account\nis unique to this enterprise and EMM, and will be deleted if the enterprise\nis unbound. The credentials contain private key data and are not stored\nserver-side.\n<br> <br>\nThis method can only be called after calling\nEnterprises.Enroll or Enterprises.CompleteSignup, and before\nEnterprises.SetAccount; at other times it will return an error.\n<br> <br>\nSubsequent calls after the first will generate a new, unique set of\ncredentials, and invalidate the previously generated credentials.\n<br> <br>\nOnce the service account is bound to the enterprise, it can be managed\nusing the serviceAccountKeys resource."]
+            #[doc = "Returns a service account and credentials. The service account can be bound to the enterprise by calling setAccount. The service account is unique to this enterprise and EMM, and will be deleted if the enterprise is unbound. The credentials contain private key data and are not stored server-side. This method can only be called after calling Enterprises.Enroll or Enterprises.CompleteSignup, and before Enterprises.SetAccount; at other times it will return an error. Subsequent calls after the first will generate a new, unique set of credentials, and invalidate the previously generated credentials. Once the service account is bound to the enterprise, it can be managed using the serviceAccountKeys resource."]
             pub fn get_service_account(
                 &self,
                 enterprise_id: impl Into<String>,
@@ -8547,7 +8649,7 @@ pub mod resources {
                     key_type: None,
                 }
             }
-            #[doc = "Returns the store layout for the enterprise. If the store layout\nhas not been set, returns \"basic\" as the store layout type and no\nhomepage."]
+            #[doc = "Returns the store layout for the enterprise. If the store layout has not been set, returns \"basic\" as the store layout type and no homepage."]
             pub fn get_store_layout(
                 &self,
                 enterprise_id: impl Into<String>,
@@ -8569,7 +8671,7 @@ pub mod resources {
                     enterprise_id: enterprise_id.into(),
                 }
             }
-            #[doc = "Looks up an enterprise by domain name.\nThis is only supported for enterprises created via the Google-initiated\ncreation flow.  Lookup of the id is not needed for enterprises created via\nthe EMM-initiated flow since the EMM learns the enterprise ID in the\ncallback specified in the Enterprises.generateSignupUrl call."]
+            #[doc = "Looks up an enterprise by domain name. This is only supported for enterprises created via the Google-initiated creation flow. Lookup of the id is not needed for enterprises created via the EMM-initiated flow since the EMM learns the enterprise ID in the callback specified in the Enterprises.generateSignupUrl call."]
             pub fn list(&self, domain: impl Into<String>) -> ListRequestBuilder {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
@@ -8588,7 +8690,7 @@ pub mod resources {
                     domain: domain.into(),
                 }
             }
-            #[doc = "Pulls and returns a notification set for the enterprises associated with\nthe service account authenticated for the request. The notification set may\nbe empty if no notification are pending.\n<br>\nA notification set returned needs to be acknowledged within 20 seconds\nby calling Enterprises.AcknowledgeNotificationSet, unless the\nnotification set is empty.\n<br>\nNotifications that are not acknowledged within the 20 seconds will\neventually be included again in the response to another PullNotificationSet\nrequest, and those that are never acknowledged will ultimately be deleted\naccording to the Google Cloud Platform Pub/Sub system policy.\n<br>\nMultiple requests might be performed concurrently to retrieve\nnotifications, in which case the pending notifications (if any) will be\nsplit among each caller, if any are pending.\n<br>\nIf no notifications are present, an empty notification list is returned.\nSubsequent requests may return more notifications once they become\navailable."]
+            #[doc = "Pulls and returns a notification set for the enterprises associated with the service account authenticated for the request. The notification set may be empty if no notification are pending. A notification set returned needs to be acknowledged within 20 seconds by calling Enterprises.AcknowledgeNotificationSet, unless the notification set is empty. Notifications that are not acknowledged within the 20 seconds will eventually be included again in the response to another PullNotificationSet request, and those that are never acknowledged will ultimately be deleted according to the Google Cloud Platform Pub/Sub system policy. Multiple requests might be performed concurrently to retrieve notifications, in which case the pending notifications (if any) will be split among each caller, if any are pending. If no notifications are present, an empty notification list is returned. Subsequent requests may return more notifications once they become available."]
             pub fn pull_notification_set(&self) -> PullNotificationSetRequestBuilder {
                 PullNotificationSetRequestBuilder {
                     reqwest: &self.reqwest,
@@ -8607,7 +8709,7 @@ pub mod resources {
                     request_mode: None,
                 }
             }
-            #[doc = "Sends a test notification to validate the EMM integration with\nthe Google Cloud Pub/Sub service for this enterprise."]
+            #[doc = "Sends a test notification to validate the EMM integration with the Google Cloud Pub/Sub service for this enterprise."]
             pub fn send_test_push_notification(
                 &self,
                 enterprise_id: impl Into<String>,
@@ -8629,7 +8731,7 @@ pub mod resources {
                     enterprise_id: enterprise_id.into(),
                 }
             }
-            #[doc = "Sets the account that will be used to authenticate to the API as the\nenterprise."]
+            #[doc = "Sets the account that will be used to authenticate to the API as the enterprise."]
             pub fn set_account(
                 &self,
                 request: crate::schemas::EnterpriseAccount,
@@ -8653,7 +8755,7 @@ pub mod resources {
                     enterprise_id: enterprise_id.into(),
                 }
             }
-            #[doc = "Sets the store layout for the enterprise. By default, storeLayoutType\nis set to \"basic\" and the basic store layout is enabled. The basic\nlayout only contains apps approved by the admin, and that have\nbeen added to the available product set for a user (using the\n<a href=\"/android/work/play/emm-api/v1/users/setAvailableProductSet\">\nsetAvailableProductSet</a> call). Apps on the page are sorted in order of\ntheir product ID value. If you create a custom store layout (by setting\nstoreLayoutType = \"custom\" and setting a homepage), the basic store\nlayout is disabled."]
+            #[doc = "Sets the store layout for the enterprise. By default, storeLayoutType is set to \"basic\" and the basic store layout is enabled. The basic layout only contains apps approved by the admin, and that have been added to the available product set for a user (using the setAvailableProductSet call). Apps on the page are sorted in order of their product ID value. If you create a custom store layout (by setting storeLayoutType = \"custom\" and setting a homepage), the basic store layout is disabled."]
             pub fn set_store_layout(
                 &self,
                 request: crate::schemas::StoreLayout,
@@ -8716,7 +8818,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> AcknowledgeNotificationSetRequestBuilder<'a> {
-            #[doc = "The notification set ID as returned by Enterprises.PullNotificationSet.\nThis must be provided."]
+            #[doc = "The notification set ID as returned by Enterprises.PullNotificationSet. This must be provided."]
             pub fn notification_set_id(mut self, value: impl Into<String>) -> Self {
                 self.notification_set_id = Some(value.into());
                 self
@@ -8772,7 +8874,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/acknowledgeNotificationSet");
                 output
             }
@@ -8780,20 +8882,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("notificationSetId", &self.notification_set_id)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("notificationSetId", &self.notification_set_id)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -8933,7 +9035,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/completeSignup");
                 output
             }
@@ -8941,21 +9043,21 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("completionToken", &self.completion_token)]);
-                let req = req.query(&[("enterpriseToken", &self.enterprise_token)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("completionToken", &self.completion_token)]);
+                req = req.query(&[("enterpriseToken", &self.enterprise_token)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9086,7 +9188,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -9102,19 +9204,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9245,7 +9347,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/enroll");
                 output
             }
@@ -9253,20 +9355,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("token", &self.token)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("token", &self.token)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9293,7 +9395,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GenerateSignupUrlRequestBuilder<'a> {
-            #[doc = "The callback URL to which the Admin will be redirected after successfully\ncreating an enterprise. Before redirecting there the system will add a\nsingle query parameter to this URL named \"enterpriseToken\" which will\ncontain an opaque token to be used for the CompleteSignup request.<br>\nBeware that this means that the URL will be parsed, the parameter added\nand then a new URL formatted, i.e. there may be some minor formatting\nchanges and, more importantly, the URL must be well-formed so that it can\nbe parsed."]
+            #[doc = "The callback URL to which the Admin will be redirected after successfully creating an enterprise. Before redirecting there the system will add a single query parameter to this URL named \"enterpriseToken\" which will contain an opaque token to be used for the CompleteSignup request. Beware that this means that the URL will be parsed, the parameter added and then a new URL formatted, i.e. there may be some minor formatting changes and, more importantly, the URL must be well-formed so that it can be parsed."]
             pub fn callback_url(mut self, value: impl Into<String>) -> Self {
                 self.callback_url = Some(value.into());
                 self
@@ -9400,7 +9502,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/signupUrl");
                 output
             }
@@ -9408,20 +9510,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("callbackUrl", &self.callback_url)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("callbackUrl", &self.callback_url)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9550,7 +9652,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -9565,19 +9667,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9715,7 +9817,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -9731,20 +9833,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("keyType", &self.key_type)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("keyType", &self.key_type)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9873,7 +9975,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -9889,19 +9991,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10030,7 +10132,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises");
                 output
             }
@@ -10038,20 +10140,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("domain", &self.domain)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("domain", &self.domain)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10079,7 +10181,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> PullNotificationSetRequestBuilder<'a> {
-            #[doc = "The request mode for pulling notifications.\n<br>\nSpecifying <code>waitForNotifications</code> will cause the request to\nblock and wait until one or more notifications are present, or return an\nempty notification list if no notifications are present after some time.\n<br>\nSpeciying <code>returnImmediately</code> will cause the request to\nimmediately return the pending notifications, or an empty list if no\nnotifications are present.\n<br>\nIf omitted, defaults to <code>waitForNotifications</code>."]
+            #[doc = "The request mode for pulling notifications. Specifying waitForNotifications will cause the request to block and wait until one or more notifications are present, or return an empty notification list if no notifications are present after some time. Speciying returnImmediately will cause the request to immediately return the pending notifications, or an empty list if no notifications are present. If omitted, defaults to waitForNotifications."]
             pub fn request_mode(
                 mut self,
                 value: crate::resources::enterprises::params::PullNotificationSetRequestMode,
@@ -10189,7 +10291,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/pullNotificationSet");
                 output
             }
@@ -10197,20 +10299,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("requestMode", &self.request_mode)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("requestMode", &self.request_mode)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10341,7 +10443,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -10357,19 +10459,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10500,7 +10602,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -10516,19 +10618,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10659,7 +10761,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -10675,19 +10777,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10765,7 +10867,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -10781,19 +10883,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10990,7 +11092,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -11021,19 +11123,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11164,7 +11266,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -11195,19 +11297,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11337,7 +11439,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -11361,19 +11463,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11404,7 +11506,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> UpdateRequestBuilder<'a> {
-            #[doc = "Set to true to also install the product on all the user's devices where\npossible. Failure to install on one or more devices will not prevent\nthis operation from returning successfully, as long as the entitlement\nwas successfully assigned to the user."]
+            #[doc = "Set to true to also install the product on all the user's devices where possible. Failure to install on one or more devices will not prevent this operation from returning successfully, as long as the entitlement was successfully assigned to the user."]
             pub fn install(mut self, value: bool) -> Self {
                 self.install = Some(value);
                 self
@@ -11512,7 +11614,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -11543,20 +11645,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("install", &self.install)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("install", &self.install)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11741,7 +11843,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -11764,19 +11866,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11905,7 +12007,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -11921,19 +12023,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11952,7 +12054,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Retrieves the IDs of the users who have been granted entitlements\nunder the license."]
+            #[doc = "Retrieves the IDs of the users who have been granted entitlements under the license."]
             pub fn list(
                 &self,
                 enterprise_id: impl Into<String>,
@@ -12099,7 +12201,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -12123,19 +12225,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12154,7 +12256,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Requests to remove an app from a device. A call to <code>get</code> or\n<code>list</code> will still show the app as installed on the device until\nit is actually removed."]
+            #[doc = "Requests to remove an app from a device. A call to get or list will still show the app as installed on the device until it is actually removed."]
             pub fn delete(
                 &self,
                 enterprise_id: impl Into<String>,
@@ -12236,7 +12338,7 @@ pub mod resources {
                     device_id: device_id.into(),
                 }
             }
-            #[doc = "Requests to install the latest version of an app to a device. If the app\nis already installed, then it is updated to the latest version if\nnecessary."]
+            #[doc = "Requests to install the latest version of an app to a device. If the app is already installed, then it is updated to the latest version if necessary."]
             pub fn update(
                 &self,
                 request: crate::schemas::Install,
@@ -12340,7 +12442,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -12379,19 +12481,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12521,7 +12623,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -12560,19 +12662,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12703,7 +12805,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -12735,19 +12837,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12879,7 +12981,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -12918,19 +13020,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12949,7 +13051,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Removes a per-device managed configuration for an app for the specified\ndevice."]
+            #[doc = "Removes a per-device managed configuration for an app for the specified device."]
             pub fn delete(
                 &self,
                 enterprise_id: impl Into<String>,
@@ -13005,7 +13107,7 @@ pub mod resources {
                     managed_configuration_for_device_id: managed_configuration_for_device_id.into(),
                 }
             }
-            #[doc = "Lists all the per-device managed configurations for the specified device.\nOnly the ID is set."]
+            #[doc = "Lists all the per-device managed configurations for the specified device. Only the ID is set."]
             pub fn list(
                 &self,
                 enterprise_id: impl Into<String>,
@@ -13031,7 +13133,7 @@ pub mod resources {
                     device_id: device_id.into(),
                 }
             }
-            #[doc = "Adds or updates a per-device managed configuration for an app for the\nspecified device."]
+            #[doc = "Adds or updates a per-device managed configuration for an app for the specified device."]
             pub fn update(
                 &self,
                 request: crate::schemas::ManagedConfiguration,
@@ -13135,7 +13237,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -13174,19 +13276,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13318,7 +13420,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -13357,19 +13459,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13502,7 +13604,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -13534,19 +13636,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13680,7 +13782,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -13719,19 +13821,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13776,7 +13878,7 @@ pub mod resources {
                     managed_configuration_for_user_id: managed_configuration_for_user_id.into(),
                 }
             }
-            #[doc = "Retrieves details of a per-user managed configuration for an app for the\nspecified user."]
+            #[doc = "Retrieves details of a per-user managed configuration for an app for the specified user."]
             pub fn get(
                 &self,
                 enterprise_id: impl Into<String>,
@@ -13802,7 +13904,7 @@ pub mod resources {
                     managed_configuration_for_user_id: managed_configuration_for_user_id.into(),
                 }
             }
-            #[doc = "Lists all the per-user managed configurations for the specified user. Only\nthe ID is set."]
+            #[doc = "Lists all the per-user managed configurations for the specified user. Only the ID is set."]
             pub fn list(
                 &self,
                 enterprise_id: impl Into<String>,
@@ -13826,7 +13928,7 @@ pub mod resources {
                     user_id: user_id.into(),
                 }
             }
-            #[doc = "Adds or updates the managed configuration settings for an app for the\nspecified user.\nIf you support the <a\nhref=\"https://developers.google.com/android/work/play/emm-api/managed-configurations-iframe\">Managed\nconfigurations iframe</a>,\nyou can apply managed configurations to a user by specifying an\n<code>mcmId</code>\nand its associated configuration variables (if any) in the request.\nAlternatively,\nall EMMs can apply managed configurations by passing a list of managed\nproperties."]
+            #[doc = "Adds or updates the managed configuration settings for an app for the specified user. If you support the Managed configurations iframe, you can apply managed configurations to a user by specifying an mcmId and its associated configuration variables (if any) in the request. Alternatively, all EMMs can apply managed configurations by passing a list of managed properties."]
             pub fn update(
                 &self,
                 request: crate::schemas::ManagedConfiguration,
@@ -13927,7 +14029,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -13958,19 +14060,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14101,7 +14203,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -14132,19 +14234,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14276,7 +14378,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -14300,19 +14402,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14445,7 +14547,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -14476,19 +14578,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14656,7 +14758,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -14680,19 +14782,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14711,7 +14813,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Retrieves details of an Android app permission for display to an enterprise\nadmin."]
+            #[doc = "Retrieves details of an Android app permission for display to an enterprise admin."]
             pub fn get(&self, permission_id: impl Into<String>) -> GetRequestBuilder {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
@@ -14859,7 +14961,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/permissions/");
                 {
                     let var_as_str = &self.permission_id;
@@ -14874,20 +14976,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("language", &self.language)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("language", &self.language)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14906,7 +15008,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "<p>Approves the specified product and the relevant app permissions, if any.\nThe maximum number of products that you can approve per enterprise customer\nis 1,000.</p>\n<p>To learn how to use managed Google Play to design and create a store\nlayout to display approved products to your users,\nsee <a href=\"/android/work/play/emm-api/store-layout\">Store Layout\nDesign</a>.</p>"]
+            #[doc = "Approves the specified product and the relevant app permissions, if any. The maximum number of products that you can approve per enterprise customer is 1,000. To learn how to use managed Google Play to design and create a store layout to display approved products to your users, see Store Layout Design. "]
             pub fn approve(
                 &self,
                 request: crate::schemas::ProductsApproveRequest,
@@ -14932,7 +15034,7 @@ pub mod resources {
                     product_id: product_id.into(),
                 }
             }
-            #[doc = "Generates a URL that can be rendered in an iframe to display the\npermissions (if any) of a product. An enterprise admin must view these\npermissions and accept them on behalf of their organization in order to\napprove that product. <br><br>\nAdmins should accept the displayed permissions by\ninteracting with a separate UI element in the EMM console, which in turn\nshould trigger the use of this URL as the\n<code>approvalUrlInfo.approvalUrl</code> property in a\n<code>Products.approve</code> call to approve the product.\nThis URL can only be used to display permissions for up to 1 day."]
+            #[doc = "Generates a URL that can be rendered in an iframe to display the permissions (if any) of a product. An enterprise admin must view these permissions and accept them on behalf of their organization in order to approve that product. Admins should accept the displayed permissions by interacting with a separate UI element in the EMM console, which in turn should trigger the use of this URL as the approvalUrlInfo.approvalUrl property in a Products.approve call to approve the product. This URL can only be used to display permissions for up to 1 day."]
             pub fn generate_approval_url(
                 &self,
                 enterprise_id: impl Into<String>,
@@ -14982,7 +15084,7 @@ pub mod resources {
                     language: None,
                 }
             }
-            #[doc = "Retrieves the schema that defines the configurable properties for this\nproduct. All products have a schema, but this schema may be empty if no\nmanaged configurations have been defined. This schema can be used to\npopulate a UI that allows an admin to configure the product.\nTo apply a managed configuration based on the schema obtained using this\nAPI, see\n<a href=\"/android/work/play/emm-api/managed-configurations\">Managed\nConfigurations through Play</a>."]
+            #[doc = "Retrieves the schema that defines the configurable properties for this product. All products have a schema, but this schema may be empty if no managed configurations have been defined. This schema can be used to populate a UI that allows an admin to configure the product. To apply a managed configuration based on the schema obtained using this API, see Managed Configurations through Play."]
             pub fn get_app_restrictions_schema(
                 &self,
                 enterprise_id: impl Into<String>,
@@ -15031,7 +15133,7 @@ pub mod resources {
                     product_id: product_id.into(),
                 }
             }
-            #[doc = "Finds approved products that match a query, or all approved products\nif there is no query."]
+            #[doc = "Finds approved products that match a query, or all approved products if there is no query."]
             pub fn list(&self, enterprise_id: impl Into<String>) -> ListRequestBuilder {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
@@ -15153,7 +15255,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -15177,19 +15279,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -15218,7 +15320,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GenerateApprovalUrlRequestBuilder<'a> {
-            #[doc = "The BCP 47 language code used for permission names and descriptions in\nthe returned iframe, for instance \"en-US\"."]
+            #[doc = "The BCP 47 language code used for permission names and descriptions in the returned iframe, for instance \"en-US\"."]
             pub fn language_code(mut self, value: impl Into<String>) -> Self {
                 self.language_code = Some(value.into());
                 self
@@ -15327,7 +15429,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -15351,20 +15453,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("languageCode", &self.language_code)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("languageCode", &self.language_code)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -15498,7 +15600,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -15521,20 +15623,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("language", &self.language)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("language", &self.language)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -15670,7 +15772,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -15694,20 +15796,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("language", &self.language)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("language", &self.language)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -15837,7 +15939,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -15861,19 +15963,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -15905,27 +16007,27 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "Specifies whether to search among all products (false) or among\nonly products that have been approved (true). Only \"true\" is\nsupported, and should be specified."]
+            #[doc = "Specifies whether to search among all products (false) or among only products that have been approved (true). Only \"true\" is supported, and should be specified."]
             pub fn approved(mut self, value: bool) -> Self {
                 self.approved = Some(value);
                 self
             }
-            #[doc = "The BCP47 tag for the user's preferred language (e.g. \"en-US\", \"de\").\nResults are returned in the language best matching the preferred\nlanguage."]
+            #[doc = "The BCP47 tag for the user's preferred language (e.g. \"en-US\", \"de\"). Results are returned in the language best matching the preferred language."]
             pub fn language(mut self, value: impl Into<String>) -> Self {
                 self.language = Some(value.into());
                 self
             }
-            #[doc = "Defines how many results the list operation should return.\nThe default number depends on the resource collection."]
+            #[doc = "Defines how many results the list operation should return. The default number depends on the resource collection."]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
             }
-            #[doc = "The search query as typed in the Google Play store search box.\nIf omitted, all approved apps will be returned (using the pagination\nparameters), including apps that are not available in the store\n(e.g. unpublished apps)."]
+            #[doc = "The search query as typed in the Google Play store search box. If omitted, all approved apps will be returned (using the pagination parameters), including apps that are not available in the store (e.g. unpublished apps)."]
             pub fn query(mut self, value: impl Into<String>) -> Self {
                 self.query = Some(value.into());
                 self
             }
-            #[doc = "Defines the token of the page to return, usually taken from\nTokenPagination.\nThis can only be used if token paging is enabled."]
+            #[doc = "Defines the token of the page to return, usually taken from TokenPagination. This can only be used if token paging is enabled."]
             pub fn token(mut self, value: impl Into<String>) -> Self {
                 self.token = Some(value.into());
                 self
@@ -16032,7 +16134,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -16048,24 +16150,24 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("approved", &self.approved)]);
-                let req = req.query(&[("language", &self.language)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("query", &self.query)]);
-                let req = req.query(&[("token", &self.token)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("approved", &self.approved)]);
+                req = req.query(&[("language", &self.language)]);
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("query", &self.query)]);
+                req = req.query(&[("token", &self.token)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -16144,7 +16246,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -16168,19 +16270,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -16199,7 +16301,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Removes and invalidates the specified credentials for the service account\nassociated with this enterprise. The calling service account must have been\nretrieved by calling Enterprises.GetServiceAccount and must have been set\nas the enterprise service account by calling Enterprises.SetAccount."]
+            #[doc = "Removes and invalidates the specified credentials for the service account associated with this enterprise. The calling service account must have been retrieved by calling Enterprises.GetServiceAccount and must have been set as the enterprise service account by calling Enterprises.SetAccount."]
             pub fn delete(
                 &self,
                 enterprise_id: impl Into<String>,
@@ -16223,7 +16325,7 @@ pub mod resources {
                     key_id: key_id.into(),
                 }
             }
-            #[doc = "Generates new credentials for the service account associated with this\nenterprise. The calling service account must have been retrieved by calling\nEnterprises.GetServiceAccount and must have been set as the enterprise\nservice account by calling Enterprises.SetAccount. <br><br>\nOnly the type of the key should be populated in the resource to be\ninserted."]
+            #[doc = "Generates new credentials for the service account associated with this enterprise. The calling service account must have been retrieved by calling Enterprises.GetServiceAccount and must have been set as the enterprise service account by calling Enterprises.SetAccount. Only the type of the key should be populated in the resource to be inserted."]
             pub fn insert(
                 &self,
                 request: crate::schemas::ServiceAccountKey,
@@ -16247,7 +16349,7 @@ pub mod resources {
                     enterprise_id: enterprise_id.into(),
                 }
             }
-            #[doc = "Lists all active credentials for the service account associated with this\nenterprise. Only the ID and key type are returned. The calling service\naccount must have been retrieved by calling Enterprises.GetServiceAccount\nand must have been set as the enterprise service account by calling\nEnterprises.SetAccount."]
+            #[doc = "Lists all active credentials for the service account associated with this enterprise. Only the ID and key type are returned. The calling service account must have been retrieved by calling Enterprises.GetServiceAccount and must have been set as the enterprise service account by calling Enterprises.SetAccount."]
             pub fn list(&self, enterprise_id: impl Into<String>) -> ListRequestBuilder {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
@@ -16338,7 +16440,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -16361,19 +16463,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -16504,7 +16606,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -16520,19 +16622,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -16661,7 +16763,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -16677,19 +16779,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -16911,7 +17013,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -16942,19 +17044,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -17085,7 +17187,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -17116,19 +17218,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -17260,7 +17362,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -17284,19 +17386,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -17426,7 +17528,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -17450,19 +17552,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -17595,7 +17697,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -17626,19 +17728,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -17846,7 +17948,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -17869,19 +17971,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -18011,7 +18113,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -18034,19 +18136,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -18177,7 +18279,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -18193,19 +18295,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -18334,7 +18436,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -18350,19 +18452,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -18494,7 +18596,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -18517,19 +18619,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -18572,7 +18674,7 @@ pub mod resources {
                     user_id: user_id.into(),
                 }
             }
-            #[doc = "Generates an authentication token which the device policy client can use to\nprovision the given EMM-managed user account on a device.\nThe generated token is single-use and expires after a few minutes.\n\nYou can provision a maximum of 10 devices per user.\n\nThis call only works with EMM-managed accounts."]
+            #[doc = "Generates an authentication token which the device policy client can use to provision the given EMM-managed user account on a device. The generated token is single-use and expires after a few minutes. You can provision a maximum of 10 devices per user. This call only works with EMM-managed accounts."]
             pub fn generate_authentication_token(
                 &self,
                 enterprise_id: impl Into<String>,
@@ -18644,7 +18746,7 @@ pub mod resources {
                     user_id: user_id.into(),
                 }
             }
-            #[doc = "Creates a new EMM-managed user.\n\nThe <a href=\"/android/work/play/emm-api/v1/users.html\">Users</a> resource\npassed in the body of the request should include an\n<code>accountIdentifier</code> and an <code>accountType</code>.\n\n<p>If a corresponding user already exists with the same account identifier,\nthe user will be updated with the resource. In this case only the\n<code>displayName</code> field can be changed."]
+            #[doc = "Creates a new EMM-managed user. The Users resource passed in the body of the request should include an accountIdentifier and an accountType. If a corresponding user already exists with the same account identifier, the user will be updated with the resource. In this case only the displayName field can be changed."]
             pub fn insert(
                 &self,
                 request: crate::schemas::User,
@@ -18668,7 +18770,7 @@ pub mod resources {
                     enterprise_id: enterprise_id.into(),
                 }
             }
-            #[doc = "Looks up a user by primary email address.\nThis is only supported for Google-managed users.  Lookup of the id is not\nneeded for EMM-managed users because the id is already returned in the\nresult of the Users.insert call."]
+            #[doc = "Looks up a user by primary email address. This is only supported for Google-managed users. Lookup of the id is not needed for EMM-managed users because the id is already returned in the result of the Users.insert call."]
             pub fn list(
                 &self,
                 enterprise_id: impl Into<String>,
@@ -18692,7 +18794,7 @@ pub mod resources {
                     email: email.into(),
                 }
             }
-            #[doc = "Revokes access to all devices currently provisioned to the user. The user\nwill no longer be able to use the managed Play store on any of their\nmanaged devices.\n\nThis call only works with EMM-managed accounts."]
+            #[doc = "Revokes access to all devices currently provisioned to the user. The user will no longer be able to use the managed Play store on any of their managed devices. This call only works with EMM-managed accounts."]
             pub fn revoke_device_access(
                 &self,
                 enterprise_id: impl Into<String>,
@@ -18716,7 +18818,7 @@ pub mod resources {
                     user_id: user_id.into(),
                 }
             }
-            #[doc = "Modifies the set of products that a user is entitled to access (referred to\nas <em>whitelisted</em> products). Only products that are\n<a href=\"/android/work/play/emm-api/v1/products/approve\">approved</a>\nor products that were previously approved (products with revoked approval)\ncan be whitelisted."]
+            #[doc = "Modifies the set of products that a user is entitled to access (referred to as *whitelisted* products). Only products that are approved or products that were previously approved (products with revoked approval) can be whitelisted."]
             pub fn set_available_product_set(
                 &self,
                 request: crate::schemas::ProductSet,
@@ -18742,7 +18844,7 @@ pub mod resources {
                     user_id: user_id.into(),
                 }
             }
-            #[doc = "Updates the details of an EMM-managed user.\n\nCan be used with EMM-managed users only (not Google managed users).\nPass the new details in the\n<a href=\"/android/work/play/emm-api/v1/users.html\">Users</a>\nresource in the request body. Only the <code>displayName</code> field\ncan be changed. Other fields must either be unset or have the\ncurrently active value."]
+            #[doc = "Updates the details of an EMM-managed user. Can be used with EMM-managed users only (not Google managed users). Pass the new details in the Users resource in the request body. Only the displayName field can be changed. Other fields must either be unset or have the currently active value."]
             pub fn update(
                 &self,
                 request: crate::schemas::User,
@@ -18840,7 +18942,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -18863,19 +18965,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -19005,7 +19107,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -19029,19 +19131,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -19167,7 +19269,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -19190,19 +19292,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -19332,7 +19434,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -19356,19 +19458,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -19495,7 +19597,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -19511,19 +19613,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -19653,7 +19755,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -19669,20 +19771,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("email", &self.email)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("email", &self.email)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -19761,7 +19863,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -19785,19 +19887,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -19929,7 +20031,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -19953,19 +20055,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -20093,7 +20195,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -20116,19 +20218,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -20336,7 +20438,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -20359,19 +20461,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -20499,7 +20601,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -20522,19 +20624,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -20663,7 +20765,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -20679,19 +20781,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -20820,7 +20922,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -20836,19 +20938,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -20978,7 +21080,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://androidenterprise.googleapis.com/".to_owned();
                 output.push_str("androidenterprise/v1/enterprises/");
                 {
                     let var_as_str = &self.enterprise_id;
@@ -21001,19 +21103,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,

@@ -49,7 +49,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UrlNotification {
-        #[doc = "Creation timestamp for this notification.\nUsers should *not* specify it, the field is ignored at the request time."]
+        #[doc = "Creation timestamp for this notification. Users should *not* specify it, the field is ignored at the request time."]
         #[serde(
             rename = "notifyTime",
             default,
@@ -63,7 +63,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<crate::schemas::UrlNotificationType>,
-        #[doc = "The object of this notification. The URL must be owned by the publisher\nof this notification and, in case of `URL_UPDATED` notifications, it *must*\nbe crawlable by Google."]
+        #[doc = "The object of this notification. The URL must be owned by the publisher of this notification and, in case of `URL_UPDATED` notifications, it *must* be crawlable by Google."]
         #[serde(
             rename = "url",
             default,
@@ -408,7 +408,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Gets metadata about a Web Document. This method can *only* be used to query\nURLs that were previously seen in successful Indexing API notifications.\nIncludes the latest `UrlNotification` received via this API."]
+            #[doc = "Gets metadata about a Web Document. This method can *only* be used to query URLs that were previously seen in successful Indexing API notifications. Includes the latest `UrlNotification` received via this API."]
             pub fn get_metadata(&self) -> GetMetadataRequestBuilder {
                 GetMetadataRequestBuilder {
                     reqwest: &self.reqwest,
@@ -584,20 +584,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("url", &self.url)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("url", &self.url)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -735,19 +735,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,

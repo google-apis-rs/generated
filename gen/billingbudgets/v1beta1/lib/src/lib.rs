@@ -1,5 +1,7 @@
 #![doc = "# Resources and Methods\n    * [billing_accounts](resources/billing_accounts/struct.BillingAccountsActions.html)\n      * [budgets](resources/billing_accounts/budgets/struct.BudgetsActions.html)\n        * [*create*](resources/billing_accounts/budgets/struct.CreateRequestBuilder.html), [*delete*](resources/billing_accounts/budgets/struct.DeleteRequestBuilder.html), [*get*](resources/billing_accounts/budgets/struct.GetRequestBuilder.html), [*list*](resources/billing_accounts/budgets/struct.ListRequestBuilder.html), [*patch*](resources/billing_accounts/budgets/struct.PatchRequestBuilder.html)\n"]
 pub mod scopes {
+    #[doc = "View and manage your Google Cloud Platform billing accounts\n\n`https://www.googleapis.com/auth/cloud-billing`"]
+    pub const CLOUD_BILLING: &str = "https://www.googleapis.com/auth/cloud-billing";
     #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
     pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
 }
@@ -17,14 +19,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudBillingBudgetsV1Beta1AllUpdatesRule {
-        #[doc = "Required. The name of the Cloud Pub/Sub topic where budget related messages will be\npublished, in the form `projects/{project_id}/topics/{topic_id}`. Updates\nare sent at regular intervals to the topic.\nThe topic needs to be created before the budget is created; see\nhttps://cloud.google.com/billing/docs/how-to/budgets#manage-notifications\nfor more details.\nCaller is expected to have\n`pubsub.topics.setIamPolicy` permission on the topic when it's set for a\nbudget, otherwise, the API call will fail with PERMISSION_DENIED. See\nhttps://cloud.google.com/pubsub/docs/access-control for more details on\nPub/Sub roles and permissions."]
+        #[doc = "Optional. When set to true, disables default notifications sent when a threshold is exceeded. Default notifications are sent to those with Billing Account Administrator and Billing Account User IAM roles for the target account."]
+        #[serde(
+            rename = "disableDefaultIamRecipients",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub disable_default_iam_recipients: ::std::option::Option<bool>,
+        #[doc = "Optional. Targets to send notifications to when a threshold is exceeded. This is in addition to default recipients who have billing account IAM roles. The value is the full REST resource name of a monitoring notification channel with the form `projects/{project_id}/notificationChannels/{channel_id}`. A maximum of 5 channels are allowed. See https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients for more details."]
+        #[serde(
+            rename = "monitoringNotificationChannels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub monitoring_notification_channels: ::std::option::Option<Vec<String>>,
+        #[doc = "Optional. The name of the Pub/Sub topic where budget related messages will be published, in the form `projects/{project_id}/topics/{topic_id}`. Updates are sent at regular intervals to the topic. The topic needs to be created before the budget is created; see https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications for more details. Caller is expected to have `pubsub.topics.setIamPolicy` permission on the topic when it's set for a budget, otherwise, the API call will fail with PERMISSION_DENIED. See https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#permissions_required_for_this_task for more details on Pub/Sub roles and permissions."]
         #[serde(
             rename = "pubsubTopic",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub pubsub_topic: ::std::option::Option<String>,
-        #[doc = "Required. The schema version of the notification.\nOnly \"1.0\" is accepted. It represents the JSON schema as defined in\nhttps://cloud.google.com/billing/docs/how-to/budgets#notification_format"]
+        #[doc = "Optional. Required when AllUpdatesRule.pubsub_topic is set. The schema version of the notification sent to AllUpdatesRule.pubsub_topic. Only \"1.0\" is accepted. It represents the JSON schema as defined in https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format."]
         #[serde(
             rename = "schemaVersion",
             default,
@@ -44,7 +60,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudBillingBudgetsV1Beta1Budget {
-        #[doc = "Optional. Rules to apply to all updates to the actual spend, regardless\nof the thresholds set in `threshold_rules`."]
+        #[doc = "Optional. Rules to apply to notifications sent based on budget spend and thresholds."]
         #[serde(
             rename = "allUpdatesRule",
             default,
@@ -60,7 +76,7 @@ pub mod schemas {
         )]
         pub amount:
             ::std::option::Option<crate::schemas::GoogleCloudBillingBudgetsV1Beta1BudgetAmount>,
-        #[doc = "Optional. Filters that define which resources are used to compute\nthe actual spend against the budget."]
+        #[doc = "Optional. Filters that define which resources are used to compute the actual spend against the budget."]
         #[serde(
             rename = "budgetFilter",
             default,
@@ -68,28 +84,28 @@ pub mod schemas {
         )]
         pub budget_filter:
             ::std::option::Option<crate::schemas::GoogleCloudBillingBudgetsV1Beta1Filter>,
-        #[doc = "User data for display name in UI.\nValidation: <= 60 chars."]
+        #[doc = "User data for display name in UI. Validation: <= 60 chars."]
         #[serde(
             rename = "displayName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "Optional. Etag to validate that the object is unchanged for a\nread-modify-write operation.\nAn empty etag will cause an update to overwrite other changes."]
+        #[doc = "Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes."]
         #[serde(
             rename = "etag",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<String>,
-        #[doc = "Output only. Resource name of the budget.\nThe resource name implies the scope of a budget. Values are of the form\n`billingAccounts/{billingAccountId}/budgets/{budgetId}`."]
+        #[doc = "Output only. Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Optional. Rules that trigger alerts (notifications of thresholds\nbeing crossed) when spend exceeds the specified percentages of the budget."]
+        #[doc = "Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget."]
         #[serde(
             rename = "thresholdRules",
             default,
@@ -122,7 +138,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudBillingBudgetsV1Beta1BudgetAmount {
-        #[doc = "Use the last period's actual spend as the budget for the present period."]
+        #[doc = "Use the last period's actual spend as the budget for the present period. Cannot be set in combination with Filter.custom_period."]
         #[serde(
             rename = "lastPeriodAmount",
             default,
@@ -130,7 +146,7 @@ pub mod schemas {
         )]
         pub last_period_amount:
             ::std::option::Option<crate::schemas::GoogleCloudBillingBudgetsV1Beta1LastPeriodAmount>,
-        #[doc = "A specified amount to use as the budget.\n`currency_code` is optional. If specified, it must match the\ncurrency of the billing account. The `currency_code` is provided on\noutput."]
+        #[doc = "A specified amount to use as the budget. `currency_code` is optional. If specified when creating a budget, it must match the currency of the billing account. If specified when updating a budget, it must match the currency_code of the existing budget. The `currency_code` is provided on output."]
         #[serde(
             rename = "specifiedAmount",
             default,
@@ -170,8 +186,62 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudBillingBudgetsV1Beta1CustomPeriod {
+        #[doc = "Optional. The end date of the time period. Budgets with elapsed end date won't be processed. If unset, specifies to track all usage incurred since the start_date."]
+        #[serde(
+            rename = "endDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub end_date: ::std::option::Option<crate::schemas::GoogleTypeDate>,
+        #[doc = "Required. The start date must be after January 1, 2017."]
+        #[serde(
+            rename = "startDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_date: ::std::option::Option<crate::schemas::GoogleTypeDate>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudBillingBudgetsV1Beta1CustomPeriod {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudBillingBudgetsV1Beta1CustomPeriod {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudBillingBudgetsV1Beta1Filter {
+        #[doc = "Optional. Specifies to track usage for recurring calendar period. E.g. Assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when current calendar month is July, August, September, and so on."]
+        #[serde(
+            rename = "calendarPeriod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub calendar_period: ::std::option::Option<
+            crate::schemas::GoogleCloudBillingBudgetsV1Beta1FilterCalendarPeriod,
+        >,
+        #[doc = "Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. If Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS, this field must be empty. See [a list of acceptable credit type values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type)."]
+        #[serde(
+            rename = "creditTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub credit_types: ::std::option::Option<Vec<String>>,
         #[doc = "Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`."]
         #[serde(
             rename = "creditTypesTreatment",
@@ -181,7 +251,15 @@ pub mod schemas {
         pub credit_types_treatment: ::std::option::Option<
             crate::schemas::GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment,
         >,
-        #[doc = "Optional. A single label and value pair specifying that usage from only this set of\nlabeled resources should be included in the budget. Currently, multiple\nentries or multiple values per entry are not allowed. If omitted, the\nreport will include all labeled and unlabeled usage."]
+        #[doc = "Optional. Specifies to track usage from any start date (required) to any end date (optional)."]
+        #[serde(
+            rename = "customPeriod",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub custom_period:
+            ::std::option::Option<crate::schemas::GoogleCloudBillingBudgetsV1Beta1CustomPeriod>,
+        #[doc = "Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. Currently, multiple entries or multiple values per entry are not allowed. If omitted, the report will include all labeled and unlabeled usage."]
         #[serde(
             rename = "labels",
             default,
@@ -189,21 +267,21 @@ pub mod schemas {
         )]
         pub labels:
             ::std::option::Option<::std::collections::BTreeMap<String, Vec<::serde_json::Value>>>,
-        #[doc = "Optional. A set of projects of the form `projects/{project}`,\nspecifying that usage from only this set of projects should be\nincluded in the budget. If omitted, the report will include all usage for\nthe billing account, regardless of which project the usage occurred on.\nOnly zero or one project can be specified currently."]
+        #[doc = "Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on. Only zero or one project can be specified currently."]
         #[serde(
             rename = "projects",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub projects: ::std::option::Option<Vec<String>>,
-        #[doc = "Optional. A set of services of the form `services/{service_id}`,\nspecifying that usage from only this set of services should be\nincluded in the budget. If omitted, the report will include usage for\nall the services.\nThe service names are available through the Catalog API:\nhttps://cloud.google.com/billing/v1/how-tos/catalog-api."]
+        #[doc = "Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report will include usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api."]
         #[serde(
             rename = "services",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub services: ::std::option::Option<Vec<String>>,
-        #[doc = "Optional. A set of subaccounts of the form `billingAccounts/{account_id}`, specifying\nthat usage from only this set of subaccounts should be included in the\nbudget. If a subaccount is set to the name of the master account, usage\nfrom the master account will be included. If omitted, the report will\ninclude usage from the master account and all subaccounts, if they exist."]
+        #[doc = "Optional. A set of subaccounts of the form `billingAccounts/{account_id}`, specifying that usage from only this set of subaccounts should be included in the budget. If a subaccount is set to the name of the parent account, usage from the parent account will be included. If omitted, the report will include usage from the parent account and all subaccounts, if they exist."]
         #[serde(
             rename = "subaccounts",
             default,
@@ -222,16 +300,109 @@ pub mod schemas {
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleCloudBillingBudgetsV1Beta1FilterCalendarPeriod {
+        CalendarPeriodUnspecified,
+        #[doc = "A month. Month starts on the first day of each month, such as January 1, February 1, March 1, and so on."]
+        Month,
+        #[doc = "A quarter. Quarters start on dates January 1, April 1, July 1, and October 1 of each year."]
+        Quarter,
+        #[doc = "A year. Year starts on January 1."]
+        Year,
+    }
+    impl GoogleCloudBillingBudgetsV1Beta1FilterCalendarPeriod {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                GoogleCloudBillingBudgetsV1Beta1FilterCalendarPeriod::CalendarPeriodUnspecified => {
+                    "CALENDAR_PERIOD_UNSPECIFIED"
+                }
+                GoogleCloudBillingBudgetsV1Beta1FilterCalendarPeriod::Month => "MONTH",
+                GoogleCloudBillingBudgetsV1Beta1FilterCalendarPeriod::Quarter => "QUARTER",
+                GoogleCloudBillingBudgetsV1Beta1FilterCalendarPeriod::Year => "YEAR",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudBillingBudgetsV1Beta1FilterCalendarPeriod {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudBillingBudgetsV1Beta1FilterCalendarPeriod {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudBillingBudgetsV1Beta1FilterCalendarPeriod, ()>
+        {
+            Ok(match s {
+                "CALENDAR_PERIOD_UNSPECIFIED" => {
+                    GoogleCloudBillingBudgetsV1Beta1FilterCalendarPeriod::CalendarPeriodUnspecified
+                }
+                "MONTH" => GoogleCloudBillingBudgetsV1Beta1FilterCalendarPeriod::Month,
+                "QUARTER" => GoogleCloudBillingBudgetsV1Beta1FilterCalendarPeriod::Quarter,
+                "YEAR" => GoogleCloudBillingBudgetsV1Beta1FilterCalendarPeriod::Year,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for GoogleCloudBillingBudgetsV1Beta1FilterCalendarPeriod {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleCloudBillingBudgetsV1Beta1FilterCalendarPeriod {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for GoogleCloudBillingBudgetsV1Beta1FilterCalendarPeriod {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "CALENDAR_PERIOD_UNSPECIFIED" => {
+                    GoogleCloudBillingBudgetsV1Beta1FilterCalendarPeriod::CalendarPeriodUnspecified
+                }
+                "MONTH" => GoogleCloudBillingBudgetsV1Beta1FilterCalendarPeriod::Month,
+                "QUARTER" => GoogleCloudBillingBudgetsV1Beta1FilterCalendarPeriod::Quarter,
+                "YEAR" => GoogleCloudBillingBudgetsV1Beta1FilterCalendarPeriod::Year,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudBillingBudgetsV1Beta1FilterCalendarPeriod
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudBillingBudgetsV1Beta1FilterCalendarPeriod {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment {
         CreditTypesTreatmentUnspecified,
-        #[doc = "All types of credit are added to the net cost to determine the spend for\nthreshold calculations."]
+        #[doc = "All types of credit are added to the net cost to determine the spend for threshold calculations."]
         ExcludeAllCredits,
-        #[doc = "All types of credit are subtracted from the gross cost to determine the\nspend for threshold calculations."]
+        #[doc = "All types of credit are subtracted from the gross cost to determine the spend for threshold calculations."]
         IncludeAllCredits,
+        #[doc = "Credit types specified in the credit_types field are subtracted from the gross cost to determine the spend for threshold calculations."]
+        IncludeSpecifiedCredits,
     }
     impl GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment :: CreditTypesTreatmentUnspecified => "CREDIT_TYPES_TREATMENT_UNSPECIFIED" , GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment :: ExcludeAllCredits => "EXCLUDE_ALL_CREDITS" , GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment :: IncludeAllCredits => "INCLUDE_ALL_CREDITS" , }
+            match self { GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment :: CreditTypesTreatmentUnspecified => "CREDIT_TYPES_TREATMENT_UNSPECIFIED" , GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment :: ExcludeAllCredits => "EXCLUDE_ALL_CREDITS" , GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment :: IncludeAllCredits => "INCLUDE_ALL_CREDITS" , GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment :: IncludeSpecifiedCredits => "INCLUDE_SPECIFIED_CREDITS" , }
         }
     }
     impl ::std::convert::AsRef<str> for GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment {
@@ -245,7 +416,7 @@ pub mod schemas {
             s: &str,
         ) -> ::std::result::Result<GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment, ()>
         {
-            Ok ( match s { "CREDIT_TYPES_TREATMENT_UNSPECIFIED" => GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment :: CreditTypesTreatmentUnspecified , "EXCLUDE_ALL_CREDITS" => GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment :: ExcludeAllCredits , "INCLUDE_ALL_CREDITS" => GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment :: IncludeAllCredits , _ => return Err ( ( ) ) , } )
+            Ok ( match s { "CREDIT_TYPES_TREATMENT_UNSPECIFIED" => GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment :: CreditTypesTreatmentUnspecified , "EXCLUDE_ALL_CREDITS" => GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment :: ExcludeAllCredits , "INCLUDE_ALL_CREDITS" => GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment :: IncludeAllCredits , "INCLUDE_SPECIFIED_CREDITS" => GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment :: IncludeSpecifiedCredits , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display for GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment {
@@ -267,7 +438,7 @@ pub mod schemas {
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "CREDIT_TYPES_TREATMENT_UNSPECIFIED" => GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment :: CreditTypesTreatmentUnspecified , "EXCLUDE_ALL_CREDITS" => GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment :: ExcludeAllCredits , "INCLUDE_ALL_CREDITS" => GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment :: IncludeAllCredits , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "CREDIT_TYPES_TREATMENT_UNSPECIFIED" => GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment :: CreditTypesTreatmentUnspecified , "EXCLUDE_ALL_CREDITS" => GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment :: ExcludeAllCredits , "INCLUDE_ALL_CREDITS" => GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment :: IncludeAllCredits , "INCLUDE_SPECIFIED_CREDITS" => GoogleCloudBillingBudgetsV1Beta1FilterCreditTypesTreatment :: IncludeSpecifiedCredits , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::google_field_selector::FieldSelector
@@ -318,7 +489,7 @@ pub mod schemas {
         )]
         pub budgets:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudBillingBudgetsV1Beta1Budget>>,
-        #[doc = "If not empty, indicates that there may be more budgets that match the\nrequest; this value should be passed in a new `ListBudgetsRequest`."]
+        #[doc = "If not empty, indicates that there may be more budgets that match the request; this value should be passed in a new `ListBudgetsRequest`."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -342,7 +513,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GoogleCloudBillingBudgetsV1Beta1ThresholdRule {
-        #[doc = "Optional. The type of basis used to determine if spend has passed the\nthreshold. Behavior defaults to CURRENT_SPEND if not set."]
+        #[doc = "Optional. The type of basis used to determine if spend has passed the threshold. Behavior defaults to CURRENT_SPEND if not set."]
         #[serde(
             rename = "spendBasis",
             default,
@@ -351,7 +522,7 @@ pub mod schemas {
         pub spend_basis: ::std::option::Option<
             crate::schemas::GoogleCloudBillingBudgetsV1Beta1ThresholdRuleSpendBasis,
         >,
-        #[doc = "Required. Send an alert when this threshold is exceeded.\nThis is a 1.0-based percentage, so 0.5 = 50%.\nValidation: non-negative number."]
+        #[doc = "Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number."]
         #[serde(
             rename = "thresholdPercent",
             default,
@@ -375,7 +546,7 @@ pub mod schemas {
         BasisUnspecified,
         #[doc = "Use current spend as the basis for comparison against the threshold."]
         CurrentSpend,
-        #[doc = "Use forecasted spend for the period as the basis for comparison against\nthe threshold."]
+        #[doc = "Use forecasted spend for the period as the basis for comparison against the threshold. Cannot be set in combination with Filter.custom_period."]
         ForecastedSpend,
     }
     impl GoogleCloudBillingBudgetsV1Beta1ThresholdRuleSpendBasis {
@@ -472,14 +643,14 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudBillingBudgetsV1Beta1UpdateBudgetRequest {
-        #[doc = "Required. The updated budget object.\nThe budget to update is specified by the budget name in the budget."]
+        #[doc = "Required. The updated budget object. The budget to update is specified by the budget name in the budget."]
         #[serde(
             rename = "budget",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub budget: ::std::option::Option<crate::schemas::GoogleCloudBillingBudgetsV1Beta1Budget>,
-        #[doc = "Optional. Indicates which fields in the provided budget to update.\nRead-only fields (such as `name`) cannot be changed. If this is not\nprovided, then only fields with non-default values from the request are\nupdated. See\nhttps://developers.google.com/protocol-buffers/docs/proto3#default for more\ndetails about default values."]
+        #[doc = "Optional. Indicates which fields in the provided budget to update. Read-only fields (such as `name`) cannot be changed. If this is not provided, then only fields with non-default values from the request are updated. See https://developers.google.com/protocol-buffers/docs/proto3#default for more details about default values."]
         #[serde(
             rename = "updateMask",
             default,
@@ -535,22 +706,67 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct GoogleTypeDate {
+        #[doc = "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant."]
+        #[serde(
+            rename = "day",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub day: ::std::option::Option<i32>,
+        #[doc = "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day."]
+        #[serde(
+            rename = "month",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub month: ::std::option::Option<i32>,
+        #[doc = "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year."]
+        #[serde(
+            rename = "year",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub year: ::std::option::Option<i32>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleTypeDate {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleTypeDate {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct GoogleTypeMoney {
-        #[doc = "The 3-letter currency code defined in ISO 4217."]
+        #[doc = "The three-letter currency code defined in ISO 4217."]
         #[serde(
             rename = "currencyCode",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub currency_code: ::std::option::Option<String>,
-        #[doc = "Number of nano (10^-9) units of the amount.\nThe value must be between -999,999,999 and +999,999,999 inclusive.\nIf `units` is positive, `nanos` must be positive or zero.\nIf `units` is zero, `nanos` can be positive, zero, or negative.\nIf `units` is negative, `nanos` must be negative or zero.\nFor example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000."]
+        #[doc = "Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000."]
         #[serde(
             rename = "nanos",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub nanos: ::std::option::Option<i32>,
-        #[doc = "The whole units of the amount.\nFor example if `currencyCode` is `\"USD\"`, then 1 unit is one US dollar."]
+        #[doc = "The whole units of the amount. For example if `currencyCode` is `\"USD\"`, then 1 unit is one US dollar."]
         #[serde(
             rename = "units",
             default,
@@ -785,7 +1001,7 @@ pub mod resources {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Creates a new budget. See\n<a href=\"https://cloud.google.com/billing/quotas\">Quotas and limits</a>\nfor more information on the limits of the number of budgets you can create."]
+                #[doc = "Creates a new budget. See Quotas and limits for more information on the limits of the number of budgets you can create."]
                 pub fn create(
                     &self,
                     request: crate::schemas::GoogleCloudBillingBudgetsV1Beta1CreateBudgetRequest,
@@ -828,7 +1044,7 @@ pub mod resources {
                         name: name.into(),
                     }
                 }
-                #[doc = "Returns a budget.\n\nWARNING: There are some fields exposed on the Google Cloud Console that\naren't available on this API. When reading from the API, you will not\nsee these fields in the return value, though they may have been set\nin the Cloud Console."]
+                #[doc = "Returns a budget. WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API. When reading from the API, you will not see these fields in the return value, though they may have been set in the Cloud Console."]
                 pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder {
                     GetRequestBuilder {
                         reqwest: &self.reqwest,
@@ -847,7 +1063,7 @@ pub mod resources {
                         name: name.into(),
                     }
                 }
-                #[doc = "Returns a list of budgets for a billing account.\n\nWARNING: There are some fields exposed on the Google Cloud Console that\naren't available on this API. When reading from the API, you will not\nsee these fields in the return value, though they may have been set\nin the Cloud Console."]
+                #[doc = "Returns a list of budgets for a billing account. WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API. When reading from the API, you will not see these fields in the return value, though they may have been set in the Cloud Console."]
                 pub fn list(&self, parent: impl Into<String>) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
@@ -868,7 +1084,7 @@ pub mod resources {
                         page_token: None,
                     }
                 }
-                #[doc = "Updates a budget and returns the updated budget.\n\nWARNING: There are some fields exposed on the Google Cloud Console that\naren't available on this API. Budget fields that are not exposed in\nthis API will not be changed by this method."]
+                #[doc = "Updates a budget and returns the updated budget. WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API. Budget fields that are not exposed in this API will not be changed by this method."]
                 pub fn patch(
                     &self,
                     request: crate::schemas::GoogleCloudBillingBudgetsV1Beta1UpdateBudgetRequest,
@@ -1037,19 +1253,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -1196,19 +1412,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -1357,19 +1573,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -1398,12 +1614,12 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "Optional. The maximum number of budgets to return per page.\nThe default and maximum value are 100."]
+                #[doc = "Optional. The maximum number of budgets to return per page. The default and maximum value are 100."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
                     self
                 }
-                #[doc = "Optional. The value returned by the last `ListBudgetsResponse` which\nindicates that this is a continuation of a prior `ListBudgets` call,\nand that the system should return the next page of data."]
+                #[doc = "Optional. The value returned by the last `ListBudgetsResponse` which indicates that this is a continuation of a prior `ListBudgets` call, and that the system should return the next page of data."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
                     self
@@ -1645,21 +1861,21 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -1821,19 +2037,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,

@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("script1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200622")
-            .about("Manages and executes Google Apps Script projects.\n")
+            .version("0.1.0-20210307")
+            .about("Manages and executes Google Apps Script projects. ")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -37,18 +37,18 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: list and list_script_processes");
         {
-            let mcmd = SubCommand::with_name("list").about("List information about processes made by or on behalf of a user,\nsuch as process type and current status.");
+            let mcmd = SubCommand::with_name("list").about("List information about processes made by or on behalf of a user, such as process type and current status.");
             processes0 = processes0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list_script_processes").about("List information about a script\'s executed processes, such as process type\nand current status.");
+            let mcmd = SubCommand::with_name("list_script_processes").about("List information about a script\'s executed processes, such as process type and current status.");
             processes0 = processes0.subcommand(mcmd);
         }
         let mut projects0 = SubCommand::with_name("projects")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, get, get_content, get_metrics and update_content");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a new, empty script project with no script files and a base\nmanifest file.");
+            let mcmd = SubCommand::with_name("create").about("Creates a new, empty script project with no script files and a base manifest file.");
             projects0 = projects0.subcommand(mcmd);
         }
         {
@@ -56,24 +56,24 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             projects0 = projects0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_content").about("Gets the content of the script project, including the code source and\nmetadata for each script file.");
+            let mcmd = SubCommand::with_name("get_content").about("Gets the content of the script project, including the code source and metadata for each script file.");
             projects0 = projects0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("get_metrics").about(
-                "Get metrics data for scripts, such as number of executions and\nactive users.",
+                "Get metrics data for scripts, such as number of executions and active users.",
             );
             projects0 = projects0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update_content").about("Updates the content of the specified script project.\nThis content is stored as the HEAD version, and is used when the script is\nexecuted as a trigger, in the script editor, in add-on preview mode, or as\na web app or Apps Script API in development mode. This clears all the\nexisting files in the project.");
+            let mcmd = SubCommand::with_name("update_content").about("Updates the content of the specified script project. This content is stored as the HEAD version, and is used when the script is executed as a trigger, in the script editor, in add-on preview mode, or as a web app or Apps Script API in development mode. This clears all the existing files in the project.");
             projects0 = projects0.subcommand(mcmd);
         }
         let mut scripts0 = SubCommand::with_name("scripts")
             .setting(AppSettings::ColoredHelp)
             .about("methods: run");
         {
-            let mcmd = SubCommand::with_name("run").about("Runs a function in an Apps Script project. The script project must be\ndeployed for use with the Apps Script API and the calling application must\nshare the same Cloud Platform project.\n\nThis method requires authorization with an OAuth 2.0 token that includes at\nleast one of the scopes listed in the\n[Authorization](#authorization-scopes) section; script projects that do not\nrequire authorization cannot be executed through this API. To find the\ncorrect scopes to include in the authentication token, open the project in\nthe script editor, then select **File > Project properties** and click the\n**Scopes** tab.\n\nThe error `403, PERMISSION_DENIED: The caller does not have permission`\nindicates that the Cloud Platform project used to authorize the request is\nnot the same as the one used by the script.");
+            let mcmd = SubCommand::with_name("run").about("Runs a function in an Apps Script project. The script project must be deployed for use with the Apps Script API and the calling application must share the same Cloud Platform project. This method requires authorization with an OAuth 2.0 token that includes at least one of the scopes listed in the [Authorization](#authorization-scopes) section; script projects that do not require authorization cannot be executed through this API. To find the correct scopes to include in the authentication token, open the script project **Overview** page and scroll down to \"Project OAuth Scopes.\" The error `403, PERMISSION_DENIED: The caller does not have permission` indicates that the Cloud Platform project used to authorize the request is not the same as the one used by the script.");
             scripts0 = scripts0.subcommand(mcmd);
         }
         let mut deployments1 = SubCommand::with_name("deployments")
@@ -108,7 +108,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, get and list");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a new immutable version using the current code, with a unique\nversion number.");
+            let mcmd = SubCommand::with_name("create").about("Creates a new immutable version using the current code, with a unique version number.");
             versions1 = versions1.subcommand(mcmd);
         }
         {

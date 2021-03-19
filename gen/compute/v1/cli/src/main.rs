@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("compute1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200606")
+            .version("0.1.0-20210310")
             .about("Creates and runs virtual machines on Google Cloud Platform.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -185,7 +185,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             backend_services0 = backend_services0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("insert").about("Creates a BackendService resource in the specified project using the data included in the request. There are several restrictions and guidelines to keep in mind when creating a backend service. Read  Understanding backend services for more information.");
+            let mcmd = SubCommand::with_name("insert").about("Creates a BackendService resource in the specified project using the data included in the request. For more information, see  Backend services overview.");
             backend_services0 = backend_services0.subcommand(mcmd);
         }
         {
@@ -193,16 +193,15 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             backend_services0 = backend_services0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Patches the specified BackendService resource with the data included in the request. There are several Understanding backend services to keep in mind when updating a backend service. Read  Understanding backend services for more information. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.");
+            let mcmd = SubCommand::with_name("patch").about("Patches the specified BackendService resource with the data included in the request. For more information, see  Backend services overview. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.");
             backend_services0 = backend_services0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_security_policy")
-                .about("Sets the security policy for the specified backend service.");
+            let mcmd = SubCommand::with_name("set_security_policy").about("Sets the Google Cloud Armor security policy for the specified backend service. For more information, see Google Cloud Armor Overview");
             backend_services0 = backend_services0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Updates the specified BackendService resource with the data included in the request. There are several Understanding backend services to keep in mind when updating a backend service. Read  Understanding backend services for more information.");
+            let mcmd = SubCommand::with_name("update").about("Updates the specified BackendService resource with the data included in the request. For more information, see Backend services overview.");
             backend_services0 = backend_services0.subcommand(mcmd);
         }
         let mut disk_types0 = SubCommand::with_name("disk_types")
@@ -252,7 +251,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             disks0 = disks0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("insert").about("Creates a persistent disk in the specified project using the data in the request. You can create a disk with a sourceImage, a sourceSnapshot, or create an empty 500 GB data disk by omitting all properties. You can also create a disk that is larger than the default size by specifying the sizeGb property.");
+            let mcmd = SubCommand::with_name("insert").about("Creates a persistent disk in the specified project using the data in the request. You can create a disk from a source (sourceImage, sourceSnapshot, or sourceDisk) or create an empty 500 GB data disk by omitting all properties. You can also create a disk that is larger than the default size by specifying the sizeGb property.");
             disks0 = disks0.subcommand(mcmd);
         }
         {
@@ -313,6 +312,95 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .about("Returns permissions that a caller has on the specified resource.");
             external_vpn_gateways0 = external_vpn_gateways0.subcommand(mcmd);
         }
+        let mut firewall_policies0 = SubCommand::with_name("firewall_policies")
+                        .setting(AppSettings::ColoredHelp)
+                        .about("methods: add_association, add_rule, clone_rules, delete, get, get_association, get_iam_policy, get_rule, insert, list, list_associations, r#move, patch, patch_rule, remove_association, remove_rule, set_iam_policy and test_iam_permissions");
+        {
+            let mcmd = SubCommand::with_name("add_association")
+                .about("Inserts an association for the specified firewall policy.");
+            firewall_policies0 = firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("add_rule").about("Inserts a rule into a firewall policy.");
+            firewall_policies0 = firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("clone_rules")
+                .about("Copies rules to the specified firewall policy.");
+            firewall_policies0 = firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes the specified policy.");
+            firewall_policies0 = firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Returns the specified firewall policy.");
+            firewall_policies0 = firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get_association")
+                .about("Gets an association with the specified name.");
+            firewall_policies0 = firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a resource. May be empty if no such policy or resource exists.");
+            firewall_policies0 = firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("get_rule").about("Gets a rule of the specified priority.");
+            firewall_policies0 = firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("insert").about("Creates a new policy in the specified project using the data included in the request.");
+            firewall_policies0 = firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about(
+                "Lists all the policies that have been configured for the specified project.",
+            );
+            firewall_policies0 = firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list_associations")
+                .about("Lists associations of a specified target, i.e., organization or folder.");
+            firewall_policies0 = firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("r#move").about("Moves the specified firewall policy.");
+            firewall_policies0 = firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch")
+                .about("Patches the specified policy with the data included in the request.");
+            firewall_policies0 = firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch_rule")
+                .about("Patches a rule of the specified priority.");
+            firewall_policies0 = firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("remove_association")
+                .about("Removes an association for the specified firewall policy.");
+            firewall_policies0 = firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("remove_rule")
+                .about("Deletes a rule of the specified priority.");
+            firewall_policies0 = firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any existing policy.");
+            firewall_policies0 = firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("test_iam_permissions")
+                .about("Returns permissions that a caller has on the specified resource.");
+            firewall_policies0 = firewall_policies0.subcommand(mcmd);
+        }
         let mut firewalls0 = SubCommand::with_name("firewalls")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete, get, insert, list, patch and update");
@@ -342,8 +430,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             firewalls0 = firewalls0.subcommand(mcmd);
         }
         let mut forwarding_rules0 = SubCommand::with_name("forwarding_rules")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: aggregated_list, delete, get, insert, list, patch and set_target");
+                        .setting(AppSettings::ColoredHelp)
+                        .about("methods: aggregated_list, delete, get, insert, list, patch, set_labels and set_target");
         {
             let mcmd = SubCommand::with_name("aggregated_list")
                 .about("Retrieves an aggregated list of forwarding rules.");
@@ -372,6 +460,10 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             forwarding_rules0 = forwarding_rules0.subcommand(mcmd);
         }
         {
+            let mcmd = SubCommand::with_name("set_labels").about("Sets the labels on the specified resource. To learn more about labels, read the Labeling Resources documentation.");
+            forwarding_rules0 = forwarding_rules0.subcommand(mcmd);
+        }
+        {
             let mcmd = SubCommand::with_name("set_target").about("Changes target URL for forwarding rule. The new target should be of the same type as the old target.");
             forwarding_rules0 = forwarding_rules0.subcommand(mcmd);
         }
@@ -397,7 +489,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut global_forwarding_rules0 = SubCommand::with_name("global_forwarding_rules")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: delete, get, insert, list, patch and set_target");
+            .about("methods: delete, get, insert, list, patch, set_labels and set_target");
         {
             let mcmd = SubCommand::with_name("delete")
                 .about("Deletes the specified GlobalForwardingRule resource.");
@@ -417,6 +509,10 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("patch").about("Updates the specified forwarding rule with the data included in the request. This method supports PATCH semantics and uses the JSON merge patch format and processing rules. Currently, you can only patch the network_tier field.");
+            global_forwarding_rules0 = global_forwarding_rules0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("set_labels").about("Sets the labels on the specified resource. To learn more about labels, read the Labeling Resources documentation.");
             global_forwarding_rules0 = global_forwarding_rules0.subcommand(mcmd);
         }
         {
@@ -483,6 +579,50 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         {
             let mcmd = SubCommand::with_name("wait").about("Waits for the specified Operation resource to return as `DONE` or for the request to approach the 2 minute deadline, and retrieves the specified Operation resource. This method differs from the `GET` method in that it waits for no more than the default deadline (2 minutes) and then returns the current state of the operation, which might be `DONE` or still in progress.\n\nThis method is called on a best-effort basis. Specifically:  \n- In uncommon cases, when the server is overloaded, the request might return before the default deadline is reached, or might return after zero seconds. \n- If the default deadline is reached, there is no guarantee that the operation is actually done when the method returns. Be prepared to retry if the operation is not `DONE`.");
             global_operations0 = global_operations0.subcommand(mcmd);
+        }
+        let mut global_organization_operations0 =
+            SubCommand::with_name("global_organization_operations")
+                .setting(AppSettings::ColoredHelp)
+                .about("methods: delete, get and list");
+        {
+            let mcmd =
+                SubCommand::with_name("delete").about("Deletes the specified Operations resource.");
+            global_organization_operations0 = global_organization_operations0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Retrieves the specified Operations resource. Gets a list of operations by making a `list()` request.");
+            global_organization_operations0 = global_organization_operations0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Retrieves a list of Operation resources contained within the specified organization.");
+            global_organization_operations0 = global_organization_operations0.subcommand(mcmd);
+        }
+        let mut global_public_delegated_prefixes0 =
+            SubCommand::with_name("global_public_delegated_prefixes")
+                .setting(AppSettings::ColoredHelp)
+                .about("methods: delete, get, insert, list and patch");
+        {
+            let mcmd = SubCommand::with_name("delete")
+                .about("Deletes the specified global PublicDelegatedPrefix.");
+            global_public_delegated_prefixes0 = global_public_delegated_prefixes0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Returns the specified global PublicDelegatedPrefix resource.");
+            global_public_delegated_prefixes0 = global_public_delegated_prefixes0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("insert").about("Creates a global PublicDelegatedPrefix in the specified project using the parameters that are included in the request.");
+            global_public_delegated_prefixes0 = global_public_delegated_prefixes0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists the global PublicDelegatedPrefixes for a project.");
+            global_public_delegated_prefixes0 = global_public_delegated_prefixes0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Patches the specified global PublicDelegatedPrefix resource with the data included in the request. This method supports PATCH semantics and uses JSON merge patch format and processing rules.");
+            global_public_delegated_prefixes0 = global_public_delegated_prefixes0.subcommand(mcmd);
         }
         let mut health_checks0 = SubCommand::with_name("health_checks")
             .setting(AppSettings::ColoredHelp)
@@ -576,7 +716,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut images0 = SubCommand::with_name("images")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: delete, deprecate, get, get_from_family, get_iam_policy, insert, list, set_iam_policy, set_labels and test_iam_permissions");
+                        .about("methods: delete, deprecate, get, get_from_family, get_iam_policy, insert, list, patch, set_iam_policy, set_labels and test_iam_permissions");
         {
             let mcmd = SubCommand::with_name("delete").about("Deletes the specified image.");
             images0 = images0.subcommand(mcmd);
@@ -610,6 +750,10 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             images0 = images0.subcommand(mcmd);
         }
         {
+            let mcmd = SubCommand::with_name("patch").about("Patches the specified image with the data included in the request. Only the following fields can be modified: family, description, deprecation status.");
+            images0 = images0.subcommand(mcmd);
+        }
+        {
             let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any existing policy.");
             images0 = images0.subcommand(mcmd);
         }
@@ -624,7 +768,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut instance_group_managers0 = SubCommand::with_name("instance_group_managers")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: abandon_instances, aggregated_list, apply_updates_to_instances, create_instances, delete, delete_instances, get, insert, list, list_errors, list_managed_instances, patch, recreate_instances, resize, set_instance_template and set_target_pools");
+                        .about("methods: abandon_instances, aggregated_list, apply_updates_to_instances, create_instances, delete, delete_instances, delete_per_instance_configs, get, insert, list, list_errors, list_managed_instances, list_per_instance_configs, patch, patch_per_instance_configs, recreate_instances, resize, set_instance_template, set_target_pools and update_per_instance_configs");
         {
             let mcmd = SubCommand::with_name("abandon_instances").about("Flags the specified instances to be removed from the managed instance group. Abandoning an instance does not delete the instance, but it does remove the instance from any target pools that are applied by the managed instance group. This method reduces the targetSize of the managed instance group by the number of instances that you abandon. This operation is marked as DONE when the action is scheduled even if the instances have not yet been removed from the group. You must separately verify the status of the abandoning action with the listmanagedinstances method.\n\nIf the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration has elapsed before the VM instance is removed or deleted.\n\nYou can specify a maximum of 1000 instances with this method per request.");
             instance_group_managers0 = instance_group_managers0.subcommand(mcmd);
@@ -651,6 +795,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instance_group_managers0 = instance_group_managers0.subcommand(mcmd);
         }
         {
+            let mcmd = SubCommand::with_name("delete_per_instance_configs")
+                .about("Deletes selected per-instance configs for the managed instance group.");
+            instance_group_managers0 = instance_group_managers0.subcommand(mcmd);
+        }
+        {
             let mcmd = SubCommand::with_name("get").about("Returns all of the details about the specified managed instance group. Gets a list of available managed instance groups by making a list() request.");
             instance_group_managers0 = instance_group_managers0.subcommand(mcmd);
         }
@@ -663,15 +812,23 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instance_group_managers0 = instance_group_managers0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list_errors").about("Lists all errors thrown by actions on instances for a given managed instance group.");
+            let mcmd = SubCommand::with_name("list_errors").about("Lists all errors thrown by actions on instances for a given managed instance group. The filter and orderBy query parameters are not supported.");
             instance_group_managers0 = instance_group_managers0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list_managed_instances").about("Lists all of the instances in the managed instance group. Each instance in the list has a currentAction, which indicates the action that the managed instance group is performing on the instance. For example, if the group is still creating an instance, the currentAction is CREATING. If a previous action failed, the list displays the errors for that failed action.");
+            let mcmd = SubCommand::with_name("list_managed_instances").about("Lists all of the instances in the managed instance group. Each instance in the list has a currentAction, which indicates the action that the managed instance group is performing on the instance. For example, if the group is still creating an instance, the currentAction is CREATING. If a previous action failed, the list displays the errors for that failed action. The orderBy query parameter is not supported.");
+            instance_group_managers0 = instance_group_managers0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list_per_instance_configs").about("Lists all of the per-instance configs defined for the managed instance group. The orderBy query parameter is not supported.");
             instance_group_managers0 = instance_group_managers0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("patch").about("Updates a managed instance group using the information that you specify in the request. This operation is marked as DONE when the group is patched even if the instances in the group are still in the process of being patched. You must separately verify the status of the individual instances with the listManagedInstances method. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.");
+            instance_group_managers0 = instance_group_managers0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch_per_instance_configs").about("Inserts or patches per-instance configs for the managed instance group. perInstanceConfig.name serves as a key used to distinguish whether to perform insert or patch.");
             instance_group_managers0 = instance_group_managers0.subcommand(mcmd);
         }
         {
@@ -683,11 +840,15 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instance_group_managers0 = instance_group_managers0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_instance_template").about("Specifies the instance template to use when creating new instances in this group. The templates for existing instances in the group do not change unless you recreate them.");
+            let mcmd = SubCommand::with_name("set_instance_template").about("Specifies the instance template to use when creating new instances in this group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group\'s updatePolicy.type to PROACTIVE.");
             instance_group_managers0 = instance_group_managers0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("set_target_pools").about("Modifies the target pools to which all instances in this managed instance group are assigned. The target pools automatically apply to all of the instances in the managed instance group. This operation is marked DONE when you make the request even if the instances have not yet been added to their target pools. The change might take some time to apply to all of the instances in the group depending on the size of the group.");
+            instance_group_managers0 = instance_group_managers0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("update_per_instance_configs").about("Inserts or updates per-instance configs for the managed instance group. perInstanceConfig.name serves as a key used to distinguish whether to perform insert or patch.");
             instance_group_managers0 = instance_group_managers0.subcommand(mcmd);
         }
         let mut instance_groups0 = SubCommand::with_name("instance_groups")
@@ -707,7 +868,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instance_groups0 = instance_groups0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Returns the specified instance group. Gets a list of available instance groups by making a list() request.");
+            let mcmd = SubCommand::with_name("get").about("Returns the specified zonal instance group. Get a list of available zonal instance groups by making a list() request.\n\nFor managed instance groups, use the instanceGroupManagers or regionInstanceGroupManagers methods instead.");
             instance_groups0 = instance_groups0.subcommand(mcmd);
         }
         {
@@ -715,12 +876,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instance_groups0 = instance_groups0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Retrieves the list of instance groups that are located in the specified project and zone.");
+            let mcmd = SubCommand::with_name("list").about("Retrieves the list of zonal instance group resources contained within the specified zone.\n\nFor managed instance groups, use the instanceGroupManagers or regionInstanceGroupManagers methods instead.");
             instance_groups0 = instance_groups0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list_instances")
-                .about("Lists the instances in the specified instance group.");
+            let mcmd = SubCommand::with_name("list_instances").about("Lists the instances in the specified instance group. The orderBy query parameter is not supported.");
             instance_groups0 = instance_groups0.subcommand(mcmd);
         }
         {
@@ -766,7 +926,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut instances0 = SubCommand::with_name("instances")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: add_access_config, add_resource_policies, aggregated_list, attach_disk, delete, delete_access_config, detach_disk, get, get_guest_attributes, get_iam_policy, get_serial_port_output, get_shielded_instance_identity, insert, list, list_referrers, remove_resource_policies, reset, set_deletion_protection, set_disk_auto_delete, set_iam_policy, set_labels, set_machine_resources, set_machine_type, set_metadata, set_min_cpu_platform, set_scheduling, set_service_account, set_shielded_instance_integrity_policy, set_tags, simulate_maintenance_event, start, start_with_encryption_key, stop, test_iam_permissions, update, update_access_config, update_display_device, update_network_interface and update_shielded_instance_config");
+                        .about("methods: add_access_config, add_resource_policies, aggregated_list, attach_disk, bulk_insert, delete, delete_access_config, detach_disk, get, get_effective_firewalls, get_guest_attributes, get_iam_policy, get_screenshot, get_serial_port_output, get_shielded_instance_identity, insert, list, list_referrers, remove_resource_policies, reset, set_deletion_protection, set_disk_auto_delete, set_iam_policy, set_labels, set_machine_resources, set_machine_type, set_metadata, set_min_cpu_platform, set_scheduling, set_service_account, set_shielded_instance_integrity_policy, set_tags, simulate_maintenance_event, start, start_with_encryption_key, stop, test_iam_permissions, update, update_access_config, update_display_device, update_network_interface and update_shielded_instance_config");
         {
             let mcmd = SubCommand::with_name("add_access_config")
                 .about("Adds an access config to an instance\'s network interface.");
@@ -782,6 +942,12 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("attach_disk").about("Attaches an existing Disk resource to an instance. You must first create the disk before you can attach it. It is not possible to create and attach a disk at the same time. For more information, read Adding a persistent disk to your instance.");
+            instances0 = instances0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("bulk_insert").about(
+                "Creates multiple instances. Count specifies the number of instances to create.",
+            );
             instances0 = instances0.subcommand(mcmd);
         }
         {
@@ -803,12 +969,22 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instances0 = instances0.subcommand(mcmd);
         }
         {
+            let mcmd = SubCommand::with_name("get_effective_firewalls")
+                .about("Returns effective firewalls applied to an interface of the instance.");
+            instances0 = instances0.subcommand(mcmd);
+        }
+        {
             let mcmd = SubCommand::with_name("get_guest_attributes")
                 .about("Returns the specified guest attributes entry.");
             instances0 = instances0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a resource. May be empty if no such policy or resource exists.");
+            instances0 = instances0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get_screenshot")
+                .about("Returns the screenshot from the specified instance.");
             instances0 = instances0.subcommand(mcmd);
         }
         {
@@ -831,7 +1007,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instances0 = instances0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list_referrers").about("Retrieves a list of resources that refer to the VM instance specified in the request. For example, if the VM instance is part of a managed instance group, the referrers list includes the managed instance group. For more information, read Viewing Referrers to VM Instances.");
+            let mcmd = SubCommand::with_name("list_referrers").about("Retrieves a list of resources that refer to the VM instance specified in the request. For example, if the VM instance is part of a managed or unmanaged instance group, the referrers list includes the instance group. For more information, read Viewing referrers to VM instances.");
             instances0 = instances0.subcommand(mcmd);
         }
         {
@@ -932,9 +1108,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instances0 = instances0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update_network_interface").about(
-                "Updates an instance\'s network interface. This method follows PATCH semantics.",
-            );
+            let mcmd = SubCommand::with_name("update_network_interface").about("Updates an instance\'s network interface. This method can only update an interface\'s alias IP range and attached network. See Modifying alias IP ranges for an existing instance for instructions on changing alias IP ranges. See Migrating a VM between networks for instructions on migrating an interface. This method follows PATCH semantics.");
             instances0 = instances0.subcommand(mcmd);
         }
         {
@@ -1120,7 +1294,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut networks0 = SubCommand::with_name("networks")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: add_peering, delete, get, insert, list, list_peering_routes, patch, remove_peering, switch_to_custom_mode and update_peering");
+                        .about("methods: add_peering, delete, get, get_effective_firewalls, insert, list, list_peering_routes, patch, remove_peering, switch_to_custom_mode and update_peering");
         {
             let mcmd = SubCommand::with_name("add_peering")
                 .about("Adds a peering to the specified network.");
@@ -1132,6 +1306,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("get").about("Returns the specified network. Gets a list of available networks by making a list() request.");
+            networks0 = networks0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get_effective_firewalls")
+                .about("Returns the effective firewalls on a given network.");
             networks0 = networks0.subcommand(mcmd);
         }
         {
@@ -1382,6 +1561,62 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("set_usage_export_bucket").about("Enables the usage export feature and sets the usage export bucket where reports are stored. If you provide an empty request body using this method, the usage export feature will be disabled.");
             projects0 = projects0.subcommand(mcmd);
         }
+        let mut public_advertised_prefixes0 = SubCommand::with_name("public_advertised_prefixes")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: delete, get, insert, list and patch");
+        {
+            let mcmd = SubCommand::with_name("delete")
+                .about("Deletes the specified PublicAdvertisedPrefix");
+            public_advertised_prefixes0 = public_advertised_prefixes0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Returns the specified PublicAdvertisedPrefix resource.");
+            public_advertised_prefixes0 = public_advertised_prefixes0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("insert").about("Creates a PublicAdvertisedPrefix in the specified project using the parameters that are included in the request.");
+            public_advertised_prefixes0 = public_advertised_prefixes0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists the PublicAdvertisedPrefixes for a project.");
+            public_advertised_prefixes0 = public_advertised_prefixes0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Patches the specified Router resource with the data included in the request. This method supports PATCH semantics and uses JSON merge patch format and processing rules.");
+            public_advertised_prefixes0 = public_advertised_prefixes0.subcommand(mcmd);
+        }
+        let mut public_delegated_prefixes0 = SubCommand::with_name("public_delegated_prefixes")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: aggregated_list, delete, get, insert, list and patch");
+        {
+            let mcmd = SubCommand::with_name("aggregated_list").about("Lists all PublicDelegatedPrefix resources owned by the specific project across all scopes.");
+            public_delegated_prefixes0 = public_delegated_prefixes0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete")
+                .about("Deletes the specified PublicDelegatedPrefix in the given region.");
+            public_delegated_prefixes0 = public_delegated_prefixes0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Returns the specified PublicDelegatedPrefix resource in the given region.");
+            public_delegated_prefixes0 = public_delegated_prefixes0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("insert").about("Creates a PublicDelegatedPrefix in the specified project in the given region using the parameters that are included in the request.");
+            public_delegated_prefixes0 = public_delegated_prefixes0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists the PublicDelegatedPrefixes for a project in the given region.");
+            public_delegated_prefixes0 = public_delegated_prefixes0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Patches the specified PublicDelegatedPrefix resource with the data included in the request. This method supports PATCH semantics and uses JSON merge patch format and processing rules.");
+            public_delegated_prefixes0 = public_delegated_prefixes0.subcommand(mcmd);
+        }
         let mut region_autoscalers0 = SubCommand::with_name("region_autoscalers")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete, get, insert, list, patch and update");
@@ -1430,7 +1665,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             region_backend_services0 = region_backend_services0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("insert").about("Creates a regional BackendService resource in the specified project using the data included in the request. There are several restrictions and guidelines to keep in mind when creating a regional backend service. Read  Understanding backend services for more information.");
+            let mcmd = SubCommand::with_name("insert").about("Creates a regional BackendService resource in the specified project using the data included in the request. For more information, see  Backend services overview.");
             region_backend_services0 = region_backend_services0.subcommand(mcmd);
         }
         {
@@ -1438,11 +1673,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             region_backend_services0 = region_backend_services0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates the specified regional BackendService resource with the data included in the request. There are several Understanding backend services to keep in mind when updating a backend service. Read  Understanding backend services for more information. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.");
+            let mcmd = SubCommand::with_name("patch").about("Updates the specified regional BackendService resource with the data included in the request. For more information, see  Understanding backend services This method supports PATCH semantics and uses the JSON merge patch format and processing rules.");
             region_backend_services0 = region_backend_services0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Updates the specified regional BackendService resource with the data included in the request. There are several Understanding backend services to keep in mind when updating a backend service. Read  Understanding backend services for more information.");
+            let mcmd = SubCommand::with_name("update").about("Updates the specified regional BackendService resource with the data included in the request. For more information, see  Backend services overview.");
             region_backend_services0 = region_backend_services0.subcommand(mcmd);
         }
         let mut region_commitments0 = SubCommand::with_name("region_commitments")
@@ -1596,7 +1831,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut region_instance_group_managers0 = SubCommand::with_name("region_instance_group_managers")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: abandon_instances, apply_updates_to_instances, create_instances, delete, delete_instances, get, insert, list, list_errors, list_managed_instances, patch, recreate_instances, resize, set_instance_template and set_target_pools");
+                        .about("methods: abandon_instances, apply_updates_to_instances, create_instances, delete, delete_instances, delete_per_instance_configs, get, insert, list, list_errors, list_managed_instances, list_per_instance_configs, patch, patch_per_instance_configs, recreate_instances, resize, set_instance_template, set_target_pools and update_per_instance_configs");
         {
             let mcmd = SubCommand::with_name("abandon_instances").about("Flags the specified instances to be immediately removed from the managed instance group. Abandoning an instance does not delete the instance, but it does remove the instance from any target pools that are applied by the managed instance group. This method reduces the targetSize of the managed instance group by the number of instances that you abandon. This operation is marked as DONE when the action is scheduled even if the instances have not yet been removed from the group. You must separately verify the status of the abandoning action with the listmanagedinstances method.\n\nIf the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration has elapsed before the VM instance is removed or deleted.\n\nYou can specify a maximum of 1000 instances with this method per request.");
             region_instance_group_managers0 = region_instance_group_managers0.subcommand(mcmd);
@@ -1619,6 +1854,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             region_instance_group_managers0 = region_instance_group_managers0.subcommand(mcmd);
         }
         {
+            let mcmd = SubCommand::with_name("delete_per_instance_configs")
+                .about("Deletes selected per-instance configs for the managed instance group.");
+            region_instance_group_managers0 = region_instance_group_managers0.subcommand(mcmd);
+        }
+        {
             let mcmd = SubCommand::with_name("get")
                 .about("Returns all of the details about the specified managed instance group.");
             region_instance_group_managers0 = region_instance_group_managers0.subcommand(mcmd);
@@ -1632,15 +1872,23 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             region_instance_group_managers0 = region_instance_group_managers0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list_errors").about("Lists all errors thrown by actions on instances for a given regional managed instance group.");
+            let mcmd = SubCommand::with_name("list_errors").about("Lists all errors thrown by actions on instances for a given regional managed instance group. The filter and orderBy query parameters are not supported.");
             region_instance_group_managers0 = region_instance_group_managers0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list_managed_instances").about("Lists the instances in the managed instance group and instances that are scheduled to be created. The list includes any current actions that the group has scheduled for its instances.");
+            let mcmd = SubCommand::with_name("list_managed_instances").about("Lists the instances in the managed instance group and instances that are scheduled to be created. The list includes any current actions that the group has scheduled for its instances. The orderBy query parameter is not supported.");
+            region_instance_group_managers0 = region_instance_group_managers0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list_per_instance_configs").about("Lists all of the per-instance configs defined for the managed instance group. The orderBy query parameter is not supported.");
             region_instance_group_managers0 = region_instance_group_managers0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("patch").about("Updates a managed instance group using the information that you specify in the request. This operation is marked as DONE when the group is patched even if the instances in the group are still in the process of being patched. You must separately verify the status of the individual instances with the listmanagedinstances method. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.");
+            region_instance_group_managers0 = region_instance_group_managers0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch_per_instance_configs").about("Inserts or patches per-instance configs for the managed instance group. perInstanceConfig.name serves as a key used to distinguish whether to perform insert or patch.");
             region_instance_group_managers0 = region_instance_group_managers0.subcommand(mcmd);
         }
         {
@@ -1659,6 +1907,10 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("set_target_pools").about("Modifies the target pools to which all new instances in this group are assigned. Existing instances in the group are not affected.");
             region_instance_group_managers0 = region_instance_group_managers0.subcommand(mcmd);
         }
+        {
+            let mcmd = SubCommand::with_name("update_per_instance_configs").about("Inserts or updates per-instance configs for the managed instance group. perInstanceConfig.name serves as a key used to distinguish whether to perform insert or patch.");
+            region_instance_group_managers0 = region_instance_group_managers0.subcommand(mcmd);
+        }
         let mut region_instance_groups0 = SubCommand::with_name("region_instance_groups")
             .setting(AppSettings::ColoredHelp)
             .about("methods: get, list, list_instances and set_named_ports");
@@ -1672,13 +1924,40 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             region_instance_groups0 = region_instance_groups0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list_instances").about("Lists the instances in the specified instance group and displays information about the named ports. Depending on the specified options, this method can list all instances or only the instances that are running.");
+            let mcmd = SubCommand::with_name("list_instances").about("Lists the instances in the specified instance group and displays information about the named ports. Depending on the specified options, this method can list all instances or only the instances that are running. The orderBy query parameter is not supported.");
             region_instance_groups0 = region_instance_groups0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("set_named_ports")
                 .about("Sets the named ports for the specified regional instance group.");
             region_instance_groups0 = region_instance_groups0.subcommand(mcmd);
+        }
+        let mut region_instances0 = SubCommand::with_name("region_instances")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: bulk_insert");
+        {
+            let mcmd = SubCommand::with_name("bulk_insert").about("Creates multiple instances in a given region. Count specifies the number of instances to create.");
+            region_instances0 = region_instances0.subcommand(mcmd);
+        }
+        let mut region_network_endpoint_groups0 =
+            SubCommand::with_name("region_network_endpoint_groups")
+                .setting(AppSettings::ColoredHelp)
+                .about("methods: delete, get, insert and list");
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes the specified network endpoint group. Note that the NEG cannot be deleted if it is configured as a backend of a backend service.");
+            region_network_endpoint_groups0 = region_network_endpoint_groups0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Returns the specified network endpoint group. Gets a list of available network endpoint groups by making a list() request.");
+            region_network_endpoint_groups0 = region_network_endpoint_groups0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("insert").about("Creates a network endpoint group in the specified project using the parameters that are included in the request.");
+            region_network_endpoint_groups0 = region_network_endpoint_groups0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Retrieves the list of regional network endpoint groups available to the specified project in the given region.");
+            region_network_endpoint_groups0 = region_network_endpoint_groups0.subcommand(mcmd);
         }
         let mut region_notification_endpoints0 =
             SubCommand::with_name("region_notification_endpoints")
@@ -2037,8 +2316,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             security_policies0 = security_policies0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch")
-                .about("Patches the specified policy with the data included in the request.");
+            let mcmd = SubCommand::with_name("patch").about("Patches the specified policy with the data included in the request. This cannot be used to be update the rules in the policy. Please use the per rule methods like addRule, patchRule, and removeRule instead.");
             security_policies0 = security_policies0.subcommand(mcmd);
         }
         {
@@ -2175,11 +2453,12 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             subnetworks0 = subnetworks0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list_usable").about("Retrieves an aggregated list of all usable subnetworks in the project. The list contains all of the subnetworks in the project and the subnetworks that were shared by a Shared VPC host project.");
+            let mcmd = SubCommand::with_name("list_usable")
+                .about("Retrieves an aggregated list of all usable subnetworks in the project.");
             subnetworks0 = subnetworks0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Patches the specified subnetwork with the data included in the request. Only certain fields can up updated with a patch request as indicated in the field descriptions. You must specify the current fingerprint of the subnetwork resource being patched.");
+            let mcmd = SubCommand::with_name("patch").about("Patches the specified subnetwork with the data included in the request. Only certain fields can be updated with a patch request as indicated in the field descriptions. You must specify the current fingerprint of the subnetwork resource being patched.");
             subnetworks0 = subnetworks0.subcommand(mcmd);
         }
         {
@@ -2195,9 +2474,35 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .about("Returns permissions that a caller has on the specified resource.");
             subnetworks0 = subnetworks0.subcommand(mcmd);
         }
+        let mut target_grpc_proxies0 = SubCommand::with_name("target_grpc_proxies")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: delete, get, insert, list and patch");
+        {
+            let mcmd = SubCommand::with_name("delete")
+                .about("Deletes the specified TargetGrpcProxy in the given scope");
+            target_grpc_proxies0 = target_grpc_proxies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Returns the specified TargetGrpcProxy resource in the given scope.");
+            target_grpc_proxies0 = target_grpc_proxies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("insert").about("Creates a TargetGrpcProxy in the specified project in the given scope using the parameters that are included in the request.");
+            target_grpc_proxies0 = target_grpc_proxies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists the TargetGrpcProxies for a project in the given scope.");
+            target_grpc_proxies0 = target_grpc_proxies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Patches the specified TargetGrpcProxy resource with the data included in the request. This method supports PATCH semantics and uses JSON merge patch format and processing rules.");
+            target_grpc_proxies0 = target_grpc_proxies0.subcommand(mcmd);
+        }
         let mut target_http_proxies0 = SubCommand::with_name("target_http_proxies")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: aggregated_list, delete, get, insert, list and set_url_map");
+            .about("methods: aggregated_list, delete, get, insert, list, patch and set_url_map");
         {
             let mcmd = SubCommand::with_name("aggregated_list").about("Retrieves the list of all TargetHttpProxy resources, regional and global, available to the specified project.");
             target_http_proxies0 = target_http_proxies0.subcommand(mcmd);
@@ -2220,13 +2525,17 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             target_http_proxies0 = target_http_proxies0.subcommand(mcmd);
         }
         {
+            let mcmd = SubCommand::with_name("patch").about("Patches the specified TargetHttpProxy resource with the data included in the request. This method supports PATCH semantics and uses JSON merge patch format and processing rules. (== suppress_warning http-rest-shadowed ==)");
+            target_http_proxies0 = target_http_proxies0.subcommand(mcmd);
+        }
+        {
             let mcmd = SubCommand::with_name("set_url_map")
                 .about("Changes the URL map for TargetHttpProxy.");
             target_http_proxies0 = target_http_proxies0.subcommand(mcmd);
         }
         let mut target_https_proxies0 = SubCommand::with_name("target_https_proxies")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: aggregated_list, delete, get, insert, list, set_quic_override, set_ssl_certificates, set_ssl_policy and set_url_map");
+                        .about("methods: aggregated_list, delete, get, insert, list, patch, set_quic_override, set_ssl_certificates, set_ssl_policy and set_url_map");
         {
             let mcmd = SubCommand::with_name("aggregated_list").about("Retrieves the list of all TargetHttpsProxy resources, regional and global, available to the specified project.");
             target_https_proxies0 = target_https_proxies0.subcommand(mcmd);
@@ -2246,6 +2555,10 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("list").about("Retrieves the list of TargetHttpsProxy resources available to the specified project.");
+            target_https_proxies0 = target_https_proxies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Patches the specified TargetHttpsProxy resource with the data included in the request. This method supports PATCH semantics and uses JSON merge patch format and processing rules. (== suppress_warning http-rest-shadowed ==)");
             target_https_proxies0 = target_https_proxies0.subcommand(mcmd);
         }
         {
@@ -2462,7 +2775,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             url_maps0 = url_maps0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("invalidate_cache").about("Initiates a cache invalidation operation, invalidating the specified path, scoped to the specified UrlMap.");
+            let mcmd = SubCommand::with_name("invalidate_cache").about("Initiates a cache invalidation operation, invalidating the specified path, scoped to the specified UrlMap.\n\nFor more information, see [Invalidating cached content](/cdn/docs/invalidating-cached-content).");
             url_maps0 = url_maps0.subcommand(mcmd);
         }
         {
@@ -2597,6 +2910,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         app = app.subcommand(target_instances0);
         app = app.subcommand(target_https_proxies0);
         app = app.subcommand(target_http_proxies0);
+        app = app.subcommand(target_grpc_proxies0);
         app = app.subcommand(subnetworks0);
         app = app.subcommand(ssl_policies0);
         app = app.subcommand(ssl_certificates0);
@@ -2613,6 +2927,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         app = app.subcommand(region_ssl_certificates0);
         app = app.subcommand(region_operations0);
         app = app.subcommand(region_notification_endpoints0);
+        app = app.subcommand(region_network_endpoint_groups0);
+        app = app.subcommand(region_instances0);
         app = app.subcommand(region_instance_groups0);
         app = app.subcommand(region_instance_group_managers0);
         app = app.subcommand(region_health_checks0);
@@ -2622,6 +2938,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         app = app.subcommand(region_commitments0);
         app = app.subcommand(region_backend_services0);
         app = app.subcommand(region_autoscalers0);
+        app = app.subcommand(public_delegated_prefixes0);
+        app = app.subcommand(public_advertised_prefixes0);
         app = app.subcommand(projects0);
         app = app.subcommand(packet_mirrorings0);
         app = app.subcommand(node_types0);
@@ -2643,12 +2961,15 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         app = app.subcommand(https_health_checks0);
         app = app.subcommand(http_health_checks0);
         app = app.subcommand(health_checks0);
+        app = app.subcommand(global_public_delegated_prefixes0);
+        app = app.subcommand(global_organization_operations0);
         app = app.subcommand(global_operations0);
         app = app.subcommand(global_network_endpoint_groups0);
         app = app.subcommand(global_forwarding_rules0);
         app = app.subcommand(global_addresses0);
         app = app.subcommand(forwarding_rules0);
         app = app.subcommand(firewalls0);
+        app = app.subcommand(firewall_policies0);
         app = app.subcommand(external_vpn_gateways0);
         app = app.subcommand(disks0);
         app = app.subcommand(disk_types0);

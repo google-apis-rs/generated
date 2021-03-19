@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("language1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200613")
+            .version("0.1.0-20210306")
             .about("Provides natural language understanding technologies, such as sentiment analysis, entity recognition, entity sentiment analysis, and other text annotations, to developers.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -37,11 +37,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: analyze_entities, analyze_entity_sentiment, analyze_sentiment, analyze_syntax, annotate_text and classify_text");
         {
-            let mcmd = SubCommand::with_name("analyze_entities").about("Finds named entities (currently proper names and common nouns) in the text\nalong with entity types, salience, mentions for each entity, and\nother properties.");
+            let mcmd = SubCommand::with_name("analyze_entities").about("Finds named entities (currently proper names and common nouns) in the text along with entity types, salience, mentions for each entity, and other properties.");
             documents0 = documents0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("analyze_entity_sentiment").about("Finds entities, similar to AnalyzeEntities in the text and analyzes\nsentiment associated with each entity and its mentions.");
+            let mcmd = SubCommand::with_name("analyze_entity_sentiment").about("Finds entities, similar to AnalyzeEntities in the text and analyzes sentiment associated with each entity and its mentions.");
             documents0 = documents0.subcommand(mcmd);
         }
         {
@@ -50,11 +50,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             documents0 = documents0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("analyze_syntax").about("Analyzes the syntax of the text and provides sentence boundaries and\ntokenization along with part of speech tags, dependency trees, and other\nproperties.");
+            let mcmd = SubCommand::with_name("analyze_syntax").about("Analyzes the syntax of the text and provides sentence boundaries and tokenization along with part of speech tags, dependency trees, and other properties.");
             documents0 = documents0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("annotate_text").about("A convenience method that provides all the features that analyzeSentiment,\nanalyzeEntities, and analyzeSyntax provide in one call.");
+            let mcmd = SubCommand::with_name("annotate_text").about("A convenience method that provides all the features that analyzeSentiment, analyzeEntities, and analyzeSyntax provide in one call.");
             documents0 = documents0.subcommand(mcmd);
         }
         {

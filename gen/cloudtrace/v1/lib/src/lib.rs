@@ -45,7 +45,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ListTracesResponse {
-        #[doc = "If defined, indicates that there are more traces that match the request\nand that this value should be passed to the next request to continue\nretrieving additional traces."]
+        #[doc = "If defined, indicates that there are more traces that match the request and that this value should be passed to the next request to continue retrieving additional traces."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -97,7 +97,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub spans: ::std::option::Option<Vec<crate::schemas::TraceSpan>>,
-        #[doc = "Globally unique identifier for the trace. This identifier is a 128-bit\nnumeric value formatted as a 32-byte hex string. For example,\n`382d4f4c6b7bb2f4a972559d9085001d`."]
+        #[doc = "Globally unique identifier for the trace. This identifier is a 128-bit numeric value formatted as a 32-byte hex string. For example, `382d4f4c6b7bb2f4a972559d9085001d`. The numeric value should not be zero."]
         #[serde(
             rename = "traceId",
             default,
@@ -135,21 +135,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub end_time: ::std::option::Option<String>,
-        #[doc = "Distinguishes between spans generated in a particular context. For example,\ntwo spans with the same name may be distinguished using `RPC_CLIENT`\nand `RPC_SERVER` to identify queueing latency associated with the span."]
+        #[doc = "Distinguishes between spans generated in a particular context. For example, two spans with the same name may be distinguished using `RPC_CLIENT` and `RPC_SERVER` to identify queueing latency associated with the span."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<crate::schemas::TraceSpanKind>,
-        #[doc = "Collection of labels associated with the span. Label keys must be less than\n128 bytes. Label values must be less than 16 kilobytes (10MB for\n`/stacktrace` values).\n\nSome predefined label keys exist, or you may create your own. When creating\nyour own, we recommend the following formats:\n\n* `/category/product/key` for agents of well-known products (e.g.\n  `/db/mongodb/read_size`).\n* `short_host/path/key` for domain-specific keys (e.g.\n  `foo.com/myproduct/bar`)\n\nPredefined labels include:\n\n* `/agent`\n* `/component`\n* `/error/message`\n* `/error/name`\n* `/http/client_city`\n* `/http/client_country`\n* `/http/client_protocol`\n* `/http/client_region`\n* `/http/host`\n* `/http/method`\n* `/http/path`\n* `/http/redirected_url`\n* `/http/request/size`\n* `/http/response/size`\n* `/http/route`\n* `/http/status_code`\n* `/http/url`\n* `/http/user_agent`\n* `/pid`\n* `/stacktrace`\n* `/tid`"]
+        #[doc = "Collection of labels associated with the span. Label keys must be less than 128 bytes. Label values must be less than 16 kilobytes (10MB for `/stacktrace` values). Some predefined label keys exist, or you may create your own. When creating your own, we recommend the following formats: * `/category/product/key` for agents of well-known products (e.g. `/db/mongodb/read_size`). * `short_host/path/key` for domain-specific keys (e.g. `foo.com/myproduct/bar`) Predefined labels include: * `/agent` * `/component` * `/error/message` * `/error/name` * `/http/client_city` * `/http/client_country` * `/http/client_protocol` * `/http/client_region` * `/http/host` * `/http/method` * `/http/path` * `/http/redirected_url` * `/http/request/size` * `/http/response/size` * `/http/route` * `/http/status_code` * `/http/url` * `/http/user_agent` * `/pid` * `/stacktrace` * `/tid`"]
         #[serde(
             rename = "labels",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Name of the span. Must be less than 128 bytes. The span name is sanitized\nand displayed in the Stackdriver Trace tool in the\nGoogle Cloud Platform Console.\nThe name may be a method name or some other per-call site name.\nFor the same executable and the same call point, a best practice is\nto use a consistent name, which makes it easier to correlate\ncross-trace spans."]
+        #[doc = "Name of the span. Must be less than 128 bytes. The span name is sanitized and displayed in the Trace tool in the Google Cloud Platform Console. The name may be a method name or some other per-call site name. For the same executable and the same call point, a best practice is to use a consistent name, which makes it easier to correlate cross-trace spans."]
         #[serde(
             rename = "name",
             default,
@@ -164,7 +164,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub parent_span_id: ::std::option::Option<u64>,
-        #[doc = "Identifier for the span. Must be a 64-bit integer other than 0 and\nunique within a trace. For example, `2205310701640571284`."]
+        #[doc = "Identifier for the span. Must be a 64-bit integer other than 0 and unique within a trace. For example, `2205310701640571284`."]
         #[serde(
             rename = "spanId",
             default,
@@ -192,9 +192,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TraceSpanKind {
-        #[doc = "Indicates that the span covers the client-side wrapper around an RPC or\nother remote request."]
+        #[doc = "Indicates that the span covers the client-side wrapper around an RPC or other remote request."]
         RpcClient,
-        #[doc = "Indicates that the span covers server-side handling of an RPC or other\nremote network request."]
+        #[doc = "Indicates that the span covers server-side handling of an RPC or other remote network request."]
         RpcServer,
         #[doc = "Unspecified."]
         SpanKindUnspecified,
@@ -495,7 +495,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Sends new traces to Stackdriver Trace or updates existing traces. If the ID\nof a trace that you send matches that of an existing trace, any fields\nin the existing trace and its spans are overwritten by the provided values,\nand any new fields provided are merged with the existing trace data. If the\nID does not match, a new trace is created.\nIn this case, writing traces is not considered an active developer\nmethod since traces are machine generated."]
+            #[doc = "Sends new traces to Cloud Trace or updates existing traces. If the ID of a trace that you send matches that of an existing trace, any fields in the existing trace and its spans are overwritten by the provided values, and any new fields provided are merged with the existing trace data. If the ID does not match, a new trace is created."]
             pub fn patch_traces(
                 &self,
                 request: crate::schemas::Traces,
@@ -664,19 +664,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -688,9 +688,13 @@ pub mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListView {
+                    #[doc = "Complete view of the trace record that contains the actual trace data. This is equivalent to calling the REST `get` or RPC `GetTrace` method using the ID of each listed trace."]
                     Complete,
+                    #[doc = "Minimal view of the trace record that contains only the project and trace IDs."]
                     Minimal,
+                    #[doc = "Root span view of the trace record that returns the root spans along with the minimal trace data."]
                     Rootspan,
+                    #[doc = "Default is `MINIMAL` if unspecified."]
                     ViewTypeUnspecified,
                 }
                 impl ListView {
@@ -772,7 +776,7 @@ pub mod resources {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Gets a single trace by its ID.\nIn this case, getting for traces is considered an active developer method,\neven though it is technically a read-only method."]
+                #[doc = "Gets a single trace by its ID."]
                 pub fn get(
                     &self,
                     project_id: impl Into<String>,
@@ -796,7 +800,7 @@ pub mod resources {
                         trace_id: trace_id.into(),
                     }
                 }
-                #[doc = "Returns of a list of traces that match the specified filter conditions.\nIn this case, listing for traces is considered an active developer method,\neven though it is technically a read-only method."]
+                #[doc = "Returns of a list of traces that match the specified filter conditions."]
                 pub fn list(&self, project_id: impl Into<String>) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
@@ -971,19 +975,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -1017,37 +1021,37 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "End of the time interval (inclusive) during which the trace data was\ncollected from the application."]
+                #[doc = "End of the time interval (inclusive) during which the trace data was collected from the application."]
                 pub fn end_time(mut self, value: impl Into<String>) -> Self {
                     self.end_time = Some(value.into());
                     self
                 }
-                #[doc = "Optional. A filter against labels for the request.\n\nBy default, searches use prefix matching. To specify exact match, prepend\na plus symbol (`+`) to the search term.\nMultiple terms are ANDed. Syntax:\n\n* `root:NAME_PREFIX` or `NAME_PREFIX`: Return traces where any root\n  span starts with `NAME_PREFIX`.\n* `+root:NAME` or `+NAME`: Return traces where any root span's name is\n  exactly `NAME`.\n* `span:NAME_PREFIX`: Return traces where any span starts with\n  `NAME_PREFIX`.\n* `+span:NAME`: Return traces where any span's name is exactly\n  `NAME`.\n* `latency:DURATION`: Return traces whose overall latency is\n  greater or equal to than `DURATION`. Accepted units are nanoseconds\n  (`ns`), milliseconds (`ms`), and seconds (`s`). Default is `ms`. For\n  example, `latency:24ms` returns traces whose overall latency\n  is greater than or equal to 24 milliseconds.\n* `label:LABEL_KEY`: Return all traces containing the specified\n  label key (exact match, case-sensitive) regardless of the key:value\n  pair's value (including empty values).\n* `LABEL_KEY:VALUE_PREFIX`: Return all traces containing the specified\n  label key (exact match, case-sensitive) whose value starts with\n  `VALUE_PREFIX`. Both a key and a value must be specified.\n* `+LABEL_KEY:VALUE`: Return all traces containing a key:value pair\n  exactly matching the specified text. Both a key and a value must be\n  specified.\n* `method:VALUE`: Equivalent to `/http/method:VALUE`.\n* `url:VALUE`: Equivalent to `/http/url:VALUE`."]
+                #[doc = "Optional. A filter against labels for the request. By default, searches use prefix matching. To specify exact match, prepend a plus symbol (`+`) to the search term. Multiple terms are ANDed. Syntax: * `root:NAME_PREFIX` or `NAME_PREFIX`: Return traces where any root span starts with `NAME_PREFIX`. * `+root:NAME` or `+NAME`: Return traces where any root span's name is exactly `NAME`. * `span:NAME_PREFIX`: Return traces where any span starts with `NAME_PREFIX`. * `+span:NAME`: Return traces where any span's name is exactly `NAME`. * `latency:DURATION`: Return traces whose overall latency is greater or equal to than `DURATION`. Accepted units are nanoseconds (`ns`), milliseconds (`ms`), and seconds (`s`). Default is `ms`. For example, `latency:24ms` returns traces whose overall latency is greater than or equal to 24 milliseconds. * `label:LABEL_KEY`: Return all traces containing the specified label key (exact match, case-sensitive) regardless of the key:value pair's value (including empty values). * `LABEL_KEY:VALUE_PREFIX`: Return all traces containing the specified label key (exact match, case-sensitive) whose value starts with `VALUE_PREFIX`. Both a key and a value must be specified. * `+LABEL_KEY:VALUE`: Return all traces containing a key:value pair exactly matching the specified text. Both a key and a value must be specified. * `method:VALUE`: Equivalent to `/http/method:VALUE`. * `url:VALUE`: Equivalent to `/http/url:VALUE`."]
                 pub fn filter(mut self, value: impl Into<String>) -> Self {
                     self.filter = Some(value.into());
                     self
                 }
-                #[doc = "Optional. Field used to sort the returned traces.\nCan be one of the following:\n\n* `trace_id`\n* `name` (`name` field of root span in the trace)\n* `duration` (difference between `end_time` and `start_time` fields of\n  the root span)\n* `start` (`start_time` field of the root span)\n\nDescending order can be specified by appending `desc` to the sort field\n(for example, `name desc`).\n\nOnly one sort field is permitted."]
+                #[doc = "Optional. Field used to sort the returned traces. Can be one of the following: * `trace_id` * `name` (`name` field of root span in the trace) * `duration` (difference between `end_time` and `start_time` fields of the root span) * `start` (`start_time` field of the root span) Descending order can be specified by appending `desc` to the sort field (for example, `name desc`). Only one sort field is permitted."]
                 pub fn order_by(mut self, value: impl Into<String>) -> Self {
                     self.order_by = Some(value.into());
                     self
                 }
-                #[doc = "Optional. Maximum number of traces to return. If not specified or <= 0, the\nimplementation selects a reasonable value.  The implementation may\nreturn fewer traces than the requested page size."]
+                #[doc = "Optional. Maximum number of traces to return. If not specified or <= 0, the implementation selects a reasonable value. The implementation may return fewer traces than the requested page size."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
                     self
                 }
-                #[doc = "Token identifying the page of results to return. If provided, use the\nvalue of the `next_page_token` field from a previous request."]
+                #[doc = "Token identifying the page of results to return. If provided, use the value of the `next_page_token` field from a previous request."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
                     self
                 }
-                #[doc = "Start of the time interval (inclusive) during which the trace data was\ncollected from the application."]
+                #[doc = "Start of the time interval (inclusive) during which the trace data was collected from the application."]
                 pub fn start_time(mut self, value: impl Into<String>) -> Self {
                     self.start_time = Some(value.into());
                     self
                 }
-                #[doc = "Optional. Type of data returned for traces in the list. Default is\n`MINIMAL`."]
+                #[doc = "Optional. Type of data returned for traces in the list. Default is `MINIMAL`."]
                 pub fn view(
                     mut self,
                     value: crate::resources::projects::traces::params::ListView,
@@ -1276,26 +1280,26 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("endTime", &self.end_time)]);
-                    let req = req.query(&[("filter", &self.filter)]);
-                    let req = req.query(&[("orderBy", &self.order_by)]);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("startTime", &self.start_time)]);
-                    let req = req.query(&[("view", &self.view)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("endTime", &self.end_time)]);
+                    req = req.query(&[("filter", &self.filter)]);
+                    req = req.query(&[("orderBy", &self.order_by)]);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("startTime", &self.start_time)]);
+                    req = req.query(&[("view", &self.view)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,

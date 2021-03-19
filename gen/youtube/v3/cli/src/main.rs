@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("youtube3")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200624")
+            .version("0.1.0-20210314")
             .about("The YouTube Data API v3 is an API that provides access to YouTube data, such as videos, playlists, and channels.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -33,6 +33,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .help("Provide more output to aid with debugging")
                 .multiple(false)
                 .takes_value(false));
+        let mut abuse_reports0 = SubCommand::with_name("abuse_reports")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: insert");
+        {
+            let mcmd = SubCommand::with_name("insert")
+                .about("Inserts a new resource into this collection.");
+            abuse_reports0 = abuse_reports0.subcommand(mcmd);
+        }
         let mut activities0 = SubCommand::with_name("activities")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
@@ -142,7 +150,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             comments0 = comments0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("mark_as_spam").about("Expresses the caller\'s opinion that one or more comments should be flagged\nas spam.");
+            let mcmd = SubCommand::with_name("mark_as_spam").about("Expresses the caller\'s opinion that one or more comments should be flagged as spam.");
             comments0 = comments0.subcommand(mcmd);
         }
         {
@@ -153,13 +161,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         {
             let mcmd = SubCommand::with_name("update").about("Updates an existing resource.");
             comments0 = comments0.subcommand(mcmd);
-        }
-        let mut guide_categories0 = SubCommand::with_name("guide_categories")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: list");
-        {
-            let mcmd = SubCommand::with_name("list").about("Retrieves a list of guide categories.");
-            guide_categories0 = guide_categories0.subcommand(mcmd);
         }
         let mut i_1_8n_languages0 = SubCommand::with_name("i_1_8n_languages")
             .setting(AppSettings::ColoredHelp)
@@ -179,13 +180,9 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut live_broadcasts0 = SubCommand::with_name("live_broadcasts")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: bind, control, delete, insert, list, transition and update");
+            .about("methods: bind, delete, insert, list, transition and update");
         {
             let mcmd = SubCommand::with_name("bind").about("Bind a broadcast to a stream.");
-            live_broadcasts0 = live_broadcasts0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("control").about("Slate and recording control of the live broadcast.\nSupport actions: slate on/off, recording start/stop/pause/resume.\nDesign doc: goto/yt-api-liveBroadcast-control");
             live_broadcasts0 = live_broadcasts0.subcommand(mcmd);
         }
         {
@@ -347,15 +344,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("list").about("Retrieves a list of search resources");
             search0 = search0.subcommand(mcmd);
         }
-        let mut sponsors0 = SubCommand::with_name("sponsors")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: list");
-        {
-            let mcmd = SubCommand::with_name("list").about(
-                "Retrieves a list of sponsors that match the request criteria for a\nchannel.",
-            );
-            sponsors0 = sponsors0.subcommand(mcmd);
-        }
         let mut subscriptions0 = SubCommand::with_name("subscriptions")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete, insert and list");
@@ -381,11 +369,39 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .about("Retrieves a list of resources, possibly filtered.");
             super_chat_events0 = super_chat_events0.subcommand(mcmd);
         }
+        let mut tests0 = SubCommand::with_name("tests")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: insert");
+        {
+            let mcmd = SubCommand::with_name("insert").about("POST method.");
+            tests0 = tests0.subcommand(mcmd);
+        }
+        let mut third_party_links0 = SubCommand::with_name("third_party_links")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: delete, insert, list and update");
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes a resource.");
+            third_party_links0 = third_party_links0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("insert")
+                .about("Inserts a new resource into this collection.");
+            third_party_links0 = third_party_links0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Retrieves a list of resources, possibly filtered.");
+            third_party_links0 = third_party_links0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("update").about("Updates an existing resource.");
+            third_party_links0 = third_party_links0.subcommand(mcmd);
+        }
         let mut thumbnails0 = SubCommand::with_name("thumbnails")
             .setting(AppSettings::ColoredHelp)
             .about("methods: set");
         {
-            let mcmd = SubCommand::with_name("set").about("As this is not an insert in a strict sense (it supports uploading/setting\nof a thumbnail for multiple videos, which doesn\'t result in creation of a\nsingle resource), I use a custom verb here.");
+            let mcmd = SubCommand::with_name("set").about("As this is not an insert in a strict sense (it supports uploading/setting of a thumbnail for multiple videos, which doesn\'t result in creation of a single resource), I use a custom verb here.");
             thumbnails0 = thumbnails0.subcommand(mcmd);
         }
         let mut video_abuse_report_reasons0 = SubCommand::with_name("video_abuse_report_reasons")
@@ -412,7 +428,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             videos0 = videos0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_rating").about("Retrieves the ratings that the authorized user gave to a list of specified\nvideos.");
+            let mcmd = SubCommand::with_name("get_rating").about("Retrieves the ratings that the authorized user gave to a list of specified videos.");
             videos0 = videos0.subcommand(mcmd);
         }
         {
@@ -451,30 +467,15 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("unset").about("Allows removal of channel watermark.");
             watermarks0 = watermarks0.subcommand(mcmd);
         }
-        let mut youtube0 = SubCommand::with_name("youtube")
-            .setting(AppSettings::ColoredHelp)
-            .about("sub-resources: v_3");
-        let mut v_31 = SubCommand::with_name("v_3")
-            .setting(AppSettings::ColoredHelp)
-            .about("sub-resources: tests");
-        let mut tests2 = SubCommand::with_name("tests")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: create");
-        {
-            let mcmd = SubCommand::with_name("create").about("POST method.");
-            tests2 = tests2.subcommand(mcmd);
-        }
-        v_31 = v_31.subcommand(tests2);
-        youtube0 = youtube0.subcommand(v_31);
-        app = app.subcommand(youtube0);
         app = app.subcommand(watermarks0);
         app = app.subcommand(videos0);
         app = app.subcommand(video_categories0);
         app = app.subcommand(video_abuse_report_reasons0);
         app = app.subcommand(thumbnails0);
+        app = app.subcommand(third_party_links0);
+        app = app.subcommand(tests0);
         app = app.subcommand(super_chat_events0);
         app = app.subcommand(subscriptions0);
-        app = app.subcommand(sponsors0);
         app = app.subcommand(search0);
         app = app.subcommand(playlists0);
         app = app.subcommand(playlist_items0);
@@ -487,7 +488,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         app = app.subcommand(live_broadcasts0);
         app = app.subcommand(i_1_8n_regions0);
         app = app.subcommand(i_1_8n_languages0);
-        app = app.subcommand(guide_categories0);
         app = app.subcommand(comments0);
         app = app.subcommand(comment_threads0);
         app = app.subcommand(channels0);
@@ -495,6 +495,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         app = app.subcommand(channel_banners0);
         app = app.subcommand(captions0);
         app = app.subcommand(activities0);
+        app = app.subcommand(abuse_reports0);
 
         Self { app }
     }

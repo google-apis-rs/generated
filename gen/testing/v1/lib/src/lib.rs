@@ -51,28 +51,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AndroidDevice {
-        #[doc = "Required. The id of the Android device to be used.\nUse the TestEnvironmentDiscoveryService to get supported options."]
+        #[doc = "Required. The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options."]
         #[serde(
             rename = "androidModelId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub android_model_id: ::std::option::Option<String>,
-        #[doc = "Required. The id of the Android OS version to be used.\nUse the TestEnvironmentDiscoveryService to get supported options."]
+        #[doc = "Required. The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options."]
         #[serde(
             rename = "androidVersionId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub android_version_id: ::std::option::Option<String>,
-        #[doc = "Required. The locale the test device used for testing.\nUse the TestEnvironmentDiscoveryService to get supported options."]
+        #[doc = "Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options."]
         #[serde(
             rename = "locale",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub locale: ::std::option::Option<String>,
-        #[doc = "Required. How the device is oriented during the test.\nUse the TestEnvironmentDiscoveryService to get supported options."]
+        #[doc = "Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options."]
         #[serde(
             rename = "orientation",
             default,
@@ -185,14 +185,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub app_bundle: ::std::option::Option<crate::schemas::AppBundle>,
-        #[doc = "The java package for the application under test.\nThe default value is determined by examining the application's manifest."]
+        #[doc = "The java package for the application under test. The default value is determined by examining the application's manifest."]
         #[serde(
             rename = "appPackageId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub app_package_id: ::std::option::Option<String>,
-        #[doc = "The option of whether running each test within its own invocation of\ninstrumentation with Android Test Orchestrator or not.\n** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or\nhigher! **\nOrchestrator offers the following benefits:\n\n* No shared state\n* Crashes are isolated\n* Logs are scoped per test\n\nSee\n[https://developer.android.com/training/testing/junit-runner.html#using-android-test-orchestrator](https://developer.android.com/training/testing/junit-runner.html#using-android-test-orchestrator)\nfor more information about Android Test Orchestrator.\n\nIf not set, the test will be run without the orchestrator."]
+        #[doc = "The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator."]
         #[serde(
             rename = "orchestratorOption",
             default,
@@ -214,21 +214,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub test_apk: ::std::option::Option<crate::schemas::FileReference>,
-        #[doc = "The java package for the test to be executed.\nThe default value is determined by examining the application's manifest."]
+        #[doc = "The java package for the test to be executed. The default value is determined by examining the application's manifest."]
         #[serde(
             rename = "testPackageId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub test_package_id: ::std::option::Option<String>,
-        #[doc = "The InstrumentationTestRunner class.\nThe default value is determined by examining the application's manifest."]
+        #[doc = "The InstrumentationTestRunner class. The default value is determined by examining the application's manifest."]
         #[serde(
             rename = "testRunnerClass",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub test_runner_class: ::std::option::Option<String>,
-        #[doc = "Each target must be fully qualified with the package name or class name,\nin one of these formats:\n\n* \"package package_name\"\n* \"class package_name.class_name\"\n* \"class package_name.class_name#method_name\"\n\nIf empty, all targets in the module will be run."]
+        #[doc = "Each target must be fully qualified with the package name or class name, in one of these formats: - \"package package_name\" - \"class package_name.class_name\" - \"class package_name.class_name#method_name\" If empty, all targets in the module will be run."]
         #[serde(
             rename = "testTargets",
             default,
@@ -250,9 +250,9 @@ pub mod schemas {
     pub enum AndroidInstrumentationTestOrchestratorOption {
         #[doc = "Run test without using orchestrator."]
         DoNotUseOrchestrator,
-        #[doc = "Default value: the server will choose the mode. Currently implies that\nthe test will run without the orchestrator. In the future,\nall instrumentation tests will be run with the orchestrator.\nUsing the orchestrator is highly encouraged because of all the benefits it\noffers."]
+        #[doc = "Default value: the server will choose the mode. Currently implies that the test will run without the orchestrator. In the future, all instrumentation tests will be run with the orchestrator. Using the orchestrator is highly encouraged because of all the benefits it offers."]
         OrchestratorOptionUnspecified,
-        #[doc = "Run test using orchestrator.\n** Only compatible with AndroidJUnitRunner version 1.0 or higher! **\nRecommended."]
+        #[doc = "Run test using orchestrator. ** Only compatible with AndroidJUnitRunner version 1.0 or higher! ** Recommended."]
         UseOrchestrator,
     }
     impl AndroidInstrumentationTestOrchestratorOption {
@@ -349,28 +349,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AndroidMatrix {
-        #[doc = "Required. The ids of the set of Android device to be used.\nUse the TestEnvironmentDiscoveryService to get supported options."]
+        #[doc = "Required. The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options."]
         #[serde(
             rename = "androidModelIds",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub android_model_ids: ::std::option::Option<Vec<String>>,
-        #[doc = "Required. The ids of the set of Android OS version to be used.\nUse the TestEnvironmentDiscoveryService to get supported options."]
+        #[doc = "Required. The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options."]
         #[serde(
             rename = "androidVersionIds",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub android_version_ids: ::std::option::Option<Vec<String>>,
-        #[doc = "Required. The set of locales the test device will enable for testing.\nUse the TestEnvironmentDiscoveryService to get supported options."]
+        #[doc = "Required. The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options."]
         #[serde(
             rename = "locales",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub locales: ::std::option::Option<Vec<String>>,
-        #[doc = "Required. The set of orientations to test with.\nUse the TestEnvironmentDiscoveryService to get supported options."]
+        #[doc = "Required. The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options."]
         #[serde(
             rename = "orientations",
             default,
@@ -401,14 +401,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AndroidModel {
-        #[doc = "The company that this device is branded with.\nExample: \"Google\", \"Samsung\"."]
+        #[doc = "The company that this device is branded with. Example: \"Google\", \"Samsung\"."]
         #[serde(
             rename = "brand",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub brand: ::std::option::Option<String>,
-        #[doc = "The name of the industrial design.\nThis corresponds to android.os.Build.DEVICE."]
+        #[doc = "The name of the industrial design. This corresponds to android.os.Build.DEVICE."]
         #[serde(
             rename = "codename",
             default,
@@ -429,14 +429,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub form_factor: ::std::option::Option<crate::schemas::AndroidModelFormFactor>,
-        #[doc = "The unique opaque id for this model.\nUse this for invoking the TestExecutionService."]
+        #[doc = "The unique opaque id for this model. Use this for invoking the TestExecutionService."]
         #[serde(
             rename = "id",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "True if and only if tests with this model are recorded by stitching\ntogether screenshots. See use_low_spec_video_recording in device config."]
+        #[doc = "True if and only if tests with this model are recorded by stitching together screenshots. See use_low_spec_video_recording in device config."]
         #[serde(
             rename = "lowFpsVideoRecording",
             default,
@@ -450,14 +450,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub manufacturer: ::std::option::Option<String>,
-        #[doc = "The human-readable marketing name for this device model.\nExamples: \"Nexus 5\", \"Galaxy S5\"."]
+        #[doc = "The human-readable marketing name for this device model. Examples: \"Nexus 5\", \"Galaxy S5\"."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Screen density in DPI.\nThis corresponds to ro.sf.lcd_density"]
+        #[doc = "Screen density in DPI. This corresponds to ro.sf.lcd_density"]
         #[serde(
             rename = "screenDensity",
             default,
@@ -478,7 +478,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub screen_y: ::std::option::Option<i32>,
-        #[doc = "The list of supported ABIs for this device.\nThis corresponds to either android.os.Build.SUPPORTED_ABIS (for API level\n21 and above) or android.os.Build.CPU_ABI/CPU_ABI2.\nThe most preferred ABI is the first element in the list.\n\nElements are optionally prefixed by \"version_id:\" (where version_id is\nthe id of an AndroidVersion), denoting an ABI that is supported only on\na particular version."]
+        #[doc = "The list of supported ABIs for this device. This corresponds to either android.os.Build.SUPPORTED_ABIS (for API level 21 and above) or android.os.Build.CPU_ABI/CPU_ABI2. The most preferred ABI is the first element in the list. Elements are optionally prefixed by \"version_id:\" (where version_id is the id of an AndroidVersion), denoting an ABI that is supported only on a particular version."]
         #[serde(
             rename = "supportedAbis",
             default,
@@ -492,14 +492,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub supported_version_ids: ::std::option::Option<Vec<String>>,
-        #[doc = "Tags for this dimension.\nExamples: \"default\", \"preview\", \"deprecated\"."]
+        #[doc = "Tags for this dimension. Examples: \"default\", \"preview\", \"deprecated\"."]
         #[serde(
             rename = "tags",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub tags: ::std::option::Option<Vec<String>>,
-        #[doc = "URL of a thumbnail image (photo) of the device.\ne.g. https://lh3.googleusercontent.com/90WcauuJiCYABEl8U0lcZeuS5STUbf2yW..."]
+        #[doc = "URL of a thumbnail image (photo) of the device. e.g. https://lh3.googleusercontent.com/90WcauuJiCYABEl8U0lcZeuS5STUbf2yW..."]
         #[serde(
             rename = "thumbnailUrl",
             default,
@@ -519,17 +519,20 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AndroidModelForm {
-        #[doc = "Do not use.  For proto versioning only."]
+        #[doc = "Do not use. For proto versioning only."]
         DeviceFormUnspecified,
+        #[doc = "Android virtual device using emulator in nested virtualization. Equivalent to Android Studio."]
+        Emulator,
         #[doc = "Actual hardware."]
         Physical,
-        #[doc = "A software stack that simulates the device."]
+        #[doc = "Android virtual device using Compute Engine native virtualization. Firebase Test Lab only."]
         Virtual,
     }
     impl AndroidModelForm {
         pub fn as_str(self) -> &'static str {
             match self {
                 AndroidModelForm::DeviceFormUnspecified => "DEVICE_FORM_UNSPECIFIED",
+                AndroidModelForm::Emulator => "EMULATOR",
                 AndroidModelForm::Physical => "PHYSICAL",
                 AndroidModelForm::Virtual => "VIRTUAL",
             }
@@ -545,6 +548,7 @@ pub mod schemas {
         fn from_str(s: &str) -> ::std::result::Result<AndroidModelForm, ()> {
             Ok(match s {
                 "DEVICE_FORM_UNSPECIFIED" => AndroidModelForm::DeviceFormUnspecified,
+                "EMULATOR" => AndroidModelForm::Emulator,
                 "PHYSICAL" => AndroidModelForm::Physical,
                 "VIRTUAL" => AndroidModelForm::Virtual,
                 _ => return Err(()),
@@ -572,6 +576,7 @@ pub mod schemas {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "DEVICE_FORM_UNSPECIFIED" => AndroidModelForm::DeviceFormUnspecified,
+                "EMULATOR" => AndroidModelForm::Emulator,
                 "PHYSICAL" => AndroidModelForm::Physical,
                 "VIRTUAL" => AndroidModelForm::Virtual,
                 _ => {
@@ -714,42 +719,42 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub app_initial_activity: ::std::option::Option<String>,
-        #[doc = "The java package for the application under test.\nThe default value is determined by examining the application's manifest."]
+        #[doc = "The java package for the application under test. The default value is determined by examining the application's manifest."]
         #[serde(
             rename = "appPackageId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub app_package_id: ::std::option::Option<String>,
-        #[doc = "The max depth of the traversal stack Robo can explore. Needs to be at least\n2 to make Robo explore the app beyond the first activity.\nDefault is 50."]
+        #[doc = "The max depth of the traversal stack Robo can explore. Needs to be at least 2 to make Robo explore the app beyond the first activity. Default is 50."]
         #[serde(
             rename = "maxDepth",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub max_depth: ::std::option::Option<i32>,
-        #[doc = "The max number of steps Robo can execute.\nDefault is no limit."]
+        #[doc = "The max number of steps Robo can execute. Default is no limit."]
         #[serde(
             rename = "maxSteps",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub max_steps: ::std::option::Option<i32>,
-        #[doc = "A set of directives Robo should apply during the crawl.\nThis allows users to customize the crawl. For example, the username and\npassword for a test account can be provided."]
+        #[doc = "A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided."]
         #[serde(
             rename = "roboDirectives",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub robo_directives: ::std::option::Option<Vec<crate::schemas::RoboDirective>>,
-        #[doc = "A JSON file with a sequence of actions Robo should perform as a prologue\nfor the crawl."]
+        #[doc = "A JSON file with a sequence of actions Robo should perform as a prologue for the crawl."]
         #[serde(
             rename = "roboScript",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub robo_script: ::std::option::Option<crate::schemas::FileReference>,
-        #[doc = "The intents used to launch the app for the crawl.\nIf none are provided, then the main launcher activity is launched.\nIf some are provided, then only those provided are launched (the main\nlauncher activity must be provided explicitly)."]
+        #[doc = "The intents used to launch the app for the crawl. If none are provided, then the main launcher activity is launched. If some are provided, then only those provided are launched (the main launcher activity must be provided explicitly)."]
         #[serde(
             rename = "startingIntents",
             default,
@@ -832,21 +837,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub app_bundle: ::std::option::Option<crate::schemas::AppBundle>,
-        #[doc = "The java package for the application under test.\nThe default is determined by examining the application's manifest."]
+        #[doc = "The java package for the application under test. The default is determined by examining the application's manifest."]
         #[serde(
             rename = "appPackageId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub app_package_id: ::std::option::Option<String>,
-        #[doc = "The list of scenario labels that should be run during the test.\nThe scenario labels should map to labels defined in the application's\nmanifest. For example, player_experience and\ncom.google.test.loops.player_experience add all of the loops labeled in the\nmanifest with the com.google.test.loops.player_experience name to the\nexecution.\nScenarios can also be specified in the scenarios field."]
+        #[doc = "The list of scenario labels that should be run during the test. The scenario labels should map to labels defined in the application's manifest. For example, player_experience and com.google.test.loops.player_experience add all of the loops labeled in the manifest with the com.google.test.loops.player_experience name to the execution. Scenarios can also be specified in the scenarios field."]
         #[serde(
             rename = "scenarioLabels",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub scenario_labels: ::std::option::Option<Vec<String>>,
-        #[doc = "The list of scenarios that should be run during the test.\nThe default is all test loops, derived from the application's\nmanifest."]
+        #[doc = "The list of scenarios that should be run during the test. The default is all test loops, derived from the application's manifest."]
         #[serde(
             rename = "scenarios",
             default,
@@ -868,14 +873,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AndroidVersion {
-        #[doc = "The API level for this Android version.\nExamples: 18, 19."]
+        #[doc = "The API level for this Android version. Examples: 18, 19."]
         #[serde(
             rename = "apiLevel",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub api_level: ::std::option::Option<i32>,
-        #[doc = "The code name for this Android version.\nExamples: \"JellyBean\", \"KitKat\"."]
+        #[doc = "The code name for this Android version. Examples: \"JellyBean\", \"KitKat\"."]
         #[serde(
             rename = "codeName",
             default,
@@ -889,7 +894,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub distribution: ::std::option::Option<crate::schemas::Distribution>,
-        #[doc = "An opaque id for this Android version.\nUse this id to invoke the TestExecutionService."]
+        #[doc = "An opaque id for this Android version. Use this id to invoke the TestExecutionService."]
         #[serde(
             rename = "id",
             default,
@@ -903,14 +908,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub release_date: ::std::option::Option<crate::schemas::Date>,
-        #[doc = "Tags for this dimension.\nExamples: \"default\", \"preview\", \"deprecated\"."]
+        #[doc = "Tags for this dimension. Examples: \"default\", \"preview\", \"deprecated\"."]
         #[serde(
             rename = "tags",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub tags: ::std::option::Option<Vec<String>>,
-        #[doc = "A string representing this version of the Android OS.\nExamples: \"4.3\", \"4.4\"."]
+        #[doc = "A string representing this version of the Android OS. Examples: \"4.3\", \"4.4\"."]
         #[serde(
             rename = "versionString",
             default,
@@ -948,7 +953,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub location: ::std::option::Option<crate::schemas::FileReference>,
-        #[doc = "The java package for the APK to be installed.\nValue is determined by examining the application's manifest."]
+        #[doc = "The java package for the APK to be installed. Value is determined by examining the application's manifest."]
         #[serde(
             rename = "packageName",
             default,
@@ -1036,7 +1041,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub min_sdk_version: ::std::option::Option<i32>,
-        #[doc = "Full Java-style package name for this application, e.g.\n\"com.example.foo\"."]
+        #[doc = "Full Java-style package name for this application, e.g. \"com.example.foo\"."]
         #[serde(
             rename = "packageName",
             default,
@@ -1050,6 +1055,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub target_sdk_version: ::std::option::Option<i32>,
+        #[doc = "Permissions declared to be used by the application"]
+        #[serde(
+            rename = "usesPermission",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub uses_permission: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ApkManifest {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1105,7 +1117,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CancelTestMatrixResponse {
-        #[doc = "The current rolled-up state of the test matrix.\nIf this state is already final, then the cancelation request will\nhave no effect."]
+        #[doc = "The current rolled-up state of the test matrix. If this state is already final, then the cancelation request will have no effect."]
         #[serde(
             rename = "testState",
             default,
@@ -1125,25 +1137,25 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CancelTestMatrixResponseTestState {
-        #[doc = "The user cancelled the execution.\n\nCan only be set on an execution."]
+        #[doc = "The user cancelled the execution. Can only be set on an execution."]
         Cancelled,
-        #[doc = "The execution or matrix has stopped because it encountered an\ninfrastructure failure."]
+        #[doc = "The execution or matrix has stopped because it encountered an infrastructure failure."]
         Error,
-        #[doc = "The execution or matrix has terminated normally.\n\nOn a matrix this means that the matrix level processing completed normally,\nbut individual executions may be in an ERROR state."]
+        #[doc = "The execution or matrix has terminated normally. On a matrix this means that the matrix level processing completed normally, but individual executions may be in an ERROR state."]
         Finished,
-        #[doc = "The execution was not run because the provided inputs are incompatible with\nthe requested architecture.\n\nExample: requested device does not support running the native code in\nthe supplied APK\n\nCan only be set on an execution."]
+        #[doc = "The execution was not run because the provided inputs are incompatible with the requested architecture. Example: requested device does not support running the native code in the supplied APK Can only be set on an execution."]
         IncompatibleArchitecture,
-        #[doc = "The execution was not run because the provided inputs are incompatible with\nthe requested environment.\n\nExample: requested AndroidVersion is lower than APK's minSdkVersion\n\nCan only be set on an execution."]
+        #[doc = "The execution was not run because the provided inputs are incompatible with the requested environment. Example: requested AndroidVersion is lower than APK's minSdkVersion Can only be set on an execution."]
         IncompatibleEnvironment,
-        #[doc = "The execution or matrix was not run because the provided inputs are not\nvalid.\n\nExamples: input file is not of the expected type, is malformed/corrupt, or\nwas flagged as malware"]
+        #[doc = "The execution or matrix was not run because the provided inputs are not valid. Examples: input file is not of the expected type, is malformed/corrupt, or was flagged as malware"]
         Invalid,
         #[doc = "The execution or matrix is waiting for resources to become available."]
         Pending,
-        #[doc = "The execution is currently being processed.\n\nCan only be set on an execution."]
+        #[doc = "The execution is currently being processed. Can only be set on an execution."]
         Running,
-        #[doc = "Do not use.  For proto versioning only."]
+        #[doc = "Do not use. For proto versioning only."]
         TestStateUnspecified,
-        #[doc = "The execution was not run because it corresponds to a unsupported\nenvironment.\n\nCan only be set on an execution."]
+        #[doc = "The execution was not run because it corresponds to a unsupported environment. Can only be set on an execution."]
         UnsupportedEnvironment,
         #[doc = "The execution or matrix is being validated."]
         Validating,
@@ -1346,21 +1358,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Date {
-        #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month, or 0\nif specifying a year by itself or a year and month where the day is not\nsignificant."]
+        #[doc = "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant."]
         #[serde(
             rename = "day",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub day: ::std::option::Option<i32>,
-        #[doc = "Month of year. Must be from 1 to 12, or 0 if specifying a year without a\nmonth and day."]
+        #[doc = "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day."]
         #[serde(
             rename = "month",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub month: ::std::option::Option<i32>,
-        #[doc = "Year of date. Must be from 1 to 9999, or 0 if specifying a date without\na year."]
+        #[doc = "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year."]
         #[serde(
             rename = "year",
             default,
@@ -1417,10 +1429,167 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DeviceIpBlock {
+        #[doc = "The date this block was added to Firebase Test Lab"]
+        #[serde(
+            rename = "addedDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub added_date: ::std::option::Option<crate::schemas::Date>,
+        #[doc = "An IP address block in CIDR notation eg: 34.68.194.64/29"]
+        #[serde(
+            rename = "block",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub block: ::std::option::Option<String>,
+        #[doc = "Whether this block is used by physical or virtual devices"]
+        #[serde(
+            rename = "form",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub form: ::std::option::Option<crate::schemas::DeviceIpBlockForm>,
+    }
+    impl ::google_field_selector::FieldSelector for DeviceIpBlock {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DeviceIpBlock {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum DeviceIpBlockForm {
+        #[doc = "Do not use. For proto versioning only."]
+        DeviceFormUnspecified,
+        #[doc = "Android virtual device using emulator in nested virtualization. Equivalent to Android Studio."]
+        Emulator,
+        #[doc = "Actual hardware."]
+        Physical,
+        #[doc = "Android virtual device using Compute Engine native virtualization. Firebase Test Lab only."]
+        Virtual,
+    }
+    impl DeviceIpBlockForm {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                DeviceIpBlockForm::DeviceFormUnspecified => "DEVICE_FORM_UNSPECIFIED",
+                DeviceIpBlockForm::Emulator => "EMULATOR",
+                DeviceIpBlockForm::Physical => "PHYSICAL",
+                DeviceIpBlockForm::Virtual => "VIRTUAL",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DeviceIpBlockForm {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DeviceIpBlockForm {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DeviceIpBlockForm, ()> {
+            Ok(match s {
+                "DEVICE_FORM_UNSPECIFIED" => DeviceIpBlockForm::DeviceFormUnspecified,
+                "EMULATOR" => DeviceIpBlockForm::Emulator,
+                "PHYSICAL" => DeviceIpBlockForm::Physical,
+                "VIRTUAL" => DeviceIpBlockForm::Virtual,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for DeviceIpBlockForm {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for DeviceIpBlockForm {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for DeviceIpBlockForm {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "DEVICE_FORM_UNSPECIFIED" => DeviceIpBlockForm::DeviceFormUnspecified,
+                "EMULATOR" => DeviceIpBlockForm::Emulator,
+                "PHYSICAL" => DeviceIpBlockForm::Physical,
+                "VIRTUAL" => DeviceIpBlockForm::Virtual,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for DeviceIpBlockForm {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DeviceIpBlockForm {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DeviceIpBlockCatalog {
+        #[doc = "The device IP blocks used by Firebase Test Lab"]
+        #[serde(
+            rename = "ipBlocks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub ip_blocks: ::std::option::Option<Vec<crate::schemas::DeviceIpBlock>>,
+    }
+    impl ::google_field_selector::FieldSelector for DeviceIpBlockCatalog {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DeviceIpBlockCatalog {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Distribution {
-        #[doc = "Output only. The estimated fraction (0-1) of the total market with this\nconfiguration."]
+        #[doc = "Output only. The estimated fraction (0-1) of the total market with this configuration."]
         #[serde(
             rename = "marketShare",
             default,
@@ -1496,7 +1665,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct EnvironmentMatrix {
-        #[doc = "A list of Android devices; the test will be run only on the specified\ndevices."]
+        #[doc = "A list of Android devices; the test will be run only on the specified devices."]
         #[serde(
             rename = "androidDeviceList",
             default,
@@ -1579,7 +1748,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct FileReference {
-        #[doc = "A path to a file in Google Cloud Storage.\nExample: gs://build-app-1414623860166/app%40debug-unaligned.apk\nThese paths are expected to be url encoded (percent encoding)"]
+        #[doc = "A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app%40debug-unaligned.apk These paths are expected to be url encoded (percent encoding)"]
         #[serde(
             rename = "gcsPath",
             default,
@@ -1665,7 +1834,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudStorage {
-        #[doc = "Required. The path to a directory in GCS that will\neventually contain the results for this test.\nThe requesting user must have write access on the bucket in the supplied\npath."]
+        #[doc = "Required. The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path."]
         #[serde(
             rename = "gcsPath",
             default,
@@ -1696,21 +1865,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct IntentFilter {
-        #[doc = "The android:name value of the <action> tag."]
+        #[doc = "The android:name value of the tag."]
         #[serde(
             rename = "actionNames",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub action_names: ::std::option::Option<Vec<String>>,
-        #[doc = "The android:name value of the <category> tag."]
+        #[doc = "The android:name value of the tag."]
         #[serde(
             rename = "categoryNames",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub category_names: ::std::option::Option<Vec<String>>,
-        #[doc = "The android:mimeType value of the <data> tag."]
+        #[doc = "The android:mimeType value of the tag."]
         #[serde(
             rename = "mimeType",
             default,
@@ -1741,28 +1910,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct IosDevice {
-        #[doc = "Required. The id of the iOS device to be used.\nUse the TestEnvironmentDiscoveryService to get supported options."]
+        #[doc = "Required. The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options."]
         #[serde(
             rename = "iosModelId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ios_model_id: ::std::option::Option<String>,
-        #[doc = "Required. The id of the iOS major software version to be used.\nUse the TestEnvironmentDiscoveryService to get supported options."]
+        #[doc = "Required. The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options."]
         #[serde(
             rename = "iosVersionId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ios_version_id: ::std::option::Option<String>,
-        #[doc = "Required. The locale the test device used for testing.\nUse the TestEnvironmentDiscoveryService to get supported options."]
+        #[doc = "Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options."]
         #[serde(
             rename = "locale",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub locale: ::std::option::Option<String>,
-        #[doc = "Required. How the device is oriented during the test.\nUse the TestEnvironmentDiscoveryService to get supported options."]
+        #[doc = "Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options."]
         #[serde(
             rename = "orientation",
             default,
@@ -1844,6 +2013,51 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct IosDeviceFile {
+        #[doc = "The bundle id of the app where this file lives. iOS apps sandbox their own filesystem, so app files must specify which app installed on the device."]
+        #[serde(
+            rename = "bundleId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub bundle_id: ::std::option::Option<String>,
+        #[doc = "The source file"]
+        #[serde(
+            rename = "content",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub content: ::std::option::Option<crate::schemas::FileReference>,
+        #[doc = "Location of the file on the device, inside the app's sandboxed filesystem"]
+        #[serde(
+            rename = "devicePath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub device_path: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for IosDeviceFile {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for IosDeviceFile {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct IosDeviceList {
         #[doc = "Required. A list of iOS devices."]
         #[serde(
@@ -1876,7 +2090,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct IosModel {
-        #[doc = "Device capabilities.\nCopied from\nhttps://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html"]
+        #[doc = "Device capabilities. Copied from https://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html"]
         #[serde(
             rename = "deviceCapabilities",
             default,
@@ -1890,14 +2104,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub form_factor: ::std::option::Option<crate::schemas::IosModelFormFactor>,
-        #[doc = "The unique opaque id for this model.\nUse this for invoking the TestExecutionService."]
+        #[doc = "The unique opaque id for this model. Use this for invoking the TestExecutionService."]
         #[serde(
             rename = "id",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "The human-readable name for this device model.\nExamples: \"iPhone 4s\", \"iPad Mini 2\"."]
+        #[doc = "The human-readable name for this device model. Examples: \"iPhone 4s\", \"iPad Mini 2\"."]
         #[serde(
             rename = "name",
             default,
@@ -1932,7 +2146,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub supported_version_ids: ::std::option::Option<Vec<String>>,
-        #[doc = "Tags for this dimension.\nExamples: \"default\", \"preview\", \"deprecated\"."]
+        #[doc = "Tags for this dimension. Examples: \"default\", \"preview\", \"deprecated\"."]
         #[serde(
             rename = "tags",
             default,
@@ -2096,7 +2310,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub app_ipa: ::std::option::Option<crate::schemas::FileReference>,
-        #[doc = "The list of scenarios that should be run during the test. Defaults to the\nsingle scenario 0 if unspecified."]
+        #[doc = "The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified."]
         #[serde(
             rename = "scenarios",
             default,
@@ -2127,13 +2341,34 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct IosTestSetup {
-        #[doc = "The network traffic profile used for running the test.\nAvailable network profiles can be queried by using the\nNETWORK_CONFIGURATION environment type when calling\nTestEnvironmentDiscoveryService.GetTestEnvironmentCatalog."]
+        #[doc = "iOS apps to install in addition to those being directly tested."]
+        #[serde(
+            rename = "additionalIpas",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub additional_ipas: ::std::option::Option<Vec<crate::schemas::FileReference>>,
+        #[doc = "The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog."]
         #[serde(
             rename = "networkProfile",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub network_profile: ::std::option::Option<String>,
+        #[doc = "List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (e.g. /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (e.g. /Documents) by specifying the bundle id."]
+        #[serde(
+            rename = "pullDirectories",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub pull_directories: ::std::option::Option<Vec<crate::schemas::IosDeviceFile>>,
+        #[doc = "List of files to push to the device before starting the test."]
+        #[serde(
+            rename = "pushFiles",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub push_files: ::std::option::Option<Vec<crate::schemas::IosDeviceFile>>,
     }
     impl ::google_field_selector::FieldSelector for IosTestSetup {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -2158,21 +2393,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct IosVersion {
-        #[doc = "An opaque id for this iOS version.\nUse this id to invoke the TestExecutionService."]
+        #[doc = "An opaque id for this iOS version. Use this id to invoke the TestExecutionService."]
         #[serde(
             rename = "id",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "An integer representing the major iOS version.\nExamples: \"8\", \"9\"."]
+        #[doc = "An integer representing the major iOS version. Examples: \"8\", \"9\"."]
         #[serde(
             rename = "majorVersion",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub major_version: ::std::option::Option<i32>,
-        #[doc = "An integer representing the minor iOS version.\nExamples: \"1\", \"2\"."]
+        #[doc = "An integer representing the minor iOS version. Examples: \"1\", \"2\"."]
         #[serde(
             rename = "minorVersion",
             default,
@@ -2186,7 +2421,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub supported_xcode_version_ids: ::std::option::Option<Vec<String>>,
-        #[doc = "Tags for this dimension.\nExamples: \"default\", \"preview\", \"deprecated\"."]
+        #[doc = "Tags for this dimension. Examples: \"default\", \"preview\", \"deprecated\"."]
         #[serde(
             rename = "tags",
             default,
@@ -2224,28 +2459,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub app_bundle_id: ::std::option::Option<String>,
-        #[doc = "The option to test special app entitlements. Setting this would re-sign the\napp having special entitlements with an explicit application-identifier.\nCurrently supports testing aps-environment entitlement."]
+        #[doc = "The option to test special app entitlements. Setting this would re-sign the app having special entitlements with an explicit application-identifier. Currently supports testing aps-environment entitlement."]
         #[serde(
             rename = "testSpecialEntitlements",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub test_special_entitlements: ::std::option::Option<bool>,
-        #[doc = "Required. The .zip containing the .xctestrun file and the contents of the\nDerivedData/Build/Products directory.\nThe .xctestrun file in this zip is ignored if the xctestrun field is\nspecified."]
+        #[doc = "Required. The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified."]
         #[serde(
             rename = "testsZip",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub tests_zip: ::std::option::Option<crate::schemas::FileReference>,
-        #[doc = "The Xcode version that should be used for the test.\nUse the TestEnvironmentDiscoveryService to get supported options.\nDefaults to the latest Xcode version Firebase Test Lab supports."]
+        #[doc = "The Xcode version that should be used for the test. Use the TestEnvironmentDiscoveryService to get supported options. Defaults to the latest Xcode version Firebase Test Lab supports."]
         #[serde(
             rename = "xcodeVersion",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub xcode_version: ::std::option::Option<String>,
-        #[doc = "An .xctestrun file that will override the .xctestrun file in the\ntests zip. Because the .xctestrun file contains environment variables along\nwith test methods to run and/or ignore, this can be useful for sharding\ntests. Default is taken from the tests zip."]
+        #[doc = "An .xctestrun file that will override the .xctestrun file in the tests zip. Because the .xctestrun file contains environment variables along with test methods to run and/or ignore, this can be useful for sharding tests. Default is taken from the tests zip."]
         #[serde(
             rename = "xctestrun",
             default,
@@ -2300,28 +2535,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Locale {
-        #[doc = "The id for this locale.\nExample: \"en_US\"."]
+        #[doc = "The id for this locale. Example: \"en_US\"."]
         #[serde(
             rename = "id",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "A human-friendly name for this language/locale.\nExample: \"English\"."]
+        #[doc = "A human-friendly name for this language/locale. Example: \"English\"."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "A human-friendly string representing the region for this\nlocale. Example: \"United States\". Not present for every locale."]
+        #[doc = "A human-friendly string representing the region for this locale. Example: \"United States\". Not present for every locale."]
         #[serde(
             rename = "region",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub region: ::std::option::Option<String>,
-        #[doc = "Tags for this dimension.\nExample: \"default\"."]
+        #[doc = "Tags for this dimension. Example: \"default\"."]
         #[serde(
             rename = "tags",
             default,
@@ -2352,7 +2587,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ManualSharding {
-        #[doc = "Required. Group of packages, classes, and/or test methods to be run for\neach shard. The number of shard_test_targets must be >= 1 and <= 50."]
+        #[doc = "Required. Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500."]
         #[serde(
             rename = "testTargetsForShard",
             default,
@@ -2447,7 +2682,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub obb: ::std::option::Option<crate::schemas::FileReference>,
-        #[doc = "Required. OBB file name which must conform to the format as specified by\nAndroid\ne.g. [main|patch].0300110.com.example.android.obb\nwhich will be installed into\n<shared-storage>/Android/obb/<package-name>/\non the device."]
+        #[doc = "Required. OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into /Android/obb// on the device."]
         #[serde(
             rename = "obbFileName",
             default,
@@ -2478,21 +2713,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Orientation {
-        #[doc = "The id for this orientation.\nExample: \"portrait\"."]
+        #[doc = "The id for this orientation. Example: \"portrait\"."]
         #[serde(
             rename = "id",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "A human-friendly name for this orientation.\nExample: \"portrait\"."]
+        #[doc = "A human-friendly name for this orientation. Example: \"portrait\"."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Tags for this dimension.\nExample: \"default\"."]
+        #[doc = "Tags for this dimension. Example: \"default\"."]
         #[serde(
             rename = "tags",
             default,
@@ -2523,7 +2758,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ProvidedSoftwareCatalog {
-        #[doc = "A string representing the current version of Android Test\nOrchestrator that is provided by TestExecutionService.\nExample: \"1.0.2 beta\"."]
+        #[doc = "A string representing the current version of AndroidX Test Orchestrator that is used in the environment. The package is available at https://maven.google.com/web/index.html#androidx.test:orchestrator."]
+        #[serde(
+            rename = "androidxOrchestratorVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub androidx_orchestrator_version: ::std::option::Option<String>,
+        #[doc = "A string representing the current version of Android Test Orchestrator that is used in the environment. The package is available at https://maven.google.com/web/index.html#com.android.support.test:orchestrator."]
         #[serde(
             rename = "orchestratorVersion",
             default,
@@ -2561,7 +2803,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub content: ::std::option::Option<crate::schemas::FileReference>,
-        #[doc = "Required. Where to put the content on the device. Must be an absolute,\nwhitelisted path. If the file exists, it will be replaced.\nThe following device-side directories and any of their subdirectories are\nwhitelisted:\n\n<p>${EXTERNAL_STORAGE}, or /sdcard</p>\n<p>${ANDROID_DATA}/local/tmp, or /data/local/tmp</p>\n<p>Specifying a path outside of these directory trees is invalid.\n\n<p> The paths /sdcard and /data will be made available and treated as\nimplicit path substitutions. E.g. if /sdcard on a particular device does\nnot map to external storage, the system will replace it with the external\nstorage path prefix for that device and copy the file there.\n\n<p> It is strongly advised to use the <a href=\n\"http://developer.android.com/reference/android/os/Environment.html\">\nEnvironment API</a> in app and test code to access files on the device in a\nportable way."]
+        #[doc = "Required. Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way."]
         #[serde(
             rename = "devicePath",
             default,
@@ -2613,7 +2855,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub tool_results_execution: ::std::option::Option<crate::schemas::ToolResultsExecution>,
-        #[doc = "The tool results history that contains the tool results execution that\nresults are written to.\n\nIf not provided, the service will choose an appropriate value."]
+        #[doc = "The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value."]
         #[serde(
             rename = "toolResultsHistory",
             default,
@@ -2644,21 +2886,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RoboDirective {
-        #[doc = "Required. The type of action that Robo should perform on the specified\nelement."]
+        #[doc = "Required. The type of action that Robo should perform on the specified element."]
         #[serde(
             rename = "actionType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub action_type: ::std::option::Option<crate::schemas::RoboDirectiveActionType>,
-        #[doc = "The text that Robo is directed to set. If left empty, the directive will be\ntreated as a CLICK on the element matching the resource_name."]
+        #[doc = "The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name."]
         #[serde(
             rename = "inputText",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub input_text: ::std::option::Option<String>,
-        #[doc = "Required. The android resource name of the target UI element.\nFor example,\nin Java: R.string.foo\nin xml: @string/foo\nOnly the \"foo\" part is needed.\nReference doc:\nhttps://developer.android.com/guide/topics/resources/accessing-resources.html"]
+        #[doc = "Required. The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the \"foo\" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html"]
         #[serde(
             rename = "resourceName",
             default,
@@ -2680,11 +2922,11 @@ pub mod schemas {
     pub enum RoboDirectiveActionType {
         #[doc = "DO NOT USE. For proto versioning only."]
         ActionTypeUnspecified,
-        #[doc = "Direct Robo to enter text on the specified element. No-op if specified\nelement is not enabled or does not allow text entry."]
+        #[doc = "Direct Robo to enter text on the specified element. No-op if specified element is not enabled or does not allow text entry."]
         EnterText,
         #[doc = "Direct Robo to ignore interactions with a specific element."]
         Ignore,
-        #[doc = "Direct Robo to click on the specified element. No-op if specified element\nis not clickable."]
+        #[doc = "Direct Robo to click on the specified element. No-op if specified element is not clickable."]
         SingleClick,
     }
     impl RoboDirectiveActionType {
@@ -2860,7 +3102,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ShardingOption {
-        #[doc = "Shards test cases into the specified groups of packages, classes, and/or\nmethods."]
+        #[doc = "Shards test cases into the specified groups of packages, classes, and/or methods."]
         #[serde(
             rename = "manualSharding",
             default,
@@ -2898,7 +3140,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct StartActivityIntent {
-        #[doc = "Action name.\nRequired for START_ACTIVITY."]
+        #[doc = "Action name. Required for START_ACTIVITY."]
         #[serde(
             rename = "action",
             default,
@@ -2943,7 +3185,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SystraceSetup {
-        #[doc = "Systrace duration in seconds.\nShould be between 1 and 30 seconds. 0 disables systrace."]
+        #[doc = "Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace."]
         #[serde(
             rename = "durationSeconds",
             default,
@@ -2974,14 +3216,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TestDetails {
-        #[doc = "Output only. If the TestState is ERROR, then this string will contain\nhuman-readable details about the error."]
+        #[doc = "Output only. If the TestState is ERROR, then this string will contain human-readable details about the error."]
         #[serde(
             rename = "errorMessage",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub error_message: ::std::option::Option<String>,
-        #[doc = "Output only. Human-readable, detailed descriptions of the test's progress.\nFor example: \"Provisioning a device\", \"Starting Test\".\n\nDuring the course of execution new data may be appended\nto the end of progress_messages."]
+        #[doc = "Output only. Human-readable, detailed descriptions of the test's progress. For example: \"Provisioning a device\", \"Starting Test\". During the course of execution new data may be appended to the end of progress_messages."]
         #[serde(
             rename = "progressMessages",
             default,
@@ -3010,6 +3252,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub android_device_catalog: ::std::option::Option<crate::schemas::AndroidDeviceCatalog>,
+        #[doc = "The IP blocks used by devices in the test environment."]
+        #[serde(
+            rename = "deviceIpBlockCatalog",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub device_ip_block_catalog: ::std::option::Option<crate::schemas::DeviceIpBlockCatalog>,
         #[doc = "Supported iOS devices."]
         #[serde(
             rename = "iosDeviceCatalog",
@@ -3091,7 +3340,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub shard: ::std::option::Option<crate::schemas::Shard>,
-        #[doc = "Output only. Indicates the current progress of the test execution\n(e.g., FINISHED)."]
+        #[doc = "Output only. Indicates the current progress of the test execution (e.g., FINISHED)."]
         #[serde(
             rename = "state",
             default,
@@ -3139,25 +3388,25 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TestExecutionState {
-        #[doc = "The user cancelled the execution.\n\nCan only be set on an execution."]
+        #[doc = "The user cancelled the execution. Can only be set on an execution."]
         Cancelled,
-        #[doc = "The execution or matrix has stopped because it encountered an\ninfrastructure failure."]
+        #[doc = "The execution or matrix has stopped because it encountered an infrastructure failure."]
         Error,
-        #[doc = "The execution or matrix has terminated normally.\n\nOn a matrix this means that the matrix level processing completed normally,\nbut individual executions may be in an ERROR state."]
+        #[doc = "The execution or matrix has terminated normally. On a matrix this means that the matrix level processing completed normally, but individual executions may be in an ERROR state."]
         Finished,
-        #[doc = "The execution was not run because the provided inputs are incompatible with\nthe requested architecture.\n\nExample: requested device does not support running the native code in\nthe supplied APK\n\nCan only be set on an execution."]
+        #[doc = "The execution was not run because the provided inputs are incompatible with the requested architecture. Example: requested device does not support running the native code in the supplied APK Can only be set on an execution."]
         IncompatibleArchitecture,
-        #[doc = "The execution was not run because the provided inputs are incompatible with\nthe requested environment.\n\nExample: requested AndroidVersion is lower than APK's minSdkVersion\n\nCan only be set on an execution."]
+        #[doc = "The execution was not run because the provided inputs are incompatible with the requested environment. Example: requested AndroidVersion is lower than APK's minSdkVersion Can only be set on an execution."]
         IncompatibleEnvironment,
-        #[doc = "The execution or matrix was not run because the provided inputs are not\nvalid.\n\nExamples: input file is not of the expected type, is malformed/corrupt, or\nwas flagged as malware"]
+        #[doc = "The execution or matrix was not run because the provided inputs are not valid. Examples: input file is not of the expected type, is malformed/corrupt, or was flagged as malware"]
         Invalid,
         #[doc = "The execution or matrix is waiting for resources to become available."]
         Pending,
-        #[doc = "The execution is currently being processed.\n\nCan only be set on an execution."]
+        #[doc = "The execution is currently being processed. Can only be set on an execution."]
         Running,
-        #[doc = "Do not use.  For proto versioning only."]
+        #[doc = "Do not use. For proto versioning only."]
         TestStateUnspecified,
-        #[doc = "The execution was not run because it corresponds to a unsupported\nenvironment.\n\nCan only be set on an execution."]
+        #[doc = "The execution was not run because it corresponds to a unsupported environment. Can only be set on an execution."]
         UnsupportedEnvironment,
         #[doc = "The execution or matrix is being validated."]
         Validating,
@@ -3280,14 +3529,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub environment_matrix: ::std::option::Option<crate::schemas::EnvironmentMatrix>,
-        #[doc = "The number of times a TestExecution should be re-attempted if one or more\nof its test cases fail for any reason.\nThe maximum number of reruns allowed is 10.\n\nDefault is 0, which implies no reruns."]
+        #[doc = "If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation."]
+        #[serde(
+            rename = "failFast",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub fail_fast: ::std::option::Option<bool>,
+        #[doc = "The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns."]
         #[serde(
             rename = "flakyTestAttempts",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub flaky_test_attempts: ::std::option::Option<i32>,
-        #[doc = "Output only. Describes why the matrix is considered invalid.\nOnly useful for matrices in the INVALID state."]
+        #[doc = "Output only. Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state."]
         #[serde(
             rename = "invalidMatrixDetails",
             default,
@@ -3295,7 +3551,7 @@ pub mod schemas {
         )]
         pub invalid_matrix_details:
             ::std::option::Option<crate::schemas::TestMatrixInvalidMatrixDetails>,
-        #[doc = "Output Only. The overall outcome of the test.\nOnly set when the test matrix state is FINISHED."]
+        #[doc = "Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED."]
         #[serde(
             rename = "outcomeSummary",
             default,
@@ -3323,7 +3579,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub state: ::std::option::Option<crate::schemas::TestMatrixState>,
-        #[doc = "Output only. The list of test executions that the service creates for\nthis matrix."]
+        #[doc = "Output only. The list of test executions that the service creates for this matrix."]
         #[serde(
             rename = "testExecutions",
             default,
@@ -3364,7 +3620,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TestMatrixInvalidMatrixDetails {
-        #[doc = "The zipped XCTest was built for the iOS simulator rather than for a\nphysical device."]
+        #[doc = "The zipped XCTest was built for the iOS simulator rather than for a physical device."]
         BuiltForIosSimulator,
         #[doc = "The matrix is INVALID, but there are no further details available."]
         DetailsUnavailable,
@@ -3372,19 +3628,19 @@ pub mod schemas {
         DeviceAdminReceiver,
         #[doc = "The app declares one or more permissions that are not allowed."]
         ForbiddenPermissions,
-        #[doc = "The test runner class specified by user or in the test APK's manifest file\nis not compatible with Android Test Orchestrator.\nOrchestrator is only compatible with AndroidJUnitRunner version 1.0 or\nhigher.\nOrchestrator can be disabled by using DO_NOT_USE_ORCHESTRATOR\nOrchestratorOption."]
+        #[doc = "The test runner class specified by user or in the test APK's manifest file is not compatible with Android Test Orchestrator. Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher. Orchestrator can be disabled by using DO_NOT_USE_ORCHESTRATOR OrchestratorOption."]
         InstrumentationOrchestratorIncompatible,
         #[doc = "APK is built for a preview SDK which is unsupported"]
         InvalidApkPreviewSdk,
-        #[doc = "Invalid definition of action in the robo directives\n(e.g. a click or ignore action includes an input text field)"]
+        #[doc = "Invalid definition of action in the robo directives (e.g. a click or ignore action includes an input text field)"]
         InvalidDirectiveAction,
-        #[doc = "Either the provided input APK path was malformed,\nthe APK file does not exist, or the user does not have permission to\naccess the APK file."]
+        #[doc = "Either the provided input APK path was malformed, the APK file does not exist, or the user does not have permission to access the APK file."]
         InvalidInputApk,
         #[doc = "Do not use. For proto versioning only."]
         InvalidMatrixDetailsUnspecified,
-        #[doc = "The APK application ID (aka package name) is invalid.\nSee also\nhttps://developer.android.com/studio/build/application-id"]
+        #[doc = "The APK application ID (aka package name) is invalid. See also https://developer.android.com/studio/build/application-id"]
         InvalidPackageName,
-        #[doc = "There is at least one invalid resource name in the provided\nrobo directives"]
+        #[doc = "There is at least one invalid resource name in the provided robo directives"]
         InvalidResourceName,
         #[doc = "There is a conflict in the provided robo_directives."]
         InvalidRoboDirectives,
@@ -3396,11 +3652,11 @@ pub mod schemas {
         MalformedIpa,
         #[doc = "The input test APK could not be parsed."]
         MalformedTestApk,
-        #[doc = "The zipped XCTest was malformed. The zip did not contain a single\n.xctestrun file and the contents of the DerivedData/Build/Products\ndirectory."]
+        #[doc = "The zipped XCTest was malformed. The zip did not contain a single .xctestrun file and the contents of the DerivedData/Build/Products directory."]
         MalformedXcTestZip,
         #[doc = "The application doesn't register the game loop URL scheme."]
         MissingUrlScheme,
-        #[doc = "APK contains no code.\nSee also\nhttps://developer.android.com/guide/topics/manifest/application-element.html#code"]
+        #[doc = "APK contains no code. See also https://developer.android.com/guide/topics/manifest/application-element.html#code"]
         NoCodeApk,
         #[doc = "The test apk does not declare an instrumentation."]
         NoInstrumentation,
@@ -3412,7 +3668,7 @@ pub mod schemas {
         NoPackageName,
         #[doc = "The input app apk does not have a signature."]
         NoSignature,
-        #[doc = "The test APK does not contain the test runner class specified by user or in\nthe manifest file.\nThis can be caused by either of the following reasons:\n\n* the user provided a runner class name that's incorrect, or\n* the test runner isn't built into the test APK (might be in the app APK\n  instead)."]
+        #[doc = "The test APK does not contain the test runner class specified by user or in the manifest file. This can be caused by either of the following reasons: - the user provided a runner class name that's incorrect, or - the test runner isn't built into the test APK (might be in the app APK instead)."]
         NoTestRunnerClass,
         #[doc = "The .xctestrun file did not specify any test targets."]
         NoTestsInXcTestZip,
@@ -3420,19 +3676,19 @@ pub mod schemas {
         PlistCannotBeParsed,
         #[doc = "There was an error when parsing a label's value."]
         ScenarioLabelMalformed,
-        #[doc = "The request contains a scenario label that was not declared in the\nmanifest."]
+        #[doc = "The request contains a scenario label that was not declared in the manifest."]
         ScenarioLabelNotDeclared,
-        #[doc = "The request contains a scenario number that was not declared in the\nmanifest."]
+        #[doc = "The request contains a scenario number that was not declared in the manifest."]
         ScenarioNotDeclared,
-        #[doc = "There is no test loop intent filter, or the one that is given is\nnot formatted correctly."]
+        #[doc = "There is no test loop intent filter, or the one that is given is not formatted correctly."]
         TestLoopIntentFilterNotFound,
-        #[doc = "XC tests which run on physical devices must have\n\"IsAppHostedTestBundle\" == \"true\" in the xctestrun file."]
+        #[doc = "XC tests which run on physical devices must have \"IsAppHostedTestBundle\" == \"true\" in the xctestrun file."]
         TestNotAppHosted,
-        #[doc = "The APK is marked as \"testOnly\".\nDeprecated and not currently used."]
+        #[doc = "The APK is marked as \"testOnly\". Deprecated and not currently used."]
         TestOnlyApk,
         #[doc = "The test package and app package are the same."]
         TestSameAsApp,
-        #[doc = "One or more of the test targets defined in the .xctestrun file specifies\n\"UseDestinationArtifacts\", which is disallowed."]
+        #[doc = "One or more of the test targets defined in the .xctestrun file specifies \"UseDestinationArtifacts\", which is disallowed."]
         UseDestinationArtifacts,
     }
     impl TestMatrixInvalidMatrixDetails {
@@ -3642,15 +3898,15 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TestMatrixOutcomeSummary {
-        #[doc = "A run failed, for instance:\n\n* One or more test case failed.\n* A test timed out.\n* The application under test crashed."]
+        #[doc = "A run failed, for instance: - One or more test case failed. - A test timed out. - The application under test crashed."]
         Failure,
-        #[doc = "Something unexpected happened. The run should still be considered\nunsuccessful but this is likely a transient problem and re-running the\ntest might be successful."]
+        #[doc = "Something unexpected happened. The run should still be considered unsuccessful but this is likely a transient problem and re-running the test might be successful."]
         Inconclusive,
         #[doc = "Do not use. For proto versioning only."]
         OutcomeSummaryUnspecified,
-        #[doc = "All tests were skipped, for instance:\n\n* All device configurations were incompatible."]
+        #[doc = "All tests were skipped, for instance: - All device configurations were incompatible."]
         Skipped,
-        #[doc = "The test matrix run was successful, for instance:\n\n* All the test cases passed.\n* Robo did not detect a crash of the application under test."]
+        #[doc = "The test matrix run was successful, for instance: - All the test cases passed. - Robo did not detect a crash of the application under test."]
         Success,
     }
     impl TestMatrixOutcomeSummary {
@@ -3734,25 +3990,25 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TestMatrixState {
-        #[doc = "The user cancelled the execution.\n\nCan only be set on an execution."]
+        #[doc = "The user cancelled the execution. Can only be set on an execution."]
         Cancelled,
-        #[doc = "The execution or matrix has stopped because it encountered an\ninfrastructure failure."]
+        #[doc = "The execution or matrix has stopped because it encountered an infrastructure failure."]
         Error,
-        #[doc = "The execution or matrix has terminated normally.\n\nOn a matrix this means that the matrix level processing completed normally,\nbut individual executions may be in an ERROR state."]
+        #[doc = "The execution or matrix has terminated normally. On a matrix this means that the matrix level processing completed normally, but individual executions may be in an ERROR state."]
         Finished,
-        #[doc = "The execution was not run because the provided inputs are incompatible with\nthe requested architecture.\n\nExample: requested device does not support running the native code in\nthe supplied APK\n\nCan only be set on an execution."]
+        #[doc = "The execution was not run because the provided inputs are incompatible with the requested architecture. Example: requested device does not support running the native code in the supplied APK Can only be set on an execution."]
         IncompatibleArchitecture,
-        #[doc = "The execution was not run because the provided inputs are incompatible with\nthe requested environment.\n\nExample: requested AndroidVersion is lower than APK's minSdkVersion\n\nCan only be set on an execution."]
+        #[doc = "The execution was not run because the provided inputs are incompatible with the requested environment. Example: requested AndroidVersion is lower than APK's minSdkVersion Can only be set on an execution."]
         IncompatibleEnvironment,
-        #[doc = "The execution or matrix was not run because the provided inputs are not\nvalid.\n\nExamples: input file is not of the expected type, is malformed/corrupt, or\nwas flagged as malware"]
+        #[doc = "The execution or matrix was not run because the provided inputs are not valid. Examples: input file is not of the expected type, is malformed/corrupt, or was flagged as malware"]
         Invalid,
         #[doc = "The execution or matrix is waiting for resources to become available."]
         Pending,
-        #[doc = "The execution is currently being processed.\n\nCan only be set on an execution."]
+        #[doc = "The execution is currently being processed. Can only be set on an execution."]
         Running,
-        #[doc = "Do not use.  For proto versioning only."]
+        #[doc = "Do not use. For proto versioning only."]
         TestStateUnspecified,
-        #[doc = "The execution was not run because it corresponds to a unsupported\nenvironment.\n\nCan only be set on an execution."]
+        #[doc = "The execution was not run because it corresponds to a unsupported environment. Can only be set on an execution."]
         UnsupportedEnvironment,
         #[doc = "The execution or matrix is being validated."]
         Validating,
@@ -3868,21 +4124,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub account: ::std::option::Option<crate::schemas::Account>,
-        #[doc = "APKs to install in addition to those being directly tested.\nCurrently capped at 100."]
+        #[doc = "APKs to install in addition to those being directly tested. Currently capped at 100."]
         #[serde(
             rename = "additionalApks",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub additional_apks: ::std::option::Option<Vec<crate::schemas::Apk>>,
-        #[doc = "List of directories on the device to upload to GCS at the end of the test;\nthey must be absolute paths under /sdcard or /data/local/tmp.\nPath names are restricted to characters a-z A-Z 0-9 _ - . + and /\n\nNote: The paths /sdcard and /data will be made available and treated as\nimplicit path substitutions. E.g. if /sdcard on a particular device does\nnot map to external storage, the system will replace it with the external\nstorage path prefix for that device."]
+        #[doc = "List of directories on the device to upload to GCS at the end of the test; they must be absolute paths under /sdcard, /storage or /data/local/tmp. Path names are restricted to characters a-z A-Z 0-9 _ - . + and / Note: The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device."]
         #[serde(
             rename = "directoriesToPull",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub directories_to_pull: ::std::option::Option<Vec<String>>,
-        #[doc = "Environment variables to set for the test (only applicable for\ninstrumentation tests)."]
+        #[doc = "Whether to prevent all runtime permissions to be granted at app install"]
+        #[serde(
+            rename = "dontAutograntPermissions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub dont_autogrant_permissions: ::std::option::Option<bool>,
+        #[doc = "Environment variables to set for the test (only applicable for instrumentation tests)."]
         #[serde(
             rename = "environmentVariables",
             default,
@@ -3896,14 +4159,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub files_to_push: ::std::option::Option<Vec<crate::schemas::DeviceFile>>,
-        #[doc = "The network traffic profile used for running the test.\nAvailable network profiles can be queried by using the\nNETWORK_CONFIGURATION environment type when calling\nTestEnvironmentDiscoveryService.GetTestEnvironmentCatalog."]
+        #[doc = "The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog."]
         #[serde(
             rename = "networkProfile",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub network_profile: ::std::option::Option<String>,
-        #[doc = "Systrace configuration for the run.\nIf set a systrace will be taken, starting on test start and lasting for the\nconfigured duration. The systrace file thus obtained is put in the results\nbucket together with the other artifacts from the run."]
+        #[doc = "Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run."]
         #[serde(
             rename = "systrace",
             default,
@@ -3991,14 +4254,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ios_xc_test: ::std::option::Option<crate::schemas::IosXcTest>,
-        #[doc = "Test setup requirements for Android e.g. files to install, bootstrap\nscripts."]
+        #[doc = "Test setup requirements for Android e.g. files to install, bootstrap scripts."]
         #[serde(
             rename = "testSetup",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub test_setup: ::std::option::Option<crate::schemas::TestSetup>,
-        #[doc = "Max time a test execution is allowed to run before it is\nautomatically cancelled.\nThe default value is 5 min."]
+        #[doc = "Max time a test execution is allowed to run before it is automatically cancelled. The default value is 5 min."]
         #[serde(
             rename = "testTimeout",
             default,
@@ -4029,7 +4292,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TestTargetsForShard {
-        #[doc = "Group of packages, classes, and/or test methods to be run for each shard.\nThe targets need to be specified in AndroidJUnitRunner argument format. For\nexample, “package com.my.packages” “class com.my.package.MyClass”.\n\nThe number of shard_test_targets must be greater than 0."]
+        #[doc = "Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, \"package com.my.packages\" \"class com.my.package.MyClass\". The number of shard_test_targets must be greater than 0."]
         #[serde(
             rename = "testTargets",
             default,
@@ -4245,7 +4508,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UniformSharding {
-        #[doc = "Required. Total number of shards. The number must be >= 1 and <= 50."]
+        #[doc = "Required. Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500."]
         #[serde(
             rename = "numShards",
             default,
@@ -4276,14 +4539,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct XcodeVersion {
-        #[doc = "Tags for this Xcode version.\nExample: \"default\"."]
+        #[doc = "Tags for this Xcode version. Example: \"default\"."]
         #[serde(
             rename = "tags",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub tags: ::std::option::Option<Vec<String>>,
-        #[doc = "The id for this version.\nExample: \"9.2\"."]
+        #[doc = "The id for this version. Example: \"9.2\"."]
         #[serde(
             rename = "version",
             default,
@@ -4670,19 +4933,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -4721,7 +4984,7 @@ pub mod resources {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Cancels unfinished test executions in a test matrix.\nThis call returns immediately and cancellation proceeds asychronously.\nIf the matrix is already final, this operation will have no effect.\n\nMay return any of the following canonical error codes:\n\n* PERMISSION_DENIED - if the user is not authorized to read project\n* INVALID_ARGUMENT - if the request is malformed\n* NOT_FOUND - if the Test Matrix does not exist"]
+                #[doc = "Cancels unfinished test executions in a test matrix. This call returns immediately and cancellation proceeds asynchronously. If the matrix is already final, this operation will have no effect. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist"]
                 pub fn cancel(
                     &self,
                     project_id: impl Into<String>,
@@ -4745,7 +5008,7 @@ pub mod resources {
                         test_matrix_id: test_matrix_id.into(),
                     }
                 }
-                #[doc = "Creates and runs a matrix of tests according to the given specifications.\nUnsupported environments will be returned in the state UNSUPPORTED.\nMatrices are limited to at most 200 supported executions.\n\nMay return any of the following canonical error codes:\n\n* PERMISSION_DENIED - if the user is not authorized to write to project\n* INVALID_ARGUMENT - if the request is malformed or if the matrix expands\n  to more than 200 supported executions"]
+                #[doc = "Creates and runs a matrix of tests according to the given specifications. Unsupported environments will be returned in the state UNSUPPORTED. A test matrix is limited to use at most 2000 devices in parallel. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed or if the matrix tries to use too many simultaneous devices."]
                 pub fn create(
                     &self,
                     request: crate::schemas::TestMatrix,
@@ -4770,7 +5033,7 @@ pub mod resources {
                         request_id: None,
                     }
                 }
-                #[doc = "Checks the status of a test matrix.\n\nMay return any of the following canonical error codes:\n\n* PERMISSION_DENIED - if the user is not authorized to read project\n* INVALID_ARGUMENT - if the request is malformed\n* NOT_FOUND - if the Test Matrix does not exist"]
+                #[doc = "Checks the status of a test matrix. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist"]
                 pub fn get(
                     &self,
                     project_id: impl Into<String>,
@@ -4946,19 +5209,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -4987,7 +5250,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> CreateRequestBuilder<'a> {
-                #[doc = "A string id used to detect duplicated requests.\nIds are automatically scoped to a project, so\nusers should ensure the ID is unique per-project.\nA UUID is recommended.\n\nOptional, but strongly recommended."]
+                #[doc = "A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended."]
                 pub fn request_id(mut self, value: impl Into<String>) -> Self {
                     self.request_id = Some(value.into());
                     self
@@ -5114,20 +5377,20 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("requestId", &self.request_id)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("requestId", &self.request_id)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -5283,19 +5546,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -5309,16 +5572,24 @@ pub mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum GetEnvironmentType {
+                #[doc = "A device running a version of the Android OS."]
                 Android,
+                #[doc = "The IP blocks used by devices in the test environment."]
+                DeviceIpBlocks,
+                #[doc = "Do not use. For proto versioning only."]
                 EnvironmentTypeUnspecified,
+                #[doc = "A device running a version of iOS."]
                 Ios,
+                #[doc = "A network configuration to use when running a test."]
                 NetworkConfiguration,
+                #[doc = "The software environment provided by TestExecutionService."]
                 ProvidedSoftware,
             }
             impl GetEnvironmentType {
                 pub fn as_str(self) -> &'static str {
                     match self {
                         GetEnvironmentType::Android => "ANDROID",
+                        GetEnvironmentType::DeviceIpBlocks => "DEVICE_IP_BLOCKS",
                         GetEnvironmentType::EnvironmentTypeUnspecified => {
                             "ENVIRONMENT_TYPE_UNSPECIFIED"
                         }
@@ -5338,6 +5609,7 @@ pub mod resources {
                 fn from_str(s: &str) -> ::std::result::Result<GetEnvironmentType, ()> {
                     Ok(match s {
                         "ANDROID" => GetEnvironmentType::Android,
+                        "DEVICE_IP_BLOCKS" => GetEnvironmentType::DeviceIpBlocks,
                         "ENVIRONMENT_TYPE_UNSPECIFIED" => {
                             GetEnvironmentType::EnvironmentTypeUnspecified
                         }
@@ -5369,6 +5641,7 @@ pub mod resources {
                     let value: &'de str = <&str>::deserialize(deserializer)?;
                     Ok(match value {
                         "ANDROID" => GetEnvironmentType::Android,
+                        "DEVICE_IP_BLOCKS" => GetEnvironmentType::DeviceIpBlocks,
                         "ENVIRONMENT_TYPE_UNSPECIFIED" => {
                             GetEnvironmentType::EnvironmentTypeUnspecified
                         }
@@ -5403,7 +5676,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Gets the catalog of supported test environments.\n\nMay return any of the following canonical error codes:\n\n* INVALID_ARGUMENT - if the request is malformed\n* NOT_FOUND - if the environment type does not exist\n* INTERNAL - if an internal error occurred"]
+            #[doc = "Gets the catalog of supported test environments. May return any of the following canonical error codes: - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the environment type does not exist - INTERNAL - if an internal error occurred"]
             pub fn get(
                 &self,
                 environment_type : crate :: resources :: test_environment_catalog :: params :: GetEnvironmentType,
@@ -5571,20 +5844,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("projectId", &self.project_id)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("projectId", &self.project_id)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,

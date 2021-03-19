@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("bigquerydatatransfer1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200502")
+            .version("0.1.0-20210311")
             .about("Schedule queries or transfer external data from SaaS applications to Google BigQuery on a regular basis.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -40,15 +40,15 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: check_valid_creds, get and list");
         {
-            let mcmd = SubCommand::with_name("check_valid_creds").about("Returns true if valid credentials exist for the given data source and\nrequesting user.\nSome data sources doesn\'t support service account, so we need to talk to\nthem on behalf of the end user. This API just checks whether we have OAuth\ntoken for the particular user, which is a pre-requisite before user can\ncreate a transfer config.");
+            let mcmd = SubCommand::with_name("check_valid_creds").about("Returns true if valid credentials exist for the given data source and requesting user. Some data sources doesn\'t support service account, so we need to talk to them on behalf of the end user. This API just checks whether we have OAuth token for the particular user, which is a pre-requisite before user can create a transfer config.");
             data_sources1 = data_sources1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Retrieves a supported data source and returns its settings,\nwhich can be used for UI rendering.");
+            let mcmd = SubCommand::with_name("get").about("Retrieves a supported data source and returns its settings, which can be used for UI rendering.");
             data_sources1 = data_sources1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists supported data sources and returns their settings,\nwhich can be used for UI rendering.");
+            let mcmd = SubCommand::with_name("list").about("Lists supported data sources and returns their settings, which can be used for UI rendering.");
             data_sources1 = data_sources1.subcommand(mcmd);
         }
         let mut locations1 = SubCommand::with_name("locations")
@@ -74,7 +74,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             transfer_configs1 = transfer_configs1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a data transfer configuration,\nincluding any associated transfer runs and logs.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a data transfer configuration, including any associated transfer runs and logs.");
             transfer_configs1 = transfer_configs1.subcommand(mcmd);
         }
         {
@@ -88,30 +88,30 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             transfer_configs1 = transfer_configs1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates a data transfer configuration.\nAll fields must be set, even if they are not updated.");
+            let mcmd = SubCommand::with_name("patch").about("Updates a data transfer configuration. All fields must be set, even if they are not updated.");
             transfer_configs1 = transfer_configs1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("schedule_runs").about("Creates transfer runs for a time range [start_time, end_time].\nFor each date - or whatever granularity the data source supports - in the\nrange, one transfer run is created.\nNote that runs are created per UTC time in the time range.\nDEPRECATED: use StartManualTransferRuns instead.");
+            let mcmd = SubCommand::with_name("schedule_runs").about("Creates transfer runs for a time range [start_time, end_time]. For each date - or whatever granularity the data source supports - in the range, one transfer run is created. Note that runs are created per UTC time in the time range. DEPRECATED: use StartManualTransferRuns instead.");
             transfer_configs1 = transfer_configs1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("start_manual_runs").about("Start manual transfer runs to be executed now with schedule_time equal to\ncurrent time. The transfer runs can be created for a time range where the\nrun_time is between start_time (inclusive) and end_time (exclusive), or for\na specific run_time.");
+            let mcmd = SubCommand::with_name("start_manual_runs").about("Start manual transfer runs to be executed now with schedule_time equal to current time. The transfer runs can be created for a time range where the run_time is between start_time (inclusive) and end_time (exclusive), or for a specific run_time.");
             transfer_configs1 = transfer_configs1.subcommand(mcmd);
         }
         let mut data_sources2 = SubCommand::with_name("data_sources")
             .setting(AppSettings::ColoredHelp)
             .about("methods: check_valid_creds, get and list");
         {
-            let mcmd = SubCommand::with_name("check_valid_creds").about("Returns true if valid credentials exist for the given data source and\nrequesting user.\nSome data sources doesn\'t support service account, so we need to talk to\nthem on behalf of the end user. This API just checks whether we have OAuth\ntoken for the particular user, which is a pre-requisite before user can\ncreate a transfer config.");
+            let mcmd = SubCommand::with_name("check_valid_creds").about("Returns true if valid credentials exist for the given data source and requesting user. Some data sources doesn\'t support service account, so we need to talk to them on behalf of the end user. This API just checks whether we have OAuth token for the particular user, which is a pre-requisite before user can create a transfer config.");
             data_sources2 = data_sources2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Retrieves a supported data source and returns its settings,\nwhich can be used for UI rendering.");
+            let mcmd = SubCommand::with_name("get").about("Retrieves a supported data source and returns its settings, which can be used for UI rendering.");
             data_sources2 = data_sources2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists supported data sources and returns their settings,\nwhich can be used for UI rendering.");
+            let mcmd = SubCommand::with_name("list").about("Lists supported data sources and returns their settings, which can be used for UI rendering.");
             data_sources2 = data_sources2.subcommand(mcmd);
         }
         let mut transfer_configs2 = SubCommand::with_name("transfer_configs")
@@ -125,7 +125,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             transfer_configs2 = transfer_configs2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a data transfer configuration,\nincluding any associated transfer runs and logs.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a data transfer configuration, including any associated transfer runs and logs.");
             transfer_configs2 = transfer_configs2.subcommand(mcmd);
         }
         {
@@ -139,15 +139,15 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             transfer_configs2 = transfer_configs2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates a data transfer configuration.\nAll fields must be set, even if they are not updated.");
+            let mcmd = SubCommand::with_name("patch").about("Updates a data transfer configuration. All fields must be set, even if they are not updated.");
             transfer_configs2 = transfer_configs2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("schedule_runs").about("Creates transfer runs for a time range [start_time, end_time].\nFor each date - or whatever granularity the data source supports - in the\nrange, one transfer run is created.\nNote that runs are created per UTC time in the time range.\nDEPRECATED: use StartManualTransferRuns instead.");
+            let mcmd = SubCommand::with_name("schedule_runs").about("Creates transfer runs for a time range [start_time, end_time]. For each date - or whatever granularity the data source supports - in the range, one transfer run is created. Note that runs are created per UTC time in the time range. DEPRECATED: use StartManualTransferRuns instead.");
             transfer_configs2 = transfer_configs2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("start_manual_runs").about("Start manual transfer runs to be executed now with schedule_time equal to\ncurrent time. The transfer runs can be created for a time range where the\nrun_time is between start_time (inclusive) and end_time (exclusive), or for\na specific run_time.");
+            let mcmd = SubCommand::with_name("start_manual_runs").about("Start manual transfer runs to be executed now with schedule_time equal to current time. The transfer runs can be created for a time range where the run_time is between start_time (inclusive) and end_time (exclusive), or for a specific run_time.");
             transfer_configs2 = transfer_configs2.subcommand(mcmd);
         }
         let mut runs2 = SubCommand::with_name("runs")

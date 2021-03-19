@@ -3,7 +3,7 @@ pub mod scopes {}
 pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct SearchResponse {
-        #[doc = "The local context applicable for the response. See more details at\nhttp://www.w3.org/TR/json-ld/#context-definitions."]
+        #[doc = "The local context applicable for the response. See more details at http://www.w3.org/TR/json-ld/#context-definitions."]
         #[serde(
             rename = "@context",
             default,
@@ -233,7 +233,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Searches Knowledge Graph for entities that match the constraints.\nA list of matched entities will be returned in response, which will be in\nJSON-LD format and compatible with http://schema.org"]
+            #[doc = "Searches Knowledge Graph for entities that match the constraints. A list of matched entities will be returned in response, which will be in JSON-LD format and compatible with http://schema.org"]
             pub fn search(&self) -> SearchRequestBuilder {
                 SearchRequestBuilder {
                     reqwest: &self.reqwest,
@@ -284,7 +284,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> SearchRequestBuilder<'a> {
-            #[doc = "The list of entity id to be used for search instead of query string.\nTo specify multiple ids in the HTTP request, repeat the parameter in the\nURL as in ...?ids=A&ids=B"]
+            #[doc = "The list of entity id to be used for search instead of query string. To specify multiple ids in the HTTP request, repeat the parameter in the URL as in ...?ids=A&ids=B"]
             pub fn ids(mut self, value: impl Into<Vec<String>>) -> Self {
                 self.ids = Some(value.into());
                 self
@@ -294,7 +294,7 @@ pub mod resources {
                 self.indent = Some(value);
                 self
             }
-            #[doc = "The list of language codes (defined in ISO 693) to run the query with,\ne.g. 'en'."]
+            #[doc = "The list of language codes (defined in ISO 693) to run the query with, e.g. 'en'."]
             pub fn languages(mut self, value: impl Into<Vec<String>>) -> Self {
                 self.languages = Some(value.into());
                 self
@@ -314,7 +314,7 @@ pub mod resources {
                 self.query = Some(value.into());
                 self
             }
-            #[doc = "Restricts returned entities with these types, e.g. Person\n(as defined in http://schema.org/Person). If multiple types are specified,\nreturned entities will contain one or more of these types."]
+            #[doc = "Restricts returned entities with these types, e.g. Person (as defined in http://schema.org/Person). If multiple types are specified, returned entities will contain one or more of these types."]
             pub fn types(mut self, value: impl Into<Vec<String>>) -> Self {
                 self.types = Some(value.into());
                 self
@@ -429,26 +429,32 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("ids", &self.ids)]);
-                let req = req.query(&[("indent", &self.indent)]);
-                let req = req.query(&[("languages", &self.languages)]);
-                let req = req.query(&[("limit", &self.limit)]);
-                let req = req.query(&[("prefix", &self.prefix)]);
-                let req = req.query(&[("query", &self.query)]);
-                let req = req.query(&[("types", &self.types)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in self.ids.iter().flatten() {
+                    req = req.query(&[("ids", value)]);
+                }
+                req = req.query(&[("indent", &self.indent)]);
+                for value in self.languages.iter().flatten() {
+                    req = req.query(&[("languages", value)]);
+                }
+                req = req.query(&[("limit", &self.limit)]);
+                req = req.query(&[("prefix", &self.prefix)]);
+                req = req.query(&[("query", &self.query)]);
+                for value in self.types.iter().flatten() {
+                    req = req.query(&[("types", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,

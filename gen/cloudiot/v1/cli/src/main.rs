@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("cloudiot1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200519")
-            .about("Registers and manages IoT (Internet of Things) devices that connect to the Google Cloud Platform.\n")
+            .version("0.1.0-20210309")
+            .about("Registers and manages IoT (Internet of Things) devices that connect to the Google Cloud Platform. ")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -62,7 +62,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             registries2 = registries2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset.");
+            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.");
             registries2 = registries2.subcommand(mcmd);
         }
         {
@@ -75,11 +75,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             registries2 = registries2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any existing policy.");
             registries2 = registries2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.");
+            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.");
             registries2 = registries2.subcommand(mcmd);
         }
         {
@@ -108,7 +108,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             devices3 = devices3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("modify_cloud_to_device_config").about("Modifies the configuration for the device, which is eventually sent from\nthe Cloud IoT Core servers. Returns the modified configuration version and\nits metadata.");
+            let mcmd = SubCommand::with_name("modify_cloud_to_device_config").about("Modifies the configuration for the device, which is eventually sent from the Cloud IoT Core servers. Returns the modified configuration version and its metadata.");
             devices3 = devices3.subcommand(mcmd);
         }
         {
@@ -116,36 +116,36 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             devices3 = devices3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("send_command_to_device").about("Sends a command to the specified device. In order for a device to be able\nto receive commands, it must:\n1) be connected to Cloud IoT Core using the MQTT protocol, and\n2) be subscribed to the group of MQTT topics specified by\n   /devices/{device-id}/commands/#. This subscription will receive commands\n   at the top-level topic /devices/{device-id}/commands as well as commands\n   for subfolders, like /devices/{device-id}/commands/subfolder.\n   Note that subscribing to specific subfolders is not supported.\nIf the command could not be delivered to the device, this method will\nreturn an error; in particular, if the device is not subscribed, this\nmethod will return FAILED_PRECONDITION. Otherwise, this method will\nreturn OK. If the subscription is QoS 1, at least once delivery will be\nguaranteed; for QoS 0, no acknowledgment will be expected from the device.");
+            let mcmd = SubCommand::with_name("send_command_to_device").about("Sends a command to the specified device. In order for a device to be able to receive commands, it must: 1) be connected to Cloud IoT Core using the MQTT protocol, and 2) be subscribed to the group of MQTT topics specified by /devices/{device-id}/commands/#. This subscription will receive commands at the top-level topic /devices/{device-id}/commands as well as commands for subfolders, like /devices/{device-id}/commands/subfolder. Note that subscribing to specific subfolders is not supported. If the command could not be delivered to the device, this method will return an error; in particular, if the device is not subscribed, this method will return FAILED_PRECONDITION. Otherwise, this method will return OK. If the subscription is QoS 1, at least once delivery will be guaranteed; for QoS 0, no acknowledgment will be expected from the device.");
             devices3 = devices3.subcommand(mcmd);
         }
         let mut groups3 = SubCommand::with_name("groups")
             .setting(AppSettings::ColoredHelp)
             .about("methods: get_iam_policy, set_iam_policy and test_iam_permissions");
         {
-            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset.");
+            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.");
             groups3 = groups3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any existing policy.");
             groups3 = groups3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.");
+            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.");
             groups3 = groups3.subcommand(mcmd);
         }
         let mut config_versions4 = SubCommand::with_name("config_versions")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("Lists the last few versions of the device configuration in descending\norder (i.e.: newest first).");
+            let mcmd = SubCommand::with_name("list").about("Lists the last few versions of the device configuration in descending order (i.e.: newest first).");
             config_versions4 = config_versions4.subcommand(mcmd);
         }
         let mut states4 = SubCommand::with_name("states")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("Lists the last few versions of the device state in descending order (i.e.:\nnewest first).");
+            let mcmd = SubCommand::with_name("list").about("Lists the last few versions of the device state in descending order (i.e.: newest first).");
             states4 = states4.subcommand(mcmd);
         }
         let mut devices4 = SubCommand::with_name("devices")

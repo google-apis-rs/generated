@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("gmail1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200622")
-            .about("The Gmail API lets you view and manage Gmail mailbox data like\n    threads, messages, and labels.")
+            .version("0.1.0-20210315")
+            .about("The Gmail API lets you view and manage Gmail mailbox data like threads, messages, and labels.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -56,11 +56,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .about("methods: create, delete, get, list, send and update");
         {
             let mcmd = SubCommand::with_name("create")
-                .about("Creates a new draft with the <code>DRAFT</code> label.");
+                .about("Creates a new draft with the `DRAFT` label.");
             drafts1 = drafts1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Immediately and permanently deletes the specified draft.\nDoes not simply trash it.");
+            let mcmd = SubCommand::with_name("delete").about("Immediately and permanently deletes the specified draft. Does not simply trash it.");
             drafts1 = drafts1.subcommand(mcmd);
         }
         {
@@ -73,7 +73,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             drafts1 = drafts1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("send").about("Sends the specified, existing draft to the recipients in the\n<code>To</code>, <code>Cc</code>, and <code>Bcc</code> headers.");
+            let mcmd = SubCommand::with_name("send").about("Sends the specified, existing draft to the recipients in the `To`, `Cc`, and `Bcc` headers.");
             drafts1 = drafts1.subcommand(mcmd);
         }
         {
@@ -84,7 +84,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("Lists the history of all changes to the given mailbox. History results are\nreturned in chronological order (increasing <code>historyId</code>).");
+            let mcmd = SubCommand::with_name("list").about("Lists the history of all changes to the given mailbox. History results are returned in chronological order (increasing `historyId`).");
             history1 = history1.subcommand(mcmd);
         }
         let mut labels1 = SubCommand::with_name("labels")
@@ -95,7 +95,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             labels1 = labels1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Immediately and permanently deletes the specified label and removes it from\nany messages and threads that it is applied to.");
+            let mcmd = SubCommand::with_name("delete").about("Immediately and permanently deletes the specified label and removes it from any messages and threads that it is applied to.");
             labels1 = labels1.subcommand(mcmd);
         }
         {
@@ -119,7 +119,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: batch_delete, batch_modify, delete, get, import, insert, list, modify, send, trash and untrash");
         {
-            let mcmd = SubCommand::with_name("batch_delete").about("Deletes many messages by message ID.  Provides no guarantees that messages\nwere not already deleted or even existed at all.");
+            let mcmd = SubCommand::with_name("batch_delete").about("Deletes many messages by message ID. Provides no guarantees that messages were not already deleted or even existed at all.");
             messages1 = messages1.subcommand(mcmd);
         }
         {
@@ -128,7 +128,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             messages1 = messages1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Immediately and permanently deletes the specified message. This operation\ncannot be undone.  Prefer <code>messages.trash</code> instead.");
+            let mcmd = SubCommand::with_name("delete").about("Immediately and permanently deletes the specified message. This operation cannot be undone. Prefer `messages.trash` instead.");
             messages1 = messages1.subcommand(mcmd);
         }
         {
@@ -136,11 +136,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             messages1 = messages1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("import").about("Imports a message into only this user\'s mailbox, with standard\nemail delivery scanning and classification similar to receiving via SMTP.\nDoes not send a message.");
+            let mcmd = SubCommand::with_name("import").about("Imports a message into only this user\'s mailbox, with standard email delivery scanning and classification similar to receiving via SMTP. Does not send a message. Note: This function doesn\'t trigger forwarding rules or filters set up by the user.");
             messages1 = messages1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("insert").about("Directly inserts a message into only this user\'s mailbox similar to\n<code>IMAP APPEND</code>, bypassing most scanning and classification.\nDoes not send a message.");
+            let mcmd = SubCommand::with_name("insert").about("Directly inserts a message into only this user\'s mailbox similar to `IMAP APPEND`, bypassing most scanning and classification. Does not send a message.");
             messages1 = messages1.subcommand(mcmd);
         }
         {
@@ -154,7 +154,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             messages1 = messages1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("send").about("Sends the specified message to the recipients in the\n<code>To</code>, <code>Cc</code>, and <code>Bcc</code> headers.");
+            let mcmd = SubCommand::with_name("send").about("Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc` headers.");
             messages1 = messages1.subcommand(mcmd);
         }
         {
@@ -193,7 +193,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             settings1 = settings1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update_auto_forwarding").about("Updates the auto-forwarding setting for the specified account.  A verified\nforwarding address must be specified when auto-forwarding is enabled.\n\nThis method is only available to service account clients that have been\ndelegated domain-wide authority.");
+            let mcmd = SubCommand::with_name("update_auto_forwarding").about("Updates the auto-forwarding setting for the specified account. A verified forwarding address must be specified when auto-forwarding is enabled. This method is only available to service account clients that have been delegated domain-wide authority.");
             settings1 = settings1.subcommand(mcmd);
         }
         {
@@ -201,7 +201,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             settings1 = settings1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update_language").about("Updates language settings.\n\nIf successful, the return object contains the <code>displayLanguage</code>\nthat was saved for the user, which may differ from the value passed into\nthe request. This is because the requested <code>displayLanguage</code> may\nnot be directly supported by Gmail but have a close variant that is, and so\nthe variant may be chosen and saved instead.");
+            let mcmd = SubCommand::with_name("update_language").about("Updates language settings. If successful, the return object contains the `displayLanguage` that was saved for the user, which may differ from the value passed into the request. This is because the requested `displayLanguage` may not be directly supported by Gmail but have a close variant that is, and so the variant may be chosen and saved instead.");
             settings1 = settings1.subcommand(mcmd);
         }
         {
@@ -217,7 +217,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete, get, list, modify, trash and untrash");
         {
-            let mcmd = SubCommand::with_name("delete").about("Immediately and permanently deletes the specified thread. This operation\ncannot be undone. Prefer <code>threads.trash</code> instead.");
+            let mcmd = SubCommand::with_name("delete").about("Immediately and permanently deletes the specified thread. This operation cannot be undone. Prefer `threads.trash` instead.");
             threads1 = threads1.subcommand(mcmd);
         }
         {
@@ -230,7 +230,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             threads1 = threads1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("modify").about("Modifies the labels applied to the thread. This applies to all messages\nin the thread.");
+            let mcmd = SubCommand::with_name("modify").about("Modifies the labels applied to the thread. This applies to all messages in the thread.");
             threads1 = threads1.subcommand(mcmd);
         }
         {
@@ -254,26 +254,27 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get and list");
         {
-            let mcmd = SubCommand::with_name("create").about("Adds a delegate with its verification status set directly to\n<code>accepted</code>, without sending any verification email.  The\ndelegate user must be a member of the same G Suite organization as the\ndelegator user.\n\nGmail imposes limitations on the number of delegates and delegators each\nuser in a G Suite organization can have. These limits depend on your\norganization, but in general each user can have up to 25 delegates and\nup to 10 delegators.\n\nNote that a delegate user must be referred to by their primary email\naddress, and not an email alias.\n\nAlso note that when a new delegate is created, there may be up to a one\nminute delay before the new delegate is available for use.\n\nThis method is only available to service account clients that have been\ndelegated domain-wide authority.");
+            let mcmd = SubCommand::with_name("create").about("Adds a delegate with its verification status set directly to `accepted`, without sending any verification email. The delegate user must be a member of the same G Suite organization as the delegator user. Gmail imposes limitations on the number of delegates and delegators each user in a G Suite organization can have. These limits depend on your organization, but in general each user can have up to 25 delegates and up to 10 delegators. Note that a delegate user must be referred to by their primary email address, and not an email alias. Also note that when a new delegate is created, there may be up to a one minute delay before the new delegate is available for use. This method is only available to service account clients that have been delegated domain-wide authority.");
             delegates2 = delegates2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Removes the specified delegate (which can be of any verification status),\nand revokes any verification that may have been required for using it.\n\nNote that a delegate user must be referred to by their primary email\naddress, and not an email alias.\n\nThis method is only available to service account clients that have been\ndelegated domain-wide authority.");
+            let mcmd = SubCommand::with_name("delete").about("Removes the specified delegate (which can be of any verification status), and revokes any verification that may have been required for using it. Note that a delegate user must be referred to by their primary email address, and not an email alias. This method is only available to service account clients that have been delegated domain-wide authority.");
             delegates2 = delegates2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Gets the specified delegate.\n\nNote that a delegate user must be referred to by their primary email\naddress, and not an email alias.\n\nThis method is only available to service account clients that have been\ndelegated domain-wide authority.");
+            let mcmd = SubCommand::with_name("get").about("Gets the specified delegate. Note that a delegate user must be referred to by their primary email address, and not an email alias. This method is only available to service account clients that have been delegated domain-wide authority.");
             delegates2 = delegates2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists the delegates for the specified account.\n\nThis method is only available to service account clients that have been\ndelegated domain-wide authority.");
+            let mcmd = SubCommand::with_name("list").about("Lists the delegates for the specified account. This method is only available to service account clients that have been delegated domain-wide authority.");
             delegates2 = delegates2.subcommand(mcmd);
         }
         let mut filters2 = SubCommand::with_name("filters")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get and list");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a filter.");
+            let mcmd = SubCommand::with_name("create")
+                .about("Creates a filter. Note: you can only create a maximum of 1,000 filters.");
             filters2 = filters2.subcommand(mcmd);
         }
         {
@@ -293,11 +294,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get and list");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a forwarding address.  If ownership verification is required, a\nmessage will be sent to the recipient and the resource\'s verification\nstatus will be set to <code>pending</code>; otherwise, the resource will be\ncreated with verification status set to <code>accepted</code>.\n\nThis method is only available to service account clients that have been\ndelegated domain-wide authority.");
+            let mcmd = SubCommand::with_name("create").about("Creates a forwarding address. If ownership verification is required, a message will be sent to the recipient and the resource\'s verification status will be set to `pending`; otherwise, the resource will be created with verification status set to `accepted`. This method is only available to service account clients that have been delegated domain-wide authority.");
             forwarding_addresses2 = forwarding_addresses2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes the specified forwarding address and revokes any verification that\nmay have been required.\n\nThis method is only available to service account clients that have been\ndelegated domain-wide authority.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes the specified forwarding address and revokes any verification that may have been required. This method is only available to service account clients that have been delegated domain-wide authority.");
             forwarding_addresses2 = forwarding_addresses2.subcommand(mcmd);
         }
         {
@@ -313,19 +314,19 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get, list, patch, update and verify");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a custom \"from\" send-as alias.  If an SMTP MSA is specified, Gmail\nwill attempt to connect to the SMTP service to validate the configuration\nbefore creating the alias.  If ownership verification is required for the\nalias, a message will be sent to the email address and the resource\'s\nverification status will be set to <code>pending</code>; otherwise, the\nresource will be created with verification status set to\n<code>accepted</code>.  If a signature is provided, Gmail will sanitize the\nHTML before saving it with the alias.\n\nThis method is only available to service account clients that have been\ndelegated domain-wide authority.");
+            let mcmd = SubCommand::with_name("create").about("Creates a custom \"from\" send-as alias. If an SMTP MSA is specified, Gmail will attempt to connect to the SMTP service to validate the configuration before creating the alias. If ownership verification is required for the alias, a message will be sent to the email address and the resource\'s verification status will be set to `pending`; otherwise, the resource will be created with verification status set to `accepted`. If a signature is provided, Gmail will sanitize the HTML before saving it with the alias. This method is only available to service account clients that have been delegated domain-wide authority.");
             send_as2 = send_as2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes the specified send-as alias.  Revokes any verification that may\nhave been required for using it.\n\nThis method is only available to service account clients that have been\ndelegated domain-wide authority.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes the specified send-as alias. Revokes any verification that may have been required for using it. This method is only available to service account clients that have been delegated domain-wide authority.");
             send_as2 = send_as2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Gets the specified send-as alias.  Fails with an HTTP 404 error if the\nspecified address is not a member of the collection.");
+            let mcmd = SubCommand::with_name("get").about("Gets the specified send-as alias. Fails with an HTTP 404 error if the specified address is not a member of the collection.");
             send_as2 = send_as2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists the send-as aliases for the specified account.  The result includes\nthe primary send-as address associated with the account as well as any\ncustom \"from\" aliases.");
+            let mcmd = SubCommand::with_name("list").about("Lists the send-as aliases for the specified account. The result includes the primary send-as address associated with the account as well as any custom \"from\" aliases.");
             send_as2 = send_as2.subcommand(mcmd);
         }
         {
@@ -333,11 +334,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             send_as2 = send_as2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Updates a send-as alias.  If a signature is provided, Gmail will sanitize\nthe HTML before saving it with the alias.\n\nAddresses other than the primary address for the account can only be\nupdated by service account clients that have been delegated domain-wide\nauthority.");
+            let mcmd = SubCommand::with_name("update").about("Updates a send-as alias. If a signature is provided, Gmail will sanitize the HTML before saving it with the alias. Addresses other than the primary address for the account can only be updated by service account clients that have been delegated domain-wide authority.");
             send_as2 = send_as2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("verify").about("Sends a verification email to the specified send-as alias address.\nThe verification status must be <code>pending</code>.\n\nThis method is only available to service account clients that have been\ndelegated domain-wide authority.");
+            let mcmd = SubCommand::with_name("verify").about("Sends a verification email to the specified send-as alias address. The verification status must be `pending`. This method is only available to service account clients that have been delegated domain-wide authority.");
             send_as2 = send_as2.subcommand(mcmd);
         }
         let mut smime_info3 = SubCommand::with_name("smime_info")
@@ -354,7 +355,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             smime_info3 = smime_info3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("insert").about("Insert (upload) the given S/MIME config for the specified send-as alias.\nNote that pkcs12 format is required for the key.");
+            let mcmd = SubCommand::with_name("insert").about("Insert (upload) the given S/MIME config for the specified send-as alias. Note that pkcs12 format is required for the key.");
             smime_info3 = smime_info3.subcommand(mcmd);
         }
         {

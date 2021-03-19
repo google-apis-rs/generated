@@ -41,7 +41,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub availability_timestamp: ::std::option::Option<i64>,
-        #[doc = "The numeric segmentation identifier (for example, DoubleClick Search\nFloodlight activity ID)."]
+        #[doc = "The numeric segmentation identifier (for example, DoubleClick Search Floodlight activity ID)."]
         #[serde(
             rename = "segmentationId",
             default,
@@ -49,14 +49,14 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub segmentation_id: ::std::option::Option<i64>,
-        #[doc = "The friendly segmentation identifier (for example, DoubleClick Search\nFloodlight activity name)."]
+        #[doc = "The friendly segmentation identifier (for example, DoubleClick Search Floodlight activity name)."]
         #[serde(
             rename = "segmentationName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub segmentation_name: ::std::option::Option<String>,
-        #[doc = "The segmentation type that this availability is for (its default value is\n`FLOODLIGHT`)."]
+        #[doc = "The segmentation type that this availability is for (its default value is `FLOODLIGHT`)."]
         #[serde(
             rename = "segmentationType",
             default,
@@ -110,7 +110,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub agency_id: ::std::option::Option<i64>,
-        #[doc = "Available to advertisers only after contacting DoubleClick Search customer\nsupport."]
+        #[doc = "Available to advertisers only after contacting DoubleClick Search customer support."]
         #[serde(
             rename = "attributionModel",
             default,
@@ -125,7 +125,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub campaign_id: ::std::option::Option<i64>,
-        #[doc = "Sales channel for the product. Acceptable values are: <ul>\n\n<li>\"`local`\": a physical store</li> <li>\"`online`\":\nan online store</li> </ul>"]
+        #[doc = "Sales channel for the product. Acceptable values are: - \"`local`\": a physical store - \"`online`\": an online store "]
         #[serde(
             rename = "channel",
             default,
@@ -139,7 +139,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub click_id: ::std::option::Option<String>,
-        #[doc = "For offline conversions, advertisers provide this ID. Advertisers can\nspecify any ID that is meaningful to them. Each conversion in a request\nmust specify a unique ID, and the combination of ID and timestamp must be\nunique amongst all conversions within the advertiser.<br> For online\nconversions, DS copies the `dsConversionId` or\n`floodlightOrderId` into this property depending on the\nadvertiser's Floodlight instructions."]
+        #[doc = "For offline conversions, advertisers provide this ID. Advertisers can specify any ID that is meaningful to them. Each conversion in a request must specify a unique ID, and the combination of ID and timestamp must be unique amongst all conversions within the advertiser. For online conversions, DS copies the `dsConversionId` or `floodlightOrderId` into this property depending on the advertiser's Floodlight instructions."]
         #[serde(
             rename = "conversionId",
             default,
@@ -161,7 +161,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub conversion_timestamp: ::std::option::Option<String>,
-        #[doc = "Available to advertisers only after contacting DoubleClick Search customer\nsupport."]
+        #[doc = "Available to advertisers only after contacting DoubleClick Search customer support."]
         #[serde(
             rename = "countMillis",
             default,
@@ -177,14 +177,14 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub criterion_id: ::std::option::Option<i64>,
-        #[doc = "The currency code for the conversion's revenue. Should be in ISO 4217\nalphabetic (3-char) format."]
+        #[doc = "The currency code for the conversion's revenue. Should be in ISO 4217 alphabetic (3-char) format."]
         #[serde(
             rename = "currencyCode",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub currency_code: ::std::option::Option<String>,
-        #[doc = "Custom dimensions for the conversion, which can be used to filter data in a\nreport."]
+        #[doc = "Custom dimensions for the conversion, which can be used to filter data in a report."]
         #[serde(
             rename = "customDimension",
             default,
@@ -228,7 +228,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub floodlight_order_id: ::std::option::Option<String>,
-        #[doc = "ID that DS generates and uses to uniquely identify the inventory account\nthat contains the product."]
+        #[doc = "ID that DS generates and uses to uniquely identify the inventory account that contains the product."]
         #[serde(
             rename = "inventoryAccountId",
             default,
@@ -236,7 +236,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub inventory_account_id: ::std::option::Option<i64>,
-        #[doc = "The country registered for the Merchant Center feed that contains the\nproduct. Use an ISO 3166 code to specify a country."]
+        #[doc = "The country registered for the Merchant Center feed that contains the product. Use an ISO 3166 code to specify a country."]
         #[serde(
             rename = "productCountry",
             default,
@@ -258,7 +258,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub product_id: ::std::option::Option<String>,
-        #[doc = "The language registered for the Merchant Center feed that contains the\nproduct. Use an ISO 639 code to specify a language."]
+        #[doc = "The language registered for the Merchant Center feed that contains the product. Use an ISO 639 code to specify a language."]
         #[serde(
             rename = "productLanguage",
             default,
@@ -273,21 +273,21 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub quantity_millis: ::std::option::Option<i64>,
-        #[doc = "The type of the conversion, that is, either `ACTION` or\n`TRANSACTION`. An `ACTION` conversion is an action by\nthe user that has no monetarily quantifiable value, while a\n`TRANSACTION` conversion is an action that does have a\nmonetarily quantifiable value. Examples are email list signups\n(`ACTION`) versus ecommerce purchases\n(`TRANSACTION`)."]
+        #[doc = "The type of the conversion, that is, either `ACTION` or `TRANSACTION`. An `ACTION` conversion is an action by the user that has no monetarily quantifiable value, while a `TRANSACTION` conversion is an action that does have a monetarily quantifiable value. Examples are email list signups (`ACTION`) versus ecommerce purchases (`TRANSACTION`)."]
         #[serde(
             rename = "type",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<String>,
-        #[doc = "The revenue amount of this `TRANSACTION` conversion, in micros\n(value multiplied by 1000000, no decimal). For example, to specify a\nrevenue value of \"10\"  enter \"10000000\" (10 million) in your request."]
+        #[doc = "The revenue amount of this `TRANSACTION` conversion, in micros (value multiplied by 1000000, no decimal). For example, to specify a revenue value of \"10\" enter \"10000000\" (10 million) in your request."]
         #[serde(
             rename = "revenueMicros",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub revenue_micros: ::std::option::Option<String>,
-        #[doc = "The numeric segmentation identifier (for example, DoubleClick Search\nFloodlight activity ID)."]
+        #[doc = "The numeric segmentation identifier (for example, DoubleClick Search Floodlight activity ID)."]
         #[serde(
             rename = "segmentationId",
             default,
@@ -295,28 +295,28 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub segmentation_id: ::std::option::Option<i64>,
-        #[doc = "The friendly segmentation identifier (for example, DoubleClick Search\nFloodlight activity name)."]
+        #[doc = "The friendly segmentation identifier (for example, DoubleClick Search Floodlight activity name)."]
         #[serde(
             rename = "segmentationName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub segmentation_name: ::std::option::Option<String>,
-        #[doc = "The segmentation type of this conversion (for example,\n`FLOODLIGHT`)."]
+        #[doc = "The segmentation type of this conversion (for example, `FLOODLIGHT`)."]
         #[serde(
             rename = "segmentationType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub segmentation_type: ::std::option::Option<String>,
-        #[doc = "The state of the conversion, that is, either `ACTIVE` or\n`REMOVED`. Note: state DELETED is deprecated."]
+        #[doc = "The state of the conversion, that is, either `ACTIVE` or `REMOVED`. Note: state DELETED is deprecated."]
         #[serde(
             rename = "state",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub state: ::std::option::Option<String>,
-        #[doc = "The ID of the local store for which the product was advertised. Applicable\nonly when the channel is \"`local`\"."]
+        #[doc = "The ID of the local store for which the product was advertised. Applicable only when the channel is \"`local`\"."]
         #[serde(
             rename = "storeId",
             default,
@@ -345,7 +345,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub conversion: ::std::option::Option<Vec<crate::schemas::Conversion>>,
-        #[doc = "Identifies this as a ConversionList resource. Value: the fixed string\n<code>doubleclicksearch#conversionList</code>."]
+        #[doc = "Identifies this as a ConversionList resource. Value: the fixed string doubleclicksearch#conversionList."]
         #[serde(
             rename = "kind",
             default,
@@ -432,7 +432,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Report {
-        #[doc = "Asynchronous report only. Contains a list of generated report files once\nthe report has successfully completed."]
+        #[doc = "Asynchronous report only. Contains a list of generated report files once the report has successfully completed."]
         #[serde(
             rename = "files",
             default,
@@ -446,21 +446,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Asynchronous report only. True if and only if the report has completed\nsuccessfully and the report files are ready to be downloaded."]
+        #[doc = "Asynchronous report only. True if and only if the report has completed successfully and the report files are ready to be downloaded."]
         #[serde(
             rename = "isReportReady",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_report_ready: ::std::option::Option<bool>,
-        #[doc = "Identifies this as a Report resource. Value: the fixed string\n`doubleclicksearch#report`."]
+        #[doc = "Identifies this as a Report resource. Value: the fixed string `doubleclicksearch#report`."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The request that created the report. Optional fields not specified in the\noriginal request are filled with default values."]
+        #[doc = "The request that created the report. Optional fields not specified in the original request are filled with default values."]
         #[serde(
             rename = "request",
             default,
@@ -481,14 +481,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub rows: ::std::option::Option<Vec<crate::schemas::ReportRow>>,
-        #[doc = "The currency code of all monetary values produced in the report, including\nvalues that are set by users (e.g., keyword bid settings) and metrics\n(e.g., cost and revenue). The currency code of a report is determined by\nthe `statisticsCurrency` field of the report request."]
+        #[doc = "The currency code of all monetary values produced in the report, including values that are set by users (e.g., keyword bid settings) and metrics (e.g., cost and revenue). The currency code of a report is determined by the `statisticsCurrency` field of the report request."]
         #[serde(
             rename = "statisticsCurrencyCode",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub statistics_currency_code: ::std::option::Option<String>,
-        #[doc = "If all statistics of the report are sourced from the same time zone, this\nwould be it. Otherwise the field is unset."]
+        #[doc = "If all statistics of the report are sourced from the same time zone, this would be it. Otherwise the field is unset."]
         #[serde(
             rename = "statisticsTimeZone",
             default,
@@ -565,63 +565,63 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub column_name: ::std::option::Option<String>,
-        #[doc = "Segments a report by a custom dimension. The report must be scoped to an\nadvertiser or lower, and the custom dimension must already be set up in\nDoubleClick Search. The custom dimension name, which appears in DoubleClick\nSearch, is case sensitive.  \nIf used in a conversion report, returns the\nvalue of the specified custom dimension for the given conversion, if set.\nThis column does not segment the conversion report."]
+        #[doc = "Segments a report by a custom dimension. The report must be scoped to an advertiser or lower, and the custom dimension must already be set up in DoubleClick Search. The custom dimension name, which appears in DoubleClick Search, is case sensitive.\\ If used in a conversion report, returns the value of the specified custom dimension for the given conversion, if set. This column does not segment the conversion report."]
         #[serde(
             rename = "customDimensionName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub custom_dimension_name: ::std::option::Option<String>,
-        #[doc = "Name of a custom metric to include in the report. The report must be scoped\nto an advertiser or lower, and the custom metric must already be set up in\nDoubleClick Search. The custom metric name, which appears in DoubleClick\nSearch, is case sensitive."]
+        #[doc = "Name of a custom metric to include in the report. The report must be scoped to an advertiser or lower, and the custom metric must already be set up in DoubleClick Search. The custom metric name, which appears in DoubleClick Search, is case sensitive."]
         #[serde(
             rename = "customMetricName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub custom_metric_name: ::std::option::Option<String>,
-        #[doc = "Inclusive day in YYYY-MM-DD format. When provided, this overrides the\noverall time range of the report for this column only. Must be provided\ntogether with `startDate`."]
+        #[doc = "Inclusive day in YYYY-MM-DD format. When provided, this overrides the overall time range of the report for this column only. Must be provided together with `startDate`."]
         #[serde(
             rename = "endDate",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub end_date: ::std::option::Option<String>,
-        #[doc = "Synchronous report only. Set to `true` to group by this column.\nDefaults to `false`."]
+        #[doc = "Synchronous report only. Set to `true` to group by this column. Defaults to `false`."]
         #[serde(
             rename = "groupByColumn",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub group_by_column: ::std::option::Option<bool>,
-        #[doc = "Text used to identify this column in the report output; defaults to\n`columnName` or `savedColumnName` when not specified.\nThis can be used to prevent collisions between DoubleClick Search columns\nand saved columns with the same name."]
+        #[doc = "Text used to identify this column in the report output; defaults to `columnName` or `savedColumnName` when not specified. This can be used to prevent collisions between DoubleClick Search columns and saved columns with the same name."]
         #[serde(
             rename = "headerText",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub header_text: ::std::option::Option<String>,
-        #[doc = "The platform that is used to provide data for the custom dimension.\nAcceptable values are \"floodlight\"."]
+        #[doc = "The platform that is used to provide data for the custom dimension. Acceptable values are \"floodlight\"."]
         #[serde(
             rename = "platformSource",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub platform_source: ::std::option::Option<String>,
-        #[doc = "Returns metrics only for a specific type of product activity. Accepted\nvalues are: <ul> <li>\"`sold`\": returns metrics only for products\nthat were sold</li> <li>\"`advertised`\": returns metrics only for\nproducts that were advertised in a Shopping campaign, and that might or\nmight not have been sold</li> </ul>"]
+        #[doc = "Returns metrics only for a specific type of product activity. Accepted values are: - \"`sold`\": returns metrics only for products that were sold - \"`advertised`\": returns metrics only for products that were advertised in a Shopping campaign, and that might or might not have been sold "]
         #[serde(
             rename = "productReportPerspective",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub product_report_perspective: ::std::option::Option<String>,
-        #[doc = "Name of a saved column to include in the report. The report must be scoped\nat advertiser or lower, and this saved column must already be created in\nthe DoubleClick Search UI."]
+        #[doc = "Name of a saved column to include in the report. The report must be scoped at advertiser or lower, and this saved column must already be created in the DoubleClick Search UI."]
         #[serde(
             rename = "savedColumnName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub saved_column_name: ::std::option::Option<String>,
-        #[doc = "Inclusive date in YYYY-MM-DD format. When provided, this overrides the\noverall time range of the report for this column only. Must be provided\ntogether with `endDate`."]
+        #[doc = "Inclusive date in YYYY-MM-DD format. When provided, this overrides the overall time range of the report for this column only. Must be provided together with `endDate`."]
         #[serde(
             rename = "startDate",
             default,
@@ -641,98 +641,98 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ReportRequest {
-        #[doc = "The columns to include in the report. This includes both DoubleClick Search\ncolumns and saved columns. For DoubleClick Search columns, only the\n`columnName` parameter is required. For saved columns only the\n`savedColumnName` parameter is required. Both\n`columnName` and `savedColumnName` cannot be set in\nthe same stanza.  \nThe maximum number of columns per request is 300."]
+        #[doc = "The columns to include in the report. This includes both DoubleClick Search columns and saved columns. For DoubleClick Search columns, only the `columnName` parameter is required. For saved columns only the `savedColumnName` parameter is required. Both `columnName` and `savedColumnName` cannot be set in the same stanza.\\ The maximum number of columns per request is 300."]
         #[serde(
             rename = "columns",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub columns: ::std::option::Option<Vec<crate::schemas::ReportApiColumnSpec>>,
-        #[doc = "Format that the report should be returned in. Currently `csv` or\n`tsv` is supported."]
+        #[doc = "Format that the report should be returned in. Currently `csv` or `tsv` is supported."]
         #[serde(
             rename = "downloadFormat",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub download_format: ::std::option::Option<String>,
-        #[doc = "A list of filters to be applied to the report.  \nThe maximum number of filters per request is 300."]
+        #[doc = "A list of filters to be applied to the report.\\ The maximum number of filters per request is 300."]
         #[serde(
             rename = "filters",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub filters: ::std::option::Option<Vec<crate::schemas::ReportRequestFiltersItems>>,
-        #[doc = "Determines if removed entities should be included in the report. Defaults\nto `false`. Deprecated, please use\n`includeRemovedEntities` instead."]
+        #[doc = "Determines if removed entities should be included in the report. Defaults to `false`. Deprecated, please use `includeRemovedEntities` instead."]
         #[serde(
             rename = "includeDeletedEntities",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub include_deleted_entities: ::std::option::Option<bool>,
-        #[doc = "Determines if removed entities should be included in the report. Defaults\nto `false`."]
+        #[doc = "Determines if removed entities should be included in the report. Defaults to `false`."]
         #[serde(
             rename = "includeRemovedEntities",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub include_removed_entities: ::std::option::Option<bool>,
-        #[doc = "Asynchronous report only. The maximum number of rows per report file. A\nlarge report is split into many files based on this field. Acceptable\nvalues are `1000000` to `100000000`, inclusive."]
+        #[doc = "Asynchronous report only. The maximum number of rows per report file. A large report is split into many files based on this field. Acceptable values are `1000000` to `100000000`, inclusive."]
         #[serde(
             rename = "maxRowsPerFile",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub max_rows_per_file: ::std::option::Option<i32>,
-        #[doc = "Synchronous report only. A list of columns and directions defining sorting\nto be performed on the report rows.  \nThe maximum number of orderings per request is 300."]
+        #[doc = "Synchronous report only. A list of columns and directions defining sorting to be performed on the report rows.\\ The maximum number of orderings per request is 300."]
         #[serde(
             rename = "orderBy",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub order_by: ::std::option::Option<Vec<crate::schemas::ReportRequestOrderByItems>>,
-        #[doc = "The reportScope is a set of IDs that are used to determine which subset of\nentities will be returned in the report. The full lineage of IDs from the\nlowest scoped level desired up through agency is required."]
+        #[doc = "The reportScope is a set of IDs that are used to determine which subset of entities will be returned in the report. The full lineage of IDs from the lowest scoped level desired up through agency is required."]
         #[serde(
             rename = "reportScope",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub report_scope: ::std::option::Option<crate::schemas::ReportRequestReportScope>,
-        #[doc = "Determines the type of rows that are returned in the report. For example,\nif you specify `reportType: keyword`, each row in the report\nwill contain data about a keyword. See the [Types of\nReports](/search-ads/v2/report-types/) reference for the columns that are\navailable for each type."]
+        #[doc = "Determines the type of rows that are returned in the report. For example, if you specify `reportType: keyword`, each row in the report will contain data about a keyword. See the [Types of Reports](/search-ads/v2/report-types/) reference for the columns that are available for each type."]
         #[serde(
             rename = "reportType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub report_type: ::std::option::Option<String>,
-        #[doc = "Synchronous report only. The maximum number of rows to return; additional\nrows are dropped. Acceptable values are `0` to\n`10000`, inclusive. Defaults to `10000`."]
+        #[doc = "Synchronous report only. The maximum number of rows to return; additional rows are dropped. Acceptable values are `0` to `10000`, inclusive. Defaults to `10000`."]
         #[serde(
             rename = "rowCount",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub row_count: ::std::option::Option<i32>,
-        #[doc = "Synchronous report only. Zero-based index of the first row to return.\nAcceptable values are `0` to `50000`, inclusive.\nDefaults to `0`."]
+        #[doc = "Synchronous report only. Zero-based index of the first row to return. Acceptable values are `0` to `50000`, inclusive. Defaults to `0`."]
         #[serde(
             rename = "startRow",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub start_row: ::std::option::Option<i32>,
-        #[doc = "Specifies the currency in which monetary will be returned. Possible values\nare: `usd`, `agency` (valid if the report is scoped\nto agency or lower), `advertiser` (valid if the report is scoped\nto * advertiser or lower), or `account` (valid if the report is\nscoped to engine account or lower)."]
+        #[doc = "Specifies the currency in which monetary will be returned. Possible values are: `usd`, `agency` (valid if the report is scoped to agency or lower), `advertiser` (valid if the report is scoped to * advertiser or lower), or `account` (valid if the report is scoped to engine account or lower)."]
         #[serde(
             rename = "statisticsCurrency",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub statistics_currency: ::std::option::Option<String>,
-        #[doc = "If metrics are requested in a report, this argument will be used to\nrestrict the metrics to a specific time range."]
+        #[doc = "If metrics are requested in a report, this argument will be used to restrict the metrics to a specific time range."]
         #[serde(
             rename = "timeRange",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub time_range: ::std::option::Option<crate::schemas::ReportRequestTimeRange>,
-        #[doc = "If `true`, the report would only be created if all the requested\nstat data are sourced from a single timezone. Defaults to\n`false`."]
+        #[doc = "If `true`, the report would only be created if all the requested stat data are sourced from a single timezone. Defaults to `false`."]
         #[serde(
             rename = "verifySingleTimeZone",
             default,
@@ -752,21 +752,21 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ReportRequestFiltersItems {
-        #[doc = "Column to perform the filter on. This can be a DoubleClick Search column\nor a saved column."]
+        #[doc = "Column to perform the filter on. This can be a DoubleClick Search column or a saved column."]
         #[serde(
             rename = "column",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub column: ::std::option::Option<crate::schemas::ReportApiColumnSpec>,
-        #[doc = "Operator to use in the filter. See the filter reference for a list of\navailable operators."]
+        #[doc = "Operator to use in the filter. See the filter reference for a list of available operators."]
         #[serde(
             rename = "operator",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub operator: ::std::option::Option<String>,
-        #[doc = "A list of values to filter the column value against.  \nThe maximum number of filter values per request is 300."]
+        #[doc = "A list of values to filter the column value against.\\ The maximum number of filter values per request is 300."]
         #[serde(
             rename = "values",
             default,
@@ -797,14 +797,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ReportRequestOrderByItems {
-        #[doc = "Column to perform the sort on. This can be a DoubleClick Search-defined\ncolumn or a saved column."]
+        #[doc = "Column to perform the sort on. This can be a DoubleClick Search-defined column or a saved column."]
         #[serde(
             rename = "column",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub column: ::std::option::Option<crate::schemas::ReportApiColumnSpec>,
-        #[doc = "The sort direction, which is either `ascending` or\n`descending`."]
+        #[doc = "The sort direction, which is either `ascending` or `descending`."]
         #[serde(
             rename = "sortOrder",
             default,
@@ -915,14 +915,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ReportRequestTimeRange {
-        #[doc = "Inclusive UTC timestamp in RFC format, e.g.,\n`2013-07-16T10:16:23.555Z`. See additional references on how\nchanged attribute reports work."]
+        #[doc = "Inclusive UTC timestamp in RFC format, e.g., `2013-07-16T10:16:23.555Z`. See additional references on how changed attribute reports work."]
         #[serde(
             rename = "changedAttributesSinceTimestamp",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub changed_attributes_since_timestamp: ::std::option::Option<String>,
-        #[doc = "Inclusive UTC timestamp in RFC format, e.g.,\n`2013-07-16T10:16:23.555Z`. See additional references on how\nchanged metrics reports work."]
+        #[doc = "Inclusive UTC timestamp in RFC format, e.g., `2013-07-16T10:16:23.555Z`. See additional references on how changed metrics reports work."]
         #[serde(
             rename = "changedMetricsSinceTimestamp",
             default,
@@ -968,7 +968,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SavedColumn {
-        #[doc = "Identifies this as a SavedColumn resource. Value: the fixed string\n<code>doubleclicksearch#savedColumn</code>."]
+        #[doc = "Identifies this as a SavedColumn resource. Value: the fixed string doubleclicksearch#savedColumn."]
         #[serde(
             rename = "kind",
             default,
@@ -1020,7 +1020,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::SavedColumn>>,
-        #[doc = "Identifies this as a SavedColumnList resource. Value: the fixed string\n<code>doubleclicksearch#savedColumnList</code>."]
+        #[doc = "Identifies this as a SavedColumnList resource. Value: the fixed string doubleclicksearch#savedColumnList."]
         #[serde(
             rename = "kind",
             default,
@@ -1326,10 +1326,12 @@ pub mod resources {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
                     callback: None,
                     fields: None,
                     key: None,
+                    oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
                     upload_protocol: None,
@@ -1354,10 +1356,12 @@ pub mod resources {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
                     request,
+                    access_token: None,
                     alt: None,
                     callback: None,
                     fields: None,
                     key: None,
+                    oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
                     upload_protocol: None,
@@ -1371,10 +1375,12 @@ pub mod resources {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
                     request,
+                    access_token: None,
                     alt: None,
                     callback: None,
                     fields: None,
                     key: None,
+                    oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
                     upload_protocol: None,
@@ -1382,7 +1388,7 @@ pub mod resources {
                     xgafv: None,
                 }
             }
-            #[doc = "Updates the availabilities of a batch of floodlight activities in\nDoubleClick Search."]
+            #[doc = "Updates the availabilities of a batch of floodlight activities in DoubleClick Search."]
             pub fn update_availability(
                 &self,
                 request: crate::schemas::UpdateAvailabilityRequest,
@@ -1391,10 +1397,12 @@ pub mod resources {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
                     request,
+                    access_token: None,
                     alt: None,
                     callback: None,
                     fields: None,
                     key: None,
+                    oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
                     upload_protocol: None,
@@ -1419,10 +1427,12 @@ pub mod resources {
             ad_id: Option<i64>,
             campaign_id: Option<i64>,
             criterion_id: Option<i64>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
+            oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
             upload_protocol: Option<String>,
@@ -1450,6 +1460,11 @@ pub mod resources {
                 self.criterion_id = Some(value);
                 self
             }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
@@ -1458,6 +1473,11 @@ pub mod resources {
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
                 self
             }
             #[doc = "Returns response with indentations and line breaks."]
@@ -1542,7 +1562,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://doubleclicksearch.googleapis.com/".to_owned();
                 output.push_str("doubleclicksearch/v2/agency/");
                 {
                     let var_as_string = self.agency_id.to_string();
@@ -1577,25 +1597,27 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("endDate", &self.end_date)]);
-                let req = req.query(&[("rowCount", &self.row_count)]);
-                let req = req.query(&[("startDate", &self.start_date)]);
-                let req = req.query(&[("startRow", &self.start_row)]);
-                let req = req.query(&[("adGroupId", &self.ad_group_id)]);
-                let req = req.query(&[("adId", &self.ad_id)]);
-                let req = req.query(&[("campaignId", &self.campaign_id)]);
-                let req = req.query(&[("criterionId", &self.criterion_id)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("endDate", &self.end_date)]);
+                req = req.query(&[("rowCount", &self.row_count)]);
+                req = req.query(&[("startDate", &self.start_date)]);
+                req = req.query(&[("startRow", &self.start_row)]);
+                req = req.query(&[("adGroupId", &self.ad_group_id)]);
+                req = req.query(&[("adId", &self.ad_id)]);
+                req = req.query(&[("campaignId", &self.campaign_id)]);
+                req = req.query(&[("criterionId", &self.criterion_id)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -1609,10 +1631,12 @@ pub mod resources {
             pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ConversionList,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
+            oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
             upload_protocol: Option<String>,
@@ -1620,6 +1644,11 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> InsertRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
@@ -1628,6 +1657,11 @@ pub mod resources {
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
                 self
             }
             #[doc = "Returns response with indentations and line breaks."]
@@ -1713,7 +1747,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://doubleclicksearch.googleapis.com/".to_owned();
                 output.push_str("doubleclicksearch/v2/conversion");
                 output
             }
@@ -1721,17 +1755,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -1745,10 +1781,12 @@ pub mod resources {
             pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ConversionList,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
+            oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
             upload_protocol: Option<String>,
@@ -1756,6 +1794,11 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> UpdateRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
@@ -1764,6 +1807,11 @@ pub mod resources {
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
                 self
             }
             #[doc = "Returns response with indentations and line breaks."]
@@ -1849,7 +1897,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://doubleclicksearch.googleapis.com/".to_owned();
                 output.push_str("doubleclicksearch/v2/conversion");
                 output
             }
@@ -1857,17 +1905,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -1881,10 +1931,12 @@ pub mod resources {
             pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::UpdateAvailabilityRequest,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
+            oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
             upload_protocol: Option<String>,
@@ -1892,6 +1944,11 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> UpdateAvailabilityRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
@@ -1900,6 +1957,11 @@ pub mod resources {
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
                 self
             }
             #[doc = "Returns response with indentations and line breaks."]
@@ -1985,7 +2047,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://doubleclicksearch.googleapis.com/".to_owned();
                 output.push_str("doubleclicksearch/v2/conversion/updateAvailability");
                 output
             }
@@ -1993,17 +2055,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -2031,10 +2095,12 @@ pub mod resources {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
                     request,
+                    access_token: None,
                     alt: None,
                     callback: None,
                     fields: None,
                     key: None,
+                    oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
                     upload_protocol: None,
@@ -2047,10 +2113,12 @@ pub mod resources {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
                     callback: None,
                     fields: None,
                     key: None,
+                    oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
                     upload_protocol: None,
@@ -2068,10 +2136,12 @@ pub mod resources {
                 GetFileRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
                     callback: None,
                     fields: None,
                     key: None,
+                    oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
                     upload_protocol: None,
@@ -2087,10 +2157,12 @@ pub mod resources {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
                     request,
+                    access_token: None,
                     alt: None,
                     callback: None,
                     fields: None,
                     key: None,
+                    oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
                     upload_protocol: None,
@@ -2105,10 +2177,12 @@ pub mod resources {
             pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ReportRequest,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
+            oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
             upload_protocol: Option<String>,
@@ -2116,6 +2190,11 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GenerateRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
@@ -2124,6 +2203,11 @@ pub mod resources {
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
                 self
             }
             #[doc = "Returns response with indentations and line breaks."]
@@ -2207,7 +2291,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://doubleclicksearch.googleapis.com/".to_owned();
                 output.push_str("doubleclicksearch/v2/reports/generate");
                 output
             }
@@ -2215,17 +2299,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -2239,10 +2325,12 @@ pub mod resources {
             pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             report_id: String,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
+            oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
             upload_protocol: Option<String>,
@@ -2250,6 +2338,11 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
@@ -2258,6 +2351,11 @@ pub mod resources {
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
                 self
             }
             #[doc = "Returns response with indentations and line breaks."]
@@ -2340,7 +2438,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://doubleclicksearch.googleapis.com/".to_owned();
                 output.push_str("doubleclicksearch/v2/reports/");
                 {
                     let var_as_str = &self.report_id;
@@ -2355,17 +2453,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -2380,10 +2480,12 @@ pub mod resources {
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             report_id: String,
             report_fragment: i32,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
+            oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
             upload_protocol: Option<String>,
@@ -2391,6 +2493,11 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetFileRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
@@ -2399,6 +2506,11 @@ pub mod resources {
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
                 self
             }
             #[doc = "Returns response with indentations and line breaks."]
@@ -2427,7 +2539,7 @@ pub mod resources {
                 self
             }
             fn _download_path(&self) -> String {
-                let mut output = "https://www.googleapis.com/download/".to_owned();
+                let mut output = "https://doubleclicksearch.googleapis.com/download/".to_owned();
                 output.push_str("doubleclicksearch/v2/reports/");
                 {
                     let var_as_str = &self.report_id;
@@ -2463,7 +2575,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://doubleclicksearch.googleapis.com/".to_owned();
                 output.push_str("doubleclicksearch/v2/reports/");
                 {
                     let var_as_str = &self.report_id;
@@ -2487,17 +2599,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -2511,10 +2625,12 @@ pub mod resources {
             pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ReportRequest,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
+            oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
             upload_protocol: Option<String>,
@@ -2522,6 +2638,11 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> RequestRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
@@ -2530,6 +2651,11 @@ pub mod resources {
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
                 self
             }
             #[doc = "Returns response with indentations and line breaks."]
@@ -2613,7 +2739,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://doubleclicksearch.googleapis.com/".to_owned();
                 output.push_str("doubleclicksearch/v2/reports");
                 output
             }
@@ -2621,17 +2747,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -2655,10 +2783,12 @@ pub mod resources {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
                     callback: None,
                     fields: None,
                     key: None,
+                    oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
                     upload_protocol: None,
@@ -2676,10 +2806,12 @@ pub mod resources {
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             agency_id: i64,
             advertiser_id: i64,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
+            oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
             upload_protocol: Option<String>,
@@ -2687,6 +2819,11 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
             #[doc = "JSONP"]
             pub fn callback(mut self, value: impl Into<String>) -> Self {
                 self.callback = Some(value.into());
@@ -2695,6 +2832,11 @@ pub mod resources {
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
                 self
             }
             #[doc = "Returns response with indentations and line breaks."]
@@ -2779,7 +2921,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://doubleclicksearch.googleapis.com/".to_owned();
                 output.push_str("doubleclicksearch/v2/agency/");
                 {
                     let var_as_string = self.agency_id.to_string();
@@ -2805,17 +2947,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,

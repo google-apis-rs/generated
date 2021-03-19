@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("doubleclicksearch2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200616")
+            .version("0.1.0-20210309")
             .about("The Search Ads 360 API allows developers to automate uploading conversions and downloading reports from Search Ads 360.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -52,7 +52,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             conversion0 = conversion0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update_availability").about("Updates the availabilities of a batch of floodlight activities in\nDoubleClick Search.");
+            let mcmd = SubCommand::with_name("update_availability").about("Updates the availabilities of a batch of floodlight activities in DoubleClick Search.");
             conversion0 = conversion0.subcommand(mcmd);
         }
         let mut reports0 = SubCommand::with_name("reports")

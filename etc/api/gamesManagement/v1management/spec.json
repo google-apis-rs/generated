@@ -7,9 +7,9 @@
   "canonicalName": "Games Management",
   "fullyEncodeReservedExpansion": null,
   "version": "v1management",
-  "revision": "20200622",
+  "revision": "20210311",
   "title": "Google Play Game Management",
-  "description": "The Google Play Game Management API allows developers to manage resources from the Google\n     Play Game service.",
+  "description": "The Google Play Game Management API allows developers to manage resources from the Google Play Game service.",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "icons": {
@@ -18,11 +18,11 @@
   },
   "documentationLink": "https://developers.google.com/games/",
   "protocol": "rest",
-  "baseUrl": "https://www.googleapis.com/",
+  "baseUrl": "https://gamesmanagement.googleapis.com/",
   "basePath": "",
-  "rootUrl": "https://www.googleapis.com/",
+  "rootUrl": "https://gamesmanagement.googleapis.com/",
   "servicePath": "",
-  "batchPath": "batch/games/v1management",
+  "batchPath": "batch",
   "version_module": null,
   "packagePath": null,
   "labels": null,
@@ -216,7 +216,7 @@
       "enumDescriptions": [],
       "properties": {
         "kind": {
-          "description": "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesManagement#achievementResetAllResponse`.",
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#achievementResetAllResponse`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -268,7 +268,7 @@
           }
         },
         "kind": {
-          "description": "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesManagement#achievementResetMultipleForAllRequest`.",
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#achievementResetMultipleForAllRequest`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -290,7 +290,7 @@
       "enumDescriptions": [],
       "properties": {
         "currentState": {
-          "description": "The current state of the achievement.  This is the same as the initial\nstate of the achievement. <br/>Possible values are: <ul>\n<li>\"`HIDDEN`\"- Achievement is hidden.</li>\n<li>\"`REVEALED`\" - Achievement is revealed.</li>\n<li>\"`UNLOCKED`\" - Achievement is unlocked.</li> </ul>",
+          "description": "The current state of the achievement. This is the same as the initial state of the achievement. Possible values are: - \"`HIDDEN`\"- Achievement is hidden. - \"`REVEALED`\" - Achievement is revealed. - \"`UNLOCKED`\" - Achievement is unlocked. ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -310,7 +310,7 @@
           "items": null
         },
         "kind": {
-          "description": "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesManagement#achievementResetResponse`.",
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#achievementResetResponse`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -360,7 +360,7 @@
           }
         },
         "kind": {
-          "description": "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesManagement#eventsResetMultipleForAllRequest`.",
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#eventsResetMultipleForAllRequest`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -396,7 +396,7 @@
           "$ref": "GamesPlayerLevelResource"
         },
         "lastLevelUpTimestampMillis": {
-          "description": "The timestamp when the player was leveled up, in millis since Unix epoch\nUTC.",
+          "description": "The timestamp when the player was leveled up, in millis since Unix epoch UTC.",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -406,7 +406,7 @@
           "items": null
         },
         "nextLevel": {
-          "description": "The next level of the player. If the current level is the maximum level,\nthis should be same as the current level.",
+          "description": "The next level of the player. If the current level is the maximum level, this should be same as the current level.",
           "$ref": "GamesPlayerLevelResource"
         }
       },
@@ -474,7 +474,7 @@
           "items": null
         },
         "kind": {
-          "description": "Output only. Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesManagement#hiddenPlayer`.",
+          "description": "Output only. Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#hiddenPlayer`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -512,7 +512,7 @@
           }
         },
         "kind": {
-          "description": "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesManagement#hiddenPlayerList`.",
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#hiddenPlayerList`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -588,7 +588,7 @@
           "$ref": "GamesPlayerExperienceInfoResource"
         },
         "kind": {
-          "description": "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesManagement#player`.",
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#player`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -598,14 +598,14 @@
           "items": null
         },
         "name": {
-          "description": "An object representation of the individual components of the player's name.\nFor some players, these fields may not be present.",
+          "description": "An object representation of the individual components of the player's name. For some players, these fields may not be present.",
           "type": "object",
           "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {
             "familyName": {
-              "description": "The family name of this player. In some places, this is known as the last\nname.",
+              "description": "The family name of this player. In some places, this is known as the last name.",
               "type": "string",
               "format": null,
               "enum": [],
@@ -615,7 +615,7 @@
               "items": null
             },
             "givenName": {
-              "description": "The given name of this player. In some places, this is known as the first\nname.",
+              "description": "The given name of this player. In some places, this is known as the first name.",
               "type": "string",
               "format": null,
               "enum": [],
@@ -629,7 +629,7 @@
           "items": null
         },
         "originalPlayerId": {
-          "description": "The player ID that was used for this player the first time they signed into\nthe game in question. This is only populated for calls to player.get for\nthe requesting player, only if the player ID has subsequently changed, and\nonly to clients that support remapping player IDs.",
+          "description": "The player ID that was used for this player the first time they signed into the game in question. This is only populated for calls to player.get for the requesting player, only if the player ID has subsequently changed, and only to clients that support remapping player IDs.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -649,7 +649,7 @@
           "items": null
         },
         "profileSettings": {
-          "description": "The player's profile settings. Controls whether or not the player's profile\nis visible to other players.",
+          "description": "The player's profile settings. Controls whether or not the player's profile is visible to other players.",
           "$ref": "ProfileSettings"
         },
         "title": {
@@ -675,7 +675,7 @@
       "enumDescriptions": [],
       "properties": {
         "kind": {
-          "description": "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesManagement#playerScoreResetAllResponse`.",
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#playerScoreResetAllResponse`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -719,7 +719,7 @@
           "items": null
         },
         "kind": {
-          "description": "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesManagement#playerScoreResetResponse`.",
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#playerScoreResetResponse`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -729,7 +729,7 @@
           "items": null
         },
         "resetScoreTimeSpans": {
-          "description": "The time spans of the updated score. <br/>Possible values are: <ul>\n<li>\"`ALL_TIME`\" - The score is an all-time score.</li>\n<li>\"`WEEKLY`\" - The score is a weekly score.</li>\n<li>\"`DAILY`\" - The score is a daily score.</li> </ul>",
+          "description": "The time spans of the updated score. Possible values are: - \"`ALL_TIME`\" - The score is an all-time score. - \"`WEEKLY`\" - The score is a weekly score. - \"`DAILY`\" - The score is a daily score. ",
           "type": "array",
           "format": null,
           "enum": [],
@@ -759,7 +759,7 @@
       "enumDescriptions": [],
       "properties": {
         "kind": {
-          "description": "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesManagement#profileSettings`.",
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#profileSettings`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -791,7 +791,7 @@
       "enumDescriptions": [],
       "properties": {
         "kind": {
-          "description": "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesManagement#scoresResetMultipleForAllRequest`.",
+          "description": "Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#scoresResetMultipleForAllRequest`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -831,7 +831,7 @@
           "id": "gamesManagement.achievements.reset",
           "path": "games/v1management/achievements/{achievementId}/reset",
           "httpMethod": "POST",
-          "description": "Resets the achievement with the given ID for the currently authenticated\nplayer. This method is only accessible to whitelisted tester accounts for\nyour application.",
+          "description": "Resets the achievement with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.",
           "parameters": {
             "achievementId": {
               "description": "The ID of the achievement used by this method.",
@@ -868,7 +868,7 @@
           "id": "gamesManagement.achievements.resetAll",
           "path": "games/v1management/achievements/reset",
           "httpMethod": "POST",
-          "description": "Resets all achievements for the currently authenticated player for your\napplication. This method is only accessible to whitelisted tester accounts\nfor your application.",
+          "description": "Resets all achievements for the currently authenticated player for your application. This method is only accessible to whitelisted tester accounts for your application.",
           "parameters": {},
           "parameterOrder": [],
           "request": null,
@@ -888,7 +888,7 @@
           "id": "gamesManagement.achievements.resetAllForAllPlayers",
           "path": "games/v1management/achievements/resetAllForAllPlayers",
           "httpMethod": "POST",
-          "description": "Resets all draft achievements for all players. This method is only\navailable to user accounts for your developer console.",
+          "description": "Resets all draft achievements for all players. This method is only available to user accounts for your developer console.",
           "parameters": {},
           "parameterOrder": [],
           "request": null,
@@ -906,7 +906,7 @@
           "id": "gamesManagement.achievements.resetForAllPlayers",
           "path": "games/v1management/achievements/{achievementId}/resetForAllPlayers",
           "httpMethod": "POST",
-          "description": "Resets the achievement with the given ID for all players. This method is\nonly available to user accounts for your developer console. Only draft\nachievements can be reset.",
+          "description": "Resets the achievement with the given ID for all players. This method is only available to user accounts for your developer console. Only draft achievements can be reset.",
           "parameters": {
             "achievementId": {
               "description": "The ID of the achievement used by this method.",
@@ -941,7 +941,7 @@
           "id": "gamesManagement.achievements.resetMultipleForAllPlayers",
           "path": "games/v1management/achievements/resetMultipleForAllPlayers",
           "httpMethod": "POST",
-          "description": "Resets achievements with the given IDs for all players. This method is only\navailable to user accounts for your developer console. Only draft\nachievements may be reset.",
+          "description": "Resets achievements with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft achievements may be reset.",
           "parameters": {},
           "parameterOrder": [],
           "request": {
@@ -966,7 +966,7 @@
           "id": "gamesManagement.applications.listHidden",
           "path": "games/v1management/applications/{applicationId}/players/hidden",
           "httpMethod": "GET",
-          "description": "Get the list of players hidden from the given application. This method is\nonly available to user accounts for your developer console.",
+          "description": "Get the list of players hidden from the given application. This method is only available to user accounts for your developer console.",
           "parameters": {
             "applicationId": {
               "description": "The application ID from the Google Play developer console.",
@@ -983,7 +983,7 @@
               "repeated": false
             },
             "maxResults": {
-              "description": "The maximum number of player resources to return in the response, used for\npaging. For any response, the actual number of player resources returned\nmay be less than the specified `maxResults`.",
+              "description": "The maximum number of player resources to return in the response, used for paging. For any response, the actual number of player resources returned may be less than the specified `maxResults`.",
               "default": null,
               "location": "query",
               "required": false,
@@ -1036,7 +1036,7 @@
           "id": "gamesManagement.events.reset",
           "path": "games/v1management/events/{eventId}/reset",
           "httpMethod": "POST",
-          "description": "Resets all player progress on the event with the given ID for the currently\nauthenticated player. This method is only accessible to whitelisted tester\naccounts for your application.",
+          "description": "Resets all player progress on the event with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.",
           "parameters": {
             "eventId": {
               "description": "The ID of the event.",
@@ -1071,7 +1071,7 @@
           "id": "gamesManagement.events.resetAll",
           "path": "games/v1management/events/reset",
           "httpMethod": "POST",
-          "description": "Resets all player progress on all events for the currently authenticated\nplayer. This method is only accessible to whitelisted tester accounts for\nyour application.",
+          "description": "Resets all player progress on all events for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.",
           "parameters": {},
           "parameterOrder": [],
           "request": null,
@@ -1089,7 +1089,7 @@
           "id": "gamesManagement.events.resetAllForAllPlayers",
           "path": "games/v1management/events/resetAllForAllPlayers",
           "httpMethod": "POST",
-          "description": "Resets all draft events for all players. This method is only available to\nuser accounts for your developer console.",
+          "description": "Resets all draft events for all players. This method is only available to user accounts for your developer console.",
           "parameters": {},
           "parameterOrder": [],
           "request": null,
@@ -1107,7 +1107,7 @@
           "id": "gamesManagement.events.resetForAllPlayers",
           "path": "games/v1management/events/{eventId}/resetForAllPlayers",
           "httpMethod": "POST",
-          "description": "Resets the event with the given ID for all players. This method is only\navailable to user accounts for your developer console. Only draft events\ncan be reset.",
+          "description": "Resets the event with the given ID for all players. This method is only available to user accounts for your developer console. Only draft events can be reset.",
           "parameters": {
             "eventId": {
               "description": "The ID of the event.",
@@ -1142,7 +1142,7 @@
           "id": "gamesManagement.events.resetMultipleForAllPlayers",
           "path": "games/v1management/events/resetMultipleForAllPlayers",
           "httpMethod": "POST",
-          "description": "Resets events with the given IDs for all players. This method is only\navailable to user accounts for your developer console. Only draft events\nmay be reset.",
+          "description": "Resets events with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft events may be reset.",
           "parameters": {},
           "parameterOrder": [],
           "request": {
@@ -1167,7 +1167,7 @@
           "id": "gamesManagement.players.hide",
           "path": "games/v1management/applications/{applicationId}/players/hidden/{playerId}",
           "httpMethod": "POST",
-          "description": "Hide the given player's leaderboard scores from the given application. This\nmethod is only available to user accounts for your developer console.",
+          "description": "Hide the given player's leaderboard scores from the given application. This method is only available to user accounts for your developer console.",
           "parameters": {
             "applicationId": {
               "description": "The application ID from the Google Play developer console.",
@@ -1184,7 +1184,7 @@
               "repeated": false
             },
             "playerId": {
-              "description": "A player ID. A value of `me` may be used in place of the\nauthenticated player's ID.",
+              "description": "A player ID. A value of `me` may be used in place of the authenticated player's ID.",
               "default": null,
               "location": "path",
               "required": true,
@@ -1217,7 +1217,7 @@
           "id": "gamesManagement.players.unhide",
           "path": "games/v1management/applications/{applicationId}/players/hidden/{playerId}",
           "httpMethod": "DELETE",
-          "description": "Unhide the given player's leaderboard scores from the given application.\nThis method is only available to user accounts for your developer console.",
+          "description": "Unhide the given player's leaderboard scores from the given application. This method is only available to user accounts for your developer console.",
           "parameters": {
             "applicationId": {
               "description": "The application ID from the Google Play developer console.",
@@ -1234,7 +1234,7 @@
               "repeated": false
             },
             "playerId": {
-              "description": "A player ID. A value of `me` may be used in place of the\nauthenticated player's ID.",
+              "description": "A player ID. A value of `me` may be used in place of the authenticated player's ID.",
               "default": null,
               "location": "path",
               "required": true,
@@ -1272,7 +1272,7 @@
           "id": "gamesManagement.scores.reset",
           "path": "games/v1management/leaderboards/{leaderboardId}/scores/reset",
           "httpMethod": "POST",
-          "description": "Resets scores for the leaderboard with the given ID for the currently\nauthenticated player. This method is only accessible to whitelisted tester\naccounts for your application.",
+          "description": "Resets scores for the leaderboard with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.",
           "parameters": {
             "leaderboardId": {
               "description": "The ID of the leaderboard.",
@@ -1309,7 +1309,7 @@
           "id": "gamesManagement.scores.resetAll",
           "path": "games/v1management/scores/reset",
           "httpMethod": "POST",
-          "description": "Resets all scores for all leaderboards for the currently authenticated\nplayers. This method is only accessible to whitelisted tester accounts for\nyour application.",
+          "description": "Resets all scores for all leaderboards for the currently authenticated players. This method is only accessible to whitelisted tester accounts for your application.",
           "parameters": {},
           "parameterOrder": [],
           "request": null,
@@ -1329,7 +1329,7 @@
           "id": "gamesManagement.scores.resetAllForAllPlayers",
           "path": "games/v1management/scores/resetAllForAllPlayers",
           "httpMethod": "POST",
-          "description": "Resets scores for all draft leaderboards for all players. This method is\nonly available to user accounts for your developer console.",
+          "description": "Resets scores for all draft leaderboards for all players. This method is only available to user accounts for your developer console.",
           "parameters": {},
           "parameterOrder": [],
           "request": null,
@@ -1347,7 +1347,7 @@
           "id": "gamesManagement.scores.resetForAllPlayers",
           "path": "games/v1management/leaderboards/{leaderboardId}/scores/resetForAllPlayers",
           "httpMethod": "POST",
-          "description": "Resets scores for the leaderboard with the given ID for all players. This\nmethod is only available to user accounts for your developer console. Only\ndraft leaderboards can be reset.",
+          "description": "Resets scores for the leaderboard with the given ID for all players. This method is only available to user accounts for your developer console. Only draft leaderboards can be reset.",
           "parameters": {
             "leaderboardId": {
               "description": "The ID of the leaderboard.",
@@ -1382,7 +1382,7 @@
           "id": "gamesManagement.scores.resetMultipleForAllPlayers",
           "path": "games/v1management/scores/resetMultipleForAllPlayers",
           "httpMethod": "POST",
-          "description": "Resets scores for the leaderboards with the given IDs for all players. This\nmethod is only available to user accounts for your developer console. Only\ndraft leaderboards may be reset.",
+          "description": "Resets scores for the leaderboards with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft leaderboards may be reset.",
           "parameters": {},
           "parameterOrder": [],
           "request": {

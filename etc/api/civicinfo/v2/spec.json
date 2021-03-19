@@ -7,7 +7,7 @@
   "canonicalName": "Civic Info",
   "fullyEncodeReservedExpansion": null,
   "version": "v2",
-  "revision": "20200624",
+  "revision": "20210108",
   "title": "Google Civic Information API",
   "description": "Provides polling places, early vote locations, contest data, election officials, and government representatives for U.S. residential addresses.",
   "ownerDomain": "google.com",
@@ -211,16 +211,6 @@
           "description": "The election administration body for this area.",
           "$ref": "AdministrativeBody"
         },
-        "id": {
-          "description": "An ID for this object. IDs may change in future requests and should not be cached. Access to this field requires special access that can be requested from the Request more link on the Quotas page.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
         "local_jurisdiction": {
           "description": "The city or county that provides election information for this voter. This object can have the same elements as state.",
           "$ref": "AdministrationRegion"
@@ -285,6 +275,26 @@
         },
         "electionInfoUrl": {
           "description": "A URL provided by this administrative body for looking up general election information.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "electionNoticeText": {
+          "description": "A last minute or emergency notification text provided by this administrative body.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "electionNoticeUrl": {
+          "description": "A URL provided by this administrative body for additional information related to the last minute or emergency notification.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -571,32 +581,12 @@
           "additionalProperties": null,
           "items": null
         },
-        "id": {
-          "description": "An ID for this object. IDs may change in future requests and should not be cached. Access to this field requires special access that can be requested from the Request more link on the Quotas page.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
         "level": {
           "description": "The levels of government of the office for this contest. There may be more than one in cases where a jurisdiction effectively acts at two different levels of government; for example, the mayor of the District of Columbia acts at \"locality\" level, but also effectively at both \"administrative-area-2\" and \"administrative-area-1\".",
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": {
@@ -613,7 +603,17 @@
               "subLocality2",
               "special"
             ],
-            "enumDescriptions": [],
+            "enumDescriptions": [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
             "properties": {},
             "additionalProperties": null,
             "items": null
@@ -649,8 +649,26 @@
           "additionalProperties": null,
           "items": null
         },
+        "primaryParties": {
+          "description": "If this is a partisan election, the name of the party/parties it is for.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
         "primaryParty": {
-          "description": "If this is a partisan election, the name of the party it is for.",
+          "description": "[DEPRECATED] If this is a partisan election, the name of the party it is for. This field as deprecated in favor of the array \"primaryParties\", as contests may contain more than one party.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -772,19 +790,7 @@
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": {
@@ -803,7 +809,19 @@
               "schoolBoard",
               "specialPurposeOfficer"
             ],
-            "enumDescriptions": [],
+            "enumDescriptions": [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
             "properties": {},
             "additionalProperties": null,
             "items": null
@@ -1230,17 +1248,7 @@
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": {
@@ -1257,7 +1265,17 @@
               "subLocality2",
               "special"
             ],
-            "enumDescriptions": [],
+            "enumDescriptions": [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
             "properties": {},
             "additionalProperties": null,
             "items": null
@@ -1296,19 +1314,7 @@
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": {
@@ -1327,7 +1333,19 @@
               "schoolBoard",
               "specialPurposeOfficer"
             ],
-            "enumDescriptions": [],
+            "enumDescriptions": [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
             "properties": {},
             "additionalProperties": null,
             "items": null
@@ -1491,18 +1509,8 @@
           "additionalProperties": null,
           "items": null
         },
-        "id": {
-          "description": "An ID for this object. IDs may change in future requests and should not be cached. Access to this field requires special access that can be requested from the Request more link on the Quotas page.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
         "latitude": {
-          "description": "Latitude of the location, in degrees north of the equator. Only some locations -- generally, ballot drop boxes for vote-by-mail elections -- will have this set; for others, use a geocoding service like the Google Maps API to resolve the address to a geographic point.",
+          "description": "Latitude of the location, in degrees north of the equator. Note this field may not be available for some locations.",
           "type": "number",
           "format": "double",
           "enum": [],
@@ -1512,7 +1520,7 @@
           "items": null
         },
         "longitude": {
-          "description": "Longitude of the location, in degrees east of the Prime Meridian. Only some locations -- generally, ballot drop boxes for vote-by-mail elections -- will have this set; for others, use a geocoding service like the Google Maps API to resolve the address to a geographic point.",
+          "description": "Longitude of the location, in degrees east of the Prime Meridian. Note this field may not be available for some locations.",
           "type": "number",
           "format": "double",
           "enum": [],
@@ -2045,7 +2053,7 @@
               "repeated": false
             },
             "returnAllAvailableData": {
-              "description": "If set to true, the query will return the success codeand include any partial information when it is unable to determine a matching address or unable to determine the election for electionId=0 queries.",
+              "description": "If set to true, the query will return the success code and include any partial information when it is unable to determine a matching address or unable to determine the election for electionId=0 queries.",
               "default": "false",
               "location": "query",
               "required": false,
@@ -2133,7 +2141,17 @@
                 "subLocality2",
                 "special"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
               "repeated": true
             },
             "roles": {
@@ -2159,7 +2177,19 @@
                 "schoolBoard",
                 "specialPurposeOfficer"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
               "repeated": true
             }
           },
@@ -2202,7 +2232,17 @@
                 "subLocality2",
                 "special"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
               "repeated": true
             },
             "ocdId": {
@@ -2256,7 +2296,19 @@
                 "schoolBoard",
                 "specialPurposeOfficer"
               ],
-              "enumDescriptions": [],
+              "enumDescriptions": [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
               "repeated": true
             }
           },

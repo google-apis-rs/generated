@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/-Nl7BJKc5veEZIf9jF6KvRj8s1c\"",
+  "etag": "\"uWj2hSb4GVjzdDlAnRd2gbM1ZQ8/WyBZdYbE0D4DynBiI0u-hsaxEpU\"",
   "discoveryVersion": "v1",
   "id": "drive:v2",
   "name": "drive",
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v2",
-  "revision": "20200615",
+  "revision": "20210315",
   "title": "Drive API",
   "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
   "ownerDomain": "google.com",
@@ -138,19 +138,19 @@
           "description": "See, edit, create, and delete all of your Google Drive files"
         },
         "https://www.googleapis.com/auth/drive.appdata": {
-          "description": "View and manage its own configuration data in your Google Drive"
+          "description": "See, create, and delete its own configuration data in your Google Drive"
         },
         "https://www.googleapis.com/auth/drive.apps.readonly": {
           "description": "View your Google Drive apps"
         },
         "https://www.googleapis.com/auth/drive.file": {
-          "description": "View and manage Google Drive files and folders that you have opened or created with this app"
+          "description": "See, edit, create, and delete only the specific Google Drive files you use with this app"
         },
         "https://www.googleapis.com/auth/drive.metadata": {
           "description": "View and manage metadata of files in your Google Drive"
         },
         "https://www.googleapis.com/auth/drive.metadata.readonly": {
-          "description": "View metadata for files in your Google Drive"
+          "description": "See information about your Google Drive files"
         },
         "https://www.googleapis.com/auth/drive.photos.readonly": {
           "description": "View the photos, videos and albums in your Google Photos"
@@ -1044,7 +1044,7 @@
           "items": null
         },
         "supportsImport": {
-          "description": "Whether this app supports importing Google Docs.",
+          "description": "Whether this app supports importing from Docs Editors.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -1485,7 +1485,7 @@
           "items": null
         },
         "type": {
-          "description": "The type of delivery mechanism used for this channel.",
+          "description": "The type of delivery mechanism used for this channel. Valid values are \"web_hook\" (or \"webhook\"). Both values refer to a channel where Http requests are used to deliver messages.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2027,6 +2027,62 @@
       "additionalProperties": null,
       "items": null
     },
+    "ContentRestriction": {
+      "id": "ContentRestriction",
+      "description": "A restriction for accessing the content of the file.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "readOnly": {
+          "description": "Whether the content of the file is read-only. If a file is read-only, a new revision of the file may not be added, comments may not be added or modified, and the title of the file may not be modified.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "reason": {
+          "description": "Reason for why the content of the file is restricted. This is only mutable on requests that also set readOnly=true.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "restrictingUser": {
+          "description": "The user who set the content restriction. Only populated if readOnly is true.",
+          "$ref": "User"
+        },
+        "restrictionDate": {
+          "description": "The time at which the content restriction was set (formatted RFC 3339 timestamp). Only populated if readOnly is true.",
+          "type": "string",
+          "format": "date-time",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "type": {
+          "description": "The type of the content restriction. Currently the only possible value is globalContentRestriction.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "Drive": {
       "id": "Drive",
       "description": "Representation of a shared drive.",
@@ -2521,6 +2577,16 @@
               "additionalProperties": null,
               "items": null
             },
+            "canAddFolderFromAnotherDrive": {
+              "description": "Whether the current user can add a folder from another drive (different shared drive or My Drive) to this folder. This is false when the item is not a folder. Only populated for items in shared drives.",
+              "type": "boolean",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
             "canAddMyDriveParent": {
               "description": "Whether the current user can add a parent for the item without removing an existing parent in the same request. Not populated for shared drive files.",
               "type": "boolean",
@@ -2631,6 +2697,16 @@
               "additionalProperties": null,
               "items": null
             },
+            "canModifyContentRestriction": {
+              "description": "Whether the current user can modify restrictions on content of this file.",
+              "type": "boolean",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
             "canMoveChildrenOutOfDrive": {
               "description": "Whether the current user can move children of this folder outside of the shared drive. This is false when the item is not a folder. Only populated for items in shared drives.",
               "type": "boolean",
@@ -2652,7 +2728,7 @@
               "items": null
             },
             "canMoveChildrenWithinDrive": {
-              "description": "Whether the current user can move children of this folder within the shared drive. This is false when the item is not a folder. Only populated for items in shared drives.",
+              "description": "Whether the current user can move children of this folder within this drive. This is false when the item is not a folder. Note that a request to move the child may still fail depending on the current user's access to the child and to the destination folder.",
               "type": "boolean",
               "format": null,
               "enum": [],
@@ -2702,7 +2778,7 @@
               "items": null
             },
             "canMoveItemWithinDrive": {
-              "description": "Whether the current user can move this item within this shared drive. Note that a request to change the parent of the item may still fail depending on the new parent that is being added. Only populated for items in shared drives.",
+              "description": "Whether the current user can move this item within this drive. Note that a request to change the parent of the item may still fail depending on the new parent that is being added and the parent that is being removed.",
               "type": "boolean",
               "format": null,
               "enum": [],
@@ -2835,6 +2911,18 @@
           "additionalProperties": null,
           "items": null
         },
+        "contentRestrictions": {
+          "description": "Restrictions for accessing the content of the file. Only populated if such a restriction exists.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "ContentRestriction"
+          }
+        },
         "copyRequiresWriterPermission": {
           "description": "Whether the options to copy, print, or download this file, should be disabled for readers and commenters.",
           "type": "boolean",
@@ -2886,7 +2974,7 @@
           "items": null
         },
         "downloadUrl": {
-          "description": "Short lived download URL for the file. This field is only populated for files with content stored in Google Drive; it is not populated for Google Docs or shortcut files.",
+          "description": "Short lived download URL for the file. This field is only populated for files with content stored in Google Drive; it is not populated for Docs Editors or shortcut files.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2946,7 +3034,7 @@
           "items": null
         },
         "exportLinks": {
-          "description": "Links for exporting Google Docs to specific formats.",
+          "description": "Links for exporting Docs Editors files to specific formats.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -2965,7 +3053,7 @@
           "items": null
         },
         "fileExtension": {
-          "description": "The final component of fullFileExtension with trailing text that does not appear to be part of the extension removed. This field is only populated for files with content stored in Google Drive; it is not populated for Google Docs or shortcut files.",
+          "description": "The final component of fullFileExtension with trailing text that does not appear to be part of the extension removed. This field is only populated for files with content stored in Google Drive; it is not populated for Docs Editors or shortcut files.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2975,7 +3063,7 @@
           "items": null
         },
         "fileSize": {
-          "description": "The size of the file in bytes. This field is only populated for files with content stored in Google Drive; it is not populated for Google Docs or shortcut files.",
+          "description": "The size of the file in bytes. This field is populated for files with content stored in Google Drive and for files in Docs Editors; it is not populated for shortcut files.",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -2995,7 +3083,7 @@
           "items": null
         },
         "fullFileExtension": {
-          "description": "The full file extension; extracted from the title. May contain multiple concatenated extensions, such as \"tar.gz\". Removing an extension from the title does not clear this field; however, changing the extension on the title does update this field. This field is only populated for files with content stored in Google Drive; it is not populated for Google Docs or shortcut files.",
+          "description": "The full file extension; extracted from the title. May contain multiple concatenated extensions, such as \"tar.gz\". Removing an extension from the title does not clear this field; however, changing the extension on the title does update this field. This field is only populated for files with content stored in Google Drive; it is not populated for Docs Editors or shortcut files.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3025,7 +3113,7 @@
           "items": null
         },
         "headRevisionId": {
-          "description": "The ID of the file's head revision. This field is only populated for files with content stored in Google Drive; it is not populated for Google Docs or shortcut files.",
+          "description": "The ID of the file's head revision. This field is only populated for files with content stored in Google Drive; it is not populated for Docs Editors or shortcut files.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3395,7 +3483,7 @@
               "items": null
             },
             "trashed": {
-              "description": "Whether this file has been trashed. This label applies to all users accessing the file; however, only owners are allowed to see and untrash files.",
+              "description": "Whether the file has been trashed, either explicitly or from a trashed parent folder. Only the owner may trash a file. The trashed item is excluded from all files.list responses returned for any user who does not own the file. However, all users with access to the file can see the trashed item metadata in an API response. All users with access can copy, download, export, and share the file.",
               "type": "boolean",
               "format": null,
               "enum": [],
@@ -3453,7 +3541,7 @@
           "items": null
         },
         "md5Checksum": {
-          "description": "An MD5 checksum for the content of this file. This field is only populated for files with content stored in Google Drive; it is not populated for Google Docs or shortcut files.",
+          "description": "An MD5 checksum for the content of this file. This field is only populated for files with content stored in Google Drive; it is not populated for Docs Editors or shortcut files.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3760,7 +3848,7 @@
           "items": null
         },
         "thumbnailLink": {
-          "description": "A short-lived link to the file's thumbnail. Typically lasts on the order of hours. Only populated when the requesting app can access the file's content.",
+          "description": "A short-lived link to the file's thumbnail. Typically lasts on the order of hours. Only populated when the requesting app can access the file's content. If the file isn't shared publicly, the URL returned in Files.thumbnailLink must be fetched using a credentialed request.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4462,6 +4550,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "view": {
+          "description": "Indicates the view for this permission. Only populated for permissions that belong to a view. published is the only supported value.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "withLink": {
           "description": "Whether the link is required for this permission.",
           "type": "boolean",
@@ -4631,7 +4729,7 @@
           "items": null
         },
         "visibility": {
-          "description": "The visibility of this property. Allowed values are PRIVATE and PUBLIC. (Default: PRIVATE)",
+          "description": "The visibility of this property. Allowed values are PRIVATE and PUBLIC. (Default: PRIVATE). Private properties can only be retrieved using an authenticated request. An authenticated request uses an access token obtained with a OAuth 2 client ID. You cannot use an API key to retrieve private properties.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4727,7 +4825,7 @@
           "items": null
         },
         "exportLinks": {
-          "description": "Links for exporting Google Docs to specific formats.",
+          "description": "Links for exporting Docs Editors files to specific formats.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -4830,7 +4928,7 @@
           "items": null
         },
         "pinned": {
-          "description": "Whether this revision is pinned to prevent automatic purging. This will only be populated and can only be modified on files with content stored in Drive which are not Google Docs. Revisions can also be pinned when they are created through the drive.files.insert/update/copy by using the pinned query parameter. Pinned revisions are stored indefinitely using additional storage quota, up to a maximum of 200 revisions.",
+          "description": "Whether this revision is pinned to prevent automatic purging. This will only be populated and can only be modified on files with content stored in Drive, excluding Docs Editors files. Revisions can also be pinned when they are created through the drive.files.insert/update/copy by using the pinned query parameter. Pinned revisions are stored indefinitely using additional storage quota, up to a maximum of 200 revisions.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -4840,7 +4938,7 @@
           "items": null
         },
         "publishAuto": {
-          "description": "Whether subsequent revisions will be automatically republished. This is only populated and can only be modified for Google Docs.",
+          "description": "Whether subsequent revisions will be automatically republished. This is only populated and can only be modified for Docs Editors files.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -4850,7 +4948,7 @@
           "items": null
         },
         "published": {
-          "description": "Whether this revision is published. This is only populated and can only be modified for Google Docs.",
+          "description": "Whether this revision is published. This is only populated and can only be modified for Docs Editors files.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -4860,7 +4958,7 @@
           "items": null
         },
         "publishedLink": {
-          "description": "A link to the published revision.",
+          "description": "A link to the published revision. This is only populated for Google Sites files.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4870,7 +4968,7 @@
           "items": null
         },
         "publishedOutsideDomain": {
-          "description": "Whether this revision is published outside the domain. This is only populated and can only be modified for Google Docs.",
+          "description": "Whether this revision is published outside the domain. This is only populated and can only be modified for Docs Editors files.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -5937,6 +6035,20 @@
               "enumDescriptions": [],
               "repeated": false
             },
+            "includePermissionsForView": {
+              "description": "Specifies which additional view's permissions to include in the response. Only 'published' is supported.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
             "includeSubscribed": {
               "description": "Whether to include changes outside the My Drive hierarchy in the result. When set to false, changes to files such as those in the Application Data folder or shared files which have not been added to My Drive are omitted from the result.",
               "default": "true",
@@ -6139,6 +6251,20 @@
               "location": "query",
               "required": false,
               "type": "boolean",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "includePermissionsForView": {
+              "description": "Specifies which additional view's permissions to include in the response. Only 'published' is supported.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
               "format": null,
               "minimum": null,
               "maximum": null,
@@ -6355,7 +6481,7 @@
               "repeated": false
             },
             "enforceSingleParent": {
-              "description": "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter only takes effect if the item is not in a shared drive. If the item's last parent is removed, the item is placed under its owner's root.",
+              "description": "Deprecated. If an item is not in a shared drive and its last parent is deleted but the item itself is not, the item will be placed under its owner's root.",
               "default": "false",
               "location": "query",
               "required": false,
@@ -6464,7 +6590,7 @@
           "description": "Inserts a file into a folder.",
           "parameters": {
             "enforceSingleParent": {
-              "description": "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter only takes effect if the item is not in a shared drive. If the child's owner makes the request, the child is removed from all current folders and placed in the requested folder. Any other requests that increase the number of the child's parents fail, except when the canAddMyDriveParent file capability is true and a single parent is being added.",
+              "description": "Deprecated. Adding files to multiple folders is no longer supported. Use shortcuts instead.",
               "default": "false",
               "location": "query",
               "required": false,
@@ -7353,10 +7479,10 @@
           "id": "drive.files.copy",
           "path": "files/{fileId}/copy",
           "httpMethod": "POST",
-          "description": "Creates a copy of the specified file.",
+          "description": "Creates a copy of the specified file. Folders cannot be copied.",
           "parameters": {
             "convert": {
-              "description": "Whether to convert this file to the corresponding Google Docs format.",
+              "description": "Whether to convert this file to the corresponding Docs Editors format.",
               "default": "false",
               "location": "query",
               "required": false,
@@ -7370,7 +7496,7 @@
               "repeated": false
             },
             "enforceSingleParent": {
-              "description": "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter only takes effect if the item is not in a shared drive. Requests that specify more than one parent fail.",
+              "description": "Deprecated. Copying files into multiple folders is no longer supported. Use shortcuts instead.",
               "default": "false",
               "location": "query",
               "required": false,
@@ -7388,6 +7514,20 @@
               "default": null,
               "location": "path",
               "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "includePermissionsForView": {
+              "description": "Specifies which additional view's permissions to include in the response. Only 'published' is supported.",
+              "default": null,
+              "location": "query",
+              "required": false,
               "type": "string",
               "format": null,
               "minimum": null,
@@ -7544,6 +7684,20 @@
           "httpMethod": "DELETE",
           "description": "Permanently deletes a file by ID. Skips the trash. The currently authenticated user must own the file or be an organizer on the parent for shared drive files.",
           "parameters": {
+            "enforceSingleParent": {
+              "description": "Deprecated. If an item is not in a shared drive and its last parent is deleted but the item itself is not, the item will be placed under its owner's root.",
+              "default": "false",
+              "location": "query",
+              "required": false,
+              "type": "boolean",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
             "fileId": {
               "description": "The ID of the file to delete.",
               "default": null,
@@ -7608,7 +7762,22 @@
           "path": "files/trash",
           "httpMethod": "DELETE",
           "description": "Permanently deletes all of the user's trashed files.",
-          "parameters": {},
+          "parameters": {
+            "enforceSingleParent": {
+              "description": "Deprecated. If an item is not in a shared drive and its last parent is deleted but the item itself is not, the item will be placed under its owner's root.",
+              "default": "false",
+              "location": "query",
+              "required": false,
+              "type": "boolean",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
           "parameterOrder": [],
           "request": null,
           "response": null,
@@ -7758,6 +7927,20 @@
               "enumDescriptions": [],
               "repeated": false
             },
+            "includePermissionsForView": {
+              "description": "Specifies which additional view's permissions to include in the response. Only 'published' is supported.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
             "projection": {
               "description": "This parameter is deprecated and has no function.",
               "default": null,
@@ -7864,7 +8047,7 @@
           "description": "Insert a new file.",
           "parameters": {
             "convert": {
-              "description": "Whether to convert this file to the corresponding Google Docs format.",
+              "description": "Whether to convert this file to the corresponding Docs Editors format.",
               "default": "false",
               "location": "query",
               "required": false,
@@ -7878,11 +8061,25 @@
               "repeated": false
             },
             "enforceSingleParent": {
-              "description": "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter only takes effect if the item is not in a shared drive. Requests that specify more than one parent fail.",
+              "description": "Deprecated. Creating files in multiple folders is no longer supported.",
               "default": "false",
               "location": "query",
               "required": false,
               "type": "boolean",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "includePermissionsForView": {
+              "description": "Specifies which additional view's permissions to include in the response. Only 'published' is supported.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
               "format": null,
               "minimum": null,
               "maximum": null,
@@ -8065,7 +8262,7 @@
           "description": "Lists the user's files.",
           "parameters": {
             "corpora": {
-              "description": "Bodies of items (files/documents) to which the query applies. Supported bodies are 'default', 'domain', 'drive' and 'allDrives'. Prefer 'default' or 'drive' to 'allDrives' for efficiency.",
+              "description": "Groupings of files to which the query applies. Supported groupings are: 'user' (files created by, opened by, or shared directly with the user), 'drive' (files in the specified shared drive as indicated by the 'driveId'), 'domain' (files shared to the user's domain), and 'allDrives' (A combination of 'user' and 'drive' for all drives where the user is a member). When able, use 'user' or 'drive', instead of 'allDrives', for efficiency.",
               "default": null,
               "location": "query",
               "required": false,
@@ -8118,6 +8315,20 @@
               "location": "query",
               "required": false,
               "type": "boolean",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "includePermissionsForView": {
+              "description": "Specifies which additional view's permissions to include in the response. Only 'published' is supported.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
               "format": null,
               "minimum": null,
               "maximum": null,
@@ -8329,7 +8540,7 @@
               "repeated": false
             },
             "enforceSingleParent": {
-              "description": "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter only takes effect if the item is not in a shared drive. If the item's owner makes a request to add a single parent, the item is removed from all current folders and placed in the requested folder. Other requests that increase the number of parents fail, except when the canAddMyDriveParent file capability is true and a single parent is being added.",
+              "description": "Deprecated. Adding files to multiple folders is no longer supported. Use shortcuts instead.",
               "default": "false",
               "location": "query",
               "required": false,
@@ -8347,6 +8558,20 @@
               "default": null,
               "location": "path",
               "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "includePermissionsForView": {
+              "description": "Specifies which additional view's permissions to include in the response. Only 'published' is supported.",
+              "default": null,
+              "location": "query",
+              "required": false,
               "type": "string",
               "format": null,
               "minimum": null,
@@ -8385,7 +8610,7 @@
               "repeated": false
             },
             "newRevision": {
-              "description": "Whether a blob upload should create a new revision. If false, the blob data in the current head revision is replaced. If true or not set, a new blob is created as head revision, and previous unpinned revisions are preserved for a short period of time. Pinned revisions are stored indefinitely, using additional storage quota, up to a maximum of 200 revisions. For details on how revisions are retained, see the Drive Help Center.",
+              "description": "Whether a blob upload should create a new revision. If false, the blob data in the current head revision is replaced. If true or not set, a new blob is created as head revision, and previous unpinned revisions are preserved for a short period of time. Pinned revisions are stored indefinitely, using additional storage quota, up to a maximum of 200 revisions. For details on how revisions are retained, see the Drive Help Center. Note that this field is ignored if there is no payload in the request.",
               "default": "true",
               "location": "query",
               "required": false,
@@ -8427,7 +8652,7 @@
               "repeated": false
             },
             "pinned": {
-              "description": "Whether to pin the new revision. A file can have a maximum of 200 pinned revisions.",
+              "description": "Whether to pin the new revision. A file can have a maximum of 200 pinned revisions. Note that this field is ignored if there is no payload in the request.",
               "default": "false",
               "location": "query",
               "required": false,
@@ -8596,6 +8821,20 @@
               "enumDescriptions": [],
               "repeated": false
             },
+            "includePermissionsForView": {
+              "description": "Specifies which additional view's permissions to include in the response. Only 'published' is supported.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
             "supportsAllDrives": {
               "description": "Whether the requesting application supports both My Drives and shared drives.",
               "default": "false",
@@ -8649,13 +8888,27 @@
           "id": "drive.files.trash",
           "path": "files/{fileId}/trash",
           "httpMethod": "POST",
-          "description": "Moves a file to the trash. The currently authenticated user must own the file or be at least a fileOrganizer on the parent for shared drive files.",
+          "description": "Moves a file to the trash. The currently authenticated user must own the file or be at least a fileOrganizer on the parent for shared drive files. Only the owner may trash a file. The trashed item is excluded from all files.list responses returned for any user who does not own the file. However, all users with access to the file can see the trashed item metadata in an API response. All users with access can copy, download, export, and share the file.",
           "parameters": {
             "fileId": {
               "description": "The ID of the file to trash.",
               "default": null,
               "location": "path",
               "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "includePermissionsForView": {
+              "description": "Specifies which additional view's permissions to include in the response. Only 'published' is supported.",
+              "default": null,
+              "location": "query",
+              "required": false,
               "type": "string",
               "format": null,
               "minimum": null,
@@ -8717,13 +8970,27 @@
           "id": "drive.files.untrash",
           "path": "files/{fileId}/untrash",
           "httpMethod": "POST",
-          "description": "Restores a file from the trash.",
+          "description": "Restores a file from the trash. The currently authenticated user must own the file or be at least a fileOrganizer on the parent for shared drive files. Only the owner may untrash a file.",
           "parameters": {
             "fileId": {
               "description": "The ID of the file to untrash.",
               "default": null,
               "location": "path",
               "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "includePermissionsForView": {
+              "description": "Specifies which additional view's permissions to include in the response. Only 'published' is supported.",
+              "default": null,
+              "location": "query",
+              "required": false,
               "type": "string",
               "format": null,
               "minimum": null,
@@ -8816,7 +9083,7 @@
               "repeated": false
             },
             "enforceSingleParent": {
-              "description": "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter only takes effect if the item is not in a shared drive. If the item's owner makes a request to add a single parent, the item is removed from all current folders and placed in the requested folder. Other requests that increase the number of parents fail, except when the canAddMyDriveParent file capability is true and a single parent is being added.",
+              "description": "Deprecated. Adding files to multiple folders is no longer supported. Use shortcuts instead.",
               "default": "false",
               "location": "query",
               "required": false,
@@ -8834,6 +9101,20 @@
               "default": null,
               "location": "path",
               "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "includePermissionsForView": {
+              "description": "Specifies which additional view's permissions to include in the response. Only 'published' is supported.",
+              "default": null,
+              "location": "query",
+              "required": false,
               "type": "string",
               "format": null,
               "minimum": null,
@@ -8872,7 +9153,7 @@
               "repeated": false
             },
             "newRevision": {
-              "description": "Whether a blob upload should create a new revision. If false, the blob data in the current head revision is replaced. If true or not set, a new blob is created as head revision, and previous unpinned revisions are preserved for a short period of time. Pinned revisions are stored indefinitely, using additional storage quota, up to a maximum of 200 revisions. For details on how revisions are retained, see the Drive Help Center.",
+              "description": "Whether a blob upload should create a new revision. If false, the blob data in the current head revision is replaced. If true or not set, a new blob is created as head revision, and previous unpinned revisions are preserved for a short period of time. Pinned revisions are stored indefinitely, using additional storage quota, up to a maximum of 200 revisions. For details on how revisions are retained, see the Drive Help Center. Note that this field is ignored if there is no payload in the request.",
               "default": "true",
               "location": "query",
               "required": false,
@@ -8914,7 +9195,7 @@
               "repeated": false
             },
             "pinned": {
-              "description": "Whether to pin the new revision. A file can have a maximum of 200 pinned revisions.",
+              "description": "Whether to pin the new revision. A file can have a maximum of 200 pinned revisions. Note that this field is ignored if there is no payload in the request.",
               "default": "false",
               "location": "query",
               "required": false,
@@ -9112,6 +9393,20 @@
               "enumDescriptions": [],
               "repeated": false
             },
+            "includePermissionsForView": {
+              "description": "Specifies which additional view's permissions to include in the response. Only 'published' is supported.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
             "projection": {
               "description": "This parameter is deprecated and has no function.",
               "default": null,
@@ -9225,7 +9520,7 @@
           "description": "Removes a parent from a file.",
           "parameters": {
             "enforceSingleParent": {
-              "description": "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter only takes effect if the item is not in a shared drive. If the item's last parent is removed, the item is placed under its owner's root.",
+              "description": "Deprecated. If an item is not in a shared drive and its last parent is deleted but the item itself is not, the item will be placed under its owner's root.",
               "default": "false",
               "location": "query",
               "required": false,
@@ -9348,7 +9643,7 @@
           "description": "Adds a parent folder for a file.",
           "parameters": {
             "enforceSingleParent": {
-              "description": "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter only takes effect if the item is not in a shared drive. If the child's owner makes the request, the child is removed from all current folders and placed in the requested folder. Any other requests that increase the number of the child's parents fail, except when the canAddMyDriveParent file capability is true and a single parent is being added.",
+              "description": "Deprecated. Adding files to multiple folders is no longer supported. Use shortcuts instead.",
               "default": "false",
               "location": "query",
               "required": false,
@@ -9729,7 +10024,7 @@
               "repeated": false
             },
             "enforceSingleParent": {
-              "description": "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter only takes effect if the item is not in a shared drive. See moveToNewOwnersRoot for details.",
+              "description": "Deprecated. See moveToNewOwnersRoot for details.",
               "default": "false",
               "location": "query",
               "required": false,
@@ -9757,7 +10052,7 @@
               "repeated": false
             },
             "moveToNewOwnersRoot": {
-              "description": "This parameter only takes effect if the item is not in a shared drive and the request is attempting to transfer the ownership of the item. When set to true, the item will be moved to the new owner's My Drive root folder and all prior parents removed. If set to false, when enforceSingleParent=true, parents are not changed. If set to false, when enforceSingleParent=false, existing parents are not changed; however, the file will be added to the new owner's My Drive root folder, unless it is already in the new owner's My Drive.",
+              "description": "This parameter will only take effect if the item is not in a shared drive and the request is attempting to transfer the ownership of the item. If set to true, the item will be moved to the new owner's My Drive root folder and all prior parents removed. If set to false, parents are not changed.",
               "default": "false",
               "location": "query",
               "required": false,
@@ -9857,6 +10152,20 @@
               "default": null,
               "location": "path",
               "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "includePermissionsForView": {
+              "description": "Specifies which additional view's permissions to include in the response. Only 'published' is supported.",
+              "default": null,
+              "location": "query",
+              "required": false,
               "type": "string",
               "format": null,
               "minimum": null,

@@ -19,14 +19,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AsymmetricDecryptRequest {
-        #[doc = "Required. The data encrypted with the named CryptoKeyVersion's public\nkey using OAEP."]
+        #[doc = "Required. The data encrypted with the named CryptoKeyVersion's public key using OAEP."]
         #[serde(
             rename = "ciphertext",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ciphertext: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Optional. An optional CRC32C checksum of the AsymmetricDecryptRequest.ciphertext.\nIf specified, KeyManagementService will verify the integrity of the\nreceived AsymmetricDecryptRequest.ciphertext using this checksum.\nKeyManagementService will report an error if the checksum verification\nfails. If you receive a checksum error, your client should verify that\nCRC32C(AsymmetricDecryptRequest.ciphertext) is equal to\nAsymmetricDecryptRequest.ciphertext_crc32c, and if so, perform a\nlimited number of retries. A persistent mismatch may indicate an issue in\nyour computation of the CRC32C checksum.\nNote: This field is defined as int64 for reasons of compatibility across\ndifferent languages. However, it is a non-negative integer, which will\nnever exceed 2^32-1, and can be safely downconverted to uint32 in languages\nthat support this type.\n\nNOTE: This field is in Beta."]
+        #[doc = "Optional. An optional CRC32C checksum of the AsymmetricDecryptRequest.ciphertext. If specified, KeyManagementService will verify the integrity of the received AsymmetricDecryptRequest.ciphertext using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(AsymmetricDecryptRequest.ciphertext) is equal to AsymmetricDecryptRequest.ciphertext_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This field is in Beta."]
         #[serde(
             rename = "ciphertextCrc32c",
             default,
@@ -65,7 +65,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub plaintext: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Integrity verification field. A CRC32C checksum of the returned\nAsymmetricDecryptResponse.plaintext. An integrity check of\nAsymmetricDecryptResponse.plaintext can be performed by computing the\nCRC32C checksum of AsymmetricDecryptResponse.plaintext and comparing\nyour results to this field. Discard the response in case of non-matching\nchecksum values, and perform a limited number of retries. A persistent\nmismatch may indicate an issue in your computation of the CRC32C checksum.\nNote: This field is defined as int64 for reasons of compatibility across\ndifferent languages. However, it is a non-negative integer, which will\nnever exceed 2^32-1, and can be safely downconverted to uint32 in languages\nthat support this type.\n\nNOTE: This field is in Beta."]
+        #[doc = "Integrity verification field. A CRC32C checksum of the returned AsymmetricDecryptResponse.plaintext. An integrity check of AsymmetricDecryptResponse.plaintext can be performed by computing the CRC32C checksum of AsymmetricDecryptResponse.plaintext and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This field is in Beta."]
         #[serde(
             rename = "plaintextCrc32c",
             default,
@@ -73,7 +73,15 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub plaintext_crc_3_2c: ::std::option::Option<i64>,
-        #[doc = "Integrity verification field. A flag indicating whether\nAsymmetricDecryptRequest.ciphertext_crc32c was received by\nKeyManagementService and used for the integrity verification of the\nciphertext. A false value of this\nfield indicates either that AsymmetricDecryptRequest.ciphertext_crc32c\nwas left unset or that it was not delivered to KeyManagementService. If\nyou've set AsymmetricDecryptRequest.ciphertext_crc32c but this field is\nstill false, discard the response and perform a limited number of retries.\n\nNOTE: This field is in Beta."]
+        #[doc = "The ProtectionLevel of the CryptoKeyVersion used in decryption."]
+        #[serde(
+            rename = "protectionLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub protection_level:
+            ::std::option::Option<crate::schemas::AsymmetricDecryptResponseProtectionLevel>,
+        #[doc = "Integrity verification field. A flag indicating whether AsymmetricDecryptRequest.ciphertext_crc32c was received by KeyManagementService and used for the integrity verification of the ciphertext. A false value of this field indicates either that AsymmetricDecryptRequest.ciphertext_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set AsymmetricDecryptRequest.ciphertext_crc32c but this field is still false, discard the response and perform a limited number of retries. NOTE: This field is in Beta."]
         #[serde(
             rename = "verifiedCiphertextCrc32c",
             default,
@@ -91,6 +99,95 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum AsymmetricDecryptResponseProtectionLevel {
+        #[doc = "Crypto operations are performed by an external key manager."]
+        External,
+        #[doc = "Crypto operations are performed in a Hardware Security Module."]
+        Hsm,
+        #[doc = "Not specified."]
+        ProtectionLevelUnspecified,
+        #[doc = "Crypto operations are performed in software."]
+        Software,
+    }
+    impl AsymmetricDecryptResponseProtectionLevel {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                AsymmetricDecryptResponseProtectionLevel::External => "EXTERNAL",
+                AsymmetricDecryptResponseProtectionLevel::Hsm => "HSM",
+                AsymmetricDecryptResponseProtectionLevel::ProtectionLevelUnspecified => {
+                    "PROTECTION_LEVEL_UNSPECIFIED"
+                }
+                AsymmetricDecryptResponseProtectionLevel::Software => "SOFTWARE",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AsymmetricDecryptResponseProtectionLevel {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AsymmetricDecryptResponseProtectionLevel {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<AsymmetricDecryptResponseProtectionLevel, ()> {
+            Ok(match s {
+                "EXTERNAL" => AsymmetricDecryptResponseProtectionLevel::External,
+                "HSM" => AsymmetricDecryptResponseProtectionLevel::Hsm,
+                "PROTECTION_LEVEL_UNSPECIFIED" => {
+                    AsymmetricDecryptResponseProtectionLevel::ProtectionLevelUnspecified
+                }
+                "SOFTWARE" => AsymmetricDecryptResponseProtectionLevel::Software,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for AsymmetricDecryptResponseProtectionLevel {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for AsymmetricDecryptResponseProtectionLevel {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for AsymmetricDecryptResponseProtectionLevel {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "EXTERNAL" => AsymmetricDecryptResponseProtectionLevel::External,
+                "HSM" => AsymmetricDecryptResponseProtectionLevel::Hsm,
+                "PROTECTION_LEVEL_UNSPECIFIED" => {
+                    AsymmetricDecryptResponseProtectionLevel::ProtectionLevelUnspecified
+                }
+                "SOFTWARE" => AsymmetricDecryptResponseProtectionLevel::Software,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for AsymmetricDecryptResponseProtectionLevel {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for AsymmetricDecryptResponseProtectionLevel {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -104,14 +201,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AsymmetricSignRequest {
-        #[doc = "Required. The digest of the data to sign. The digest must be produced with\nthe same digest algorithm as specified by the key version's\nalgorithm."]
+        #[doc = "Optional. The digest of the data to sign. The digest must be produced with the same digest algorithm as specified by the key version's algorithm."]
         #[serde(
             rename = "digest",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub digest: ::std::option::Option<crate::schemas::Digest>,
-        #[doc = "Optional. An optional CRC32C checksum of the AsymmetricSignRequest.digest. If\nspecified, KeyManagementService will verify the integrity of the\nreceived AsymmetricSignRequest.digest using this checksum.\nKeyManagementService will report an error if the checksum verification\nfails. If you receive a checksum error, your client should verify that\nCRC32C(AsymmetricSignRequest.digest) is equal to\nAsymmetricSignRequest.digest_crc32c, and if so, perform a limited\nnumber of retries. A persistent mismatch may indicate an issue in your\ncomputation of the CRC32C checksum.\nNote: This field is defined as int64 for reasons of compatibility across\ndifferent languages. However, it is a non-negative integer, which will\nnever exceed 2^32-1, and can be safely downconverted to uint32 in languages\nthat support this type.\n\nNOTE: This field is in Beta."]
+        #[doc = "Optional. An optional CRC32C checksum of the AsymmetricSignRequest.digest. If specified, KeyManagementService will verify the integrity of the received AsymmetricSignRequest.digest using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(AsymmetricSignRequest.digest) is equal to AsymmetricSignRequest.digest_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This field is in Beta."]
         #[serde(
             rename = "digestCrc32c",
             default,
@@ -143,13 +240,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AsymmetricSignResponse {
-        #[doc = "The resource name of the CryptoKeyVersion used for signing. Check\nthis field to verify that the intended resource was used for signing.\n\nNOTE: This field is in Beta."]
+        #[doc = "The resource name of the CryptoKeyVersion used for signing. Check this field to verify that the intended resource was used for signing. NOTE: This field is in Beta."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
+        #[doc = "The ProtectionLevel of the CryptoKeyVersion used for signing."]
+        #[serde(
+            rename = "protectionLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub protection_level:
+            ::std::option::Option<crate::schemas::AsymmetricSignResponseProtectionLevel>,
         #[doc = "The created signature."]
         #[serde(
             rename = "signature",
@@ -157,7 +262,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub signature: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Integrity verification field. A CRC32C checksum of the returned\nAsymmetricSignResponse.signature. An integrity check of\nAsymmetricSignResponse.signature can be performed by computing the\nCRC32C checksum of AsymmetricSignResponse.signature and comparing your\nresults to this field. Discard the response in case of non-matching\nchecksum values, and perform a limited number of retries. A persistent\nmismatch may indicate an issue in your computation of the CRC32C checksum.\nNote: This field is defined as int64 for reasons of compatibility across\ndifferent languages. However, it is a non-negative integer, which will\nnever exceed 2^32-1, and can be safely downconverted to uint32 in languages\nthat support this type.\n\nNOTE: This field is in Beta."]
+        #[doc = "Integrity verification field. A CRC32C checksum of the returned AsymmetricSignResponse.signature. An integrity check of AsymmetricSignResponse.signature can be performed by computing the CRC32C checksum of AsymmetricSignResponse.signature and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This field is in Beta."]
         #[serde(
             rename = "signatureCrc32c",
             default,
@@ -165,7 +270,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub signature_crc_3_2c: ::std::option::Option<i64>,
-        #[doc = "Integrity verification field. A flag indicating whether\nAsymmetricSignRequest.digest_crc32c was received by\nKeyManagementService and used for the integrity verification of the\ndigest. A false value of this field\nindicates either that AsymmetricSignRequest.digest_crc32c was left\nunset or that it was not delivered to KeyManagementService. If you've\nset AsymmetricSignRequest.digest_crc32c but this field is still false,\ndiscard the response and perform a limited number of retries.\n\nNOTE: This field is in Beta."]
+        #[doc = "Integrity verification field. A flag indicating whether AsymmetricSignRequest.digest_crc32c was received by KeyManagementService and used for the integrity verification of the digest. A false value of this field indicates either that AsymmetricSignRequest.digest_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set AsymmetricSignRequest.digest_crc32c but this field is still false, discard the response and perform a limited number of retries. NOTE: This field is in Beta."]
         #[serde(
             rename = "verifiedDigestCrc32c",
             default,
@@ -179,6 +284,93 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for AsymmetricSignResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum AsymmetricSignResponseProtectionLevel {
+        #[doc = "Crypto operations are performed by an external key manager."]
+        External,
+        #[doc = "Crypto operations are performed in a Hardware Security Module."]
+        Hsm,
+        #[doc = "Not specified."]
+        ProtectionLevelUnspecified,
+        #[doc = "Crypto operations are performed in software."]
+        Software,
+    }
+    impl AsymmetricSignResponseProtectionLevel {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                AsymmetricSignResponseProtectionLevel::External => "EXTERNAL",
+                AsymmetricSignResponseProtectionLevel::Hsm => "HSM",
+                AsymmetricSignResponseProtectionLevel::ProtectionLevelUnspecified => {
+                    "PROTECTION_LEVEL_UNSPECIFIED"
+                }
+                AsymmetricSignResponseProtectionLevel::Software => "SOFTWARE",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AsymmetricSignResponseProtectionLevel {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AsymmetricSignResponseProtectionLevel {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AsymmetricSignResponseProtectionLevel, ()> {
+            Ok(match s {
+                "EXTERNAL" => AsymmetricSignResponseProtectionLevel::External,
+                "HSM" => AsymmetricSignResponseProtectionLevel::Hsm,
+                "PROTECTION_LEVEL_UNSPECIFIED" => {
+                    AsymmetricSignResponseProtectionLevel::ProtectionLevelUnspecified
+                }
+                "SOFTWARE" => AsymmetricSignResponseProtectionLevel::Software,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for AsymmetricSignResponseProtectionLevel {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for AsymmetricSignResponseProtectionLevel {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for AsymmetricSignResponseProtectionLevel {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "EXTERNAL" => AsymmetricSignResponseProtectionLevel::External,
+                "HSM" => AsymmetricSignResponseProtectionLevel::Hsm,
+                "PROTECTION_LEVEL_UNSPECIFIED" => {
+                    AsymmetricSignResponseProtectionLevel::ProtectionLevelUnspecified
+                }
+                "SOFTWARE" => AsymmetricSignResponseProtectionLevel::Software,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for AsymmetricSignResponseProtectionLevel {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for AsymmetricSignResponseProtectionLevel {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -203,7 +395,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub audit_log_configs: ::std::option::Option<Vec<crate::schemas::AuditLogConfig>>,
-        #[doc = "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services."]
+        #[doc = "Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services."]
         #[serde(
             rename = "service",
             default,
@@ -234,7 +426,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AuditLogConfig {
-        #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
+        #[doc = "Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members."]
         #[serde(
             rename = "exemptedMembers",
             default,
@@ -353,21 +545,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Binding {
-        #[doc = "The condition that is associated with this binding.\n\nIf the condition evaluates to `true`, then this binding applies to the\ncurrent request.\n\nIf the condition evaluates to `false`, then this binding does not apply to\nthe current request. However, a different role binding might grant the same\nrole to one or more of the members in this binding.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM\ndocumentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
+        #[doc = "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
         #[serde(
             rename = "condition",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
-        #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique\n  identifier) representing a user that has been recently deleted. For\n  example, `alice@example.com?uid=123456789012345678901`. If the user is\n  recovered, this value reverts to `user:{emailid}` and the recovered user\n  retains the role in the binding.\n\n* `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus\n  unique identifier) representing a service account that has been recently\n  deleted. For example,\n  `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.\n  If the service account is undeleted, this value reverts to\n  `serviceAccount:{emailid}` and the undeleted service account retains the\n  role in the binding.\n\n* `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique\n  identifier) representing a Google group that has been recently\n  deleted. For example, `admins@example.com?uid=123456789012345678901`. If\n  the group is recovered, this value reverts to `group:{emailid}` and the\n  recovered group retains the role in the binding.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
+        #[doc = "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. "]
         #[serde(
             rename = "members",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub members: ::std::option::Option<Vec<String>>,
-        #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
+        #[doc = "Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
         #[serde(
             rename = "role",
             default,
@@ -397,6 +589,51 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct CertificateChains {
+        #[doc = "Cavium certificate chain corresponding to the attestation."]
+        #[serde(
+            rename = "caviumCerts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cavium_certs: ::std::option::Option<Vec<String>>,
+        #[doc = "Google card certificate chain corresponding to the attestation."]
+        #[serde(
+            rename = "googleCardCerts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub google_card_certs: ::std::option::Option<Vec<String>>,
+        #[doc = "Google partition certificate chain corresponding to the attestation."]
+        #[serde(
+            rename = "googlePartitionCerts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub google_partition_certs: ::std::option::Option<Vec<String>>,
+    }
+    impl ::google_field_selector::FieldSelector for CertificateChains {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CertificateChains {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct CryptoKey {
         #[doc = "Output only. The time at which this CryptoKey was created."]
         #[serde(
@@ -405,28 +642,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub create_time: ::std::option::Option<String>,
-        #[doc = "Labels with user-defined metadata. For more information, see\n[Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys)."]
+        #[doc = "Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys)."]
         #[serde(
             rename = "labels",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Output only. The resource name for this CryptoKey in the format\n`projects/*/locations/*/keyRings/*/cryptoKeys/*`."]
+        #[doc = "Output only. The resource name for this CryptoKey in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*`."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "At next_rotation_time, the Key Management Service will automatically:\n\n1. Create a new version of this CryptoKey.\n1. Mark the new version as primary.\n\nKey rotations performed manually via\nCreateCryptoKeyVersion and\nUpdateCryptoKeyPrimaryVersion\ndo not affect next_rotation_time.\n\nKeys with purpose\nENCRYPT_DECRYPT support\nautomatic rotation. For other keys, this field must be omitted."]
+        #[doc = "At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted."]
         #[serde(
             rename = "nextRotationTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub next_rotation_time: ::std::option::Option<String>,
-        #[doc = "Output only. A copy of the \"primary\" CryptoKeyVersion that will be used\nby Encrypt when this CryptoKey is given\nin EncryptRequest.name.\n\nThe CryptoKey's primary version can be updated via\nUpdateCryptoKeyPrimaryVersion.\n\nKeys with purpose\nENCRYPT_DECRYPT may have a\nprimary. For other keys, this field will be omitted."]
+        #[doc = "Output only. A copy of the \"primary\" CryptoKeyVersion that will be used by Encrypt when this CryptoKey is given in EncryptRequest.name. The CryptoKey's primary version can be updated via UpdateCryptoKeyPrimaryVersion. Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be omitted."]
         #[serde(
             rename = "primary",
             default,
@@ -440,14 +677,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub purpose: ::std::option::Option<crate::schemas::CryptoKeyPurpose>,
-        #[doc = "next_rotation_time will be advanced by this period when the service\nautomatically rotates a key. Must be at least 24 hours and at most\n876,000 hours.\n\nIf rotation_period is set, next_rotation_time must also be set.\n\nKeys with purpose\nENCRYPT_DECRYPT support\nautomatic rotation. For other keys, this field must be omitted."]
+        #[doc = "next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted."]
         #[serde(
             rename = "rotationPeriod",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub rotation_period: ::std::option::Option<String>,
-        #[doc = "A template describing settings for new CryptoKeyVersion instances.\nThe properties of new CryptoKeyVersion instances created by either\nCreateCryptoKeyVersion or\nauto-rotation are controlled by this template."]
+        #[doc = "A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template."]
         #[serde(
             rename = "versionTemplate",
             default,
@@ -467,13 +704,13 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CryptoKeyPurpose {
-        #[doc = "CryptoKeys with this purpose may be used with\nAsymmetricDecrypt and\nGetPublicKey."]
+        #[doc = "CryptoKeys with this purpose may be used with AsymmetricDecrypt and GetPublicKey."]
         AsymmetricDecrypt,
-        #[doc = "CryptoKeys with this purpose may be used with\nAsymmetricSign and\nGetPublicKey."]
+        #[doc = "CryptoKeys with this purpose may be used with AsymmetricSign and GetPublicKey."]
         AsymmetricSign,
         #[doc = "Not specified."]
         CryptoKeyPurposeUnspecified,
-        #[doc = "CryptoKeys with this purpose may be used with\nEncrypt and\nDecrypt."]
+        #[doc = "CryptoKeys with this purpose may be used with Encrypt and Decrypt."]
         EncryptDecrypt,
     }
     impl CryptoKeyPurpose {
@@ -559,14 +796,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CryptoKeyVersion {
-        #[doc = "Output only. The CryptoKeyVersionAlgorithm that this\nCryptoKeyVersion supports."]
+        #[doc = "Output only. The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports."]
         #[serde(
             rename = "algorithm",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub algorithm: ::std::option::Option<crate::schemas::CryptoKeyVersionAlgorithm>,
-        #[doc = "Output only. Statement that was generated and signed by the HSM at key\ncreation time. Use this statement to verify attributes of the key as stored\non the HSM, independently of Google. Only provided for key versions with\nprotection_level HSM."]
+        #[doc = "Output only. Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM."]
         #[serde(
             rename = "attestation",
             default,
@@ -580,21 +817,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub create_time: ::std::option::Option<String>,
-        #[doc = "Output only. The time this CryptoKeyVersion's key material was\ndestroyed. Only present if state is\nDESTROYED."]
+        #[doc = "Output only. The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED."]
         #[serde(
             rename = "destroyEventTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub destroy_event_time: ::std::option::Option<String>,
-        #[doc = "Output only. The time this CryptoKeyVersion's key material is scheduled\nfor destruction. Only present if state is\nDESTROY_SCHEDULED."]
+        #[doc = "Output only. The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED."]
         #[serde(
             rename = "destroyTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub destroy_time: ::std::option::Option<String>,
-        #[doc = "ExternalProtectionLevelOptions stores a group of additional fields for\nconfiguring a CryptoKeyVersion that are specific to the\nEXTERNAL protection level."]
+        #[doc = "ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level."]
         #[serde(
             rename = "externalProtectionLevelOptions",
             default,
@@ -602,42 +839,42 @@ pub mod schemas {
         )]
         pub external_protection_level_options:
             ::std::option::Option<crate::schemas::ExternalProtectionLevelOptions>,
-        #[doc = "Output only. The time this CryptoKeyVersion's key material was\ngenerated."]
+        #[doc = "Output only. The time this CryptoKeyVersion's key material was generated."]
         #[serde(
             rename = "generateTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub generate_time: ::std::option::Option<String>,
-        #[doc = "Output only. The root cause of an import failure. Only present if\nstate is\nIMPORT_FAILED."]
+        #[doc = "Output only. The root cause of an import failure. Only present if state is IMPORT_FAILED."]
         #[serde(
             rename = "importFailureReason",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub import_failure_reason: ::std::option::Option<String>,
-        #[doc = "Output only. The name of the ImportJob used to import this\nCryptoKeyVersion. Only present if the underlying key material was\nimported."]
+        #[doc = "Output only. The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported."]
         #[serde(
             rename = "importJob",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub import_job: ::std::option::Option<String>,
-        #[doc = "Output only. The time at which this CryptoKeyVersion's key material\nwas imported."]
+        #[doc = "Output only. The time at which this CryptoKeyVersion's key material was imported."]
         #[serde(
             rename = "importTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub import_time: ::std::option::Option<String>,
-        #[doc = "Output only. The resource name for this CryptoKeyVersion in the format\n`projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`."]
+        #[doc = "Output only. The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Output only. The ProtectionLevel describing how crypto operations are\nperformed with this CryptoKeyVersion."]
+        #[doc = "Output only. The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion."]
         #[serde(
             rename = "protectionLevel",
             default,
@@ -942,19 +1179,19 @@ pub mod schemas {
     pub enum CryptoKeyVersionState {
         #[doc = "Not specified."]
         CryptoKeyVersionStateUnspecified,
-        #[doc = "This version is scheduled for destruction, and will be destroyed soon.\nCall\nRestoreCryptoKeyVersion\nto put it back into the DISABLED state."]
+        #[doc = "This version is scheduled for destruction, and will be destroyed soon. Call RestoreCryptoKeyVersion to put it back into the DISABLED state."]
         DestroyScheduled,
-        #[doc = "This version is destroyed, and the key material is no longer stored.\nA version may not leave this state once entered."]
+        #[doc = "This version is destroyed, and the key material is no longer stored. A version may not leave this state once entered."]
         Destroyed,
-        #[doc = "This version may not be used, but the key material is still available,\nand the version can be placed back into the ENABLED state."]
+        #[doc = "This version may not be used, but the key material is still available, and the version can be placed back into the ENABLED state."]
         Disabled,
         #[doc = "This version may be used for cryptographic operations."]
         Enabled,
-        #[doc = "This version was not imported successfully. It may not be used, enabled,\ndisabled, or destroyed. The submitted key material has been discarded.\nAdditional details can be found in\nCryptoKeyVersion.import_failure_reason."]
+        #[doc = "This version was not imported successfully. It may not be used, enabled, disabled, or destroyed. The submitted key material has been discarded. Additional details can be found in CryptoKeyVersion.import_failure_reason."]
         ImportFailed,
-        #[doc = "This version is still being generated. It may not be used, enabled,\ndisabled, or destroyed yet. Cloud KMS will automatically mark this\nversion ENABLED as soon as the version is ready."]
+        #[doc = "This version is still being generated. It may not be used, enabled, disabled, or destroyed yet. Cloud KMS will automatically mark this version ENABLED as soon as the version is ready."]
         PendingGeneration,
-        #[doc = "This version is still being imported. It may not be used, enabled,\ndisabled, or destroyed yet. Cloud KMS will automatically mark this\nversion ENABLED as soon as the version is ready."]
+        #[doc = "This version is still being imported. It may not be used, enabled, disabled, or destroyed yet. Cloud KMS will automatically mark this version ENABLED as soon as the version is ready."]
         PendingImport,
     }
     impl CryptoKeyVersionState {
@@ -1058,14 +1295,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CryptoKeyVersionTemplate {
-        #[doc = "Required. Algorithm to use\nwhen creating a CryptoKeyVersion based on this template.\n\nFor backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both\nthis field is omitted and CryptoKey.purpose is\nENCRYPT_DECRYPT."]
+        #[doc = "Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT."]
         #[serde(
             rename = "algorithm",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub algorithm: ::std::option::Option<crate::schemas::CryptoKeyVersionTemplateAlgorithm>,
-        #[doc = "ProtectionLevel to use when creating a CryptoKeyVersion based on\nthis template. Immutable. Defaults to SOFTWARE."]
+        #[doc = "ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE."]
         #[serde(
             rename = "protectionLevel",
             default,
@@ -1420,14 +1657,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DecryptRequest {
-        #[doc = "Optional. Optional data that must match the data originally supplied in\nEncryptRequest.additional_authenticated_data."]
+        #[doc = "Optional. Optional data that must match the data originally supplied in EncryptRequest.additional_authenticated_data."]
         #[serde(
             rename = "additionalAuthenticatedData",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub additional_authenticated_data: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Optional. An optional CRC32C checksum of the\nDecryptRequest.additional_authenticated_data. If specified,\nKeyManagementService will verify the integrity of the received\nDecryptRequest.additional_authenticated_data using this checksum.\nKeyManagementService will report an error if the checksum verification\nfails. If you receive a checksum error, your client should verify that\nCRC32C(DecryptRequest.additional_authenticated_data) is equal to\nDecryptRequest.additional_authenticated_data_crc32c, and if so, perform\na limited number of retries. A persistent mismatch may indicate an issue in\nyour computation of the CRC32C checksum.\nNote: This field is defined as int64 for reasons of compatibility across\ndifferent languages. However, it is a non-negative integer, which will\nnever exceed 2^32-1, and can be safely downconverted to uint32 in languages\nthat support this type.\n\nNOTE: This field is in Beta."]
+        #[doc = "Optional. An optional CRC32C checksum of the DecryptRequest.additional_authenticated_data. If specified, KeyManagementService will verify the integrity of the received DecryptRequest.additional_authenticated_data using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(DecryptRequest.additional_authenticated_data) is equal to DecryptRequest.additional_authenticated_data_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This field is in Beta."]
         #[serde(
             rename = "additionalAuthenticatedDataCrc32c",
             default,
@@ -1435,14 +1672,14 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub additional_authenticated_data_crc_3_2c: ::std::option::Option<i64>,
-        #[doc = "Required. The encrypted data originally returned in\nEncryptResponse.ciphertext."]
+        #[doc = "Required. The encrypted data originally returned in EncryptResponse.ciphertext."]
         #[serde(
             rename = "ciphertext",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ciphertext: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Optional. An optional CRC32C checksum of the DecryptRequest.ciphertext. If\nspecified, KeyManagementService will verify the integrity of the\nreceived DecryptRequest.ciphertext using this checksum.\nKeyManagementService will report an error if the checksum verification\nfails. If you receive a checksum error, your client should verify that\nCRC32C(DecryptRequest.ciphertext) is equal to\nDecryptRequest.ciphertext_crc32c, and if so, perform a limited number\nof retries. A persistent mismatch may indicate an issue in your computation\nof the CRC32C checksum.\nNote: This field is defined as int64 for reasons of compatibility across\ndifferent languages. However, it is a non-negative integer, which will\nnever exceed 2^32-1, and can be safely downconverted to uint32 in languages\nthat support this type.\n\nNOTE: This field is in Beta."]
+        #[doc = "Optional. An optional CRC32C checksum of the DecryptRequest.ciphertext. If specified, KeyManagementService will verify the integrity of the received DecryptRequest.ciphertext using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(DecryptRequest.ciphertext) is equal to DecryptRequest.ciphertext_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This field is in Beta."]
         #[serde(
             rename = "ciphertextCrc32c",
             default,
@@ -1481,7 +1718,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub plaintext: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Integrity verification field. A CRC32C checksum of the returned\nDecryptResponse.plaintext. An integrity check of\nDecryptResponse.plaintext can be performed by computing the CRC32C\nchecksum of DecryptResponse.plaintext and comparing your results to\nthis field. Discard the response in case of non-matching checksum values,\nand perform a limited number of retries. A persistent mismatch may indicate\nan issue in your computation of the CRC32C checksum. Note: receiving this\nresponse message indicates that KeyManagementService is able to\nsuccessfully decrypt the ciphertext.\nNote: This field is defined as int64 for reasons of compatibility across\ndifferent languages. However, it is a non-negative integer, which will\nnever exceed 2^32-1, and can be safely downconverted to uint32 in languages\nthat support this type.\n\nNOTE: This field is in Beta."]
+        #[doc = "Integrity verification field. A CRC32C checksum of the returned DecryptResponse.plaintext. An integrity check of DecryptResponse.plaintext can be performed by computing the CRC32C checksum of DecryptResponse.plaintext and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: receiving this response message indicates that KeyManagementService is able to successfully decrypt the ciphertext. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This field is in Beta."]
         #[serde(
             rename = "plaintextCrc32c",
             default,
@@ -1489,6 +1726,20 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub plaintext_crc_3_2c: ::std::option::Option<i64>,
+        #[doc = "The ProtectionLevel of the CryptoKeyVersion used in decryption."]
+        #[serde(
+            rename = "protectionLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub protection_level: ::std::option::Option<crate::schemas::DecryptResponseProtectionLevel>,
+        #[doc = "Whether the Decryption was performed using the primary key version."]
+        #[serde(
+            rename = "usedPrimary",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub used_primary: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for DecryptResponse {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1496,6 +1747,93 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for DecryptResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum DecryptResponseProtectionLevel {
+        #[doc = "Crypto operations are performed by an external key manager."]
+        External,
+        #[doc = "Crypto operations are performed in a Hardware Security Module."]
+        Hsm,
+        #[doc = "Not specified."]
+        ProtectionLevelUnspecified,
+        #[doc = "Crypto operations are performed in software."]
+        Software,
+    }
+    impl DecryptResponseProtectionLevel {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                DecryptResponseProtectionLevel::External => "EXTERNAL",
+                DecryptResponseProtectionLevel::Hsm => "HSM",
+                DecryptResponseProtectionLevel::ProtectionLevelUnspecified => {
+                    "PROTECTION_LEVEL_UNSPECIFIED"
+                }
+                DecryptResponseProtectionLevel::Software => "SOFTWARE",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DecryptResponseProtectionLevel {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DecryptResponseProtectionLevel {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DecryptResponseProtectionLevel, ()> {
+            Ok(match s {
+                "EXTERNAL" => DecryptResponseProtectionLevel::External,
+                "HSM" => DecryptResponseProtectionLevel::Hsm,
+                "PROTECTION_LEVEL_UNSPECIFIED" => {
+                    DecryptResponseProtectionLevel::ProtectionLevelUnspecified
+                }
+                "SOFTWARE" => DecryptResponseProtectionLevel::Software,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for DecryptResponseProtectionLevel {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for DecryptResponseProtectionLevel {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for DecryptResponseProtectionLevel {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "EXTERNAL" => DecryptResponseProtectionLevel::External,
+                "HSM" => DecryptResponseProtectionLevel::Hsm,
+                "PROTECTION_LEVEL_UNSPECIFIED" => {
+                    DecryptResponseProtectionLevel::ProtectionLevelUnspecified
+                }
+                "SOFTWARE" => DecryptResponseProtectionLevel::Software,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for DecryptResponseProtectionLevel {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DecryptResponseProtectionLevel {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1582,14 +1920,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct EncryptRequest {
-        #[doc = "Optional. Optional data that, if specified, must also be provided during decryption\nthrough DecryptRequest.additional_authenticated_data.\n\nThe maximum size depends on the key version's\nprotection_level. For\nSOFTWARE keys, the AAD must be no larger than\n64KiB. For HSM keys, the combined length of the\nplaintext and additional_authenticated_data fields must be no larger than\n8KiB."]
+        #[doc = "Optional. Optional data that, if specified, must also be provided during decryption through DecryptRequest.additional_authenticated_data. The maximum size depends on the key version's protection_level. For SOFTWARE keys, the AAD must be no larger than 64KiB. For HSM keys, the combined length of the plaintext and additional_authenticated_data fields must be no larger than 8KiB."]
         #[serde(
             rename = "additionalAuthenticatedData",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub additional_authenticated_data: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Optional. An optional CRC32C checksum of the\nEncryptRequest.additional_authenticated_data. If specified,\nKeyManagementService will verify the integrity of the received\nEncryptRequest.additional_authenticated_data using this checksum.\nKeyManagementService will report an error if the checksum verification\nfails. If you receive a checksum error, your client should verify that\nCRC32C(EncryptRequest.additional_authenticated_data) is equal to\nEncryptRequest.additional_authenticated_data_crc32c, and if so, perform\na limited number of retries. A persistent mismatch may indicate an issue in\nyour computation of the CRC32C checksum.\nNote: This field is defined as int64 for reasons of compatibility across\ndifferent languages. However, it is a non-negative integer, which will\nnever exceed 2^32-1, and can be safely downconverted to uint32 in languages\nthat support this type.\n\nNOTE: This field is in Beta."]
+        #[doc = "Optional. An optional CRC32C checksum of the EncryptRequest.additional_authenticated_data. If specified, KeyManagementService will verify the integrity of the received EncryptRequest.additional_authenticated_data using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(EncryptRequest.additional_authenticated_data) is equal to EncryptRequest.additional_authenticated_data_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This field is in Beta."]
         #[serde(
             rename = "additionalAuthenticatedDataCrc32c",
             default,
@@ -1597,14 +1935,14 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub additional_authenticated_data_crc_3_2c: ::std::option::Option<i64>,
-        #[doc = "Required. The data to encrypt. Must be no larger than 64KiB.\n\nThe maximum size depends on the key version's\nprotection_level. For\nSOFTWARE keys, the plaintext must be no larger\nthan 64KiB. For HSM keys, the combined length of the\nplaintext and additional_authenticated_data fields must be no larger than\n8KiB."]
+        #[doc = "Required. The data to encrypt. Must be no larger than 64KiB. The maximum size depends on the key version's protection_level. For SOFTWARE keys, the plaintext must be no larger than 64KiB. For HSM keys, the combined length of the plaintext and additional_authenticated_data fields must be no larger than 8KiB."]
         #[serde(
             rename = "plaintext",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub plaintext: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Optional. An optional CRC32C checksum of the EncryptRequest.plaintext. If\nspecified, KeyManagementService will verify the integrity of the\nreceived EncryptRequest.plaintext using this checksum.\nKeyManagementService will report an error if the checksum verification\nfails. If you receive a checksum error, your client should verify that\nCRC32C(EncryptRequest.plaintext) is equal to\nEncryptRequest.plaintext_crc32c, and if so, perform a limited number of\nretries. A persistent mismatch may indicate an issue in your computation of\nthe CRC32C checksum.\nNote: This field is defined as int64 for reasons of compatibility across\ndifferent languages. However, it is a non-negative integer, which will\nnever exceed 2^32-1, and can be safely downconverted to uint32 in languages\nthat support this type.\n\nNOTE: This field is in Beta."]
+        #[doc = "Optional. An optional CRC32C checksum of the EncryptRequest.plaintext. If specified, KeyManagementService will verify the integrity of the received EncryptRequest.plaintext using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(EncryptRequest.plaintext) is equal to EncryptRequest.plaintext_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This field is in Beta."]
         #[serde(
             rename = "plaintextCrc32c",
             default,
@@ -1643,7 +1981,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ciphertext: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Integrity verification field. A CRC32C checksum of the returned\nEncryptResponse.ciphertext. An integrity check of\nEncryptResponse.ciphertext can be performed by computing the CRC32C\nchecksum of EncryptResponse.ciphertext and comparing your results to\nthis field. Discard the response in case of non-matching checksum values,\nand perform a limited number of retries. A persistent mismatch may indicate\nan issue in your computation of the CRC32C checksum.\nNote: This field is defined as int64 for reasons of compatibility across\ndifferent languages. However, it is a non-negative integer, which will\nnever exceed 2^32-1, and can be safely downconverted to uint32 in languages\nthat support this type.\n\nNOTE: This field is in Beta."]
+        #[doc = "Integrity verification field. A CRC32C checksum of the returned EncryptResponse.ciphertext. An integrity check of EncryptResponse.ciphertext can be performed by computing the CRC32C checksum of EncryptResponse.ciphertext and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This field is in Beta."]
         #[serde(
             rename = "ciphertextCrc32c",
             default,
@@ -1651,21 +1989,28 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub ciphertext_crc_3_2c: ::std::option::Option<i64>,
-        #[doc = "The resource name of the CryptoKeyVersion used in encryption. Check\nthis field to verify that the intended resource was used for encryption."]
+        #[doc = "The resource name of the CryptoKeyVersion used in encryption. Check this field to verify that the intended resource was used for encryption."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Integrity verification field. A flag indicating whether\nEncryptRequest.additional_authenticated_data_crc32c was received by\nKeyManagementService and used for the integrity verification of the\nAAD. A false value of this\nfield indicates either that\nEncryptRequest.additional_authenticated_data_crc32c was left unset or\nthat it was not delivered to KeyManagementService. If you've set\nEncryptRequest.additional_authenticated_data_crc32c but this field is\nstill false, discard the response and perform a limited number of retries.\n\nNOTE: This field is in Beta."]
+        #[doc = "The ProtectionLevel of the CryptoKeyVersion used in encryption."]
+        #[serde(
+            rename = "protectionLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub protection_level: ::std::option::Option<crate::schemas::EncryptResponseProtectionLevel>,
+        #[doc = "Integrity verification field. A flag indicating whether EncryptRequest.additional_authenticated_data_crc32c was received by KeyManagementService and used for the integrity verification of the AAD. A false value of this field indicates either that EncryptRequest.additional_authenticated_data_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set EncryptRequest.additional_authenticated_data_crc32c but this field is still false, discard the response and perform a limited number of retries. NOTE: This field is in Beta."]
         #[serde(
             rename = "verifiedAdditionalAuthenticatedDataCrc32c",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub verified_additional_authenticated_data_crc_3_2c: ::std::option::Option<bool>,
-        #[doc = "Integrity verification field. A flag indicating whether\nEncryptRequest.plaintext_crc32c was received by\nKeyManagementService and used for the integrity verification of the\nplaintext. A false value of this field\nindicates either that EncryptRequest.plaintext_crc32c was left unset or\nthat it was not delivered to KeyManagementService. If you've set\nEncryptRequest.plaintext_crc32c but this field is still false, discard\nthe response and perform a limited number of retries.\n\nNOTE: This field is in Beta."]
+        #[doc = "Integrity verification field. A flag indicating whether EncryptRequest.plaintext_crc32c was received by KeyManagementService and used for the integrity verification of the plaintext. A false value of this field indicates either that EncryptRequest.plaintext_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set EncryptRequest.plaintext_crc32c but this field is still false, discard the response and perform a limited number of retries. NOTE: This field is in Beta."]
         #[serde(
             rename = "verifiedPlaintextCrc32c",
             default,
@@ -1683,6 +2028,93 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum EncryptResponseProtectionLevel {
+        #[doc = "Crypto operations are performed by an external key manager."]
+        External,
+        #[doc = "Crypto operations are performed in a Hardware Security Module."]
+        Hsm,
+        #[doc = "Not specified."]
+        ProtectionLevelUnspecified,
+        #[doc = "Crypto operations are performed in software."]
+        Software,
+    }
+    impl EncryptResponseProtectionLevel {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                EncryptResponseProtectionLevel::External => "EXTERNAL",
+                EncryptResponseProtectionLevel::Hsm => "HSM",
+                EncryptResponseProtectionLevel::ProtectionLevelUnspecified => {
+                    "PROTECTION_LEVEL_UNSPECIFIED"
+                }
+                EncryptResponseProtectionLevel::Software => "SOFTWARE",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for EncryptResponseProtectionLevel {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for EncryptResponseProtectionLevel {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<EncryptResponseProtectionLevel, ()> {
+            Ok(match s {
+                "EXTERNAL" => EncryptResponseProtectionLevel::External,
+                "HSM" => EncryptResponseProtectionLevel::Hsm,
+                "PROTECTION_LEVEL_UNSPECIFIED" => {
+                    EncryptResponseProtectionLevel::ProtectionLevelUnspecified
+                }
+                "SOFTWARE" => EncryptResponseProtectionLevel::Software,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for EncryptResponseProtectionLevel {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for EncryptResponseProtectionLevel {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for EncryptResponseProtectionLevel {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "EXTERNAL" => EncryptResponseProtectionLevel::External,
+                "HSM" => EncryptResponseProtectionLevel::Hsm,
+                "PROTECTION_LEVEL_UNSPECIFIED" => {
+                    EncryptResponseProtectionLevel::ProtectionLevelUnspecified
+                }
+                "SOFTWARE" => EncryptResponseProtectionLevel::Software,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for EncryptResponseProtectionLevel {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for EncryptResponseProtectionLevel {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1696,28 +2128,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Expr {
-        #[doc = "Optional. Description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
+        #[doc = "Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI."]
         #[serde(
             rename = "description",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "Textual representation of an expression in Common Expression Language\nsyntax."]
+        #[doc = "Textual representation of an expression in Common Expression Language syntax."]
         #[serde(
             rename = "expression",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub expression: ::std::option::Option<String>,
-        #[doc = "Optional. String indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
+        #[doc = "Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file."]
         #[serde(
             rename = "location",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub location: ::std::option::Option<String>,
-        #[doc = "Optional. Title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
+        #[doc = "Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression."]
         #[serde(
             rename = "title",
             default,
@@ -1779,7 +2211,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ImportCryptoKeyVersionRequest {
-        #[doc = "Required. The algorithm of\nthe key being imported. This does not need to match the\nversion_template of the CryptoKey this\nversion imports into."]
+        #[doc = "Required. The algorithm of the key being imported. This does not need to match the version_template of the CryptoKey this version imports into."]
         #[serde(
             rename = "algorithm",
             default,
@@ -1787,14 +2219,14 @@ pub mod schemas {
         )]
         pub algorithm:
             ::std::option::Option<crate::schemas::ImportCryptoKeyVersionRequestAlgorithm>,
-        #[doc = "Required. The name of the ImportJob that was used to\nwrap this key material."]
+        #[doc = "Required. The name of the ImportJob that was used to wrap this key material."]
         #[serde(
             rename = "importJob",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub import_job: ::std::option::Option<String>,
-        #[doc = "Wrapped key material produced with\nRSA_OAEP_3072_SHA1_AES_256\nor\nRSA_OAEP_4096_SHA1_AES_256.\n\nThis field contains the concatenation of two wrapped keys:\n\n<ol>\n  <li>An ephemeral AES-256 wrapping key wrapped with the\n      public_key using RSAES-OAEP with SHA-1,\n      MGF1 with SHA-1, and an empty label.\n  </li>\n  <li>The key to be imported, wrapped with the ephemeral AES-256 key\n      using AES-KWP (RFC 5649).\n  </li>\n</ol>\n\nIf importing symmetric key material, it is expected that the unwrapped\nkey contains plain bytes. If importing asymmetric key material, it is\nexpected that the unwrapped key is in PKCS#8-encoded DER format (the\nPrivateKeyInfo structure from RFC 5208).\n\nThis format is the same as the format produced by PKCS#11 mechanism\nCKM_RSA_AES_KEY_WRAP."]
+        #[doc = "Wrapped key material produced with RSA_OAEP_3072_SHA1_AES_256 or RSA_OAEP_4096_SHA1_AES_256. This field contains the concatenation of two wrapped keys: 1. An ephemeral AES-256 wrapping key wrapped with the public_key using RSAES-OAEP with SHA-1, MGF1 with SHA-1, and an empty label. 2. The key to be imported, wrapped with the ephemeral AES-256 key using AES-KWP (RFC 5649). If importing symmetric key material, it is expected that the unwrapped key contains plain bytes. If importing asymmetric key material, it is expected that the unwrapped key is in PKCS#8-encoded DER format (the PrivateKeyInfo structure from RFC 5208). This format is the same as the format produced by PKCS#11 mechanism CKM_RSA_AES_KEY_WRAP."]
         #[serde(
             rename = "rsaAesWrappedKey",
             default,
@@ -2061,7 +2493,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ImportJob {
-        #[doc = "Output only. Statement that was generated and signed by the key creator\n(for example, an HSM) at key creation time. Use this statement to verify\nattributes of the key as stored on the HSM, independently of Google.\nOnly present if the chosen ImportMethod is one with a protection\nlevel of HSM."]
+        #[doc = "Output only. Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen ImportMethod is one with a protection level of HSM."]
         #[serde(
             rename = "attestation",
             default,
@@ -2075,14 +2507,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub create_time: ::std::option::Option<String>,
-        #[doc = "Output only. The time this ImportJob expired. Only present if\nstate is EXPIRED."]
+        #[doc = "Output only. The time this ImportJob expired. Only present if state is EXPIRED."]
         #[serde(
             rename = "expireEventTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub expire_event_time: ::std::option::Option<String>,
-        #[doc = "Output only. The time at which this ImportJob is scheduled for\nexpiration and can no longer be used to import key material."]
+        #[doc = "Output only. The time at which this ImportJob is scheduled for expiration and can no longer be used to import key material."]
         #[serde(
             rename = "expireTime",
             default,
@@ -2103,28 +2535,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub import_method: ::std::option::Option<crate::schemas::ImportJobImportMethod>,
-        #[doc = "Output only. The resource name for this ImportJob in the format\n`projects/*/locations/*/keyRings/*/importJobs/*`."]
+        #[doc = "Output only. The resource name for this ImportJob in the format `projects/*/locations/*/keyRings/*/importJobs/*`."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Required. Immutable. The protection level of the ImportJob. This must match the\nprotection_level of the\nversion_template on the CryptoKey you\nattempt to import into."]
+        #[doc = "Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into."]
         #[serde(
             rename = "protectionLevel",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub protection_level: ::std::option::Option<crate::schemas::ImportJobProtectionLevel>,
-        #[doc = "Output only. The public key with which to wrap key material prior to\nimport. Only returned if state is\nACTIVE."]
+        #[doc = "Output only. The public key with which to wrap key material prior to import. Only returned if state is ACTIVE."]
         #[serde(
             rename = "publicKey",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub public_key: ::std::option::Option<crate::schemas::WrappingPublicKey>,
-        #[doc = "Output only. The current state of the ImportJob, indicating if it can\nbe used."]
+        #[doc = "Output only. The current state of the ImportJob, indicating if it can be used."]
         #[serde(
             rename = "state",
             default,
@@ -2146,9 +2578,9 @@ pub mod schemas {
     pub enum ImportJobImportMethod {
         #[doc = "Not specified."]
         ImportMethodUnspecified,
-        #[doc = "This ImportMethod represents the CKM_RSA_AES_KEY_WRAP key wrapping\nscheme defined in the PKCS #11 standard. In summary, this involves\nwrapping the raw key with an ephemeral AES key, and wrapping the\nephemeral AES key with a 3072 bit RSA key. For more details, see\n[RSA AES key wrap\nmechanism](http://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226908)."]
+        #[doc = "This ImportMethod represents the CKM_RSA_AES_KEY_WRAP key wrapping scheme defined in the PKCS #11 standard. In summary, this involves wrapping the raw key with an ephemeral AES key, and wrapping the ephemeral AES key with a 3072 bit RSA key. For more details, see [RSA AES key wrap mechanism](http://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226908)."]
         RsaOaep3072Sha1Aes256,
-        #[doc = "This ImportMethod represents the CKM_RSA_AES_KEY_WRAP key wrapping\nscheme defined in the PKCS #11 standard. In summary, this involves\nwrapping the raw key with an ephemeral AES key, and wrapping the\nephemeral AES key with a 4096 bit RSA key. For more details, see\n[RSA AES key wrap\nmechanism](http://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226908)."]
+        #[doc = "This ImportMethod represents the CKM_RSA_AES_KEY_WRAP key wrapping scheme defined in the PKCS #11 standard. In summary, this involves wrapping the raw key with an ephemeral AES key, and wrapping the ephemeral AES key with a 4096 bit RSA key. For more details, see [RSA AES key wrap mechanism](http://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226908)."]
         RsaOaep4096Sha1Aes256,
     }
     impl ImportJobImportMethod {
@@ -2307,13 +2739,13 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ImportJobState {
-        #[doc = "This job may be used in\nCreateCryptoKey and\nCreateCryptoKeyVersion\nrequests."]
+        #[doc = "This job may be used in CreateCryptoKey and CreateCryptoKeyVersion requests."]
         Active,
         #[doc = "This job can no longer be used and may not leave this state once entered."]
         Expired,
         #[doc = "Not specified."]
         ImportJobStateUnspecified,
-        #[doc = "The wrapping key for this job is still being generated. It may not be\nused. Cloud KMS will automatically mark this job as\nACTIVE as soon as the wrapping key is generated."]
+        #[doc = "The wrapping key for this job is still being generated. It may not be used. Cloud KMS will automatically mark this job as ACTIVE as soon as the wrapping key is generated."]
         PendingGeneration,
     }
     impl ImportJobState {
@@ -2399,7 +2831,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct KeyOperationAttestation {
-        #[doc = "Output only. The attestation data provided by the HSM when the key\noperation was performed."]
+        #[doc = "Output only. The certificate chains needed to validate the attestation"]
+        #[serde(
+            rename = "certChains",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cert_chains: ::std::option::Option<crate::schemas::CertificateChains>,
+        #[doc = "Output only. The attestation data provided by the HSM when the key operation was performed."]
         #[serde(
             rename = "content",
             default,
@@ -2428,9 +2867,9 @@ pub mod schemas {
     pub enum KeyOperationAttestationFormat {
         #[doc = "Not specified."]
         AttestationFormatUnspecified,
-        #[doc = "Cavium HSM attestation compressed with gzip. Note that this format is\ndefined by Cavium and subject to change at any time."]
+        #[doc = "Cavium HSM attestation compressed with gzip. Note that this format is defined by Cavium and subject to change at any time."]
         CaviumV1Compressed,
-        #[doc = "Cavium HSM attestation V2 compressed with gzip. This is a new format\nintroduced in Cavium's version 3.2-08."]
+        #[doc = "Cavium HSM attestation V2 compressed with gzip. This is a new format introduced in Cavium's version 3.2-08."]
         CaviumV2Compressed,
     }
     impl KeyOperationAttestationFormat {
@@ -2526,7 +2965,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub create_time: ::std::option::Option<String>,
-        #[doc = "Output only. The resource name for the KeyRing in the format\n`projects/*/locations/*/keyRings/*`."]
+        #[doc = "Output only. The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`."]
         #[serde(
             rename = "name",
             default,
@@ -2564,14 +3003,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub crypto_key_versions: ::std::option::Option<Vec<crate::schemas::CryptoKeyVersion>>,
-        #[doc = "A token to retrieve next page of results. Pass this value in\nListCryptoKeyVersionsRequest.page_token to retrieve the next page of\nresults."]
+        #[doc = "A token to retrieve next page of results. Pass this value in ListCryptoKeyVersionsRequest.page_token to retrieve the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub next_page_token: ::std::option::Option<String>,
-        #[doc = "The total number of CryptoKeyVersions that matched the\nquery."]
+        #[doc = "The total number of CryptoKeyVersions that matched the query."]
         #[serde(
             rename = "totalSize",
             default,
@@ -2609,7 +3048,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub crypto_keys: ::std::option::Option<Vec<crate::schemas::CryptoKey>>,
-        #[doc = "A token to retrieve next page of results. Pass this value in\nListCryptoKeysRequest.page_token to retrieve the next page of results."]
+        #[doc = "A token to retrieve next page of results. Pass this value in ListCryptoKeysRequest.page_token to retrieve the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -2654,7 +3093,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub import_jobs: ::std::option::Option<Vec<crate::schemas::ImportJob>>,
-        #[doc = "A token to retrieve next page of results. Pass this value in\nListImportJobsRequest.page_token to retrieve the next page of results."]
+        #[doc = "A token to retrieve next page of results. Pass this value in ListImportJobsRequest.page_token to retrieve the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -2699,7 +3138,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub key_rings: ::std::option::Option<Vec<crate::schemas::KeyRing>>,
-        #[doc = "A token to retrieve next page of results. Pass this value in\nListKeyRingsRequest.page_token to retrieve the next page of results."]
+        #[doc = "A token to retrieve next page of results. Pass this value in ListKeyRingsRequest.page_token to retrieve the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -2753,14 +3192,14 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Location {
-        #[doc = "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\"."]
+        #[doc = "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\"."]
         #[serde(
             rename = "displayName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "Cross-service attributes for the location. For example\n\n````text\n{\"cloud.googleapis.com/region\": \"us-east1\"}````"]
+        #[doc = "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}"]
         #[serde(
             rename = "labels",
             default,
@@ -2774,7 +3213,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub location_id: ::std::option::Option<String>,
-        #[doc = "Service-specific metadata. For example the available capacity at the given\nlocation."]
+        #[doc = "Service-specific metadata. For example the available capacity at the given location."]
         #[serde(
             rename = "metadata",
             default,
@@ -2782,7 +3221,7 @@ pub mod schemas {
         )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`"]
+        #[doc = "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`"]
         #[serde(
             rename = "name",
             default,
@@ -2813,14 +3252,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LocationMetadata {
-        #[doc = "Indicates whether CryptoKeys with\nprotection_level\nEXTERNAL can be created in this location."]
+        #[doc = "Indicates whether CryptoKeys with protection_level EXTERNAL can be created in this location."]
         #[serde(
             rename = "ekmAvailable",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ekm_available: ::std::option::Option<bool>,
-        #[doc = "Indicates whether CryptoKeys with\nprotection_level\nHSM can be created in this location."]
+        #[doc = "Indicates whether CryptoKeys with protection_level HSM can be created in this location."]
         #[serde(
             rename = "hsmAvailable",
             default,
@@ -2858,21 +3297,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub audit_configs: ::std::option::Option<Vec<crate::schemas::AuditConfig>>,
-        #[doc = "Associates a list of `members` to a `role`. Optionally, may specify a\n`condition` that determines how and when the `bindings` are applied. Each\nof the `bindings` must contain at least one member."]
+        #[doc = "Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member."]
         #[serde(
             rename = "bindings",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
-        #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost."]
+        #[doc = "`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost."]
         #[serde(
             rename = "etag",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Specifies the format of the policy.\n\nValid values are `0`, `1`, and `3`. Requests that specify an invalid value\nare rejected.\n\nAny operation that affects conditional role bindings must specify version\n`3`. This requirement applies to the following operations:\n\n* Getting a policy that includes a conditional role binding\n* Adding a conditional role binding to a policy\n* Changing a conditional role binding in a policy\n* Removing any role binding, with or without a condition, from a policy\n  that includes conditions\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.\n\nIf a policy does not include any conditions, operations on that policy may\nspecify any valid version or leave the field unset.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
+        #[doc = "Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
         #[serde(
             rename = "version",
             default,
@@ -2903,28 +3342,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PublicKey {
-        #[doc = "The Algorithm associated\nwith this key."]
+        #[doc = "The Algorithm associated with this key."]
         #[serde(
             rename = "algorithm",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub algorithm: ::std::option::Option<crate::schemas::PublicKeyAlgorithm>,
-        #[doc = "The name of the CryptoKeyVersion public key.\nProvided here for verification.\n\nNOTE: This field is in Beta."]
+        #[doc = "The name of the CryptoKeyVersion public key. Provided here for verification. NOTE: This field is in Beta."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "The public key, encoded in PEM format. For more information, see the\n[RFC 7468](https://tools.ietf.org/html/rfc7468) sections for\n[General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and\n[Textual Encoding of Subject Public Key Info]\n(https://tools.ietf.org/html/rfc7468#section-13)."]
+        #[doc = "The public key, encoded in PEM format. For more information, see the [RFC 7468](https://tools.ietf.org/html/rfc7468) sections for [General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and [Textual Encoding of Subject Public Key Info] (https://tools.ietf.org/html/rfc7468#section-13)."]
         #[serde(
             rename = "pem",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub pem: ::std::option::Option<String>,
-        #[doc = "Integrity verification field. A CRC32C checksum of the returned\nPublicKey.pem. An integrity check of PublicKey.pem can be performed\nby computing the CRC32C checksum of PublicKey.pem and\ncomparing your results to this field. Discard the response in case of\nnon-matching checksum values, and perform a limited number of retries. A\npersistent mismatch may indicate an issue in your computation of the CRC32C\nchecksum.\nNote: This field is defined as int64 for reasons of compatibility across\ndifferent languages. However, it is a non-negative integer, which will\nnever exceed 2^32-1, and can be safely downconverted to uint32 in languages\nthat support this type.\n\nNOTE: This field is in Beta."]
+        #[doc = "Integrity verification field. A CRC32C checksum of the returned PublicKey.pem. An integrity check of PublicKey.pem can be performed by computing the CRC32C checksum of PublicKey.pem and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This field is in Beta."]
         #[serde(
             rename = "pemCrc32c",
             default,
@@ -2932,6 +3371,13 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub pem_crc_3_2c: ::std::option::Option<i64>,
+        #[doc = "The ProtectionLevel of the CryptoKeyVersion public key."]
+        #[serde(
+            rename = "protectionLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub protection_level: ::std::option::Option<crate::schemas::PublicKeyProtectionLevel>,
     }
     impl ::google_field_selector::FieldSelector for PublicKey {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -3095,6 +3541,93 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum PublicKeyProtectionLevel {
+        #[doc = "Crypto operations are performed by an external key manager."]
+        External,
+        #[doc = "Crypto operations are performed in a Hardware Security Module."]
+        Hsm,
+        #[doc = "Not specified."]
+        ProtectionLevelUnspecified,
+        #[doc = "Crypto operations are performed in software."]
+        Software,
+    }
+    impl PublicKeyProtectionLevel {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                PublicKeyProtectionLevel::External => "EXTERNAL",
+                PublicKeyProtectionLevel::Hsm => "HSM",
+                PublicKeyProtectionLevel::ProtectionLevelUnspecified => {
+                    "PROTECTION_LEVEL_UNSPECIFIED"
+                }
+                PublicKeyProtectionLevel::Software => "SOFTWARE",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PublicKeyProtectionLevel {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PublicKeyProtectionLevel {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PublicKeyProtectionLevel, ()> {
+            Ok(match s {
+                "EXTERNAL" => PublicKeyProtectionLevel::External,
+                "HSM" => PublicKeyProtectionLevel::Hsm,
+                "PROTECTION_LEVEL_UNSPECIFIED" => {
+                    PublicKeyProtectionLevel::ProtectionLevelUnspecified
+                }
+                "SOFTWARE" => PublicKeyProtectionLevel::Software,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for PublicKeyProtectionLevel {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for PublicKeyProtectionLevel {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for PublicKeyProtectionLevel {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "EXTERNAL" => PublicKeyProtectionLevel::External,
+                "HSM" => PublicKeyProtectionLevel::Hsm,
+                "PROTECTION_LEVEL_UNSPECIFIED" => {
+                    PublicKeyProtectionLevel::ProtectionLevelUnspecified
+                }
+                "SOFTWARE" => PublicKeyProtectionLevel::Software,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for PublicKeyProtectionLevel {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PublicKeyProtectionLevel {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -3132,14 +3665,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SetIamPolicyRequest {
-        #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."]
+        #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."]
         #[serde(
             rename = "policy",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub policy: ::std::option::Option<crate::schemas::Policy>,
-        #[doc = "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, the\nfollowing default mask is used:\n\n`paths: \"bindings, etag\"`"]
+        #[doc = "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: \"bindings, etag\"`"]
         #[serde(
             rename = "updateMask",
             default,
@@ -3170,7 +3703,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TestIamPermissionsRequest {
-        #[doc = "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
+        #[doc = "The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or 'storage.*') are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
         #[serde(
             rename = "permissions",
             default,
@@ -3201,7 +3734,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TestIamPermissionsResponse {
-        #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."]
+        #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is allowed."]
         #[serde(
             rename = "permissions",
             default,
@@ -3263,7 +3796,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct WrappingPublicKey {
-        #[doc = "The public key, encoded in PEM format. For more information, see the [RFC\n7468](https://tools.ietf.org/html/rfc7468) sections for [General\nConsiderations](https://tools.ietf.org/html/rfc7468#section-2) and\n[Textual Encoding of Subject Public Key Info]\n(https://tools.ietf.org/html/rfc7468#section-13)."]
+        #[doc = "The public key, encoded in PEM format. For more information, see the [RFC 7468](https://tools.ietf.org/html/rfc7468) sections for [General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and [Textual Encoding of Subject Public Key Info] (https://tools.ietf.org/html/rfc7468#section-13)."]
         #[serde(
             rename = "pem",
             default,
@@ -3688,19 +4221,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -3966,22 +4499,22 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("filter", &self.filter)]);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("filter", &self.filter)]);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -4054,7 +4587,7 @@ pub mod resources {
                             name: name.into(),
                         }
                     }
-                    #[doc = "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset."]
+                    #[doc = "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set."]
                     pub fn get_iam_policy(
                         &self,
                         resource: impl Into<String>,
@@ -4100,7 +4633,7 @@ pub mod resources {
                             page_token: None,
                         }
                     }
-                    #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors."]
+                    #[doc = "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors."]
                     pub fn set_iam_policy(
                         &self,
                         request: crate::schemas::SetIamPolicyRequest,
@@ -4124,7 +4657,7 @@ pub mod resources {
                             resource: resource.into(),
                         }
                     }
-                    #[doc = "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a `NOT_FOUND` error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning."]
+                    #[doc = "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning."]
                     pub fn test_iam_permissions(
                         &self,
                         request: crate::schemas::TestIamPermissionsRequest,
@@ -4148,10 +4681,10 @@ pub mod resources {
                             resource: resource.into(),
                         }
                     }
-                    #[doc = "Actions that can be performed on the crypto_keys resource"]pub fn crypto_keys ( & self ) -> crate :: resources :: projects :: locations :: key_rings :: crypto_keys :: CryptoKeysActions{
+                    #[doc = "Actions that can be performed on the crypto_keys resource"]                    pub fn crypto_keys ( & self ) -> crate :: resources :: projects :: locations :: key_rings :: crypto_keys :: CryptoKeysActions{
                         crate :: resources :: projects :: locations :: key_rings :: crypto_keys :: CryptoKeysActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                     }
-                    #[doc = "Actions that can be performed on the import_jobs resource"]pub fn import_jobs ( & self ) -> crate :: resources :: projects :: locations :: key_rings :: import_jobs :: ImportJobsActions{
+                    #[doc = "Actions that can be performed on the import_jobs resource"]                    pub fn import_jobs ( & self ) -> crate :: resources :: projects :: locations :: key_rings :: import_jobs :: ImportJobsActions{
                         crate :: resources :: projects :: locations :: key_rings :: import_jobs :: ImportJobsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                     }
                 }
@@ -4176,7 +4709,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> CreateRequestBuilder<'a> {
-                    #[doc = "Required. It must be unique within a location and match the regular\nexpression `[a-zA-Z0-9_-]{1,63}`"]
+                    #[doc = "Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`"]
                     pub fn key_ring_id(mut self, value: impl Into<String>) -> Self {
                         self.key_ring_id = Some(value.into());
                         self
@@ -4304,20 +4837,20 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("keyRingId", &self.key_ring_id)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("keyRingId", &self.key_ring_id)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -4465,19 +4998,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -4505,7 +5038,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> GetIamPolicyRequestBuilder<'a> {
-                    #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM\ndocumentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
+                    #[doc = "Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional bindings must specify version 3. Policies without any conditional bindings may specify any valid value or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
                     pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                         self.options_requested_policy_version = Some(value);
                         self
@@ -4632,23 +5165,23 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[(
                             "options.requestedPolicyVersion",
                             &self.options_requested_policy_version,
                         )]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -4679,22 +5212,22 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
-                    #[doc = "Optional. Only include resources that match the filter in the response. For\nmore information, see\n[Sorting and filtering list\nresults](https://cloud.google.com/kms/docs/sorting-and-filtering)."]
+                    #[doc = "Optional. Only include resources that match the filter in the response. For more information, see [Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-and-filtering)."]
                     pub fn filter(mut self, value: impl Into<String>) -> Self {
                         self.filter = Some(value.into());
                         self
                     }
-                    #[doc = "Optional. Specify how the results should be sorted. If not specified, the\nresults will be sorted in the default order.  For more information, see\n[Sorting and filtering list\nresults](https://cloud.google.com/kms/docs/sorting-and-filtering)."]
+                    #[doc = "Optional. Specify how the results should be sorted. If not specified, the results will be sorted in the default order. For more information, see [Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-and-filtering)."]
                     pub fn order_by(mut self, value: impl Into<String>) -> Self {
                         self.order_by = Some(value.into());
                         self
                     }
-                    #[doc = "Optional. Optional limit on the number of KeyRings to include in the\nresponse.  Further KeyRings can subsequently be obtained by\nincluding the ListKeyRingsResponse.next_page_token in a subsequent\nrequest.  If unspecified, the server will pick an appropriate default."]
+                    #[doc = "Optional. Optional limit on the number of KeyRings to include in the response. Further KeyRings can subsequently be obtained by including the ListKeyRingsResponse.next_page_token in a subsequent request. If unspecified, the server will pick an appropriate default."]
                     pub fn page_size(mut self, value: i32) -> Self {
                         self.page_size = Some(value);
                         self
                     }
-                    #[doc = "Optional. Optional pagination token, returned earlier via\nListKeyRingsResponse.next_page_token."]
+                    #[doc = "Optional. Optional pagination token, returned earlier via ListKeyRingsResponse.next_page_token."]
                     pub fn page_token(mut self, value: impl Into<String>) -> Self {
                         self.page_token = Some(value.into());
                         self
@@ -4926,23 +5459,23 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("filter", &self.filter)]);
-                        let req = req.query(&[("orderBy", &self.order_by)]);
-                        let req = req.query(&[("pageSize", &self.page_size)]);
-                        let req = req.query(&[("pageToken", &self.page_token)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("filter", &self.filter)]);
+                        req = req.query(&[("orderBy", &self.order_by)]);
+                        req = req.query(&[("pageSize", &self.page_size)]);
+                        req = req.query(&[("pageToken", &self.page_token)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -5104,19 +5637,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -5269,19 +5802,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -5293,7 +5826,9 @@ pub mod resources {
                     pub mod params {
                         #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                         pub enum ListVersionView {
+                            #[doc = "Default view for each CryptoKeyVersion. Does not include the attestation field."]
                             CryptoKeyVersionViewUnspecified,
+                            #[doc = "Provides all fields in each CryptoKeyVersion, including the attestation."]
                             Full,
                         }
                         impl ListVersionView {
@@ -5380,7 +5915,7 @@ pub mod resources {
                         fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                             self.auth
                         }
-                        #[doc = "Create a new CryptoKey within a KeyRing.\n\nCryptoKey.purpose and\nCryptoKey.version_template.algorithm\nare required."]
+                        #[doc = "Create a new CryptoKey within a KeyRing. CryptoKey.purpose and CryptoKey.version_template.algorithm are required."]
                         pub fn create(
                             &self,
                             request: crate::schemas::CryptoKey,
@@ -5406,7 +5941,7 @@ pub mod resources {
                                 skip_initial_version_creation: None,
                             }
                         }
-                        #[doc = "Decrypts data that was protected by Encrypt. The CryptoKey.purpose\nmust be ENCRYPT_DECRYPT."]
+                        #[doc = "Decrypts data that was protected by Encrypt. The CryptoKey.purpose must be ENCRYPT_DECRYPT."]
                         pub fn decrypt(
                             &self,
                             request: crate::schemas::DecryptRequest,
@@ -5430,7 +5965,7 @@ pub mod resources {
                                 name: name.into(),
                             }
                         }
-                        #[doc = "Encrypts data, so that it can only be recovered by a call to Decrypt.\nThe CryptoKey.purpose must be\nENCRYPT_DECRYPT."]
+                        #[doc = "Encrypts data, so that it can only be recovered by a call to Decrypt. The CryptoKey.purpose must be ENCRYPT_DECRYPT."]
                         pub fn encrypt(
                             &self,
                             request: crate::schemas::EncryptRequest,
@@ -5454,7 +5989,7 @@ pub mod resources {
                                 name: name.into(),
                             }
                         }
-                        #[doc = "Returns metadata for a given CryptoKey, as well as its\nprimary CryptoKeyVersion."]
+                        #[doc = "Returns metadata for a given CryptoKey, as well as its primary CryptoKeyVersion."]
                         pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder {
                             GetRequestBuilder {
                                 reqwest: &self.reqwest,
@@ -5473,7 +6008,7 @@ pub mod resources {
                                 name: name.into(),
                             }
                         }
-                        #[doc = "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset."]
+                        #[doc = "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set."]
                         pub fn get_iam_policy(
                             &self,
                             resource: impl Into<String>,
@@ -5545,7 +6080,7 @@ pub mod resources {
                                 update_mask: None,
                             }
                         }
-                        #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors."]
+                        #[doc = "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors."]
                         pub fn set_iam_policy(
                             &self,
                             request: crate::schemas::SetIamPolicyRequest,
@@ -5569,7 +6104,7 @@ pub mod resources {
                                 resource: resource.into(),
                             }
                         }
-                        #[doc = "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a `NOT_FOUND` error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning."]
+                        #[doc = "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning."]
                         pub fn test_iam_permissions(
                             &self,
                             request: crate::schemas::TestIamPermissionsRequest,
@@ -5593,7 +6128,7 @@ pub mod resources {
                                 resource: resource.into(),
                             }
                         }
-                        #[doc = "Update the version of a CryptoKey that will be used in Encrypt.\n\nReturns an error if called on an asymmetric key."]
+                        #[doc = "Update the version of a CryptoKey that will be used in Encrypt. Returns an error if called on an asymmetric key."]
                         pub fn update_primary_version(
                             &self,
                             request: crate::schemas::UpdateCryptoKeyPrimaryVersionRequest,
@@ -5617,7 +6152,7 @@ pub mod resources {
                                 name: name.into(),
                             }
                         }
-                        #[doc = "Actions that can be performed on the crypto_key_versions resource"]pub fn crypto_key_versions ( & self ) -> crate :: resources :: projects :: locations :: key_rings :: crypto_keys :: crypto_key_versions :: CryptoKeyVersionsActions{
+                        #[doc = "Actions that can be performed on the crypto_key_versions resource"]                        pub fn crypto_key_versions ( & self ) -> crate :: resources :: projects :: locations :: key_rings :: crypto_keys :: crypto_key_versions :: CryptoKeyVersionsActions{
                             crate :: resources :: projects :: locations :: key_rings :: crypto_keys :: crypto_key_versions :: CryptoKeyVersionsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                         }
                     }
@@ -5643,12 +6178,12 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> CreateRequestBuilder<'a> {
-                        #[doc = "Required. It must be unique within a KeyRing and match the regular\nexpression `[a-zA-Z0-9_-]{1,63}`"]
+                        #[doc = "Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`"]
                         pub fn crypto_key_id(mut self, value: impl Into<String>) -> Self {
                             self.crypto_key_id = Some(value.into());
                             self
                         }
-                        #[doc = "If set to true, the request will create a CryptoKey without any\nCryptoKeyVersions. You must manually call\nCreateCryptoKeyVersion or\nImportCryptoKeyVersion\nbefore you can use this CryptoKey."]
+                        #[doc = "If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey."]
                         pub fn skip_initial_version_creation(mut self, value: bool) -> Self {
                             self.skip_initial_version_creation = Some(value);
                             self
@@ -5779,24 +6314,24 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("cryptoKeyId", &self.crypto_key_id)]);
-                            let req = req.query(&[(
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("cryptoKeyId", &self.crypto_key_id)]);
+                            req = req.query(&[(
                                 "skipInitialVersionCreation",
                                 &self.skip_initial_version_creation,
                             )]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -5950,19 +6485,19 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -6116,19 +6651,19 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -6279,19 +6814,19 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -6319,7 +6854,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> GetIamPolicyRequestBuilder<'a> {
-                        #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM\ndocumentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
+                        #[doc = "Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional bindings must specify version 3. Policies without any conditional bindings may specify any valid value or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
                         pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                             self.options_requested_policy_version = Some(value);
                             self
@@ -6447,23 +6982,23 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[(
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[(
                                 "options.requestedPolicyVersion",
                                 &self.options_requested_policy_version,
                             )]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -6475,22 +7010,22 @@ pub mod resources {
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , parent : String , filter : Option < String > , order_by : Option < String > , page_size : Option < i32 > , page_token : Option < String > , version_view : Option < crate :: resources :: projects :: locations :: key_rings :: crypto_keys :: params :: ListVersionView > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                     impl<'a> ListRequestBuilder<'a> {
-                        #[doc = "Optional. Only include resources that match the filter in the response. For\nmore information, see\n[Sorting and filtering list\nresults](https://cloud.google.com/kms/docs/sorting-and-filtering)."]
+                        #[doc = "Optional. Only include resources that match the filter in the response. For more information, see [Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-and-filtering)."]
                         pub fn filter(mut self, value: impl Into<String>) -> Self {
                             self.filter = Some(value.into());
                             self
                         }
-                        #[doc = "Optional. Specify how the results should be sorted. If not specified, the\nresults will be sorted in the default order. For more information, see\n[Sorting and filtering list\nresults](https://cloud.google.com/kms/docs/sorting-and-filtering)."]
+                        #[doc = "Optional. Specify how the results should be sorted. If not specified, the results will be sorted in the default order. For more information, see [Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-and-filtering)."]
                         pub fn order_by(mut self, value: impl Into<String>) -> Self {
                             self.order_by = Some(value.into());
                             self
                         }
-                        #[doc = "Optional. Optional limit on the number of CryptoKeys to include in the\nresponse.  Further CryptoKeys can subsequently be obtained by\nincluding the ListCryptoKeysResponse.next_page_token in a subsequent\nrequest.  If unspecified, the server will pick an appropriate default."]
+                        #[doc = "Optional. Optional limit on the number of CryptoKeys to include in the response. Further CryptoKeys can subsequently be obtained by including the ListCryptoKeysResponse.next_page_token in a subsequent request. If unspecified, the server will pick an appropriate default."]
                         pub fn page_size(mut self, value: i32) -> Self {
                             self.page_size = Some(value);
                             self
                         }
-                        #[doc = "Optional. Optional pagination token, returned earlier via\nListCryptoKeysResponse.next_page_token."]
+                        #[doc = "Optional. Optional pagination token, returned earlier via ListCryptoKeysResponse.next_page_token."]
                         pub fn page_token(mut self, value: impl Into<String>) -> Self {
                             self.page_token = Some(value.into());
                             self
@@ -6735,24 +7270,24 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("filter", &self.filter)]);
-                            let req = req.query(&[("orderBy", &self.order_by)]);
-                            let req = req.query(&[("pageSize", &self.page_size)]);
-                            let req = req.query(&[("pageToken", &self.page_token)]);
-                            let req = req.query(&[("versionView", &self.version_view)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("filter", &self.filter)]);
+                            req = req.query(&[("orderBy", &self.order_by)]);
+                            req = req.query(&[("pageSize", &self.page_size)]);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("versionView", &self.version_view)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -6922,20 +7457,20 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                            let req = req.query(&[("updateMask", &self.update_mask)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                            req = req.query(&[("updateMask", &self.update_mask)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -7087,19 +7622,19 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -7253,19 +7788,19 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -7419,19 +7954,19 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -7443,7 +7978,9 @@ pub mod resources {
                         pub mod params {
                             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                             pub enum ListView {
+                                #[doc = "Default view for each CryptoKeyVersion. Does not include the attestation field."]
                                 CryptoKeyVersionViewUnspecified,
+                                #[doc = "Provides all fields in each CryptoKeyVersion, including the attestation."]
                                 Full,
                             }
                             impl ListView {
@@ -7533,7 +8070,7 @@ pub mod resources {
                             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                                 self.auth
                             }
-                            #[doc = "Decrypts data that was encrypted with a public key retrieved from\nGetPublicKey corresponding to a CryptoKeyVersion with\nCryptoKey.purpose ASYMMETRIC_DECRYPT."]
+                            #[doc = "Decrypts data that was encrypted with a public key retrieved from GetPublicKey corresponding to a CryptoKeyVersion with CryptoKey.purpose ASYMMETRIC_DECRYPT."]
                             pub fn asymmetric_decrypt(
                                 &self,
                                 request: crate::schemas::AsymmetricDecryptRequest,
@@ -7557,7 +8094,7 @@ pub mod resources {
                                     name: name.into(),
                                 }
                             }
-                            #[doc = "Signs data using a CryptoKeyVersion with CryptoKey.purpose\nASYMMETRIC_SIGN, producing a signature that can be verified with the public\nkey retrieved from GetPublicKey."]
+                            #[doc = "Signs data using a CryptoKeyVersion with CryptoKey.purpose ASYMMETRIC_SIGN, producing a signature that can be verified with the public key retrieved from GetPublicKey."]
                             pub fn asymmetric_sign(
                                 &self,
                                 request: crate::schemas::AsymmetricSignRequest,
@@ -7581,7 +8118,7 @@ pub mod resources {
                                     name: name.into(),
                                 }
                             }
-                            #[doc = "Create a new CryptoKeyVersion in a CryptoKey.\n\nThe server will assign the next sequential id. If unset,\nstate will be set to\nENABLED."]
+                            #[doc = "Create a new CryptoKeyVersion in a CryptoKey. The server will assign the next sequential id. If unset, state will be set to ENABLED."]
                             pub fn create(
                                 &self,
                                 request: crate::schemas::CryptoKeyVersion,
@@ -7605,7 +8142,7 @@ pub mod resources {
                                     parent: parent.into(),
                                 }
                             }
-                            #[doc = "Schedule a CryptoKeyVersion for destruction.\n\nUpon calling this method, CryptoKeyVersion.state will be set to\nDESTROY_SCHEDULED\nand destroy_time will be set to a time 24\nhours in the future, at which point the state\nwill be changed to\nDESTROYED, and the key\nmaterial will be irrevocably destroyed.\n\nBefore the destroy_time is reached,\nRestoreCryptoKeyVersion may be called to reverse the process."]
+                            #[doc = "Schedule a CryptoKeyVersion for destruction. Upon calling this method, CryptoKeyVersion.state will be set to DESTROY_SCHEDULED and destroy_time will be set to a time 24 hours in the future, at which point the state will be changed to DESTROYED, and the key material will be irrevocably destroyed. Before the destroy_time is reached, RestoreCryptoKeyVersion may be called to reverse the process."]
                             pub fn destroy(
                                 &self,
                                 request: crate::schemas::DestroyCryptoKeyVersionRequest,
@@ -7648,7 +8185,7 @@ pub mod resources {
                                     name: name.into(),
                                 }
                             }
-                            #[doc = "Returns the public key for the given CryptoKeyVersion. The\nCryptoKey.purpose must be\nASYMMETRIC_SIGN or\nASYMMETRIC_DECRYPT."]
+                            #[doc = "Returns the public key for the given CryptoKeyVersion. The CryptoKey.purpose must be ASYMMETRIC_SIGN or ASYMMETRIC_DECRYPT."]
                             pub fn get_public_key(
                                 &self,
                                 name: impl Into<String>,
@@ -7670,7 +8207,7 @@ pub mod resources {
                                     name: name.into(),
                                 }
                             }
-                            #[doc = "Imports a new CryptoKeyVersion into an existing CryptoKey using the\nwrapped key material provided in the request.\n\nThe version ID will be assigned the next sequential id within the\nCryptoKey."]
+                            #[doc = "Imports a new CryptoKeyVersion into an existing CryptoKey using the wrapped key material provided in the request. The version ID will be assigned the next sequential id within the CryptoKey."]
                             pub fn import(
                                 &self,
                                 request: crate::schemas::ImportCryptoKeyVersionRequest,
@@ -7718,7 +8255,7 @@ pub mod resources {
                                     view: None,
                                 }
                             }
-                            #[doc = "Update a CryptoKeyVersion's metadata.\n\nstate may be changed between\nENABLED and\nDISABLED using this\nmethod. See DestroyCryptoKeyVersion and RestoreCryptoKeyVersion to\nmove between other states."]
+                            #[doc = "Update a CryptoKeyVersion's metadata. state may be changed between ENABLED and DISABLED using this method. See DestroyCryptoKeyVersion and RestoreCryptoKeyVersion to move between other states."]
                             pub fn patch(
                                 &self,
                                 request: crate::schemas::CryptoKeyVersion,
@@ -7743,7 +8280,7 @@ pub mod resources {
                                     update_mask: None,
                                 }
                             }
-                            #[doc = "Restore a CryptoKeyVersion in the\nDESTROY_SCHEDULED\nstate.\n\nUpon restoration of the CryptoKeyVersion, state\nwill be set to DISABLED,\nand destroy_time will be cleared."]
+                            #[doc = "Restore a CryptoKeyVersion in the DESTROY_SCHEDULED state. Upon restoration of the CryptoKeyVersion, state will be set to DISABLED, and destroy_time will be cleared."]
                             pub fn restore(
                                 &self,
                                 request: crate::schemas::RestoreCryptoKeyVersionRequest,
@@ -7914,19 +8451,19 @@ pub mod resources {
                                 path: &str,
                             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
-                                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                                let req = req.query(&[("access_token", &self.access_token)]);
-                                let req = req.query(&[("alt", &self.alt)]);
-                                let req = req.query(&[("callback", &self.callback)]);
-                                let req = req.query(&[("fields", &self.fields)]);
-                                let req = req.query(&[("key", &self.key)]);
-                                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                                let req = req.query(&[("uploadType", &self.upload_type)]);
-                                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                                let req = req.bearer_auth(
+                                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                                req = req.query(&[("access_token", &self.access_token)]);
+                                req = req.query(&[("alt", &self.alt)]);
+                                req = req.query(&[("callback", &self.callback)]);
+                                req = req.query(&[("fields", &self.fields)]);
+                                req = req.query(&[("key", &self.key)]);
+                                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                                req = req.query(&[("quotaUser", &self.quota_user)]);
+                                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                                req = req.query(&[("uploadType", &self.upload_type)]);
+                                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                                req = req.bearer_auth(
                                     self.auth
                                         .access_token()
                                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -8080,19 +8617,19 @@ pub mod resources {
                                 path: &str,
                             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
-                                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                                let req = req.query(&[("access_token", &self.access_token)]);
-                                let req = req.query(&[("alt", &self.alt)]);
-                                let req = req.query(&[("callback", &self.callback)]);
-                                let req = req.query(&[("fields", &self.fields)]);
-                                let req = req.query(&[("key", &self.key)]);
-                                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                                let req = req.query(&[("uploadType", &self.upload_type)]);
-                                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                                let req = req.bearer_auth(
+                                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                                req = req.query(&[("access_token", &self.access_token)]);
+                                req = req.query(&[("alt", &self.alt)]);
+                                req = req.query(&[("callback", &self.callback)]);
+                                req = req.query(&[("fields", &self.fields)]);
+                                req = req.query(&[("key", &self.key)]);
+                                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                                req = req.query(&[("quotaUser", &self.quota_user)]);
+                                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                                req = req.query(&[("uploadType", &self.upload_type)]);
+                                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                                req = req.bearer_auth(
                                     self.auth
                                         .access_token()
                                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -8246,19 +8783,19 @@ pub mod resources {
                                 path: &str,
                             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
-                                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                                let req = req.query(&[("access_token", &self.access_token)]);
-                                let req = req.query(&[("alt", &self.alt)]);
-                                let req = req.query(&[("callback", &self.callback)]);
-                                let req = req.query(&[("fields", &self.fields)]);
-                                let req = req.query(&[("key", &self.key)]);
-                                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                                let req = req.query(&[("uploadType", &self.upload_type)]);
-                                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                                let req = req.bearer_auth(
+                                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                                req = req.query(&[("access_token", &self.access_token)]);
+                                req = req.query(&[("alt", &self.alt)]);
+                                req = req.query(&[("callback", &self.callback)]);
+                                req = req.query(&[("fields", &self.fields)]);
+                                req = req.query(&[("key", &self.key)]);
+                                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                                req = req.query(&[("quotaUser", &self.quota_user)]);
+                                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                                req = req.query(&[("uploadType", &self.upload_type)]);
+                                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                                req = req.bearer_auth(
                                     self.auth
                                         .access_token()
                                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -8412,19 +8949,19 @@ pub mod resources {
                                 path: &str,
                             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
-                                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                                let req = req.query(&[("access_token", &self.access_token)]);
-                                let req = req.query(&[("alt", &self.alt)]);
-                                let req = req.query(&[("callback", &self.callback)]);
-                                let req = req.query(&[("fields", &self.fields)]);
-                                let req = req.query(&[("key", &self.key)]);
-                                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                                let req = req.query(&[("uploadType", &self.upload_type)]);
-                                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                                let req = req.bearer_auth(
+                                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                                req = req.query(&[("access_token", &self.access_token)]);
+                                req = req.query(&[("alt", &self.alt)]);
+                                req = req.query(&[("callback", &self.callback)]);
+                                req = req.query(&[("fields", &self.fields)]);
+                                req = req.query(&[("key", &self.key)]);
+                                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                                req = req.query(&[("quotaUser", &self.quota_user)]);
+                                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                                req = req.query(&[("uploadType", &self.upload_type)]);
+                                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                                req = req.bearer_auth(
                                     self.auth
                                         .access_token()
                                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -8575,19 +9112,19 @@ pub mod resources {
                                 path: &str,
                             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
-                                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                                let req = req.query(&[("access_token", &self.access_token)]);
-                                let req = req.query(&[("alt", &self.alt)]);
-                                let req = req.query(&[("callback", &self.callback)]);
-                                let req = req.query(&[("fields", &self.fields)]);
-                                let req = req.query(&[("key", &self.key)]);
-                                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                                let req = req.query(&[("uploadType", &self.upload_type)]);
-                                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                                let req = req.bearer_auth(
+                                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                                req = req.query(&[("access_token", &self.access_token)]);
+                                req = req.query(&[("alt", &self.alt)]);
+                                req = req.query(&[("callback", &self.callback)]);
+                                req = req.query(&[("fields", &self.fields)]);
+                                req = req.query(&[("key", &self.key)]);
+                                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                                req = req.query(&[("quotaUser", &self.quota_user)]);
+                                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                                req = req.query(&[("uploadType", &self.upload_type)]);
+                                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                                req = req.bearer_auth(
                                     self.auth
                                         .access_token()
                                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -8739,19 +9276,19 @@ pub mod resources {
                                 path: &str,
                             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
-                                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                                let req = req.query(&[("access_token", &self.access_token)]);
-                                let req = req.query(&[("alt", &self.alt)]);
-                                let req = req.query(&[("callback", &self.callback)]);
-                                let req = req.query(&[("fields", &self.fields)]);
-                                let req = req.query(&[("key", &self.key)]);
-                                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                                let req = req.query(&[("uploadType", &self.upload_type)]);
-                                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                                let req = req.bearer_auth(
+                                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                                req = req.query(&[("access_token", &self.access_token)]);
+                                req = req.query(&[("alt", &self.alt)]);
+                                req = req.query(&[("callback", &self.callback)]);
+                                req = req.query(&[("fields", &self.fields)]);
+                                req = req.query(&[("key", &self.key)]);
+                                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                                req = req.query(&[("quotaUser", &self.quota_user)]);
+                                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                                req = req.query(&[("uploadType", &self.upload_type)]);
+                                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                                req = req.bearer_auth(
                                     self.auth
                                         .access_token()
                                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -8905,19 +9442,19 @@ pub mod resources {
                                 path: &str,
                             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
-                                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                                let req = req.query(&[("access_token", &self.access_token)]);
-                                let req = req.query(&[("alt", &self.alt)]);
-                                let req = req.query(&[("callback", &self.callback)]);
-                                let req = req.query(&[("fields", &self.fields)]);
-                                let req = req.query(&[("key", &self.key)]);
-                                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                                let req = req.query(&[("uploadType", &self.upload_type)]);
-                                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                                let req = req.bearer_auth(
+                                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                                req = req.query(&[("access_token", &self.access_token)]);
+                                req = req.query(&[("alt", &self.alt)]);
+                                req = req.query(&[("callback", &self.callback)]);
+                                req = req.query(&[("fields", &self.fields)]);
+                                req = req.query(&[("key", &self.key)]);
+                                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                                req = req.query(&[("quotaUser", &self.quota_user)]);
+                                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                                req = req.query(&[("uploadType", &self.upload_type)]);
+                                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                                req = req.bearer_auth(
                                     self.auth
                                         .access_token()
                                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -8929,22 +9466,22 @@ pub mod resources {
                         #[derive(Debug, Clone)]
                         pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , parent : String , filter : Option < String > , order_by : Option < String > , page_size : Option < i32 > , page_token : Option < String > , view : Option < crate :: resources :: projects :: locations :: key_rings :: crypto_keys :: crypto_key_versions :: params :: ListView > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                         impl<'a> ListRequestBuilder<'a> {
-                            #[doc = "Optional. Only include resources that match the filter in the response. For\nmore information, see\n[Sorting and filtering list\nresults](https://cloud.google.com/kms/docs/sorting-and-filtering)."]
+                            #[doc = "Optional. Only include resources that match the filter in the response. For more information, see [Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-and-filtering)."]
                             pub fn filter(mut self, value: impl Into<String>) -> Self {
                                 self.filter = Some(value.into());
                                 self
                             }
-                            #[doc = "Optional. Specify how the results should be sorted. If not specified, the\nresults will be sorted in the default order. For more information, see\n[Sorting and filtering list\nresults](https://cloud.google.com/kms/docs/sorting-and-filtering)."]
+                            #[doc = "Optional. Specify how the results should be sorted. If not specified, the results will be sorted in the default order. For more information, see [Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-and-filtering)."]
                             pub fn order_by(mut self, value: impl Into<String>) -> Self {
                                 self.order_by = Some(value.into());
                                 self
                             }
-                            #[doc = "Optional. Optional limit on the number of CryptoKeyVersions to\ninclude in the response. Further CryptoKeyVersions can\nsubsequently be obtained by including the\nListCryptoKeyVersionsResponse.next_page_token in a subsequent request.\nIf unspecified, the server will pick an appropriate default."]
+                            #[doc = "Optional. Optional limit on the number of CryptoKeyVersions to include in the response. Further CryptoKeyVersions can subsequently be obtained by including the ListCryptoKeyVersionsResponse.next_page_token in a subsequent request. If unspecified, the server will pick an appropriate default."]
                             pub fn page_size(mut self, value: i32) -> Self {
                                 self.page_size = Some(value);
                                 self
                             }
-                            #[doc = "Optional. Optional pagination token, returned earlier via\nListCryptoKeyVersionsResponse.next_page_token."]
+                            #[doc = "Optional. Optional pagination token, returned earlier via ListCryptoKeyVersionsResponse.next_page_token."]
                             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                                 self.page_token = Some(value.into());
                                 self
@@ -9195,24 +9732,24 @@ pub mod resources {
                                 path: &str,
                             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
-                                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                                let req = req.query(&[("filter", &self.filter)]);
-                                let req = req.query(&[("orderBy", &self.order_by)]);
-                                let req = req.query(&[("pageSize", &self.page_size)]);
-                                let req = req.query(&[("pageToken", &self.page_token)]);
-                                let req = req.query(&[("view", &self.view)]);
-                                let req = req.query(&[("access_token", &self.access_token)]);
-                                let req = req.query(&[("alt", &self.alt)]);
-                                let req = req.query(&[("callback", &self.callback)]);
-                                let req = req.query(&[("fields", &self.fields)]);
-                                let req = req.query(&[("key", &self.key)]);
-                                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                                let req = req.query(&[("uploadType", &self.upload_type)]);
-                                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                                let req = req.bearer_auth(
+                                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                                req = req.query(&[("filter", &self.filter)]);
+                                req = req.query(&[("orderBy", &self.order_by)]);
+                                req = req.query(&[("pageSize", &self.page_size)]);
+                                req = req.query(&[("pageToken", &self.page_token)]);
+                                req = req.query(&[("view", &self.view)]);
+                                req = req.query(&[("access_token", &self.access_token)]);
+                                req = req.query(&[("alt", &self.alt)]);
+                                req = req.query(&[("callback", &self.callback)]);
+                                req = req.query(&[("fields", &self.fields)]);
+                                req = req.query(&[("key", &self.key)]);
+                                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                                req = req.query(&[("quotaUser", &self.quota_user)]);
+                                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                                req = req.query(&[("uploadType", &self.upload_type)]);
+                                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                                req = req.bearer_auth(
                                     self.auth
                                         .access_token()
                                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9382,20 +9919,20 @@ pub mod resources {
                                 path: &str,
                             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
-                                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                                let req = req.query(&[("updateMask", &self.update_mask)]);
-                                let req = req.query(&[("access_token", &self.access_token)]);
-                                let req = req.query(&[("alt", &self.alt)]);
-                                let req = req.query(&[("callback", &self.callback)]);
-                                let req = req.query(&[("fields", &self.fields)]);
-                                let req = req.query(&[("key", &self.key)]);
-                                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                                let req = req.query(&[("uploadType", &self.upload_type)]);
-                                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                                let req = req.bearer_auth(
+                                let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                                req = req.query(&[("updateMask", &self.update_mask)]);
+                                req = req.query(&[("access_token", &self.access_token)]);
+                                req = req.query(&[("alt", &self.alt)]);
+                                req = req.query(&[("callback", &self.callback)]);
+                                req = req.query(&[("fields", &self.fields)]);
+                                req = req.query(&[("key", &self.key)]);
+                                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                                req = req.query(&[("quotaUser", &self.quota_user)]);
+                                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                                req = req.query(&[("uploadType", &self.upload_type)]);
+                                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                                req = req.bearer_auth(
                                     self.auth
                                         .access_token()
                                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9549,19 +10086,19 @@ pub mod resources {
                                 path: &str,
                             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
-                                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                                let req = req.query(&[("access_token", &self.access_token)]);
-                                let req = req.query(&[("alt", &self.alt)]);
-                                let req = req.query(&[("callback", &self.callback)]);
-                                let req = req.query(&[("fields", &self.fields)]);
-                                let req = req.query(&[("key", &self.key)]);
-                                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                                let req = req.query(&[("uploadType", &self.upload_type)]);
-                                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                                let req = req.bearer_auth(
+                                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                                req = req.query(&[("access_token", &self.access_token)]);
+                                req = req.query(&[("alt", &self.alt)]);
+                                req = req.query(&[("callback", &self.callback)]);
+                                req = req.query(&[("fields", &self.fields)]);
+                                req = req.query(&[("key", &self.key)]);
+                                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                                req = req.query(&[("quotaUser", &self.quota_user)]);
+                                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                                req = req.query(&[("uploadType", &self.upload_type)]);
+                                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                                req = req.bearer_auth(
                                     self.auth
                                         .access_token()
                                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9581,7 +10118,7 @@ pub mod resources {
                         fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                             self.auth
                         }
-                        #[doc = "Create a new ImportJob within a KeyRing.\n\nImportJob.import_method is required."]
+                        #[doc = "Create a new ImportJob within a KeyRing. ImportJob.import_method is required."]
                         pub fn create(
                             &self,
                             request: crate::schemas::ImportJob,
@@ -9625,7 +10162,7 @@ pub mod resources {
                                 name: name.into(),
                             }
                         }
-                        #[doc = "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset."]
+                        #[doc = "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set."]
                         pub fn get_iam_policy(
                             &self,
                             resource: impl Into<String>,
@@ -9671,7 +10208,7 @@ pub mod resources {
                                 page_token: None,
                             }
                         }
-                        #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors."]
+                        #[doc = "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors."]
                         pub fn set_iam_policy(
                             &self,
                             request: crate::schemas::SetIamPolicyRequest,
@@ -9695,7 +10232,7 @@ pub mod resources {
                                 resource: resource.into(),
                             }
                         }
-                        #[doc = "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a `NOT_FOUND` error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning."]
+                        #[doc = "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning."]
                         pub fn test_iam_permissions(
                             &self,
                             request: crate::schemas::TestIamPermissionsRequest,
@@ -9741,7 +10278,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> CreateRequestBuilder<'a> {
-                        #[doc = "Required. It must be unique within a KeyRing and match the regular\nexpression `[a-zA-Z0-9_-]{1,63}`"]
+                        #[doc = "Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`"]
                         pub fn import_job_id(mut self, value: impl Into<String>) -> Self {
                             self.import_job_id = Some(value.into());
                             self
@@ -9872,20 +10409,20 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("importJobId", &self.import_job_id)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("importJobId", &self.import_job_id)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10036,19 +10573,19 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10076,7 +10613,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> GetIamPolicyRequestBuilder<'a> {
-                        #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM\ndocumentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
+                        #[doc = "Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional bindings must specify version 3. Policies without any conditional bindings may specify any valid value or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
                         pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                             self.options_requested_policy_version = Some(value);
                             self
@@ -10204,23 +10741,23 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[(
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[(
                                 "options.requestedPolicyVersion",
                                 &self.options_requested_policy_version,
                             )]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10251,22 +10788,22 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> ListRequestBuilder<'a> {
-                        #[doc = "Optional. Only include resources that match the filter in the response. For\nmore information, see\n[Sorting and filtering list\nresults](https://cloud.google.com/kms/docs/sorting-and-filtering)."]
+                        #[doc = "Optional. Only include resources that match the filter in the response. For more information, see [Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-and-filtering)."]
                         pub fn filter(mut self, value: impl Into<String>) -> Self {
                             self.filter = Some(value.into());
                             self
                         }
-                        #[doc = "Optional. Specify how the results should be sorted. If not specified, the\nresults will be sorted in the default order. For more information, see\n[Sorting and filtering list\nresults](https://cloud.google.com/kms/docs/sorting-and-filtering)."]
+                        #[doc = "Optional. Specify how the results should be sorted. If not specified, the results will be sorted in the default order. For more information, see [Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-and-filtering)."]
                         pub fn order_by(mut self, value: impl Into<String>) -> Self {
                             self.order_by = Some(value.into());
                             self
                         }
-                        #[doc = "Optional. Optional limit on the number of ImportJobs to include in the\nresponse. Further ImportJobs can subsequently be obtained by\nincluding the ListImportJobsResponse.next_page_token in a subsequent\nrequest. If unspecified, the server will pick an appropriate default."]
+                        #[doc = "Optional. Optional limit on the number of ImportJobs to include in the response. Further ImportJobs can subsequently be obtained by including the ListImportJobsResponse.next_page_token in a subsequent request. If unspecified, the server will pick an appropriate default."]
                         pub fn page_size(mut self, value: i32) -> Self {
                             self.page_size = Some(value);
                             self
                         }
-                        #[doc = "Optional. Optional pagination token, returned earlier via\nListImportJobsResponse.next_page_token."]
+                        #[doc = "Optional. Optional pagination token, returned earlier via ListImportJobsResponse.next_page_token."]
                         pub fn page_token(mut self, value: impl Into<String>) -> Self {
                             self.page_token = Some(value.into());
                             self
@@ -10503,23 +11040,23 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("filter", &self.filter)]);
-                            let req = req.query(&[("orderBy", &self.order_by)]);
-                            let req = req.query(&[("pageSize", &self.page_size)]);
-                            let req = req.query(&[("pageToken", &self.page_token)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("filter", &self.filter)]);
+                            req = req.query(&[("orderBy", &self.order_by)]);
+                            req = req.query(&[("pageSize", &self.page_size)]);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10682,19 +11219,19 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10848,19 +11385,19 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,

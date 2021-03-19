@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("tagmanager1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200625")
-            .about("This API allows clients to access and modify container and tag\n     configuration.")
+            .version("0.1.0-20210317")
+            .about("This API allows clients to access and modify container and tag configuration.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -82,7 +82,9 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             permissions1 = permissions1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Removes a user from the account, revoking access to it and all of its\ncontainers.");
+            let mcmd = SubCommand::with_name("delete").about(
+                "Removes a user from the account, revoking access to it and all of its containers.",
+            );
             permissions1 = permissions1.subcommand(mcmd);
         }
         {
@@ -91,7 +93,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             permissions1 = permissions1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("List all users that have access to the account along with Account and\nContainer Permissions granted to each of them.");
+            let mcmd = SubCommand::with_name("list").about("List all users that have access to the account along with Account and Container Permissions granted to each of them.");
             permissions1 = permissions1.subcommand(mcmd);
         }
         {
@@ -257,7 +259,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             versions2 = versions2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("restore").about("Restores a Container Version. This will overwrite the container\'s current\nconfiguration (including its variables, triggers and tags). The operation\nwill not have any effect on the version that is being served (i.e. the\npublished version).");
+            let mcmd = SubCommand::with_name("restore").about("Restores a Container Version. This will overwrite the container\'s current configuration (including its variables, triggers and tags). The operation will not have any effect on the version that is being served (i.e. the published version).");
             versions2 = versions2.subcommand(mcmd);
         }
         {

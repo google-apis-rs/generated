@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("secretmanager1_beta1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200619")
-            .about("Stores sensitive data such as API keys, passwords, and certificates. Provides convenience while improving security.\n")
+            .version("0.1.0-20210308")
+            .about("Stores sensitive data such as API keys, passwords, and certificates. Provides convenience while improving security. ")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -52,7 +52,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: add_version, create, delete, get, get_iam_policy, list, patch, set_iam_policy and test_iam_permissions");
         {
-            let mcmd = SubCommand::with_name("add_version").about("Creates a new SecretVersion containing secret data and attaches\nit to an existing Secret.");
+            let mcmd = SubCommand::with_name("add_version").about("Creates a new SecretVersion containing secret data and attaches it to an existing Secret.");
             secrets1 = secrets1.subcommand(mcmd);
         }
         {
@@ -69,7 +69,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             secrets1 = secrets1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a secret.\nReturns empty policy if the secret exists and does not have a policy set.");
+            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a secret. Returns empty policy if the secret exists and does not have a policy set.");
             secrets1 = secrets1.subcommand(mcmd);
         }
         {
@@ -82,43 +82,42 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             secrets1 = secrets1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified secret. Replaces any\nexisting policy.\n\nPermissions on SecretVersions are enforced according\nto the policy set on the associated Secret.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified secret. Replaces any existing policy. Permissions on SecretVersions are enforced according to the policy set on the associated Secret.");
             secrets1 = secrets1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has for the specified secret.\nIf the secret does not exist, this call returns an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.");
+            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has for the specified secret. If the secret does not exist, this call returns an empty set of permissions, not a NOT_FOUND error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.");
             secrets1 = secrets1.subcommand(mcmd);
         }
         let mut versions2 = SubCommand::with_name("versions")
             .setting(AppSettings::ColoredHelp)
             .about("methods: access, destroy, disable, enable, get and list");
         {
-            let mcmd = SubCommand::with_name("access").about("Accesses a SecretVersion. This call returns the secret data.\n\n`projects/*/secrets/*/versions/latest` is an alias to the `latest`\nSecretVersion.");
+            let mcmd = SubCommand::with_name("access").about("Accesses a SecretVersion. This call returns the secret data. `projects/*/secrets/*/versions/latest` is an alias to the `latest` SecretVersion.");
             versions2 = versions2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("destroy").about("Destroys a SecretVersion.\n\nSets the state of the SecretVersion to\nDESTROYED and irrevocably destroys the\nsecret data.");
+            let mcmd = SubCommand::with_name("destroy").about("Destroys a SecretVersion. Sets the state of the SecretVersion to DESTROYED and irrevocably destroys the secret data.");
             versions2 = versions2.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("disable").about(
-                "Disables a SecretVersion.\n\nSets the state of the SecretVersion to\nDISABLED.",
+                "Disables a SecretVersion. Sets the state of the SecretVersion to DISABLED.",
             );
             versions2 = versions2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("enable").about(
-                "Enables a SecretVersion.\n\nSets the state of the SecretVersion to\nENABLED.",
-            );
+            let mcmd = SubCommand::with_name("enable")
+                .about("Enables a SecretVersion. Sets the state of the SecretVersion to ENABLED.");
             versions2 = versions2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Gets metadata for a SecretVersion.\n\n`projects/*/secrets/*/versions/latest` is an alias to the `latest`\nSecretVersion.");
+            let mcmd = SubCommand::with_name("get").about("Gets metadata for a SecretVersion. `projects/*/secrets/*/versions/latest` is an alias to the `latest` SecretVersion.");
             versions2 = versions2.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("list")
-                .about("Lists SecretVersions. This call does not return secret\ndata.");
+                .about("Lists SecretVersions. This call does not return secret data.");
             versions2 = versions2.subcommand(mcmd);
         }
         secrets1 = secrets1.subcommand(versions2);

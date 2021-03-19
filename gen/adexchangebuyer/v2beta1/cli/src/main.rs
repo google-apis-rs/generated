@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("adexchangebuyer2_beta1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200625")
+            .version("0.1.0-20210318")
             .about("Accesses the latest features for managing Authorized Buyers accounts, Real-Time Bidding configurations and auction metrics, and Marketplace programmatic deals.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -76,7 +76,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             creatives1 = creatives1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("stop_watching").about("Stops watching a creative. Will stop push notifications being sent to the\ntopics when the creative changes status.");
+            let mcmd = SubCommand::with_name("stop_watching").about("Stops watching a creative. Will stop push notifications being sent to the topics when the creative changes status.");
             creatives1 = creatives1.subcommand(mcmd);
         }
         {
@@ -84,14 +84,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             creatives1 = creatives1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("watch").about("Watches a creative. Will result in push notifications being sent to the\ntopic when the creative changes status.");
+            let mcmd = SubCommand::with_name("watch").about("Watches a creative. Will result in push notifications being sent to the topic when the creative changes status.");
             creatives1 = creatives1.subcommand(mcmd);
         }
         let mut finalized_proposals1 = SubCommand::with_name("finalized_proposals")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("List finalized proposals, regardless if a proposal is being renegotiated.\nA filter expression (PQL query) may be specified to filter the results.\nThe notes will not be returned.");
+            let mcmd = SubCommand::with_name("list").about("List finalized proposals, regardless if a proposal is being renegotiated. A filter expression (PQL query) may be specified to filter the results. The notes will not be returned.");
             finalized_proposals1 = finalized_proposals1.subcommand(mcmd);
         }
         let mut products1 = SubCommand::with_name("products")
@@ -102,52 +102,52 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             products1 = products1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("List all products visible to the buyer (optionally filtered by the\nspecified PQL query).");
+            let mcmd = SubCommand::with_name("list").about("List all products visible to the buyer (optionally filtered by the specified PQL query).");
             products1 = products1.subcommand(mcmd);
         }
         let mut proposals1 = SubCommand::with_name("proposals")
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: accept, add_note, cancel_negotiation, complete_setup, create, get, list, pause, resume and update");
         {
-            let mcmd = SubCommand::with_name("accept").about("Mark the proposal as accepted at the given revision number. If the number\ndoes not match the server\'s revision number an `ABORTED` error message will\nbe returned. This call updates the proposal_state from `PROPOSED` to\n`BUYER_ACCEPTED`, or from `SELLER_ACCEPTED` to `FINALIZED`.");
+            let mcmd = SubCommand::with_name("accept").about("Mark the proposal as accepted at the given revision number. If the number does not match the server\'s revision number an `ABORTED` error message will be returned. This call updates the proposal_state from `PROPOSED` to `BUYER_ACCEPTED`, or from `SELLER_ACCEPTED` to `FINALIZED`. Upon calling this endpoint, the buyer implicitly agrees to the terms and conditions optionally set within the proposal by the publisher.");
             proposals1 = proposals1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("add_note").about("Create a new note and attach it to the proposal. The note is assigned\na unique ID by the server.\nThe proposal revision number will not increase when associated with a\nnew note.");
+            let mcmd = SubCommand::with_name("add_note").about("Create a new note and attach it to the proposal. The note is assigned a unique ID by the server. The proposal revision number will not increase when associated with a new note.");
             proposals1 = proposals1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("cancel_negotiation").about("Cancel an ongoing negotiation on a proposal. This does not cancel or end\nserving for the deals if the proposal has been finalized, but only cancels\na negotiation unilaterally.");
+            let mcmd = SubCommand::with_name("cancel_negotiation").about("Cancel an ongoing negotiation on a proposal. This does not cancel or end serving for the deals if the proposal has been finalized, but only cancels a negotiation unilaterally.");
             proposals1 = proposals1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("complete_setup").about("Update the given proposal to indicate that setup has been completed.\nThis method is called by the buyer when the line items have been created\non their end for a finalized proposal and all the required creatives\nhave been uploaded using the creatives API. This call updates the\n`is_setup_completed` bit on the proposal and also notifies the seller.\nThe server will advance the revision number of the most recent proposal.");
+            let mcmd = SubCommand::with_name("complete_setup").about("Update the given proposal to indicate that setup has been completed. This method is called by the buyer when the line items have been created on their end for a finalized proposal and all the required creatives have been uploaded using the creatives API. This call updates the `is_setup_completed` bit on the proposal and also notifies the seller. The server will advance the revision number of the most recent proposal.");
             proposals1 = proposals1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("create").about("Create the given proposal. Each created proposal and any deals it contains\nare assigned a unique ID by the server.");
+            let mcmd = SubCommand::with_name("create").about("Create the given proposal. Each created proposal and any deals it contains are assigned a unique ID by the server.");
             proposals1 = proposals1.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("get").about(
-                "Gets a proposal given its ID. The proposal is returned at its head\nrevision.",
+                "Gets a proposal given its ID. The proposal is returned at its head revision.",
             );
             proposals1 = proposals1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("List proposals. A filter expression (PQL query) may be specified to\nfilter the results. To retrieve all finalized proposals, regardless if a\nproposal is being renegotiated, see the FinalizedProposals resource.\nNote that Bidder/ChildSeat relationships differ from the usual behavior.\nA Bidder account can only see its child seats\' proposals by specifying\nthe ChildSeat\'s accountId in the request path.");
+            let mcmd = SubCommand::with_name("list").about("List proposals. A filter expression (PQL query) may be specified to filter the results. To retrieve all finalized proposals, regardless if a proposal is being renegotiated, see the FinalizedProposals resource. Note that Bidder/ChildSeat relationships differ from the usual behavior. A Bidder account can only see its child seats\' proposals by specifying the ChildSeat\'s accountId in the request path.");
             proposals1 = proposals1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("pause").about("Update the given proposal to pause serving.\nThis method will set the\n`DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all\ndeals in the proposal.\n\nIt is a no-op to pause an already-paused proposal.\nIt is an error to call PauseProposal for a proposal that is not\nfinalized or renegotiating.");
+            let mcmd = SubCommand::with_name("pause").about("Update the given proposal to pause serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all deals in the proposal. It is a no-op to pause an already-paused proposal. It is an error to call PauseProposal for a proposal that is not finalized or renegotiating.");
             proposals1 = proposals1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("resume").about("Update the given proposal to resume serving.\nThis method will set the\n`DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all\ndeals in the proposal.\n\nNote that if the `has_seller_paused` bit is also set, serving will not\nresume until the seller also resumes.\n\nIt is a no-op to resume an already-running proposal.\nIt is an error to call ResumeProposal for a proposal that is not\nfinalized or renegotiating.");
+            let mcmd = SubCommand::with_name("resume").about("Update the given proposal to resume serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all deals in the proposal. Note that if the `has_seller_paused` bit is also set, serving will not resume until the seller also resumes. It is a no-op to resume an already-running proposal. It is an error to call ResumeProposal for a proposal that is not finalized or renegotiating.");
             proposals1 = proposals1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Update the given proposal at the client known revision number. If the\nserver revision has advanced since the passed-in\n`proposal.proposal_revision`, an `ABORTED` error message will be returned.\nOnly the buyer-modifiable fields of the proposal will be updated.\n\nNote that the deals in the proposal will be updated to match the passed-in\ncopy.\nIf a passed-in deal does not have a `deal_id`, the server will assign a new\nunique ID and create the deal.\nIf passed-in deal has a `deal_id`, it will be updated to match the\npassed-in copy.\nAny existing deals not present in the passed-in proposal will be deleted.\nIt is an error to pass in a deal with a `deal_id` not present at head.");
+            let mcmd = SubCommand::with_name("update").about("Update the given proposal at the client known revision number. If the server revision has advanced since the passed-in `proposal.proposal_revision`, an `ABORTED` error message will be returned. Only the buyer-modifiable fields of the proposal will be updated. Note that the deals in the proposal will be updated to match the passed-in copy. If a passed-in deal does not have a `deal_id`, the server will assign a new unique ID and create the deal. If passed-in deal has a `deal_id`, it will be updated to match the passed-in copy. Any existing deals not present in the passed-in proposal will be deleted. It is an error to pass in a deal with a `deal_id` not present at head.");
             proposals1 = proposals1.subcommand(mcmd);
         }
         let mut publisher_profiles1 = SubCommand::with_name("publisher_profiles")
@@ -177,13 +177,13 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("delete").about(
-                "Deletes the requested filter set from the account with the given account\nID.",
+                "Deletes the requested filter set from the account with the given account ID.",
             );
             filter_sets1 = filter_sets1.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("get").about(
-                "Retrieves the requested filter set for the account with the given account\nID.",
+                "Retrieves the requested filter set for the account with the given account ID.",
             );
             filter_sets1 = filter_sets1.subcommand(mcmd);
         }
@@ -196,7 +196,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, get and list");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates and sends out an email invitation to access\nan Ad Exchange client buyer account.");
+            let mcmd = SubCommand::with_name("create").about("Creates and sends out an email invitation to access an Ad Exchange client buyer account.");
             invitations2 = invitations2.subcommand(mcmd);
         }
         {
@@ -206,7 +206,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("list").about(
-                "Lists all the client users invitations for a client\nwith a given account ID.",
+                "Lists all the client users invitations for a client with a given account ID.",
             );
             invitations2 = invitations2.subcommand(mcmd);
         }
@@ -219,13 +219,13 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("list").about(
-                "Lists all the known client users for a specified\nsponsor buyer account ID.",
+                "Lists all the known client users for a specified sponsor buyer account ID.",
             );
             users2 = users2.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("update").about(
-                "Updates an existing client user.\nOnly the user status can be changed on update.",
+                "Updates an existing client user. Only the user status can be changed on update.",
             );
             users2 = users2.subcommand(mcmd);
         }
@@ -257,13 +257,13 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("delete").about(
-                "Deletes the requested filter set from the account with the given account\nID.",
+                "Deletes the requested filter set from the account with the given account ID.",
             );
             filter_sets2 = filter_sets2.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("get").about(
-                "Retrieves the requested filter set for the account with the given account\nID.",
+                "Retrieves the requested filter set for the account with the given account ID.",
             );
             filter_sets2 = filter_sets2.subcommand(mcmd);
         }
@@ -284,28 +284,28 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("List all errors that occurred in bid responses, with the number of bid\nresponses affected for each reason.");
+            let mcmd = SubCommand::with_name("list").about("List all errors that occurred in bid responses, with the number of bid responses affected for each reason.");
             bid_response_errors2 = bid_response_errors2.subcommand(mcmd);
         }
         let mut bid_responses_without_bids2 = SubCommand::with_name("bid_responses_without_bids")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("List all reasons for which bid responses were considered to have no\napplicable bids, with the number of bid responses affected for each reason.");
+            let mcmd = SubCommand::with_name("list").about("List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason.");
             bid_responses_without_bids2 = bid_responses_without_bids2.subcommand(mcmd);
         }
         let mut filtered_bid_requests2 = SubCommand::with_name("filtered_bid_requests")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("List all reasons that caused a bid request not to be sent for an\nimpression, with the number of bid requests not sent for each reason.");
+            let mcmd = SubCommand::with_name("list").about("List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason.");
             filtered_bid_requests2 = filtered_bid_requests2.subcommand(mcmd);
         }
         let mut filtered_bids2 = SubCommand::with_name("filtered_bids")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("List all reasons for which bids were filtered, with the number of bids\nfiltered for each reason.");
+            let mcmd = SubCommand::with_name("list").about("List all reasons for which bids were filtered, with the number of bids filtered for each reason.");
             filtered_bids2 = filtered_bids2.subcommand(mcmd);
         }
         let mut impression_metrics2 = SubCommand::with_name("impression_metrics")
@@ -320,14 +320,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("List all reasons for which bids lost in the auction, with the number of\nbids that lost for each reason.");
+            let mcmd = SubCommand::with_name("list").about("List all reasons for which bids lost in the auction, with the number of bids that lost for each reason.");
             losing_bids2 = losing_bids2.subcommand(mcmd);
         }
         let mut non_billable_winning_bids2 = SubCommand::with_name("non_billable_winning_bids")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("List all reasons for which winning bids were not billable, with the number\nof bids not billed for each reason.");
+            let mcmd = SubCommand::with_name("list").about("List all reasons for which winning bids were not billable, with the number of bids not billed for each reason.");
             non_billable_winning_bids2 = non_billable_winning_bids2.subcommand(mcmd);
         }
         let mut bid_metrics3 = SubCommand::with_name("bid_metrics")
@@ -342,28 +342,28 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("List all errors that occurred in bid responses, with the number of bid\nresponses affected for each reason.");
+            let mcmd = SubCommand::with_name("list").about("List all errors that occurred in bid responses, with the number of bid responses affected for each reason.");
             bid_response_errors3 = bid_response_errors3.subcommand(mcmd);
         }
         let mut bid_responses_without_bids3 = SubCommand::with_name("bid_responses_without_bids")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("List all reasons for which bid responses were considered to have no\napplicable bids, with the number of bid responses affected for each reason.");
+            let mcmd = SubCommand::with_name("list").about("List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason.");
             bid_responses_without_bids3 = bid_responses_without_bids3.subcommand(mcmd);
         }
         let mut filtered_bid_requests3 = SubCommand::with_name("filtered_bid_requests")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("List all reasons that caused a bid request not to be sent for an\nimpression, with the number of bid requests not sent for each reason.");
+            let mcmd = SubCommand::with_name("list").about("List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason.");
             filtered_bid_requests3 = filtered_bid_requests3.subcommand(mcmd);
         }
         let mut filtered_bids3 = SubCommand::with_name("filtered_bids")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("List all reasons for which bids were filtered, with the number of bids\nfiltered for each reason.");
+            let mcmd = SubCommand::with_name("list").about("List all reasons for which bids were filtered, with the number of bids filtered for each reason.");
             filtered_bids3 = filtered_bids3.subcommand(mcmd);
         }
         let mut impression_metrics3 = SubCommand::with_name("impression_metrics")
@@ -378,42 +378,42 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("List all reasons for which bids lost in the auction, with the number of\nbids that lost for each reason.");
+            let mcmd = SubCommand::with_name("list").about("List all reasons for which bids lost in the auction, with the number of bids that lost for each reason.");
             losing_bids3 = losing_bids3.subcommand(mcmd);
         }
         let mut non_billable_winning_bids3 = SubCommand::with_name("non_billable_winning_bids")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("List all reasons for which winning bids were not billable, with the number\nof bids not billed for each reason.");
+            let mcmd = SubCommand::with_name("list").about("List all reasons for which winning bids were not billable, with the number of bids not billed for each reason.");
             non_billable_winning_bids3 = non_billable_winning_bids3.subcommand(mcmd);
         }
         let mut creatives3 = SubCommand::with_name("creatives")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("List all creatives associated with a specific reason for which bids were\nfiltered, with the number of bids filtered for each creative.");
+            let mcmd = SubCommand::with_name("list").about("List all creatives associated with a specific reason for which bids were filtered, with the number of bids filtered for each creative.");
             creatives3 = creatives3.subcommand(mcmd);
         }
         let mut details3 = SubCommand::with_name("details")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("List all details associated with a specific reason for which bids were\nfiltered, with the number of bids filtered for each detail.");
+            let mcmd = SubCommand::with_name("list").about("List all details associated with a specific reason for which bids were filtered, with the number of bids filtered for each detail.");
             details3 = details3.subcommand(mcmd);
         }
         let mut creatives4 = SubCommand::with_name("creatives")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("List all creatives associated with a specific reason for which bids were\nfiltered, with the number of bids filtered for each creative.");
+            let mcmd = SubCommand::with_name("list").about("List all creatives associated with a specific reason for which bids were filtered, with the number of bids filtered for each creative.");
             creatives4 = creatives4.subcommand(mcmd);
         }
         let mut details4 = SubCommand::with_name("details")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("List all details associated with a specific reason for which bids were\nfiltered, with the number of bids filtered for each detail.");
+            let mcmd = SubCommand::with_name("list").about("List all details associated with a specific reason for which bids were filtered, with the number of bids filtered for each detail.");
             details4 = details4.subcommand(mcmd);
         }
         filtered_bids3 = filtered_bids3.subcommand(details4);

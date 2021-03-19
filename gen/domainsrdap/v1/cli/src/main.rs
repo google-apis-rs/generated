@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("domainsrdap1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200603")
+            .version("0.1.0-20210318")
             .about("Read-only public API that lets users search for information about domain names.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -37,7 +37,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: get");
         {
-            let mcmd = SubCommand::with_name("get").about("The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error.");
+            let mcmd = SubCommand::with_name("get").about("The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a formatted 501 error.");
             autnum0 = autnum0.subcommand(mcmd);
         }
         let mut domain0 = SubCommand::with_name("domain")
@@ -52,32 +52,32 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: get");
         {
-            let mcmd = SubCommand::with_name("get").about("The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error.");
+            let mcmd = SubCommand::with_name("get").about("The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a formatted 501 error.");
             entity0 = entity0.subcommand(mcmd);
         }
         let mut ip0 = SubCommand::with_name("ip")
             .setting(AppSettings::ColoredHelp)
             .about("methods: get");
         {
-            let mcmd = SubCommand::with_name("get").about("The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error.");
+            let mcmd = SubCommand::with_name("get").about("The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a formatted 501 error.");
             ip0 = ip0.subcommand(mcmd);
         }
         let mut nameserver0 = SubCommand::with_name("nameserver")
             .setting(AppSettings::ColoredHelp)
             .about("methods: get");
         {
-            let mcmd = SubCommand::with_name("get").about("The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error.");
+            let mcmd = SubCommand::with_name("get").about("The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a formatted 501 error.");
             nameserver0 = nameserver0.subcommand(mcmd);
         }
         let mut v_10 = SubCommand::with_name("v_1")
             .setting(AppSettings::ColoredHelp)
             .about("methods: get_domains, get_entities, get_help, get_ip and get_nameservers");
         {
-            let mcmd = SubCommand::with_name("get_domains").about("The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error.");
+            let mcmd = SubCommand::with_name("get_domains").about("The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a formatted 501 error.");
             v_10 = v_10.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_entities").about("The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error.");
+            let mcmd = SubCommand::with_name("get_entities").about("The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a formatted 501 error.");
             v_10 = v_10.subcommand(mcmd);
         }
         {
@@ -86,11 +86,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             v_10 = v_10.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_ip").about("The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error.");
+            let mcmd = SubCommand::with_name("get_ip").about("The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a formatted 501 error.");
             v_10 = v_10.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_nameservers").about("The RDAP API recognizes this command from the RDAP specification but\ndoes not support it. The response is a formatted 501 error.");
+            let mcmd = SubCommand::with_name("get_nameservers").about("The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a formatted 501 error.");
             v_10 = v_10.subcommand(mcmd);
         }
         app = app.subcommand(v_10);

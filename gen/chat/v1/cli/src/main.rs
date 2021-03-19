@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("chat1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200620")
-            .about("Enables bots to fetch information and perform actions in Hangouts Chat.")
+            .version("0.1.0-20210314")
+            .about("Enables bots to fetch information and perform actions in Google Chat.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -33,9 +33,40 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .help("Provide more output to aid with debugging")
                 .multiple(false)
                 .takes_value(false));
+        let mut dms0 = SubCommand::with_name("dms")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: messages and webhooks");
+        {
+            let mcmd = SubCommand::with_name("messages").about("Legacy path for creating message. Calling these will result in a BadRequest response.");
+            dms0 = dms0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("webhooks").about("Legacy path for creating message. Calling these will result in a BadRequest response.");
+            dms0 = dms0.subcommand(mcmd);
+        }
+        let mut media0 = SubCommand::with_name("media")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: download");
+        {
+            let mcmd = SubCommand::with_name("download").about(
+                "Downloads media. Download is supported on the URI `/v1/media/{+name}?alt=media`.",
+            );
+            media0 = media0.subcommand(mcmd);
+        }
+        let mut rooms0 = SubCommand::with_name("rooms")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: messages and webhooks");
+        {
+            let mcmd = SubCommand::with_name("messages").about("Legacy path for creating message. Calling these will result in a BadRequest response.");
+            rooms0 = rooms0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("webhooks").about("Legacy path for creating message. Calling these will result in a BadRequest response.");
+            rooms0 = rooms0.subcommand(mcmd);
+        }
         let mut spaces0 = SubCommand::with_name("spaces")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: get and list");
+            .about("methods: get, list and webhooks");
         {
             let mcmd = SubCommand::with_name("get").about("Returns a space.");
             spaces0 = spaces0.subcommand(mcmd);
@@ -44,6 +75,24 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd =
                 SubCommand::with_name("list").about("Lists spaces the caller is a member of.");
             spaces0 = spaces0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("webhooks").about("Legacy path for creating message. Calling these will result in a BadRequest response.");
+            spaces0 = spaces0.subcommand(mcmd);
+        }
+        let mut conversations1 = SubCommand::with_name("conversations")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: messages");
+        {
+            let mcmd = SubCommand::with_name("messages").about("Legacy path for creating message. Calling these will result in a BadRequest response.");
+            conversations1 = conversations1.subcommand(mcmd);
+        }
+        let mut conversations1 = SubCommand::with_name("conversations")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: messages");
+        {
+            let mcmd = SubCommand::with_name("messages").about("Legacy path for creating message. Calling these will result in a BadRequest response.");
+            conversations1 = conversations1.subcommand(mcmd);
         }
         let mut members1 = SubCommand::with_name("members")
             .setting(AppSettings::ColoredHelp)
@@ -75,9 +124,22 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("update").about("Updates a message.");
             messages1 = messages1.subcommand(mcmd);
         }
+        let mut attachments2 = SubCommand::with_name("attachments")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: get");
+        {
+            let mcmd = SubCommand::with_name("get").about("Gets the metadata of a message attachment. The attachment data is fetched using the media API.");
+            attachments2 = attachments2.subcommand(mcmd);
+        }
+        messages1 = messages1.subcommand(attachments2);
         spaces0 = spaces0.subcommand(messages1);
         spaces0 = spaces0.subcommand(members1);
+        rooms0 = rooms0.subcommand(conversations1);
+        dms0 = dms0.subcommand(conversations1);
         app = app.subcommand(spaces0);
+        app = app.subcommand(rooms0);
+        app = app.subcommand(media0);
+        app = app.subcommand(dms0);
 
         Self { app }
     }

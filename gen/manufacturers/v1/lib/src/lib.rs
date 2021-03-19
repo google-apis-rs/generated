@@ -17,56 +17,56 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Attributes {
-        #[doc = "The additional images of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#addlimage."]
+        #[doc = "The additional images of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#addlimage."]
         #[serde(
             rename = "additionalImageLink",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub additional_image_link: ::std::option::Option<Vec<crate::schemas::Image>>,
-        #[doc = "The target age group of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#agegroup."]
+        #[doc = "The target age group of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#agegroup."]
         #[serde(
             rename = "ageGroup",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub age_group: ::std::option::Option<String>,
-        #[doc = "The brand name of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#brand."]
+        #[doc = "The brand name of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#brand."]
         #[serde(
             rename = "brand",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub brand: ::std::option::Option<String>,
-        #[doc = "The capacity of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#capacity."]
+        #[doc = "The capacity of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#capacity."]
         #[serde(
             rename = "capacity",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub capacity: ::std::option::Option<crate::schemas::Capacity>,
-        #[doc = "The color of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#color."]
+        #[doc = "The color of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#color."]
         #[serde(
             rename = "color",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub color: ::std::option::Option<String>,
-        #[doc = "The count of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#count."]
+        #[doc = "The count of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#count."]
         #[serde(
             rename = "count",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub count: ::std::option::Option<crate::schemas::Count>,
-        #[doc = "The description of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#description."]
+        #[doc = "The description of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#description."]
         #[serde(
             rename = "description",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "The disclosure date of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#disclosure."]
+        #[doc = "The disclosure date of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#disclosure."]
         #[serde(
             rename = "disclosureDate",
             default,
@@ -80,42 +80,42 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub excluded_destination: ::std::option::Option<Vec<String>>,
-        #[doc = "The rich format description of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#featuredesc."]
+        #[doc = "The rich format description of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#featuredesc."]
         #[serde(
             rename = "featureDescription",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub feature_description: ::std::option::Option<Vec<crate::schemas::FeatureDescription>>,
-        #[doc = "The flavor of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#flavor."]
+        #[doc = "The flavor of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#flavor."]
         #[serde(
             rename = "flavor",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub flavor: ::std::option::Option<String>,
-        #[doc = "The format of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#format."]
+        #[doc = "The format of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#format."]
         #[serde(
             rename = "format",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub format: ::std::option::Option<String>,
-        #[doc = "The target gender of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#gender."]
+        #[doc = "The target gender of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#gender."]
         #[serde(
             rename = "gender",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub gender: ::std::option::Option<String>,
-        #[doc = "The Global Trade Item Number (GTIN) of the product. For more information,\nsee https://support.google.com/manufacturers/answer/6124116#gtin."]
+        #[doc = "The Global Trade Item Number (GTIN) of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#gtin."]
         #[serde(
             rename = "gtin",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub gtin: ::std::option::Option<Vec<String>>,
-        #[doc = "The image of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#image."]
+        #[doc = "The image of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#image."]
         #[serde(
             rename = "imageLink",
             default,
@@ -129,140 +129,147 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub included_destination: ::std::option::Option<Vec<String>>,
-        #[doc = "The item group id of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#itemgroupid."]
+        #[doc = "The item group id of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#itemgroupid."]
         #[serde(
             rename = "itemGroupId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub item_group_id: ::std::option::Option<String>,
-        #[doc = "The material of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#material."]
+        #[doc = "The material of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#material."]
         #[serde(
             rename = "material",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub material: ::std::option::Option<String>,
-        #[doc = "The Manufacturer Part Number (MPN) of the product. For more information,\nsee https://support.google.com/manufacturers/answer/6124116#mpn."]
+        #[doc = "The Manufacturer Part Number (MPN) of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#mpn."]
         #[serde(
             rename = "mpn",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mpn: ::std::option::Option<String>,
-        #[doc = "The pattern of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#pattern."]
+        #[doc = "The pattern of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#pattern."]
         #[serde(
             rename = "pattern",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub pattern: ::std::option::Option<String>,
-        #[doc = "The details of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#productdetail."]
+        #[doc = "The details of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#productdetail."]
         #[serde(
             rename = "productDetail",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub product_detail: ::std::option::Option<Vec<crate::schemas::ProductDetail>>,
-        #[doc = "The name of the group of products related to the product. For more\ninformation, see\nhttps://support.google.com/manufacturers/answer/6124116#productline."]
+        #[doc = "The product highlights. For more information, see https://support.google.com/manufacturers/answer/10066942"]
+        #[serde(
+            rename = "productHighlight",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub product_highlight: ::std::option::Option<Vec<String>>,
+        #[doc = "The name of the group of products related to the product. For more information, see https://support.google.com/manufacturers/answer/6124116#productline."]
         #[serde(
             rename = "productLine",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub product_line: ::std::option::Option<String>,
-        #[doc = "The canonical name of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#productname."]
+        #[doc = "The canonical name of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#productname."]
         #[serde(
             rename = "productName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub product_name: ::std::option::Option<String>,
-        #[doc = "The URL of the detail page of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#productpage."]
+        #[doc = "The URL of the detail page of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#productpage."]
         #[serde(
             rename = "productPageUrl",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub product_page_url: ::std::option::Option<String>,
-        #[doc = "The type or category of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#producttype."]
+        #[doc = "The type or category of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#producttype."]
         #[serde(
             rename = "productType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub product_type: ::std::option::Option<Vec<String>>,
-        #[doc = "The release date of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#release."]
+        #[doc = "The release date of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#release."]
         #[serde(
             rename = "releaseDate",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub release_date: ::std::option::Option<String>,
-        #[doc = "Rich product content. For more information, see\nhttps://support.google.com/manufacturers/answer/9389865"]
+        #[doc = "Rich product content. For more information, see https://support.google.com/manufacturers/answer/9389865"]
         #[serde(
             rename = "richProductContent",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub rich_product_content: ::std::option::Option<Vec<String>>,
-        #[doc = "The scent of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#scent."]
+        #[doc = "The scent of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#scent."]
         #[serde(
             rename = "scent",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub scent: ::std::option::Option<String>,
-        #[doc = "The size of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#size."]
+        #[doc = "The size of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#size."]
         #[serde(
             rename = "size",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub size: ::std::option::Option<String>,
-        #[doc = "The size system of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#sizesystem."]
+        #[doc = "The size system of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#sizesystem."]
         #[serde(
             rename = "sizeSystem",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub size_system: ::std::option::Option<String>,
-        #[doc = "The size type of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#sizetype."]
+        #[doc = "The size type of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#sizetype."]
         #[serde(
             rename = "sizeType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub size_type: ::std::option::Option<String>,
-        #[doc = "The suggested retail price (MSRP) of the product. For more information,\nsee https://support.google.com/manufacturers/answer/6124116#price."]
+        #[doc = "The suggested retail price (MSRP) of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#price."]
         #[serde(
             rename = "suggestedRetailPrice",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub suggested_retail_price: ::std::option::Option<crate::schemas::Price>,
-        #[doc = "The target client id. Should only be used in the accounts of the data\npartners."]
+        #[doc = "The target client id. Should only be used in the accounts of the data partners."]
         #[serde(
             rename = "targetClientId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub target_client_id: ::std::option::Option<String>,
-        #[doc = "The theme of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#theme."]
+        #[doc = "The theme of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#theme."]
         #[serde(
             rename = "theme",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub theme: ::std::option::Option<String>,
-        #[doc = "The title of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#title."]
+        #[doc = "The title of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#title."]
         #[serde(
             rename = "title",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub title: ::std::option::Option<String>,
-        #[doc = "The videos of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#video."]
+        #[doc = "The videos of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#video."]
         #[serde(
             rename = "videoLink",
             default,
@@ -559,21 +566,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Image {
-        #[doc = "The URL of the image. For crawled images, this is the provided URL. For\nuploaded images, this is a serving URL from Google if the image has been\nprocessed successfully."]
+        #[doc = "The URL of the image. For crawled images, this is the provided URL. For uploaded images, this is a serving URL from Google if the image has been processed successfully."]
         #[serde(
             rename = "imageUrl",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub image_url: ::std::option::Option<String>,
-        #[doc = "The type of the image, i.e., crawled or uploaded.\n@OutputOnly"]
+        #[doc = "The type of the image, i.e., crawled or uploaded. @OutputOnly"]
         #[serde(
             rename = "type",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<crate::schemas::ImageType>,
-        #[doc = "The status of the image.\n@OutputOnly"]
+        #[doc = "The status of the image. @OutputOnly"]
         #[serde(
             rename = "status",
             default,
@@ -806,7 +813,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Issue {
-        #[doc = "If present, the attribute that triggered the issue. For more information\nabout attributes, see\nhttps://support.google.com/manufacturers/answer/6124116."]
+        #[doc = "If present, the attribute that triggered the issue. For more information about attributes, see https://support.google.com/manufacturers/answer/6124116."]
         #[serde(
             rename = "attribute",
             default,
@@ -827,7 +834,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub destination: ::std::option::Option<String>,
-        #[doc = "The server-generated type of the issue, for example,\n“INCORRECT_TEXT_FORMATTING”, “IMAGE_NOT_SERVEABLE”, etc."]
+        #[doc = "The server-generated type of the issue, for example, “INCORRECT_TEXT_FORMATTING”, “IMAGE_NOT_SERVEABLE”, etc."]
         #[serde(
             rename = "type",
             default,
@@ -875,11 +882,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum IssueResolution {
-        #[doc = "The issue will be resolved automatically (for example image crawl or\nGoogle review). No action is required now. Resolution might lead to\nanother issue (for example if crawl fails)."]
+        #[doc = "The issue will be resolved automatically (for example image crawl or Google review). No action is required now. Resolution might lead to another issue (for example if crawl fails)."]
         PendingProcessing,
         #[doc = "Unspecified resolution, never used."]
         ResolutionUnspecified,
-        #[doc = "The user who provided the data must act in order to resolve the issue\n(for example by correcting some data)."]
+        #[doc = "The user who provided the data must act in order to resolve the issue (for example by correcting some data)."]
         UserAction,
     }
     impl IssueResolution {
@@ -953,11 +960,11 @@ pub mod schemas {
     pub enum IssueSeverity {
         #[doc = "Error severity. The issue prevents the usage of the whole item."]
         Error,
-        #[doc = "Info severity. The issue is one that doesn't require immediate attention.\nIt is, for example, used to communicate which attributes are still\npending review."]
+        #[doc = "Info severity. The issue is one that doesn't require immediate attention. It is, for example, used to communicate which attributes are still pending review."]
         Info,
         #[doc = "Unspecified severity, never used."]
         SeverityUnspecified,
-        #[doc = "Warning severity. The issue is either one that prevents the usage of the\nattribute that triggered it or one that will soon prevent the usage of\nthe whole item."]
+        #[doc = "Warning severity. The issue is either one that prevents the usage of the attribute that triggered it or one that will soon prevent the usage of the whole item."]
         Warning,
     }
     impl IssueSeverity {
@@ -1119,14 +1126,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Product {
-        #[doc = "Attributes of the product uploaded to the Manufacturer Center. Manually\nedited attributes are taken into account."]
+        #[doc = "Attributes of the product uploaded to the Manufacturer Center. Manually edited attributes are taken into account."]
         #[serde(
             rename = "attributes",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub attributes: ::std::option::Option<crate::schemas::Attributes>,
-        #[doc = "The content language of the product as a two-letter ISO 639-1 language code\n(for example, en)."]
+        #[doc = "The content language of the product as a two-letter ISO 639-1 language code (for example, en)."]
         #[serde(
             rename = "contentLanguage",
             default,
@@ -1147,28 +1154,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub issues: ::std::option::Option<Vec<crate::schemas::Issue>>,
-        #[doc = "Name in the format `{target_country}:{content_language}:{product_id}`.\n\n`target_country`   - The target country of the product as a CLDR territory\ncode (for example, US).\n\n`content_language` - The content language of the product as a two-letter\nISO 639-1 language code (for example, en).\n\n`product_id`     -   The ID of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#id."]
+        #[doc = "Name in the format `{target_country}:{content_language}:{product_id}`. `target_country` - The target country of the product as a CLDR territory code (for example, US). `content_language` - The content language of the product as a two-letter ISO 639-1 language code (for example, en). `product_id` - The ID of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#id."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Parent ID in the format `accounts/{account_id}`.\n\n`account_id` - The ID of the Manufacturer Center account."]
+        #[doc = "Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer Center account."]
         #[serde(
             rename = "parent",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub parent: ::std::option::Option<String>,
-        #[doc = "The ID of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#id."]
+        #[doc = "The ID of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#id."]
         #[serde(
             rename = "productId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub product_id: ::std::option::Option<String>,
-        #[doc = "The target country of the product as a CLDR territory code (for example,\nUS)."]
+        #[doc = "The target country of the product as a CLDR territory code (for example, US)."]
         #[serde(
             rename = "targetCountry",
             default,
@@ -1441,9 +1448,13 @@ pub mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum GetIncludeItems {
+                    #[doc = "Include the attributes of the product."]
                     Attributes,
+                    #[doc = "Include the destination statuses of the product."]
                     DestinationStatuses,
+                    #[doc = "Include the issues of the product."]
                     Issues,
+                    #[doc = "Unknown, never used."]
                     Unknown,
                 }
                 impl GetIncludeItems {
@@ -1518,9 +1529,13 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListIncludeItems {
+                    #[doc = "Include the attributes of the product."]
                     Attributes,
+                    #[doc = "Include the destination statuses of the product."]
                     DestinationStatuses,
+                    #[doc = "Include the issues of the product."]
                     Issues,
+                    #[doc = "Unknown, never used."]
                     Unknown,
                 }
                 impl ListIncludeItems {
@@ -1626,7 +1641,7 @@ pub mod resources {
                         name: name.into(),
                     }
                 }
-                #[doc = "Gets the product from a Manufacturer Center account, including product\nissues.\n\nA recently updated product takes around 15 minutes to process. Changes are\nonly visible after it has been processed. While some issues may be\navailable once the product has been processed, other issues may take days\nto appear."]
+                #[doc = "Gets the product from a Manufacturer Center account, including product issues. A recently updated product takes around 15 minutes to process. Changes are only visible after it has been processed. While some issues may be available once the product has been processed, other issues may take days to appear."]
                 pub fn get(
                     &self,
                     parent: impl Into<String>,
@@ -1673,7 +1688,7 @@ pub mod resources {
                         page_token: None,
                     }
                 }
-                #[doc = "Inserts or updates the attributes of the product in a Manufacturer Center\naccount.\n\nCreates a product with the provided attributes. If the product already\nexists, then all attributes are replaced with the new ones. The checks at\nupload time are minimal. All required attributes need to be present for a\nproduct to be valid. Issues may show up later after the API has accepted a\nnew upload for a product and it is possible to overwrite an existing valid\nproduct with an invalid product. To detect this, you should retrieve the\nproduct and check it for issues once the new version is available.\n\nUploaded attributes first need to be processed before they can be\nretrieved. Until then, new products will be unavailable, and retrieval\nof previously uploaded products will return the original state of the\nproduct."]
+                #[doc = "Inserts or updates the attributes of the product in a Manufacturer Center account. Creates a product with the provided attributes. If the product already exists, then all attributes are replaced with the new ones. The checks at upload time are minimal. All required attributes need to be present for a product to be valid. Issues may show up later after the API has accepted a new upload for a product and it is possible to overwrite an existing valid product with an invalid product. To detect this, you should retrieve the product and check it for issues once the new version is available. Uploaded attributes first need to be processed before they can be retrieved. Until then, new products will be unavailable, and retrieval of previously uploaded products will return the original state of the product."]
                 pub fn update(
                     &self,
                     request: crate::schemas::Attributes,
@@ -1848,19 +1863,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -1889,7 +1904,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> GetRequestBuilder<'a> {
-                #[doc = "The information to be included in the response. Only sections listed here\nwill be returned."]
+                #[doc = "The information to be included in the response. Only sections listed here will be returned."]
                 pub fn include(
                     mut self,
                     value: impl Into<Vec<crate::resources::accounts::products::params::GetIncludeItems>>,
@@ -2025,20 +2040,22 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("include", &self.include)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    for value in self.include.iter().flatten() {
+                        req = req.query(&[("include", value)]);
+                    }
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -2069,7 +2086,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "The information to be included in the response. Only sections listed here\nwill be returned."]
+                #[doc = "The information to be included in the response. Only sections listed here will be returned."]
                 pub fn include(
                     mut self,
                     value: impl Into<
@@ -2079,7 +2096,7 @@ pub mod resources {
                     self.include = Some(value.into());
                     self
                 }
-                #[doc = "Maximum number of product statuses to return in the response, used for\npaging."]
+                #[doc = "Maximum number of product statuses to return in the response, used for paging."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
                     self
@@ -2310,22 +2327,24 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("include", &self.include)]);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    for value in self.include.iter().flatten() {
+                        req = req.query(&[("include", value)]);
+                    }
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -2494,19 +2513,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,

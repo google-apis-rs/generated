@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("tagmanager2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200625")
-            .about("This API allows clients to access and modify container and tag\n     configuration.")
+            .version("0.1.0-20210317")
+            .about("This API allows clients to access and modify container and tag configuration.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -82,7 +82,9 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             user_permissions1 = user_permissions1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Removes a user from the account, revoking access to it and all of its\ncontainers.");
+            let mcmd = SubCommand::with_name("delete").about(
+                "Removes a user from the account, revoking access to it and all of its containers.",
+            );
             user_permissions1 = user_permissions1.subcommand(mcmd);
         }
         {
@@ -91,7 +93,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             user_permissions1 = user_permissions1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("List all users that have access to the account along with Account and\nContainer user access granted to each of them.");
+            let mcmd = SubCommand::with_name("list").about("List all users that have access to the account along with Account and Container user access granted to each of them.");
             user_permissions1 = user_permissions1.subcommand(mcmd);
         }
         {
@@ -162,7 +164,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             versions2 = versions2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_latest").about("Sets the latest version used for synchronization of workspaces when\ndetecting conflicts and errors.");
+            let mcmd = SubCommand::with_name("set_latest").about("Sets the latest version used for synchronization of workspaces when detecting conflicts and errors.");
             versions2 = versions2.subcommand(mcmd);
         }
         {
@@ -181,7 +183,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             workspaces2 = workspaces2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("create_version").about("Creates a Container Version from the entities present in the workspace,\ndeletes the workspace, and sets the base container version to the newly\ncreated version.");
+            let mcmd = SubCommand::with_name("create_version").about("Creates a Container Version from the entities present in the workspace, deletes the workspace, and sets the base container version to the newly created version.");
             workspaces2 = workspaces2.subcommand(mcmd);
         }
         {
@@ -203,15 +205,15 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             workspaces2 = workspaces2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("quick_preview").about("Quick previews a workspace by creating a fake container version from all\nentities in the provided workspace.");
+            let mcmd = SubCommand::with_name("quick_preview").about("Quick previews a workspace by creating a fake container version from all entities in the provided workspace.");
             workspaces2 = workspaces2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("resolve_conflict").about("Resolves a merge conflict for a workspace entity by updating it to the\nresolved entity passed in the request.");
+            let mcmd = SubCommand::with_name("resolve_conflict").about("Resolves a merge conflict for a workspace entity by updating it to the resolved entity passed in the request.");
             workspaces2 = workspaces2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("sync").about("Syncs a workspace to the latest container version by updating all\nunmodified workspace entities and displaying conflicts for modified\nentities.");
+            let mcmd = SubCommand::with_name("sync").about("Syncs a workspace to the latest container version by updating all unmodified workspace entities and displaying conflicts for modified entities.");
             workspaces2 = workspaces2.subcommand(mcmd);
         }
         {

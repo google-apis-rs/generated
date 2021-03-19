@@ -7,7 +7,7 @@
   "canonicalName": null,
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200625",
+  "revision": "20210317",
   "title": "Google Play Custom App Publishing API",
   "description": "API to create and publish custom Android apps",
   "ownerDomain": "google.com",
@@ -18,11 +18,11 @@
   },
   "documentationLink": "https://developers.google.com/android/work/play/custom-app-api/",
   "protocol": "rest",
-  "baseUrl": "https://www.googleapis.com/",
+  "baseUrl": "https://playcustomapp.googleapis.com/",
   "basePath": "",
-  "rootUrl": "https://www.googleapis.com/",
+  "rootUrl": "https://playcustomapp.googleapis.com/",
   "servicePath": "",
-  "batchPath": "batch/playcustomapp/v1",
+  "batchPath": "batch",
   "version_module": null,
   "packagePath": null,
   "labels": null,
@@ -226,7 +226,7 @@
           "items": null
         },
         "packageName": {
-          "description": "Output only. Package name of the created Android app.\nOnly present in the API response.",
+          "description": "Output only. Package name of the created Android app. Only present in the API response.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -303,7 +303,10 @@
                     "multipart": true,
                     "path": "/upload/playcustomapp/v1/accounts/{account}/customApps"
                   },
-                  "resumable": null
+                  "resumable": {
+                    "multipart": true,
+                    "path": "/resumable/upload/playcustomapp/v1/accounts/{account}/customApps"
+                  }
                 }
               }
             }

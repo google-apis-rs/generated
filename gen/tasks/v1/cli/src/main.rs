@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("tasks1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200619")
+            .version("0.1.0-20210316")
             .about("The Google Tasks API lets you manage your tasks and task lists.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -58,7 +58,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             tasklists0 = tasklists0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates the authenticated user\'s specified task list. This method supports\npatch semantics.");
+            let mcmd = SubCommand::with_name("patch").about("Updates the authenticated user\'s specified task list. This method supports patch semantics.");
             tasklists0 = tasklists0.subcommand(mcmd);
         }
         {
@@ -70,7 +70,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: clear, delete, get, insert, list, r#move, patch and update");
         {
-            let mcmd = SubCommand::with_name("clear").about("Clears all completed tasks from the specified task list. The affected tasks\nwill be marked as \'hidden\' and no longer be returned by default when\nretrieving all tasks for a task list.");
+            let mcmd = SubCommand::with_name("clear").about("Clears all completed tasks from the specified task list. The affected tasks will be marked as \'hidden\' and no longer be returned by default when retrieving all tasks for a task list.");
             tasks0 = tasks0.subcommand(mcmd);
         }
         {
@@ -93,7 +93,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             tasks0 = tasks0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("r#move").about("Moves the specified task to another position in the task list. This can\ninclude putting it as a child task under a new parent and/or move it to a\ndifferent position among its sibling tasks.");
+            let mcmd = SubCommand::with_name("r#move").about("Moves the specified task to another position in the task list. This can include putting it as a child task under a new parent and/or move it to a different position among its sibling tasks.");
             tasks0 = tasks0.subcommand(mcmd);
         }
         {

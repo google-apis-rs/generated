@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("osconfig1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200615")
+            .version("0.1.0-20210305")
             .about("OS management tools that can be used for patch management, patch compliance, and configuration management on VM instances.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -62,7 +62,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: cancel, execute, get and list");
         {
-            let mcmd = SubCommand::with_name("cancel").about("Cancel a patch job. The patch job must be active. Canceled patch jobs\ncannot be restarted.");
+            let mcmd = SubCommand::with_name("cancel").about("Cancel a patch job. The patch job must be active. Canceled patch jobs cannot be restarted.");
             patch_jobs1 = patch_jobs1.subcommand(mcmd);
         }
         {
@@ -71,7 +71,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             patch_jobs1 = patch_jobs1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Get the patch job. This can be used to track the progress of an\nongoing patch job or review the details of completed jobs.");
+            let mcmd = SubCommand::with_name("get").about("Get the patch job. This can be used to track the progress of an ongoing patch job or review the details of completed jobs.");
             patch_jobs1 = patch_jobs1.subcommand(mcmd);
         }
         {

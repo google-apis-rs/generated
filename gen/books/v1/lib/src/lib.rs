@@ -17,14 +17,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Annotation {
-        #[doc = "Anchor text after excerpt. For requests, if the user bookmarked a screen\nthat has no flowing text on it, then this field should be empty."]
+        #[doc = "Anchor text after excerpt. For requests, if the user bookmarked a screen that has no flowing text on it, then this field should be empty."]
         #[serde(
             rename = "afterSelectedText",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub after_selected_text: ::std::option::Option<String>,
-        #[doc = "Anchor text before excerpt. For requests, if the user bookmarked a screen\nthat has no flowing text on it, then this field should be empty."]
+        #[doc = "Anchor text before excerpt. For requests, if the user bookmarked a screen that has no flowing text on it, then this field should be empty."]
         #[serde(
             rename = "beforeSelectedText",
             default,
@@ -279,21 +279,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AnnotationLayerSummary {
-        #[doc = "Maximum allowed characters on this layer, especially for the \"copy\"\nlayer."]
+        #[doc = "Maximum allowed characters on this layer, especially for the \"copy\" layer."]
         #[serde(
             rename = "allowedCharacterCount",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub allowed_character_count: ::std::option::Option<i32>,
-        #[doc = "Type of limitation on this layer. \"limited\" or \"unlimited\" for the \"copy\"\nlayer."]
+        #[doc = "Type of limitation on this layer. \"limited\" or \"unlimited\" for the \"copy\" layer."]
         #[serde(
             rename = "limitType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub limit_type: ::std::option::Option<String>,
-        #[doc = "Remaining allowed characters on this layer, especially for the \"copy\"\nlayer."]
+        #[doc = "Remaining allowed characters on this layer, especially for the \"copy\" layer."]
         #[serde(
             rename = "remainingCharacterCount",
             default,
@@ -338,14 +338,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "Token to pass in for pagination for the next page. This will not be present\nif this request does not have more results."]
+        #[doc = "Token to pass in for pagination for the next page. This will not be present if this request does not have more results."]
         #[serde(
             rename = "nextPageToken",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub next_page_token: ::std::option::Option<String>,
-        #[doc = "Total number of annotations found. This may be greater than the number of\nnotes returned in this response if results have been paginated."]
+        #[doc = "Total number of annotations found. This may be greater than the number of notes returned in this response if results have been paginated."]
         #[serde(
             rename = "totalItems",
             default,
@@ -471,7 +471,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "Token to pass in for pagination for the next page. This will not be present\nif this request does not have more results."]
+        #[doc = "Token to pass in for pagination for the next page. This will not be present if this request does not have more results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -646,7 +646,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub access: ::std::option::Option<String>,
-        #[doc = "Created time for this bookshelf (formatted UTC timestamp with millisecond\nresolution)."]
+        #[doc = "Created time for this bookshelf (formatted UTC timestamp with millisecond resolution)."]
         #[serde(
             rename = "created",
             default,
@@ -688,7 +688,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub title: ::std::option::Option<String>,
-        #[doc = "Last modified time of this bookshelf (formatted UTC timestamp with\nmillisecond resolution)."]
+        #[doc = "Last modified time of this bookshelf (formatted UTC timestamp with millisecond resolution)."]
         #[serde(
             rename = "updated",
             default,
@@ -702,7 +702,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub volume_count: ::std::option::Option<i32>,
-        #[doc = "Last time a volume was added or removed from this bookshelf (formatted UTC\ntimestamp with millisecond resolution)."]
+        #[doc = "Last time a volume was added or removed from this bookshelf (formatted UTC timestamp with millisecond resolution)."]
         #[serde(
             rename = "volumesLastUpdated",
             default,
@@ -907,7 +907,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub signature: ::std::option::Option<String>,
-        #[doc = "Client app identifier for verification. Download access and\nclient-validation only."]
+        #[doc = "Client app identifier for verification. Download access and client-validation only."]
         #[serde(
             rename = "source",
             default,
@@ -959,7 +959,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub annotation_type: ::std::option::Option<String>,
-        #[doc = "JSON encoded data for this dictionary annotation data.\nEmitted with name 'data' in JSON output. Either this or geo_data will\nbe populated."]
+        #[doc = "JSON encoded data for this dictionary annotation data. Emitted with name 'data' in JSON output. Either this or geo_data will be populated."]
         #[serde(
             rename = "data",
             default,
@@ -1001,7 +1001,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub self_link: ::std::option::Option<String>,
-        #[doc = "Timestamp for the last time this data was updated. (RFC 3339 UTC date-time\nformat)."]
+        #[doc = "Timestamp for the last time this data was updated. (RFC 3339 UTC date-time format)."]
         #[serde(
             rename = "updated",
             default,
@@ -1081,7 +1081,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DictlayerdataCommon {
-        #[doc = "The display title and localized canonical name to use when searching for\nthis entity on Google search."]
+        #[doc = "The display title and localized canonical name to use when searching for this entity on Google search."]
         #[serde(
             rename = "title",
             default,
@@ -1206,7 +1206,7 @@ pub mod schemas {
         )]
         pub senses:
             ::std::option::Option<Vec<crate::schemas::DictlayerdataDictWordsItemsSensesItems>>,
-        #[doc = "The words with different meanings but not related words, e.g. \"go\"\n(game) and \"go\" (verb)."]
+        #[doc = "The words with different meanings but not related words, e.g. \"go\" (game) and \"go\" (verb)."]
         #[serde(
             rename = "source",
             default,
@@ -1924,7 +1924,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub device_allowed: ::std::option::Option<bool>,
-        #[doc = "If restricted, the number of content download licenses already acquired\n(including the requesting client, if licensed)."]
+        #[doc = "If restricted, the number of content download licenses already acquired (including the requesting client, if licensed)."]
         #[serde(
             rename = "downloadsAcquired",
             default,
@@ -1945,7 +1945,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "If restricted, the maximum number of content download licenses for this\nvolume."]
+        #[doc = "If restricted, the maximum number of content download licenses for this volume."]
         #[serde(
             rename = "maxDownloadDevices",
             default,
@@ -1966,7 +1966,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub nonce: ::std::option::Option<String>,
-        #[doc = "Error/warning reason code.  Additional codes may be added in the future. 0\nOK 100   ACCESS_DENIED_PUBLISHER_LIMIT 101   ACCESS_DENIED_LIMIT 200\nWARNING_USED_LAST_ACCESS"]
+        #[doc = "Error/warning reason code. Additional codes may be added in the future. 0 OK 100 ACCESS_DENIED_PUBLISHER_LIMIT 101 ACCESS_DENIED_LIMIT 200 WARNING_USED_LAST_ACCESS"]
         #[serde(
             rename = "reasonCode",
             default,
@@ -1987,7 +1987,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub signature: ::std::option::Option<String>,
-        #[doc = "Client app identifier for verification. Download access and\nclient-validation only."]
+        #[doc = "Client app identifier for verification. Download access and client-validation only."]
         #[serde(
             rename = "source",
             default,
@@ -2182,7 +2182,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub annotation_type: ::std::option::Option<String>,
-        #[doc = "JSON encoded data for this geo annotation data.\nEmitted with name 'data' in JSON output. Either this or dict_data will\nbe populated."]
+        #[doc = "JSON encoded data for this geo annotation data. Emitted with name 'data' in JSON output. Either this or dict_data will be populated."]
         #[serde(
             rename = "data",
             default,
@@ -2224,7 +2224,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub self_link: ::std::option::Option<String>,
-        #[doc = "Timestamp for the last time this data was updated. (RFC 3339 UTC date-time\nformat)."]
+        #[doc = "Timestamp for the last time this data was updated. (RFC 3339 UTC date-time format)."]
         #[serde(
             rename = "updated",
             default,
@@ -2323,7 +2323,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub snippet_url: ::std::option::Option<String>,
-        #[doc = "The display title and localized canonical name to use when searching for\nthis entity on Google search."]
+        #[doc = "The display title and localized canonical name to use when searching for this entity on Google search."]
         #[serde(
             rename = "title",
             default,
@@ -2345,14 +2345,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GeolayerdataGeo {
-        #[doc = "The boundary of the location as a set of loops containing pairs of\nlatitude, longitude coordinates."]
+        #[doc = "The boundary of the location as a set of loops containing pairs of latitude, longitude coordinates."]
         #[serde(
             rename = "boundary",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub boundary: ::std::option::Option<Vec<String>>,
-        #[doc = "The cache policy active for this data. EX: UNRESTRICTED, RESTRICTED,\nNEVER"]
+        #[doc = "The cache policy active for this data. EX: UNRESTRICTED, RESTRICTED, NEVER"]
         #[serde(
             rename = "cachePolicy",
             default,
@@ -2380,21 +2380,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub longitude: ::std::option::Option<f64>,
-        #[doc = "The type of map that should be used for this location. EX: HYBRID,\nROADMAP, SATELLITE, TERRAIN"]
+        #[doc = "The type of map that should be used for this location. EX: HYBRID, ROADMAP, SATELLITE, TERRAIN"]
         #[serde(
             rename = "mapType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub map_type: ::std::option::Option<String>,
-        #[doc = "The viewport for showing this location. This is a latitude, longitude\nrectangle."]
+        #[doc = "The viewport for showing this location. This is a latitude, longitude rectangle."]
         #[serde(
             rename = "viewport",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub viewport: ::std::option::Option<crate::schemas::GeolayerdataGeoViewport>,
-        #[doc = "The Zoom level to use for the map. Zoom levels between 0 (the lowest zoom\nlevel, in which the entire world can be seen on one map) to 21+ (down to\nindividual buildings). See: https:\n//developers.google.com/maps/documentation/staticmaps/#Zoomlevels"]
+        #[doc = "The Zoom level to use for the map. Zoom levels between 0 (the lowest zoom level, in which the entire world can be seen on one map) to 21+ (down to individual buildings). See: https: //developers.google.com/maps/documentation/staticmaps/#Zoomlevels"]
         #[serde(
             rename = "zoom",
             default,
@@ -2621,14 +2621,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub self_link: ::std::option::Option<String>,
-        #[doc = "Timestamp for the last time an item in this layer was updated. (RFC 3339\nUTC date-time format)."]
+        #[doc = "Timestamp for the last time an item in this layer was updated. (RFC 3339 UTC date-time format)."]
         #[serde(
             rename = "updated",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub updated: ::std::option::Option<String>,
-        #[doc = "The current version of this layer's volume annotations. Note that this\nversion applies only to the data in the books.layers.volumeAnnotations.*\nresponses. The actual annotation data is versioned separately."]
+        #[doc = "The current version of this layer's volume annotations. Note that this version applies only to the data in the books.layers.volumeAnnotations.* responses. The actual annotation data is versioned separately."]
         #[serde(
             rename = "volumeAnnotationsVersion",
             default,
@@ -3064,7 +3064,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub pdf_position: ::std::option::Option<String>,
-        #[doc = "Timestamp when this reading position was last updated (formatted UTC\ntimestamp with millisecond resolution)."]
+        #[doc = "Timestamp when this reading position was last updated (formatted UTC timestamp with millisecond resolution)."]
         #[serde(
             rename = "updated",
             default,
@@ -3182,21 +3182,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "Source type for this review. Possible values are EDITORIAL, WEB_USER or\nGOOGLE_USER."]
+        #[doc = "Source type for this review. Possible values are EDITORIAL, WEB_USER or GOOGLE_USER."]
         #[serde(
             rename = "type",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<String>,
-        #[doc = "Star rating for this review. Possible values are ONE, TWO, THREE, FOUR,\nFIVE or NOT_RATED."]
+        #[doc = "Star rating for this review. Possible values are ONE, TWO, THREE, FOUR, FIVE or NOT_RATED."]
         #[serde(
             rename = "rating",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub rating: ::std::option::Option<String>,
-        #[doc = "Information regarding the source of this review, when the review is not\nfrom a Google Books user."]
+        #[doc = "Information regarding the source of this review, when the review is not from a Google Books user."]
         #[serde(
             rename = "source",
             default,
@@ -3863,14 +3863,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Volume {
-        #[doc = "Any information about a volume related to reading or obtaining that volume\ntext. This information can depend on country (books may be public domain in\none country but not in another, e.g.)."]
+        #[doc = "Any information about a volume related to reading or obtaining that volume text. This information can depend on country (books may be public domain in one country but not in another, e.g.)."]
         #[serde(
             rename = "accessInfo",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub access_info: ::std::option::Option<crate::schemas::VolumeAccessInfo>,
-        #[doc = "Opaque identifier for a specific version of a volume resource. (In LITE\nprojection)"]
+        #[doc = "Opaque identifier for a specific version of a volume resource. (In LITE projection)"]
         #[serde(
             rename = "etag",
             default,
@@ -3905,7 +3905,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub recommended_info: ::std::option::Option<crate::schemas::VolumeRecommendedInfo>,
-        #[doc = "Any information about a volume related to the eBookstore and/or\npurchaseability. This information can depend on the country where the\nrequest originates from (i.e. books may not be for sale in certain\ncountries)."]
+        #[doc = "Any information about a volume related to the eBookstore and/or purchaseability. This information can depend on the country where the request originates from (i.e. books may not be for sale in certain countries)."]
         #[serde(
             rename = "saleInfo",
             default,
@@ -3926,7 +3926,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub self_link: ::std::option::Option<String>,
-        #[doc = "User specific information related to this volume. (e.g. page this user last\nread or whether they purchased this book)"]
+        #[doc = "User specific information related to this volume. (e.g. page this user last read or whether they purchased this book)"]
         #[serde(
             rename = "userInfo",
             default,
@@ -3964,14 +3964,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct VolumeAccessInfo {
-        #[doc = "Combines the access and viewability of this volume into a single status\nfield for this user. Values can be FULL_PURCHASED, FULL_PUBLIC_DOMAIN,\nSAMPLE or NONE. (In LITE projection.)"]
+        #[doc = "Combines the access and viewability of this volume into a single status field for this user. Values can be FULL_PURCHASED, FULL_PUBLIC_DOMAIN, SAMPLE or NONE. (In LITE projection.)"]
         #[serde(
             rename = "accessViewStatus",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub access_view_status: ::std::option::Option<String>,
-        #[doc = "The two-letter ISO_3166-1 country code for which this access information\nis valid. (In LITE projection.)"]
+        #[doc = "The two-letter ISO_3166-1 country code for which this access information is valid. (In LITE projection.)"]
         #[serde(
             rename = "country",
             default,
@@ -3985,14 +3985,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub download_access: ::std::option::Option<crate::schemas::DownloadAccessRestriction>,
-        #[doc = "URL to the Google Drive viewer if this volume is uploaded by the user by\nselecting the file from Google Drive."]
+        #[doc = "URL to the Google Drive viewer if this volume is uploaded by the user by selecting the file from Google Drive."]
         #[serde(
             rename = "driveImportedContentLink",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub drive_imported_content_link: ::std::option::Option<String>,
-        #[doc = "Whether this volume can be embedded in a viewport using the Embedded\nViewer API."]
+        #[doc = "Whether this volume can be embedded in a viewport using the Embedded Viewer API."]
         #[serde(
             rename = "embeddable",
             default,
@@ -4006,7 +4006,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub epub: ::std::option::Option<crate::schemas::VolumeAccessInfoEpub>,
-        #[doc = "Whether this volume requires that the client explicitly request offline\ndownload license rather than have it done automatically when loading the\ncontent, if the client supports it."]
+        #[doc = "Whether this volume requires that the client explicitly request offline download license rather than have it done automatically when loading the content, if the client supports it."]
         #[serde(
             rename = "explicitOfflineLicenseManagement",
             default,
@@ -4034,28 +4034,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub quote_sharing_allowed: ::std::option::Option<bool>,
-        #[doc = "Whether text-to-speech is permitted for this volume. Values can be\nALLOWED, ALLOWED_FOR_ACCESSIBILITY, or NOT_ALLOWED."]
+        #[doc = "Whether text-to-speech is permitted for this volume. Values can be ALLOWED, ALLOWED_FOR_ACCESSIBILITY, or NOT_ALLOWED."]
         #[serde(
             rename = "textToSpeechPermission",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub text_to_speech_permission: ::std::option::Option<String>,
-        #[doc = "For ordered but not yet processed orders, we give a URL that can be used\nto go to the appropriate Google Wallet page."]
+        #[doc = "For ordered but not yet processed orders, we give a URL that can be used to go to the appropriate Google Wallet page."]
         #[serde(
             rename = "viewOrderUrl",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub view_order_url: ::std::option::Option<String>,
-        #[doc = "The read access of a volume. Possible values are PARTIAL, ALL_PAGES,\nNO_PAGES or UNKNOWN. This value depends on the country listed above. A\nvalue of PARTIAL means that the publisher has allowed some portion of the\nvolume to be viewed publicly, without purchase. This can apply to eBooks\nas well as non-eBooks. Public domain books will always have a value of\nALL_PAGES."]
+        #[doc = "The read access of a volume. Possible values are PARTIAL, ALL_PAGES, NO_PAGES or UNKNOWN. This value depends on the country listed above. A value of PARTIAL means that the publisher has allowed some portion of the volume to be viewed publicly, without purchase. This can apply to eBooks as well as non-eBooks. Public domain books will always have a value of ALL_PAGES."]
         #[serde(
             rename = "viewability",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub viewability: ::std::option::Option<String>,
-        #[doc = "URL to read this volume on the Google Books site. Link will not allow\nusers to read non-viewable volumes."]
+        #[doc = "URL to read this volume on the Google Books site. Link will not allow users to read non-viewable volumes."]
         #[serde(
             rename = "webReaderLink",
             default,
@@ -4100,7 +4100,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub download_link: ::std::option::Option<String>,
-        #[doc = "Is a flowing text epub available either as public domain or for\npurchase. (In LITE projection.)"]
+        #[doc = "Is a flowing text epub available either as public domain or for purchase. (In LITE projection.)"]
         #[serde(
             rename = "isAvailable",
             default,
@@ -4145,7 +4145,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub download_link: ::std::option::Option<String>,
-        #[doc = "Is a scanned image pdf available either as public domain or for\npurchase. (In LITE projection.)"]
+        #[doc = "Is a scanned image pdf available either as public domain or for purchase. (In LITE projection.)"]
         #[serde(
             rename = "isAvailable",
             default,
@@ -4214,7 +4214,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub layer_id: ::std::option::Option<String>,
-        #[doc = "The current version of this layer's volume annotations. Note that this\nversion applies only to the data in the\nbooks.layers.volumeAnnotations.* responses. The actual annotation data\nis versioned separately."]
+        #[doc = "The current version of this layer's volume annotations. Note that this version applies only to the data in the books.layers.volumeAnnotations.* responses. The actual annotation data is versioned separately."]
         #[serde(
             rename = "volumeAnnotationsVersion",
             default,
@@ -4267,21 +4267,21 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct VolumeSaleInfo {
-        #[doc = "URL to purchase this volume on the Google Books site. (In LITE\nprojection)"]
+        #[doc = "URL to purchase this volume on the Google Books site. (In LITE projection)"]
         #[serde(
             rename = "buyLink",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub buy_link: ::std::option::Option<String>,
-        #[doc = "The two-letter ISO_3166-1 country code for which this sale information is\nvalid. (In LITE projection.)"]
+        #[doc = "The two-letter ISO_3166-1 country code for which this sale information is valid. (In LITE projection.)"]
         #[serde(
             rename = "country",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub country: ::std::option::Option<String>,
-        #[doc = "Whether or not this volume is an eBook (can be added to the My eBooks\nshelf)."]
+        #[doc = "Whether or not this volume is an eBook (can be added to the My eBooks shelf)."]
         #[serde(
             rename = "isEbook",
             default,
@@ -4309,14 +4309,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub on_sale_date: ::std::option::Option<String>,
-        #[doc = "The actual selling price of the book. This is the same as the suggested\nretail or list price unless there are offers or discounts on this volume.\n(In LITE projection.)"]
+        #[doc = "The actual selling price of the book. This is the same as the suggested retail or list price unless there are offers or discounts on this volume. (In LITE projection.)"]
         #[serde(
             rename = "retailPrice",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub retail_price: ::std::option::Option<crate::schemas::VolumeSaleInfoRetailPrice>,
-        #[doc = "Whether or not this book is available for sale or offered for free in the\nGoogle eBookstore for the country listed above. Possible values are\nFOR_SALE, FOR_RENTAL_ONLY, FOR_SALE_AND_RENTAL, FREE, NOT_FOR_SALE, or\nFOR_PREORDER."]
+        #[doc = "Whether or not this book is available for sale or offered for free in the Google eBookstore for the country listed above. Possible values are FOR_SALE, FOR_RENTAL_ONLY, FOR_SALE_AND_RENTAL, FREE, NOT_FOR_SALE, or FOR_PREORDER."]
         #[serde(
             rename = "saleability",
             default,
@@ -4569,7 +4569,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct VolumeUserInfo {
-        #[doc = "Timestamp when this volume was acquired by the user. (RFC 3339 UTC\ndate-time format) Acquiring includes purchase, user upload, receiving\nfamily sharing, etc."]
+        #[doc = "Timestamp when this volume was acquired by the user. (RFC 3339 UTC date-time format) Acquiring includes purchase, user upload, receiving family sharing, etc."]
         #[serde(
             rename = "acquiredTime",
             default,
@@ -4639,14 +4639,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_in_my_books: ::std::option::Option<bool>,
-        #[doc = "Whether or not this volume was pre-ordered by the authenticated user\nmaking the request. (In LITE projection.)"]
+        #[doc = "Whether or not this volume was pre-ordered by the authenticated user making the request. (In LITE projection.)"]
         #[serde(
             rename = "isPreordered",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_preordered: ::std::option::Option<bool>,
-        #[doc = "Whether or not this volume was purchased by the authenticated user making\nthe request. (In LITE projection.)"]
+        #[doc = "Whether or not this volume was purchased by the authenticated user making the request. (In LITE projection.)"]
         #[serde(
             rename = "isPurchased",
             default,
@@ -4660,7 +4660,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_uploaded: ::std::option::Option<bool>,
-        #[doc = "The user's current reading position in the volume, if one is available.\n(In LITE projection.)"]
+        #[doc = "The user's current reading position in the volume, if one is available. (In LITE projection.)"]
         #[serde(
             rename = "readingPosition",
             default,
@@ -4688,7 +4688,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub review: ::std::option::Option<crate::schemas::Review>,
-        #[doc = "Timestamp when this volume was last modified by a user action, such as a\nreading position update, volume purchase or writing a review. (RFC 3339\nUTC date-time format)."]
+        #[doc = "Timestamp when this volume was last modified by a user action, such as a reading position update, volume purchase or writing a review. (RFC 3339 UTC date-time format)."]
         #[serde(
             rename = "updated",
             default,
@@ -4781,14 +4781,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub family_role: ::std::option::Option<String>,
-        #[doc = "Whether or not this volume can be shared with the family by the user.\nThis includes sharing eligibility of both the volume and the user. If\nthe value is true, the user can initiate a family sharing action."]
+        #[doc = "Whether or not this volume can be shared with the family by the user. This includes sharing eligibility of both the volume and the user. If the value is true, the user can initiate a family sharing action."]
         #[serde(
             rename = "isSharingAllowed",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_sharing_allowed: ::std::option::Option<bool>,
-        #[doc = "Whether or not sharing this volume is temporarily disabled due to\nissues with the Family Wallet."]
+        #[doc = "Whether or not sharing this volume is temporarily disabled due to issues with the Family Wallet."]
         #[serde(
             rename = "isSharingDisabledByFop",
             default,
@@ -4885,7 +4885,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub allow_anon_logging: ::std::option::Option<bool>,
-        #[doc = "The names of the authors and/or editors for this volume. (In LITE\nprojection)"]
+        #[doc = "The names of the authors and/or editors for this volume. (In LITE projection)"]
         #[serde(
             rename = "authors",
             default,
@@ -4920,14 +4920,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub comics_content: ::std::option::Option<bool>,
-        #[doc = "An identifier for the version of the volume content (text & images). (In\nLITE projection)"]
+        #[doc = "An identifier for the version of the volume content (text & images). (In LITE projection)"]
         #[serde(
             rename = "contentVersion",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub content_version: ::std::option::Option<String>,
-        #[doc = "A synopsis of the volume. The text of the description is formatted in\nHTML and includes simple formatting elements, such as b, i, and br tags.\n(In LITE projection.)"]
+        #[doc = "A synopsis of the volume. The text of the description is formatted in HTML and includes simple formatting elements, such as b, i, and br tags. (In LITE projection.)"]
         #[serde(
             rename = "description",
             default,
@@ -4941,7 +4941,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub dimensions: ::std::option::Option<crate::schemas::VolumeVolumeInfoDimensions>,
-        #[doc = "A list of image links for all the sizes that are available. (In LITE\nprojection.)"]
+        #[doc = "A list of image links for all the sizes that are available. (In LITE projection.)"]
         #[serde(
             rename = "imageLinks",
             default,
@@ -4956,21 +4956,21 @@ pub mod schemas {
         )]
         pub industry_identifiers:
             ::std::option::Option<Vec<crate::schemas::VolumeVolumeInfoIndustryIdentifiersItems>>,
-        #[doc = "URL to view information about this volume on the Google Books site. (In\nLITE projection)"]
+        #[doc = "URL to view information about this volume on the Google Books site. (In LITE projection)"]
         #[serde(
             rename = "infoLink",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub info_link: ::std::option::Option<String>,
-        #[doc = "Best language for this volume (based on content). It is the two-letter\nISO 639-1 code such as 'fr', 'en', etc."]
+        #[doc = "Best language for this volume (based on content). It is the two-letter ISO 639-1 code such as 'fr', 'en', etc."]
         #[serde(
             rename = "language",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub language: ::std::option::Option<String>,
-        #[doc = "The main category to which this volume belongs. It will be the category\nfrom the categories list returned below that has the highest weight."]
+        #[doc = "The main category to which this volume belongs. It will be the category from the categories list returned below that has the highest weight."]
         #[serde(
             rename = "mainCategory",
             default,
@@ -5143,7 +5143,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct VolumeVolumeInfoImageLinks {
-        #[doc = "Image link for extra large size (width of ~1280 pixels). (In LITE\nprojection)"]
+        #[doc = "Image link for extra large size (width of ~1280 pixels). (In LITE projection)"]
         #[serde(
             rename = "extraLarge",
             default,
@@ -5171,14 +5171,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub small: ::std::option::Option<String>,
-        #[doc = "Image link for small thumbnail size (width of ~80 pixels). (In LITE\nprojection)"]
+        #[doc = "Image link for small thumbnail size (width of ~80 pixels). (In LITE projection)"]
         #[serde(
             rename = "smallThumbnail",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub small_thumbnail: ::std::option::Option<String>,
-        #[doc = "Image link for thumbnail size (width of ~128 pixels). (In LITE\nprojection)"]
+        #[doc = "Image link for thumbnail size (width of ~128 pixels). (In LITE projection)"]
         #[serde(
             rename = "thumbnail",
             default,
@@ -5450,7 +5450,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub self_link: ::std::option::Option<String>,
-        #[doc = "Timestamp for the last time this anntoation was updated. (RFC 3339 UTC\ndate-time format)."]
+        #[doc = "Timestamp for the last time this anntoation was updated. (RFC 3339 UTC date-time format)."]
         #[serde(
             rename = "updated",
             default,
@@ -5554,7 +5554,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "Token to pass in for pagination for the next page. This will not be present\nif this request does not have more results."]
+        #[doc = "Token to pass in for pagination for the next page. This will not be present if this request does not have more results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -5568,7 +5568,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub total_items: ::std::option::Option<i32>,
-        #[doc = "The version string for all of the volume annotations in this layer (not\njust the ones in this response). Note: the version string\ndoesn't apply to the annotation data, just the information in this response\n(e.g. the location of annotations in the book)."]
+        #[doc = "The version string for all of the volume annotations in this layer (not just the ones in this response). Note: the version string doesn't apply to the annotation data, just the information in this response (e.g. the location of annotations in the book)."]
         #[serde(
             rename = "version",
             default,
@@ -5604,7 +5604,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "Total number of volumes found. This might be greater than the number of\nvolumes returned in this response if results have been paginated."]
+        #[doc = "Total number of volumes found. This might be greater than the number of volumes returned in this response if results have been paginated."]
         #[serde(
             rename = "totalItems",
             default,
@@ -5635,7 +5635,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Volumeseriesinfo {
-        #[doc = "The display number string. This should be used only for display purposes\nand the actual sequence should be inferred from the below orderNumber."]
+        #[doc = "The display number string. This should be used only for display purposes and the actual sequence should be inferred from the below orderNumber."]
         #[serde(
             rename = "bookDisplayNumber",
             default,
@@ -5702,7 +5702,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub order_number: ::std::option::Option<i32>,
-        #[doc = "The book type in the context of series. Examples - Single Issue,\nCollection Edition, etc."]
+        #[doc = "The book type in the context of series. Examples - Single Issue, Collection Edition, etc."]
         #[serde(
             rename = "seriesBookType",
             default,
@@ -6228,7 +6228,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/users/");
                 {
                     let var_as_str = &self.user_id;
@@ -6251,20 +6251,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("source", &self.source)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("source", &self.source)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -6399,7 +6399,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/users/");
                 {
                     let var_as_str = &self.user_id;
@@ -6415,20 +6415,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("source", &self.source)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("source", &self.source)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -6624,7 +6624,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/users/");
                     {
                         let var_as_str = &self.user_id;
@@ -6648,23 +6648,23 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("maxResults", &self.max_results)]);
-                    let req = req.query(&[("showPreorders", &self.show_preorders)]);
-                    let req = req.query(&[("source", &self.source)]);
-                    let req = req.query(&[("startIndex", &self.start_index)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("maxResults", &self.max_results)]);
+                    req = req.query(&[("showPreorders", &self.show_preorders)]);
+                    req = req.query(&[("source", &self.source)]);
+                    req = req.query(&[("startIndex", &self.start_index)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -6707,7 +6707,7 @@ pub mod resources {
                 }
             }
             #[doc = "Remove the book and its contents"]
-            pub fn delete_book(&self) -> DeleteBookRequestBuilder {
+            pub fn delete_book(&self, volume_id: impl Into<String>) -> DeleteBookRequestBuilder {
                 DeleteBookRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
@@ -6722,7 +6722,7 @@ pub mod resources {
                     upload_protocol: None,
                     upload_type: None,
                     xgafv: None,
-                    volume_id: None,
+                    volume_id: volume_id.into(),
                 }
             }
             #[doc = "Updates a user-upload volume."]
@@ -6892,7 +6892,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/cloudloading/addBook");
                 output
             }
@@ -6900,23 +6900,23 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("drive_document_id", &self.drive_document_id)]);
-                let req = req.query(&[("mime_type", &self.mime_type)]);
-                let req = req.query(&[("name", &self.name)]);
-                let req = req.query(&[("upload_client_token", &self.upload_client_token)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("drive_document_id", &self.drive_document_id)]);
+                req = req.query(&[("mime_type", &self.mime_type)]);
+                req = req.query(&[("name", &self.name)]);
+                req = req.query(&[("upload_client_token", &self.upload_client_token)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -6929,7 +6929,7 @@ pub mod resources {
         pub struct DeleteBookRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            volume_id: Option<String>,
+            volume_id: String,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
@@ -6943,11 +6943,6 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> DeleteBookRequestBuilder<'a> {
-            #[doc = "The id of the book to be removed."]
-            pub fn volume_id(mut self, value: impl Into<String>) -> Self {
-                self.volume_id = Some(value.into());
-                self
-            }
             #[doc = "OAuth access token."]
             pub fn access_token(mut self, value: impl Into<String>) -> Self {
                 self.access_token = Some(value.into());
@@ -7048,7 +7043,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/cloudloading/deleteBook");
                 output
             }
@@ -7056,20 +7051,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("volumeId", &self.volume_id)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("volumeId", &self.volume_id)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -7199,7 +7194,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/cloudloading/updateBook");
                 output
             }
@@ -7207,19 +7202,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -7239,7 +7234,10 @@ pub mod resources {
                 self.auth
             }
             #[doc = "Returns a list of offline dictionary metadata available"]
-            pub fn list_offline_metadata(&self) -> ListOfflineMetadataRequestBuilder {
+            pub fn list_offline_metadata(
+                &self,
+                cpksver: impl Into<String>,
+            ) -> ListOfflineMetadataRequestBuilder {
                 ListOfflineMetadataRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
@@ -7254,7 +7252,7 @@ pub mod resources {
                     upload_protocol: None,
                     upload_type: None,
                     xgafv: None,
-                    cpksver: None,
+                    cpksver: cpksver.into(),
                 }
             }
         }
@@ -7263,7 +7261,7 @@ pub mod resources {
         pub struct ListOfflineMetadataRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            cpksver: Option<String>,
+            cpksver: String,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
@@ -7277,11 +7275,6 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListOfflineMetadataRequestBuilder<'a> {
-            #[doc = "The device/version ID from which to request the data."]
-            pub fn cpksver(mut self, value: impl Into<String>) -> Self {
-                self.cpksver = Some(value.into());
-                self
-            }
             #[doc = "OAuth access token."]
             pub fn access_token(mut self, value: impl Into<String>) -> Self {
                 self.access_token = Some(value.into());
@@ -7382,7 +7375,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/dictionary/listOfflineMetadata");
                 output
             }
@@ -7390,20 +7383,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("cpksver", &self.cpksver)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("cpksver", &self.cpksver)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -7441,7 +7434,7 @@ pub mod resources {
                     source: None,
                 }
             }
-            #[doc = "Initiates sharing of the content with the user's family. Empty response\nindicates success."]
+            #[doc = "Initiates sharing of the content with the user's family. Empty response indicates success."]
             pub fn share(&self) -> ShareRequestBuilder {
                 ShareRequestBuilder {
                     reqwest: &self.reqwest,
@@ -7462,7 +7455,7 @@ pub mod resources {
                     volume_id: None,
                 }
             }
-            #[doc = "Initiates revoking content that has already been shared with the user's\nfamily. Empty response indicates success."]
+            #[doc = "Initiates revoking content that has already been shared with the user's family. Empty response indicates success."]
             pub fn unshare(&self) -> UnshareRequestBuilder {
                 UnshareRequestBuilder {
                     reqwest: &self.reqwest,
@@ -7610,7 +7603,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/familysharing/getFamilyInfo");
                 output
             }
@@ -7618,20 +7611,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("source", &self.source)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("source", &self.source)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -7775,7 +7768,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/familysharing/share");
                 output
             }
@@ -7783,22 +7776,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("docId", &self.doc_id)]);
-                let req = req.query(&[("source", &self.source)]);
-                let req = req.query(&[("volumeId", &self.volume_id)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("docId", &self.doc_id)]);
+                req = req.query(&[("source", &self.source)]);
+                req = req.query(&[("volumeId", &self.volume_id)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -7942,7 +7935,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/familysharing/unshare");
                 output
             }
@@ -7950,22 +7943,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("docId", &self.doc_id)]);
-                let req = req.query(&[("source", &self.source)]);
-                let req = req.query(&[("volumeId", &self.volume_id)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("docId", &self.doc_id)]);
+                req = req.query(&[("source", &self.source)]);
+                req = req.query(&[("volumeId", &self.volume_id)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -8187,7 +8180,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/volumes/");
                 {
                     let var_as_str = &self.volume_id;
@@ -8210,21 +8203,21 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("contentVersion", &self.content_version)]);
-                let req = req.query(&[("source", &self.source)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("contentVersion", &self.content_version)]);
+                req = req.query(&[("source", &self.source)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -8377,7 +8370,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/volumes/");
                 {
                     let var_as_str = &self.volume_id;
@@ -8393,23 +8386,23 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("contentVersion", &self.content_version)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("source", &self.source)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("contentVersion", &self.content_version)]);
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("source", &self.source)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -8433,6 +8426,7 @@ pub mod resources {
                     volume_id: impl Into<String>,
                     layer_id: impl Into<String>,
                     annotation_data_id: impl Into<String>,
+                    content_version: impl Into<String>,
                 ) -> GetRequestBuilder {
                     GetRequestBuilder {
                         reqwest: &self.reqwest,
@@ -8451,8 +8445,8 @@ pub mod resources {
                         volume_id: volume_id.into(),
                         layer_id: layer_id.into(),
                         annotation_data_id: annotation_data_id.into(),
+                        content_version: content_version.into(),
                         allow_web_definitions: None,
-                        content_version: None,
                         h: None,
                         locale: None,
                         scale: None,
@@ -8465,6 +8459,7 @@ pub mod resources {
                     &self,
                     volume_id: impl Into<String>,
                     layer_id: impl Into<String>,
+                    content_version: impl Into<String>,
                 ) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
@@ -8482,8 +8477,8 @@ pub mod resources {
                         xgafv: None,
                         volume_id: volume_id.into(),
                         layer_id: layer_id.into(),
+                        content_version: content_version.into(),
                         annotation_data_id: None,
-                        content_version: None,
                         h: None,
                         locale: None,
                         max_results: None,
@@ -8504,8 +8499,8 @@ pub mod resources {
                 volume_id: String,
                 layer_id: String,
                 annotation_data_id: String,
+                content_version: String,
                 allow_web_definitions: Option<bool>,
-                content_version: Option<String>,
                 h: Option<i32>,
                 locale: Option<String>,
                 scale: Option<i32>,
@@ -8529,17 +8524,12 @@ pub mod resources {
                     self.allow_web_definitions = Some(value);
                     self
                 }
-                #[doc = "The content version for the volume you are trying to retrieve."]
-                pub fn content_version(mut self, value: impl Into<String>) -> Self {
-                    self.content_version = Some(value.into());
-                    self
-                }
-                #[doc = "The requested pixel height for any images. If height is provided width must\nalso be provided."]
+                #[doc = "The requested pixel height for any images. If height is provided width must also be provided."]
                 pub fn h(mut self, value: i32) -> Self {
                     self.h = Some(value);
                     self
                 }
-                #[doc = "The locale information for the data. ISO-639-1 language and ISO-3166-1\ncountry code. Ex: 'en_US'."]
+                #[doc = "The locale information for the data. ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'."]
                 pub fn locale(mut self, value: impl Into<String>) -> Self {
                     self.locale = Some(value.into());
                     self
@@ -8554,7 +8544,7 @@ pub mod resources {
                     self.source = Some(value.into());
                     self
                 }
-                #[doc = "The requested pixel width for any images. If width is provided height must\nalso be provided."]
+                #[doc = "The requested pixel width for any images. If width is provided height must also be provided."]
                 pub fn w(mut self, value: i32) -> Self {
                     self.w = Some(value);
                     self
@@ -8666,7 +8656,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/volumes/");
                     {
                         let var_as_str = &self.volume_id;
@@ -8697,26 +8687,26 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("allowWebDefinitions", &self.allow_web_definitions)]);
-                    let req = req.query(&[("contentVersion", &self.content_version)]);
-                    let req = req.query(&[("h", &self.h)]);
-                    let req = req.query(&[("locale", &self.locale)]);
-                    let req = req.query(&[("scale", &self.scale)]);
-                    let req = req.query(&[("source", &self.source)]);
-                    let req = req.query(&[("w", &self.w)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("contentVersion", &self.content_version)]);
+                    req = req.query(&[("allowWebDefinitions", &self.allow_web_definitions)]);
+                    req = req.query(&[("h", &self.h)]);
+                    req = req.query(&[("locale", &self.locale)]);
+                    req = req.query(&[("scale", &self.scale)]);
+                    req = req.query(&[("source", &self.source)]);
+                    req = req.query(&[("w", &self.w)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -8731,8 +8721,8 @@ pub mod resources {
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 volume_id: String,
                 layer_id: String,
+                content_version: String,
                 annotation_data_id: Option<Vec<String>>,
-                content_version: Option<String>,
                 h: Option<i32>,
                 locale: Option<String>,
                 max_results: Option<u32>,
@@ -8755,22 +8745,17 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "The list of Annotation Data Ids to retrieve. Pagination is ignored if this\nis set."]
+                #[doc = "The list of Annotation Data Ids to retrieve. Pagination is ignored if this is set."]
                 pub fn annotation_data_id(mut self, value: impl Into<Vec<String>>) -> Self {
                     self.annotation_data_id = Some(value.into());
                     self
                 }
-                #[doc = "The content version for the requested volume."]
-                pub fn content_version(mut self, value: impl Into<String>) -> Self {
-                    self.content_version = Some(value.into());
-                    self
-                }
-                #[doc = "The requested pixel height for any images. If height is provided width must\nalso be provided."]
+                #[doc = "The requested pixel height for any images. If height is provided width must also be provided."]
                 pub fn h(mut self, value: i32) -> Self {
                     self.h = Some(value);
                     self
                 }
-                #[doc = "The locale information for the data. ISO-639-1 language and ISO-3166-1\ncountry code. Ex: 'en_US'."]
+                #[doc = "The locale information for the data. ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'."]
                 pub fn locale(mut self, value: impl Into<String>) -> Self {
                     self.locale = Some(value.into());
                     self
@@ -8795,17 +8780,17 @@ pub mod resources {
                     self.source = Some(value.into());
                     self
                 }
-                #[doc = "RFC 3339 timestamp to restrict to items updated prior to this timestamp\n(exclusive)."]
+                #[doc = "RFC 3339 timestamp to restrict to items updated prior to this timestamp (exclusive)."]
                 pub fn updated_max(mut self, value: impl Into<String>) -> Self {
                     self.updated_max = Some(value.into());
                     self
                 }
-                #[doc = "RFC 3339 timestamp to restrict to items updated since this timestamp\n(inclusive)."]
+                #[doc = "RFC 3339 timestamp to restrict to items updated since this timestamp (inclusive)."]
                 pub fn updated_min(mut self, value: impl Into<String>) -> Self {
                     self.updated_min = Some(value.into());
                     self
                 }
-                #[doc = "The requested pixel width for any images. If width is provided height must\nalso be provided."]
+                #[doc = "The requested pixel width for any images. If width is provided height must also be provided."]
                 pub fn w(mut self, value: i32) -> Self {
                     self.w = Some(value);
                     self
@@ -9015,7 +9000,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/volumes/");
                     {
                         let var_as_str = &self.volume_id;
@@ -9039,30 +9024,32 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("annotationDataId", &self.annotation_data_id)]);
-                    let req = req.query(&[("contentVersion", &self.content_version)]);
-                    let req = req.query(&[("h", &self.h)]);
-                    let req = req.query(&[("locale", &self.locale)]);
-                    let req = req.query(&[("maxResults", &self.max_results)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("scale", &self.scale)]);
-                    let req = req.query(&[("source", &self.source)]);
-                    let req = req.query(&[("updatedMax", &self.updated_max)]);
-                    let req = req.query(&[("updatedMin", &self.updated_min)]);
-                    let req = req.query(&[("w", &self.w)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("contentVersion", &self.content_version)]);
+                    for value in self.annotation_data_id.iter().flatten() {
+                        req = req.query(&[("annotationDataId", value)]);
+                    }
+                    req = req.query(&[("h", &self.h)]);
+                    req = req.query(&[("locale", &self.locale)]);
+                    req = req.query(&[("maxResults", &self.max_results)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("scale", &self.scale)]);
+                    req = req.query(&[("source", &self.source)]);
+                    req = req.query(&[("updatedMax", &self.updated_max)]);
+                    req = req.query(&[("updatedMin", &self.updated_min)]);
+                    req = req.query(&[("w", &self.w)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9125,6 +9112,7 @@ pub mod resources {
                     &self,
                     volume_id: impl Into<String>,
                     layer_id: impl Into<String>,
+                    content_version: impl Into<String>,
                 ) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
@@ -9142,7 +9130,7 @@ pub mod resources {
                         xgafv: None,
                         volume_id: volume_id.into(),
                         layer_id: layer_id.into(),
-                        content_version: None,
+                        content_version: content_version.into(),
                         end_offset: None,
                         end_position: None,
                         locale: None,
@@ -9181,7 +9169,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> GetRequestBuilder<'a> {
-                #[doc = "The locale information for the data. ISO-639-1 language and ISO-3166-1\ncountry code. Ex: 'en_US'."]
+                #[doc = "The locale information for the data. ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'."]
                 pub fn locale(mut self, value: impl Into<String>) -> Self {
                     self.locale = Some(value.into());
                     self
@@ -9296,7 +9284,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/volumes/");
                     {
                         let var_as_str = &self.volume_id;
@@ -9327,21 +9315,21 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("locale", &self.locale)]);
-                    let req = req.query(&[("source", &self.source)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("locale", &self.locale)]);
+                    req = req.query(&[("source", &self.source)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9356,7 +9344,7 @@ pub mod resources {
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 volume_id: String,
                 layer_id: String,
-                content_version: Option<String>,
+                content_version: String,
                 end_offset: Option<String>,
                 end_position: Option<String>,
                 locale: Option<String>,
@@ -9382,11 +9370,6 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "The content version for the requested volume."]
-                pub fn content_version(mut self, value: impl Into<String>) -> Self {
-                    self.content_version = Some(value.into());
-                    self
-                }
                 #[doc = "The end offset to end retrieving data from."]
                 pub fn end_offset(mut self, value: impl Into<String>) -> Self {
                     self.end_offset = Some(value.into());
@@ -9397,7 +9380,7 @@ pub mod resources {
                     self.end_position = Some(value.into());
                     self
                 }
-                #[doc = "The locale information for the data. ISO-639-1 language and ISO-3166-1\ncountry code. Ex: 'en_US'."]
+                #[doc = "The locale information for the data. ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'."]
                 pub fn locale(mut self, value: impl Into<String>) -> Self {
                     self.locale = Some(value.into());
                     self
@@ -9412,7 +9395,7 @@ pub mod resources {
                     self.page_token = Some(value.into());
                     self
                 }
-                #[doc = "Set to true to return deleted annotations. updatedMin must be in the\nrequest to use this. Defaults to false."]
+                #[doc = "Set to true to return deleted annotations. updatedMin must be in the request to use this. Defaults to false."]
                 pub fn show_deleted(mut self, value: bool) -> Self {
                     self.show_deleted = Some(value);
                     self
@@ -9432,12 +9415,12 @@ pub mod resources {
                     self.start_position = Some(value.into());
                     self
                 }
-                #[doc = "RFC 3339 timestamp to restrict to items updated prior to this timestamp\n(exclusive)."]
+                #[doc = "RFC 3339 timestamp to restrict to items updated prior to this timestamp (exclusive)."]
                 pub fn updated_max(mut self, value: impl Into<String>) -> Self {
                     self.updated_max = Some(value.into());
                     self
                 }
-                #[doc = "RFC 3339 timestamp to restrict to items updated since this timestamp\n(inclusive)."]
+                #[doc = "RFC 3339 timestamp to restrict to items updated since this timestamp (inclusive)."]
                 pub fn updated_min(mut self, value: impl Into<String>) -> Self {
                     self.updated_min = Some(value.into());
                     self
@@ -9654,7 +9637,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/volumes/");
                     {
                         let var_as_str = &self.volume_id;
@@ -9677,33 +9660,33 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("contentVersion", &self.content_version)]);
-                    let req = req.query(&[("endOffset", &self.end_offset)]);
-                    let req = req.query(&[("endPosition", &self.end_position)]);
-                    let req = req.query(&[("locale", &self.locale)]);
-                    let req = req.query(&[("maxResults", &self.max_results)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("showDeleted", &self.show_deleted)]);
-                    let req = req.query(&[("source", &self.source)]);
-                    let req = req.query(&[("startOffset", &self.start_offset)]);
-                    let req = req.query(&[("startPosition", &self.start_position)]);
-                    let req = req.query(&[("updatedMax", &self.updated_max)]);
-                    let req = req.query(&[("updatedMin", &self.updated_min)]);
-                    let req = req
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("contentVersion", &self.content_version)]);
+                    req = req.query(&[("endOffset", &self.end_offset)]);
+                    req = req.query(&[("endPosition", &self.end_position)]);
+                    req = req.query(&[("locale", &self.locale)]);
+                    req = req.query(&[("maxResults", &self.max_results)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("showDeleted", &self.show_deleted)]);
+                    req = req.query(&[("source", &self.source)]);
+                    req = req.query(&[("startOffset", &self.start_offset)]);
+                    req = req.query(&[("startPosition", &self.start_position)]);
+                    req = req.query(&[("updatedMax", &self.updated_max)]);
+                    req = req.query(&[("updatedMin", &self.updated_min)]);
+                    req = req
                         .query(&[("volumeAnnotationsVersion", &self.volume_annotations_version)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9728,8 +9711,11 @@ pub mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum RequestAccessLicenseTypes {
+                #[doc = "Both concurrent and download licenses."]
                 Both,
+                #[doc = "Concurrent access license."]
                 Concurrent,
+                #[doc = "Offline download access license."]
                 Download,
                 LicenseTypesUndefined,
             }
@@ -9812,6 +9798,7 @@ pub mod resources {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum SyncVolumeLicensesFeaturesItems {
                 FeaturesUndefined,
+                #[doc = "Client supports rentals."]
                 Rentals,
             }
             impl SyncVolumeLicensesFeaturesItems {
@@ -9907,7 +9894,11 @@ pub mod resources {
                 }
             }
             #[doc = "Release downloaded content access restriction."]
-            pub fn release_download_access(&self) -> ReleaseDownloadAccessRequestBuilder {
+            pub fn release_download_access(
+                &self,
+                cpksver: impl Into<String>,
+                volume_ids: impl Into<Vec<String>>,
+            ) -> ReleaseDownloadAccessRequestBuilder {
                 ReleaseDownloadAccessRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
@@ -9922,14 +9913,20 @@ pub mod resources {
                     upload_protocol: None,
                     upload_type: None,
                     xgafv: None,
-                    cpksver: None,
+                    cpksver: cpksver.into(),
+                    volume_ids: volume_ids.into(),
                     locale: None,
                     source: None,
-                    volume_ids: None,
                 }
             }
             #[doc = "Request concurrent and download access restrictions."]
-            pub fn request_access(&self) -> RequestAccessRequestBuilder {
+            pub fn request_access(
+                &self,
+                cpksver: impl Into<String>,
+                nonce: impl Into<String>,
+                source: impl Into<String>,
+                volume_id: impl Into<String>,
+            ) -> RequestAccessRequestBuilder {
                 RequestAccessRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
@@ -9944,16 +9941,21 @@ pub mod resources {
                     upload_protocol: None,
                     upload_type: None,
                     xgafv: None,
-                    cpksver: None,
+                    cpksver: cpksver.into(),
+                    nonce: nonce.into(),
+                    source: source.into(),
+                    volume_id: volume_id.into(),
                     license_types: None,
                     locale: None,
-                    nonce: None,
-                    source: None,
-                    volume_id: None,
                 }
             }
-            #[doc = "Request downloaded content access for specified volumes on the My eBooks\nshelf."]
-            pub fn sync_volume_licenses(&self) -> SyncVolumeLicensesRequestBuilder {
+            #[doc = "Request downloaded content access for specified volumes on the My eBooks shelf."]
+            pub fn sync_volume_licenses(
+                &self,
+                cpksver: impl Into<String>,
+                nonce: impl Into<String>,
+                source: impl Into<String>,
+            ) -> SyncVolumeLicensesRequestBuilder {
                 SyncVolumeLicensesRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
@@ -9968,17 +9970,17 @@ pub mod resources {
                     upload_protocol: None,
                     upload_type: None,
                     xgafv: None,
-                    cpksver: None,
+                    cpksver: cpksver.into(),
+                    nonce: nonce.into(),
+                    source: source.into(),
                     features: None,
                     include_non_comics_series: None,
                     locale: None,
-                    nonce: None,
                     show_preorders: None,
-                    source: None,
                     volume_ids: None,
                 }
             }
-            #[doc = "Sets the settings for the user. If a sub-object is specified, it will\noverwrite the existing sub-object stored in the server. Unspecified\nsub-objects will retain the existing value."]
+            #[doc = "Sets the settings for the user. If a sub-object is specified, it will overwrite the existing sub-object stored in the server. Unspecified sub-objects will retain the existing value."]
             pub fn update_user_settings(
                 &self,
                 request: crate::schemas::Usersettings,
@@ -10127,7 +10129,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/myconfig/getUserSettings");
                 output
             }
@@ -10135,20 +10137,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("country", &self.country)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("country", &self.country)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10161,10 +10163,10 @@ pub mod resources {
         pub struct ReleaseDownloadAccessRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            cpksver: Option<String>,
+            cpksver: String,
+            volume_ids: Vec<String>,
             locale: Option<String>,
             source: Option<String>,
-            volume_ids: Option<Vec<String>>,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
@@ -10178,11 +10180,6 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ReleaseDownloadAccessRequestBuilder<'a> {
-            #[doc = "The device/version ID from which to release the restriction."]
-            pub fn cpksver(mut self, value: impl Into<String>) -> Self {
-                self.cpksver = Some(value.into());
-                self
-            }
             #[doc = "ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US."]
             pub fn locale(mut self, value: impl Into<String>) -> Self {
                 self.locale = Some(value.into());
@@ -10191,11 +10188,6 @@ pub mod resources {
             #[doc = "String to identify the originator of this request."]
             pub fn source(mut self, value: impl Into<String>) -> Self {
                 self.source = Some(value.into());
-                self
-            }
-            #[doc = "The volume(s) to release restrictions for."]
-            pub fn volume_ids(mut self, value: impl Into<Vec<String>>) -> Self {
-                self.volume_ids = Some(value.into());
                 self
             }
             #[doc = "OAuth access token."]
@@ -10300,7 +10292,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/myconfig/releaseDownloadAccess");
                 output
             }
@@ -10308,23 +10300,25 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("cpksver", &self.cpksver)]);
-                let req = req.query(&[("locale", &self.locale)]);
-                let req = req.query(&[("source", &self.source)]);
-                let req = req.query(&[("volumeIds", &self.volume_ids)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("cpksver", &self.cpksver)]);
+                for value in &self.volume_ids {
+                    req = req.query(&[("volumeIds", value)]);
+                }
+                req = req.query(&[("locale", &self.locale)]);
+                req = req.query(&[("source", &self.source)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10337,12 +10331,12 @@ pub mod resources {
         pub struct RequestAccessRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            cpksver: Option<String>,
+            cpksver: String,
+            nonce: String,
+            source: String,
+            volume_id: String,
             license_types: Option<crate::resources::myconfig::params::RequestAccessLicenseTypes>,
             locale: Option<String>,
-            nonce: Option<String>,
-            source: Option<String>,
-            volume_id: Option<String>,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
@@ -10356,12 +10350,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> RequestAccessRequestBuilder<'a> {
-            #[doc = "The device/version ID from which to request the restrictions."]
-            pub fn cpksver(mut self, value: impl Into<String>) -> Self {
-                self.cpksver = Some(value.into());
-                self
-            }
-            #[doc = "The type of access license to request. If not specified, the default is\nBOTH."]
+            #[doc = "The type of access license to request. If not specified, the default is BOTH."]
             pub fn license_types(
                 mut self,
                 value: crate::resources::myconfig::params::RequestAccessLicenseTypes,
@@ -10372,21 +10361,6 @@ pub mod resources {
             #[doc = "ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US."]
             pub fn locale(mut self, value: impl Into<String>) -> Self {
                 self.locale = Some(value.into());
-                self
-            }
-            #[doc = "The client nonce value."]
-            pub fn nonce(mut self, value: impl Into<String>) -> Self {
-                self.nonce = Some(value.into());
-                self
-            }
-            #[doc = "String to identify the originator of this request."]
-            pub fn source(mut self, value: impl Into<String>) -> Self {
-                self.source = Some(value.into());
-                self
-            }
-            #[doc = "The volume to request concurrent/download restrictions for."]
-            pub fn volume_id(mut self, value: impl Into<String>) -> Self {
-                self.volume_id = Some(value.into());
                 self
             }
             #[doc = "OAuth access token."]
@@ -10491,7 +10465,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/myconfig/requestAccess");
                 output
             }
@@ -10499,25 +10473,25 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("cpksver", &self.cpksver)]);
-                let req = req.query(&[("licenseTypes", &self.license_types)]);
-                let req = req.query(&[("locale", &self.locale)]);
-                let req = req.query(&[("nonce", &self.nonce)]);
-                let req = req.query(&[("source", &self.source)]);
-                let req = req.query(&[("volumeId", &self.volume_id)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("cpksver", &self.cpksver)]);
+                req = req.query(&[("nonce", &self.nonce)]);
+                req = req.query(&[("source", &self.source)]);
+                req = req.query(&[("volumeId", &self.volume_id)]);
+                req = req.query(&[("licenseTypes", &self.license_types)]);
+                req = req.query(&[("locale", &self.locale)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10530,14 +10504,14 @@ pub mod resources {
         pub struct SyncVolumeLicensesRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            cpksver: Option<String>,
+            cpksver: String,
+            nonce: String,
+            source: String,
             features:
                 Option<Vec<crate::resources::myconfig::params::SyncVolumeLicensesFeaturesItems>>,
             include_non_comics_series: Option<bool>,
             locale: Option<String>,
-            nonce: Option<String>,
             show_preorders: Option<bool>,
-            source: Option<String>,
             volume_ids: Option<Vec<String>>,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
@@ -10552,11 +10526,6 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> SyncVolumeLicensesRequestBuilder<'a> {
-            #[doc = "The device/version ID from which to release the restriction."]
-            pub fn cpksver(mut self, value: impl Into<String>) -> Self {
-                self.cpksver = Some(value.into());
-                self
-            }
             #[doc = "List of features supported by the client, i.e., 'RENTALS'"]
             pub fn features(
                 mut self,
@@ -10577,19 +10546,9 @@ pub mod resources {
                 self.locale = Some(value.into());
                 self
             }
-            #[doc = "The client nonce value."]
-            pub fn nonce(mut self, value: impl Into<String>) -> Self {
-                self.nonce = Some(value.into());
-                self
-            }
             #[doc = "Set to true to show pre-ordered books. Defaults to false."]
             pub fn show_preorders(mut self, value: bool) -> Self {
                 self.show_preorders = Some(value);
-                self
-            }
-            #[doc = "String to identify the originator of this request."]
-            pub fn source(mut self, value: impl Into<String>) -> Self {
-                self.source = Some(value.into());
                 self
             }
             #[doc = "The volume(s) to request download restrictions for."]
@@ -10697,7 +10656,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/myconfig/syncVolumeLicenses");
                 output
             }
@@ -10705,27 +10664,31 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("cpksver", &self.cpksver)]);
-                let req = req.query(&[("features", &self.features)]);
-                let req = req.query(&[("includeNonComicsSeries", &self.include_non_comics_series)]);
-                let req = req.query(&[("locale", &self.locale)]);
-                let req = req.query(&[("nonce", &self.nonce)]);
-                let req = req.query(&[("showPreorders", &self.show_preorders)]);
-                let req = req.query(&[("source", &self.source)]);
-                let req = req.query(&[("volumeIds", &self.volume_ids)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("cpksver", &self.cpksver)]);
+                req = req.query(&[("nonce", &self.nonce)]);
+                req = req.query(&[("source", &self.source)]);
+                for value in self.features.iter().flatten() {
+                    req = req.query(&[("features", value)]);
+                }
+                req = req.query(&[("includeNonComicsSeries", &self.include_non_comics_series)]);
+                req = req.query(&[("locale", &self.locale)]);
+                req = req.query(&[("showPreorders", &self.show_preorders)]);
+                for value in self.volume_ids.iter().flatten() {
+                    req = req.query(&[("volumeIds", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10855,7 +10818,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/myconfig/updateUserSettings");
                 output
             }
@@ -10863,19 +10826,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11005,7 +10968,11 @@ pub mod resources {
                     }
                 }
                 #[doc = "Gets the summary of specified layers."]
-                pub fn summary(&self) -> SummaryRequestBuilder {
+                pub fn summary(
+                    &self,
+                    layer_ids: impl Into<Vec<String>>,
+                    volume_id: impl Into<String>,
+                ) -> SummaryRequestBuilder {
                     SummaryRequestBuilder {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
@@ -11020,8 +10987,8 @@ pub mod resources {
                         upload_protocol: None,
                         upload_type: None,
                         xgafv: None,
-                        layer_ids: None,
-                        volume_id: None,
+                        layer_ids: layer_ids.into(),
+                        volume_id: volume_id.into(),
                     }
                 }
                 #[doc = "Updates an existing annotation."]
@@ -11180,7 +11147,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/mylibrary/annotations/");
                     {
                         let var_as_str = &self.annotation_id;
@@ -11195,20 +11162,20 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                    let req = req.query(&[("source", &self.source)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                    req = req.query(&[("source", &self.source)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11249,7 +11216,7 @@ pub mod resources {
                     self.country = Some(value.into());
                     self
                 }
-                #[doc = "Requests that only the summary of the specified layer be provided in the\nresponse."]
+                #[doc = "Requests that only the summary of the specified layer be provided in the response."]
                 pub fn show_only_summary_in_response(mut self, value: bool) -> Self {
                     self.show_only_summary_in_response = Some(value);
                     self
@@ -11365,7 +11332,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/mylibrary/annotations");
                     output
                 }
@@ -11373,26 +11340,26 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("annotationId", &self.annotation_id)]);
-                    let req = req.query(&[("country", &self.country)]);
-                    let req = req.query(&[(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("annotationId", &self.annotation_id)]);
+                    req = req.query(&[("country", &self.country)]);
+                    req = req.query(&[(
                         "showOnlySummaryInResponse",
                         &self.show_only_summary_in_response,
                     )]);
-                    let req = req.query(&[("source", &self.source)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    req = req.query(&[("source", &self.source)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11453,7 +11420,7 @@ pub mod resources {
                     self.page_token = Some(value.into());
                     self
                 }
-                #[doc = "Set to true to return deleted annotations. updatedMin must be in the\nrequest to use this. Defaults to false."]
+                #[doc = "Set to true to return deleted annotations. updatedMin must be in the request to use this. Defaults to false."]
                 pub fn show_deleted(mut self, value: bool) -> Self {
                     self.show_deleted = Some(value);
                     self
@@ -11463,12 +11430,12 @@ pub mod resources {
                     self.source = Some(value.into());
                     self
                 }
-                #[doc = "RFC 3339 timestamp to restrict to items updated prior to this timestamp\n(exclusive)."]
+                #[doc = "RFC 3339 timestamp to restrict to items updated prior to this timestamp (exclusive)."]
                 pub fn updated_max(mut self, value: impl Into<String>) -> Self {
                     self.updated_max = Some(value.into());
                     self
                 }
-                #[doc = "RFC 3339 timestamp to restrict to items updated since this timestamp\n(inclusive)."]
+                #[doc = "RFC 3339 timestamp to restrict to items updated since this timestamp (inclusive)."]
                 pub fn updated_min(mut self, value: impl Into<String>) -> Self {
                     self.updated_min = Some(value.into());
                     self
@@ -11681,7 +11648,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/mylibrary/annotations");
                     output
                 }
@@ -11689,29 +11656,31 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("contentVersion", &self.content_version)]);
-                    let req = req.query(&[("layerId", &self.layer_id)]);
-                    let req = req.query(&[("layerIds", &self.layer_ids)]);
-                    let req = req.query(&[("maxResults", &self.max_results)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("showDeleted", &self.show_deleted)]);
-                    let req = req.query(&[("source", &self.source)]);
-                    let req = req.query(&[("updatedMax", &self.updated_max)]);
-                    let req = req.query(&[("updatedMin", &self.updated_min)]);
-                    let req = req.query(&[("volumeId", &self.volume_id)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("contentVersion", &self.content_version)]);
+                    req = req.query(&[("layerId", &self.layer_id)]);
+                    for value in self.layer_ids.iter().flatten() {
+                        req = req.query(&[("layerIds", value)]);
+                    }
+                    req = req.query(&[("maxResults", &self.max_results)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("showDeleted", &self.show_deleted)]);
+                    req = req.query(&[("source", &self.source)]);
+                    req = req.query(&[("updatedMax", &self.updated_max)]);
+                    req = req.query(&[("updatedMin", &self.updated_min)]);
+                    req = req.query(&[("volumeId", &self.volume_id)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11735,8 +11704,8 @@ pub mod resources {
             pub struct SummaryRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-                layer_ids: Option<Vec<String>>,
-                volume_id: Option<String>,
+                layer_ids: Vec<String>,
+                volume_id: String,
                 access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
@@ -11750,16 +11719,6 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> SummaryRequestBuilder<'a> {
-                #[doc = "Array of layer IDs to get the summary for."]
-                pub fn layer_ids(mut self, value: impl Into<Vec<String>>) -> Self {
-                    self.layer_ids = Some(value.into());
-                    self
-                }
-                #[doc = "Volume id to get the summary for."]
-                pub fn volume_id(mut self, value: impl Into<String>) -> Self {
-                    self.volume_id = Some(value.into());
-                    self
-                }
                 #[doc = "OAuth access token."]
                 pub fn access_token(mut self, value: impl Into<String>) -> Self {
                     self.access_token = Some(value.into());
@@ -11865,7 +11824,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/mylibrary/annotations/summary");
                     output
                 }
@@ -11873,21 +11832,23 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("layerIds", &self.layer_ids)]);
-                    let req = req.query(&[("volumeId", &self.volume_id)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    for value in &self.layer_ids {
+                        req = req.query(&[("layerIds", value)]);
+                    }
+                    req = req.query(&[("volumeId", &self.volume_id)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12027,7 +11988,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/mylibrary/annotations/");
                     {
                         let var_as_str = &self.annotation_id;
@@ -12042,20 +12003,20 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                    let req = req.query(&[("source", &self.source)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                    req = req.query(&[("source", &self.source)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12068,8 +12029,11 @@ pub mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum AddVolumeReason {
+                    #[doc = "Volumes added from the PREX flow on iOS."]
                     IosPrex,
+                    #[doc = "Volumes added from the Search flow on iOS."]
                     IosSearch,
+                    #[doc = "Volumes added from the Onboarding flow."]
                     Onboarding,
                     ReasonUndefined,
                 }
@@ -12145,6 +12109,7 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum RemoveVolumeReason {
+                    #[doc = "Samples removed from the Onboarding flow."]
                     Onboarding,
                     ReasonUndefined,
                 }
@@ -12222,7 +12187,11 @@ pub mod resources {
                     self.auth
                 }
                 #[doc = "Adds a volume to a bookshelf."]
-                pub fn add_volume(&self, shelf: impl Into<String>) -> AddVolumeRequestBuilder {
+                pub fn add_volume(
+                    &self,
+                    shelf: impl Into<String>,
+                    volume_id: impl Into<String>,
+                ) -> AddVolumeRequestBuilder {
                     AddVolumeRequestBuilder {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
@@ -12238,9 +12207,9 @@ pub mod resources {
                         upload_type: None,
                         xgafv: None,
                         shelf: shelf.into(),
+                        volume_id: volume_id.into(),
                         reason: None,
                         source: None,
-                        volume_id: None,
                     }
                 }
                 #[doc = "Clears all volumes from a bookshelf."]
@@ -12266,7 +12235,7 @@ pub mod resources {
                         source: None,
                     }
                 }
-                #[doc = "Retrieves metadata for a specific bookshelf belonging to the authenticated\nuser."]
+                #[doc = "Retrieves metadata for a specific bookshelf belonging to the authenticated user."]
                 pub fn get(&self, shelf: impl Into<String>) -> GetRequestBuilder {
                     GetRequestBuilder {
                         reqwest: &self.reqwest,
@@ -12306,7 +12275,12 @@ pub mod resources {
                     }
                 }
                 #[doc = "Moves a volume within a bookshelf."]
-                pub fn move_volume(&self, shelf: impl Into<String>) -> MoveVolumeRequestBuilder {
+                pub fn move_volume(
+                    &self,
+                    shelf: impl Into<String>,
+                    volume_id: impl Into<String>,
+                    volume_position: i32,
+                ) -> MoveVolumeRequestBuilder {
                     MoveVolumeRequestBuilder {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
@@ -12322,15 +12296,16 @@ pub mod resources {
                         upload_type: None,
                         xgafv: None,
                         shelf: shelf.into(),
+                        volume_id: volume_id.into(),
+                        volume_position,
                         source: None,
-                        volume_id: None,
-                        volume_position: None,
                     }
                 }
                 #[doc = "Removes a volume from a bookshelf."]
                 pub fn remove_volume(
                     &self,
                     shelf: impl Into<String>,
+                    volume_id: impl Into<String>,
                 ) -> RemoveVolumeRequestBuilder {
                     RemoveVolumeRequestBuilder {
                         reqwest: &self.reqwest,
@@ -12347,9 +12322,9 @@ pub mod resources {
                         upload_type: None,
                         xgafv: None,
                         shelf: shelf.into(),
+                        volume_id: volume_id.into(),
                         reason: None,
                         source: None,
-                        volume_id: None,
                     }
                 }
                 #[doc = "Actions that can be performed on the volumes resource"]
@@ -12369,9 +12344,9 @@ pub mod resources {
                 pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 shelf: String,
+                volume_id: String,
                 reason: Option<crate::resources::mylibrary::bookshelves::params::AddVolumeReason>,
                 source: Option<String>,
-                volume_id: Option<String>,
                 access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
@@ -12396,11 +12371,6 @@ pub mod resources {
                 #[doc = "String to identify the originator of this request."]
                 pub fn source(mut self, value: impl Into<String>) -> Self {
                     self.source = Some(value.into());
-                    self
-                }
-                #[doc = "ID of volume to add."]
-                pub fn volume_id(mut self, value: impl Into<String>) -> Self {
-                    self.volume_id = Some(value.into());
                     self
                 }
                 #[doc = "OAuth access token."]
@@ -12508,7 +12478,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/mylibrary/bookshelves/");
                     {
                         let var_as_str = &self.shelf;
@@ -12524,22 +12494,22 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("reason", &self.reason)]);
-                    let req = req.query(&[("source", &self.source)]);
-                    let req = req.query(&[("volumeId", &self.volume_id)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("volumeId", &self.volume_id)]);
+                    req = req.query(&[("reason", &self.reason)]);
+                    req = req.query(&[("source", &self.source)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12677,7 +12647,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/mylibrary/bookshelves/");
                     {
                         let var_as_str = &self.shelf;
@@ -12693,20 +12663,20 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("source", &self.source)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("source", &self.source)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12844,7 +12814,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/mylibrary/bookshelves/");
                     {
                         let var_as_str = &self.shelf;
@@ -12859,20 +12829,20 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("source", &self.source)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("source", &self.source)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13009,7 +12979,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/mylibrary/bookshelves");
                     output
                 }
@@ -13017,20 +12987,20 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("source", &self.source)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("source", &self.source)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13044,9 +13014,9 @@ pub mod resources {
                 pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 shelf: String,
+                volume_id: String,
+                volume_position: i32,
                 source: Option<String>,
-                volume_id: Option<String>,
-                volume_position: Option<i32>,
                 access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
@@ -13063,16 +13033,6 @@ pub mod resources {
                 #[doc = "String to identify the originator of this request."]
                 pub fn source(mut self, value: impl Into<String>) -> Self {
                     self.source = Some(value.into());
-                    self
-                }
-                #[doc = "ID of volume to move."]
-                pub fn volume_id(mut self, value: impl Into<String>) -> Self {
-                    self.volume_id = Some(value.into());
-                    self
-                }
-                #[doc = "Position on shelf to move the item (0 puts the item before the current\nfirst item, 1 puts it between the first and the second and so on.)"]
-                pub fn volume_position(mut self, value: i32) -> Self {
-                    self.volume_position = Some(value);
                     self
                 }
                 #[doc = "OAuth access token."]
@@ -13180,7 +13140,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/mylibrary/bookshelves/");
                     {
                         let var_as_str = &self.shelf;
@@ -13196,22 +13156,22 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("source", &self.source)]);
-                    let req = req.query(&[("volumeId", &self.volume_id)]);
-                    let req = req.query(&[("volumePosition", &self.volume_position)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("volumeId", &self.volume_id)]);
+                    req = req.query(&[("volumePosition", &self.volume_position)]);
+                    req = req.query(&[("source", &self.source)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13225,10 +13185,10 @@ pub mod resources {
                 pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 shelf: String,
+                volume_id: String,
                 reason:
                     Option<crate::resources::mylibrary::bookshelves::params::RemoveVolumeReason>,
                 source: Option<String>,
-                volume_id: Option<String>,
                 access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
@@ -13255,11 +13215,6 @@ pub mod resources {
                     self.source = Some(value.into());
                     self
                 }
-                #[doc = "ID of volume to remove."]
-                pub fn volume_id(mut self, value: impl Into<String>) -> Self {
-                    self.volume_id = Some(value.into());
-                    self
-                }
                 #[doc = "OAuth access token."]
                 pub fn access_token(mut self, value: impl Into<String>) -> Self {
                     self.access_token = Some(value.into());
@@ -13365,7 +13320,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/mylibrary/bookshelves/");
                     {
                         let var_as_str = &self.shelf;
@@ -13381,22 +13336,22 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("reason", &self.reason)]);
-                    let req = req.query(&[("source", &self.source)]);
-                    let req = req.query(&[("volumeId", &self.volume_id)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("volumeId", &self.volume_id)]);
+                    req = req.query(&[("reason", &self.reason)]);
+                    req = req.query(&[("source", &self.source)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13408,7 +13363,9 @@ pub mod resources {
                 pub mod params {
                     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                     pub enum ListProjection {
+                        #[doc = "Includes all volume data."]
                         Full,
+                        #[doc = "Includes a subset of fields in volumeInfo and accessInfo."]
                         Lite,
                         ProjectionUndefined,
                     }
@@ -13689,7 +13646,7 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
+                        let mut output = "https://books.googleapis.com/".to_owned();
                         output.push_str("books/v1/mylibrary/bookshelves/");
                         {
                             let var_as_str = &self.shelf;
@@ -13706,26 +13663,26 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("country", &self.country)]);
-                        let req = req.query(&[("maxResults", &self.max_results)]);
-                        let req = req.query(&[("projection", &self.projection)]);
-                        let req = req.query(&[("q", &self.q)]);
-                        let req = req.query(&[("showPreorders", &self.show_preorders)]);
-                        let req = req.query(&[("source", &self.source)]);
-                        let req = req.query(&[("startIndex", &self.start_index)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("country", &self.country)]);
+                        req = req.query(&[("maxResults", &self.max_results)]);
+                        req = req.query(&[("projection", &self.projection)]);
+                        req = req.query(&[("q", &self.q)]);
+                        req = req.query(&[("showPreorders", &self.show_preorders)]);
+                        req = req.query(&[("source", &self.source)]);
+                        req = req.query(&[("startIndex", &self.start_index)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13740,11 +13697,17 @@ pub mod resources {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum SetPositionAction {
                     ActionUndefined,
+                    #[doc = "User chose bookmark within volume."]
                     Bookmark,
+                    #[doc = "User selected chapter from list."]
                     Chapter,
+                    #[doc = "Next page event."]
                     NextPage,
+                    #[doc = "Previous page event."]
                     PrevPage,
+                    #[doc = "User navigated to page."]
                     Scroll,
+                    #[doc = "User chose search results within volume."]
                     Search,
                 }
                 impl SetPositionAction {
@@ -13860,6 +13823,8 @@ pub mod resources {
                 pub fn set_position(
                     &self,
                     volume_id: impl Into<String>,
+                    position: impl Into<String>,
+                    timestamp: impl Into<String>,
                 ) -> SetPositionRequestBuilder {
                     SetPositionRequestBuilder {
                         reqwest: &self.reqwest,
@@ -13876,12 +13841,12 @@ pub mod resources {
                         upload_type: None,
                         xgafv: None,
                         volume_id: volume_id.into(),
+                        position: position.into(),
+                        timestamp: timestamp.into(),
                         action: None,
                         content_version: None,
                         device_cookie: None,
-                        position: None,
                         source: None,
-                        timestamp: None,
                     }
                 }
             }
@@ -14021,7 +13986,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/mylibrary/readingpositions/");
                     {
                         let var_as_str = &self.volume_id;
@@ -14036,21 +14001,21 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("contentVersion", &self.content_version)]);
-                    let req = req.query(&[("source", &self.source)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("contentVersion", &self.content_version)]);
+                    req = req.query(&[("source", &self.source)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14064,14 +14029,14 @@ pub mod resources {
                 pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 volume_id: String,
+                position: String,
+                timestamp: String,
                 action: Option<
                     crate::resources::mylibrary::readingpositions::params::SetPositionAction,
                 >,
                 content_version: Option<String>,
                 device_cookie: Option<String>,
-                position: Option<String>,
                 source: Option<String>,
-                timestamp: Option<String>,
                 access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
@@ -14103,19 +14068,9 @@ pub mod resources {
                     self.device_cookie = Some(value.into());
                     self
                 }
-                #[doc = "Position string for the new volume reading position."]
-                pub fn position(mut self, value: impl Into<String>) -> Self {
-                    self.position = Some(value.into());
-                    self
-                }
                 #[doc = "String to identify the originator of this request."]
                 pub fn source(mut self, value: impl Into<String>) -> Self {
                     self.source = Some(value.into());
-                    self
-                }
-                #[doc = "RFC 3339 UTC format timestamp associated with this reading position."]
-                pub fn timestamp(mut self, value: impl Into<String>) -> Self {
-                    self.timestamp = Some(value.into());
                     self
                 }
                 #[doc = "OAuth access token."]
@@ -14223,7 +14178,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/mylibrary/readingpositions/");
                     {
                         let var_as_str = &self.volume_id;
@@ -14239,25 +14194,25 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("action", &self.action)]);
-                    let req = req.query(&[("contentVersion", &self.content_version)]);
-                    let req = req.query(&[("deviceCookie", &self.device_cookie)]);
-                    let req = req.query(&[("position", &self.position)]);
-                    let req = req.query(&[("source", &self.source)]);
-                    let req = req.query(&[("timestamp", &self.timestamp)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("position", &self.position)]);
+                    req = req.query(&[("timestamp", &self.timestamp)]);
+                    req = req.query(&[("action", &self.action)]);
+                    req = req.query(&[("contentVersion", &self.content_version)]);
+                    req = req.query(&[("deviceCookie", &self.device_cookie)]);
+                    req = req.query(&[("source", &self.source)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14278,7 +14233,7 @@ pub mod resources {
                 self.auth
             }
             #[doc = "Returns notification details for a given notification id."]
-            pub fn get(&self) -> GetRequestBuilder {
+            pub fn get(&self, notification_id: impl Into<String>) -> GetRequestBuilder {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
@@ -14293,8 +14248,8 @@ pub mod resources {
                     upload_protocol: None,
                     upload_type: None,
                     xgafv: None,
+                    notification_id: notification_id.into(),
                     locale: None,
-                    notification_id: None,
                     source: None,
                 }
             }
@@ -14304,8 +14259,8 @@ pub mod resources {
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            notification_id: String,
             locale: Option<String>,
-            notification_id: Option<String>,
             source: Option<String>,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
@@ -14320,14 +14275,9 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetRequestBuilder<'a> {
-            #[doc = "ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for\ngenerating notification title and body."]
+            #[doc = "ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating notification title and body."]
             pub fn locale(mut self, value: impl Into<String>) -> Self {
                 self.locale = Some(value.into());
-                self
-            }
-            #[doc = "String to identify the notification."]
-            pub fn notification_id(mut self, value: impl Into<String>) -> Self {
-                self.notification_id = Some(value.into());
                 self
             }
             #[doc = "String to identify the originator of this request."]
@@ -14437,7 +14387,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/notification/get");
                 output
             }
@@ -14445,22 +14395,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("locale", &self.locale)]);
-                let req = req.query(&[("notification_id", &self.notification_id)]);
-                let req = req.query(&[("source", &self.source)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("notification_id", &self.notification_id)]);
+                req = req.query(&[("locale", &self.locale)]);
+                req = req.query(&[("source", &self.source)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14473,8 +14423,10 @@ pub mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListCategoryVolumesMaxAllowedMaturityRating {
+                #[doc = "Show books which are rated mature or lower."]
                 Mature,
                 MaxAllowedMaturityRatingUndefined,
+                #[doc = "Show books which are rated not mature."]
                 NotMature,
             }
             impl ListCategoryVolumesMaxAllowedMaturityRating {
@@ -14704,7 +14656,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/onboarding/listCategories");
                 output
             }
@@ -14712,20 +14664,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("locale", &self.locale)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("locale", &self.locale)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14768,7 +14720,7 @@ pub mod resources {
                 self.locale = Some(value.into());
                 self
             }
-            #[doc = "The maximum allowed maturity rating of returned volumes. Books with a\nhigher maturity rating are filtered out."]
+            #[doc = "The maximum allowed maturity rating of returned volumes. Books with a higher maturity rating are filtered out."]
             pub fn max_allowed_maturity_rating(
                 mut self,
                 value : crate :: resources :: onboarding :: params :: ListCategoryVolumesMaxAllowedMaturityRating,
@@ -14984,7 +14936,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/onboarding/listCategoryVolumes");
                 output
             }
@@ -14992,27 +14944,29 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("categoryId", &self.category_id)]);
-                let req = req.query(&[("locale", &self.locale)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in self.category_id.iter().flatten() {
+                    req = req.query(&[("categoryId", value)]);
+                }
+                req = req.query(&[("locale", &self.locale)]);
+                req = req.query(&[(
                     "maxAllowedMaturityRating",
                     &self.max_allowed_maturity_rating,
                 )]);
-                let req = req.query(&[("pageSize", &self.page_size)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("pageSize", &self.page_size)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -15036,8 +14990,10 @@ pub mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum GetMaxAllowedMaturityRating {
+                #[doc = "Show books which are rated mature or lower."]
                 Mature,
                 MaxAllowedMaturityRatingUndefined,
+                #[doc = "Show books which are rated not mature."]
                 NotMature,
             }
             impl GetMaxAllowedMaturityRating {
@@ -15166,12 +15122,12 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetRequestBuilder<'a> {
-            #[doc = "ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for\ngenerating recommendations."]
+            #[doc = "ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating recommendations."]
             pub fn locale(mut self, value: impl Into<String>) -> Self {
                 self.locale = Some(value.into());
                 self
             }
-            #[doc = "The maximum allowed maturity rating of returned recommendations. Books with\na higher maturity rating are filtered out."]
+            #[doc = "The maximum allowed maturity rating of returned recommendations. Books with a higher maturity rating are filtered out."]
             pub fn max_allowed_maturity_rating(
                 mut self,
                 value: crate::resources::personalizedstream::params::GetMaxAllowedMaturityRating,
@@ -15286,7 +15242,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/personalizedstream/get");
                 output
             }
@@ -15294,25 +15250,25 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("locale", &self.locale)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("locale", &self.locale)]);
+                req = req.query(&[(
                     "maxAllowedMaturityRating",
                     &self.max_allowed_maturity_rating,
                 )]);
-                let req = req.query(&[("source", &self.source)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("source", &self.source)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -15573,7 +15529,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/promooffer/accept");
                 output
             }
@@ -15581,27 +15537,27 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("androidId", &self.android_id)]);
-                let req = req.query(&[("device", &self.device)]);
-                let req = req.query(&[("manufacturer", &self.manufacturer)]);
-                let req = req.query(&[("model", &self.model)]);
-                let req = req.query(&[("offerId", &self.offer_id)]);
-                let req = req.query(&[("product", &self.product)]);
-                let req = req.query(&[("serial", &self.serial)]);
-                let req = req.query(&[("volumeId", &self.volume_id)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("androidId", &self.android_id)]);
+                req = req.query(&[("device", &self.device)]);
+                req = req.query(&[("manufacturer", &self.manufacturer)]);
+                req = req.query(&[("model", &self.model)]);
+                req = req.query(&[("offerId", &self.offer_id)]);
+                req = req.query(&[("product", &self.product)]);
+                req = req.query(&[("serial", &self.serial)]);
+                req = req.query(&[("volumeId", &self.volume_id)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -15769,7 +15725,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/promooffer/dismiss");
                 output
             }
@@ -15777,26 +15733,26 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("androidId", &self.android_id)]);
-                let req = req.query(&[("device", &self.device)]);
-                let req = req.query(&[("manufacturer", &self.manufacturer)]);
-                let req = req.query(&[("model", &self.model)]);
-                let req = req.query(&[("offerId", &self.offer_id)]);
-                let req = req.query(&[("product", &self.product)]);
-                let req = req.query(&[("serial", &self.serial)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("androidId", &self.android_id)]);
+                req = req.query(&[("device", &self.device)]);
+                req = req.query(&[("manufacturer", &self.manufacturer)]);
+                req = req.query(&[("model", &self.model)]);
+                req = req.query(&[("offerId", &self.offer_id)]);
+                req = req.query(&[("product", &self.product)]);
+                req = req.query(&[("serial", &self.serial)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -15958,7 +15914,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/promooffer/get");
                 output
             }
@@ -15966,25 +15922,25 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("androidId", &self.android_id)]);
-                let req = req.query(&[("device", &self.device)]);
-                let req = req.query(&[("manufacturer", &self.manufacturer)]);
-                let req = req.query(&[("model", &self.model)]);
-                let req = req.query(&[("product", &self.product)]);
-                let req = req.query(&[("serial", &self.serial)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("androidId", &self.android_id)]);
+                req = req.query(&[("device", &self.device)]);
+                req = req.query(&[("manufacturer", &self.manufacturer)]);
+                req = req.query(&[("model", &self.model)]);
+                req = req.query(&[("product", &self.product)]);
+                req = req.query(&[("serial", &self.serial)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -16004,7 +15960,7 @@ pub mod resources {
                 self.auth
             }
             #[doc = "Returns Series metadata for the given series ids."]
-            pub fn get(&self) -> GetRequestBuilder {
+            pub fn get(&self, series_id: impl Into<Vec<String>>) -> GetRequestBuilder {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
@@ -16019,7 +15975,7 @@ pub mod resources {
                     upload_protocol: None,
                     upload_type: None,
                     xgafv: None,
-                    series_id: None,
+                    series_id: series_id.into(),
                 }
             }
             #[doc = "Actions that can be performed on the membership resource"]
@@ -16035,7 +15991,7 @@ pub mod resources {
         pub struct GetRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            series_id: Option<Vec<String>>,
+            series_id: Vec<String>,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
@@ -16049,11 +16005,6 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetRequestBuilder<'a> {
-            #[doc = "String that identifies the series"]
-            pub fn series_id(mut self, value: impl Into<Vec<String>>) -> Self {
-                self.series_id = Some(value.into());
-                self
-            }
             #[doc = "OAuth access token."]
             pub fn access_token(mut self, value: impl Into<String>) -> Self {
                 self.access_token = Some(value.into());
@@ -16154,7 +16105,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/series/get");
                 output
             }
@@ -16162,20 +16113,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("series_id", &self.series_id)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.series_id {
+                    req = req.query(&[("series_id", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -16194,7 +16147,7 @@ pub mod resources {
                     self.auth
                 }
                 #[doc = "Returns Series membership data given the series id."]
-                pub fn get(&self) -> GetRequestBuilder {
+                pub fn get(&self, series_id: impl Into<String>) -> GetRequestBuilder {
                     GetRequestBuilder {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
@@ -16209,9 +16162,9 @@ pub mod resources {
                         upload_protocol: None,
                         upload_type: None,
                         xgafv: None,
+                        series_id: series_id.into(),
                         page_size: None,
                         page_token: None,
-                        series_id: None,
                     }
                 }
             }
@@ -16220,9 +16173,9 @@ pub mod resources {
             pub struct GetRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                series_id: String,
                 page_size: Option<u32>,
                 page_token: Option<String>,
-                series_id: Option<String>,
                 access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
@@ -16244,11 +16197,6 @@ pub mod resources {
                 #[doc = "The value of the nextToken from the previous page."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
-                    self
-                }
-                #[doc = "String that identifies the series"]
-                pub fn series_id(mut self, value: impl Into<String>) -> Self {
-                    self.series_id = Some(value.into());
                     self
                 }
                 #[doc = "OAuth access token."]
@@ -16356,7 +16304,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/series/membership/get");
                     output
                 }
@@ -16364,22 +16312,22 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("page_size", &self.page_size)]);
-                    let req = req.query(&[("page_token", &self.page_token)]);
-                    let req = req.query(&[("series_id", &self.series_id)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("series_id", &self.series_id)]);
+                    req = req.query(&[("page_size", &self.page_size)]);
+                    req = req.query(&[("page_token", &self.page_token)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -16393,7 +16341,9 @@ pub mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum GetProjection {
+                #[doc = "Includes all volume data."]
                 Full,
+                #[doc = "Includes a subset of fields in volumeInfo and accessInfo."]
                 Lite,
                 ProjectionUndefined,
             }
@@ -16467,6 +16417,7 @@ pub mod resources {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListDownload {
                 DownloadUndefined,
+                #[doc = "All volumes with epub."]
                 Epub,
             }
             impl ListDownload {
@@ -16535,11 +16486,16 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListFilter {
+                #[doc = "All Google eBooks."]
                 Ebooks,
                 FilterUndefined,
+                #[doc = "Google eBook with full volume text viewability."]
                 FreeEbooks,
+                #[doc = "Public can view entire volume text."]
                 Full,
+                #[doc = "Google eBook with a price."]
                 PaidEbooks,
+                #[doc = "Public able to see parts of text."]
                 Partial,
             }
             impl ListFilter {
@@ -16621,7 +16577,9 @@ pub mod resources {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListLibraryRestrict {
                 LibraryRestrictUndefined,
+                #[doc = "Restrict to the user's library, any shelf."]
                 MyLibrary,
+                #[doc = "Do not restrict based on user's library."]
                 NoRestrict,
             }
             impl ListLibraryRestrict {
@@ -16699,8 +16657,10 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListMaxAllowedMaturityRating {
+                #[doc = "Show books which are rated mature or lower."]
                 Mature,
                 MaxAllowedMaturityRatingUndefined,
+                #[doc = "Show books which are rated not mature."]
                 NotMature,
             }
             impl ListMaxAllowedMaturityRating {
@@ -16778,8 +16738,10 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListOrderBy {
+                #[doc = "Most recently published."]
                 Newest,
                 OrderByUndefined,
+                #[doc = "Relevance to search terms."]
                 Relevance,
             }
             impl ListOrderBy {
@@ -16851,8 +16813,11 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListPrintType {
+                #[doc = "All volume content types."]
                 All,
+                #[doc = "Just books."]
                 Books,
+                #[doc = "Just magazines."]
                 Magazines,
                 PrintTypeUndefined,
             }
@@ -16928,7 +16893,9 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListProjection {
+                #[doc = "Includes all volume data."]
                 Full,
+                #[doc = "Includes a subset of fields in volumeInfo and accessInfo."]
                 Lite,
                 ProjectionUndefined,
             }
@@ -17034,7 +17001,7 @@ pub mod resources {
                 }
             }
             #[doc = "Performs a book search."]
-            pub fn list(&self) -> ListRequestBuilder {
+            pub fn list(&self, q: impl Into<String>) -> ListRequestBuilder {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
@@ -17049,6 +17016,7 @@ pub mod resources {
                     upload_protocol: None,
                     upload_type: None,
                     xgafv: None,
+                    q: q.into(),
                     download: None,
                     filter: None,
                     lang_restrict: None,
@@ -17059,7 +17027,6 @@ pub mod resources {
                     partner: None,
                     print_type: None,
                     projection: None,
-                    q: None,
                     show_preorders: None,
                     source: None,
                     start_index: None,
@@ -17146,7 +17113,7 @@ pub mod resources {
                 self.projection = Some(value);
                 self
             }
-            #[doc = "string  to identify the originator of this request."]
+            #[doc = "string to identify the originator of this request."]
             pub fn source(mut self, value: impl Into<String>) -> Self {
                 self.source = Some(value.into());
                 self
@@ -17256,7 +17223,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/volumes/");
                 {
                     let var_as_str = &self.volume_id;
@@ -17271,28 +17238,28 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("country", &self.country)]);
-                let req = req.query(&[("includeNonComicsSeries", &self.include_non_comics_series)]);
-                let req = req.query(&[("partner", &self.partner)]);
-                let req = req.query(&[("projection", &self.projection)]);
-                let req = req.query(&[("source", &self.source)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("country", &self.country)]);
+                req = req.query(&[("includeNonComicsSeries", &self.include_non_comics_series)]);
+                req = req.query(&[("partner", &self.partner)]);
+                req = req.query(&[("projection", &self.projection)]);
+                req = req.query(&[("source", &self.source)]);
+                req = req.query(&[(
                     "user_library_consistent_read",
                     &self.user_library_consistent_read,
                 )]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -17305,6 +17272,7 @@ pub mod resources {
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            q: String,
             download: Option<crate::resources::volumes::params::ListDownload>,
             filter: Option<crate::resources::volumes::params::ListFilter>,
             lang_restrict: Option<String>,
@@ -17316,7 +17284,6 @@ pub mod resources {
             partner: Option<String>,
             print_type: Option<crate::resources::volumes::params::ListPrintType>,
             projection: Option<crate::resources::volumes::params::ListProjection>,
-            q: Option<String>,
             show_preorders: Option<bool>,
             source: Option<String>,
             start_index: Option<u32>,
@@ -17359,7 +17326,7 @@ pub mod resources {
                 self.library_restrict = Some(value);
                 self
             }
-            #[doc = "The maximum allowed maturity rating of returned recommendations. Books with\na higher maturity rating are filtered out."]
+            #[doc = "The maximum allowed maturity rating of returned recommendations. Books with a higher maturity rating are filtered out."]
             pub fn max_allowed_maturity_rating(
                 mut self,
                 value: crate::resources::volumes::params::ListMaxAllowedMaturityRating,
@@ -17399,11 +17366,6 @@ pub mod resources {
                 value: crate::resources::volumes::params::ListProjection,
             ) -> Self {
                 self.projection = Some(value);
-                self
-            }
-            #[doc = "Full-text search query string."]
-            pub fn q(mut self, value: impl Into<String>) -> Self {
-                self.q = Some(value.into());
                 self
             }
             #[doc = "Set to true to show books available for preorder. Defaults to false."]
@@ -17521,7 +17483,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://books.googleapis.com/".to_owned();
                 output.push_str("books/v1/volumes");
                 output
             }
@@ -17529,36 +17491,36 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("download", &self.download)]);
-                let req = req.query(&[("filter", &self.filter)]);
-                let req = req.query(&[("langRestrict", &self.lang_restrict)]);
-                let req = req.query(&[("libraryRestrict", &self.library_restrict)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("q", &self.q)]);
+                req = req.query(&[("download", &self.download)]);
+                req = req.query(&[("filter", &self.filter)]);
+                req = req.query(&[("langRestrict", &self.lang_restrict)]);
+                req = req.query(&[("libraryRestrict", &self.library_restrict)]);
+                req = req.query(&[(
                     "maxAllowedMaturityRating",
                     &self.max_allowed_maturity_rating,
                 )]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("orderBy", &self.order_by)]);
-                let req = req.query(&[("partner", &self.partner)]);
-                let req = req.query(&[("printType", &self.print_type)]);
-                let req = req.query(&[("projection", &self.projection)]);
-                let req = req.query(&[("q", &self.q)]);
-                let req = req.query(&[("showPreorders", &self.show_preorders)]);
-                let req = req.query(&[("source", &self.source)]);
-                let req = req.query(&[("startIndex", &self.start_index)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("orderBy", &self.order_by)]);
+                req = req.query(&[("partner", &self.partner)]);
+                req = req.query(&[("printType", &self.print_type)]);
+                req = req.query(&[("projection", &self.projection)]);
+                req = req.query(&[("showPreorders", &self.show_preorders)]);
+                req = req.query(&[("source", &self.source)]);
+                req = req.query(&[("startIndex", &self.start_index)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -17571,8 +17533,11 @@ pub mod resources {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListAssociation {
                     AssociationUndefined,
+                    #[doc = "Recommendations for display end-of-sample."]
                     EndOfSample,
+                    #[doc = "Recommendations for display end-of-volume."]
                     EndOfVolume,
+                    #[doc = "Related volumes for Play Store."]
                     RelatedForPlay,
                 }
                 impl ListAssociation {
@@ -17647,8 +17612,10 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListMaxAllowedMaturityRating {
+                    #[doc = "Show books which are rated mature or lower."]
                     Mature,
                     MaxAllowedMaturityRatingUndefined,
+                    #[doc = "Show books which are rated not mature."]
                     NotMature,
                 }
                 impl ListMaxAllowedMaturityRating {
@@ -17793,12 +17760,12 @@ pub mod resources {
                     self.association = Some(value);
                     self
                 }
-                #[doc = "ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for\ngenerating recommendations."]
+                #[doc = "ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating recommendations."]
                 pub fn locale(mut self, value: impl Into<String>) -> Self {
                     self.locale = Some(value.into());
                     self
                 }
-                #[doc = "The maximum allowed maturity rating of returned recommendations. Books with\na higher maturity rating are filtered out."]
+                #[doc = "The maximum allowed maturity rating of returned recommendations. Books with a higher maturity rating are filtered out."]
                 pub fn max_allowed_maturity_rating(
                     mut self,
                     value : crate :: resources :: volumes :: associated :: params :: ListMaxAllowedMaturityRating,
@@ -17916,7 +17883,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/volumes/");
                     {
                         let var_as_str = &self.volume_id;
@@ -17932,26 +17899,26 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("association", &self.association)]);
-                    let req = req.query(&[("locale", &self.locale)]);
-                    let req = req.query(&[(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("association", &self.association)]);
+                    req = req.query(&[("locale", &self.locale)]);
+                    req = req.query(&[(
                         "maxAllowedMaturityRating",
                         &self.max_allowed_maturity_rating,
                     )]);
-                    let req = req.query(&[("source", &self.source)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    req = req.query(&[("source", &self.source)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -17965,13 +17932,21 @@ pub mod resources {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListAcquireMethodItems {
                     AcquireMethodUndefined,
+                    #[doc = "Books acquired via Family Sharing"]
                     FamilyShared,
+                    #[doc = "Preordered books (not yet available)"]
                     Preordered,
+                    #[doc = "User-rented books past their expiration time"]
                     PreviouslyRented,
+                    #[doc = "Public domain books"]
                     PublicDomain,
+                    #[doc = "Purchased books"]
                     Purchased,
+                    #[doc = "User-rented books"]
                     Rented,
+                    #[doc = "Sample books"]
                     Sample,
+                    #[doc = "User uploaded books"]
                     Uploaded,
                 }
                 impl ListAcquireMethodItems {
@@ -18067,9 +18042,12 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListProcessingStateItems {
+                    #[doc = "The volume processing hase failed."]
                     CompletedFailed,
+                    #[doc = "The volume processing was completed."]
                     CompletedSuccess,
                     ProcessingStateUndefined,
+                    #[doc = "The volume processing is not completed."]
                     Running,
                 }
                 impl ListProcessingStateItems {
@@ -18226,7 +18204,7 @@ pub mod resources {
                     self.country = Some(value.into());
                     self
                 }
-                #[doc = "ISO-639-1 language and ISO-3166-1 country code. Ex:'en_US'. Used for\ngenerating recommendations."]
+                #[doc = "ISO-639-1 language and ISO-3166-1 country code. Ex:'en_US'. Used for generating recommendations."]
                 pub fn locale(mut self, value: impl Into<String>) -> Self {
                     self.locale = Some(value.into());
                     self
@@ -18236,7 +18214,7 @@ pub mod resources {
                     self.max_results = Some(value);
                     self
                 }
-                #[doc = "The processing state of the user uploaded volumes to be returned.\nApplicable only if the UPLOADED is specified in the acquireMethod."]
+                #[doc = "The processing state of the user uploaded volumes to be returned. Applicable only if the UPLOADED is specified in the acquireMethod."]
                 pub fn processing_state(
                     mut self,
                     value: impl Into<
@@ -18361,7 +18339,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/volumes/mybooks");
                     output
                 }
@@ -18369,26 +18347,30 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("acquireMethod", &self.acquire_method)]);
-                    let req = req.query(&[("country", &self.country)]);
-                    let req = req.query(&[("locale", &self.locale)]);
-                    let req = req.query(&[("maxResults", &self.max_results)]);
-                    let req = req.query(&[("processingState", &self.processing_state)]);
-                    let req = req.query(&[("source", &self.source)]);
-                    let req = req.query(&[("startIndex", &self.start_index)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    for value in self.acquire_method.iter().flatten() {
+                        req = req.query(&[("acquireMethod", value)]);
+                    }
+                    req = req.query(&[("country", &self.country)]);
+                    req = req.query(&[("locale", &self.locale)]);
+                    req = req.query(&[("maxResults", &self.max_results)]);
+                    for value in self.processing_state.iter().flatten() {
+                        req = req.query(&[("processingState", value)]);
+                    }
+                    req = req.query(&[("source", &self.source)]);
+                    req = req.query(&[("startIndex", &self.start_index)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -18401,8 +18383,10 @@ pub mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListMaxAllowedMaturityRating {
+                    #[doc = "Show books which are rated mature or lower."]
                     Mature,
                     MaxAllowedMaturityRatingUndefined,
+                    #[doc = "Show books which are rated not mature."]
                     NotMature,
                 }
                 impl ListMaxAllowedMaturityRating {
@@ -18483,7 +18467,9 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum RateRating {
+                    #[doc = "Rating indicating a dismissal due to ownership."]
                     HaveIt,
+                    #[doc = "Rating indicating a negative dismissal of a volume."]
                     NotInterested,
                     RatingUndefined,
                 }
@@ -18585,7 +18571,11 @@ pub mod resources {
                     }
                 }
                 #[doc = "Rate a recommended book for the current user."]
-                pub fn rate(&self) -> RateRequestBuilder {
+                pub fn rate(
+                    &self,
+                    rating: crate::resources::volumes::recommended::params::RateRating,
+                    volume_id: impl Into<String>,
+                ) -> RateRequestBuilder {
                     RateRequestBuilder {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
@@ -18600,10 +18590,10 @@ pub mod resources {
                         upload_protocol: None,
                         upload_type: None,
                         xgafv: None,
+                        rating,
+                        volume_id: volume_id.into(),
                         locale: None,
-                        rating: None,
                         source: None,
-                        volume_id: None,
                     }
                 }
             }
@@ -18630,12 +18620,12 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for\ngenerating recommendations."]
+                #[doc = "ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating recommendations."]
                 pub fn locale(mut self, value: impl Into<String>) -> Self {
                     self.locale = Some(value.into());
                     self
                 }
-                #[doc = "The maximum allowed maturity rating of returned recommendations. Books with\na higher maturity rating are filtered out."]
+                #[doc = "The maximum allowed maturity rating of returned recommendations. Books with a higher maturity rating are filtered out."]
                 pub fn max_allowed_maturity_rating(
                     mut self,
                     value : crate :: resources :: volumes :: recommended :: params :: ListMaxAllowedMaturityRating,
@@ -18753,7 +18743,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/volumes/recommended");
                     output
                 }
@@ -18761,25 +18751,25 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("locale", &self.locale)]);
-                    let req = req.query(&[(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("locale", &self.locale)]);
+                    req = req.query(&[(
                         "maxAllowedMaturityRating",
                         &self.max_allowed_maturity_rating,
                     )]);
-                    let req = req.query(&[("source", &self.source)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    req = req.query(&[("source", &self.source)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -18792,10 +18782,10 @@ pub mod resources {
             pub struct RateRequestBuilder<'a> {
                 pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                rating: crate::resources::volumes::recommended::params::RateRating,
+                volume_id: String,
                 locale: Option<String>,
-                rating: Option<crate::resources::volumes::recommended::params::RateRating>,
                 source: Option<String>,
-                volume_id: Option<String>,
                 access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
@@ -18809,27 +18799,14 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> RateRequestBuilder<'a> {
-                #[doc = "ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for\ngenerating recommendations."]
+                #[doc = "ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating recommendations."]
                 pub fn locale(mut self, value: impl Into<String>) -> Self {
                     self.locale = Some(value.into());
-                    self
-                }
-                #[doc = "Rating to be given to the volume."]
-                pub fn rating(
-                    mut self,
-                    value: crate::resources::volumes::recommended::params::RateRating,
-                ) -> Self {
-                    self.rating = Some(value);
                     self
                 }
                 #[doc = "String to identify the originator of this request."]
                 pub fn source(mut self, value: impl Into<String>) -> Self {
                     self.source = Some(value.into());
-                    self
-                }
-                #[doc = "ID of the source volume."]
-                pub fn volume_id(mut self, value: impl Into<String>) -> Self {
-                    self.volume_id = Some(value.into());
                     self
                 }
                 #[doc = "OAuth access token."]
@@ -18939,7 +18916,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/volumes/recommended/rate");
                     output
                 }
@@ -18947,23 +18924,23 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("locale", &self.locale)]);
-                    let req = req.query(&[("rating", &self.rating)]);
-                    let req = req.query(&[("source", &self.source)]);
-                    let req = req.query(&[("volumeId", &self.volume_id)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("rating", &self.rating)]);
+                    req = req.query(&[("volumeId", &self.volume_id)]);
+                    req = req.query(&[("locale", &self.locale)]);
+                    req = req.query(&[("source", &self.source)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -18976,9 +18953,12 @@ pub mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListProcessingStateItems {
+                    #[doc = "The volume processing hase failed."]
                     CompletedFailed,
+                    #[doc = "The volume processing was completed."]
                     CompletedSuccess,
                     ProcessingStateUndefined,
+                    #[doc = "The volume processing is not completed."]
                     Running,
                 }
                 impl ListProcessingStateItems {
@@ -19117,7 +19097,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for\ngenerating recommendations."]
+                #[doc = "ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating recommendations."]
                 pub fn locale(mut self, value: impl Into<String>) -> Self {
                     self.locale = Some(value.into());
                     self
@@ -19145,7 +19125,7 @@ pub mod resources {
                     self.start_index = Some(value);
                     self
                 }
-                #[doc = "The ids of the volumes to be returned. If not specified all that match the\nprocessingState are returned."]
+                #[doc = "The ids of the volumes to be returned. If not specified all that match the processingState are returned."]
                 pub fn volume_id(mut self, value: impl Into<Vec<String>>) -> Self {
                     self.volume_id = Some(value.into());
                     self
@@ -19255,7 +19235,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://books.googleapis.com/".to_owned();
                     output.push_str("books/v1/volumes/useruploaded");
                     output
                 }
@@ -19263,25 +19243,29 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("locale", &self.locale)]);
-                    let req = req.query(&[("maxResults", &self.max_results)]);
-                    let req = req.query(&[("processingState", &self.processing_state)]);
-                    let req = req.query(&[("source", &self.source)]);
-                    let req = req.query(&[("startIndex", &self.start_index)]);
-                    let req = req.query(&[("volumeId", &self.volume_id)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("locale", &self.locale)]);
+                    req = req.query(&[("maxResults", &self.max_results)]);
+                    for value in self.processing_state.iter().flatten() {
+                        req = req.query(&[("processingState", value)]);
+                    }
+                    req = req.query(&[("source", &self.source)]);
+                    req = req.query(&[("startIndex", &self.start_index)]);
+                    for value in self.volume_id.iter().flatten() {
+                        req = req.query(&[("volumeId", value)]);
+                    }
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,

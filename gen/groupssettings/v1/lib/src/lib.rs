@@ -171,7 +171,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub primary_language: ::std::option::Option<String>,
-        #[doc = "Specifies who should the default reply go to. Possible values are:\n\n* REPLY_TO_CUSTOM: For replies to messages, use the group's custom email address.\n  When the group's ReplyTo property is set to REPLY_TO_CUSTOM, the customReplyTo property holds the custom email address used when replying to a message. If the group's ReplyTo property is set to REPLY_TO_CUSTOM, the customReplyTo property must have a value. Otherwise an error is returned.\n\n* REPLY_TO_SENDER: The reply sent to author of message. \n\n* REPLY_TO_LIST: This reply message is sent to the group. \n\n* REPLY_TO_OWNER: The reply is sent to the owner(s) of the group. This does not include the group's managers. \n\n* REPLY_TO_IGNORE: Group users individually decide where the message reply is sent. \n\n* REPLY_TO_MANAGERS: This reply message is sent to the group's managers, which includes all managers and the group owner."]
+        #[doc = "Specifies who receives the default reply. Possible values are:\n\n* REPLY_TO_CUSTOM: For replies to messages, use the group's custom email address.\n  When the group's ReplyTo property is set to REPLY_TO_CUSTOM, the customReplyTo property holds the custom email address used when replying to a message. If the group's ReplyTo property is set to REPLY_TO_CUSTOM, the customReplyTo property must have a value. Otherwise an error is returned.\n\n* REPLY_TO_SENDER: The reply sent to author of message. \n\n* REPLY_TO_LIST: This reply message is sent to the group. \n\n* REPLY_TO_OWNER: The reply is sent to the owner(s) of the group. This does not include the group's managers. \n\n* REPLY_TO_IGNORE: Group users individually decide where the message reply is sent. \n\n* REPLY_TO_MANAGERS: This reply message is sent to the group's managers, which includes all managers and the group owner."]
         #[serde(
             rename = "replyTo",
             default,
@@ -248,7 +248,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub who_can_ban_users: ::std::option::Option<String>,
-        #[doc = "Permission to contact owner of the group via web UI. Possible values are:\n\n* ALL_IN_DOMAIN_CAN_CONTACT \n* ALL_MANAGERS_CAN_CONTACT \n* ALL_MEMBERS_CAN_CONTACT \n* ANYONE_CAN_CONTACT"]
+        #[doc = "Permission to contact owner of the group via web UI. Possible values are:\n\n* ALL_IN_DOMAIN_CAN_CONTACT \n* ALL_MANAGERS_CAN_CONTACT \n* ALL_MEMBERS_CAN_CONTACT \n* ANYONE_CAN_CONTACT \n* ALL_OWNERS_CAN_CONTACT"]
         #[serde(
             rename = "whoCanContactOwner",
             default,
@@ -742,15 +742,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -869,15 +869,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -996,15 +996,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,

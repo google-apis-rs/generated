@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("androidenterprise1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200620")
+            .version("0.1.0-20210317")
             .about("Manages the deployment of apps to Android Enterprise devices.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -37,7 +37,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: force_report_upload, get, get_state, list, set_state and update");
         {
-            let mcmd = SubCommand::with_name("force_report_upload").about("Uploads a report containing any changes in app states on the device since\nthe last report was generated. You can call this method up to 3 times every\n24 hours for a given device.\nIf you exceed the quota, then the Google Play EMM API returns <code>HTTP\n429 Too Many Requests</code>.");
+            let mcmd = SubCommand::with_name("force_report_upload").about("Uploads a report containing any changes in app states on the device since the last report was generated. You can call this method up to 3 times every 24 hours for a given device. If you exceed the quota, then the Google Play EMM API returns HTTP 429 Too Many Requests.");
             devices0 = devices0.subcommand(mcmd);
         }
         {
@@ -45,7 +45,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             devices0 = devices0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_state").about("Retrieves whether a device\'s access to Google services is enabled or\ndisabled.\nThe device state takes effect only if enforcing EMM policies on Android\ndevices is enabled in the Google Admin Console.\nOtherwise, the device state is ignored and all devices are allowed access\nto Google services.\nThis is only supported for Google-managed users.");
+            let mcmd = SubCommand::with_name("get_state").about("Retrieves whether a device\'s access to Google services is enabled or disabled. The device state takes effect only if enforcing EMM policies on Android devices is enabled in the Google Admin Console. Otherwise, the device state is ignored and all devices are allowed access to Google services. This is only supported for Google-managed users.");
             devices0 = devices0.subcommand(mcmd);
         }
         {
@@ -54,26 +54,26 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             devices0 = devices0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_state").about("Sets whether a device\'s access to Google services is enabled or disabled.\nThe device state takes effect only if enforcing EMM policies on Android\ndevices is enabled in the Google Admin Console.\nOtherwise, the device state is ignored and all devices are allowed access\nto Google services.\nThis is only supported for Google-managed users.");
+            let mcmd = SubCommand::with_name("set_state").about("Sets whether a device\'s access to Google services is enabled or disabled. The device state takes effect only if enforcing EMM policies on Android devices is enabled in the Google Admin Console. Otherwise, the device state is ignored and all devices are allowed access to Google services. This is only supported for Google-managed users.");
             devices0 = devices0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Updates the device policy");
+            let mcmd = SubCommand::with_name("update").about("Updates the device policy. To ensure the policy is properly enforced, you need to prevent unmanaged accounts from accessing Google Play by setting the allowed_accounts in the managed configuration for the Google Play package. See restrict accounts in Google Play.");
             devices0 = devices0.subcommand(mcmd);
         }
         let mut enterprises0 = SubCommand::with_name("enterprises")
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: acknowledge_notification_set, complete_signup, create_web_token, enroll, generate_signup_url, get, get_service_account, get_store_layout, list, pull_notification_set, send_test_push_notification, set_account, set_store_layout and unenroll");
         {
-            let mcmd = SubCommand::with_name("acknowledge_notification_set").about("Acknowledges notifications that were received from\nEnterprises.PullNotificationSet to prevent subsequent calls from returning\nthe same notifications.");
+            let mcmd = SubCommand::with_name("acknowledge_notification_set").about("Acknowledges notifications that were received from Enterprises.PullNotificationSet to prevent subsequent calls from returning the same notifications.");
             enterprises0 = enterprises0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("complete_signup").about("Completes the signup flow, by specifying the Completion token and\nEnterprise token.\nThis request must not be called multiple times for a given Enterprise\nToken.");
+            let mcmd = SubCommand::with_name("complete_signup").about("Completes the signup flow, by specifying the Completion token and Enterprise token. This request must not be called multiple times for a given Enterprise Token.");
             enterprises0 = enterprises0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("create_web_token").about("Returns a unique token to access an embeddable UI. To generate a\nweb UI, pass the generated token into the managed Google Play javascript\nAPI. Each token may only be used to start one UI session. See the\njavascript API documentation for further information.");
+            let mcmd = SubCommand::with_name("create_web_token").about("Returns a unique token to access an embeddable UI. To generate a web UI, pass the generated token into the managed Google Play javascript API. Each token may only be used to start one UI session. See the javascript API documentation for further information.");
             enterprises0 = enterprises0.subcommand(mcmd);
         }
         {
@@ -92,33 +92,33 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             enterprises0 = enterprises0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_service_account").about("Returns a service account and credentials. The service account\ncan be bound to the enterprise by calling setAccount. The service account\nis unique to this enterprise and EMM, and will be deleted if the enterprise\nis unbound. The credentials contain private key data and are not stored\nserver-side.\n<br> <br>\nThis method can only be called after calling\nEnterprises.Enroll or Enterprises.CompleteSignup, and before\nEnterprises.SetAccount; at other times it will return an error.\n<br> <br>\nSubsequent calls after the first will generate a new, unique set of\ncredentials, and invalidate the previously generated credentials.\n<br> <br>\nOnce the service account is bound to the enterprise, it can be managed\nusing the serviceAccountKeys resource.");
+            let mcmd = SubCommand::with_name("get_service_account").about("Returns a service account and credentials. The service account can be bound to the enterprise by calling setAccount. The service account is unique to this enterprise and EMM, and will be deleted if the enterprise is unbound. The credentials contain private key data and are not stored server-side. This method can only be called after calling Enterprises.Enroll or Enterprises.CompleteSignup, and before Enterprises.SetAccount; at other times it will return an error. Subsequent calls after the first will generate a new, unique set of credentials, and invalidate the previously generated credentials. Once the service account is bound to the enterprise, it can be managed using the serviceAccountKeys resource.");
             enterprises0 = enterprises0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_store_layout").about("Returns the store layout for the enterprise. If the store layout\nhas not been set, returns \"basic\" as the store layout type and no\nhomepage.");
+            let mcmd = SubCommand::with_name("get_store_layout").about("Returns the store layout for the enterprise. If the store layout has not been set, returns \"basic\" as the store layout type and no homepage.");
             enterprises0 = enterprises0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Looks up an enterprise by domain name.\nThis is only supported for enterprises created via the Google-initiated\ncreation flow.  Lookup of the id is not needed for enterprises created via\nthe EMM-initiated flow since the EMM learns the enterprise ID in the\ncallback specified in the Enterprises.generateSignupUrl call.");
+            let mcmd = SubCommand::with_name("list").about("Looks up an enterprise by domain name. This is only supported for enterprises created via the Google-initiated creation flow. Lookup of the id is not needed for enterprises created via the EMM-initiated flow since the EMM learns the enterprise ID in the callback specified in the Enterprises.generateSignupUrl call.");
             enterprises0 = enterprises0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("pull_notification_set").about("Pulls and returns a notification set for the enterprises associated with\nthe service account authenticated for the request. The notification set may\nbe empty if no notification are pending.\n<br>\nA notification set returned needs to be acknowledged within 20 seconds\nby calling Enterprises.AcknowledgeNotificationSet, unless the\nnotification set is empty.\n<br>\nNotifications that are not acknowledged within the 20 seconds will\neventually be included again in the response to another PullNotificationSet\nrequest, and those that are never acknowledged will ultimately be deleted\naccording to the Google Cloud Platform Pub/Sub system policy.\n<br>\nMultiple requests might be performed concurrently to retrieve\nnotifications, in which case the pending notifications (if any) will be\nsplit among each caller, if any are pending.\n<br>\nIf no notifications are present, an empty notification list is returned.\nSubsequent requests may return more notifications once they become\navailable.");
+            let mcmd = SubCommand::with_name("pull_notification_set").about("Pulls and returns a notification set for the enterprises associated with the service account authenticated for the request. The notification set may be empty if no notification are pending. A notification set returned needs to be acknowledged within 20 seconds by calling Enterprises.AcknowledgeNotificationSet, unless the notification set is empty. Notifications that are not acknowledged within the 20 seconds will eventually be included again in the response to another PullNotificationSet request, and those that are never acknowledged will ultimately be deleted according to the Google Cloud Platform Pub/Sub system policy. Multiple requests might be performed concurrently to retrieve notifications, in which case the pending notifications (if any) will be split among each caller, if any are pending. If no notifications are present, an empty notification list is returned. Subsequent requests may return more notifications once they become available.");
             enterprises0 = enterprises0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("send_test_push_notification").about("Sends a test notification to validate the EMM integration with\nthe Google Cloud Pub/Sub service for this enterprise.");
+            let mcmd = SubCommand::with_name("send_test_push_notification").about("Sends a test notification to validate the EMM integration with the Google Cloud Pub/Sub service for this enterprise.");
             enterprises0 = enterprises0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("set_account").about(
-                "Sets the account that will be used to authenticate to the API as the\nenterprise.",
+                "Sets the account that will be used to authenticate to the API as the enterprise.",
             );
             enterprises0 = enterprises0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_store_layout").about("Sets the store layout for the enterprise. By default, storeLayoutType\nis set to \"basic\" and the basic store layout is enabled. The basic\nlayout only contains apps approved by the admin, and that have\nbeen added to the available product set for a user (using the\n<a href=\"/android/work/play/emm-api/v1/users/setAvailableProductSet\">\nsetAvailableProductSet</a> call). Apps on the page are sorted in order of\ntheir product ID value. If you create a custom store layout (by setting\nstoreLayoutType = \"custom\" and setting a homepage), the basic store\nlayout is disabled.");
+            let mcmd = SubCommand::with_name("set_store_layout").about("Sets the store layout for the enterprise. By default, storeLayoutType is set to \"basic\" and the basic store layout is enabled. The basic layout only contains apps approved by the admin, and that have been added to the available product set for a user (using the setAvailableProductSet call). Apps on the page are sorted in order of their product ID value. If you create a custom store layout (by setting storeLayoutType = \"custom\" and setting a homepage), the basic store layout is disabled.");
             enterprises0 = enterprises0.subcommand(mcmd);
         }
         {
@@ -166,14 +166,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("Retrieves the IDs of the users who have been granted entitlements\nunder the license.");
+            let mcmd = SubCommand::with_name("list").about("Retrieves the IDs of the users who have been granted entitlements under the license.");
             grouplicenseusers0 = grouplicenseusers0.subcommand(mcmd);
         }
         let mut installs0 = SubCommand::with_name("installs")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete, get, list and update");
         {
-            let mcmd = SubCommand::with_name("delete").about("Requests to remove an app from a device. A call to <code>get</code> or\n<code>list</code> will still show the app as installed on the device until\nit is actually removed.");
+            let mcmd = SubCommand::with_name("delete").about("Requests to remove an app from a device. A call to get or list will still show the app as installed on the device until it is actually removed.");
             installs0 = installs0.subcommand(mcmd);
         }
         {
@@ -187,7 +187,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             installs0 = installs0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Requests to install the latest version of an app to a device. If the app\nis already installed, then it is updated to the latest version if\nnecessary.");
+            let mcmd = SubCommand::with_name("update").about("Requests to install the latest version of an app to a device. If the app is already installed, then it is updated to the latest version if necessary.");
             installs0 = installs0.subcommand(mcmd);
         }
         let mut managedconfigurationsfordevice0 =
@@ -196,7 +196,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .about("methods: delete, get, list and update");
         {
             let mcmd = SubCommand::with_name("delete").about(
-                "Removes a per-device managed configuration for an app for the specified\ndevice.",
+                "Removes a per-device managed configuration for an app for the specified device.",
             );
             managedconfigurationsfordevice0 = managedconfigurationsfordevice0.subcommand(mcmd);
         }
@@ -206,11 +206,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             managedconfigurationsfordevice0 = managedconfigurationsfordevice0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists all the per-device managed configurations for the specified device.\nOnly the ID is set.");
+            let mcmd = SubCommand::with_name("list").about("Lists all the per-device managed configurations for the specified device. Only the ID is set.");
             managedconfigurationsfordevice0 = managedconfigurationsfordevice0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Adds or updates a per-device managed configuration for an app for the\nspecified device.");
+            let mcmd = SubCommand::with_name("update").about("Adds or updates a per-device managed configuration for an app for the specified device.");
             managedconfigurationsfordevice0 = managedconfigurationsfordevice0.subcommand(mcmd);
         }
         let mut managedconfigurationsforuser0 =
@@ -224,15 +224,15 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             managedconfigurationsforuser0 = managedconfigurationsforuser0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Retrieves details of a per-user managed configuration for an app for the\nspecified user.");
+            let mcmd = SubCommand::with_name("get").about("Retrieves details of a per-user managed configuration for an app for the specified user.");
             managedconfigurationsforuser0 = managedconfigurationsforuser0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists all the per-user managed configurations for the specified user. Only\nthe ID is set.");
+            let mcmd = SubCommand::with_name("list").about("Lists all the per-user managed configurations for the specified user. Only the ID is set.");
             managedconfigurationsforuser0 = managedconfigurationsforuser0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Adds or updates the managed configuration settings for an app for the\nspecified user.\nIf you support the <a\nhref=\"https://developers.google.com/android/work/play/emm-api/managed-configurations-iframe\">Managed\nconfigurations iframe</a>,\nyou can apply managed configurations to a user by specifying an\n<code>mcmId</code>\nand its associated configuration variables (if any) in the request.\nAlternatively,\nall EMMs can apply managed configurations by passing a list of managed\nproperties.");
+            let mcmd = SubCommand::with_name("update").about("Adds or updates the managed configuration settings for an app for the specified user. If you support the Managed configurations iframe, you can apply managed configurations to a user by specifying an mcmId and its associated configuration variables (if any) in the request. Alternatively, all EMMs can apply managed configurations by passing a list of managed properties.");
             managedconfigurationsforuser0 = managedconfigurationsforuser0.subcommand(mcmd);
         }
         let mut managedconfigurationssettings0 =
@@ -248,18 +248,18 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: get");
         {
-            let mcmd = SubCommand::with_name("get").about("Retrieves details of an Android app permission for display to an enterprise\nadmin.");
+            let mcmd = SubCommand::with_name("get").about("Retrieves details of an Android app permission for display to an enterprise admin.");
             permissions0 = permissions0.subcommand(mcmd);
         }
         let mut products0 = SubCommand::with_name("products")
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: approve, generate_approval_url, get, get_app_restrictions_schema, get_permissions, list and unapprove");
         {
-            let mcmd = SubCommand::with_name("approve").about("<p>Approves the specified product and the relevant app permissions, if any.\nThe maximum number of products that you can approve per enterprise customer\nis 1,000.</p>\n<p>To learn how to use managed Google Play to design and create a store\nlayout to display approved products to your users,\nsee <a href=\"/android/work/play/emm-api/store-layout\">Store Layout\nDesign</a>.</p>");
+            let mcmd = SubCommand::with_name("approve").about(" Approves the specified product and the relevant app permissions, if any. The maximum number of products that you can approve per enterprise customer is 1,000. To learn how to use managed Google Play to design and create a store layout to display approved products to your users, see Store Layout Design. ");
             products0 = products0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("generate_approval_url").about("Generates a URL that can be rendered in an iframe to display the\npermissions (if any) of a product. An enterprise admin must view these\npermissions and accept them on behalf of their organization in order to\napprove that product. <br><br>\nAdmins should accept the displayed permissions by\ninteracting with a separate UI element in the EMM console, which in turn\nshould trigger the use of this URL as the\n<code>approvalUrlInfo.approvalUrl</code> property in a\n<code>Products.approve</code> call to approve the product.\nThis URL can only be used to display permissions for up to 1 day.");
+            let mcmd = SubCommand::with_name("generate_approval_url").about("Generates a URL that can be rendered in an iframe to display the permissions (if any) of a product. An enterprise admin must view these permissions and accept them on behalf of their organization in order to approve that product. Admins should accept the displayed permissions by interacting with a separate UI element in the EMM console, which in turn should trigger the use of this URL as the approvalUrlInfo.approvalUrl property in a Products.approve call to approve the product. This URL can only be used to display permissions for up to 1 day.");
             products0 = products0.subcommand(mcmd);
         }
         {
@@ -268,7 +268,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             products0 = products0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_app_restrictions_schema").about("Retrieves the schema that defines the configurable properties for this\nproduct. All products have a schema, but this schema may be empty if no\nmanaged configurations have been defined. This schema can be used to\npopulate a UI that allows an admin to configure the product.\nTo apply a managed configuration based on the schema obtained using this\nAPI, see\n<a href=\"/android/work/play/emm-api/managed-configurations\">Managed\nConfigurations through Play</a>.");
+            let mcmd = SubCommand::with_name("get_app_restrictions_schema").about("Retrieves the schema that defines the configurable properties for this product. All products have a schema, but this schema may be empty if no managed configurations have been defined. This schema can be used to populate a UI that allows an admin to configure the product. To apply a managed configuration based on the schema obtained using this API, see Managed Configurations through Play.");
             products0 = products0.subcommand(mcmd);
         }
         {
@@ -277,7 +277,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             products0 = products0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Finds approved products that match a query, or all approved products\nif there is no query.");
+            let mcmd = SubCommand::with_name("list").about("Finds approved products that match a query, or all approved products if there is no query.");
             products0 = products0.subcommand(mcmd);
         }
         {
@@ -290,15 +290,15 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete, insert and list");
         {
-            let mcmd = SubCommand::with_name("delete").about("Removes and invalidates the specified credentials for the service account\nassociated with this enterprise. The calling service account must have been\nretrieved by calling Enterprises.GetServiceAccount and must have been set\nas the enterprise service account by calling Enterprises.SetAccount.");
+            let mcmd = SubCommand::with_name("delete").about("Removes and invalidates the specified credentials for the service account associated with this enterprise. The calling service account must have been retrieved by calling Enterprises.GetServiceAccount and must have been set as the enterprise service account by calling Enterprises.SetAccount.");
             serviceaccountkeys0 = serviceaccountkeys0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("insert").about("Generates new credentials for the service account associated with this\nenterprise. The calling service account must have been retrieved by calling\nEnterprises.GetServiceAccount and must have been set as the enterprise\nservice account by calling Enterprises.SetAccount. <br><br>\nOnly the type of the key should be populated in the resource to be\ninserted.");
+            let mcmd = SubCommand::with_name("insert").about("Generates new credentials for the service account associated with this enterprise. The calling service account must have been retrieved by calling Enterprises.GetServiceAccount and must have been set as the enterprise service account by calling Enterprises.SetAccount. Only the type of the key should be populated in the resource to be inserted.");
             serviceaccountkeys0 = serviceaccountkeys0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists all active credentials for the service account associated with this\nenterprise. Only the ID and key type are returned. The calling service\naccount must have been retrieved by calling Enterprises.GetServiceAccount\nand must have been set as the enterprise service account by calling\nEnterprises.SetAccount.");
+            let mcmd = SubCommand::with_name("list").about("Lists all active credentials for the service account associated with this enterprise. Only the ID and key type are returned. The calling service account must have been retrieved by calling Enterprises.GetServiceAccount and must have been set as the enterprise service account by calling Enterprises.SetAccount.");
             serviceaccountkeys0 = serviceaccountkeys0.subcommand(mcmd);
         }
         let mut storelayoutclusters0 = SubCommand::with_name("storelayoutclusters")
@@ -358,7 +358,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             users0 = users0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("generate_authentication_token").about("Generates an authentication token which the device policy client can use to\nprovision the given EMM-managed user account on a device.\nThe generated token is single-use and expires after a few minutes.\n\nYou can provision a maximum of 10 devices per user.\n\nThis call only works with EMM-managed accounts.");
+            let mcmd = SubCommand::with_name("generate_authentication_token").about("Generates an authentication token which the device policy client can use to provision the given EMM-managed user account on a device. The generated token is single-use and expires after a few minutes. You can provision a maximum of 10 devices per user. This call only works with EMM-managed accounts.");
             users0 = users0.subcommand(mcmd);
         }
         {
@@ -371,23 +371,23 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             users0 = users0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("insert").about("Creates a new EMM-managed user.\n\nThe <a href=\"/android/work/play/emm-api/v1/users.html\">Users</a> resource\npassed in the body of the request should include an\n<code>accountIdentifier</code> and an <code>accountType</code>.\n<p>If a corresponding user already exists with the same account identifier,\nthe user will be updated with the resource. In this case only the\n<code>displayName</code> field can be changed.");
+            let mcmd = SubCommand::with_name("insert").about("Creates a new EMM-managed user. The Users resource passed in the body of the request should include an accountIdentifier and an accountType. If a corresponding user already exists with the same account identifier, the user will be updated with the resource. In this case only the displayName field can be changed.");
             users0 = users0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Looks up a user by primary email address.\nThis is only supported for Google-managed users.  Lookup of the id is not\nneeded for EMM-managed users because the id is already returned in the\nresult of the Users.insert call.");
+            let mcmd = SubCommand::with_name("list").about("Looks up a user by primary email address. This is only supported for Google-managed users. Lookup of the id is not needed for EMM-managed users because the id is already returned in the result of the Users.insert call.");
             users0 = users0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("revoke_device_access").about("Revokes access to all devices currently provisioned to the user. The user\nwill no longer be able to use the managed Play store on any of their\nmanaged devices.\n\nThis call only works with EMM-managed accounts.");
+            let mcmd = SubCommand::with_name("revoke_device_access").about("Revokes access to all devices currently provisioned to the user. The user will no longer be able to use the managed Play store on any of their managed devices. This call only works with EMM-managed accounts.");
             users0 = users0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_available_product_set").about("Modifies the set of products that a user is entitled to access (referred to\nas <em>whitelisted</em> products). Only products that are\n<a href=\"/android/work/play/emm-api/v1/products/approve\">approved</a>\nor products that were previously approved (products with revoked approval)\ncan be whitelisted.");
+            let mcmd = SubCommand::with_name("set_available_product_set").about("Modifies the set of products that a user is entitled to access (referred to as *whitelisted* products). Only products that are approved or products that were previously approved (products with revoked approval) can be whitelisted.");
             users0 = users0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Updates the details of an EMM-managed user.\n\nCan be used with EMM-managed users only (not Google managed users).\nPass the new details in the\n<a href=\"/android/work/play/emm-api/v1/users.html\">Users</a>\nresource in the request body. Only the <code>displayName</code> field\ncan be changed. Other fields must either be unset or have the\ncurrently active value.");
+            let mcmd = SubCommand::with_name("update").about("Updates the details of an EMM-managed user. Can be used with EMM-managed users only (not Google managed users). Pass the new details in the Users resource in the request body. Only the displayName field can be changed. Other fields must either be unset or have the currently active value.");
             users0 = users0.subcommand(mcmd);
         }
         let mut webapps0 = SubCommand::with_name("webapps")

@@ -1,6 +1,6 @@
 #![doc = "# Resources and Methods\n    * [archive](resources/archive/struct.ArchiveActions.html)\n      * [*insert*](resources/archive/struct.InsertRequestBuilder.html)\n"]
 pub mod scopes {
-    #[doc = "Manage messages in groups on your domain\n\n`https://www.googleapis.com/auth/apps.groups.migration`"]
+    #[doc = "Upload messages to any Google group in your domain\n\n`https://www.googleapis.com/auth/apps.groups.migration`"]
     pub const APPS_GROUPS_MIGRATION: &str = "https://www.googleapis.com/auth/apps.groups.migration";
 }
 pub mod schemas {
@@ -325,7 +325,7 @@ pub mod resources {
                 self
             }
             fn _simple_upload_path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://groupsmigration.googleapis.com/".to_owned();
                 output.push_str("upload/groups/v1/groups/");
                 {
                     let var_as_str = &self.group_id;
@@ -419,7 +419,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://groupsmigration.googleapis.com/".to_owned();
                 output.push_str("groups/v1/groups/");
                 {
                     let var_as_str = &self.group_id;
@@ -435,19 +435,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,

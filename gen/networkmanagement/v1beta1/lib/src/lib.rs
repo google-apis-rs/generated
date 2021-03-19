@@ -48,23 +48,23 @@ pub mod schemas {
         CauseUnspecified,
         #[doc = "Aborted due to internal server error."]
         InternalError,
-        #[doc = "Aborted because the source and/or destination endpoint specified in\nthe test are invalid. The possible reasons that an endpoint is\ninvalid include: malformed IP address; nonexistent instance or\nnetwork URI; IP address not in the range of specified network URI; and\ninstance not owning the network interface in the specified network."]
+        #[doc = "Aborted because the source and/or destination endpoint specified in the test are invalid. The possible reasons that an endpoint is invalid include: malformed IP address; nonexistent instance or network URI; IP address not in the range of specified network URI; and instance not owning the network interface in the specified network."]
         InvalidArgument,
-        #[doc = "Aborted because traffic is sent from a public IP to an instance without\nan external IP."]
+        #[doc = "Aborted because traffic is sent from a public IP to an instance without an external IP."]
         NoExternalIp,
-        #[doc = "Aborted because no valid source endpoint is derived from the input test\nrequest."]
+        #[doc = "Aborted because no valid source endpoint is derived from the input test request."]
         NoSourceLocation,
-        #[doc = "Aborted because the user lacks the permission to access all or part of\nthe network configurations required to run the test."]
+        #[doc = "Aborted because the user lacks the permission to access all or part of the network configurations required to run the test."]
         PermissionDenied,
-        #[doc = "Aborted because the number of steps in the trace exceeding a certain\nlimit which may be caused by routing loop."]
+        #[doc = "Aborted because the number of steps in the trace exceeding a certain limit which may be caused by routing loop."]
         TraceTooLong,
-        #[doc = "Aborted because none of the traces matches destination information\nspecified in the input test request."]
+        #[doc = "Aborted because none of the traces matches destination information specified in the input test request."]
         UnintendedDestination,
         #[doc = "Aborted because the IP address(es) are unknown."]
         UnknownIp,
-        #[doc = "Aborted due to unknown network.\nThe reachability analysis cannot proceed because the user does not have\naccess to the host project's network configurations, including firewall\nrules and routes. This happens when the project is a service project and\nthe endpoints being traced are in the host project's network."]
+        #[doc = "Aborted due to unknown network. The reachability analysis cannot proceed because the user does not have access to the host project's network configurations, including firewall rules and routes. This happens when the project is a service project and the endpoints being traced are in the host project's network."]
         UnknownNetwork,
-        #[doc = "Aborted because no project information can be derived from the test\ninput."]
+        #[doc = "Aborted because no project information can be derived from the test input."]
         UnknownProject,
     }
     impl AbortInfoCause {
@@ -178,7 +178,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub audit_log_configs: ::std::option::Option<Vec<crate::schemas::AuditLogConfig>>,
-        #[doc = "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services."]
+        #[doc = "Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services."]
         #[serde(
             rename = "service",
             default,
@@ -209,7 +209,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AuditLogConfig {
-        #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
+        #[doc = "Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members."]
         #[serde(
             rename = "exemptedMembers",
             default,
@@ -328,21 +328,27 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Binding {
-        #[doc = "The condition that is associated with this binding.\n\nIf the condition evaluates to `true`, then this binding applies to the\ncurrent request.\n\nIf the condition evaluates to `false`, then this binding does not apply to\nthe current request. However, a different role binding might grant the same\nrole to one or more of the members in this binding.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM\ndocumentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
+        #[serde(
+            rename = "bindingId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub binding_id: ::std::option::Option<String>,
+        #[doc = "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
         #[serde(
             rename = "condition",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
-        #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique\n  identifier) representing a user that has been recently deleted. For\n  example, `alice@example.com?uid=123456789012345678901`. If the user is\n  recovered, this value reverts to `user:{emailid}` and the recovered user\n  retains the role in the binding.\n\n* `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus\n  unique identifier) representing a service account that has been recently\n  deleted. For example,\n  `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.\n  If the service account is undeleted, this value reverts to\n  `serviceAccount:{emailid}` and the undeleted service account retains the\n  role in the binding.\n\n* `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique\n  identifier) representing a Google group that has been recently\n  deleted. For example, `admins@example.com?uid=123456789012345678901`. If\n  the group is recovered, this value reverts to `group:{emailid}` and the\n  recovered group retains the role in the binding.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
+        #[doc = "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. "]
         #[serde(
             rename = "members",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub members: ::std::option::Option<Vec<String>>,
-        #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
+        #[doc = "Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
         #[serde(
             rename = "role",
             default,
@@ -384,6 +390,72 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CloudSQLInstanceInfo {
+        #[doc = "Name of a Cloud SQL instance."]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "External IP address of Cloud SQL instance."]
+        #[serde(
+            rename = "externalIp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub external_ip: ::std::option::Option<String>,
+        #[doc = "Internal IP address of Cloud SQL instance."]
+        #[serde(
+            rename = "internalIp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub internal_ip: ::std::option::Option<String>,
+        #[doc = "URI of a Cloud SQL instance network or empty string if instance does not have one."]
+        #[serde(
+            rename = "networkUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub network_uri: ::std::option::Option<String>,
+        #[doc = "Region in which the Cloud SQL instance is running."]
+        #[serde(
+            rename = "region",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub region: ::std::option::Option<String>,
+        #[doc = "URI of a Cloud SQL instance."]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub uri: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for CloudSQLInstanceInfo {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CloudSQLInstanceInfo {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ConnectivityTest {
         #[doc = "Output only. The time the test was created."]
@@ -393,14 +465,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub create_time: ::std::option::Option<String>,
-        #[doc = "The user-supplied description of the Connectivity Test.\nMaximum of 512 characters."]
+        #[doc = "The user-supplied description of the Connectivity Test. Maximum of 512 characters."]
         #[serde(
             rename = "description",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "Required. Destination specification of the Connectivity Test.\n\nYou can use a combination of destination IP address, Compute Engine\nVM instance, or VPC network to uniquely identify the destination\nlocation.\n\nEven if the destination IP address is not unique, the source IP\nlocation is unique. Usually, the analysis can infer the destination\nendpoint from route information.\n\nIf the destination you specify is a VM instance and the instance has\nmultiple network interfaces, then you must also specify either\na destination IP address  or VPC network to identify the destination\ninterface.\n\nA reachability analysis proceeds even if the destination location is\nambiguous. However, the result can include endpoints that you don't\nintend to test."]
+        #[doc = "Required. Destination specification of the Connectivity Test. You can use a combination of destination IP address, Compute Engine VM instance, or VPC network to uniquely identify the destination location. Even if the destination IP address is not unique, the source IP location is unique. Usually, the analysis can infer the destination endpoint from route information. If the destination you specify is a VM instance and the instance has multiple network interfaces, then you must also specify either a destination IP address or VPC network to identify the destination interface. A reachability analysis proceeds even if the destination location is ambiguous. However, the result can include endpoints that you don't intend to test."]
         #[serde(
             rename = "destination",
             default,
@@ -421,13 +493,20 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Required. Unique name of the resource using the form:\n`projects/{project_id}/locations/global/connectivityTests/{test}`"]
+        #[doc = "Required. Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test}`"]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
+        #[doc = "Output only. The probing details of this test from the latest run, present for applicable tests only. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test."]
+        #[serde(
+            rename = "probingDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub probing_details: ::std::option::Option<crate::schemas::ProbingDetails>,
         #[doc = "IP Protocol of the test. When not provided, \"TCP\" is assumed."]
         #[serde(
             rename = "protocol",
@@ -435,21 +514,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub protocol: ::std::option::Option<String>,
-        #[doc = "Output only. The reachability details of this test from the latest run.\nThe details are updated when creating a new test, updating an\nexisting test, or triggering a one-time rerun of an existing test."]
+        #[doc = "Output only. The reachability details of this test from the latest run. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test."]
         #[serde(
             rename = "reachabilityDetails",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub reachability_details: ::std::option::Option<crate::schemas::ReachabilityDetails>,
-        #[doc = "Other projects that may be relevant for reachability analysis.\nThis is applicable to scenarios where a test can cross project boundaries."]
+        #[doc = "Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross project boundaries."]
         #[serde(
             rename = "relatedProjects",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub related_projects: ::std::option::Option<Vec<String>>,
-        #[doc = "Required. Source specification of the Connectivity Test.\n\nYou can use a combination of source IP address, virtual machine\n(VM) instance, or Compute Engine network to uniquely identify\nthe source location.\n\nExamples:\nIf the source IP address is an internal IP address within a Google Cloud\nVirtual Private Cloud (VPC) network, then you must also specify the VPC\nnetwork. Otherwise, specify the VM instance, which already contains its\ninternal IP address and VPC network information.\n\nIf the source of the test is within an on-premises network, then you must\nprovide the destination VPC network.\n\nIf the source endpoint is a Compute Engine VM instance with multiple\nnetwork interfaces, the instance itself is not sufficient to identify the\nendpoint. So, you must also specify the source IP address or VPC network.\n\nA reachability analysis proceeds even if the source location is\nambiguous. However, the test result may include endpoints that you don't\nintend to test."]
+        #[doc = "Required. Source specification of the Connectivity Test. You can use a combination of source IP address, virtual machine (VM) instance, or Compute Engine network to uniquely identify the source location. Examples: If the source IP address is an internal IP address within a Google Cloud Virtual Private Cloud (VPC) network, then you must also specify the VPC network. Otherwise, specify the VM instance, which already contains its internal IP address and VPC network information. If the source of the test is within an on-premises network, then you must provide the destination VPC network. If the source endpoint is a Compute Engine VM instance with multiple network interfaces, the instance itself is not sufficient to identify the endpoint. So, you must also specify the source IP address or VPC network. A reachability analysis proceeds even if the source location is ambiguous. However, the test result may include endpoints that you don't intend to test."]
         #[serde(
             rename = "source",
             default,
@@ -514,6 +593,10 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DeliverInfoTarget {
+        #[doc = "Target is a Cloud SQL instance."]
+        CloudSqlInstance,
+        #[doc = "Target is a Google Kubernetes Engine cluster master."]
+        GkeMaster,
         #[doc = "Target is a Google API."]
         GoogleApi,
         #[doc = "Target is a Compute Engine instance."]
@@ -526,6 +609,8 @@ pub mod schemas {
     impl DeliverInfoTarget {
         pub fn as_str(self) -> &'static str {
             match self {
+                DeliverInfoTarget::CloudSqlInstance => "CLOUD_SQL_INSTANCE",
+                DeliverInfoTarget::GkeMaster => "GKE_MASTER",
                 DeliverInfoTarget::GoogleApi => "GOOGLE_API",
                 DeliverInfoTarget::Instance => "INSTANCE",
                 DeliverInfoTarget::Internet => "INTERNET",
@@ -542,6 +627,8 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<DeliverInfoTarget, ()> {
             Ok(match s {
+                "CLOUD_SQL_INSTANCE" => DeliverInfoTarget::CloudSqlInstance,
+                "GKE_MASTER" => DeliverInfoTarget::GkeMaster,
                 "GOOGLE_API" => DeliverInfoTarget::GoogleApi,
                 "INSTANCE" => DeliverInfoTarget::Instance,
                 "INTERNET" => DeliverInfoTarget::Internet,
@@ -570,6 +657,8 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CLOUD_SQL_INSTANCE" => DeliverInfoTarget::CloudSqlInstance,
+                "GKE_MASTER" => DeliverInfoTarget::GkeMaster,
                 "GOOGLE_API" => DeliverInfoTarget::GoogleApi,
                 "INSTANCE" => DeliverInfoTarget::Instance,
                 "INTERNET" => DeliverInfoTarget::Internet,
@@ -635,33 +724,39 @@ pub mod schemas {
     pub enum DropInfoCause {
         #[doc = "Cause is unspecified."]
         CauseUnspecified,
-        #[doc = "Firewalls block the health check probes to the backends and cause\nthe backends to be unavailable for traffic from the load balancer.\nSee [Health check firewall rules](/load-balancing/docs/\nhealth-checks#firewall_rules) for more details."]
+        #[doc = "Access to the Cloud SQL instance endpoint is not authorized. See [Authorizing with authorized networks](https://cloud.google.com/sql/docs/mysql/authorize-networks) for more details."]
+        CloudSqlInstanceUnauthorizedAccess,
+        #[doc = "Packet was dropped inside Cloud SQL Service."]
+        DroppedInsideCloudSqlService,
+        #[doc = "Packet was dropped inside Google Kubernetes Engine Service."]
+        DroppedInsideGkeService,
+        #[doc = "Firewalls block the health check probes to the backends and cause the backends to be unavailable for traffic from the load balancer. See [Health check firewall rules](https://cloud.google.com/load-balancing/docs/health-checks#firewall_rules) for more details."]
         FirewallBlockingLoadBalancerBackendHealthCheck,
         #[doc = "Dropped due to a firewall rule unless allowed due to connection tracking."]
         FirewallRule,
-        #[doc = "a Compute Engine instance can only send or receive a packet with a\nforeign IP <code>if ip_forward</code> is enabled."]
+        #[doc = "a Compute Engine instance can only send or receive a packet with a foreign IP if ip_forward is enabled."]
         ForeignIpDisallowed,
         #[doc = "Forwarding rule's protocol and ports do not match the packet header."]
         ForwardingRuleMismatch,
         #[doc = "Forwarding rule does not have backends configured."]
         ForwardingRuleNoInstances,
-        #[doc = "Access to GKE master's endpoint is not authorized.\nSee [Access to the cluster endpoints](/kubernetes-engine/docs/how-to/\nprivate-clusters#access_to_the_cluster_endpoints) for more details."]
+        #[doc = "Access to Google Kubernetes Engine cluster master's endpoint is not authorized. See [Access to the cluster endpoints](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#access_to_the_cluster_endpoints) for more details."]
         GkeMasterUnauthorizedAccess,
-        #[doc = "Packet is sent from or to a Compute Engine instance that is not in a\nrunning state."]
+        #[doc = "Packet is sent from or to a Compute Engine instance that is not in a running state."]
         InstanceNotRunning,
-        #[doc = "Instance with only internal IP tries to access external hosts, but\nCloud NAT is not enabled in the subnet, unless special configurations\non a VM allows this connection. See [Special Configurations for VM\ninstances](/vpc/docs/special-configurations) for details."]
+        #[doc = "Instance with only internal IP tries to access external hosts, but Cloud NAT is not enabled in the subnet, unless special configurations on a VM allows this connection. See [Special Configurations for VM instances](https://cloud.google.com/vpc/docs/special-configurations) for details."]
         NoExternalAddress,
         #[doc = "Dropped due to no routes."]
         NoRoute,
-        #[doc = "Instance with only an internal IP tries to access Google API and\nServices, and private Google access is not enabled."]
+        #[doc = "Instance with only an internal IP tries to access Google API and Services, and private Google access is not enabled."]
         PrivateGoogleAccessDisallowed,
         #[doc = "Packet with internal destination address sent to Internet gateway."]
         PrivateTrafficToInternet,
         #[doc = "Dropped due to invalid route. Route's next hop is a blackhole."]
         RouteBlackhole,
-        #[doc = "Packet is sent to a wrong (unintended) network. Example: user traces a\npacket from VM1:Network1 to VM2:Network2, however, the route configured\nin Network1 sends the packet destined for VM2's IP addresss to Network3."]
+        #[doc = "Packet is sent to a wrong (unintended) network. Example: user traces a packet from VM1:Network1 to VM2:Network2, however, the route configured in Network1 sends the packet destined for VM2's IP addresss to Network3."]
         RouteWrongNetwork,
-        #[doc = "The type of traffic is blocked and the user cannot configure a firewall\nrule to enable it. See [Always blocked traffic](/vpc/docs/firewalls#\nblockedtraffic) for more details."]
+        #[doc = "The type of traffic is blocked and the user cannot configure a firewall rule to enable it. See [Always blocked traffic](https://cloud.google.com/vpc/docs/firewalls#blockedtraffic) for more details."]
         TrafficTypeBlocked,
         #[doc = "Destination external address cannot be resolved to a known target."]
         UnknownExternalAddress,
@@ -672,6 +767,11 @@ pub mod schemas {
         pub fn as_str(self) -> &'static str {
             match self {
                 DropInfoCause::CauseUnspecified => "CAUSE_UNSPECIFIED",
+                DropInfoCause::CloudSqlInstanceUnauthorizedAccess => {
+                    "CLOUD_SQL_INSTANCE_UNAUTHORIZED_ACCESS"
+                }
+                DropInfoCause::DroppedInsideCloudSqlService => "DROPPED_INSIDE_CLOUD_SQL_SERVICE",
+                DropInfoCause::DroppedInsideGkeService => "DROPPED_INSIDE_GKE_SERVICE",
                 DropInfoCause::FirewallBlockingLoadBalancerBackendHealthCheck => {
                     "FIREWALL_BLOCKING_LOAD_BALANCER_BACKEND_HEALTH_CHECK"
                 }
@@ -703,6 +803,11 @@ pub mod schemas {
         fn from_str(s: &str) -> ::std::result::Result<DropInfoCause, ()> {
             Ok(match s {
                 "CAUSE_UNSPECIFIED" => DropInfoCause::CauseUnspecified,
+                "CLOUD_SQL_INSTANCE_UNAUTHORIZED_ACCESS" => {
+                    DropInfoCause::CloudSqlInstanceUnauthorizedAccess
+                }
+                "DROPPED_INSIDE_CLOUD_SQL_SERVICE" => DropInfoCause::DroppedInsideCloudSqlService,
+                "DROPPED_INSIDE_GKE_SERVICE" => DropInfoCause::DroppedInsideGkeService,
                 "FIREWALL_BLOCKING_LOAD_BALANCER_BACKEND_HEALTH_CHECK" => {
                     DropInfoCause::FirewallBlockingLoadBalancerBackendHealthCheck
                 }
@@ -746,6 +851,11 @@ pub mod schemas {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "CAUSE_UNSPECIFIED" => DropInfoCause::CauseUnspecified,
+                "CLOUD_SQL_INSTANCE_UNAUTHORIZED_ACCESS" => {
+                    DropInfoCause::CloudSqlInstanceUnauthorizedAccess
+                }
+                "DROPPED_INSIDE_CLOUD_SQL_SERVICE" => DropInfoCause::DroppedInsideCloudSqlService,
+                "DROPPED_INSIDE_GKE_SERVICE" => DropInfoCause::DroppedInsideGkeService,
                 "FIREWALL_BLOCKING_LOAD_BALANCER_BACKEND_HEALTH_CHECK" => {
                     DropInfoCause::FirewallBlockingLoadBalancerBackendHealthCheck
                 }
@@ -820,6 +930,20 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Endpoint {
+        #[doc = "A [Cloud SQL](https://cloud.google.com/sql) instance URI."]
+        #[serde(
+            rename = "cloudSqlInstance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cloud_sql_instance: ::std::option::Option<String>,
+        #[doc = "A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture)."]
+        #[serde(
+            rename = "gkeMasterCluster",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub gke_master_cluster: ::std::option::Option<String>,
         #[doc = "A Compute Engine instance URI."]
         #[serde(
             rename = "instance",
@@ -827,7 +951,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub instance: ::std::option::Option<String>,
-        #[doc = "The IP address of the endpoint, which can be an external or internal IP.\nAn IPv6 address is only allowed when the test's destination is a\n[global load balancer VIP](/load-balancing/docs/load-balancing-overview)."]
+        #[doc = "The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only allowed when the test's destination is a [global load balancer VIP](https://cloud.google.com/load-balancing/docs/load-balancing-overview)."]
         #[serde(
             rename = "ipAddress",
             default,
@@ -841,21 +965,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub network: ::std::option::Option<String>,
-        #[doc = "Type of the network where the endpoint is located.\nApplicable only to source endpoint, as destination network type can be\ninferred from the source."]
+        #[doc = "Type of the network where the endpoint is located. Applicable only to source endpoint, as destination network type can be inferred from the source."]
         #[serde(
             rename = "networkType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub network_type: ::std::option::Option<crate::schemas::EndpointNetworkType>,
-        #[doc = "The IP protocol port of the endpoint.\nOnly applicable when protocol is TCP or UDP."]
+        #[doc = "The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP."]
         #[serde(
             rename = "port",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub port: ::std::option::Option<i32>,
-        #[doc = "Project ID where the endpoint is located.\nThe Project ID can be derived from the URI if you provide a VM instance or\nnetwork URI.\nThe following are two cases where you must provide the project ID:\n\n1. Only the IP address is specified, and the IP address is within a GCP\n   project.\n1. When you are using Shared VPC and the IP address that you provide is\n   from the service project. In this case, the network that the IP address\n   resides in is defined in the host project."]
+        #[doc = "Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project."]
         #[serde(
             rename = "projectId",
             default,
@@ -875,11 +999,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum EndpointNetworkType {
-        #[doc = "A network hosted within Google Cloud Platform.\nTo receive more detailed output, specify the URI for the source or\ndestination network."]
+        #[doc = "A network hosted within Google Cloud Platform. To receive more detailed output, specify the URI for the source or destination network."]
         GcpNetwork,
         #[doc = "Default type if unspecified."]
         NetworkTypeUnspecified,
-        #[doc = "A network hosted outside of Google Cloud Platform.\nThis can be an on-premises network, or a network hosted by another cloud\nprovider."]
+        #[doc = "A network hosted outside of Google Cloud Platform. This can be an on-premises network, or a network hosted by another cloud provider."]
         NonGcpNetwork,
     }
     impl EndpointNetworkType {
@@ -1035,28 +1159,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Expr {
-        #[doc = "Optional. Description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
+        #[doc = "Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI."]
         #[serde(
             rename = "description",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "Textual representation of an expression in Common Expression Language\nsyntax."]
+        #[doc = "Textual representation of an expression in Common Expression Language syntax."]
         #[serde(
             rename = "expression",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub expression: ::std::option::Option<String>,
-        #[doc = "Optional. String indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
+        #[doc = "Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file."]
         #[serde(
             rename = "location",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub location: ::std::option::Option<String>,
-        #[doc = "Optional. Title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
+        #[doc = "Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression."]
         #[serde(
             rename = "title",
             default,
@@ -1136,7 +1260,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub target_tags: ::std::option::Option<Vec<String>>,
-        #[doc = "URI of a Compute Engine firewall rule.\nImplied default rule does not have URI."]
+        #[doc = "URI of a Compute Engine firewall rule. Implied default rule does not have URI."]
         #[serde(
             rename = "uri",
             default,
@@ -1194,6 +1318,8 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ForwardInfoTarget {
+        #[doc = "Forwarded to a Cloud SQL Instance."]
+        CloudSqlInstance,
         #[doc = "Forwarded to a Google Kubernetes Engine Container cluster master."]
         GkeMaster,
         #[doc = "Forwarded to the next hop of a custom route imported from a peering VPC."]
@@ -1210,6 +1336,7 @@ pub mod schemas {
     impl ForwardInfoTarget {
         pub fn as_str(self) -> &'static str {
             match self {
+                ForwardInfoTarget::CloudSqlInstance => "CLOUD_SQL_INSTANCE",
                 ForwardInfoTarget::GkeMaster => "GKE_MASTER",
                 ForwardInfoTarget::ImportedCustomRouteNextHop => "IMPORTED_CUSTOM_ROUTE_NEXT_HOP",
                 ForwardInfoTarget::Interconnect => "INTERCONNECT",
@@ -1228,6 +1355,7 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<ForwardInfoTarget, ()> {
             Ok(match s {
+                "CLOUD_SQL_INSTANCE" => ForwardInfoTarget::CloudSqlInstance,
                 "GKE_MASTER" => ForwardInfoTarget::GkeMaster,
                 "IMPORTED_CUSTOM_ROUTE_NEXT_HOP" => ForwardInfoTarget::ImportedCustomRouteNextHop,
                 "INTERCONNECT" => ForwardInfoTarget::Interconnect,
@@ -1258,6 +1386,7 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "CLOUD_SQL_INSTANCE" => ForwardInfoTarget::CloudSqlInstance,
                 "GKE_MASTER" => ForwardInfoTarget::GkeMaster,
                 "IMPORTED_CUSTOM_ROUTE_NEXT_HOP" => ForwardInfoTarget::ImportedCustomRouteNextHop,
                 "INTERCONNECT" => ForwardInfoTarget::Interconnect,
@@ -1368,6 +1497,58 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct GkemasterInfo {
+        #[doc = "URI of a Google Kubernetes Engine cluster network."]
+        #[serde(
+            rename = "clusterNetworkUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cluster_network_uri: ::std::option::Option<String>,
+        #[doc = "URI of a Google Kubernetes Engine cluster."]
+        #[serde(
+            rename = "clusterUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cluster_uri: ::std::option::Option<String>,
+        #[doc = "External IP address of a Google Kubernetes Engine cluster master."]
+        #[serde(
+            rename = "externalIp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub external_ip: ::std::option::Option<String>,
+        #[doc = "Internal IP address of a Google Kubernetes Engine cluster master."]
+        #[serde(
+            rename = "internalIp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub internal_ip: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for GkemasterInfo {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GkemasterInfo {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct InstanceInfo {
         #[doc = "Name of a Compute Engine instance."]
         #[serde(
@@ -1432,6 +1613,76 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for InstanceInfo {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct LatencyDistribution {
+        #[doc = "Representative latency percentiles."]
+        #[serde(
+            rename = "latencyPercentiles",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub latency_percentiles: ::std::option::Option<Vec<crate::schemas::LatencyPercentile>>,
+    }
+    impl ::google_field_selector::FieldSelector for LatencyDistribution {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for LatencyDistribution {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct LatencyPercentile {
+        #[doc = "percent-th percentile of latency observed, in microseconds. Fraction of percent/100 of samples have latency lower or equal to the value of this field."]
+        #[serde(
+            rename = "latencyMicros",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub latency_micros: ::std::option::Option<i64>,
+        #[doc = "Percentage of samples this data point applies to."]
+        #[serde(
+            rename = "percent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub percent: ::std::option::Option<i32>,
+    }
+    impl ::google_field_selector::FieldSelector for LatencyPercentile {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for LatencyPercentile {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1586,11 +1837,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LoadBalancerBackendHealthCheckFirewallState {
-        #[doc = "There are configured firewall rules to allow health check probes to the\nbackend."]
+        #[doc = "There are configured firewall rules to allow health check probes to the backend."]
         Configured,
         #[doc = "State is unspecified. Default state if not populated."]
         HealthCheckFirewallStateUnspecified,
-        #[doc = "There are firewall rules configured to allow partial health check ranges\nor block all health check ranges.\nIf a health check probe is sent from denied IP ranges,\nthe health check to the backend will fail. Then, the backend will be\nmarked unhealthy and will not receive traffic sent to the load balancer."]
+        #[doc = "There are firewall rules configured to allow partial health check ranges or block all health check ranges. If a health check probe is sent from denied IP ranges, the health check to the backend will fail. Then, the backend will be marked unhealthy and will not receive traffic sent to the load balancer."]
         Misconfigured,
     }
     impl LoadBalancerBackendHealthCheckFirewallState {
@@ -1897,14 +2148,14 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Location {
-        #[doc = "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\"."]
+        #[doc = "The friendly name for this location, typically a nearby city name. For example, \"Tokyo\"."]
         #[serde(
             rename = "displayName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "Cross-service attributes for the location. For example\n\n````text\n{\"cloud.googleapis.com/region\": \"us-east1\"}````"]
+        #[doc = "Cross-service attributes for the location. For example {\"cloud.googleapis.com/region\": \"us-east1\"}"]
         #[serde(
             rename = "labels",
             default,
@@ -1918,7 +2169,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub location_id: ::std::option::Option<String>,
-        #[doc = "Service-specific metadata. For example the available capacity at the given\nlocation."]
+        #[doc = "Service-specific metadata. For example the available capacity at the given location."]
         #[serde(
             rename = "metadata",
             default,
@@ -1926,7 +2177,7 @@ pub mod schemas {
         )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`"]
+        #[doc = "Resource name for the location, which may vary between implementations. For example: `\"projects/example-project/locations/us-east1\"`"]
         #[serde(
             rename = "name",
             default,
@@ -1991,7 +2242,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
-        #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
+        #[doc = "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available."]
         #[serde(
             rename = "done",
             default,
@@ -2005,7 +2256,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub error: ::std::option::Option<crate::schemas::Status>,
-        #[doc = "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."]
+        #[doc = "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any."]
         #[serde(
             rename = "metadata",
             default,
@@ -2013,14 +2264,14 @@ pub mod schemas {
         )]
         pub metadata:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`."]
+        #[doc = "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`."]
+        #[doc = "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`."]
         #[serde(
             rename = "response",
             default,
@@ -2087,7 +2338,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub status_detail: ::std::option::Option<String>,
-        #[doc = "Target of the operation - for example\nprojects/project-1/locations/global/connectivityTests/test-1"]
+        #[doc = "Target of the operation - for example projects/project-1/locations/global/connectivityTests/test-1"]
         #[serde(
             rename = "target",
             default,
@@ -2132,21 +2383,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub audit_configs: ::std::option::Option<Vec<crate::schemas::AuditConfig>>,
-        #[doc = "Associates a list of `members` to a `role`. Optionally, may specify a\n`condition` that determines how and when the `bindings` are applied. Each\nof the `bindings` must contain at least one member."]
+        #[doc = "Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member."]
         #[serde(
             rename = "bindings",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
-        #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost."]
+        #[doc = "`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost."]
         #[serde(
             rename = "etag",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Specifies the format of the policy.\n\nValid values are `0`, `1`, and `3`. Requests that specify an invalid value\nare rejected.\n\nAny operation that affects conditional role bindings must specify version\n`3`. This requirement applies to the following operations:\n\n* Getting a policy that includes a conditional role binding\n* Adding a conditional role binding to a policy\n* Changing a conditional role binding in a policy\n* Removing any role binding, with or without a condition, from a policy\n  that includes conditions\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.\n\nIf a policy does not include any conditions, operations on that policy may\nspecify any valid version or leave the field unset.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
+        #[doc = "Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
         #[serde(
             rename = "version",
             default,
@@ -2160,6 +2411,243 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Policy {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct ProbingDetails {
+        #[doc = "Causes that the probing was aborted."]
+        #[serde(
+            rename = "abortCause",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub abort_cause: ::std::option::Option<crate::schemas::ProbingDetailsAbortCause>,
+        #[doc = "Derived from the test input. The actual source and destination endpoint where the probing was run."]
+        #[serde(
+            rename = "endpointInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub endpoint_info: ::std::option::Option<crate::schemas::EndpointInfo>,
+        #[doc = "The details of an internal failure or a cancellation of reachability analysis."]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub error: ::std::option::Option<crate::schemas::Status>,
+        #[doc = "One way probing latency distribution. The latency is measured as duration of packet traversal of Google Cloud network, from source to destination endpoint."]
+        #[serde(
+            rename = "probingLatency",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub probing_latency: ::std::option::Option<crate::schemas::LatencyDistribution>,
+        #[doc = "The overall reachability result of the test."]
+        #[serde(
+            rename = "result",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub result: ::std::option::Option<crate::schemas::ProbingDetailsResult>,
+        #[doc = "Number of probes sent."]
+        #[serde(
+            rename = "sentProbeCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub sent_probe_count: ::std::option::Option<i32>,
+        #[doc = "Number of probes that reached destination."]
+        #[serde(
+            rename = "successfulProbeCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub successful_probe_count: ::std::option::Option<i32>,
+        #[doc = "The time the reachability state was verified."]
+        #[serde(
+            rename = "verifyTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub verify_time: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for ProbingDetails {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ProbingDetails {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ProbingDetailsAbortCause {
+        #[doc = "Aborted because no valid source endpoint is derived from the input test request."]
+        NoSourceLocation,
+        #[doc = "Aborted because the user lacks the permission to access all or part of the network configurations required to run the test."]
+        PermissionDenied,
+        #[doc = "Abort reason unspecified."]
+        ProbingAbortCauseUnspecified,
+    }
+    impl ProbingDetailsAbortCause {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ProbingDetailsAbortCause::NoSourceLocation => "NO_SOURCE_LOCATION",
+                ProbingDetailsAbortCause::PermissionDenied => "PERMISSION_DENIED",
+                ProbingDetailsAbortCause::ProbingAbortCauseUnspecified => {
+                    "PROBING_ABORT_CAUSE_UNSPECIFIED"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ProbingDetailsAbortCause {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ProbingDetailsAbortCause {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ProbingDetailsAbortCause, ()> {
+            Ok(match s {
+                "NO_SOURCE_LOCATION" => ProbingDetailsAbortCause::NoSourceLocation,
+                "PERMISSION_DENIED" => ProbingDetailsAbortCause::PermissionDenied,
+                "PROBING_ABORT_CAUSE_UNSPECIFIED" => {
+                    ProbingDetailsAbortCause::ProbingAbortCauseUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for ProbingDetailsAbortCause {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ProbingDetailsAbortCause {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ProbingDetailsAbortCause {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "NO_SOURCE_LOCATION" => ProbingDetailsAbortCause::NoSourceLocation,
+                "PERMISSION_DENIED" => ProbingDetailsAbortCause::PermissionDenied,
+                "PROBING_ABORT_CAUSE_UNSPECIFIED" => {
+                    ProbingDetailsAbortCause::ProbingAbortCauseUnspecified
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for ProbingDetailsAbortCause {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ProbingDetailsAbortCause {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ProbingDetailsResult {
+        #[doc = "Result is not specified."]
+        ProbingResultUnspecified,
+        #[doc = "Less than 95% packets originating from source reached destination."]
+        ReachabilityInconsistent,
+        #[doc = "95% or more packets originating from source reached destination."]
+        Reachable,
+        #[doc = "The reachability could not be determined. Possible reasons are: * Analysis is aborted due to permission error. User does not have read permission to the projects listed in the test. * Analysis is aborted due to internal errors."]
+        Undetermined,
+        #[doc = "No packet originating from source reached destination."]
+        Unreachable,
+    }
+    impl ProbingDetailsResult {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ProbingDetailsResult::ProbingResultUnspecified => "PROBING_RESULT_UNSPECIFIED",
+                ProbingDetailsResult::ReachabilityInconsistent => "REACHABILITY_INCONSISTENT",
+                ProbingDetailsResult::Reachable => "REACHABLE",
+                ProbingDetailsResult::Undetermined => "UNDETERMINED",
+                ProbingDetailsResult::Unreachable => "UNREACHABLE",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ProbingDetailsResult {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ProbingDetailsResult {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ProbingDetailsResult, ()> {
+            Ok(match s {
+                "PROBING_RESULT_UNSPECIFIED" => ProbingDetailsResult::ProbingResultUnspecified,
+                "REACHABILITY_INCONSISTENT" => ProbingDetailsResult::ReachabilityInconsistent,
+                "REACHABLE" => ProbingDetailsResult::Reachable,
+                "UNDETERMINED" => ProbingDetailsResult::Undetermined,
+                "UNREACHABLE" => ProbingDetailsResult::Unreachable,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for ProbingDetailsResult {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ProbingDetailsResult {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ProbingDetailsResult {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "PROBING_RESULT_UNSPECIFIED" => ProbingDetailsResult::ProbingResultUnspecified,
+                "REACHABILITY_INCONSISTENT" => ProbingDetailsResult::ReachabilityInconsistent,
+                "REACHABLE" => ProbingDetailsResult::Reachable,
+                "UNDETERMINED" => ProbingDetailsResult::Undetermined,
+                "UNREACHABLE" => ProbingDetailsResult::Unreachable,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for ProbingDetailsResult {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ProbingDetailsResult {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -2180,7 +2668,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub result: ::std::option::Option<crate::schemas::ReachabilityDetailsResult>,
-        #[doc = "Result may contain a list of traces if a test has multiple possible\npaths in the network, such as when destination endpoint is a load balancer\nwith multiple backends."]
+        #[doc = "Result may contain a list of traces if a test has multiple possible paths in the network, such as when destination endpoint is a load balancer with multiple backends."]
         #[serde(
             rename = "traces",
             default,
@@ -2207,15 +2695,15 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ReachabilityDetailsResult {
-        #[doc = "If the source and destination endpoint does not uniquely identify\nthe test location in the network, and the reachability result contains\nmultiple traces with mixed reachable and unreachable states, then this\nresult is returned."]
+        #[doc = "If the source and destination endpoint does not uniquely identify the test location in the network, and the reachability result contains multiple traces with mixed reachable and unreachable states, then this result is returned."]
         Ambiguous,
         #[doc = "Packet originating from source is expected to reach destination."]
         Reachable,
         #[doc = "Result is not specified."]
         ResultUnspecified,
-        #[doc = "The reachability could not be determined. Possible reasons are:\n\n* Analysis is aborted due to permission error. User does not have read\n  permission to the projects listed in the test.\n* Analysis is aborted due to internal errors.\n* Analysis is partially complete based on configurations where the user\n  has permission.\n  The Final state indicates that the packet is forwarded to another\n  network where the user has no permission to access the configurations."]
+        #[doc = "The reachability could not be determined. Possible reasons are: * Analysis is aborted due to permission error. User does not have read permission to the projects listed in the test. * Analysis is aborted due to internal errors. * Analysis is partially complete based on configurations where the user has permission. The Final state indicates that the packet is forwarded to another network where the user has no permission to access the configurations."]
         Undetermined,
-        #[doc = "Packet originating from source is expected to be dropped before\nreaching destination."]
+        #[doc = "Packet originating from source is expected to be dropped before reaching destination."]
         Unreachable,
     }
     impl ReachabilityDetailsResult {
@@ -2384,7 +2872,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub route_type: ::std::option::Option<crate::schemas::RouteInfoRouteType>,
-        #[doc = "URI of a Compute Engine route.\nDynamic route from cloud router does not have a URI.\nAdvertised route from Google Cloud VPC to on-premises network also does\nnot have a URI."]
+        #[doc = "URI of a Compute Engine route. Dynamic route from cloud router does not have a URI. Advertised route from Google Cloud VPC to on-premises network also does not have a URI."]
         #[serde(
             rename = "uri",
             default,
@@ -2404,7 +2892,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RouteInfoNextHopType {
-        #[doc = "Next hop is blackhole; that is, the next hop either does not exist or is\nnot running."]
+        #[doc = "Next hop is blackhole; that is, the next hop either does not exist or is not running."]
         NextHopBlackhole,
         #[doc = "Next hop is the forwarding rule of an Internal Load Balancer."]
         NextHopIlb,
@@ -2422,7 +2910,7 @@ pub mod schemas {
         NextHopPeering,
         #[doc = "Unspecified type. Default value."]
         NextHopTypeUnspecified,
-        #[doc = "Next hop is a VPN Gateway. This scenario only happens when tracing\nconnectivity from an on-premises network to GCP through a VPN. The\nanalysis simulates a packet departing from the on-premises network\nthrough a VPN tunnel and arrives at a Cloud VPN gateway."]
+        #[doc = "Next hop is a VPN Gateway. This scenario only happens when tracing connectivity from an on-premises network to GCP through a VPN. The analysis simulates a packet departing from the on-premises network through a VPN tunnel and arrives at a Cloud VPN gateway."]
         NextHopVpnGateway,
         #[doc = "Next hop is a VPN tunnel."]
         NextHopVpnTunnel,
@@ -2530,7 +3018,7 @@ pub mod schemas {
         PeeringSubnet,
         #[doc = "Unspecified type. Default value."]
         RouteTypeUnspecified,
-        #[doc = "Static route created by the user including the default route to the\nInternet."]
+        #[doc = "Static route created by the user including the default route to the Internet."]
         Static,
         #[doc = "Route is a subnet route automatically created by the system."]
         Subnet,
@@ -2627,14 +3115,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SetIamPolicyRequest {
-        #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."]
+        #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."]
         #[serde(
             rename = "policy",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub policy: ::std::option::Option<crate::schemas::Policy>,
-        #[doc = "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, the\nfollowing default mask is used:\n\n`paths: \"bindings, etag\"`"]
+        #[doc = "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: \"bindings, etag\"`"]
         #[serde(
             rename = "updateMask",
             default,
@@ -2661,7 +3149,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub code: ::std::option::Option<i32>,
-        #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
+        #[doc = "A list of messages that carry the error details. There is a common set of message types for APIs to use."]
         #[serde(
             rename = "details",
             default,
@@ -2669,7 +3157,7 @@ pub mod schemas {
         )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
-        #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
+        #[doc = "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client."]
         #[serde(
             rename = "message",
             default,
@@ -2714,6 +3202,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub causes_drop: ::std::option::Option<bool>,
+        #[doc = "Display info of a Cloud SQL instance."]
+        #[serde(
+            rename = "cloudSqlInstance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cloud_sql_instance: ::std::option::Option<crate::schemas::CloudSQLInstanceInfo>,
         #[doc = "Display info of the final state \"deliver\" and reason."]
         #[serde(
             rename = "deliver",
@@ -2735,7 +3230,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub drop: ::std::option::Option<crate::schemas::DropInfo>,
-        #[doc = "Display info of the source and destination under analysis.\nThe endpiont info in an intermediate state may differ with the\ninitial input, as it might be modified by state like NAT,\nor Connection Proxy."]
+        #[doc = "Display info of the source and destination under analysis. The endpiont info in an intermediate state may differ with the initial input, as it might be modified by state like NAT, or Connection Proxy."]
         #[serde(
             rename = "endpoint",
             default,
@@ -2763,6 +3258,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub forwarding_rule: ::std::option::Option<crate::schemas::ForwardingRuleInfo>,
+        #[doc = "Display info of a Google Kubernetes Engine cluster master."]
+        #[serde(
+            rename = "gkeMaster",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub gke_master: ::std::option::Option<crate::schemas::GkemasterInfo>,
         #[doc = "Display info of a Compute Engine instance."]
         #[serde(
             rename = "instance",
@@ -2860,19 +3362,23 @@ pub mod schemas {
         Forward,
         #[doc = "Transition state: packet header translated."]
         Nat,
-        #[doc = "Transition state: original connection is terminated and a new proxied\nconnection is initiated."]
+        #[doc = "Transition state: original connection is terminated and a new proxied connection is initiated."]
         ProxyConnection,
-        #[doc = "Config checking state: packet sent or received under foreign IP\naddress and allowed."]
+        #[doc = "Config checking state: packet sent or received under foreign IP address and allowed."]
         SpoofingApproved,
-        #[doc = "Initial state: packet originating from a Compute Engine instance.\nAn InstanceInfo will be populated with starting instance info."]
+        #[doc = "Initial state: packet originating from a Cloud SQL instance. A CloudSQLInstanceInfo will be populated with starting instance info."]
+        StartFromCloudSqlInstance,
+        #[doc = "Initial state: packet originating from a Google Kubernetes Engine cluster master. A GKEMasterInfo will be populated with starting instance info."]
+        StartFromGkeMaster,
+        #[doc = "Initial state: packet originating from a Compute Engine instance. An InstanceInfo will be populated with starting instance info."]
         StartFromInstance,
-        #[doc = "Initial state: packet originating from Internet.\nThe endpoint info will be populated."]
+        #[doc = "Initial state: packet originating from Internet. The endpoint info will be populated."]
         StartFromInternet,
-        #[doc = "Initial state: packet originating from a VPC or on-premises network\nwith internal source IP.\nIf the source is a VPC network visible to the user, a NetworkInfo\nwill be populated with details of the network."]
+        #[doc = "Initial state: packet originating from a VPC or on-premises network with internal source IP. If the source is a VPC network visible to the user, a NetworkInfo will be populated with details of the network."]
         StartFromPrivateNetwork,
         #[doc = "Unspecified state."]
         StateUnspecified,
-        #[doc = "Special state: viewer of the test result does not have permission to\nsee the configuration in this step."]
+        #[doc = "Special state: viewer of the test result does not have permission to see the configuration in this step."]
         ViewerPermissionMissing,
     }
     impl StepState {
@@ -2894,6 +3400,8 @@ pub mod schemas {
                 StepState::Nat => "NAT",
                 StepState::ProxyConnection => "PROXY_CONNECTION",
                 StepState::SpoofingApproved => "SPOOFING_APPROVED",
+                StepState::StartFromCloudSqlInstance => "START_FROM_CLOUD_SQL_INSTANCE",
+                StepState::StartFromGkeMaster => "START_FROM_GKE_MASTER",
                 StepState::StartFromInstance => "START_FROM_INSTANCE",
                 StepState::StartFromInternet => "START_FROM_INTERNET",
                 StepState::StartFromPrivateNetwork => "START_FROM_PRIVATE_NETWORK",
@@ -2927,6 +3435,8 @@ pub mod schemas {
                 "NAT" => StepState::Nat,
                 "PROXY_CONNECTION" => StepState::ProxyConnection,
                 "SPOOFING_APPROVED" => StepState::SpoofingApproved,
+                "START_FROM_CLOUD_SQL_INSTANCE" => StepState::StartFromCloudSqlInstance,
+                "START_FROM_GKE_MASTER" => StepState::StartFromGkeMaster,
                 "START_FROM_INSTANCE" => StepState::StartFromInstance,
                 "START_FROM_INTERNET" => StepState::StartFromInternet,
                 "START_FROM_PRIVATE_NETWORK" => StepState::StartFromPrivateNetwork,
@@ -2972,6 +3482,8 @@ pub mod schemas {
                 "NAT" => StepState::Nat,
                 "PROXY_CONNECTION" => StepState::ProxyConnection,
                 "SPOOFING_APPROVED" => StepState::SpoofingApproved,
+                "START_FROM_CLOUD_SQL_INSTANCE" => StepState::StartFromCloudSqlInstance,
+                "START_FROM_GKE_MASTER" => StepState::StartFromGkeMaster,
                 "START_FROM_INSTANCE" => StepState::StartFromInstance,
                 "START_FROM_INTERNET" => StepState::StartFromInternet,
                 "START_FROM_PRIVATE_NETWORK" => StepState::StartFromPrivateNetwork,
@@ -3009,7 +3521,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TestIamPermissionsRequest {
-        #[doc = "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
+        #[doc = "The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or 'storage.*') are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
         #[serde(
             rename = "permissions",
             default,
@@ -3040,7 +3552,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TestIamPermissionsResponse {
-        #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."]
+        #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is allowed."]
         #[serde(
             rename = "permissions",
             default,
@@ -3071,14 +3583,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Trace {
-        #[doc = "Derived from the source and destination endpoints definition, and validated\nby the data plane model.\nIf there are multiple traces starting from different source locations, then\nthe endpoint_info may be different between traces."]
+        #[doc = "Derived from the source and destination endpoints definition, and validated by the data plane model. If there are multiple traces starting from different source locations, then the endpoint_info may be different between traces."]
         #[serde(
             rename = "endpointInfo",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub endpoint_info: ::std::option::Option<crate::schemas::EndpointInfo>,
-        #[doc = "A trace of a test contains multiple steps from the initial state to the\nfinal state (delivered, dropped, forwarded, or aborted).\n\nThe steps are ordered by the processing sequence within the simulated\nnetwork state machine. It is critical to preserve the order of the steps\nand avoid reordering or sorting them."]
+        #[doc = "A trace of a test contains multiple steps from the initial state to the final state (delivered, dropped, forwarded, or aborted). The steps are ordered by the processing sequence within the simulated network state machine. It is critical to preserve the order of the steps and avoid reordering or sorting them."]
         #[serde(
             rename = "steps",
             default,
@@ -3144,7 +3656,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub uri: ::std::option::Option<String>,
-        #[doc = "A VPN tunnel that is associated with this VPN gateway.\nThere may be multiple VPN tunnels configured on a VPN gateway, and only\nthe one relevant to the test is displayed."]
+        #[doc = "A VPN tunnel that is associated with this VPN gateway. There may be multiple VPN tunnels configured on a VPN gateway, and only the one relevant to the test is displayed."]
         #[serde(
             rename = "vpnTunnelUri",
             default,
@@ -3736,19 +4248,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -4014,22 +4526,22 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("filter", &self.filter)]);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("filter", &self.filter)]);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -4058,7 +4570,7 @@ pub mod resources {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "Actions that can be performed on the connectivity_tests resource"]pub fn connectivity_tests ( & self ) -> crate :: resources :: projects :: locations :: global :: connectivity_tests :: ConnectivityTestsActions{
+                    #[doc = "Actions that can be performed on the connectivity_tests resource"]                    pub fn connectivity_tests ( & self ) -> crate :: resources :: projects :: locations :: global :: connectivity_tests :: ConnectivityTestsActions{
                         crate :: resources :: projects :: locations :: global :: connectivity_tests :: ConnectivityTestsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                     }
                     #[doc = "Actions that can be performed on the operations resource"]
@@ -4079,7 +4591,7 @@ pub mod resources {
                         fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                             self.auth
                         }
-                        #[doc = "Creates a new Connectivity Test.\nAfter you create a test, the reachability analysis is performed as part\nof the long running operation, which completes when the analysis completes.\n\nIf the endpoint specifications in `ConnectivityTest` are invalid\n(for example, containing non-existent resources in the network, or you\ndon't have read permissions to the network configurations of listed\nprojects), then the reachability result returns a value of `UNKNOWN`.\n\nIf the endpoint specifications in `ConnectivityTest` are\nincomplete, the reachability result returns a value of\n<code>AMBIGUOUS</code>. For more information,\nsee the Connectivity Test documentation."]
+                        #[doc = "Creates a new Connectivity Test. After you create a test, the reachability analysis is performed as part of the long running operation, which completes when the analysis completes. If the endpoint specifications in `ConnectivityTest` are invalid (for example, containing non-existent resources in the network, or you don't have read permissions to the network configurations of listed projects), then the reachability result returns a value of `UNKNOWN`. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability result returns a value of AMBIGUOUS. For more information, see the Connectivity Test documentation."]
                         pub fn create(
                             &self,
                             request: crate::schemas::ConnectivityTest,
@@ -4142,7 +4654,7 @@ pub mod resources {
                                 name: name.into(),
                             }
                         }
-                        #[doc = "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset."]
+                        #[doc = "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set."]
                         pub fn get_iam_policy(
                             &self,
                             resource: impl Into<String>,
@@ -4188,7 +4700,7 @@ pub mod resources {
                                 page_token: None,
                             }
                         }
-                        #[doc = "Updates the configuration of an existing `ConnectivityTest`.\nAfter you update a test, the reachability analysis is performed as part\nof the long running operation, which completes when the analysis completes.\nThe Reachability state in the test resource is updated with the new result.\n\nIf the endpoint specifications in `ConnectivityTest` are invalid\n(for example, they contain non-existent resources in the network, or the\nuser does not have read permissions to the network configurations of\nlisted projects), then the reachability result returns a value of\n<code>UNKNOWN</code>.\n\nIf the endpoint specifications in `ConnectivityTest` are incomplete, the\nreachability result returns a value of `AMBIGUOUS`. See the documentation\nin `ConnectivityTest` for for more details."]
+                        #[doc = "Updates the configuration of an existing `ConnectivityTest`. After you update a test, the reachability analysis is performed as part of the long running operation, which completes when the analysis completes. The Reachability state in the test resource is updated with the new result. If the endpoint specifications in `ConnectivityTest` are invalid (for example, they contain non-existent resources in the network, or the user does not have read permissions to the network configurations of listed projects), then the reachability result returns a value of UNKNOWN. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability result returns a value of `AMBIGUOUS`. See the documentation in `ConnectivityTest` for for more details."]
                         pub fn patch(
                             &self,
                             request: crate::schemas::ConnectivityTest,
@@ -4213,7 +4725,7 @@ pub mod resources {
                                 update_mask: None,
                             }
                         }
-                        #[doc = "Rerun an existing `ConnectivityTest`.\nAfter the user triggers the rerun, the reachability analysis is performed\nas part of the long running operation, which completes when the analysis\ncompletes.\n\nEven though the test configuration remains the same, the reachability\nresult may change due to underlying network configuration changes.\n\nIf the endpoint specifications in `ConnectivityTest` become invalid (for\nexample, specified resources are deleted in the network, or you lost\nread permissions to the network configurations of listed projects), then\nthe reachability result returns a value of `UNKNOWN`."]
+                        #[doc = "Rerun an existing `ConnectivityTest`. After the user triggers the rerun, the reachability analysis is performed as part of the long running operation, which completes when the analysis completes. Even though the test configuration remains the same, the reachability result may change due to underlying network configuration changes. If the endpoint specifications in `ConnectivityTest` become invalid (for example, specified resources are deleted in the network, or you lost read permissions to the network configurations of listed projects), then the reachability result returns a value of `UNKNOWN`."]
                         pub fn rerun(
                             &self,
                             request: crate::schemas::RerunConnectivityTestRequest,
@@ -4237,7 +4749,7 @@ pub mod resources {
                                 name: name.into(),
                             }
                         }
-                        #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors."]
+                        #[doc = "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors."]
                         pub fn set_iam_policy(
                             &self,
                             request: crate::schemas::SetIamPolicyRequest,
@@ -4261,7 +4773,7 @@ pub mod resources {
                                 resource: resource.into(),
                             }
                         }
-                        #[doc = "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a `NOT_FOUND` error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning."]
+                        #[doc = "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning."]
                         pub fn test_iam_permissions(
                             &self,
                             request: crate::schemas::TestIamPermissionsRequest,
@@ -4307,7 +4819,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> CreateRequestBuilder<'a> {
-                        #[doc = "Required. The logical name of the Connectivity Test in your project\nwith the following restrictions:\n\n* Must contain only lowercase letters, numbers, and hyphens.\n* Must start with a letter.\n* Must be between 1-40 characters.\n* Must end with a number or a letter.\n* Must be unique within the customer project"]
+                        #[doc = "Required. The logical name of the Connectivity Test in your project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project"]
                         pub fn test_id(mut self, value: impl Into<String>) -> Self {
                             self.test_id = Some(value.into());
                             self
@@ -4438,20 +4950,20 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("testId", &self.test_id)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("testId", &self.test_id)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -4602,19 +5114,19 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -4765,19 +5277,19 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -4805,7 +5317,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> GetIamPolicyRequestBuilder<'a> {
-                        #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM\ndocumentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
+                        #[doc = "Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional bindings must specify version 3. Policies without any conditional bindings may specify any valid value or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
                         pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                             self.options_requested_policy_version = Some(value);
                             self
@@ -4933,23 +5445,23 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[(
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[(
                                 "options.requestedPolicyVersion",
                                 &self.options_requested_policy_version,
                             )]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -4980,7 +5492,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> ListRequestBuilder<'a> {
-                        #[doc = "Lists the `ConnectivityTests` that match the filter expression. A filter\nexpression filters the resources listed in the response. The expression\nmust be of the form `<field> <operator> <value>` where operators: `<`, `>`,\n`<=`,\n`>=`,\n`!=`, `=`, `:` are supported (colon `:` represents a HAS operator which is\nroughly synonymous with equality). <field> can refer to a proto or JSON\nfield, or a synthetic field. Field names can be camelCase or snake_case.\n\nExamples:\n\n* Filter by name:\n  name = \"projects/proj-1/locations/global/connectivityTests/test-1\n\n* Filter by labels:\n  \n  * Resources that have a key called `foo`\n    labels.foo:*\n  * Resources that have a key called `foo` whose value is `bar`\n    labels.foo = bar"]
+                        #[doc = "Lists the `ConnectivityTests` that match the filter expression. A filter expression filters the resources listed in the response. The expression must be of the form ` ` where operators: `<`, `>`, `<=`, `>=`, `!=`, `=`, `:` are supported (colon `:` represents a HAS operator which is roughly synonymous with equality). can refer to a proto or JSON field, or a synthetic field. Field names can be camelCase or snake_case. Examples: - Filter by name: name = \"projects/proj-1/locations/global/connectivityTests/test-1 - Filter by labels: - Resources that have a key called `foo` labels.foo:* - Resources that have a key called `foo` whose value is `bar` labels.foo = bar"]
                         pub fn filter(mut self, value: impl Into<String>) -> Self {
                             self.filter = Some(value.into());
                             self
@@ -5296,23 +5808,23 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("filter", &self.filter)]);
-                            let req = req.query(&[("orderBy", &self.order_by)]);
-                            let req = req.query(&[("pageSize", &self.page_size)]);
-                            let req = req.query(&[("pageToken", &self.page_token)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("filter", &self.filter)]);
+                            req = req.query(&[("orderBy", &self.order_by)]);
+                            req = req.query(&[("pageSize", &self.page_size)]);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -5352,7 +5864,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> PatchRequestBuilder<'a> {
-                        #[doc = "Required. Mask of fields to update. At least one path must be supplied in\nthis field."]
+                        #[doc = "Required. Mask of fields to update. At least one path must be supplied in this field."]
                         pub fn update_mask(mut self, value: impl Into<String>) -> Self {
                             self.update_mask = Some(value.into());
                             self
@@ -5482,20 +5994,20 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                            let req = req.query(&[("updateMask", &self.update_mask)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                            req = req.query(&[("updateMask", &self.update_mask)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -5649,19 +6161,19 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -5813,19 +6325,19 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -5979,19 +6491,19 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -6010,7 +6522,7 @@ pub mod resources {
                         fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                             self.auth
                         }
-                        #[doc = "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`."]
+                        #[doc = "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`."]
                         pub fn cancel(
                             &self,
                             request: crate::schemas::CancelOperationRequest,
@@ -6034,7 +6546,7 @@ pub mod resources {
                                 name: name.into(),
                             }
                         }
-                        #[doc = "Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`."]
+                        #[doc = "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`."]
                         pub fn delete(&self, name: impl Into<String>) -> DeleteRequestBuilder {
                             DeleteRequestBuilder {
                                 reqwest: &self.reqwest,
@@ -6053,7 +6565,7 @@ pub mod resources {
                                 name: name.into(),
                             }
                         }
-                        #[doc = "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice."]
+                        #[doc = "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service."]
                         pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder {
                             GetRequestBuilder {
                                 reqwest: &self.reqwest,
@@ -6072,7 +6584,7 @@ pub mod resources {
                                 name: name.into(),
                             }
                         }
-                        #[doc = "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id."]
+                        #[doc = "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id."]
                         pub fn list(&self, name: impl Into<String>) -> ListRequestBuilder {
                             ListRequestBuilder {
                                 reqwest: &self.reqwest,
@@ -6239,19 +6751,19 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -6400,19 +6912,19 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -6563,19 +7075,19 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -6852,22 +7364,22 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("filter", &self.filter)]);
-                            let req = req.query(&[("pageSize", &self.page_size)]);
-                            let req = req.query(&[("pageToken", &self.page_token)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("filter", &self.filter)]);
+                            req = req.query(&[("pageSize", &self.page_size)]);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,

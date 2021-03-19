@@ -41,28 +41,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ErrorContext {
-        #[doc = "The HTTP request which was processed when the error was\ntriggered."]
+        #[doc = "The HTTP request which was processed when the error was triggered."]
         #[serde(
             rename = "httpRequest",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub http_request: ::std::option::Option<crate::schemas::HttpRequestContext>,
-        #[doc = "The location in the source code where the decision was made to\nreport the error, usually the place where it was logged.\nFor a logged exception this would be the source line where the\nexception is logged, usually close to the place where it was\ncaught."]
+        #[doc = "The location in the source code where the decision was made to report the error, usually the place where it was logged. For a logged exception this would be the source line where the exception is logged, usually close to the place where it was caught."]
         #[serde(
             rename = "reportLocation",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub report_location: ::std::option::Option<crate::schemas::SourceLocation>,
-        #[doc = "Source code that was used to build the executable which has\ncaused the given error message."]
+        #[doc = "Source code that was used to build the executable which has caused the given error message."]
         #[serde(
             rename = "sourceReferences",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub source_references: ::std::option::Option<Vec<crate::schemas::SourceReference>>,
-        #[doc = "The user who caused or was affected by the crash.\nThis can be a user ID, an email address, or an arbitrary token that\nuniquely identifies the user.\nWhen sending an error report, leave this field empty if the user was not\nlogged in. In this case the\nError Reporting system will use other data, such as remote IP address, to\ndistinguish affected users. See `affected_users_count` in\n`ErrorGroupStats`."]
+        #[doc = "The user who caused or was affected by the crash. This can be a user ID, an email address, or an arbitrary token that uniquely identifies the user. When sending an error report, leave this field empty if the user was not logged in. In this case the Error Reporting system will use other data, such as remote IP address, to distinguish affected users. See `affected_users_count` in `ErrorGroupStats`."]
         #[serde(
             rename = "user",
             default,
@@ -100,7 +100,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub context: ::std::option::Option<crate::schemas::ErrorContext>,
-        #[doc = "Time when the event occurred as provided in the error report.\nIf the report did not contain a timestamp, the time the error was received\nby the Error Reporting system is used."]
+        #[doc = "Time when the event occurred as provided in the error report. If the report did not contain a timestamp, the time the error was received by the Error Reporting system is used."]
         #[serde(
             rename = "eventTime",
             default,
@@ -145,20 +145,27 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ErrorGroup {
-        #[doc = "Group IDs are unique for a given project. If the same kind of error\noccurs in different service contexts, it will receive the same group ID."]
+        #[doc = "Group IDs are unique for a given project. If the same kind of error occurs in different service contexts, it will receive the same group ID."]
         #[serde(
             rename = "groupId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub group_id: ::std::option::Option<String>,
-        #[doc = "The group resource name.\nExample: <code>projects/my-project-123/groups/CNSgkpnppqKCUw</code>"]
+        #[doc = "The group resource name. Example: projects/my-project-123/groups/CNSgkpnppqKCUw"]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
+        #[doc = "Error group's resolution status. An unspecified resolution status will be interpreted as OPEN"]
+        #[serde(
+            rename = "resolutionStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resolution_status: ::std::option::Option<crate::schemas::ErrorGroupResolutionStatus>,
         #[doc = "Associated tracking issues."]
         #[serde(
             rename = "trackingIssues",
@@ -177,6 +184,98 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ErrorGroupResolutionStatus {
+        #[doc = "Error Group manually acknowledged, it can have an issue link attached."]
+        Acknowledged,
+        #[doc = "The error group is muted and excluded by default on group stats requests."]
+        Muted,
+        #[doc = "The error group is not being addressed. This is the default for new groups. It is also used for errors re-occurring after marked RESOLVED."]
+        Open,
+        #[doc = "Status is unknown. When left unspecified in requests, it is treated like OPEN."]
+        ResolutionStatusUnspecified,
+        #[doc = "Error Group manually resolved, more events for this group are not expected to occur."]
+        Resolved,
+    }
+    impl ErrorGroupResolutionStatus {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ErrorGroupResolutionStatus::Acknowledged => "ACKNOWLEDGED",
+                ErrorGroupResolutionStatus::Muted => "MUTED",
+                ErrorGroupResolutionStatus::Open => "OPEN",
+                ErrorGroupResolutionStatus::ResolutionStatusUnspecified => {
+                    "RESOLUTION_STATUS_UNSPECIFIED"
+                }
+                ErrorGroupResolutionStatus::Resolved => "RESOLVED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ErrorGroupResolutionStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ErrorGroupResolutionStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ErrorGroupResolutionStatus, ()> {
+            Ok(match s {
+                "ACKNOWLEDGED" => ErrorGroupResolutionStatus::Acknowledged,
+                "MUTED" => ErrorGroupResolutionStatus::Muted,
+                "OPEN" => ErrorGroupResolutionStatus::Open,
+                "RESOLUTION_STATUS_UNSPECIFIED" => {
+                    ErrorGroupResolutionStatus::ResolutionStatusUnspecified
+                }
+                "RESOLVED" => ErrorGroupResolutionStatus::Resolved,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for ErrorGroupResolutionStatus {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ErrorGroupResolutionStatus {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ErrorGroupResolutionStatus {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ACKNOWLEDGED" => ErrorGroupResolutionStatus::Acknowledged,
+                "MUTED" => ErrorGroupResolutionStatus::Muted,
+                "OPEN" => ErrorGroupResolutionStatus::Open,
+                "RESOLUTION_STATUS_UNSPECIFIED" => {
+                    ErrorGroupResolutionStatus::ResolutionStatusUnspecified
+                }
+                "RESOLVED" => ErrorGroupResolutionStatus::Resolved,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for ErrorGroupResolutionStatus {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ErrorGroupResolutionStatus {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -190,14 +289,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ErrorGroupStats {
-        #[doc = "Service contexts with a non-zero error count for the given filter\ncriteria. This list can be truncated if multiple services are affected.\nRefer to `num_affected_services` for the total count."]
+        #[doc = "Service contexts with a non-zero error count for the given filter criteria. This list can be truncated if multiple services are affected. Refer to `num_affected_services` for the total count."]
         #[serde(
             rename = "affectedServices",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub affected_services: ::std::option::Option<Vec<crate::schemas::ServiceContext>>,
-        #[doc = "Approximate number of affected users in the given group that\nmatch the filter criteria.\nUsers are distinguished by data in the `ErrorContext` of the\nindividual error events, such as their login name or their remote\nIP address in case of HTTP requests.\nThe number of affected users can be zero even if the number of\nerrors is non-zero if no data was provided from which the\naffected user could be deduced.\nUsers are counted based on data in the request\ncontext that was provided in the error report. If more users are\nimplicitly affected, such as due to a crash of the whole service,\nthis is not reflected here."]
+        #[doc = "Approximate number of affected users in the given group that match the filter criteria. Users are distinguished by data in the `ErrorContext` of the individual error events, such as their login name or their remote IP address in case of HTTP requests. The number of affected users can be zero even if the number of errors is non-zero if no data was provided from which the affected user could be deduced. Users are counted based on data in the request context that was provided in the error report. If more users are implicitly affected, such as due to a crash of the whole service, this is not reflected here."]
         #[serde(
             rename = "affectedUsersCount",
             default,
@@ -205,7 +304,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub affected_users_count: ::std::option::Option<i64>,
-        #[doc = "Approximate total number of events in the given group that match\nthe filter criteria."]
+        #[doc = "Approximate total number of events in the given group that match the filter criteria."]
         #[serde(
             rename = "count",
             default,
@@ -213,7 +312,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub count: ::std::option::Option<i64>,
-        #[doc = "Approximate first occurrence that was ever seen for this group\nand which matches the given filter criteria, ignoring the\ntime_range that was specified in the request."]
+        #[doc = "Approximate first occurrence that was ever seen for this group and which matches the given filter criteria, ignoring the time_range that was specified in the request."]
         #[serde(
             rename = "firstSeenTime",
             default,
@@ -227,28 +326,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub group: ::std::option::Option<crate::schemas::ErrorGroup>,
-        #[doc = "Approximate last occurrence that was ever seen for this group and\nwhich matches the given filter criteria, ignoring the time_range\nthat was specified in the request."]
+        #[doc = "Approximate last occurrence that was ever seen for this group and which matches the given filter criteria, ignoring the time_range that was specified in the request."]
         #[serde(
             rename = "lastSeenTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub last_seen_time: ::std::option::Option<String>,
-        #[doc = "The total number of services with a non-zero error count for the given\nfilter criteria."]
+        #[doc = "The total number of services with a non-zero error count for the given filter criteria."]
         #[serde(
             rename = "numAffectedServices",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub num_affected_services: ::std::option::Option<i32>,
-        #[doc = "An arbitrary event that is chosen as representative for the whole group.\nThe representative event is intended to be used as a quick preview for\nthe whole group. Events in the group are usually sufficiently similar\nto each other such that showing an arbitrary representative provides\ninsight into the characteristics of the group as a whole."]
+        #[doc = "An arbitrary event that is chosen as representative for the whole group. The representative event is intended to be used as a quick preview for the whole group. Events in the group are usually sufficiently similar to each other such that showing an arbitrary representative provides insight into the characteristics of the group as a whole."]
         #[serde(
             rename = "representative",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub representative: ::std::option::Option<crate::schemas::ErrorEvent>,
-        #[doc = "Approximate number of occurrences over time.\nTimed counts returned by ListGroups are guaranteed to be:\n\n* Inside the requested time interval\n* Non-overlapping, and\n* Ordered by ascending time."]
+        #[doc = "Approximate number of occurrences over time. Timed counts returned by ListGroups are guaranteed to be: - Inside the requested time interval - Non-overlapping, and - Ordered by ascending time."]
         #[serde(
             rename = "timedCounts",
             default,
@@ -293,7 +392,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub referrer: ::std::option::Option<String>,
-        #[doc = "The IP address from which the request originated.\nThis can be IPv4, IPv6, or a token which is derived from the\nIP address, depending on the data that has been provided\nin the error report."]
+        #[doc = "The IP address from which the request originated. This can be IPv4, IPv6, or a token which is derived from the IP address, depending on the data that has been provided in the error report."]
         #[serde(
             rename = "remoteIp",
             default,
@@ -352,7 +451,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub error_events: ::std::option::Option<Vec<crate::schemas::ErrorEvent>>,
-        #[doc = "If non-empty, more results are available.\nPass this token, along with the same query parameters as the first\nrequest, to view the next page of results."]
+        #[doc = "If non-empty, more results are available. Pass this token, along with the same query parameters as the first request, to view the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -397,14 +496,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub error_group_stats: ::std::option::Option<Vec<crate::schemas::ErrorGroupStats>>,
-        #[doc = "If non-empty, more results are available.\nPass this token, along with the same query parameters as the first\nrequest, to view the next page of results."]
+        #[doc = "If non-empty, more results are available. Pass this token, along with the same query parameters as the first request, to view the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub next_page_token: ::std::option::Option<String>,
-        #[doc = "The timestamp specifies the start time to which the request was restricted.\nThe start time is set based on the requested time range. It may be adjusted\nto a later time if a project has exceeded the storage quota and older data\nhas been deleted."]
+        #[doc = "The timestamp specifies the start time to which the request was restricted. The start time is set based on the requested time range. It may be adjusted to a later time if a project has exceeded the storage quota and older data has been deleted."]
         #[serde(
             rename = "timeRangeBegin",
             default,
@@ -466,14 +565,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub context: ::std::option::Option<crate::schemas::ErrorContext>,
-        #[doc = "Optional. Time when the event occurred.\nIf not provided, the time when the event was received by the\nError Reporting system will be used."]
+        #[doc = "Optional. Time when the event occurred. If not provided, the time when the event was received by the Error Reporting system will be used."]
         #[serde(
             rename = "eventTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub event_time: ::std::option::Option<String>,
-        #[doc = "Required. The error message.\nIf no `context.reportLocation` is provided, the message must contain a\nheader (typically consisting of the exception type name and an error\nmessage) and an exception stack trace in one of the supported programming\nlanguages and formats.\nSupported languages are Java, Python, JavaScript, Ruby, C#, PHP, and Go.\nSupported stack trace formats are:\n\n* **Java**: Must be the return value of\n  [`Throwable.printStackTrace()`](https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html#printStackTrace%28%29).\n* **Python**: Must be the return value of\n  [`traceback.format_exc()`](https://docs.python.org/2/library/traceback.html#traceback.format_exc).\n* **JavaScript**: Must be the value of\n  [`error.stack`](https://github.com/v8/v8/wiki/Stack-Trace-API) as returned\n  by V8.\n* **Ruby**: Must contain frames returned by\n  [`Exception.backtrace`](https://ruby-doc.org/core-2.2.0/Exception.html#method-i-backtrace).\n* **C#**: Must be the return value of\n  [`Exception.ToString()`](https://msdn.microsoft.com/en-us/library/system.exception.tostring.aspx).\n* **PHP**: Must start with `PHP (Notice|Parse error|Fatal error|Warning)`\n  and contain the result of\n  [`(string)$exception`](http://php.net/manual/en/exception.tostring.php).\n* **Go**: Must be the return value of\n  [`runtime.Stack()`](https://golang.org/pkg/runtime/debug/#Stack)."]
+        #[doc = "Required. The error message. If no `context.reportLocation` is provided, the message must contain a header (typically consisting of the exception type name and an error message) and an exception stack trace in one of the supported programming languages and formats. Supported languages are Java, Python, JavaScript, Ruby, C#, PHP, and Go. Supported stack trace formats are: * **Java**: Must be the return value of [`Throwable.printStackTrace()`](https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html#printStackTrace%28%29). * **Python**: Must be the return value of [`traceback.format_exc()`](https://docs.python.org/2/library/traceback.html#traceback.format_exc). * **JavaScript**: Must be the value of [`error.stack`](https://github.com/v8/v8/wiki/Stack-Trace-API) as returned by V8. * **Ruby**: Must contain frames returned by [`Exception.backtrace`](https://ruby-doc.org/core-2.2.0/Exception.html#method-i-backtrace). * **C#**: Must be the return value of [`Exception.ToString()`](https://msdn.microsoft.com/en-us/library/system.exception.tostring.aspx). * **PHP**: Must start with `PHP (Notice|Parse error|Fatal error|Warning)` and contain the result of [`(string)$exception`](http://php.net/manual/en/exception.tostring.php). * **Go**: Must be the return value of [`runtime.Stack()`](https://golang.org/pkg/runtime/debug/#Stack)."]
         #[serde(
             rename = "message",
             default,
@@ -511,21 +610,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ServiceContext {
-        #[doc = "Type of the MonitoredResource. List of possible values:\nhttps://cloud.google.com/monitoring/api/resources\n\nValue is set automatically for incoming errors and must not be set when\nreporting errors."]
+        #[doc = "Type of the MonitoredResource. List of possible values: https://cloud.google.com/monitoring/api/resources Value is set automatically for incoming errors and must not be set when reporting errors."]
         #[serde(
             rename = "resourceType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub resource_type: ::std::option::Option<String>,
-        #[doc = "An identifier of the service, such as the name of the\nexecutable, job, or Google App Engine service name. This field is expected\nto have a low number of values that are relatively stable over time, as\nopposed to `version`, which can be changed whenever new code is deployed.\n\nContains the service name for error reports extracted from Google\nApp Engine logs or `default` if the App Engine default service is used."]
+        #[doc = "An identifier of the service, such as the name of the executable, job, or Google App Engine service name. This field is expected to have a low number of values that are relatively stable over time, as opposed to `version`, which can be changed whenever new code is deployed. Contains the service name for error reports extracted from Google App Engine logs or `default` if the App Engine default service is used."]
         #[serde(
             rename = "service",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub service: ::std::option::Option<String>,
-        #[doc = "Represents the source code version that the developer provided,\nwhich could represent a version label or a Git SHA-1 hash, for example.\nFor App Engine standard environment, the version is set to the version of\nthe app."]
+        #[doc = "Represents the source code version that the developer provided, which could represent a version label or a Git SHA-1 hash, for example. For App Engine standard environment, the version is set to the version of the app."]
         #[serde(
             rename = "version",
             default,
@@ -556,14 +655,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SourceLocation {
-        #[doc = "The source code filename, which can include a truncated relative\npath, or a full path from a production machine."]
+        #[doc = "The source code filename, which can include a truncated relative path, or a full path from a production machine."]
         #[serde(
             rename = "filePath",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub file_path: ::std::option::Option<String>,
-        #[doc = "Human-readable name of a function or method.\nThe value can include optional context like the class or package name.\nFor example, `my.package.MyClass.method` in case of Java."]
+        #[doc = "Human-readable name of a function or method. The value can include optional context like the class or package name. For example, `my.package.MyClass.method` in case of Java."]
         #[serde(
             rename = "functionName",
             default,
@@ -601,14 +700,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SourceReference {
-        #[doc = "Optional. A URI string identifying the repository.\nExample: \"https://github.com/GoogleCloudPlatform/kubernetes.git\""]
+        #[doc = "Optional. A URI string identifying the repository. Example: \"https://github.com/GoogleCloudPlatform/kubernetes.git\""]
         #[serde(
             rename = "repository",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub repository: ::std::option::Option<String>,
-        #[doc = "The canonical and persistent identifier of the deployed revision.\nExample (git): \"0035781c50ec7aa23385dc841529ce8a4b70db1b\""]
+        #[doc = "The canonical and persistent identifier of the deployed revision. Example (git): \"0035781c50ec7aa23385dc841529ce8a4b70db1b\""]
         #[serde(
             rename = "revisionId",
             default,
@@ -685,7 +784,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TrackingIssue {
-        #[doc = "A URL pointing to a related entry in an issue tracking system.\nExample: `https://github.com/user/project/issues/4`"]
+        #[doc = "A URL pointing to a related entry in an issue tracking system. Example: `https://github.com/user/project/issues/4`"]
         #[serde(
             rename = "url",
             default,
@@ -1084,19 +1183,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -1108,11 +1207,17 @@ pub mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListTimeRangePeriod {
+                    #[doc = "Retrieve data for the last day. Recommended minimum timed count duration: 1 hour."]
                     Period1Day,
+                    #[doc = "Retrieve data for the last hour. Recommended minimum timed count duration: 1 min."]
                     Period1Hour,
+                    #[doc = "Retrieve data for the last week. Recommended minimum timed count duration: 6 hours."]
                     Period1Week,
+                    #[doc = "Retrieve data for the last 30 days. Recommended minimum timed count duration: 1 day."]
                     Period30Days,
+                    #[doc = "Retrieve data for the last 6 hours. Recommended minimum timed count duration: 10 min."]
                     Period6Hours,
+                    #[doc = "Do not use."]
                     PeriodUnspecified,
                 }
                 impl ListTimeRangePeriod {
@@ -1226,7 +1331,7 @@ pub mod resources {
                         time_range_period: None,
                     }
                 }
-                #[doc = "Report an individual error event.\n\nThis endpoint accepts **either** an OAuth token,\n**or** an [API key](https://support.google.com/cloud/answer/6158862)\nfor authentication. To use an API key, append it to the URL as the value of\na `key` parameter. For example:\n\n`POST https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456`"]
+                #[doc = "Report an individual error event and record the event to a log. This endpoint accepts **either** an OAuth token, **or** an [API key](https://support.google.com/cloud/answer/6158862) for authentication. To use an API key, append it to the URL as the value of a `key` parameter. For example: `POST https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456` **Note:** [Error Reporting](/error-reporting) is a global service built on Cloud Logging and doesn't analyze logs stored in regional log buckets or logs routed to other Google Cloud projects. For more information, see [Using Error Reporting with regionalized logs](/error-reporting/docs/regionalization)."]
                 pub fn report(
                     &self,
                     request: crate::schemas::ReportedErrorEvent,
@@ -1293,17 +1398,17 @@ pub mod resources {
                     self.page_token = Some(value.into());
                     self
                 }
-                #[doc = "Optional. The exact value to match against\n[`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type)."]
+                #[doc = "Optional. The exact value to match against [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type)."]
                 pub fn service_filter_resource_type(mut self, value: impl Into<String>) -> Self {
                     self.service_filter_resource_type = Some(value.into());
                     self
                 }
-                #[doc = "Optional. The exact value to match against\n[`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service)."]
+                #[doc = "Optional. The exact value to match against [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service)."]
                 pub fn service_filter_service(mut self, value: impl Into<String>) -> Self {
                     self.service_filter_service = Some(value.into());
                     self
                 }
-                #[doc = "Optional. The exact value to match against\n[`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version)."]
+                #[doc = "Optional. The exact value to match against [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version)."]
                 pub fn service_filter_version(mut self, value: impl Into<String>) -> Self {
                     self.service_filter_version = Some(value.into());
                     self
@@ -1537,29 +1642,29 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("groupId", &self.group_id)]);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("groupId", &self.group_id)]);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[(
                         "serviceFilter.resourceType",
                         &self.service_filter_resource_type,
                     )]);
-                    let req = req.query(&[("serviceFilter.service", &self.service_filter_service)]);
-                    let req = req.query(&[("serviceFilter.version", &self.service_filter_version)]);
-                    let req = req.query(&[("timeRange.period", &self.time_range_period)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    req = req.query(&[("serviceFilter.service", &self.service_filter_service)]);
+                    req = req.query(&[("serviceFilter.version", &self.service_filter_version)]);
+                    req = req.query(&[("timeRange.period", &self.time_range_period)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -1722,19 +1827,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -1747,8 +1852,11 @@ pub mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListAlignment {
+                    #[doc = "The time periods shall be consecutive, have width equal to the requested duration, and be aligned at the end of the requested time period. This can result in a different size of the first time period."]
                     AlignmentEqualAtEnd,
+                    #[doc = "The time periods shall be consecutive, have width equal to the requested duration, and be aligned at the `alignment_time` provided in the request. The `alignment_time` does not have to be inside the query period but even if it is outside, only time periods are returned which overlap with the query period. A rounded alignment will typically result in a different size of the first or the last time period."]
                     AlignmentEqualRounded,
+                    #[doc = "No alignment specified."]
                     ErrorCountAlignmentUnspecified,
                 }
                 impl ListAlignment {
@@ -1826,10 +1934,15 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListOrder {
+                    #[doc = "Number of affected users in the given time window in descending order."]
                     AffectedUsersDesc,
+                    #[doc = "Total count of errors in the given time window in descending order."]
                     CountDesc,
+                    #[doc = "Timestamp when the group was created in descending order."]
                     CreatedDesc,
+                    #[doc = "No group order specified."]
                     GroupOrderUnspecified,
+                    #[doc = "Timestamp when the group was last seen in the given time window in descending order."]
                     LastSeenDesc,
                 }
                 impl ListOrder {
@@ -1907,11 +2020,17 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListTimeRangePeriod {
+                    #[doc = "Retrieve data for the last day. Recommended minimum timed count duration: 1 hour."]
                     Period1Day,
+                    #[doc = "Retrieve data for the last hour. Recommended minimum timed count duration: 1 min."]
                     Period1Hour,
+                    #[doc = "Retrieve data for the last week. Recommended minimum timed count duration: 6 hours."]
                     Period1Week,
+                    #[doc = "Retrieve data for the last 30 days. Recommended minimum timed count duration: 1 day."]
                     Period30Days,
+                    #[doc = "Retrieve data for the last 6 hours. Recommended minimum timed count duration: 10 min."]
                     Period6Hours,
+                    #[doc = "Do not use."]
                     PeriodUnspecified,
                 }
                 impl ListTimeRangePeriod {
@@ -2061,7 +2180,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "Optional. The alignment of the timed counts to be returned.\nDefault is `ALIGNMENT_EQUAL_AT_END`."]
+                #[doc = "Optional. The alignment of the timed counts to be returned. Default is `ALIGNMENT_EQUAL_AT_END`."]
                 pub fn alignment(
                     mut self,
                     value: crate::resources::projects::group_stats::params::ListAlignment,
@@ -2069,17 +2188,17 @@ pub mod resources {
                     self.alignment = Some(value);
                     self
                 }
-                #[doc = "Optional. Time where the timed counts shall be aligned if rounded\nalignment is chosen. Default is 00:00 UTC."]
+                #[doc = "Optional. Time where the timed counts shall be aligned if rounded alignment is chosen. Default is 00:00 UTC."]
                 pub fn alignment_time(mut self, value: impl Into<String>) -> Self {
                     self.alignment_time = Some(value.into());
                     self
                 }
-                #[doc = "Optional. List all <code>ErrorGroupStats</code> with these IDs."]
+                #[doc = "Optional. List all ErrorGroupStats with these IDs."]
                 pub fn group_id(mut self, value: impl Into<Vec<String>>) -> Self {
                     self.group_id = Some(value.into());
                     self
                 }
-                #[doc = "Optional. The sort order in which the results are returned.\nDefault is `COUNT_DESC`."]
+                #[doc = "Optional. The sort order in which the results are returned. Default is `COUNT_DESC`."]
                 pub fn order(
                     mut self,
                     value: crate::resources::projects::group_stats::params::ListOrder,
@@ -2087,27 +2206,27 @@ pub mod resources {
                     self.order = Some(value);
                     self
                 }
-                #[doc = "Optional. The maximum number of results to return per response.\nDefault is 20."]
+                #[doc = "Optional. The maximum number of results to return per response. Default is 20."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
                     self
                 }
-                #[doc = "Optional. A `next_page_token` provided by a previous response. To view\nadditional results, pass this token along with the identical query\nparameters as the first request."]
+                #[doc = "Optional. A `next_page_token` provided by a previous response. To view additional results, pass this token along with the identical query parameters as the first request."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
                     self
                 }
-                #[doc = "Optional. The exact value to match against\n[`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type)."]
+                #[doc = "Optional. The exact value to match against [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type)."]
                 pub fn service_filter_resource_type(mut self, value: impl Into<String>) -> Self {
                     self.service_filter_resource_type = Some(value.into());
                     self
                 }
-                #[doc = "Optional. The exact value to match against\n[`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service)."]
+                #[doc = "Optional. The exact value to match against [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service)."]
                 pub fn service_filter_service(mut self, value: impl Into<String>) -> Self {
                     self.service_filter_service = Some(value.into());
                     self
                 }
-                #[doc = "Optional. The exact value to match against\n[`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version)."]
+                #[doc = "Optional. The exact value to match against [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version)."]
                 pub fn service_filter_version(mut self, value: impl Into<String>) -> Self {
                     self.service_filter_version = Some(value.into());
                     self
@@ -2120,7 +2239,7 @@ pub mod resources {
                     self.time_range_period = Some(value);
                     self
                 }
-                #[doc = "Optional. The preferred duration for a single returned `TimedCount`.\nIf not set, no timed counts are returned."]
+                #[doc = "Optional. The preferred duration for a single returned `TimedCount`. If not set, no timed counts are returned."]
                 pub fn timed_count_duration(mut self, value: impl Into<String>) -> Self {
                     self.timed_count_duration = Some(value.into());
                     self
@@ -2348,33 +2467,35 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("alignment", &self.alignment)]);
-                    let req = req.query(&[("alignmentTime", &self.alignment_time)]);
-                    let req = req.query(&[("groupId", &self.group_id)]);
-                    let req = req.query(&[("order", &self.order)]);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("alignment", &self.alignment)]);
+                    req = req.query(&[("alignmentTime", &self.alignment_time)]);
+                    for value in self.group_id.iter().flatten() {
+                        req = req.query(&[("groupId", value)]);
+                    }
+                    req = req.query(&[("order", &self.order)]);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[(
                         "serviceFilter.resourceType",
                         &self.service_filter_resource_type,
                     )]);
-                    let req = req.query(&[("serviceFilter.service", &self.service_filter_service)]);
-                    let req = req.query(&[("serviceFilter.version", &self.service_filter_version)]);
-                    let req = req.query(&[("timeRange.period", &self.time_range_period)]);
-                    let req = req.query(&[("timedCountDuration", &self.timed_count_duration)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    req = req.query(&[("serviceFilter.service", &self.service_filter_service)]);
+                    req = req.query(&[("serviceFilter.version", &self.service_filter_version)]);
+                    req = req.query(&[("timeRange.period", &self.time_range_period)]);
+                    req = req.query(&[("timedCountDuration", &self.timed_count_duration)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -2423,7 +2544,7 @@ pub mod resources {
                         group_name: group_name.into(),
                     }
                 }
-                #[doc = "Replace the data for the specified group.\nFails if the group does not exist."]
+                #[doc = "Replace the data for the specified group. Fails if the group does not exist."]
                 pub fn update(
                     &self,
                     request: crate::schemas::ErrorGroup,
@@ -2587,19 +2708,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -2748,19 +2869,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,

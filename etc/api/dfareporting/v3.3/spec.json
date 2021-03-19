@@ -1,35 +1,69 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/kUE5ERHBaKgFUVRbuUNbc2vvqsA\"",
+  "etag": null,
   "discoveryVersion": "v1",
   "id": "dfareporting:v3.3",
   "name": "dfareporting",
-  "canonicalName": null,
+  "canonicalName": "Dfareporting",
   "fullyEncodeReservedExpansion": null,
   "version": "v3.3",
-  "revision": "20200514",
-  "title": "DCM/DFA Reporting And Trafficking API",
-  "description": "Manages your DoubleClick Campaign Manager ad campaigns and reports.",
+  "revision": "20210210",
+  "title": "Campaign Manager 360 API",
+  "description": "Build applications to efficiently manage large or complex trafficking, reporting, and attribution workflows for Campaign Manager 360.",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "icons": {
-    "x16": "https://www.google.com/images/icons/product/doubleclick-16.gif",
-    "x32": "https://www.google.com/images/icons/product/doubleclick-32.gif"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "documentationLink": "https://developers.google.com/doubleclick-advertisers/",
   "protocol": "rest",
-  "baseUrl": "https://www.googleapis.com/dfareporting/v3.3/",
+  "baseUrl": "https://dfareporting.googleapis.com/dfareporting/v3.3/",
   "basePath": "/dfareporting/v3.3/",
-  "rootUrl": "https://www.googleapis.com/",
+  "rootUrl": "https://dfareporting.googleapis.com/",
   "servicePath": "dfareporting/v3.3/",
-  "batchPath": "batch/dfareporting/v3.3",
+  "batchPath": "batch",
   "version_module": null,
   "packagePath": null,
   "labels": null,
   "features": null,
   "parameters": {
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [
+        "1",
+        "2"
+      ],
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "repeated": false
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
     "alt": {
-      "description": "Data format for the response.",
+      "description": "Data format for response.",
       "default": "json",
       "location": "query",
       "required": false,
@@ -39,11 +73,29 @@
       "maximum": null,
       "pattern": null,
       "enum": [
-        "json"
+        "json",
+        "media",
+        "proto"
       ],
       "enumDescriptions": [
-        "Responses with Content-Type of application/json"
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
       ],
+      "repeated": false
+    },
+    "callback": {
+      "description": "JSONP",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
       "repeated": false
     },
     "fields": {
@@ -103,7 +155,7 @@
       "repeated": false
     },
     "quotaUser": {
-      "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "default": null,
       "location": "query",
       "required": false,
@@ -116,8 +168,22 @@
       "enumDescriptions": [],
       "repeated": false
     },
-    "userIp": {
-      "description": "Deprecated. Please use quotaUser instead.",
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "default": null,
       "location": "query",
       "required": false,
@@ -204,14 +270,14 @@
           "type": "string",
           "format": null,
           "enum": [
+            "ACTIVE_ADS_TIER_40K",
+            "ACTIVE_ADS_TIER_75K",
             "ACTIVE_ADS_TIER_100K",
-            "ACTIVE_ADS_TIER_1M",
             "ACTIVE_ADS_TIER_200K",
             "ACTIVE_ADS_TIER_300K",
-            "ACTIVE_ADS_TIER_40K",
             "ACTIVE_ADS_TIER_500K",
             "ACTIVE_ADS_TIER_750K",
-            "ACTIVE_ADS_TIER_75K"
+            "ACTIVE_ADS_TIER_1M"
           ],
           "enumDescriptions": [
             "",
@@ -266,7 +332,7 @@
           "items": null
         },
         "currencyId": {
-          "description": "ID of currency associated with this account. This is a required field.\nAcceptable values are: \n- \"1\" for USD \n- \"2\" for GBP \n- \"3\" for ESP \n- \"4\" for SEK \n- \"5\" for CAD \n- \"6\" for JPY \n- \"7\" for DEM \n- \"8\" for AUD \n- \"9\" for FRF \n- \"10\" for ITL \n- \"11\" for DKK \n- \"12\" for NOK \n- \"13\" for FIM \n- \"14\" for ZAR \n- \"15\" for IEP \n- \"16\" for NLG \n- \"17\" for EUR \n- \"18\" for KRW \n- \"19\" for TWD \n- \"20\" for SGD \n- \"21\" for CNY \n- \"22\" for HKD \n- \"23\" for NZD \n- \"24\" for MYR \n- \"25\" for BRL \n- \"26\" for PTE \n- \"27\" for MXP \n- \"28\" for CLP \n- \"29\" for TRY \n- \"30\" for ARS \n- \"31\" for PEN \n- \"32\" for ILS \n- \"33\" for CHF \n- \"34\" for VEF \n- \"35\" for COP \n- \"36\" for GTQ \n- \"37\" for PLN \n- \"39\" for INR \n- \"40\" for THB \n- \"41\" for IDR \n- \"42\" for CZK \n- \"43\" for RON \n- \"44\" for HUF \n- \"45\" for RUB \n- \"46\" for AED \n- \"47\" for BGN \n- \"48\" for HRK \n- \"49\" for MXN \n- \"50\" for NGN \n- \"51\" for EGP",
+          "description": "ID of currency associated with this account. This is a required field. Acceptable values are: - \"1\" for USD - \"2\" for GBP - \"3\" for ESP - \"4\" for SEK - \"5\" for CAD - \"6\" for JPY - \"7\" for DEM - \"8\" for AUD - \"9\" for FRF - \"10\" for ITL - \"11\" for DKK - \"12\" for NOK - \"13\" for FIM - \"14\" for ZAR - \"15\" for IEP - \"16\" for NLG - \"17\" for EUR - \"18\" for KRW - \"19\" for TWD - \"20\" for SGD - \"21\" for CNY - \"22\" for HKD - \"23\" for NZD - \"24\" for MYR - \"25\" for BRL - \"26\" for PTE - \"28\" for CLP - \"29\" for TRY - \"30\" for ARS - \"31\" for PEN - \"32\" for ILS - \"33\" for CHF - \"34\" for VEF - \"35\" for COP - \"36\" for GTQ - \"37\" for PLN - \"39\" for INR - \"40\" for THB - \"41\" for IDR - \"42\" for CZK - \"43\" for RON - \"44\" for HUF - \"45\" for RUB - \"46\" for AED - \"47\" for BGN - \"48\" for HRK - \"49\" for MXN - \"50\" for NGN - \"51\" for EGP ",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -316,7 +382,7 @@
           "items": null
         },
         "locale": {
-          "description": "Locale of this account.\nAcceptable values are: \n- \"cs\" (Czech) \n- \"de\" (German) \n- \"en\" (English) \n- \"en-GB\" (English United Kingdom) \n- \"es\" (Spanish) \n- \"fr\" (French) \n- \"it\" (Italian) \n- \"ja\" (Japanese) \n- \"ko\" (Korean) \n- \"pl\" (Polish) \n- \"pt-BR\" (Portuguese Brazil) \n- \"ru\" (Russian) \n- \"sv\" (Swedish) \n- \"tr\" (Turkish) \n- \"zh-CN\" (Chinese Simplified) \n- \"zh-TW\" (Chinese Traditional)",
+          "description": "Locale of this account. Acceptable values are: - \"cs\" (Czech) - \"de\" (German) - \"en\" (English) - \"en-GB\" (English United Kingdom) - \"es\" (Spanish) - \"fr\" (French) - \"it\" (Italian) - \"ja\" (Japanese) - \"ko\" (Korean) - \"pl\" (Polish) - \"pt-BR\" (Portuguese Brazil) - \"ru\" (Russian) - \"sv\" (Swedish) - \"tr\" (Turkish) - \"zh-CN\" (Chinese Simplified) - \"zh-TW\" (Chinese Traditional) ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -416,14 +482,14 @@
           "type": "string",
           "format": null,
           "enum": [
+            "ACTIVE_ADS_TIER_40K",
+            "ACTIVE_ADS_TIER_75K",
             "ACTIVE_ADS_TIER_100K",
-            "ACTIVE_ADS_TIER_1M",
             "ACTIVE_ADS_TIER_200K",
             "ACTIVE_ADS_TIER_300K",
-            "ACTIVE_ADS_TIER_40K",
             "ACTIVE_ADS_TIER_500K",
             "ACTIVE_ADS_TIER_750K",
-            "ACTIVE_ADS_TIER_75K"
+            "ACTIVE_ADS_TIER_1M"
           ],
           "enumDescriptions": [
             "",
@@ -472,7 +538,7 @@
       "enumDescriptions": [],
       "properties": {
         "accountProfiles": {
-          "description": "Account profiles associated with this account permission.\n\nPossible values are:\n- \"ACCOUNT_PROFILE_BASIC\"\n- \"ACCOUNT_PROFILE_STANDARD\"",
+          "description": "Account profiles associated with this account permission. Possible values are: - \"ACCOUNT_PROFILE_BASIC\" - \"ACCOUNT_PROFILE_STANDARD\" ",
           "type": "array",
           "format": null,
           "enum": [],
@@ -520,8 +586,8 @@
           "type": "string",
           "format": null,
           "enum": [
-            "ADMINISTRATOR",
-            "USER"
+            "USER",
+            "ADMINISTRATOR"
           ],
           "enumDescriptions": [
             "",
@@ -742,7 +808,7 @@
           "items": null
         },
         "locale": {
-          "description": "Locale of the user profile. This is a required field.\nAcceptable values are:  \n- \"cs\" (Czech) \n- \"de\" (German) \n- \"en\" (English) \n- \"en-GB\" (English United Kingdom) \n- \"es\" (Spanish) \n- \"fr\" (French) \n- \"it\" (Italian) \n- \"ja\" (Japanese) \n- \"ko\" (Korean) \n- \"pl\" (Polish) \n- \"pt-BR\" (Portuguese Brazil)\n- \"ru\" (Russian) \n- \"sv\" (Swedish) \n- \"tr\" (Turkish) \n- \"zh-CN\" (Chinese Simplified) \n- \"zh-TW\" (Chinese Traditional)",
+          "description": "Locale of the user profile. This is a required field. Acceptable values are: - \"cs\" (Czech) - \"de\" (German) - \"en\" (English) - \"en-GB\" (English United Kingdom) - \"es\" (Spanish) - \"fr\" (French) - \"it\" (Italian) - \"ja\" (Japanese) - \"ko\" (Korean) - \"pl\" (Polish) - \"pt-BR\" (Portuguese Brazil) - \"ru\" (Russian) - \"sv\" (Swedish) - \"tr\" (Turkish) - \"zh-CN\" (Chinese Simplified) - \"zh-TW\" (Chinese Traditional) ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -752,7 +818,7 @@
           "items": null
         },
         "name": {
-          "description": "Name of the user profile. This is a required field. Must be less than 64 characters long, must be globally unique, and cannot contain whitespace or any of the following characters: \"&;\"#%,\".",
+          "description": "Name of the user profile. This is a required field. Must be less than 64 characters long, must be globally unique, and cannot contain whitespace or any of the following characters: \"&;<>\"#%,\".",
           "type": "string",
           "format": null,
           "enum": [],
@@ -780,9 +846,9 @@
           "type": "string",
           "format": null,
           "enum": [
-            "EXTERNAL_TRAFFICKER",
             "INTERNAL_NON_TRAFFICKER",
-            "INTERNAL_TRAFFICKER"
+            "INTERNAL_TRAFFICKER",
+            "EXTERNAL_TRAFFICKER"
           ],
           "enumDescriptions": [
             "",
@@ -798,10 +864,10 @@
           "type": "string",
           "format": null,
           "enum": [
-            "INTERNAL_ADMINISTRATOR",
             "NORMAL_USER",
-            "READ_ONLY_SUPER_USER",
-            "SUPER_USER"
+            "SUPER_USER",
+            "INTERNAL_ADMINISTRATOR",
+            "READ_ONLY_SUPER_USER"
           ],
           "enumDescriptions": [
             "",
@@ -1070,12 +1136,12 @@
           "type": "string",
           "format": null,
           "enum": [
-            "APP",
-            "APP_INTERSTITIAL",
             "DISPLAY",
             "DISPLAY_INTERSTITIAL",
-            "IN_STREAM_AUDIO",
-            "IN_STREAM_VIDEO"
+            "APP",
+            "APP_INTERSTITIAL",
+            "IN_STREAM_VIDEO",
+            "IN_STREAM_AUDIO"
           ],
           "enumDescriptions": [
             "",
@@ -1106,7 +1172,7 @@
           }
         },
         "creativeRotation": {
-          "description": "Creative rotation for this ad. Applicable when type is AD_SERVING_DEFAULT_AD, AD_SERVING_STANDARD_AD, or AD_SERVING_TRACKING. When type is AD_SERVING_DEFAULT_AD, this field should have exactly one creativeAssignment.",
+          "description": "Creative rotation for this ad. Applicable when type is AD_SERVING_DEFAULT_AD, AD_SERVING_STANDARD_AD, or AD_SERVING_TRACKING. When type is AD_SERVING_DEFAULT_AD, this field should have exactly one creativeAssignment .",
           "$ref": "CreativeRotation"
         },
         "dayPartTargeting": {
@@ -1132,7 +1198,7 @@
           "items": null
         },
         "endTime": {
-          "description": "Date and time that this ad should stop serving. Must be later than the start time. This is a required field on insertion.",
+          "description": null,
           "type": "string",
           "format": "date-time",
           "enum": [],
@@ -1244,7 +1310,7 @@
           "items": null
         },
         "startTime": {
-          "description": "Date and time that this ad should start serving. If creating an ad, this field must be a time in the future. This is a required field on insertion.",
+          "description": null,
           "type": "string",
           "format": "date-time",
           "enum": [],
@@ -1278,16 +1344,18 @@
           "$ref": "TechnologyTargeting"
         },
         "type": {
-          "description": "Type of ad. This is a required field on insertion. Note that default ads (AD_SERVING_DEFAULT_AD) cannot be created directly (see Creative resource).",
+          "description": "Type of ad. This is a required field on insertion. Note that default ads ( AD_SERVING_DEFAULT_AD) cannot be created directly (see Creative resource).",
           "type": "string",
           "format": null,
           "enum": [
-            "AD_SERVING_CLICK_TRACKER",
-            "AD_SERVING_DEFAULT_AD",
             "AD_SERVING_STANDARD_AD",
-            "AD_SERVING_TRACKING"
+            "AD_SERVING_DEFAULT_AD",
+            "AD_SERVING_CLICK_TRACKER",
+            "AD_SERVING_TRACKING",
+            "AD_SERVING_BRAND_SAFE_AD"
           ],
           "enumDescriptions": [
+            "",
             "",
             "",
             "",
@@ -1376,12 +1444,12 @@
           "type": "string",
           "format": null,
           "enum": [
-            "APP",
-            "APP_INTERSTITIAL",
             "DISPLAY",
             "DISPLAY_INTERSTITIAL",
-            "IN_STREAM_AUDIO",
-            "IN_STREAM_VIDEO"
+            "APP",
+            "APP_INTERSTITIAL",
+            "IN_STREAM_VIDEO",
+            "IN_STREAM_AUDIO"
           ],
           "enumDescriptions": [
             "",
@@ -1568,7 +1636,7 @@
           "items": null
         },
         "floodlightConfigurationId": {
-          "description": "Floodlight configuration ID of this advertiser. The floodlight configuration ID will be created automatically, so on insert this field should be left blank. This field can be set to another advertiser's floodlight configuration ID in order to share that advertiser's floodlight configuration with this advertiser, so long as: \n- This advertiser's original floodlight configuration is not already associated with floodlight activities or floodlight activity groups. \n- This advertiser's original floodlight configuration is not already shared with another advertiser.",
+          "description": "Floodlight configuration ID of this advertiser. The floodlight configuration ID will be created automatically, so on insert this field should be left blank. This field can be set to another advertiser's floodlight configuration ID in order to share that advertiser's floodlight configuration with this advertiser, so long as: - This advertiser's original floodlight configuration is not already associated with floodlight activities or floodlight activity groups. - This advertiser's original floodlight configuration is not already shared with another advertiser. ",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -2186,7 +2254,7 @@
           "items": null
         },
         "endDate": {
-          "description": "Date on which the campaign will stop running. On insert, the end date must be today or a future date. The end date must be later than or be the same as the start date. If, for example, you set 6/25/2015 as both the start and end dates, the effective campaign run date is just that day only, 6/25/2015. The hours, minutes, and seconds of the end date should not be set, as doing so will result in an error. This is a required field.",
+          "description": null,
           "type": "string",
           "format": "date",
           "enum": [],
@@ -2266,7 +2334,7 @@
           "items": null
         },
         "startDate": {
-          "description": "Date on which the campaign starts running. The start date can be any date. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error. This is a required field.",
+          "description": null,
           "type": "string",
           "format": "date",
           "enum": [],
@@ -2456,7 +2524,7 @@
           "items": null
         },
         "changeTime": {
-          "description": "Time when the object was modified.",
+          "description": null,
           "type": "string",
           "format": "date-time",
           "enum": [],
@@ -2804,7 +2872,7 @@
       "enumDescriptions": [],
       "properties": {
         "computedClickThroughUrl": {
-          "description": "Read-only convenience field representing the actual URL that will be used for this click-through. The URL is computed as follows: \n- If defaultLandingPage is enabled then the campaign's default landing page URL is assigned to this field.\n- If defaultLandingPage is not enabled and a landingPageId is specified then that landing page's URL is assigned to this field.\n- If neither of the above cases apply, then the customClickThroughUrl is assigned to this field.",
+          "description": "Read-only convenience field representing the actual URL that will be used for this click-through. The URL is computed as follows: - If defaultLandingPage is enabled then the campaign's default landing page URL is assigned to this field. - If defaultLandingPage is not enabled and a landingPageId is specified then that landing page's URL is assigned to this field. - If neither of the above cases apply, then the customClickThroughUrl is assigned to this field. ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2924,7 +2992,7 @@
           "items": null
         },
         "enabledSizes": {
-          "description": "Whitelist of companion sizes to be served to this placement. Set this list to null or empty to serve all companion sizes.",
+          "description": "Allowlist of companion sizes to be served to this placement. Set this list to null or empty to serve all companion sizes.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -3378,10 +3446,10 @@
           "type": "string",
           "format": null,
           "enum": [
-            "INTERNAL",
             "INVALID_ARGUMENT",
-            "NOT_FOUND",
-            "PERMISSION_DENIED"
+            "INTERNAL",
+            "PERMISSION_DENIED",
+            "NOT_FOUND"
           ],
           "enumDescriptions": [
             "",
@@ -3820,8 +3888,8 @@
           "enum": [
             "ARTWORK_TYPE_FLASH",
             "ARTWORK_TYPE_HTML5",
-            "ARTWORK_TYPE_IMAGE",
-            "ARTWORK_TYPE_MIXED"
+            "ARTWORK_TYPE_MIXED",
+            "ARTWORK_TYPE_IMAGE"
           ],
           "enumDescriptions": [
             "",
@@ -3838,11 +3906,13 @@
           "type": "string",
           "format": null,
           "enum": [
-            "CREATIVE_AUTHORING_SOURCE_DBM",
             "CREATIVE_AUTHORING_SOURCE_DCM",
-            "CREATIVE_AUTHORING_SOURCE_STUDIO"
+            "CREATIVE_AUTHORING_SOURCE_DBM",
+            "CREATIVE_AUTHORING_SOURCE_STUDIO",
+            "CREATIVE_AUTHORING_SOURCE_GWD"
           ],
           "enumDescriptions": [
+            "",
             "",
             "",
             ""
@@ -3903,72 +3973,72 @@
             "type": "string",
             "format": null,
             "enum": [
-              "APPLICATION_CACHE",
-              "AUDIO",
-              "CANVAS",
-              "CANVAS_TEXT",
-              "CSS_ANIMATIONS",
+              "CSS_FONT_FACE",
               "CSS_BACKGROUND_SIZE",
               "CSS_BORDER_IMAGE",
               "CSS_BORDER_RADIUS",
               "CSS_BOX_SHADOW",
-              "CSS_COLUMNS",
               "CSS_FLEX_BOX",
-              "CSS_FONT_FACE",
-              "CSS_GENERATED_CONTENT",
-              "CSS_GRADIENTS",
               "CSS_HSLA",
               "CSS_MULTIPLE_BGS",
               "CSS_OPACITY",
-              "CSS_REFLECTIONS",
               "CSS_RGBA",
               "CSS_TEXT_SHADOW",
+              "CSS_ANIMATIONS",
+              "CSS_COLUMNS",
+              "CSS_GENERATED_CONTENT",
+              "CSS_GRADIENTS",
+              "CSS_REFLECTIONS",
               "CSS_TRANSFORMS",
               "CSS_TRANSFORMS3D",
               "CSS_TRANSITIONS",
+              "APPLICATION_CACHE",
+              "CANVAS",
+              "CANVAS_TEXT",
               "DRAG_AND_DROP",
-              "GEO_LOCATION",
               "HASH_CHANGE",
               "HISTORY",
+              "AUDIO",
+              "VIDEO",
               "INDEXED_DB",
-              "INLINE_SVG",
               "INPUT_ATTR_AUTOCOMPLETE",
               "INPUT_ATTR_AUTOFOCUS",
               "INPUT_ATTR_LIST",
+              "INPUT_ATTR_PLACEHOLDER",
               "INPUT_ATTR_MAX",
               "INPUT_ATTR_MIN",
               "INPUT_ATTR_MULTIPLE",
               "INPUT_ATTR_PATTERN",
-              "INPUT_ATTR_PLACEHOLDER",
               "INPUT_ATTR_REQUIRED",
               "INPUT_ATTR_STEP",
-              "INPUT_TYPE_COLOR",
-              "INPUT_TYPE_DATE",
-              "INPUT_TYPE_DATETIME",
-              "INPUT_TYPE_DATETIME_LOCAL",
-              "INPUT_TYPE_EMAIL",
-              "INPUT_TYPE_MONTH",
-              "INPUT_TYPE_NUMBER",
-              "INPUT_TYPE_RANGE",
               "INPUT_TYPE_SEARCH",
               "INPUT_TYPE_TEL",
-              "INPUT_TYPE_TIME",
               "INPUT_TYPE_URL",
+              "INPUT_TYPE_EMAIL",
+              "INPUT_TYPE_DATETIME",
+              "INPUT_TYPE_DATE",
+              "INPUT_TYPE_MONTH",
               "INPUT_TYPE_WEEK",
+              "INPUT_TYPE_TIME",
+              "INPUT_TYPE_DATETIME_LOCAL",
+              "INPUT_TYPE_NUMBER",
+              "INPUT_TYPE_RANGE",
+              "INPUT_TYPE_COLOR",
               "LOCAL_STORAGE",
               "POST_MESSAGE",
               "SESSION_STORAGE",
-              "SMIL",
-              "SVG_CLIP_PATHS",
-              "SVG_FE_IMAGE",
-              "SVG_FILTERS",
-              "SVG_HREF",
-              "TOUCH",
-              "VIDEO",
-              "WEBGL",
               "WEB_SOCKETS",
               "WEB_SQL_DATABASE",
-              "WEB_WORKERS"
+              "WEB_WORKERS",
+              "GEO_LOCATION",
+              "INLINE_SVG",
+              "SMIL",
+              "SVG_HREF",
+              "SVG_CLIP_PATHS",
+              "TOUCH",
+              "WEBGL",
+              "SVG_FILTERS",
+              "SVG_FE_IMAGE"
             ],
             "enumDescriptions": [
               "",
@@ -4098,7 +4168,7 @@
           }
         },
         "compatibility": {
-          "description": "Compatibilities associated with this creative. This is a read-only field. DISPLAY and DISPLAY_INTERSTITIAL refer to rendering either on desktop or on mobile devices or in mobile apps for regular or interstitial ads, respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps. Only pre-existing creatives may have these compatibilities since new creatives will either be assigned DISPLAY or DISPLAY_INTERSTITIAL instead. IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard. IN_STREAM_AUDIO refers to rendering in in-stream audio ads developed with the VAST standard. Applicable to all creative types.\n\nAcceptable values are:\n- \"APP\"\n- \"APP_INTERSTITIAL\"\n- \"IN_STREAM_VIDEO\"\n- \"IN_STREAM_AUDIO\"\n- \"DISPLAY\"\n- \"DISPLAY_INTERSTITIAL\"",
+          "description": "Compatibilities associated with this creative. This is a read-only field. DISPLAY and DISPLAY_INTERSTITIAL refer to rendering either on desktop or on mobile devices or in mobile apps for regular or interstitial ads, respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps. Only pre-existing creatives may have these compatibilities since new creatives will either be assigned DISPLAY or DISPLAY_INTERSTITIAL instead. IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard. IN_STREAM_AUDIO refers to rendering in in-stream audio ads developed with the VAST standard. Applicable to all creative types. Acceptable values are: - \"APP\" - \"APP_INTERSTITIAL\" - \"IN_STREAM_VIDEO\" - \"IN_STREAM_AUDIO\" - \"DISPLAY\" - \"DISPLAY_INTERSTITIAL\" ",
           "type": "array",
           "format": null,
           "enum": [],
@@ -4109,12 +4179,12 @@
             "type": "string",
             "format": null,
             "enum": [
-              "APP",
-              "APP_INTERSTITIAL",
               "DISPLAY",
               "DISPLAY_INTERSTITIAL",
-              "IN_STREAM_AUDIO",
-              "IN_STREAM_VIDEO"
+              "APP",
+              "APP_INTERSTITIAL",
+              "IN_STREAM_VIDEO",
+              "IN_STREAM_AUDIO"
             ],
             "enumDescriptions": [
               "",
@@ -4502,35 +4572,35 @@
           "items": null
         },
         "type": {
-          "description": "Type of this creative. This is a required field. Applicable to all creative types.\n\nNote: FLASH_INPAGE, HTML5_BANNER, and IMAGE are only used for existing creatives. New creatives should use DISPLAY as a replacement for these types.",
+          "description": "Type of this creative. This is a required field. Applicable to all creative types. *Note:* FLASH_INPAGE, HTML5_BANNER, and IMAGE are only used for existing creatives. New creatives should use DISPLAY as a replacement for these types.",
           "type": "string",
           "format": null,
           "enum": [
-            "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO",
-            "CUSTOM_DISPLAY",
-            "CUSTOM_DISPLAY_INTERSTITIAL",
-            "DISPLAY",
-            "DISPLAY_IMAGE_GALLERY",
-            "DISPLAY_REDIRECT",
-            "FLASH_INPAGE",
-            "HTML5_BANNER",
             "IMAGE",
-            "INSTREAM_AUDIO",
-            "INSTREAM_VIDEO",
-            "INSTREAM_VIDEO_REDIRECT",
+            "DISPLAY_REDIRECT",
+            "CUSTOM_DISPLAY",
             "INTERNAL_REDIRECT",
+            "CUSTOM_DISPLAY_INTERSTITIAL",
             "INTERSTITIAL_INTERNAL_REDIRECT",
+            "TRACKING_TEXT",
             "RICH_MEDIA_DISPLAY_BANNER",
+            "RICH_MEDIA_INPAGE_FLOATING",
+            "RICH_MEDIA_IM_EXPAND",
             "RICH_MEDIA_DISPLAY_EXPANDING",
             "RICH_MEDIA_DISPLAY_INTERSTITIAL",
             "RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL",
-            "RICH_MEDIA_IM_EXPAND",
-            "RICH_MEDIA_INPAGE_FLOATING",
             "RICH_MEDIA_MOBILE_IN_APP",
-            "RICH_MEDIA_PEEL_DOWN",
-            "TRACKING_TEXT",
+            "FLASH_INPAGE",
+            "INSTREAM_VIDEO",
             "VPAID_LINEAR_VIDEO",
-            "VPAID_NON_LINEAR_VIDEO"
+            "VPAID_NON_LINEAR_VIDEO",
+            "INSTREAM_VIDEO_REDIRECT",
+            "RICH_MEDIA_PEEL_DOWN",
+            "HTML5_BANNER",
+            "DISPLAY",
+            "DISPLAY_IMAGE_GALLERY",
+            "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO",
+            "INSTREAM_AUDIO"
           ],
           "enumDescriptions": [
             "",
@@ -4622,14 +4692,14 @@
           }
         },
         "alignment": {
-          "description": "Possible alignments for an asset. This is a read-only field. Applicable to the following creative types: RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL.",
+          "description": "Possible alignments for an asset. This is a read-only field. Applicable to the following creative types: RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL .",
           "type": "string",
           "format": null,
           "enum": [
-            "ALIGNMENT_BOTTOM",
-            "ALIGNMENT_LEFT",
+            "ALIGNMENT_TOP",
             "ALIGNMENT_RIGHT",
-            "ALIGNMENT_TOP"
+            "ALIGNMENT_BOTTOM",
+            "ALIGNMENT_LEFT"
           ],
           "enumDescriptions": [
             "",
@@ -4648,8 +4718,8 @@
           "enum": [
             "ARTWORK_TYPE_FLASH",
             "ARTWORK_TYPE_HTML5",
-            "ARTWORK_TYPE_IMAGE",
-            "ARTWORK_TYPE_MIXED"
+            "ARTWORK_TYPE_MIXED",
+            "ARTWORK_TYPE_IMAGE"
           ],
           "enumDescriptions": [
             "",
@@ -4704,10 +4774,10 @@
           "type": "string",
           "format": null,
           "enum": [
-            "CHILD_ASSET_TYPE_DATA",
             "CHILD_ASSET_TYPE_FLASH",
+            "CHILD_ASSET_TYPE_VIDEO",
             "CHILD_ASSET_TYPE_IMAGE",
-            "CHILD_ASSET_TYPE_VIDEO"
+            "CHILD_ASSET_TYPE_DATA"
           ],
           "enumDescriptions": [
             "",
@@ -4763,72 +4833,72 @@
             "type": "string",
             "format": null,
             "enum": [
-              "APPLICATION_CACHE",
-              "AUDIO",
-              "CANVAS",
-              "CANVAS_TEXT",
-              "CSS_ANIMATIONS",
+              "CSS_FONT_FACE",
               "CSS_BACKGROUND_SIZE",
               "CSS_BORDER_IMAGE",
               "CSS_BORDER_RADIUS",
               "CSS_BOX_SHADOW",
-              "CSS_COLUMNS",
               "CSS_FLEX_BOX",
-              "CSS_FONT_FACE",
-              "CSS_GENERATED_CONTENT",
-              "CSS_GRADIENTS",
               "CSS_HSLA",
               "CSS_MULTIPLE_BGS",
               "CSS_OPACITY",
-              "CSS_REFLECTIONS",
               "CSS_RGBA",
               "CSS_TEXT_SHADOW",
+              "CSS_ANIMATIONS",
+              "CSS_COLUMNS",
+              "CSS_GENERATED_CONTENT",
+              "CSS_GRADIENTS",
+              "CSS_REFLECTIONS",
               "CSS_TRANSFORMS",
               "CSS_TRANSFORMS3D",
               "CSS_TRANSITIONS",
+              "APPLICATION_CACHE",
+              "CANVAS",
+              "CANVAS_TEXT",
               "DRAG_AND_DROP",
-              "GEO_LOCATION",
               "HASH_CHANGE",
               "HISTORY",
+              "AUDIO",
+              "VIDEO",
               "INDEXED_DB",
-              "INLINE_SVG",
               "INPUT_ATTR_AUTOCOMPLETE",
               "INPUT_ATTR_AUTOFOCUS",
               "INPUT_ATTR_LIST",
+              "INPUT_ATTR_PLACEHOLDER",
               "INPUT_ATTR_MAX",
               "INPUT_ATTR_MIN",
               "INPUT_ATTR_MULTIPLE",
               "INPUT_ATTR_PATTERN",
-              "INPUT_ATTR_PLACEHOLDER",
               "INPUT_ATTR_REQUIRED",
               "INPUT_ATTR_STEP",
-              "INPUT_TYPE_COLOR",
-              "INPUT_TYPE_DATE",
-              "INPUT_TYPE_DATETIME",
-              "INPUT_TYPE_DATETIME_LOCAL",
-              "INPUT_TYPE_EMAIL",
-              "INPUT_TYPE_MONTH",
-              "INPUT_TYPE_NUMBER",
-              "INPUT_TYPE_RANGE",
               "INPUT_TYPE_SEARCH",
               "INPUT_TYPE_TEL",
-              "INPUT_TYPE_TIME",
               "INPUT_TYPE_URL",
+              "INPUT_TYPE_EMAIL",
+              "INPUT_TYPE_DATETIME",
+              "INPUT_TYPE_DATE",
+              "INPUT_TYPE_MONTH",
               "INPUT_TYPE_WEEK",
+              "INPUT_TYPE_TIME",
+              "INPUT_TYPE_DATETIME_LOCAL",
+              "INPUT_TYPE_NUMBER",
+              "INPUT_TYPE_RANGE",
+              "INPUT_TYPE_COLOR",
               "LOCAL_STORAGE",
               "POST_MESSAGE",
               "SESSION_STORAGE",
-              "SMIL",
-              "SVG_CLIP_PATHS",
-              "SVG_FE_IMAGE",
-              "SVG_FILTERS",
-              "SVG_HREF",
-              "TOUCH",
-              "VIDEO",
-              "WEBGL",
               "WEB_SOCKETS",
               "WEB_SQL_DATABASE",
-              "WEB_WORKERS"
+              "WEB_WORKERS",
+              "GEO_LOCATION",
+              "INLINE_SVG",
+              "SMIL",
+              "SVG_HREF",
+              "SVG_CLIP_PATHS",
+              "TOUCH",
+              "WEBGL",
+              "SVG_FILTERS",
+              "SVG_FE_IMAGE"
             ],
             "enumDescriptions": [
               "",
@@ -4908,16 +4978,16 @@
           "type": "string",
           "format": null,
           "enum": [
-            "ASSET_DISPLAY_TYPE_BACKDROP",
+            "ASSET_DISPLAY_TYPE_INPAGE",
+            "ASSET_DISPLAY_TYPE_FLOATING",
+            "ASSET_DISPLAY_TYPE_OVERLAY",
             "ASSET_DISPLAY_TYPE_EXPANDING",
             "ASSET_DISPLAY_TYPE_FLASH_IN_FLASH",
             "ASSET_DISPLAY_TYPE_FLASH_IN_FLASH_EXPANDING",
-            "ASSET_DISPLAY_TYPE_FLOATING",
-            "ASSET_DISPLAY_TYPE_INPAGE",
-            "ASSET_DISPLAY_TYPE_OVERLAY",
             "ASSET_DISPLAY_TYPE_PEEL_DOWN",
             "ASSET_DISPLAY_TYPE_VPAID_LINEAR",
-            "ASSET_DISPLAY_TYPE_VPAID_NON_LINEAR"
+            "ASSET_DISPLAY_TYPE_VPAID_NON_LINEAR",
+            "ASSET_DISPLAY_TYPE_BACKDROP"
           ],
           "enumDescriptions": [
             "",
@@ -4951,8 +5021,8 @@
           "format": null,
           "enum": [
             "ASSET_DURATION_TYPE_AUTO",
-            "ASSET_DURATION_TYPE_CUSTOM",
-            "ASSET_DURATION_TYPE_NONE"
+            "ASSET_DURATION_TYPE_NONE",
+            "ASSET_DURATION_TYPE_CUSTOM"
           ],
           "enumDescriptions": [
             "",
@@ -5112,8 +5182,8 @@
           "type": "string",
           "format": null,
           "enum": [
-            "OFFSET_UNIT_PERCENT",
             "OFFSET_UNIT_PIXEL",
+            "OFFSET_UNIT_PERCENT",
             "OFFSET_UNIT_PIXEL_FROM_CENTER"
           ],
           "enumDescriptions": [
@@ -5130,8 +5200,8 @@
           "type": "string",
           "format": null,
           "enum": [
-            "OFFSET_UNIT_PERCENT",
             "OFFSET_UNIT_PIXEL",
+            "OFFSET_UNIT_PERCENT",
             "OFFSET_UNIT_PIXEL_FROM_CENTER"
           ],
           "enumDescriptions": [
@@ -5174,20 +5244,20 @@
           "items": null
         },
         "role": {
-          "description": "Role of the asset in relation to creative. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT. This is a required field.\nPRIMARY applies to DISPLAY, FLASH_INPAGE, HTML5_BANNER, IMAGE, DISPLAY_IMAGE_GALLERY, all RICH_MEDIA (which may contain multiple primary assets), and all VPAID creatives.\nBACKUP_IMAGE applies to FLASH_INPAGE, HTML5_BANNER, all RICH_MEDIA, and all VPAID creatives. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.\nADDITIONAL_IMAGE and ADDITIONAL_FLASH apply to FLASH_INPAGE creatives.\nOTHER refers to assets from sources other than Campaign Manager, such as Studio uploaded assets, applicable to all RICH_MEDIA and all VPAID creatives.\nPARENT_VIDEO refers to videos uploaded by the user in Campaign Manager and is applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives.\nTRANSCODED_VIDEO refers to videos transcoded by Campaign Manager from PARENT_VIDEO assets and is applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives.\nALTERNATE_VIDEO refers to the Campaign Manager representation of child asset videos from Studio, and is applicable to VPAID_LINEAR_VIDEO creatives. These cannot be added or removed within Campaign Manager.\nFor VPAID_LINEAR_VIDEO creatives, PARENT_VIDEO, TRANSCODED_VIDEO and ALTERNATE_VIDEO assets that are marked active serve as backup in case the VPAID creative cannot be served. Only PARENT_VIDEO assets can be added or removed for an INSTREAM_VIDEO or VPAID_LINEAR_VIDEO creative.\nPARENT_AUDIO refers to audios uploaded by the user in Campaign Manager and is applicable to INSTREAM_AUDIO creatives.\nTRANSCODED_AUDIO refers to audios transcoded by Campaign Manager from PARENT_AUDIO assets and is applicable to INSTREAM_AUDIO creatives.",
+          "description": "Role of the asset in relation to creative. Applicable to all but the following creative types: all REDIRECT and TRACKING_TEXT. This is a required field. PRIMARY applies to DISPLAY, FLASH_INPAGE, HTML5_BANNER, IMAGE, DISPLAY_IMAGE_GALLERY, all RICH_MEDIA (which may contain multiple primary assets), and all VPAID creatives. BACKUP_IMAGE applies to FLASH_INPAGE, HTML5_BANNER, all RICH_MEDIA, and all VPAID creatives. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE. ADDITIONAL_IMAGE and ADDITIONAL_FLASH apply to FLASH_INPAGE creatives. OTHER refers to assets from sources other than Campaign Manager, such as Studio uploaded assets, applicable to all RICH_MEDIA and all VPAID creatives. PARENT_VIDEO refers to videos uploaded by the user in Campaign Manager and is applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives. TRANSCODED_VIDEO refers to videos transcoded by Campaign Manager from PARENT_VIDEO assets and is applicable to INSTREAM_VIDEO and VPAID_LINEAR_VIDEO creatives. ALTERNATE_VIDEO refers to the Campaign Manager representation of child asset videos from Studio, and is applicable to VPAID_LINEAR_VIDEO creatives. These cannot be added or removed within Campaign Manager. For VPAID_LINEAR_VIDEO creatives, PARENT_VIDEO, TRANSCODED_VIDEO and ALTERNATE_VIDEO assets that are marked active serve as backup in case the VPAID creative cannot be served. Only PARENT_VIDEO assets can be added or removed for an INSTREAM_VIDEO or VPAID_LINEAR_VIDEO creative. PARENT_AUDIO refers to audios uploaded by the user in Campaign Manager and is applicable to INSTREAM_AUDIO creatives. TRANSCODED_AUDIO refers to audios transcoded by Campaign Manager from PARENT_AUDIO assets and is applicable to INSTREAM_AUDIO creatives. ",
           "type": "string",
           "format": null,
           "enum": [
-            "ADDITIONAL_FLASH",
-            "ADDITIONAL_IMAGE",
-            "ALTERNATE_VIDEO",
-            "BACKUP_IMAGE",
-            "OTHER",
-            "PARENT_AUDIO",
-            "PARENT_VIDEO",
             "PRIMARY",
-            "TRANSCODED_AUDIO",
-            "TRANSCODED_VIDEO"
+            "BACKUP_IMAGE",
+            "ADDITIONAL_IMAGE",
+            "ADDITIONAL_FLASH",
+            "PARENT_VIDEO",
+            "TRANSCODED_VIDEO",
+            "OTHER",
+            "ALTERNATE_VIDEO",
+            "PARENT_AUDIO",
+            "TRANSCODED_AUDIO"
           ],
           "enumDescriptions": [
             "",
@@ -5224,8 +5294,8 @@
           "type": "string",
           "format": null,
           "enum": [
-            "ASSET_START_TIME_TYPE_CUSTOM",
-            "ASSET_START_TIME_TYPE_NONE"
+            "ASSET_START_TIME_TYPE_NONE",
+            "ASSET_START_TIME_TYPE_CUSTOM"
           ],
           "enumDescriptions": [
             "",
@@ -5271,8 +5341,8 @@
           "format": null,
           "enum": [
             "OPAQUE",
-            "TRANSPARENT",
-            "WINDOW"
+            "WINDOW",
+            "TRANSPARENT"
           ],
           "enumDescriptions": [
             "",
@@ -5340,12 +5410,12 @@
           "type": "string",
           "format": null,
           "enum": [
-            "AUDIO",
+            "IMAGE",
             "FLASH",
+            "VIDEO",
             "HTML",
             "HTML_IMAGE",
-            "IMAGE",
-            "VIDEO"
+            "AUDIO"
           ],
           "enumDescriptions": [
             "",
@@ -5399,72 +5469,72 @@
             "type": "string",
             "format": null,
             "enum": [
-              "APPLICATION_CACHE",
-              "AUDIO",
-              "CANVAS",
-              "CANVAS_TEXT",
-              "CSS_ANIMATIONS",
+              "CSS_FONT_FACE",
               "CSS_BACKGROUND_SIZE",
               "CSS_BORDER_IMAGE",
               "CSS_BORDER_RADIUS",
               "CSS_BOX_SHADOW",
-              "CSS_COLUMNS",
               "CSS_FLEX_BOX",
-              "CSS_FONT_FACE",
-              "CSS_GENERATED_CONTENT",
-              "CSS_GRADIENTS",
               "CSS_HSLA",
               "CSS_MULTIPLE_BGS",
               "CSS_OPACITY",
-              "CSS_REFLECTIONS",
               "CSS_RGBA",
               "CSS_TEXT_SHADOW",
+              "CSS_ANIMATIONS",
+              "CSS_COLUMNS",
+              "CSS_GENERATED_CONTENT",
+              "CSS_GRADIENTS",
+              "CSS_REFLECTIONS",
               "CSS_TRANSFORMS",
               "CSS_TRANSFORMS3D",
               "CSS_TRANSITIONS",
+              "APPLICATION_CACHE",
+              "CANVAS",
+              "CANVAS_TEXT",
               "DRAG_AND_DROP",
-              "GEO_LOCATION",
               "HASH_CHANGE",
               "HISTORY",
+              "AUDIO",
+              "VIDEO",
               "INDEXED_DB",
-              "INLINE_SVG",
               "INPUT_ATTR_AUTOCOMPLETE",
               "INPUT_ATTR_AUTOFOCUS",
               "INPUT_ATTR_LIST",
+              "INPUT_ATTR_PLACEHOLDER",
               "INPUT_ATTR_MAX",
               "INPUT_ATTR_MIN",
               "INPUT_ATTR_MULTIPLE",
               "INPUT_ATTR_PATTERN",
-              "INPUT_ATTR_PLACEHOLDER",
               "INPUT_ATTR_REQUIRED",
               "INPUT_ATTR_STEP",
-              "INPUT_TYPE_COLOR",
-              "INPUT_TYPE_DATE",
-              "INPUT_TYPE_DATETIME",
-              "INPUT_TYPE_DATETIME_LOCAL",
-              "INPUT_TYPE_EMAIL",
-              "INPUT_TYPE_MONTH",
-              "INPUT_TYPE_NUMBER",
-              "INPUT_TYPE_RANGE",
               "INPUT_TYPE_SEARCH",
               "INPUT_TYPE_TEL",
-              "INPUT_TYPE_TIME",
               "INPUT_TYPE_URL",
+              "INPUT_TYPE_EMAIL",
+              "INPUT_TYPE_DATETIME",
+              "INPUT_TYPE_DATE",
+              "INPUT_TYPE_MONTH",
               "INPUT_TYPE_WEEK",
+              "INPUT_TYPE_TIME",
+              "INPUT_TYPE_DATETIME_LOCAL",
+              "INPUT_TYPE_NUMBER",
+              "INPUT_TYPE_RANGE",
+              "INPUT_TYPE_COLOR",
               "LOCAL_STORAGE",
               "POST_MESSAGE",
               "SESSION_STORAGE",
-              "SMIL",
-              "SVG_CLIP_PATHS",
-              "SVG_FE_IMAGE",
-              "SVG_FILTERS",
-              "SVG_HREF",
-              "TOUCH",
-              "VIDEO",
-              "WEBGL",
               "WEB_SOCKETS",
               "WEB_SQL_DATABASE",
-              "WEB_WORKERS"
+              "WEB_WORKERS",
+              "GEO_LOCATION",
+              "INLINE_SVG",
+              "SMIL",
+              "SVG_HREF",
+              "SVG_CLIP_PATHS",
+              "TOUCH",
+              "WEBGL",
+              "SVG_FILTERS",
+              "SVG_FE_IMAGE"
             ],
             "enumDescriptions": [
               "",
@@ -5564,7 +5634,7 @@
           "items": null
         },
         "warnedValidationRules": {
-          "description": "Rules validated during code generation that generated a warning. This is a read-only, auto-generated field.\n\nPossible values are:\n- \"ADMOB_REFERENCED\"\n- \"ASSET_FORMAT_UNSUPPORTED_DCM\"\n- \"ASSET_INVALID\"\n- \"CLICK_TAG_HARD_CODED\"\n- \"CLICK_TAG_INVALID\"\n- \"CLICK_TAG_IN_GWD\"\n- \"CLICK_TAG_MISSING\"\n- \"CLICK_TAG_MORE_THAN_ONE\"\n- \"CLICK_TAG_NON_TOP_LEVEL\"\n- \"COMPONENT_UNSUPPORTED_DCM\"\n- \"ENABLER_UNSUPPORTED_METHOD_DCM\"\n- \"EXTERNAL_FILE_REFERENCED\"\n- \"FILE_DETAIL_EMPTY\"\n- \"FILE_TYPE_INVALID\"\n- \"GWD_PROPERTIES_INVALID\"\n- \"HTML5_FEATURE_UNSUPPORTED\"\n- \"LINKED_FILE_NOT_FOUND\"\n- \"MAX_FLASH_VERSION_11\"\n- \"MRAID_REFERENCED\"\n- \"NOT_SSL_COMPLIANT\"\n- \"ORPHANED_ASSET\"\n- \"PRIMARY_HTML_MISSING\"\n- \"SVG_INVALID\"\n- \"ZIP_INVALID\"",
+          "description": "Rules validated during code generation that generated a warning. This is a read-only, auto-generated field. Possible values are: - \"ADMOB_REFERENCED\" - \"ASSET_FORMAT_UNSUPPORTED_DCM\" - \"ASSET_INVALID\" - \"CLICK_TAG_HARD_CODED\" - \"CLICK_TAG_INVALID\" - \"CLICK_TAG_IN_GWD\" - \"CLICK_TAG_MISSING\" - \"CLICK_TAG_MORE_THAN_ONE\" - \"CLICK_TAG_NON_TOP_LEVEL\" - \"COMPONENT_UNSUPPORTED_DCM\" - \"ENABLER_UNSUPPORTED_METHOD_DCM\" - \"EXTERNAL_FILE_REFERENCED\" - \"FILE_DETAIL_EMPTY\" - \"FILE_TYPE_INVALID\" - \"GWD_PROPERTIES_INVALID\" - \"HTML5_FEATURE_UNSUPPORTED\" - \"LINKED_FILE_NOT_FOUND\" - \"MAX_FLASH_VERSION_11\" - \"MRAID_REFERENCED\" - \"NOT_SSL_COMPLIANT\" - \"ORPHANED_ASSET\" - \"PRIMARY_HTML_MISSING\" - \"SVG_INVALID\" - \"ZIP_INVALID\" ",
           "type": "array",
           "format": null,
           "enum": [],
@@ -5575,30 +5645,30 @@
             "type": "string",
             "format": null,
             "enum": [
-              "ADMOB_REFERENCED",
-              "ASSET_FORMAT_UNSUPPORTED_DCM",
-              "ASSET_INVALID",
-              "CLICK_TAG_HARD_CODED",
-              "CLICK_TAG_INVALID",
-              "CLICK_TAG_IN_GWD",
+              "CLICK_TAG_NON_TOP_LEVEL",
               "CLICK_TAG_MISSING",
               "CLICK_TAG_MORE_THAN_ONE",
-              "CLICK_TAG_NON_TOP_LEVEL",
-              "COMPONENT_UNSUPPORTED_DCM",
-              "ENABLER_UNSUPPORTED_METHOD_DCM",
-              "EXTERNAL_FILE_REFERENCED",
-              "FILE_DETAIL_EMPTY",
-              "FILE_TYPE_INVALID",
-              "GWD_PROPERTIES_INVALID",
-              "HTML5_FEATURE_UNSUPPORTED",
-              "LINKED_FILE_NOT_FOUND",
-              "MAX_FLASH_VERSION_11",
-              "MRAID_REFERENCED",
-              "NOT_SSL_COMPLIANT",
+              "CLICK_TAG_INVALID",
               "ORPHANED_ASSET",
               "PRIMARY_HTML_MISSING",
-              "SVG_INVALID",
-              "ZIP_INVALID"
+              "EXTERNAL_FILE_REFERENCED",
+              "MRAID_REFERENCED",
+              "ADMOB_REFERENCED",
+              "FILE_TYPE_INVALID",
+              "ZIP_INVALID",
+              "LINKED_FILE_NOT_FOUND",
+              "MAX_FLASH_VERSION_11",
+              "NOT_SSL_COMPLIANT",
+              "FILE_DETAIL_EMPTY",
+              "ASSET_INVALID",
+              "GWD_PROPERTIES_INVALID",
+              "ENABLER_UNSUPPORTED_METHOD_DCM",
+              "ASSET_FORMAT_UNSUPPORTED_DCM",
+              "COMPONENT_UNSUPPORTED_DCM",
+              "HTML5_FEATURE_UNSUPPORTED",
+              "CLICK_TAG_IN_GWD",
+              "CLICK_TAG_HARD_CODED",
+              "SVG_INVALID"
             ],
             "enumDescriptions": [
               "",
@@ -5740,7 +5810,7 @@
           "$ref": "DimensionValue"
         },
         "endTime": {
-          "description": "Date and time that the assigned creative should stop serving. Must be later than the start time.",
+          "description": null,
           "type": "string",
           "format": "date-time",
           "enum": [],
@@ -5750,7 +5820,7 @@
           "items": null
         },
         "richMediaExitOverrides": {
-          "description": "Rich media exit overrides for this creative assignment.\nApplicable when the creative type is any of the following: \n- DISPLAY\n- RICH_MEDIA_INPAGE\n- RICH_MEDIA_INPAGE_FLOATING\n- RICH_MEDIA_IM_EXPAND\n- RICH_MEDIA_EXPANDING\n- RICH_MEDIA_INTERSTITIAL_FLOAT\n- RICH_MEDIA_MOBILE_IN_APP\n- RICH_MEDIA_MULTI_FLOATING\n- RICH_MEDIA_PEEL_DOWN\n- VPAID_LINEAR\n- VPAID_NON_LINEAR",
+          "description": "Rich media exit overrides for this creative assignment. Applicable when the creative type is any of the following: - DISPLAY - RICH_MEDIA_INPAGE - RICH_MEDIA_INPAGE_FLOATING - RICH_MEDIA_IM_EXPAND - RICH_MEDIA_EXPANDING - RICH_MEDIA_INTERSTITIAL_FLOAT - RICH_MEDIA_MOBILE_IN_APP - RICH_MEDIA_MULTI_FLOATING - RICH_MEDIA_PEEL_DOWN - VPAID_LINEAR - VPAID_NON_LINEAR ",
           "type": "array",
           "format": null,
           "enum": [],
@@ -5782,7 +5852,7 @@
           "items": null
         },
         "startTime": {
-          "description": "Date and time that the assigned creative should start serving.",
+          "description": null,
           "type": "string",
           "format": "date-time",
           "enum": [],
@@ -5814,7 +5884,7 @@
       "enumDescriptions": [],
       "properties": {
         "computedClickThroughUrl": {
-          "description": "Read-only convenience field representing the actual URL that will be used for this click-through. The URL is computed as follows: \n- If landingPageId is specified then that landing page's URL is assigned to this field.\n- Otherwise, the customClickThroughUrl is assigned to this field.",
+          "description": "Read-only convenience field representing the actual URL that will be used for this click-through. The URL is computed as follows: - If landingPageId is specified then that landing page's URL is assigned to this field. - Otherwise, the customClickThroughUrl is assigned to this field. ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5880,9 +5950,9 @@
           "type": "string",
           "format": null,
           "enum": [
-            "ADVERTISER_EVENT_COUNTER",
+            "ADVERTISER_EVENT_TIMER",
             "ADVERTISER_EVENT_EXIT",
-            "ADVERTISER_EVENT_TIMER"
+            "ADVERTISER_EVENT_COUNTER"
           ],
           "enumDescriptions": [
             "",
@@ -5910,8 +5980,8 @@
           "enum": [
             "ARTWORK_TYPE_FLASH",
             "ARTWORK_TYPE_HTML5",
-            "ARTWORK_TYPE_IMAGE",
-            "ARTWORK_TYPE_MIXED"
+            "ARTWORK_TYPE_MIXED",
+            "ARTWORK_TYPE_IMAGE"
           ],
           "enumDescriptions": [
             "",
@@ -5947,10 +6017,10 @@
           "format": null,
           "enum": [
             "TARGET_BLANK",
-            "TARGET_PARENT",
-            "TARGET_POPUP",
+            "TARGET_TOP",
             "TARGET_SELF",
-            "TARGET_TOP"
+            "TARGET_PARENT",
+            "TARGET_POPUP"
           ],
           "enumDescriptions": [
             "",
@@ -6430,8 +6500,8 @@
           "enum": [
             "CLICK",
             "POST_CLICK",
-            "POST_CLICK_AND_IMPRESSION",
             "POST_IMPRESSION",
+            "POST_CLICK_AND_IMPRESSION",
             "VIDEO_COMPLETION"
           ],
           "enumDescriptions": [
@@ -6484,8 +6554,8 @@
           "type": "string",
           "format": null,
           "enum": [
-            "CREATIVE_ROTATION_TYPE_RANDOM",
-            "CREATIVE_ROTATION_TYPE_SEQUENTIAL"
+            "CREATIVE_ROTATION_TYPE_SEQUENTIAL",
+            "CREATIVE_ROTATION_TYPE_RANDOM"
           ],
           "enumDescriptions": [
             "",
@@ -6500,8 +6570,8 @@
           "type": "string",
           "format": null,
           "enum": [
-            "WEIGHT_STRATEGY_CUSTOM",
             "WEIGHT_STRATEGY_EQUAL",
+            "WEIGHT_STRATEGY_CUSTOM",
             "WEIGHT_STRATEGY_HIGHEST_CTR",
             "WEIGHT_STRATEGY_OPTIMIZED"
           ],
@@ -6657,8 +6727,15 @@
           "format": null,
           "enum": [
             "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
             "U10",
-            "U100",
             "U11",
             "U12",
             "U13",
@@ -6668,7 +6745,6 @@
             "U17",
             "U18",
             "U19",
-            "U2",
             "U20",
             "U21",
             "U22",
@@ -6679,7 +6755,6 @@
             "U27",
             "U28",
             "U29",
-            "U3",
             "U30",
             "U31",
             "U32",
@@ -6690,7 +6765,6 @@
             "U37",
             "U38",
             "U39",
-            "U4",
             "U40",
             "U41",
             "U42",
@@ -6701,7 +6775,6 @@
             "U47",
             "U48",
             "U49",
-            "U5",
             "U50",
             "U51",
             "U52",
@@ -6712,7 +6785,6 @@
             "U57",
             "U58",
             "U59",
-            "U6",
             "U60",
             "U61",
             "U62",
@@ -6723,7 +6795,6 @@
             "U67",
             "U68",
             "U69",
-            "U7",
             "U70",
             "U71",
             "U72",
@@ -6734,7 +6805,6 @@
             "U77",
             "U78",
             "U79",
-            "U8",
             "U80",
             "U81",
             "U82",
@@ -6745,7 +6815,6 @@
             "U87",
             "U88",
             "U89",
-            "U9",
             "U90",
             "U91",
             "U92",
@@ -6755,7 +6824,8 @@
             "U96",
             "U97",
             "U98",
-            "U99"
+            "U99",
+            "U100"
           ],
           "enumDescriptions": [
             "",
@@ -6864,7 +6934,7 @@
           "items": null
         },
         "value": {
-          "description": "The value of the custom floodlight variable. The length of string must not exceed 50 characters.",
+          "description": "The value of the custom floodlight variable. The length of string must not exceed 100 characters.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -7008,7 +7078,7 @@
       "enumDescriptions": [],
       "properties": {
         "endDate": {
-          "description": "The end date of the date range, inclusive. A string of the format: \"yyyy-MM-dd\".",
+          "description": null,
           "type": "string",
           "format": "date",
           "enum": [],
@@ -7032,23 +7102,23 @@
           "type": "string",
           "format": null,
           "enum": [
-            "LAST_14_DAYS",
-            "LAST_24_MONTHS",
-            "LAST_30_DAYS",
-            "LAST_365_DAYS",
-            "LAST_60_DAYS",
-            "LAST_7_DAYS",
-            "LAST_90_DAYS",
+            "TODAY",
+            "YESTERDAY",
+            "WEEK_TO_DATE",
             "MONTH_TO_DATE",
+            "QUARTER_TO_DATE",
+            "YEAR_TO_DATE",
+            "PREVIOUS_WEEK",
             "PREVIOUS_MONTH",
             "PREVIOUS_QUARTER",
-            "PREVIOUS_WEEK",
             "PREVIOUS_YEAR",
-            "QUARTER_TO_DATE",
-            "TODAY",
-            "WEEK_TO_DATE",
-            "YEAR_TO_DATE",
-            "YESTERDAY"
+            "LAST_7_DAYS",
+            "LAST_30_DAYS",
+            "LAST_90_DAYS",
+            "LAST_365_DAYS",
+            "LAST_24_MONTHS",
+            "LAST_14_DAYS",
+            "LAST_60_DAYS"
           ],
           "enumDescriptions": [
             "",
@@ -7074,7 +7144,7 @@
           "items": null
         },
         "startDate": {
-          "description": "The start date of the date range, inclusive. A string of the format: \"yyyy-MM-dd\".",
+          "description": null,
           "type": "string",
           "format": "date",
           "enum": [],
@@ -7096,7 +7166,7 @@
       "enumDescriptions": [],
       "properties": {
         "daysOfWeek": {
-          "description": "Days of the week when the ad will serve.\n\nAcceptable values are:\n- \"SUNDAY\"\n- \"MONDAY\"\n- \"TUESDAY\"\n- \"WEDNESDAY\"\n- \"THURSDAY\"\n- \"FRIDAY\"\n- \"SATURDAY\"",
+          "description": "Days of the week when the ad will serve. Acceptable values are: - \"SUNDAY\" - \"MONDAY\" - \"TUESDAY\" - \"WEDNESDAY\" - \"THURSDAY\" - \"FRIDAY\" - \"SATURDAY\" ",
           "type": "array",
           "format": null,
           "enum": [],
@@ -7107,13 +7177,13 @@
             "type": "string",
             "format": null,
             "enum": [
-              "FRIDAY",
               "MONDAY",
-              "SATURDAY",
-              "SUNDAY",
-              "THURSDAY",
               "TUESDAY",
-              "WEDNESDAY"
+              "WEDNESDAY",
+              "THURSDAY",
+              "FRIDAY",
+              "SATURDAY",
+              "SUNDAY"
             ],
             "enumDescriptions": [
               "",
@@ -7526,9 +7596,9 @@
           "type": "string",
           "format": null,
           "enum": [
+            "EXACT",
             "BEGINS_WITH",
             "CONTAINS",
-            "EXACT",
             "WILDCARD_EXPRESSION"
           ],
           "enumDescriptions": [
@@ -7628,7 +7698,7 @@
           "items": null
         },
         "endDate": {
-          "description": "The end date of the date range for which to retrieve dimension values. A string of the format \"yyyy-MM-dd\".",
+          "description": null,
           "type": "string",
           "format": "date",
           "enum": [],
@@ -7650,7 +7720,7 @@
           }
         },
         "kind": {
-          "description": "The kind of request this is, in this case dfareporting#dimensionValueRequest.",
+          "description": "The kind of request this is, in this case dfareporting#dimensionValueRequest .",
           "type": "string",
           "format": null,
           "enum": [],
@@ -7660,7 +7730,7 @@
           "items": null
         },
         "startDate": {
-          "description": "The start date of the date range for which to retrieve dimension values. A string of the format \"yyyy-MM-dd\".",
+          "description": null,
           "type": "string",
           "format": "date",
           "enum": [],
@@ -7706,7 +7776,7 @@
           "$ref": "DimensionValue"
         },
         "inpageTagFormats": {
-          "description": "Tag types for regular placements.\n\nAcceptable values are:\n- \"STANDARD\"\n- \"IFRAME_JAVASCRIPT_INPAGE\"\n- \"INTERNAL_REDIRECT_INPAGE\"\n- \"JAVASCRIPT_INPAGE\"",
+          "description": "Tag types for regular placements. Acceptable values are: - \"STANDARD\" - \"IFRAME_JAVASCRIPT_INPAGE\" - \"INTERNAL_REDIRECT_INPAGE\" - \"JAVASCRIPT_INPAGE\" ",
           "type": "array",
           "format": null,
           "enum": [],
@@ -7717,10 +7787,10 @@
             "type": "string",
             "format": null,
             "enum": [
+              "STANDARD",
               "IFRAME_JAVASCRIPT_INPAGE",
               "INTERNAL_REDIRECT_INPAGE",
-              "JAVASCRIPT_INPAGE",
-              "STANDARD"
+              "JAVASCRIPT_INPAGE"
             ],
             "enumDescriptions": [
               "",
@@ -7734,7 +7804,7 @@
           }
         },
         "interstitialTagFormats": {
-          "description": "Tag types for interstitial placements.\n\nAcceptable values are:\n- \"IFRAME_JAVASCRIPT_INTERSTITIAL\"\n- \"INTERNAL_REDIRECT_INTERSTITIAL\"\n- \"JAVASCRIPT_INTERSTITIAL\"",
+          "description": "Tag types for interstitial placements. Acceptable values are: - \"IFRAME_JAVASCRIPT_INTERSTITIAL\" - \"INTERNAL_REDIRECT_INTERSTITIAL\" - \"JAVASCRIPT_INTERSTITIAL\" ",
           "type": "array",
           "format": null,
           "enum": [],
@@ -7930,8 +8000,8 @@
           "type": "string",
           "format": null,
           "enum": [
-            "OBJECT_AD",
             "OBJECT_ADVERTISER",
+            "OBJECT_AD",
             "OBJECT_CREATIVE",
             "OBJECT_PLACEMENT"
           ],
@@ -8006,13 +8076,13 @@
           "type": "string",
           "format": null,
           "enum": [
-            "ADWORDS_CUSTOMER",
-            "DBM_ADVERTISER",
-            "DBM_PARTNER",
+            "ENCRYPTION_ENTITY_TYPE_UNKNOWN",
             "DCM_ACCOUNT",
             "DCM_ADVERTISER",
-            "DFP_NETWORK_CODE",
-            "ENCRYPTION_ENTITY_TYPE_UNKNOWN"
+            "DBM_PARTNER",
+            "DBM_ADVERTISER",
+            "ADWORDS_CUSTOMER",
+            "DFP_NETWORK_CODE"
           ],
           "enumDescriptions": [
             "",
@@ -8032,9 +8102,9 @@
           "type": "string",
           "format": null,
           "enum": [
+            "ENCRYPTION_SCOPE_UNKNOWN",
             "AD_SERVING",
-            "DATA_TRANSFER",
-            "ENCRYPTION_SCOPE_UNKNOWN"
+            "DATA_TRANSFER"
           ],
           "enumDescriptions": [
             "",
@@ -8160,8 +8230,8 @@
           "type": "string",
           "format": null,
           "enum": [
-            "BLACKLIST",
-            "WHITELIST"
+            "WHITELIST",
+            "BLACKLIST"
           ],
           "enumDescriptions": [
             "",
@@ -8172,7 +8242,7 @@
           "items": null
         },
         "siteIds": {
-          "description": "Filter list of site IDs associated with this event tag. The siteFilterType determines whether this is a whitelist or blacklist filter.",
+          "description": "Filter list of site IDs associated with this event tag. The siteFilterType determines whether this is a allowlist or blocklist filter.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -8204,8 +8274,8 @@
           "type": "string",
           "format": null,
           "enum": [
-            "DISABLED",
-            "ENABLED"
+            "ENABLED",
+            "DISABLED"
           ],
           "enumDescriptions": [
             "",
@@ -8230,9 +8300,9 @@
           "type": "string",
           "format": null,
           "enum": [
-            "CLICK_THROUGH_EVENT_TAG",
             "IMPRESSION_IMAGE_EVENT_TAG",
-            "IMPRESSION_JAVASCRIPT_EVENT_TAG"
+            "IMPRESSION_JAVASCRIPT_EVENT_TAG",
+            "CLICK_THROUGH_EVENT_TAG"
           ],
           "enumDescriptions": [
             "",
@@ -8426,10 +8496,10 @@
           "type": "string",
           "format": null,
           "enum": [
-            "CANCELLED",
-            "FAILED",
             "PROCESSING",
-            "REPORT_AVAILABLE"
+            "REPORT_AVAILABLE",
+            "FAILED",
+            "CANCELLED"
           ],
           "enumDescriptions": [
             "",
@@ -8539,7 +8609,7 @@
       "enumDescriptions": [],
       "properties": {
         "endDate": {
-          "description": "Inventory item flight end date.",
+          "description": null,
           "type": "string",
           "format": "date",
           "enum": [],
@@ -8559,7 +8629,7 @@
           "items": null
         },
         "startDate": {
-          "description": "Inventory item flight start date.",
+          "description": null,
           "type": "string",
           "format": "date",
           "enum": [],
@@ -8705,11 +8775,11 @@
           "type": "string",
           "format": null,
           "enum": [
-            "ACTIVE_SERVER_PAGE",
-            "COLD_FUSION",
             "JAVASCRIPT",
+            "ACTIVE_SERVER_PAGE",
             "JSP",
-            "PHP"
+            "PHP",
+            "COLD_FUSION"
           ],
           "enumDescriptions": [
             "",
@@ -8727,11 +8797,11 @@
           "type": "string",
           "format": null,
           "enum": [
-            "ITEMS_SOLD_COUNTING",
-            "SESSION_COUNTING",
             "STANDARD_COUNTING",
+            "UNIQUE_COUNTING",
+            "SESSION_COUNTING",
             "TRANSACTIONS_COUNTING",
-            "UNIQUE_COUNTING"
+            "ITEMS_SOLD_COUNTING"
           ],
           "enumDescriptions": [
             "",
@@ -8831,9 +8901,9 @@
           "type": "string",
           "format": null,
           "enum": [
-            "GLOBAL_SITE_TAG",
             "IFRAME",
-            "IMAGE"
+            "IMAGE",
+            "GLOBAL_SITE_TAG"
           ],
           "enumDescriptions": [
             "",
@@ -8967,7 +9037,7 @@
           "items": null
         },
         "tagString": {
-          "description": "Value of the cat= parameter in the floodlight tag, which the ad servers use to identify the activity. This is optional: if empty, a new tag string will be generated for you. This string must be 1 to 8 characters long, with valid characters being [a-z][A-Z][0-9][-][ _ ]. This tag string must also be unique among activities of the same activity group. This field is read-only after insertion.",
+          "description": "Value of the cat= parameter in the floodlight tag, which the ad servers use to identify the activity. This is optional: if empty, a new tag string will be generated for you. This string must be 1 to 8 characters long, with valid characters being a-z0-9[ _ ]. This tag string must also be unique among activities of the same activity group. This field is read-only after insertion.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -8977,7 +9047,7 @@
           "items": null
         },
         "userDefinedVariableTypes": {
-          "description": "List of the user-defined variables used by this conversion tag. These map to the \"u[1-100]=\" in the tags. Each of these can have a user defined type.\nAcceptable values are U1 to U100, inclusive.",
+          "description": "List of the user-defined variables used by this conversion tag. These map to the \"u[1-100]=\" in the tags. Each of these can have a user defined type. Acceptable values are U1 to U100, inclusive. ",
           "type": "array",
           "format": null,
           "enum": [],
@@ -8989,8 +9059,15 @@
             "format": null,
             "enum": [
               "U1",
+              "U2",
+              "U3",
+              "U4",
+              "U5",
+              "U6",
+              "U7",
+              "U8",
+              "U9",
               "U10",
-              "U100",
               "U11",
               "U12",
               "U13",
@@ -9000,7 +9077,6 @@
               "U17",
               "U18",
               "U19",
-              "U2",
               "U20",
               "U21",
               "U22",
@@ -9011,7 +9087,6 @@
               "U27",
               "U28",
               "U29",
-              "U3",
               "U30",
               "U31",
               "U32",
@@ -9022,7 +9097,6 @@
               "U37",
               "U38",
               "U39",
-              "U4",
               "U40",
               "U41",
               "U42",
@@ -9033,7 +9107,6 @@
               "U47",
               "U48",
               "U49",
-              "U5",
               "U50",
               "U51",
               "U52",
@@ -9044,7 +9117,6 @@
               "U57",
               "U58",
               "U59",
-              "U6",
               "U60",
               "U61",
               "U62",
@@ -9055,7 +9127,6 @@
               "U67",
               "U68",
               "U69",
-              "U7",
               "U70",
               "U71",
               "U72",
@@ -9066,7 +9137,6 @@
               "U77",
               "U78",
               "U79",
-              "U8",
               "U80",
               "U81",
               "U82",
@@ -9077,7 +9147,6 @@
               "U87",
               "U88",
               "U89",
-              "U9",
               "U90",
               "U91",
               "U92",
@@ -9087,7 +9156,8 @@
               "U96",
               "U97",
               "U98",
-              "U99"
+              "U99",
+              "U100"
             ],
             "enumDescriptions": [
               "",
@@ -9333,7 +9403,7 @@
           "items": null
         },
         "tagString": {
-          "description": "Value of the type= parameter in the floodlight tag, which the ad servers use to identify the activity group that the activity belongs to. This is optional: if empty, a new tag string will be generated for you. This string must be 1 to 8 characters long, with valid characters being [a-z][A-Z][0-9][-][ _ ]. This tag string must also be unique among activity groups of the same floodlight configuration. This field is read-only after insertion.",
+          "description": "Value of the type= parameter in the floodlight tag, which the ad servers use to identify the activity group that the activity belongs to. This is optional: if empty, a new tag string will be generated for you. This string must be 1 to 8 characters long, with valid characters being a-z0-9[ _ ]. This tag string must also be unique among activity groups of the same floodlight configuration. This field is read-only after insertion.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -10107,8 +10177,8 @@
           "type": "string",
           "format": null,
           "enum": [
-            "PLANNING_PLACEMENT_TYPE_CREDIT",
-            "PLANNING_PLACEMENT_TYPE_REGULAR"
+            "PLANNING_PLACEMENT_TYPE_REGULAR",
+            "PLANNING_PLACEMENT_TYPE_CREDIT"
           ],
           "enumDescriptions": [
             "",
@@ -10506,12 +10576,12 @@
           "format": null,
           "enum": [
             "NUM_EQUALS",
-            "NUM_GREATER_THAN",
-            "NUM_GREATER_THAN_EQUAL",
             "NUM_LESS_THAN",
             "NUM_LESS_THAN_EQUAL",
-            "STRING_CONTAINS",
-            "STRING_EQUALS"
+            "NUM_GREATER_THAN",
+            "NUM_GREATER_THAN_EQUAL",
+            "STRING_EQUALS",
+            "STRING_CONTAINS"
           ],
           "enumDescriptions": [
             "",
@@ -10803,9 +10873,9 @@
           "type": "string",
           "format": null,
           "enum": [
+            "UNKNOWN",
             "APPLE_APP_STORE",
-            "GOOGLE_PLAY_STORE",
-            "UNKNOWN"
+            "GOOGLE_PLAY_STORE"
           ],
           "enumDescriptions": [
             "",
@@ -11041,9 +11111,9 @@
           "type": "string",
           "format": null,
           "enum": [
-            "ALL",
+            "NONE",
             "ASSIGNED",
-            "NONE"
+            "ALL"
           ],
           "enumDescriptions": [
             "",
@@ -11629,8 +11699,8 @@
           "type": "string",
           "format": null,
           "enum": [
-            "PLANNING_ORDER_CONTACT_BUYER_BILLING_CONTACT",
             "PLANNING_ORDER_CONTACT_BUYER_CONTACT",
+            "PLANNING_ORDER_CONTACT_BUYER_BILLING_CONTACT",
             "PLANNING_ORDER_CONTACT_SELLER_CONTACT"
           ],
           "enumDescriptions": [
@@ -11727,7 +11797,7 @@
           "$ref": "LastModifiedInfo"
         },
         "effectiveDate": {
-          "description": "Effective date of this order document.",
+          "description": null,
           "type": "string",
           "format": "date",
           "enum": [],
@@ -11775,7 +11845,7 @@
           }
         },
         "lastSentTime": {
-          "description": "Timestamp of the last email sent with this order document.",
+          "description": null,
           "type": "string",
           "format": "date-time",
           "enum": [],
@@ -11839,8 +11909,8 @@
           "type": "string",
           "format": null,
           "enum": [
-            "PLANNING_ORDER_TYPE_CHANGE_ORDER",
-            "PLANNING_ORDER_TYPE_INSERTION_ORDER"
+            "PLANNING_ORDER_TYPE_INSERTION_ORDER",
+            "PLANNING_ORDER_TYPE_CHANGE_ORDER"
           ],
           "enumDescriptions": [
             "",
@@ -12105,12 +12175,12 @@
           "type": "string",
           "format": null,
           "enum": [
-            "APP",
-            "APP_INTERSTITIAL",
             "DISPLAY",
             "DISPLAY_INTERSTITIAL",
-            "IN_STREAM_AUDIO",
-            "IN_STREAM_VIDEO"
+            "APP",
+            "APP_INTERSTITIAL",
+            "IN_STREAM_VIDEO",
+            "IN_STREAM_AUDIO"
           ],
           "enumDescriptions": [
             "",
@@ -12205,7 +12275,7 @@
           "$ref": "LookbackConfiguration"
         },
         "name": {
-          "description": "Name of this placement.This is a required field and must be less than 256 characters long.",
+          "description": "Name of this placement.This is a required field and must be less than or equal to 256 characters long.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -12315,12 +12385,12 @@
           "type": "string",
           "format": null,
           "enum": [
-            "ACKNOWLEDGE_ACCEPTANCE",
-            "ACKNOWLEDGE_REJECTION",
-            "DRAFT",
+            "PENDING_REVIEW",
             "PAYMENT_ACCEPTED",
             "PAYMENT_REJECTED",
-            "PENDING_REVIEW"
+            "ACKNOWLEDGE_REJECTION",
+            "ACKNOWLEDGE_ACCEPTANCE",
+            "DRAFT"
           ],
           "enumDescriptions": [
             "",
@@ -12345,7 +12415,7 @@
           "items": null
         },
         "tagFormats": {
-          "description": "Tag formats to generate for this placement. This field is required on insertion.\nAcceptable values are:\n- \"PLACEMENT_TAG_STANDARD\"\n- \"PLACEMENT_TAG_IFRAME_JAVASCRIPT\"\n- \"PLACEMENT_TAG_IFRAME_ILAYER\"\n- \"PLACEMENT_TAG_INTERNAL_REDIRECT\"\n- \"PLACEMENT_TAG_JAVASCRIPT\"\n- \"PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT\"\n- \"PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT\"\n- \"PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT\"\n- \"PLACEMENT_TAG_CLICK_COMMANDS\"\n- \"PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH\"\n- \"PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3\"\n- \"PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4\"\n- \"PLACEMENT_TAG_TRACKING\"\n- \"PLACEMENT_TAG_TRACKING_IFRAME\"\n- \"PLACEMENT_TAG_TRACKING_JAVASCRIPT\"",
+          "description": "Tag formats to generate for this placement. This field is required on insertion. Acceptable values are: - \"PLACEMENT_TAG_STANDARD\" - \"PLACEMENT_TAG_IFRAME_JAVASCRIPT\" - \"PLACEMENT_TAG_IFRAME_ILAYER\" - \"PLACEMENT_TAG_INTERNAL_REDIRECT\" - \"PLACEMENT_TAG_JAVASCRIPT\" - \"PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT\" - \"PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT\" - \"PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT\" - \"PLACEMENT_TAG_CLICK_COMMANDS\" - \"PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH\" - \"PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3\" - \"PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4\" - \"PLACEMENT_TAG_TRACKING\" - \"PLACEMENT_TAG_TRACKING_IFRAME\" - \"PLACEMENT_TAG_TRACKING_JAVASCRIPT\" ",
           "type": "array",
           "format": null,
           "enum": [],
@@ -12356,25 +12426,25 @@
             "type": "string",
             "format": null,
             "enum": [
-              "PLACEMENT_TAG_CLICK_COMMANDS",
-              "PLACEMENT_TAG_IFRAME_ILAYER",
+              "PLACEMENT_TAG_STANDARD",
               "PLACEMENT_TAG_IFRAME_JAVASCRIPT",
-              "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY",
-              "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH",
-              "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3",
-              "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4",
+              "PLACEMENT_TAG_IFRAME_ILAYER",
               "PLACEMENT_TAG_INTERNAL_REDIRECT",
+              "PLACEMENT_TAG_JAVASCRIPT",
               "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT",
-              "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY",
               "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT",
               "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT",
-              "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY",
-              "PLACEMENT_TAG_JAVASCRIPT",
-              "PLACEMENT_TAG_JAVASCRIPT_LEGACY",
-              "PLACEMENT_TAG_STANDARD",
+              "PLACEMENT_TAG_CLICK_COMMANDS",
+              "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH",
               "PLACEMENT_TAG_TRACKING",
               "PLACEMENT_TAG_TRACKING_IFRAME",
-              "PLACEMENT_TAG_TRACKING_JAVASCRIPT"
+              "PLACEMENT_TAG_TRACKING_JAVASCRIPT",
+              "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3",
+              "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY",
+              "PLACEMENT_TAG_JAVASCRIPT_LEGACY",
+              "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY",
+              "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY",
+              "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
             ],
             "enumDescriptions": [
               "",
@@ -12421,14 +12491,14 @@
           "$ref": "VideoSettings"
         },
         "vpaidAdapterChoice": {
-          "description": "VPAID adapter setting for this placement. Controls which VPAID format the measurement adapter will use for in-stream video creatives assigned to this placement.\n\nNote: Flash is no longer supported. This field now defaults to HTML5 when the following values are provided: FLASH, BOTH.",
+          "description": "VPAID adapter setting for this placement. Controls which VPAID format the measurement adapter will use for in-stream video creatives assigned to this placement. *Note:* Flash is no longer supported. This field now defaults to HTML5 when the following values are provided: FLASH, BOTH.",
           "type": "string",
           "format": null,
           "enum": [
-            "BOTH",
             "DEFAULT",
             "FLASH",
-            "HTML5"
+            "HTML5",
+            "BOTH"
           ],
           "enumDescriptions": [
             "",
@@ -13255,9 +13325,9 @@
           "type": "string",
           "format": null,
           "enum": [
-            "PLANNING_PLACEMENT_CAP_COST_TYPE_CUMULATIVE",
+            "PLANNING_PLACEMENT_CAP_COST_TYPE_NONE",
             "PLANNING_PLACEMENT_CAP_COST_TYPE_MONTHLY",
-            "PLANNING_PLACEMENT_CAP_COST_TYPE_NONE"
+            "PLANNING_PLACEMENT_CAP_COST_TYPE_CUMULATIVE"
           ],
           "enumDescriptions": [
             "",
@@ -13269,7 +13339,7 @@
           "items": null
         },
         "endDate": {
-          "description": "End date of this inventory item.",
+          "description": null,
           "type": "string",
           "format": "date",
           "enum": [],
@@ -13311,14 +13381,14 @@
           "type": "string",
           "format": null,
           "enum": [
-            "PLANNING_PLACEMENT_PRICING_TYPE_CLICKS",
-            "PLANNING_PLACEMENT_PRICING_TYPE_CPA",
-            "PLANNING_PLACEMENT_PRICING_TYPE_CPC",
+            "PLANNING_PLACEMENT_PRICING_TYPE_IMPRESSIONS",
             "PLANNING_PLACEMENT_PRICING_TYPE_CPM",
-            "PLANNING_PLACEMENT_PRICING_TYPE_CPM_ACTIVEVIEW",
-            "PLANNING_PLACEMENT_PRICING_TYPE_FLAT_RATE_CLICKS",
+            "PLANNING_PLACEMENT_PRICING_TYPE_CLICKS",
+            "PLANNING_PLACEMENT_PRICING_TYPE_CPC",
+            "PLANNING_PLACEMENT_PRICING_TYPE_CPA",
             "PLANNING_PLACEMENT_PRICING_TYPE_FLAT_RATE_IMPRESSIONS",
-            "PLANNING_PLACEMENT_PRICING_TYPE_IMPRESSIONS"
+            "PLANNING_PLACEMENT_PRICING_TYPE_FLAT_RATE_CLICKS",
+            "PLANNING_PLACEMENT_PRICING_TYPE_CPM_ACTIVEVIEW"
           ],
           "enumDescriptions": [
             "",
@@ -13335,7 +13405,7 @@
           "items": null
         },
         "startDate": {
-          "description": "Start date of this inventory item.",
+          "description": null,
           "type": "string",
           "format": "date",
           "enum": [],
@@ -13361,9 +13431,9 @@
           "type": "string",
           "format": null,
           "enum": [
-            "CAP_COST_CUMULATIVE",
+            "CAP_COST_NONE",
             "CAP_COST_MONTHLY",
-            "CAP_COST_NONE"
+            "CAP_COST_CUMULATIVE"
           ],
           "enumDescriptions": [
             "",
@@ -13385,7 +13455,7 @@
           "items": null
         },
         "endDate": {
-          "description": "Placement end date. This date must be later than, or the same day as, the placement start date, but not later than the campaign end date. If, for example, you set 6/25/2015 as both the start and end dates, the effective placement date is just that day only, 6/25/2015. The hours, minutes, and seconds of the end date should not be set, as doing so will result in an error. This field is required on insertion.",
+          "description": null,
           "type": "string",
           "format": "date",
           "enum": [],
@@ -13431,12 +13501,12 @@
           "type": "string",
           "format": null,
           "enum": [
-            "PRICING_TYPE_CPA",
-            "PRICING_TYPE_CPC",
             "PRICING_TYPE_CPM",
-            "PRICING_TYPE_CPM_ACTIVEVIEW",
+            "PRICING_TYPE_CPC",
+            "PRICING_TYPE_CPA",
+            "PRICING_TYPE_FLAT_RATE_IMPRESSIONS",
             "PRICING_TYPE_FLAT_RATE_CLICKS",
-            "PRICING_TYPE_FLAT_RATE_IMPRESSIONS"
+            "PRICING_TYPE_CPM_ACTIVEVIEW"
           ],
           "enumDescriptions": [
             "",
@@ -13451,7 +13521,7 @@
           "items": null
         },
         "startDate": {
-          "description": "Placement start date. This date must be later than, or the same day as, the campaign start date. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error. This field is required on insertion.",
+          "description": null,
           "type": "string",
           "format": "date",
           "enum": [],
@@ -13461,7 +13531,7 @@
           "items": null
         },
         "testingStartDate": {
-          "description": "Testing start date of this placement. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error.",
+          "description": null,
           "type": "string",
           "format": "date",
           "enum": [],
@@ -13483,7 +13553,7 @@
       "enumDescriptions": [],
       "properties": {
         "endDate": {
-          "description": "Pricing period end date. This date must be later than, or the same day as, the pricing period start date, but not later than the placement end date. The period end date can be the same date as the period start date. If, for example, you set 6/25/2015 as both the start and end dates, the effective pricing period date is just that day only, 6/25/2015. The hours, minutes, and seconds of the end date should not be set, as doing so will result in an error.",
+          "description": null,
           "type": "string",
           "format": "date",
           "enum": [],
@@ -13513,7 +13583,7 @@
           "items": null
         },
         "startDate": {
-          "description": "Pricing period start date. This date must be later than, or the same day as, the placement start date. The hours, minutes, and seconds of the start date should not be set, as doing so will result in an error.",
+          "description": null,
           "type": "string",
           "format": "date",
           "enum": [],
@@ -13595,8 +13665,8 @@
           "type": "string",
           "format": null,
           "enum": [
-            "PLANNING_AUDIENCE_GENDER_FEMALE",
-            "PLANNING_AUDIENCE_GENDER_MALE"
+            "PLANNING_AUDIENCE_GENDER_MALE",
+            "PLANNING_AUDIENCE_GENDER_FEMALE"
           ],
           "enumDescriptions": [
             "",
@@ -13637,7 +13707,7 @@
           "items": null
         },
         "endDate": {
-          "description": "End date of the project.",
+          "description": null,
           "type": "string",
           "format": "date",
           "enum": [],
@@ -13691,7 +13761,7 @@
           "items": null
         },
         "startDate": {
-          "description": "Start date of the project.",
+          "description": null,
           "type": "string",
           "format": "date",
           "enum": [],
@@ -13923,8 +13993,8 @@
           "type": "string",
           "format": null,
           "enum": [
-            "ATTACHMENT",
-            "LINK"
+            "LINK",
+            "ATTACHMENT"
           ],
           "enumDescriptions": [
             "",
@@ -14165,17 +14235,17 @@
           "type": "string",
           "format": null,
           "enum": [
-            "REMARKETING_LIST_SOURCE_ADX",
-            "REMARKETING_LIST_SOURCE_DBM",
-            "REMARKETING_LIST_SOURCE_DFA",
-            "REMARKETING_LIST_SOURCE_DFP",
-            "REMARKETING_LIST_SOURCE_DMP",
-            "REMARKETING_LIST_SOURCE_GA",
-            "REMARKETING_LIST_SOURCE_GPLUS",
             "REMARKETING_LIST_SOURCE_OTHER",
-            "REMARKETING_LIST_SOURCE_PLAY_STORE",
+            "REMARKETING_LIST_SOURCE_ADX",
+            "REMARKETING_LIST_SOURCE_DFP",
             "REMARKETING_LIST_SOURCE_XFP",
-            "REMARKETING_LIST_SOURCE_YOUTUBE"
+            "REMARKETING_LIST_SOURCE_DFA",
+            "REMARKETING_LIST_SOURCE_GA",
+            "REMARKETING_LIST_SOURCE_YOUTUBE",
+            "REMARKETING_LIST_SOURCE_DBM",
+            "REMARKETING_LIST_SOURCE_GPLUS",
+            "REMARKETING_LIST_SOURCE_DMP",
+            "REMARKETING_LIST_SOURCE_PLAY_STORE"
           ],
           "enumDescriptions": [
             "",
@@ -14368,7 +14438,7 @@
               "$ref": "DateRange"
             },
             "dimensionFilters": {
-              "description": "The list of filters on which dimensions are filtered.\nFilters for different dimensions are ANDed, filters for the same dimension are grouped together and ORed.",
+              "description": "The list of filters on which dimensions are filtered. Filters for different dimensions are ANDed, filters for the same dimension are grouped together and ORed.",
               "type": "array",
               "format": null,
               "enum": [],
@@ -14540,8 +14610,8 @@
               "type": "string",
               "format": null,
               "enum": [
-                "ATTACHMENT",
-                "LINK"
+                "LINK",
+                "ATTACHMENT"
               ],
               "enumDescriptions": [
                 "",
@@ -14621,7 +14691,7 @@
               "$ref": "DateRange"
             },
             "dimensionFilters": {
-              "description": "The list of filters on which dimensions are filtered.\nFilters for different dimensions are ANDed, filters for the same dimension are grouped together and ORed.",
+              "description": "The list of filters on which dimensions are filtered. Filters for different dimensions are ANDed, filters for the same dimension are grouped together and ORed.",
               "type": "array",
               "format": null,
               "enum": [],
@@ -14878,7 +14948,7 @@
               "enumDescriptions": [],
               "properties": {
                 "clicksLookbackWindow": {
-                  "description": "DFA checks to see if a click interaction occurred within the specified period of time before a conversion. By default the value is pulled from Floodlight or you can manually enter a custom value. Valid values: 1-90.",
+                  "description": "CM360 checks to see if a click interaction occurred within the specified period of time before a conversion. By default the value is pulled from Floodlight or you can manually enter a custom value. Valid values: 1-90.",
                   "type": "integer",
                   "format": "int32",
                   "enum": [],
@@ -14888,7 +14958,7 @@
                   "items": null
                 },
                 "impressionsLookbackWindow": {
-                  "description": "DFA checks to see if an impression interaction occurred within the specified period of time before a conversion. By default the value is pulled from Floodlight or you can manually enter a custom value. Valid values: 1-90.",
+                  "description": "CM360 checks to see if an impression interaction occurred within the specified period of time before a conversion. By default the value is pulled from Floodlight or you can manually enter a custom value. Valid values: 1-90.",
                   "type": "integer",
                   "format": "int32",
                   "enum": [],
@@ -14995,7 +15065,7 @@
               "$ref": "DateRange"
             },
             "dimensionFilters": {
-              "description": "The list of filters on which dimensions are filtered.\nFilters for different dimensions are ANDed, filters for the same dimension are grouped together and ORed.",
+              "description": "The list of filters on which dimensions are filtered. Filters for different dimensions are ANDed, filters for the same dimension are grouped together and ORed.",
               "type": "array",
               "format": null,
               "enum": [],
@@ -15047,7 +15117,7 @@
               }
             },
             "reachByFrequencyMetricNames": {
-              "description": "The list of names of  Reach By Frequency metrics the report should include.",
+              "description": "The list of names of Reach By Frequency metrics the report should include.",
               "type": "array",
               "format": null,
               "enum": [],
@@ -15096,7 +15166,7 @@
               "items": null
             },
             "expirationDate": {
-              "description": "The expiration date when the scheduled report stops running.",
+              "description": null,
               "type": "string",
               "format": "date",
               "enum": [],
@@ -15106,7 +15176,7 @@
               "items": null
             },
             "repeats": {
-              "description": "The interval for which the report is repeated. Note:  \n- \"DAILY\" also requires field \"every\" to be set. \n- \"WEEKLY\" also requires fields \"every\" and \"repeatsOnWeekDays\" to be set. \n- \"MONTHLY\" also requires fields \"every\" and \"runsOnDayOfMonth\" to be set.",
+              "description": "The interval for which the report is repeated. Note: - \"DAILY\" also requires field \"every\" to be set. - \"WEEKLY\" also requires fields \"every\" and \"repeatsOnWeekDays\" to be set. - \"MONTHLY\" also requires fields \"every\" and \"runsOnDayOfMonth\" to be set. ",
               "type": "string",
               "format": null,
               "enum": [],
@@ -15127,13 +15197,13 @@
                 "type": "string",
                 "format": null,
                 "enum": [
-                  "FRIDAY",
-                  "MONDAY",
-                  "SATURDAY",
                   "SUNDAY",
-                  "THURSDAY",
+                  "MONDAY",
                   "TUESDAY",
-                  "WEDNESDAY"
+                  "WEDNESDAY",
+                  "THURSDAY",
+                  "FRIDAY",
+                  "SATURDAY"
                 ],
                 "enumDescriptions": [
                   "",
@@ -15150,7 +15220,7 @@
               }
             },
             "runsOnDayOfMonth": {
-              "description": "Enum to define for \"MONTHLY\" scheduled reports whether reports should be repeated on the same day of the month as \"startDate\" or the same day of the week of the month.\nExample: If 'startDate' is Monday, April 2nd 2012 (2012-04-02), \"DAY_OF_MONTH\" would run subsequent reports on the 2nd of every Month, and \"WEEK_OF_MONTH\" would run subsequent reports on the first Monday of the month.",
+              "description": "Enum to define for \"MONTHLY\" scheduled reports whether reports should be repeated on the same day of the month as \"startDate\" or the same day of the week of the month. Example: If 'startDate' is Monday, April 2nd 2012 (2012-04-02), \"DAY_OF_MONTH\" would run subsequent reports on the 2nd of every Month, and \"WEEK_OF_MONTH\" would run subsequent reports on the first Monday of the month.",
               "type": "string",
               "format": null,
               "enum": [
@@ -15166,7 +15236,7 @@
               "items": null
             },
             "startDate": {
-              "description": "Start date of date range for which scheduled reports should be run.",
+              "description": null,
               "type": "string",
               "format": "date",
               "enum": [],
@@ -15194,11 +15264,11 @@
           "type": "string",
           "format": null,
           "enum": [
-            "CROSS_DIMENSION_REACH",
-            "FLOODLIGHT",
-            "PATH_TO_CONVERSION",
+            "STANDARD",
             "REACH",
-            "STANDARD"
+            "PATH_TO_CONVERSION",
+            "CROSS_DIMENSION_REACH",
+            "FLOODLIGHT"
           ],
           "enumDescriptions": [
             "",
@@ -15362,7 +15432,7 @@
           "$ref": "LookbackConfiguration"
         },
         "reportGenerationTimeZoneId": {
-          "description": "Report generation time zone ID of this account. This is a required field that can only be changed by a superuser.\nAcceptable values are:\n\n- \"1\" for \"America/New_York\" \n- \"2\" for \"Europe/London\" \n- \"3\" for \"Europe/Paris\" \n- \"4\" for \"Africa/Johannesburg\" \n- \"5\" for \"Asia/Jerusalem\" \n- \"6\" for \"Asia/Shanghai\" \n- \"7\" for \"Asia/Hong_Kong\" \n- \"8\" for \"Asia/Tokyo\" \n- \"9\" for \"Australia/Sydney\" \n- \"10\" for \"Asia/Dubai\" \n- \"11\" for \"America/Los_Angeles\" \n- \"12\" for \"Pacific/Auckland\" \n- \"13\" for \"America/Sao_Paulo\" \n- \"16\" for \"America/Asuncion\" \n- \"17\" for \"America/Chicago\" \n- \"18\" for \"America/Denver\" \n- \"19\" for \"America/St_Johns\" \n- \"20\" for \"Asia/Dhaka\" \n- \"21\" for \"Asia/Jakarta\" \n- \"22\" for \"Asia/Kabul\" \n- \"23\" for \"Asia/Karachi\" \n- \"24\" for \"Asia/Calcutta\" \n- \"25\" for \"Asia/Pyongyang\" \n- \"26\" for \"Asia/Rangoon\" \n- \"27\" for \"Atlantic/Cape_Verde\" \n- \"28\" for \"Atlantic/South_Georgia\" \n- \"29\" for \"Australia/Adelaide\" \n- \"30\" for \"Australia/Lord_Howe\" \n- \"31\" for \"Europe/Moscow\" \n- \"32\" for \"Pacific/Kiritimati\" \n- \"35\" for \"Pacific/Norfolk\" \n- \"36\" for \"Pacific/Tongatapu\"",
+          "description": "Report generation time zone ID of this account. This is a required field that can only be changed by a superuser. Acceptable values are: - \"1\" for \"America/New_York\" - \"2\" for \"Europe/London\" - \"3\" for \"Europe/Paris\" - \"4\" for \"Africa/Johannesburg\" - \"5\" for \"Asia/Jerusalem\" - \"6\" for \"Asia/Shanghai\" - \"7\" for \"Asia/Hong_Kong\" - \"8\" for \"Asia/Tokyo\" - \"9\" for \"Australia/Sydney\" - \"10\" for \"Asia/Dubai\" - \"11\" for \"America/Los_Angeles\" - \"12\" for \"Pacific/Auckland\" - \"13\" for \"America/Sao_Paulo\" - \"16\" for \"America/Asuncion\" - \"17\" for \"America/Chicago\" - \"18\" for \"America/Denver\" - \"19\" for \"America/St_Johns\" - \"20\" for \"Asia/Dhaka\" - \"21\" for \"Asia/Jakarta\" - \"22\" for \"Asia/Kabul\" - \"23\" for \"Asia/Karachi\" - \"24\" for \"Asia/Calcutta\" - \"25\" for \"Asia/Pyongyang\" - \"26\" for \"Asia/Rangoon\" - \"27\" for \"Atlantic/Cape_Verde\" - \"28\" for \"Atlantic/South_Georgia\" - \"29\" for \"Australia/Adelaide\" - \"30\" for \"Australia/Lord_Howe\" - \"31\" for \"Europe/Moscow\" - \"32\" for \"Pacific/Kiritimati\" - \"35\" for \"Pacific/Norfolk\" - \"36\" for \"Pacific/Tongatapu\" ",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -15592,7 +15662,7 @@
           "items": null
         },
         "enabledSizes": {
-          "description": "Whitelist of companion sizes to be served via this site template. Set this list to null or empty to serve all companion sizes.",
+          "description": "Allowlist of companion sizes to be served via this site template. Set this list to null or empty to serve all companion sizes.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -15778,14 +15848,14 @@
           "items": null
         },
         "vpaidAdapterChoiceTemplate": {
-          "description": "Default VPAID adapter setting for new placements created under this site. This value will be used to populate the placements.vpaidAdapterChoice field, when no value is specified for the new placement. Controls which VPAID format the measurement adapter will use for in-stream video creatives assigned to the placement. The publisher's specifications will typically determine this setting. For VPAID creatives, the adapter format will match the VPAID format (HTML5 VPAID creatives use the HTML5 adapter).\n\nNote: Flash is no longer supported. This field now defaults to HTML5 when the following values are provided: FLASH, BOTH.",
+          "description": "Default VPAID adapter setting for new placements created under this site. This value will be used to populate the placements.vpaidAdapterChoice field, when no value is specified for the new placement. Controls which VPAID format the measurement adapter will use for in-stream video creatives assigned to the placement. The publisher's specifications will typically determine this setting. For VPAID creatives, the adapter format will match the VPAID format (HTML5 VPAID creatives use the HTML5 adapter). *Note:* Flash is no longer supported. This field now defaults to HTML5 when the following values are provided: FLASH, BOTH.",
           "type": "string",
           "format": null,
           "enum": [
-            "BOTH",
             "DEFAULT",
             "FLASH",
-            "HTML5"
+            "HTML5",
+            "BOTH"
           ],
           "enumDescriptions": [
             "",
@@ -15850,7 +15920,7 @@
       "enumDescriptions": [],
       "properties": {
         "enabledVideoFormats": {
-          "description": "Whitelist of video formats to be served to this site template. Set this list to null or empty to serve all video formats.",
+          "description": "Allowlist of video formats to be served to this site template. Set this list to null or empty to serve all video formats.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -16318,25 +16388,25 @@
           "type": "string",
           "format": null,
           "enum": [
-            "PLACEMENT_TAG_CLICK_COMMANDS",
-            "PLACEMENT_TAG_IFRAME_ILAYER",
+            "PLACEMENT_TAG_STANDARD",
             "PLACEMENT_TAG_IFRAME_JAVASCRIPT",
-            "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY",
-            "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH",
-            "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3",
-            "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4",
+            "PLACEMENT_TAG_IFRAME_ILAYER",
             "PLACEMENT_TAG_INTERNAL_REDIRECT",
+            "PLACEMENT_TAG_JAVASCRIPT",
             "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT",
-            "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY",
             "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT",
             "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT",
-            "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY",
-            "PLACEMENT_TAG_JAVASCRIPT",
-            "PLACEMENT_TAG_JAVASCRIPT_LEGACY",
-            "PLACEMENT_TAG_STANDARD",
+            "PLACEMENT_TAG_CLICK_COMMANDS",
+            "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH",
             "PLACEMENT_TAG_TRACKING",
             "PLACEMENT_TAG_TRACKING_IFRAME",
-            "PLACEMENT_TAG_TRACKING_JAVASCRIPT"
+            "PLACEMENT_TAG_TRACKING_JAVASCRIPT",
+            "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3",
+            "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY",
+            "PLACEMENT_TAG_JAVASCRIPT_LEGACY",
+            "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY",
+            "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY",
+            "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
           ],
           "enumDescriptions": [
             "",
@@ -16420,9 +16490,9 @@
           "type": "string",
           "format": null,
           "enum": [
-            "GENERATE_SEPARATE_TAG_FOR_EACH_KEYWORD",
+            "PLACEHOLDER_WITH_LIST_OF_KEYWORDS",
             "IGNORE",
-            "PLACEHOLDER_WITH_LIST_OF_KEYWORDS"
+            "GENERATE_SEPARATE_TAG_FOR_EACH_KEYWORD"
           ],
           "enumDescriptions": [
             "",
@@ -16492,9 +16562,9 @@
           "type": "string",
           "format": null,
           "enum": [
+            "NEW_WINDOW",
             "CURRENT_WINDOW",
-            "CUSTOM",
-            "NEW_WINDOW"
+            "CUSTOM"
           ],
           "enumDescriptions": [
             "",
@@ -16606,17 +16676,17 @@
           "type": "string",
           "format": null,
           "enum": [
-            "REMARKETING_LIST_SOURCE_ADX",
-            "REMARKETING_LIST_SOURCE_DBM",
-            "REMARKETING_LIST_SOURCE_DFA",
-            "REMARKETING_LIST_SOURCE_DFP",
-            "REMARKETING_LIST_SOURCE_DMP",
-            "REMARKETING_LIST_SOURCE_GA",
-            "REMARKETING_LIST_SOURCE_GPLUS",
             "REMARKETING_LIST_SOURCE_OTHER",
-            "REMARKETING_LIST_SOURCE_PLAY_STORE",
+            "REMARKETING_LIST_SOURCE_ADX",
+            "REMARKETING_LIST_SOURCE_DFP",
             "REMARKETING_LIST_SOURCE_XFP",
-            "REMARKETING_LIST_SOURCE_YOUTUBE"
+            "REMARKETING_LIST_SOURCE_DFA",
+            "REMARKETING_LIST_SOURCE_GA",
+            "REMARKETING_LIST_SOURCE_YOUTUBE",
+            "REMARKETING_LIST_SOURCE_DBM",
+            "REMARKETING_LIST_SOURCE_GPLUS",
+            "REMARKETING_LIST_SOURCE_DMP",
+            "REMARKETING_LIST_SOURCE_PLAY_STORE"
           ],
           "enumDescriptions": [
             "",
@@ -16976,25 +17046,25 @@
           "type": "string",
           "format": null,
           "enum": [
-            "CLICK_TRACKING",
             "IMPRESSION",
-            "RICH_MEDIA_BACKUP_IMPRESSION",
-            "RICH_MEDIA_IMPRESSION",
-            "RICH_MEDIA_RM_IMPRESSION",
-            "SURVEY",
-            "VIDEO_COMPLETE",
-            "VIDEO_CUSTOM",
+            "CLICK_TRACKING",
+            "VIDEO_START",
             "VIDEO_FIRST_QUARTILE",
-            "VIDEO_FULLSCREEN",
             "VIDEO_MIDPOINT",
+            "VIDEO_THIRD_QUARTILE",
+            "VIDEO_COMPLETE",
             "VIDEO_MUTE",
             "VIDEO_PAUSE",
-            "VIDEO_PROGRESS",
             "VIDEO_REWIND",
-            "VIDEO_SKIP",
-            "VIDEO_START",
+            "VIDEO_FULLSCREEN",
             "VIDEO_STOP",
-            "VIDEO_THIRD_QUARTILE"
+            "VIDEO_CUSTOM",
+            "SURVEY",
+            "RICH_MEDIA_IMPRESSION",
+            "RICH_MEDIA_RM_IMPRESSION",
+            "RICH_MEDIA_BACKUP_IMPRESSION",
+            "VIDEO_SKIP",
+            "VIDEO_PROGRESS"
           ],
           "enumDescriptions": [
             "",
@@ -17044,7 +17114,7 @@
       "enumDescriptions": [],
       "properties": {
         "enabledVideoFormats": {
-          "description": "Whitelist of video formats to be served to this placement. Set this list to null or empty to serve all video formats.",
+          "description": "Allowlist of video formats to be served to this placement. Set this list to null or empty to serve all video formats.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -17088,10 +17158,10 @@
           "type": "string",
           "format": null,
           "enum": [
+            "OTHER",
             "AD_ID.ORG",
             "CLEARCAST",
-            "DCM",
-            "OTHER"
+            "DCM"
           ],
           "enumDescriptions": [
             "",
@@ -17130,8 +17200,8 @@
           "type": "string",
           "format": null,
           "enum": [
-            "NUMBER",
-            "STRING"
+            "STRING",
+            "NUMBER"
           ],
           "enumDescriptions": [
             "",
@@ -17157,8 +17227,15 @@
           "format": null,
           "enum": [
             "U1",
+            "U2",
+            "U3",
+            "U4",
+            "U5",
+            "U6",
+            "U7",
+            "U8",
+            "U9",
             "U10",
-            "U100",
             "U11",
             "U12",
             "U13",
@@ -17168,7 +17245,6 @@
             "U17",
             "U18",
             "U19",
-            "U2",
             "U20",
             "U21",
             "U22",
@@ -17179,7 +17255,6 @@
             "U27",
             "U28",
             "U29",
-            "U3",
             "U30",
             "U31",
             "U32",
@@ -17190,7 +17265,6 @@
             "U37",
             "U38",
             "U39",
-            "U4",
             "U40",
             "U41",
             "U42",
@@ -17201,7 +17275,6 @@
             "U47",
             "U48",
             "U49",
-            "U5",
             "U50",
             "U51",
             "U52",
@@ -17212,7 +17285,6 @@
             "U57",
             "U58",
             "U59",
-            "U6",
             "U60",
             "U61",
             "U62",
@@ -17223,7 +17295,6 @@
             "U67",
             "U68",
             "U69",
-            "U7",
             "U70",
             "U71",
             "U72",
@@ -17234,7 +17305,6 @@
             "U77",
             "U78",
             "U79",
-            "U8",
             "U80",
             "U81",
             "U82",
@@ -17245,7 +17315,6 @@
             "U87",
             "U88",
             "U89",
-            "U9",
             "U90",
             "U91",
             "U92",
@@ -17255,7 +17324,8 @@
             "U96",
             "U97",
             "U98",
-            "U99"
+            "U99",
+            "U100"
           ],
           "enumDescriptions": [
             "",
@@ -17369,7 +17439,7 @@
     },
     "UserProfile": {
       "id": "UserProfile",
-      "description": "A UserProfile resource lets you list all DFA user profiles that are associated with a Google user account. The profile_id needs to be specified in other API requests. ",
+      "description": "A UserProfile resource lets you list all DFA user profiles that are associated with a Google user account. The profile_id needs to be specified in other API requests. ",
       "type": "object",
       "format": null,
       "enum": [],
@@ -17610,11 +17680,11 @@
           "type": "string",
           "format": null,
           "enum": [
-            "ACCOUNT_ALWAYS",
-            "ACCOUNT_BY_DEFAULT",
             "NOT_AVAILABLE_BY_DEFAULT",
-            "SUBACCOUNT_AND_ACCOUNT_ALWAYS",
-            "SUBACCOUNT_AND_ACCOUNT_BY_DEFAULT"
+            "ACCOUNT_BY_DEFAULT",
+            "SUBACCOUNT_AND_ACCOUNT_BY_DEFAULT",
+            "ACCOUNT_ALWAYS",
+            "SUBACCOUNT_AND_ACCOUNT_ALWAYS"
           ],
           "enumDescriptions": [
             "",
@@ -17839,10 +17909,10 @@
           "format": null,
           "enum": [
             "FLV",
-            "M3U8",
-            "MP4",
             "THREEGPP",
-            "WEBM"
+            "MP4",
+            "WEBM",
+            "M3U8"
           ],
           "enumDescriptions": [
             "",
@@ -18534,7 +18604,7 @@
           "description": "Updates an existing account user profile. This method supports patch semantics.",
           "parameters": {
             "id": {
-              "description": "User profile ID.",
+              "description": "AccountUserProfile ID.",
               "default": null,
               "location": "query",
               "required": true,
@@ -19100,12 +19170,12 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "APP",
-                "APP_INTERSTITIAL",
                 "DISPLAY",
                 "DISPLAY_INTERSTITIAL",
-                "IN_STREAM_AUDIO",
-                "IN_STREAM_VIDEO"
+                "APP",
+                "APP_INTERSTITIAL",
+                "IN_STREAM_VIDEO",
+                "IN_STREAM_AUDIO"
               ],
               "enumDescriptions": [
                 "",
@@ -19378,12 +19448,14 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "AD_SERVING_CLICK_TRACKER",
-                "AD_SERVING_DEFAULT_AD",
                 "AD_SERVING_STANDARD_AD",
-                "AD_SERVING_TRACKING"
+                "AD_SERVING_DEFAULT_AD",
+                "AD_SERVING_CLICK_TRACKER",
+                "AD_SERVING_TRACKING",
+                "AD_SERVING_BRAND_SAFE_AD"
               ],
               "enumDescriptions": [
+                "",
                 "",
                 "",
                 "",
@@ -19787,7 +19859,7 @@
           "description": "Updates an existing advertiser group. This method supports patch semantics.",
           "parameters": {
             "id": {
-              "description": "Advertiser group ID.",
+              "description": "AdvertiserGroup ID.",
               "default": null,
               "location": "query",
               "required": true,
@@ -20162,10 +20234,10 @@
           "id": "dfareporting.advertiserLandingPages.patch",
           "path": "userprofiles/{profileId}/advertiserLandingPages",
           "httpMethod": "PATCH",
-          "description": "Updates an existing landing page. This method supports patch semantics.",
+          "description": "Updates an existing advertiser landing page. This method supports patch semantics.",
           "parameters": {
             "id": {
-              "description": "Landing page ID.",
+              "description": "LandingPage ID.",
               "default": null,
               "location": "query",
               "required": true,
@@ -20466,7 +20538,7 @@
               "repeated": false
             },
             "searchString": {
-              "description": "Allows searching for objects by name or ID. Wildcards (*) are allowed. For example, \"advertiser*2015\" will return objects with names like \"advertiser June 2015\", \"advertiser April 2015\", or simply \"advertiser 2015\". Most of the searches also add wildcards implicitly at the start and the end of the search string. For example, a search string of \"advertiser\" will match objects with name \"my advertiser\", \"advertiser 2015\", or simply \"advertiser\".",
+              "description": "Allows searching for objects by name or ID. Wildcards (*) are allowed. For example, \"advertiser*2015\" will return objects with names like \"advertiser June 2015\", \"advertiser April 2015\", or simply \"advertiser 2015\". Most of the searches also add wildcards implicitly at the start and the end of the search string. For example, a search string of \"advertiser\" will match objects with name \"my advertiser\", \"advertiser 2015\", or simply \"advertiser\" .",
               "default": null,
               "location": "query",
               "required": false,
@@ -21358,23 +21430,23 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "ACTION_ADD",
-                "ACTION_ASSIGN",
-                "ACTION_ASSOCIATE",
                 "ACTION_CREATE",
+                "ACTION_UPDATE",
                 "ACTION_DELETE",
-                "ACTION_DISABLE",
-                "ACTION_EMAIL_TAGS",
                 "ACTION_ENABLE",
-                "ACTION_LINK",
-                "ACTION_MARK_AS_DEFAULT",
-                "ACTION_PUSH",
+                "ACTION_DISABLE",
+                "ACTION_ADD",
                 "ACTION_REMOVE",
-                "ACTION_SEND",
-                "ACTION_SHARE",
+                "ACTION_MARK_AS_DEFAULT",
+                "ACTION_ASSOCIATE",
+                "ACTION_ASSIGN",
                 "ACTION_UNASSIGN",
+                "ACTION_SEND",
+                "ACTION_LINK",
                 "ACTION_UNLINK",
-                "ACTION_UPDATE"
+                "ACTION_PUSH",
+                "ACTION_EMAIL_TAGS",
+                "ACTION_SHARE"
               ],
               "enumDescriptions": [
                 "",
@@ -21478,46 +21550,46 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "OBJECT_ACCOUNT",
-                "OBJECT_ACCOUNT_BILLING_FEATURE",
-                "OBJECT_AD",
                 "OBJECT_ADVERTISER",
+                "OBJECT_FLOODLIGHT_CONFIGURATION",
+                "OBJECT_AD",
+                "OBJECT_FLOODLIGHT_ACTVITY",
+                "OBJECT_CAMPAIGN",
+                "OBJECT_FLOODLIGHT_ACTIVITY_GROUP",
+                "OBJECT_CREATIVE",
+                "OBJECT_PLACEMENT",
+                "OBJECT_DFA_SITE",
+                "OBJECT_USER_ROLE",
+                "OBJECT_USER_PROFILE",
                 "OBJECT_ADVERTISER_GROUP",
+                "OBJECT_ACCOUNT",
+                "OBJECT_SUBACCOUNT",
+                "OBJECT_RICHMEDIA_CREATIVE",
+                "OBJECT_INSTREAM_CREATIVE",
+                "OBJECT_MEDIA_ORDER",
+                "OBJECT_CONTENT_CATEGORY",
+                "OBJECT_PLACEMENT_STRATEGY",
+                "OBJECT_SD_SITE",
+                "OBJECT_SIZE",
+                "OBJECT_CREATIVE_GROUP",
+                "OBJECT_CREATIVE_ASSET",
+                "OBJECT_USER_PROFILE_FILTER",
+                "OBJECT_LANDING_PAGE",
+                "OBJECT_CREATIVE_FIELD",
+                "OBJECT_REMARKETING_LIST",
+                "OBJECT_PROVIDED_LIST_CLIENT",
+                "OBJECT_EVENT_TAG",
+                "OBJECT_CREATIVE_BUNDLE",
                 "OBJECT_BILLING_ACCOUNT_GROUP",
                 "OBJECT_BILLING_FEATURE",
+                "OBJECT_RATE_CARD",
+                "OBJECT_ACCOUNT_BILLING_FEATURE",
                 "OBJECT_BILLING_MINIMUM_FEE",
                 "OBJECT_BILLING_PROFILE",
-                "OBJECT_CAMPAIGN",
-                "OBJECT_CONTENT_CATEGORY",
-                "OBJECT_CREATIVE",
-                "OBJECT_CREATIVE_ASSET",
-                "OBJECT_CREATIVE_BUNDLE",
-                "OBJECT_CREATIVE_FIELD",
-                "OBJECT_CREATIVE_GROUP",
-                "OBJECT_DFA_SITE",
-                "OBJECT_EVENT_TAG",
-                "OBJECT_FLOODLIGHT_ACTIVITY_GROUP",
-                "OBJECT_FLOODLIGHT_ACTVITY",
-                "OBJECT_FLOODLIGHT_CONFIGURATION",
-                "OBJECT_FLOODLIGHT_DV360_LINK",
-                "OBJECT_INSTREAM_CREATIVE",
-                "OBJECT_LANDING_PAGE",
-                "OBJECT_MEDIA_ORDER",
-                "OBJECT_PLACEMENT",
-                "OBJECT_PLACEMENT_STRATEGY",
                 "OBJECT_PLAYSTORE_LINK",
-                "OBJECT_PROVIDED_LIST_CLIENT",
-                "OBJECT_RATE_CARD",
-                "OBJECT_REMARKETING_LIST",
-                "OBJECT_RICHMEDIA_CREATIVE",
-                "OBJECT_SD_SITE",
-                "OBJECT_SEARCH_LIFT_STUDY",
-                "OBJECT_SIZE",
-                "OBJECT_SUBACCOUNT",
                 "OBJECT_TARGETING_TEMPLATE",
-                "OBJECT_USER_PROFILE",
-                "OBJECT_USER_PROFILE_FILTER",
-                "OBJECT_USER_ROLE"
+                "OBJECT_SEARCH_LIFT_STUDY",
+                "OBJECT_FLOODLIGHT_DV360_LINK"
               ],
               "enumDescriptions": [
                 "",
@@ -22114,7 +22186,7 @@
           "description": "Updates an existing content category. This method supports patch semantics.",
           "parameters": {
             "id": {
-              "description": "Content category ID.",
+              "description": "ContentCategory ID.",
               "default": null,
               "location": "query",
               "required": true,
@@ -22438,16 +22510,13 @@
             "accept": [
               "*/*"
             ],
-            "maxSize": "1024MB",
+            "maxSize": "1073741824",
             "protocols": {
               "simple": {
                 "multipart": true,
                 "path": "/upload/dfareporting/v3.3/userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets"
               },
-              "resumable": {
-                "multipart": true,
-                "path": "/resumable/upload/dfareporting/v3.3/userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets"
-              }
+              "resumable": null
             }
           }
         }
@@ -22797,7 +22866,7 @@
           "description": "Updates an existing creative field value. This method supports patch semantics.",
           "parameters": {
             "creativeFieldId": {
-              "description": "Creative field ID for this creative field value.",
+              "description": "CreativeField ID.",
               "default": null,
               "location": "path",
               "required": true,
@@ -22811,7 +22880,7 @@
               "repeated": false
             },
             "id": {
-              "description": "Creative Field Value ID",
+              "description": "CreativeFieldValue ID.",
               "default": null,
               "location": "query",
               "required": true,
@@ -23213,7 +23282,7 @@
           "description": "Updates an existing creative field. This method supports patch semantics.",
           "parameters": {
             "id": {
-              "description": "Creative Field ID",
+              "description": "CreativeField ID.",
               "default": null,
               "location": "query",
               "required": true,
@@ -23563,7 +23632,7 @@
           "description": "Updates an existing creative group. This method supports patch semantics.",
           "parameters": {
             "id": {
-              "description": "Creative group ID.",
+              "description": "CreativeGroup ID.",
               "default": null,
               "location": "query",
               "required": true,
@@ -23998,31 +24067,31 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO",
-                "CUSTOM_DISPLAY",
-                "CUSTOM_DISPLAY_INTERSTITIAL",
-                "DISPLAY",
-                "DISPLAY_IMAGE_GALLERY",
-                "DISPLAY_REDIRECT",
-                "FLASH_INPAGE",
-                "HTML5_BANNER",
                 "IMAGE",
-                "INSTREAM_AUDIO",
-                "INSTREAM_VIDEO",
-                "INSTREAM_VIDEO_REDIRECT",
+                "DISPLAY_REDIRECT",
+                "CUSTOM_DISPLAY",
                 "INTERNAL_REDIRECT",
+                "CUSTOM_DISPLAY_INTERSTITIAL",
                 "INTERSTITIAL_INTERNAL_REDIRECT",
+                "TRACKING_TEXT",
                 "RICH_MEDIA_DISPLAY_BANNER",
+                "RICH_MEDIA_INPAGE_FLOATING",
+                "RICH_MEDIA_IM_EXPAND",
                 "RICH_MEDIA_DISPLAY_EXPANDING",
                 "RICH_MEDIA_DISPLAY_INTERSTITIAL",
                 "RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL",
-                "RICH_MEDIA_IM_EXPAND",
-                "RICH_MEDIA_INPAGE_FLOATING",
                 "RICH_MEDIA_MOBILE_IN_APP",
-                "RICH_MEDIA_PEEL_DOWN",
-                "TRACKING_TEXT",
+                "FLASH_INPAGE",
+                "INSTREAM_VIDEO",
                 "VPAID_LINEAR_VIDEO",
-                "VPAID_NON_LINEAR_VIDEO"
+                "VPAID_NON_LINEAR_VIDEO",
+                "INSTREAM_VIDEO_REDIRECT",
+                "RICH_MEDIA_PEEL_DOWN",
+                "HTML5_BANNER",
+                "DISPLAY",
+                "DISPLAY_IMAGE_GALLERY",
+                "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO",
+                "INSTREAM_AUDIO"
               ],
               "enumDescriptions": [
                 "",
@@ -24203,7 +24272,7 @@
               "repeated": false
             },
             "profileId": {
-              "description": "The DFA user profile ID.",
+              "description": "The Campaign Manager 360 user profile ID.",
               "default": null,
               "location": "path",
               "required": true,
@@ -24584,8 +24653,8 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "OBJECT_AD",
                 "OBJECT_ADVERTISER",
+                "OBJECT_AD",
                 "OBJECT_CREATIVE",
                 "OBJECT_PLACEMENT"
               ],
@@ -24727,8 +24796,8 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "OBJECT_AD",
                 "OBJECT_ADVERTISER",
+                "OBJECT_AD",
                 "OBJECT_CREATIVE",
                 "OBJECT_PLACEMENT"
               ],
@@ -25004,9 +25073,9 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "CLICK_THROUGH_EVENT_TAG",
                 "IMPRESSION_IMAGE_EVENT_TAG",
-                "IMPRESSION_JAVASCRIPT_EVENT_TAG"
+                "IMPRESSION_JAVASCRIPT_EVENT_TAG",
+                "CLICK_THROUGH_EVENT_TAG"
               ],
               "enumDescriptions": [
                 "",
@@ -25121,7 +25190,7 @@
           "description": "Updates an existing event tag. This method supports patch semantics.",
           "parameters": {
             "id": {
-              "description": "Event tag ID.",
+              "description": "EventTag ID.",
               "default": null,
               "location": "query",
               "required": true,
@@ -25299,7 +25368,7 @@
               "repeated": false
             },
             "profileId": {
-              "description": "The DFA profile ID.",
+              "description": "The Campaign Manager 360 user profile ID.",
               "default": null,
               "location": "path",
               "required": true,
@@ -25832,7 +25901,7 @@
           "description": "Updates an existing floodlight activity. This method supports patch semantics.",
           "parameters": {
             "id": {
-              "description": "Floodlight activity ID.",
+              "description": "FloodlightActivity ID.",
               "default": null,
               "location": "query",
               "required": true,
@@ -26202,7 +26271,7 @@
           "description": "Updates an existing floodlight activity group. This method supports patch semantics.",
           "parameters": {
             "id": {
-              "description": "Floodlight activity Group ID.",
+              "description": "FloodlightActivityGroup ID.",
               "default": null,
               "location": "query",
               "required": true,
@@ -26403,7 +26472,7 @@
           "description": "Updates an existing floodlight configuration. This method supports patch semantics.",
           "parameters": {
             "id": {
-              "description": "Floodlight configuration ID.",
+              "description": "FloodlightConfiguration ID.",
               "default": null,
               "location": "query",
               "required": true,
@@ -26730,8 +26799,8 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "PLANNING_PLACEMENT_TYPE_CREDIT",
-                "PLANNING_PLACEMENT_TYPE_REGULAR"
+                "PLANNING_PLACEMENT_TYPE_REGULAR",
+                "PLANNING_PLACEMENT_TYPE_CREDIT"
               ],
               "enumDescriptions": [
                 "",
@@ -26915,9 +26984,9 @@
               "maximum": null,
               "pattern": null,
               "enum": [
+                "UNKNOWN",
                 "APPLE_APP_STORE",
-                "GOOGLE_PLAY_STORE",
-                "UNKNOWN"
+                "GOOGLE_PLAY_STORE"
               ],
               "enumDescriptions": [
                 "",
@@ -28106,12 +28175,12 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "PRICING_TYPE_CPA",
-                "PRICING_TYPE_CPC",
                 "PRICING_TYPE_CPM",
-                "PRICING_TYPE_CPM_ACTIVEVIEW",
+                "PRICING_TYPE_CPC",
+                "PRICING_TYPE_CPA",
+                "PRICING_TYPE_FLAT_RATE_IMPRESSIONS",
                 "PRICING_TYPE_FLAT_RATE_CLICKS",
-                "PRICING_TYPE_FLAT_RATE_IMPRESSIONS"
+                "PRICING_TYPE_CPM_ACTIVEVIEW"
               ],
               "enumDescriptions": [
                 "",
@@ -28229,7 +28298,7 @@
           "description": "Updates an existing placement group. This method supports patch semantics.",
           "parameters": {
             "id": {
-              "description": "Placement group ID.",
+              "description": "PlacementGroup ID.",
               "default": null,
               "location": "query",
               "required": true,
@@ -28601,7 +28670,7 @@
           "description": "Updates an existing placement strategy. This method supports patch semantics.",
           "parameters": {
             "id": {
-              "description": "Placement strategy ID.",
+              "description": "PlacementStrategy ID.",
               "default": null,
               "location": "query",
               "required": true,
@@ -28741,7 +28810,7 @@
               "repeated": false
             },
             "tagFormats": {
-              "description": "Tag formats to generate for these placements.\n\nNote: PLACEMENT_TAG_STANDARD can only be generated for 1x1 placements.",
+              "description": "Tag formats to generate for these placements. *Note:* PLACEMENT_TAG_STANDARD can only be generated for 1x1 placements.",
               "default": null,
               "location": "query",
               "required": false,
@@ -28751,25 +28820,25 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "PLACEMENT_TAG_CLICK_COMMANDS",
-                "PLACEMENT_TAG_IFRAME_ILAYER",
+                "PLACEMENT_TAG_STANDARD",
                 "PLACEMENT_TAG_IFRAME_JAVASCRIPT",
-                "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY",
-                "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH",
-                "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3",
-                "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4",
+                "PLACEMENT_TAG_IFRAME_ILAYER",
                 "PLACEMENT_TAG_INTERNAL_REDIRECT",
+                "PLACEMENT_TAG_JAVASCRIPT",
                 "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT",
-                "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY",
                 "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT",
                 "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT",
-                "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY",
-                "PLACEMENT_TAG_JAVASCRIPT",
-                "PLACEMENT_TAG_JAVASCRIPT_LEGACY",
-                "PLACEMENT_TAG_STANDARD",
+                "PLACEMENT_TAG_CLICK_COMMANDS",
+                "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH",
                 "PLACEMENT_TAG_TRACKING",
                 "PLACEMENT_TAG_TRACKING_IFRAME",
-                "PLACEMENT_TAG_TRACKING_JAVASCRIPT"
+                "PLACEMENT_TAG_TRACKING_JAVASCRIPT",
+                "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3",
+                "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY",
+                "PLACEMENT_TAG_JAVASCRIPT_LEGACY",
+                "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY",
+                "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY",
+                "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
               ],
               "enumDescriptions": [
                 "",
@@ -28961,12 +29030,12 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "APP",
-                "APP_INTERSTITIAL",
                 "DISPLAY",
                 "DISPLAY_INTERSTITIAL",
-                "IN_STREAM_AUDIO",
-                "IN_STREAM_VIDEO"
+                "APP",
+                "APP_INTERSTITIAL",
+                "IN_STREAM_VIDEO",
+                "IN_STREAM_AUDIO"
               ],
               "enumDescriptions": [
                 "",
@@ -29163,12 +29232,12 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "PRICING_TYPE_CPA",
-                "PRICING_TYPE_CPC",
                 "PRICING_TYPE_CPM",
-                "PRICING_TYPE_CPM_ACTIVEVIEW",
+                "PRICING_TYPE_CPC",
+                "PRICING_TYPE_CPA",
+                "PRICING_TYPE_FLAT_RATE_IMPRESSIONS",
                 "PRICING_TYPE_FLAT_RATE_CLICKS",
-                "PRICING_TYPE_FLAT_RATE_IMPRESSIONS"
+                "PRICING_TYPE_CPM_ACTIVEVIEW"
               ],
               "enumDescriptions": [
                 "",
@@ -29195,7 +29264,7 @@
               "repeated": false
             },
             "searchString": {
-              "description": "Allows searching for placements by name or ID. Wildcards (*) are allowed. For example, \"placement*2015\" will return placements with names like \"placement June 2015\", \"placement May 2015\", or simply \"placements 2015\". Most of the searches also add wildcards implicitly at the start and the end of the search string. For example, a search string of \"placement\" will match placements with name \"my placement\", \"placement 2015\", or simply \"placement\".",
+              "description": "Allows searching for placements by name or ID. Wildcards (*) are allowed. For example, \"placement*2015\" will return placements with names like \"placement June 2015\", \"placement May 2015\", or simply \"placements 2015\". Most of the searches also add wildcards implicitly at the start and the end of the search string. For example, a search string of \"placement\" will match placements with name \"my placement\", \"placement 2015\", or simply \"placement\" .",
               "default": null,
               "location": "query",
               "required": false,
@@ -29635,7 +29704,7 @@
           "id": "dfareporting.projects.list",
           "path": "userprofiles/{profileId}/projects",
           "httpMethod": "GET",
-          "description": "Retrieves a list of projects, possibly filtered. This method supports paging.",
+          "description": "Retrieves a list of projects, possibly filtered. This method supports paging .",
           "parameters": {
             "advertiserIds": {
               "description": "Select only projects with these advertiser IDs.",
@@ -29883,6 +29952,20 @@
           "httpMethod": "PATCH",
           "description": "Updates an existing remarketing list share. This method supports patch semantics.",
           "parameters": {
+            "id": {
+              "description": "RemarketingList ID.",
+              "default": null,
+              "location": "query",
+              "required": true,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
             "profileId": {
               "description": "User profile ID associated with this request.",
               "default": null,
@@ -29896,25 +29979,11 @@
               "enum": [],
               "enumDescriptions": [],
               "repeated": false
-            },
-            "remarketingListId": {
-              "description": "Remarketing list ID.",
-              "default": null,
-              "location": "query",
-              "required": true,
-              "type": "string",
-              "format": "int64",
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
             }
           },
           "parameterOrder": [
             "profileId",
-            "remarketingListId"
+            "id"
           ],
           "request": {
             "$ref": "RemarketingListShare"
@@ -30235,7 +30304,7 @@
           "description": "Updates an existing remarketing list. This method supports patch semantics.",
           "parameters": {
             "id": {
-              "description": "Remarketing list ID.",
+              "description": "RemarketingList ID.",
               "default": null,
               "location": "query",
               "required": true,
@@ -30335,7 +30404,7 @@
               "description": "Returns the fields that are compatible to be selected in the respective sections of a report criteria, given the fields already selected in the input report and user permissions.",
               "parameters": {
                 "profileId": {
-                  "description": "The DFA user profile ID.",
+                  "description": "The Campaign Manager 360 user profile ID.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -30393,7 +30462,7 @@
                   "repeated": false
                 },
                 "profileId": {
-                  "description": "The DFA user profile ID.",
+                  "description": "The Campaign Manager 360 user profile ID.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -30474,7 +30543,7 @@
                   "repeated": false
                 },
                 "profileId": {
-                  "description": "The DFA profile ID.",
+                  "description": "The Campaign Manager 360 user profile ID.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -30570,7 +30639,7 @@
           "description": "Deletes a report by its ID.",
           "parameters": {
             "profileId": {
-              "description": "The DFA user profile ID.",
+              "description": "The Campaign Manager 360 user profile ID.",
               "default": null,
               "location": "path",
               "required": true,
@@ -30620,7 +30689,7 @@
           "description": "Retrieves a report by its ID.",
           "parameters": {
             "profileId": {
-              "description": "The DFA user profile ID.",
+              "description": "The Campaign Manager 360 user profile ID.",
               "default": null,
               "location": "path",
               "required": true,
@@ -30672,7 +30741,7 @@
           "description": "Creates a report.",
           "parameters": {
             "profileId": {
-              "description": "The DFA user profile ID.",
+              "description": "The Campaign Manager 360 user profile ID.",
               "default": null,
               "location": "path",
               "required": true,
@@ -30739,7 +30808,7 @@
               "repeated": false
             },
             "profileId": {
-              "description": "The DFA user profile ID.",
+              "description": "The Campaign Manager 360 user profile ID.",
               "default": null,
               "location": "path",
               "required": true,
@@ -30835,7 +30904,7 @@
           "id": "dfareporting.reports.patch",
           "path": "userprofiles/{profileId}/reports/{reportId}",
           "httpMethod": "PATCH",
-          "description": "Updates a report. This method supports patch semantics.",
+          "description": "Updates an existing report. This method supports patch semantics.",
           "parameters": {
             "profileId": {
               "description": "The DFA user profile ID.",
@@ -30892,7 +30961,7 @@
           "description": "Runs a report.",
           "parameters": {
             "profileId": {
-              "description": "The DFA profile ID.",
+              "description": "The Campaign Manager 360 user profile ID.",
               "default": null,
               "location": "path",
               "required": true,
@@ -30958,7 +31027,7 @@
           "description": "Updates a report.",
           "parameters": {
             "profileId": {
-              "description": "The DFA user profile ID.",
+              "description": "The Campaign Manager 360 user profile ID.",
               "default": null,
               "location": "path",
               "required": true,
@@ -31801,7 +31870,7 @@
               "repeated": false
             },
             "searchString": {
-              "description": "Allows searching for objects by name or ID. Wildcards (*) are allowed. For example, \"subaccount*2015\" will return objects with names like \"subaccount June 2015\", \"subaccount April 2015\", or simply \"subaccount 2015\". Most of the searches also add wildcards implicitly at the start and the end of the search string. For example, a search string of \"subaccount\" will match objects with name \"my subaccount\", \"subaccount 2015\", or simply \"subaccount\".",
+              "description": "Allows searching for objects by name or ID. Wildcards (*) are allowed. For example, \"subaccount*2015\" will return objects with names like \"subaccount June 2015\", \"subaccount April 2015\", or simply \"subaccount 2015\". Most of the searches also add wildcards implicitly at the start and the end of the search string. For example, a search string of \"subaccount\" will match objects with name \"my subaccount\", \"subaccount 2015\", or simply \"subaccount\" .",
               "default": null,
               "location": "query",
               "required": false,
@@ -32419,7 +32488,7 @@
           "description": "Updates an existing targeting template. This method supports patch semantics.",
           "parameters": {
             "id": {
-              "description": "Targeting template ID.",
+              "description": "TargetingTemplate ID.",
               "default": null,
               "location": "query",
               "required": true,
@@ -32539,6 +32608,7 @@
             "$ref": "UserProfile"
           },
           "scopes": [
+            "https://www.googleapis.com/auth/ddmconversions",
             "https://www.googleapis.com/auth/dfareporting",
             "https://www.googleapis.com/auth/dfatrafficking"
           ],
@@ -32560,6 +32630,7 @@
             "$ref": "UserProfileList"
           },
           "scopes": [
+            "https://www.googleapis.com/auth/ddmconversions",
             "https://www.googleapis.com/auth/dfareporting",
             "https://www.googleapis.com/auth/dfatrafficking"
           ],
@@ -33085,7 +33156,7 @@
           "description": "Updates an existing user role. This method supports patch semantics.",
           "parameters": {
             "id": {
-              "description": "User role ID.",
+              "description": "UserRole ID.",
               "default": null,
               "location": "query",
               "required": true,

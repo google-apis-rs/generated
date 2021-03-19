@@ -1,4 +1,4 @@
-#![doc = "# Resources and Methods\n    * [activities](resources/activities/struct.ActivitiesActions.html)\n      * [*list*](resources/activities/struct.ListRequestBuilder.html)\n    * [captions](resources/captions/struct.CaptionsActions.html)\n      * [*delete*](resources/captions/struct.DeleteRequestBuilder.html), [*download*](resources/captions/struct.DownloadRequestBuilder.html), [*insert*](resources/captions/struct.InsertRequestBuilder.html), [*list*](resources/captions/struct.ListRequestBuilder.html), [*update*](resources/captions/struct.UpdateRequestBuilder.html)\n    * [channel_banners](resources/channel_banners/struct.ChannelBannersActions.html)\n      * [*insert*](resources/channel_banners/struct.InsertRequestBuilder.html)\n    * [channel_sections](resources/channel_sections/struct.ChannelSectionsActions.html)\n      * [*delete*](resources/channel_sections/struct.DeleteRequestBuilder.html), [*insert*](resources/channel_sections/struct.InsertRequestBuilder.html), [*list*](resources/channel_sections/struct.ListRequestBuilder.html), [*update*](resources/channel_sections/struct.UpdateRequestBuilder.html)\n    * [channels](resources/channels/struct.ChannelsActions.html)\n      * [*list*](resources/channels/struct.ListRequestBuilder.html), [*update*](resources/channels/struct.UpdateRequestBuilder.html)\n    * [comment_threads](resources/comment_threads/struct.CommentThreadsActions.html)\n      * [*insert*](resources/comment_threads/struct.InsertRequestBuilder.html), [*list*](resources/comment_threads/struct.ListRequestBuilder.html), [*update*](resources/comment_threads/struct.UpdateRequestBuilder.html)\n    * [comments](resources/comments/struct.CommentsActions.html)\n      * [*delete*](resources/comments/struct.DeleteRequestBuilder.html), [*insert*](resources/comments/struct.InsertRequestBuilder.html), [*list*](resources/comments/struct.ListRequestBuilder.html), [*markAsSpam*](resources/comments/struct.MarkAsSpamRequestBuilder.html), [*setModerationStatus*](resources/comments/struct.SetModerationStatusRequestBuilder.html), [*update*](resources/comments/struct.UpdateRequestBuilder.html)\n    * [guide_categories](resources/guide_categories/struct.GuideCategoriesActions.html)\n      * [*list*](resources/guide_categories/struct.ListRequestBuilder.html)\n    * [i_1_8n_languages](resources/i_1_8n_languages/struct.I18NLanguagesActions.html)\n      * [*list*](resources/i_1_8n_languages/struct.ListRequestBuilder.html)\n    * [i_1_8n_regions](resources/i_1_8n_regions/struct.I18NRegionsActions.html)\n      * [*list*](resources/i_1_8n_regions/struct.ListRequestBuilder.html)\n    * [live_broadcasts](resources/live_broadcasts/struct.LiveBroadcastsActions.html)\n      * [*bind*](resources/live_broadcasts/struct.BindRequestBuilder.html), [*control*](resources/live_broadcasts/struct.ControlRequestBuilder.html), [*delete*](resources/live_broadcasts/struct.DeleteRequestBuilder.html), [*insert*](resources/live_broadcasts/struct.InsertRequestBuilder.html), [*list*](resources/live_broadcasts/struct.ListRequestBuilder.html), [*transition*](resources/live_broadcasts/struct.TransitionRequestBuilder.html), [*update*](resources/live_broadcasts/struct.UpdateRequestBuilder.html)\n    * [live_chat_bans](resources/live_chat_bans/struct.LiveChatBansActions.html)\n      * [*delete*](resources/live_chat_bans/struct.DeleteRequestBuilder.html), [*insert*](resources/live_chat_bans/struct.InsertRequestBuilder.html)\n    * [live_chat_messages](resources/live_chat_messages/struct.LiveChatMessagesActions.html)\n      * [*delete*](resources/live_chat_messages/struct.DeleteRequestBuilder.html), [*insert*](resources/live_chat_messages/struct.InsertRequestBuilder.html), [*list*](resources/live_chat_messages/struct.ListRequestBuilder.html)\n    * [live_chat_moderators](resources/live_chat_moderators/struct.LiveChatModeratorsActions.html)\n      * [*delete*](resources/live_chat_moderators/struct.DeleteRequestBuilder.html), [*insert*](resources/live_chat_moderators/struct.InsertRequestBuilder.html), [*list*](resources/live_chat_moderators/struct.ListRequestBuilder.html)\n    * [live_streams](resources/live_streams/struct.LiveStreamsActions.html)\n      * [*delete*](resources/live_streams/struct.DeleteRequestBuilder.html), [*insert*](resources/live_streams/struct.InsertRequestBuilder.html), [*list*](resources/live_streams/struct.ListRequestBuilder.html), [*update*](resources/live_streams/struct.UpdateRequestBuilder.html)\n    * [members](resources/members/struct.MembersActions.html)\n      * [*list*](resources/members/struct.ListRequestBuilder.html)\n    * [memberships_levels](resources/memberships_levels/struct.MembershipsLevelsActions.html)\n      * [*list*](resources/memberships_levels/struct.ListRequestBuilder.html)\n    * [playlist_items](resources/playlist_items/struct.PlaylistItemsActions.html)\n      * [*delete*](resources/playlist_items/struct.DeleteRequestBuilder.html), [*insert*](resources/playlist_items/struct.InsertRequestBuilder.html), [*list*](resources/playlist_items/struct.ListRequestBuilder.html), [*update*](resources/playlist_items/struct.UpdateRequestBuilder.html)\n    * [playlists](resources/playlists/struct.PlaylistsActions.html)\n      * [*delete*](resources/playlists/struct.DeleteRequestBuilder.html), [*insert*](resources/playlists/struct.InsertRequestBuilder.html), [*list*](resources/playlists/struct.ListRequestBuilder.html), [*update*](resources/playlists/struct.UpdateRequestBuilder.html)\n    * [search](resources/search/struct.SearchActions.html)\n      * [*list*](resources/search/struct.ListRequestBuilder.html)\n    * [sponsors](resources/sponsors/struct.SponsorsActions.html)\n      * [*list*](resources/sponsors/struct.ListRequestBuilder.html)\n    * [subscriptions](resources/subscriptions/struct.SubscriptionsActions.html)\n      * [*delete*](resources/subscriptions/struct.DeleteRequestBuilder.html), [*insert*](resources/subscriptions/struct.InsertRequestBuilder.html), [*list*](resources/subscriptions/struct.ListRequestBuilder.html)\n    * [super_chat_events](resources/super_chat_events/struct.SuperChatEventsActions.html)\n      * [*list*](resources/super_chat_events/struct.ListRequestBuilder.html)\n    * [thumbnails](resources/thumbnails/struct.ThumbnailsActions.html)\n      * [*set*](resources/thumbnails/struct.SetRequestBuilder.html)\n    * [video_abuse_report_reasons](resources/video_abuse_report_reasons/struct.VideoAbuseReportReasonsActions.html)\n      * [*list*](resources/video_abuse_report_reasons/struct.ListRequestBuilder.html)\n    * [video_categories](resources/video_categories/struct.VideoCategoriesActions.html)\n      * [*list*](resources/video_categories/struct.ListRequestBuilder.html)\n    * [videos](resources/videos/struct.VideosActions.html)\n      * [*delete*](resources/videos/struct.DeleteRequestBuilder.html), [*getRating*](resources/videos/struct.GetRatingRequestBuilder.html), [*insert*](resources/videos/struct.InsertRequestBuilder.html), [*list*](resources/videos/struct.ListRequestBuilder.html), [*rate*](resources/videos/struct.RateRequestBuilder.html), [*reportAbuse*](resources/videos/struct.ReportAbuseRequestBuilder.html), [*update*](resources/videos/struct.UpdateRequestBuilder.html)\n    * [watermarks](resources/watermarks/struct.WatermarksActions.html)\n      * [*set*](resources/watermarks/struct.SetRequestBuilder.html), [*unset*](resources/watermarks/struct.UnsetRequestBuilder.html)\n    * [youtube](resources/youtube/struct.YoutubeActions.html)\n      * [v_3](resources/youtube/v_3/struct.V3Actions.html)\n        * [tests](resources/youtube/v_3/tests/struct.TestsActions.html)\n          * [*create*](resources/youtube/v_3/tests/struct.CreateRequestBuilder.html)\n"]
+#![doc = "# Resources and Methods\n    * [abuse_reports](resources/abuse_reports/struct.AbuseReportsActions.html)\n      * [*insert*](resources/abuse_reports/struct.InsertRequestBuilder.html)\n    * [activities](resources/activities/struct.ActivitiesActions.html)\n      * [*list*](resources/activities/struct.ListRequestBuilder.html)\n    * [captions](resources/captions/struct.CaptionsActions.html)\n      * [*delete*](resources/captions/struct.DeleteRequestBuilder.html), [*download*](resources/captions/struct.DownloadRequestBuilder.html), [*insert*](resources/captions/struct.InsertRequestBuilder.html), [*list*](resources/captions/struct.ListRequestBuilder.html), [*update*](resources/captions/struct.UpdateRequestBuilder.html)\n    * [channel_banners](resources/channel_banners/struct.ChannelBannersActions.html)\n      * [*insert*](resources/channel_banners/struct.InsertRequestBuilder.html)\n    * [channel_sections](resources/channel_sections/struct.ChannelSectionsActions.html)\n      * [*delete*](resources/channel_sections/struct.DeleteRequestBuilder.html), [*insert*](resources/channel_sections/struct.InsertRequestBuilder.html), [*list*](resources/channel_sections/struct.ListRequestBuilder.html), [*update*](resources/channel_sections/struct.UpdateRequestBuilder.html)\n    * [channels](resources/channels/struct.ChannelsActions.html)\n      * [*list*](resources/channels/struct.ListRequestBuilder.html), [*update*](resources/channels/struct.UpdateRequestBuilder.html)\n    * [comment_threads](resources/comment_threads/struct.CommentThreadsActions.html)\n      * [*insert*](resources/comment_threads/struct.InsertRequestBuilder.html), [*list*](resources/comment_threads/struct.ListRequestBuilder.html), [*update*](resources/comment_threads/struct.UpdateRequestBuilder.html)\n    * [comments](resources/comments/struct.CommentsActions.html)\n      * [*delete*](resources/comments/struct.DeleteRequestBuilder.html), [*insert*](resources/comments/struct.InsertRequestBuilder.html), [*list*](resources/comments/struct.ListRequestBuilder.html), [*markAsSpam*](resources/comments/struct.MarkAsSpamRequestBuilder.html), [*setModerationStatus*](resources/comments/struct.SetModerationStatusRequestBuilder.html), [*update*](resources/comments/struct.UpdateRequestBuilder.html)\n    * [i_1_8n_languages](resources/i_1_8n_languages/struct.I18NLanguagesActions.html)\n      * [*list*](resources/i_1_8n_languages/struct.ListRequestBuilder.html)\n    * [i_1_8n_regions](resources/i_1_8n_regions/struct.I18NRegionsActions.html)\n      * [*list*](resources/i_1_8n_regions/struct.ListRequestBuilder.html)\n    * [live_broadcasts](resources/live_broadcasts/struct.LiveBroadcastsActions.html)\n      * [*bind*](resources/live_broadcasts/struct.BindRequestBuilder.html), [*delete*](resources/live_broadcasts/struct.DeleteRequestBuilder.html), [*insert*](resources/live_broadcasts/struct.InsertRequestBuilder.html), [*list*](resources/live_broadcasts/struct.ListRequestBuilder.html), [*transition*](resources/live_broadcasts/struct.TransitionRequestBuilder.html), [*update*](resources/live_broadcasts/struct.UpdateRequestBuilder.html)\n    * [live_chat_bans](resources/live_chat_bans/struct.LiveChatBansActions.html)\n      * [*delete*](resources/live_chat_bans/struct.DeleteRequestBuilder.html), [*insert*](resources/live_chat_bans/struct.InsertRequestBuilder.html)\n    * [live_chat_messages](resources/live_chat_messages/struct.LiveChatMessagesActions.html)\n      * [*delete*](resources/live_chat_messages/struct.DeleteRequestBuilder.html), [*insert*](resources/live_chat_messages/struct.InsertRequestBuilder.html), [*list*](resources/live_chat_messages/struct.ListRequestBuilder.html)\n    * [live_chat_moderators](resources/live_chat_moderators/struct.LiveChatModeratorsActions.html)\n      * [*delete*](resources/live_chat_moderators/struct.DeleteRequestBuilder.html), [*insert*](resources/live_chat_moderators/struct.InsertRequestBuilder.html), [*list*](resources/live_chat_moderators/struct.ListRequestBuilder.html)\n    * [live_streams](resources/live_streams/struct.LiveStreamsActions.html)\n      * [*delete*](resources/live_streams/struct.DeleteRequestBuilder.html), [*insert*](resources/live_streams/struct.InsertRequestBuilder.html), [*list*](resources/live_streams/struct.ListRequestBuilder.html), [*update*](resources/live_streams/struct.UpdateRequestBuilder.html)\n    * [members](resources/members/struct.MembersActions.html)\n      * [*list*](resources/members/struct.ListRequestBuilder.html)\n    * [memberships_levels](resources/memberships_levels/struct.MembershipsLevelsActions.html)\n      * [*list*](resources/memberships_levels/struct.ListRequestBuilder.html)\n    * [playlist_items](resources/playlist_items/struct.PlaylistItemsActions.html)\n      * [*delete*](resources/playlist_items/struct.DeleteRequestBuilder.html), [*insert*](resources/playlist_items/struct.InsertRequestBuilder.html), [*list*](resources/playlist_items/struct.ListRequestBuilder.html), [*update*](resources/playlist_items/struct.UpdateRequestBuilder.html)\n    * [playlists](resources/playlists/struct.PlaylistsActions.html)\n      * [*delete*](resources/playlists/struct.DeleteRequestBuilder.html), [*insert*](resources/playlists/struct.InsertRequestBuilder.html), [*list*](resources/playlists/struct.ListRequestBuilder.html), [*update*](resources/playlists/struct.UpdateRequestBuilder.html)\n    * [search](resources/search/struct.SearchActions.html)\n      * [*list*](resources/search/struct.ListRequestBuilder.html)\n    * [subscriptions](resources/subscriptions/struct.SubscriptionsActions.html)\n      * [*delete*](resources/subscriptions/struct.DeleteRequestBuilder.html), [*insert*](resources/subscriptions/struct.InsertRequestBuilder.html), [*list*](resources/subscriptions/struct.ListRequestBuilder.html)\n    * [super_chat_events](resources/super_chat_events/struct.SuperChatEventsActions.html)\n      * [*list*](resources/super_chat_events/struct.ListRequestBuilder.html)\n    * [tests](resources/tests/struct.TestsActions.html)\n      * [*insert*](resources/tests/struct.InsertRequestBuilder.html)\n    * [third_party_links](resources/third_party_links/struct.ThirdPartyLinksActions.html)\n      * [*delete*](resources/third_party_links/struct.DeleteRequestBuilder.html), [*insert*](resources/third_party_links/struct.InsertRequestBuilder.html), [*list*](resources/third_party_links/struct.ListRequestBuilder.html), [*update*](resources/third_party_links/struct.UpdateRequestBuilder.html)\n    * [thumbnails](resources/thumbnails/struct.ThumbnailsActions.html)\n      * [*set*](resources/thumbnails/struct.SetRequestBuilder.html)\n    * [video_abuse_report_reasons](resources/video_abuse_report_reasons/struct.VideoAbuseReportReasonsActions.html)\n      * [*list*](resources/video_abuse_report_reasons/struct.ListRequestBuilder.html)\n    * [video_categories](resources/video_categories/struct.VideoCategoriesActions.html)\n      * [*list*](resources/video_categories/struct.ListRequestBuilder.html)\n    * [videos](resources/videos/struct.VideosActions.html)\n      * [*delete*](resources/videos/struct.DeleteRequestBuilder.html), [*getRating*](resources/videos/struct.GetRatingRequestBuilder.html), [*insert*](resources/videos/struct.InsertRequestBuilder.html), [*list*](resources/videos/struct.ListRequestBuilder.html), [*rate*](resources/videos/struct.RateRequestBuilder.html), [*reportAbuse*](resources/videos/struct.ReportAbuseRequestBuilder.html), [*update*](resources/videos/struct.UpdateRequestBuilder.html)\n    * [watermarks](resources/watermarks/struct.WatermarksActions.html)\n      * [*set*](resources/watermarks/struct.SetRequestBuilder.html), [*unset*](resources/watermarks/struct.UnsetRequestBuilder.html)\n"]
 pub mod scopes {
     #[doc = "Manage your YouTube account\n\n`https://www.googleapis.com/auth/youtube`"]
     pub const YOUTUBE: &str = "https://www.googleapis.com/auth/youtube";
@@ -30,15 +30,93 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct AbuseReport {
+        #[serde(
+            rename = "abuseTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub abuse_types: ::std::option::Option<Vec<crate::schemas::AbuseType>>,
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub description: ::std::option::Option<String>,
+        #[serde(
+            rename = "relatedEntities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub related_entities: ::std::option::Option<Vec<crate::schemas::RelatedEntity>>,
+        #[serde(
+            rename = "subject",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub subject: ::std::option::Option<crate::schemas::Entity>,
+    }
+    impl ::google_field_selector::FieldSelector for AbuseReport {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for AbuseReport {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AbuseType {
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub id: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for AbuseType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for AbuseType {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct AccessPolicy {
-        #[doc = "The value of <code>allowed</code> indicates whether the access to the\npolicy is allowed or denied by default."]
+        #[doc = "The value of allowed indicates whether the access to the policy is allowed or denied by default."]
         #[serde(
             rename = "allowed",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub allowed: ::std::option::Option<bool>,
-        #[doc = "A list of region codes that identify countries where the default policy do\nnot apply."]
+        #[doc = "A list of region codes that identify countries where the default policy do not apply."]
         #[serde(
             rename = "exception",
             default,
@@ -69,7 +147,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Activity {
-        #[doc = "The <code>contentDetails</code> object contains information about the\ncontent associated with the activity. For example, if the\n<code>snippet.type</code> value is <code>videoRated</code>, then the\n<code>contentDetails</code> object's content identifies the rated video."]
+        #[doc = "The contentDetails object contains information about the content associated with the activity. For example, if the snippet.type value is videoRated, then the contentDetails object's content identifies the rated video."]
         #[serde(
             rename = "contentDetails",
             default,
@@ -90,14 +168,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#activity\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#activity\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>snippet</code> object contains basic details about the\nactivity, including the activity's type and group ID."]
+        #[doc = "The snippet object contains basic details about the activity, including the activity's type and group ID."]
         #[serde(
             rename = "snippet",
             default,
@@ -128,42 +206,42 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ActivityContentDetails {
-        #[doc = "The <code>bulletin</code> object contains details about a channel\nbulletin post. This object is only present if the\n<code>snippet.type</code> is <code>bulletin</code>."]
+        #[doc = "The bulletin object contains details about a channel bulletin post. This object is only present if the snippet.type is bulletin."]
         #[serde(
             rename = "bulletin",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bulletin: ::std::option::Option<crate::schemas::ActivityContentDetailsBulletin>,
-        #[doc = "The <code>channelItem</code> object contains details about a resource\nwhich was added to a channel. This property is only present if the\n<code>snippet.type</code> is <code>channelItem</code>."]
+        #[doc = "The channelItem object contains details about a resource which was added to a channel. This property is only present if the snippet.type is channelItem."]
         #[serde(
             rename = "channelItem",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub channel_item: ::std::option::Option<crate::schemas::ActivityContentDetailsChannelItem>,
-        #[doc = "The <code>comment</code> object contains information about a resource\nthat received a comment. This property is only present if the\n<code>snippet.type</code> is <code>comment</code>."]
+        #[doc = "The comment object contains information about a resource that received a comment. This property is only present if the snippet.type is comment."]
         #[serde(
             rename = "comment",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub comment: ::std::option::Option<crate::schemas::ActivityContentDetailsComment>,
-        #[doc = "The <code>favorite</code> object contains information about a video that\nwas marked as a favorite video. This property is only present if the\n<code>snippet.type</code> is <code>favorite</code>."]
+        #[doc = "The favorite object contains information about a video that was marked as a favorite video. This property is only present if the snippet.type is favorite."]
         #[serde(
             rename = "favorite",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub favorite: ::std::option::Option<crate::schemas::ActivityContentDetailsFavorite>,
-        #[doc = "The <code>like</code> object contains information about a resource that\nreceived a positive (like) rating. This property is only present if\nthe <code>snippet.type</code> is <code>like</code>."]
+        #[doc = "The like object contains information about a resource that received a positive (like) rating. This property is only present if the snippet.type is like."]
         #[serde(
             rename = "like",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub like: ::std::option::Option<crate::schemas::ActivityContentDetailsLike>,
-        #[doc = "The <code>playlistItem</code> object contains information about a\nnew playlist item. This property is only present if the\n<code>snippet.type</code> is <code>playlistItem</code>."]
+        #[doc = "The playlistItem object contains information about a new playlist item. This property is only present if the snippet.type is playlistItem."]
         #[serde(
             rename = "playlistItem",
             default,
@@ -171,7 +249,7 @@ pub mod schemas {
         )]
         pub playlist_item:
             ::std::option::Option<crate::schemas::ActivityContentDetailsPlaylistItem>,
-        #[doc = "The <code>promotedItem</code> object contains details about a resource\nwhich is being promoted. This property is only present if the\n<code>snippet.type</code> is <code>promotedItem</code>."]
+        #[doc = "The promotedItem object contains details about a resource which is being promoted. This property is only present if the snippet.type is promotedItem."]
         #[serde(
             rename = "promotedItem",
             default,
@@ -179,7 +257,7 @@ pub mod schemas {
         )]
         pub promoted_item:
             ::std::option::Option<crate::schemas::ActivityContentDetailsPromotedItem>,
-        #[doc = "The <code>recommendation</code> object contains information about a\nrecommended resource. This property is only present if the\n<code>snippet.type</code> is <code>recommendation</code>."]
+        #[doc = "The recommendation object contains information about a recommended resource. This property is only present if the snippet.type is recommendation."]
         #[serde(
             rename = "recommendation",
             default,
@@ -187,21 +265,21 @@ pub mod schemas {
         )]
         pub recommendation:
             ::std::option::Option<crate::schemas::ActivityContentDetailsRecommendation>,
-        #[doc = "The <code>social</code> object contains details about a social network\npost. This property is only present if the <code>snippet.type</code>\nis <code>social</code>."]
+        #[doc = "The social object contains details about a social network post. This property is only present if the snippet.type is social."]
         #[serde(
             rename = "social",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub social: ::std::option::Option<crate::schemas::ActivityContentDetailsSocial>,
-        #[doc = "The <code>subscription</code> object contains information about a\nchannel that a user subscribed to. This property is only\npresent if the <code>snippet.type</code> is <code>subscription</code>."]
+        #[doc = "The subscription object contains information about a channel that a user subscribed to. This property is only present if the snippet.type is subscription."]
         #[serde(
             rename = "subscription",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub subscription: ::std::option::Option<crate::schemas::ActivityContentDetailsSubscription>,
-        #[doc = "The <code>upload</code> object contains information about the uploaded\nvideo. This property is only present if the <code>snippet.type</code>\nis <code>upload</code>."]
+        #[doc = "The upload object contains information about the uploaded video. This property is only present if the snippet.type is upload."]
         #[serde(
             rename = "upload",
             default,
@@ -232,7 +310,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ActivityContentDetailsBulletin {
-        #[doc = "The <code>resourceId</code> object contains information that\nidentifies the resource associated with a bulletin post.\n@mutable youtube.activities.insert"]
+        #[doc = "The resourceId object contains information that identifies the resource associated with a bulletin post. @mutable youtube.activities.insert"]
         #[serde(
             rename = "resourceId",
             default,
@@ -263,7 +341,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ActivityContentDetailsChannelItem {
-        #[doc = "The <code>resourceId</code> object contains information that\nidentifies the resource that was added to the channel."]
+        #[doc = "The resourceId object contains information that identifies the resource that was added to the channel."]
         #[serde(
             rename = "resourceId",
             default,
@@ -294,7 +372,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ActivityContentDetailsComment {
-        #[doc = "The <code>resourceId</code> object contains information that\nidentifies the resource associated with the comment."]
+        #[doc = "The resourceId object contains information that identifies the resource associated with the comment."]
         #[serde(
             rename = "resourceId",
             default,
@@ -325,7 +403,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ActivityContentDetailsFavorite {
-        #[doc = "The <code>resourceId</code> object contains information that\nidentifies the resource that was marked as a favorite."]
+        #[doc = "The resourceId object contains information that identifies the resource that was marked as a favorite."]
         #[serde(
             rename = "resourceId",
             default,
@@ -356,7 +434,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ActivityContentDetailsLike {
-        #[doc = "The <code>resourceId</code> object contains information that identifies\nthe rated resource."]
+        #[doc = "The resourceId object contains information that identifies the rated resource."]
         #[serde(
             rename = "resourceId",
             default,
@@ -401,7 +479,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub playlist_item_id: ::std::option::Option<String>,
-        #[doc = "The <code>resourceId</code> object contains information about the\nresource that was added to the playlist."]
+        #[doc = "The resourceId object contains information about the resource that was added to the playlist."]
         #[serde(
             rename = "resourceId",
             default,
@@ -439,21 +517,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ad_tag: ::std::option::Option<String>,
-        #[doc = "The URL the client should ping to indicate that the user clicked through\non this promoted item."]
+        #[doc = "The URL the client should ping to indicate that the user clicked through on this promoted item."]
         #[serde(
             rename = "clickTrackingUrl",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub click_tracking_url: ::std::option::Option<String>,
-        #[doc = "The URL the client should ping to indicate that the user was shown this\npromoted item."]
+        #[doc = "The URL the client should ping to indicate that the user was shown this promoted item."]
         #[serde(
             rename = "creativeViewUrl",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub creative_view_url: ::std::option::Option<String>,
-        #[doc = "The type of call-to-action, a message to the user indicating action that\ncan be taken."]
+        #[doc = "The type of call-to-action, a message to the user indicating action that can be taken."]
         #[serde(
             rename = "ctaType",
             default,
@@ -461,7 +539,7 @@ pub mod schemas {
         )]
         pub cta_type:
             ::std::option::Option<crate::schemas::ActivityContentDetailsPromotedItemCtaType>,
-        #[doc = "The custom call-to-action button text. If specified, it will override\nthe default button text for the cta_type."]
+        #[doc = "The custom call-to-action button text. If specified, it will override the default button text for the cta_type."]
         #[serde(
             rename = "customCtaButtonText",
             default,
@@ -475,21 +553,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description_text: ::std::option::Option<String>,
-        #[doc = "The URL the client should direct the user to, if the user chooses to\nvisit the advertiser's website."]
+        #[doc = "The URL the client should direct the user to, if the user chooses to visit the advertiser's website."]
         #[serde(
             rename = "destinationUrl",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub destination_url: ::std::option::Option<String>,
-        #[doc = "The list of forecasting URLs. The client should ping all of these URLs\nwhen a promoted item is not available, to indicate that a promoted item\ncould have been shown."]
+        #[doc = "The list of forecasting URLs. The client should ping all of these URLs when a promoted item is not available, to indicate that a promoted item could have been shown."]
         #[serde(
             rename = "forecastingUrl",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub forecasting_url: ::std::option::Option<Vec<String>>,
-        #[doc = "The list of impression URLs. The client should ping all of these URLs to\nindicate that the user was shown this promoted item."]
+        #[doc = "The list of impression URLs. The client should ping all of these URLs to indicate that the user was shown this promoted item."]
         #[serde(
             rename = "impressionUrl",
             default,
@@ -618,14 +696,14 @@ pub mod schemas {
         )]
         pub reason:
             ::std::option::Option<crate::schemas::ActivityContentDetailsRecommendationReason>,
-        #[doc = "The <code>resourceId</code> object contains information that\nidentifies the recommended resource."]
+        #[doc = "The resourceId object contains information that identifies the recommended resource."]
         #[serde(
             rename = "resourceId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
-        #[doc = "The <code>seedResourceId</code> object contains information about\nthe resource that caused the recommendation."]
+        #[doc = "The seedResourceId object contains information about the resource that caused the recommendation."]
         #[serde(
             rename = "seedResourceId",
             default,
@@ -769,7 +847,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub reference_url: ::std::option::Option<String>,
-        #[doc = "The <code>resourceId</code> object encapsulates information that\nidentifies the resource associated with a social network post."]
+        #[doc = "The resourceId object encapsulates information that identifies the resource associated with a social network post."]
         #[serde(
             rename = "resourceId",
             default,
@@ -877,7 +955,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ActivityContentDetailsSubscription {
-        #[doc = "The <code>resourceId</code> object contains information that\nidentifies the resource that the user subscribed to."]
+        #[doc = "The resourceId object contains information that identifies the resource that the user subscribed to."]
         #[serde(
             rename = "resourceId",
             default,
@@ -959,14 +1037,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::Activity>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#activityListResponse\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#activityListResponse\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the next page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -980,7 +1058,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the previous page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
         #[serde(
             rename = "prevPageToken",
             default,
@@ -993,7 +1071,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
+        #[doc = "The visitorId identifies the visitor."]
         #[serde(
             rename = "visitorId",
             default,
@@ -1024,7 +1102,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ActivitySnippet {
-        #[doc = "The ID that YouTube uses to uniquely identify the channel associated\nwith the activity."]
+        #[doc = "The ID that YouTube uses to uniquely identify the channel associated with the activity."]
         #[serde(
             rename = "channelId",
             default,
@@ -1038,27 +1116,27 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub channel_title: ::std::option::Option<String>,
-        #[doc = "The description of the resource primarily associated with the activity.\n@mutable youtube.activities.insert"]
+        #[doc = "The description of the resource primarily associated with the activity. @mutable youtube.activities.insert"]
         #[serde(
             rename = "description",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "The group ID associated with the activity. A group ID identifies user\nevents that are associated with the same user and resource. For example,\nif a user rates a video and marks the same video as a favorite, the\nentries for those events would have the same group ID in the user's\nactivity feed. In your user interface, you can avoid repetition by\ngrouping events with the same <code>groupId</code> value."]
+        #[doc = "The group ID associated with the activity. A group ID identifies user events that are associated with the same user and resource. For example, if a user rates a video and marks the same video as a favorite, the entries for those events would have the same group ID in the user's activity feed. In your user interface, you can avoid repetition by grouping events with the same groupId value."]
         #[serde(
             rename = "groupId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub group_id: ::std::option::Option<String>,
-        #[doc = "The date and time that the video was uploaded. The value is specified\nin <a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat."]
+        #[doc = "The date and time that the video was uploaded."]
         #[serde(
             rename = "publishedAt",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub published_at: ::std::option::Option<String>,
+        pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The type of activity that the resource describes."]
         #[serde(
             rename = "type",
@@ -1066,7 +1144,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<crate::schemas::ActivitySnippetType>,
-        #[doc = "A map of thumbnail images associated with the resource that is primarily\nassociated with the activity. For each object in the map, the key is the\nname of the thumbnail image, and the value is an object that contains\nother information about the thumbnail."]
+        #[doc = "A map of thumbnail images associated with the resource that is primarily associated with the activity. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail."]
         #[serde(
             rename = "thumbnails",
             default,
@@ -1227,14 +1305,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#caption\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#caption\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>snippet</code> object contains basic details about the caption."]
+        #[doc = "The snippet object contains basic details about the caption."]
         #[serde(
             rename = "snippet",
             default,
@@ -1286,14 +1364,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::Caption>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#captionListResponse\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#captionListResponse\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
+        #[doc = "The visitorId identifies the visitor."]
         #[serde(
             rename = "visitorId",
             default,
@@ -1331,63 +1409,63 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub audio_track_type: ::std::option::Option<crate::schemas::CaptionSnippetAudioTrackType>,
-        #[doc = "The reason that YouTube failed to process the caption track. This\nproperty is only present if the <code><a href=\"#state\">state</a></code>\nproperty's value is <code>failed</code>."]
+        #[doc = "The reason that YouTube failed to process the caption track. This property is only present if the state property's value is failed."]
         #[serde(
             rename = "failureReason",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub failure_reason: ::std::option::Option<crate::schemas::CaptionSnippetFailureReason>,
-        #[doc = "Indicates whether YouTube synchronized the caption track to the audio\ntrack in the video. The value will be <code>true</code> if a sync was\nexplicitly requested when the caption track was uploaded. For example,\nwhen calling the <code>captions.insert</code> or\n<code>captions.update</code> methods, you can set the <code>sync</code>\nparameter to <code>true</code> to instruct YouTube to sync the uploaded\ntrack to the video. If the value is <code>false</code>, YouTube uses\nthe time codes in the uploaded caption track to determine when to display\ncaptions."]
+        #[doc = "Indicates whether YouTube synchronized the caption track to the audio track in the video. The value will be true if a sync was explicitly requested when the caption track was uploaded. For example, when calling the captions.insert or captions.update methods, you can set the sync parameter to true to instruct YouTube to sync the uploaded track to the video. If the value is false, YouTube uses the time codes in the uploaded caption track to determine when to display captions."]
         #[serde(
             rename = "isAutoSynced",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_auto_synced: ::std::option::Option<bool>,
-        #[doc = "Indicates whether the track contains closed captions for the deaf\nand hard of hearing. The default value is <code>false</code>."]
+        #[doc = "Indicates whether the track contains closed captions for the deaf and hard of hearing. The default value is false."]
         #[serde(
             rename = "isCC",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_cc: ::std::option::Option<bool>,
-        #[doc = "Indicates whether the caption track is a draft. If the value is\n<code>true</code>, then the track is not publicly visible.\nThe default value is <code>false</code>.\n@mutable youtube.captions.insert youtube.captions.update"]
+        #[doc = "Indicates whether the caption track is a draft. If the value is true, then the track is not publicly visible. The default value is false. @mutable youtube.captions.insert youtube.captions.update"]
         #[serde(
             rename = "isDraft",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_draft: ::std::option::Option<bool>,
-        #[doc = "Indicates whether caption track is formatted for \"easy reader,\"\nmeaning it is at a third-grade level for language learners.\nThe default value is <code>false</code>."]
+        #[doc = "Indicates whether caption track is formatted for \"easy reader,\" meaning it is at a third-grade level for language learners. The default value is false."]
         #[serde(
             rename = "isEasyReader",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_easy_reader: ::std::option::Option<bool>,
-        #[doc = "Indicates whether the caption track uses large text for the\nvision-impaired. The default value is <code>false</code>."]
+        #[doc = "Indicates whether the caption track uses large text for the vision-impaired. The default value is false."]
         #[serde(
             rename = "isLarge",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_large: ::std::option::Option<bool>,
-        #[doc = "The language of the caption track. The property value is a\n<a href=\"http://www.rfc-editor.org/rfc/bcp/bcp47.txt\">BCP-47</a>\nlanguage tag."]
+        #[doc = "The language of the caption track. The property value is a BCP-47 language tag."]
         #[serde(
             rename = "language",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub language: ::std::option::Option<String>,
-        #[doc = "The date and time when the caption track was last updated. The value is\nspecified in <a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat."]
+        #[doc = "The date and time when the caption track was last updated."]
         #[serde(
             rename = "lastUpdated",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub last_updated: ::std::option::Option<String>,
-        #[doc = "The name of the caption track. The name is intended to be visible\nto the user as an option during playback."]
+        pub last_updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "The name of the caption track. The name is intended to be visible to the user as an option during playback."]
         #[serde(
             rename = "name",
             default,
@@ -1408,7 +1486,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub track_kind: ::std::option::Option<crate::schemas::CaptionSnippetTrackKind>,
-        #[doc = "The ID that YouTube uses to uniquely identify the video associated\nwith the caption track.\n@mutable youtube.captions.insert"]
+        #[doc = "The ID that YouTube uses to uniquely identify the video associated with the caption track. @mutable youtube.captions.insert"]
         #[serde(
             rename = "videoId",
             default,
@@ -1735,7 +1813,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CdnSettings {
-        #[doc = "The format of the video stream that you are sending to Youtube. <br><br>"]
+        #[doc = "The format of the video stream that you are sending to Youtube. "]
         #[serde(
             rename = "format",
             default,
@@ -1749,7 +1827,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub frame_rate: ::std::option::Option<crate::schemas::CdnSettingsFrameRate>,
-        #[doc = "The <code>ingestionInfo</code> object contains information that YouTube\nprovides that you need to transmit your RTMP or HTTP stream to YouTube."]
+        #[doc = "The ingestionInfo object contains information that YouTube provides that you need to transmit your RTMP or HTTP stream to YouTube."]
         #[serde(
             rename = "ingestionInfo",
             default,
@@ -2037,28 +2115,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Channel {
-        #[doc = "The <code>auditionDetails</code> object encapsulates channel data\nthat is relevant for YouTube Partners during the audition process."]
+        #[doc = "The auditionDetails object encapsulates channel data that is relevant for YouTube Partners during the audition process."]
         #[serde(
             rename = "auditDetails",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub audit_details: ::std::option::Option<crate::schemas::ChannelAuditDetails>,
-        #[doc = "The <code>brandingSettings</code> object encapsulates information about\nthe branding of the channel."]
+        #[doc = "The brandingSettings object encapsulates information about the branding of the channel."]
         #[serde(
             rename = "brandingSettings",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub branding_settings: ::std::option::Option<crate::schemas::ChannelBrandingSettings>,
-        #[doc = "The <code>contentDetails</code> object encapsulates information about the\nchannel's content."]
+        #[doc = "The contentDetails object encapsulates information about the channel's content."]
         #[serde(
             rename = "contentDetails",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub content_details: ::std::option::Option<crate::schemas::ChannelContentDetails>,
-        #[doc = "The <code>contentOwnerDetails</code> object encapsulates channel data\nthat is relevant for YouTube Partners linked with the channel."]
+        #[doc = "The contentOwnerDetails object encapsulates channel data that is relevant for YouTube Partners linked with the channel."]
         #[serde(
             rename = "contentOwnerDetails",
             default,
@@ -2066,7 +2144,7 @@ pub mod schemas {
         )]
         pub content_owner_details:
             ::std::option::Option<crate::schemas::ChannelContentOwnerDetails>,
-        #[doc = "The <code>conversionPings</code> object encapsulates information about\nconversion pings that need to be respected by the channel."]
+        #[doc = "The conversionPings object encapsulates information about conversion pings that need to be respected by the channel."]
         #[serde(
             rename = "conversionPings",
             default,
@@ -2087,14 +2165,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "The <code>invideoPromotion</code> object encapsulates information about\npromotion campaign associated with the channel."]
-        #[serde(
-            rename = "invideoPromotion",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub invideo_promotion: ::std::option::Option<crate::schemas::InvideoPromotion>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#channel\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#channel\"."]
         #[serde(
             rename = "kind",
             default,
@@ -2110,28 +2181,28 @@ pub mod schemas {
         pub localizations: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::ChannelLocalization>,
         >,
-        #[doc = "The <code>snippet</code> object contains basic details about the channel,\nsuch as its title, description, and thumbnail images."]
+        #[doc = "The snippet object contains basic details about the channel, such as its title, description, and thumbnail images."]
         #[serde(
             rename = "snippet",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub snippet: ::std::option::Option<crate::schemas::ChannelSnippet>,
-        #[doc = "The <code>statistics</code> object encapsulates statistics for the channel."]
+        #[doc = "The statistics object encapsulates statistics for the channel."]
         #[serde(
             rename = "statistics",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub statistics: ::std::option::Option<crate::schemas::ChannelStatistics>,
-        #[doc = "The <code>status</code> object encapsulates information about the privacy\nstatus of the channel."]
+        #[doc = "The status object encapsulates information about the privacy status of the channel."]
         #[serde(
             rename = "status",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub status: ::std::option::Option<crate::schemas::ChannelStatus>,
-        #[doc = "The <code>topicDetails</code> object encapsulates information about\n<a href=\"http://www.freebase.com\">Freebase</a> topics associated with the\nchannel."]
+        #[doc = "The topicDetails object encapsulates information about Freebase topics associated with the channel."]
         #[serde(
             rename = "topicDetails",
             default,
@@ -2213,7 +2284,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#channelBannerResource\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#channelBannerResource\"."]
         #[serde(
             rename = "kind",
             default,
@@ -2334,35 +2405,35 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ChannelContentDetailsRelatedPlaylists {
-        #[doc = "The ID of the playlist that contains the channel\"s favorite videos. Use\nthe <code> <a\nhref=\"/youtube/v3/docs/playlistItems/insert\">playlistItems.insert</a></code>\nand <code> <a\nhref=\"/youtube/v3/docs/playlistItems/delete\">playlistItems.delete</a></code>\nto add or remove items from that list."]
+        #[doc = "The ID of the playlist that contains the channel\"s favorite videos. Use the playlistItems.insert and playlistItems.delete to add or remove items from that list."]
         #[serde(
             rename = "favorites",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub favorites: ::std::option::Option<String>,
-        #[doc = "The ID of the playlist that contains the channel\"s liked videos. Use the\n<code> <a href=\"/youtube/v3/docs/playlistItems/insert\">\nplaylistItems.insert</a></code> and <code> <a\nhref=\"/youtube/v3/docs/playlistItems/delete\">playlistItems.delete</a></code>\nto add or remove items from that list."]
+        #[doc = "The ID of the playlist that contains the channel\"s liked videos. Use the playlistItems.insert and playlistItems.delete to add or remove items from that list."]
         #[serde(
             rename = "likes",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub likes: ::std::option::Option<String>,
-        #[doc = "The ID of the playlist that contains the channel\"s uploaded videos. Use\nthe <code> <a\nhref=\"/youtube/v3/docs/videos/insert\">videos.insert</a></code> method to\nupload new videos and the <code><a\nhref=\"/youtube/v3/docs/videos/delete\">videos.delete</a></code> method to\ndelete previously uploaded videos."]
+        #[doc = "The ID of the playlist that contains the channel\"s uploaded videos. Use the videos.insert method to upload new videos and the videos.delete method to delete previously uploaded videos."]
         #[serde(
             rename = "uploads",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub uploads: ::std::option::Option<String>,
-        #[doc = "The ID of the playlist that contains the channel\"s watch history. Use the\n<code> <a\nhref=\"/youtube/v3/docs/playlistItems/insert\">playlistItems.insert</a></code>\nand <code> <a\nhref=\"/youtube/v3/docs/playlistItems/delete\">playlistItems.delete</a></code>\nto add or remove items from that list."]
+        #[doc = "The ID of the playlist that contains the channel\"s watch history. Use the playlistItems.insert and playlistItems.delete to add or remove items from that list."]
         #[serde(
             rename = "watchHistory",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub watch_history: ::std::option::Option<String>,
-        #[doc = "The ID of the playlist that contains the channel\"s watch later playlist.\nUse the <code><a\nhref=\"/youtube/v3/docs/playlistItems/insert\">playlistItems.insert</a></code>\nand <code> <a\nhref=\"/youtube/v3/docs/playlistItems/delete\">playlistItems.delete</a></code>\nto add or remove items from that list."]
+        #[doc = "The ID of the playlist that contains the channel\"s watch later playlist. Use the playlistItems.insert and playlistItems.delete to add or remove items from that list."]
         #[serde(
             rename = "watchLater",
             default,
@@ -2400,13 +2471,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub content_owner: ::std::option::Option<String>,
-        #[doc = "The date and time of when the channel was linked to the content owner.\nThe value is specified in <a href=\"//www.w3.org/TR/NOTE-datetime\">ISO\n8601</a>\nformat."]
+        #[doc = "The date and time when the channel was linked to the content owner."]
         #[serde(
             rename = "timeLinked",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub time_linked: ::std::option::Option<String>,
+        pub time_linked: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for ChannelContentOwnerDetails {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -2438,7 +2509,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub context: ::std::option::Option<crate::schemas::ChannelConversionPingContext>,
-        #[doc = "The url (without the schema) that the player shall send the ping to.\nIt's at caller's descretion to decide which schema to use (http vs https)\nExample of a returned url: //googleads.g.doubleclick.net/pagead/\nviewthroughconversion/962985656/?data=path%3DtHe_path%3Btype%3D\ncview%3Butuid%3DGISQtTNGYqaYl4sKxoVvKA&labe=default\nThe caller must append biscotti authentication (ms param in case of\nmobile, for example) to this ping."]
+        #[doc = "The url (without the schema) that the player shall send the ping to. It's at caller's descretion to decide which schema to use (http vs https) Example of a returned url: //googleads.g.doubleclick.net/pagead/ viewthroughconversion/962985656/?data=path%3DtHe_path%3Btype%3D cview%3Butuid%3DGISQtTNGYqaYl4sKxoVvKA&labe=default The caller must append biscotti authentication (ms param in case of mobile, for example) to this ping."]
         #[serde(
             rename = "conversionUrl",
             default,
@@ -2542,7 +2613,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ChannelConversionPings {
-        #[doc = "Pings that the app shall fire (authenticated by biscotti cookie). Each ping\nhas a context, in which the app must fire the ping, and a url identifying\nthe ping."]
+        #[doc = "Pings that the app shall fire (authenticated by biscotti cookie). Each ping has a context, in which the app must fire the ping, and a url identifying the ping."]
         #[serde(
             rename = "pings",
             default,
@@ -2593,14 +2664,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::Channel>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#channelListResponse\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#channelListResponse\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the next page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -2614,7 +2685,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the previous page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
         #[serde(
             rename = "prevPageToken",
             default,
@@ -2627,7 +2698,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
+        #[doc = "The visitorId identifies the visitor."]
         #[serde(
             rename = "visitorId",
             default,
@@ -2748,7 +2819,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ChannelSection {
-        #[doc = "The <code>contentDetails</code> object contains details about the channel\nsection content, such as a list of playlists or channels featured in the\nsection."]
+        #[doc = "The contentDetails object contains details about the channel section content, such as a list of playlists or channels featured in the section."]
         #[serde(
             rename = "contentDetails",
             default,
@@ -2769,7 +2840,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#channelSection\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#channelSection\"."]
         #[serde(
             rename = "kind",
             default,
@@ -2785,14 +2856,14 @@ pub mod schemas {
         pub localizations: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::ChannelSectionLocalization>,
         >,
-        #[doc = "The <code>snippet</code> object contains basic details about the channel\nsection, such as its type, style and title."]
+        #[doc = "The snippet object contains basic details about the channel section, such as its type, style and title."]
         #[serde(
             rename = "snippet",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub snippet: ::std::option::Option<crate::schemas::ChannelSectionSnippet>,
-        #[doc = "The <code>targeting</code> object contains basic targeting settings about\nthe channel section."]
+        #[doc = "The targeting object contains basic targeting settings about the channel section."]
         #[serde(
             rename = "targeting",
             default,
@@ -2830,7 +2901,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub channels: ::std::option::Option<Vec<String>>,
-        #[doc = "The playlist ids for type single_playlist and multiple_playlists. For\nsinglePlaylist, only one playlistId is allowed."]
+        #[doc = "The playlist ids for type single_playlist and multiple_playlists. For singlePlaylist, only one playlistId is allowed."]
         #[serde(
             rename = "playlists",
             default,
@@ -2882,14 +2953,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::ChannelSection>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#channelSectionListResponse\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#channelSectionListResponse\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
+        #[doc = "The visitorId identifies the visitor."]
         #[serde(
             rename = "visitorId",
             default,
@@ -2951,7 +3022,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ChannelSectionSnippet {
-        #[doc = "The ID that YouTube uses to uniquely identify the channel that published\nthe channel section."]
+        #[doc = "The ID that YouTube uses to uniquely identify the channel that published the channel section."]
         #[serde(
             rename = "channelId",
             default,
@@ -3331,7 +3402,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub keywords: ::std::option::Option<String>,
-        #[doc = "Whether user-submitted comments left on the channel page need to be\napproved by the channel owner to be publicly visible."]
+        #[doc = "Whether user-submitted comments left on the channel page need to be approved by the channel owner to be publicly visible."]
         #[serde(
             rename = "moderateComments",
             default,
@@ -3366,7 +3437,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub title: ::std::option::Option<String>,
-        #[doc = "The ID for a Google Analytics account to track and measure traffic to the\nchannels."]
+        #[doc = "The ID for a Google Analytics account to track and measure traffic to the channels."]
         #[serde(
             rename = "trackingAnalyticsAccountId",
             default,
@@ -3439,14 +3510,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub localized: ::std::option::Option<crate::schemas::ChannelLocalization>,
-        #[doc = "The date and time that the channel was created. The value is specified in\n< a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat."]
+        #[doc = "The date and time that the channel was created."]
         #[serde(
             rename = "publishedAt",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub published_at: ::std::option::Option<String>,
-        #[doc = "A map of thumbnail images associated with the channel. For each object in\nthe map, the key is the name of the thumbnail image, and the value is an\nobject that contains other information about the thumbnail.<br><br> When\ndisplaying thumbnails in your application, make sure that your code uses\nthe image URLs exactly as they are returned in API responses. For example,\nyour application should not use the <code>http</code> domain instead of the\n<code>https</code> domain in a URL returned in an API response.<br><br>\nBeginning in July 2018, channel thumbnail URLs will only be available in\nthe <code>https</code> domain, which is how the URLs appear in API\nresponses. After that time, you might see broken images in your application\nif it tries to load YouTube images from the <code>http</code> domain."]
+        pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "A map of thumbnail images associated with the channel. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail. When displaying thumbnails in your application, make sure that your code uses the image URLs exactly as they are returned in API responses. For example, your application should not use the http domain instead of the https domain in a URL returned in an API response. Beginning in July 2018, channel thumbnail URLs will only be available in the https domain, which is how the URLs appear in API responses. After that time, you might see broken images in your application if it tries to load YouTube images from the http domain. Thumbnail images might be empty for newly created channels and might take up to one day to populate."]
         #[serde(
             rename = "thumbnails",
             default,
@@ -3547,14 +3618,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ChannelStatus {
-        #[doc = "If true, then the user is linked to either a YouTube username or G+\naccount. Otherwise, the user doesn't have a public YouTube identity."]
+        #[doc = "If true, then the user is linked to either a YouTube username or G+ account. Otherwise, the user doesn't have a public YouTube identity."]
         #[serde(
             rename = "isLinked",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_linked: ::std::option::Option<bool>,
-        #[doc = "The long uploads status of this channel. See\nhttps://support.google.com/youtube/answer/71673 for more information."]
+        #[doc = "The long uploads status of this channel. See https://support.google.com/youtube/answer/71673 for more information."]
         #[serde(
             rename = "longUploadsStatus",
             default,
@@ -3754,6 +3825,44 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct ChannelToStoreLinkDetails {
+        #[doc = "Name of the store."]
+        #[serde(
+            rename = "storeName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub store_name: ::std::option::Option<String>,
+        #[doc = "Landing page of the store."]
+        #[serde(
+            rename = "storeUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub store_url: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for ChannelToStoreLinkDetails {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ChannelToStoreLinkDetails {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct ChannelTopicDetails {
         #[doc = "A list of Wikipedia URLs that describe the channel's content."]
         #[serde(
@@ -3762,7 +3871,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub topic_categories: ::std::option::Option<Vec<String>>,
-        #[doc = "A list of Freebase topic IDs associated with the channel. You can retrieve\ninformation about each topic using the <a\nhref=\"http://wiki.freebase.com/wiki/Topic_API\">Freebase Topic API</a>."]
+        #[doc = "A list of Freebase topic IDs associated with the channel. You can retrieve information about each topic using the Freebase Topic API."]
         #[serde(
             rename = "topicIds",
             default,
@@ -3807,14 +3916,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#comment\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#comment\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>snippet</code> object contains basic details about the comment."]
+        #[doc = "The snippet object contains basic details about the comment."]
         #[serde(
             rename = "snippet",
             default,
@@ -3866,14 +3975,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::Comment>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#commentListResponse\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#commentListResponse\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the next page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -3893,7 +4002,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
+        #[doc = "The visitorId identifies the visitor."]
         #[serde(
             rename = "visitorId",
             default,
@@ -3958,7 +4067,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub can_rate: ::std::option::Option<bool>,
-        #[doc = "The id of the corresponding YouTube channel. In case of a channel comment\nthis is the channel the comment refers to. In case of a video comment\nit's the video's channel."]
+        #[doc = "The id of the corresponding YouTube channel. In case of a channel comment this is the channel the comment refers to. In case of a video comment it's the video's channel."]
         #[serde(
             rename = "channelId",
             default,
@@ -3972,7 +4081,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub like_count: ::std::option::Option<u32>,
-        #[doc = "The comment's moderation status. Will not be set if the comments were\nrequested through the id filter."]
+        #[doc = "The comment's moderation status. Will not be set if the comments were requested through the id filter."]
         #[serde(
             rename = "moderationStatus",
             default,
@@ -3987,34 +4096,34 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub parent_id: ::std::option::Option<String>,
-        #[doc = "The date and time when the comment was orignally published. The value is\nspecified in <a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat."]
+        #[doc = "The date and time when the comment was originally published."]
         #[serde(
             rename = "publishedAt",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub published_at: ::std::option::Option<String>,
-        #[doc = "The comment's text. The format is either plain text or HTML dependent on\nwhat has been requested. Even the plain text representation may differ\nfrom the text originally posted in that it may replace video links with\nvideo titles etc."]
+        pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "The comment's text. The format is either plain text or HTML dependent on what has been requested. Even the plain text representation may differ from the text originally posted in that it may replace video links with video titles etc."]
         #[serde(
             rename = "textDisplay",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub text_display: ::std::option::Option<String>,
-        #[doc = "The comment's original raw text as initially posted or last updated. The\noriginal text will only be returned if it is accessible to the viewer,\nwhich is only guaranteed if the viewer is the comment's author."]
+        #[doc = "The comment's original raw text as initially posted or last updated. The original text will only be returned if it is accessible to the viewer, which is only guaranteed if the viewer is the comment's author."]
         #[serde(
             rename = "textOriginal",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub text_original: ::std::option::Option<String>,
-        #[doc = "The date and time when was last updated . The value is\nspecified in <a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat."]
+        #[doc = "The date and time when the comment was last updated."]
         #[serde(
             rename = "updatedAt",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub updated_at: ::std::option::Option<String>,
+        pub updated_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The ID of the video the comment refers to, if any."]
         #[serde(
             rename = "videoId",
@@ -4022,7 +4131,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub video_id: ::std::option::Option<String>,
-        #[doc = "The rating the viewer has given to this comment. For the time being this\nwill never return RATE_TYPE_DISLIKE and instead return RATE_TYPE_NONE.\nThis may change in the future."]
+        #[doc = "The rating the viewer has given to this comment. For the time being this will never return RATE_TYPE_DISLIKE and instead return RATE_TYPE_NONE. This may change in the future."]
         #[serde(
             rename = "viewerRating",
             default,
@@ -4042,9 +4151,12 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CommentSnippetModerationStatus {
+        #[doc = "The comment is awaiting review by a moderator."]
         HeldForReview,
         LikelySpam,
+        #[doc = "The comment is available for public display."]
         Published,
+        #[doc = "The comment is unfit for display."]
         Rejected,
     }
     impl CommentSnippetModerationStatus {
@@ -4119,7 +4231,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CommentSnippetViewerRating {
+        #[doc = "The entity is disliked."]
         Dislike,
+        #[doc = "The entity is liked."]
         Like,
         None,
     }
@@ -4247,21 +4361,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#commentThread\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#commentThread\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>replies</code> object contains a limited number of replies (if\nany) to the top level comment found in the snippet."]
+        #[doc = "The replies object contains a limited number of replies (if any) to the top level comment found in the snippet."]
         #[serde(
             rename = "replies",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub replies: ::std::option::Option<crate::schemas::CommentThreadReplies>,
-        #[doc = "The <code>snippet</code> object contains basic details about the comment\nthread and also the top level comment."]
+        #[doc = "The snippet object contains basic details about the comment thread and also the top level comment."]
         #[serde(
             rename = "snippet",
             default,
@@ -4313,14 +4427,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::CommentThread>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#commentThreadListResponse\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#commentThreadListResponse\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the next page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -4340,7 +4454,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
+        #[doc = "The visitorId identifies the visitor."]
         #[serde(
             rename = "visitorId",
             default,
@@ -4371,7 +4485,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CommentThreadReplies {
-        #[doc = "A limited number of replies. Unless the number of replies returned equals\ntotal_reply_count in the snippet the returned replies are only a subset\nof the total number of replies."]
+        #[doc = "A limited number of replies. Unless the number of replies returned equals total_reply_count in the snippet the returned replies are only a subset of the total number of replies."]
         #[serde(
             rename = "comments",
             default,
@@ -4402,21 +4516,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CommentThreadSnippet {
-        #[doc = "Whether the current viewer of the thread can reply to it. This is viewer\nspecific - other viewers may see a different value for this field."]
+        #[doc = "Whether the current viewer of the thread can reply to it. This is viewer specific - other viewers may see a different value for this field."]
         #[serde(
             rename = "canReply",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub can_reply: ::std::option::Option<bool>,
-        #[doc = "The YouTube channel the comments in the thread refer to or the channel\nwith the video the comments refer to. If video_id isn't set the comments\nrefer to the channel itself."]
+        #[doc = "The YouTube channel the comments in the thread refer to or the channel with the video the comments refer to. If video_id isn't set the comments refer to the channel itself."]
         #[serde(
             rename = "channelId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub channel_id: ::std::option::Option<String>,
-        #[doc = "Whether the thread (and therefore all its comments) is visible to all\nYouTube users."]
+        #[doc = "Whether the thread (and therefore all its comments) is visible to all YouTube users."]
         #[serde(
             rename = "isPublic",
             default,
@@ -4437,7 +4551,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub total_reply_count: ::std::option::Option<u32>,
-        #[doc = "The ID of the video the comments refer to, if any. No video_id implies a\nchannel discussion comment."]
+        #[doc = "The ID of the video the comments refer to, if any. No video_id implies a channel discussion comment."]
         #[serde(
             rename = "videoId",
             default,
@@ -4468,21 +4582,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ContentRating {
-        #[doc = "The video's Australian Classification Board (ACB) or Australian\nCommunications and Media Authority (ACMA) rating. ACMA ratings are used\nto classify children's television programming."]
+        #[doc = "The video's Australian Classification Board (ACB) or Australian Communications and Media Authority (ACMA) rating. ACMA ratings are used to classify children's television programming."]
         #[serde(
             rename = "acbRating",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub acb_rating: ::std::option::Option<crate::schemas::ContentRatingAcbRating>,
-        #[doc = "The video's rating from Italy's Autorità per le Garanzie nelle\nComunicazioni (AGCOM)."]
+        #[doc = "The video's rating from Italy's Autorità per le Garanzie nelle Comunicazioni (AGCOM)."]
         #[serde(
             rename = "agcomRating",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub agcom_rating: ::std::option::Option<crate::schemas::ContentRatingAgcomRating>,
-        #[doc = "The video's Anatel (Asociación Nacional de Televisión)\nrating for Chilean television."]
+        #[doc = "The video's Anatel (Asociación Nacional de Televisión) rating for Chilean television."]
         #[serde(
             rename = "anatelRating",
             default,
@@ -4503,21 +4617,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bfvc_rating: ::std::option::Option<crate::schemas::ContentRatingBfvcRating>,
-        #[doc = "The video's rating from the Austrian Board of Media Classification\n(Bundesministerium für Unterricht, Kunst und Kultur)."]
+        #[doc = "The video's rating from the Austrian Board of Media Classification (Bundesministerium für Unterricht, Kunst und Kultur)."]
         #[serde(
             rename = "bmukkRating",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bmukk_rating: ::std::option::Option<crate::schemas::ContentRatingBmukkRating>,
-        #[doc = "Rating system for Canadian TV - Canadian TV Classification System\nThe video's rating from the Canadian Radio-Television and\nTelecommunications Commission (CRTC) for Canadian English-language\nbroadcasts. For more information, see the\n<a href=\"http://www.cbsc.ca/english/agvot/englishsystem.php\">Canadian\nBroadcast Standards Council</a> website."]
+        #[doc = "Rating system for Canadian TV - Canadian TV Classification System The video's rating from the Canadian Radio-Television and Telecommunications Commission (CRTC) for Canadian English-language broadcasts. For more information, see the Canadian Broadcast Standards Council website."]
         #[serde(
             rename = "catvRating",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub catv_rating: ::std::option::Option<crate::schemas::ContentRatingCatvRating>,
-        #[doc = "The video's rating from the Canadian Radio-Television and\nTelecommunications Commission (CRTC) for Canadian French-language\nbroadcasts. For more information, see the\n<a href=\"http://www.cbsc.ca/english/agvot/frenchsystem.php\">Canadian\nBroadcast Standards Council</a> website."]
+        #[doc = "The video's rating from the Canadian Radio-Television and Telecommunications Commission (CRTC) for Canadian French-language broadcasts. For more information, see the Canadian Broadcast Standards Council website."]
         #[serde(
             rename = "catvfrRating",
             default,
@@ -4531,14 +4645,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cbfc_rating: ::std::option::Option<crate::schemas::ContentRatingCbfcRating>,
-        #[doc = "The video's Consejo de Calificación Cinematográfica (Chile)\nrating."]
+        #[doc = "The video's Consejo de Calificación Cinematográfica (Chile) rating."]
         #[serde(
             rename = "cccRating",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ccc_rating: ::std::option::Option<crate::schemas::ContentRatingCccRating>,
-        #[doc = "The video's rating from Portugal's Comissão de\nClassificação de Espect´culos."]
+        #[doc = "The video's rating from Portugal's Comissão de Classificação de Espect´culos."]
         #[serde(
             rename = "cceRating",
             default,
@@ -4559,14 +4673,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub chvrs_rating: ::std::option::Option<crate::schemas::ContentRatingChvrsRating>,
-        #[doc = "The video's rating from the Commission de Contrôle des Films\n(Belgium)."]
+        #[doc = "The video's rating from the Commission de Contrôle des Films (Belgium)."]
         #[serde(
             rename = "cicfRating",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cicf_rating: ::std::option::Option<crate::schemas::ContentRatingCicfRating>,
-        #[doc = "The video's rating from Romania's CONSILIUL NATIONAL AL AUDIOVIZUALULUI\n(CNA)."]
+        #[doc = "The video's rating from Romania's CONSILIUL NATIONAL AL AUDIOVIZUALULUI (CNA)."]
         #[serde(
             rename = "cnaRating",
             default,
@@ -4580,14 +4694,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cnc_rating: ::std::option::Option<crate::schemas::ContentRatingCncRating>,
-        #[doc = "The video's rating from France's Conseil supérieur de\nl’audiovisuel, which rates broadcast content."]
+        #[doc = "The video's rating from France's Conseil supérieur de l’audiovisuel, which rates broadcast content."]
         #[serde(
             rename = "csaRating",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub csa_rating: ::std::option::Option<crate::schemas::ContentRatingCsaRating>,
-        #[doc = "The video's rating from Luxembourg's Commission de surveillance\nde la classification des films (CSCF)."]
+        #[doc = "The video's rating from Luxembourg's Commission de surveillance de la classification des films (CSCF)."]
         #[serde(
             rename = "cscfRating",
             default,
@@ -4601,7 +4715,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub czfilm_rating: ::std::option::Option<crate::schemas::ContentRatingCzfilmRating>,
-        #[doc = "The video's Departamento de Justiça, Classificação,\nQualificação e Títulos (DJCQT - Brazil) rating."]
+        #[doc = "The video's Departamento de Justiça, Classificação, Qualificação e Títulos (DJCQT - Brazil) rating."]
         #[serde(
             rename = "djctqRating",
             default,
@@ -4616,7 +4730,7 @@ pub mod schemas {
         )]
         pub djctq_rating_reasons:
             ::std::option::Option<Vec<crate::schemas::ContentRatingDjctqRatingReasonsItems>>,
-        #[doc = "Rating system in Turkey - Evaluation and Classification Board of the\nMinistry of Culture and Tourism"]
+        #[doc = "Rating system in Turkey - Evaluation and Classification Board of the Ministry of Culture and Tourism"]
         #[serde(
             rename = "ecbmctRating",
             default,
@@ -4637,7 +4751,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub egfilm_rating: ::std::option::Option<crate::schemas::ContentRatingEgfilmRating>,
-        #[doc = "The video's Eirin (映倫) rating.\nEirin is the Japanese rating system."]
+        #[doc = "The video's Eirin (映倫) rating. Eirin is the Japanese rating system."]
         #[serde(
             rename = "eirinRating",
             default,
@@ -4651,14 +4765,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fcbm_rating: ::std::option::Option<crate::schemas::ContentRatingFcbmRating>,
-        #[doc = "The video's rating from Hong Kong's Office for Film, Newspaper\nand Article Administration."]
+        #[doc = "The video's rating from Hong Kong's Office for Film, Newspaper and Article Administration."]
         #[serde(
             rename = "fcoRating",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fco_rating: ::std::option::Option<crate::schemas::ContentRatingFcoRating>,
-        #[doc = "<span class=\"deprecated\">This property has been deprecated. Use the\n<code><a\nhref=\"#contentDetails.contentRating.cncRating\">contentDetails.contentRating.cncRating</a></code>\ninstead.</span>"]
+        #[doc = "This property has been deprecated. Use the contentDetails.contentRating.cncRating instead."]
         #[serde(
             rename = "fmocRating",
             default,
@@ -4680,7 +4794,7 @@ pub mod schemas {
         )]
         pub fpb_rating_reasons:
             ::std::option::Option<Vec<crate::schemas::ContentRatingFpbRatingReasonsItems>>,
-        #[doc = "The video's Freiwillige Selbstkontrolle der Filmwirtschaft\n(FSK - Germany) rating."]
+        #[doc = "The video's Freiwillige Selbstkontrolle der Filmwirtschaft (FSK - Germany) rating."]
         #[serde(
             rename = "fskRating",
             default,
@@ -4694,14 +4808,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub grfilm_rating: ::std::option::Option<crate::schemas::ContentRatingGrfilmRating>,
-        #[doc = "The video's Instituto de la Cinematografía y de las Artes\nAudiovisuales (ICAA - Spain) rating."]
+        #[doc = "The video's Instituto de la Cinematografía y de las Artes Audiovisuales (ICAA - Spain) rating."]
         #[serde(
             rename = "icaaRating",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub icaa_rating: ::std::option::Option<crate::schemas::ContentRatingIcaaRating>,
-        #[doc = "The video's Irish Film Classification Office (IFCO - Ireland) rating.\nSee the <a\nhref=\"http://www.ifco.ie/website/ifco/ifcoweb.nsf/web/classcatintro\">IFCO</a>\nwebsite for more information."]
+        #[doc = "The video's Irish Film Classification Office (IFCO - Ireland) rating. See the IFCO website for more information."]
         #[serde(
             rename = "ifcoRating",
             default,
@@ -4715,7 +4829,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ilfilm_rating: ::std::option::Option<crate::schemas::ContentRatingIlfilmRating>,
-        #[doc = "The video's INCAA (Instituto Nacional de Cine y Artes Audiovisuales -\nArgentina) rating."]
+        #[doc = "The video's INCAA (Instituto Nacional de Cine y Artes Audiovisuales - Argentina) rating."]
         #[serde(
             rename = "incaaRating",
             default,
@@ -4729,14 +4843,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kfcb_rating: ::std::option::Option<crate::schemas::ContentRatingKfcbRating>,
-        #[doc = "The video's NICAM/Kijkwijzer rating from the Nederlands Instituut\nvoor de Classificatie van Audiovisuele Media (Netherlands)."]
+        #[doc = "The video's NICAM/Kijkwijzer rating from the Nederlands Instituut voor de Classificatie van Audiovisuele Media (Netherlands)."]
         #[serde(
             rename = "kijkwijzerRating",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kijkwijzer_rating: ::std::option::Option<crate::schemas::ContentRatingKijkwijzerRating>,
-        #[doc = "The video's Korea Media Rating Board\n(영상물등급위원회) rating.\nThe KMRB rates videos in South Korea."]
+        #[doc = "The video's Korea Media Rating Board (영상물등급위원회) rating. The KMRB rates videos in South Korea."]
         #[serde(
             rename = "kmrbRating",
             default,
@@ -4757,7 +4871,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mccaa_rating: ::std::option::Option<crate::schemas::ContentRatingMccaaRating>,
-        #[doc = "The video's rating from the Danish Film Institute's (Det Danske\nFilminstitut) Media Council for Children and Young People."]
+        #[doc = "The video's rating from the Danish Film Institute's (Det Danske Filminstitut) Media Council for Children and Young People."]
         #[serde(
             rename = "mccypRating",
             default,
@@ -4771,7 +4885,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mcst_rating: ::std::option::Option<crate::schemas::ContentRatingMcstRating>,
-        #[doc = "The video's rating from Singapore's Media Development Authority (MDA) and,\nspecifically, it's Board of Film Censors (BFC)."]
+        #[doc = "The video's rating from Singapore's Media Development Authority (MDA) and, specifically, it's Board of Film Censors (BFC)."]
         #[serde(
             rename = "mdaRating",
             default,
@@ -4786,21 +4900,21 @@ pub mod schemas {
         )]
         pub medietilsynet_rating:
             ::std::option::Option<crate::schemas::ContentRatingMedietilsynetRating>,
-        #[doc = "The video's rating from Finland's Kansallinen Audiovisuaalinen Instituutti\n(National Audiovisual Institute)."]
+        #[doc = "The video's rating from Finland's Kansallinen Audiovisuaalinen Instituutti (National Audiovisual Institute)."]
         #[serde(
             rename = "mekuRating",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub meku_rating: ::std::option::Option<crate::schemas::ContentRatingMekuRating>,
-        #[doc = "The rating system for MENA countries, a clone of MPAA. It is needed to\nprevent titles go live w/o additional QC check, since some of them can be\ninappropriate for the countries at all. See b/33408548 for more details."]
+        #[doc = "The rating system for MENA countries, a clone of MPAA. It is needed to prevent titles go live w/o additional QC check, since some of them can be inappropriate for the countries at all. See b/33408548 for more details."]
         #[serde(
             rename = "menaMpaaRating",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mena_mpaa_rating: ::std::option::Option<crate::schemas::ContentRatingMenaMpaaRating>,
-        #[doc = "The video's rating from the Ministero dei Beni e delle Attività\nCulturali e del Turismo (Italy)."]
+        #[doc = "The video's rating from the Ministero dei Beni e delle Attività Culturali e del Turismo (Italy)."]
         #[serde(
             rename = "mibacRating",
             default,
@@ -4814,7 +4928,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub moc_rating: ::std::option::Option<crate::schemas::ContentRatingMocRating>,
-        #[doc = "The video's rating from Taiwan's Ministry of Culture\n(文化部)."]
+        #[doc = "The video's rating from Taiwan's Ministry of Culture (文化部)."]
         #[serde(
             rename = "moctwRating",
             default,
@@ -4828,14 +4942,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mpaa_rating: ::std::option::Option<crate::schemas::ContentRatingMpaaRating>,
-        #[doc = "The rating system for trailer, DVD, and Ad in the US.  See\nhttp://movielabs.com/md/ratings/v2.3/html/US_MPAAT_Ratings.html."]
+        #[doc = "The rating system for trailer, DVD, and Ad in the US. See http://movielabs.com/md/ratings/v2.3/html/US_MPAAT_Ratings.html."]
         #[serde(
             rename = "mpaatRating",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mpaat_rating: ::std::option::Option<crate::schemas::ContentRatingMpaatRating>,
-        #[doc = "The video's rating from the Movie and Television Review and\nClassification Board (Philippines)."]
+        #[doc = "The video's rating from the Movie and Television Review and Classification Board (Philippines)."]
         #[serde(
             rename = "mtrcbRating",
             default,
@@ -4856,7 +4970,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub nbcpl_rating: ::std::option::Option<crate::schemas::ContentRatingNbcplRating>,
-        #[doc = "The video's rating from the <a href=\"http://www.nfc.bg/\">Bulgarian\nNational Film Center</a>."]
+        #[doc = "The video's rating from the Bulgarian National Film Center."]
         #[serde(
             rename = "nfrcRating",
             default,
@@ -4870,7 +4984,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub nfvcb_rating: ::std::option::Option<crate::schemas::ContentRatingNfvcbRating>,
-        #[doc = "The video's rating from the Nacionãlais Kino centrs (National Film\nCentre of Latvia)."]
+        #[doc = "The video's rating from the Nacionãlais Kino centrs (National Film Centre of Latvia)."]
         #[serde(
             rename = "nkclvRating",
             default,
@@ -4884,7 +4998,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub nmc_rating: ::std::option::Option<crate::schemas::ContentRatingNmcRating>,
-        #[doc = "The video's Office of Film and Literature Classification\n(OFLC - New Zealand) rating."]
+        #[doc = "The video's Office of Film and Literature Classification (OFLC - New Zealand) rating."]
         #[serde(
             rename = "oflcRating",
             default,
@@ -4898,7 +5012,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub pefilm_rating: ::std::option::Option<crate::schemas::ContentRatingPefilmRating>,
-        #[doc = "The video's rating from the Hungarian Nemzeti Filmiroda, the Rating\nCommittee of the National Office of Film."]
+        #[doc = "The video's rating from the Hungarian Nemzeti Filmiroda, the Rating Committee of the National Office of Film."]
         #[serde(
             rename = "rcnofRating",
             default,
@@ -4913,21 +5027,21 @@ pub mod schemas {
         )]
         pub resorteviolencia_rating:
             ::std::option::Option<crate::schemas::ContentRatingResorteviolenciaRating>,
-        #[doc = "The video's General Directorate of Radio, Television and Cinematography\n(Mexico) rating."]
+        #[doc = "The video's General Directorate of Radio, Television and Cinematography (Mexico) rating."]
         #[serde(
             rename = "rtcRating",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub rtc_rating: ::std::option::Option<crate::schemas::ContentRatingRtcRating>,
-        #[doc = "The video's rating from Ireland's Raidió Teilifís\nÉireann."]
+        #[doc = "The video's rating from Ireland's Raidió Teilifís Éireann."]
         #[serde(
             rename = "rteRating",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub rte_rating: ::std::option::Option<crate::schemas::ContentRatingRteRating>,
-        #[doc = "The video's National Film Registry of the Russian Federation\n(MKRF - Russia) rating."]
+        #[doc = "The video's National Film Registry of the Russian Federation (MKRF - Russia) rating."]
         #[serde(
             rename = "russiaRating",
             default,
@@ -4948,7 +5062,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub smais_rating: ::std::option::Option<crate::schemas::ContentRatingSmaisRating>,
-        #[doc = "The video's rating from Statens medieråd (Sweden's National Media\nCouncil)."]
+        #[doc = "The video's rating from Statens medieråd (Sweden's National Media Council)."]
         #[serde(
             rename = "smsaRating",
             default,
@@ -4982,7 +5096,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingAcbRating {
-        #[doc = "Programs that have been given a <code>C</code> classification by the\nAustralian Communications and Media Authority. These programs are\nintended for children (other than preschool children) who are younger\nthan 14 years of age."]
+        #[doc = "Programs that have been given a C classification by the Australian Communications and Media Authority. These programs are intended for children (other than preschool children) who are younger than 14 years of age."]
         AcbC,
         #[doc = "E"]
         AcbE,
@@ -4992,7 +5106,7 @@ pub mod schemas {
         AcbM,
         #[doc = "MA15+"]
         AcbMa15Plus,
-        #[doc = "Programs that have been given a <code>P</code> classification by the\nAustralian Communications and Media Authority. These programs are\nintended for preschool children."]
+        #[doc = "Programs that have been given a P classification by the Australian Communications and Media Authority. These programs are intended for preschool children."]
         AcbP,
         #[doc = "PG"]
         AcbPg,
@@ -5599,6 +5713,7 @@ pub mod schemas {
         CatvC,
         #[doc = "C8"]
         CatvC8,
+        CatvE,
         #[doc = "G"]
         CatvG,
         #[doc = "PG"]
@@ -5613,6 +5728,7 @@ pub mod schemas {
                 ContentRatingCatvRating::Catv18Plus => "catv18plus",
                 ContentRatingCatvRating::CatvC => "catvC",
                 ContentRatingCatvRating::CatvC8 => "catvC8",
+                ContentRatingCatvRating::CatvE => "catvE",
                 ContentRatingCatvRating::CatvG => "catvG",
                 ContentRatingCatvRating::CatvPg => "catvPg",
                 ContentRatingCatvRating::CatvUnrated => "catvUnrated",
@@ -5633,6 +5749,7 @@ pub mod schemas {
                 "catv18plus" => ContentRatingCatvRating::Catv18Plus,
                 "catvC" => ContentRatingCatvRating::CatvC,
                 "catvC8" => ContentRatingCatvRating::CatvC8,
+                "catvE" => ContentRatingCatvRating::CatvE,
                 "catvG" => ContentRatingCatvRating::CatvG,
                 "catvPg" => ContentRatingCatvRating::CatvPg,
                 "catvUnrated" => ContentRatingCatvRating::CatvUnrated,
@@ -5665,6 +5782,7 @@ pub mod schemas {
                 "catv18plus" => ContentRatingCatvRating::Catv18Plus,
                 "catvC" => ContentRatingCatvRating::CatvC,
                 "catvC8" => ContentRatingCatvRating::CatvC8,
+                "catvE" => ContentRatingCatvRating::CatvE,
                 "catvG" => ContentRatingCatvRating::CatvG,
                 "catvPg" => ContentRatingCatvRating::CatvPg,
                 "catvUnrated" => ContentRatingCatvRating::CatvUnrated,
@@ -5698,6 +5816,7 @@ pub mod schemas {
         Catvfr18Plus,
         #[doc = "8+"]
         Catvfr8Plus,
+        CatvfrE,
         #[doc = "G"]
         CatvfrG,
         CatvfrUnrated,
@@ -5710,6 +5829,7 @@ pub mod schemas {
                 ContentRatingCatvfrRating::Catvfr16Plus => "catvfr16plus",
                 ContentRatingCatvfrRating::Catvfr18Plus => "catvfr18plus",
                 ContentRatingCatvfrRating::Catvfr8Plus => "catvfr8plus",
+                ContentRatingCatvfrRating::CatvfrE => "catvfrE",
                 ContentRatingCatvfrRating::CatvfrG => "catvfrG",
                 ContentRatingCatvfrRating::CatvfrUnrated => "catvfrUnrated",
                 ContentRatingCatvfrRating::CatvfrUnspecified => "catvfrUnspecified",
@@ -5729,6 +5849,7 @@ pub mod schemas {
                 "catvfr16plus" => ContentRatingCatvfrRating::Catvfr16Plus,
                 "catvfr18plus" => ContentRatingCatvfrRating::Catvfr18Plus,
                 "catvfr8plus" => ContentRatingCatvfrRating::Catvfr8Plus,
+                "catvfrE" => ContentRatingCatvfrRating::CatvfrE,
                 "catvfrG" => ContentRatingCatvfrRating::CatvfrG,
                 "catvfrUnrated" => ContentRatingCatvfrRating::CatvfrUnrated,
                 "catvfrUnspecified" => ContentRatingCatvfrRating::CatvfrUnspecified,
@@ -5760,6 +5881,7 @@ pub mod schemas {
                 "catvfr16plus" => ContentRatingCatvfrRating::Catvfr16Plus,
                 "catvfr18plus" => ContentRatingCatvfrRating::Catvfr18Plus,
                 "catvfr8plus" => ContentRatingCatvfrRating::Catvfr8Plus,
+                "catvfrE" => ContentRatingCatvfrRating::CatvfrE,
                 "catvfrG" => ContentRatingCatvfrRating::CatvfrG,
                 "catvfrUnrated" => ContentRatingCatvfrRating::CatvfrUnrated,
                 "catvfrUnspecified" => ContentRatingCatvfrRating::CatvfrUnspecified,
@@ -7001,18 +7123,30 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingDjctqRatingReasonsItems {
+        #[doc = "Atos Criminosos (Criminal Acts)"]
         DjctqCriminalActs,
+        #[doc = "Drogas (Drugs)"]
         DjctqDrugs,
+        #[doc = "Sexo Explícito (Explicit sex)"]
         DjctqExplicitSex,
+        #[doc = "Violência extrema (Extreme violence)"]
         DjctqExtremeViolence,
+        #[doc = "Drogas Ilícitas (Illegal drugs)"]
         DjctqIllegalDrugs,
+        #[doc = "Conteúdo Impactante (Impacting content)"]
         DjctqImpactingContent,
+        #[doc = "Linguagem Imprópria (Inappropriate language)"]
         DjctqInappropriateLanguage,
+        #[doc = "Drogas Lícitas (Legal drugs)"]
         DjctqLegalDrugs,
+        #[doc = "Nudez (Nudity)"]
         DjctqNudity,
         DjctqRatingReasonUnspecified,
+        #[doc = "Sexo (Sex)"]
         DjctqSex,
+        #[doc = "Conteúdo sexual (Sexual content)"]
         DjctqSexualContent,
+        #[doc = "Brazil rating content descriptors. See http://go/brazilratings section F. Violência (Violence)"]
         DjctqViolence,
     }
     impl ContentRatingDjctqRatingReasonsItems {
@@ -7950,6 +8084,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ContentRatingFpbRatingReasonsItems {
+        #[doc = "South Africa rating content descriptors."]
         FpbBlasphemy,
         FpbCriminalTechniques,
         FpbDrugs,
@@ -9069,11 +9204,11 @@ pub mod schemas {
         Mccaa12,
         #[doc = "12A"]
         Mccaa12A,
-        #[doc = "14 - this rating was removed from the new classification structure\nintroduced in 2013."]
+        #[doc = "14 - this rating was removed from the new classification structure introduced in 2013."]
         Mccaa14,
         #[doc = "15"]
         Mccaa15,
-        #[doc = "16 - this rating was removed from the new classification structure\nintroduced in 2013."]
+        #[doc = "16 - this rating was removed from the new classification structure introduced in 2013."]
         Mccaa16,
         #[doc = "18"]
         Mccaa18,
@@ -12062,6 +12197,48 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Entity {
+        #[serde(
+            rename = "id",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub id: ::std::option::Option<String>,
+        #[serde(
+            rename = "typeId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub type_id: ::std::option::Option<String>,
+        #[serde(
+            rename = "url",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub url: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for Entity {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Entity {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GeoPoint {
@@ -12109,180 +12286,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GuideCategory {
-        #[doc = "Etag of this resource."]
-        #[serde(
-            rename = "etag",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub etag: ::std::option::Option<String>,
-        #[doc = "The ID that YouTube uses to uniquely identify the guide category."]
-        #[serde(
-            rename = "id",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub id: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#guideCategory\"</code>."]
-        #[serde(
-            rename = "kind",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>snippet</code> object contains basic details about the category,\nsuch as its title."]
-        #[serde(
-            rename = "snippet",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub snippet: ::std::option::Option<crate::schemas::GuideCategorySnippet>,
-    }
-    impl ::google_field_selector::FieldSelector for GuideCategory {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GuideCategory {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GuideCategoryListResponse {
-        #[doc = "Etag of this resource."]
-        #[serde(
-            rename = "etag",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub etag: ::std::option::Option<String>,
-        #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(
-            rename = "eventId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub event_id: ::std::option::Option<String>,
-        #[doc = "A list of categories that can be associated with YouTube channels. In this\nmap, the category ID is the map key, and its value is the corresponding\n<code>guideCategory</code> resource."]
-        #[serde(
-            rename = "items",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub items: ::std::option::Option<Vec<crate::schemas::GuideCategory>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#guideCategoryListResponse\"</code>."]
-        #[serde(
-            rename = "kind",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the next page in the result set."]
-        #[serde(
-            rename = "nextPageToken",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub next_page_token: ::std::option::Option<String>,
-        #[serde(
-            rename = "pageInfo",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the previous page in the result set."]
-        #[serde(
-            rename = "prevPageToken",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub prev_page_token: ::std::option::Option<String>,
-        #[serde(
-            rename = "tokenPagination",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
-        #[serde(
-            rename = "visitorId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub visitor_id: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for GuideCategoryListResponse {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GuideCategoryListResponse {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GuideCategorySnippet {
-        #[serde(
-            rename = "channelId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub channel_id: ::std::option::Option<String>,
-        #[doc = "Description of the guide category."]
-        #[serde(
-            rename = "title",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub title: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for GuideCategorySnippet {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GuideCategorySnippet {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct I18Nlanguage {
         #[doc = "Etag of this resource."]
         #[serde(
@@ -12298,14 +12301,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#i18nLanguage\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#i18nLanguage\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>snippet</code> object contains basic details about the i18n\nlanguage, such as language code and human-readable name."]
+        #[doc = "The snippet object contains basic details about the i18n language, such as language code and human-readable name."]
         #[serde(
             rename = "snippet",
             default,
@@ -12350,21 +12353,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub event_id: ::std::option::Option<String>,
-        #[doc = "A list of supported i18n languages. In this map, the i18n language ID is\nthe map key, and its value is the corresponding <code>i18nLanguage</code>\nresource."]
+        #[doc = "A list of supported i18n languages. In this map, the i18n language ID is the map key, and its value is the corresponding i18nLanguage resource."]
         #[serde(
             rename = "items",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::I18Nlanguage>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#i18nLanguageListResponse\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#i18nLanguageListResponse\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
+        #[doc = "The visitorId identifies the visitor."]
         #[serde(
             rename = "visitorId",
             default,
@@ -12447,14 +12450,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#i18nRegion\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#i18nRegion\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>snippet</code> object contains basic details about the i18n\nregion, such as region code and human-readable name."]
+        #[doc = "The snippet object contains basic details about the i18n region, such as region code and human-readable name."]
         #[serde(
             rename = "snippet",
             default,
@@ -12499,21 +12502,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub event_id: ::std::option::Option<String>,
-        #[doc = "A list of regions where YouTube is available. In this map, the i18n region\nID is the map key, and its value is the corresponding\n<code>i18nRegion</code> resource."]
+        #[doc = "A list of regions where YouTube is available. In this map, the i18n region ID is the map key, and its value is the corresponding i18nRegion resource."]
         #[serde(
             rename = "items",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::I18Nregion>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#i18nRegionListResponse\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#i18nRegionListResponse\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
+        #[doc = "The visitorId identifies the visitor."]
         #[serde(
             rename = "visitorId",
             default,
@@ -12582,14 +12585,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ImageSettings {
-        #[doc = "The URL for the background image shown on the video watch page. The image\nshould be 1200px by 615px, with a maximum file size of 128k."]
+        #[doc = "The URL for the background image shown on the video watch page. The image should be 1200px by 615px, with a maximum file size of 128k."]
         #[serde(
             rename = "backgroundImageUrl",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub background_image_url: ::std::option::Option<crate::schemas::LocalizedProperty>,
-        #[doc = "This is used only in update requests; if it's set, we use this URL to\ngenerate all of the above banner URLs."]
+        #[doc = "This is generated when a ChannelBanner.Insert request has succeeded for the given channel."]
         #[serde(
             rename = "bannerExternalUrl",
             default,
@@ -12702,7 +12705,7 @@ pub mod schemas {
         )]
         pub large_branded_banner_image_imap_script:
             ::std::option::Option<crate::schemas::LocalizedProperty>,
-        #[doc = "The URL for the 854px by 70px image that appears below the video player in\nthe expanded video view of the video watch page."]
+        #[doc = "The URL for the 854px by 70px image that appears below the video player in the expanded video view of the video watch page."]
         #[serde(
             rename = "largeBrandedBannerImageUrl",
             default,
@@ -12718,7 +12721,7 @@ pub mod schemas {
         )]
         pub small_branded_banner_image_imap_script:
             ::std::option::Option<crate::schemas::LocalizedProperty>,
-        #[doc = "The URL for the 640px by 70px banner image that appears below the video\nplayer in the default view of the video watch page.\nThe URL for the image that appears above the top-left corner of the video\nplayer. This is a 25-pixel-high image with a flexible width that cannot\nexceed 170 pixels."]
+        #[doc = "The URL for the 640px by 70px banner image that appears below the video player in the default view of the video watch page. The URL for the image that appears above the top-left corner of the video player. This is a 25-pixel-high image with a flexible width that cannot exceed 170 pixels."]
         #[serde(
             rename = "smallBrandedBannerImageUrl",
             default,
@@ -12726,7 +12729,7 @@ pub mod schemas {
         )]
         pub small_branded_banner_image_url:
             ::std::option::Option<crate::schemas::LocalizedProperty>,
-        #[doc = "The URL for a 1px by 1px tracking pixel that can be used to collect\nstatistics for views of the channel or video pages."]
+        #[doc = "The URL for a 1px by 1px tracking pixel that can be used to collect statistics for views of the channel or video pages."]
         #[serde(
             rename = "trackingImageUrl",
             default,
@@ -12763,28 +12766,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct IngestionInfo {
-        #[doc = "The backup ingestion URL that you should use to stream video to\nYouTube. You have the option of simultaneously streaming the content\nthat you are sending to the <code>ingestionAddress</code> to this URL."]
+        #[doc = "The backup ingestion URL that you should use to stream video to YouTube. You have the option of simultaneously streaming the content that you are sending to the ingestionAddress to this URL."]
         #[serde(
             rename = "backupIngestionAddress",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub backup_ingestion_address: ::std::option::Option<String>,
-        #[doc = "The primary ingestion URL that you should use to stream video to\nYouTube. You must stream video to this URL.<br><br>\nDepending on which application or tool you use to encode\nyour video stream, you may need to enter the stream URL and stream\nname separately or you may need to concatenate them in the following\nformat:<br><pre><strong>STREAM_URL/STREAM_NAME</strong></pre>"]
+        #[doc = "The primary ingestion URL that you should use to stream video to YouTube. You must stream video to this URL. Depending on which application or tool you use to encode your video stream, you may need to enter the stream URL and stream name separately or you may need to concatenate them in the following format: *STREAM_URL/STREAM_NAME* "]
         #[serde(
             rename = "ingestionAddress",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ingestion_address: ::std::option::Option<String>,
-        #[doc = "This ingestion url may be used instead of\n<code>backupIngestionAddress</code> in order to stream via RTMPS. Not\napplicable to non-RTMP streams."]
+        #[doc = "This ingestion url may be used instead of backupIngestionAddress in order to stream via RTMPS. Not applicable to non-RTMP streams."]
         #[serde(
             rename = "rtmpsBackupIngestionAddress",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub rtmps_backup_ingestion_address: ::std::option::Option<String>,
-        #[doc = "This ingestion url may be used instead of\n<code>ingestionAddress</code> in order to stream via RTMPS. Not applicable\nto non-RTMP streams."]
+        #[doc = "This ingestion url may be used instead of ingestionAddress in order to stream via RTMPS. Not applicable to non-RTMP streams."]
         #[serde(
             rename = "rtmpsIngestionAddress",
             default,
@@ -12836,14 +12839,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub image_url: ::std::option::Option<String>,
-        #[doc = "The spatial position within the video where the branding watermark will be\ndisplayed."]
+        #[doc = "The spatial position within the video where the branding watermark will be displayed."]
         #[serde(
             rename = "position",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub position: ::std::option::Option<crate::schemas::InvideoPosition>,
-        #[doc = "The channel to which this branding links. If not present it defaults to\nthe current channel."]
+        #[doc = "The channel to which this branding links. If not present it defaults to the current channel."]
         #[serde(
             rename = "targetChannelId",
             default,
@@ -13060,60 +13063,8 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct InvideoPromotion {
-        #[doc = "The default temporal position within the video where the promoted item will\nbe displayed. Can be overridden by more specific timing in the item."]
-        #[serde(
-            rename = "defaultTiming",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub default_timing: ::std::option::Option<crate::schemas::InvideoTiming>,
-        #[doc = "List of promoted items in decreasing priority."]
-        #[serde(
-            rename = "items",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub items: ::std::option::Option<Vec<crate::schemas::PromotedItem>>,
-        #[doc = "The spatial position within the video where the promoted item will be\ndisplayed."]
-        #[serde(
-            rename = "position",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub position: ::std::option::Option<crate::schemas::InvideoPosition>,
-        #[doc = "Indicates whether the channel's promotional campaign uses \"smart timing.\"\nThis feature attempts to show promotions at a point in the video when they\nare more likely to be clicked and less likely to disrupt the viewing\nexperience. This feature also picks up a single promotion to show on each\nvideo."]
-        #[serde(
-            rename = "useSmartTiming",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub use_smart_timing: ::std::option::Option<bool>,
-    }
-    impl ::google_field_selector::FieldSelector for InvideoPromotion {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for InvideoPromotion {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct InvideoTiming {
-        #[doc = "Defines the duration in milliseconds for which the promotion should be\ndisplayed. If missing, the client should use the default."]
+        #[doc = "Defines the duration in milliseconds for which the promotion should be displayed. If missing, the client should use the default."]
         #[serde(
             rename = "durationMs",
             default,
@@ -13121,7 +13072,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub duration_ms: ::std::option::Option<u64>,
-        #[doc = "Defines the time at which the promotion will appear. Depending on the value\nof <code>type</code> the value of the <code>offsetMs</code> field will\nrepresent a time offset from the start or from the end of the video,\nexpressed in milliseconds."]
+        #[doc = "Defines the time at which the promotion will appear. Depending on the value of type the value of the offsetMs field will represent a time offset from the start or from the end of the video, expressed in milliseconds."]
         #[serde(
             rename = "offsetMs",
             default,
@@ -13129,7 +13080,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub offset_ms: ::std::option::Option<u64>,
-        #[doc = "Describes a timing type. If the value is <code>offsetFromStart</code>, then\nthe <code>offsetMs</code> field represents an offset from the start of the\nvideo. If the value is <code>offsetFromEnd</code>, then the\n<code>offsetMs</code> field represents an offset from the end of the video."]
+        #[doc = "Describes a timing type. If the value is offsetFromStart, then the offsetMs field represents an offset from the start of the video. If the value is offsetFromEnd, then the offsetMs field represents an offset from the end of the video."]
         #[serde(
             rename = "type",
             default,
@@ -13290,7 +13241,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LiveBroadcast {
-        #[doc = "The <code>contentDetails</code> object contains information about the\nevent's video content, such as whether the content can be shown in an\nembedded video player or if it will be archived and therefore available\nfor viewing after the event has concluded."]
+        #[doc = "The contentDetails object contains information about the event's video content, such as whether the content can be shown in an embedded video player or if it will be archived and therefore available for viewing after the event has concluded."]
         #[serde(
             rename = "contentDetails",
             default,
@@ -13311,28 +13262,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#liveBroadcast\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveBroadcast\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>snippet</code> object contains basic details about the event,\nincluding its title, description, start time, and end time."]
+        #[doc = "The snippet object contains basic details about the event, including its title, description, start time, and end time."]
         #[serde(
             rename = "snippet",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub snippet: ::std::option::Option<crate::schemas::LiveBroadcastSnippet>,
-        #[doc = "The <code>statistics</code> object contains info about the event's current\nstats. These include concurrent viewers and total chat count. Statistics\ncan change (in either direction) during the lifetime of an event.\nStatistics are only returned while the event is live."]
+        #[doc = "The statistics object contains info about the event's current stats. These include concurrent viewers and total chat count. Statistics can change (in either direction) during the lifetime of an event. Statistics are only returned while the event is live."]
         #[serde(
             rename = "statistics",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub statistics: ::std::option::Option<crate::schemas::LiveBroadcastStatistics>,
-        #[doc = "The <code>status</code> object contains information about the event's\nstatus."]
+        #[doc = "The status object contains information about the event's status."]
         #[serde(
             rename = "status",
             default,
@@ -13363,20 +13314,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LiveBroadcastContentDetails {
-        #[doc = "This value uniquely identifies the\n<code><a href=\"/youtube/v3/live/docs/liveStreams\">live stream</a></code>\nbound to the broadcast."]
+        #[doc = "This value uniquely identifies the live stream bound to the broadcast."]
         #[serde(
             rename = "boundStreamId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bound_stream_id: ::std::option::Option<String>,
-        #[doc = "The date and time that the live stream referenced by\n<code>boundStreamId</code> was last updated."]
+        #[doc = "The date and time that the live stream referenced by boundStreamId was last updated."]
         #[serde(
             rename = "boundStreamLastUpdateTimeMs",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub bound_stream_last_update_time_ms: ::std::option::Option<String>,
+        pub bound_stream_last_update_time_ms:
+            ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[serde(
             rename = "closedCaptionsType",
             default,
@@ -13384,42 +13336,42 @@ pub mod schemas {
         )]
         pub closed_captions_type:
             ::std::option::Option<crate::schemas::LiveBroadcastContentDetailsClosedCaptionsType>,
-        #[doc = "This setting indicates whether auto start is enabled for this broadcast.\nThe default value for this property is <code>false</code>.<br><br>\nThis setting can only be used by Events."]
+        #[doc = "This setting indicates whether auto start is enabled for this broadcast. The default value for this property is false. This setting can only be used by Events."]
         #[serde(
             rename = "enableAutoStart",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub enable_auto_start: ::std::option::Option<bool>,
-        #[doc = "This setting indicates whether auto stop is enabled for this broadcast.\nThe default value for this property is <code>false</code>.<br><br>\nThis setting can only be used by Events."]
+        #[doc = "This setting indicates whether auto stop is enabled for this broadcast. The default value for this property is false. This setting can only be used by Events."]
         #[serde(
             rename = "enableAutoStop",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub enable_auto_stop: ::std::option::Option<bool>,
-        #[doc = "This setting indicates whether HTTP POST closed captioning is enabled for\nthis broadcast. The ingestion URL of the closed captions is returned\nthrough the liveStreams API.  This is mutually exclusive with using the\n<code>closed_captions_type</code> property, and is equivalent to setting\n<code>closed_captions_type</code> to CLOSED_CAPTIONS_HTTP_POST."]
+        #[doc = "This setting indicates whether HTTP POST closed captioning is enabled for this broadcast. The ingestion URL of the closed captions is returned through the liveStreams API. This is mutually exclusive with using the closed_captions_type property, and is equivalent to setting closed_captions_type to CLOSED_CAPTIONS_HTTP_POST."]
         #[serde(
             rename = "enableClosedCaptions",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub enable_closed_captions: ::std::option::Option<bool>,
-        #[doc = "This setting indicates whether YouTube should enable content encryption\nfor the broadcast."]
+        #[doc = "This setting indicates whether YouTube should enable content encryption for the broadcast."]
         #[serde(
             rename = "enableContentEncryption",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub enable_content_encryption: ::std::option::Option<bool>,
-        #[doc = "This setting determines whether viewers can access DVR controls while\nwatching the video. DVR controls enable the viewer to control the video\nplayback experience by pausing, rewinding, or fast forwarding content.\nThe default value for this property is <code>true</code>.<br><br>\n\n<strong>Important:</strong> You must set the value to <code>true</code>\nand also set the <code>enableArchive</code> property's value to\n<code>true</code> if you want to make playback available immediately\nafter the broadcast ends."]
+        #[doc = "This setting determines whether viewers can access DVR controls while watching the video. DVR controls enable the viewer to control the video playback experience by pausing, rewinding, or fast forwarding content. The default value for this property is true. *Important:* You must set the value to true and also set the enableArchive property's value to true if you want to make playback available immediately after the broadcast ends."]
         #[serde(
             rename = "enableDvr",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub enable_dvr: ::std::option::Option<bool>,
-        #[doc = "This setting indicates whether the broadcast video can be played in an\nembedded player. If you choose to archive the video (using the\n<code>enableArchive</code> property), this setting will also apply to\nthe archived video."]
+        #[doc = "This setting indicates whether the broadcast video can be played in an embedded player. If you choose to archive the video (using the enableArchive property), this setting will also apply to the archived video."]
         #[serde(
             rename = "enableEmbed",
             default,
@@ -13433,7 +13385,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub enable_low_latency: ::std::option::Option<bool>,
-        #[doc = "If both this and enable_low_latency are set, they must match.\nLATENCY_NORMAL should match enable_low_latency=false\nLATENCY_LOW should match enable_low_latency=true\nLATENCY_ULTRA_LOW should have enable_low_latency omitted."]
+        #[doc = "If both this and enable_low_latency are set, they must match. LATENCY_NORMAL should match enable_low_latency=false LATENCY_LOW should match enable_low_latency=true LATENCY_ULTRA_LOW should have enable_low_latency omitted."]
         #[serde(
             rename = "latencyPreference",
             default,
@@ -13441,21 +13393,21 @@ pub mod schemas {
         )]
         pub latency_preference:
             ::std::option::Option<crate::schemas::LiveBroadcastContentDetailsLatencyPreference>,
-        #[doc = "The mesh for projecting the video if <code>projection</code> is\n<code>mesh</code>. The mesh value must be a UTF-8 string containing the\nbase-64 encoding of 3D mesh data that follows the <a\nhref=\"https://github.com/google/spatial-media/blob/master/docs/spherical-video-v2-rfc.md\">\nSpherical Video V2 RFC specification</a> for an mshp box, excluding the box\nsize and type but including the following four reserved zero bytes for the\nversion and flags."]
+        #[doc = "The mesh for projecting the video if projection is mesh. The mesh value must be a UTF-8 string containing the base-64 encoding of 3D mesh data that follows the Spherical Video V2 RFC specification for an mshp box, excluding the box size and type but including the following four reserved zero bytes for the version and flags."]
         #[serde(
             rename = "mesh",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mesh: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "The <code>monitorStream</code> object contains information about the\nmonitor stream, which the broadcaster can use to review the event\ncontent before the broadcast stream is shown publicly."]
+        #[doc = "The monitorStream object contains information about the monitor stream, which the broadcaster can use to review the event content before the broadcast stream is shown publicly."]
         #[serde(
             rename = "monitorStream",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub monitor_stream: ::std::option::Option<crate::schemas::MonitorStreamInfo>,
-        #[doc = "The projection format of this broadcast. This defaults to\n<code>rectangular</code>."]
+        #[doc = "The projection format of this broadcast. This defaults to rectangular."]
         #[serde(
             rename = "projection",
             default,
@@ -13463,20 +13415,28 @@ pub mod schemas {
         )]
         pub projection:
             ::std::option::Option<crate::schemas::LiveBroadcastContentDetailsProjection>,
-        #[doc = "Automatically start recording after the event goes live.\nThe default value for this property is <code>true</code>.<br><br>\n\n<strong>Important:</strong> You must also set the <code>enableDvr</code>\nproperty's value to\n<code>true</code> if you want the playback to be available immediately\nafter the broadcast ends. If you set this property's value to\n<code>true</code> but do not also set the <code>enableDvr</code> property\nto <code>true</code>, there may be a delay of around one day before the\narchived video will be available for playback."]
+        #[doc = "Automatically start recording after the event goes live. The default value for this property is true. *Important:* You must also set the enableDvr property's value to true if you want the playback to be available immediately after the broadcast ends. If you set this property's value to true but do not also set the enableDvr property to true, there may be a delay of around one day before the archived video will be available for playback."]
         #[serde(
             rename = "recordFromStart",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub record_from_start: ::std::option::Option<bool>,
-        #[doc = "This setting indicates whether the broadcast should automatically begin\nwith an <a\nhref=\"/youtube/v3/live/getting-started#Displaying_Slates\">in-stream\nslate</a> when you update the broadcast's status to <code>live</code>.\nAfter updating the status, you then need to send a\n<code><a\nhref=\"/youtube/v3/live/docs/liveCuepoints/insert\">liveCuepoints.insert</a></code>\nrequest that sets the cuepoint's <code>eventState</code> to\n<code>end</code> to remove the in-stream slate and make your broadcast\nstream visible to viewers."]
+        #[doc = "This setting indicates whether the broadcast should automatically begin with an in-stream slate when you update the broadcast's status to live. After updating the status, you then need to send a liveCuepoints.insert request that sets the cuepoint's eventState to end to remove the in-stream slate and make your broadcast stream visible to viewers."]
         #[serde(
             rename = "startWithSlate",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub start_with_slate: ::std::option::Option<bool>,
+        #[doc = "The 3D stereo layout of this broadcast. This defaults to mono."]
+        #[serde(
+            rename = "stereoLayout",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub stereo_layout:
+            ::std::option::Option<crate::schemas::LiveBroadcastContentDetailsStereoLayout>,
     }
     impl ::google_field_selector::FieldSelector for LiveBroadcastContentDetails {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -13598,7 +13558,7 @@ pub mod schemas {
         Low,
         #[doc = "Best for: highest quality viewer playbacks and higher resolutions."]
         Normal,
-        #[doc = "Best for: real-time interaction\nDoes not support: Closed captions, 1440p, and 4k resolutions"]
+        #[doc = "Best for: real-time interaction Does not support: Closed captions, 1440p, and 4k resolutions"]
         UltraLow,
     }
     impl LiveBroadcastContentDetailsLatencyPreference {
@@ -13762,6 +13722,89 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum LiveBroadcastContentDetailsStereoLayout {
+        LeftRight,
+        Mono,
+        StereoLayoutUnspecified,
+        TopBottom,
+    }
+    impl LiveBroadcastContentDetailsStereoLayout {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                LiveBroadcastContentDetailsStereoLayout::LeftRight => "leftRight",
+                LiveBroadcastContentDetailsStereoLayout::Mono => "mono",
+                LiveBroadcastContentDetailsStereoLayout::StereoLayoutUnspecified => {
+                    "stereoLayoutUnspecified"
+                }
+                LiveBroadcastContentDetailsStereoLayout::TopBottom => "topBottom",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LiveBroadcastContentDetailsStereoLayout {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LiveBroadcastContentDetailsStereoLayout {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LiveBroadcastContentDetailsStereoLayout, ()> {
+            Ok(match s {
+                "leftRight" => LiveBroadcastContentDetailsStereoLayout::LeftRight,
+                "mono" => LiveBroadcastContentDetailsStereoLayout::Mono,
+                "stereoLayoutUnspecified" => {
+                    LiveBroadcastContentDetailsStereoLayout::StereoLayoutUnspecified
+                }
+                "topBottom" => LiveBroadcastContentDetailsStereoLayout::TopBottom,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for LiveBroadcastContentDetailsStereoLayout {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for LiveBroadcastContentDetailsStereoLayout {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for LiveBroadcastContentDetailsStereoLayout {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "leftRight" => LiveBroadcastContentDetailsStereoLayout::LeftRight,
+                "mono" => LiveBroadcastContentDetailsStereoLayout::Mono,
+                "stereoLayoutUnspecified" => {
+                    LiveBroadcastContentDetailsStereoLayout::StereoLayoutUnspecified
+                }
+                "topBottom" => LiveBroadcastContentDetailsStereoLayout::TopBottom,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for LiveBroadcastContentDetailsStereoLayout {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for LiveBroadcastContentDetailsStereoLayout {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -13796,14 +13839,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::LiveBroadcast>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#liveBroadcastListResponse\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveBroadcastListResponse\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the next page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -13817,7 +13860,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the previous page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
         #[serde(
             rename = "prevPageToken",
             default,
@@ -13830,7 +13873,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
+        #[doc = "The visitorId identifies the visitor."]
         #[serde(
             rename = "visitorId",
             default,
@@ -13861,35 +13904,35 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LiveBroadcastSnippet {
-        #[doc = "The date and time that the broadcast actually ended. This information is\nonly available once the broadcast's state is <code>complete</code>. The\nvalue is specified in <a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat."]
+        #[doc = "The date and time that the broadcast actually ended. This information is only available once the broadcast's state is complete."]
         #[serde(
             rename = "actualEndTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub actual_end_time: ::std::option::Option<String>,
-        #[doc = "The date and time that the broadcast actually started. This information is\nonly available once the broadcast's state is <code>live</code>. The\nvalue is specified in <a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat."]
+        pub actual_end_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "The date and time that the broadcast actually started. This information is only available once the broadcast's state is live."]
         #[serde(
             rename = "actualStartTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub actual_start_time: ::std::option::Option<String>,
-        #[doc = "The ID that YouTube uses to uniquely identify the channel that\nis publishing the broadcast."]
+        pub actual_start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "The ID that YouTube uses to uniquely identify the channel that is publishing the broadcast."]
         #[serde(
             rename = "channelId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub channel_id: ::std::option::Option<String>,
-        #[doc = "The broadcast's description. As with the <code>title</code>, you can set\nthis field by modifying the broadcast resource or by setting the\n<code><a\nhref=\"/youtube/v3/docs/videos#snippet.description\">description</a></code>\nfield of the corresponding video resource."]
+        #[doc = "The broadcast's description. As with the title, you can set this field by modifying the broadcast resource or by setting the description field of the corresponding video resource."]
         #[serde(
             rename = "description",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "Indicates whether this broadcast is the default broadcast.\nInternal only."]
+        #[doc = "Indicates whether this broadcast is the default broadcast. Internal only."]
         #[serde(
             rename = "isDefaultBroadcast",
             default,
@@ -13903,35 +13946,35 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub live_chat_id: ::std::option::Option<String>,
-        #[doc = "The date and time that the broadcast was added to YouTube's live broadcast\nschedule. The value is specified in\n<a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat."]
+        #[doc = "The date and time that the broadcast was added to YouTube's live broadcast schedule."]
         #[serde(
             rename = "publishedAt",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub published_at: ::std::option::Option<String>,
-        #[doc = "The date and time that the broadcast is scheduled to end. The value\nis specified in <a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat."]
+        pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "The date and time that the broadcast is scheduled to start."]
         #[serde(
             rename = "scheduledEndTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub scheduled_end_time: ::std::option::Option<String>,
-        #[doc = "The date and time that the broadcast is scheduled to start. The value\nis specified in <a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat."]
+        pub scheduled_end_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "The date and time that the broadcast is scheduled to end."]
         #[serde(
             rename = "scheduledStartTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub scheduled_start_time: ::std::option::Option<String>,
-        #[doc = "A map of thumbnail images associated with the broadcast. For each nested\nobject in this object, the key is the name of the thumbnail image, and\nthe value is an object that contains other information about the\nthumbnail."]
+        pub scheduled_start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "A map of thumbnail images associated with the broadcast. For each nested object in this object, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail."]
         #[serde(
             rename = "thumbnails",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub thumbnails: ::std::option::Option<crate::schemas::ThumbnailDetails>,
-        #[doc = "The broadcast's title. Note that the broadcast represents exactly one\nYouTube video. You can set this field by modifying the broadcast resource\nor by setting the\n<code><a href=\"/youtube/v3/docs/videos#snippet.title\">title</a></code>\nfield of the corresponding video resource."]
+        #[doc = "The broadcast's title. Note that the broadcast represents exactly one YouTube video. You can set this field by modifying the broadcast resource or by setting the title field of the corresponding video resource."]
         #[serde(
             rename = "title",
             default,
@@ -13962,7 +14005,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LiveBroadcastStatistics {
-        #[doc = "The total number of live chat messages currently on the broadcast. The\nproperty and its value will be present if the broadcast is public, has\nthe live chat feature enabled, and has at least one message. Note that\nthis field will not be filled after the broadcast ends. So this property\nwould not identify the number of chat messages for an archived video of a\ncompleted live broadcast."]
+        #[doc = "The total number of live chat messages currently on the broadcast. The property and its value will be present if the broadcast is public, has the live chat feature enabled, and has at least one message. Note that this field will not be filled after the broadcast ends. So this property would not identify the number of chat messages for an archived video of a completed live broadcast."]
         #[serde(
             rename = "totalChatCount",
             default,
@@ -13994,7 +14037,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LiveBroadcastStatus {
-        #[doc = "The broadcast's status. The status can be updated using the API's\n<code><a\nhref=\"/youtube/v3/live/docs/liveBroadcasts/transition\"\n>liveBroadcasts.transition</a></code> method."]
+        #[doc = "The broadcast's status. The status can be updated using the API's liveBroadcasts.transition method."]
         #[serde(
             rename = "lifeCycleStatus",
             default,
@@ -14010,14 +14053,14 @@ pub mod schemas {
         )]
         pub live_broadcast_priority:
             ::std::option::Option<crate::schemas::LiveBroadcastStatusLiveBroadcastPriority>,
-        #[doc = "Whether the broadcast is made for kids or not, decided by YouTube instead\nof the creator. This field is read only."]
+        #[doc = "Whether the broadcast is made for kids or not, decided by YouTube instead of the creator. This field is read only."]
         #[serde(
             rename = "madeForKids",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub made_for_kids: ::std::option::Option<bool>,
-        #[doc = "The broadcast's privacy status. Note that the broadcast represents\nexactly one YouTube video, so the privacy settings are identical to\nthose supported for videos. In addition, you can set this field by\nmodifying the broadcast resource or by setting the\n<code><a\nhref=\"/youtube/v3/docs/videos#status.privacyStatus\"\n>privacyStatus</a></code>\nfield of the corresponding video resource."]
+        #[doc = "The broadcast's privacy status. Note that the broadcast represents exactly one YouTube video, so the privacy settings are identical to those supported for videos. In addition, you can set this field by modifying the broadcast resource or by setting the privacyStatus field of the corresponding video resource."]
         #[serde(
             rename = "privacyStatus",
             default,
@@ -14032,7 +14075,7 @@ pub mod schemas {
         )]
         pub recording_status:
             ::std::option::Option<crate::schemas::LiveBroadcastStatusRecordingStatus>,
-        #[doc = "This field will be set to True if the creator declares the broadcast to be\nkids only: go/live-cw-work."]
+        #[doc = "This field will be set to True if the creator declares the broadcast to be kids only: go/live-cw-work."]
         #[serde(
             rename = "selfDeclaredMadeForKids",
             default,
@@ -14167,7 +14210,7 @@ pub mod schemas {
         #[doc = "High priority broadcast: for high profile HoAs, like PixelCorp ones."]
         High,
         LiveBroadcastPriorityUnspecified,
-        #[doc = "Low priority broadcast: for low view count HoAs or other\nlow priority broadcasts."]
+        #[doc = "Low priority broadcast: for low view count HoAs or other low priority broadcasts."]
         Low,
         #[doc = "Normal priority broadcast: for regular HoAs and broadcasts."]
         Normal,
@@ -14437,7 +14480,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n`\"youtube#liveChatBan\"`."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string `\"youtube#liveChatBan\"`."]
         #[serde(
             rename = "kind",
             default,
@@ -14656,7 +14699,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LiveChatMessage {
-        #[doc = "The <code>authorDetails</code> object contains basic details about the\nuser that posted this message."]
+        #[doc = "The authorDetails object contains basic details about the user that posted this message."]
         #[serde(
             rename = "authorDetails",
             default,
@@ -14677,14 +14720,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#liveChatMessage\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveChatMessage\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>snippet</code> object contains basic details about the message."]
+        #[doc = "The snippet object contains basic details about the message."]
         #[serde(
             rename = "snippet",
             default,
@@ -14845,7 +14888,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::LiveChatMessage>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#liveChatMessageListResponse\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveChatMessageListResponse\"."]
         #[serde(
             rename = "kind",
             default,
@@ -14858,13 +14901,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub next_page_token: ::std::option::Option<String>,
-        #[doc = "The date and time when the underlying stream went offline. The value is\nspecified in <a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat."]
+        #[doc = "The date and time when the underlying stream went offline."]
         #[serde(
             rename = "offlineAt",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub offline_at: ::std::option::Option<String>,
+        pub offline_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "General pagination information."]
         #[serde(
             rename = "pageInfo",
@@ -14885,7 +14928,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
+        #[doc = "The visitorId identifies the visitor."]
         #[serde(
             rename = "visitorId",
             default,
@@ -14946,21 +14989,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LiveChatMessageSnippet {
-        #[doc = "The ID of the user that authored this message, this field is not always\nfilled.\ntextMessageEvent - the user that wrote the message\nfanFundingEvent - the user that funded the broadcast\nnewSponsorEvent - the user that just became a sponsor\nmessageDeletedEvent - the moderator that took the action\nmessageRetractedEvent - the author that retracted their message\nuserBannedEvent - the moderator that took the action\nsuperChatEvent - the user that made the purchase"]
+        #[doc = "The ID of the user that authored this message, this field is not always filled. textMessageEvent - the user that wrote the message fanFundingEvent - the user that funded the broadcast newSponsorEvent - the user that just became a sponsor messageDeletedEvent - the moderator that took the action messageRetractedEvent - the author that retracted their message userBannedEvent - the moderator that took the action superChatEvent - the user that made the purchase"]
         #[serde(
             rename = "authorChannelId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub author_channel_id: ::std::option::Option<String>,
-        #[doc = "Contains a string that can be displayed to the user.\nIf this field is not present the message is silent, at the moment only\nmessages of type TOMBSTONE and CHAT_ENDED_EVENT are silent."]
+        #[doc = "Contains a string that can be displayed to the user. If this field is not present the message is silent, at the moment only messages of type TOMBSTONE and CHAT_ENDED_EVENT are silent."]
         #[serde(
             rename = "displayMessage",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_message: ::std::option::Option<String>,
-        #[doc = "Details about the funding event, this is only set if the type is\n'fanFundingEvent'."]
+        #[doc = "Details about the funding event, this is only set if the type is 'fanFundingEvent'."]
         #[serde(
             rename = "fanFundingEventDetails",
             default,
@@ -14995,28 +15038,28 @@ pub mod schemas {
         )]
         pub message_retracted_details:
             ::std::option::Option<crate::schemas::LiveChatMessageRetractedDetails>,
-        #[doc = "The date and time when the message was orignally published. The value is\nspecified in <a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat."]
+        #[doc = "The date and time when the message was orignally published."]
         #[serde(
             rename = "publishedAt",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub published_at: ::std::option::Option<String>,
-        #[doc = "The type of message, this will always be present, it determines the\ncontents of the message as well as which fields will be present."]
+        pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "The type of message, this will always be present, it determines the contents of the message as well as which fields will be present."]
         #[serde(
             rename = "type",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<crate::schemas::LiveChatMessageSnippetType>,
-        #[doc = "Details about the Super Chat event, this is only set if the type is\n'superChatEvent'."]
+        #[doc = "Details about the Super Chat event, this is only set if the type is 'superChatEvent'."]
         #[serde(
             rename = "superChatDetails",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub super_chat_details: ::std::option::Option<crate::schemas::LiveChatSuperChatDetails>,
-        #[doc = "Details about the Super Sticker event, this is only set if the type is\n'superStickerEvent'."]
+        #[doc = "Details about the Super Sticker event, this is only set if the type is 'superStickerEvent'."]
         #[serde(
             rename = "superStickerDetails",
             default,
@@ -15024,7 +15067,7 @@ pub mod schemas {
         )]
         pub super_sticker_details:
             ::std::option::Option<crate::schemas::LiveChatSuperStickerDetails>,
-        #[doc = "Details about the text message, this is only set if the type is\n'textMessageEvent'."]
+        #[doc = "Details about the text message, this is only set if the type is 'textMessageEvent'."]
         #[serde(
             rename = "textMessageDetails",
             default,
@@ -15201,14 +15244,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#liveChatModerator\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveChatModerator\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>snippet</code> object contains basic details about the\nmoderator."]
+        #[doc = "The snippet object contains basic details about the moderator."]
         #[serde(
             rename = "snippet",
             default,
@@ -15260,14 +15303,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::LiveChatModerator>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#liveChatModeratorListResponse\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveChatModeratorListResponse\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the next page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -15281,7 +15324,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the previous page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
         #[serde(
             rename = "prevPageToken",
             default,
@@ -15294,7 +15337,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
+        #[doc = "The visitorId identifies the visitor."]
         #[serde(
             rename = "visitorId",
             default,
@@ -15385,7 +15428,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub currency: ::std::option::Option<String>,
-        #[doc = "The tier in which the amount belongs. Lower amounts belong to lower\ntiers. The lowest tier is <code>1</code>."]
+        #[doc = "The tier in which the amount belongs. Lower amounts belong to lower tiers. The lowest tier is 1."]
         #[serde(
             rename = "tier",
             default,
@@ -15452,7 +15495,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub super_sticker_metadata: ::std::option::Option<crate::schemas::SuperStickerMetadata>,
-        #[doc = "The tier in which the amount belongs. Lower amounts belong to lower\ntiers. The lowest tier is <code>1</code>."]
+        #[doc = "The tier in which the amount belongs. Lower amounts belong to lower tiers. The lowest tier is 1."]
         #[serde(
             rename = "tier",
             default,
@@ -15514,7 +15557,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LiveChatUserBannedMessageDetails {
-        #[doc = "The duration of the ban. This property is only present if the\n<code>banType</code> is <code>temporary</code>."]
+        #[doc = "The duration of the ban. This property is only present if the banType is temporary."]
         #[serde(
             rename = "banDurationSeconds",
             default,
@@ -15630,14 +15673,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LiveStream {
-        #[doc = "The <code>cdn</code> object defines the live stream's content delivery\nnetwork (CDN) settings. These settings provide details about the manner\nin which you stream your content to YouTube."]
+        #[doc = "The cdn object defines the live stream's content delivery network (CDN) settings. These settings provide details about the manner in which you stream your content to YouTube."]
         #[serde(
             rename = "cdn",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cdn: ::std::option::Option<crate::schemas::CdnSettings>,
-        #[doc = "The <code>content_details</code> object contains information about the\nstream, including the closed captions ingestion URL."]
+        #[doc = "The content_details object contains information about the stream, including the closed captions ingestion URL."]
         #[serde(
             rename = "contentDetails",
             default,
@@ -15658,21 +15701,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#liveStream\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveStream\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>snippet</code> object contains basic details about the\nstream, including its channel, title, and description."]
+        #[doc = "The snippet object contains basic details about the stream, including its channel, title, and description."]
         #[serde(
             rename = "snippet",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub snippet: ::std::option::Option<crate::schemas::LiveStreamSnippet>,
-        #[doc = "The <code>status</code> object contains information about\nlive stream's status."]
+        #[doc = "The status object contains information about live stream's status."]
         #[serde(
             rename = "status",
             default,
@@ -16062,7 +16105,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub closed_captions_ingestion_url: ::std::option::Option<String>,
-        #[doc = "Indicates whether the stream is reusable, which means that it\ncan be bound to multiple broadcasts. It is common for\nbroadcasters to reuse the same stream for many different\nbroadcasts if those broadcasts occur at different times.<br><br>\nIf you set this value to <code>false</code>, then the stream\nwill not be reusable, which means that it can only be bound to\none broadcast. Non-reusable streams differ from reusable streams in the\nfollowing ways:\n\n<ul>\n  <li>A non-reusable stream can only be bound to one broadcast.</li>\n  <li>A non-reusable stream might be deleted by an automated process\n    after the broadcast ends.</li>\n  <li>The <code><a href=\"/youtube/v3/live/docs/liveStreams/list\">\n    liveStreams.list</a></code> method does not list non-reusable streams\n    if you call the method and set the <code>mine</code> parameter to\n    <code>true</code>. The only way to use that method to retrieve the\n    resource for a non-reusable stream is to use the <code>id</code>\n    parameter to identify the stream.</li>\n</ul>"]
+        #[doc = "Indicates whether the stream is reusable, which means that it can be bound to multiple broadcasts. It is common for broadcasters to reuse the same stream for many different broadcasts if those broadcasts occur at different times. If you set this value to false, then the stream will not be reusable, which means that it can only be bound to one broadcast. Non-reusable streams differ from reusable streams in the following ways: - A non-reusable stream can only be bound to one broadcast. - A non-reusable stream might be deleted by an automated process after the broadcast ends. - The liveStreams.list method does not list non-reusable streams if you call the method and set the mine parameter to true. The only way to use that method to retrieve the resource for a non-reusable stream is to use the id parameter to identify the stream. "]
         #[serde(
             rename = "isReusable",
             default,
@@ -16242,14 +16285,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::LiveStream>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#liveStreamListResponse\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#liveStreamListResponse\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the next page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -16262,7 +16305,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the previous page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
         #[serde(
             rename = "prevPageToken",
             default,
@@ -16275,7 +16318,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
+        #[doc = "The visitorId identifies the visitor."]
         #[serde(
             rename = "visitorId",
             default,
@@ -16306,14 +16349,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LiveStreamSnippet {
-        #[doc = "The ID that YouTube uses to uniquely identify the channel that\nis transmitting the stream."]
+        #[doc = "The ID that YouTube uses to uniquely identify the channel that is transmitting the stream."]
         #[serde(
             rename = "channelId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub channel_id: ::std::option::Option<String>,
-        #[doc = "The stream's description. The value cannot be longer than 10000\ncharacters."]
+        #[doc = "The stream's description. The value cannot be longer than 10000 characters."]
         #[serde(
             rename = "description",
             default,
@@ -16326,13 +16369,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_default_stream: ::std::option::Option<bool>,
-        #[doc = "The date and time that the stream was created. The value is specified in\n<a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat."]
+        #[doc = "The date and time that the stream was created."]
         #[serde(
             rename = "publishedAt",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub published_at: ::std::option::Option<String>,
+        pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "The stream's title. The value must be between 1 and 128 characters long."]
         #[serde(
             rename = "title",
@@ -16568,14 +16611,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#member\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#member\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>snippet</code> object contains basic details about the member."]
+        #[doc = "The snippet object contains basic details about the member."]
         #[serde(
             rename = "snippet",
             default,
@@ -16627,14 +16670,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::Member>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#memberListResponse\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#memberListResponse\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the next page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -16653,7 +16696,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
+        #[doc = "The visitorId identifies the visitor."]
         #[serde(
             rename = "visitorId",
             default,
@@ -16729,7 +16772,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct MembershipsDetails {
-        #[doc = "Ids of all levels that the user has access to. This includes the currently\nactive level and all other levels that are included because of a higher\npurchase."]
+        #[doc = "Ids of all levels that the user has access to. This includes the currently active level and all other levels that are included because of a higher purchase."]
         #[serde(
             rename = "accessibleLevels",
             default,
@@ -16743,14 +16786,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub highest_accessible_level: ::std::option::Option<String>,
-        #[doc = "Display name for the highest level that the user has access to at the\nmoment."]
+        #[doc = "Display name for the highest level that the user has access to at the moment."]
         #[serde(
             rename = "highestAccessibleLevelDisplayName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub highest_accessible_level_display_name: ::std::option::Option<String>,
-        #[doc = "Data about memberships duration without taking into consideration pricing\nlevels."]
+        #[doc = "Data about memberships duration without taking into consideration pricing levels."]
         #[serde(
             rename = "membershipsDuration",
             default,
@@ -16789,14 +16832,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct MembershipsDuration {
-        #[doc = "The date and time when the user became a continuous member across all\nlevels."]
+        #[doc = "The date and time when the user became a continuous member across all levels."]
         #[serde(
             rename = "memberSince",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub member_since: ::std::option::Option<String>,
-        #[doc = "The cumulative time the user has been a member across all levels in\ncomplete months (the time is rounded down to the nearest integer)."]
+        #[doc = "The cumulative time the user has been a member across all levels in complete months (the time is rounded down to the nearest integer)."]
         #[serde(
             rename = "memberTotalDurationMonths",
             default,
@@ -16834,14 +16877,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub level: ::std::option::Option<String>,
-        #[doc = "The date and time when the user became a continuous member for the given\nlevel."]
+        #[doc = "The date and time when the user became a continuous member for the given level."]
         #[serde(
             rename = "memberSince",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub member_since: ::std::option::Option<String>,
-        #[doc = "The cumulative time the user has been a member for the given level in\ncomplete months (the time is rounded down to the nearest integer)."]
+        #[doc = "The cumulative time the user has been a member for the given level in complete months (the time is rounded down to the nearest integer)."]
         #[serde(
             rename = "memberTotalDurationMonths",
             default,
@@ -16886,14 +16929,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#membershipsLevelListResponse\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#membershipsLevelListResponse\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>snippet</code> object contains basic details about the level."]
+        #[doc = "The snippet object contains basic details about the level."]
         #[serde(
             rename = "snippet",
             default,
@@ -16945,14 +16988,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::MembershipsLevel>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#membershipsLevelListResponse\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#membershipsLevelListResponse\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
+        #[doc = "The visitorId identifies the visitor."]
         #[serde(
             rename = "visitorId",
             default,
@@ -17021,7 +17064,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct MonitorStreamInfo {
-        #[doc = "If you have set the\n<code><a href=\"#enableMonitorStream\">enableMonitorStream</a></code>\nproperty to <code>true</code>, then this property determines the\nlength of the live broadcast delay."]
+        #[doc = "If you have set the enableMonitorStream property to true, then this property determines the length of the live broadcast delay."]
         #[serde(
             rename = "broadcastStreamDelayMs",
             default,
@@ -17035,7 +17078,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub embed_html: ::std::option::Option<String>,
-        #[doc = "This value determines whether the monitor stream is enabled for the\nbroadcast. If the monitor stream is enabled, then YouTube will\nbroadcast the event content on a special stream intended only for\nthe broadcaster's consumption. The broadcaster can use the stream\nto review the event content and also to identify the optimal times\nto insert cuepoints.<br><br>\nYou need to set this value to <code>true</code> if you intend to have\na broadcast delay for your event.<br><br>\n<strong>Note:</strong> This property cannot be updated once the\nbroadcast is in the <code>testing</code> or <code>live</code> state."]
+        #[doc = "This value determines whether the monitor stream is enabled for the broadcast. If the monitor stream is enabled, then YouTube will broadcast the event content on a special stream intended only for the broadcaster's consumption. The broadcaster can use the stream to review the event content and also to identify the optimal times to insert cuepoints. You need to set this value to true if you intend to have a broadcast delay for your event. *Note:* This property cannot be updated once the broadcast is in the testing or live state."]
         #[serde(
             rename = "enableMonitorStream",
             default,
@@ -17104,7 +17147,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Playlist {
-        #[doc = "The <code>contentDetails</code> object contains information like\nvideo count."]
+        #[doc = "The contentDetails object contains information like video count."]
         #[serde(
             rename = "contentDetails",
             default,
@@ -17125,7 +17168,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#playlist\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#playlist\"."]
         #[serde(
             rename = "kind",
             default,
@@ -17141,21 +17184,21 @@ pub mod schemas {
         pub localizations: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::PlaylistLocalization>,
         >,
-        #[doc = "The <code>player</code> object contains information that you would use\nto play the playlist in an embedded player."]
+        #[doc = "The player object contains information that you would use to play the playlist in an embedded player."]
         #[serde(
             rename = "player",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub player: ::std::option::Option<crate::schemas::PlaylistPlayer>,
-        #[doc = "The <code>snippet</code> object contains basic details about the\nplaylist, such as its title and description."]
+        #[doc = "The snippet object contains basic details about the playlist, such as its title and description."]
         #[serde(
             rename = "snippet",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub snippet: ::std::option::Option<crate::schemas::PlaylistSnippet>,
-        #[doc = "The <code>status</code> object contains status information for the\nplaylist."]
+        #[doc = "The status object contains status information for the playlist."]
         #[serde(
             rename = "status",
             default,
@@ -17217,7 +17260,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PlaylistItem {
-        #[doc = "The <code>contentDetails</code> object is included in the resource if\nthe included item is a YouTube video. The object contains additional\ninformation about the video."]
+        #[doc = "The contentDetails object is included in the resource if the included item is a YouTube video. The object contains additional information about the video."]
         #[serde(
             rename = "contentDetails",
             default,
@@ -17238,21 +17281,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#playlistItem\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#playlistItem\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>snippet</code> object contains basic details about the\nplaylist item, such as its title and position in the playlist."]
+        #[doc = "The snippet object contains basic details about the playlist item, such as its title and position in the playlist."]
         #[serde(
             rename = "snippet",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub snippet: ::std::option::Option<crate::schemas::PlaylistItemSnippet>,
-        #[doc = "The <code>status</code> object contains information about the playlist\nitem's privacy status."]
+        #[doc = "The status object contains information about the playlist item's privacy status."]
         #[serde(
             rename = "status",
             default,
@@ -17283,7 +17326,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PlaylistItemContentDetails {
-        #[doc = "The time, measured in seconds from the start of the video, when the video\nshould stop playing. (The playlist owner can specify the times when the\nvideo should start and stop playing when the video is played in the context\nof the playlist.) By default, assume that the <code>video.endTime</code> is\nthe end of the video."]
+        #[doc = "The time, measured in seconds from the start of the video, when the video should stop playing. (The playlist owner can specify the times when the video should start and stop playing when the video is played in the context of the playlist.) By default, assume that the video.endTime is the end of the video."]
         #[serde(
             rename = "endAt",
             default,
@@ -17297,27 +17340,27 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub note: ::std::option::Option<String>,
-        #[doc = "The time, measured in seconds from the start of the video, when the video\nshould start playing. (The playlist owner can specify the times when the\nvideo should start and stop playing when the video is played in the context\nof the playlist.) The default value is <code>0</code>."]
+        #[doc = "The time, measured in seconds from the start of the video, when the video should start playing. (The playlist owner can specify the times when the video should start and stop playing when the video is played in the context of the playlist.) The default value is 0."]
         #[serde(
             rename = "startAt",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub start_at: ::std::option::Option<String>,
-        #[doc = "The ID that YouTube uses to uniquely identify a video. To <a\nhref=\"/youtube/v3/docs/video/list.html\">retrieve the <code>video</code>\nresource</a>, set the <code>id</code> query parameter to this value in your\nAPI request."]
+        #[doc = "The ID that YouTube uses to uniquely identify a video. To retrieve the video resource, set the id query parameter to this value in your API request."]
         #[serde(
             rename = "videoId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub video_id: ::std::option::Option<String>,
-        #[doc = "The date and time that the video was published to YouTube. The value is\nspecified in <a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat."]
+        #[doc = "The date and time that the video was published to YouTube."]
         #[serde(
             rename = "videoPublishedAt",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub video_published_at: ::std::option::Option<String>,
+        pub video_published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for PlaylistItemContentDetails {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -17362,14 +17405,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::PlaylistItem>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#playlistItemListResponse\"</code>.\nEtag of this resource."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#playlistItemListResponse\". Etag of this resource."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the next page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -17383,7 +17426,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the previous page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
         #[serde(
             rename = "prevPageToken",
             default,
@@ -17396,7 +17439,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
+        #[doc = "The visitorId identifies the visitor."]
         #[serde(
             rename = "visitorId",
             default,
@@ -17427,7 +17470,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PlaylistItemSnippet {
-        #[doc = "The ID that YouTube uses to uniquely identify the user that added\nthe item to the playlist."]
+        #[doc = "The ID that YouTube uses to uniquely identify the user that added the item to the playlist."]
         #[serde(
             rename = "channelId",
             default,
@@ -17448,35 +17491,35 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "The ID that YouTube uses to uniquely identify thGe playlist that the\nplaylist item is in."]
+        #[doc = "The ID that YouTube uses to uniquely identify thGe playlist that the playlist item is in."]
         #[serde(
             rename = "playlistId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub playlist_id: ::std::option::Option<String>,
-        #[doc = "The order in which the item appears in the playlist. The value uses a\nzero-based index, so the first item has a position of <code>0</code>,\nthe second item has a position of <code>1</code>, and so forth."]
+        #[doc = "The order in which the item appears in the playlist. The value uses a zero-based index, so the first item has a position of 0, the second item has a position of 1, and so forth."]
         #[serde(
             rename = "position",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub position: ::std::option::Option<u32>,
-        #[doc = "The date and time that the item was added to the playlist. The value is\nspecified in <a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat."]
+        #[doc = "The date and time that the item was added to the playlist."]
         #[serde(
             rename = "publishedAt",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub published_at: ::std::option::Option<String>,
-        #[doc = "The <code>id</code> object contains information that can be used to\nuniquely identify the resource that is included in the playlist as\nthe playlist item."]
+        pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "The id object contains information that can be used to uniquely identify the resource that is included in the playlist as the playlist item."]
         #[serde(
             rename = "resourceId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
-        #[doc = "A map of thumbnail images associated with the playlist item. For each\nobject in the map, the key is the name of the thumbnail image, and the\nvalue is an object that contains other information about the thumbnail."]
+        #[doc = "A map of thumbnail images associated with the playlist item. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail."]
         #[serde(
             rename = "thumbnails",
             default,
@@ -17490,6 +17533,20 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub title: ::std::option::Option<String>,
+        #[doc = "Channel id for the channel this video belongs to."]
+        #[serde(
+            rename = "videoOwnerChannelId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub video_owner_channel_id: ::std::option::Option<String>,
+        #[doc = "Channel title for the channel this video belongs to."]
+        #[serde(
+            rename = "videoOwnerChannelTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub video_owner_channel_title: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PlaylistItemSnippet {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -17639,14 +17696,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::Playlist>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#playlistListResponse\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#playlistListResponse\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the next page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -17660,7 +17717,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the previous page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
         #[serde(
             rename = "prevPageToken",
             default,
@@ -17673,7 +17730,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
+        #[doc = "The visitorId identifies the visitor."]
         #[serde(
             rename = "visitorId",
             default,
@@ -17742,7 +17799,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PlaylistPlayer {
-        #[doc = "An <code><iframe></code> tag that embeds a player that will\nplay the playlist."]
+        #[doc = "An <iframe> tag that embeds a player that will play the playlist."]
         #[serde(
             rename = "embedHtml",
             default,
@@ -17773,7 +17830,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PlaylistSnippet {
-        #[doc = "The ID that YouTube uses to uniquely identify the channel that\npublished the playlist."]
+        #[doc = "The ID that YouTube uses to uniquely identify the channel that published the playlist."]
         #[serde(
             rename = "channelId",
             default,
@@ -17808,13 +17865,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub localized: ::std::option::Option<crate::schemas::PlaylistLocalization>,
-        #[doc = "The date and time that the playlist was created. The value is specified\nin <a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat."]
+        #[doc = "The date and time that the playlist was created."]
         #[serde(
             rename = "publishedAt",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub published_at: ::std::option::Option<String>,
+        pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Keyword tags associated with the playlist."]
         #[serde(
             rename = "tags",
@@ -17822,7 +17879,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub tags: ::std::option::Option<Vec<String>>,
-        #[doc = "A map of thumbnail images associated with the playlist. For each object\nin the map, the key is the name of the thumbnail image, and the value\nis an object that contains other information about the thumbnail."]
+        #[doc = "Note: if the playlist has a custom thumbnail, this field will not be populated. The video id selected by the user that will be used as the thumbnail of this playlist. This field defaults to the first publicly viewable video in the playlist, if: 1. The user has never selected a video to be the thumbnail of the playlist. 2. The user selects a video to be the thumbnail, and then removes that video from the playlist. 3. The user selects a non-owned video to be the thumbnail, but that video becomes private, or gets deleted."]
+        #[serde(
+            rename = "thumbnailVideoId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub thumbnail_video_id: ::std::option::Option<String>,
+        #[doc = "A map of thumbnail images associated with the playlist. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail."]
         #[serde(
             rename = "thumbnails",
             default,
@@ -17963,183 +18027,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct PromotedItem {
-        #[doc = "A custom message to display for this promotion. This field is currently\nignored unless the promoted item is a website."]
-        #[serde(
-            rename = "customMessage",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub custom_message: ::std::option::Option<String>,
-        #[doc = "Identifies the promoted item."]
-        #[serde(
-            rename = "id",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub id: ::std::option::Option<crate::schemas::PromotedItemId>,
-        #[doc = "If true, the content owner's name will be used when displaying the\npromotion. This field can only be set when the update is made on behalf of\nthe content owner."]
-        #[serde(
-            rename = "promotedByContentOwner",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub promoted_by_content_owner: ::std::option::Option<bool>,
-        #[doc = "The temporal position within the video where the promoted item will be\ndisplayed. If present, it overrides the default timing."]
-        #[serde(
-            rename = "timing",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub timing: ::std::option::Option<crate::schemas::InvideoTiming>,
-    }
-    impl ::google_field_selector::FieldSelector for PromotedItem {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for PromotedItem {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct PromotedItemId {
-        #[doc = "Describes the type of the promoted item."]
-        #[serde(
-            rename = "type",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub r#type: ::std::option::Option<crate::schemas::PromotedItemIdType>,
-        #[doc = "If type is recentUpload, this field identifies the channel from which to\ntake the recent upload. If missing, the channel is assumed to be the same\nchannel for which the invideoPromotion is set."]
-        #[serde(
-            rename = "recentlyUploadedBy",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub recently_uploaded_by: ::std::option::Option<String>,
-        #[doc = "If the promoted item represents a video, this field represents the unique\nYouTube ID identifying it. This field will be present only if\n<code>type</code> has the value <code>video</code>."]
-        #[serde(
-            rename = "videoId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub video_id: ::std::option::Option<String>,
-        #[doc = "If the promoted item represents a website, this field represents the url\npointing to the website. This field will be present only if\n<code>type</code> has the value <code>website</code>."]
-        #[serde(
-            rename = "websiteUrl",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub website_url: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for PromotedItemId {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for PromotedItemId {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum PromotedItemIdType {
-        RecentUpload,
-        Video,
-        Website,
-    }
-    impl PromotedItemIdType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                PromotedItemIdType::RecentUpload => "recentUpload",
-                PromotedItemIdType::Video => "video",
-                PromotedItemIdType::Website => "website",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for PromotedItemIdType {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for PromotedItemIdType {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<PromotedItemIdType, ()> {
-            Ok(match s {
-                "recentUpload" => PromotedItemIdType::RecentUpload,
-                "video" => PromotedItemIdType::Video,
-                "website" => PromotedItemIdType::Website,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for PromotedItemIdType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for PromotedItemIdType {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for PromotedItemIdType {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "recentUpload" => PromotedItemIdType::RecentUpload,
-                "video" => PromotedItemIdType::Video,
-                "website" => PromotedItemIdType::Website,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for PromotedItemIdType {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for PromotedItemIdType {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct PropertyValue {
         #[doc = "A property."]
         #[serde(
@@ -18178,8 +18065,38 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct RelatedEntity {
+        #[serde(
+            rename = "entity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub entity: ::std::option::Option<crate::schemas::Entity>,
+    }
+    impl ::google_field_selector::FieldSelector for RelatedEntity {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for RelatedEntity {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct ResourceId {
-        #[doc = "The ID that YouTube uses to uniquely identify the referred resource, if\nthat resource is a channel. This property is only present if the\n<code>resourceId.kind</code> value is <code>youtube#channel</code>."]
+        #[doc = "The ID that YouTube uses to uniquely identify the referred resource, if that resource is a channel. This property is only present if the resourceId.kind value is youtube#channel."]
         #[serde(
             rename = "channelId",
             default,
@@ -18193,14 +18110,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The ID that YouTube uses to uniquely identify the referred resource, if\nthat resource is a playlist. This property is only present if the\n<code>resourceId.kind</code> value is <code>youtube#playlist</code>."]
+        #[doc = "The ID that YouTube uses to uniquely identify the referred resource, if that resource is a playlist. This property is only present if the resourceId.kind value is youtube#playlist."]
         #[serde(
             rename = "playlistId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub playlist_id: ::std::option::Option<String>,
-        #[doc = "The ID that YouTube uses to uniquely identify the referred resource, if\nthat resource is a video. This property is only present if the\n<code>resourceId.kind</code> value is <code>youtube#video</code>."]
+        #[doc = "The ID that YouTube uses to uniquely identify the referred resource, if that resource is a video. This property is only present if the resourceId.kind value is youtube#video."]
         #[serde(
             rename = "videoId",
             default,
@@ -18252,14 +18169,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::SearchResult>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#searchListResponse\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#searchListResponse\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the next page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -18273,7 +18190,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the previous page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
         #[serde(
             rename = "prevPageToken",
             default,
@@ -18292,7 +18209,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
+        #[doc = "The visitorId identifies the visitor."]
         #[serde(
             rename = "visitorId",
             default,
@@ -18330,21 +18247,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<String>,
-        #[doc = "The <code>id</code> object contains information that can be used to\nuniquely identify the resource that matches the search request."]
+        #[doc = "The id object contains information that can be used to uniquely identify the resource that matches the search request."]
         #[serde(
             rename = "id",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<crate::schemas::ResourceId>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#searchResult\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#searchResult\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>snippet</code> object contains basic details about a search\nresult, such as its title or description. For example, if the search result\nis a video, then the title will be the\nvideo's title and the description will be the video's description."]
+        #[doc = "The snippet object contains basic details about a search result, such as its title or description. For example, if the search result is a video, then the title will be the video's title and the description will be the video's description."]
         #[serde(
             rename = "snippet",
             default,
@@ -18375,14 +18292,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SearchResultSnippet {
-        #[doc = "The value that YouTube uses to uniquely identify the channel that\npublished the resource that the search result identifies."]
+        #[doc = "The value that YouTube uses to uniquely identify the channel that published the resource that the search result identifies."]
         #[serde(
             rename = "channelId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub channel_id: ::std::option::Option<String>,
-        #[doc = "The title of the channel that published the resource that the search result\nidentifies."]
+        #[doc = "The title of the channel that published the resource that the search result identifies."]
         #[serde(
             rename = "channelTitle",
             default,
@@ -18396,7 +18313,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "It indicates if the resource (video or channel) has upcoming/active live\nbroadcast content. Or it's \"none\" if there is not any upcoming/active\nlive broadcasts."]
+        #[doc = "It indicates if the resource (video or channel) has upcoming/active live broadcast content. Or it's \"none\" if there is not any upcoming/active live broadcasts."]
         #[serde(
             rename = "liveBroadcastContent",
             default,
@@ -18404,14 +18321,14 @@ pub mod schemas {
         )]
         pub live_broadcast_content:
             ::std::option::Option<crate::schemas::SearchResultSnippetLiveBroadcastContent>,
-        #[doc = "The creation date and time of the resource that the search result\nidentifies. The value is specified in <a\nhref=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat."]
+        #[doc = "The creation date and time of the resource that the search result identifies."]
         #[serde(
             rename = "publishedAt",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub published_at: ::std::option::Option<String>,
-        #[doc = "A map of thumbnail images associated with the search result. For each\nobject in the map, the key is the name of the thumbnail image, and the\nvalue is an object that contains other information about the thumbnail."]
+        pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "A map of thumbnail images associated with the search result. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail."]
         #[serde(
             rename = "thumbnails",
             default,
@@ -18438,9 +18355,12 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SearchResultSnippetLiveBroadcastContent {
+        #[doc = "The live broadcast has been completed."]
         Completed,
+        #[doc = "The live broadcast is active."]
         Live,
         None,
+        #[doc = "The live broadcast is upcoming."]
         Upcoming,
     }
     impl SearchResultSnippetLiveBroadcastContent {
@@ -18525,183 +18445,8 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Sponsor {
-        #[doc = "Etag of this resource."]
-        #[serde(
-            rename = "etag",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub etag: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n`\"youtube#sponsor\"`."]
-        #[serde(
-            rename = "kind",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "The `snippet` object contains basic details about the sponsor."]
-        #[serde(
-            rename = "snippet",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub snippet: ::std::option::Option<crate::schemas::SponsorSnippet>,
-    }
-    impl ::google_field_selector::FieldSelector for Sponsor {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for Sponsor {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SponsorListResponse {
-        #[doc = "Etag of this resource."]
-        #[serde(
-            rename = "etag",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub etag: ::std::option::Option<String>,
-        #[doc = "Serialized EventId of the request which produced this response."]
-        #[serde(
-            rename = "eventId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub event_id: ::std::option::Option<String>,
-        #[doc = "A list of sponsors that match the request criteria."]
-        #[serde(
-            rename = "items",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub items: ::std::option::Option<Vec<crate::schemas::Sponsor>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n`\"youtube#sponsorListResponse\"."]
-        #[serde(
-            rename = "kind",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "The token that can be used as the value of the `pageToken` parameter to\nretrieve the next page in the result set."]
-        #[serde(
-            rename = "nextPageToken",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub next_page_token: ::std::option::Option<String>,
-        #[serde(
-            rename = "pageInfo",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
-        #[serde(
-            rename = "tokenPagination",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
-        #[doc = "The `visitorId` identifies the visitor."]
-        #[serde(
-            rename = "visitorId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub visitor_id: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for SponsorListResponse {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for SponsorListResponse {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SponsorSnippet {
-        #[doc = "The id of the channel being sponsored."]
-        #[serde(
-            rename = "channelId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub channel_id: ::std::option::Option<String>,
-        #[doc = "The cumulative time a user has been a sponsor in months."]
-        #[serde(
-            rename = "cumulativeDurationMonths",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub cumulative_duration_months: ::std::option::Option<i32>,
-        #[doc = "Details about the sponsor."]
-        #[serde(
-            rename = "sponsorDetails",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub sponsor_details: ::std::option::Option<crate::schemas::ChannelProfileDetails>,
-        #[doc = "The date and time when the user became a sponsor. The value is\nspecified in <a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\n(`YYYY-MM-DDThh:mm:ss.sZ`) format."]
-        #[serde(
-            rename = "sponsorSince",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub sponsor_since: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for SponsorSnippet {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for SponsorSnippet {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct Subscription {
-        #[doc = "The <code>contentDetails</code> object contains basic statistics about the\nsubscription."]
+        #[doc = "The contentDetails object contains basic statistics about the subscription."]
         #[serde(
             rename = "contentDetails",
             default,
@@ -18722,21 +18467,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#subscription\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#subscription\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>snippet</code> object contains basic details about the\nsubscription, including its title and the channel that the user subscribed\nto."]
+        #[doc = "The snippet object contains basic details about the subscription, including its title and the channel that the user subscribed to."]
         #[serde(
             rename = "snippet",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub snippet: ::std::option::Option<crate::schemas::SubscriptionSnippet>,
-        #[doc = "The <code>subscriberSnippet</code> object contains basic details about the\nsubscriber."]
+        #[doc = "The subscriberSnippet object contains basic details about the subscriber."]
         #[serde(
             rename = "subscriberSnippet",
             default,
@@ -18768,7 +18513,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SubscriptionContentDetails {
-        #[doc = "The type of activity this subscription is for\n(only uploads, everything)."]
+        #[doc = "The type of activity this subscription is for (only uploads, everything)."]
         #[serde(
             rename = "activityType",
             default,
@@ -18776,7 +18521,7 @@ pub mod schemas {
         )]
         pub activity_type:
             ::std::option::Option<crate::schemas::SubscriptionContentDetailsActivityType>,
-        #[doc = "The number of new items in the subscription since its content was last\nread."]
+        #[doc = "The number of new items in the subscription since its content was last read."]
         #[serde(
             rename = "newItemCount",
             default,
@@ -18914,14 +18659,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::Subscription>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#subscriptionListResponse\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#subscriptionListResponse\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the next page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -18934,7 +18679,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the previous page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
         #[serde(
             rename = "prevPageToken",
             default,
@@ -18947,7 +18692,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
+        #[doc = "The visitorId identifies the visitor."]
         #[serde(
             rename = "visitorId",
             default,
@@ -18999,21 +18744,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "The date and time that the subscription was created. The value is\nspecified in <a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat."]
+        #[doc = "The date and time that the subscription was created."]
         #[serde(
             rename = "publishedAt",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub published_at: ::std::option::Option<String>,
-        #[doc = "The <code>id</code> object contains information about the channel that\nthe user subscribed to."]
+        pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "The id object contains information about the channel that the user subscribed to."]
         #[serde(
             rename = "resourceId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub resource_id: ::std::option::Option<crate::schemas::ResourceId>,
-        #[doc = "A map of thumbnail images associated with the video. For each object\nin the map, the key is the name of the thumbnail image, and the value\nis an object that contains other information about the thumbnail."]
+        #[doc = "A map of thumbnail images associated with the video. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail."]
         #[serde(
             rename = "thumbnails",
             default,
@@ -19117,7 +18862,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n`\"youtube#superChatEvent\"`."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string `\"youtube#superChatEvent\"`."]
         #[serde(
             rename = "kind",
             default,
@@ -19176,14 +18921,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::SuperChatEvent>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#superChatEventListResponse\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#superChatEventListResponse\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the next page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -19202,7 +18947,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
+        #[doc = "The visitorId identifies the visitor."]
         #[serde(
             rename = "visitorId",
             default,
@@ -19233,7 +18978,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SuperChatEventSnippet {
-        #[doc = "The purchase amount, in micros of the purchase currency.  e.g., 1 is\nrepresented as 1000000."]
+        #[doc = "The purchase amount, in micros of the purchase currency. e.g., 1 is represented as 1000000."]
         #[serde(
             rename = "amountMicros",
             default,
@@ -19255,21 +19000,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub comment_text: ::std::option::Option<String>,
-        #[doc = "The date and time when the event occurred. The value is\nspecified in <a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat."]
+        #[doc = "The date and time when the event occurred."]
         #[serde(
             rename = "createdAt",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub created_at: ::std::option::Option<String>,
-        #[doc = "The currency in which the purchase was made.  ISO 4217."]
+        pub created_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "The currency in which the purchase was made. ISO 4217."]
         #[serde(
             rename = "currency",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub currency: ::std::option::Option<String>,
-        #[doc = "A rendered string that displays the purchase amount and currency\n(e.g., \"$1.00\").  The string is rendered for the given language."]
+        #[doc = "A rendered string that displays the purchase amount and currency (e.g., \"$1.00\"). The string is rendered for the given language."]
         #[serde(
             rename = "displayString",
             default,
@@ -19283,14 +19028,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_super_sticker_event: ::std::option::Option<bool>,
-        #[doc = "The tier for the paid message, which is based on the amount of money spent\nto purchase the message."]
+        #[doc = "The tier for the paid message, which is based on the amount of money spent to purchase the message."]
         #[serde(
             rename = "messageType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub message_type: ::std::option::Option<u32>,
-        #[doc = "If this event is a Super Sticker event, this field will contain metadata\nabout the Super Sticker."]
+        #[doc = "If this event is a Super Sticker event, this field will contain metadata about the Super Sticker."]
         #[serde(
             rename = "superStickerMetadata",
             default,
@@ -19328,7 +19073,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SuperStickerMetadata {
-        #[doc = "Internationalized alt text that describes the sticker image and any\nanimation associated with it."]
+        #[doc = "Internationalized alt text that describes the sticker image and any animation associated with it."]
         #[serde(
             rename = "altText",
             default,
@@ -19342,7 +19087,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub alt_text_language: ::std::option::Option<String>,
-        #[doc = "Unique identifier of the Super Sticker. This is a shorter form of the\nalt_text that includes pack name and a recognizable characteristic of the\nsticker."]
+        #[doc = "Unique identifier of the Super Sticker. This is a shorter form of the alt_text that includes pack name and a recognizable characteristic of the sticker."]
         #[serde(
             rename = "stickerId",
             default,
@@ -19373,6 +19118,13 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TestItem {
+        #[serde(
+            rename = "gaia",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub gaia: ::std::option::Option<i64>,
         #[serde(
             rename = "id",
             default,
@@ -19416,6 +19168,280 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for TestItemTestItemSnippet {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ThirdPartyLink {
+        #[doc = "Etag of this resource"]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<String>,
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#thirdPartyLink\"."]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub kind: ::std::option::Option<String>,
+        #[doc = "The linking_token identifies a YouTube account and channel with which the third party account is linked."]
+        #[serde(
+            rename = "linkingToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub linking_token: ::std::option::Option<String>,
+        #[doc = "The snippet object contains basic details about the third- party account link."]
+        #[serde(
+            rename = "snippet",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub snippet: ::std::option::Option<crate::schemas::ThirdPartyLinkSnippet>,
+        #[doc = "The status object contains information about the status of the link."]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub status: ::std::option::Option<crate::schemas::ThirdPartyLinkStatus>,
+    }
+    impl ::google_field_selector::FieldSelector for ThirdPartyLink {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ThirdPartyLink {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ThirdPartyLinkSnippet {
+        #[doc = "Information specific to a link between a channel and a store on a merchandising platform."]
+        #[serde(
+            rename = "channelToStoreLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub channel_to_store_link: ::std::option::Option<crate::schemas::ChannelToStoreLinkDetails>,
+        #[doc = "Type of the link named after the entities that are being linked."]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub r#type: ::std::option::Option<crate::schemas::ThirdPartyLinkSnippetType>,
+    }
+    impl ::google_field_selector::FieldSelector for ThirdPartyLinkSnippet {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ThirdPartyLinkSnippet {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ThirdPartyLinkSnippetType {
+        #[doc = "A link that is connecting (or about to connect) a channel with a store on a merchandising platform in order to enable retail commerce capabilities for that channel on YouTube."]
+        ChannelToStoreLink,
+        LinkUnspecified,
+    }
+    impl ThirdPartyLinkSnippetType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ThirdPartyLinkSnippetType::ChannelToStoreLink => "channelToStoreLink",
+                ThirdPartyLinkSnippetType::LinkUnspecified => "linkUnspecified",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ThirdPartyLinkSnippetType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ThirdPartyLinkSnippetType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ThirdPartyLinkSnippetType, ()> {
+            Ok(match s {
+                "channelToStoreLink" => ThirdPartyLinkSnippetType::ChannelToStoreLink,
+                "linkUnspecified" => ThirdPartyLinkSnippetType::LinkUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for ThirdPartyLinkSnippetType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ThirdPartyLinkSnippetType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ThirdPartyLinkSnippetType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "channelToStoreLink" => ThirdPartyLinkSnippetType::ChannelToStoreLink,
+                "linkUnspecified" => ThirdPartyLinkSnippetType::LinkUnspecified,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for ThirdPartyLinkSnippetType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ThirdPartyLinkSnippetType {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ThirdPartyLinkStatus {
+        #[serde(
+            rename = "linkStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub link_status: ::std::option::Option<crate::schemas::ThirdPartyLinkStatusLinkStatus>,
+    }
+    impl ::google_field_selector::FieldSelector for ThirdPartyLinkStatus {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ThirdPartyLinkStatus {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ThirdPartyLinkStatusLinkStatus {
+        Failed,
+        Linked,
+        Pending,
+        Unknown,
+    }
+    impl ThirdPartyLinkStatusLinkStatus {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ThirdPartyLinkStatusLinkStatus::Failed => "failed",
+                ThirdPartyLinkStatusLinkStatus::Linked => "linked",
+                ThirdPartyLinkStatusLinkStatus::Pending => "pending",
+                ThirdPartyLinkStatusLinkStatus::Unknown => "unknown",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ThirdPartyLinkStatusLinkStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ThirdPartyLinkStatusLinkStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ThirdPartyLinkStatusLinkStatus, ()> {
+            Ok(match s {
+                "failed" => ThirdPartyLinkStatusLinkStatus::Failed,
+                "linked" => ThirdPartyLinkStatusLinkStatus::Linked,
+                "pending" => ThirdPartyLinkStatusLinkStatus::Pending,
+                "unknown" => ThirdPartyLinkStatusLinkStatus::Unknown,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for ThirdPartyLinkStatusLinkStatus {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ThirdPartyLinkStatusLinkStatus {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ThirdPartyLinkStatusLinkStatus {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "failed" => ThirdPartyLinkStatusLinkStatus::Failed,
+                "linked" => ThirdPartyLinkStatusLinkStatus::Linked,
+                "pending" => ThirdPartyLinkStatusLinkStatus::Pending,
+                "unknown" => ThirdPartyLinkStatusLinkStatus::Unknown,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for ThirdPartyLinkStatusLinkStatus {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ThirdPartyLinkStatusLinkStatus {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -19558,14 +19584,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::ThumbnailDetails>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#thumbnailSetResponse\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#thumbnailSetResponse\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
+        #[doc = "The visitorId identifies the visitor."]
         #[serde(
             rename = "visitorId",
             default,
@@ -19611,14 +19637,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Video {
-        #[doc = "Age restriction details related to a video. This data can only be retrieved\nby the video owner."]
+        #[doc = "Age restriction details related to a video. This data can only be retrieved by the video owner."]
         #[serde(
             rename = "ageGating",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub age_gating: ::std::option::Option<crate::schemas::VideoAgeGating>,
-        #[doc = "The <code>contentDetails</code> object contains information about the video\ncontent, including the length of the video and its aspect ratio."]
+        #[doc = "The contentDetails object contains information about the video content, including the length of the video and its aspect ratio."]
         #[serde(
             rename = "contentDetails",
             default,
@@ -19632,7 +19658,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<String>,
-        #[doc = "The <code>fileDetails</code> object encapsulates information about the\nvideo file that was uploaded to YouTube, including the file's resolution,\nduration, audio and video codecs, stream bitrates, and more. This data can\nonly be retrieved by the video owner."]
+        #[doc = "The fileDetails object encapsulates information about the video file that was uploaded to YouTube, including the file's resolution, duration, audio and video codecs, stream bitrates, and more. This data can only be retrieved by the video owner."]
         #[serde(
             rename = "fileDetails",
             default,
@@ -19646,14 +19672,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#video\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#video\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>liveStreamingDetails</code> object contains metadata about a live\nvideo broadcast. The object will only be present in a <code>video</code>\nresource if the video is an upcoming, live, or completed live broadcast."]
+        #[doc = "The liveStreamingDetails object contains metadata about a live video broadcast. The object will only be present in a video resource if the video is an upcoming, live, or completed live broadcast."]
         #[serde(
             rename = "liveStreamingDetails",
             default,
@@ -19661,7 +19687,7 @@ pub mod schemas {
         )]
         pub live_streaming_details:
             ::std::option::Option<crate::schemas::VideoLiveStreamingDetails>,
-        #[doc = "The <code>localizations</code> object contains localized versions of the\nbasic details about the video, such as its title and description."]
+        #[doc = "The localizations object contains localized versions of the basic details about the video, such as its title and description."]
         #[serde(
             rename = "localizations",
             default,
@@ -19670,70 +19696,70 @@ pub mod schemas {
         pub localizations: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::VideoLocalization>,
         >,
-        #[doc = "The <code>monetizationDetails</code> object encapsulates information\nabout the monetization status of the video."]
+        #[doc = "The monetizationDetails object encapsulates information about the monetization status of the video."]
         #[serde(
             rename = "monetizationDetails",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub monetization_details: ::std::option::Option<crate::schemas::VideoMonetizationDetails>,
-        #[doc = "The <code>player</code> object contains information that you would use to\nplay the video in an embedded player."]
+        #[doc = "The player object contains information that you would use to play the video in an embedded player."]
         #[serde(
             rename = "player",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub player: ::std::option::Option<crate::schemas::VideoPlayer>,
-        #[doc = "The <code>processingDetails</code> object encapsulates information about\nYouTube's progress in processing the uploaded video file. The properties\nin the object identify the current processing status and an estimate of\nthe time remaining until YouTube finishes processing the video. This part\nalso indicates whether different types of data or content, such as file\ndetails or thumbnail images, are available for the video.<br><br>\nThe <code>processingProgress</code> object is designed to be polled so\nthat the video uploaded can track the progress that YouTube has made in\nprocessing the uploaded video file. This data can only be retrieved by\nthe video owner."]
+        #[doc = "The processingDetails object encapsulates information about YouTube's progress in processing the uploaded video file. The properties in the object identify the current processing status and an estimate of the time remaining until YouTube finishes processing the video. This part also indicates whether different types of data or content, such as file details or thumbnail images, are available for the video. The processingProgress object is designed to be polled so that the video uploaded can track the progress that YouTube has made in processing the uploaded video file. This data can only be retrieved by the video owner."]
         #[serde(
             rename = "processingDetails",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub processing_details: ::std::option::Option<crate::schemas::VideoProcessingDetails>,
-        #[doc = "The <code>projectDetails</code> object contains information about the\nproject specific video metadata."]
+        #[doc = "The projectDetails object contains information about the project specific video metadata. b/157517979: This part was never populated after it was added. However, it sees non-zero traffic because there is generated client code in the wild that refers to it [1]. We keep this field and do NOT remove it because otherwise V3 would return an error when this part gets requested [2]. [1] https://developers.google.com/resources/api-libraries/documentation/youtube/v3/csharp/latest/classGoogle_1_1Apis_1_1YouTube_1_1v3_1_1Data_1_1VideoProjectDetails.html [2] http://google3/video/youtube/src/python/servers/data_api/common.py?l=1565-1569&rcl=344141677"]
         #[serde(
             rename = "projectDetails",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub project_details: ::std::option::Option<crate::schemas::VideoProjectDetails>,
-        #[doc = "The <code>recordingDetails</code> object encapsulates information about the\nlocation, date and address where the video was recorded."]
+        #[doc = "The recordingDetails object encapsulates information about the location, date and address where the video was recorded."]
         #[serde(
             rename = "recordingDetails",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub recording_details: ::std::option::Option<crate::schemas::VideoRecordingDetails>,
-        #[doc = "The <code>snippet</code> object contains basic details about the video,\nsuch as its title, description, and category."]
+        #[doc = "The snippet object contains basic details about the video, such as its title, description, and category."]
         #[serde(
             rename = "snippet",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub snippet: ::std::option::Option<crate::schemas::VideoSnippet>,
-        #[doc = "The <code>statistics</code> object contains statistics about the video."]
+        #[doc = "The statistics object contains statistics about the video."]
         #[serde(
             rename = "statistics",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub statistics: ::std::option::Option<crate::schemas::VideoStatistics>,
-        #[doc = "The <code>status</code> object contains information about the video's\nuploading, processing, and privacy statuses."]
+        #[doc = "The status object contains information about the video's uploading, processing, and privacy statuses."]
         #[serde(
             rename = "status",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub status: ::std::option::Option<crate::schemas::VideoStatus>,
-        #[doc = "The <code>suggestions</code> object encapsulates suggestions that identify\nopportunities to improve the video quality or the metadata for the uploaded\nvideo. This data can only be retrieved by the video owner."]
+        #[doc = "The suggestions object encapsulates suggestions that identify opportunities to improve the video quality or the metadata for the uploaded video. This data can only be retrieved by the video owner."]
         #[serde(
             rename = "suggestions",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub suggestions: ::std::option::Option<crate::schemas::VideoSuggestions>,
-        #[doc = "The <code>topicDetails</code> object encapsulates information about <a\nhref=\"http://www.freebase.com\">Freebase</a> topics associated with the\nvideo."]
+        #[doc = "The topicDetails object encapsulates information about Freebase topics associated with the video."]
         #[serde(
             rename = "topicDetails",
             default,
@@ -19778,14 +19804,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub language: ::std::option::Option<String>,
-        #[doc = "The high-level, or primary, reason that the content is abusive. The value\nis an abuse report reason ID."]
+        #[doc = "The high-level, or primary, reason that the content is abusive. The value is an abuse report reason ID."]
         #[serde(
             rename = "reasonId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub reason_id: ::std::option::Option<String>,
-        #[doc = "The specific, or secondary, reason that this content is abusive (if\navailable). The value is an abuse report reason ID that is a valid\nsecondary reason for the primary reason."]
+        #[doc = "The specific, or secondary, reason that this content is abusive (if available). The value is an abuse report reason ID that is a valid secondary reason for the primary reason."]
         #[serde(
             rename = "secondaryReasonId",
             default,
@@ -19837,7 +19863,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n`\"youtube#videoAbuseReportReason\"`."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string `\"youtube#videoAbuseReportReason\"`."]
         #[serde(
             rename = "kind",
             default,
@@ -19896,7 +19922,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::VideoAbuseReportReason>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n`\"youtube#videoAbuseReportReasonListResponse\"`."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string `\"youtube#videoAbuseReportReasonListResponse\"`."]
         #[serde(
             rename = "kind",
             default,
@@ -19941,7 +19967,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub label: ::std::option::Option<String>,
-        #[doc = "The secondary reasons associated with this reason, if any are available.\n(There might be 0 or more.)"]
+        #[doc = "The secondary reasons associated with this reason, if any are available. (There might be 0 or more.)"]
         #[serde(
             rename = "secondaryReasons",
             default,
@@ -20011,14 +20037,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct VideoAgeGating {
-        #[doc = "Indicates whether or not the video has alcoholic beverage content. Only\nusers of legal purchasing age in a particular country, as identified by\nICAP, can view the content."]
+        #[doc = "Indicates whether or not the video has alcoholic beverage content. Only users of legal purchasing age in a particular country, as identified by ICAP, can view the content."]
         #[serde(
             rename = "alcoholContent",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub alcohol_content: ::std::option::Option<bool>,
-        #[doc = "Age-restricted trailers. For redband trailers and adult-rated video-games.\nOnly users aged 18+ can view the content. The the field is\n<code>true</code> the content is restricted to viewers aged 18+. Otherwise\nThe field won't be present."]
+        #[doc = "Age-restricted trailers. For redband trailers and adult-rated video-games. Only users aged 18+ can view the content. The the field is true the content is restricted to viewers aged 18+. Otherwise The field won't be present."]
         #[serde(
             rename = "restricted",
             default,
@@ -20147,14 +20173,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#videoCategory\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#videoCategory\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>snippet</code> object contains basic details about the video\ncategory, including its title."]
+        #[doc = "The snippet object contains basic details about the video category, including its title."]
         #[serde(
             rename = "snippet",
             default,
@@ -20199,21 +20225,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub event_id: ::std::option::Option<String>,
-        #[doc = "A list of video categories that can be associated with YouTube videos. In\nthis map, the video category ID is the map key, and its value is the\ncorresponding <code>videoCategory</code> resource."]
+        #[doc = "A list of video categories that can be associated with YouTube videos. In this map, the video category ID is the map key, and its value is the corresponding videoCategory resource."]
         #[serde(
             rename = "items",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::VideoCategory>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#videoCategoryListResponse\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#videoCategoryListResponse\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the next page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -20227,7 +20253,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the previous page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
         #[serde(
             rename = "prevPageToken",
             default,
@@ -20240,7 +20266,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
+        #[doc = "The visitorId identifies the visitor."]
         #[serde(
             rename = "visitorId",
             default,
@@ -20315,7 +20341,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct VideoContentDetails {
-        #[doc = "The value of <code>captions</code> indicates whether the video\nhas captions or not."]
+        #[doc = "The value of captions indicates whether the video has captions or not."]
         #[serde(
             rename = "caption",
             default,
@@ -20329,42 +20355,42 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub content_rating: ::std::option::Option<crate::schemas::ContentRating>,
-        #[doc = "The <code>countryRestriction</code> object contains information about the\ncountries where a video is (or is not) viewable."]
+        #[doc = "The countryRestriction object contains information about the countries where a video is (or is not) viewable."]
         #[serde(
             rename = "countryRestriction",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub country_restriction: ::std::option::Option<crate::schemas::AccessPolicy>,
-        #[doc = "The value of <code>definition</code> indicates whether the video is\navailable in high definition or only in standard definition."]
+        #[doc = "The value of definition indicates whether the video is available in high definition or only in standard definition."]
         #[serde(
             rename = "definition",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub definition: ::std::option::Option<crate::schemas::VideoContentDetailsDefinition>,
-        #[doc = "The value of <code>dimension</code> indicates whether the video is\navailable in 3D or in 2D."]
+        #[doc = "The value of dimension indicates whether the video is available in 3D or in 2D."]
         #[serde(
             rename = "dimension",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub dimension: ::std::option::Option<String>,
-        #[doc = "The length of the video. The tag value is an <a\nhref=\"//en.wikipedia.org/wiki/ISO_8601#Durations\">ISO 8601</a> duration in\nthe format <code>PT#M#S</code>, in which the letters <code>PT</code>\nindicate that the value specifies a period of time, and the letters\n<code>M</code> and <code>S</code> refer to length in minutes and seconds,\nrespectively. The <code>#</code> characters preceding the <code>M</code>\nand <code>S</code> letters are both integers that specify the number of\nminutes (or seconds) of the video. For example, a value of\n<code>PT15M51S</code> indicates that the video is 15 minutes and 51 seconds\nlong."]
+        #[doc = "The length of the video. The tag value is an ISO 8601 duration in the format PT#M#S, in which the letters PT indicate that the value specifies a period of time, and the letters M and S refer to length in minutes and seconds, respectively. The # characters preceding the M and S letters are both integers that specify the number of minutes (or seconds) of the video. For example, a value of PT15M51S indicates that the video is 15 minutes and 51 seconds long."]
         #[serde(
             rename = "duration",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub duration: ::std::option::Option<String>,
-        #[doc = "Indicates whether the video uploader has provided a custom\nthumbnail image for the video.\nThis property is only visible to the video uploader."]
+        #[doc = "Indicates whether the video uploader has provided a custom thumbnail image for the video. This property is only visible to the video uploader."]
         #[serde(
             rename = "hasCustomThumbnail",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub has_custom_thumbnail: ::std::option::Option<bool>,
-        #[doc = "The value of <code>is_license_content</code> indicates whether the video is\nlicensed content."]
+        #[doc = "The value of is_license_content indicates whether the video is licensed content."]
         #[serde(
             rename = "licensedContent",
             default,
@@ -20378,7 +20404,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub projection: ::std::option::Option<crate::schemas::VideoContentDetailsProjection>,
-        #[doc = "The <code>regionRestriction</code> object contains information about the\ncountries where a video is (or is not) viewable. The object will contain\neither the <code>contentDetails.regionRestriction.allowed</code> property\nor the <code>contentDetails.regionRestriction.blocked</code> property."]
+        #[doc = "The regionRestriction object contains information about the countries where a video is (or is not) viewable. The object will contain either the contentDetails.regionRestriction.allowed property or the contentDetails.regionRestriction.blocked property."]
         #[serde(
             rename = "regionRestriction",
             default,
@@ -20619,14 +20645,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct VideoContentDetailsRegionRestriction {
-        #[doc = "A list of region codes that identify countries where the video is\nviewable. If this property is present and a country is not listed\nin its value, then the video is blocked from appearing in that\ncountry. If this property is present and contains an empty list,\nthe video is blocked in all countries."]
+        #[doc = "A list of region codes that identify countries where the video is viewable. If this property is present and a country is not listed in its value, then the video is blocked from appearing in that country. If this property is present and contains an empty list, the video is blocked in all countries."]
         #[serde(
             rename = "allowed",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub allowed: ::std::option::Option<Vec<String>>,
-        #[doc = "A list of region codes that identify countries where the video is\nblocked. If this property is present and a country is not listed in\nits value, then the video is viewable in that country. If this\nproperty is present and contains an empty list, the video is\nviewable in all countries."]
+        #[doc = "A list of region codes that identify countries where the video is blocked. If this property is present and a country is not listed in its value, then the video is viewable in that country. If this property is present and contains an empty list, the video is viewable in all countries."]
         #[serde(
             rename = "blocked",
             default,
@@ -20648,14 +20674,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct VideoFileDetails {
-        #[doc = "A list of audio streams contained in the uploaded video file. Each item\nin the list contains detailed metadata about an audio stream."]
+        #[doc = "A list of audio streams contained in the uploaded video file. Each item in the list contains detailed metadata about an audio stream."]
         #[serde(
             rename = "audioStreams",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub audio_streams: ::std::option::Option<Vec<crate::schemas::VideoFileDetailsAudioStream>>,
-        #[doc = "The uploaded video file's combined (video and audio) bitrate in bits\nper second."]
+        #[doc = "The uploaded video file's combined (video and audio) bitrate in bits per second."]
         #[serde(
             rename = "bitrateBps",
             default,
@@ -20670,7 +20696,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container: ::std::option::Option<String>,
-        #[doc = "The date and time when the uploaded video file was created. The value is\nspecified in <a href=\"http://www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat. Currently, the following ISO 8601 formats are supported:\n\n<ul>\n<li>Date only: <code>YYYY-MM-DD</code></li>\n<li>Naive time: <code>YYYY-MM-DDTHH:MM:SS</code></li>\n<li>Time with timezone: <code>YYYY-MM-DDTHH:MM:SS+HH:MM</code></li>\n</ul>"]
+        #[doc = "The date and time when the uploaded video file was created. The value is specified in ISO 8601 format. Currently, the following ISO 8601 formats are supported: - Date only: YYYY-MM-DD - Naive time: YYYY-MM-DDTHH:MM:SS - Time with timezone: YYYY-MM-DDTHH:MM:SS+HH:MM "]
         #[serde(
             rename = "creationTime",
             default,
@@ -20685,14 +20711,14 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub duration_ms: ::std::option::Option<u64>,
-        #[doc = "The uploaded file's name. This field is present whether a video file or\nanother type of file was uploaded."]
+        #[doc = "The uploaded file's name. This field is present whether a video file or another type of file was uploaded."]
         #[serde(
             rename = "fileName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub file_name: ::std::option::Option<String>,
-        #[doc = "The uploaded file's size in bytes. This field is present whether\na video file or another type of file was uploaded."]
+        #[doc = "The uploaded file's size in bytes. This field is present whether a video file or another type of file was uploaded."]
         #[serde(
             rename = "fileSize",
             default,
@@ -20700,14 +20726,14 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub file_size: ::std::option::Option<u64>,
-        #[doc = "The uploaded file's type as detected by YouTube's video processing\nengine. Currently, YouTube only processes video files, but this field\nis present whether a video file or another type of file was uploaded."]
+        #[doc = "The uploaded file's type as detected by YouTube's video processing engine. Currently, YouTube only processes video files, but this field is present whether a video file or another type of file was uploaded."]
         #[serde(
             rename = "fileType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub file_type: ::std::option::Option<crate::schemas::VideoFileDetailsFileType>,
-        #[doc = "A list of video streams contained in the uploaded video file. Each item\nin the list contains detailed metadata about a video stream."]
+        #[doc = "A list of video streams contained in the uploaded video file. Each item in the list contains detailed metadata about a video stream."]
         #[serde(
             rename = "videoStreams",
             default,
@@ -20856,7 +20882,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub codec: ::std::option::Option<String>,
-        #[doc = "A value that uniquely identifies a video vendor. Typically, the value\nis a four-letter vendor code."]
+        #[doc = "A value that uniquely identifies a video vendor. Typically, the value is a four-letter vendor code."]
         #[serde(
             rename = "vendor",
             default,
@@ -20878,7 +20904,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct VideoFileDetailsVideoStream {
-        #[doc = "The video content's display aspect ratio, which specifies the aspect\nratio in which the video should be displayed."]
+        #[doc = "The video content's display aspect ratio, which specifies the aspect ratio in which the video should be displayed."]
         #[serde(
             rename = "aspectRatio",
             default,
@@ -20914,21 +20940,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub height_pixels: ::std::option::Option<u32>,
-        #[doc = "The amount that YouTube needs to rotate the original source content\nto properly display the video."]
+        #[doc = "The amount that YouTube needs to rotate the original source content to properly display the video."]
         #[serde(
             rename = "rotation",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub rotation: ::std::option::Option<crate::schemas::VideoFileDetailsVideoStreamRotation>,
-        #[doc = "A value that uniquely identifies a video vendor. Typically, the value is\na four-letter vendor code."]
+        #[doc = "A value that uniquely identifies a video vendor. Typically, the value is a four-letter vendor code."]
         #[serde(
             rename = "vendor",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub vendor: ::std::option::Option<String>,
-        #[doc = "The encoded video content's width in pixels. You can calculate the\nvideo's encoding aspect ratio as\n<code>width_pixels</code>\u{a0}/\u{a0}<code>height_pixels</code>."]
+        #[doc = "The encoded video content's width in pixels. You can calculate the video's encoding aspect ratio as width_pixels / height_pixels."]
         #[serde(
             rename = "widthPixels",
             default,
@@ -21051,14 +21077,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::Video>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#videoListResponse\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#videoListResponse\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the next page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -21072,7 +21098,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub page_info: ::std::option::Option<crate::schemas::PageInfo>,
-        #[doc = "The token that can be used as the value of the <code>pageToken</code>\nparameter to retrieve the previous page in the result set."]
+        #[doc = "The token that can be used as the value of the pageToken parameter to retrieve the previous page in the result set."]
         #[serde(
             rename = "prevPageToken",
             default,
@@ -21085,7 +21111,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub token_pagination: ::std::option::Option<crate::schemas::TokenPagination>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
+        #[doc = "The visitorId identifies the visitor."]
         #[serde(
             rename = "visitorId",
             default,
@@ -21116,28 +21142,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct VideoLiveStreamingDetails {
-        #[doc = "The ID of the currently active live chat attached to this video. This\nfield is filled only if the video is a currently live broadcast that has\nlive chat. Once the broadcast transitions to complete this field will be\nremoved and the live chat closed down. For persistent broadcasts that live\nchat id will no longer be tied to this video but rather to the new video\nbeing displayed at the persistent page."]
+        #[doc = "The ID of the currently active live chat attached to this video. This field is filled only if the video is a currently live broadcast that has live chat. Once the broadcast transitions to complete this field will be removed and the live chat closed down. For persistent broadcasts that live chat id will no longer be tied to this video but rather to the new video being displayed at the persistent page."]
         #[serde(
             rename = "activeLiveChatId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub active_live_chat_id: ::std::option::Option<String>,
-        #[doc = "The time that the broadcast actually ended. The value is specified\nin <a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat. This value will not be\navailable until the broadcast is over."]
+        #[doc = "The time that the broadcast actually ended. This value will not be available until the broadcast is over."]
         #[serde(
             rename = "actualEndTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub actual_end_time: ::std::option::Option<String>,
-        #[doc = "The time that the broadcast actually started. The value is specified\nin <a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat. This value will not be\navailable until the broadcast begins."]
+        pub actual_end_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "The time that the broadcast actually started. This value will not be available until the broadcast begins."]
         #[serde(
             rename = "actualStartTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub actual_start_time: ::std::option::Option<String>,
-        #[doc = "The number of viewers currently watching the broadcast. The property and\nits value will be present if the broadcast has current viewers and the\nbroadcast owner has not hidden the viewcount for the video. Note that\nYouTube stops tracking the number of concurrent viewers for a broadcast\nwhen the broadcast ends. So, this property would not identify the number\nof viewers watching an archived video of a live broadcast that already\nended."]
+        pub actual_start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "The number of viewers currently watching the broadcast. The property and its value will be present if the broadcast has current viewers and the broadcast owner has not hidden the viewcount for the video. Note that YouTube stops tracking the number of concurrent viewers for a broadcast when the broadcast ends. So, this property would not identify the number of viewers watching an archived video of a live broadcast that already ended."]
         #[serde(
             rename = "concurrentViewers",
             default,
@@ -21145,20 +21171,20 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub concurrent_viewers: ::std::option::Option<u64>,
-        #[doc = "The time that the broadcast is scheduled to end. The value is specified\nin <a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat. If the value is empty or\nthe property is not present, then the broadcast is scheduled to continue\nindefinitely."]
+        #[doc = "The time that the broadcast is scheduled to end. If the value is empty or the property is not present, then the broadcast is scheduled to contiue indefinitely."]
         #[serde(
             rename = "scheduledEndTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub scheduled_end_time: ::std::option::Option<String>,
-        #[doc = "The time that the broadcast is scheduled to begin. The value is specified\nin <a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat."]
+        pub scheduled_end_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "The time that the broadcast is scheduled to begin."]
         #[serde(
             rename = "scheduledStartTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub scheduled_start_time: ::std::option::Option<String>,
+        pub scheduled_start_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for VideoLiveStreamingDetails {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -21221,7 +21247,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct VideoMonetizationDetails {
-        #[doc = "The value of <code>access</code> indicates whether the video can be\nmonetized or not."]
+        #[doc = "The value of access indicates whether the video can be monetized or not."]
         #[serde(
             rename = "access",
             default,
@@ -21259,7 +21285,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub embed_height: ::std::option::Option<i64>,
-        #[doc = "An <code><iframe></code> tag that embeds a player that will\nplay the video."]
+        #[doc = "An <iframe> tag that embeds a player that will play the video."]
         #[serde(
             rename = "embedHtml",
             default,
@@ -21298,21 +21324,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct VideoProcessingDetails {
-        #[doc = "This value indicates whether video editing suggestions, which might\nimprove video quality or the playback experience, are available for\nthe video. You can retrieve these suggestions by requesting the\n<code>suggestions</code> part in your <code>videos.list()</code> request."]
+        #[doc = "This value indicates whether video editing suggestions, which might improve video quality or the playback experience, are available for the video. You can retrieve these suggestions by requesting the suggestions part in your videos.list() request."]
         #[serde(
             rename = "editorSuggestionsAvailability",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub editor_suggestions_availability: ::std::option::Option<String>,
-        #[doc = "This value indicates whether file details are available for the uploaded\nvideo. You can retrieve a video's file details by requesting the\n<code>fileDetails</code> part in your <code>videos.list()</code> request."]
+        #[doc = "This value indicates whether file details are available for the uploaded video. You can retrieve a video's file details by requesting the fileDetails part in your videos.list() request."]
         #[serde(
             rename = "fileDetailsAvailability",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub file_details_availability: ::std::option::Option<String>,
-        #[doc = "The reason that YouTube failed to process the video. This property will\nonly have a value if the <code>processingStatus</code>\nproperty's value is <code>failed</code>."]
+        #[doc = "The reason that YouTube failed to process the video. This property will only have a value if the processingStatus property's value is failed."]
         #[serde(
             rename = "processingFailureReason",
             default,
@@ -21320,14 +21346,14 @@ pub mod schemas {
         )]
         pub processing_failure_reason:
             ::std::option::Option<crate::schemas::VideoProcessingDetailsProcessingFailureReason>,
-        #[doc = "This value indicates whether the video processing engine has generated\nsuggestions that might improve YouTube's ability to process the\nthe video, warnings that explain video processing problems, or\nerrors that cause video processing problems. You can retrieve these\nsuggestions by requesting the <code>suggestions</code> part in your\n<code>videos.list()</code> request."]
+        #[doc = "This value indicates whether the video processing engine has generated suggestions that might improve YouTube's ability to process the the video, warnings that explain video processing problems, or errors that cause video processing problems. You can retrieve these suggestions by requesting the suggestions part in your videos.list() request."]
         #[serde(
             rename = "processingIssuesAvailability",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub processing_issues_availability: ::std::option::Option<String>,
-        #[doc = "The <code>processingProgress</code> object contains information about the\nprogress YouTube has made in processing the video. The values are really\nonly relevant if the video's processing status is <code>processing</code>."]
+        #[doc = "The processingProgress object contains information about the progress YouTube has made in processing the video. The values are really only relevant if the video's processing status is processing."]
         #[serde(
             rename = "processingProgress",
             default,
@@ -21335,7 +21361,7 @@ pub mod schemas {
         )]
         pub processing_progress:
             ::std::option::Option<crate::schemas::VideoProcessingDetailsProcessingProgress>,
-        #[doc = "The video's processing status. This value indicates whether YouTube was\nable to process the video or if the video is still being processed."]
+        #[doc = "The video's processing status. This value indicates whether YouTube was able to process the video or if the video is still being processed."]
         #[serde(
             rename = "processingStatus",
             default,
@@ -21343,14 +21369,14 @@ pub mod schemas {
         )]
         pub processing_status:
             ::std::option::Option<crate::schemas::VideoProcessingDetailsProcessingStatus>,
-        #[doc = "This value indicates whether keyword (tag) suggestions are available for\nthe video. Tags can be added to a video's metadata to make it easier for\nother users to find the video. You can retrieve these suggestions by\nrequesting the <code>suggestions</code> part in your\n<code>videos.list()</code> request."]
+        #[doc = "This value indicates whether keyword (tag) suggestions are available for the video. Tags can be added to a video's metadata to make it easier for other users to find the video. You can retrieve these suggestions by requesting the suggestions part in your videos.list() request."]
         #[serde(
             rename = "tagSuggestionsAvailability",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub tag_suggestions_availability: ::std::option::Option<String>,
-        #[doc = "This value indicates whether thumbnail images have been generated for\nthe video."]
+        #[doc = "This value indicates whether thumbnail images have been generated for the video."]
         #[serde(
             rename = "thumbnailsAvailability",
             default,
@@ -21537,7 +21563,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct VideoProcessingDetailsProcessingProgress {
-        #[doc = "The number of parts of the video that YouTube has already processed.\nYou can estimate the percentage of the video that YouTube has already\nprocessed by calculating:<br>\n<code>100 * parts_processed / parts_total</code><br><br>\nNote that since the estimated number of parts could increase without\na corresponding increase in the number of parts that have already been\nprocessed, it is possible that the calculated progress could\nperiodically decrease while YouTube processes a video."]
+        #[doc = "The number of parts of the video that YouTube has already processed. You can estimate the percentage of the video that YouTube has already processed by calculating: 100 * parts_processed / parts_total Note that since the estimated number of parts could increase without a corresponding increase in the number of parts that have already been processed, it is possible that the calculated progress could periodically decrease while YouTube processes a video."]
         #[serde(
             rename = "partsProcessed",
             default,
@@ -21545,7 +21571,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub parts_processed: ::std::option::Option<u64>,
-        #[doc = "An estimate of the total number of parts that need to be processed\nfor the video. The number may be updated with more precise estimates\nwhile YouTube processes the video."]
+        #[doc = "An estimate of the total number of parts that need to be processed for the video. The number may be updated with more precise estimates while YouTube processes the video."]
         #[serde(
             rename = "partsTotal",
             default,
@@ -21553,7 +21579,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub parts_total: ::std::option::Option<u64>,
-        #[doc = "An estimate of the amount of time, in millseconds, that YouTube needs\nto finish processing the video."]
+        #[doc = "An estimate of the amount of time, in millseconds, that YouTube needs to finish processing the video."]
         #[serde(
             rename = "timeLeftMs",
             default,
@@ -21580,19 +21606,12 @@ pub mod schemas {
         PartialOrd,
         Ord,
         Eq,
+        Copy,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct VideoProjectDetails {
-        #[doc = "A list of project tags associated with the video during the upload."]
-        #[serde(
-            rename = "tags",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub tags: ::std::option::Option<Vec<String>>,
-    }
+    pub struct VideoProjectDetails {}
     impl ::google_field_selector::FieldSelector for VideoProjectDetails {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
@@ -21643,7 +21662,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum VideoRatingRating {
+        #[doc = "The entity is disliked."]
         Dislike,
+        #[doc = "The entity is liked."]
         Like,
         None,
     }
@@ -21748,14 +21769,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::VideoRating>>,
-        #[doc = "Identifies what kind of resource this is. Value: the fixed string\n<code>\"youtube#videoGetRatingResponse\"</code>."]
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"youtube#videoGetRatingResponse\"."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The <code>visitorId</code> identifies the visitor."]
+        #[doc = "The visitorId identifies the visitor."]
         #[serde(
             rename = "visitorId",
             default,
@@ -21791,13 +21812,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub location_description: ::std::option::Option<String>,
-        #[doc = "The date and time when the video was recorded. The value is specified in <a\nhref=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\n(<code>YYYY-MM-DDThh:mm:ss.sssZ</code>) format."]
+        #[doc = "The date and time when the video was recorded."]
         #[serde(
             rename = "recordingDate",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub recording_date: ::std::option::Option<String>,
+        pub recording_date: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
     }
     impl ::google_field_selector::FieldSelector for VideoRecordingDetails {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -21822,14 +21843,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct VideoSnippet {
-        #[doc = "The YouTube <a href=\"/youtube/v3/docs/videoCategories/list\">video\ncategory</a> associated with the video."]
+        #[doc = "The YouTube video category associated with the video."]
         #[serde(
             rename = "categoryId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub category_id: ::std::option::Option<String>,
-        #[doc = "The ID that YouTube uses to uniquely identify the channel that the\nvideo was uploaded to."]
+        #[doc = "The ID that YouTube uses to uniquely identify the channel that the video was uploaded to."]
         #[serde(
             rename = "channelId",
             default,
@@ -21843,7 +21864,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub channel_title: ::std::option::Option<String>,
-        #[doc = "The <code>default_audio_language</code> property specifies the language\nspoken in the video's default audio track."]
+        #[doc = "The default_audio_language property specifies the language spoken in the video's default audio track."]
         #[serde(
             rename = "defaultAudioLanguage",
             default,
@@ -21857,14 +21878,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub default_language: ::std::option::Option<String>,
-        #[doc = "The video's description.\n@mutable youtube.videos.insert youtube.videos.update"]
+        #[doc = "The video's description. @mutable youtube.videos.insert youtube.videos.update"]
         #[serde(
             rename = "description",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "Indicates if the video is an upcoming/active live broadcast.\nOr it's \"none\" if the video is not an upcoming/active live broadcast."]
+        #[doc = "Indicates if the video is an upcoming/active live broadcast. Or it's \"none\" if the video is not an upcoming/active live broadcast."]
         #[serde(
             rename = "liveBroadcastContent",
             default,
@@ -21872,20 +21893,20 @@ pub mod schemas {
         )]
         pub live_broadcast_content:
             ::std::option::Option<crate::schemas::VideoSnippetLiveBroadcastContent>,
-        #[doc = "Localized snippet selected with the hl parameter. If no such localization\nexists, this field is populated with the default snippet. (Read-only)"]
+        #[doc = "Localized snippet selected with the hl parameter. If no such localization exists, this field is populated with the default snippet. (Read-only)"]
         #[serde(
             rename = "localized",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub localized: ::std::option::Option<crate::schemas::VideoLocalization>,
-        #[doc = "The date and time that the video was uploaded. The value is specified\nin <a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat."]
+        #[doc = "The date and time when the video was uploaded."]
         #[serde(
             rename = "publishedAt",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub published_at: ::std::option::Option<String>,
+        pub published_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "A list of keyword tags associated with the video. Tags may contain spaces."]
         #[serde(
             rename = "tags",
@@ -21893,14 +21914,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub tags: ::std::option::Option<Vec<String>>,
-        #[doc = "A map of thumbnail images associated with the video. For each object in the\nmap, the key is the name of the thumbnail image, and the value is an object\nthat contains other information about the thumbnail."]
+        #[doc = "A map of thumbnail images associated with the video. For each object in the map, the key is the name of the thumbnail image, and the value is an object that contains other information about the thumbnail."]
         #[serde(
             rename = "thumbnails",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub thumbnails: ::std::option::Option<crate::schemas::ThumbnailDetails>,
-        #[doc = "The video's title.\n@mutable youtube.videos.insert youtube.videos.update"]
+        #[doc = "The video's title. @mutable youtube.videos.insert youtube.videos.update"]
         #[serde(
             rename = "title",
             default,
@@ -21920,9 +21941,12 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum VideoSnippetLiveBroadcastContent {
+        #[doc = "The live broadcast has been completed."]
         Completed,
+        #[doc = "The live broadcast is active."]
         Live,
         None,
+        #[doc = "The live broadcast is upcoming."]
         Upcoming,
     }
     impl VideoSnippetLiveBroadcastContent {
@@ -22016,7 +22040,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub comment_count: ::std::option::Option<u64>,
-        #[doc = "The number of users who have indicated that they disliked the video by\ngiving it a negative rating."]
+        #[doc = "The number of users who have indicated that they disliked the video by giving it a negative rating."]
         #[serde(
             rename = "dislikeCount",
             default,
@@ -22024,7 +22048,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub dislike_count: ::std::option::Option<u64>,
-        #[doc = "The number of users who currently have the video marked as a favorite\nvideo."]
+        #[doc = "The number of users who currently have the video marked as a favorite video."]
         #[serde(
             rename = "favoriteCount",
             default,
@@ -22032,7 +22056,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub favorite_count: ::std::option::Option<u64>,
-        #[doc = "The number of users who have indicated that they liked the video by\ngiving it a positive rating."]
+        #[doc = "The number of users who have indicated that they liked the video by giving it a positive rating."]
         #[serde(
             rename = "likeCount",
             default,
@@ -22072,21 +22096,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct VideoStatus {
-        #[doc = "This value indicates if the video can be embedded on another website.\n@mutable youtube.videos.insert youtube.videos.update"]
+        #[doc = "This value indicates if the video can be embedded on another website. @mutable youtube.videos.insert youtube.videos.update"]
         #[serde(
             rename = "embeddable",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub embeddable: ::std::option::Option<bool>,
-        #[doc = "This value explains why a video failed to upload. This property is\nonly present if the <code>uploadStatus</code> property indicates that\nthe upload failed."]
+        #[doc = "This value explains why a video failed to upload. This property is only present if the uploadStatus property indicates that the upload failed."]
         #[serde(
             rename = "failureReason",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub failure_reason: ::std::option::Option<crate::schemas::VideoStatusFailureReason>,
-        #[doc = "The video's license.\n@mutable youtube.videos.insert youtube.videos.update"]
+        #[doc = "The video's license. @mutable youtube.videos.insert youtube.videos.update"]
         #[serde(
             rename = "license",
             default,
@@ -22106,21 +22130,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub privacy_status: ::std::option::Option<crate::schemas::VideoStatusPrivacyStatus>,
-        #[doc = "This value indicates if the extended video statistics on the watch page\ncan be viewed by everyone. Note that the view count, likes, etc will still\nbe visible if this is disabled.\n@mutable youtube.videos.insert youtube.videos.update"]
+        #[doc = "This value indicates if the extended video statistics on the watch page can be viewed by everyone. Note that the view count, likes, etc will still be visible if this is disabled. @mutable youtube.videos.insert youtube.videos.update"]
         #[serde(
             rename = "publicStatsViewable",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub public_stats_viewable: ::std::option::Option<bool>,
-        #[doc = "The date and time when the video is scheduled to publish. It can be set\nonly if the privacy status of the video is private. The value is specified\nin <a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601</a>\nformat."]
+        #[doc = "The date and time when the video is scheduled to publish. It can be set only if the privacy status of the video is private.."]
         #[serde(
             rename = "publishAt",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub publish_at: ::std::option::Option<String>,
-        #[doc = "This value explains why YouTube rejected an uploaded video. This\nproperty is only present if the <code>uploadStatus</code> property\nindicates that the upload was rejected."]
+        pub publish_at: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "This value explains why YouTube rejected an uploaded video. This property is only present if the uploadStatus property indicates that the upload was rejected."]
         #[serde(
             rename = "rejectionReason",
             default,
@@ -22594,7 +22618,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct VideoSuggestions {
-        #[doc = "A list of video editing operations that might improve the video quality\nor playback experience of the uploaded video."]
+        #[doc = "A list of video editing operations that might improve the video quality or playback experience of the uploaded video."]
         #[serde(
             rename = "editorSuggestions",
             default,
@@ -22602,7 +22626,7 @@ pub mod schemas {
         )]
         pub editor_suggestions:
             ::std::option::Option<Vec<crate::schemas::VideoSuggestionsEditorSuggestionsItems>>,
-        #[doc = "A list of errors that will prevent YouTube from successfully processing\nthe uploaded video video. These errors indicate that, regardless of the\nvideo's current <a href=\"#processingProgress.processingStatus\">processing\nstatus</a>, eventually, that status will almost certainly be\n<code>failed</code>."]
+        #[doc = "A list of errors that will prevent YouTube from successfully processing the uploaded video video. These errors indicate that, regardless of the video's current processing status, eventually, that status will almost certainly be failed."]
         #[serde(
             rename = "processingErrors",
             default,
@@ -22610,7 +22634,7 @@ pub mod schemas {
         )]
         pub processing_errors:
             ::std::option::Option<Vec<crate::schemas::VideoSuggestionsProcessingErrorsItems>>,
-        #[doc = "A list of suggestions that may improve YouTube's ability to process the\nvideo."]
+        #[doc = "A list of suggestions that may improve YouTube's ability to process the video."]
         #[serde(
             rename = "processingHints",
             default,
@@ -22618,7 +22642,7 @@ pub mod schemas {
         )]
         pub processing_hints:
             ::std::option::Option<Vec<crate::schemas::VideoSuggestionsProcessingHintsItems>>,
-        #[doc = "A list of reasons why YouTube may have difficulty transcoding the\nuploaded video or that might result in an erroneous transcoding.\nThese warnings are generated before YouTube actually processes the\nuploaded video file. In addition, they identify issues that are unlikely\nto cause the video processing to fail but that might cause problems\nsuch as sync issues, video artifacts, or a missing audio track."]
+        #[doc = "A list of reasons why YouTube may have difficulty transcoding the uploaded video or that might result in an erroneous transcoding. These warnings are generated before YouTube actually processes the uploaded video file. In addition, they identify issues that are unlikely to cause the video processing to fail but that might cause problems such as sync issues, video artifacts, or a missing audio track."]
         #[serde(
             rename = "processingWarnings",
             default,
@@ -22626,7 +22650,7 @@ pub mod schemas {
         )]
         pub processing_warnings:
             ::std::option::Option<Vec<crate::schemas::VideoSuggestionsProcessingWarningsItems>>,
-        #[doc = "A list of keyword tags that could be added to the video's metadata to\nincrease the likelihood that users will locate your video when searching\nor browsing on YouTube."]
+        #[doc = "A list of keyword tags that could be added to the video's metadata to increase the likelihood that users will locate your video when searching or browsing on YouTube."]
         #[serde(
             rename = "tagSuggestions",
             default,
@@ -22647,9 +22671,13 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum VideoSuggestionsEditorSuggestionsItems {
+        #[doc = "The audio track appears silent and could be swapped with a better quality one."]
         AudioQuietAudioSwap,
+        #[doc = "Picture brightness levels seem off and could be corrected."]
         VideoAutoLevels,
+        #[doc = "Margins (mattes) detected around the picture could be cropped."]
         VideoCrop,
+        #[doc = "The video appears shaky and could be stabilized."]
         VideoStabilize,
     }
     impl VideoSuggestionsEditorSuggestionsItems {
@@ -22730,12 +22758,19 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum VideoSuggestionsProcessingErrorsItems {
+        #[doc = "An archive file (e.g., a ZIP archive)."]
         ArchiveFile,
+        #[doc = "File contains audio only (e.g., an MP3 file)."]
         AudioFile,
+        #[doc = "Document or text file (e.g., MS Word document)."]
         DocFile,
+        #[doc = "Image file (e.g., a JPEG image)."]
         ImageFile,
+        #[doc = "Other non-video file."]
         NotAVideoFile,
+        #[doc = "Movie project file (e.g., Microsoft Windows Movie Maker project)."]
         ProjectFile,
+        #[doc = "Unsupported spatial audio layout type."]
         UnsupportedSpatialAudioLayout,
     }
     impl VideoSuggestionsProcessingErrorsItems {
@@ -22825,11 +22860,17 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum VideoSuggestionsProcessingHintsItems {
+        #[doc = "Uploaded video is HDR video."]
         HdrVideo,
+        #[doc = "The MP4 file is not streamable, this will slow down the processing. MOOV atom was not found at the beginning of the file."]
         NonStreamableMov,
+        #[doc = "Probably a better quality version of the video exists. The video has wide screen aspect ratio, but is not an HD video."]
         SendBestQualityVideo,
+        #[doc = "Uploaded video has spatial audio."]
         SpatialAudio,
+        #[doc = "Uploaded video is spherical video."]
         SphericalVideo,
+        #[doc = "Uploaded video is VR video."]
         VrVideo,
     }
     impl VideoSuggestionsProcessingHintsItems {
@@ -22916,17 +22957,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum VideoSuggestionsProcessingWarningsItems {
+        #[doc = "Edit lists are not currently supported."]
         HasEditlist,
+        #[doc = "Conflicting container and stream resolutions."]
         InconsistentResolution,
+        #[doc = "Audio codec that is known to cause problems was used."]
         ProblematicAudioCodec,
+        #[doc = "Problematic HDR lookup table attached."]
         ProblematicHdrLookupTable,
+        #[doc = "Video codec that is known to cause problems was used."]
         ProblematicVideoCodec,
+        #[doc = "Unrecognized audio codec, transcoding is likely to fail."]
         UnknownAudioCodec,
+        #[doc = "Unrecognized file format, transcoding is likely to fail."]
         UnknownContainer,
+        #[doc = "Unrecognized video codec, transcoding is likely to fail."]
         UnknownVideoCodec,
+        #[doc = "Unspecified HDR color metadata."]
         UnsupportedHdrColorMetadata,
+        #[doc = "Unsupported HDR pixel format."]
         UnsupportedHdrPixelFormat,
+        #[doc = "Unsupported spherical video projection type."]
         UnsupportedSphericalProjectionType,
+        #[doc = "Unsupported VR video stereo mode."]
         UnsupportedVrStereoMode,
     }
     impl VideoSuggestionsProcessingWarningsItems {
@@ -23084,7 +23137,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct VideoSuggestionsTagSuggestion {
-        #[doc = "A set of video categories for which the tag is relevant. You can use this\ninformation to display appropriate tag suggestions based on the video\ncategory that the video uploader associates with the video. By default,\ntag suggestions are relevant for all categories if there are no restricts\ndefined for the keyword."]
+        #[doc = "A set of video categories for which the tag is relevant. You can use this information to display appropriate tag suggestions based on the video category that the video uploader associates with the video. By default, tag suggestions are relevant for all categories if there are no restricts defined for the keyword."]
         #[serde(
             rename = "categoryRestricts",
             default,
@@ -23122,21 +23175,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct VideoTopicDetails {
-        #[doc = "Similar to topic_id, except that these topics are merely relevant to the\nvideo. These are topics that may be mentioned in, or appear in the video.\nYou can retrieve information about each topic using <a\nhref=\"http://wiki.freebase.com/wiki/Topic_API\">Freebase Topic API</a>."]
+        #[doc = "Similar to topic_id, except that these topics are merely relevant to the video. These are topics that may be mentioned in, or appear in the video. You can retrieve information about each topic using Freebase Topic API."]
         #[serde(
             rename = "relevantTopicIds",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub relevant_topic_ids: ::std::option::Option<Vec<String>>,
-        #[doc = "A list of Wikipedia URLs that provide a high-level description of the\nvideo's content."]
+        #[doc = "A list of Wikipedia URLs that provide a high-level description of the video's content."]
         #[serde(
             rename = "topicCategories",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub topic_categories: ::std::option::Option<Vec<String>>,
-        #[doc = "A list of Freebase topic IDs that are centrally associated with the video.\nThese are topics that are centrally featured in the video, and it can be\nsaid that the video is mainly about each of these. You can retrieve\ninformation about each topic using the < a\nhref=\"http://wiki.freebase.com/wiki/Topic_API\">Freebase Topic API</a>."]
+        #[doc = "A list of Freebase topic IDs that are centrally associated with the video. These are topics that are centrally featured in the video, and it can be said that the video is mainly about each of these. You can retrieve information about each topic using the < a href=\"http://wiki.freebase.com/wiki/Topic_API\">Freebase Topic API."]
         #[serde(
             rename = "topicIds",
             default,
@@ -23174,7 +23227,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub background_color: ::std::option::Option<String>,
-        #[doc = "An ID that uniquely identifies a playlist that displays next to the video\nplayer."]
+        #[doc = "An ID that uniquely identifies a playlist that displays next to the video player."]
         #[serde(
             rename = "featuredPlaylistId",
             default,
@@ -23378,6 +23431,13 @@ impl Client {
     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
         self.auth.as_ref()
     }
+    #[doc = "Actions that can be performed on the abuse_reports resource"]
+    pub fn abuse_reports(&self) -> crate::resources::abuse_reports::AbuseReportsActions {
+        crate::resources::abuse_reports::AbuseReportsActions {
+            reqwest: &self.reqwest,
+            auth: self.auth_ref(),
+        }
+    }
     #[doc = "Actions that can be performed on the activities resource"]
     pub fn activities(&self) -> crate::resources::activities::ActivitiesActions {
         crate::resources::activities::ActivitiesActions {
@@ -23423,13 +23483,6 @@ impl Client {
     #[doc = "Actions that can be performed on the comments resource"]
     pub fn comments(&self) -> crate::resources::comments::CommentsActions {
         crate::resources::comments::CommentsActions {
-            reqwest: &self.reqwest,
-            auth: self.auth_ref(),
-        }
-    }
-    #[doc = "Actions that can be performed on the guide_categories resource"]
-    pub fn guide_categories(&self) -> crate::resources::guide_categories::GuideCategoriesActions {
-        crate::resources::guide_categories::GuideCategoriesActions {
             reqwest: &self.reqwest,
             auth: self.auth_ref(),
         }
@@ -23524,13 +23577,6 @@ impl Client {
             auth: self.auth_ref(),
         }
     }
-    #[doc = "Actions that can be performed on the sponsors resource"]
-    pub fn sponsors(&self) -> crate::resources::sponsors::SponsorsActions {
-        crate::resources::sponsors::SponsorsActions {
-            reqwest: &self.reqwest,
-            auth: self.auth_ref(),
-        }
-    }
     #[doc = "Actions that can be performed on the subscriptions resource"]
     pub fn subscriptions(&self) -> crate::resources::subscriptions::SubscriptionsActions {
         crate::resources::subscriptions::SubscriptionsActions {
@@ -23541,6 +23587,20 @@ impl Client {
     #[doc = "Actions that can be performed on the super_chat_events resource"]
     pub fn super_chat_events(&self) -> crate::resources::super_chat_events::SuperChatEventsActions {
         crate::resources::super_chat_events::SuperChatEventsActions {
+            reqwest: &self.reqwest,
+            auth: self.auth_ref(),
+        }
+    }
+    #[doc = "Actions that can be performed on the tests resource"]
+    pub fn tests(&self) -> crate::resources::tests::TestsActions {
+        crate::resources::tests::TestsActions {
+            reqwest: &self.reqwest,
+            auth: self.auth_ref(),
+        }
+    }
+    #[doc = "Actions that can be performed on the third_party_links resource"]
+    pub fn third_party_links(&self) -> crate::resources::third_party_links::ThirdPartyLinksActions {
+        crate::resources::third_party_links::ThirdPartyLinksActions {
             reqwest: &self.reqwest,
             auth: self.auth_ref(),
         }
@@ -23582,15 +23642,198 @@ impl Client {
             auth: self.auth_ref(),
         }
     }
-    #[doc = "Actions that can be performed on the youtube resource"]
-    pub fn youtube(&self) -> crate::resources::youtube::YoutubeActions {
-        crate::resources::youtube::YoutubeActions {
-            reqwest: &self.reqwest,
-            auth: self.auth_ref(),
-        }
-    }
 }
 pub mod resources {
+    pub mod abuse_reports {
+        pub mod params {}
+        pub struct AbuseReportsActions<'a> {
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+        }
+        impl<'a> AbuseReportsActions<'a> {
+            fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                self.auth
+            }
+            #[doc = "Inserts a new resource into this collection."]
+            pub fn insert(
+                &self,
+                request: crate::schemas::AbuseReport,
+                part: impl Into<Vec<String>>,
+            ) -> InsertRequestBuilder {
+                InsertRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    request,
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    part: part.into(),
+                }
+            }
+        }
+        #[doc = "Created via [AbuseReportsActions::insert()](struct.AbuseReportsActions.html#method.insert)"]
+        #[derive(Debug, Clone)]
+        pub struct InsertRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            request: crate::schemas::AbuseReport,
+            part: Vec<String>,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a> InsertRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::AbuseReport, crate::Error> {
+                self.execute_with_fields(None::<&str>)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_with_all_fields(
+                self,
+            ) -> Result<crate::schemas::AbuseReport, crate::Error> {
+                self.execute_with_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path())?;
+                let req = req.json(&self.request);
+                Ok(crate::error_from_response(req.send()?)?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://youtube.googleapis.com/".to_owned();
+                output.push_str("youtube/v3/abuseReports");
+                output
+            }
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
+                Ok(req)
+            }
+        }
+    }
     pub mod activities {
         pub mod params {}
         pub struct ActivitiesActions<'a> {
@@ -23666,7 +23909,7 @@ pub mod resources {
                 self.home = Some(value);
                 self
             }
-            #[doc = "The <code><strong>maxResults</strong></code> parameter specifies the\nmaximum number of items that should be returned in the result set."]
+            #[doc = "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set."]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
@@ -23676,7 +23919,7 @@ pub mod resources {
                 self.mine = Some(value);
                 self
             }
-            #[doc = "The <code><strong>pageToken</strong></code> parameter identifies a specific\npage in the result set that should be returned. In an API response, the\n<code>nextPageToken</code> and <code>prevPageToken</code> properties\nidentify other pages that could be retrieved."]
+            #[doc = "The *pageToken* parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
@@ -23896,7 +24139,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/activities");
                 output
             }
@@ -23904,28 +24147,30 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("channelId", &self.channel_id)]);
-                let req = req.query(&[("home", &self.home)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("mine", &self.mine)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("publishedAfter", &self.published_after)]);
-                let req = req.query(&[("publishedBefore", &self.published_before)]);
-                let req = req.query(&[("regionCode", &self.region_code)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("channelId", &self.channel_id)]);
+                req = req.query(&[("home", &self.home)]);
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("mine", &self.mine)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("publishedAfter", &self.published_after)]);
+                req = req.query(&[("publishedBefore", &self.published_before)]);
+                req = req.query(&[("regionCode", &self.region_code)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -24029,8 +24274,8 @@ pub mod resources {
             #[doc = "Retrieves a list of resources, possibly filtered."]
             pub fn list(
                 &self,
-                video_id: impl Into<String>,
                 part: impl Into<Vec<String>>,
+                video_id: impl Into<String>,
             ) -> ListRequestBuilder {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
@@ -24046,8 +24291,8 @@ pub mod resources {
                     upload_protocol: None,
                     upload_type: None,
                     xgafv: None,
-                    video_id: video_id.into(),
                     part: part.into(),
+                    video_id: video_id.into(),
                     id: None,
                     on_behalf_of: None,
                     on_behalf_of_content_owner: None,
@@ -24107,7 +24352,7 @@ pub mod resources {
                 self.on_behalf_of = Some(value.into());
                 self
             }
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the request's authorization credentials identify a YouTube CMS user\nwho is acting on behalf of the content owner specified in the parameter\nvalue. This parameter is intended for YouTube content partners that own and\nmanage many different YouTube channels. It allows content owners to\nauthenticate once and get access to all their video and channel data,\nwithout having to provide authentication credentials for each individual\nchannel. The actual CMS account that the user authenticates with must be\nlinked to the specified YouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The actual CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
@@ -24163,7 +24408,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/captions");
                 output
             }
@@ -24171,23 +24416,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("onBehalfOf", &self.on_behalf_of)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("id", &self.id)]);
+                req = req.query(&[("onBehalfOf", &self.on_behalf_of)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -24223,17 +24467,17 @@ pub mod resources {
                 self.on_behalf_of = Some(value.into());
                 self
             }
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the request's authorization credentials identify a YouTube CMS user\nwho is acting on behalf of the content owner specified in the parameter\nvalue. This parameter is intended for YouTube content partners that own and\nmanage many different YouTube channels. It allows content owners to\nauthenticate once and get access to all their video and channel data,\nwithout having to provide authentication credentials for each individual\nchannel. The actual CMS account that the user authenticates with must be\nlinked to the specified YouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The actual CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
             }
-            #[doc = "Convert the captions into this format. Supported options are\nsbv, srt, and vtt."]
+            #[doc = "Convert the captions into this format. Supported options are sbv, srt, and vtt."]
             pub fn tfmt(mut self, value: impl Into<String>) -> Self {
                 self.tfmt = Some(value.into());
                 self
             }
-            #[doc = "tlang is the language code; machine translate the captions into\nthis language."]
+            #[doc = "tlang is the language code; machine translate the captions into this language."]
             pub fn tlang(mut self, value: impl Into<String>) -> Self {
                 self.tlang = Some(value.into());
                 self
@@ -24284,7 +24528,7 @@ pub mod resources {
                 self
             }
             fn _download_path(&self) -> String {
-                let mut output = "https://www.googleapis.com/download/".to_owned();
+                let mut output = "https://youtube.googleapis.com/download/".to_owned();
                 output.push_str("youtube/v3/captions/");
                 {
                     let var_as_str = &self.id;
@@ -24311,7 +24555,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/captions/");
                 {
                     let var_as_str = &self.id;
@@ -24326,24 +24570,23 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("onBehalfOf", &self.on_behalf_of)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("tfmt", &self.tfmt)]);
-                let req = req.query(&[("tlang", &self.tlang)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("onBehalfOf", &self.on_behalf_of)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("tfmt", &self.tfmt)]);
+                req = req.query(&[("tlang", &self.tlang)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -24379,12 +24622,12 @@ pub mod resources {
                 self.on_behalf_of = Some(value.into());
                 self
             }
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the request's authorization credentials identify a YouTube CMS user\nwho is acting on behalf of the content owner specified in the parameter\nvalue. This parameter is intended for YouTube content partners that own and\nmanage many different YouTube channels. It allows content owners to\nauthenticate once and get access to all their video and channel data,\nwithout having to provide authentication credentials for each individual\nchannel. The actual CMS account that the user authenticates with must be\nlinked to the specified YouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The actual CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
             }
-            #[doc = "Extra parameter to allow automatically syncing the uploaded\ncaption/transcript with the audio."]
+            #[doc = "Extra parameter to allow automatically syncing the uploaded caption/transcript with the audio."]
             pub fn sync(mut self, value: bool) -> Self {
                 self.sync = Some(value);
                 self
@@ -24435,7 +24678,7 @@ pub mod resources {
                 self
             }
             fn _simple_upload_path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("upload/youtube/v3/captions");
                 output
             }
@@ -24470,6 +24713,44 @@ pub mod resources {
                 );
                 let req = req.body(reqwest::blocking::Body::new(multipart.into_reader()));
                 Ok(crate::error_from_response(req.send()?)?.json()?)
+            }
+            fn _resumable_upload_path(&self) -> String {
+                let mut output = "https://youtube.googleapis.com/".to_owned();
+                output.push_str("resumable/upload/youtube/v3/captions");
+                output
+            }
+            pub fn start_resumable_upload(
+                self,
+                mime_type: ::mime::Mime,
+            ) -> Result<crate::ResumableUpload, crate::Error> {
+                let req = self._request(&self._resumable_upload_path())?;
+                let req = req.query(&[("uploadType", "resumable")]);
+                let req = req.header(
+                    ::reqwest::header::HeaderName::from_static("x-upload-content-type"),
+                    mime_type.to_string(),
+                );
+                let req = req.json(&self.request);
+                let resp = crate::error_from_response(req.send()?)?;
+                let location_header =
+                    resp.headers()
+                        .get(::reqwest::header::LOCATION)
+                        .ok_or_else(|| {
+                            crate::Error::Other(
+                                format!(
+                                    "No LOCATION header returned when initiating resumable upload"
+                                )
+                                .into(),
+                            )
+                        })?;
+                let upload_url = ::std::str::from_utf8(location_header.as_bytes())
+                    .map_err(|_| {
+                        crate::Error::Other(format!("Non UTF8 LOCATION header returned").into())
+                    })?
+                    .to_owned();
+                Ok(crate::ResumableUpload::new(
+                    self.reqwest.clone(),
+                    upload_url,
+                ))
             }
             #[doc = r" Execute the given operation. The fields requested are"]
             #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -24527,7 +24808,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/captions");
                 output
             }
@@ -24535,24 +24816,25 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("onBehalfOf", &self.on_behalf_of)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("sync", &self.sync)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("onBehalfOf", &self.on_behalf_of)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("sync", &self.sync)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -24565,8 +24847,8 @@ pub mod resources {
         pub struct ListRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            video_id: String,
             part: Vec<String>,
+            video_id: String,
             id: Option<Vec<String>>,
             on_behalf_of: Option<String>,
             on_behalf_of_content_owner: Option<String>,
@@ -24593,7 +24875,7 @@ pub mod resources {
                 self.on_behalf_of = Some(value.into());
                 self
             }
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the request's authorization credentials identify a YouTube CMS user\nwho is acting on behalf of the content owner specified in the parameter\nvalue. This parameter is intended for YouTube content partners that own and\nmanage many different YouTube channels. It allows content owners to\nauthenticate once and get access to all their video and channel data,\nwithout having to provide authentication credentials for each individual\nchannel. The actual CMS account that the user authenticates with must be\nlinked to the specified YouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The actual CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
@@ -24700,7 +24982,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/captions");
                 output
             }
@@ -24708,25 +24990,28 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("videoId", &self.video_id)]);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("onBehalfOf", &self.on_behalf_of)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("videoId", &self.video_id)]);
+                for value in self.id.iter().flatten() {
+                    req = req.query(&[("id", value)]);
+                }
+                req = req.query(&[("onBehalfOf", &self.on_behalf_of)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -24762,12 +25047,12 @@ pub mod resources {
                 self.on_behalf_of = Some(value.into());
                 self
             }
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the request's authorization credentials identify a YouTube CMS user\nwho is acting on behalf of the content owner specified in the parameter\nvalue. This parameter is intended for YouTube content partners that own and\nmanage many different YouTube channels. It allows content owners to\nauthenticate once and get access to all their video and channel data,\nwithout having to provide authentication credentials for each individual\nchannel. The actual CMS account that the user authenticates with must be\nlinked to the specified YouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The actual CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
             }
-            #[doc = "Extra parameter to allow automatically syncing the uploaded\ncaption/transcript with the audio."]
+            #[doc = "Extra parameter to allow automatically syncing the uploaded caption/transcript with the audio."]
             pub fn sync(mut self, value: bool) -> Self {
                 self.sync = Some(value);
                 self
@@ -24818,7 +25103,7 @@ pub mod resources {
                 self
             }
             fn _simple_upload_path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("upload/youtube/v3/captions");
                 output
             }
@@ -24853,6 +25138,44 @@ pub mod resources {
                 );
                 let req = req.body(reqwest::blocking::Body::new(multipart.into_reader()));
                 Ok(crate::error_from_response(req.send()?)?.json()?)
+            }
+            fn _resumable_upload_path(&self) -> String {
+                let mut output = "https://youtube.googleapis.com/".to_owned();
+                output.push_str("resumable/upload/youtube/v3/captions");
+                output
+            }
+            pub fn start_resumable_upload(
+                self,
+                mime_type: ::mime::Mime,
+            ) -> Result<crate::ResumableUpload, crate::Error> {
+                let req = self._request(&self._resumable_upload_path())?;
+                let req = req.query(&[("uploadType", "resumable")]);
+                let req = req.header(
+                    ::reqwest::header::HeaderName::from_static("x-upload-content-type"),
+                    mime_type.to_string(),
+                );
+                let req = req.json(&self.request);
+                let resp = crate::error_from_response(req.send()?)?;
+                let location_header =
+                    resp.headers()
+                        .get(::reqwest::header::LOCATION)
+                        .ok_or_else(|| {
+                            crate::Error::Other(
+                                format!(
+                                    "No LOCATION header returned when initiating resumable upload"
+                                )
+                                .into(),
+                            )
+                        })?;
+                let upload_url = ::std::str::from_utf8(location_header.as_bytes())
+                    .map_err(|_| {
+                        crate::Error::Other(format!("Non UTF8 LOCATION header returned").into())
+                    })?
+                    .to_owned();
+                Ok(crate::ResumableUpload::new(
+                    self.reqwest.clone(),
+                    upload_url,
+                ))
             }
             #[doc = r" Execute the given operation. The fields requested are"]
             #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -24910,7 +25233,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/captions");
                 output
             }
@@ -24918,24 +25241,25 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("onBehalfOf", &self.on_behalf_of)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("sync", &self.sync)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("onBehalfOf", &self.on_behalf_of)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("sync", &self.sync)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -25002,17 +25326,17 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> InsertRequestBuilder<'a> {
-            #[doc = "Unused, channel_id is currently derived from the security context of the\nrequestor."]
+            #[doc = "Unused, channel_id is currently derived from the security context of the requestor."]
             pub fn channel_id(mut self, value: impl Into<String>) -> Self {
                 self.channel_id = Some(value.into());
                 self
             }
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the request's authorization credentials identify a YouTube CMS user\nwho is acting on behalf of the content owner specified in the parameter\nvalue. This parameter is intended for YouTube content partners that own and\nmanage many different YouTube channels. It allows content owners to\nauthenticate once and get access to all their video and channel data,\nwithout having to provide authentication credentials for each individual\nchannel. The actual CMS account that the user authenticates with must be\nlinked to the specified YouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The actual CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
             }
-            #[doc = "This parameter can only be used in a properly <a\nhref=\"/youtube/v3/guides/authentication\">authorized request</a>.\n<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter\nspecifies the YouTube channel ID of the channel to which a video is being\nadded. This parameter is required when a request specifies a value for the\n<code>onBehalfOfContentOwner</code> parameter, and it can only be used in\nconjunction with that parameter. In addition, the request must be\nauthorized using a CMS account that is linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies. Finally, the\nchannel that the <code>onBehalfOfContentOwnerChannel</code> parameter value\nspecifies must be linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This\nparameter is intended for YouTube content partners that own and manage many\ndifferent YouTube channels. It allows content owners to authenticate once\nand perform actions on behalf of the channel specified in the parameter\nvalue, without having to provide authentication credentials for each\nseparate channel."]
+            #[doc = "This parameter can only be used in a properly authorized request. *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and perform actions on behalf of the channel specified in the parameter value, without having to provide authentication credentials for each separate channel."]
             pub fn on_behalf_of_content_owner_channel(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner_channel = Some(value.into());
                 self
@@ -25063,7 +25387,7 @@ pub mod resources {
                 self
             }
             fn _simple_upload_path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("upload/youtube/v3/channelBanners/insert");
                 output
             }
@@ -25098,6 +25422,44 @@ pub mod resources {
                 );
                 let req = req.body(reqwest::blocking::Body::new(multipart.into_reader()));
                 Ok(crate::error_from_response(req.send()?)?.json()?)
+            }
+            fn _resumable_upload_path(&self) -> String {
+                let mut output = "https://youtube.googleapis.com/".to_owned();
+                output.push_str("resumable/upload/youtube/v3/channelBanners/insert");
+                output
+            }
+            pub fn start_resumable_upload(
+                self,
+                mime_type: ::mime::Mime,
+            ) -> Result<crate::ResumableUpload, crate::Error> {
+                let req = self._request(&self._resumable_upload_path())?;
+                let req = req.query(&[("uploadType", "resumable")]);
+                let req = req.header(
+                    ::reqwest::header::HeaderName::from_static("x-upload-content-type"),
+                    mime_type.to_string(),
+                );
+                let req = req.json(&self.request);
+                let resp = crate::error_from_response(req.send()?)?;
+                let location_header =
+                    resp.headers()
+                        .get(::reqwest::header::LOCATION)
+                        .ok_or_else(|| {
+                            crate::Error::Other(
+                                format!(
+                                    "No LOCATION header returned when initiating resumable upload"
+                                )
+                                .into(),
+                            )
+                        })?;
+                let upload_url = ::std::str::from_utf8(location_header.as_bytes())
+                    .map_err(|_| {
+                        crate::Error::Other(format!("Non UTF8 LOCATION header returned").into())
+                    })?
+                    .to_owned();
+                Ok(crate::ResumableUpload::new(
+                    self.reqwest.clone(),
+                    upload_url,
+                ))
             }
             #[doc = r" Execute the given operation. The fields requested are"]
             #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -25157,7 +25519,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/channelBanners/insert");
                 output
             }
@@ -25165,26 +25527,25 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("channelId", &self.channel_id)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("channelId", &self.channel_id)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[(
                     "onBehalfOfContentOwnerChannel",
                     &self.on_behalf_of_content_owner_channel,
                 )]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -25319,7 +25680,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> DeleteRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
@@ -25375,7 +25736,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/channelSections");
                 output
             }
@@ -25383,22 +25744,21 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("id", &self.id)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("id", &self.id)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -25428,12 +25788,12 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> InsertRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
             }
-            #[doc = "This parameter can only be used in a properly <a\nhref=\"/youtube/v3/guides/authentication\">authorized request</a>.\n<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter\nspecifies the YouTube channel ID of the channel to which a video is being\nadded. This parameter is required when a request specifies a value for the\n<code>onBehalfOfContentOwner</code> parameter, and it can only be used in\nconjunction with that parameter. In addition, the request must be\nauthorized using a CMS account that is linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies. Finally, the\nchannel that the <code>onBehalfOfContentOwnerChannel</code> parameter value\nspecifies must be linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This\nparameter is intended for YouTube content partners that own and manage many\ndifferent YouTube channels. It allows content owners to authenticate once\nand perform actions on behalf of the channel specified in the parameter\nvalue, without having to provide authentication credentials for each\nseparate channel."]
+            #[doc = "This parameter can only be used in a properly authorized request. *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and perform actions on behalf of the channel specified in the parameter value, without having to provide authentication credentials for each separate channel."]
             pub fn on_behalf_of_content_owner_channel(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner_channel = Some(value.into());
                 self
@@ -25541,7 +25901,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/channelSections");
                 output
             }
@@ -25549,26 +25909,27 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[(
                     "onBehalfOfContentOwnerChannel",
                     &self.on_behalf_of_content_owner_channel,
                 )]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -25620,7 +25981,7 @@ pub mod resources {
                 self.mine = Some(value);
                 self
             }
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
@@ -25727,7 +26088,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/channelSections");
                 output
             }
@@ -25735,26 +26096,29 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("channelId", &self.channel_id)]);
-                let req = req.query(&[("hl", &self.hl)]);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("mine", &self.mine)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("channelId", &self.channel_id)]);
+                req = req.query(&[("hl", &self.hl)]);
+                for value in self.id.iter().flatten() {
+                    req = req.query(&[("id", value)]);
+                }
+                req = req.query(&[("mine", &self.mine)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -25783,7 +26147,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> UpdateRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
@@ -25891,7 +26255,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/channelSections");
                 output
             }
@@ -25899,22 +26263,23 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -26027,7 +26392,7 @@ pub mod resources {
                 self.for_username = Some(value.into());
                 self
             }
-            #[doc = "Stands for \"host language\". Specifies the localization language of the\nmetadata to be filled into snippet.localized. The field is filled with the\ndefault metadata if there is no localization in the specified language.\nThe parameter value must be a language code included in the list returned\nby the i18nLanguages.list method (e.g. en_US, es_MX)."]
+            #[doc = "Stands for \"host language\". Specifies the localization language of the metadata to be filled into snippet.localized. The field is filled with the default metadata if there is no localization in the specified language. The parameter value must be a language code included in the list returned by the i18nLanguages.list method (e.g. en_US, es_MX)."]
             pub fn hl(mut self, value: impl Into<String>) -> Self {
                 self.hl = Some(value.into());
                 self
@@ -26042,7 +26407,7 @@ pub mod resources {
                 self.managed_by_me = Some(value);
                 self
             }
-            #[doc = "The <code><strong>maxResults</strong></code> parameter specifies the\nmaximum number of items that should be returned in the result set."]
+            #[doc = "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set."]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
@@ -26057,12 +26422,12 @@ pub mod resources {
                 self.my_subscribers = Some(value);
                 self
             }
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
             }
-            #[doc = "The <code><strong>pageToken</strong></code> parameter identifies a specific\npage in the result set that should be returned. In an API response, the\n<code>nextPageToken</code> and <code>prevPageToken</code> properties\nidentify other pages that could be retrieved."]
+            #[doc = "The *pageToken* parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
@@ -26267,7 +26632,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/channels");
                 output
             }
@@ -26275,31 +26640,34 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("categoryId", &self.category_id)]);
-                let req = req.query(&[("forUsername", &self.for_username)]);
-                let req = req.query(&[("hl", &self.hl)]);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("managedByMe", &self.managed_by_me)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("mine", &self.mine)]);
-                let req = req.query(&[("mySubscribers", &self.my_subscribers)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("categoryId", &self.category_id)]);
+                req = req.query(&[("forUsername", &self.for_username)]);
+                req = req.query(&[("hl", &self.hl)]);
+                for value in self.id.iter().flatten() {
+                    req = req.query(&[("id", value)]);
+                }
+                req = req.query(&[("managedByMe", &self.managed_by_me)]);
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("mine", &self.mine)]);
+                req = req.query(&[("mySubscribers", &self.my_subscribers)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -26339,7 +26707,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> UpdateRequestBuilder<'a> {
-            #[doc = "The <code><strong>onBehalfOfContentOwner</strong></code> parameter\nindicates that the authenticated user is acting on behalf of the content\nowner specified in the parameter value. This parameter is intended for\nYouTube content partners that own and manage many different YouTube\nchannels. It allows content owners to authenticate once and get access to\nall their video and channel data, without having to provide authentication\ncredentials for each individual channel. The actual CMS account that the\nuser authenticates with needs to be linked to the specified YouTube content\nowner."]
+            #[doc = "The *onBehalfOfContentOwner* parameter indicates that the authenticated user is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The actual CMS account that the user authenticates with needs to be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
@@ -26445,7 +26813,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/channels");
                 output
             }
@@ -26453,22 +26821,23 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -26481,9 +26850,12 @@ pub mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListModerationStatus {
+                #[doc = "The comment is awaiting review by a moderator."]
                 HeldForReview,
                 LikelySpam,
+                #[doc = "The comment is available for public display."]
                 Published,
+                #[doc = "The comment is unfit for display."]
                 Rejected,
             }
             impl ListModerationStatus {
@@ -26559,7 +26931,9 @@ pub mod resources {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListOrder {
                 OrderUnspecified,
+                #[doc = "Order by relevance."]
                 Relevance,
+                #[doc = "Order by time."]
                 Time,
             }
             impl ListOrder {
@@ -26631,7 +27005,9 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListTextFormat {
+                #[doc = "Returns the comments in HTML format. This is the default value."]
                 Html,
+                #[doc = "Returns the comments in plain text format."]
                 PlainText,
                 TextFormatUnspecified,
             }
@@ -26912,7 +27288,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/commentThreads");
                 output
             }
@@ -26920,20 +27296,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -26971,12 +27349,12 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "Returns the comment threads of all videos of the channel and the\nchannel comments as well."]
+            #[doc = "Returns the comment threads of all videos of the channel and the channel comments as well."]
             pub fn all_threads_related_to_channel_id(mut self, value: impl Into<String>) -> Self {
                 self.all_threads_related_to_channel_id = Some(value.into());
                 self
             }
-            #[doc = "Returns the comment threads for all the channel comments (ie does not\ninclude comments left on videos)."]
+            #[doc = "Returns the comment threads for all the channel comments (ie does not include comments left on videos)."]
             pub fn channel_id(mut self, value: impl Into<String>) -> Self {
                 self.channel_id = Some(value.into());
                 self
@@ -26986,12 +27364,12 @@ pub mod resources {
                 self.id = Some(value.into());
                 self
             }
-            #[doc = "The <code><strong>maxResults</strong></code> parameter specifies the\nmaximum number of items that should be returned in the result set."]
+            #[doc = "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set."]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
             }
-            #[doc = "Limits the returned comment threads to those with the specified\nmoderation status. Not compatible with the 'id' filter.\nValid values: published, heldForReview, likelySpam."]
+            #[doc = "Limits the returned comment threads to those with the specified moderation status. Not compatible with the 'id' filter. Valid values: published, heldForReview, likelySpam."]
             pub fn moderation_status(
                 mut self,
                 value: crate::resources::comment_threads::params::ListModerationStatus,
@@ -27007,12 +27385,12 @@ pub mod resources {
                 self.order = Some(value);
                 self
             }
-            #[doc = "The <code><strong>pageToken</strong></code> parameter identifies a specific\npage in the result set that should be returned. In an API response, the\n<code>nextPageToken</code> and <code>prevPageToken</code> properties\nidentify other pages that could be retrieved."]
+            #[doc = "The *pageToken* parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
             }
-            #[doc = "Limits the returned comment threads to those matching the specified\nkey words. Not compatible with the 'id' filter."]
+            #[doc = "Limits the returned comment threads to those matching the specified key words. Not compatible with the 'id' filter."]
             pub fn search_terms(mut self, value: impl Into<String>) -> Self {
                 self.search_terms = Some(value.into());
                 self
@@ -27232,7 +27610,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/commentThreads");
                 output
             }
@@ -27240,33 +27618,37 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[(
                     "allThreadsRelatedToChannelId",
                     &self.all_threads_related_to_channel_id,
                 )]);
-                let req = req.query(&[("channelId", &self.channel_id)]);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("moderationStatus", &self.moderation_status)]);
-                let req = req.query(&[("order", &self.order)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("searchTerms", &self.search_terms)]);
-                let req = req.query(&[("textFormat", &self.text_format)]);
-                let req = req.query(&[("videoId", &self.video_id)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("channelId", &self.channel_id)]);
+                for value in self.id.iter().flatten() {
+                    req = req.query(&[("id", value)]);
+                }
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("moderationStatus", &self.moderation_status)]);
+                req = req.query(&[("order", &self.order)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("searchTerms", &self.search_terms)]);
+                req = req.query(&[("textFormat", &self.text_format)]);
+                req = req.query(&[("videoId", &self.video_id)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -27408,7 +27790,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/commentThreads");
                 output
             }
@@ -27416,20 +27798,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -27442,7 +27826,9 @@ pub mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListTextFormat {
+                #[doc = "Returns the comments in HTML format. This is the default value."]
                 Html,
+                #[doc = "Returns the comments in plain text format."]
                 PlainText,
                 TextFormatUnspecified,
             }
@@ -27515,9 +27901,12 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum SetModerationStatusModerationStatus {
+                #[doc = "The comment is awaiting review by a moderator."]
                 HeldForReview,
                 LikelySpam,
+                #[doc = "The comment is available for public display."]
                 Published,
+                #[doc = "The comment is unfit for display."]
                 Rejected,
             }
             impl SetModerationStatusModerationStatus {
@@ -27669,7 +28058,7 @@ pub mod resources {
                     text_format: None,
                 }
             }
-            #[doc = "Expresses the caller's opinion that one or more comments should be flagged\nas spam."]
+            #[doc = "Expresses the caller's opinion that one or more comments should be flagged as spam."]
             pub fn mark_as_spam(&self, id: impl Into<Vec<String>>) -> MarkAsSpamRequestBuilder {
                 MarkAsSpamRequestBuilder {
                     reqwest: &self.reqwest,
@@ -27808,7 +28197,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/comments");
                 output
             }
@@ -27816,20 +28205,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("id", &self.id)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -27958,7 +28347,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/comments");
                 output
             }
@@ -27966,20 +28355,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -28016,17 +28407,17 @@ pub mod resources {
                 self.id = Some(value.into());
                 self
             }
-            #[doc = "The <code><strong>maxResults</strong></code> parameter specifies the\nmaximum number of items that should be returned in the result set."]
+            #[doc = "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set."]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
             }
-            #[doc = "The <code><strong>pageToken</strong></code> parameter identifies a specific\npage in the result set that should be returned. In an API response, the\n<code>nextPageToken</code> and <code>prevPageToken</code> properties\nidentify other pages that could be retrieved."]
+            #[doc = "The *pageToken* parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
             }
-            #[doc = "Returns replies to the specified comment.\nNote, currently YouTube features only one level of replies (ie replies\nto top level comments). However replies to replies may be supported in\nthe future."]
+            #[doc = "Returns replies to the specified comment. Note, currently YouTube features only one level of replies (ie replies to top level comments). However replies to replies may be supported in the future."]
             pub fn parent_id(mut self, value: impl Into<String>) -> Self {
                 self.parent_id = Some(value.into());
                 self
@@ -28239,7 +28630,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/comments");
                 output
             }
@@ -28247,25 +28638,29 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("parentId", &self.parent_id)]);
-                let req = req.query(&[("textFormat", &self.text_format)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                for value in self.id.iter().flatten() {
+                    req = req.query(&[("id", value)]);
+                }
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("parentId", &self.parent_id)]);
+                req = req.query(&[("textFormat", &self.text_format)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -28354,7 +28749,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/comments/markAsSpam");
                 output
             }
@@ -28362,20 +28757,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                for value in &self.id {
+                    req = req.query(&[("id", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -28405,7 +28802,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> SetModerationStatusRequestBuilder<'a> {
-            #[doc = "If set to true the author of the comment gets added to the ban list.\nThis means all future comments of the author will autmomatically be\nrejected.\nOnly valid in combination with STATUS_REJECTED."]
+            #[doc = "If set to true the author of the comment gets added to the ban list. This means all future comments of the author will autmomatically be rejected. Only valid in combination with STATUS_REJECTED."]
             pub fn ban_author(mut self, value: bool) -> Self {
                 self.ban_author = Some(value);
                 self
@@ -28461,7 +28858,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/comments/setModerationStatus");
                 output
             }
@@ -28469,22 +28866,24 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("moderationStatus", &self.moderation_status)]);
-                let req = req.query(&[("banAuthor", &self.ban_author)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                for value in &self.id {
+                    req = req.query(&[("id", value)]);
+                }
+                req = req.query(&[("moderationStatus", &self.moderation_status)]);
+                req = req.query(&[("banAuthor", &self.ban_author)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -28613,7 +29012,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/comments");
                 output
             }
@@ -28621,225 +29020,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
-                Ok(req)
-            }
-        }
-    }
-    pub mod guide_categories {
-        pub mod params {}
-        pub struct GuideCategoriesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::blocking::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-        }
-        impl<'a> GuideCategoriesActions<'a> {
-            fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
-                self.auth
-            }
-            #[doc = "Retrieves a list of guide categories."]
-            pub fn list(&self, part: impl Into<Vec<String>>) -> ListRequestBuilder {
-                ListRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    access_token: None,
-                    alt: None,
-                    callback: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    upload_protocol: None,
-                    upload_type: None,
-                    xgafv: None,
-                    part: part.into(),
-                    hl: None,
-                    id: None,
-                    region_code: None,
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
                 }
-            }
-        }
-        #[doc = "Created via [GuideCategoriesActions::list()](struct.GuideCategoriesActions.html#method.list)"]
-        #[derive(Debug, Clone)]
-        pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            part: Vec<String>,
-            hl: Option<String>,
-            id: Option<Vec<String>>,
-            region_code: Option<String>,
-            access_token: Option<String>,
-            alt: Option<crate::params::Alt>,
-            callback: Option<String>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            upload_protocol: Option<String>,
-            upload_type: Option<String>,
-            xgafv: Option<crate::params::Xgafv>,
-        }
-        impl<'a> ListRequestBuilder<'a> {
-            #[doc = ""]
-            pub fn hl(mut self, value: impl Into<String>) -> Self {
-                self.hl = Some(value.into());
-                self
-            }
-            #[doc = "Return the guide categories with the given IDs."]
-            pub fn id(mut self, value: impl Into<Vec<String>>) -> Self {
-                self.id = Some(value.into());
-                self
-            }
-            #[doc = "Return all categories in the given region code."]
-            pub fn region_code(mut self, value: impl Into<String>) -> Self {
-                self.region_code = Some(value.into());
-                self
-            }
-            #[doc = "OAuth access token."]
-            pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                self.access_token = Some(value.into());
-                self
-            }
-            #[doc = "JSONP"]
-            pub fn callback(mut self, value: impl Into<String>) -> Self {
-                self.callback = Some(value.into());
-                self
-            }
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(mut self, value: impl Into<String>) -> Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(mut self, value: bool) -> Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
-                self.upload_protocol = Some(value.into());
-                self
-            }
-            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
-                self.upload_type = Some(value.into());
-                self
-            }
-            #[doc = "V1 error format."]
-            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
-                self.xgafv = Some(value);
-                self
-            }
-            #[doc = r" Execute the given operation. The fields requested are"]
-            #[doc = r" determined by the FieldSelector attribute of the return type."]
-            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
-            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
-            #[doc = r" are not generic over the return type and deserialize the"]
-            #[doc = r" response into an auto-generated struct will all possible"]
-            #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.execute_with_fields(fields)
-            }
-            #[doc = r" Execute the given operation. This will not provide any"]
-            #[doc = r" `fields` selector indicating that the server will determine"]
-            #[doc = r" the fields returned. This typically includes the most common"]
-            #[doc = r" fields, but it will not include every possible attribute of"]
-            #[doc = r" the response resource."]
-            pub fn execute_with_default_fields(
-                self,
-            ) -> Result<crate::schemas::GuideCategoryListResponse, crate::Error> {
-                self.execute_with_fields(None::<&str>)
-            }
-            #[doc = r" Execute the given operation. This will provide a `fields`"]
-            #[doc = r" selector of `*`. This will include every attribute of the"]
-            #[doc = r" response resource and should be limited to use during"]
-            #[doc = r" development or debugging."]
-            pub fn execute_with_all_fields(
-                self,
-            ) -> Result<crate::schemas::GuideCategoryListResponse, crate::Error> {
-                self.execute_with_fields(Some("*"))
-            }
-            #[doc = r" Execute the given operation. This will use the `fields`"]
-            #[doc = r" selector provided and will deserialize the response into"]
-            #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: Into<String>,
-            {
-                self.fields = fields.map(Into::into);
-                self._execute()
-            }
-            fn _execute<T>(&mut self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-            {
-                let req = self._request(&self._path())?;
-                Ok(crate::error_from_response(req.send()?)?.json()?)
-            }
-            fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
-                output.push_str("youtube/v3/guideCategories");
-                output
-            }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("hl", &self.hl)]);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("regionCode", &self.region_code)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -29006,7 +29202,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/i18nLanguages");
                 output
             }
@@ -29014,21 +29210,23 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("hl", &self.hl)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("hl", &self.hl)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -29195,7 +29393,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/i18nRegions");
                 output
             }
@@ -29203,21 +29401,23 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("hl", &self.hl)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("hl", &self.hl)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -29230,10 +29430,14 @@ pub mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListBroadcastStatus {
+                #[doc = "Return current live broadcasts."]
                 Active,
+                #[doc = "Return all broadcasts."]
                 All,
                 BroadcastStatusFilterUnspecified,
+                #[doc = "Return broadcasts that have already ended."]
                 Completed,
+                #[doc = "Return broadcasts that have not yet started."]
                 Upcoming,
             }
             impl ListBroadcastStatus {
@@ -29317,9 +29521,12 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListBroadcastType {
+                #[doc = "Return all broadcasts."]
                 All,
                 BroadcastTypeFilterUnspecified,
+                #[doc = "Return only scheduled event broadcasts."]
                 Event,
+                #[doc = "Return only persistent broadcasts."]
                 Persistent,
             }
             impl ListBroadcastType {
@@ -29400,9 +29607,12 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum TransitionBroadcastStatus {
+                #[doc = "The broadcast is over. YouTube stops transmitting video."]
                 Complete,
+                #[doc = "Return only persistent broadcasts."]
                 Live,
                 StatusUnspecified,
+                #[doc = "Start testing the broadcast. YouTube transmits video to the broadcast's monitor stream. Note that you can only transition a broadcast to the testing state if its contentDetails.monitorStream.enableMonitorStream property is set to true.\","]
                 Testing,
             }
             impl TransitionBroadcastStatus {
@@ -29511,35 +29721,6 @@ pub mod resources {
                     stream_id: None,
                 }
             }
-            #[doc = "Slate and recording control of the live broadcast.\nSupport actions: slate on/off, recording start/stop/pause/resume.\nDesign doc: goto/yt-api-liveBroadcast-control"]
-            pub fn control(
-                &self,
-                id: impl Into<String>,
-                part: impl Into<Vec<String>>,
-            ) -> ControlRequestBuilder {
-                ControlRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    access_token: None,
-                    alt: None,
-                    callback: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    upload_protocol: None,
-                    upload_type: None,
-                    xgafv: None,
-                    id: id.into(),
-                    part: part.into(),
-                    display_slate: None,
-                    offset_time_ms: None,
-                    on_behalf_of_content_owner: None,
-                    on_behalf_of_content_owner_channel: None,
-                    walltime: None,
-                }
-            }
             #[doc = "Delete a given broadcast."]
             pub fn delete(&self, id: impl Into<String>) -> DeleteRequestBuilder {
                 DeleteRequestBuilder {
@@ -29617,8 +29798,8 @@ pub mod resources {
             #[doc = "Transition a broadcast to a given status."]
             pub fn transition(
                 &self,
-                id: impl Into<String>,
                 broadcast_status : crate :: resources :: live_broadcasts :: params :: TransitionBroadcastStatus,
+                id: impl Into<String>,
                 part: impl Into<Vec<String>>,
             ) -> TransitionRequestBuilder {
                 TransitionRequestBuilder {
@@ -29635,8 +29816,8 @@ pub mod resources {
                     upload_protocol: None,
                     upload_type: None,
                     xgafv: None,
-                    id: id.into(),
                     broadcast_status,
+                    id: id.into(),
                     part: part.into(),
                     on_behalf_of_content_owner: None,
                     on_behalf_of_content_owner_channel: None,
@@ -29692,12 +29873,12 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> BindRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
             }
-            #[doc = "This parameter can only be used in a properly <a\nhref=\"/youtube/v3/guides/authentication\">authorized request</a>.\n<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter\nspecifies the YouTube channel ID of the channel to which a video is being\nadded. This parameter is required when a request specifies a value for the\n<code>onBehalfOfContentOwner</code> parameter, and it can only be used in\nconjunction with that parameter. In addition, the request must be\nauthorized using a CMS account that is linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies. Finally, the\nchannel that the <code>onBehalfOfContentOwnerChannel</code> parameter value\nspecifies must be linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This\nparameter is intended for YouTube content partners that own and manage many\ndifferent YouTube channels. It allows content owners to authenticate once\nand perform actions on behalf of the channel specified in the parameter\nvalue, without having to provide authentication credentials for each\nseparate channel."]
+            #[doc = "This parameter can only be used in a properly authorized request. *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and perform actions on behalf of the channel specified in the parameter value, without having to provide authentication credentials for each separate channel."]
             pub fn on_behalf_of_content_owner_channel(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner_channel = Some(value.into());
                 self
@@ -29809,7 +29990,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/liveBroadcasts/bind");
                 output
             }
@@ -29817,219 +29998,29 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("part", &self.part)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("id", &self.id)]);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[(
                     "onBehalfOfContentOwnerChannel",
                     &self.on_behalf_of_content_owner_channel,
                 )]);
-                let req = req.query(&[("streamId", &self.stream_id)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
-                Ok(req)
-            }
-        }
-        #[doc = "Created via [LiveBroadcastsActions::control()](struct.LiveBroadcastsActions.html#method.control)"]
-        #[derive(Debug, Clone)]
-        pub struct ControlRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            id: String,
-            part: Vec<String>,
-            display_slate: Option<bool>,
-            offset_time_ms: Option<u64>,
-            on_behalf_of_content_owner: Option<String>,
-            on_behalf_of_content_owner_channel: Option<String>,
-            walltime: Option<String>,
-            access_token: Option<String>,
-            alt: Option<crate::params::Alt>,
-            callback: Option<String>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            upload_protocol: Option<String>,
-            upload_type: Option<String>,
-            xgafv: Option<crate::params::Xgafv>,
-        }
-        impl<'a> ControlRequestBuilder<'a> {
-            #[doc = "Whether display or hide slate."]
-            pub fn display_slate(mut self, value: bool) -> Self {
-                self.display_slate = Some(value);
-                self
-            }
-            #[doc = "The exact time when the actions (e.g. slate on) are executed.\nIt is an offset from the first frame of the monitor stream.\nIf not set, it means \"now\" or ASAP.\nThis field should not be set if the monitor stream is disabled,\notherwise an error will be returned."]
-            pub fn offset_time_ms(mut self, value: u64) -> Self {
-                self.offset_time_ms = Some(value);
-                self
-            }
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
-            pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
-                self.on_behalf_of_content_owner = Some(value.into());
-                self
-            }
-            #[doc = "This parameter can only be used in a properly <a\nhref=\"/youtube/v3/guides/authentication\">authorized request</a>.\n<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter\nspecifies the YouTube channel ID of the channel to which a video is being\nadded. This parameter is required when a request specifies a value for the\n<code>onBehalfOfContentOwner</code> parameter, and it can only be used in\nconjunction with that parameter. In addition, the request must be\nauthorized using a CMS account that is linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies. Finally, the\nchannel that the <code>onBehalfOfContentOwnerChannel</code> parameter value\nspecifies must be linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This\nparameter is intended for YouTube content partners that own and manage many\ndifferent YouTube channels. It allows content owners to authenticate once\nand perform actions on behalf of the channel specified in the parameter\nvalue, without having to provide authentication credentials for each\nseparate channel."]
-            pub fn on_behalf_of_content_owner_channel(mut self, value: impl Into<String>) -> Self {
-                self.on_behalf_of_content_owner_channel = Some(value.into());
-                self
-            }
-            #[doc = "The wall clock time at which the action should be executed.\nOnly one of offset_time_ms and walltime may be set at a time."]
-            pub fn walltime(mut self, value: impl Into<String>) -> Self {
-                self.walltime = Some(value.into());
-                self
-            }
-            #[doc = "OAuth access token."]
-            pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                self.access_token = Some(value.into());
-                self
-            }
-            #[doc = "JSONP"]
-            pub fn callback(mut self, value: impl Into<String>) -> Self {
-                self.callback = Some(value.into());
-                self
-            }
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(mut self, value: impl Into<String>) -> Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(mut self, value: bool) -> Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
-                self.upload_protocol = Some(value.into());
-                self
-            }
-            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
-                self.upload_type = Some(value.into());
-                self
-            }
-            #[doc = "V1 error format."]
-            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
-                self.xgafv = Some(value);
-                self
-            }
-            #[doc = r" Execute the given operation. The fields requested are"]
-            #[doc = r" determined by the FieldSelector attribute of the return type."]
-            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
-            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
-            #[doc = r" are not generic over the return type and deserialize the"]
-            #[doc = r" response into an auto-generated struct will all possible"]
-            #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.execute_with_fields(fields)
-            }
-            #[doc = r" Execute the given operation. This will not provide any"]
-            #[doc = r" `fields` selector indicating that the server will determine"]
-            #[doc = r" the fields returned. This typically includes the most common"]
-            #[doc = r" fields, but it will not include every possible attribute of"]
-            #[doc = r" the response resource."]
-            pub fn execute_with_default_fields(
-                self,
-            ) -> Result<crate::schemas::LiveBroadcast, crate::Error> {
-                self.execute_with_fields(None::<&str>)
-            }
-            #[doc = r" Execute the given operation. This will provide a `fields`"]
-            #[doc = r" selector of `*`. This will include every attribute of the"]
-            #[doc = r" response resource and should be limited to use during"]
-            #[doc = r" development or debugging."]
-            pub fn execute_with_all_fields(
-                self,
-            ) -> Result<crate::schemas::LiveBroadcast, crate::Error> {
-                self.execute_with_fields(Some("*"))
-            }
-            #[doc = r" Execute the given operation. This will use the `fields`"]
-            #[doc = r" selector provided and will deserialize the response into"]
-            #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: Into<String>,
-            {
-                self.fields = fields.map(Into::into);
-                self._execute()
-            }
-            fn _execute<T>(&mut self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-            {
-                let req = self._request(&self._path())?;
-                Ok(crate::error_from_response(req.send()?)?.json()?)
-            }
-            fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
-                output.push_str("youtube/v3/liveBroadcasts/control");
-                output
-            }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("displaySlate", &self.display_slate)]);
-                let req = req.query(&[("offsetTimeMs", &self.offset_time_ms)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[(
-                    "onBehalfOfContentOwnerChannel",
-                    &self.on_behalf_of_content_owner_channel,
-                )]);
-                let req = req.query(&[("walltime", &self.walltime)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("streamId", &self.stream_id)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -30058,12 +30049,12 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> DeleteRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
             }
-            #[doc = "This parameter can only be used in a properly <a\nhref=\"/youtube/v3/guides/authentication\">authorized request</a>.\n<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter\nspecifies the YouTube channel ID of the channel to which a video is being\nadded. This parameter is required when a request specifies a value for the\n<code>onBehalfOfContentOwner</code> parameter, and it can only be used in\nconjunction with that parameter. In addition, the request must be\nauthorized using a CMS account that is linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies. Finally, the\nchannel that the <code>onBehalfOfContentOwnerChannel</code> parameter value\nspecifies must be linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This\nparameter is intended for YouTube content partners that own and manage many\ndifferent YouTube channels. It allows content owners to authenticate once\nand perform actions on behalf of the channel specified in the parameter\nvalue, without having to provide authentication credentials for each\nseparate channel."]
+            #[doc = "This parameter can only be used in a properly authorized request. *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and perform actions on behalf of the channel specified in the parameter value, without having to provide authentication credentials for each separate channel."]
             pub fn on_behalf_of_content_owner_channel(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner_channel = Some(value.into());
                 self
@@ -30119,7 +30110,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/liveBroadcasts");
                 output
             }
@@ -30127,26 +30118,25 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("id", &self.id)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("id", &self.id)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[(
                     "onBehalfOfContentOwnerChannel",
                     &self.on_behalf_of_content_owner_channel,
                 )]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -30176,12 +30166,12 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> InsertRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
             }
-            #[doc = "This parameter can only be used in a properly <a\nhref=\"/youtube/v3/guides/authentication\">authorized request</a>.\n<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter\nspecifies the YouTube channel ID of the channel to which a video is being\nadded. This parameter is required when a request specifies a value for the\n<code>onBehalfOfContentOwner</code> parameter, and it can only be used in\nconjunction with that parameter. In addition, the request must be\nauthorized using a CMS account that is linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies. Finally, the\nchannel that the <code>onBehalfOfContentOwnerChannel</code> parameter value\nspecifies must be linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This\nparameter is intended for YouTube content partners that own and manage many\ndifferent YouTube channels. It allows content owners to authenticate once\nand perform actions on behalf of the channel specified in the parameter\nvalue, without having to provide authentication credentials for each\nseparate channel."]
+            #[doc = "This parameter can only be used in a properly authorized request. *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and perform actions on behalf of the channel specified in the parameter value, without having to provide authentication credentials for each separate channel."]
             pub fn on_behalf_of_content_owner_channel(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner_channel = Some(value.into());
                 self
@@ -30289,7 +30279,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/liveBroadcasts");
                 output
             }
@@ -30297,26 +30287,27 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[(
                     "onBehalfOfContentOwnerChannel",
                     &self.on_behalf_of_content_owner_channel,
                 )]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -30373,7 +30364,7 @@ pub mod resources {
                 self.id = Some(value.into());
                 self
             }
-            #[doc = "The <code><strong>maxResults</strong></code> parameter specifies the\nmaximum number of items that should be returned in the result set."]
+            #[doc = "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set."]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
@@ -30383,17 +30374,17 @@ pub mod resources {
                 self.mine = Some(value);
                 self
             }
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
             }
-            #[doc = "This parameter can only be used in a properly <a\nhref=\"/youtube/v3/guides/authentication\">authorized request</a>.\n<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter\nspecifies the YouTube channel ID of the channel to which a video is being\nadded. This parameter is required when a request specifies a value for the\n<code>onBehalfOfContentOwner</code> parameter, and it can only be used in\nconjunction with that parameter. In addition, the request must be\nauthorized using a CMS account that is linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies. Finally, the\nchannel that the <code>onBehalfOfContentOwnerChannel</code> parameter value\nspecifies must be linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This\nparameter is intended for YouTube content partners that own and manage many\ndifferent YouTube channels. It allows content owners to authenticate once\nand perform actions on behalf of the channel specified in the parameter\nvalue, without having to provide authentication credentials for each\nseparate channel."]
+            #[doc = "This parameter can only be used in a properly authorized request. *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and perform actions on behalf of the channel specified in the parameter value, without having to provide authentication credentials for each separate channel."]
             pub fn on_behalf_of_content_owner_channel(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner_channel = Some(value.into());
                 self
             }
-            #[doc = "The <code><strong>pageToken</strong></code> parameter identifies a specific\npage in the result set that should be returned. In an API response, the\n<code>nextPageToken</code> and <code>prevPageToken</code> properties\nidentify other pages that could be retrieved."]
+            #[doc = "The *pageToken* parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
@@ -30600,7 +30591,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/liveBroadcasts");
                 output
             }
@@ -30608,32 +30599,35 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("broadcastStatus", &self.broadcast_status)]);
-                let req = req.query(&[("broadcastType", &self.broadcast_type)]);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("mine", &self.mine)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("broadcastStatus", &self.broadcast_status)]);
+                req = req.query(&[("broadcastType", &self.broadcast_type)]);
+                for value in self.id.iter().flatten() {
+                    req = req.query(&[("id", value)]);
+                }
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("mine", &self.mine)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[(
                     "onBehalfOfContentOwnerChannel",
                     &self.on_behalf_of_content_owner_channel,
                 )]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -30657,8 +30651,8 @@ pub mod resources {
         pub struct TransitionRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            id: String,
             broadcast_status: crate::resources::live_broadcasts::params::TransitionBroadcastStatus,
+            id: String,
             part: Vec<String>,
             on_behalf_of_content_owner: Option<String>,
             on_behalf_of_content_owner_channel: Option<String>,
@@ -30675,12 +30669,12 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> TransitionRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
             }
-            #[doc = "This parameter can only be used in a properly <a\nhref=\"/youtube/v3/guides/authentication\">authorized request</a>.\n<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter\nspecifies the YouTube channel ID of the channel to which a video is being\nadded. This parameter is required when a request specifies a value for the\n<code>onBehalfOfContentOwner</code> parameter, and it can only be used in\nconjunction with that parameter. In addition, the request must be\nauthorized using a CMS account that is linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies. Finally, the\nchannel that the <code>onBehalfOfContentOwnerChannel</code> parameter value\nspecifies must be linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This\nparameter is intended for YouTube content partners that own and manage many\ndifferent YouTube channels. It allows content owners to authenticate once\nand perform actions on behalf of the channel specified in the parameter\nvalue, without having to provide authentication credentials for each\nseparate channel."]
+            #[doc = "This parameter can only be used in a properly authorized request. *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and perform actions on behalf of the channel specified in the parameter value, without having to provide authentication credentials for each separate channel."]
             pub fn on_behalf_of_content_owner_channel(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner_channel = Some(value.into());
                 self
@@ -30787,7 +30781,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/liveBroadcasts/transition");
                 output
             }
@@ -30795,28 +30789,29 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("broadcastStatus", &self.broadcast_status)]);
-                let req = req.query(&[("part", &self.part)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("broadcastStatus", &self.broadcast_status)]);
+                req = req.query(&[("id", &self.id)]);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[(
                     "onBehalfOfContentOwnerChannel",
                     &self.on_behalf_of_content_owner_channel,
                 )]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -30846,12 +30841,12 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> UpdateRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
             }
-            #[doc = "This parameter can only be used in a properly <a\nhref=\"/youtube/v3/guides/authentication\">authorized request</a>.\n<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter\nspecifies the YouTube channel ID of the channel to which a video is being\nadded. This parameter is required when a request specifies a value for the\n<code>onBehalfOfContentOwner</code> parameter, and it can only be used in\nconjunction with that parameter. In addition, the request must be\nauthorized using a CMS account that is linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies. Finally, the\nchannel that the <code>onBehalfOfContentOwnerChannel</code> parameter value\nspecifies must be linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This\nparameter is intended for YouTube content partners that own and manage many\ndifferent YouTube channels. It allows content owners to authenticate once\nand perform actions on behalf of the channel specified in the parameter\nvalue, without having to provide authentication credentials for each\nseparate channel."]
+            #[doc = "This parameter can only be used in a properly authorized request. *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and perform actions on behalf of the channel specified in the parameter value, without having to provide authentication credentials for each separate channel."]
             pub fn on_behalf_of_content_owner_channel(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner_channel = Some(value.into());
                 self
@@ -30959,7 +30954,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/liveBroadcasts");
                 output
             }
@@ -30967,26 +30962,27 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[(
                     "onBehalfOfContentOwnerChannel",
                     &self.on_behalf_of_content_owner_channel,
                 )]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -31119,7 +31115,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/liveChat/bans");
                 output
             }
@@ -31127,20 +31123,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("id", &self.id)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -31271,7 +31267,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/liveChat/bans");
                 output
             }
@@ -31279,20 +31275,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -31453,7 +31451,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/liveChat/messages");
                 output
             }
@@ -31461,20 +31459,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("id", &self.id)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -31605,7 +31603,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/liveChat/messages");
                 output
             }
@@ -31613,20 +31611,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -31658,22 +31658,22 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "Specifies the localization language in which the system messages\nshould be returned."]
+            #[doc = "Specifies the localization language in which the system messages should be returned."]
             pub fn hl(mut self, value: impl Into<String>) -> Self {
                 self.hl = Some(value.into());
                 self
             }
-            #[doc = "The <code><strong>maxResults</strong></code> parameter specifies the\nmaximum number of items that should be returned in the result set."]
+            #[doc = "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set."]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
             }
-            #[doc = "The <code><strong>pageToken</strong></code> parameter identifies a specific\npage in the result set that should be returned. In an API response, the\n<code>nextPageToken</code> property identify other pages that could be\nretrieved."]
+            #[doc = "The *pageToken* parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken property identify other pages that could be retrieved."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
             }
-            #[doc = "Specifies the size of the profile image that should be\nreturned for each user."]
+            #[doc = "Specifies the size of the profile image that should be returned for each user."]
             pub fn profile_image_size(mut self, value: u32) -> Self {
                 self.profile_image_size = Some(value);
                 self
@@ -31880,7 +31880,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/liveChat/messages");
                 output
             }
@@ -31888,25 +31888,27 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("liveChatId", &self.live_chat_id)]);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("hl", &self.hl)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("profileImageSize", &self.profile_image_size)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("liveChatId", &self.live_chat_id)]);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("hl", &self.hl)]);
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("profileImageSize", &self.profile_image_size)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -32076,7 +32078,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/liveChat/moderators");
                 output
             }
@@ -32084,20 +32086,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("id", &self.id)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -32228,7 +32230,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/liveChat/moderators");
                 output
             }
@@ -32236,20 +32238,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -32279,12 +32283,12 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "The <code><strong>maxResults</strong></code> parameter specifies the\nmaximum number of items that should be returned in the result set."]
+            #[doc = "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set."]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
             }
-            #[doc = "The <code><strong>pageToken</strong></code> parameter identifies a specific\npage in the result set that should be returned. In an API response, the\n<code>nextPageToken</code> and <code>prevPageToken</code> properties\nidentify other pages that could be retrieved."]
+            #[doc = "The *pageToken* parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
@@ -32491,7 +32495,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/liveChat/moderators");
                 output
             }
@@ -32499,23 +32503,25 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("liveChatId", &self.live_chat_id)]);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("liveChatId", &self.live_chat_id)]);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -32665,12 +32671,12 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> DeleteRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
             }
-            #[doc = "This parameter can only be used in a properly <a\nhref=\"/youtube/v3/guides/authentication\">authorized request</a>.\n<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter\nspecifies the YouTube channel ID of the channel to which a video is being\nadded. This parameter is required when a request specifies a value for the\n<code>onBehalfOfContentOwner</code> parameter, and it can only be used in\nconjunction with that parameter. In addition, the request must be\nauthorized using a CMS account that is linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies. Finally, the\nchannel that the <code>onBehalfOfContentOwnerChannel</code> parameter value\nspecifies must be linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This\nparameter is intended for YouTube content partners that own and manage many\ndifferent YouTube channels. It allows content owners to authenticate once\nand perform actions on behalf of the channel specified in the parameter\nvalue, without having to provide authentication credentials for each\nseparate channel."]
+            #[doc = "This parameter can only be used in a properly authorized request. *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and perform actions on behalf of the channel specified in the parameter value, without having to provide authentication credentials for each separate channel."]
             pub fn on_behalf_of_content_owner_channel(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner_channel = Some(value.into());
                 self
@@ -32726,7 +32732,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/liveStreams");
                 output
             }
@@ -32734,26 +32740,25 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("id", &self.id)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("id", &self.id)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[(
                     "onBehalfOfContentOwnerChannel",
                     &self.on_behalf_of_content_owner_channel,
                 )]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -32783,12 +32788,12 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> InsertRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
             }
-            #[doc = "This parameter can only be used in a properly <a\nhref=\"/youtube/v3/guides/authentication\">authorized request</a>.\n<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter\nspecifies the YouTube channel ID of the channel to which a video is being\nadded. This parameter is required when a request specifies a value for the\n<code>onBehalfOfContentOwner</code> parameter, and it can only be used in\nconjunction with that parameter. In addition, the request must be\nauthorized using a CMS account that is linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies. Finally, the\nchannel that the <code>onBehalfOfContentOwnerChannel</code> parameter value\nspecifies must be linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This\nparameter is intended for YouTube content partners that own and manage many\ndifferent YouTube channels. It allows content owners to authenticate once\nand perform actions on behalf of the channel specified in the parameter\nvalue, without having to provide authentication credentials for each\nseparate channel."]
+            #[doc = "This parameter can only be used in a properly authorized request. *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and perform actions on behalf of the channel specified in the parameter value, without having to provide authentication credentials for each separate channel."]
             pub fn on_behalf_of_content_owner_channel(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner_channel = Some(value.into());
                 self
@@ -32896,7 +32901,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/liveStreams");
                 output
             }
@@ -32904,26 +32909,27 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[(
                     "onBehalfOfContentOwnerChannel",
                     &self.on_behalf_of_content_owner_channel,
                 )]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -32961,7 +32967,7 @@ pub mod resources {
                 self.id = Some(value.into());
                 self
             }
-            #[doc = "The <code><strong>maxResults</strong></code> parameter specifies the\nmaximum number of items that should be returned in the result set."]
+            #[doc = "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set."]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
@@ -32971,17 +32977,17 @@ pub mod resources {
                 self.mine = Some(value);
                 self
             }
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
             }
-            #[doc = "This parameter can only be used in a properly <a\nhref=\"/youtube/v3/guides/authentication\">authorized request</a>.\n<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter\nspecifies the YouTube channel ID of the channel to which a video is being\nadded. This parameter is required when a request specifies a value for the\n<code>onBehalfOfContentOwner</code> parameter, and it can only be used in\nconjunction with that parameter. In addition, the request must be\nauthorized using a CMS account that is linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies. Finally, the\nchannel that the <code>onBehalfOfContentOwnerChannel</code> parameter value\nspecifies must be linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This\nparameter is intended for YouTube content partners that own and manage many\ndifferent YouTube channels. It allows content owners to authenticate once\nand perform actions on behalf of the channel specified in the parameter\nvalue, without having to provide authentication credentials for each\nseparate channel."]
+            #[doc = "This parameter can only be used in a properly authorized request. *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and perform actions on behalf of the channel specified in the parameter value, without having to provide authentication credentials for each separate channel."]
             pub fn on_behalf_of_content_owner_channel(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner_channel = Some(value.into());
                 self
             }
-            #[doc = "The <code><strong>pageToken</strong></code> parameter identifies a specific\npage in the result set that should be returned. In an API response, the\n<code>nextPageToken</code> and <code>prevPageToken</code> properties\nidentify other pages that could be retrieved."]
+            #[doc = "The *pageToken* parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
@@ -33186,7 +33192,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/liveStreams");
                 output
             }
@@ -33194,30 +33200,33 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("mine", &self.mine)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                for value in self.id.iter().flatten() {
+                    req = req.query(&[("id", value)]);
+                }
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("mine", &self.mine)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[(
                     "onBehalfOfContentOwnerChannel",
                     &self.on_behalf_of_content_owner_channel,
                 )]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -33258,12 +33267,12 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> UpdateRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
             }
-            #[doc = "This parameter can only be used in a properly <a\nhref=\"/youtube/v3/guides/authentication\">authorized request</a>.\n<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter\nspecifies the YouTube channel ID of the channel to which a video is being\nadded. This parameter is required when a request specifies a value for the\n<code>onBehalfOfContentOwner</code> parameter, and it can only be used in\nconjunction with that parameter. In addition, the request must be\nauthorized using a CMS account that is linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies. Finally, the\nchannel that the <code>onBehalfOfContentOwnerChannel</code> parameter value\nspecifies must be linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This\nparameter is intended for YouTube content partners that own and manage many\ndifferent YouTube channels. It allows content owners to authenticate once\nand perform actions on behalf of the channel specified in the parameter\nvalue, without having to provide authentication credentials for each\nseparate channel."]
+            #[doc = "This parameter can only be used in a properly authorized request. *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and perform actions on behalf of the channel specified in the parameter value, without having to provide authentication credentials for each separate channel."]
             pub fn on_behalf_of_content_owner_channel(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner_channel = Some(value.into());
                 self
@@ -33371,7 +33380,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/liveStreams");
                 output
             }
@@ -33379,26 +33388,27 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[(
                     "onBehalfOfContentOwnerChannel",
                     &self.on_behalf_of_content_owner_channel,
                 )]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -33411,8 +33421,10 @@ pub mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListMode {
+                #[doc = "Return all current members, from newest to oldest."]
                 AllCurrent,
                 ListMembersModeUnknown,
+                #[doc = "Return only members that joined after the first call with this mode was made."]
                 Updates,
             }
             impl ListMode {
@@ -33540,7 +33552,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "Comma separated list of channel IDs. Only data about members that are part\nof this list will be included in the response."]
+            #[doc = "Comma separated list of channel IDs. Only data about members that are part of this list will be included in the response."]
             pub fn filter_by_member_channel_id(mut self, value: impl Into<String>) -> Self {
                 self.filter_by_member_channel_id = Some(value.into());
                 self
@@ -33550,7 +33562,7 @@ pub mod resources {
                 self.has_access_to_level = Some(value.into());
                 self
             }
-            #[doc = "The <code><strong>maxResults</strong></code> parameter specifies the\nmaximum number of items that should be returned in the result set."]
+            #[doc = "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set."]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
@@ -33560,7 +33572,7 @@ pub mod resources {
                 self.mode = Some(value);
                 self
             }
-            #[doc = "The <code><strong>pageToken</strong></code> parameter identifies a specific\npage in the result set that should be returned. In an API response, the\n<code>nextPageToken</code> and <code>prevPageToken</code> properties\nidentify other pages that could be retrieved."]
+            #[doc = "The *pageToken* parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
@@ -33765,7 +33777,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/members");
                 output
             }
@@ -33773,26 +33785,27 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req =
-                    req.query(&[("filterByMemberChannelId", &self.filter_by_member_channel_id)]);
-                let req = req.query(&[("hasAccessToLevel", &self.has_access_to_level)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("mode", &self.mode)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("filterByMemberChannelId", &self.filter_by_member_channel_id)]);
+                req = req.query(&[("hasAccessToLevel", &self.has_access_to_level)]);
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("mode", &self.mode)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -33963,7 +33976,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/membershipsLevels");
                 output
             }
@@ -33971,20 +33984,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -34119,7 +34134,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> DeleteRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
@@ -34175,7 +34190,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/playlistItems");
                 output
             }
@@ -34183,22 +34198,21 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("id", &self.id)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("id", &self.id)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -34227,7 +34241,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> InsertRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
@@ -34335,7 +34349,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/playlistItems");
                 output
             }
@@ -34343,22 +34357,23 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -34396,17 +34411,17 @@ pub mod resources {
                 self.id = Some(value.into());
                 self
             }
-            #[doc = "The <code><strong>maxResults</strong></code> parameter specifies the\nmaximum number of items that should be returned in the result set."]
+            #[doc = "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set."]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
             }
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
             }
-            #[doc = "The <code><strong>pageToken</strong></code> parameter identifies a specific\npage in the result set that should be returned. In an API response, the\n<code>nextPageToken</code> and <code>prevPageToken</code> properties\nidentify other pages that could be retrieved."]
+            #[doc = "The *pageToken* parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
@@ -34621,7 +34636,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/playlistItems");
                 output
             }
@@ -34629,27 +34644,30 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("playlistId", &self.playlist_id)]);
-                let req = req.query(&[("videoId", &self.video_id)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                for value in self.id.iter().flatten() {
+                    req = req.query(&[("id", value)]);
+                }
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("playlistId", &self.playlist_id)]);
+                req = req.query(&[("videoId", &self.video_id)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -34689,7 +34707,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> UpdateRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
@@ -34797,7 +34815,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/playlistItems");
                 output
             }
@@ -34805,22 +34823,23 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -34958,7 +34977,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> DeleteRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
@@ -35014,7 +35033,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/playlists");
                 output
             }
@@ -35022,22 +35041,21 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("id", &self.id)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("id", &self.id)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -35067,12 +35085,12 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> InsertRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
             }
-            #[doc = "This parameter can only be used in a properly <a\nhref=\"/youtube/v3/guides/authentication\">authorized request</a>.\n<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter\nspecifies the YouTube channel ID of the channel to which a video is being\nadded. This parameter is required when a request specifies a value for the\n<code>onBehalfOfContentOwner</code> parameter, and it can only be used in\nconjunction with that parameter. In addition, the request must be\nauthorized using a CMS account that is linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies. Finally, the\nchannel that the <code>onBehalfOfContentOwnerChannel</code> parameter value\nspecifies must be linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This\nparameter is intended for YouTube content partners that own and manage many\ndifferent YouTube channels. It allows content owners to authenticate once\nand perform actions on behalf of the channel specified in the parameter\nvalue, without having to provide authentication credentials for each\nseparate channel."]
+            #[doc = "This parameter can only be used in a properly authorized request. *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and perform actions on behalf of the channel specified in the parameter value, without having to provide authentication credentials for each separate channel."]
             pub fn on_behalf_of_content_owner_channel(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner_channel = Some(value.into());
                 self
@@ -35178,7 +35196,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/playlists");
                 output
             }
@@ -35186,26 +35204,27 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[(
                     "onBehalfOfContentOwnerChannel",
                     &self.on_behalf_of_content_owner_channel,
                 )]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -35255,7 +35274,7 @@ pub mod resources {
                 self.id = Some(value.into());
                 self
             }
-            #[doc = "The <code><strong>maxResults</strong></code> parameter specifies the\nmaximum number of items that should be returned in the result set."]
+            #[doc = "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set."]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
@@ -35265,17 +35284,17 @@ pub mod resources {
                 self.mine = Some(value);
                 self
             }
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
             }
-            #[doc = "This parameter can only be used in a properly <a\nhref=\"/youtube/v3/guides/authentication\">authorized request</a>.\n<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter\nspecifies the YouTube channel ID of the channel to which a video is being\nadded. This parameter is required when a request specifies a value for the\n<code>onBehalfOfContentOwner</code> parameter, and it can only be used in\nconjunction with that parameter. In addition, the request must be\nauthorized using a CMS account that is linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies. Finally, the\nchannel that the <code>onBehalfOfContentOwnerChannel</code> parameter value\nspecifies must be linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This\nparameter is intended for YouTube content partners that own and manage many\ndifferent YouTube channels. It allows content owners to authenticate once\nand perform actions on behalf of the channel specified in the parameter\nvalue, without having to provide authentication credentials for each\nseparate channel."]
+            #[doc = "This parameter can only be used in a properly authorized request. *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and perform actions on behalf of the channel specified in the parameter value, without having to provide authentication credentials for each separate channel."]
             pub fn on_behalf_of_content_owner_channel(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner_channel = Some(value.into());
                 self
             }
-            #[doc = "The <code><strong>pageToken</strong></code> parameter identifies a specific\npage in the result set that should be returned. In an API response, the\n<code>nextPageToken</code> and <code>prevPageToken</code> properties\nidentify other pages that could be retrieved."]
+            #[doc = "The *pageToken* parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
@@ -35480,7 +35499,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/playlists");
                 output
             }
@@ -35488,32 +35507,35 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("channelId", &self.channel_id)]);
-                let req = req.query(&[("hl", &self.hl)]);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("mine", &self.mine)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("channelId", &self.channel_id)]);
+                req = req.query(&[("hl", &self.hl)]);
+                for value in self.id.iter().flatten() {
+                    req = req.query(&[("id", value)]);
+                }
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("mine", &self.mine)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[(
                     "onBehalfOfContentOwnerChannel",
                     &self.on_behalf_of_content_owner_channel,
                 )]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -35553,7 +35575,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> UpdateRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
@@ -35659,7 +35681,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/playlists");
                 output
             }
@@ -35667,22 +35689,23 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -35695,8 +35718,10 @@ pub mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListChannelType {
+                #[doc = "Return all channels."]
                 Any,
                 ChannelTypeUnspecified,
+                #[doc = "Only retrieve shows."]
                 Show,
             }
             impl ListChannelType {
@@ -35768,9 +35793,12 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListEventType {
+                #[doc = "The live broadcast has been completed."]
                 Completed,
+                #[doc = "The live broadcast is active."]
                 Live,
                 None,
+                #[doc = "The live broadcast is upcoming."]
                 Upcoming,
             }
             impl ListEventType {
@@ -35845,12 +35873,18 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListOrder {
+                #[doc = "Resources are sorted in reverse chronological order based on the date they were created."]
                 Date,
+                #[doc = "Resources are sorted from highest to lowest rating."]
                 Rating,
+                #[doc = "Resources are sorted based on their relevance to the search query. This is the default value for this parameter."]
                 Relevance,
                 SearchSortUnspecified,
+                #[doc = "Resources are sorted alphabetically by title."]
                 Title,
+                #[doc = "Channels are sorted in descending order of their number of uploaded videos."]
                 VideoCount,
+                #[doc = "Resources are sorted from highest to lowest number of views."]
                 ViewCount,
             }
             impl ListOrder {
@@ -35934,9 +35968,12 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListSafeSearch {
+                #[doc = "YouTube will filter some content from search results and, at the least, will filter content that is restricted in your locale. Based on their content, search results could be removed from search results or demoted in search results. This is the default parameter value."]
                 Moderate,
+                #[doc = "YouTube will not filter the search result set."]
                 None,
                 SafeSearchSettingUnspecified,
+                #[doc = "YouTube will try to exclude all restricted content from the search result set. Based on their content, search results could be removed from search results or demoted in search results."]
                 Strict,
             }
             impl ListSafeSearch {
@@ -36017,8 +36054,11 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListVideoCaption {
+                #[doc = "Do not filter results based on caption availability."]
                 Any,
+                #[doc = "Only include videos that have captions."]
                 ClosedCaption,
+                #[doc = "Only include videos that do not have captions."]
                 None,
                 VideoCaptionUnspecified,
             }
@@ -36094,8 +36134,11 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListVideoDefinition {
+                #[doc = "Return all videos, regardless of their resolution."]
                 Any,
+                #[doc = "Only retrieve HD videos."]
                 High,
+                #[doc = "Only retrieve videos in standard definition."]
                 Standard,
             }
             impl ListVideoDefinition {
@@ -36168,7 +36211,9 @@ pub mod resources {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListVideoDimension {
                 Any,
+                #[doc = "Restrict search results to exclude 3D videos."]
                 _2D,
+                #[doc = "Restrict search results to only include 3D videos."]
                 _3D,
             }
             impl ListVideoDimension {
@@ -36240,9 +36285,13 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListVideoDuration {
+                #[doc = "Do not filter video search results based on their duration. This is the default value."]
                 Any,
+                #[doc = "Only include videos longer than 20 minutes."]
                 Long,
+                #[doc = "Only include videos that are between four and 20 minutes long (inclusive)."]
                 Medium,
+                #[doc = "Only include videos that are less than four minutes long."]
                 Short,
                 VideoDurationUnspecified,
             }
@@ -36321,7 +36370,9 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListVideoEmbeddable {
+                #[doc = "Return all videos, embeddable or not."]
                 Any,
+                #[doc = "Only retrieve embeddable videos."]
                 True,
                 VideoEmbeddableUnspecified,
             }
@@ -36400,8 +36451,11 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListVideoLicense {
+                #[doc = "Return all videos, regardless of which license they have, that match the query parameters."]
                 Any,
+                #[doc = "Only return videos that have a Creative Commons license. Users can reuse videos with this license in other videos that they create. Learn more."]
                 CreativeCommon,
+                #[doc = "Only return videos that have the standard YouTube license."]
                 Youtube,
             }
             impl ListVideoLicense {
@@ -36473,7 +36527,9 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListVideoSyndicated {
+                #[doc = "Return all videos, syndicated or not."]
                 Any,
+                #[doc = "Only retrieve syndicated videos."]
                 True,
                 VideoSyndicatedUnspecified,
             }
@@ -36552,8 +36608,11 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListVideoType {
+                #[doc = "Return all videos."]
                 Any,
+                #[doc = "Only retrieve episodes of shows."]
                 Episode,
+                #[doc = "Only retrieve movies."]
                 Movie,
                 VideoTypeUnspecified,
             }
@@ -36761,7 +36820,7 @@ pub mod resources {
                 self.for_content_owner = Some(value);
                 self
             }
-            #[doc = "Restrict the search to only retrieve videos uploaded using the project id\nof the authenticated user."]
+            #[doc = "Restrict the search to only retrieve videos uploaded using the project id of the authenticated user."]
             pub fn for_developer(mut self, value: bool) -> Self {
                 self.for_developer = Some(value);
                 self
@@ -36781,12 +36840,12 @@ pub mod resources {
                 self.location_radius = Some(value.into());
                 self
             }
-            #[doc = "The <code><strong>maxResults</strong></code> parameter specifies the\nmaximum number of items that should be returned in the result set."]
+            #[doc = "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set."]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
             }
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
@@ -36796,7 +36855,7 @@ pub mod resources {
                 self.order = Some(value);
                 self
             }
-            #[doc = "The <code><strong>pageToken</strong></code> parameter identifies a specific\npage in the result set that should be returned. In an API response, the\n<code>nextPageToken</code> and <code>prevPageToken</code> properties\nidentify other pages that could be retrieved."]
+            #[doc = "The *pageToken* parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
@@ -36836,7 +36895,7 @@ pub mod resources {
                 self.relevance_language = Some(value.into());
                 self
             }
-            #[doc = "Indicates whether the search results should include restricted content as\nwell as standard content."]
+            #[doc = "Indicates whether the search results should include restricted content as well as standard content."]
             pub fn safe_search(
                 mut self,
                 value: crate::resources::search::params::ListSafeSearch,
@@ -37118,7 +37177,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/search");
                 output
             }
@@ -37126,439 +37185,54 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("channelId", &self.channel_id)]);
-                let req = req.query(&[("channelType", &self.channel_type)]);
-                let req = req.query(&[("eventType", &self.event_type)]);
-                let req = req.query(&[("forContentOwner", &self.for_content_owner)]);
-                let req = req.query(&[("forDeveloper", &self.for_developer)]);
-                let req = req.query(&[("forMine", &self.for_mine)]);
-                let req = req.query(&[("location", &self.location)]);
-                let req = req.query(&[("locationRadius", &self.location_radius)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("order", &self.order)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("publishedAfter", &self.published_after)]);
-                let req = req.query(&[("publishedBefore", &self.published_before)]);
-                let req = req.query(&[("q", &self.q)]);
-                let req = req.query(&[("type", &self.r#type)]);
-                let req = req.query(&[("regionCode", &self.region_code)]);
-                let req = req.query(&[("relatedToVideoId", &self.related_to_video_id)]);
-                let req = req.query(&[("relevanceLanguage", &self.relevance_language)]);
-                let req = req.query(&[("safeSearch", &self.safe_search)]);
-                let req = req.query(&[("topicId", &self.topic_id)]);
-                let req = req.query(&[("videoCaption", &self.video_caption)]);
-                let req = req.query(&[("videoCategoryId", &self.video_category_id)]);
-                let req = req.query(&[("videoDefinition", &self.video_definition)]);
-                let req = req.query(&[("videoDimension", &self.video_dimension)]);
-                let req = req.query(&[("videoDuration", &self.video_duration)]);
-                let req = req.query(&[("videoEmbeddable", &self.video_embeddable)]);
-                let req = req.query(&[("videoLicense", &self.video_license)]);
-                let req = req.query(&[("videoSyndicated", &self.video_syndicated)]);
-                let req = req.query(&[("videoType", &self.video_type)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
-                Ok(req)
-            }
-        }
-        impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-            fn set_page_token(&mut self, value: String) {
-                self.page_token = value.into();
-            }
-            fn execute<T>(&mut self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-            {
-                self._execute()
-            }
-        }
-    }
-    pub mod sponsors {
-        pub mod params {
-            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-            pub enum ListFilter {
-                All,
-                Newest,
-                SponsorFilterUnknown,
-            }
-            impl ListFilter {
-                pub fn as_str(self) -> &'static str {
-                    match self {
-                        ListFilter::All => "all",
-                        ListFilter::Newest => "newest",
-                        ListFilter::SponsorFilterUnknown => "sponsorFilterUnknown",
-                    }
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
                 }
-            }
-            impl ::std::convert::AsRef<str> for ListFilter {
-                fn as_ref(&self) -> &str {
-                    self.as_str()
+                req = req.query(&[("channelId", &self.channel_id)]);
+                req = req.query(&[("channelType", &self.channel_type)]);
+                req = req.query(&[("eventType", &self.event_type)]);
+                req = req.query(&[("forContentOwner", &self.for_content_owner)]);
+                req = req.query(&[("forDeveloper", &self.for_developer)]);
+                req = req.query(&[("forMine", &self.for_mine)]);
+                req = req.query(&[("location", &self.location)]);
+                req = req.query(&[("locationRadius", &self.location_radius)]);
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("order", &self.order)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("publishedAfter", &self.published_after)]);
+                req = req.query(&[("publishedBefore", &self.published_before)]);
+                req = req.query(&[("q", &self.q)]);
+                for value in self.r#type.iter().flatten() {
+                    req = req.query(&[("type", value)]);
                 }
-            }
-            impl ::std::str::FromStr for ListFilter {
-                type Err = ();
-                fn from_str(s: &str) -> ::std::result::Result<ListFilter, ()> {
-                    Ok(match s {
-                        "all" => ListFilter::All,
-                        "newest" => ListFilter::Newest,
-                        "sponsorFilterUnknown" => ListFilter::SponsorFilterUnknown,
-                        _ => return Err(()),
-                    })
-                }
-            }
-            impl ::std::fmt::Display for ListFilter {
-                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-                    f.write_str(self.as_str())
-                }
-            }
-            impl ::serde::Serialize for ListFilter {
-                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-                where
-                    S: ::serde::ser::Serializer,
-                {
-                    serializer.serialize_str(self.as_str())
-                }
-            }
-            impl<'de> ::serde::Deserialize<'de> for ListFilter {
-                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-                where
-                    D: ::serde::de::Deserializer<'de>,
-                {
-                    let value: &'de str = <&str>::deserialize(deserializer)?;
-                    Ok(match value {
-                        "all" => ListFilter::All,
-                        "newest" => ListFilter::Newest,
-                        "sponsorFilterUnknown" => ListFilter::SponsorFilterUnknown,
-                        _ => {
-                            return Err(::serde::de::Error::custom(format!(
-                                "invalid enum for #name: {}",
-                                value
-                            )))
-                        }
-                    })
-                }
-            }
-            impl ::google_field_selector::FieldSelector for ListFilter {
-                fn fields() -> Vec<::google_field_selector::Field> {
-                    Vec::new()
-                }
-            }
-            impl ::google_field_selector::ToFieldType for ListFilter {
-                fn field_type() -> ::google_field_selector::FieldType {
-                    ::google_field_selector::FieldType::Leaf
-                }
-            }
-        }
-        pub struct SponsorsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::blocking::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-        }
-        impl<'a> SponsorsActions<'a> {
-            fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
-                self.auth
-            }
-            #[doc = "Retrieves a list of sponsors that match the request criteria for a\nchannel."]
-            pub fn list(&self, part: impl Into<Vec<String>>) -> ListRequestBuilder {
-                ListRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    access_token: None,
-                    alt: None,
-                    callback: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    upload_protocol: None,
-                    upload_type: None,
-                    xgafv: None,
-                    part: part.into(),
-                    filter: None,
-                    max_results: None,
-                    page_token: None,
-                }
-            }
-        }
-        #[doc = "Created via [SponsorsActions::list()](struct.SponsorsActions.html#method.list)"]
-        #[derive(Debug, Clone)]
-        pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            part: Vec<String>,
-            filter: Option<crate::resources::sponsors::params::ListFilter>,
-            max_results: Option<u32>,
-            page_token: Option<String>,
-            access_token: Option<String>,
-            alt: Option<crate::params::Alt>,
-            callback: Option<String>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            upload_protocol: Option<String>,
-            upload_type: Option<String>,
-            xgafv: Option<crate::params::Xgafv>,
-        }
-        impl<'a> ListRequestBuilder<'a> {
-            #[doc = "Parameter that specifies which channel sponsors to return."]
-            pub fn filter(mut self, value: crate::resources::sponsors::params::ListFilter) -> Self {
-                self.filter = Some(value);
-                self
-            }
-            #[doc = "The <code><strong>maxResults</strong></code> parameter specifies the\nmaximum number of items that should be returned in the result set."]
-            pub fn max_results(mut self, value: u32) -> Self {
-                self.max_results = Some(value);
-                self
-            }
-            #[doc = "The <code><strong>pageToken</strong></code> parameter identifies a specific\npage in the result set that should be returned. In an API response, the\n<code>nextPageToken</code> and <code>prevPageToken</code> properties\nidentify other pages that could be retrieved."]
-            pub fn page_token(mut self, value: impl Into<String>) -> Self {
-                self.page_token = Some(value.into());
-                self
-            }
-            #[doc = "OAuth access token."]
-            pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                self.access_token = Some(value.into());
-                self
-            }
-            #[doc = "JSONP"]
-            pub fn callback(mut self, value: impl Into<String>) -> Self {
-                self.callback = Some(value.into());
-                self
-            }
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(mut self, value: impl Into<String>) -> Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(mut self, value: bool) -> Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
-                self.upload_protocol = Some(value.into());
-                self
-            }
-            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
-                self.upload_type = Some(value.into());
-                self
-            }
-            #[doc = "V1 error format."]
-            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
-                self.xgafv = Some(value);
-                self
-            }
-            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-            #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-            #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-            #[doc = r" populated fields in the yielded items will be determined by the"]
-            #[doc = r" `FieldSelector` implementation."]
-            pub fn iter_items<T>(self) -> crate::iter::PageItemIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.iter_items_with_fields(fields)
-            }
-            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-            #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-            #[doc = r" fields in `#items_type` will be the default fields populated by"]
-            #[doc = r" the server."]
-            pub fn iter_items_with_default_fields(
-                self,
-            ) -> crate::iter::PageItemIter<Self, crate::schemas::Sponsor> {
-                self.iter_items_with_fields(None::<String>)
-            }
-            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-            #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-            #[doc = r" fields in `#items_type` will be all fields available. This should"]
-            #[doc = r" primarily be used during developement and debugging as fetching"]
-            #[doc = r" all fields can be expensive both in bandwidth and server"]
-            #[doc = r" resources."]
-            pub fn iter_items_with_all_fields(
-                self,
-            ) -> crate::iter::PageItemIter<Self, crate::schemas::Sponsor> {
-                self.iter_items_with_fields(Some("*"))
-            }
-            pub fn iter_items_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> crate::iter::PageItemIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: AsRef<str>,
-            {
-                self.fields = Some({
-                    let mut selector = concat!("nextPageToken,", "items").to_owned();
-                    let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                    if !items_fields.is_empty() {
-                        selector.push_str("(");
-                        selector.push_str(items_fields);
-                        selector.push_str(")");
-                    }
-                    selector
-                });
-                crate::iter::PageItemIter::new(self, "items")
-            }
-            pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.iter_with_fields(fields)
-            }
-            pub fn iter_with_default_fields(
-                self,
-            ) -> crate::iter::PageIter<Self, crate::schemas::SponsorListResponse> {
-                self.iter_with_fields(None::<&str>)
-            }
-            pub fn iter_with_all_fields(
-                self,
-            ) -> crate::iter::PageIter<Self, crate::schemas::SponsorListResponse> {
-                self.iter_with_fields(Some("*"))
-            }
-            pub fn iter_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> crate::iter::PageIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: AsRef<str>,
-            {
-                let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                if !fields.is_empty() {
-                    match fields.chars().rev().nth(0) {
-                        Some(',') | None => {}
-                        _ => fields.push_str(","),
-                    }
-                    fields.push_str("nextPageToken");
-                    self.fields = Some(fields);
-                }
-                crate::iter::PageIter::new(self)
-            }
-            #[doc = r" Execute the given operation. The fields requested are"]
-            #[doc = r" determined by the FieldSelector attribute of the return type."]
-            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
-            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
-            #[doc = r" are not generic over the return type and deserialize the"]
-            #[doc = r" response into an auto-generated struct will all possible"]
-            #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.execute_with_fields(fields)
-            }
-            #[doc = r" Execute the given operation. This will not provide any"]
-            #[doc = r" `fields` selector indicating that the server will determine"]
-            #[doc = r" the fields returned. This typically includes the most common"]
-            #[doc = r" fields, but it will not include every possible attribute of"]
-            #[doc = r" the response resource."]
-            pub fn execute_with_default_fields(
-                self,
-            ) -> Result<crate::schemas::SponsorListResponse, crate::Error> {
-                self.execute_with_fields(None::<&str>)
-            }
-            #[doc = r" Execute the given operation. This will provide a `fields`"]
-            #[doc = r" selector of `*`. This will include every attribute of the"]
-            #[doc = r" response resource and should be limited to use during"]
-            #[doc = r" development or debugging."]
-            pub fn execute_with_all_fields(
-                self,
-            ) -> Result<crate::schemas::SponsorListResponse, crate::Error> {
-                self.execute_with_fields(Some("*"))
-            }
-            #[doc = r" Execute the given operation. This will use the `fields`"]
-            #[doc = r" selector provided and will deserialize the response into"]
-            #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: Into<String>,
-            {
-                self.fields = fields.map(Into::into);
-                self._execute()
-            }
-            fn _execute<T>(&mut self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-            {
-                let req = self._request(&self._path())?;
-                Ok(crate::error_from_response(req.send()?)?.json()?)
-            }
-            fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
-                output.push_str("youtube/v3/sponsors");
-                output
-            }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("filter", &self.filter)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("regionCode", &self.region_code)]);
+                req = req.query(&[("relatedToVideoId", &self.related_to_video_id)]);
+                req = req.query(&[("relevanceLanguage", &self.relevance_language)]);
+                req = req.query(&[("safeSearch", &self.safe_search)]);
+                req = req.query(&[("topicId", &self.topic_id)]);
+                req = req.query(&[("videoCaption", &self.video_caption)]);
+                req = req.query(&[("videoCategoryId", &self.video_category_id)]);
+                req = req.query(&[("videoDefinition", &self.video_definition)]);
+                req = req.query(&[("videoDimension", &self.video_dimension)]);
+                req = req.query(&[("videoDuration", &self.video_duration)]);
+                req = req.query(&[("videoEmbeddable", &self.video_embeddable)]);
+                req = req.query(&[("videoLicense", &self.video_license)]);
+                req = req.query(&[("videoSyndicated", &self.video_syndicated)]);
+                req = req.query(&[("videoType", &self.video_type)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -37582,9 +37256,12 @@ pub mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListOrder {
+                #[doc = "Sort alphabetically."]
                 Alphabetical,
+                #[doc = "Sort by relevance."]
                 Relevance,
                 SubscriptionOrderUnspecified,
+                #[doc = "Sort by order of activity."]
                 Unread,
             }
             impl ListOrder {
@@ -37810,7 +37487,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/subscriptions");
                 output
             }
@@ -37818,20 +37495,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("id", &self.id)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -37962,7 +37639,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/subscriptions");
                 output
             }
@@ -37970,20 +37647,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -38026,7 +37705,7 @@ pub mod resources {
                 self.channel_id = Some(value.into());
                 self
             }
-            #[doc = "Return the subscriptions to the subset of these channels that the\nauthenticated user is subscribed to."]
+            #[doc = "Return the subscriptions to the subset of these channels that the authenticated user is subscribed to."]
             pub fn for_channel_id(mut self, value: impl Into<String>) -> Self {
                 self.for_channel_id = Some(value.into());
                 self
@@ -38036,7 +37715,7 @@ pub mod resources {
                 self.id = Some(value.into());
                 self
             }
-            #[doc = "The <code><strong>maxResults</strong></code> parameter specifies the\nmaximum number of items that should be returned in the result set."]
+            #[doc = "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set."]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
@@ -38056,12 +37735,12 @@ pub mod resources {
                 self.my_subscribers = Some(value);
                 self
             }
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
             }
-            #[doc = "This parameter can only be used in a properly <a\nhref=\"/youtube/v3/guides/authentication\">authorized request</a>.\n<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter\nspecifies the YouTube channel ID of the channel to which a video is being\nadded. This parameter is required when a request specifies a value for the\n<code>onBehalfOfContentOwner</code> parameter, and it can only be used in\nconjunction with that parameter. In addition, the request must be\nauthorized using a CMS account that is linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies. Finally, the\nchannel that the <code>onBehalfOfContentOwnerChannel</code> parameter value\nspecifies must be linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This\nparameter is intended for YouTube content partners that own and manage many\ndifferent YouTube channels. It allows content owners to authenticate once\nand perform actions on behalf of the channel specified in the parameter\nvalue, without having to provide authentication credentials for each\nseparate channel."]
+            #[doc = "This parameter can only be used in a properly authorized request. *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and perform actions on behalf of the channel specified in the parameter value, without having to provide authentication credentials for each separate channel."]
             pub fn on_behalf_of_content_owner_channel(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner_channel = Some(value.into());
                 self
@@ -38074,7 +37753,7 @@ pub mod resources {
                 self.order = Some(value);
                 self
             }
-            #[doc = "The <code><strong>pageToken</strong></code> parameter identifies a specific\npage in the result set that should be returned. In an API response, the\n<code>nextPageToken</code> and <code>prevPageToken</code> properties\nidentify other pages that could be retrieved."]
+            #[doc = "The *pageToken* parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
@@ -38279,7 +37958,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/subscriptions");
                 output
             }
@@ -38287,35 +37966,38 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("channelId", &self.channel_id)]);
-                let req = req.query(&[("forChannelId", &self.for_channel_id)]);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("mine", &self.mine)]);
-                let req = req.query(&[("myRecentSubscribers", &self.my_recent_subscribers)]);
-                let req = req.query(&[("mySubscribers", &self.my_subscribers)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("channelId", &self.channel_id)]);
+                req = req.query(&[("forChannelId", &self.for_channel_id)]);
+                for value in self.id.iter().flatten() {
+                    req = req.query(&[("id", value)]);
+                }
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("mine", &self.mine)]);
+                req = req.query(&[("myRecentSubscribers", &self.my_recent_subscribers)]);
+                req = req.query(&[("mySubscribers", &self.my_subscribers)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[(
                     "onBehalfOfContentOwnerChannel",
                     &self.on_behalf_of_content_owner_channel,
                 )]);
-                let req = req.query(&[("order", &self.order)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("order", &self.order)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -38395,12 +38077,12 @@ pub mod resources {
                 self.hl = Some(value.into());
                 self
             }
-            #[doc = "The <code><strong>maxResults</strong></code> parameter specifies the\nmaximum number of items that should be returned in the result set."]
+            #[doc = "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set."]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
             }
-            #[doc = "The <code><strong>pageToken</strong></code> parameter identifies a specific\npage in the result set that should be returned. In an API response, the\n<code>nextPageToken</code> and <code>prevPageToken</code> properties\nidentify other pages that could be retrieved."]
+            #[doc = "The *pageToken* parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
@@ -38607,7 +38289,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/superChatEvents");
                 output
             }
@@ -38615,23 +38297,25 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("hl", &self.hl)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("hl", &self.hl)]);
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -38651,6 +38335,1028 @@ pub mod resources {
             }
         }
     }
+    pub mod tests {
+        pub mod params {}
+        pub struct TestsActions<'a> {
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+        }
+        impl<'a> TestsActions<'a> {
+            fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                self.auth
+            }
+            #[doc = "POST method."]
+            pub fn insert(
+                &self,
+                request: crate::schemas::TestItem,
+                part: impl Into<Vec<String>>,
+            ) -> InsertRequestBuilder {
+                InsertRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    request,
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    part: part.into(),
+                }
+            }
+        }
+        #[doc = "Created via [TestsActions::insert()](struct.TestsActions.html#method.insert)"]
+        #[derive(Debug, Clone)]
+        pub struct InsertRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            request: crate::schemas::TestItem,
+            part: Vec<String>,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a> InsertRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::TestItem, crate::Error> {
+                self.execute_with_fields(None::<&str>)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_with_all_fields(self) -> Result<crate::schemas::TestItem, crate::Error> {
+                self.execute_with_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path())?;
+                let req = req.json(&self.request);
+                Ok(crate::error_from_response(req.send()?)?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://youtube.googleapis.com/".to_owned();
+                output.push_str("youtube/v3/tests");
+                output
+            }
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
+                Ok(req)
+            }
+        }
+    }
+    pub mod third_party_links {
+        pub mod params {
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+            pub enum DeleteType {
+                #[doc = "A link that is connecting (or about to connect) a channel with a store on a merchandising platform in order to enable retail commerce capabilities for that channel on YouTube."]
+                ChannelToStoreLink,
+                LinkUnspecified,
+            }
+            impl DeleteType {
+                pub fn as_str(self) -> &'static str {
+                    match self {
+                        DeleteType::ChannelToStoreLink => "channelToStoreLink",
+                        DeleteType::LinkUnspecified => "linkUnspecified",
+                    }
+                }
+            }
+            impl ::std::convert::AsRef<str> for DeleteType {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for DeleteType {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<DeleteType, ()> {
+                    Ok(match s {
+                        "channelToStoreLink" => DeleteType::ChannelToStoreLink,
+                        "linkUnspecified" => DeleteType::LinkUnspecified,
+                        _ => return Err(()),
+                    })
+                }
+            }
+            impl ::std::fmt::Display for DeleteType {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                    f.write_str(self.as_str())
+                }
+            }
+            impl ::serde::Serialize for DeleteType {
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+                where
+                    S: ::serde::ser::Serializer,
+                {
+                    serializer.serialize_str(self.as_str())
+                }
+            }
+            impl<'de> ::serde::Deserialize<'de> for DeleteType {
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+                where
+                    D: ::serde::de::Deserializer<'de>,
+                {
+                    let value: &'de str = <&str>::deserialize(deserializer)?;
+                    Ok(match value {
+                        "channelToStoreLink" => DeleteType::ChannelToStoreLink,
+                        "linkUnspecified" => DeleteType::LinkUnspecified,
+                        _ => {
+                            return Err(::serde::de::Error::custom(format!(
+                                "invalid enum for #name: {}",
+                                value
+                            )))
+                        }
+                    })
+                }
+            }
+            impl ::google_field_selector::FieldSelector for DeleteType {
+                fn fields() -> Vec<::google_field_selector::Field> {
+                    Vec::new()
+                }
+            }
+            impl ::google_field_selector::ToFieldType for DeleteType {
+                fn field_type() -> ::google_field_selector::FieldType {
+                    ::google_field_selector::FieldType::Leaf
+                }
+            }
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+            pub enum ListType {
+                #[doc = "A link that is connecting (or about to connect) a channel with a store on a merchandising platform in order to enable retail commerce capabilities for that channel on YouTube."]
+                ChannelToStoreLink,
+                LinkUnspecified,
+            }
+            impl ListType {
+                pub fn as_str(self) -> &'static str {
+                    match self {
+                        ListType::ChannelToStoreLink => "channelToStoreLink",
+                        ListType::LinkUnspecified => "linkUnspecified",
+                    }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListType {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListType {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListType, ()> {
+                    Ok(match s {
+                        "channelToStoreLink" => ListType::ChannelToStoreLink,
+                        "linkUnspecified" => ListType::LinkUnspecified,
+                        _ => return Err(()),
+                    })
+                }
+            }
+            impl ::std::fmt::Display for ListType {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                    f.write_str(self.as_str())
+                }
+            }
+            impl ::serde::Serialize for ListType {
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+                where
+                    S: ::serde::ser::Serializer,
+                {
+                    serializer.serialize_str(self.as_str())
+                }
+            }
+            impl<'de> ::serde::Deserialize<'de> for ListType {
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+                where
+                    D: ::serde::de::Deserializer<'de>,
+                {
+                    let value: &'de str = <&str>::deserialize(deserializer)?;
+                    Ok(match value {
+                        "channelToStoreLink" => ListType::ChannelToStoreLink,
+                        "linkUnspecified" => ListType::LinkUnspecified,
+                        _ => {
+                            return Err(::serde::de::Error::custom(format!(
+                                "invalid enum for #name: {}",
+                                value
+                            )))
+                        }
+                    })
+                }
+            }
+            impl ::google_field_selector::FieldSelector for ListType {
+                fn fields() -> Vec<::google_field_selector::Field> {
+                    Vec::new()
+                }
+            }
+            impl ::google_field_selector::ToFieldType for ListType {
+                fn field_type() -> ::google_field_selector::FieldType {
+                    ::google_field_selector::FieldType::Leaf
+                }
+            }
+        }
+        pub struct ThirdPartyLinksActions<'a> {
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+        }
+        impl<'a> ThirdPartyLinksActions<'a> {
+            fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                self.auth
+            }
+            #[doc = "Deletes a resource."]
+            pub fn delete(
+                &self,
+                linking_token: impl Into<String>,
+                r#type: crate::resources::third_party_links::params::DeleteType,
+            ) -> DeleteRequestBuilder {
+                DeleteRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    linking_token: linking_token.into(),
+                    r#type,
+                    part: None,
+                }
+            }
+            #[doc = "Inserts a new resource into this collection."]
+            pub fn insert(
+                &self,
+                request: crate::schemas::ThirdPartyLink,
+                part: impl Into<Vec<String>>,
+            ) -> InsertRequestBuilder {
+                InsertRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    request,
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    part: part.into(),
+                }
+            }
+            #[doc = "Retrieves a list of resources, possibly filtered."]
+            pub fn list(&self, part: impl Into<Vec<String>>) -> ListRequestBuilder {
+                ListRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    part: part.into(),
+                    linking_token: None,
+                    r#type: None,
+                }
+            }
+            #[doc = "Updates an existing resource."]
+            pub fn update(
+                &self,
+                request: crate::schemas::ThirdPartyLink,
+                part: impl Into<Vec<String>>,
+            ) -> UpdateRequestBuilder {
+                UpdateRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    request,
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    part: part.into(),
+                }
+            }
+        }
+        #[doc = "Created via [ThirdPartyLinksActions::delete()](struct.ThirdPartyLinksActions.html#method.delete)"]
+        #[derive(Debug, Clone)]
+        pub struct DeleteRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            linking_token: String,
+            r#type: crate::resources::third_party_links::params::DeleteType,
+            part: Option<Vec<String>>,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a> DeleteRequestBuilder<'a> {
+            #[doc = "Do not use. Required for compatibility."]
+            pub fn part(mut self, value: impl Into<Vec<String>>) -> Self {
+                self.part = Some(value.into());
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            pub fn execute(self) -> Result<(), crate::Error> {
+                let req = self._request(&self._path())?;
+                crate::error_from_response(req.send()?)?;
+                Ok(())
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://youtube.googleapis.com/".to_owned();
+                output.push_str("youtube/v3/thirdPartyLinks");
+                output
+            }
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("linkingToken", &self.linking_token)]);
+                req = req.query(&[("type", &self.r#type)]);
+                for value in self.part.iter().flatten() {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
+                Ok(req)
+            }
+        }
+        #[doc = "Created via [ThirdPartyLinksActions::insert()](struct.ThirdPartyLinksActions.html#method.insert)"]
+        #[derive(Debug, Clone)]
+        pub struct InsertRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            request: crate::schemas::ThirdPartyLink,
+            part: Vec<String>,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a> InsertRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::ThirdPartyLink, crate::Error> {
+                self.execute_with_fields(None::<&str>)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_with_all_fields(
+                self,
+            ) -> Result<crate::schemas::ThirdPartyLink, crate::Error> {
+                self.execute_with_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path())?;
+                let req = req.json(&self.request);
+                Ok(crate::error_from_response(req.send()?)?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://youtube.googleapis.com/".to_owned();
+                output.push_str("youtube/v3/thirdPartyLinks");
+                output
+            }
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
+                Ok(req)
+            }
+        }
+        #[doc = "Created via [ThirdPartyLinksActions::list()](struct.ThirdPartyLinksActions.html#method.list)"]
+        #[derive(Debug, Clone)]
+        pub struct ListRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            part: Vec<String>,
+            linking_token: Option<String>,
+            r#type: Option<crate::resources::third_party_links::params::ListType>,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a> ListRequestBuilder<'a> {
+            #[doc = "Get a third party link with the given linking token."]
+            pub fn linking_token(mut self, value: impl Into<String>) -> Self {
+                self.linking_token = Some(value.into());
+                self
+            }
+            #[doc = "Get a third party link of the given type."]
+            pub fn r#type(
+                mut self,
+                value: crate::resources::third_party_links::params::ListType,
+            ) -> Self {
+                self.r#type = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::ThirdPartyLink, crate::Error> {
+                self.execute_with_fields(None::<&str>)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_with_all_fields(
+                self,
+            ) -> Result<crate::schemas::ThirdPartyLink, crate::Error> {
+                self.execute_with_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path())?;
+                Ok(crate::error_from_response(req.send()?)?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://youtube.googleapis.com/".to_owned();
+                output.push_str("youtube/v3/thirdPartyLinks");
+                output
+            }
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("linkingToken", &self.linking_token)]);
+                req = req.query(&[("type", &self.r#type)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
+                Ok(req)
+            }
+        }
+        #[doc = "Created via [ThirdPartyLinksActions::update()](struct.ThirdPartyLinksActions.html#method.update)"]
+        #[derive(Debug, Clone)]
+        pub struct UpdateRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            request: crate::schemas::ThirdPartyLink,
+            part: Vec<String>,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a> UpdateRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::ThirdPartyLink, crate::Error> {
+                self.execute_with_fields(None::<&str>)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_with_all_fields(
+                self,
+            ) -> Result<crate::schemas::ThirdPartyLink, crate::Error> {
+                self.execute_with_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path())?;
+                let req = req.json(&self.request);
+                Ok(crate::error_from_response(req.send()?)?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://youtube.googleapis.com/".to_owned();
+                output.push_str("youtube/v3/thirdPartyLinks");
+                output
+            }
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
+                Ok(req)
+            }
+        }
+    }
     pub mod thumbnails {
         pub mod params {}
         pub struct ThumbnailsActions<'a> {
@@ -38661,7 +39367,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "As this is not an insert in a strict sense (it supports uploading/setting\nof a thumbnail for multiple videos, which doesn't result in creation of a\nsingle resource), I use a custom verb here."]
+            #[doc = "As this is not an insert in a strict sense (it supports uploading/setting of a thumbnail for multiple videos, which doesn't result in creation of a single resource), I use a custom verb here."]
             pub fn set(&self, video_id: impl Into<String>) -> SetRequestBuilder {
                 SetRequestBuilder {
                     reqwest: &self.reqwest,
@@ -38702,7 +39408,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> SetRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The actual\nCMS account that the user authenticates with must be linked to the\nspecified YouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The actual CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
@@ -38753,7 +39459,7 @@ pub mod resources {
                 self
             }
             fn _simple_upload_path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("upload/youtube/v3/thumbnails/set");
                 output
             }
@@ -38783,6 +39489,43 @@ pub mod resources {
                 );
                 let req = req.body(reqwest::blocking::Body::new(multipart.into_reader()));
                 Ok(crate::error_from_response(req.send()?)?.json()?)
+            }
+            fn _resumable_upload_path(&self) -> String {
+                let mut output = "https://youtube.googleapis.com/".to_owned();
+                output.push_str("resumable/upload/youtube/v3/thumbnails/set");
+                output
+            }
+            pub fn start_resumable_upload(
+                self,
+                mime_type: ::mime::Mime,
+            ) -> Result<crate::ResumableUpload, crate::Error> {
+                let req = self._request(&self._resumable_upload_path())?;
+                let req = req.query(&[("uploadType", "resumable")]);
+                let req = req.header(
+                    ::reqwest::header::HeaderName::from_static("x-upload-content-type"),
+                    mime_type.to_string(),
+                );
+                let resp = crate::error_from_response(req.send()?)?;
+                let location_header =
+                    resp.headers()
+                        .get(::reqwest::header::LOCATION)
+                        .ok_or_else(|| {
+                            crate::Error::Other(
+                                format!(
+                                    "No LOCATION header returned when initiating resumable upload"
+                                )
+                                .into(),
+                            )
+                        })?;
+                let upload_url = ::std::str::from_utf8(location_header.as_bytes())
+                    .map_err(|_| {
+                        crate::Error::Other(format!("Non UTF8 LOCATION header returned").into())
+                    })?
+                    .to_owned();
+                Ok(crate::ResumableUpload::new(
+                    self.reqwest.clone(),
+                    upload_url,
+                ))
             }
             #[doc = r" Execute the given operation. The fields requested are"]
             #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -38841,7 +39584,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/thumbnails/set");
                 output
             }
@@ -38849,22 +39592,21 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("videoId", &self.video_id)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("videoId", &self.video_id)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -39033,7 +39775,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/videoAbuseReportReasons");
                 output
             }
@@ -39041,21 +39783,23 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("hl", &self.hl)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("hl", &self.hl)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -39236,7 +39980,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/videoCategories");
                 output
             }
@@ -39244,23 +39988,27 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("hl", &self.hl)]);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("regionCode", &self.region_code)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("hl", &self.hl)]);
+                for value in self.id.iter().flatten() {
+                    req = req.query(&[("id", value)]);
+                }
+                req = req.query(&[("regionCode", &self.region_code)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -39274,6 +40022,7 @@ pub mod resources {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListChart {
                 ChartUnspecified,
+                #[doc = "Return the most popular videos for the specified content region and video category."]
                 MostPopular,
             }
             impl ListChart {
@@ -39342,7 +40091,9 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListMyRating {
+                #[doc = "The entity is disliked."]
                 Dislike,
+                #[doc = "The entity is liked."]
                 Like,
                 None,
             }
@@ -39415,7 +40166,9 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum RateRating {
+                #[doc = "The entity is disliked."]
                 Dislike,
+                #[doc = "The entity is liked."]
                 Like,
                 None,
             }
@@ -39515,7 +40268,7 @@ pub mod resources {
                     on_behalf_of_content_owner: None,
                 }
             }
-            #[doc = "Retrieves the ratings that the authorized user gave to a list of specified\nvideos."]
+            #[doc = "Retrieves the ratings that the authorized user gave to a list of specified videos."]
             pub fn get_rating(&self, id: impl Into<Vec<String>>) -> GetRatingRequestBuilder {
                 GetRatingRequestBuilder {
                     reqwest: &self.reqwest,
@@ -39688,7 +40441,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> DeleteRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The actual\nCMS account that the user authenticates with must be linked to the\nspecified YouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The actual CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
@@ -39744,7 +40497,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/videos");
                 output
             }
@@ -39752,22 +40505,21 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("id", &self.id)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("id", &self.id)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -39795,7 +40547,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetRatingRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
@@ -39902,7 +40654,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/videos/getRating");
                 output
             }
@@ -39910,22 +40662,23 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("id", &self.id)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.id {
+                    req = req.query(&[("id", value)]);
+                }
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -39963,17 +40716,17 @@ pub mod resources {
                 self.auto_levels = Some(value);
                 self
             }
-            #[doc = "Notify the channel subscribers about the new video. As default, the\nnotification is enabled."]
+            #[doc = "Notify the channel subscribers about the new video. As default, the notification is enabled."]
             pub fn notify_subscribers(mut self, value: bool) -> Self {
                 self.notify_subscribers = Some(value);
                 self
             }
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
             }
-            #[doc = "This parameter can only be used in a properly <a\nhref=\"/youtube/v3/guides/authentication\">authorized request</a>.\n<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwnerChannel</strong></code> parameter\nspecifies the YouTube channel ID of the channel to which a video is being\nadded. This parameter is required when a request specifies a value for the\n<code>onBehalfOfContentOwner</code> parameter, and it can only be used in\nconjunction with that parameter. In addition, the request must be\nauthorized using a CMS account that is linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies. Finally, the\nchannel that the <code>onBehalfOfContentOwnerChannel</code> parameter value\nspecifies must be linked to the content owner that the\n<code>onBehalfOfContentOwner</code> parameter specifies.<br><br>This\nparameter is intended for YouTube content partners that own and manage many\ndifferent YouTube channels. It allows content owners to authenticate once\nand perform actions on behalf of the channel specified in the parameter\nvalue, without having to provide authentication credentials for each\nseparate channel."]
+            #[doc = "This parameter can only be used in a properly authorized request. *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and perform actions on behalf of the channel specified in the parameter value, without having to provide authentication credentials for each separate channel."]
             pub fn on_behalf_of_content_owner_channel(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner_channel = Some(value.into());
                 self
@@ -40029,7 +40782,7 @@ pub mod resources {
                 self
             }
             fn _simple_upload_path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("upload/youtube/v3/videos");
                 output
             }
@@ -40064,6 +40817,44 @@ pub mod resources {
                 );
                 let req = req.body(reqwest::blocking::Body::new(multipart.into_reader()));
                 Ok(crate::error_from_response(req.send()?)?.json()?)
+            }
+            fn _resumable_upload_path(&self) -> String {
+                let mut output = "https://youtube.googleapis.com/".to_owned();
+                output.push_str("resumable/upload/youtube/v3/videos");
+                output
+            }
+            pub fn start_resumable_upload(
+                self,
+                mime_type: ::mime::Mime,
+            ) -> Result<crate::ResumableUpload, crate::Error> {
+                let req = self._request(&self._resumable_upload_path())?;
+                let req = req.query(&[("uploadType", "resumable")]);
+                let req = req.header(
+                    ::reqwest::header::HeaderName::from_static("x-upload-content-type"),
+                    mime_type.to_string(),
+                );
+                let req = req.json(&self.request);
+                let resp = crate::error_from_response(req.send()?)?;
+                let location_header =
+                    resp.headers()
+                        .get(::reqwest::header::LOCATION)
+                        .ok_or_else(|| {
+                            crate::Error::Other(
+                                format!(
+                                    "No LOCATION header returned when initiating resumable upload"
+                                )
+                                .into(),
+                            )
+                        })?;
+                let upload_url = ::std::str::from_utf8(location_header.as_bytes())
+                    .map_err(|_| {
+                        crate::Error::Other(format!("Non UTF8 LOCATION header returned").into())
+                    })?
+                    .to_owned();
+                Ok(crate::ResumableUpload::new(
+                    self.reqwest.clone(),
+                    upload_url,
+                ))
             }
             #[doc = r" Execute the given operation. The fields requested are"]
             #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -40121,7 +40912,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/videos");
                 output
             }
@@ -40129,29 +40920,30 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("autoLevels", &self.auto_levels)]);
-                let req = req.query(&[("notifySubscribers", &self.notify_subscribers)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("autoLevels", &self.auto_levels)]);
+                req = req.query(&[("notifySubscribers", &self.notify_subscribers)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[(
                     "onBehalfOfContentOwnerChannel",
                     &self.on_behalf_of_content_owner_channel,
                 )]);
-                let req = req.query(&[("stabilize", &self.stabilize)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("stabilize", &self.stabilize)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -40195,7 +40987,7 @@ pub mod resources {
                 self.chart = Some(value);
                 self
             }
-            #[doc = "Stands for \"host language\". Specifies the localization language of the\nmetadata to be filled into snippet.localized. The field is filled with the\ndefault metadata if there is no localization in the specified language.\nThe parameter value must be a language code included in the list returned\nby the i18nLanguages.list method (e.g. en_US, es_MX)."]
+            #[doc = "Stands for \"host language\". Specifies the localization language of the metadata to be filled into snippet.localized. The field is filled with the default metadata if there is no localization in the specified language. The parameter value must be a language code included in the list returned by the i18nLanguages.list method (e.g. en_US, es_MX)."]
             pub fn hl(mut self, value: impl Into<String>) -> Self {
                 self.hl = Some(value.into());
                 self
@@ -40215,7 +41007,7 @@ pub mod resources {
                 self.max_height = Some(value);
                 self
             }
-            #[doc = "The <code><strong>maxResults</strong></code> parameter specifies the\nmaximum number of items that should be returned in the result\nset.<br><br><strong>Note:</strong> This parameter is supported for use in\nconjunction with the <code><a href=\"#myRating\">myRating</a></code> and\n<code><a href=\"#chart\">chart</a></code> parameters, but it is not supported\nfor use in conjunction with the <code><a href=\"#id\">id</a></code>\nparameter."]
+            #[doc = "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set. *Note:* This parameter is supported for use in conjunction with the myRating and chart parameters, but it is not supported for use in conjunction with the id parameter."]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
@@ -40225,7 +41017,7 @@ pub mod resources {
                 self.max_width = Some(value);
                 self
             }
-            #[doc = "Return videos liked/disliked by the authenticated user.\nDoes not support RateType.RATED_TYPE_NONE."]
+            #[doc = "Return videos liked/disliked by the authenticated user. Does not support RateType.RATED_TYPE_NONE."]
             pub fn my_rating(
                 mut self,
                 value: crate::resources::videos::params::ListMyRating,
@@ -40233,12 +41025,12 @@ pub mod resources {
                 self.my_rating = Some(value);
                 self
             }
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
             }
-            #[doc = "The <code><strong>pageToken</strong></code> parameter identifies a specific\npage in the result set that should be returned. In an API response, the\n<code>nextPageToken</code> and <code>prevPageToken</code> properties\nidentify other pages that could be retrieved.<br><br><strong>Note:</strong>\nThis parameter is supported for use in conjunction with the <code><a\nhref=\"#myRating\">myRating</a></code> and <code><a\nhref=\"#chart\">chart</a></code> parameters, but it is not supported for use\nin conjunction with the <code><a href=\"#id\">id</a></code> parameter."]
+            #[doc = "The *pageToken* parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved. *Note:* This parameter is supported for use in conjunction with the myRating and chart parameters, but it is not supported for use in conjunction with the id parameter."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
@@ -40453,7 +41245,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/videos");
                 output
             }
@@ -40461,33 +41253,36 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req = req.query(&[("chart", &self.chart)]);
-                let req = req.query(&[("hl", &self.hl)]);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("locale", &self.locale)]);
-                let req = req.query(&[("maxHeight", &self.max_height)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("maxWidth", &self.max_width)]);
-                let req = req.query(&[("myRating", &self.my_rating)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("regionCode", &self.region_code)]);
-                let req = req.query(&[("videoCategoryId", &self.video_category_id)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("chart", &self.chart)]);
+                req = req.query(&[("hl", &self.hl)]);
+                for value in self.id.iter().flatten() {
+                    req = req.query(&[("id", value)]);
+                }
+                req = req.query(&[("locale", &self.locale)]);
+                req = req.query(&[("maxHeight", &self.max_height)]);
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("maxWidth", &self.max_width)]);
+                req = req.query(&[("myRating", &self.my_rating)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("regionCode", &self.region_code)]);
+                req = req.query(&[("videoCategoryId", &self.video_category_id)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -40577,7 +41372,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/videos/rate");
                 output
             }
@@ -40585,21 +41380,21 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("id", &self.id)]);
-                let req = req.query(&[("rating", &self.rating)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("id", &self.id)]);
+                req = req.query(&[("rating", &self.rating)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -40627,7 +41422,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ReportAbuseRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
@@ -40684,7 +41479,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/videos/reportAbuse");
                 output
             }
@@ -40692,21 +41487,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -40735,7 +41529,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> UpdateRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The actual\nCMS account that the user authenticates with must be linked to the\nspecified YouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The actual CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
@@ -40841,7 +41635,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/videos");
                 output
             }
@@ -40849,22 +41643,23 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("part", &self.part)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                for value in &self.part {
+                    req = req.query(&[("part", value)]);
+                }
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -40950,7 +41745,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> SetRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
@@ -41001,7 +41796,7 @@ pub mod resources {
                 self
             }
             fn _simple_upload_path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("upload/youtube/v3/watermarks/set");
                 output
             }
@@ -41027,6 +41822,44 @@ pub mod resources {
                 crate::error_from_response(req.send()?)?;
                 Ok(())
             }
+            fn _resumable_upload_path(&self) -> String {
+                let mut output = "https://youtube.googleapis.com/".to_owned();
+                output.push_str("resumable/upload/youtube/v3/watermarks/set");
+                output
+            }
+            pub fn start_resumable_upload(
+                self,
+                mime_type: ::mime::Mime,
+            ) -> Result<crate::ResumableUpload, crate::Error> {
+                let req = self._request(&self._resumable_upload_path())?;
+                let req = req.query(&[("uploadType", "resumable")]);
+                let req = req.header(
+                    ::reqwest::header::HeaderName::from_static("x-upload-content-type"),
+                    mime_type.to_string(),
+                );
+                let req = req.json(&self.request);
+                let resp = crate::error_from_response(req.send()?)?;
+                let location_header =
+                    resp.headers()
+                        .get(::reqwest::header::LOCATION)
+                        .ok_or_else(|| {
+                            crate::Error::Other(
+                                format!(
+                                    "No LOCATION header returned when initiating resumable upload"
+                                )
+                                .into(),
+                            )
+                        })?;
+                let upload_url = ::std::str::from_utf8(location_header.as_bytes())
+                    .map_err(|_| {
+                        crate::Error::Other(format!("Non UTF8 LOCATION header returned").into())
+                    })?
+                    .to_owned();
+                Ok(crate::ResumableUpload::new(
+                    self.reqwest.clone(),
+                    upload_url,
+                ))
+            }
             pub fn execute(self) -> Result<(), crate::Error> {
                 let req = self._request(&self._path())?;
                 let req = req.json(&self.request);
@@ -41034,7 +41867,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/watermarks/set");
                 output
             }
@@ -41042,22 +41875,21 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("channelId", &self.channel_id)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("channelId", &self.channel_id)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -41085,7 +41917,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> UnsetRequestBuilder<'a> {
-            #[doc = "<strong>Note:</strong> This parameter is intended exclusively for YouTube\ncontent partners.<br><br>The\n<code><strong>onBehalfOfContentOwner</strong></code> parameter indicates\nthat the\nrequest's authorization credentials identify a YouTube CMS user who is\nacting on behalf of the content owner specified in the parameter value.\nThis parameter is intended for YouTube content partners that own and manage\nmany different YouTube channels. It allows content owners to authenticate\nonce and get access to all their video and channel data, without having to\nprovide authentication credentials for each individual channel. The CMS\naccount that the user authenticates with must be linked to the specified\nYouTube content owner."]
+            #[doc = "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner."]
             pub fn on_behalf_of_content_owner(mut self, value: impl Into<String>) -> Self {
                 self.on_behalf_of_content_owner = Some(value.into());
                 self
@@ -41141,7 +41973,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://youtube.googleapis.com/".to_owned();
                 output.push_str("youtube/v3/watermarks/unset");
                 output
             }
@@ -41149,261 +41981,26 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("channelId", &self.channel_id)]);
-                let req =
-                    req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("channelId", &self.channel_id)]);
+                req = req.query(&[("onBehalfOfContentOwner", &self.on_behalf_of_content_owner)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
                 );
                 Ok(req)
-            }
-        }
-    }
-    pub mod youtube {
-        pub mod params {}
-        pub struct YoutubeActions<'a> {
-            pub(crate) reqwest: &'a reqwest::blocking::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-        }
-        impl<'a> YoutubeActions<'a> {
-            fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
-                self.auth
-            }
-            #[doc = "Actions that can be performed on the v_3 resource"]
-            pub fn v_3(&self) -> crate::resources::youtube::v_3::V3Actions {
-                crate::resources::youtube::v_3::V3Actions {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                }
-            }
-        }
-        pub mod v_3 {
-            pub mod params {}
-            pub struct V3Actions<'a> {
-                pub(crate) reqwest: &'a reqwest::blocking::Client,
-                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            }
-            impl<'a> V3Actions<'a> {
-                fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
-                    self.auth
-                }
-                #[doc = "Actions that can be performed on the tests resource"]
-                pub fn tests(&self) -> crate::resources::youtube::v_3::tests::TestsActions {
-                    crate::resources::youtube::v_3::tests::TestsActions {
-                        reqwest: &self.reqwest,
-                        auth: self.auth_ref(),
-                    }
-                }
-            }
-            pub mod tests {
-                pub mod params {}
-                pub struct TestsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::blocking::Client,
-                    pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-                }
-                impl<'a> TestsActions<'a> {
-                    fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
-                        self.auth
-                    }
-                    #[doc = "POST method."]
-                    pub fn create(
-                        &self,
-                        request: crate::schemas::TestItem,
-                    ) -> CreateRequestBuilder {
-                        CreateRequestBuilder {
-                            reqwest: &self.reqwest,
-                            auth: self.auth_ref(),
-                            request,
-                            access_token: None,
-                            alt: None,
-                            callback: None,
-                            fields: None,
-                            key: None,
-                            oauth_token: None,
-                            pretty_print: None,
-                            quota_user: None,
-                            upload_protocol: None,
-                            upload_type: None,
-                            xgafv: None,
-                            part: None,
-                        }
-                    }
-                }
-                #[doc = "Created via [TestsActions::create()](struct.TestsActions.html#method.create)"]
-                #[derive(Debug, Clone)]
-                pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
-                    pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-                    request: crate::schemas::TestItem,
-                    part: Option<Vec<String>>,
-                    access_token: Option<String>,
-                    alt: Option<crate::params::Alt>,
-                    callback: Option<String>,
-                    fields: Option<String>,
-                    key: Option<String>,
-                    oauth_token: Option<String>,
-                    pretty_print: Option<bool>,
-                    quota_user: Option<String>,
-                    upload_protocol: Option<String>,
-                    upload_type: Option<String>,
-                    xgafv: Option<crate::params::Xgafv>,
-                }
-                impl<'a> CreateRequestBuilder<'a> {
-                    #[doc = ""]
-                    pub fn part(mut self, value: impl Into<Vec<String>>) -> Self {
-                        self.part = Some(value.into());
-                        self
-                    }
-                    #[doc = "OAuth access token."]
-                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                        self.access_token = Some(value.into());
-                        self
-                    }
-                    #[doc = "JSONP"]
-                    pub fn callback(mut self, value: impl Into<String>) -> Self {
-                        self.callback = Some(value.into());
-                        self
-                    }
-                    #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-                    pub fn key(mut self, value: impl Into<String>) -> Self {
-                        self.key = Some(value.into());
-                        self
-                    }
-                    #[doc = "OAuth 2.0 token for the current user."]
-                    pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                        self.oauth_token = Some(value.into());
-                        self
-                    }
-                    #[doc = "Returns response with indentations and line breaks."]
-                    pub fn pretty_print(mut self, value: bool) -> Self {
-                        self.pretty_print = Some(value);
-                        self
-                    }
-                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-                    pub fn quota_user(mut self, value: impl Into<String>) -> Self {
-                        self.quota_user = Some(value.into());
-                        self
-                    }
-                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
-                        self.upload_protocol = Some(value.into());
-                        self
-                    }
-                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
-                        self.upload_type = Some(value.into());
-                        self
-                    }
-                    #[doc = "V1 error format."]
-                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
-                        self.xgafv = Some(value);
-                        self
-                    }
-                    #[doc = r" Execute the given operation. The fields requested are"]
-                    #[doc = r" determined by the FieldSelector attribute of the return type."]
-                    #[doc = r" This allows for flexible and ergonomic partial responses. See"]
-                    #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
-                    #[doc = r" are not generic over the return type and deserialize the"]
-                    #[doc = r" response into an auto-generated struct will all possible"]
-                    #[doc = r" fields."]
-                    pub fn execute<T>(self) -> Result<T, crate::Error>
-                    where
-                        T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                    {
-                        let fields = ::google_field_selector::to_string::<T>();
-                        let fields: Option<String> = if fields.is_empty() {
-                            None
-                        } else {
-                            Some(fields)
-                        };
-                        self.execute_with_fields(fields)
-                    }
-                    #[doc = r" Execute the given operation. This will not provide any"]
-                    #[doc = r" `fields` selector indicating that the server will determine"]
-                    #[doc = r" the fields returned. This typically includes the most common"]
-                    #[doc = r" fields, but it will not include every possible attribute of"]
-                    #[doc = r" the response resource."]
-                    pub fn execute_with_default_fields(
-                        self,
-                    ) -> Result<crate::schemas::TestItem, crate::Error> {
-                        self.execute_with_fields(None::<&str>)
-                    }
-                    #[doc = r" Execute the given operation. This will provide a `fields`"]
-                    #[doc = r" selector of `*`. This will include every attribute of the"]
-                    #[doc = r" response resource and should be limited to use during"]
-                    #[doc = r" development or debugging."]
-                    pub fn execute_with_all_fields(
-                        self,
-                    ) -> Result<crate::schemas::TestItem, crate::Error> {
-                        self.execute_with_fields(Some("*"))
-                    }
-                    #[doc = r" Execute the given operation. This will use the `fields`"]
-                    #[doc = r" selector provided and will deserialize the response into"]
-                    #[doc = r" whatever return value is provided."]
-                    pub fn execute_with_fields<T, F>(
-                        mut self,
-                        fields: Option<F>,
-                    ) -> Result<T, crate::Error>
-                    where
-                        T: ::serde::de::DeserializeOwned,
-                        F: Into<String>,
-                    {
-                        self.fields = fields.map(Into::into);
-                        self._execute()
-                    }
-                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
-                    where
-                        T: ::serde::de::DeserializeOwned,
-                    {
-                        let req = self._request(&self._path())?;
-                        let req = req.json(&self.request);
-                        Ok(crate::error_from_response(req.send()?)?.json()?)
-                    }
-                    fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/".to_owned();
-                        output.push_str("youtube/v3/tests");
-                        output
-                    }
-                    fn _request(
-                        &self,
-                        path: &str,
-                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
-                    {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("part", &self.part)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
-                        Ok(req)
-                    }
-                }
             }
         }
     }
@@ -41681,6 +42278,84 @@ mod parsed_string {
             None => Ok(None),
         }
     }
+}
+pub struct ResumableUpload {
+    reqwest: ::reqwest::blocking::Client,
+    url: String,
+    progress: Option<i64>,
+}
+
+impl ResumableUpload {
+    pub fn new(reqwest: ::reqwest::blocking::Client, url: String) -> Self {
+        ResumableUpload {
+            reqwest,
+            url,
+            progress: None,
+        }
+    }
+
+    pub fn url(&self) -> &str {
+        &self.url
+    }
+
+    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
+    where
+        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
+    {
+        let reader_len = {
+            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
+            let end = reader.seek(::std::io::SeekFrom::End(0))?;
+            reader.seek(::std::io::SeekFrom::Start(start))?;
+            end
+        };
+        let progress = match self.progress {
+            Some(progress) => progress,
+            None => {
+                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
+                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
+                let req = req.header(
+                    ::reqwest::header::CONTENT_RANGE,
+                    format!("bytes */{}", reader_len),
+                );
+                let resp = req.send()?.error_for_status()?;
+                match resp.headers().get(::reqwest::header::RANGE) {
+                    Some(range_header) => {
+                        let (_, progress) = parse_range_header(range_header)
+                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
+                        progress + 1
+                    }
+                    None => 0,
+                }
+            }
+        };
+
+        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
+        let content_length = reader_len - progress as u64;
+        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
+        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
+        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
+        let req = req.body(::reqwest::blocking::Body::sized(reader, content_length));
+        req.send()?.error_for_status()?;
+        Ok(())
+    }
+}
+
+fn parse_range_header(
+    range: &::reqwest::header::HeaderValue,
+) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
+    let range = range.to_str()?;
+    if !range.starts_with("bytes ") {
+        return Err(r#"does not begin with "bytes""#.to_owned().into());
+    }
+    let range = &range[6..];
+    let slash_idx = range
+        .find('/')
+        .ok_or_else(|| r#"does not contain"#.to_owned())?;
+    let (begin, end) = range.split_at(slash_idx);
+    let end = &end[1..]; // remove '/'
+    let begin: i64 = begin.parse()?;
+    let end: i64 = end.parse()?;
+    Ok((begin, end))
 }
 pub mod iter {
     pub trait IterableMethod {

@@ -1,35 +1,69 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/seWVFIM6TQ0ZbicGCsWtCvIDWuo\"",
+  "etag": null,
   "discoveryVersion": "v1",
   "id": "content:v2",
   "name": "content",
   "canonicalName": "Shopping Content",
-  "fullyEncodeReservedExpansion": null,
+  "fullyEncodeReservedExpansion": true,
   "version": "v2",
-  "revision": "20200617",
+  "revision": "20210311",
   "title": "Content API for Shopping",
-  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
+  "description": "Manage your product listings and accounts for Google Shopping",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "icons": {
-    "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
-    "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "documentationLink": "https://developers.google.com/shopping-content",
+  "documentationLink": "https://developers.google.com/shopping-content/v2/",
   "protocol": "rest",
-  "baseUrl": "https://www.googleapis.com/content/v2/",
+  "baseUrl": "https://shoppingcontent.googleapis.com/content/v2/",
   "basePath": "/content/v2/",
-  "rootUrl": "https://www.googleapis.com/",
+  "rootUrl": "https://shoppingcontent.googleapis.com/",
   "servicePath": "content/v2/",
-  "batchPath": "batch/content/v2",
+  "batchPath": "batch",
   "version_module": null,
   "packagePath": null,
   "labels": null,
   "features": null,
   "parameters": {
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [
+        "1",
+        "2"
+      ],
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "repeated": false
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
     "alt": {
-      "description": "Data format for the response.",
+      "description": "Data format for response.",
       "default": "json",
       "location": "query",
       "required": false,
@@ -39,11 +73,29 @@
       "maximum": null,
       "pattern": null,
       "enum": [
-        "json"
+        "json",
+        "media",
+        "proto"
       ],
       "enumDescriptions": [
-        "Responses with Content-Type of application/json"
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
       ],
+      "repeated": false
+    },
+    "callback": {
+      "description": "JSONP",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
       "repeated": false
     },
     "fields": {
@@ -103,7 +155,7 @@
       "repeated": false
     },
     "quotaUser": {
-      "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "default": null,
       "location": "query",
       "required": false,
@@ -116,8 +168,22 @@
       "enumDescriptions": [],
       "repeated": false
     },
-    "userIp": {
-      "description": "Deprecated. Please use quotaUser instead.",
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "default": null,
       "location": "query",
       "required": false,
@@ -160,7 +226,7 @@
           "items": null
         },
         "adwordsLinks": {
-          "description": "List of linked AdWords accounts that are active or pending approval. To create a new link request, add a new link with status `active` to the list. It will remain in a `pending` state until approved or rejected either in the AdWords interface or through the  AdWords API. To delete an active link, or to cancel a link request, remove it from the list.",
+          "description": "List of linked AdWords accounts that are active or pending approval. To create a new link request, add a new link with status `active` to the list. It will remain in a `pending` state until approved or rejected either in the AdWords interface or through the AdWords API. To delete an active link, or to cancel a link request, remove it from the list.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -276,7 +342,7 @@
       "enumDescriptions": [],
       "properties": {
         "country": {
-          "description": "CLDR country code (e.g. \"US\").",
+          "description": "CLDR country code (e.g. \"US\"). This value cannot be set for a sub-account of an MCA. All MCA sub-accounts inherit the country of their parent MCA.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -348,7 +414,7 @@
           "items": null
         },
         "status": {
-          "description": "Status of the link between this Merchant Center account and the AdWords account. Upon retrieval, it represents the actual status of the link and can be either `active` if it was approved in Google AdWords or `pending` if it's pending approval. Upon insertion, it represents the intended status of the link. Re-uploading a link with status `active` when it's still pending or with status `pending` when it's already active will have no effect: the status will remain unchanged. Re-uploading a link with deprecated status `inactive` is equivalent to not submitting the link at all and will delete the link if it was active or cancel the link request if it was pending.\n\nAcceptable values are:  \n- \"`active`\" \n- \"`pending`\"",
+          "description": "Status of the link between this Merchant Center account and the AdWords account. Upon retrieval, it represents the actual status of the link and can be either `active` if it was approved in Google AdWords or `pending` if it's pending approval. Upon insertion, it represents the *intended* status of the link. Re-uploading a link with status `active` when it's still pending or with status `pending` when it's already active will have no effect: the status will remain unchanged. Re-uploading a link with deprecated status `inactive` is equivalent to not submitting the link at all and will delete the link if it was active or cancel the link request if it was pending. Acceptable values are: - \"`active`\" - \"`pending`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -452,7 +518,7 @@
           "items": null
         },
         "status": {
-          "description": "Status of the link between this Merchant Center account and the GMB account.\n\nAcceptable values are:  \n- \"`active`\" \n- \"`pending`\"",
+          "description": "Status of the link between this Merchant Center account and the GMB account. Acceptable values are: - \"`active`\" - \"`pending`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -594,7 +660,7 @@
           "items": null
         },
         "destination": {
-          "description": "The destination the issue applies to.",
+          "description": "The destination the issue applies to. If this field is empty then the issue applies to all available destinations.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -634,7 +700,7 @@
           "items": null
         },
         "severity": {
-          "description": "Severity of the issue.\n\nAcceptable values are:  \n- \"`critical`\" \n- \"`error`\" \n- \"`suggestion`\"",
+          "description": "Severity of the issue. Acceptable values are: - \"`critical`\" - \"`error`\" - \"`suggestion`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -758,7 +824,7 @@
           "items": null
         },
         "severity": {
-          "description": "Acceptable values are:  \n- \"`critical`\" \n- \"`error`\" \n- \"`suggestion`\"",
+          "description": " Acceptable values are: - \"`critical`\" - \"`error`\" - \"`suggestion`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -944,7 +1010,7 @@
       "enumDescriptions": [],
       "properties": {
         "channel": {
-          "description": "The channel the data applies to.\n\nAcceptable values are:  \n- \"`local`\" \n- \"`online`\"",
+          "description": "The channel the data applies to. Acceptable values are: - \"`local`\" - \"`online`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1232,7 +1298,7 @@
           "items": null
         },
         "status": {
-          "description": "Status of the link between this Merchant Center account and the YouTube channel. Upon retrieval, it represents the actual status of the link and can be either `active` if it was approved in YT Creator Studio or `pending` if it's pending approval. Upon insertion, it represents the intended status of the link. Re-uploading a link with status `active` when it's still pending or with status `pending` when it's already active will have no effect: the status will remain unchanged. Re-uploading a link with deprecated status `inactive` is equivalent to not submitting the link at all and will delete the link if it was active or cancel the link request if it was pending.",
+          "description": "Status of the link between this Merchant Center account and the YouTube channel. Upon retrieval, it represents the actual status of the link and can be either `active` if it was approved in YT Creator Studio or `pending` if it's pending approval. Upon insertion, it represents the *intended* status of the link. Re-uploading a link with status `active` when it's still pending or with status `pending` when it's already active will have no effect: the status will remain unchanged. Re-uploading a link with deprecated status `inactive` is equivalent to not submitting the link at all and will delete the link if it was active or cancel the link request if it was pending.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1254,7 +1320,7 @@
       "enumDescriptions": [],
       "properties": {
         "accountIdentifiers": {
-          "description": "The account identifiers corresponding to the authenticated user.\n- For an individual account: only the merchant ID is defined\n- For an aggregator: only the aggregator ID is defined\n- For a subaccount of an MCA: both the merchant ID and the aggregator ID are defined.",
+          "description": "The account identifiers corresponding to the authenticated user. - For an individual account: only the merchant ID is defined - For an aggregator: only the aggregator ID is defined - For a subaccount of an MCA: both the merchant ID and the aggregator ID are defined. ",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1367,6 +1433,24 @@
           "additionalProperties": null,
           "items": null
         },
+        "labelIds": {
+          "description": "Label IDs for the 'updatelabels' request.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": "uint64",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
         "linkRequest": {
           "description": "Details about the `link` request.",
           "$ref": "AccountsCustomBatchRequestEntryLinkRequest"
@@ -1382,7 +1466,7 @@
           "items": null
         },
         "method": {
-          "description": "The method of the batch entry.\n\nAcceptable values are:  \n- \"`claimWebsite`\" \n- \"`delete`\" \n- \"`get`\" \n- \"`insert`\" \n- \"`link`\" \n- \"`update`\"",
+          "description": "The method of the batch entry. Acceptable values are: - \"`claimWebsite`\" - \"`delete`\" - \"`get`\" - \"`insert`\" - \"`link`\" - \"`update`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1414,7 +1498,7 @@
       "enumDescriptions": [],
       "properties": {
         "action": {
-          "description": "Action to perform for this link. The `\"request\"` action is only available to select merchants.\n\nAcceptable values are:  \n- \"`approve`\" \n- \"`remove`\" \n- \"`request`\"",
+          "description": "Action to perform for this link. The `\"request\"` action is only available to select merchants. Acceptable values are: - \"`approve`\" - \"`remove`\" - \"`request`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1424,7 +1508,7 @@
           "items": null
         },
         "linkType": {
-          "description": "Type of the link between the two accounts.\n\nAcceptable values are:  \n- \"`channelPartner`\" \n- \"`eCommercePlatform`\"",
+          "description": "Type of the link between the two accounts. Acceptable values are: - \"`channelPartner`\" - \"`eCommercePlatform`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1518,7 +1602,7 @@
           "items": null
         },
         "linkStatus": {
-          "description": "Deprecated. This field is never set.\n\nAcceptable values are:  \n- \"`active`\" \n- \"`inactive`\" \n- \"`pending`\"",
+          "description": "Deprecated. This field is never set. Acceptable values are: - \"`active`\" - \"`inactive`\" - \"`pending`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1540,7 +1624,7 @@
       "enumDescriptions": [],
       "properties": {
         "action": {
-          "description": "Action to perform for this link. The `\"request\"` action is only available to select merchants.\n\nAcceptable values are:  \n- \"`approve`\" \n- \"`remove`\" \n- \"`request`\"",
+          "description": "Action to perform for this link. The `\"request\"` action is only available to select merchants. Acceptable values are: - \"`approve`\" - \"`remove`\" - \"`request`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1550,7 +1634,7 @@
           "items": null
         },
         "linkType": {
-          "description": "Type of the link between the two accounts.\n\nAcceptable values are:  \n- \"`channelPartner`\" \n- \"`eCommercePlatform`\"",
+          "description": "Type of the link between the two accounts. Acceptable values are: - \"`channelPartner`\" - \"`eCommercePlatform`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1720,7 +1804,7 @@
           "items": null
         },
         "method": {
-          "description": "The method of the batch entry.\n\nAcceptable values are:  \n- \"`get`\"",
+          "description": "The method of the batch entry. Acceptable values are: - \"`get`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1908,7 +1992,7 @@
           "items": null
         },
         "method": {
-          "description": "The method of the batch entry.\n\nAcceptable values are:  \n- \"`get`\" \n- \"`update`\"",
+          "description": "The method of the batch entry. Acceptable values are: - \"`get`\" - \"`update`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2224,7 +2308,7 @@
           "items": null
         },
         "type": {
-          "description": "The type of the attribute.\n\nAcceptable values are:  \n- \"`boolean`\" \n- \"`datetimerange`\" \n- \"`float`\" \n- \"`group`\" \n- \"`int`\" \n- \"`price`\" \n- \"`text`\" \n- \"`time`\" \n- \"`url`\"",
+          "description": "The type of the attribute. Acceptable values are: - \"`boolean`\" - \"`datetimerange`\" - \"`float`\" - \"`group`\" - \"`int`\" - \"`price`\" - \"`text`\" - \"`time`\" - \"`url`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2310,7 +2394,7 @@
           "items": null
         },
         "reasonCode": {
-          "description": "Code of the return reason.\n\nAcceptable values are:  \n- \"`betterPriceFound`\" \n- \"`changedMind`\" \n- \"`damagedOrDefectiveItem`\" \n- \"`didNotMatchDescription`\" \n- \"`doesNotFit`\" \n- \"`expiredItem`\" \n- \"`incorrectItemReceived`\" \n- \"`noLongerNeeded`\" \n- \"`notSpecified`\" \n- \"`orderedWrongItem`\" \n- \"`other`\" \n- \"`qualityNotExpected`\" \n- \"`receivedTooLate`\" \n- \"`undeliverable`\"",
+          "description": "Code of the return reason. Acceptable values are: - \"`betterPriceFound`\" - \"`changedMind`\" - \"`damagedOrDefectiveItem`\" - \"`didNotMatchDescription`\" - \"`doesNotFit`\" - \"`expiredItem`\" - \"`incorrectItemReceived`\" - \"`noLongerNeeded`\" - \"`notSpecified`\" - \"`orderedWrongItem`\" - \"`other`\" - \"`qualityNotExpected`\" - \"`receivedTooLate`\" - \"`undeliverable`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2352,7 +2436,7 @@
           "items": null
         },
         "timezone": {
-          "description": "Timezone identifier for the cutoff time. A list of identifiers can be found in  the AdWords API documentation. E.g. \"Europe/Zurich\". Required.",
+          "description": "Timezone identifier for the cutoff time. A list of identifiers can be found in the AdWords API documentation. E.g. \"Europe/Zurich\". Required.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2394,7 +2478,7 @@
           "items": null
         },
         "contentType": {
-          "description": "Required. The type of data feed. For product inventory feeds, only feeds for local stores, not online stores, are supported.\n\nAcceptable values are:  \n- \"`local products`\" \n- \"`product inventory`\" \n- \"`products`\"",
+          "description": "Required. The type of data feed. For product inventory feeds, only feeds for local stores, not online stores, are supported. Acceptable values are: - \"`local products`\" - \"`product inventory`\" - \"`products`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2432,7 +2516,7 @@
           "items": null
         },
         "intendedDestinations": {
-          "description": "[DEPRECATED] Please use  targets[].includedDestinations instead. The list of intended destinations (corresponds to checked check boxes in Merchant Center).",
+          "description": "[DEPRECATED] Please use targets[].includedDestinations instead. The list of intended destinations (corresponds to checked check boxes in Merchant Center).",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2584,7 +2668,7 @@
           "items": null
         },
         "weekday": {
-          "description": "The day of the week the feed file should be fetched.\n\nAcceptable values are:  \n- \"`monday`\" \n- \"`tuesday`\" \n- \"`wednesday`\" \n- \"`thursday`\" \n- \"`friday`\" \n- \"`saturday`\" \n- \"`sunday`\"",
+          "description": "The day of the week the feed file should be fetched. Acceptable values are: - \"`monday`\" - \"`tuesday`\" - \"`wednesday`\" - \"`thursday`\" - \"`friday`\" - \"`saturday`\" - \"`sunday`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2606,7 +2690,7 @@
       "enumDescriptions": [],
       "properties": {
         "columnDelimiter": {
-          "description": "Delimiter for the separation of values in a delimiter-separated values feed. If not specified, the delimiter will be auto-detected. Ignored for non-DSV data feeds.\n\nAcceptable values are:  \n- \"`pipe`\" \n- \"`tab`\" \n- \"`tilde`\"",
+          "description": "Delimiter for the separation of values in a delimiter-separated values feed. If not specified, the delimiter will be auto-detected. Ignored for non-DSV data feeds. Acceptable values are: - \"`pipe`\" - \"`tab`\" - \"`tilde`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2616,7 +2700,7 @@
           "items": null
         },
         "fileEncoding": {
-          "description": "Character encoding scheme of the data feed. If not specified, the encoding will be auto-detected.\n\nAcceptable values are:  \n- \"`latin-1`\" \n- \"`utf-16be`\" \n- \"`utf-16le`\" \n- \"`utf-8`\" \n- \"`windows-1252`\"",
+          "description": "Character encoding scheme of the data feed. If not specified, the encoding will be auto-detected. Acceptable values are: - \"`latin-1`\" - \"`utf-16be`\" - \"`utf-16le`\" - \"`utf-8`\" - \"`windows-1252`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2626,7 +2710,7 @@
           "items": null
         },
         "quotingMode": {
-          "description": "Specifies how double quotes are interpreted. If not specified, the mode will be auto-detected. Ignored for non-DSV data feeds.\n\nAcceptable values are:  \n- \"`normal character`\" \n- \"`value quoting`\"",
+          "description": "Specifies how double quotes are interpreted. If not specified, the mode will be auto-detected. Ignored for non-DSV data feeds. Acceptable values are: - \"`normal character`\" - \"`value quoting`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2648,7 +2732,7 @@
       "enumDescriptions": [],
       "properties": {
         "country": {
-          "description": "The country for which the status is reported, represented as a  CLDR territory code.",
+          "description": "The country for which the status is reported, represented as a CLDR territory code.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2730,7 +2814,7 @@
           "items": null
         },
         "processingStatus": {
-          "description": "The processing status of the feed.\n\nAcceptable values are:  \n- \"`\"`failure`\": The feed could not be processed or all items had errors.`\" \n- \"`in progress`\": The feed is being processed. \n- \"`none`\": The feed has not yet been processed. For example, a feed that has never been uploaded will have this processing status. \n- \"`success`\": The feed was processed successfully, though some items might have had errors.",
+          "description": "The processing status of the feed. Acceptable values are: - \"`\"`failure`\": The feed could not be processed or all items had errors.`\" - \"`in progress`\": The feed is being processed. - \"`none`\": The feed has not yet been processed. For example, a feed that has never been uploaded will have this processing status. - \"`success`\": The feed was processed successfully, though some items might have had errors. ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2860,7 +2944,7 @@
       "enumDescriptions": [],
       "properties": {
         "country": {
-          "description": "The country where the items in the feed will be included in the search index, represented as a  CLDR territory code.",
+          "description": "The country where the items in the feed will be included in the search index, represented as a CLDR territory code.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2888,7 +2972,7 @@
           }
         },
         "includedDestinations": {
-          "description": "The list of destinations to include for this target (corresponds to checked check boxes in Merchant Center). Default destinations are always included unless provided in `excludedDestinations`.\n\nList of supported destinations (if available to the account):  \n- DisplayAds \n- Shopping \n- ShoppingActions \n- SurfacesAcrossGoogle",
+          "description": "The list of destinations to include for this target (corresponds to checked check boxes in Merchant Center). Default destinations are always included unless provided in `excludedDestinations`. List of supported destinations (if available to the account): - DisplayAds - Shopping - ShoppingActions - SurfacesAcrossGoogle ",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2986,7 +3070,7 @@
           "items": null
         },
         "method": {
-          "description": "The method of the batch entry.\n\nAcceptable values are:  \n- \"`delete`\" \n- \"`fetchNow`\" \n- \"`get`\" \n- \"`insert`\" \n- \"`update`\"",
+          "description": "The method of the batch entry. Acceptable values are: - \"`delete`\" - \"`fetchNow`\" - \"`get`\" - \"`insert`\" - \"`update`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3212,7 +3296,7 @@
           "items": null
         },
         "method": {
-          "description": "The method of the batch entry.\n\nAcceptable values are:  \n- \"`get`\"",
+          "description": "The method of the batch entry. Acceptable values are: - \"`get`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3606,7 +3690,7 @@
           }
         },
         "numberOfItems": {
-          "description": "A list of inclusive number of items upper bounds. The last value can be `\"infinity\"`. For example `[\"10\", \"50\", \"infinity\"]` represents the headers \"<= 10 items\", \" 50 items\". Must be non-empty. Can only be set if all other fields are not set.",
+          "description": "A list of inclusive number of items upper bounds. The last value can be `\"infinity\"`. For example `[\"10\", \"50\", \"infinity\"]` represents the headers \"<= 10 items\", \"<= 50 items\", and \"> 50 items\". Must be non-empty. Can only be set if all other fields are not set.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -3642,7 +3726,7 @@
           }
         },
         "prices": {
-          "description": "A list of inclusive order price upper bounds. The last price's value can be `\"infinity\"`. For example `[{\"value\": \"10\", \"currency\": \"USD\"}, {\"value\": \"500\", \"currency\": \"USD\"}, {\"value\": \"infinity\", \"currency\": \"USD\"}]` represents the headers \"<= $10\", \" $500\". All prices within a service must have the same currency. Must be non-empty. Can only be set if all other fields are not set.",
+          "description": "A list of inclusive order price upper bounds. The last price's value can be `\"infinity\"`. For example `[{\"value\": \"10\", \"currency\": \"USD\"}, {\"value\": \"500\", \"currency\": \"USD\"}, {\"value\": \"infinity\", \"currency\": \"USD\"}]` represents the headers \"<= $10\", \"<= $500\", and \"> $500\". All prices within a service must have the same currency. Must be non-empty. Can only be set if all other fields are not set.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -3654,7 +3738,7 @@
           }
         },
         "weights": {
-          "description": "A list of inclusive order weight upper bounds. The last weight's value can be `\"infinity\"`. For example `[{\"value\": \"10\", \"unit\": \"kg\"}, {\"value\": \"50\", \"unit\": \"kg\"}, {\"value\": \"infinity\", \"unit\": \"kg\"}]` represents the headers \"<= 10kg\", \" 50kg\". All weights within a service must have the same unit. Must be non-empty. Can only be set if all other fields are not set.",
+          "description": "A list of inclusive order weight upper bounds. The last weight's value can be `\"infinity\"`. For example `[{\"value\": \"10\", \"unit\": \"kg\"}, {\"value\": \"50\", \"unit\": \"kg\"}, {\"value\": \"infinity\", \"unit\": \"kg\"}]` represents the headers \"<= 10kg\", \"<= 50kg\", and \"> 50kg\". All weights within a service must have the same unit. Must be non-empty. Can only be set if all other fields are not set.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -3698,7 +3782,7 @@
           "items": null
         },
         "deadlineTimezone": {
-          "description": "Timezone identifier for the deadline hour. A list of identifiers can be found in  the AdWords API documentation. E.g. \"Europe/Zurich\". Required.",
+          "description": "Timezone identifier for the deadline hour. A list of identifiers can be found in the AdWords API documentation. E.g. \"Europe/Zurich\". Required.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3790,7 +3874,7 @@
           "items": null
         },
         "type": {
-          "description": "The holiday type. Always present.\n\nAcceptable values are:  \n- \"`Christmas`\" \n- \"`Easter`\" \n- \"`Father's Day`\" \n- \"`Halloween`\" \n- \"`Independence Day (USA)`\" \n- \"`Mother's Day`\" \n- \"`Thanksgiving`\" \n- \"`Valentine's Day`\"",
+          "description": "The holiday type. Always present. Acceptable values are: - \"`Christmas`\" - \"`Easter`\" - \"`Father's Day`\" - \"`Halloween`\" - \"`Independence Day (USA)`\" - \"`Mother's Day`\" - \"`Thanksgiving`\" - \"`Valentine's Day`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3831,14 +3915,14 @@
     },
     "Inventory": {
       "id": "Inventory",
-      "description": "(== resource_for v2.inventory ==)",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "availability": {
-          "description": "The availability of the product.\n\nAcceptable values are:  \n- \"`in stock`\" \n- \"`out of stock`\" \n- \"`preorder`\"",
+          "description": "The availability of the product. Acceptable values are: - \"`in stock`\" - \"`out of stock`\" - \"`preorder`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4130,7 +4214,7 @@
       "enumDescriptions": [],
       "properties": {
         "pickupMethod": {
-          "description": "Whether store pickup is available for this offer and whether the pickup option should be shown as buy, reserve, or not supported. Only supported for local inventory. Unless the value is \"not supported\", must be submitted together with `pickupSla`.\n\nAcceptable values are:  \n- \"`buy`\" \n- \"`not supported`\" \n- \"`reserve`\" \n- \"`ship to store`\"",
+          "description": "Whether store pickup is available for this offer and whether the pickup option should be shown as buy, reserve, or not supported. Only supported for local inventory. Unless the value is \"not supported\", must be submitted together with `pickupSla`. Acceptable values are: - \"`buy`\" - \"`not supported`\" - \"`reserve`\" - \"`ship to store`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4140,7 +4224,7 @@
           "items": null
         },
         "pickupSla": {
-          "description": "The expected date that an order will be ready for pickup, relative to when the order is placed. Only supported for local inventory. Must be submitted together with `pickupMethod`.\n\nAcceptable values are:  \n- \"`five day`\" \n- \"`four day`\" \n- \"`multi day`\" \n- \"`multi week`\" \n- \"`next day`\" \n- \"`same day`\" \n- \"`seven day`\" \n- \"`six day`\" \n- \"`three day`\" \n- \"`two day`\"",
+          "description": "The expected date that an order will be ready for pickup, relative to when the order is placed. Only supported for local inventory. Must be submitted together with `pickupMethod`. Acceptable values are: - \"`five day`\" - \"`four day`\" - \"`multi day`\" - \"`multi week`\" - \"`next day`\" - \"`same day`\" - \"`seven day`\" - \"`six day`\" - \"`three day`\" - \"`two day`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4162,7 +4246,7 @@
       "enumDescriptions": [],
       "properties": {
         "availability": {
-          "description": "The availability of the product.\n\nAcceptable values are:  \n- \"`in stock`\" \n- \"`out of stock`\" \n- \"`preorder`\"",
+          "description": "The availability of the product. Acceptable values are: - \"`in stock`\" - \"`out of stock`\" - \"`preorder`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4372,7 +4456,7 @@
           "$ref": "Amount"
         },
         "type": {
-          "description": "[required] Type of the additional charge.\n\nAcceptable values are:  \n- \"`shipping`\"",
+          "description": "[required] Type of the additional charge. Acceptable values are: - \"`shipping`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4394,7 +4478,7 @@
       "enumDescriptions": [],
       "properties": {
         "status": {
-          "description": "The status of the verification process for the About page.\n\nAcceptable values are:  \n- \"`active`\" \n- \"`inactive`\" \n- \"`pending`\"",
+          "description": "The status of the verification process for the About page. Acceptable values are: - \"`active`\" - \"`inactive`\" - \"`pending`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4504,7 +4588,7 @@
           "items": null
         },
         "inventoryVerificationContactStatus": {
-          "description": "The status of the verification contact.\n\nAcceptable values are:  \n- \"`active`\" \n- \"`inactive`\" \n- \"`pending`\"",
+          "description": "The status of the verification contact. Acceptable values are: - \"`active`\" - \"`inactive`\" - \"`pending`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4514,7 +4598,7 @@
           "items": null
         },
         "status": {
-          "description": "The status of the inventory verification process.\n\nAcceptable values are:  \n- \"`active`\" \n- \"`inactive`\" \n- \"`pending`\"",
+          "description": "The status of the inventory verification process. Acceptable values are: - \"`active`\" - \"`inactive`\" - \"`pending`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4546,7 +4630,7 @@
           "items": null
         },
         "status": {
-          "description": "The status of the ?On display to order? feature.\n\nAcceptable values are:  \n- \"`active`\" \n- \"`inactive`\" \n- \"`pending`\"",
+          "description": "The status of the ?On display to order? feature. Acceptable values are: - \"`active`\" - \"`inactive`\" - \"`pending`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4742,7 +4826,7 @@
           "items": null
         },
         "method": {
-          "description": "The method of the batch entry.\n\nAcceptable values are:  \n- \"`get`\" \n- \"`getAccessibleGmbAccounts`\" \n- \"`requestGmbAccess`\" \n- \"`requestInventoryVerification`\" \n- \"`setInventoryVerificationContact`\" \n- \"`update`\"",
+          "description": "The method of the batch entry. Acceptable values are: - \"`get`\" - \"`getAccessibleGmbAccounts`\" - \"`requestGmbAccess`\" - \"`requestInventoryVerification`\" - \"`setInventoryVerificationContact`\" - \"`update`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4832,7 +4916,7 @@
           "$ref": "Errors"
         },
         "gmbAccounts": {
-          "description": "The the list of accessible GMB accounts.",
+          "description": "The list of accessible GMB accounts.",
           "$ref": "GmbAccounts"
         },
         "kind": {
@@ -5272,7 +5356,7 @@
           }
         },
         "state": {
-          "description": "State of the item.\n\nAcceptable values are:  \n- \"`canceled`\" \n- \"`new`\" \n- \"`received`\" \n- \"`refunded`\" \n- \"`rejected`\"",
+          "description": "State of the item. Acceptable values are: - \"`canceled`\" - \"`new`\" - \"`received`\" - \"`refunded`\" - \"`rejected`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5345,7 +5429,7 @@
     },
     "Order": {
       "id": "Order",
-      "description": "Order. Production access (all methods) requires the order manager role. Sandbox access does not. (== resource_for v2.orders ==) (== resource_for v2.1.orders ==)",
+      "description": "Order. Production access (all methods) requires the order manager role. Sandbox access does not.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -5362,7 +5446,7 @@
           "items": null
         },
         "channelType": {
-          "description": "Deprecated.\n\nAcceptable values are:  \n- \"`googleExpress`\" \n- \"`purchasesOnGoogle`\"",
+          "description": "Deprecated. Acceptable values are: - \"`googleExpress`\" - \"`purchasesOnGoogle`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5440,7 +5524,7 @@
           "$ref": "OrderPaymentMethod"
         },
         "paymentStatus": {
-          "description": "The status of the payment.\n\nAcceptable values are:  \n- \"`paymentCaptured`\" \n- \"`paymentRejected`\" \n- \"`paymentSecured`\" \n- \"`pendingAuthorization`\"",
+          "description": "The status of the payment. Acceptable values are: - \"`paymentCaptured`\" - \"`paymentRejected`\" - \"`paymentSecured`\" - \"`pendingAuthorization`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5464,7 +5548,7 @@
           "items": null
         },
         "promotions": {
-          "description": "The details of the merchant provided promotions applied to the order.\n\nTo determine which promotions apply to which products, check the `Promotions[].Benefits[].OfferIds` field against the `LineItems[].Product.OfferId` field for each promotion. If a promotion is applied to more than 1 `offerId`, divide the discount value by the number of affected offers to determine how much discount to apply to each `offerId`.\n\nExamples:  \n- To calculate the line item level discount for a single specific item: For each promotion, subtract the `Promotions[].Benefits[].Discount.value` amount from the `LineItems[].Price.value`. \n- To calculate the line item level discount for multiple quantity of a specific item: For each promotion, divide the `Promotions[].Benefits[].Discount.value` by the quantity of products and substract it from `LineItems[].Product.Price.value` for each quantity item.  \n\nOnly 1 promotion can be applied to an offerId in a given order. To refund an item which had a promotion applied to it, make sure to refund the amount after first subtracting the promotion discount from the item price.\n\nMore details about the program are here.",
+          "description": "The details of the merchant provided promotions applied to the order. To determine which promotions apply to which products, check the `Promotions[].Benefits[].OfferIds` field against the `LineItems[].Product.OfferId` field for each promotion. If a promotion is applied to more than 1 `offerId`, divide the discount value by the number of affected offers to determine how much discount to apply to each `offerId`. Examples: 1. To calculate the line item level discount for a single specific item: For each promotion, subtract the `Promotions[].Benefits[].Discount.value` amount from the `LineItems[].Price.value`. 2. To calculate the line item level discount for multiple quantity of a specific item: For each promotion, divide the `Promotions[].Benefits[].Discount.value` by the quantity of products and substract it from `LineItems[].Product.Price.value` for each quantity item. Only 1 promotion can be applied to an offerId in a given order. To refund an item which had a promotion applied to it, make sure to refund the amount after first subtracting the promotion discount from the item price. More details about the program are here.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -5508,7 +5592,7 @@
           "$ref": "Price"
         },
         "shippingOption": {
-          "description": "Deprecated. Shipping details are provided with line items instead.\n\nAcceptable values are:  \n- \"`economy`\" \n- \"`expedited`\" \n- \"`oneDay`\" \n- \"`sameDay`\" \n- \"`standard`\" \n- \"`twoDay`\"",
+          "description": "Deprecated. Shipping details are provided with line items instead. Acceptable values are: - \"`economy`\" - \"`expedited`\" - \"`oneDay`\" - \"`sameDay`\" - \"`standard`\" - \"`twoDay`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5518,7 +5602,7 @@
           "items": null
         },
         "status": {
-          "description": "The status of the order.\n\nAcceptable values are:  \n- \"`canceled`\" \n- \"`delivered`\" \n- \"`inProgress`\" \n- \"`partiallyDelivered`\" \n- \"`partiallyReturned`\" \n- \"`partiallyShipped`\" \n- \"`pendingShipment`\" \n- \"`returned`\" \n- \"`shipped`\"",
+          "description": "The status of the order. Acceptable values are: - \"`canceled`\" - \"`delivered`\" - \"`inProgress`\" - \"`partiallyDelivered`\" - \"`partiallyReturned`\" - \"`partiallyShipped`\" - \"`pendingShipment`\" - \"`returned`\" - \"`shipped`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5528,7 +5612,7 @@
           "items": null
         },
         "taxCollector": {
-          "description": "The party responsible for collecting and remitting taxes.\n\nAcceptable values are:  \n- \"`marketplaceFacilitator`\" \n- \"`merchant`\"",
+          "description": "The party responsible for collecting and remitting taxes. Acceptable values are: - \"`marketplaceFacilitator`\" - \"`merchant`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5560,7 +5644,7 @@
           "items": null
         },
         "fullAddress": {
-          "description": "Strings representing the lines of the printed label for mailing the order, for example:\nJohn Smith\n1600 Amphitheatre Parkway\nMountain View, CA, 94043\nUnited States",
+          "description": "Strings representing the lines of the printed label for mailing the order, for example: John Smith 1600 Amphitheatre Parkway Mountain View, CA, 94043 United States ",
           "type": "array",
           "format": null,
           "enum": [],
@@ -5658,7 +5742,7 @@
       "enumDescriptions": [],
       "properties": {
         "actor": {
-          "description": "The actor that created the cancellation.\n\nAcceptable values are:  \n- \"`customer`\" \n- \"`googleBot`\" \n- \"`googleCustomerService`\" \n- \"`googlePayments`\" \n- \"`googleSabre`\" \n- \"`merchant`\"",
+          "description": "The actor that created the cancellation. Acceptable values are: - \"`customer`\" - \"`googleBot`\" - \"`googleCustomerService`\" - \"`googlePayments`\" - \"`googleSabre`\" - \"`merchant`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5688,7 +5772,7 @@
           "items": null
         },
         "reason": {
-          "description": "The reason for the cancellation. Orders that are canceled with a noInventory reason will lead to the removal of the product from Shopping Actions until you make an update to that product. This will not affect your Shopping ads.\n\nAcceptable values are:  \n- \"`autoPostInternal`\" \n- \"`autoPostInvalidBillingAddress`\" \n- \"`autoPostNoInventory`\" \n- \"`autoPostPriceError`\" \n- \"`autoPostUndeliverableShippingAddress`\" \n- \"`couponAbuse`\" \n- \"`customerCanceled`\" \n- \"`customerInitiatedCancel`\" \n- \"`customerSupportRequested`\" \n- \"`failToPushOrderGoogleError`\" \n- \"`failToPushOrderMerchantError`\" \n- \"`failToPushOrderMerchantFulfillmentError`\" \n- \"`failToPushOrderToMerchant`\" \n- \"`failToPushOrderToMerchantOutOfStock`\" \n- \"`invalidCoupon`\" \n- \"`malformedShippingAddress`\" \n- \"`merchantDidNotShipOnTime`\" \n- \"`noInventory`\" \n- \"`orderTimeout`\" \n- \"`other`\" \n- \"`paymentAbuse`\" \n- \"`paymentDeclined`\" \n- \"`priceError`\" \n- \"`returnRefundAbuse`\" \n- \"`shippingPriceError`\" \n- \"`taxError`\" \n- \"`undeliverableShippingAddress`\" \n- \"`unsupportedPoBoxAddress`\"",
+          "description": "The reason for the cancellation. Orders that are canceled with a noInventory reason will lead to the removal of the product from Buy on Google until you make an update to that product. This will not affect your Shopping ads. Acceptable values are: - \"`autoPostInternal`\" - \"`autoPostInvalidBillingAddress`\" - \"`autoPostNoInventory`\" - \"`autoPostPriceError`\" - \"`autoPostUndeliverableShippingAddress`\" - \"`couponAbuse`\" - \"`customerCanceled`\" - \"`customerInitiatedCancel`\" - \"`customerSupportRequested`\" - \"`failToPushOrderGoogleError`\" - \"`failToPushOrderMerchantError`\" - \"`failToPushOrderMerchantFulfillmentError`\" - \"`failToPushOrderToMerchant`\" - \"`failToPushOrderToMerchantOutOfStock`\" - \"`invalidCoupon`\" - \"`malformedShippingAddress`\" - \"`merchantDidNotShipOnTime`\" - \"`noInventory`\" - \"`orderTimeout`\" - \"`other`\" - \"`paymentAbuse`\" - \"`paymentDeclined`\" - \"`priceError`\" - \"`returnRefundAbuse`\" - \"`shippingPriceError`\" - \"`taxError`\" - \"`undeliverableShippingAddress`\" - \"`unsupportedPoBoxAddress`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5750,7 +5834,7 @@
           "items": null
         },
         "invoiceReceivingEmail": {
-          "description": "Email address for the merchant to send value-added tax or invoice documentation of the order. Only the last document sent is made available to the customer. For more information, see  About automated VAT invoicing for Shopping Actions.",
+          "description": "Email address for the merchant to send value-added tax or invoice documentation of the order. Only the last document sent is made available to the customer. For more information, see About automated VAT invoicing for Buy on Google.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5776,7 +5860,7 @@
       "enumDescriptions": [],
       "properties": {
         "explicitMarketingPreference": {
-          "description": "Last known customer selection regarding marketing preferences. In certain cases this selection might not be known, so this field would be empty. If a customer selected `granted` in their most recent order, they can be subscribed to marketing emails. Customers who have chosen `denied` must not be subscribed, or must be unsubscribed if already opted-in.\n\nAcceptable values are:  \n- \"`denied`\" \n- \"`granted`\"",
+          "description": "Last known customer selection regarding marketing preferences. In certain cases this selection might not be known, so this field would be empty. If a customer selected `granted` in their most recent order, they can be subscribed to marketing emails. Customers who have chosen `denied` must not be subscribed, or must be unsubscribed if already opted-in. Acceptable values are: - \"`denied`\" - \"`granted`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5856,7 +5940,7 @@
           }
         },
         "effectiveDates": {
-          "description": "The date and time frame when the promotion is active and ready for validation review. Note that the promotion live time may be delayed for a few hours due to the validation review.\nStart date and end date are separated by a forward slash (/). The start date is specified by the format (YYYY-MM-DD), followed by the letter ?T?, the time of the day when the sale starts (in Greenwich Mean Time, GMT), followed by an expression of the time zone for the sale. The end date is in the same format.",
+          "description": "The date and time frame when the promotion is active and ready for validation review. Note that the promotion live time may be delayed for a few hours due to the validation review. Start date and end date are separated by a forward slash (/). The start date is specified by the format (YYYY-MM-DD), followed by the letter ?T?, the time of the day when the sale starts (in Greenwich Mean Time, GMT), followed by an expression of the time zone for the sale. The end date is in the same format.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5896,7 +5980,7 @@
           "items": null
         },
         "productApplicability": {
-          "description": "Whether the promotion is applicable to all products or only specific products.\n\nAcceptable values are:  \n- \"`allProducts`\" \n- \"`specificProducts`\"",
+          "description": "Whether the promotion is applicable to all products or only specific products. Acceptable values are: - \"`allProducts`\" - \"`specificProducts`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5906,7 +5990,7 @@
           "items": null
         },
         "redemptionChannel": {
-          "description": "Indicates that the promotion is valid online.\n\nAcceptable values are:  \n- \"`online`\"",
+          "description": "Indicates that the promotion is valid online. Acceptable values are: - \"`online`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5950,7 +6034,7 @@
           }
         },
         "subType": {
-          "description": "Further describes the benefit of the promotion. Note that we will expand on this enumeration as we support new promotion sub-types.\n\nAcceptable values are:  \n- \"`buyMGetMoneyOff`\" \n- \"`buyMGetNMoneyOff`\" \n- \"`buyMGetNPercentOff`\" \n- \"`buyMGetPercentOff`\" \n- \"`freeGift`\" \n- \"`freeGiftWithItemId`\" \n- \"`freeGiftWithValue`\" \n- \"`freeOvernightShipping`\" \n- \"`freeShipping`\" \n- \"`freeTwoDayShipping`\" \n- \"`moneyOff`\" \n- \"`percentageOff`\" \n- \"`rewardPoints`\" \n- \"`salePrice`\"",
+          "description": "Further describes the benefit of the promotion. Note that we will expand on this enumeration as we support new promotion sub-types. Acceptable values are: - \"`buyMGetMoneyOff`\" - \"`buyMGetNMoneyOff`\" - \"`buyMGetNPercentOff`\" - \"`buyMGetPercentOff`\" - \"`freeGift`\" - \"`freeGiftWithItemId`\" - \"`freeGiftWithValue`\" - \"`freeOvernightShipping`\" - \"`freeShipping`\" - \"`freeTwoDayShipping`\" - \"`moneyOff`\" - \"`percentageOff`\" - \"`rewardPoints`\" - \"`salePrice`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5964,7 +6048,7 @@
           "$ref": "Price"
         },
         "type": {
-          "description": "Describes whether the promotion applies to products (e.g. 20% off) or to shipping (e.g. Free Shipping).\n\nAcceptable values are:  \n- \"`product`\" \n- \"`shipping`\"",
+          "description": "Describes whether the promotion applies to products (e.g. 20% off) or to shipping (e.g. Free Shipping). Acceptable values are: - \"`product`\" - \"`shipping`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -6144,7 +6228,7 @@
           "items": null
         },
         "channel": {
-          "description": "The item's channel (online or local).\n\nAcceptable values are:  \n- \"`local`\" \n- \"`online`\"",
+          "description": "The item's channel (online or local). Acceptable values are: - \"`local`\" - \"`online`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -6154,7 +6238,7 @@
           "items": null
         },
         "condition": {
-          "description": "Condition or state of the item.\n\nAcceptable values are:  \n- \"`new`\" \n- \"`refurbished`\" \n- \"`used`\"",
+          "description": "Condition or state of the item. Acceptable values are: - \"`new`\" - \"`refurbished`\" - \"`used`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -6260,7 +6344,7 @@
           "items": null
         },
         "targetCountry": {
-          "description": "The CLDR territory code of the target country of the product.",
+          "description": "The CLDR territory // code of the target country of the product.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -6428,7 +6512,7 @@
           "items": null
         },
         "type": {
-          "description": "Type of shipment. Indicates whether `deliveryDetails` or `pickupDetails` is applicable for this shipment.\n\nAcceptable values are:  \n- \"`delivery`\" \n- \"`pickup`\"",
+          "description": "Type of shipment. Indicates whether `deliveryDetails` or `pickupDetails` is applicable for this shipment. Acceptable values are: - \"`delivery`\" - \"`pickup`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -6578,7 +6662,7 @@
           "items": null
         },
         "type": {
-          "description": "The type of instrument.\n\nAcceptable values are:  \n- \"`AMEX`\" \n- \"`DISCOVER`\" \n- \"`JCB`\" \n- \"`MASTERCARD`\" \n- \"`UNIONPAY`\" \n- \"`VISA`\" \n- \"``\"",
+          "description": "The type of instrument. Acceptable values are: - \"`AMEX`\" - \"`DISCOVER`\" - \"`JCB`\" - \"`MASTERCARD`\" - \"`UNIONPAY`\" - \"`VISA`\" - \"``\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -6670,7 +6754,7 @@
       "enumDescriptions": [],
       "properties": {
         "actor": {
-          "description": "The actor that created the refund.\n\nAcceptable values are:  \n- \"`customer`\" \n- \"`googleBot`\" \n- \"`googleCustomerService`\" \n- \"`googlePayments`\" \n- \"`googleSabre`\" \n- \"`merchant`\"",
+          "description": "The actor that created the refund. Acceptable values are: - \"`customer`\" - \"`googleBot`\" - \"`googleCustomerService`\" - \"`googlePayments`\" - \"`googleSabre`\" - \"`merchant`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -6694,7 +6778,7 @@
           "items": null
         },
         "reason": {
-          "description": "The reason for the refund.\n\nAcceptable values are:  \n- \"`adjustment`\" \n- \"`autoPostInternal`\" \n- \"`autoPostInvalidBillingAddress`\" \n- \"`autoPostNoInventory`\" \n- \"`autoPostPriceError`\" \n- \"`autoPostUndeliverableShippingAddress`\" \n- \"`couponAbuse`\" \n- \"`courtesyAdjustment`\" \n- \"`customerCanceled`\" \n- \"`customerDiscretionaryReturn`\" \n- \"`customerInitiatedMerchantCancel`\" \n- \"`customerSupportRequested`\" \n- \"`deliveredLateByCarrier`\" \n- \"`deliveredTooLate`\" \n- \"`expiredItem`\" \n- \"`failToPushOrderGoogleError`\" \n- \"`failToPushOrderMerchantError`\" \n- \"`failToPushOrderMerchantFulfillmentError`\" \n- \"`failToPushOrderToMerchant`\" \n- \"`failToPushOrderToMerchantOutOfStock`\" \n- \"`feeAdjustment`\" \n- \"`invalidCoupon`\" \n- \"`lateShipmentCredit`\" \n- \"`malformedShippingAddress`\" \n- \"`merchantDidNotShipOnTime`\" \n- \"`noInventory`\" \n- \"`orderTimeout`\" \n- \"`other`\" \n- \"`paymentAbuse`\" \n- \"`paymentDeclined`\" \n- \"`priceAdjustment`\" \n- \"`priceError`\" \n- \"`productArrivedDamaged`\" \n- \"`productNotAsDescribed`\" \n- \"`promoReallocation`\" \n- \"`qualityNotAsExpected`\" \n- \"`returnRefundAbuse`\" \n- \"`shippingCostAdjustment`\" \n- \"`shippingPriceError`\" \n- \"`taxAdjustment`\" \n- \"`taxError`\" \n- \"`undeliverableShippingAddress`\" \n- \"`unsupportedPoBoxAddress`\" \n- \"`wrongProductShipped`\"",
+          "description": "The reason for the refund. Acceptable values are: - \"`adjustment`\" - \"`autoPostInternal`\" - \"`autoPostInvalidBillingAddress`\" - \"`autoPostNoInventory`\" - \"`autoPostPriceError`\" - \"`autoPostUndeliverableShippingAddress`\" - \"`couponAbuse`\" - \"`courtesyAdjustment`\" - \"`customerCanceled`\" - \"`customerDiscretionaryReturn`\" - \"`customerInitiatedMerchantCancel`\" - \"`customerSupportRequested`\" - \"`deliveredLateByCarrier`\" - \"`deliveredTooLate`\" - \"`expiredItem`\" - \"`failToPushOrderGoogleError`\" - \"`failToPushOrderMerchantError`\" - \"`failToPushOrderMerchantFulfillmentError`\" - \"`failToPushOrderToMerchant`\" - \"`failToPushOrderToMerchantOutOfStock`\" - \"`feeAdjustment`\" - \"`invalidCoupon`\" - \"`lateShipmentCredit`\" - \"`malformedShippingAddress`\" - \"`merchantDidNotShipOnTime`\" - \"`noInventory`\" - \"`orderTimeout`\" - \"`other`\" - \"`paymentAbuse`\" - \"`paymentDeclined`\" - \"`priceAdjustment`\" - \"`priceError`\" - \"`productArrivedDamaged`\" - \"`productNotAsDescribed`\" - \"`promoReallocation`\" - \"`qualityNotAsExpected`\" - \"`returnRefundAbuse`\" - \"`shippingCostAdjustment`\" - \"`shippingPriceError`\" - \"`taxAdjustment`\" - \"`taxError`\" - \"`undeliverableShippingAddress`\" - \"`unsupportedPoBoxAddress`\" - \"`wrongProductShipped`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -6719,7 +6803,7 @@
     },
     "OrderReportDisbursement": {
       "id": "OrderReportDisbursement",
-      "description": "Order disbursement. All methods require the payment analyst role. (== resource_for v2.orderreports ==) (== resource_for v2.1.orderreports ==)",
+      "description": "Order disbursement. All methods require the payment analyst role.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -6876,7 +6960,7 @@
       "enumDescriptions": [],
       "properties": {
         "actor": {
-          "description": "The actor that created the refund.\n\nAcceptable values are:  \n- \"`customer`\" \n- \"`googleBot`\" \n- \"`googleCustomerService`\" \n- \"`googlePayments`\" \n- \"`googleSabre`\" \n- \"`merchant`\"",
+          "description": "The actor that created the refund. Acceptable values are: - \"`customer`\" - \"`googleBot`\" - \"`googleCustomerService`\" - \"`googlePayments`\" - \"`googleSabre`\" - \"`merchant`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -6906,7 +6990,7 @@
           "items": null
         },
         "reason": {
-          "description": "The reason for the return.\n\nAcceptable values are:  \n- \"`customerDiscretionaryReturn`\" \n- \"`customerInitiatedMerchantCancel`\" \n- \"`deliveredTooLate`\" \n- \"`expiredItem`\" \n- \"`invalidCoupon`\" \n- \"`malformedShippingAddress`\" \n- \"`other`\" \n- \"`productArrivedDamaged`\" \n- \"`productNotAsDescribed`\" \n- \"`qualityNotAsExpected`\" \n- \"`undeliverableShippingAddress`\" \n- \"`unsupportedPoBoxAddress`\" \n- \"`wrongProductShipped`\"",
+          "description": "The reason for the return. Acceptable values are: - \"`customerDiscretionaryReturn`\" - \"`customerInitiatedMerchantCancel`\" - \"`deliveredTooLate`\" - \"`expiredItem`\" - \"`invalidCoupon`\" - \"`malformedShippingAddress`\" - \"`other`\" - \"`productArrivedDamaged`\" - \"`productNotAsDescribed`\" - \"`qualityNotAsExpected`\" - \"`undeliverableShippingAddress`\" - \"`unsupportedPoBoxAddress`\" - \"`wrongProductShipped`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -6938,7 +7022,7 @@
       "enumDescriptions": [],
       "properties": {
         "carrier": {
-          "description": "The carrier handling the shipment.\n\nFor supported carriers, Google includes the carrier name and tracking URL in emails to customers. For select supported carriers, Google also automatically updates the shipment status based on the provided shipment ID. Note: You can also use unsupported carriers, but emails to customers will not include the carrier name or tracking URL, and there will be no automatic order status updates. \nSupported carriers for US are:  \n- \"`ups`\" (United Parcel Service) automatic status updates \n- \"`usps`\" (United States Postal Service) automatic status updates \n- \"`fedex`\" (FedEx) automatic status updates  \n- \"`dhl`\" (DHL eCommerce) automatic status updates (US only) \n- \"`ontrac`\" (OnTrac) automatic status updates  \n- \"`dhl express`\" (DHL Express)\n- \"`deliv`\" (Deliv) \n- \"`dynamex`\" (TForce) \n- \"`lasership`\" (LaserShip) \n- \"`mpx`\" (Military Parcel Xpress) \n- \"`uds`\" (United Delivery Service) \n- \"`efw`\" (Estes Forwarding Worldwide) \n- \"`jd logistics`\" (JD Logistics) \n- \"`yunexpress`\" (YunExpress) \n- \"`china post`\" (China Post) \n- \"`china ems`\" (China Post Express Mail Service) \n- \"`singapore post`\" (Singapore Post) \n- \"`pos malaysia`\" (Pos Malaysia) \n- \"`postnl`\" (PostNL) \n- \"`ptt`\" (PTT Turkish Post) \n- \"`eub`\" (ePacket) \n- \"`chukou1`\" (Chukou1 Logistics)  \nSupported carriers for FR are:  \n- \"`la poste`\" (La Poste) automatic status updates  \n- \"`colissimo`\" (Colissimo by La Poste) automatic status updates \n- \"`ups`\" (United Parcel Service) automatic status updates  \n- \"`chronopost`\" (Chronopost by La Poste) \n- \"`gls`\" (General Logistics Systems France) \n- \"`dpd`\" (DPD Group by GeoPost) \n- \"`bpost`\" (Belgian Post Group) \n- \"`colis prive`\" (Colis Privé) \n- \"`boxtal`\" (Boxtal) \n- \"`geodis`\" (GEODIS) \n- \"`tnt`\" (TNT) \n- \"`db schenker`\" (DB Schenker) \n- \"`aramex`\" (Aramex)",
+          "description": "The carrier handling the shipment. For supported carriers, Google includes the carrier name and tracking URL in emails to customers. For select supported carriers, Google also automatically updates the shipment status based on the provided shipment ID. *Note:* You can also use unsupported carriers, but emails to customers will not include the carrier name or tracking URL, and there will be no automatic order status updates. Supported carriers for US are: - \"`ups`\" (United Parcel Service) *automatic status updates* - \"`usps`\" (United States Postal Service) *automatic status updates* - \"`fedex`\" (FedEx) *automatic status updates * - \"`dhl`\" (DHL eCommerce) *automatic status updates* (US only) - \"`ontrac`\" (OnTrac) *automatic status updates * - \"`dhl express`\" (DHL Express) - \"`deliv`\" (Deliv) - \"`dynamex`\" (TForce) - \"`lasership`\" (LaserShip) - \"`mpx`\" (Military Parcel Xpress) - \"`uds`\" (United Delivery Service) - \"`efw`\" (Estes Forwarding Worldwide) - \"`jd logistics`\" (JD Logistics) - \"`yunexpress`\" (YunExpress) - \"`china post`\" (China Post) - \"`china ems`\" (China Post Express Mail Service) - \"`singapore post`\" (Singapore Post) - \"`pos malaysia`\" (Pos Malaysia) - \"`postnl`\" (PostNL) - \"`ptt`\" (PTT Turkish Post) - \"`eub`\" (ePacket) - \"`chukou1`\" (Chukou1 Logistics) - \"`bestex`\" (Best Express) - \"`canada post`\" (Canada Post) - \"`purolator`\" (Purolator) - \"`canpar`\" (Canpar) - \"`india post`\" (India Post) - \"`blue dart`\" (Blue Dart) - \"`delhivery`\" (Delhivery) - \"`dtdc`\" (DTDC) - \"`tpc india`\" (TPC India) Supported carriers for FR are: - \"`la poste`\" (La Poste) *automatic status updates * - \"`colissimo`\" (Colissimo by La Poste) *automatic status updates* - \"`ups`\" (United Parcel Service) *automatic status updates * - \"`chronopost`\" (Chronopost by La Poste) - \"`gls`\" (General Logistics Systems France) - \"`dpd`\" (DPD Group by GeoPost) - \"`bpost`\" (Belgian Post Group) - \"`colis prive`\" (Colis Privé) - \"`boxtal`\" (Boxtal) - \"`geodis`\" (GEODIS) - \"`tnt`\" (TNT) - \"`db schenker`\" (DB Schenker) - \"`aramex`\" (Aramex) ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -6994,7 +7078,7 @@
           "$ref": "OrderShipmentScheduledDeliveryDetails"
         },
         "status": {
-          "description": "The status of the shipment.\n\nAcceptable values are:  \n- \"`delivered`\" \n- \"`readyForPickup`\" \n- \"`shipped`\" \n- \"`undeliverable`\"",
+          "description": "The status of the shipment. Acceptable values are: - \"`delivered`\" - \"`readyForPickup`\" - \"`shipped`\" - \"`undeliverable`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -7068,7 +7152,7 @@
       "enumDescriptions": [],
       "properties": {
         "carrierPhoneNumber": {
-          "description": "The phone number of the carrier fulfilling the delivery.",
+          "description": "The phone number of the carrier fulfilling the delivery. The phone number is formatted as the international notation in ITU-T Recommendation E.123 (e.g., \"+41 44 668 1800\").",
           "type": "string",
           "format": null,
           "enum": [],
@@ -7158,7 +7242,7 @@
       "enumDescriptions": [],
       "properties": {
         "executionStatus": {
-          "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"",
+          "description": "The status of the execution. Acceptable values are: - \"`duplicate`\" - \"`executed`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -7242,7 +7326,7 @@
       "enumDescriptions": [],
       "properties": {
         "executionStatus": {
-          "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"",
+          "description": "The status of the execution. Acceptable values are: - \"`duplicate`\" - \"`executed`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -7284,7 +7368,7 @@
           "items": null
         },
         "reason": {
-          "description": "[required] Reason for the refund.\n\nAcceptable values are:  \n- \"`adjustment`\" \n- \"`autoPostInternal`\" \n- \"`autoPostInvalidBillingAddress`\" \n- \"`autoPostNoInventory`\" \n- \"`autoPostPriceError`\" \n- \"`autoPostUndeliverableShippingAddress`\" \n- \"`couponAbuse`\" \n- \"`courtesyAdjustment`\" \n- \"`customerCanceled`\" \n- \"`customerDiscretionaryReturn`\" \n- \"`customerInitiatedMerchantCancel`\" \n- \"`customerSupportRequested`\" \n- \"`deliveredLateByCarrier`\" \n- \"`deliveredTooLate`\" \n- \"`expiredItem`\" \n- \"`failToPushOrderGoogleError`\" \n- \"`failToPushOrderMerchantError`\" \n- \"`failToPushOrderMerchantFulfillmentError`\" \n- \"`failToPushOrderToMerchant`\" \n- \"`failToPushOrderToMerchantOutOfStock`\" \n- \"`feeAdjustment`\" \n- \"`invalidCoupon`\" \n- \"`lateShipmentCredit`\" \n- \"`malformedShippingAddress`\" \n- \"`merchantDidNotShipOnTime`\" \n- \"`noInventory`\" \n- \"`orderTimeout`\" \n- \"`other`\" \n- \"`paymentAbuse`\" \n- \"`paymentDeclined`\" \n- \"`priceAdjustment`\" \n- \"`priceError`\" \n- \"`productArrivedDamaged`\" \n- \"`productNotAsDescribed`\" \n- \"`promoReallocation`\" \n- \"`qualityNotAsExpected`\" \n- \"`returnRefundAbuse`\" \n- \"`shippingCostAdjustment`\" \n- \"`shippingPriceError`\" \n- \"`taxAdjustment`\" \n- \"`taxError`\" \n- \"`undeliverableShippingAddress`\" \n- \"`unsupportedPoBoxAddress`\" \n- \"`wrongProductShipped`\"",
+          "description": "[required] Reason for the refund. Acceptable values are: - \"`adjustment`\" - \"`autoPostInternal`\" - \"`autoPostInvalidBillingAddress`\" - \"`autoPostNoInventory`\" - \"`autoPostPriceError`\" - \"`autoPostUndeliverableShippingAddress`\" - \"`couponAbuse`\" - \"`courtesyAdjustment`\" - \"`customerCanceled`\" - \"`customerDiscretionaryReturn`\" - \"`customerInitiatedMerchantCancel`\" - \"`customerSupportRequested`\" - \"`deliveredLateByCarrier`\" - \"`deliveredTooLate`\" - \"`expiredItem`\" - \"`failToPushOrderGoogleError`\" - \"`failToPushOrderMerchantError`\" - \"`failToPushOrderMerchantFulfillmentError`\" - \"`failToPushOrderToMerchant`\" - \"`failToPushOrderToMerchantOutOfStock`\" - \"`feeAdjustment`\" - \"`invalidCoupon`\" - \"`lateShipmentCredit`\" - \"`malformedShippingAddress`\" - \"`merchantDidNotShipOnTime`\" - \"`noInventory`\" - \"`orderTimeout`\" - \"`other`\" - \"`paymentAbuse`\" - \"`paymentDeclined`\" - \"`priceAdjustment`\" - \"`priceError`\" - \"`productArrivedDamaged`\" - \"`productNotAsDescribed`\" - \"`promoReallocation`\" - \"`qualityNotAsExpected`\" - \"`returnRefundAbuse`\" - \"`shippingCostAdjustment`\" - \"`shippingPriceError`\" - \"`taxAdjustment`\" - \"`taxError`\" - \"`undeliverableShippingAddress`\" - \"`unsupportedPoBoxAddress`\" - \"`wrongProductShipped`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -7316,7 +7400,7 @@
           "items": null
         },
         "reason": {
-          "description": "[required] Reason for the return.\n\nAcceptable values are:  \n- \"`customerDiscretionaryReturn`\" \n- \"`customerInitiatedMerchantCancel`\" \n- \"`deliveredTooLate`\" \n- \"`expiredItem`\" \n- \"`invalidCoupon`\" \n- \"`malformedShippingAddress`\" \n- \"`other`\" \n- \"`productArrivedDamaged`\" \n- \"`productNotAsDescribed`\" \n- \"`qualityNotAsExpected`\" \n- \"`undeliverableShippingAddress`\" \n- \"`unsupportedPoBoxAddress`\" \n- \"`wrongProductShipped`\"",
+          "description": "[required] Reason for the return. Acceptable values are: - \"`customerDiscretionaryReturn`\" - \"`customerInitiatedMerchantCancel`\" - \"`deliveredTooLate`\" - \"`expiredItem`\" - \"`invalidCoupon`\" - \"`malformedShippingAddress`\" - \"`other`\" - \"`productArrivedDamaged`\" - \"`productNotAsDescribed`\" - \"`qualityNotAsExpected`\" - \"`undeliverableShippingAddress`\" - \"`unsupportedPoBoxAddress`\" - \"`wrongProductShipped`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -7492,7 +7576,7 @@
       "enumDescriptions": [],
       "properties": {
         "executionStatus": {
-          "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"",
+          "description": "The status of the execution. Acceptable values are: - \"`duplicate`\" - \"`executed`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -7598,7 +7682,7 @@
           "items": null
         },
         "reason": {
-          "description": "The reason for the cancellation.\n\nAcceptable values are:  \n- \"`customerInitiatedCancel`\" \n- \"`invalidCoupon`\" \n- \"`malformedShippingAddress`\" \n- \"`noInventory`\" \n- \"`other`\" \n- \"`priceError`\" \n- \"`shippingPriceError`\" \n- \"`taxError`\" \n- \"`undeliverableShippingAddress`\" \n- \"`unsupportedPoBoxAddress`\"",
+          "description": "The reason for the cancellation. Acceptable values are: - \"`customerInitiatedCancel`\" - \"`invalidCoupon`\" - \"`malformedShippingAddress`\" - \"`noInventory`\" - \"`other`\" - \"`priceError`\" - \"`shippingPriceError`\" - \"`taxError`\" - \"`undeliverableShippingAddress`\" - \"`unsupportedPoBoxAddress`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -7630,7 +7714,7 @@
       "enumDescriptions": [],
       "properties": {
         "executionStatus": {
-          "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"",
+          "description": "The status of the execution. Acceptable values are: - \"`duplicate`\" - \"`executed`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -7672,7 +7756,7 @@
           "items": null
         },
         "reason": {
-          "description": "The reason for the cancellation.\n\nAcceptable values are:  \n- \"`customerInitiatedCancel`\" \n- \"`invalidCoupon`\" \n- \"`malformedShippingAddress`\" \n- \"`noInventory`\" \n- \"`other`\" \n- \"`priceError`\" \n- \"`shippingPriceError`\" \n- \"`taxError`\" \n- \"`undeliverableShippingAddress`\" \n- \"`unsupportedPoBoxAddress`\"",
+          "description": "The reason for the cancellation. Acceptable values are: - \"`customerInitiatedCancel`\" - \"`invalidCoupon`\" - \"`malformedShippingAddress`\" - \"`noInventory`\" - \"`other`\" - \"`priceError`\" - \"`shippingPriceError`\" - \"`taxError`\" - \"`undeliverableShippingAddress`\" - \"`unsupportedPoBoxAddress`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -7704,7 +7788,7 @@
       "enumDescriptions": [],
       "properties": {
         "executionStatus": {
-          "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"",
+          "description": "The status of the execution. Acceptable values are: - \"`duplicate`\" - \"`executed`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -7736,7 +7820,7 @@
       "enumDescriptions": [],
       "properties": {
         "reason": {
-          "description": "The reason for the cancellation.\n\nAcceptable values are:  \n- \"`changedMind`\" \n- \"`orderedWrongItem`\" \n- \"`other`\"",
+          "description": "The reason for the cancellation. Acceptable values are: - \"`changedMind`\" - \"`orderedWrongItem`\" - \"`other`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -7780,7 +7864,7 @@
       "enumDescriptions": [],
       "properties": {
         "country": {
-          "description": "The  CLDR territory code of the country of the test order to create. Affects the currency and addresses of orders created via `template_name`, or the addresses of orders created via `test_order`.\n\nAcceptable values are:  \n- \"`US`\" \n- \"`FR`\"  Defaults to `US`.",
+          "description": "The CLDR territory code of the country of the test order to create. Affects the currency and addresses of orders created via `template_name`, or the addresses of orders created via `test_order`. Acceptable values are: - \"`US`\" - \"`FR`\" Defaults to `US`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -7790,7 +7874,7 @@
           "items": null
         },
         "templateName": {
-          "description": "The test order template to use. Specify as an alternative to `testOrder` as a shortcut for retrieving a template and then creating an order using that template.\n\nAcceptable values are:  \n- \"`template1`\" \n- \"`template1a`\" \n- \"`template1b`\" \n- \"`template2`\" \n- \"`template3`\"",
+          "description": "The test order template to use. Specify as an alternative to `testOrder` as a shortcut for retrieving a template and then creating an order using that template. Acceptable values are: - \"`template1`\" - \"`template1a`\" - \"`template1b`\" - \"`template2`\" - \"`template3`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -7970,7 +8054,7 @@
           "items": null
         },
         "method": {
-          "description": "The method of the batch entry.\n\nAcceptable values are:  \n- \"`acknowledge`\" \n- \"`cancel`\" \n- \"`cancelLineItem`\" \n- \"`get`\" \n- \"`getByMerchantOrderId`\" \n- \"`inStoreRefundLineItem`\" \n- \"`refund`\" \n- \"`rejectReturnLineItem`\" \n- \"`returnLineItem`\" \n- \"`returnRefundLineItem`\" \n- \"`setLineItemMetadata`\" \n- \"`shipLineItems`\" \n- \"`updateLineItemShippingDetails`\" \n- \"`updateMerchantOrderId`\" \n- \"`updateShipment`\"",
+          "description": "The method of the batch entry. Acceptable values are: - \"`acknowledge`\" - \"`cancel`\" - \"`cancelLineItem`\" - \"`get`\" - \"`getByMerchantOrderId`\" - \"`inStoreRefundLineItem`\" - \"`refund`\" - \"`rejectReturnLineItem`\" - \"`returnLineItem`\" - \"`returnRefundLineItem`\" - \"`setLineItemMetadata`\" - \"`shipLineItems`\" - \"`updateLineItemShippingDetails`\" - \"`updateMerchantOrderId`\" - \"`updateShipment`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -8044,7 +8128,7 @@
       "enumDescriptions": [],
       "properties": {
         "reason": {
-          "description": "The reason for the cancellation.\n\nAcceptable values are:  \n- \"`customerInitiatedCancel`\" \n- \"`invalidCoupon`\" \n- \"`malformedShippingAddress`\" \n- \"`noInventory`\" \n- \"`other`\" \n- \"`priceError`\" \n- \"`shippingPriceError`\" \n- \"`taxError`\" \n- \"`undeliverableShippingAddress`\" \n- \"`unsupportedPoBoxAddress`\"",
+          "description": "The reason for the cancellation. Acceptable values are: - \"`customerInitiatedCancel`\" - \"`invalidCoupon`\" - \"`malformedShippingAddress`\" - \"`noInventory`\" - \"`other`\" - \"`priceError`\" - \"`shippingPriceError`\" - \"`taxError`\" - \"`undeliverableShippingAddress`\" - \"`unsupportedPoBoxAddress`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -8118,7 +8202,7 @@
           "items": null
         },
         "reason": {
-          "description": "The reason for the cancellation.\n\nAcceptable values are:  \n- \"`customerInitiatedCancel`\" \n- \"`invalidCoupon`\" \n- \"`malformedShippingAddress`\" \n- \"`noInventory`\" \n- \"`other`\" \n- \"`priceError`\" \n- \"`shippingPriceError`\" \n- \"`taxError`\" \n- \"`undeliverableShippingAddress`\" \n- \"`unsupportedPoBoxAddress`\"",
+          "description": "The reason for the cancellation. Acceptable values are: - \"`customerInitiatedCancel`\" - \"`invalidCoupon`\" - \"`malformedShippingAddress`\" - \"`noInventory`\" - \"`other`\" - \"`priceError`\" - \"`shippingPriceError`\" - \"`taxError`\" - \"`undeliverableShippingAddress`\" - \"`unsupportedPoBoxAddress`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -8220,7 +8304,7 @@
           "items": null
         },
         "reason": {
-          "description": "The reason for the return.\n\nAcceptable values are:  \n- \"`customerDiscretionaryReturn`\" \n- \"`customerInitiatedMerchantCancel`\" \n- \"`deliveredTooLate`\" \n- \"`expiredItem`\" \n- \"`invalidCoupon`\" \n- \"`malformedShippingAddress`\" \n- \"`other`\" \n- \"`productArrivedDamaged`\" \n- \"`productNotAsDescribed`\" \n- \"`qualityNotAsExpected`\" \n- \"`undeliverableShippingAddress`\" \n- \"`unsupportedPoBoxAddress`\" \n- \"`wrongProductShipped`\"",
+          "description": "The reason for the return. Acceptable values are: - \"`customerDiscretionaryReturn`\" - \"`customerInitiatedMerchantCancel`\" - \"`deliveredTooLate`\" - \"`expiredItem`\" - \"`invalidCoupon`\" - \"`malformedShippingAddress`\" - \"`other`\" - \"`productArrivedDamaged`\" - \"`productNotAsDescribed`\" - \"`qualityNotAsExpected`\" - \"`undeliverableShippingAddress`\" - \"`unsupportedPoBoxAddress`\" - \"`wrongProductShipped`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -8264,7 +8348,7 @@
           "$ref": "Price"
         },
         "reason": {
-          "description": "The reason for the refund.\n\nAcceptable values are:  \n- \"`adjustment`\" \n- \"`courtesyAdjustment`\" \n- \"`customerCanceled`\" \n- \"`customerDiscretionaryReturn`\" \n- \"`deliveredLateByCarrier`\" \n- \"`feeAdjustment`\" \n- \"`lateShipmentCredit`\" \n- \"`noInventory`\" \n- \"`other`\" \n- \"`priceError`\" \n- \"`productArrivedDamaged`\" \n- \"`productNotAsDescribed`\" \n- \"`shippingCostAdjustment`\" \n- \"`taxAdjustment`\" \n- \"`undeliverableShippingAddress`\" \n- \"`wrongProductShipped`\"",
+          "description": "The reason for the refund. Acceptable values are: - \"`adjustment`\" - \"`courtesyAdjustment`\" - \"`customerCanceled`\" - \"`customerDiscretionaryReturn`\" - \"`deliveredLateByCarrier`\" - \"`feeAdjustment`\" - \"`lateShipmentCredit`\" - \"`noInventory`\" - \"`other`\" - \"`priceError`\" - \"`productArrivedDamaged`\" - \"`productNotAsDescribed`\" - \"`shippingCostAdjustment`\" - \"`taxAdjustment`\" - \"`undeliverableShippingAddress`\" - \"`wrongProductShipped`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -8326,7 +8410,7 @@
           "items": null
         },
         "reason": {
-          "description": "The reason for the return.\n\nAcceptable values are:  \n- \"`damagedOrUsed`\" \n- \"`missingComponent`\" \n- \"`notEligible`\" \n- \"`other`\" \n- \"`outOfReturnWindow`\"",
+          "description": "The reason for the return. Acceptable values are: - \"`damagedOrUsed`\" - \"`missingComponent`\" - \"`notEligible`\" - \"`other`\" - \"`outOfReturnWindow`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -8388,7 +8472,7 @@
           "items": null
         },
         "reason": {
-          "description": "The reason for the return.\n\nAcceptable values are:  \n- \"`customerDiscretionaryReturn`\" \n- \"`customerInitiatedMerchantCancel`\" \n- \"`deliveredTooLate`\" \n- \"`expiredItem`\" \n- \"`invalidCoupon`\" \n- \"`malformedShippingAddress`\" \n- \"`other`\" \n- \"`productArrivedDamaged`\" \n- \"`productNotAsDescribed`\" \n- \"`qualityNotAsExpected`\" \n- \"`undeliverableShippingAddress`\" \n- \"`unsupportedPoBoxAddress`\" \n- \"`wrongProductShipped`\"",
+          "description": "The reason for the return. Acceptable values are: - \"`customerDiscretionaryReturn`\" - \"`customerInitiatedMerchantCancel`\" - \"`deliveredTooLate`\" - \"`expiredItem`\" - \"`invalidCoupon`\" - \"`malformedShippingAddress`\" - \"`other`\" - \"`productArrivedDamaged`\" - \"`productNotAsDescribed`\" - \"`qualityNotAsExpected`\" - \"`undeliverableShippingAddress`\" - \"`unsupportedPoBoxAddress`\" - \"`wrongProductShipped`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -8458,7 +8542,7 @@
           "items": null
         },
         "reason": {
-          "description": "The reason for the return.\n\nAcceptable values are:  \n- \"`customerDiscretionaryReturn`\" \n- \"`customerInitiatedMerchantCancel`\" \n- \"`deliveredTooLate`\" \n- \"`expiredItem`\" \n- \"`invalidCoupon`\" \n- \"`malformedShippingAddress`\" \n- \"`other`\" \n- \"`productArrivedDamaged`\" \n- \"`productNotAsDescribed`\" \n- \"`qualityNotAsExpected`\" \n- \"`undeliverableShippingAddress`\" \n- \"`unsupportedPoBoxAddress`\" \n- \"`wrongProductShipped`\"",
+          "description": "The reason for the return. Acceptable values are: - \"`customerDiscretionaryReturn`\" - \"`customerInitiatedMerchantCancel`\" - \"`deliveredTooLate`\" - \"`expiredItem`\" - \"`invalidCoupon`\" - \"`malformedShippingAddress`\" - \"`other`\" - \"`productArrivedDamaged`\" - \"`productNotAsDescribed`\" - \"`qualityNotAsExpected`\" - \"`undeliverableShippingAddress`\" - \"`unsupportedPoBoxAddress`\" - \"`wrongProductShipped`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -8534,7 +8618,7 @@
       "enumDescriptions": [],
       "properties": {
         "carrier": {
-          "description": "Deprecated. Please use shipmentInfo instead. The carrier handling the shipment. See `shipments[].carrier` in the  Orders resource representation for a list of acceptable values.",
+          "description": "Deprecated. Please use shipmentInfo instead. The carrier handling the shipment. See `shipments[].carrier` in the Orders resource representation for a list of acceptable values.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -8610,7 +8694,7 @@
       "enumDescriptions": [],
       "properties": {
         "carrier": {
-          "description": "The carrier handling the shipment. See `shipments[].carrier` in the  Orders resource representation for a list of acceptable values.",
+          "description": "The carrier handling the shipment. See `shipments[].carrier` in the Orders resource representation for a list of acceptable values.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -8652,7 +8736,7 @@
       "enumDescriptions": [],
       "properties": {
         "deliverByDate": {
-          "description": "Updated delivery by date, in ISO 8601 format. If not specified only ship by date is updated.\n\nProvided date should be within 1 year timeframe and can not be a date in the past.",
+          "description": "Updated delivery by date, in ISO 8601 format. If not specified only ship by date is updated. Provided date should be within 1 year timeframe and can not be a date in the past.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -8682,7 +8766,7 @@
           "items": null
         },
         "shipByDate": {
-          "description": "Updated ship by date, in ISO 8601 format. If not specified only deliver by date is updated.\n\nProvided date should be within 1 year timeframe and can not be a date in the past.",
+          "description": "Updated ship by date, in ISO 8601 format. If not specified only deliver by date is updated. Provided date should be within 1 year timeframe and can not be a date in the past.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -8704,7 +8788,7 @@
       "enumDescriptions": [],
       "properties": {
         "carrier": {
-          "description": "The carrier handling the shipment. Not updated if missing. See `shipments[].carrier` in the  Orders resource representation for a list of acceptable values.",
+          "description": "The carrier handling the shipment. Not updated if missing. See `shipments[].carrier` in the Orders resource representation for a list of acceptable values.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -8734,7 +8818,7 @@
           "items": null
         },
         "status": {
-          "description": "New status for the shipment. Not updated if missing.\n\nAcceptable values are:  \n- \"`delivered`\" \n- \"`undeliverable`\" \n- \"`readyForPickup`\"",
+          "description": "New status for the shipment. Not updated if missing. Acceptable values are: - \"`delivered`\" - \"`undeliverable`\" - \"`readyForPickup`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -8814,7 +8898,7 @@
           "$ref": "Errors"
         },
         "executionStatus": {
-          "description": "The status of the execution. Only defined if  \n- the request was successful; and \n- the method is not `get`, `getByMerchantOrderId`, or one of the test methods.  \n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"",
+          "description": "The status of the execution. Only defined if 1. the request was successful; and 2. the method is not `get`, `getByMerchantOrderId`, or one of the test methods. Acceptable values are: - \"`duplicate`\" - \"`executed`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -8950,7 +9034,7 @@
           "items": null
         },
         "reason": {
-          "description": "The reason for the return.\n\nAcceptable values are:  \n- \"`customerDiscretionaryReturn`\" \n- \"`customerInitiatedMerchantCancel`\" \n- \"`deliveredTooLate`\" \n- \"`expiredItem`\" \n- \"`invalidCoupon`\" \n- \"`malformedShippingAddress`\" \n- \"`other`\" \n- \"`productArrivedDamaged`\" \n- \"`productNotAsDescribed`\" \n- \"`qualityNotAsExpected`\" \n- \"`undeliverableShippingAddress`\" \n- \"`unsupportedPoBoxAddress`\" \n- \"`wrongProductShipped`\"",
+          "description": "The reason for the return. Acceptable values are: - \"`customerDiscretionaryReturn`\" - \"`customerInitiatedMerchantCancel`\" - \"`deliveredTooLate`\" - \"`expiredItem`\" - \"`invalidCoupon`\" - \"`malformedShippingAddress`\" - \"`other`\" - \"`productArrivedDamaged`\" - \"`productNotAsDescribed`\" - \"`qualityNotAsExpected`\" - \"`undeliverableShippingAddress`\" - \"`unsupportedPoBoxAddress`\" - \"`wrongProductShipped`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -8982,7 +9066,7 @@
       "enumDescriptions": [],
       "properties": {
         "executionStatus": {
-          "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"",
+          "description": "The status of the execution. Acceptable values are: - \"`duplicate`\" - \"`executed`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -9080,7 +9164,7 @@
           "items": null
         },
         "reason": {
-          "description": "The reason for the refund.\n\nAcceptable values are:  \n- \"`adjustment`\" \n- \"`courtesyAdjustment`\" \n- \"`customerCanceled`\" \n- \"`customerDiscretionaryReturn`\" \n- \"`deliveredLateByCarrier`\" \n- \"`feeAdjustment`\" \n- \"`lateShipmentCredit`\" \n- \"`noInventory`\" \n- \"`other`\" \n- \"`priceError`\" \n- \"`productArrivedDamaged`\" \n- \"`productNotAsDescribed`\" \n- \"`shippingCostAdjustment`\" \n- \"`taxAdjustment`\" \n- \"`undeliverableShippingAddress`\" \n- \"`wrongProductShipped`\"",
+          "description": "The reason for the refund. Acceptable values are: - \"`adjustment`\" - \"`courtesyAdjustment`\" - \"`customerCanceled`\" - \"`customerDiscretionaryReturn`\" - \"`deliveredLateByCarrier`\" - \"`feeAdjustment`\" - \"`lateShipmentCredit`\" - \"`noInventory`\" - \"`other`\" - \"`priceError`\" - \"`productArrivedDamaged`\" - \"`productNotAsDescribed`\" - \"`shippingCostAdjustment`\" - \"`taxAdjustment`\" - \"`undeliverableShippingAddress`\" - \"`wrongProductShipped`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -9112,7 +9196,7 @@
       "enumDescriptions": [],
       "properties": {
         "executionStatus": {
-          "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"",
+          "description": "The status of the execution. Acceptable values are: - \"`duplicate`\" - \"`executed`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -9184,7 +9268,7 @@
           "items": null
         },
         "reason": {
-          "description": "The reason for the return.\n\nAcceptable values are:  \n- \"`damagedOrUsed`\" \n- \"`missingComponent`\" \n- \"`notEligible`\" \n- \"`other`\" \n- \"`outOfReturnWindow`\"",
+          "description": "The reason for the return. Acceptable values are: - \"`damagedOrUsed`\" - \"`missingComponent`\" - \"`notEligible`\" - \"`other`\" - \"`outOfReturnWindow`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -9216,7 +9300,7 @@
       "enumDescriptions": [],
       "properties": {
         "executionStatus": {
-          "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"",
+          "description": "The status of the execution. Acceptable values are: - \"`duplicate`\" - \"`executed`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -9288,7 +9372,7 @@
           "items": null
         },
         "reason": {
-          "description": "The reason for the return.\n\nAcceptable values are:  \n- \"`customerDiscretionaryReturn`\" \n- \"`customerInitiatedMerchantCancel`\" \n- \"`deliveredTooLate`\" \n- \"`expiredItem`\" \n- \"`invalidCoupon`\" \n- \"`malformedShippingAddress`\" \n- \"`other`\" \n- \"`productArrivedDamaged`\" \n- \"`productNotAsDescribed`\" \n- \"`qualityNotAsExpected`\" \n- \"`undeliverableShippingAddress`\" \n- \"`unsupportedPoBoxAddress`\" \n- \"`wrongProductShipped`\"",
+          "description": "The reason for the return. Acceptable values are: - \"`customerDiscretionaryReturn`\" - \"`customerInitiatedMerchantCancel`\" - \"`deliveredTooLate`\" - \"`expiredItem`\" - \"`invalidCoupon`\" - \"`malformedShippingAddress`\" - \"`other`\" - \"`productArrivedDamaged`\" - \"`productNotAsDescribed`\" - \"`qualityNotAsExpected`\" - \"`undeliverableShippingAddress`\" - \"`unsupportedPoBoxAddress`\" - \"`wrongProductShipped`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -9320,7 +9404,7 @@
       "enumDescriptions": [],
       "properties": {
         "executionStatus": {
-          "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"",
+          "description": "The status of the execution. Acceptable values are: - \"`duplicate`\" - \"`executed`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -9390,7 +9474,7 @@
           "items": null
         },
         "quantity": {
-          "description": "The quantity to return and refund.",
+          "description": "The quantity to return and refund. Quantity is required.",
           "type": "integer",
           "format": "uint32",
           "enum": [],
@@ -9400,7 +9484,7 @@
           "items": null
         },
         "reason": {
-          "description": "The reason for the return.\n\nAcceptable values are:  \n- \"`customerDiscretionaryReturn`\" \n- \"`customerInitiatedMerchantCancel`\" \n- \"`deliveredTooLate`\" \n- \"`expiredItem`\" \n- \"`invalidCoupon`\" \n- \"`malformedShippingAddress`\" \n- \"`other`\" \n- \"`productArrivedDamaged`\" \n- \"`productNotAsDescribed`\" \n- \"`qualityNotAsExpected`\" \n- \"`undeliverableShippingAddress`\" \n- \"`unsupportedPoBoxAddress`\" \n- \"`wrongProductShipped`\"",
+          "description": "The reason for the return. Acceptable values are: - \"`customerDiscretionaryReturn`\" - \"`customerInitiatedMerchantCancel`\" - \"`deliveredTooLate`\" - \"`expiredItem`\" - \"`invalidCoupon`\" - \"`malformedShippingAddress`\" - \"`other`\" - \"`productArrivedDamaged`\" - \"`productNotAsDescribed`\" - \"`qualityNotAsExpected`\" - \"`undeliverableShippingAddress`\" - \"`unsupportedPoBoxAddress`\" - \"`wrongProductShipped`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -9432,7 +9516,7 @@
       "enumDescriptions": [],
       "properties": {
         "executionStatus": {
-          "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"",
+          "description": "The status of the execution. Acceptable values are: - \"`duplicate`\" - \"`executed`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -9518,7 +9602,7 @@
       "enumDescriptions": [],
       "properties": {
         "executionStatus": {
-          "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"",
+          "description": "The status of the execution. Acceptable values are: - \"`duplicate`\" - \"`executed`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -9550,7 +9634,7 @@
       "enumDescriptions": [],
       "properties": {
         "carrier": {
-          "description": "Deprecated. Please use shipmentInfo instead. The carrier handling the shipment. See `shipments[].carrier` in the  Orders resource representation for a list of acceptable values.",
+          "description": "Deprecated. Please use shipmentInfo instead. The carrier handling the shipment. See `shipments[].carrier` in the Orders resource representation for a list of acceptable values.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -9636,7 +9720,7 @@
       "enumDescriptions": [],
       "properties": {
         "executionStatus": {
-          "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"",
+          "description": "The status of the execution. Acceptable values are: - \"`duplicate`\" - \"`executed`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -9668,7 +9752,7 @@
       "enumDescriptions": [],
       "properties": {
         "deliverByDate": {
-          "description": "Updated delivery by date, in ISO 8601 format. If not specified only ship by date is updated.\n\nProvided date should be within 1 year timeframe and can not be a date in the past.",
+          "description": "Updated delivery by date, in ISO 8601 format. If not specified only ship by date is updated. Provided date should be within 1 year timeframe and can not be a date in the past.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -9708,7 +9792,7 @@
           "items": null
         },
         "shipByDate": {
-          "description": "Updated ship by date, in ISO 8601 format. If not specified only deliver by date is updated.\n\nProvided date should be within 1 year timeframe and can not be a date in the past.",
+          "description": "Updated ship by date, in ISO 8601 format. If not specified only deliver by date is updated. Provided date should be within 1 year timeframe and can not be a date in the past.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -9730,7 +9814,7 @@
       "enumDescriptions": [],
       "properties": {
         "executionStatus": {
-          "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"",
+          "description": "The status of the execution. Acceptable values are: - \"`duplicate`\" - \"`executed`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -9794,7 +9878,7 @@
       "enumDescriptions": [],
       "properties": {
         "executionStatus": {
-          "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"",
+          "description": "The status of the execution. Acceptable values are: - \"`duplicate`\" - \"`executed`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -9826,7 +9910,7 @@
       "enumDescriptions": [],
       "properties": {
         "carrier": {
-          "description": "The carrier handling the shipment. Not updated if missing. See `shipments[].carrier` in the  Orders resource representation for a list of acceptable values.",
+          "description": "The carrier handling the shipment. Not updated if missing. See `shipments[].carrier` in the Orders resource representation for a list of acceptable values.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -9866,7 +9950,7 @@
           "items": null
         },
         "status": {
-          "description": "New status for the shipment. Not updated if missing.\n\nAcceptable values are:  \n- \"`delivered`\" \n- \"`undeliverable`\" \n- \"`readyForPickup`\"",
+          "description": "New status for the shipment. Not updated if missing. Acceptable values are: - \"`delivered`\" - \"`undeliverable`\" - \"`readyForPickup`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -9898,7 +9982,7 @@
       "enumDescriptions": [],
       "properties": {
         "executionStatus": {
-          "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"",
+          "description": "The status of the execution. Acceptable values are: - \"`duplicate`\" - \"`executed`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -10038,7 +10122,7 @@
           "items": null
         },
         "inventory": {
-          "description": "The inventory to submit. Set this only if the method is `inventory`.",
+          "description": "The inventory to submit. This should be set only if the method is `inventory`.",
           "$ref": "PosInventory"
         },
         "merchantId": {
@@ -10052,7 +10136,7 @@
           "items": null
         },
         "method": {
-          "description": "The method of the batch entry.\n\nAcceptable values are:  \n- \"`delete`\" \n- \"`get`\" \n- \"`insert`\" \n- \"`inventory`\" \n- \"`sale`\"",
+          "description": "The method of the batch entry. Acceptable values are: - \"`delete`\" - \"`get`\" - \"`insert`\" - \"`inventory`\" - \"`sale`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -10062,15 +10146,15 @@
           "items": null
         },
         "sale": {
-          "description": "The sale information to submit. Set this only if the method is `sale`.",
+          "description": "The sale information to submit. This should be set only if the method is `sale`.",
           "$ref": "PosSale"
         },
         "store": {
-          "description": "The store information to submit. Set this only if the method is `insert`.",
+          "description": "The store information to submit. This should be set only if the method is `insert`.",
           "$ref": "PosStore"
         },
         "storeCode": {
-          "description": "The store code. Set this only if the method is `delete` or `get`.",
+          "description": "The store code. This should be set only if the method is `delete` or `get`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -11023,7 +11107,7 @@
     },
     "Product": {
       "id": "Product",
-      "description": "Required product attributes are primarily defined by the products data specification. See the  Products Data Specification Help Center article for information.\n\nSome attributes are country-specific, so make sure you select the appropriate country in the drop-down selector at the top of the page.  \n\nProduct data. After inserting, updating, or deleting a product, it may take several minutes before changes take effect.",
+      "description": " Required product attributes are primarily defined by the products data specification. See the Products Data Specification Help Center article for information. Some attributes are country-specific, so make sure you select the appropriate country in the drop-down selector at the top of the page. Product data. After inserting, updating, or deleting a product, it may take several minutes before changes take effect.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -11066,7 +11150,7 @@
           }
         },
         "adult": {
-          "description": "Set to true if the item is targeted towards adults.",
+          "description": "Should be set to true if the item is targeted towards adults.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -11114,7 +11198,7 @@
           "items": null
         },
         "ageGroup": {
-          "description": "Target age group of the item.\n\nAcceptable values are:  \n- \"`adult`\" \n- \"`infant`\" \n- \"`kids`\" \n- \"`newborn`\" \n- \"`toddler`\" \n- \"`youngAdult`\"",
+          "description": "Target age group of the item. Acceptable values are: - \"`adult`\" - \"`infant`\" - \"`kids`\" - \"`newborn`\" - \"`toddler`\" - \"`youngAdult`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -11136,7 +11220,7 @@
           }
         },
         "availability": {
-          "description": "Availability status of the item.\n\nAcceptable values are:  \n- \"`in stock`\" \n- \"`out of stock`\" \n- \"`preorder`\"",
+          "description": "Availability status of the item. Acceptable values are: - \"`in stock`\" - \"`out of stock`\" - \"`preorder`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -11166,7 +11250,7 @@
           "items": null
         },
         "canonicalLink": {
-          "description": "Link to the canonical version of the landing page.",
+          "description": "URL for the canonical version of your item's landing page.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -11176,7 +11260,7 @@
           "items": null
         },
         "channel": {
-          "description": "Required. The item's channel (online or local).\n\nAcceptable values are:  \n- \"`local`\" \n- \"`online`\"",
+          "description": "Required. The item's channel (online or local). Acceptable values are: - \"`local`\" - \"`online`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -11196,7 +11280,7 @@
           "items": null
         },
         "condition": {
-          "description": "Condition or state of the item.\n\nAcceptable values are:  \n- \"`local`\" \n- \"`online`\"",
+          "description": "Condition or state of the item. Acceptable values are: - \"`new`\" - \"`refurbished`\" - \"`used`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -11220,7 +11304,7 @@
           "$ref": "Price"
         },
         "customAttributes": {
-          "description": "A list of custom (merchant-provided) attributes. It can also be used for submitting any attribute of the feed specification in its generic form (e.g., `{ \"name\": \"size type\", \"value\": \"regular\" }`). This is useful for submitting attributes not explicitly exposed by the API, such as additional attributes used for Shopping Actions.",
+          "description": "A list of custom (merchant-provided) attributes. It can also be used for submitting any attribute of the feed specification in its generic form (e.g., `{ \"name\": \"size type\", \"value\": \"regular\" }`). This is useful for submitting attributes not explicitly exposed by the API, such as additional attributes used for Buy on Google (formerly known as Shopping Actions).",
           "type": "array",
           "format": null,
           "enum": [],
@@ -11374,7 +11458,7 @@
           "items": null
         },
         "energyEfficiencyClass": {
-          "description": "The energy efficiency class as defined in EU directive 2010/30/EU.\n\nAcceptable values are:  \n- \"`A`\" \n- \"`A+`\" \n- \"`A++`\" \n- \"`A+++`\" \n- \"`B`\" \n- \"`C`\" \n- \"`D`\" \n- \"`E`\" \n- \"`F`\" \n- \"`G`\"",
+          "description": "The energy efficiency class as defined in EU directive 2010/30/EU. Acceptable values are: - \"`A`\" - \"`A+`\" - \"`A++`\" - \"`A+++`\" - \"`B`\" - \"`C`\" - \"`D`\" - \"`E`\" - \"`F`\" - \"`G`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -11394,7 +11478,7 @@
           "items": null
         },
         "gender": {
-          "description": "Target gender of the item.\n\nAcceptable values are:  \n- \"`female`\" \n- \"`male`\" \n- \"`unisex`\"",
+          "description": "Target gender of the item. Acceptable values are: - \"`female`\" - \"`male`\" - \"`unisex`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -11404,7 +11488,7 @@
           "items": null
         },
         "googleProductCategory": {
-          "description": "Google's category of the item (see Google product taxonomy).",
+          "description": "Google's category of the item (see [Google product taxonomy](https://support.google.com/merchants/answer/1705911)). When querying products, this field will contain the user provided value. There is currently no way to get back the auto assigned google product categories through the API.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -11424,7 +11508,7 @@
           "items": null
         },
         "id": {
-          "description": "The REST ID of the product. Content API methods that operate on products take this as their `productId` parameter.\nThe REST ID for a product is of the form channel:contentLanguage:targetCountry: offerId.",
+          "description": "The REST ID of the product. Content API methods that operate on products take this as their `productId` parameter. The REST ID for a product is of the form channel:contentLanguage: targetCountry: offerId.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -11512,7 +11596,7 @@
           "items": null
         },
         "maxEnergyEfficiencyClass": {
-          "description": "The energy efficiency class as defined in EU directive 2010/30/EU.\n\nAcceptable values are:  \n- \"`A`\" \n- \"`A+`\" \n- \"`A++`\" \n- \"`A+++`\" \n- \"`B`\" \n- \"`C`\" \n- \"`D`\" \n- \"`E`\" \n- \"`F`\" \n- \"`G`\"",
+          "description": "The energy efficiency class as defined in EU directive 2010/30/EU. Acceptable values are: - \"`A`\" - \"`A+`\" - \"`A++`\" - \"`A+++`\" - \"`B`\" - \"`C`\" - \"`D`\" - \"`E`\" - \"`F`\" - \"`G`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -11532,7 +11616,7 @@
           "items": null
         },
         "minEnergyEfficiencyClass": {
-          "description": "The energy efficiency class as defined in EU directive 2010/30/EU.\n\nAcceptable values are:  \n- \"`A`\" \n- \"`A+`\" \n- \"`A++`\" \n- \"`A+++`\" \n- \"`B`\" \n- \"`C`\" \n- \"`D`\" \n- \"`E`\" \n- \"`F`\" \n- \"`G`\"",
+          "description": "The energy efficiency class as defined in EU directive 2010/30/EU. Acceptable values are: - \"`A`\" - \"`A+`\" - \"`A++`\" - \"`A+++`\" - \"`B`\" - \"`C`\" - \"`D`\" - \"`E`\" - \"`F`\" - \"`G`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -11552,7 +11636,7 @@
           "items": null
         },
         "mobileLink": {
-          "description": "Link to a mobile-optimized version of the landing page.",
+          "description": "URL for the mobile-optimized version of your item's landing page.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -11582,7 +11666,7 @@
           "items": null
         },
         "offerId": {
-          "description": "Required. A unique identifier for the item. Leading and trailing whitespaces are stripped and multiple whitespaces are replaced by a single whitespace upon submission. Only valid unicode characters are accepted. See the products feed specification for details.\nNote: Content API methods that operate on products take the REST ID of the product, not this identifier.",
+          "description": "Required. A unique identifier for the item. Leading and trailing whitespaces are stripped and multiple whitespaces are replaced by a single whitespace upon submission. Only valid unicode characters are accepted. See the products feed specification for details. *Note:* Content API methods that operate on products take the REST ID of the product, *not* this identifier.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -11648,7 +11732,7 @@
           "$ref": "Price"
         },
         "salePriceEffectiveDate": {
-          "description": "Date range during which the item is on sale (see products data specification).",
+          "description": "Date range during which the item is on sale (see products data specification ).",
           "type": "string",
           "format": null,
           "enum": [],
@@ -11706,7 +11790,7 @@
           "$ref": "ProductShippingDimension"
         },
         "sizeSystem": {
-          "description": "System in which the size is specified. Recommended for apparel items.\n\nAcceptable values are:  \n- \"`AU`\" \n- \"`BR`\" \n- \"`CN`\" \n- \"`DE`\" \n- \"`EU`\" \n- \"`FR`\" \n- \"`IT`\" \n- \"`JP`\" \n- \"`MEX`\" \n- \"`UK`\" \n- \"`US`\"",
+          "description": "System in which the size is specified. Recommended for apparel items. Acceptable values are: - \"`AU`\" - \"`BR`\" - \"`CN`\" - \"`DE`\" - \"`EU`\" - \"`FR`\" - \"`IT`\" - \"`JP`\" - \"`MEX`\" - \"`UK`\" - \"`US`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -11716,7 +11800,7 @@
           "items": null
         },
         "sizeType": {
-          "description": "The cut of the item. Recommended for apparel items.\n\nAcceptable values are:  \n- \"`big and tall`\" \n- \"`maternity`\" \n- \"`oversize`\" \n- \"`petite`\" \n- \"`plus`\" \n- \"`regular`\"",
+          "description": "The cut of the item. Recommended for apparel items. Acceptable values are: - \"`big and tall`\" - \"`maternity`\" - \"`oversize`\" - \"`petite`\" - \"`plus`\" - \"`regular`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -11744,7 +11828,7 @@
           }
         },
         "source": {
-          "description": "The source of the offer, i.e., how the offer was created.\n\nAcceptable values are:  \n- \"`api`\" \n- \"`crawl`\" \n- \"`feed`\"",
+          "description": "The source of the offer, i.e., how the offer was created. Acceptable values are: - \"`api`\" - \"`crawl`\" - \"`feed`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -11912,7 +11996,7 @@
           "items": null
         },
         "intention": {
-          "description": "Whether the destination is required, excluded or should be validated.\n\nAcceptable values are:  \n- \"`default`\" \n- \"`excluded`\" \n- \"`optional`\" \n- \"`required`\"",
+          "description": "Whether the destination is required, excluded or should be validated. Acceptable values are: - \"`default`\" - \"`excluded`\" - \"`optional`\" - \"`required`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -12308,7 +12392,7 @@
           "items": null
         },
         "approvalStatus": {
-          "description": "The destination's approval status.\n\nAcceptable values are:  \n- \"`approved`\" \n- \"`disapproved`\"",
+          "description": "The destination's approval status. Acceptable values are: - \"`approved`\" - \"`disapproved`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -12328,7 +12412,7 @@
           "items": null
         },
         "intention": {
-          "description": "Provided for backward compatibility only. Always set to \"required\".\n\nAcceptable values are:  \n- \"`default`\" \n- \"`excluded`\" \n- \"`optional`\" \n- \"`required`\"",
+          "description": "Provided for backward compatibility only. Always set to \"required\". Acceptable values are: - \"`default`\" - \"`excluded`\" - \"`optional`\" - \"`required`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -12492,7 +12576,7 @@
           "items": null
         },
         "taxShip": {
-          "description": "Set to true if tax is charged on shipping.",
+          "description": "Should be set to true if tax is charged on shipping.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -12622,7 +12706,7 @@
           "items": null
         },
         "method": {
-          "description": "The method of the batch entry.\n\nAcceptable values are:  \n- \"`delete`\" \n- \"`get`\" \n- \"`insert`\"",
+          "description": "The method of the batch entry. Acceptable values are: - \"`delete`\" - \"`get`\" - \"`insert`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -12848,7 +12932,7 @@
           "items": null
         },
         "method": {
-          "description": "The method of the batch entry.\n\nAcceptable values are:  \n- \"`get`\"",
+          "description": "The method of the batch entry. Acceptable values are: - \"`get`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -13106,7 +13190,7 @@
           "items": null
         },
         "reasonCode": {
-          "description": "Code of the refund reason.\n\nAcceptable values are:  \n- \"`adjustment`\" \n- \"`autoPostInternal`\" \n- \"`autoPostInvalidBillingAddress`\" \n- \"`autoPostNoInventory`\" \n- \"`autoPostPriceError`\" \n- \"`autoPostUndeliverableShippingAddress`\" \n- \"`couponAbuse`\" \n- \"`courtesyAdjustment`\" \n- \"`customerCanceled`\" \n- \"`customerDiscretionaryReturn`\" \n- \"`customerInitiatedMerchantCancel`\" \n- \"`customerSupportRequested`\" \n- \"`deliveredLateByCarrier`\" \n- \"`deliveredTooLate`\" \n- \"`expiredItem`\" \n- \"`failToPushOrderGoogleError`\" \n- \"`failToPushOrderMerchantError`\" \n- \"`failToPushOrderMerchantFulfillmentError`\" \n- \"`failToPushOrderToMerchant`\" \n- \"`failToPushOrderToMerchantOutOfStock`\" \n- \"`feeAdjustment`\" \n- \"`invalidCoupon`\" \n- \"`lateShipmentCredit`\" \n- \"`malformedShippingAddress`\" \n- \"`merchantDidNotShipOnTime`\" \n- \"`noInventory`\" \n- \"`orderTimeout`\" \n- \"`other`\" \n- \"`paymentAbuse`\" \n- \"`paymentDeclined`\" \n- \"`priceAdjustment`\" \n- \"`priceError`\" \n- \"`productArrivedDamaged`\" \n- \"`productNotAsDescribed`\" \n- \"`promoReallocation`\" \n- \"`qualityNotAsExpected`\" \n- \"`returnRefundAbuse`\" \n- \"`shippingCostAdjustment`\" \n- \"`shippingPriceError`\" \n- \"`taxAdjustment`\" \n- \"`taxError`\" \n- \"`undeliverableShippingAddress`\" \n- \"`unsupportedPoBoxAddress`\" \n- \"`wrongProductShipped`\"",
+          "description": "Code of the refund reason. Acceptable values are: - \"`adjustment`\" - \"`autoPostInternal`\" - \"`autoPostInvalidBillingAddress`\" - \"`autoPostNoInventory`\" - \"`autoPostPriceError`\" - \"`autoPostUndeliverableShippingAddress`\" - \"`couponAbuse`\" - \"`courtesyAdjustment`\" - \"`customerCanceled`\" - \"`customerDiscretionaryReturn`\" - \"`customerInitiatedMerchantCancel`\" - \"`customerSupportRequested`\" - \"`deliveredLateByCarrier`\" - \"`deliveredTooLate`\" - \"`expiredItem`\" - \"`failToPushOrderGoogleError`\" - \"`failToPushOrderMerchantError`\" - \"`failToPushOrderMerchantFulfillmentError`\" - \"`failToPushOrderToMerchant`\" - \"`failToPushOrderToMerchantOutOfStock`\" - \"`feeAdjustment`\" - \"`invalidCoupon`\" - \"`lateShipmentCredit`\" - \"`malformedShippingAddress`\" - \"`merchantDidNotShipOnTime`\" - \"`noInventory`\" - \"`orderTimeout`\" - \"`other`\" - \"`paymentAbuse`\" - \"`paymentDeclined`\" - \"`priceAdjustment`\" - \"`priceError`\" - \"`productArrivedDamaged`\" - \"`productNotAsDescribed`\" - \"`promoReallocation`\" - \"`qualityNotAsExpected`\" - \"`returnRefundAbuse`\" - \"`shippingCostAdjustment`\" - \"`shippingPriceError`\" - \"`taxAdjustment`\" - \"`taxError`\" - \"`undeliverableShippingAddress`\" - \"`unsupportedPoBoxAddress`\" - \"`wrongProductShipped`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -13148,7 +13232,7 @@
           "items": null
         },
         "returnMethodType": {
-          "description": "Type of the return method.\n\nAcceptable values are:  \n- \"`byMail`\" \n- \"`contactCustomerSupport`\" \n- \"`returnless`\"",
+          "description": "Type of the return method. Acceptable values are: - \"`byMail`\" - \"`contactCustomerSupport`\" - \"`returnless`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -13190,7 +13274,7 @@
           "items": null
         },
         "state": {
-          "description": "State of the shipment.\n\nAcceptable values are:  \n- \"`completed`\" \n- \"`new`\" \n- \"`shipped`\" \n- \"`undeliverable`\" \n- \"`pending`\"",
+          "description": "State of the shipment. Acceptable values are: - \"`completed`\" - \"`new`\" - \"`shipped`\" - \"`undeliverable`\" - \"`pending`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -13270,7 +13354,7 @@
           "$ref": "DeliveryTime"
         },
         "eligibility": {
-          "description": "Eligibility for this service.\n\nAcceptable values are:  \n- \"`All scenarios`\" \n- \"`All scenarios except Shopping Actions`\" \n- \"`Shopping Actions`\"",
+          "description": "Eligibility for this service. Acceptable values are: - \"`All scenarios`\" - \"`All scenarios except Shopping Actions`\" - \"`Shopping Actions`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -13314,7 +13398,7 @@
           }
         },
         "shipmentType": {
-          "description": "Type of locations this service ships orders to.\n\nAcceptable values are:  \n- \"`delivery`\" \n- \"`pickup`\"",
+          "description": "Type of locations this service ships orders to. Acceptable values are: - \"`delivery`\" - \"`pickup`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -13428,7 +13512,7 @@
       "enumDescriptions": [],
       "properties": {
         "carrier": {
-          "description": "The shipping carrier that handles the package.\n\nAcceptable values are:  \n- \"`boxtal`\" \n- \"`bpost`\" \n- \"`chronopost`\" \n- \"`colisPrive`\" \n- \"`colissimo`\" \n- \"`cxt`\" \n- \"`deliv`\" \n- \"`dhl`\" \n- \"`dpd`\" \n- \"`dynamex`\" \n- \"`eCourier`\" \n- \"`easypost`\" \n- \"`efw`\" \n- \"`fedex`\" \n- \"`fedexSmartpost`\" \n- \"`geodis`\" \n- \"`gls`\" \n- \"`googleCourier`\" \n- \"`gsx`\" \n- \"`jdLogistics`\" \n- \"`laPoste`\" \n- \"`lasership`\" \n- \"`manual`\" \n- \"`mpx`\" \n- \"`onTrac`\" \n- \"`other`\" \n- \"`tnt`\" \n- \"`uds`\" \n- \"`ups`\" \n- \"`usps`\"",
+          "description": "The shipping carrier that handles the package. Acceptable values are: - \"`boxtal`\" - \"`bpost`\" - \"`chronopost`\" - \"`colisPrive`\" - \"`colissimo`\" - \"`cxt`\" - \"`deliv`\" - \"`dhl`\" - \"`dpd`\" - \"`dynamex`\" - \"`eCourier`\" - \"`easypost`\" - \"`efw`\" - \"`fedex`\" - \"`fedexSmartpost`\" - \"`geodis`\" - \"`gls`\" - \"`googleCourier`\" - \"`gsx`\" - \"`jdLogistics`\" - \"`laPoste`\" - \"`lasership`\" - \"`manual`\" - \"`mpx`\" - \"`onTrac`\" - \"`other`\" - \"`tnt`\" - \"`uds`\" - \"`ups`\" - \"`usps`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -13560,7 +13644,7 @@
           "items": null
         },
         "method": {
-          "description": "The method of the batch entry.\n\nAcceptable values are:  \n- \"`get`\" \n- \"`update`\"",
+          "description": "The method of the batch entry. Acceptable values are: - \"`get`\" - \"`update`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -13898,7 +13982,7 @@
           "$ref": "TestOrderPaymentMethod"
         },
         "predefinedDeliveryAddress": {
-          "description": "Required. Identifier of one of the predefined delivery addresses for the delivery.\n\nAcceptable values are:  \n- \"`dwight`\" \n- \"`jim`\" \n- \"`pam`\"",
+          "description": "Required. Identifier of one of the predefined delivery addresses for the delivery. Acceptable values are: - \"`dwight`\" - \"`jim`\" - \"`pam`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -13908,7 +13992,7 @@
           "items": null
         },
         "predefinedPickupDetails": {
-          "description": "Identifier of one of the predefined pickup details. Required for orders containing line items with shipping type `pickup`.\n\nAcceptable values are:  \n- \"`dwight`\" \n- \"`jim`\" \n- \"`pam`\"",
+          "description": "Identifier of one of the predefined pickup details. Required for orders containing line items with shipping type `pickup`. Acceptable values are: - \"`dwight`\" - \"`jim`\" - \"`pam`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -13938,7 +14022,7 @@
           "$ref": "Price"
         },
         "shippingOption": {
-          "description": "Required. The requested shipping option.\n\nAcceptable values are:  \n- \"`economy`\" \n- \"`expedited`\" \n- \"`oneDay`\" \n- \"`sameDay`\" \n- \"`standard`\" \n- \"`twoDay`\"",
+          "description": "Required. The requested shipping option. Acceptable values are: - \"`economy`\" - \"`expedited`\" - \"`oneDay`\" - \"`sameDay`\" - \"`standard`\" - \"`twoDay`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -13960,7 +14044,7 @@
       "enumDescriptions": [],
       "properties": {
         "email": {
-          "description": "Required. Email address of the customer.\n\nAcceptable values are:  \n- \"`pog.dwight.schrute@gmail.com`\" \n- \"`pog.jim.halpert@gmail.com`\" \n- \"`penpog.pam.beesly@gmail.comding`\"",
+          "description": "Required. Email address of the customer. Acceptable values are: - \"`pog.dwight.schrute@gmail.com`\" - \"`pog.jim.halpert@gmail.com`\" - \"`penpog.pam.beesly@gmail.comding`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -14006,7 +14090,7 @@
       "enumDescriptions": [],
       "properties": {
         "explicitMarketingPreference": {
-          "description": "Last know user use selection regards marketing preferences. In certain cases selection might not be known, so this field would be empty.\n\nAcceptable values are:  \n- \"`denied`\" \n- \"`granted`\"",
+          "description": "Last know user use selection regards marketing preferences. In certain cases selection might not be known, so this field would be empty. Acceptable values are: - \"`denied`\" - \"`granted`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -14086,7 +14170,7 @@
           "items": null
         },
         "channel": {
-          "description": "Deprecated.\n\nAcceptable values are:  \n- \"`online`\"",
+          "description": "Deprecated. Acceptable values are: - \"`online`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -14096,7 +14180,7 @@
           "items": null
         },
         "condition": {
-          "description": "Required. Condition or state of the item.\n\nAcceptable values are:  \n- \"`new`\"",
+          "description": "Required. Condition or state of the item. Acceptable values are: - \"`new`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -14106,7 +14190,7 @@
           "items": null
         },
         "contentLanguage": {
-          "description": "Required. The two-letter ISO 639-1 language code for the item.\n\nAcceptable values are:  \n- \"`en`\" \n- \"`fr`\"",
+          "description": "Required. The two-letter ISO 639-1 language code for the item. Acceptable values are: - \"`en`\" - \"`fr`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -14182,7 +14266,7 @@
           "$ref": "Price"
         },
         "targetCountry": {
-          "description": "Required. The CLDR territory code of the target country of the product.",
+          "description": "Required. The CLDR territory // code of the target country of the product.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -14256,7 +14340,7 @@
           "items": null
         },
         "predefinedBillingAddress": {
-          "description": "The billing address.\n\nAcceptable values are:  \n- \"`dwight`\" \n- \"`jim`\" \n- \"`pam`\"",
+          "description": "The billing address. Acceptable values are: - \"`dwight`\" - \"`jim`\" - \"`pam`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -14266,7 +14350,7 @@
           "items": null
         },
         "type": {
-          "description": "The type of instrument. Note that real orders might have different values than the four values accepted by `createTestOrder`.\n\nAcceptable values are:  \n- \"`AMEX`\" \n- \"`DISCOVER`\" \n- \"`MASTERCARD`\" \n- \"`VISA`\"",
+          "description": "The type of instrument. Note that real orders might have different values than the four values accepted by `createTestOrder`. Acceptable values are: - \"`AMEX`\" - \"`DISCOVER`\" - \"`MASTERCARD`\" - \"`VISA`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -14472,7 +14556,7 @@
           }
         },
         "type": {
-          "description": "[required] Type of the additional charge.\n\nAcceptable values are:  \n- \"`shipping`\"",
+          "description": "[required] Type of the additional charge. Acceptable values are: - \"`shipping`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -14508,7 +14592,7 @@
           "items": null
         },
         "taxType": {
-          "description": "[required] Type of the tax.\n\nAcceptable values are:  \n- \"`otherFee`\" \n- \"`otherFeeTax`\" \n- \"`sales`\"",
+          "description": "[required] Type of the tax. Acceptable values are: - \"`otherFee`\" - \"`otherFeeTax`\" - \"`sales`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -14586,7 +14670,7 @@
       "enumDescriptions": [],
       "properties": {
         "unit": {
-          "description": "Required. The weight unit.\n\nAcceptable values are:  \n- \"`kg`\" \n- \"`lb`\"",
+          "description": "Required. The weight unit. Acceptable values are: - \"`kg`\" - \"`lb`\" ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -15616,7 +15700,7 @@
           "id": "content.datafeeds.fetchnow",
           "path": "{merchantId}/datafeeds/{datafeedId}/fetchNow",
           "httpMethod": "POST",
-          "description": "Invokes a fetch for the datafeed in your Merchant Center account.",
+          "description": "Invokes a fetch for the datafeed in your Merchant Center account. If you need to call this method more than once per day, we recommend you use the Products service to update your product data.",
           "parameters": {
             "datafeedId": {
               "description": "The ID of the datafeed to be fetched.",
@@ -16672,10 +16756,10 @@
           "parameterOrder": [
             "merchantId",
             "accountId",
-            "contactEmail",
-            "contactName",
             "country",
-            "language"
+            "language",
+            "contactName",
+            "contactEmail"
           ],
           "request": null,
           "response": {
@@ -16995,7 +17079,7 @@
               "description": "The first date which disbursements occurred. In ISO 8601 format.",
               "default": null,
               "location": "query",
-              "required": true,
+              "required": false,
               "type": "string",
               "format": null,
               "minimum": null,
@@ -17049,8 +17133,7 @@
             }
           },
           "parameterOrder": [
-            "merchantId",
-            "disbursementStartDate"
+            "merchantId"
           ],
           "request": null,
           "response": {
@@ -17145,7 +17228,7 @@
               "description": "The first date in which transaction occurred. In ISO 8601 format.",
               "default": null,
               "location": "query",
-              "required": true,
+              "required": false,
               "type": "string",
               "format": null,
               "minimum": null,
@@ -17158,8 +17241,7 @@
           },
           "parameterOrder": [
             "merchantId",
-            "disbursementId",
-            "transactionStartDate"
+            "disbursementId"
           ],
           "request": null,
           "response": {
@@ -17304,8 +17386,8 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "returnCreationTimeAsc",
-                "returnCreationTimeDesc"
+                "RETURN_CREATION_TIME_DESC",
+                "RETURN_CREATION_TIME_ASC"
               ],
               "enumDescriptions": [
                 "",
@@ -17881,11 +17963,11 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "template1",
-                "template1a",
-                "template1b",
-                "template2",
-                "template3"
+                "TEMPLATE1",
+                "TEMPLATE2",
+                "TEMPLATE1A",
+                "TEMPLATE1B",
+                "TEMPLATE3"
               ],
               "enumDescriptions": [
                 "",
@@ -17918,7 +18000,7 @@
           "id": "content.orders.instorerefundlineitem",
           "path": "{merchantId}/orders/{orderId}/inStoreRefundLineItem",
           "httpMethod": "POST",
-          "description": "Deprecated. Notifies that item return and refund was handled directly by merchant outside of Google payments processing (e.g. cash refund done in store).\nNote: We recommend calling the returnrefundlineitem method to refund in-store returns. We will issue the refund directly to the customer. This helps to prevent possible differences arising between merchant and Google transaction records. We also recommend having the point of sale system communicate with Google to ensure that customers do not receive a double refund by first refunding via Google then via an in-store return.",
+          "description": "Deprecated. Notifies that item return and refund was handled directly by merchant outside of Google payments processing (e.g. cash refund done in store). Note: We recommend calling the returnrefundlineitem method to refund in-store returns. We will issue the refund directly to the customer. This helps to prevent possible differences arising between merchant and Google transaction records. We also recommend having the point of sale system communicate with Google to ensure that customers do not receive a double refund by first refunding via Google then via an in-store return.",
           "parameters": {
             "merchantId": {
               "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
@@ -17975,7 +18057,7 @@
           "description": "Lists the orders in your Merchant Center account.",
           "parameters": {
             "acknowledged": {
-              "description": "Obtains orders that match the acknowledgement status. When set to true, obtains orders that have been acknowledged. When false, obtains orders that have not been acknowledged.\nWe recommend using this filter set to `false`, in conjunction with the `acknowledge` call, such that only un-acknowledged orders are returned.",
+              "description": "Obtains orders that match the acknowledgement status. When set to true, obtains orders that have been acknowledged. When false, obtains orders that have not been acknowledged. We recommend using this filter set to `false`, in conjunction with the `acknowledge` call, such that only un-acknowledged orders are returned. ",
               "default": null,
               "location": "query",
               "required": false,
@@ -18017,7 +18099,7 @@
               "repeated": false
             },
             "orderBy": {
-              "description": "Order results by placement date in descending or ascending order.\n\nAcceptable values are:\n- placedDateAsc\n- placedDateDesc",
+              "description": "Order results by placement date in descending or ascending order. Acceptable values are: - placedDateAsc - placedDateDesc ",
               "default": null,
               "location": "query",
               "required": false,
@@ -18083,17 +18165,17 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "active",
-                "canceled",
-                "completed",
-                "delivered",
-                "inProgress",
-                "partiallyDelivered",
-                "partiallyReturned",
-                "partiallyShipped",
-                "pendingShipment",
-                "returned",
-                "shipped"
+                "ACTIVE",
+                "COMPLETED",
+                "CANCELED",
+                "IN_PROGRESS",
+                "PENDING_SHIPMENT",
+                "PARTIALLY_SHIPPED",
+                "SHIPPED",
+                "PARTIALLY_DELIVERED",
+                "DELIVERED",
+                "PARTIALLY_RETURNED",
+                "RETURNED"
               ],
               "enumDescriptions": [
                 "",

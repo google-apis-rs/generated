@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("content2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200617")
-            .about("Manages product items, inventory, and Merchant Center accounts for Google Shopping.")
+            .version("0.1.0-20210311")
+            .about("Manage your product listings and accounts for Google Shopping")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -131,8 +131,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             datafeeds0 = datafeeds0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("fetchnow")
-                .about("Invokes a fetch for the datafeed in your Merchant Center account.");
+            let mcmd = SubCommand::with_name("fetchnow").about("Invokes a fetch for the datafeed in your Merchant Center account. If you need to call this method more than once per day, we recommend you use the Products service to update your product data.");
             datafeeds0 = datafeeds0.subcommand(mcmd);
         }
         {
@@ -329,7 +328,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             orders0 = orders0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("instorerefundlineitem").about("Deprecated. Notifies that item return and refund was handled directly by merchant outside of Google payments processing (e.g. cash refund done in store).\nNote: We recommend calling the returnrefundlineitem method to refund in-store returns. We will issue the refund directly to the customer. This helps to prevent possible differences arising between merchant and Google transaction records. We also recommend having the point of sale system communicate with Google to ensure that customers do not receive a double refund by first refunding via Google then via an in-store return.");
+            let mcmd = SubCommand::with_name("instorerefundlineitem").about("Deprecated. Notifies that item return and refund was handled directly by merchant outside of Google payments processing (e.g. cash refund done in store). Note: We recommend calling the returnrefundlineitem method to refund in-store returns. We will issue the refund directly to the customer. This helps to prevent possible differences arising between merchant and Google transaction records. We also recommend having the point of sale system communicate with Google to ensure that customers do not receive a double refund by first refunding via Google then via an in-store return.");
             orders0 = orders0.subcommand(mcmd);
         }
         {

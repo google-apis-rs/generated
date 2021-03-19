@@ -1,4 +1,4 @@
-#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*deleteSnapshots*](resources/projects/struct.DeleteSnapshotsRequestBuilder.html), [*workerMessages*](resources/projects/struct.WorkerMessagesRequestBuilder.html)\n      * [catalog_templates](resources/projects/catalog_templates/struct.CatalogTemplatesActions.html)\n        * [*commit*](resources/projects/catalog_templates/struct.CommitRequestBuilder.html), [*delete*](resources/projects/catalog_templates/struct.DeleteRequestBuilder.html), [*get*](resources/projects/catalog_templates/struct.GetRequestBuilder.html), [*label*](resources/projects/catalog_templates/struct.LabelRequestBuilder.html), [*tag*](resources/projects/catalog_templates/struct.TagRequestBuilder.html)\n        * [template_versions](resources/projects/catalog_templates/template_versions/struct.TemplateVersionsActions.html)\n          * [*create*](resources/projects/catalog_templates/template_versions/struct.CreateRequestBuilder.html)\n      * [jobs](resources/projects/jobs/struct.JobsActions.html)\n        * [*aggregated*](resources/projects/jobs/struct.AggregatedRequestBuilder.html), [*create*](resources/projects/jobs/struct.CreateRequestBuilder.html), [*get*](resources/projects/jobs/struct.GetRequestBuilder.html), [*getMetrics*](resources/projects/jobs/struct.GetMetricsRequestBuilder.html), [*list*](resources/projects/jobs/struct.ListRequestBuilder.html), [*snapshot*](resources/projects/jobs/struct.SnapshotRequestBuilder.html), [*update*](resources/projects/jobs/struct.UpdateRequestBuilder.html)\n        * [debug](resources/projects/jobs/debug/struct.DebugActions.html)\n          * [*getConfig*](resources/projects/jobs/debug/struct.GetConfigRequestBuilder.html), [*sendCapture*](resources/projects/jobs/debug/struct.SendCaptureRequestBuilder.html)\n        * [messages](resources/projects/jobs/messages/struct.MessagesActions.html)\n          * [*list*](resources/projects/jobs/messages/struct.ListRequestBuilder.html)\n        * [work_items](resources/projects/jobs/work_items/struct.WorkItemsActions.html)\n          * [*lease*](resources/projects/jobs/work_items/struct.LeaseRequestBuilder.html), [*reportStatus*](resources/projects/jobs/work_items/struct.ReportStatusRequestBuilder.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*workerMessages*](resources/projects/locations/struct.WorkerMessagesRequestBuilder.html)\n        * [flex_templates](resources/projects/locations/flex_templates/struct.FlexTemplatesActions.html)\n          * [*launch*](resources/projects/locations/flex_templates/struct.LaunchRequestBuilder.html)\n        * [jobs](resources/projects/locations/jobs/struct.JobsActions.html)\n          * [*create*](resources/projects/locations/jobs/struct.CreateRequestBuilder.html), [*get*](resources/projects/locations/jobs/struct.GetRequestBuilder.html), [*getMetrics*](resources/projects/locations/jobs/struct.GetMetricsRequestBuilder.html), [*list*](resources/projects/locations/jobs/struct.ListRequestBuilder.html), [*snapshot*](resources/projects/locations/jobs/struct.SnapshotRequestBuilder.html), [*update*](resources/projects/locations/jobs/struct.UpdateRequestBuilder.html)\n          * [debug](resources/projects/locations/jobs/debug/struct.DebugActions.html)\n            * [*getConfig*](resources/projects/locations/jobs/debug/struct.GetConfigRequestBuilder.html), [*sendCapture*](resources/projects/locations/jobs/debug/struct.SendCaptureRequestBuilder.html)\n          * [messages](resources/projects/locations/jobs/messages/struct.MessagesActions.html)\n            * [*list*](resources/projects/locations/jobs/messages/struct.ListRequestBuilder.html)\n          * [snapshots](resources/projects/locations/jobs/snapshots/struct.SnapshotsActions.html)\n            * [*list*](resources/projects/locations/jobs/snapshots/struct.ListRequestBuilder.html)\n          * [work_items](resources/projects/locations/jobs/work_items/struct.WorkItemsActions.html)\n            * [*lease*](resources/projects/locations/jobs/work_items/struct.LeaseRequestBuilder.html), [*reportStatus*](resources/projects/locations/jobs/work_items/struct.ReportStatusRequestBuilder.html)\n        * [snapshots](resources/projects/locations/snapshots/struct.SnapshotsActions.html)\n          * [*delete*](resources/projects/locations/snapshots/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/snapshots/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/snapshots/struct.ListRequestBuilder.html)\n        * [sql](resources/projects/locations/sql/struct.SqlActions.html)\n          * [*validate*](resources/projects/locations/sql/struct.ValidateRequestBuilder.html)\n        * [templates](resources/projects/locations/templates/struct.TemplatesActions.html)\n          * [*create*](resources/projects/locations/templates/struct.CreateRequestBuilder.html), [*get*](resources/projects/locations/templates/struct.GetRequestBuilder.html), [*launch*](resources/projects/locations/templates/struct.LaunchRequestBuilder.html)\n      * [snapshots](resources/projects/snapshots/struct.SnapshotsActions.html)\n        * [*get*](resources/projects/snapshots/struct.GetRequestBuilder.html), [*list*](resources/projects/snapshots/struct.ListRequestBuilder.html)\n      * [template_versions](resources/projects/template_versions/struct.TemplateVersionsActions.html)\n        * [*list*](resources/projects/template_versions/struct.ListRequestBuilder.html)\n      * [templates](resources/projects/templates/struct.TemplatesActions.html)\n        * [*create*](resources/projects/templates/struct.CreateRequestBuilder.html), [*get*](resources/projects/templates/struct.GetRequestBuilder.html), [*launch*](resources/projects/templates/struct.LaunchRequestBuilder.html)\n"]
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*deleteSnapshots*](resources/projects/struct.DeleteSnapshotsRequestBuilder.html), [*workerMessages*](resources/projects/struct.WorkerMessagesRequestBuilder.html)\n      * [catalog_templates](resources/projects/catalog_templates/struct.CatalogTemplatesActions.html)\n        * [*commit*](resources/projects/catalog_templates/struct.CommitRequestBuilder.html), [*delete*](resources/projects/catalog_templates/struct.DeleteRequestBuilder.html), [*get*](resources/projects/catalog_templates/struct.GetRequestBuilder.html), [*label*](resources/projects/catalog_templates/struct.LabelRequestBuilder.html), [*tag*](resources/projects/catalog_templates/struct.TagRequestBuilder.html)\n        * [template_versions](resources/projects/catalog_templates/template_versions/struct.TemplateVersionsActions.html)\n          * [*create*](resources/projects/catalog_templates/template_versions/struct.CreateRequestBuilder.html)\n      * [jobs](resources/projects/jobs/struct.JobsActions.html)\n        * [*aggregated*](resources/projects/jobs/struct.AggregatedRequestBuilder.html), [*create*](resources/projects/jobs/struct.CreateRequestBuilder.html), [*get*](resources/projects/jobs/struct.GetRequestBuilder.html), [*getMetrics*](resources/projects/jobs/struct.GetMetricsRequestBuilder.html), [*list*](resources/projects/jobs/struct.ListRequestBuilder.html), [*snapshot*](resources/projects/jobs/struct.SnapshotRequestBuilder.html), [*update*](resources/projects/jobs/struct.UpdateRequestBuilder.html)\n        * [debug](resources/projects/jobs/debug/struct.DebugActions.html)\n          * [*getConfig*](resources/projects/jobs/debug/struct.GetConfigRequestBuilder.html), [*sendCapture*](resources/projects/jobs/debug/struct.SendCaptureRequestBuilder.html)\n        * [messages](resources/projects/jobs/messages/struct.MessagesActions.html)\n          * [*list*](resources/projects/jobs/messages/struct.ListRequestBuilder.html)\n        * [work_items](resources/projects/jobs/work_items/struct.WorkItemsActions.html)\n          * [*lease*](resources/projects/jobs/work_items/struct.LeaseRequestBuilder.html), [*reportStatus*](resources/projects/jobs/work_items/struct.ReportStatusRequestBuilder.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*workerMessages*](resources/projects/locations/struct.WorkerMessagesRequestBuilder.html)\n        * [flex_templates](resources/projects/locations/flex_templates/struct.FlexTemplatesActions.html)\n          * [*launch*](resources/projects/locations/flex_templates/struct.LaunchRequestBuilder.html)\n        * [jobs](resources/projects/locations/jobs/struct.JobsActions.html)\n          * [*create*](resources/projects/locations/jobs/struct.CreateRequestBuilder.html), [*get*](resources/projects/locations/jobs/struct.GetRequestBuilder.html), [*getExecutionDetails*](resources/projects/locations/jobs/struct.GetExecutionDetailsRequestBuilder.html), [*getMetrics*](resources/projects/locations/jobs/struct.GetMetricsRequestBuilder.html), [*list*](resources/projects/locations/jobs/struct.ListRequestBuilder.html), [*snapshot*](resources/projects/locations/jobs/struct.SnapshotRequestBuilder.html), [*update*](resources/projects/locations/jobs/struct.UpdateRequestBuilder.html)\n          * [debug](resources/projects/locations/jobs/debug/struct.DebugActions.html)\n            * [*getConfig*](resources/projects/locations/jobs/debug/struct.GetConfigRequestBuilder.html), [*sendCapture*](resources/projects/locations/jobs/debug/struct.SendCaptureRequestBuilder.html)\n          * [messages](resources/projects/locations/jobs/messages/struct.MessagesActions.html)\n            * [*list*](resources/projects/locations/jobs/messages/struct.ListRequestBuilder.html)\n          * [snapshots](resources/projects/locations/jobs/snapshots/struct.SnapshotsActions.html)\n            * [*list*](resources/projects/locations/jobs/snapshots/struct.ListRequestBuilder.html)\n          * [stages](resources/projects/locations/jobs/stages/struct.StagesActions.html)\n            * [*getExecutionDetails*](resources/projects/locations/jobs/stages/struct.GetExecutionDetailsRequestBuilder.html)\n          * [work_items](resources/projects/locations/jobs/work_items/struct.WorkItemsActions.html)\n            * [*lease*](resources/projects/locations/jobs/work_items/struct.LeaseRequestBuilder.html), [*reportStatus*](resources/projects/locations/jobs/work_items/struct.ReportStatusRequestBuilder.html)\n        * [snapshots](resources/projects/locations/snapshots/struct.SnapshotsActions.html)\n          * [*delete*](resources/projects/locations/snapshots/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/snapshots/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/snapshots/struct.ListRequestBuilder.html)\n        * [sql](resources/projects/locations/sql/struct.SqlActions.html)\n          * [*validate*](resources/projects/locations/sql/struct.ValidateRequestBuilder.html)\n        * [templates](resources/projects/locations/templates/struct.TemplatesActions.html)\n          * [*create*](resources/projects/locations/templates/struct.CreateRequestBuilder.html), [*get*](resources/projects/locations/templates/struct.GetRequestBuilder.html), [*launch*](resources/projects/locations/templates/struct.LaunchRequestBuilder.html)\n      * [snapshots](resources/projects/snapshots/struct.SnapshotsActions.html)\n        * [*get*](resources/projects/snapshots/struct.GetRequestBuilder.html), [*list*](resources/projects/snapshots/struct.ListRequestBuilder.html)\n      * [template_versions](resources/projects/template_versions/struct.TemplateVersionsActions.html)\n        * [*list*](resources/projects/template_versions/struct.ListRequestBuilder.html)\n      * [templates](resources/projects/templates/struct.TemplatesActions.html)\n        * [*create*](resources/projects/templates/struct.CreateRequestBuilder.html), [*get*](resources/projects/templates/struct.GetRequestBuilder.html), [*launch*](resources/projects/templates/struct.LaunchRequestBuilder.html)\n"]
 pub mod scopes {
     #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
     pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
@@ -50,14 +50,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ApproximateReportedProgress {
-        #[doc = "Total amount of parallelism in the portion of input of this task that has\nalready been consumed and is no longer active. In the first two examples\nabove (see remaining_parallelism), the value should be 29 or 2\nrespectively.  The sum of remaining_parallelism and consumed_parallelism\nshould equal the total amount of parallelism in this work item.  If\nspecified, must be finite."]
+        #[doc = "Total amount of parallelism in the portion of input of this task that has already been consumed and is no longer active. In the first two examples above (see remaining_parallelism), the value should be 29 or 2 respectively. The sum of remaining_parallelism and consumed_parallelism should equal the total amount of parallelism in this work item. If specified, must be finite."]
         #[serde(
             rename = "consumedParallelism",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub consumed_parallelism: ::std::option::Option<crate::schemas::ReportedParallelism>,
-        #[doc = "Completion as fraction of the input consumed, from 0.0 (beginning, nothing\nconsumed), to 1.0 (end of the input, entire input consumed)."]
+        #[doc = "Completion as fraction of the input consumed, from 0.0 (beginning, nothing consumed), to 1.0 (end of the input, entire input consumed)."]
         #[serde(
             rename = "fractionConsumed",
             default,
@@ -71,7 +71,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub position: ::std::option::Option<crate::schemas::Position>,
-        #[doc = "Total amount of parallelism in the input of this task that remains,\n(i.e. can be delegated to this task and any new tasks via dynamic\nsplitting). Always at least 1 for non-finished work items and 0 for\nfinished.\n\n\"Amount of parallelism\" refers to how many non-empty parts of the input\ncan be read in parallel. This does not necessarily equal number\nof records. An input that can be read in parallel down to the\nindividual records is called \"perfectly splittable\".\nAn example of non-perfectly parallelizable input is a block-compressed\nfile format where a block of records has to be read as a whole,\nbut different blocks can be read in parallel.\n\nExamples:\n\n* If we are processing record #30 (starting at 1) out of 50 in a perfectly\n  splittable 50-record input, this value should be 21 (20 remaining + 1\n  current).\n* If we are reading through block 3 in a block-compressed file consisting\n  of 5 blocks, this value should be 3 (since blocks 4 and 5 can be\n  processed in parallel by new tasks via dynamic splitting and the current\n  task remains processing block 3).\n* If we are reading through the last block in a block-compressed file,\n  or reading or processing the last record in a perfectly splittable\n  input, this value should be 1, because apart from the current task, no\n  additional remainder can be split off."]
+        #[doc = "Total amount of parallelism in the input of this task that remains, (i.e. can be delegated to this task and any new tasks via dynamic splitting). Always at least 1 for non-finished work items and 0 for finished. \"Amount of parallelism\" refers to how many non-empty parts of the input can be read in parallel. This does not necessarily equal number of records. An input that can be read in parallel down to the individual records is called \"perfectly splittable\". An example of non-perfectly parallelizable input is a block-compressed file format where a block of records has to be read as a whole, but different blocks can be read in parallel. Examples: * If we are processing record #30 (starting at 1) out of 50 in a perfectly splittable 50-record input, this value should be 21 (20 remaining + 1 current). * If we are reading through block 3 in a block-compressed file consisting of 5 blocks, this value should be 3 (since blocks 4 and 5 can be processed in parallel by new tasks via dynamic splitting and the current task remains processing block 3). * If we are reading through the last block in a block-compressed file, or reading or processing the last record in a perfectly splittable input, this value should be 1, because apart from the current task, no additional remainder can be split off."]
         #[serde(
             rename = "remainingParallelism",
             default,
@@ -93,14 +93,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ApproximateSplitRequest {
-        #[doc = "A fraction at which to split the work item, from 0.0 (beginning of the\ninput) to 1.0 (end of the input)."]
+        #[doc = "A fraction at which to split the work item, from 0.0 (beginning of the input) to 1.0 (end of the input)."]
         #[serde(
             rename = "fractionConsumed",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fraction_consumed: ::std::option::Option<f64>,
-        #[doc = "The fraction of the remainder of work to split the work item at, from 0.0\n(split at the current position) to 1.0 (end of the input)."]
+        #[doc = "The fraction of the remainder of work to split the work item at, from 0.0 (split at the current position) to 1.0 (end of the input)."]
         #[serde(
             rename = "fractionOfRemainder",
             default,
@@ -180,7 +180,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub current_num_workers: ::std::option::Option<i64>,
-        #[doc = "A message describing why the system decided to adjust the current\nnumber of workers, why it failed, or why the system decided to\nnot make any changes to the number of workers."]
+        #[doc = "A message describing why the system decided to adjust the current number of workers, why it failed, or why the system decided to not make any changes to the number of workers."]
         #[serde(
             rename = "description",
             default,
@@ -202,14 +202,14 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub target_num_workers: ::std::option::Option<i64>,
-        #[doc = "The time this event was emitted to indicate a new target or current\nnum_workers value."]
+        #[doc = "The time this event was emitted to indicate a new target or current num_workers value."]
         #[serde(
             rename = "time",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub time: ::std::option::Option<String>,
-        #[doc = "A short and friendly name for the worker pool this event refers to,\npopulated from the value of PoolStageRelation::user_pool_name."]
+        #[doc = "A short and friendly name for the worker pool this event refers to, populated from the value of PoolStageRelation::user_pool_name."]
         #[serde(
             rename = "workerPool",
             default,
@@ -229,15 +229,15 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AutoscalingEventEventType {
-        #[doc = "The ACTUATION_FAILURE type should be used when we want to report\nan error to the user indicating why the current number of workers\nin the pool could not be changed.\nDisplayed in the current status and history widgets."]
+        #[doc = "The ACTUATION_FAILURE type should be used when we want to report an error to the user indicating why the current number of workers in the pool could not be changed. Displayed in the current status and history widgets."]
         ActuationFailure,
-        #[doc = "The CURRENT_NUM_WORKERS_CHANGED type should be used when actual worker\npool size has been changed, but the target_num_workers has not changed."]
+        #[doc = "The CURRENT_NUM_WORKERS_CHANGED type should be used when actual worker pool size has been changed, but the target_num_workers has not changed."]
         CurrentNumWorkersChanged,
-        #[doc = "Used when we want to report to the user a reason why we are\nnot currently adjusting the number of workers.\nShould specify both target_num_workers, current_num_workers and a\ndecision_message."]
+        #[doc = "Used when we want to report to the user a reason why we are not currently adjusting the number of workers. Should specify both target_num_workers, current_num_workers and a decision_message."]
         NoChange,
-        #[doc = "The TARGET_NUM_WORKERS_CHANGED type should be used when the target\nworker pool size has changed at the start of an actuation. An event\nshould always be specified as TARGET_NUM_WORKERS_CHANGED if it reflects\na change in the target_num_workers."]
+        #[doc = "The TARGET_NUM_WORKERS_CHANGED type should be used when the target worker pool size has changed at the start of an actuation. An event should always be specified as TARGET_NUM_WORKERS_CHANGED if it reflects a change in the target_num_workers."]
         TargetNumWorkersChanged,
-        #[doc = "Default type for the enum.  Value should never be returned."]
+        #[doc = "Default type for the enum. Value should never be returned."]
         TypeUnknown,
     }
     impl AutoscalingEventEventType {
@@ -599,7 +599,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "User name for the original user transform or collection with which this\nsource is most closely associated."]
+        #[doc = "User name for the original user transform or collection with which this source is most closely associated."]
         #[serde(
             rename = "originalTransformOrCollection",
             default,
@@ -644,7 +644,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "User name for the original user transform with which this transform is\nmost closely associated."]
+        #[doc = "User name for the original user transform with which this transform is most closely associated."]
         #[serde(
             rename = "originalTransform",
             default,
@@ -786,6 +786,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ContainerSpec {
+        #[doc = "Default runtime environment for the job."]
+        #[serde(
+            rename = "defaultEnvironment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub default_environment:
+            ::std::option::Option<crate::schemas::FlexTemplateRuntimeEnvironment>,
         #[doc = "Name of the docker container image. E.g., gcr.io/project/some-image"]
         #[serde(
             rename = "image",
@@ -1109,14 +1117,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub execution_step_name: ::std::option::Option<String>,
-        #[doc = "Index of an input collection that's being read from/written to as a side\ninput.\nThe index identifies a step's side inputs starting by 1 (e.g. the first\nside input has input_index 1, the third has input_index 3).\nSide inputs are identified by a pair of (original_step_name, input_index).\nThis field helps uniquely identify them."]
+        #[doc = "Index of an input collection that's being read from/written to as a side input. The index identifies a step's side inputs starting by 1 (e.g. the first side input has input_index 1, the third has input_index 3). Side inputs are identified by a pair of (original_step_name, input_index). This field helps uniquely identify them."]
         #[serde(
             rename = "inputIndex",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub input_index: ::std::option::Option<i32>,
-        #[doc = "Counter name. Not necessarily globally-unique, but unique within the\ncontext of the other fields.\nRequired."]
+        #[doc = "Counter name. Not necessarily globally-unique, but unique within the context of the other fields. Required."]
         #[serde(
             rename = "name",
             default,
@@ -1137,14 +1145,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub origin_namespace: ::std::option::Option<String>,
-        #[doc = "The step name requesting an operation, such as GBK.\nI.e. the ParDo causing a read/write from shuffle to occur, or a\nread from side inputs."]
+        #[doc = "The step name requesting an operation, such as GBK. I.e. the ParDo causing a read/write from shuffle to occur, or a read from side inputs."]
         #[serde(
             rename = "originalRequestingStepName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub original_requesting_step_name: ::std::option::Option<String>,
-        #[doc = "System generated name of the original step in the user's graph, before\noptimization."]
+        #[doc = "System generated name of the original step in the user's graph, before optimization."]
         #[serde(
             rename = "originalStepName",
             default,
@@ -1370,7 +1378,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub boolean: ::std::option::Option<bool>,
-        #[doc = "True if this counter is reported as the total cumulative aggregate\nvalue accumulated since the worker started working on this WorkItem.\nBy default this is false, indicating that this counter is reported\nas a delta."]
+        #[doc = "True if this counter is reported as the total cumulative aggregate value accumulated since the worker started working on this WorkItem. By default this is false, indicating that this counter is reported as a delta."]
         #[serde(
             rename = "cumulative",
             default,
@@ -1447,7 +1455,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name_and_kind: ::std::option::Option<crate::schemas::NameAndKind>,
-        #[doc = "The service-generated short identifier for this counter.\nThe short_id -> (name, metadata) mapping is constant for the lifetime of\na job."]
+        #[doc = "The service-generated short identifier for this counter. The short_id -> (name, metadata) mapping is constant for the lifetime of a job."]
         #[serde(
             rename = "shortId",
             default,
@@ -1485,7 +1493,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Cputime {
-        #[doc = "Average CPU utilization rate (% non-idle cpu / second) since previous\nsample."]
+        #[doc = "Average CPU utilization rate (% non-idle cpu / second) since previous sample."]
         #[serde(
             rename = "rate",
             default,
@@ -1499,7 +1507,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub timestamp: ::std::option::Option<String>,
-        #[doc = "Total active CPU time across all cores (ie., non-idle) in milliseconds\nsince start-up."]
+        #[doc = "Total active CPU time across all cores (ie., non-idle) in milliseconds since start-up."]
         #[serde(
             rename = "totalMs",
             default,
@@ -1538,7 +1546,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub environment: ::std::option::Option<crate::schemas::RuntimeEnvironment>,
-        #[doc = "Required. A Cloud Storage path to the template from which to\ncreate the job.\nMust be a valid Cloud Storage URL, beginning with `gs://`."]
+        #[doc = "Required. A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`."]
         #[serde(
             rename = "gcsPath",
             default,
@@ -1552,7 +1560,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub job_name: ::std::option::Option<String>,
-        #[doc = "The [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to\nwhich to direct the request."]
+        #[doc = "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request."]
         #[serde(
             rename = "location",
             default,
@@ -1652,14 +1660,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DataDiskAssignment {
-        #[doc = "Mounted data disks. The order is important a data disk's 0-based index in\nthis list defines which persistent directory the disk is mounted to, for\nexample the list of { \"myproject-1014-104817-4c2-harness-0-disk-0\" },\n{ \"myproject-1014-104817-4c2-harness-0-disk-1\" }."]
+        #[doc = "Mounted data disks. The order is important a data disk's 0-based index in this list defines which persistent directory the disk is mounted to, for example the list of { \"myproject-1014-104817-4c2-harness-0-disk-0\" }, { \"myproject-1014-104817-4c2-harness-0-disk-1\" }."]
         #[serde(
             rename = "dataDisks",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub data_disks: ::std::option::Option<Vec<String>>,
-        #[doc = "VM instance name the data disks mounted to, for example\n\"myproject-1014-104817-4c2-harness-0\"."]
+        #[doc = "VM instance name the data disks mounted to, for example \"myproject-1014-104817-4c2-harness-0\"."]
         #[serde(
             rename = "vmInstance",
             default,
@@ -1711,6 +1719,37 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for DatastoreIODetails {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DebugOptions {
+        #[doc = "When true, enables the logging of the literal hot key to the user's Cloud Logging."]
+        #[serde(
+            rename = "enableHotKeyLogging",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub enable_hot_key_logging: ::std::option::Option<bool>,
+    }
+    impl ::google_field_selector::FieldSelector for DebugOptions {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DebugOptions {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1884,7 +1923,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Disk {
-        #[doc = "Disk storage type, as defined by Google Compute Engine.  This\nmust be a disk type appropriate to the project and zone in which\nthe workers will run.  If unknown or unspecified, the service\nwill attempt to choose a reasonable default.\n\nFor example, the standard persistent disk type is a resource name\ntypically ending in \"pd-standard\".  If SSD persistent disks are\navailable, the resource name typically ends with \"pd-ssd\".  The\nactual valid values are defined the Google Compute Engine API,\nnot by the Cloud Dataflow API; consult the Google Compute Engine\ndocumentation for more information about determining the set of\navailable disk types for a particular project and zone.\n\nGoogle Compute Engine Disk types are local to a particular\nproject in a particular zone, and so the resource name will\ntypically look something like this:\n\ncompute.googleapis.com/projects/project-id/zones/zone/diskTypes/pd-standard"]
+        #[doc = "Disk storage type, as defined by Google Compute Engine. This must be a disk type appropriate to the project and zone in which the workers will run. If unknown or unspecified, the service will attempt to choose a reasonable default. For example, the standard persistent disk type is a resource name typically ending in \"pd-standard\". If SSD persistent disks are available, the resource name typically ends with \"pd-ssd\". The actual valid values are defined the Google Compute Engine API, not by the Cloud Dataflow API; consult the Google Compute Engine documentation for more information about determining the set of available disk types for a particular project and zone. Google Compute Engine Disk types are local to a particular project in a particular zone, and so the resource name will typically look something like this: compute.googleapis.com/projects/project-id/zones/zone/diskTypes/pd-standard"]
         #[serde(
             rename = "diskType",
             default,
@@ -1898,7 +1937,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mount_point: ::std::option::Option<String>,
-        #[doc = "Size of disk in GB.  If zero or unspecified, the service will\nattempt to choose a reasonable default."]
+        #[doc = "Size of disk in GB. If zero or unspecified, the service will attempt to choose a reasonable default."]
         #[serde(
             rename = "sizeGb",
             default,
@@ -1956,7 +1995,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub java_class_value: ::std::option::Option<String>,
-        #[doc = "The key identifying the display data.\nThis is intended to be used as a label for the display data\nwhen viewed in a dax monitoring system."]
+        #[doc = "The key identifying the display data. This is intended to be used as a label for the display data when viewed in a dax monitoring system."]
         #[serde(
             rename = "key",
             default,
@@ -1970,14 +2009,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub label: ::std::option::Option<String>,
-        #[doc = "The namespace for the key. This is usually a class name or programming\nlanguage namespace (i.e. python module) which defines the display data.\nThis allows a dax monitoring system to specially handle the data\nand perform custom rendering."]
+        #[doc = "The namespace for the key. This is usually a class name or programming language namespace (i.e. python module) which defines the display data. This allows a dax monitoring system to specially handle the data and perform custom rendering."]
         #[serde(
             rename = "namespace",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub namespace: ::std::option::Option<String>,
-        #[doc = "A possible additional shorter value to display.\nFor example a java_class_name_value of com.mypackage.MyDoFn\nwill be stored with MyDoFn as the short_str_value and\ncom.mypackage.MyDoFn as the java_class_name value.\nshort_str_value can be displayed and java_class_name_value\nwill be displayed as a tooltip."]
+        #[doc = "A possible additional shorter value to display. For example a java_class_name_value of com.mypackage.MyDoFn will be stored with MyDoFn as the short_str_value and com.mypackage.MyDoFn as the java_class_name value. short_str_value can be displayed and java_class_name_value will be displayed as a tooltip."]
         #[serde(
             rename = "shortStrValue",
             default,
@@ -2048,7 +2087,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub min: ::std::option::Option<crate::schemas::SplitInt64>,
-        #[doc = "Use an int64 since we'd prefer the added precision. If overflow is a common\nproblem we can detect it and use an additional int64 or a double."]
+        #[doc = "Use an int64 since we'd prefer the added precision. If overflow is a common problem we can detect it and use an additional int64 or a double."]
         #[serde(
             rename = "sum",
             default,
@@ -2075,14 +2114,14 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct DynamicSourceSplit {
-        #[doc = "Primary part (continued to be processed by worker).\nSpecified relative to the previously-current source.\nBecomes current."]
+        #[doc = "Primary part (continued to be processed by worker). Specified relative to the previously-current source. Becomes current."]
         #[serde(
             rename = "primary",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub primary: ::std::option::Option<crate::schemas::DerivedSource>,
-        #[doc = "Residual part (returned to the pool of work).\nSpecified relative to the previously-current source."]
+        #[doc = "Residual part (returned to the pool of work). Specified relative to the previously-current source."]
         #[serde(
             rename = "residual",
             default,
@@ -2126,21 +2165,28 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Environment {
-        #[doc = "The type of cluster manager API to use.  If unknown or\nunspecified, the service will attempt to choose a reasonable\ndefault.  This should be in the form of the API service name,\ne.g. \"compute.googleapis.com\"."]
+        #[doc = "The type of cluster manager API to use. If unknown or unspecified, the service will attempt to choose a reasonable default. This should be in the form of the API service name, e.g. \"compute.googleapis.com\"."]
         #[serde(
             rename = "clusterManagerApiService",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cluster_manager_api_service: ::std::option::Option<String>,
-        #[doc = "The dataset for the current project where various workflow\nrelated tables are stored.\n\nThe supported resource type is:\n\nGoogle BigQuery:\nbigquery.googleapis.com/{dataset}"]
+        #[doc = "The dataset for the current project where various workflow related tables are stored. The supported resource type is: Google BigQuery: bigquery.googleapis.com/{dataset}"]
         #[serde(
             rename = "dataset",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub dataset: ::std::option::Option<String>,
-        #[doc = "The list of experiments to enable."]
+        #[doc = "Any debugging options to be supplied to the job."]
+        #[serde(
+            rename = "debugOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub debug_options: ::std::option::Option<crate::schemas::DebugOptions>,
+        #[doc = "The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options. For more details see the rationale at go/user-specified-service-options."]
         #[serde(
             rename = "experiments",
             default,
@@ -2163,7 +2209,7 @@ pub mod schemas {
         )]
         pub internal_experiments:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "The Cloud Dataflow SDK pipeline options specified by the user. These\noptions are passed through the service and are used to recreate the\nSDK pipeline options on the worker in a language agnostic and platform\nindependent way."]
+        #[doc = "The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way."]
         #[serde(
             rename = "sdkPipelineOptions",
             default,
@@ -2178,14 +2224,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub service_account_email: ::std::option::Option<String>,
-        #[doc = "If set, contains the Cloud KMS key identifier used to encrypt data\nat rest, AKA a Customer Managed Encryption Key (CMEK).\n\nFormat:\nprojects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY"]
+        #[doc = "If set, contains the Cloud KMS key identifier used to encrypt data at rest, AKA a Customer Managed Encryption Key (CMEK). Format: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY"]
         #[serde(
             rename = "serviceKmsKeyName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub service_kms_key_name: ::std::option::Option<String>,
-        #[doc = "The prefix of the resources the system should use for temporary\nstorage.  The system will append the suffix \"/temp-{JOBNAME} to\nthis resource prefix, where {JOBNAME} is the value of the\njob_name field.  The resulting bucket and object prefix is used\nas the prefix of the resources used to store temporary data\nneeded during the job execution.  NOTE: This will override the\nvalue in taskrunner_settings.\nThe supported resource type is:\n\nGoogle Cloud Storage:\n\nstorage.googleapis.com/{bucket}/{object}\nbucket.storage.googleapis.com/{object}"]
+        #[doc = "The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on). For more details see the rationale at go/user-specified-service-options."]
+        #[serde(
+            rename = "serviceOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub service_options: ::std::option::Option<Vec<String>>,
+        #[doc = "Output only. The shuffle mode used for the job."]
+        #[serde(
+            rename = "shuffleMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub shuffle_mode: ::std::option::Option<crate::schemas::EnvironmentShuffleMode>,
+        #[doc = "The prefix of the resources the system should use for temporary storage. The system will append the suffix \"/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}"]
         #[serde(
             rename = "tempStoragePrefix",
             default,
@@ -2200,7 +2260,7 @@ pub mod schemas {
         )]
         pub user_agent:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "A structure describing which components and their versions of the service\nare required in order to run the job."]
+        #[doc = "A structure describing which components and their versions of the service are required in order to run the job."]
         #[serde(
             rename = "version",
             default,
@@ -2208,21 +2268,21 @@ pub mod schemas {
         )]
         pub version:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "The worker pools. At least one \"harness\" worker pool must be\nspecified in order for the job to have workers."]
+        #[doc = "The worker pools. At least one \"harness\" worker pool must be specified in order for the job to have workers."]
         #[serde(
             rename = "workerPools",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub worker_pools: ::std::option::Option<Vec<crate::schemas::WorkerPool>>,
-        #[doc = "The Compute Engine region\n(https://cloud.google.com/compute/docs/regions-zones/regions-zones) in\nwhich worker processing should occur, e.g. \"us-west1\". Mutually exclusive\nwith worker_zone. If neither worker_region nor worker_zone is specified,\ndefault to the control plane's region."]
+        #[doc = "The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. \"us-west1\". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region."]
         #[serde(
             rename = "workerRegion",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub worker_region: ::std::option::Option<String>,
-        #[doc = "The Compute Engine zone\n(https://cloud.google.com/compute/docs/regions-zones/regions-zones) in\nwhich worker processing should occur, e.g. \"us-west1-a\". Mutually exclusive\nwith worker_region. If neither worker_region nor worker_zone is specified,\na zone in the control plane's region is chosen based on available capacity."]
+        #[doc = "The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. \"us-west1-a\". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity."]
         #[serde(
             rename = "workerZone",
             default,
@@ -2328,6 +2388,82 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum EnvironmentShuffleMode {
+        #[doc = "Shuffle is done on the service side."]
+        ServiceBased,
+        #[doc = "Shuffle mode information is not available."]
+        ShuffleModeUnspecified,
+        #[doc = "Shuffle is done on the worker VMs."]
+        VmBased,
+    }
+    impl EnvironmentShuffleMode {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                EnvironmentShuffleMode::ServiceBased => "SERVICE_BASED",
+                EnvironmentShuffleMode::ShuffleModeUnspecified => "SHUFFLE_MODE_UNSPECIFIED",
+                EnvironmentShuffleMode::VmBased => "VM_BASED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for EnvironmentShuffleMode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for EnvironmentShuffleMode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<EnvironmentShuffleMode, ()> {
+            Ok(match s {
+                "SERVICE_BASED" => EnvironmentShuffleMode::ServiceBased,
+                "SHUFFLE_MODE_UNSPECIFIED" => EnvironmentShuffleMode::ShuffleModeUnspecified,
+                "VM_BASED" => EnvironmentShuffleMode::VmBased,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for EnvironmentShuffleMode {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for EnvironmentShuffleMode {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for EnvironmentShuffleMode {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "SERVICE_BASED" => EnvironmentShuffleMode::ServiceBased,
+                "SHUFFLE_MODE_UNSPECIFIED" => EnvironmentShuffleMode::ShuffleModeUnspecified,
+                "VM_BASED" => EnvironmentShuffleMode::VmBased,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for EnvironmentShuffleMode {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for EnvironmentShuffleMode {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2376,29 +2512,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ExecutionStageStateExecutionStageState {
-        #[doc = "`JOB_STATE_CANCELLED` indicates that the job has been explicitly\ncancelled. This is a terminal job state. This state may only be\nset via a Cloud Dataflow `UpdateJob` call, and only if the job has not\nyet reached another terminal state."]
+        #[doc = "`JOB_STATE_CANCELLED` indicates that the job has been explicitly cancelled. This is a terminal job state. This state may only be set via a Cloud Dataflow `UpdateJob` call, and only if the job has not yet reached another terminal state."]
         JobStateCancelled,
-        #[doc = "`JOB_STATE_CANCELLING` indicates that the job has been explicitly cancelled\nand is in the process of stopping.  Jobs that are cancelling may only\ntransition to `JOB_STATE_CANCELLED` or `JOB_STATE_FAILED`."]
+        #[doc = "`JOB_STATE_CANCELLING` indicates that the job has been explicitly cancelled and is in the process of stopping. Jobs that are cancelling may only transition to `JOB_STATE_CANCELLED` or `JOB_STATE_FAILED`."]
         JobStateCancelling,
-        #[doc = "`JOB_STATE_DONE` indicates that the job has successfully completed.\nThis is a terminal job state.  This state may be set by the Cloud Dataflow\nservice, as a transition from `JOB_STATE_RUNNING`. It may also be set via a\nCloud Dataflow `UpdateJob` call, if the job has not yet reached a terminal\nstate."]
+        #[doc = "`JOB_STATE_DONE` indicates that the job has successfully completed. This is a terminal job state. This state may be set by the Cloud Dataflow service, as a transition from `JOB_STATE_RUNNING`. It may also be set via a Cloud Dataflow `UpdateJob` call, if the job has not yet reached a terminal state."]
         JobStateDone,
-        #[doc = "`JOB_STATE_DRAINED` indicates that the job has been drained.\nA drained job terminated by stopping pulling from its input sources and\nprocessing any data that remained in-flight when draining was requested.\nThis state is a terminal state, may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_DRAINING`."]
+        #[doc = "`JOB_STATE_DRAINED` indicates that the job has been drained. A drained job terminated by stopping pulling from its input sources and processing any data that remained in-flight when draining was requested. This state is a terminal state, may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_DRAINING`."]
         JobStateDrained,
-        #[doc = "`JOB_STATE_DRAINING` indicates that the job is in the process of draining.\nA draining job has stopped pulling from its input sources and is processing\nany data that remains in-flight. This state may be set via a Cloud Dataflow\n`UpdateJob` call, but only as a transition from `JOB_STATE_RUNNING`. Jobs\nthat are draining may only transition to `JOB_STATE_DRAINED`,\n`JOB_STATE_CANCELLED`, or `JOB_STATE_FAILED`."]
+        #[doc = "`JOB_STATE_DRAINING` indicates that the job is in the process of draining. A draining job has stopped pulling from its input sources and is processing any data that remains in-flight. This state may be set via a Cloud Dataflow `UpdateJob` call, but only as a transition from `JOB_STATE_RUNNING`. Jobs that are draining may only transition to `JOB_STATE_DRAINED`, `JOB_STATE_CANCELLED`, or `JOB_STATE_FAILED`."]
         JobStateDraining,
-        #[doc = "`JOB_STATE_FAILED` indicates that the job has failed.  This is a\nterminal job state.  This state may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_RUNNING`."]
+        #[doc = "`JOB_STATE_FAILED` indicates that the job has failed. This is a terminal job state. This state may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_RUNNING`."]
         JobStateFailed,
-        #[doc = "`JOB_STATE_PENDING` indicates that the job has been created but is not yet\nrunning.  Jobs that are pending may only transition to `JOB_STATE_RUNNING`,\nor `JOB_STATE_FAILED`."]
+        #[doc = "`JOB_STATE_PENDING` indicates that the job has been created but is not yet running. Jobs that are pending may only transition to `JOB_STATE_RUNNING`, or `JOB_STATE_FAILED`."]
         JobStatePending,
-        #[doc = "`JOB_STATE_QUEUED` indicates that the job has been created but is being\ndelayed until launch. Jobs that are queued may only transition to\n`JOB_STATE_PENDING` or `JOB_STATE_CANCELLED`."]
+        #[doc = "`JOB_STATE_QUEUED` indicates that the job has been created but is being delayed until launch. Jobs that are queued may only transition to `JOB_STATE_PENDING` or `JOB_STATE_CANCELLED`."]
         JobStateQueued,
+        #[doc = "`JOB_STATE_RESOURCE_CLEANING_UP` indicates that the batch job's associated resources are currently being cleaned up after a successful run. Currently, this is an opt-in feature, please reach out to Cloud support team if you are intersted."]
+        JobStateResourceCleaningUp,
         #[doc = "`JOB_STATE_RUNNING` indicates that the job is currently running."]
         JobStateRunning,
-        #[doc = "`JOB_STATE_STOPPED` indicates that the job has not\nyet started to run."]
+        #[doc = "`JOB_STATE_STOPPED` indicates that the job has not yet started to run."]
         JobStateStopped,
         #[doc = "The job's run state isn't specified."]
         JobStateUnknown,
-        #[doc = "`JOB_STATE_UPDATED` indicates that the job was successfully updated,\nmeaning that this job was stopped and another job was started, inheriting\nstate from this one. This is a terminal job state. This state may only be\nset by the Cloud Dataflow service, and only as a transition from\n`JOB_STATE_RUNNING`."]
+        #[doc = "`JOB_STATE_UPDATED` indicates that the job was successfully updated, meaning that this job was stopped and another job was started, inheriting state from this one. This is a terminal job state. This state may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_RUNNING`."]
         JobStateUpdated,
     }
     impl ExecutionStageStateExecutionStageState {
@@ -2414,6 +2552,9 @@ pub mod schemas {
                 ExecutionStageStateExecutionStageState::JobStateFailed => "JOB_STATE_FAILED",
                 ExecutionStageStateExecutionStageState::JobStatePending => "JOB_STATE_PENDING",
                 ExecutionStageStateExecutionStageState::JobStateQueued => "JOB_STATE_QUEUED",
+                ExecutionStageStateExecutionStageState::JobStateResourceCleaningUp => {
+                    "JOB_STATE_RESOURCE_CLEANING_UP"
+                }
                 ExecutionStageStateExecutionStageState::JobStateRunning => "JOB_STATE_RUNNING",
                 ExecutionStageStateExecutionStageState::JobStateStopped => "JOB_STATE_STOPPED",
                 ExecutionStageStateExecutionStageState::JobStateUnknown => "JOB_STATE_UNKNOWN",
@@ -2440,6 +2581,9 @@ pub mod schemas {
                 "JOB_STATE_FAILED" => ExecutionStageStateExecutionStageState::JobStateFailed,
                 "JOB_STATE_PENDING" => ExecutionStageStateExecutionStageState::JobStatePending,
                 "JOB_STATE_QUEUED" => ExecutionStageStateExecutionStageState::JobStateQueued,
+                "JOB_STATE_RESOURCE_CLEANING_UP" => {
+                    ExecutionStageStateExecutionStageState::JobStateResourceCleaningUp
+                }
                 "JOB_STATE_RUNNING" => ExecutionStageStateExecutionStageState::JobStateRunning,
                 "JOB_STATE_STOPPED" => ExecutionStageStateExecutionStageState::JobStateStopped,
                 "JOB_STATE_UNKNOWN" => ExecutionStageStateExecutionStageState::JobStateUnknown,
@@ -2478,6 +2622,9 @@ pub mod schemas {
                 "JOB_STATE_FAILED" => ExecutionStageStateExecutionStageState::JobStateFailed,
                 "JOB_STATE_PENDING" => ExecutionStageStateExecutionStageState::JobStatePending,
                 "JOB_STATE_QUEUED" => ExecutionStageStateExecutionStageState::JobStateQueued,
+                "JOB_STATE_RESOURCE_CLEANING_UP" => {
+                    ExecutionStageStateExecutionStageState::JobStateResourceCleaningUp
+                }
                 "JOB_STATE_RUNNING" => ExecutionStageStateExecutionStageState::JobStateRunning,
                 "JOB_STATE_STOPPED" => ExecutionStageStateExecutionStageState::JobStateStopped,
                 "JOB_STATE_UNKNOWN" => ExecutionStageStateExecutionStageState::JobStateUnknown,
@@ -2563,6 +2710,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub output_source: ::std::option::Option<Vec<crate::schemas::StageSource>>,
+        #[doc = "Other stages that must complete before this stage can run."]
+        #[serde(
+            rename = "prerequisiteStage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub prerequisite_stage: ::std::option::Option<Vec<String>>,
     }
     impl ::google_field_selector::FieldSelector for ExecutionStageSummary {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -2693,7 +2847,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct FailedLocation {
-        #[doc = "The name of the [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that\nfailed to respond."]
+        #[doc = "The name of the [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that failed to respond."]
         #[serde(
             rename = "name",
             default,
@@ -2774,6 +2928,325 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FlexTemplateRuntimeEnvironment {
+        #[doc = "Additional experiment flags for the job."]
+        #[serde(
+            rename = "additionalExperiments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub additional_experiments: ::std::option::Option<Vec<String>>,
+        #[doc = "Additional user labels to be specified for the job. Keys and values must follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of \"key\": value pairs. Example: { \"name\": \"wrench\", \"mass\": \"1kg\", \"count\": \"3\" }."]
+        #[serde(
+            rename = "additionalUserLabels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub additional_user_labels:
+            ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Whether to enable Streaming Engine for the job."]
+        #[serde(
+            rename = "enableStreamingEngine",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub enable_streaming_engine: ::std::option::Option<bool>,
+        #[doc = "Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/flexrs"]
+        #[serde(
+            rename = "flexrsGoal",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub flexrs_goal:
+            ::std::option::Option<crate::schemas::FlexTemplateRuntimeEnvironmentFlexrsGoal>,
+        #[doc = "Configuration for VM IPs."]
+        #[serde(
+            rename = "ipConfiguration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub ip_configuration:
+            ::std::option::Option<crate::schemas::FlexTemplateRuntimeEnvironmentIpConfiguration>,
+        #[doc = "Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/"]
+        #[serde(
+            rename = "kmsKeyName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub kms_key_name: ::std::option::Option<String>,
+        #[doc = "The machine type to use for the job. Defaults to the value from the template if not specified."]
+        #[serde(
+            rename = "machineType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub machine_type: ::std::option::Option<String>,
+        #[doc = "The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000."]
+        #[serde(
+            rename = "maxWorkers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub max_workers: ::std::option::Option<i32>,
+        #[doc = "Network to which VMs will be assigned. If empty or unspecified, the service will use the network \"default\"."]
+        #[serde(
+            rename = "network",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub network: ::std::option::Option<String>,
+        #[doc = "The initial number of Google Compute Engine instances for the job."]
+        #[serde(
+            rename = "numWorkers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub num_workers: ::std::option::Option<i32>,
+        #[doc = "The email address of the service account to run the job as."]
+        #[serde(
+            rename = "serviceAccountEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub service_account_email: ::std::option::Option<String>,
+        #[doc = "Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form \"https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK\" or \"regions/REGION/subnetworks/SUBNETWORK\". If the subnetwork is located in a Shared VPC network, you must use the complete URL."]
+        #[serde(
+            rename = "subnetwork",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub subnetwork: ::std::option::Option<String>,
+        #[doc = "The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`."]
+        #[serde(
+            rename = "tempLocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub temp_location: ::std::option::Option<String>,
+        #[doc = "The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. \"us-west1\". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region."]
+        #[serde(
+            rename = "workerRegion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub worker_region: ::std::option::Option<String>,
+        #[doc = "The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. \"us-west1-a\". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence."]
+        #[serde(
+            rename = "workerZone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub worker_zone: ::std::option::Option<String>,
+        #[doc = "The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence."]
+        #[serde(
+            rename = "zone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub zone: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for FlexTemplateRuntimeEnvironment {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for FlexTemplateRuntimeEnvironment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum FlexTemplateRuntimeEnvironmentFlexrsGoal {
+        #[doc = "Optimize for lower cost."]
+        FlexrsCostOptimized,
+        #[doc = "Optimize for lower execution time."]
+        FlexrsSpeedOptimized,
+        #[doc = "Run in the default mode."]
+        FlexrsUnspecified,
+    }
+    impl FlexTemplateRuntimeEnvironmentFlexrsGoal {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                FlexTemplateRuntimeEnvironmentFlexrsGoal::FlexrsCostOptimized => {
+                    "FLEXRS_COST_OPTIMIZED"
+                }
+                FlexTemplateRuntimeEnvironmentFlexrsGoal::FlexrsSpeedOptimized => {
+                    "FLEXRS_SPEED_OPTIMIZED"
+                }
+                FlexTemplateRuntimeEnvironmentFlexrsGoal::FlexrsUnspecified => "FLEXRS_UNSPECIFIED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FlexTemplateRuntimeEnvironmentFlexrsGoal {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FlexTemplateRuntimeEnvironmentFlexrsGoal {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<FlexTemplateRuntimeEnvironmentFlexrsGoal, ()> {
+            Ok(match s {
+                "FLEXRS_COST_OPTIMIZED" => {
+                    FlexTemplateRuntimeEnvironmentFlexrsGoal::FlexrsCostOptimized
+                }
+                "FLEXRS_SPEED_OPTIMIZED" => {
+                    FlexTemplateRuntimeEnvironmentFlexrsGoal::FlexrsSpeedOptimized
+                }
+                "FLEXRS_UNSPECIFIED" => FlexTemplateRuntimeEnvironmentFlexrsGoal::FlexrsUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for FlexTemplateRuntimeEnvironmentFlexrsGoal {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for FlexTemplateRuntimeEnvironmentFlexrsGoal {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for FlexTemplateRuntimeEnvironmentFlexrsGoal {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "FLEXRS_COST_OPTIMIZED" => {
+                    FlexTemplateRuntimeEnvironmentFlexrsGoal::FlexrsCostOptimized
+                }
+                "FLEXRS_SPEED_OPTIMIZED" => {
+                    FlexTemplateRuntimeEnvironmentFlexrsGoal::FlexrsSpeedOptimized
+                }
+                "FLEXRS_UNSPECIFIED" => FlexTemplateRuntimeEnvironmentFlexrsGoal::FlexrsUnspecified,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for FlexTemplateRuntimeEnvironmentFlexrsGoal {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for FlexTemplateRuntimeEnvironmentFlexrsGoal {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum FlexTemplateRuntimeEnvironmentIpConfiguration {
+        #[doc = "Workers should have private IP addresses."]
+        WorkerIpPrivate,
+        #[doc = "Workers should have public IP addresses."]
+        WorkerIpPublic,
+        #[doc = "The configuration is unknown, or unspecified."]
+        WorkerIpUnspecified,
+    }
+    impl FlexTemplateRuntimeEnvironmentIpConfiguration {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                FlexTemplateRuntimeEnvironmentIpConfiguration::WorkerIpPrivate => {
+                    "WORKER_IP_PRIVATE"
+                }
+                FlexTemplateRuntimeEnvironmentIpConfiguration::WorkerIpPublic => "WORKER_IP_PUBLIC",
+                FlexTemplateRuntimeEnvironmentIpConfiguration::WorkerIpUnspecified => {
+                    "WORKER_IP_UNSPECIFIED"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FlexTemplateRuntimeEnvironmentIpConfiguration {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FlexTemplateRuntimeEnvironmentIpConfiguration {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<FlexTemplateRuntimeEnvironmentIpConfiguration, ()> {
+            Ok(match s {
+                "WORKER_IP_PRIVATE" => {
+                    FlexTemplateRuntimeEnvironmentIpConfiguration::WorkerIpPrivate
+                }
+                "WORKER_IP_PUBLIC" => FlexTemplateRuntimeEnvironmentIpConfiguration::WorkerIpPublic,
+                "WORKER_IP_UNSPECIFIED" => {
+                    FlexTemplateRuntimeEnvironmentIpConfiguration::WorkerIpUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for FlexTemplateRuntimeEnvironmentIpConfiguration {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for FlexTemplateRuntimeEnvironmentIpConfiguration {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for FlexTemplateRuntimeEnvironmentIpConfiguration {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "WORKER_IP_PRIVATE" => {
+                    FlexTemplateRuntimeEnvironmentIpConfiguration::WorkerIpPrivate
+                }
+                "WORKER_IP_PUBLIC" => FlexTemplateRuntimeEnvironmentIpConfiguration::WorkerIpPublic,
+                "WORKER_IP_UNSPECIFIED" => {
+                    FlexTemplateRuntimeEnvironmentIpConfiguration::WorkerIpUnspecified
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for FlexTemplateRuntimeEnvironmentIpConfiguration {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for FlexTemplateRuntimeEnvironmentIpConfiguration {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct FloatingPointList {
@@ -2837,14 +3310,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GetDebugConfigRequest {
-        #[doc = "The internal component id for which debug configuration is\nrequested."]
+        #[doc = "The internal component id for which debug configuration is requested."]
         #[serde(
             rename = "componentId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub component_id: ::std::option::Option<String>,
-        #[doc = "The [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that\ncontains the job specified by job_id."]
+        #[doc = "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by job_id."]
         #[serde(
             rename = "location",
             default,
@@ -2902,7 +3375,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GetTemplateResponse {
-        #[doc = "The template metadata describing the template name, available\nparameters, etc."]
+        #[doc = "The template metadata describing the template name, available parameters, etc."]
         #[serde(
             rename = "metadata",
             default,
@@ -2916,7 +3389,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub runtime_metadata: ::std::option::Option<crate::schemas::RuntimeMetadata>,
-        #[doc = "The status of the get template request. Any problems with the\nrequest will be indicated in the error_details."]
+        #[doc = "The status of the get template request. Any problems with the request will be indicated in the error_details."]
         #[serde(
             rename = "status",
             default,
@@ -3030,14 +3503,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Histogram {
-        #[doc = "Counts of values in each bucket. For efficiency, prefix and trailing\nbuckets with count = 0 are elided. Buckets can store the full range of\nvalues of an unsigned long, with ULLONG_MAX falling into the 59th bucket\nwith range [1e19, 2e19)."]
+        #[doc = "Counts of values in each bucket. For efficiency, prefix and trailing buckets with count = 0 are elided. Buckets can store the full range of values of an unsigned long, with ULLONG_MAX falling into the 59th bucket with range [1e19, 2e19)."]
         #[serde(
             rename = "bucketCounts",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bucket_counts: ::std::option::Option<Vec<i64>>,
-        #[doc = "Starting index of first stored bucket. The non-inclusive upper-bound of\nthe ith bucket is given by:\npow(10,(i-first_bucket_offset)/3) * (1,2,5)[(i-first_bucket_offset)%3]"]
+        #[doc = "Starting index of first stored bucket. The non-inclusive upper-bound of the ith bucket is given by: pow(10,(i-first_bucket_offset)/3) * (1,2,5)[(i-first_bucket_offset)%3]"]
         #[serde(
             rename = "firstBucketOffset",
             default,
@@ -3075,7 +3548,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub hot_key_age: ::std::option::Option<String>,
-        #[doc = "System-defined name of the step containing this hot key.\nUnique across the workflow."]
+        #[doc = "System-defined name of the step containing this hot key. Unique across the workflow."]
         #[serde(
             rename = "systemName",
             default,
@@ -3120,7 +3593,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub output_num: ::std::option::Option<i32>,
-        #[doc = "The index (origin zero) of the parallel instruction that produces\nthe output to be consumed by this input.  This index is relative\nto the list of instructions in this input's instruction's\ncontaining MapTask."]
+        #[doc = "The index (origin zero) of the parallel instruction that produces the output to be consumed by this input. This index is relative to the list of instructions in this input's instruction's containing MapTask."]
         #[serde(
             rename = "producerInstructionIndex",
             default,
@@ -3154,28 +3627,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "For system-generated byte and mean byte metrics, certain instructions\nshould only report the key size."]
+        #[doc = "For system-generated byte and mean byte metrics, certain instructions should only report the key size."]
         #[serde(
             rename = "onlyCountKeyBytes",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub only_count_key_bytes: ::std::option::Option<bool>,
-        #[doc = "For system-generated byte and mean byte metrics, certain instructions\nshould only report the value size."]
+        #[doc = "For system-generated byte and mean byte metrics, certain instructions should only report the value size."]
         #[serde(
             rename = "onlyCountValueBytes",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub only_count_value_bytes: ::std::option::Option<bool>,
-        #[doc = "System-defined name for this output in the original workflow graph.\nOutputs that do not contribute to an original instruction do not set this."]
+        #[doc = "System-defined name for this output in the original workflow graph. Outputs that do not contribute to an original instruction do not set this."]
         #[serde(
             rename = "originalName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub original_name: ::std::option::Option<String>,
-        #[doc = "System-defined name of this output.\nUnique across the workflow."]
+        #[doc = "System-defined name of this output. Unique across the workflow."]
         #[serde(
             rename = "systemName",
             default,
@@ -3302,28 +3775,28 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Job {
-        #[doc = "The client's unique identifier of the job, re-used across retried attempts.\nIf this field is set, the service will ensure its uniqueness.\nThe request to create a job will fail if the service has knowledge of a\npreviously submitted job with the same client's ID and job name.\nThe caller may use this field to ensure idempotence of job\ncreation across retried attempts to create a job.\nBy default, the field is empty and, in that case, the service ignores it."]
+        #[doc = "The client's unique identifier of the job, re-used across retried attempts. If this field is set, the service will ensure its uniqueness. The request to create a job will fail if the service has knowledge of a previously submitted job with the same client's ID and job name. The caller may use this field to ensure idempotence of job creation across retried attempts to create a job. By default, the field is empty and, in that case, the service ignores it."]
         #[serde(
             rename = "clientRequestId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub client_request_id: ::std::option::Option<String>,
-        #[doc = "The timestamp when the job was initially created. Immutable and set by the\nCloud Dataflow service."]
+        #[doc = "The timestamp when the job was initially created. Immutable and set by the Cloud Dataflow service."]
         #[serde(
             rename = "createTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub create_time: ::std::option::Option<String>,
-        #[doc = "If this is specified, the job's initial state is populated from the given\nsnapshot."]
+        #[doc = "If this is specified, the job's initial state is populated from the given snapshot."]
         #[serde(
             rename = "createdFromSnapshotId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub created_from_snapshot_id: ::std::option::Option<String>,
-        #[doc = "The current state of the job.\n\nJobs are created in the `JOB_STATE_STOPPED` state unless otherwise\nspecified.\n\nA job in the `JOB_STATE_RUNNING` state may asynchronously enter a\nterminal state. After a job has reached a terminal state, no\nfurther state updates may be made.\n\nThis field may be mutated by the Cloud Dataflow service;\ncallers cannot mutate it."]
+        #[doc = "The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it."]
         #[serde(
             rename = "currentState",
             default,
@@ -3351,42 +3824,42 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub execution_info: ::std::option::Option<crate::schemas::JobExecutionInfo>,
-        #[doc = "The unique ID of this job.\n\nThis field is set by the Cloud Dataflow service when the Job is\ncreated, and is immutable for the life of the job."]
+        #[doc = "The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job."]
         #[serde(
             rename = "id",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "This field is populated by the Dataflow service to support filtering jobs\nby the metadata values provided here. Populated for ListJobs and all GetJob\nviews SUMMARY and higher."]
+        #[doc = "This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher."]
         #[serde(
             rename = "jobMetadata",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub job_metadata: ::std::option::Option<crate::schemas::JobMetadata>,
-        #[doc = "User-defined labels for this job.\n\nThe labels map can contain no more than 64 entries.  Entries of the labels\nmap are UTF8 strings that comply with the following restrictions:\n\n* Keys must conform to regexp:  \\p{Ll}\\p{Lo}{0,62}\n* Values must conform to regexp:  [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}\n* Both keys and values are additionally constrained to be <= 128 bytes in\n  size."]
+        #[doc = "User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \\p{Ll}\\p{Lo}{0,62} * Values must conform to regexp: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size."]
         #[serde(
             rename = "labels",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that\ncontains this job."]
+        #[doc = "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job."]
         #[serde(
             rename = "location",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub location: ::std::option::Option<String>,
-        #[doc = "The user-specified Cloud Dataflow job name.\n\nOnly one Job with a given name may exist in a project at any\ngiven time. If a caller attempts to create a Job with the same\nname as an already-existing Job, the attempt returns the\nexisting Job.\n\nThe name must match the regular expression\n`[a-z]([-a-z0-9]{0,38}[a-z0-9])?`"]
+        #[doc = "The user-specified Cloud Dataflow job name. Only one Job with a given name may exist in a project at any given time. If a caller attempts to create a Job with the same name as an already-existing Job, the attempt returns the existing Job. The name must match the regular expression `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`"]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Preliminary field: The format of this data may change at any time.\nA description of the user pipeline and stages through which it is executed.\nCreated by Cloud Dataflow service.  Only retrieved with\nJOB_VIEW_DESCRIPTION or JOB_VIEW_ALL."]
+        #[doc = "Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL."]
         #[serde(
             rename = "pipelineDescription",
             default,
@@ -3407,42 +3880,49 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<crate::schemas::JobType>,
-        #[doc = "If this job is an update of an existing job, this field is the job ID\nof the job it replaced.\n\nWhen sending a `CreateJobRequest`, you can update a job by specifying it\nhere. The job named here is stopped, and its intermediate state is\ntransferred to this job."]
+        #[doc = "If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job."]
         #[serde(
             rename = "replaceJobId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub replace_job_id: ::std::option::Option<String>,
-        #[doc = "If another job is an update of this job (and thus, this job is in\n`JOB_STATE_UPDATED`), this field contains the ID of that job."]
+        #[doc = "If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job."]
         #[serde(
             rename = "replacedByJobId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub replaced_by_job_id: ::std::option::Option<String>,
-        #[doc = "The job's requested state.\n\n`UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and\n`JOB_STATE_RUNNING` states, by setting requested_state.  `UpdateJob` may\nalso be used to directly set a job's requested state to\n`JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the\njob if it has not already reached a terminal state."]
+        #[doc = "The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state."]
         #[serde(
             rename = "requestedState",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub requested_state: ::std::option::Option<crate::schemas::JobRequestedState>,
-        #[doc = "This field may be mutated by the Cloud Dataflow service;\ncallers cannot mutate it."]
+        #[doc = "Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests."]
+        #[serde(
+            rename = "satisfiesPzs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub satisfies_pzs: ::std::option::Option<bool>,
+        #[doc = "This field may be mutated by the Cloud Dataflow service; callers cannot mutate it."]
         #[serde(
             rename = "stageStates",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub stage_states: ::std::option::Option<Vec<crate::schemas::ExecutionStageState>>,
-        #[doc = "The timestamp when the job was started (transitioned to JOB_STATE_PENDING).\nFlexible resource scheduling jobs are started with some delay after job\ncreation, so start_time is unset before start and is updated when the\njob is started by the Cloud Dataflow service. For other jobs, start_time\nalways equals to create_time and is immutable and set by the Cloud Dataflow\nservice."]
+        #[doc = "The timestamp when the job was started (transitioned to JOB_STATE_PENDING). Flexible resource scheduling jobs are started with some delay after job creation, so start_time is unset before start and is updated when the job is started by the Cloud Dataflow service. For other jobs, start_time always equals to create_time and is immutable and set by the Cloud Dataflow service."]
         #[serde(
             rename = "startTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub start_time: ::std::option::Option<String>,
-        #[doc = "Exactly one of step or steps_location should be specified.\n\nThe top-level steps that constitute the entire job."]
+        #[doc = "Exactly one of step or steps_location should be specified. The top-level steps that constitute the entire job. Only retrieved with JOB_VIEW_ALL."]
         #[serde(
             rename = "steps",
             default,
@@ -3456,14 +3936,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub steps_location: ::std::option::Option<String>,
-        #[doc = "A set of files the system should be aware of that are used\nfor temporary storage. These temporary files will be\nremoved on job completion.\nNo duplicates are allowed.\nNo file patterns are supported.\n\nThe supported files are:\n\nGoogle Cloud Storage:\n\nstorage.googleapis.com/{bucket}/{object}\nbucket.storage.googleapis.com/{object}"]
+        #[doc = "A set of files the system should be aware of that are used for temporary storage. These temporary files will be removed on job completion. No duplicates are allowed. No file patterns are supported. The supported files are: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}"]
         #[serde(
             rename = "tempFiles",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub temp_files: ::std::option::Option<Vec<String>>,
-        #[doc = "The map of transform name prefixes of the job to be replaced to the\ncorresponding name prefixes of the new job."]
+        #[doc = "The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job."]
         #[serde(
             rename = "transformNameMapping",
             default,
@@ -3484,29 +3964,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum JobCurrentState {
-        #[doc = "`JOB_STATE_CANCELLED` indicates that the job has been explicitly\ncancelled. This is a terminal job state. This state may only be\nset via a Cloud Dataflow `UpdateJob` call, and only if the job has not\nyet reached another terminal state."]
+        #[doc = "`JOB_STATE_CANCELLED` indicates that the job has been explicitly cancelled. This is a terminal job state. This state may only be set via a Cloud Dataflow `UpdateJob` call, and only if the job has not yet reached another terminal state."]
         JobStateCancelled,
-        #[doc = "`JOB_STATE_CANCELLING` indicates that the job has been explicitly cancelled\nand is in the process of stopping.  Jobs that are cancelling may only\ntransition to `JOB_STATE_CANCELLED` or `JOB_STATE_FAILED`."]
+        #[doc = "`JOB_STATE_CANCELLING` indicates that the job has been explicitly cancelled and is in the process of stopping. Jobs that are cancelling may only transition to `JOB_STATE_CANCELLED` or `JOB_STATE_FAILED`."]
         JobStateCancelling,
-        #[doc = "`JOB_STATE_DONE` indicates that the job has successfully completed.\nThis is a terminal job state.  This state may be set by the Cloud Dataflow\nservice, as a transition from `JOB_STATE_RUNNING`. It may also be set via a\nCloud Dataflow `UpdateJob` call, if the job has not yet reached a terminal\nstate."]
+        #[doc = "`JOB_STATE_DONE` indicates that the job has successfully completed. This is a terminal job state. This state may be set by the Cloud Dataflow service, as a transition from `JOB_STATE_RUNNING`. It may also be set via a Cloud Dataflow `UpdateJob` call, if the job has not yet reached a terminal state."]
         JobStateDone,
-        #[doc = "`JOB_STATE_DRAINED` indicates that the job has been drained.\nA drained job terminated by stopping pulling from its input sources and\nprocessing any data that remained in-flight when draining was requested.\nThis state is a terminal state, may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_DRAINING`."]
+        #[doc = "`JOB_STATE_DRAINED` indicates that the job has been drained. A drained job terminated by stopping pulling from its input sources and processing any data that remained in-flight when draining was requested. This state is a terminal state, may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_DRAINING`."]
         JobStateDrained,
-        #[doc = "`JOB_STATE_DRAINING` indicates that the job is in the process of draining.\nA draining job has stopped pulling from its input sources and is processing\nany data that remains in-flight. This state may be set via a Cloud Dataflow\n`UpdateJob` call, but only as a transition from `JOB_STATE_RUNNING`. Jobs\nthat are draining may only transition to `JOB_STATE_DRAINED`,\n`JOB_STATE_CANCELLED`, or `JOB_STATE_FAILED`."]
+        #[doc = "`JOB_STATE_DRAINING` indicates that the job is in the process of draining. A draining job has stopped pulling from its input sources and is processing any data that remains in-flight. This state may be set via a Cloud Dataflow `UpdateJob` call, but only as a transition from `JOB_STATE_RUNNING`. Jobs that are draining may only transition to `JOB_STATE_DRAINED`, `JOB_STATE_CANCELLED`, or `JOB_STATE_FAILED`."]
         JobStateDraining,
-        #[doc = "`JOB_STATE_FAILED` indicates that the job has failed.  This is a\nterminal job state.  This state may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_RUNNING`."]
+        #[doc = "`JOB_STATE_FAILED` indicates that the job has failed. This is a terminal job state. This state may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_RUNNING`."]
         JobStateFailed,
-        #[doc = "`JOB_STATE_PENDING` indicates that the job has been created but is not yet\nrunning.  Jobs that are pending may only transition to `JOB_STATE_RUNNING`,\nor `JOB_STATE_FAILED`."]
+        #[doc = "`JOB_STATE_PENDING` indicates that the job has been created but is not yet running. Jobs that are pending may only transition to `JOB_STATE_RUNNING`, or `JOB_STATE_FAILED`."]
         JobStatePending,
-        #[doc = "`JOB_STATE_QUEUED` indicates that the job has been created but is being\ndelayed until launch. Jobs that are queued may only transition to\n`JOB_STATE_PENDING` or `JOB_STATE_CANCELLED`."]
+        #[doc = "`JOB_STATE_QUEUED` indicates that the job has been created but is being delayed until launch. Jobs that are queued may only transition to `JOB_STATE_PENDING` or `JOB_STATE_CANCELLED`."]
         JobStateQueued,
+        #[doc = "`JOB_STATE_RESOURCE_CLEANING_UP` indicates that the batch job's associated resources are currently being cleaned up after a successful run. Currently, this is an opt-in feature, please reach out to Cloud support team if you are intersted."]
+        JobStateResourceCleaningUp,
         #[doc = "`JOB_STATE_RUNNING` indicates that the job is currently running."]
         JobStateRunning,
-        #[doc = "`JOB_STATE_STOPPED` indicates that the job has not\nyet started to run."]
+        #[doc = "`JOB_STATE_STOPPED` indicates that the job has not yet started to run."]
         JobStateStopped,
         #[doc = "The job's run state isn't specified."]
         JobStateUnknown,
-        #[doc = "`JOB_STATE_UPDATED` indicates that the job was successfully updated,\nmeaning that this job was stopped and another job was started, inheriting\nstate from this one. This is a terminal job state. This state may only be\nset by the Cloud Dataflow service, and only as a transition from\n`JOB_STATE_RUNNING`."]
+        #[doc = "`JOB_STATE_UPDATED` indicates that the job was successfully updated, meaning that this job was stopped and another job was started, inheriting state from this one. This is a terminal job state. This state may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_RUNNING`."]
         JobStateUpdated,
     }
     impl JobCurrentState {
@@ -3520,6 +4002,7 @@ pub mod schemas {
                 JobCurrentState::JobStateFailed => "JOB_STATE_FAILED",
                 JobCurrentState::JobStatePending => "JOB_STATE_PENDING",
                 JobCurrentState::JobStateQueued => "JOB_STATE_QUEUED",
+                JobCurrentState::JobStateResourceCleaningUp => "JOB_STATE_RESOURCE_CLEANING_UP",
                 JobCurrentState::JobStateRunning => "JOB_STATE_RUNNING",
                 JobCurrentState::JobStateStopped => "JOB_STATE_STOPPED",
                 JobCurrentState::JobStateUnknown => "JOB_STATE_UNKNOWN",
@@ -3544,6 +4027,7 @@ pub mod schemas {
                 "JOB_STATE_FAILED" => JobCurrentState::JobStateFailed,
                 "JOB_STATE_PENDING" => JobCurrentState::JobStatePending,
                 "JOB_STATE_QUEUED" => JobCurrentState::JobStateQueued,
+                "JOB_STATE_RESOURCE_CLEANING_UP" => JobCurrentState::JobStateResourceCleaningUp,
                 "JOB_STATE_RUNNING" => JobCurrentState::JobStateRunning,
                 "JOB_STATE_STOPPED" => JobCurrentState::JobStateStopped,
                 "JOB_STATE_UNKNOWN" => JobCurrentState::JobStateUnknown,
@@ -3580,6 +4064,7 @@ pub mod schemas {
                 "JOB_STATE_FAILED" => JobCurrentState::JobStateFailed,
                 "JOB_STATE_PENDING" => JobCurrentState::JobStatePending,
                 "JOB_STATE_QUEUED" => JobCurrentState::JobStateQueued,
+                "JOB_STATE_RESOURCE_CLEANING_UP" => JobCurrentState::JobStateResourceCleaningUp,
                 "JOB_STATE_RUNNING" => JobCurrentState::JobStateRunning,
                 "JOB_STATE_STOPPED" => JobCurrentState::JobStateStopped,
                 "JOB_STATE_UNKNOWN" => JobCurrentState::JobStateUnknown,
@@ -3605,9 +4090,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum JobType {
-        #[doc = "A batch job with a well-defined end point: data is read, data is\nprocessed, data is written, and the job is done."]
+        #[doc = "A batch job with a well-defined end point: data is read, data is processed, data is written, and the job is done."]
         JobTypeBatch,
-        #[doc = "A continuously streaming job with no end: data is read,\nprocessed, and written continuously."]
+        #[doc = "A continuously streaming job with no end: data is read, processed, and written continuously."]
         JobTypeStreaming,
         #[doc = "The type of the job is unspecified, or unknown."]
         JobTypeUnknown,
@@ -3681,29 +4166,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum JobRequestedState {
-        #[doc = "`JOB_STATE_CANCELLED` indicates that the job has been explicitly\ncancelled. This is a terminal job state. This state may only be\nset via a Cloud Dataflow `UpdateJob` call, and only if the job has not\nyet reached another terminal state."]
+        #[doc = "`JOB_STATE_CANCELLED` indicates that the job has been explicitly cancelled. This is a terminal job state. This state may only be set via a Cloud Dataflow `UpdateJob` call, and only if the job has not yet reached another terminal state."]
         JobStateCancelled,
-        #[doc = "`JOB_STATE_CANCELLING` indicates that the job has been explicitly cancelled\nand is in the process of stopping.  Jobs that are cancelling may only\ntransition to `JOB_STATE_CANCELLED` or `JOB_STATE_FAILED`."]
+        #[doc = "`JOB_STATE_CANCELLING` indicates that the job has been explicitly cancelled and is in the process of stopping. Jobs that are cancelling may only transition to `JOB_STATE_CANCELLED` or `JOB_STATE_FAILED`."]
         JobStateCancelling,
-        #[doc = "`JOB_STATE_DONE` indicates that the job has successfully completed.\nThis is a terminal job state.  This state may be set by the Cloud Dataflow\nservice, as a transition from `JOB_STATE_RUNNING`. It may also be set via a\nCloud Dataflow `UpdateJob` call, if the job has not yet reached a terminal\nstate."]
+        #[doc = "`JOB_STATE_DONE` indicates that the job has successfully completed. This is a terminal job state. This state may be set by the Cloud Dataflow service, as a transition from `JOB_STATE_RUNNING`. It may also be set via a Cloud Dataflow `UpdateJob` call, if the job has not yet reached a terminal state."]
         JobStateDone,
-        #[doc = "`JOB_STATE_DRAINED` indicates that the job has been drained.\nA drained job terminated by stopping pulling from its input sources and\nprocessing any data that remained in-flight when draining was requested.\nThis state is a terminal state, may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_DRAINING`."]
+        #[doc = "`JOB_STATE_DRAINED` indicates that the job has been drained. A drained job terminated by stopping pulling from its input sources and processing any data that remained in-flight when draining was requested. This state is a terminal state, may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_DRAINING`."]
         JobStateDrained,
-        #[doc = "`JOB_STATE_DRAINING` indicates that the job is in the process of draining.\nA draining job has stopped pulling from its input sources and is processing\nany data that remains in-flight. This state may be set via a Cloud Dataflow\n`UpdateJob` call, but only as a transition from `JOB_STATE_RUNNING`. Jobs\nthat are draining may only transition to `JOB_STATE_DRAINED`,\n`JOB_STATE_CANCELLED`, or `JOB_STATE_FAILED`."]
+        #[doc = "`JOB_STATE_DRAINING` indicates that the job is in the process of draining. A draining job has stopped pulling from its input sources and is processing any data that remains in-flight. This state may be set via a Cloud Dataflow `UpdateJob` call, but only as a transition from `JOB_STATE_RUNNING`. Jobs that are draining may only transition to `JOB_STATE_DRAINED`, `JOB_STATE_CANCELLED`, or `JOB_STATE_FAILED`."]
         JobStateDraining,
-        #[doc = "`JOB_STATE_FAILED` indicates that the job has failed.  This is a\nterminal job state.  This state may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_RUNNING`."]
+        #[doc = "`JOB_STATE_FAILED` indicates that the job has failed. This is a terminal job state. This state may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_RUNNING`."]
         JobStateFailed,
-        #[doc = "`JOB_STATE_PENDING` indicates that the job has been created but is not yet\nrunning.  Jobs that are pending may only transition to `JOB_STATE_RUNNING`,\nor `JOB_STATE_FAILED`."]
+        #[doc = "`JOB_STATE_PENDING` indicates that the job has been created but is not yet running. Jobs that are pending may only transition to `JOB_STATE_RUNNING`, or `JOB_STATE_FAILED`."]
         JobStatePending,
-        #[doc = "`JOB_STATE_QUEUED` indicates that the job has been created but is being\ndelayed until launch. Jobs that are queued may only transition to\n`JOB_STATE_PENDING` or `JOB_STATE_CANCELLED`."]
+        #[doc = "`JOB_STATE_QUEUED` indicates that the job has been created but is being delayed until launch. Jobs that are queued may only transition to `JOB_STATE_PENDING` or `JOB_STATE_CANCELLED`."]
         JobStateQueued,
+        #[doc = "`JOB_STATE_RESOURCE_CLEANING_UP` indicates that the batch job's associated resources are currently being cleaned up after a successful run. Currently, this is an opt-in feature, please reach out to Cloud support team if you are intersted."]
+        JobStateResourceCleaningUp,
         #[doc = "`JOB_STATE_RUNNING` indicates that the job is currently running."]
         JobStateRunning,
-        #[doc = "`JOB_STATE_STOPPED` indicates that the job has not\nyet started to run."]
+        #[doc = "`JOB_STATE_STOPPED` indicates that the job has not yet started to run."]
         JobStateStopped,
         #[doc = "The job's run state isn't specified."]
         JobStateUnknown,
-        #[doc = "`JOB_STATE_UPDATED` indicates that the job was successfully updated,\nmeaning that this job was stopped and another job was started, inheriting\nstate from this one. This is a terminal job state. This state may only be\nset by the Cloud Dataflow service, and only as a transition from\n`JOB_STATE_RUNNING`."]
+        #[doc = "`JOB_STATE_UPDATED` indicates that the job was successfully updated, meaning that this job was stopped and another job was started, inheriting state from this one. This is a terminal job state. This state may only be set by the Cloud Dataflow service, and only as a transition from `JOB_STATE_RUNNING`."]
         JobStateUpdated,
     }
     impl JobRequestedState {
@@ -3717,6 +4204,7 @@ pub mod schemas {
                 JobRequestedState::JobStateFailed => "JOB_STATE_FAILED",
                 JobRequestedState::JobStatePending => "JOB_STATE_PENDING",
                 JobRequestedState::JobStateQueued => "JOB_STATE_QUEUED",
+                JobRequestedState::JobStateResourceCleaningUp => "JOB_STATE_RESOURCE_CLEANING_UP",
                 JobRequestedState::JobStateRunning => "JOB_STATE_RUNNING",
                 JobRequestedState::JobStateStopped => "JOB_STATE_STOPPED",
                 JobRequestedState::JobStateUnknown => "JOB_STATE_UNKNOWN",
@@ -3741,6 +4229,7 @@ pub mod schemas {
                 "JOB_STATE_FAILED" => JobRequestedState::JobStateFailed,
                 "JOB_STATE_PENDING" => JobRequestedState::JobStatePending,
                 "JOB_STATE_QUEUED" => JobRequestedState::JobStateQueued,
+                "JOB_STATE_RESOURCE_CLEANING_UP" => JobRequestedState::JobStateResourceCleaningUp,
                 "JOB_STATE_RUNNING" => JobRequestedState::JobStateRunning,
                 "JOB_STATE_STOPPED" => JobRequestedState::JobStateStopped,
                 "JOB_STATE_UNKNOWN" => JobRequestedState::JobStateUnknown,
@@ -3777,6 +4266,7 @@ pub mod schemas {
                 "JOB_STATE_FAILED" => JobRequestedState::JobStateFailed,
                 "JOB_STATE_PENDING" => JobRequestedState::JobStatePending,
                 "JOB_STATE_QUEUED" => JobRequestedState::JobStateQueued,
+                "JOB_STATE_RESOURCE_CLEANING_UP" => JobRequestedState::JobStateResourceCleaningUp,
                 "JOB_STATE_RUNNING" => JobRequestedState::JobStateRunning,
                 "JOB_STATE_STOPPED" => JobRequestedState::JobStateStopped,
                 "JOB_STATE_UNKNOWN" => JobRequestedState::JobStateUnknown,
@@ -3796,6 +4286,33 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for JobRequestedState {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct JobExecutionDetails {
+        #[doc = "If present, this response does not contain all requested tasks. To obtain the next page of results, repeat the request with page_token set to this value."]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub next_page_token: ::std::option::Option<String>,
+        #[doc = "The stages of the job execution."]
+        #[serde(
+            rename = "stages",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub stages: ::std::option::Option<Vec<crate::schemas::StageSummary>>,
+    }
+    impl ::google_field_selector::FieldSelector for JobExecutionDetails {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for JobExecutionDetails {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -3846,7 +4363,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct JobExecutionStageInfo {
-        #[doc = "The steps associated with the execution stage.\nNote that stages may have several steps, and that a given step\nmight be run by more than one stage."]
+        #[doc = "The steps associated with the execution stage. Note that stages may have several steps, and that a given step might be run by more than one stage."]
         #[serde(
             rename = "stepName",
             default,
@@ -3918,17 +4435,17 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum JobMessageMessageImportance {
-        #[doc = "The message is at the 'basic' level: useful for keeping\ntrack of the execution of a Dataflow pipeline.  Typically,\nDataflow pipeline runners display log messages at this level by\ndefault, and these messages are displayed by default in the\nDataflow monitoring UI."]
+        #[doc = "The message is at the 'basic' level: useful for keeping track of the execution of a Dataflow pipeline. Typically, Dataflow pipeline runners display log messages at this level by default, and these messages are displayed by default in the Dataflow monitoring UI."]
         JobMessageBasic,
-        #[doc = "The message is at the 'debug' level: typically only useful for\nsoftware engineers working on the code the job is running.\nTypically, Dataflow pipeline runners do not display log messages\nat this level by default."]
+        #[doc = "The message is at the 'debug' level: typically only useful for software engineers working on the code the job is running. Typically, Dataflow pipeline runners do not display log messages at this level by default."]
         JobMessageDebug,
-        #[doc = "The message is at the 'detailed' level: somewhat verbose, but\npotentially useful to users.  Typically, Dataflow pipeline\nrunners do not display log messages at this level by default.\nThese messages are displayed by default in the Dataflow\nmonitoring UI."]
+        #[doc = "The message is at the 'detailed' level: somewhat verbose, but potentially useful to users. Typically, Dataflow pipeline runners do not display log messages at this level by default. These messages are displayed by default in the Dataflow monitoring UI."]
         JobMessageDetailed,
-        #[doc = "The message is at the 'error' level: indicating a condition\npreventing a job from succeeding.  Typically, Dataflow pipeline\nrunners display log messages at this level by default, and these\nmessages are displayed by default in the Dataflow monitoring UI."]
+        #[doc = "The message is at the 'error' level: indicating a condition preventing a job from succeeding. Typically, Dataflow pipeline runners display log messages at this level by default, and these messages are displayed by default in the Dataflow monitoring UI."]
         JobMessageError,
         #[doc = "The message importance isn't specified, or is unknown."]
         JobMessageImportanceUnknown,
-        #[doc = "The message is at the 'warning' level: indicating a condition\npertaining to a job which may require human intervention.\nTypically, Dataflow pipeline runners display log messages at this\nlevel by default, and these messages are displayed by default in\nthe Dataflow monitoring UI."]
+        #[doc = "The message is at the 'warning' level: indicating a condition pertaining to a job which may require human intervention. Typically, Dataflow pipeline runners display log messages at this level by default, and these messages are displayed by default in the Dataflow monitoring UI."]
         JobMessageWarning,
     }
     impl JobMessageMessageImportance {
@@ -4126,7 +4643,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct KeyRangeDataDiskAssignment {
-        #[doc = "The name of the data disk where data for this range is stored.\nThis name is local to the Google Cloud Platform project and uniquely\nidentifies the disk within that project, for example\n\"myproject-1014-104817-4c2-harness-0-disk-1\"."]
+        #[doc = "The name of the data disk where data for this range is stored. This name is local to the Google Cloud Platform project and uniquely identifies the disk within that project, for example \"myproject-1014-104817-4c2-harness-0-disk-1\"."]
         #[serde(
             rename = "dataDisk",
             default,
@@ -4171,21 +4688,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct KeyRangeLocation {
-        #[doc = "The name of the data disk where data for this range is stored.\nThis name is local to the Google Cloud Platform project and uniquely\nidentifies the disk within that project, for example\n\"myproject-1014-104817-4c2-harness-0-disk-1\"."]
+        #[doc = "The name of the data disk where data for this range is stored. This name is local to the Google Cloud Platform project and uniquely identifies the disk within that project, for example \"myproject-1014-104817-4c2-harness-0-disk-1\"."]
         #[serde(
             rename = "dataDisk",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub data_disk: ::std::option::Option<String>,
-        #[doc = "The physical location of this range assignment to be used for\nstreaming computation cross-worker message delivery."]
+        #[doc = "The physical location of this range assignment to be used for streaming computation cross-worker message delivery."]
         #[serde(
             rename = "deliveryEndpoint",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub delivery_endpoint: ::std::option::Option<String>,
-        #[doc = "DEPRECATED. The location of the persistent state for this range, as a\npersistent directory in the worker local filesystem."]
+        #[doc = "DEPRECATED. The location of the persistent state for this range, as a persistent directory in the worker local filesystem."]
         #[serde(
             rename = "deprecatedPersistentDirectory",
             default,
@@ -4244,20 +4761,49 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_spec_gcs_path: ::std::option::Option<String>,
-        #[doc = "Required. The job name to use for the created job."]
+        #[doc = "The runtime environment for the FlexTemplate job"]
+        #[serde(
+            rename = "environment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub environment: ::std::option::Option<crate::schemas::FlexTemplateRuntimeEnvironment>,
+        #[doc = "Required. The job name to use for the created job. For update job request, job name should be same as the existing running job."]
         #[serde(
             rename = "jobName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub job_name: ::std::option::Option<String>,
-        #[doc = "The parameters for FlexTemplate.\nEx. {\"num_workers\":\"5\"}"]
+        #[doc = "Launch options for this flex template job. This is a common set of options across languages and templates. This should not be used to pass job parameters."]
+        #[serde(
+            rename = "launchOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub launch_options: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "The parameters for FlexTemplate. Ex. {\"num_workers\":\"5\"}"]
         #[serde(
             rename = "parameters",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub parameters: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Use this to pass transform_name_mappings for streaming update jobs. Ex:{\"oldTransformName\":\"newTransformName\",...}'"]
+        #[serde(
+            rename = "transformNameMappings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub transform_name_mappings:
+            ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Set this to true if you are sending a request to update a running streaming job. When set, the job name should be the same as the running job."]
+        #[serde(
+            rename = "update",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub update: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for LaunchFlexTemplateParameter {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -4289,7 +4835,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub launch_parameter: ::std::option::Option<crate::schemas::LaunchFlexTemplateParameter>,
-        #[doc = "If true, the request is validated but not actually executed.\nDefaults to false."]
+        #[doc = "If true, the request is validated but not actually executed. Defaults to false."]
         #[serde(
             rename = "validateOnly",
             default,
@@ -4309,7 +4855,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct LaunchFlexTemplateResponse {
-        #[doc = "The job that was launched, if the request was not a dry run and\nthe job was successfully launched."]
+        #[doc = "The job that was launched, if the request was not a dry run and the job was successfully launched."]
         #[serde(
             rename = "job",
             default,
@@ -4361,7 +4907,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub parameters: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Only applicable when updating a pipeline. Map of transform name prefixes of\nthe job to be replaced to the corresponding name prefixes of the new job."]
+        #[doc = "Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job."]
         #[serde(
             rename = "transformNameMapping",
             default,
@@ -4369,7 +4915,7 @@ pub mod schemas {
         )]
         pub transform_name_mapping:
             ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "If set, replace the existing pipeline with the name specified by jobName\nwith this pipeline, preserving state."]
+        #[doc = "If set, replace the existing pipeline with the name specified by jobName with this pipeline, preserving state."]
         #[serde(
             rename = "update",
             default,
@@ -4389,7 +4935,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct LaunchTemplateResponse {
-        #[doc = "The job that was launched, if the request was not a dry run and\nthe job was successfully launched."]
+        #[doc = "The job that was launched, if the request was not a dry run and the job was successfully launched."]
         #[serde(
             rename = "job",
             default,
@@ -4416,7 +4962,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub current_worker_time: ::std::option::Option<String>,
-        #[doc = "The [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that\ncontains the WorkItem's job."]
+        #[doc = "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the WorkItem's job."]
         #[serde(
             rename = "location",
             default,
@@ -4445,14 +4991,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub work_item_types: ::std::option::Option<Vec<String>>,
-        #[doc = "Worker capabilities. WorkItems might be limited to workers with specific\ncapabilities."]
+        #[doc = "Worker capabilities. WorkItems might be limited to workers with specific capabilities."]
         #[serde(
             rename = "workerCapabilities",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub worker_capabilities: ::std::option::Option<Vec<String>>,
-        #[doc = "Identifies the worker leasing work -- typically the ID of the\nvirtual machine running the worker."]
+        #[doc = "Identifies the worker leasing work -- typically the ID of the virtual machine running the worker."]
         #[serde(
             rename = "workerId",
             default,
@@ -4534,7 +5080,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListJobsResponse {
-        #[doc = "Zero or more messages describing the [regional endpoints]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that\nfailed to respond."]
+        #[doc = "Zero or more messages describing the [regional endpoints] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that failed to respond."]
         #[serde(
             rename = "failedLocation",
             default,
@@ -4610,7 +5156,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ListTemplateVersionsResponse {
-        #[doc = "A token that can be sent as `page_token` to retrieve the next page.\nIf this field is omitted, there are no subsequent pages."]
+        #[doc = "A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -4637,7 +5183,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct MapTask {
-        #[doc = "Counter prefix that can be used to prefix counters. Not currently used in\nDataflow."]
+        #[doc = "Counter prefix that can be used to prefix counters. Not currently used in Dataflow."]
         #[serde(
             rename = "counterPrefix",
             default,
@@ -4651,14 +5197,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub instructions: ::std::option::Option<Vec<crate::schemas::ParallelInstruction>>,
-        #[doc = "System-defined name of the stage containing this MapTask.\nUnique across the workflow."]
+        #[doc = "System-defined name of the stage containing this MapTask. Unique across the workflow."]
         #[serde(
             rename = "stageName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub stage_name: ::std::option::Option<String>,
-        #[doc = "System-defined name of this MapTask.\nUnique across the workflow."]
+        #[doc = "System-defined name of this MapTask. Unique across the workflow."]
         #[serde(
             rename = "systemName",
             default,
@@ -4744,7 +5290,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct MetricShortId {
-        #[doc = "The index of the corresponding metric in\nthe ReportWorkItemStatusRequest. Required."]
+        #[doc = "The index of the corresponding metric in the ReportWorkItemStatusRequest. Required."]
         #[serde(
             rename = "metricIndex",
             default,
@@ -4783,7 +5329,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct MetricStructuredName {
-        #[doc = "Zero or more labeled fields which identify the part of the job this\nmetric is associated with, such as the name of a step or collection.\n\nFor example, built-in counters associated with steps will have\ncontext['step'] = <step-name>. Counters associated with PCollections\nin the SDK will have context['pcollection'] = <pcollection-name>."]
+        #[doc = "Zero or more labeled fields which identify the part of the job this metric is associated with, such as the name of a step or collection. For example, built-in counters associated with steps will have context['step'] = . Counters associated with PCollections in the SDK will have context['pcollection'] = ."]
         #[serde(
             rename = "context",
             default,
@@ -4797,7 +5343,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Origin (namespace) of metric name. May be blank for user-define metrics;\nwill be \"dataflow\" for metrics defined by the Dataflow service or SDK."]
+        #[doc = "Origin (namespace) of metric name. May be blank for user-define metrics; will be \"dataflow\" for metrics defined by the Dataflow service or SDK."]
         #[serde(
             rename = "origin",
             default,
@@ -4817,7 +5363,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct MetricUpdate {
-        #[doc = "True if this metric is reported as the total cumulative aggregate\nvalue accumulated since the worker started working on this WorkItem.\nBy default this is false, indicating that this metric is reported\nas a delta that is not associated with any WorkItem."]
+        #[doc = "True if this metric is reported as the total cumulative aggregate value accumulated since the worker started working on this WorkItem. By default this is false, indicating that this metric is reported as a delta that is not associated with any WorkItem."]
         #[serde(
             rename = "cumulative",
             default,
@@ -4831,35 +5377,35 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub distribution: ::std::option::Option<::serde_json::Value>,
-        #[doc = "A struct value describing properties of a Gauge.\nMetrics of gauge type show the value of a metric across time, and is\naggregated based on the newest value."]
+        #[doc = "A struct value describing properties of a Gauge. Metrics of gauge type show the value of a metric across time, and is aggregated based on the newest value."]
         #[serde(
             rename = "gauge",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub gauge: ::std::option::Option<::serde_json::Value>,
-        #[doc = "Worker-computed aggregate value for internal use by the Dataflow\nservice."]
+        #[doc = "Worker-computed aggregate value for internal use by the Dataflow service."]
         #[serde(
             rename = "internal",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub internal: ::std::option::Option<::serde_json::Value>,
-        #[doc = "Metric aggregation kind.  The possible metric aggregation kinds are\n\"Sum\", \"Max\", \"Min\", \"Mean\", \"Set\", \"And\", \"Or\", and \"Distribution\".\nThe specified aggregation kind is case-insensitive.\n\nIf omitted, this is not an aggregated value but instead\na single metric sample value."]
+        #[doc = "Metric aggregation kind. The possible metric aggregation kinds are \"Sum\", \"Max\", \"Min\", \"Mean\", \"Set\", \"And\", \"Or\", and \"Distribution\". The specified aggregation kind is case-insensitive. If omitted, this is not an aggregated value but instead a single metric sample value."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "Worker-computed aggregate value for the \"Mean\" aggregation kind.\nThis holds the count of the aggregated values and is used in combination\nwith mean_sum above to obtain the actual mean aggregate value.\nThe only possible value type is Long."]
+        #[doc = "Worker-computed aggregate value for the \"Mean\" aggregation kind. This holds the count of the aggregated values and is used in combination with mean_sum above to obtain the actual mean aggregate value. The only possible value type is Long."]
         #[serde(
             rename = "meanCount",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mean_count: ::std::option::Option<::serde_json::Value>,
-        #[doc = "Worker-computed aggregate value for the \"Mean\" aggregation kind.\nThis holds the sum of the aggregated values and is used in combination\nwith mean_count below to obtain the actual mean aggregate value.\nThe only possible value types are Long and Double."]
+        #[doc = "Worker-computed aggregate value for the \"Mean\" aggregation kind. This holds the sum of the aggregated values and is used in combination with mean_count below to obtain the actual mean aggregate value. The only possible value types are Long and Double."]
         #[serde(
             rename = "meanSum",
             default,
@@ -4873,21 +5419,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<crate::schemas::MetricStructuredName>,
-        #[doc = "Worker-computed aggregate value for aggregation kinds \"Sum\", \"Max\", \"Min\",\n\"And\", and \"Or\".  The possible value types are Long, Double, and Boolean."]
+        #[doc = "Worker-computed aggregate value for aggregation kinds \"Sum\", \"Max\", \"Min\", \"And\", and \"Or\". The possible value types are Long, Double, and Boolean."]
         #[serde(
             rename = "scalar",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub scalar: ::std::option::Option<::serde_json::Value>,
-        #[doc = "Worker-computed aggregate value for the \"Set\" aggregation kind.  The only\npossible value type is a list of Values whose type can be Long, Double,\nor String, according to the metric's type.  All Values in the list must\nbe of the same type."]
+        #[doc = "Worker-computed aggregate value for the \"Set\" aggregation kind. The only possible value type is a list of Values whose type can be Long, Double, or String, according to the metric's type. All Values in the list must be of the same type."]
         #[serde(
             rename = "set",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub set: ::std::option::Option<::serde_json::Value>,
-        #[doc = "Timestamp associated with the metric value. Optional when workers are\nreporting work progress; it will be filled in responses from the\nmetrics API."]
+        #[doc = "Timestamp associated with the metric value. Optional when workers are reporting work progress; it will be filled in responses from the metrics API."]
         #[serde(
             rename = "updateTime",
             default,
@@ -4925,7 +5471,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub key: ::std::option::Option<String>,
-        #[doc = "Requests for add label to TemplateVersion or remove label from\nTemplateVersion."]
+        #[doc = "Requests for add label to TemplateVersion or remove label from TemplateVersion."]
         #[serde(
             rename = "op",
             default,
@@ -5076,7 +5622,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ModifyTemplateVersionTagRequest {
-        #[doc = "The flag that indicates if the request is only for remove tag from\nTemplateVersion."]
+        #[doc = "The flag that indicates if the request is only for remove tag from TemplateVersion."]
         #[serde(
             rename = "removeOnly",
             default,
@@ -5145,7 +5691,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct MountedDataDisk {
-        #[doc = "The name of the data disk.\nThis name is local to the Google Cloud Platform project and uniquely\nidentifies the disk within that project, for example\n\"myproject-1014-104817-4c2-harness-0-disk-1\"."]
+        #[doc = "The name of the data disk. This name is local to the Google Cloud Platform project and uniquely identifies the disk within that project, for example \"myproject-1014-104817-4c2-harness-0-disk-1\"."]
         #[serde(
             rename = "dataDisk",
             default,
@@ -5176,7 +5722,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct MultiOutputInfo {
-        #[doc = "The id of the tag the user code will emit to this output by; this\nshould correspond to the tag of some SideInputInfo."]
+        #[doc = "The id of the tag the user code will emit to this output by; this should correspond to the tag of some SideInputInfo."]
         #[serde(
             rename = "tag",
             default,
@@ -5356,7 +5902,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Package {
-        #[doc = "The resource to read the package from. The supported resource type is:\n\nGoogle Cloud Storage:\n\nstorage.googleapis.com/{bucket}\nbucket.storage.googleapis.com/"]
+        #[doc = "The resource to read the package from. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket} bucket.storage.googleapis.com/"]
         #[serde(
             rename = "location",
             default,
@@ -5390,7 +5936,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub input: ::std::option::Option<crate::schemas::InstructionInput>,
-        #[doc = "Information about each of the outputs, if user_fn is a  MultiDoFn."]
+        #[doc = "Information about each of the outputs, if user_fn is a MultiDoFn."]
         #[serde(
             rename = "multiOutputInfos",
             default,
@@ -5482,7 +6028,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub read: ::std::option::Option<crate::schemas::ReadInstruction>,
-        #[doc = "System-defined name of this operation.\nUnique across the workflow."]
+        #[doc = "System-defined name of this operation. Unique across the workflow."]
         #[serde(
             rename = "systemName",
             default,
@@ -5575,7 +6121,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Optional. The type of the parameter.\nUsed for selecting input picker."]
+        #[doc = "Optional. The type of the parameter. Used for selecting input picker."]
         #[serde(
             rename = "paramType",
             default,
@@ -5728,14 +6274,14 @@ pub mod schemas {
         )]
         pub input_element_codec:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "If this instruction includes a combining function this is the name of the\nintermediate store between the GBK and the CombineValues."]
+        #[doc = "If this instruction includes a combining function this is the name of the intermediate store between the GBK and the CombineValues."]
         #[serde(
             rename = "originalCombineValuesInputStoreName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub original_combine_values_input_store_name: ::std::option::Option<String>,
-        #[doc = "If this instruction includes a combining function, this is the name of the\nCombineValues instruction lifted into this instruction."]
+        #[doc = "If this instruction includes a combining function, this is the name of the CombineValues instruction lifted into this instruction."]
         #[serde(
             rename = "originalCombineValuesStepName",
             default,
@@ -5807,6 +6353,35 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct Point {
+        #[doc = "The timestamp of the point."]
+        #[serde(
+            rename = "time",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub time: ::std::option::Option<String>,
+        #[doc = "The value of the point."]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub value: ::std::option::Option<f64>,
+    }
+    impl ::google_field_selector::FieldSelector for Point {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Point {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -5834,7 +6409,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub concat_position: ::std::option::Option<Box<crate::schemas::ConcatPosition>>,
-        #[doc = "Position is past all other positions. Also useful for the end\nposition of an unbounded range."]
+        #[doc = "Position is past all other positions. Also useful for the end position of an unbounded range."]
         #[serde(
             rename = "end",
             default,
@@ -5856,7 +6431,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub record_index: ::std::option::Option<i64>,
-        #[doc = "CloudPosition is a base64 encoded BatchShufflePosition (with FIXED\nsharding)."]
+        #[doc = "CloudPosition is a base64 encoded BatchShufflePosition (with FIXED sharding)."]
         #[serde(
             rename = "shufflePosition",
             default,
@@ -5870,6 +6445,35 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Position {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct ProgressTimeseries {
+        #[doc = "The current progress of the component, in the range [0,1]."]
+        #[serde(
+            rename = "currentProgress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub current_progress: ::std::option::Option<f64>,
+        #[doc = "History of progress for the component. Points are sorted by time."]
+        #[serde(
+            rename = "dataPoints",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_points: ::std::option::Option<Vec<crate::schemas::Point>>,
+    }
+    impl ::google_field_selector::FieldSelector for ProgressTimeseries {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ProgressTimeseries {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -5932,35 +6536,35 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub drop_late_data: ::std::option::Option<bool>,
-        #[doc = "If set, contains a pubsub label from which to extract record ids.\nIf left empty, record deduplication will be strictly best effort."]
+        #[doc = "If set, contains a pubsub label from which to extract record ids. If left empty, record deduplication will be strictly best effort."]
         #[serde(
             rename = "idLabel",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id_label: ::std::option::Option<String>,
-        #[doc = "A pubsub subscription, in the form of\n\"pubsub.googleapis.com/subscriptions/<project-id>/<subscription-name>\""]
+        #[doc = "A pubsub subscription, in the form of \"pubsub.googleapis.com/subscriptions//\""]
         #[serde(
             rename = "subscription",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub subscription: ::std::option::Option<String>,
-        #[doc = "If set, contains a pubsub label from which to extract record timestamps.\nIf left empty, record timestamps will be generated upon arrival."]
+        #[doc = "If set, contains a pubsub label from which to extract record timestamps. If left empty, record timestamps will be generated upon arrival."]
         #[serde(
             rename = "timestampLabel",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub timestamp_label: ::std::option::Option<String>,
-        #[doc = "A pubsub topic, in the form of\n\"pubsub.googleapis.com/topics/<project-id>/<topic-name>\""]
+        #[doc = "A pubsub topic, in the form of \"pubsub.googleapis.com/topics//\""]
         #[serde(
             rename = "topic",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub topic: ::std::option::Option<String>,
-        #[doc = "If set, specifies the pubsub subscription that will be used for tracking\ncustom time timestamps for watermark estimation."]
+        #[doc = "If set, specifies the pubsub subscription that will be used for tracking custom time timestamps for watermark estimation."]
         #[serde(
             rename = "trackingSubscription",
             default,
@@ -6063,7 +6667,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum QueryInfoQueryPropertyItems {
+        #[doc = "Indicates this query reads from >= 1 unbounded source."]
         HasUnboundedSource,
+        #[doc = "The query property is unknown or unspecified."]
         QueryPropertyUnspecified,
     }
     impl QueryInfoQueryPropertyItems {
@@ -6165,7 +6771,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub current_worker_time: ::std::option::Option<String>,
-        #[doc = "The [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that\ncontains the WorkItem's job."]
+        #[doc = "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the WorkItem's job."]
         #[serde(
             rename = "location",
             default,
@@ -6180,14 +6786,14 @@ pub mod schemas {
         )]
         pub unified_worker_request:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "The order is unimportant, except that the order of the\nWorkItemServiceState messages in the ReportWorkItemStatusResponse\ncorresponds to the order of WorkItemStatus messages here."]
+        #[doc = "The order is unimportant, except that the order of the WorkItemServiceState messages in the ReportWorkItemStatusResponse corresponds to the order of WorkItemStatus messages here."]
         #[serde(
             rename = "workItemStatuses",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub work_item_statuses: ::std::option::Option<Vec<crate::schemas::WorkItemStatus>>,
-        #[doc = "The ID of the worker reporting the WorkItem status.  If this\ndoes not match the ID of the worker which the Dataflow service\nbelieves currently has the lease on the WorkItem, the report\nwill be dropped (with an error response)."]
+        #[doc = "The ID of the worker reporting the WorkItem status. If this does not match the ID of the worker which the Dataflow service believes currently has the lease on the WorkItem, the report will be dropped (with an error response)."]
         #[serde(
             rename = "workerId",
             default,
@@ -6215,7 +6821,7 @@ pub mod schemas {
         )]
         pub unified_worker_response:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "A set of messages indicating the service-side state for each\nWorkItem whose status was reported, in the same order as the\nWorkItemStatus messages in the ReportWorkItemStatusRequest which\nresulting in this response."]
+        #[doc = "A set of messages indicating the service-side state for each WorkItem whose status was reported, in the same order as the WorkItemStatus messages in the ReportWorkItemStatusRequest which resulting in this response."]
         #[serde(
             rename = "workItemServiceStates",
             default,
@@ -6238,7 +6844,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ReportedParallelism {
-        #[doc = "Specifies whether the parallelism is infinite. If true, \"value\" is\nignored.\nInfinite parallelism means the service will assume that the work item\ncan always be split into more non-empty work items by dynamic splitting.\nThis is a work-around for lack of support for infinity by the current\nJSON-based Java RPC stack."]
+        #[doc = "Specifies whether the parallelism is infinite. If true, \"value\" is ignored. Infinite parallelism means the service will assume that the work item can always be split into more non-empty work items by dynamic splitting. This is a work-around for lack of support for infinity by the current JSON-based Java RPC stack."]
         #[serde(
             rename = "isInfinite",
             default,
@@ -6267,7 +6873,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ResourceUtilizationReport {
-        #[doc = "Per container information.\nKey: container name."]
+        #[doc = "Per container information. Key: container name."]
         #[serde(
             rename = "containers",
             default,
@@ -6345,7 +6951,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub additional_experiments: ::std::option::Option<Vec<String>>,
-        #[doc = "Additional user labels to be specified for the job.\nKeys and values should follow the restrictions specified in the [labeling\nrestrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)\npage."]
+        #[doc = "Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of \"key\": value pairs. Example: { \"name\": \"wrench\", \"mass\": \"1kg\", \"count\": \"3\" }."]
         #[serde(
             rename = "additionalUserLabels",
             default,
@@ -6353,13 +6959,20 @@ pub mod schemas {
         )]
         pub additional_user_labels:
             ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Whether to bypass the safety checks for the job's temporary directory.\nUse with caution."]
+        #[doc = "Whether to bypass the safety checks for the job's temporary directory. Use with caution."]
         #[serde(
             rename = "bypassTempDirValidation",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bypass_temp_dir_validation: ::std::option::Option<bool>,
+        #[doc = "Whether to enable Streaming Engine for the job."]
+        #[serde(
+            rename = "enableStreamingEngine",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub enable_streaming_engine: ::std::option::Option<bool>,
         #[doc = "Configuration for VM IPs."]
         #[serde(
             rename = "ipConfiguration",
@@ -6368,28 +6981,28 @@ pub mod schemas {
         )]
         pub ip_configuration:
             ::std::option::Option<crate::schemas::RuntimeEnvironmentIpConfiguration>,
-        #[doc = "Optional. Name for the Cloud KMS key for the job.\nKey format is:\nprojects/<project>/locations/<location>/keyRings/<keyring>/cryptoKeys/<key>"]
+        #[doc = "Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/"]
         #[serde(
             rename = "kmsKeyName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kms_key_name: ::std::option::Option<String>,
-        #[doc = "The machine type to use for the job. Defaults to the value from the\ntemplate if not specified."]
+        #[doc = "The machine type to use for the job. Defaults to the value from the template if not specified."]
         #[serde(
             rename = "machineType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub machine_type: ::std::option::Option<String>,
-        #[doc = "The maximum number of Google Compute Engine instances to be made\navailable to your pipeline during execution, from 1 to 1000."]
+        #[doc = "The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000."]
         #[serde(
             rename = "maxWorkers",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub max_workers: ::std::option::Option<i32>,
-        #[doc = "Network to which VMs will be assigned.  If empty or unspecified,\nthe service will use the network \"default\"."]
+        #[doc = "Network to which VMs will be assigned. If empty or unspecified, the service will use the network \"default\"."]
         #[serde(
             rename = "network",
             default,
@@ -6410,35 +7023,35 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub service_account_email: ::std::option::Option<String>,
-        #[doc = "Subnetwork to which VMs will be assigned, if desired.  Expected to be of\nthe form \"regions/REGION/subnetworks/SUBNETWORK\"."]
+        #[doc = "Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form \"https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK\" or \"regions/REGION/subnetworks/SUBNETWORK\". If the subnetwork is located in a Shared VPC network, you must use the complete URL."]
         #[serde(
             rename = "subnetwork",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub subnetwork: ::std::option::Option<String>,
-        #[doc = "The Cloud Storage path to use for temporary files.\nMust be a valid Cloud Storage URL, beginning with `gs://`."]
+        #[doc = "The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`."]
         #[serde(
             rename = "tempLocation",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub temp_location: ::std::option::Option<String>,
-        #[doc = "The Compute Engine region\n(https://cloud.google.com/compute/docs/regions-zones/regions-zones) in\nwhich worker processing should occur, e.g. \"us-west1\". Mutually exclusive\nwith worker_zone. If neither worker_region nor worker_zone is specified,\ndefault to the control plane's region."]
+        #[doc = "The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. \"us-west1\". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region."]
         #[serde(
             rename = "workerRegion",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub worker_region: ::std::option::Option<String>,
-        #[doc = "The Compute Engine zone\n(https://cloud.google.com/compute/docs/regions-zones/regions-zones) in\nwhich worker processing should occur, e.g. \"us-west1-a\". Mutually exclusive\nwith worker_region. If neither worker_region nor worker_zone is specified,\na zone in the control plane's region is chosen based on available capacity.\nIf both `worker_zone` and `zone` are set, `worker_zone` takes precedence."]
+        #[doc = "The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. \"us-west1-a\". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence."]
         #[serde(
             rename = "workerZone",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub worker_zone: ::std::option::Option<String>,
-        #[doc = "The Compute Engine [availability\nzone](https://cloud.google.com/compute/docs/regions-zones/regions-zones)\nfor launching worker instances to run your pipeline.\nIn the future, worker_zone will take precedence."]
+        #[doc = "The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence."]
         #[serde(
             rename = "zone",
             default,
@@ -6590,7 +7203,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_image: ::std::option::Option<String>,
-        #[doc = "If true, recommends the Dataflow service to use only one core per SDK\ncontainer instance with this image. If false (or unset) recommends using\nmore than one core per SDK container instance with this image for\nefficiency. Note that Dataflow service may choose to override this property\nif needed."]
+        #[doc = "Environment ID for the Beam runner API proto Environment that corresponds to the current SDK Harness."]
+        #[serde(
+            rename = "environmentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub environment_id: ::std::option::Option<String>,
+        #[doc = "If true, recommends the Dataflow service to use only one core per SDK container instance with this image. If false (or unset) recommends using more than one core per SDK container instance with this image for efficiency. Note that Dataflow service may choose to override this property if needed."]
         #[serde(
             rename = "useSingleCorePerContainer",
             default,
@@ -6655,7 +7275,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SdkVersionSdkSupportStatus {
-        #[doc = "This version of the SDK is deprecated and will eventually be no\nlonger supported."]
+        #[doc = "This version of the SDK is deprecated and will eventually be no longer supported."]
         Deprecated,
         #[doc = "A newer version of the SDK family exists, and an update is recommended."]
         Stale,
@@ -6880,7 +7500,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub data: ::std::option::Option<String>,
-        #[doc = "The [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that\ncontains the job specified by job_id."]
+        #[doc = "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by job_id."]
         #[serde(
             rename = "location",
             default,
@@ -6931,7 +7551,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct SendWorkerMessagesRequest {
-        #[doc = "The [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that\ncontains the job."]
+        #[doc = "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job."]
         #[serde(
             rename = "location",
             default,
@@ -7011,14 +7631,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub output_infos: ::std::option::Option<Vec<crate::schemas::SeqMapTaskOutputInfo>>,
-        #[doc = "System-defined name of the stage containing the SeqDo operation.\nUnique across the workflow."]
+        #[doc = "System-defined name of the stage containing the SeqDo operation. Unique across the workflow."]
         #[serde(
             rename = "stageName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub stage_name: ::std::option::Option<String>,
-        #[doc = "System-defined name of the SeqDo operation.\nUnique across the workflow."]
+        #[doc = "System-defined name of the SeqDo operation. Unique across the workflow."]
         #[serde(
             rename = "systemName",
             default,
@@ -7118,14 +7738,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "The source(s) to read element(s) from to get the value of this side input.\nIf more than one source, then the elements are taken from the\nsources, in the specified order if order matters.\nAt least one source is required."]
+        #[doc = "The source(s) to read element(s) from to get the value of this side input. If more than one source, then the elements are taken from the sources, in the specified order if order matters. At least one source is required."]
         #[serde(
             rename = "sources",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub sources: ::std::option::Option<Vec<crate::schemas::Source>>,
-        #[doc = "The id of the tag the user code will access this side input by;\nthis should correspond to the tag of some MultiOutputInfo."]
+        #[doc = "The id of the tag the user code will access this side input by; this should correspond to the tag of some MultiOutputInfo."]
         #[serde(
             rename = "tag",
             default,
@@ -7197,7 +7817,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "The disk byte size of the snapshot. Only available for snapshots in READY\nstate."]
+        #[doc = "The disk byte size of the snapshot. Only available for snapshots in READY state."]
         #[serde(
             rename = "diskSizeBytes",
             default,
@@ -7264,7 +7884,7 @@ pub mod schemas {
         Deleted,
         #[doc = "Snapshot failed to be created."]
         Failed,
-        #[doc = "Snapshot intent to create has been persisted, snapshotting of state has not\nyet started."]
+        #[doc = "Snapshot intent to create has been persisted, snapshotting of state has not yet started."]
         Pending,
         #[doc = "Snapshot has been created and is ready to be used."]
         Ready,
@@ -7403,7 +8023,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Source {
-        #[doc = "While splitting, sources may specify the produced bundles\nas differences against another source, in order to save backend-side\nmemory and allow bigger jobs. For details, see SourceSplitRequest.\nTo support this use case, the full set of parameters of the source\nis logically obtained by taking the latest explicitly specified value\nof each parameter in the order:\nbase_specs (later items win), spec (overrides anything in base_specs)."]
+        #[doc = "While splitting, sources may specify the produced bundles as differences against another source, in order to save backend-side memory and allow bigger jobs. For details, see SourceSplitRequest. To support this use case, the full set of parameters of the source is logically obtained by taking the latest explicitly specified value of each parameter in the order: base_specs (later items win), spec (overrides anything in base_specs)."]
         #[serde(
             rename = "baseSpecs",
             default,
@@ -7418,14 +8038,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub codec: ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "Setting this value to true hints to the framework that the source\ndoesn't need splitting, and using SourceSplitRequest on it would\nyield SOURCE_SPLIT_OUTCOME_USE_CURRENT.\n\nE.g. a file splitter may set this to true when splitting a single file\ninto a set of byte ranges of appropriate size, and set this\nto false when splitting a filepattern into individual files.\nHowever, for efficiency, a file splitter may decide to produce\nfile subranges directly from the filepattern to avoid a splitting\nround-trip.\n\nSee SourceSplitRequest for an overview of the splitting process.\n\nThis field is meaningful only in the Source objects populated\nby the user (e.g. when filling in a DerivedSource).\nSource objects supplied by the framework to the user don't have\nthis field populated."]
+        #[doc = "Setting this value to true hints to the framework that the source doesn't need splitting, and using SourceSplitRequest on it would yield SOURCE_SPLIT_OUTCOME_USE_CURRENT. E.g. a file splitter may set this to true when splitting a single file into a set of byte ranges of appropriate size, and set this to false when splitting a filepattern into individual files. However, for efficiency, a file splitter may decide to produce file subranges directly from the filepattern to avoid a splitting round-trip. See SourceSplitRequest for an overview of the splitting process. This field is meaningful only in the Source objects populated by the user (e.g. when filling in a DerivedSource). Source objects supplied by the framework to the user don't have this field populated."]
         #[serde(
             rename = "doesNotNeedSplitting",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub does_not_need_splitting: ::std::option::Option<bool>,
-        #[doc = "Optionally, metadata for this source can be supplied right away,\navoiding a SourceGetMetadataOperation roundtrip\n(see SourceOperationRequest).\n\nThis field is meaningful only in the Source objects populated\nby the user (e.g. when filling in a DerivedSource).\nSource objects supplied by the framework to the user don't have\nthis field populated."]
+        #[doc = "Optionally, metadata for this source can be supplied right away, avoiding a SourceGetMetadataOperation roundtrip (see SourceOperationRequest). This field is meaningful only in the Source objects populated by the user (e.g. when filling in a DerivedSource). Source objects supplied by the framework to the user don't have this field populated."]
         #[serde(
             rename = "metadata",
             default,
@@ -7555,7 +8175,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SourceMetadata {
-        #[doc = "An estimate of the total size (in bytes) of the data that would be\nread from this source.  This estimate is in terms of external storage\nsize, before any decompression or other processing done by the reader."]
+        #[doc = "An estimate of the total size (in bytes) of the data that would be read from this source. This estimate is in terms of external storage size, before any decompression or other processing done by the reader."]
         #[serde(
             rename = "estimatedSizeBytes",
             default,
@@ -7563,14 +8183,14 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub estimated_size_bytes: ::std::option::Option<i64>,
-        #[doc = "Specifies that the size of this source is known to be infinite\n(this is a streaming source)."]
+        #[doc = "Specifies that the size of this source is known to be infinite (this is a streaming source)."]
         #[serde(
             rename = "infinite",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub infinite: ::std::option::Option<bool>,
-        #[doc = "Whether this source is known to produce key/value pairs with\nthe (encoded) keys in lexicographically sorted order."]
+        #[doc = "Whether this source is known to produce key/value pairs with the (encoded) keys in lexicographically sorted order."]
         #[serde(
             rename = "producesSortedKeys",
             default,
@@ -7604,7 +8224,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "System-defined name for the Read instruction for this source\nin the original workflow graph."]
+        #[doc = "System-defined name for the Read instruction for this source in the original workflow graph."]
         #[serde(
             rename = "originalName",
             default,
@@ -7618,14 +8238,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub split: ::std::option::Option<crate::schemas::SourceSplitRequest>,
-        #[doc = "System-defined name of the stage containing the source operation.\nUnique across the workflow."]
+        #[doc = "System-defined name of the stage containing the source operation. Unique across the workflow."]
         #[serde(
             rename = "stageName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub stage_name: ::std::option::Option<String>,
-        #[doc = "System-defined name of the Read instruction for this source.\nUnique across the workflow."]
+        #[doc = "System-defined name of the Read instruction for this source. Unique across the workflow."]
         #[serde(
             rename = "systemName",
             default,
@@ -7683,7 +8303,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SourceSplitOptions {
-        #[doc = "The source should be split into a set of bundles where the estimated size\nof each is approximately this many bytes."]
+        #[doc = "The source should be split into a set of bundles where the estimated size of each is approximately this many bytes."]
         #[serde(
             rename = "desiredBundleSizeBytes",
             default,
@@ -7739,14 +8359,14 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct SourceSplitResponse {
-        #[doc = "If outcome is SPLITTING_HAPPENED, then this is a list of bundles\ninto which the source was split. Otherwise this field is ignored.\nThis list can be empty, which means the source represents an empty input."]
+        #[doc = "If outcome is SPLITTING_HAPPENED, then this is a list of bundles into which the source was split. Otherwise this field is ignored. This list can be empty, which means the source represents an empty input."]
         #[serde(
             rename = "bundles",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bundles: ::std::option::Option<Vec<crate::schemas::DerivedSource>>,
-        #[doc = "Indicates whether splitting happened and produced a list of bundles.\nIf this is USE_CURRENT_SOURCE_AS_IS, the current source should\nbe processed \"as is\" without splitting. \"bundles\" is ignored in this case.\nIf this is SPLITTING_HAPPENED, then \"bundles\" contains a list of\nbundles into which the source was split."]
+        #[doc = "Indicates whether splitting happened and produced a list of bundles. If this is USE_CURRENT_SOURCE_AS_IS, the current source should be processed \"as is\" without splitting. \"bundles\" is ignored in this case. If this is SPLITTING_HAPPENED, then \"bundles\" contains a list of bundles into which the source was split."]
         #[serde(
             rename = "outcome",
             default,
@@ -8080,6 +8700,33 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct StageExecutionDetails {
+        #[doc = "If present, this response does not contain all requested tasks. To obtain the next page of results, repeat the request with page_token set to this value."]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub next_page_token: ::std::option::Option<String>,
+        #[doc = "Workers that have done work on the stage."]
+        #[serde(
+            rename = "workers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub workers: ::std::option::Option<Vec<crate::schemas::WorkerDetails>>,
+    }
+    impl ::google_field_selector::FieldSelector for StageExecutionDetails {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for StageExecutionDetails {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -8100,7 +8747,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "User name for the original user transform or collection with which this\nsource is most closely associated."]
+        #[doc = "User name for the original user transform or collection with which this source is most closely associated."]
         #[serde(
             rename = "originalTransformOrCollection",
             default,
@@ -8129,6 +8776,152 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for StageSource {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct StageSummary {
+        #[doc = "End time of this stage. If the work item is completed, this is the actual end time of the stage. Otherwise, it is the predicted end time."]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub end_time: ::std::option::Option<String>,
+        #[doc = "Metrics for this stage."]
+        #[serde(
+            rename = "metrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub metrics: ::std::option::Option<Vec<crate::schemas::MetricUpdate>>,
+        #[doc = "Progress for this stage. Only applicable to Batch jobs."]
+        #[serde(
+            rename = "progress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub progress: ::std::option::Option<crate::schemas::ProgressTimeseries>,
+        #[doc = "ID of this stage"]
+        #[serde(
+            rename = "stageId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub stage_id: ::std::option::Option<String>,
+        #[doc = "Start time of this stage."]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_time: ::std::option::Option<String>,
+        #[doc = "State of this stage."]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub state: ::std::option::Option<crate::schemas::StageSummaryState>,
+    }
+    impl ::google_field_selector::FieldSelector for StageSummary {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for StageSummary {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum StageSummaryState {
+        #[doc = "Execution of the component was cancelled."]
+        ExecutionStateCancelled,
+        #[doc = "The component failed."]
+        ExecutionStateFailed,
+        #[doc = "The component is not yet running."]
+        ExecutionStateNotStarted,
+        #[doc = "The component is currently running."]
+        ExecutionStateRunning,
+        #[doc = "The component succeeded."]
+        ExecutionStateSucceeded,
+        #[doc = "The component state is unknown or unspecified."]
+        ExecutionStateUnknown,
+    }
+    impl StageSummaryState {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                StageSummaryState::ExecutionStateCancelled => "EXECUTION_STATE_CANCELLED",
+                StageSummaryState::ExecutionStateFailed => "EXECUTION_STATE_FAILED",
+                StageSummaryState::ExecutionStateNotStarted => "EXECUTION_STATE_NOT_STARTED",
+                StageSummaryState::ExecutionStateRunning => "EXECUTION_STATE_RUNNING",
+                StageSummaryState::ExecutionStateSucceeded => "EXECUTION_STATE_SUCCEEDED",
+                StageSummaryState::ExecutionStateUnknown => "EXECUTION_STATE_UNKNOWN",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for StageSummaryState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for StageSummaryState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<StageSummaryState, ()> {
+            Ok(match s {
+                "EXECUTION_STATE_CANCELLED" => StageSummaryState::ExecutionStateCancelled,
+                "EXECUTION_STATE_FAILED" => StageSummaryState::ExecutionStateFailed,
+                "EXECUTION_STATE_NOT_STARTED" => StageSummaryState::ExecutionStateNotStarted,
+                "EXECUTION_STATE_RUNNING" => StageSummaryState::ExecutionStateRunning,
+                "EXECUTION_STATE_SUCCEEDED" => StageSummaryState::ExecutionStateSucceeded,
+                "EXECUTION_STATE_UNKNOWN" => StageSummaryState::ExecutionStateUnknown,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for StageSummaryState {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for StageSummaryState {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for StageSummaryState {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "EXECUTION_STATE_CANCELLED" => StageSummaryState::ExecutionStateCancelled,
+                "EXECUTION_STATE_FAILED" => StageSummaryState::ExecutionStateFailed,
+                "EXECUTION_STATE_NOT_STARTED" => StageSummaryState::ExecutionStateNotStarted,
+                "EXECUTION_STATE_RUNNING" => StageSummaryState::ExecutionStateRunning,
+                "EXECUTION_STATE_SUCCEEDED" => StageSummaryState::ExecutionStateSucceeded,
+                "EXECUTION_STATE_UNKNOWN" => StageSummaryState::ExecutionStateUnknown,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for StageSummaryState {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for StageSummaryState {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -8180,7 +8973,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub code: ::std::option::Option<i32>,
-        #[doc = "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."]
+        #[doc = "A list of messages that carry the error details. There is a common set of message types for APIs to use."]
         #[serde(
             rename = "details",
             default,
@@ -8188,7 +8981,7 @@ pub mod schemas {
         )]
         pub details:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
-        #[doc = "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."]
+        #[doc = "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client."]
         #[serde(
             rename = "message",
             default,
@@ -8215,14 +9008,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The name that identifies the step. This must be unique for each\nstep with respect to all other steps in the Cloud Dataflow job."]
+        #[doc = "The name that identifies the step. This must be unique for each step with respect to all other steps in the Cloud Dataflow job."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Named properties associated with the step. Each kind of\npredefined step has its own required set of properties.\nMust be provided on Create.  Only retrieved with JOB_VIEW_ALL."]
+        #[doc = "Named properties associated with the step. Each kind of predefined step has its own required set of properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL."]
         #[serde(
             rename = "properties",
             default,
@@ -8275,7 +9068,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub side_input_location: ::std::option::Option<crate::schemas::StreamingSideInputLocation>,
-        #[doc = "The stream is part of another computation within the current\nstreaming Dataflow job."]
+        #[doc = "The stream is part of another computation within the current streaming Dataflow job."]
         #[serde(
             rename = "streamingStageLocation",
             default,
@@ -8361,7 +9154,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub system_name: ::std::option::Option<String>,
-        #[doc = "Map from user name of stateful transforms in this stage to their state\nfamily."]
+        #[doc = "Map from user name of stateful transforms in this stage to their state family."]
         #[serde(
             rename = "transformUserNameToStateFamily",
             default,
@@ -8601,14 +9394,14 @@ pub mod schemas {
         )]
         pub user_step_to_state_family_name_map:
             ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "If present, the worker must use this endpoint to communicate with Windmill\nService dispatchers, otherwise the worker must continue to use whatever\nendpoint it had been using."]
+        #[doc = "If present, the worker must use this endpoint to communicate with Windmill Service dispatchers, otherwise the worker must continue to use whatever endpoint it had been using."]
         #[serde(
             rename = "windmillServiceEndpoint",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub windmill_service_endpoint: ::std::option::Option<String>,
-        #[doc = "If present, the worker must use this port to communicate with Windmill\nService dispatchers. Only applicable when windmill_service_endpoint is\nspecified."]
+        #[doc = "If present, the worker must use this port to communicate with Windmill Service dispatchers. Only applicable when windmill_service_endpoint is specified."]
         #[serde(
             rename = "windmillServicePort",
             default,
@@ -8647,7 +9440,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub drain: ::std::option::Option<bool>,
-        #[doc = "The TCP port on which the worker should listen for messages from\nother streaming computation workers."]
+        #[doc = "The TCP port on which the worker should listen for messages from other streaming computation workers."]
         #[serde(
             rename = "receiveWorkPort",
             default,
@@ -8669,7 +9462,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub streaming_computation_topology: ::std::option::Option<crate::schemas::TopologyConfig>,
-        #[doc = "The TCP port used by the worker to communicate with the Dataflow\nworker harness."]
+        #[doc = "The TCP port used by the worker to communicate with the Dataflow worker harness."]
         #[serde(
             rename = "workerHarnessPort",
             default,
@@ -8738,7 +9531,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct StreamingStageLocation {
-        #[doc = "Identifies the particular stream within the streaming Dataflow\njob."]
+        #[doc = "Identifies the particular stream within the streaming Dataflow job."]
         #[serde(
             rename = "streamId",
             default,
@@ -8789,7 +9582,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct StructuredMessage {
-        #[doc = "Identifier for this message type.  Used by external systems to\ninternationalize or personalize message."]
+        #[doc = "Identifier for this message type. Used by external systems to internationalize or personalize message."]
         #[serde(
             rename = "messageKey",
             default,
@@ -8848,7 +9641,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub base_task_dir: ::std::option::Option<String>,
-        #[doc = "The base URL for the taskrunner to use when accessing Google Cloud APIs.\n\nWhen workers access Google Cloud APIs, they logically do so via\nrelative URLs.  If this field is specified, it supplies the base\nURL to use for resolving these relative URLs.  The normative\nalgorithm used is defined by RFC 1808, \"Relative Uniform Resource\nLocators\".\n\nIf not specified, the default value is \"http://www.googleapis.com/\""]
+        #[doc = "The base URL for the taskrunner to use when accessing Google Cloud APIs. When workers access Google Cloud APIs, they logically do so via relative URLs. If this field is specified, it supplies the base URL to use for resolving these relative URLs. The normative algorithm used is defined by RFC 1808, \"Relative Uniform Resource Locators\". If not specified, the default value is \"http://www.googleapis.com/\""]
         #[serde(
             rename = "baseUrl",
             default,
@@ -8897,21 +9690,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub log_dir: ::std::option::Option<String>,
-        #[doc = "Whether to send taskrunner log info to Google Compute Engine VM serial\nconsole."]
+        #[doc = "Whether to send taskrunner log info to Google Compute Engine VM serial console."]
         #[serde(
             rename = "logToSerialconsole",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub log_to_serialconsole: ::std::option::Option<bool>,
-        #[doc = "Indicates where to put logs.  If this is not specified, the logs\nwill not be uploaded.\n\nThe supported resource type is:\n\nGoogle Cloud Storage:\nstorage.googleapis.com/{bucket}/{object}\nbucket.storage.googleapis.com/{object}"]
+        #[doc = "Indicates where to put logs. If this is not specified, the logs will not be uploaded. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}"]
         #[serde(
             rename = "logUploadLocation",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub log_upload_location: ::std::option::Option<String>,
-        #[doc = "The OAuth2 scopes to be requested by the taskrunner in order to\naccess the Cloud Dataflow API."]
+        #[doc = "The OAuth2 scopes to be requested by the taskrunner in order to access the Cloud Dataflow API."]
         #[serde(
             rename = "oauthScopes",
             default,
@@ -8932,21 +9725,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub streaming_worker_main_class: ::std::option::Option<String>,
-        #[doc = "The UNIX group ID on the worker VM to use for tasks launched by\ntaskrunner; e.g. \"wheel\"."]
+        #[doc = "The UNIX group ID on the worker VM to use for tasks launched by taskrunner; e.g. \"wheel\"."]
         #[serde(
             rename = "taskGroup",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub task_group: ::std::option::Option<String>,
-        #[doc = "The UNIX user ID on the worker VM to use for tasks launched by\ntaskrunner; e.g. \"root\"."]
+        #[doc = "The UNIX user ID on the worker VM to use for tasks launched by taskrunner; e.g. \"root\"."]
         #[serde(
             rename = "taskUser",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub task_user: ::std::option::Option<String>,
-        #[doc = "The prefix of the resources the taskrunner should use for\ntemporary storage.\n\nThe supported resource type is:\n\nGoogle Cloud Storage:\nstorage.googleapis.com/{bucket}/{object}\nbucket.storage.googleapis.com/{object}"]
+        #[doc = "The prefix of the resources the taskrunner should use for temporary storage. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}"]
         #[serde(
             rename = "tempStoragePrefix",
             default,
@@ -9036,7 +9829,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TemplateVersion {
-        #[doc = "Job graph and metadata if it is a legacy Template.\nContainer image path and metadata if it is flex Template."]
+        #[doc = "Job graph and metadata if it is a legacy Template. Container image path and metadata if it is flex Template."]
         #[serde(
             rename = "artifact",
             default,
@@ -9285,7 +10078,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "User  names for all collection outputs to this transform."]
+        #[doc = "User names for all collection outputs to this transform."]
         #[serde(
             rename = "outputCollectionName",
             default,
@@ -9493,7 +10286,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub map_task: ::std::option::Option<crate::schemas::MapTask>,
-        #[doc = "Any required packages that need to be fetched in order to execute\nthis WorkItem."]
+        #[doc = "Any required packages that need to be fetched in order to execute this WorkItem."]
         #[serde(
             rename = "packages",
             default,
@@ -9569,8 +10362,168 @@ pub mod schemas {
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct WorkItemDetails {
+        #[doc = "Attempt ID of this work item"]
+        #[serde(
+            rename = "attemptId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub attempt_id: ::std::option::Option<String>,
+        #[doc = "End time of this work item attempt. If the work item is completed, this is the actual end time of the work item. Otherwise, it is the predicted end time."]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub end_time: ::std::option::Option<String>,
+        #[doc = "Metrics for this work item."]
+        #[serde(
+            rename = "metrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub metrics: ::std::option::Option<Vec<crate::schemas::MetricUpdate>>,
+        #[doc = "Progress of this work item."]
+        #[serde(
+            rename = "progress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub progress: ::std::option::Option<crate::schemas::ProgressTimeseries>,
+        #[doc = "Start time of this work item attempt."]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_time: ::std::option::Option<String>,
+        #[doc = "State of this work item."]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub state: ::std::option::Option<crate::schemas::WorkItemDetailsState>,
+        #[doc = "Name of this work item."]
+        #[serde(
+            rename = "taskId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub task_id: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for WorkItemDetails {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for WorkItemDetails {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum WorkItemDetailsState {
+        #[doc = "Execution of the component was cancelled."]
+        ExecutionStateCancelled,
+        #[doc = "The component failed."]
+        ExecutionStateFailed,
+        #[doc = "The component is not yet running."]
+        ExecutionStateNotStarted,
+        #[doc = "The component is currently running."]
+        ExecutionStateRunning,
+        #[doc = "The component succeeded."]
+        ExecutionStateSucceeded,
+        #[doc = "The component state is unknown or unspecified."]
+        ExecutionStateUnknown,
+    }
+    impl WorkItemDetailsState {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                WorkItemDetailsState::ExecutionStateCancelled => "EXECUTION_STATE_CANCELLED",
+                WorkItemDetailsState::ExecutionStateFailed => "EXECUTION_STATE_FAILED",
+                WorkItemDetailsState::ExecutionStateNotStarted => "EXECUTION_STATE_NOT_STARTED",
+                WorkItemDetailsState::ExecutionStateRunning => "EXECUTION_STATE_RUNNING",
+                WorkItemDetailsState::ExecutionStateSucceeded => "EXECUTION_STATE_SUCCEEDED",
+                WorkItemDetailsState::ExecutionStateUnknown => "EXECUTION_STATE_UNKNOWN",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for WorkItemDetailsState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for WorkItemDetailsState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<WorkItemDetailsState, ()> {
+            Ok(match s {
+                "EXECUTION_STATE_CANCELLED" => WorkItemDetailsState::ExecutionStateCancelled,
+                "EXECUTION_STATE_FAILED" => WorkItemDetailsState::ExecutionStateFailed,
+                "EXECUTION_STATE_NOT_STARTED" => WorkItemDetailsState::ExecutionStateNotStarted,
+                "EXECUTION_STATE_RUNNING" => WorkItemDetailsState::ExecutionStateRunning,
+                "EXECUTION_STATE_SUCCEEDED" => WorkItemDetailsState::ExecutionStateSucceeded,
+                "EXECUTION_STATE_UNKNOWN" => WorkItemDetailsState::ExecutionStateUnknown,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for WorkItemDetailsState {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for WorkItemDetailsState {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for WorkItemDetailsState {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "EXECUTION_STATE_CANCELLED" => WorkItemDetailsState::ExecutionStateCancelled,
+                "EXECUTION_STATE_FAILED" => WorkItemDetailsState::ExecutionStateFailed,
+                "EXECUTION_STATE_NOT_STARTED" => WorkItemDetailsState::ExecutionStateNotStarted,
+                "EXECUTION_STATE_RUNNING" => WorkItemDetailsState::ExecutionStateRunning,
+                "EXECUTION_STATE_SUCCEEDED" => WorkItemDetailsState::ExecutionStateSucceeded,
+                "EXECUTION_STATE_UNKNOWN" => WorkItemDetailsState::ExecutionStateUnknown,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for WorkItemDetailsState {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for WorkItemDetailsState {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct WorkItemServiceState {
-        #[doc = "Other data returned by the service, specific to the particular\nworker harness."]
+        #[doc = "If set, a request to complete the work item with the given status. This will not be set to OK, unless supported by the specific kind of WorkItem. It can be used for the backend to indicate a WorkItem must terminate, e.g., for aborting work."]
+        #[serde(
+            rename = "completeWorkStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub complete_work_status: ::std::option::Option<crate::schemas::Status>,
+        #[doc = "Other data returned by the service, specific to the particular worker harness."]
         #[serde(
             rename = "harnessData",
             default,
@@ -9578,7 +10531,7 @@ pub mod schemas {
         )]
         pub harness_data:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "A hot key is a symptom of poor data distribution in which there are enough\nelements mapped to a single key to impact pipeline performance. When\npresent, this field includes metadata associated with any hot key."]
+        #[doc = "A hot key is a symptom of poor data distribution in which there are enough elements mapped to a single key to impact pipeline performance. When present, this field includes metadata associated with any hot key."]
         #[serde(
             rename = "hotKeyDetection",
             default,
@@ -9592,14 +10545,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub lease_expire_time: ::std::option::Option<String>,
-        #[doc = "The short ids that workers should use in subsequent metric updates.\nWorkers should strive to use short ids whenever possible, but it is ok\nto request the short_id again if a worker lost track of it\n(e.g. if the worker is recovering from a crash).\nNOTE: it is possible that the response may have short ids for a subset\nof the metrics."]
+        #[doc = "The short ids that workers should use in subsequent metric updates. Workers should strive to use short ids whenever possible, but it is ok to request the short_id again if a worker lost track of it (e.g. if the worker is recovering from a crash). NOTE: it is possible that the response may have short ids for a subset of the metrics."]
         #[serde(
             rename = "metricShortId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metric_short_id: ::std::option::Option<Vec<crate::schemas::MetricShortId>>,
-        #[doc = "The index value to use for the next report sent by the worker.\nNote: If the report call fails for whatever reason, the worker should\nreuse this index for subsequent report attempts."]
+        #[doc = "The index value to use for the next report sent by the worker. Note: If the report call fails for whatever reason, the worker should reuse this index for subsequent report attempts."]
         #[serde(
             rename = "nextReportIndex",
             default,
@@ -9614,7 +10567,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub report_status_interval: ::std::option::Option<String>,
-        #[doc = "The progress point in the WorkItem where the Dataflow service\nsuggests that the worker truncate the task."]
+        #[doc = "The progress point in the WorkItem where the Dataflow service suggests that the worker truncate the task."]
         #[serde(
             rename = "splitRequest",
             default,
@@ -9669,7 +10622,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub dynamic_source_split: ::std::option::Option<crate::schemas::DynamicSourceSplit>,
-        #[doc = "Specifies errors which occurred during processing.  If errors are\nprovided, and completed = true, then the WorkItem is considered\nto have failed."]
+        #[doc = "Specifies errors which occurred during processing. If errors are provided, and completed = true, then the WorkItem is considered to have failed."]
         #[serde(
             rename = "errors",
             default,
@@ -9690,7 +10643,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub progress: ::std::option::Option<crate::schemas::ApproximateProgress>,
-        #[doc = "The report index.  When a WorkItem is leased, the lease will\ncontain an initial report index.  When a WorkItem's status is\nreported to the system, the report should be sent with\nthat report index, and the response will contain the index the\nworker should use for the next report.  Reports received with\nunexpected index values will be rejected by the service.\n\nIn order to preserve idempotency, the worker should not alter the\ncontents of a report, even if the worker must submit the same\nreport multiple times before getting back a response.  The worker\nshould not submit a subsequent report until the response for the\nprevious report had been received from the service."]
+        #[doc = "The report index. When a WorkItem is leased, the lease will contain an initial report index. When a WorkItem's status is reported to the system, the report should be sent with that report index, and the response will contain the index the worker should use for the next report. Reports received with unexpected index values will be rejected by the service. In order to preserve idempotency, the worker should not alter the contents of a report, even if the worker must submit the same report multiple times before getting back a response. The worker should not submit a subsequent report until the response for the previous report had been received from the service."]
         #[serde(
             rename = "reportIndex",
             default,
@@ -9719,7 +10672,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub source_fork: ::std::option::Option<crate::schemas::SourceFork>,
-        #[doc = "If the work item represented a SourceOperationRequest, and the work\nis completed, contains the result of the operation."]
+        #[doc = "If the work item represented a SourceOperationRequest, and the work is completed, contains the result of the operation."]
         #[serde(
             rename = "sourceOperationResponse",
             default,
@@ -9727,7 +10680,7 @@ pub mod schemas {
         )]
         pub source_operation_response:
             ::std::option::Option<crate::schemas::SourceOperationResponse>,
-        #[doc = "A worker may split an active map task in two parts, \"primary\" and\n\"residual\", continuing to process the primary part and returning the\nresidual part into the pool of available work.\nThis event is called a \"dynamic split\" and is critical to the dynamic\nwork rebalancing feature. The two obtained sub-tasks are called\n\"parts\" of the split.\nThe parts, if concatenated, must represent the same input as would\nbe read by the current task if the split did not happen.\nThe exact way in which the original task is decomposed into the two\nparts is specified either as a position demarcating them\n(stop_position), or explicitly as two DerivedSources, if this\ntask consumes a user-defined source type (dynamic_source_split).\n\nThe \"current\" task is adjusted as a result of the split: after a task\nwith range [A, B) sends a stop_position update at C, its range is\nconsidered to be [A, C), e.g.:\n\n* Progress should be interpreted relative to the new range, e.g.\n  \"75% completed\" means \"75% of [A, C) completed\"\n* The worker should interpret proposed_stop_position relative to the\n  new range, e.g. \"split at 68%\" should be interpreted as\n  \"split at 68% of [A, C)\".\n* If the worker chooses to split again using stop_position, only\n  stop_positions in [A, C) will be accepted.\n* Etc.\n  dynamic_source_split has similar semantics: e.g., if a task with\n  source S splits using dynamic_source_split into {P, R}\n  (where P and R must be together equivalent to S), then subsequent\n  progress and proposed_stop_position should be interpreted relative\n  to P, and in a potential subsequent dynamic_source_split into {P', R'},\n  P' and R' must be together equivalent to P, etc."]
+        #[doc = "A worker may split an active map task in two parts, \"primary\" and \"residual\", continuing to process the primary part and returning the residual part into the pool of available work. This event is called a \"dynamic split\" and is critical to the dynamic work rebalancing feature. The two obtained sub-tasks are called \"parts\" of the split. The parts, if concatenated, must represent the same input as would be read by the current task if the split did not happen. The exact way in which the original task is decomposed into the two parts is specified either as a position demarcating them (stop_position), or explicitly as two DerivedSources, if this task consumes a user-defined source type (dynamic_source_split). The \"current\" task is adjusted as a result of the split: after a task with range [A, B) sends a stop_position update at C, its range is considered to be [A, C), e.g.: * Progress should be interpreted relative to the new range, e.g. \"75% completed\" means \"75% of [A, C) completed\" * The worker should interpret proposed_stop_position relative to the new range, e.g. \"split at 68%\" should be interpreted as \"split at 68% of [A, C)\". * If the worker chooses to split again using stop_position, only stop_positions in [A, C) will be accepted. * Etc. dynamic_source_split has similar semantics: e.g., if a task with source S splits using dynamic_source_split into {P, R} (where P and R must be together equivalent to S), then subsequent progress and proposed_stop_position should be interpreted relative to P, and in a potential subsequent dynamic_source_split into {P', R'}, P' and R' must be together equivalent to P, etc."]
         #[serde(
             rename = "stopPosition",
             default,
@@ -9760,6 +10713,33 @@ pub mod schemas {
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct WorkerDetails {
+        #[doc = "Work items processed by this worker, sorted by time."]
+        #[serde(
+            rename = "workItems",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub work_items: ::std::option::Option<Vec<crate::schemas::WorkItemDetails>>,
+        #[doc = "Name of this worker"]
+        #[serde(
+            rename = "workerName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub worker_name: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for WorkerDetails {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for WorkerDetails {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct WorkerHealthReport {
         #[doc = "A message describing any unusual health reports."]
         #[serde(
@@ -9768,7 +10748,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub msg: ::std::option::Option<String>,
-        #[doc = "The pods running on the worker. See:\nhttp://kubernetes.io/v1.1/docs/api-reference/v1/definitions.html#_v1_pod\n\nThis field is used by the worker to send the status of the indvidual\ncontainers running on each worker."]
+        #[doc = "The pods running on the worker. See: http://kubernetes.io/v1.1/docs/api-reference/v1/definitions.html#_v1_pod This field is used by the worker to send the status of the indvidual containers running on each worker."]
         #[serde(
             rename = "pods",
             default,
@@ -9776,14 +10756,14 @@ pub mod schemas {
         )]
         pub pods:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
-        #[doc = "The interval at which the worker is sending health reports.\nThe default value of 0 should be interpreted as the field is not being\nexplicitly set by the worker."]
+        #[doc = "The interval at which the worker is sending health reports. The default value of 0 should be interpreted as the field is not being explicitly set by the worker."]
         #[serde(
             rename = "reportInterval",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub report_interval: ::std::option::Option<String>,
-        #[doc = "Whether the VM is in a permanently broken state.\nBroken VMs should be abandoned or deleted ASAP to avoid assigning or\ncompleting any work."]
+        #[doc = "Whether the VM is in a permanently broken state. Broken VMs should be abandoned or deleted ASAP to avoid assigning or completing any work."]
         #[serde(
             rename = "vmIsBroken",
             default,
@@ -9828,7 +10808,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct WorkerHealthReportResponse {
-        #[doc = "A positive value indicates the worker should change its reporting interval\nto the specified value.\n\nThe default value of zero means no change in report rate is requested by\nthe server."]
+        #[doc = "A positive value indicates the worker should change its reporting interval to the specified value. The default value of zero means no change in report rate is requested by the server."]
         #[serde(
             rename = "reportInterval",
             default,
@@ -9859,7 +10839,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct WorkerLifecycleEvent {
-        #[doc = "The start time of this container. All events will report this so that\nevents can be grouped together across container/VM restarts."]
+        #[doc = "The start time of this container. All events will report this so that events can be grouped together across container/VM restarts."]
         #[serde(
             rename = "containerStartTime",
             default,
@@ -9873,7 +10853,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub event: ::std::option::Option<crate::schemas::WorkerLifecycleEventEvent>,
-        #[doc = "Other stats that can accompany an event. E.g.\n{ \"downloaded_bytes\" : \"123456\" }"]
+        #[doc = "Other stats that can accompany an event. E.g. { \"downloaded_bytes\" : \"123456\" }"]
         #[serde(
             rename = "metadata",
             default,
@@ -9893,7 +10873,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum WorkerLifecycleEventEvent {
-        #[doc = "Our container code starts running. Multiple containers could be\ndistinguished with WorkerMessage.labels if desired."]
+        #[doc = "Our container code starts running. Multiple containers could be distinguished with WorkerMessage.labels if desired."]
         ContainerStart,
         #[doc = "The worker has a functional external network connection."]
         NetworkUp,
@@ -10006,7 +10986,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct WorkerMessage {
-        #[doc = "Labels are used to group WorkerMessages.\nFor example, a worker_message about a particular container\nmight have the labels:\n{ \"JOB_ID\": \"2015-04-22\",\n\"WORKER_ID\": \"wordcount-vm-2015…\"\n\"CONTAINER_TYPE\": \"worker\",\n\"CONTAINER_ID\": \"ac1234def\"}\nLabel tags typically correspond to Label enum values. However, for ease\nof development other strings can be used as tags. LABEL_UNSPECIFIED should\nnot be used here."]
+        #[doc = "Labels are used to group WorkerMessages. For example, a worker_message about a particular container might have the labels: { \"JOB_ID\": \"2015-04-22\", \"WORKER_ID\": \"wordcount-vm-2015…\" \"CONTAINER_TYPE\": \"worker\", \"CONTAINER_ID\": \"ac1234def\"} Label tags typically correspond to Label enum values. However, for ease of development other strings can be used as tags. LABEL_UNSPECIFIED should not be used here."]
         #[serde(
             rename = "labels",
             default,
@@ -10068,14 +11048,14 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct WorkerMessageCode {
-        #[doc = "The code is a string intended for consumption by a machine that identifies\nthe type of message being sent.\nExamples:\n\n1. \"HARNESS_STARTED\" might be used to indicate the worker harness has\n   started.\n1. \"GCS_DOWNLOAD_ERROR\" might be used to indicate an error downloading\n   a GCS file as part of the boot process of one of the worker containers.\n\nThis is a string and not an enum to make it easy to add new codes without\nwaiting for an API change."]
+        #[doc = "The code is a string intended for consumption by a machine that identifies the type of message being sent. Examples: 1. \"HARNESS_STARTED\" might be used to indicate the worker harness has started. 2. \"GCS_DOWNLOAD_ERROR\" might be used to indicate an error downloading a GCS file as part of the boot process of one of the worker containers. This is a string and not an enum to make it easy to add new codes without waiting for an API change."]
         #[serde(
             rename = "code",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub code: ::std::option::Option<String>,
-        #[doc = "Parameters contains specific information about the code.\n\nThis is a struct to allow parameters of different types.\n\nExamples:\n\n1. For a \"HARNESS_STARTED\" message parameters might provide the name\n   of the worker and additional data like timing information.\n1. For a \"GCS_DOWNLOAD_ERROR\" parameters might contain fields listing\n   the GCS objects being downloaded and fields containing errors.\n\nIn general complex data structures should be avoided. If a worker\nneeds to send a specific and complicated data structure then please\nconsider defining a new proto and adding it to the data oneof in\nWorkerMessageResponse.\n\nConventions:\nParameters should only be used for information that isn't typically passed\nas a label.\nhostname and other worker identifiers should almost always be passed\nas labels since they will be included on most messages."]
+        #[doc = "Parameters contains specific information about the code. This is a struct to allow parameters of different types. Examples: 1. For a \"HARNESS_STARTED\" message parameters might provide the name of the worker and additional data like timing information. 2. For a \"GCS_DOWNLOAD_ERROR\" parameters might contain fields listing the GCS objects being downloaded and fields containing errors. In general complex data structures should be avoided. If a worker needs to send a specific and complicated data structure then please consider defining a new proto and adding it to the data oneof in WorkerMessageResponse. Conventions: Parameters should only be used for information that isn't typically passed as a label. hostname and other worker identifiers should almost always be passed as labels since they will be included on most messages."]
         #[serde(
             rename = "parameters",
             default,
@@ -10158,14 +11138,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub data_disks: ::std::option::Option<Vec<crate::schemas::Disk>>,
-        #[doc = "The default package set to install.  This allows the service to\nselect a default set of packages which are useful to worker\nharnesses written in a particular language."]
+        #[doc = "The default package set to install. This allows the service to select a default set of packages which are useful to worker harnesses written in a particular language."]
         #[serde(
             rename = "defaultPackageSet",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub default_package_set: ::std::option::Option<crate::schemas::WorkerPoolDefaultPackageSet>,
-        #[doc = "Size of root disk for VMs, in GB.  If zero or unspecified, the service will\nattempt to choose a reasonable default."]
+        #[doc = "Size of root disk for VMs, in GB. If zero or unspecified, the service will attempt to choose a reasonable default."]
         #[serde(
             rename = "diskSizeGb",
             default,
@@ -10179,7 +11159,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub disk_source_image: ::std::option::Option<String>,
-        #[doc = "Type of root disk for VMs.  If empty or unspecified, the service will\nattempt to choose a reasonable default."]
+        #[doc = "Type of root disk for VMs. If empty or unspecified, the service will attempt to choose a reasonable default."]
         #[serde(
             rename = "diskType",
             default,
@@ -10193,14 +11173,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ip_configuration: ::std::option::Option<crate::schemas::WorkerPoolIpConfiguration>,
-        #[doc = "The kind of the worker pool; currently only `harness` and `shuffle`\nare supported."]
+        #[doc = "The kind of the worker pool; currently only `harness` and `shuffle` are supported."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "Machine type (e.g. \"n1-standard-1\").  If empty or unspecified, the\nservice will attempt to choose a reasonable default."]
+        #[doc = "Machine type (e.g. \"n1-standard-1\"). If empty or unspecified, the service will attempt to choose a reasonable default."]
         #[serde(
             rename = "machineType",
             default,
@@ -10214,28 +11194,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Network to which VMs will be assigned.  If empty or unspecified,\nthe service will use the network \"default\"."]
+        #[doc = "Network to which VMs will be assigned. If empty or unspecified, the service will use the network \"default\"."]
         #[serde(
             rename = "network",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub network: ::std::option::Option<String>,
-        #[doc = "The number of threads per worker harness. If empty or unspecified, the\nservice will choose a number of threads (according to the number of cores\non the selected machine type for batch, or 1 by convention for streaming)."]
+        #[doc = "The number of threads per worker harness. If empty or unspecified, the service will choose a number of threads (according to the number of cores on the selected machine type for batch, or 1 by convention for streaming)."]
         #[serde(
             rename = "numThreadsPerWorker",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub num_threads_per_worker: ::std::option::Option<i32>,
-        #[doc = "Number of Google Compute Engine workers in this pool needed to\nexecute the job.  If zero or unspecified, the service will\nattempt to choose a reasonable default."]
+        #[doc = "Number of Google Compute Engine workers in this pool needed to execute the job. If zero or unspecified, the service will attempt to choose a reasonable default."]
         #[serde(
             rename = "numWorkers",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub num_workers: ::std::option::Option<i32>,
-        #[doc = "The action to take on host maintenance, as defined by the Google\nCompute Engine API."]
+        #[doc = "The action to take on host maintenance, as defined by the Google Compute Engine API."]
         #[serde(
             rename = "onHostMaintenance",
             default,
@@ -10257,7 +11237,7 @@ pub mod schemas {
         )]
         pub pool_args:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "Set of SDK harness containers needed to execute this pipeline. This will\nonly be set in the Fn API path. For non-cross-language pipelines this\nshould have only one entry. Cross-language pipelines will have two or more\nentries."]
+        #[doc = "Set of SDK harness containers needed to execute this pipeline. This will only be set in the Fn API path. For non-cross-language pipelines this should have only one entry. Cross-language pipelines will have two or more entries."]
         #[serde(
             rename = "sdkHarnessContainerImages",
             default,
@@ -10265,35 +11245,35 @@ pub mod schemas {
         )]
         pub sdk_harness_container_images:
             ::std::option::Option<Vec<crate::schemas::SdkHarnessContainerImage>>,
-        #[doc = "Subnetwork to which VMs will be assigned, if desired.  Expected to be of\nthe form \"regions/REGION/subnetworks/SUBNETWORK\"."]
+        #[doc = "Subnetwork to which VMs will be assigned, if desired. Expected to be of the form \"regions/REGION/subnetworks/SUBNETWORK\"."]
         #[serde(
             rename = "subnetwork",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub subnetwork: ::std::option::Option<String>,
-        #[doc = "Settings passed through to Google Compute Engine workers when\nusing the standard Dataflow task runner.  Users should ignore\nthis field."]
+        #[doc = "Settings passed through to Google Compute Engine workers when using the standard Dataflow task runner. Users should ignore this field."]
         #[serde(
             rename = "taskrunnerSettings",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub taskrunner_settings: ::std::option::Option<crate::schemas::TaskRunnerSettings>,
-        #[doc = "Sets the policy for determining when to turndown worker pool.\nAllowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and\n`TEARDOWN_NEVER`.\n`TEARDOWN_ALWAYS` means workers are always torn down regardless of whether\nthe job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down\nif the job succeeds. `TEARDOWN_NEVER` means the workers are never torn\ndown.\n\nIf the workers are not torn down by the service, they will\ncontinue to run and use Google Compute Engine VM resources in the\nuser's project until they are explicitly terminated by the user.\nBecause of this, Google recommends using the `TEARDOWN_ALWAYS`\npolicy except for small, manually supervised test jobs.\n\nIf unknown or unspecified, the service will attempt to choose a reasonable\ndefault."]
+        #[doc = "Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default."]
         #[serde(
             rename = "teardownPolicy",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub teardown_policy: ::std::option::Option<crate::schemas::WorkerPoolTeardownPolicy>,
-        #[doc = "Required. Docker container image that executes the Cloud Dataflow worker\nharness, residing in Google Container Registry.\n\nDeprecated for the Fn API path. Use sdk_harness_container_images instead."]
+        #[doc = "Required. Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead."]
         #[serde(
             rename = "workerHarnessContainerImage",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub worker_harness_container_image: ::std::option::Option<String>,
-        #[doc = "Zone to run the worker pools in.  If empty or unspecified, the service\nwill attempt to choose a reasonable default."]
+        #[doc = "Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default."]
         #[serde(
             rename = "zone",
             default,
@@ -10315,7 +11295,7 @@ pub mod schemas {
     pub enum WorkerPoolDefaultPackageSet {
         #[doc = "Stage packages typically useful to workers written in Java."]
         DefaultPackageSetJava,
-        #[doc = "Indicates that no packages should be staged at the worker unless\nexplicitly specified by the job."]
+        #[doc = "Indicates that no packages should be staged at the worker unless explicitly specified by the job."]
         DefaultPackageSetNone,
         #[doc = "Stage pacakges typically useful to workers written in Python."]
         DefaultPackageSetPython,
@@ -10484,9 +11464,9 @@ pub mod schemas {
     pub enum WorkerPoolTeardownPolicy {
         #[doc = "Always teardown the resource."]
         TeardownAlways,
-        #[doc = "Never teardown the resource. This is useful for debugging and\ndevelopment."]
+        #[doc = "Never teardown the resource. This is useful for debugging and development."]
         TeardownNever,
-        #[doc = "Teardown the resource on success. This is useful for debugging\nfailures."]
+        #[doc = "Teardown the resource on success. This is useful for debugging failures."]
         TeardownOnSuccess,
         #[doc = "The teardown policy isn't specified, or is unknown."]
         TeardownPolicyUnknown,
@@ -10574,7 +11554,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct WorkerSettings {
-        #[doc = "The base URL for accessing Google Cloud APIs.\n\nWhen workers access Google Cloud APIs, they logically do so via\nrelative URLs.  If this field is specified, it supplies the base\nURL to use for resolving these relative URLs.  The normative\nalgorithm used is defined by RFC 1808, \"Relative Uniform Resource\nLocators\".\n\nIf not specified, the default value is \"http://www.googleapis.com/\""]
+        #[doc = "The base URL for accessing Google Cloud APIs. When workers access Google Cloud APIs, they logically do so via relative URLs. If this field is specified, it supplies the base URL to use for resolving these relative URLs. The normative algorithm used is defined by RFC 1808, \"Relative Uniform Resource Locators\". If not specified, the default value is \"http://www.googleapis.com/\""]
         #[serde(
             rename = "baseUrl",
             default,
@@ -10588,21 +11568,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub reporting_enabled: ::std::option::Option<bool>,
-        #[doc = "The Cloud Dataflow service path relative to the root URL, for example,\n\"dataflow/v1b3/projects\"."]
+        #[doc = "The Cloud Dataflow service path relative to the root URL, for example, \"dataflow/v1b3/projects\"."]
         #[serde(
             rename = "servicePath",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub service_path: ::std::option::Option<String>,
-        #[doc = "The Shuffle service path relative to the root URL, for example,\n\"shuffle/v1beta1\"."]
+        #[doc = "The Shuffle service path relative to the root URL, for example, \"shuffle/v1beta1\"."]
         #[serde(
             rename = "shuffleServicePath",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub shuffle_service_path: ::std::option::Option<String>,
-        #[doc = "The prefix of the resources the system should use for temporary\nstorage.\n\nThe supported resource type is:\n\nGoogle Cloud Storage:\n\nstorage.googleapis.com/{bucket}/{object}\nbucket.storage.googleapis.com/{object}"]
+        #[doc = "The prefix of the resources the system should use for temporary storage. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}"]
         #[serde(
             rename = "tempStoragePrefix",
             default,
@@ -10640,7 +11620,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct WorkerShutdownNotice {
-        #[doc = "The reason for the worker shutdown.\nCurrent possible values are:\n\"UNKNOWN\": shutdown reason is unknown.\n\"PREEMPTION\": shutdown reason is preemption.\nOther possible reasons may be added in the future."]
+        #[doc = "The reason for the worker shutdown. Current possible values are: \"UNKNOWN\": shutdown reason is unknown. \"PREEMPTION\": shutdown reason is preemption. Other possible reasons may be added in the future."]
         #[serde(
             rename = "reason",
             default,
@@ -11153,21 +12133,21 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("location", &self.location)]);
-                let req = req.query(&[("snapshotId", &self.snapshot_id)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("location", &self.location)]);
+                req = req.query(&[("snapshotId", &self.snapshot_id)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11314,19 +12294,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11344,7 +12324,7 @@ pub mod resources {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Creates a new TemplateVersion (Important: not new Template) entry in the\nspanner table. Requires project_id and display_name (template)."]
+                #[doc = "Creates a new TemplateVersion (Important: not new Template) entry in the spanner table. Requires project_id and display_name (template)."]
                 pub fn commit(
                     &self,
                     request: crate::schemas::CommitTemplateVersionRequest,
@@ -11387,7 +12367,7 @@ pub mod resources {
                         name: name.into(),
                     }
                 }
-                #[doc = "Get TemplateVersion using project_id and display_name with an optional\nversion_id field. Get latest (has tag \"latest\") TemplateVersion if\nversion_id not set."]
+                #[doc = "Get TemplateVersion using project_id and display_name with an optional version_id field. Get latest (has tag \"latest\") TemplateVersion if version_id not set."]
                 pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder {
                     GetRequestBuilder {
                         reqwest: &self.reqwest,
@@ -11406,7 +12386,7 @@ pub mod resources {
                         name: name.into(),
                     }
                 }
-                #[doc = "Updates the label of the TemplateVersion. Label can be duplicated in\nTemplate, so either add or remove the label in the TemplateVersion."]
+                #[doc = "Updates the label of the TemplateVersion. Label can be duplicated in Template, so either add or remove the label in the TemplateVersion."]
                 pub fn label(
                     &self,
                     request: crate::schemas::ModifyTemplateVersionLabelRequest,
@@ -11430,7 +12410,7 @@ pub mod resources {
                         name: name.into(),
                     }
                 }
-                #[doc = "Updates the tag of the TemplateVersion, and tag is unique in Template.\nIf tag exists in another TemplateVersion in the Template, updates the tag\nto this TemplateVersion will remove it from the old TemplateVersion and add\nit to this TemplateVersion. If request is remove_only (remove_only = true),\nremove the tag from this TemplateVersion."]
+                #[doc = "Updates the tag of the TemplateVersion, and tag is unique in Template. If tag exists in another TemplateVersion in the Template, updates the tag to this TemplateVersion will remove it from the old TemplateVersion and add it to this TemplateVersion. If request is remove_only (remove_only = true), remove the tag from this TemplateVersion."]
                 pub fn tag(
                     &self,
                     request: crate::schemas::ModifyTemplateVersionTagRequest,
@@ -11454,7 +12434,7 @@ pub mod resources {
                         name: name.into(),
                     }
                 }
-                #[doc = "Actions that can be performed on the template_versions resource"]pub fn template_versions ( & self ) -> crate :: resources :: projects :: catalog_templates :: template_versions :: TemplateVersionsActions{
+                #[doc = "Actions that can be performed on the template_versions resource"]                pub fn template_versions ( & self ) -> crate :: resources :: projects :: catalog_templates :: template_versions :: TemplateVersionsActions{
                     crate :: resources :: projects :: catalog_templates :: template_versions :: TemplateVersionsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                 }
             }
@@ -11600,19 +12580,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11759,19 +12739,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11918,19 +12898,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12082,19 +13062,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12246,19 +13226,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12276,7 +13256,7 @@ pub mod resources {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "Creates a new Template with TemplateVersion. Requires\nproject_id(projects) and template display_name(catalogTemplates).\nThe template display_name is set by the user."]
+                    #[doc = "Creates a new Template with TemplateVersion. Requires project_id(projects) and template display_name(catalogTemplates). The template display_name is set by the user."]
                     pub fn create(
                         &self,
                         request: crate::schemas::CreateTemplateVersionRequest,
@@ -12444,19 +13424,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12470,9 +13450,13 @@ pub mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum AggregatedFilter {
+                    #[doc = "Filters the jobs that are running ordered on the creation timestamp."]
                     Active,
+                    #[doc = "Returns all running jobs first ordered on creation timestamp, then returns all terminated jobs ordered on the termination timestamp."]
                     All,
+                    #[doc = "Filters the jobs that have a terminated state, ordered on the termination timestamp. Example terminated states: `JOB_STATE_STOPPED`, `JOB_STATE_UPDATED`, `JOB_STATE_DRAINED`, etc."]
                     Terminated,
+                    #[doc = "The filter isn't specified, or is unknown. This returns all jobs ordered on descending `JobUuid`."]
                     Unknown,
                 }
                 impl AggregatedFilter {
@@ -12547,9 +13531,13 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum AggregatedView {
+                    #[doc = "Request all information available for this job."]
                     JobViewAll,
+                    #[doc = "Request summary info and limited job description data for steps, labels and environment."]
                     JobViewDescription,
+                    #[doc = "Request summary information only: Project ID, Job ID, job name, job type, job status, start/end time, and Cloud SDK version details."]
                     JobViewSummary,
+                    #[doc = "The job view to return isn't specified, or is unknown. Responses will contain at least the `JOB_VIEW_SUMMARY` information, and may contain additional information."]
                     JobViewUnknown,
                 }
                 impl AggregatedView {
@@ -12624,9 +13612,13 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum CreateView {
+                    #[doc = "Request all information available for this job."]
                     JobViewAll,
+                    #[doc = "Request summary info and limited job description data for steps, labels and environment."]
                     JobViewDescription,
+                    #[doc = "Request summary information only: Project ID, Job ID, job name, job type, job status, start/end time, and Cloud SDK version details."]
                     JobViewSummary,
+                    #[doc = "The job view to return isn't specified, or is unknown. Responses will contain at least the `JOB_VIEW_SUMMARY` information, and may contain additional information."]
                     JobViewUnknown,
                 }
                 impl CreateView {
@@ -12701,9 +13693,13 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum GetView {
+                    #[doc = "Request all information available for this job."]
                     JobViewAll,
+                    #[doc = "Request summary info and limited job description data for steps, labels and environment."]
                     JobViewDescription,
+                    #[doc = "Request summary information only: Project ID, Job ID, job name, job type, job status, start/end time, and Cloud SDK version details."]
                     JobViewSummary,
+                    #[doc = "The job view to return isn't specified, or is unknown. Responses will contain at least the `JOB_VIEW_SUMMARY` information, and may contain additional information."]
                     JobViewUnknown,
                 }
                 impl GetView {
@@ -12778,9 +13774,13 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListFilter {
+                    #[doc = "Filters the jobs that are running ordered on the creation timestamp."]
                     Active,
+                    #[doc = "Returns all running jobs first ordered on creation timestamp, then returns all terminated jobs ordered on the termination timestamp."]
                     All,
+                    #[doc = "Filters the jobs that have a terminated state, ordered on the termination timestamp. Example terminated states: `JOB_STATE_STOPPED`, `JOB_STATE_UPDATED`, `JOB_STATE_DRAINED`, etc."]
                     Terminated,
+                    #[doc = "The filter isn't specified, or is unknown. This returns all jobs ordered on descending `JobUuid`."]
                     Unknown,
                 }
                 impl ListFilter {
@@ -12855,9 +13855,13 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListView {
+                    #[doc = "Request all information available for this job."]
                     JobViewAll,
+                    #[doc = "Request summary info and limited job description data for steps, labels and environment."]
                     JobViewDescription,
+                    #[doc = "Request summary information only: Project ID, Job ID, job name, job type, job status, start/end time, and Cloud SDK version details."]
                     JobViewSummary,
+                    #[doc = "The job view to return isn't specified, or is unknown. Responses will contain at least the `JOB_VIEW_SUMMARY` information, and may contain additional information."]
                     JobViewUnknown,
                 }
                 impl ListView {
@@ -12966,7 +13970,7 @@ pub mod resources {
                         view: None,
                     }
                 }
-                #[doc = "Creates a Cloud Dataflow job.\n\nTo create a job, we recommend using `projects.locations.jobs.create` with a\n[regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using\n`projects.jobs.create` is not recommended, as your job will always start\nin `us-central1`."]
+                #[doc = "Creates a Cloud Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`."]
                 pub fn create(
                     &self,
                     request: crate::schemas::Job,
@@ -12993,7 +13997,7 @@ pub mod resources {
                         view: None,
                     }
                 }
-                #[doc = "Gets the state of the specified Cloud Dataflow job.\n\nTo get the state of a job, we recommend using `projects.locations.jobs.get`\nwith a [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using\n`projects.jobs.get` is not recommended, as you can only get the state of\njobs that are running in `us-central1`."]
+                #[doc = "Gets the state of the specified Cloud Dataflow job. To get the state of a job, we recommend using `projects.locations.jobs.get` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.get` is not recommended, as you can only get the state of jobs that are running in `us-central1`."]
                 pub fn get(
                     &self,
                     project_id: impl Into<String>,
@@ -13019,7 +14023,7 @@ pub mod resources {
                         view: None,
                     }
                 }
-                #[doc = "Request the job status.\n\nTo request the status of a job, we recommend using\n`projects.locations.jobs.getMetrics` with a [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using\n`projects.jobs.getMetrics` is not recommended, as you can only request the\nstatus of jobs that are running in `us-central1`."]
+                #[doc = "Request the job status. To request the status of a job, we recommend using `projects.locations.jobs.getMetrics` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.getMetrics` is not recommended, as you can only request the status of jobs that are running in `us-central1`."]
                 pub fn get_metrics(
                     &self,
                     project_id: impl Into<String>,
@@ -13045,7 +14049,7 @@ pub mod resources {
                         start_time: None,
                     }
                 }
-                #[doc = "List the jobs of a project.\n\nTo list the jobs of a project in a region, we recommend using\n`projects.locations.jobs.get` with a [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To\nlist the all jobs across all regions, use `projects.jobs.aggregated`. Using\n`projects.jobs.list` is not recommended, as you can only get the list of\njobs that are running in `us-central1`."]
+                #[doc = "List the jobs of a project. To list the jobs of a project in a region, we recommend using `projects.locations.jobs.list` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To list the all jobs across all regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, as you can only get the list of jobs that are running in `us-central1`."]
                 pub fn list(&self, project_id: impl Into<String>) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
@@ -13095,7 +14099,7 @@ pub mod resources {
                         job_id: job_id.into(),
                     }
                 }
-                #[doc = "Updates the state of an existing Cloud Dataflow job.\n\nTo update the state of an existing job, we recommend using\n`projects.locations.jobs.update` with a [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using\n`projects.jobs.update` is not recommended, as you can only update the state\nof jobs that are running in `us-central1`."]
+                #[doc = "Updates the state of an existing Cloud Dataflow job. To update the state of an existing job, we recommend using `projects.locations.jobs.update` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.update` is not recommended, as you can only update the state of jobs that are running in `us-central1`."]
                 pub fn update(
                     &self,
                     request: crate::schemas::Job,
@@ -13181,22 +14185,22 @@ pub mod resources {
                     self.filter = Some(value);
                     self
                 }
-                #[doc = "The [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that\ncontains this job."]
+                #[doc = "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job."]
                 pub fn location(mut self, value: impl Into<String>) -> Self {
                     self.location = Some(value.into());
                     self
                 }
-                #[doc = "If there are many jobs, limit response to at most this many.\nThe actual number of jobs returned will be the lesser of max_responses\nand an unspecified server-defined limit."]
+                #[doc = "If there are many jobs, limit response to at most this many. The actual number of jobs returned will be the lesser of max_responses and an unspecified server-defined limit."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
                     self
                 }
-                #[doc = "Set this to the 'next_page_token' field of a previous response\nto request additional results in a long list."]
+                #[doc = "Set this to the 'next_page_token' field of a previous response to request additional results in a long list."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
                     self
                 }
-                #[doc = "Level of information requested in response. Default is `JOB_VIEW_SUMMARY`."]
+                #[doc = "Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews."]
                 pub fn view(
                     mut self,
                     value: crate::resources::projects::jobs::params::AggregatedView,
@@ -13482,24 +14486,24 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("filter", &self.filter)]);
-                    let req = req.query(&[("location", &self.location)]);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("view", &self.view)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("filter", &self.filter)]);
+                    req = req.query(&[("location", &self.location)]);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("view", &self.view)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13541,7 +14545,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> CreateRequestBuilder<'a> {
-                #[doc = "The [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that\ncontains this job."]
+                #[doc = "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job."]
                 pub fn location(mut self, value: impl Into<String>) -> Self {
                     self.location = Some(value.into());
                     self
@@ -13679,22 +14683,22 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("location", &self.location)]);
-                    let req = req.query(&[("replaceJobId", &self.replace_job_id)]);
-                    let req = req.query(&[("view", &self.view)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("location", &self.location)]);
+                    req = req.query(&[("replaceJobId", &self.replace_job_id)]);
+                    req = req.query(&[("view", &self.view)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13724,7 +14728,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> GetRequestBuilder<'a> {
-                #[doc = "The [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that\ncontains this job."]
+                #[doc = "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job."]
                 pub fn location(mut self, value: impl Into<String>) -> Self {
                     self.location = Some(value.into());
                     self
@@ -13863,21 +14867,21 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("location", &self.location)]);
-                    let req = req.query(&[("view", &self.view)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("location", &self.location)]);
+                    req = req.query(&[("view", &self.view)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13907,12 +14911,12 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> GetMetricsRequestBuilder<'a> {
-                #[doc = "The [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that\ncontains the job specified by job_id."]
+                #[doc = "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by job_id."]
                 pub fn location(mut self, value: impl Into<String>) -> Self {
                     self.location = Some(value.into());
                     self
                 }
-                #[doc = "Return only metric data that has changed since this time.\nDefault is to return all information about all metrics for the job."]
+                #[doc = "Return only metric data that has changed since this time. Default is to return all information about all metrics for the job."]
                 pub fn start_time(mut self, value: impl Into<String>) -> Self {
                     self.start_time = Some(value.into());
                     self
@@ -14046,21 +15050,21 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("location", &self.location)]);
-                    let req = req.query(&[("startTime", &self.start_time)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("location", &self.location)]);
+                    req = req.query(&[("startTime", &self.start_time)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14100,22 +15104,22 @@ pub mod resources {
                     self.filter = Some(value);
                     self
                 }
-                #[doc = "The [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that\ncontains this job."]
+                #[doc = "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job."]
                 pub fn location(mut self, value: impl Into<String>) -> Self {
                     self.location = Some(value.into());
                     self
                 }
-                #[doc = "If there are many jobs, limit response to at most this many.\nThe actual number of jobs returned will be the lesser of max_responses\nand an unspecified server-defined limit."]
+                #[doc = "If there are many jobs, limit response to at most this many. The actual number of jobs returned will be the lesser of max_responses and an unspecified server-defined limit."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
                     self
                 }
-                #[doc = "Set this to the 'next_page_token' field of a previous response\nto request additional results in a long list."]
+                #[doc = "Set this to the 'next_page_token' field of a previous response to request additional results in a long list."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
                     self
                 }
-                #[doc = "Level of information requested in response. Default is `JOB_VIEW_SUMMARY`."]
+                #[doc = "Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews."]
                 pub fn view(
                     mut self,
                     value: crate::resources::projects::jobs::params::ListView,
@@ -14401,24 +15405,24 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("filter", &self.filter)]);
-                    let req = req.query(&[("location", &self.location)]);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("view", &self.view)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("filter", &self.filter)]);
+                    req = req.query(&[("location", &self.location)]);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("view", &self.view)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14588,19 +15592,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14630,7 +15634,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> UpdateRequestBuilder<'a> {
-                #[doc = "The [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that\ncontains this job."]
+                #[doc = "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job."]
                 pub fn location(mut self, value: impl Into<String>) -> Self {
                     self.location = Some(value.into());
                     self
@@ -14762,20 +15766,20 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                    let req = req.query(&[("location", &self.location)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                    req = req.query(&[("location", &self.location)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -15000,19 +16004,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -15174,19 +16178,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -15199,11 +16203,17 @@ pub mod resources {
                 pub mod params {
                     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                     pub enum ListMinimumImportance {
+                        #[doc = "The message is at the 'basic' level: useful for keeping track of the execution of a Dataflow pipeline. Typically, Dataflow pipeline runners display log messages at this level by default, and these messages are displayed by default in the Dataflow monitoring UI."]
                         JobMessageBasic,
+                        #[doc = "The message is at the 'debug' level: typically only useful for software engineers working on the code the job is running. Typically, Dataflow pipeline runners do not display log messages at this level by default."]
                         JobMessageDebug,
+                        #[doc = "The message is at the 'detailed' level: somewhat verbose, but potentially useful to users. Typically, Dataflow pipeline runners do not display log messages at this level by default. These messages are displayed by default in the Dataflow monitoring UI."]
                         JobMessageDetailed,
+                        #[doc = "The message is at the 'error' level: indicating a condition preventing a job from succeeding. Typically, Dataflow pipeline runners display log messages at this level by default, and these messages are displayed by default in the Dataflow monitoring UI."]
                         JobMessageError,
+                        #[doc = "The message importance isn't specified, or is unknown."]
                         JobMessageImportanceUnknown,
+                        #[doc = "The message is at the 'warning' level: indicating a condition pertaining to a job which may require human intervention. Typically, Dataflow pipeline runners display log messages at this level by default, and these messages are displayed by default in the Dataflow monitoring UI."]
                         JobMessageWarning,
                     }
                     impl ListMinimumImportance {
@@ -15300,7 +16310,7 @@ pub mod resources {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "Request the job status.\n\nTo request the status of a job, we recommend using\n`projects.locations.jobs.messages.list` with a [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using\n`projects.jobs.messages.list` is not recommended, as you can only request\nthe status of jobs that are running in `us-central1`."]
+                    #[doc = "Request the job status. To request the status of a job, we recommend using `projects.locations.jobs.messages.list` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.messages.list` is not recommended, as you can only request the status of jobs that are running in `us-central1`."]
                     pub fn list(
                         &self,
                         project_id: impl Into<String>,
@@ -15359,12 +16369,12 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
-                    #[doc = "Return only messages with timestamps < end_time. The default is now\n(i.e. return up to the latest messages available)."]
+                    #[doc = "Return only messages with timestamps < end_time. The default is now (i.e. return up to the latest messages available)."]
                     pub fn end_time(mut self, value: impl Into<String>) -> Self {
                         self.end_time = Some(value.into());
                         self
                     }
-                    #[doc = "The [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that\ncontains the job specified by job_id."]
+                    #[doc = "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by job_id."]
                     pub fn location(mut self, value: impl Into<String>) -> Self {
                         self.location = Some(value.into());
                         self
@@ -15377,17 +16387,17 @@ pub mod resources {
                         self.minimum_importance = Some(value);
                         self
                     }
-                    #[doc = "If specified, determines the maximum number of messages to\nreturn.  If unspecified, the service may choose an appropriate\ndefault, or may return an arbitrarily large number of results."]
+                    #[doc = "If specified, determines the maximum number of messages to return. If unspecified, the service may choose an appropriate default, or may return an arbitrarily large number of results."]
                     pub fn page_size(mut self, value: i32) -> Self {
                         self.page_size = Some(value);
                         self
                     }
-                    #[doc = "If supplied, this should be the value of next_page_token returned\nby an earlier call. This will cause the next page of results to\nbe returned."]
+                    #[doc = "If supplied, this should be the value of next_page_token returned by an earlier call. This will cause the next page of results to be returned."]
                     pub fn page_token(mut self, value: impl Into<String>) -> Self {
                         self.page_token = Some(value.into());
                         self
                     }
-                    #[doc = "If specified, return only messages with timestamps >= start_time.\nThe default is the job creation time (i.e. beginning of messages)."]
+                    #[doc = "If specified, return only messages with timestamps >= start_time. The default is the job creation time (i.e. beginning of messages)."]
                     pub fn start_time(mut self, value: impl Into<String>) -> Self {
                         self.start_time = Some(value.into());
                         self
@@ -15687,25 +16697,25 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("endTime", &self.end_time)]);
-                        let req = req.query(&[("location", &self.location)]);
-                        let req = req.query(&[("minimumImportance", &self.minimum_importance)]);
-                        let req = req.query(&[("pageSize", &self.page_size)]);
-                        let req = req.query(&[("pageToken", &self.page_token)]);
-                        let req = req.query(&[("startTime", &self.start_time)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("endTime", &self.end_time)]);
+                        req = req.query(&[("location", &self.location)]);
+                        req = req.query(&[("minimumImportance", &self.minimum_importance)]);
+                        req = req.query(&[("pageSize", &self.page_size)]);
+                        req = req.query(&[("pageToken", &self.page_token)]);
+                        req = req.query(&[("startTime", &self.start_time)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -15942,19 +16952,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -16116,19 +17126,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -16372,19 +17382,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -16583,19 +17593,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -16608,9 +17618,13 @@ pub mod resources {
                 pub mod params {
                     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                     pub enum CreateView {
+                        #[doc = "Request all information available for this job."]
                         JobViewAll,
+                        #[doc = "Request summary info and limited job description data for steps, labels and environment."]
                         JobViewDescription,
+                        #[doc = "Request summary information only: Project ID, Job ID, job name, job type, job status, start/end time, and Cloud SDK version details."]
                         JobViewSummary,
+                        #[doc = "The job view to return isn't specified, or is unknown. Responses will contain at least the `JOB_VIEW_SUMMARY` information, and may contain additional information."]
                         JobViewUnknown,
                     }
                     impl CreateView {
@@ -16688,9 +17702,13 @@ pub mod resources {
                     }
                     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                     pub enum GetView {
+                        #[doc = "Request all information available for this job."]
                         JobViewAll,
+                        #[doc = "Request summary info and limited job description data for steps, labels and environment."]
                         JobViewDescription,
+                        #[doc = "Request summary information only: Project ID, Job ID, job name, job type, job status, start/end time, and Cloud SDK version details."]
                         JobViewSummary,
+                        #[doc = "The job view to return isn't specified, or is unknown. Responses will contain at least the `JOB_VIEW_SUMMARY` information, and may contain additional information."]
                         JobViewUnknown,
                     }
                     impl GetView {
@@ -16768,9 +17786,13 @@ pub mod resources {
                     }
                     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                     pub enum ListFilter {
+                        #[doc = "Filters the jobs that are running ordered on the creation timestamp."]
                         Active,
+                        #[doc = "Returns all running jobs first ordered on creation timestamp, then returns all terminated jobs ordered on the termination timestamp."]
                         All,
+                        #[doc = "Filters the jobs that have a terminated state, ordered on the termination timestamp. Example terminated states: `JOB_STATE_STOPPED`, `JOB_STATE_UPDATED`, `JOB_STATE_DRAINED`, etc."]
                         Terminated,
+                        #[doc = "The filter isn't specified, or is unknown. This returns all jobs ordered on descending `JobUuid`."]
                         Unknown,
                     }
                     impl ListFilter {
@@ -16848,9 +17870,13 @@ pub mod resources {
                     }
                     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                     pub enum ListView {
+                        #[doc = "Request all information available for this job."]
                         JobViewAll,
+                        #[doc = "Request summary info and limited job description data for steps, labels and environment."]
                         JobViewDescription,
+                        #[doc = "Request summary information only: Project ID, Job ID, job name, job type, job status, start/end time, and Cloud SDK version details."]
                         JobViewSummary,
+                        #[doc = "The job view to return isn't specified, or is unknown. Responses will contain at least the `JOB_VIEW_SUMMARY` information, and may contain additional information."]
                         JobViewUnknown,
                     }
                     impl ListView {
@@ -16935,7 +17961,7 @@ pub mod resources {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "Creates a Cloud Dataflow job.\n\nTo create a job, we recommend using `projects.locations.jobs.create` with a\n[regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using\n`projects.jobs.create` is not recommended, as your job will always start\nin `us-central1`."]
+                    #[doc = "Creates a Cloud Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`."]
                     pub fn create(
                         &self,
                         request: crate::schemas::Job,
@@ -16963,7 +17989,7 @@ pub mod resources {
                             view: None,
                         }
                     }
-                    #[doc = "Gets the state of the specified Cloud Dataflow job.\n\nTo get the state of a job, we recommend using `projects.locations.jobs.get`\nwith a [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using\n`projects.jobs.get` is not recommended, as you can only get the state of\njobs that are running in `us-central1`."]
+                    #[doc = "Gets the state of the specified Cloud Dataflow job. To get the state of a job, we recommend using `projects.locations.jobs.get` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.get` is not recommended, as you can only get the state of jobs that are running in `us-central1`."]
                     pub fn get(
                         &self,
                         project_id: impl Into<String>,
@@ -16990,7 +18016,35 @@ pub mod resources {
                             view: None,
                         }
                     }
-                    #[doc = "Request the job status.\n\nTo request the status of a job, we recommend using\n`projects.locations.jobs.getMetrics` with a [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using\n`projects.jobs.getMetrics` is not recommended, as you can only request the\nstatus of jobs that are running in `us-central1`."]
+                    #[doc = "Request detailed information about the execution status of the job. EXPERIMENTAL. This API is subject to change or removal without notice."]
+                    pub fn get_execution_details(
+                        &self,
+                        project_id: impl Into<String>,
+                        location: impl Into<String>,
+                        job_id: impl Into<String>,
+                    ) -> GetExecutionDetailsRequestBuilder {
+                        GetExecutionDetailsRequestBuilder {
+                            reqwest: &self.reqwest,
+                            auth: self.auth_ref(),
+                            access_token: None,
+                            alt: None,
+                            callback: None,
+                            fields: None,
+                            key: None,
+                            oauth_token: None,
+                            pretty_print: None,
+                            quota_user: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
+                            project_id: project_id.into(),
+                            location: location.into(),
+                            job_id: job_id.into(),
+                            page_size: None,
+                            page_token: None,
+                        }
+                    }
+                    #[doc = "Request the job status. To request the status of a job, we recommend using `projects.locations.jobs.getMetrics` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.getMetrics` is not recommended, as you can only request the status of jobs that are running in `us-central1`."]
                     pub fn get_metrics(
                         &self,
                         project_id: impl Into<String>,
@@ -17017,7 +18071,7 @@ pub mod resources {
                             start_time: None,
                         }
                     }
-                    #[doc = "List the jobs of a project.\n\nTo list the jobs of a project in a region, we recommend using\n`projects.locations.jobs.get` with a [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To\nlist the all jobs across all regions, use `projects.jobs.aggregated`. Using\n`projects.jobs.list` is not recommended, as you can only get the list of\njobs that are running in `us-central1`."]
+                    #[doc = "List the jobs of a project. To list the jobs of a project in a region, we recommend using `projects.locations.jobs.list` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To list the all jobs across all regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, as you can only get the list of jobs that are running in `us-central1`."]
                     pub fn list(
                         &self,
                         project_id: impl Into<String>,
@@ -17073,7 +18127,7 @@ pub mod resources {
                             job_id: job_id.into(),
                         }
                     }
-                    #[doc = "Updates the state of an existing Cloud Dataflow job.\n\nTo update the state of an existing job, we recommend using\n`projects.locations.jobs.update` with a [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using\n`projects.jobs.update` is not recommended, as you can only update the state\nof jobs that are running in `us-central1`."]
+                    #[doc = "Updates the state of an existing Cloud Dataflow job. To update the state of an existing job, we recommend using `projects.locations.jobs.update` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.update` is not recommended, as you can only update the state of jobs that are running in `us-central1`."]
                     pub fn update(
                         &self,
                         request: crate::schemas::Job,
@@ -17127,6 +18181,16 @@ pub mod resources {
                     ) -> crate::resources::projects::locations::jobs::snapshots::SnapshotsActions
                     {
                         crate::resources::projects::locations::jobs::snapshots::SnapshotsActions {
+                            reqwest: &self.reqwest,
+                            auth: self.auth_ref(),
+                        }
+                    }
+                    #[doc = "Actions that can be performed on the stages resource"]
+                    pub fn stages(
+                        &self,
+                    ) -> crate::resources::projects::locations::jobs::stages::StagesActions
+                    {
+                        crate::resources::projects::locations::jobs::stages::StagesActions {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
                         }
@@ -17309,21 +18373,21 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("replaceJobId", &self.replace_job_id)]);
-                        let req = req.query(&[("view", &self.view)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("replaceJobId", &self.replace_job_id)]);
+                        req = req.query(&[("view", &self.view)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -17498,25 +18562,334 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("view", &self.view)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("view", &self.view)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
                         );
                         Ok(req)
+                    }
+                }
+                #[doc = "Created via [JobsActions::get_execution_details()](struct.JobsActions.html#method.get_execution_details)"]
+                #[derive(Debug, Clone)]
+                pub struct GetExecutionDetailsRequestBuilder<'a> {
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                    pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                    project_id: String,
+                    location: String,
+                    job_id: String,
+                    page_size: Option<i32>,
+                    page_token: Option<String>,
+                    access_token: Option<String>,
+                    alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
+                    fields: Option<String>,
+                    key: Option<String>,
+                    oauth_token: Option<String>,
+                    pretty_print: Option<bool>,
+                    quota_user: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
+                }
+                impl<'a> GetExecutionDetailsRequestBuilder<'a> {
+                    #[doc = "If specified, determines the maximum number of stages to return. If unspecified, the service may choose an appropriate default, or may return an arbitrarily large number of results."]
+                    pub fn page_size(mut self, value: i32) -> Self {
+                        self.page_size = Some(value);
+                        self
+                    }
+                    #[doc = "If supplied, this should be the value of next_page_token returned by an earlier call. This will cause the next page of results to be returned."]
+                    pub fn page_token(mut self, value: impl Into<String>) -> Self {
+                        self.page_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
+                    #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                    pub fn key(mut self, value: impl Into<String>) -> Self {
+                        self.key = Some(value.into());
+                        self
+                    }
+                    #[doc = "OAuth 2.0 token for the current user."]
+                    pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                        self.oauth_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "Returns response with indentations and line breaks."]
+                    pub fn pretty_print(mut self, value: bool) -> Self {
+                        self.pretty_print = Some(value);
+                        self
+                    }
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                    pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                        self.quota_user = Some(value.into());
+                        self
+                    }
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
+                        self
+                    }
+                    #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                    #[doc = r" items yielded by the iterator are chosen by the caller of this"]
+                    #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
+                    #[doc = r" populated fields in the yielded items will be determined by the"]
+                    #[doc = r" `FieldSelector` implementation."]
+                    pub fn iter_stages<T>(self) -> crate::iter::PageItemIter<Self, T>
+                    where
+                        T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                    {
+                        let fields = ::google_field_selector::to_string::<T>();
+                        let fields: Option<String> = if fields.is_empty() {
+                            None
+                        } else {
+                            Some(fields)
+                        };
+                        self.iter_stages_with_fields(fields)
+                    }
+                    #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                    #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
+                    #[doc = r" fields in `#items_type` will be the default fields populated by"]
+                    #[doc = r" the server."]
+                    pub fn iter_stages_with_default_fields(
+                        self,
+                    ) -> crate::iter::PageItemIter<Self, crate::schemas::StageSummary>
+                    {
+                        self.iter_stages_with_fields(None::<String>)
+                    }
+                    #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                    #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
+                    #[doc = r" fields in `#items_type` will be all fields available. This should"]
+                    #[doc = r" primarily be used during developement and debugging as fetching"]
+                    #[doc = r" all fields can be expensive both in bandwidth and server"]
+                    #[doc = r" resources."]
+                    pub fn iter_stages_with_all_fields(
+                        self,
+                    ) -> crate::iter::PageItemIter<Self, crate::schemas::StageSummary>
+                    {
+                        self.iter_stages_with_fields(Some("*"))
+                    }
+                    pub fn iter_stages_with_fields<T, F>(
+                        mut self,
+                        fields: Option<F>,
+                    ) -> crate::iter::PageItemIter<Self, T>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                        F: AsRef<str>,
+                    {
+                        self.fields = Some({
+                            let mut selector = concat!("nextPageToken,", "stages").to_owned();
+                            let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
+                            if !items_fields.is_empty() {
+                                selector.push_str("(");
+                                selector.push_str(items_fields);
+                                selector.push_str(")");
+                            }
+                            selector
+                        });
+                        crate::iter::PageItemIter::new(self, "stages")
+                    }
+                    pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
+                    where
+                        T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                    {
+                        let fields = ::google_field_selector::to_string::<T>();
+                        let fields: Option<String> = if fields.is_empty() {
+                            None
+                        } else {
+                            Some(fields)
+                        };
+                        self.iter_with_fields(fields)
+                    }
+                    pub fn iter_with_default_fields(
+                        self,
+                    ) -> crate::iter::PageIter<Self, crate::schemas::JobExecutionDetails>
+                    {
+                        self.iter_with_fields(None::<&str>)
+                    }
+                    pub fn iter_with_all_fields(
+                        self,
+                    ) -> crate::iter::PageIter<Self, crate::schemas::JobExecutionDetails>
+                    {
+                        self.iter_with_fields(Some("*"))
+                    }
+                    pub fn iter_with_fields<T, F>(
+                        mut self,
+                        fields: Option<F>,
+                    ) -> crate::iter::PageIter<Self, T>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                        F: AsRef<str>,
+                    {
+                        let mut fields =
+                            fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
+                        if !fields.is_empty() {
+                            match fields.chars().rev().nth(0) {
+                                Some(',') | None => {}
+                                _ => fields.push_str(","),
+                            }
+                            fields.push_str("nextPageToken");
+                            self.fields = Some(fields);
+                        }
+                        crate::iter::PageIter::new(self)
+                    }
+                    #[doc = r" Execute the given operation. The fields requested are"]
+                    #[doc = r" determined by the FieldSelector attribute of the return type."]
+                    #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                    #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                    #[doc = r" are not generic over the return type and deserialize the"]
+                    #[doc = r" response into an auto-generated struct will all possible"]
+                    #[doc = r" fields."]
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                    {
+                        let fields = ::google_field_selector::to_string::<T>();
+                        let fields: Option<String> = if fields.is_empty() {
+                            None
+                        } else {
+                            Some(fields)
+                        };
+                        self.execute_with_fields(fields)
+                    }
+                    #[doc = r" Execute the given operation. This will not provide any"]
+                    #[doc = r" `fields` selector indicating that the server will determine"]
+                    #[doc = r" the fields returned. This typically includes the most common"]
+                    #[doc = r" fields, but it will not include every possible attribute of"]
+                    #[doc = r" the response resource."]
+                    pub fn execute_with_default_fields(
+                        self,
+                    ) -> Result<crate::schemas::JobExecutionDetails, crate::Error>
+                    {
+                        self.execute_with_fields(None::<&str>)
+                    }
+                    #[doc = r" Execute the given operation. This will provide a `fields`"]
+                    #[doc = r" selector of `*`. This will include every attribute of the"]
+                    #[doc = r" response resource and should be limited to use during"]
+                    #[doc = r" development or debugging."]
+                    pub fn execute_with_all_fields(
+                        self,
+                    ) -> Result<crate::schemas::JobExecutionDetails, crate::Error>
+                    {
+                        self.execute_with_fields(Some("*"))
+                    }
+                    #[doc = r" Execute the given operation. This will use the `fields`"]
+                    #[doc = r" selector provided and will deserialize the response into"]
+                    #[doc = r" whatever return value is provided."]
+                    pub fn execute_with_fields<T, F>(
+                        mut self,
+                        fields: Option<F>,
+                    ) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                        F: Into<String>,
+                    {
+                        self.fields = fields.map(Into::into);
+                        self._execute()
+                    }
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                    {
+                        let req = self._request(&self._path())?;
+                        Ok(crate::error_from_response(req.send()?)?.json()?)
+                    }
+                    fn _path(&self) -> String {
+                        let mut output = "https://dataflow.googleapis.com/".to_owned();
+                        output.push_str("v1b3/projects/");
+                        {
+                            let var_as_str = &self.project_id;
+                            output.extend(::percent_encoding::utf8_percent_encode(
+                                &var_as_str,
+                                crate::SIMPLE,
+                            ));
+                        }
+                        output.push_str("/locations/");
+                        {
+                            let var_as_str = &self.location;
+                            output.extend(::percent_encoding::utf8_percent_encode(
+                                &var_as_str,
+                                crate::SIMPLE,
+                            ));
+                        }
+                        output.push_str("/jobs/");
+                        {
+                            let var_as_str = &self.job_id;
+                            output.extend(::percent_encoding::utf8_percent_encode(
+                                &var_as_str,
+                                crate::SIMPLE,
+                            ));
+                        }
+                        output.push_str("/executionDetails");
+                        output
+                    }
+                    fn _request(
+                        &self,
+                        path: &str,
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("pageSize", &self.page_size)]);
+                        req = req.query(&[("pageToken", &self.page_token)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
+                            self.auth
+                                .access_token()
+                                .map_err(|err| crate::Error::OAuth2(err))?,
+                        );
+                        Ok(req)
+                    }
+                }
+                impl<'a> crate::iter::IterableMethod for GetExecutionDetailsRequestBuilder<'a> {
+                    fn set_page_token(&mut self, value: String) {
+                        self.page_token = value.into();
+                    }
+                    fn execute<T>(&mut self) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                    {
+                        self._execute()
                     }
                 }
                 #[doc = "Created via [JobsActions::get_metrics()](struct.JobsActions.html#method.get_metrics)"]
@@ -17541,7 +18914,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> GetMetricsRequestBuilder<'a> {
-                    #[doc = "Return only metric data that has changed since this time.\nDefault is to return all information about all metrics for the job."]
+                    #[doc = "Return only metric data that has changed since this time. Default is to return all information about all metrics for the job."]
                     pub fn start_time(mut self, value: impl Into<String>) -> Self {
                         self.start_time = Some(value.into());
                         self
@@ -17684,20 +19057,20 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("startTime", &self.start_time)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("startTime", &self.start_time)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -17737,17 +19110,17 @@ pub mod resources {
                         self.filter = Some(value);
                         self
                     }
-                    #[doc = "If there are many jobs, limit response to at most this many.\nThe actual number of jobs returned will be the lesser of max_responses\nand an unspecified server-defined limit."]
+                    #[doc = "If there are many jobs, limit response to at most this many. The actual number of jobs returned will be the lesser of max_responses and an unspecified server-defined limit."]
                     pub fn page_size(mut self, value: i32) -> Self {
                         self.page_size = Some(value);
                         self
                     }
-                    #[doc = "Set this to the 'next_page_token' field of a previous response\nto request additional results in a long list."]
+                    #[doc = "Set this to the 'next_page_token' field of a previous response to request additional results in a long list."]
                     pub fn page_token(mut self, value: impl Into<String>) -> Self {
                         self.page_token = Some(value.into());
                         self
                     }
-                    #[doc = "Level of information requested in response. Default is `JOB_VIEW_SUMMARY`."]
+                    #[doc = "Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews."]
                     pub fn view(
                         mut self,
                         value: crate::resources::projects::locations::jobs::params::ListView,
@@ -18048,23 +19421,23 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("filter", &self.filter)]);
-                        let req = req.query(&[("pageSize", &self.page_size)]);
-                        let req = req.query(&[("pageToken", &self.page_token)]);
-                        let req = req.query(&[("view", &self.view)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("filter", &self.filter)]);
+                        req = req.query(&[("pageSize", &self.page_size)]);
+                        req = req.query(&[("pageToken", &self.page_token)]);
+                        req = req.query(&[("view", &self.view)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -18244,19 +19617,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -18424,19 +19797,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -18675,19 +20048,19 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -18859,19 +20232,19 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -18884,11 +20257,17 @@ pub mod resources {
                     pub mod params {
                         #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                         pub enum ListMinimumImportance {
+                            #[doc = "The message is at the 'basic' level: useful for keeping track of the execution of a Dataflow pipeline. Typically, Dataflow pipeline runners display log messages at this level by default, and these messages are displayed by default in the Dataflow monitoring UI."]
                             JobMessageBasic,
+                            #[doc = "The message is at the 'debug' level: typically only useful for software engineers working on the code the job is running. Typically, Dataflow pipeline runners do not display log messages at this level by default."]
                             JobMessageDebug,
+                            #[doc = "The message is at the 'detailed' level: somewhat verbose, but potentially useful to users. Typically, Dataflow pipeline runners do not display log messages at this level by default. These messages are displayed by default in the Dataflow monitoring UI."]
                             JobMessageDetailed,
+                            #[doc = "The message is at the 'error' level: indicating a condition preventing a job from succeeding. Typically, Dataflow pipeline runners display log messages at this level by default, and these messages are displayed by default in the Dataflow monitoring UI."]
                             JobMessageError,
+                            #[doc = "The message importance isn't specified, or is unknown."]
                             JobMessageImportanceUnknown,
+                            #[doc = "The message is at the 'warning' level: indicating a condition pertaining to a job which may require human intervention. Typically, Dataflow pipeline runners display log messages at this level by default, and these messages are displayed by default in the Dataflow monitoring UI."]
                             JobMessageWarning,
                         }
                         impl ListMinimumImportance {
@@ -19002,7 +20381,7 @@ pub mod resources {
                         fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                             self.auth
                         }
-                        #[doc = "Request the job status.\n\nTo request the status of a job, we recommend using\n`projects.locations.jobs.messages.list` with a [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using\n`projects.jobs.messages.list` is not recommended, as you can only request\nthe status of jobs that are running in `us-central1`."]
+                        #[doc = "Request the job status. To request the status of a job, we recommend using `projects.locations.jobs.messages.list` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.messages.list` is not recommended, as you can only request the status of jobs that are running in `us-central1`."]
                         pub fn list(
                             &self,
                             project_id: impl Into<String>,
@@ -19038,7 +20417,7 @@ pub mod resources {
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , project_id : String , location : String , job_id : String , end_time : Option < String > , minimum_importance : Option < crate :: resources :: projects :: locations :: jobs :: messages :: params :: ListMinimumImportance > , page_size : Option < i32 > , page_token : Option < String > , start_time : Option < String > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                     impl<'a> ListRequestBuilder<'a> {
-                        #[doc = "Return only messages with timestamps < end_time. The default is now\n(i.e. return up to the latest messages available)."]
+                        #[doc = "Return only messages with timestamps < end_time. The default is now (i.e. return up to the latest messages available)."]
                         pub fn end_time(mut self, value: impl Into<String>) -> Self {
                             self.end_time = Some(value.into());
                             self
@@ -19051,17 +20430,17 @@ pub mod resources {
                             self.minimum_importance = Some(value);
                             self
                         }
-                        #[doc = "If specified, determines the maximum number of messages to\nreturn.  If unspecified, the service may choose an appropriate\ndefault, or may return an arbitrarily large number of results."]
+                        #[doc = "If specified, determines the maximum number of messages to return. If unspecified, the service may choose an appropriate default, or may return an arbitrarily large number of results."]
                         pub fn page_size(mut self, value: i32) -> Self {
                             self.page_size = Some(value);
                             self
                         }
-                        #[doc = "If supplied, this should be the value of next_page_token returned\nby an earlier call. This will cause the next page of results to\nbe returned."]
+                        #[doc = "If supplied, this should be the value of next_page_token returned by an earlier call. This will cause the next page of results to be returned."]
                         pub fn page_token(mut self, value: impl Into<String>) -> Self {
                             self.page_token = Some(value.into());
                             self
                         }
-                        #[doc = "If specified, return only messages with timestamps >= start_time.\nThe default is the job creation time (i.e. beginning of messages)."]
+                        #[doc = "If specified, return only messages with timestamps >= start_time. The default is the job creation time (i.e. beginning of messages)."]
                         pub fn start_time(mut self, value: impl Into<String>) -> Self {
                             self.start_time = Some(value.into());
                             self
@@ -19378,24 +20757,24 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("endTime", &self.end_time)]);
-                            let req = req.query(&[("minimumImportance", &self.minimum_importance)]);
-                            let req = req.query(&[("pageSize", &self.page_size)]);
-                            let req = req.query(&[("pageToken", &self.page_token)]);
-                            let req = req.query(&[("startTime", &self.start_time)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("endTime", &self.end_time)]);
+                            req = req.query(&[("minimumImportance", &self.minimum_importance)]);
+                            req = req.query(&[("pageSize", &self.page_size)]);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("startTime", &self.start_time)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -19614,24 +20993,404 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
                             );
                             Ok(req)
+                        }
+                    }
+                }
+                pub mod stages {
+                    pub mod params {}
+                    pub struct StagesActions<'a> {
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
+                        pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                    }
+                    impl<'a> StagesActions<'a> {
+                        fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                            self.auth
+                        }
+                        #[doc = "Request detailed information about the execution status of a stage of the job. EXPERIMENTAL. This API is subject to change or removal without notice."]
+                        pub fn get_execution_details(
+                            &self,
+                            project_id: impl Into<String>,
+                            location: impl Into<String>,
+                            job_id: impl Into<String>,
+                            stage_id: impl Into<String>,
+                        ) -> GetExecutionDetailsRequestBuilder {
+                            GetExecutionDetailsRequestBuilder {
+                                reqwest: &self.reqwest,
+                                auth: self.auth_ref(),
+                                access_token: None,
+                                alt: None,
+                                callback: None,
+                                fields: None,
+                                key: None,
+                                oauth_token: None,
+                                pretty_print: None,
+                                quota_user: None,
+                                upload_protocol: None,
+                                upload_type: None,
+                                xgafv: None,
+                                project_id: project_id.into(),
+                                location: location.into(),
+                                job_id: job_id.into(),
+                                stage_id: stage_id.into(),
+                                end_time: None,
+                                page_size: None,
+                                page_token: None,
+                                start_time: None,
+                            }
+                        }
+                    }
+                    #[doc = "Created via [StagesActions::get_execution_details()](struct.StagesActions.html#method.get_execution_details)"]
+                    #[derive(Debug, Clone)]
+                    pub struct GetExecutionDetailsRequestBuilder<'a> {
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                        pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                        project_id: String,
+                        location: String,
+                        job_id: String,
+                        stage_id: String,
+                        end_time: Option<String>,
+                        page_size: Option<i32>,
+                        page_token: Option<String>,
+                        start_time: Option<String>,
+                        access_token: Option<String>,
+                        alt: Option<crate::params::Alt>,
+                        callback: Option<String>,
+                        fields: Option<String>,
+                        key: Option<String>,
+                        oauth_token: Option<String>,
+                        pretty_print: Option<bool>,
+                        quota_user: Option<String>,
+                        upload_protocol: Option<String>,
+                        upload_type: Option<String>,
+                        xgafv: Option<crate::params::Xgafv>,
+                    }
+                    impl<'a> GetExecutionDetailsRequestBuilder<'a> {
+                        #[doc = "Upper time bound of work items to include, by start time."]
+                        pub fn end_time(mut self, value: impl Into<String>) -> Self {
+                            self.end_time = Some(value.into());
+                            self
+                        }
+                        #[doc = "If specified, determines the maximum number of work items to return. If unspecified, the service may choose an appropriate default, or may return an arbitrarily large number of results."]
+                        pub fn page_size(mut self, value: i32) -> Self {
+                            self.page_size = Some(value);
+                            self
+                        }
+                        #[doc = "If supplied, this should be the value of next_page_token returned by an earlier call. This will cause the next page of results to be returned."]
+                        pub fn page_token(mut self, value: impl Into<String>) -> Self {
+                            self.page_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "Lower time bound of work items to include, by start time."]
+                        pub fn start_time(mut self, value: impl Into<String>) -> Self {
+                            self.start_time = Some(value.into());
+                            self
+                        }
+                        #[doc = "OAuth access token."]
+                        pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                            self.access_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "JSONP"]
+                        pub fn callback(mut self, value: impl Into<String>) -> Self {
+                            self.callback = Some(value.into());
+                            self
+                        }
+                        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                        pub fn key(mut self, value: impl Into<String>) -> Self {
+                            self.key = Some(value.into());
+                            self
+                        }
+                        #[doc = "OAuth 2.0 token for the current user."]
+                        pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                            self.oauth_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "Returns response with indentations and line breaks."]
+                        pub fn pretty_print(mut self, value: bool) -> Self {
+                            self.pretty_print = Some(value);
+                            self
+                        }
+                        #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                        pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                            self.quota_user = Some(value.into());
+                            self
+                        }
+                        #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                        pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                            self.upload_protocol = Some(value.into());
+                            self
+                        }
+                        #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                        pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                            self.upload_type = Some(value.into());
+                            self
+                        }
+                        #[doc = "V1 error format."]
+                        pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                            self.xgafv = Some(value);
+                            self
+                        }
+                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                        #[doc = r" items yielded by the iterator are chosen by the caller of this"]
+                        #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
+                        #[doc = r" populated fields in the yielded items will be determined by the"]
+                        #[doc = r" `FieldSelector` implementation."]
+                        pub fn iter_workers<T>(self) -> crate::iter::PageItemIter<Self, T>
+                        where
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
+                        {
+                            let fields = ::google_field_selector::to_string::<T>();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.iter_workers_with_fields(fields)
+                        }
+                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
+                        #[doc = r" fields in `#items_type` will be the default fields populated by"]
+                        #[doc = r" the server."]
+                        pub fn iter_workers_with_default_fields(
+                            self,
+                        ) -> crate::iter::PageItemIter<Self, crate::schemas::WorkerDetails>
+                        {
+                            self.iter_workers_with_fields(None::<String>)
+                        }
+                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
+                        #[doc = r" fields in `#items_type` will be all fields available. This should"]
+                        #[doc = r" primarily be used during developement and debugging as fetching"]
+                        #[doc = r" all fields can be expensive both in bandwidth and server"]
+                        #[doc = r" resources."]
+                        pub fn iter_workers_with_all_fields(
+                            self,
+                        ) -> crate::iter::PageItemIter<Self, crate::schemas::WorkerDetails>
+                        {
+                            self.iter_workers_with_fields(Some("*"))
+                        }
+                        pub fn iter_workers_with_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> crate::iter::PageItemIter<Self, T>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: AsRef<str>,
+                        {
+                            self.fields = Some({
+                                let mut selector = concat!("nextPageToken,", "workers").to_owned();
+                                let items_fields =
+                                    fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
+                                if !items_fields.is_empty() {
+                                    selector.push_str("(");
+                                    selector.push_str(items_fields);
+                                    selector.push_str(")");
+                                }
+                                selector
+                            });
+                            crate::iter::PageItemIter::new(self, "workers")
+                        }
+                        pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
+                        where
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
+                        {
+                            let fields = ::google_field_selector::to_string::<T>();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.iter_with_fields(fields)
+                        }
+                        pub fn iter_with_default_fields(
+                            self,
+                        ) -> crate::iter::PageIter<Self, crate::schemas::StageExecutionDetails>
+                        {
+                            self.iter_with_fields(None::<&str>)
+                        }
+                        pub fn iter_with_all_fields(
+                            self,
+                        ) -> crate::iter::PageIter<Self, crate::schemas::StageExecutionDetails>
+                        {
+                            self.iter_with_fields(Some("*"))
+                        }
+                        pub fn iter_with_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> crate::iter::PageIter<Self, T>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: AsRef<str>,
+                        {
+                            let mut fields =
+                                fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
+                            if !fields.is_empty() {
+                                match fields.chars().rev().nth(0) {
+                                    Some(',') | None => {}
+                                    _ => fields.push_str(","),
+                                }
+                                fields.push_str("nextPageToken");
+                                self.fields = Some(fields);
+                            }
+                            crate::iter::PageIter::new(self)
+                        }
+                        #[doc = r" Execute the given operation. The fields requested are"]
+                        #[doc = r" determined by the FieldSelector attribute of the return type."]
+                        #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                        #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                        #[doc = r" are not generic over the return type and deserialize the"]
+                        #[doc = r" response into an auto-generated struct will all possible"]
+                        #[doc = r" fields."]
+                        pub fn execute<T>(self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
+                        {
+                            let fields = ::google_field_selector::to_string::<T>();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.execute_with_fields(fields)
+                        }
+                        #[doc = r" Execute the given operation. This will not provide any"]
+                        #[doc = r" `fields` selector indicating that the server will determine"]
+                        #[doc = r" the fields returned. This typically includes the most common"]
+                        #[doc = r" fields, but it will not include every possible attribute of"]
+                        #[doc = r" the response resource."]
+                        pub fn execute_with_default_fields(
+                            self,
+                        ) -> Result<crate::schemas::StageExecutionDetails, crate::Error>
+                        {
+                            self.execute_with_fields(None::<&str>)
+                        }
+                        #[doc = r" Execute the given operation. This will provide a `fields`"]
+                        #[doc = r" selector of `*`. This will include every attribute of the"]
+                        #[doc = r" response resource and should be limited to use during"]
+                        #[doc = r" development or debugging."]
+                        pub fn execute_with_all_fields(
+                            self,
+                        ) -> Result<crate::schemas::StageExecutionDetails, crate::Error>
+                        {
+                            self.execute_with_fields(Some("*"))
+                        }
+                        #[doc = r" Execute the given operation. This will use the `fields`"]
+                        #[doc = r" selector provided and will deserialize the response into"]
+                        #[doc = r" whatever return value is provided."]
+                        pub fn execute_with_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: Into<String>,
+                        {
+                            self.fields = fields.map(Into::into);
+                            self._execute()
+                        }
+                        fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                        {
+                            let req = self._request(&self._path())?;
+                            Ok(crate::error_from_response(req.send()?)?.json()?)
+                        }
+                        fn _path(&self) -> String {
+                            let mut output = "https://dataflow.googleapis.com/".to_owned();
+                            output.push_str("v1b3/projects/");
+                            {
+                                let var_as_str = &self.project_id;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::SIMPLE,
+                                ));
+                            }
+                            output.push_str("/locations/");
+                            {
+                                let var_as_str = &self.location;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::SIMPLE,
+                                ));
+                            }
+                            output.push_str("/jobs/");
+                            {
+                                let var_as_str = &self.job_id;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::SIMPLE,
+                                ));
+                            }
+                            output.push_str("/stages/");
+                            {
+                                let var_as_str = &self.stage_id;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::SIMPLE,
+                                ));
+                            }
+                            output.push_str("/executionDetails");
+                            output
+                        }
+                        fn _request(
+                            &self,
+                            path: &str,
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                        {
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("endTime", &self.end_time)]);
+                            req = req.query(&[("pageSize", &self.page_size)]);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("startTime", &self.start_time)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
+                                self.auth
+                                    .access_token()
+                                    .map_err(|err| crate::Error::OAuth2(err))?,
+                            );
+                            Ok(req)
+                        }
+                    }
+                    impl<'a> crate::iter::IterableMethod for GetExecutionDetailsRequestBuilder<'a> {
+                        fn set_page_token(&mut self, value: String) {
+                            self.page_token = value.into();
+                        }
+                        fn execute<T>(&mut self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                        {
+                            self._execute()
                         }
                     }
                 }
@@ -19866,19 +21625,19 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -20050,19 +21809,19 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::POST, path);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -20320,19 +22079,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -20498,19 +22257,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -20676,20 +22435,20 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("jobId", &self.job_id)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("jobId", &self.job_id)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -20708,7 +22467,7 @@ pub mod resources {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "Validates a GoogleSQL query for Cloud Dataflow syntax. Will always\nconfirm the given query parses correctly, and if able to look up\nschema information from DataCatalog, will validate that the query\nanalyzes properly as well."]
+                    #[doc = "Validates a GoogleSQL query for Cloud Dataflow syntax. Will always confirm the given query parses correctly, and if able to look up schema information from DataCatalog, will validate that the query analyzes properly as well."]
                     pub fn validate(
                         &self,
                         project_id: impl Into<String>,
@@ -20892,20 +22651,20 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("query", &self.query)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("query", &self.query)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -20918,6 +22677,7 @@ pub mod resources {
                 pub mod params {
                     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                     pub enum GetView {
+                        #[doc = "Template view that retrieves only the metadata associated with the template."]
                         MetadataOnly,
                     }
                     impl GetView {
@@ -21228,19 +22988,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -21270,7 +23030,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> GetRequestBuilder<'a> {
-                    #[doc = "Required. A Cloud Storage path to the template from which to\ncreate the job.\nMust be valid Cloud Storage URL, beginning with 'gs://'."]
+                    #[doc = "Required. A Cloud Storage path to the template from which to create the job. Must be valid Cloud Storage URL, beginning with 'gs://'."]
                     pub fn gcs_path(mut self, value: impl Into<String>) -> Self {
                         self.gcs_path = Some(value.into());
                         self
@@ -21415,21 +23175,21 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("gcsPath", &self.gcs_path)]);
-                        let req = req.query(&[("view", &self.view)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("gcsPath", &self.gcs_path)]);
+                        req = req.query(&[("view", &self.view)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -21462,12 +23222,12 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> LaunchRequestBuilder<'a> {
-                    #[doc = "Path to dynamic template spec file on GCS.\nThe file must be a Json serialized DynamicTemplateFieSpec object."]
+                    #[doc = "Path to dynamic template spec file on GCS. The file must be a Json serialized DynamicTemplateFieSpec object."]
                     pub fn dynamic_template_gcs_path(mut self, value: impl Into<String>) -> Self {
                         self.dynamic_template_gcs_path = Some(value.into());
                         self
                     }
-                    #[doc = "Cloud Storage path for staging dependencies.\nMust be a valid Cloud Storage URL, beginning with `gs://`."]
+                    #[doc = "Cloud Storage path for staging dependencies. Must be a valid Cloud Storage URL, beginning with `gs://`."]
                     pub fn dynamic_template_staging_location(
                         mut self,
                         value: impl Into<String>,
@@ -21475,12 +23235,12 @@ pub mod resources {
                         self.dynamic_template_staging_location = Some(value.into());
                         self
                     }
-                    #[doc = "A Cloud Storage path to the template from which to create\nthe job.\nMust be valid Cloud Storage URL, beginning with 'gs://'."]
+                    #[doc = "A Cloud Storage path to the template from which to create the job. Must be valid Cloud Storage URL, beginning with 'gs://'."]
                     pub fn gcs_path(mut self, value: impl Into<String>) -> Self {
                         self.gcs_path = Some(value.into());
                         self
                     }
-                    #[doc = "If true, the request is validated but not actually executed.\nDefaults to false."]
+                    #[doc = "If true, the request is validated but not actually executed. Defaults to false."]
                     pub fn validate_only(mut self, value: bool) -> Self {
                         self.validate_only = Some(value);
                         self
@@ -21618,27 +23378,27 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req
                             .query(&[("dynamicTemplate.gcsPath", &self.dynamic_template_gcs_path)]);
-                        let req = req.query(&[(
+                        req = req.query(&[(
                             "dynamicTemplate.stagingLocation",
                             &self.dynamic_template_staging_location,
                         )]);
-                        let req = req.query(&[("gcsPath", &self.gcs_path)]);
-                        let req = req.query(&[("validateOnly", &self.validate_only)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        req = req.query(&[("gcsPath", &self.gcs_path)]);
+                        req = req.query(&[("validateOnly", &self.validate_only)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -21859,20 +23619,20 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("location", &self.location)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("location", &self.location)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -22032,21 +23792,21 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("jobId", &self.job_id)]);
-                    let req = req.query(&[("location", &self.location)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("jobId", &self.job_id)]);
+                    req = req.query(&[("location", &self.location)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -22065,7 +23825,7 @@ pub mod resources {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "List TemplateVersions using project_id and an optional display_name field.\nList all the TemplateVersions in the Template if display set.\nList all the TemplateVersions in the Project if display_name not set."]
+                #[doc = "List TemplateVersions using project_id and an optional display_name field. List all the TemplateVersions in the Template if display set. List all the TemplateVersions in the Project if display_name not set."]
                 pub fn list(&self, parent: impl Into<String>) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
@@ -22113,7 +23873,7 @@ pub mod resources {
                     self.page_size = Some(value);
                     self
                 }
-                #[doc = "The page token, received from a previous ListTemplateVersions call.\nProvide this to retrieve the subsequent page."]
+                #[doc = "The page token, received from a previous ListTemplateVersions call. Provide this to retrieve the subsequent page."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
                     self
@@ -22343,21 +24103,21 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -22381,6 +24141,7 @@ pub mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum GetView {
+                    #[doc = "Template view that retrieves only the metadata associated with the template."]
                     MetadataOnly,
                 }
                 impl GetView {
@@ -22669,19 +24430,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -22711,12 +24472,12 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> GetRequestBuilder<'a> {
-                #[doc = "Required. A Cloud Storage path to the template from which to\ncreate the job.\nMust be valid Cloud Storage URL, beginning with 'gs://'."]
+                #[doc = "Required. A Cloud Storage path to the template from which to create the job. Must be valid Cloud Storage URL, beginning with 'gs://'."]
                 pub fn gcs_path(mut self, value: impl Into<String>) -> Self {
                     self.gcs_path = Some(value.into());
                     self
                 }
-                #[doc = "The [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to\nwhich to direct the request."]
+                #[doc = "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request."]
                 pub fn location(mut self, value: impl Into<String>) -> Self {
                     self.location = Some(value.into());
                     self
@@ -22850,22 +24611,22 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("gcsPath", &self.gcs_path)]);
-                    let req = req.query(&[("location", &self.location)]);
-                    let req = req.query(&[("view", &self.view)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("gcsPath", &self.gcs_path)]);
+                    req = req.query(&[("location", &self.location)]);
+                    req = req.query(&[("view", &self.view)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -22898,12 +24659,12 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> LaunchRequestBuilder<'a> {
-                #[doc = "Path to dynamic template spec file on GCS.\nThe file must be a Json serialized DynamicTemplateFieSpec object."]
+                #[doc = "Path to dynamic template spec file on GCS. The file must be a Json serialized DynamicTemplateFieSpec object."]
                 pub fn dynamic_template_gcs_path(mut self, value: impl Into<String>) -> Self {
                     self.dynamic_template_gcs_path = Some(value.into());
                     self
                 }
-                #[doc = "Cloud Storage path for staging dependencies.\nMust be a valid Cloud Storage URL, beginning with `gs://`."]
+                #[doc = "Cloud Storage path for staging dependencies. Must be a valid Cloud Storage URL, beginning with `gs://`."]
                 pub fn dynamic_template_staging_location(
                     mut self,
                     value: impl Into<String>,
@@ -22911,17 +24672,17 @@ pub mod resources {
                     self.dynamic_template_staging_location = Some(value.into());
                     self
                 }
-                #[doc = "A Cloud Storage path to the template from which to create\nthe job.\nMust be valid Cloud Storage URL, beginning with 'gs://'."]
+                #[doc = "A Cloud Storage path to the template from which to create the job. Must be valid Cloud Storage URL, beginning with 'gs://'."]
                 pub fn gcs_path(mut self, value: impl Into<String>) -> Self {
                     self.gcs_path = Some(value.into());
                     self
                 }
-                #[doc = "The [regional endpoint]\n(https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to\nwhich to direct the request."]
+                #[doc = "The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request."]
                 pub fn location(mut self, value: impl Into<String>) -> Self {
                     self.location = Some(value.into());
                     self
                 }
-                #[doc = "If true, the request is validated but not actually executed.\nDefaults to false."]
+                #[doc = "If true, the request is validated but not actually executed. Defaults to false."]
                 pub fn validate_only(mut self, value: bool) -> Self {
                     self.validate_only = Some(value);
                     self
@@ -23048,28 +24809,28 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req =
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req =
                         req.query(&[("dynamicTemplate.gcsPath", &self.dynamic_template_gcs_path)]);
-                    let req = req.query(&[(
+                    req = req.query(&[(
                         "dynamicTemplate.stagingLocation",
                         &self.dynamic_template_staging_location,
                     )]);
-                    let req = req.query(&[("gcsPath", &self.gcs_path)]);
-                    let req = req.query(&[("location", &self.location)]);
-                    let req = req.query(&[("validateOnly", &self.validate_only)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    req = req.query(&[("gcsPath", &self.gcs_path)]);
+                    req = req.query(&[("location", &self.location)]);
+                    req = req.query(&[("validateOnly", &self.validate_only)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,

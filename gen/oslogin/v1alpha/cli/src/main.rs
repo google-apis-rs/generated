@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("oslogin1_alpha")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200620")
+            .version("0.1.0-20210307")
             .about("You can use OS Login to manage access to your VM instances using IAM roles.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -37,11 +37,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: get_login_profile and import_ssh_public_key");
         {
-            let mcmd = SubCommand::with_name("get_login_profile").about("Retrieves the profile information used for logging in to a virtual machine\non Google Compute Engine.");
+            let mcmd = SubCommand::with_name("get_login_profile").about("Retrieves the profile information used for logging in to a virtual machine on Google Compute Engine.");
             users0 = users0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("import_ssh_public_key").about("Adds an SSH public key and returns the profile information. Default POSIX\naccount information is set when no username and UID exist as part of the\nlogin profile.");
+            let mcmd = SubCommand::with_name("import_ssh_public_key").about("Adds an SSH public key and returns the profile information. Default POSIX account information is set when no username and UID exist as part of the login profile.");
             users0 = users0.subcommand(mcmd);
         }
         let mut projects1 = SubCommand::with_name("projects")
@@ -63,7 +63,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             ssh_public_keys1 = ssh_public_keys1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates an SSH public key and returns the profile information. This method\nsupports patch semantics.");
+            let mcmd = SubCommand::with_name("patch").about("Updates an SSH public key and returns the profile information. This method supports patch semantics.");
             ssh_public_keys1 = ssh_public_keys1.subcommand(mcmd);
         }
         users0 = users0.subcommand(ssh_public_keys1);

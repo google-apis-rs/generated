@@ -7,7 +7,7 @@
   "canonicalName": "Indexing",
   "fullyEncodeReservedExpansion": true,
   "version": "v3",
-  "revision": "20200616",
+  "revision": "20210313",
   "title": "Indexing API",
   "description": "Notifies Google when your web pages change.",
   "ownerDomain": "google.com",
@@ -225,14 +225,14 @@
     },
     "UrlNotification": {
       "id": "UrlNotification",
-      "description": "`UrlNotification` is the resource used in all Indexing API calls.\nIt describes one event in the life cycle of a Web Document.",
+      "description": "`UrlNotification` is the resource used in all Indexing API calls. It describes one event in the life cycle of a Web Document.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "notifyTime": {
-          "description": "Creation timestamp for this notification.\nUsers should _not_ specify it, the field is ignored at the request time.",
+          "description": "Creation timestamp for this notification. Users should _not_ specify it, the field is ignored at the request time.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -260,7 +260,7 @@
           "items": null
         },
         "url": {
-          "description": "The object of this notification. The URL must be owned by the publisher\nof this notification and, in case of `URL_UPDATED` notifications, it _must_\nbe crawlable by Google.",
+          "description": "The object of this notification. The URL must be owned by the publisher of this notification and, in case of `URL_UPDATED` notifications, it _must_ be crawlable by Google.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -275,7 +275,7 @@
     },
     "UrlNotificationMetadata": {
       "id": "UrlNotificationMetadata",
-      "description": "Summary of the most recent Indexing API notifications successfully received,\nfor a given URL.",
+      "description": "Summary of the most recent Indexing API notifications successfully received, for a given URL.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -312,7 +312,7 @@
           "id": "indexing.urlNotifications.getMetadata",
           "path": "v3/urlNotifications/metadata",
           "httpMethod": "GET",
-          "description": "Gets metadata about a Web Document. This method can _only_ be used to query\nURLs that were previously seen in successful Indexing API notifications.\nIncludes the latest `UrlNotification` received via this API.",
+          "description": "Gets metadata about a Web Document. This method can _only_ be used to query URLs that were previously seen in successful Indexing API notifications. Includes the latest `UrlNotification` received via this API.",
           "parameters": {
             "url": {
               "description": "URL that is being queried.",

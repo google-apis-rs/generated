@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("servicedirectory1_beta1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200617")
-            .about("Service Directory is a platform for discovering, publishing, and connecting services.\n")
+            .version("0.1.0-20210303")
+            .about("Service Directory is a platform for discovering, publishing, and connecting services. ")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -53,11 +53,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                         .about("methods: create, delete, get, get_iam_policy, list, patch, set_iam_policy and test_iam_permissions");
         {
             let mcmd = SubCommand::with_name("create")
-                .about("Creates a namespace, and returns the new Namespace.");
+                .about("Creates a namespace, and returns the new namespace.");
             namespaces2 = namespaces2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a namespace. This also deletes all services and endpoints in\nthe namespace.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a namespace. This also deletes all services and endpoints in the namespace.");
             namespaces2 = namespaces2.subcommand(mcmd);
         }
         {
@@ -92,12 +92,12 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                         .about("methods: create, delete, get, get_iam_policy, list, patch, resolve, set_iam_policy and test_iam_permissions");
         {
             let mcmd = SubCommand::with_name("create")
-                .about("Creates a service, and returns the new Service.");
+                .about("Creates a service, and returns the new service.");
             services3 = services3.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("delete").about(
-                "Deletes a service. This also deletes all endpoints associated with\nthe service.",
+                "Deletes a service. This also deletes all endpoints associated with the service.",
             );
             services3 = services3.subcommand(mcmd);
         }
@@ -120,7 +120,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             services3 = services3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("resolve").about("Returns a service and its\nassociated endpoints.\nResolving a service is not considered an active developer method.");
+            let mcmd = SubCommand::with_name("resolve").about("Returns a service and its associated endpoints. Resolving a service is not considered an active developer method.");
             services3 = services3.subcommand(mcmd);
         }
         {
@@ -138,15 +138,15 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .about("methods: create, delete, get, list and patch");
         {
             let mcmd = SubCommand::with_name("create")
-                .about("Creates a endpoint, and returns the new Endpoint.");
+                .about("Creates an endpoint, and returns the new endpoint.");
             endpoints4 = endpoints4.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a endpoint.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes an endpoint.");
             endpoints4 = endpoints4.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Gets a endpoint.");
+            let mcmd = SubCommand::with_name("get").about("Gets an endpoint.");
             endpoints4 = endpoints4.subcommand(mcmd);
         }
         {
@@ -154,7 +154,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             endpoints4 = endpoints4.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates a endpoint.");
+            let mcmd = SubCommand::with_name("patch").about("Updates an endpoint.");
             endpoints4 = endpoints4.subcommand(mcmd);
         }
         services3 = services3.subcommand(endpoints4);

@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("policytroubleshooter1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200619")
+            .version("0.1.0-20210314")
             .about("")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -37,7 +37,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: troubleshoot");
         {
-            let mcmd = SubCommand::with_name("troubleshoot").about("Checks whether a member has a specific permission for a specific resource,\nand explains why the member does or does not have that permission.");
+            let mcmd = SubCommand::with_name("troubleshoot").about("Checks whether a member has a specific permission for a specific resource, and explains why the member does or does not have that permission.");
             iam0 = iam0.subcommand(mcmd);
         }
         app = app.subcommand(iam0);

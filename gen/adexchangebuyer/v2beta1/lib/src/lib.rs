@@ -17,14 +17,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AbsoluteDateRange {
-        #[doc = "The end date of the range (inclusive).\nMust be within the 30 days leading up to current date, and must be equal to\nor after start_date."]
+        #[doc = "The end date of the range (inclusive). Must be within the 30 days leading up to current date, and must be equal to or after start_date."]
         #[serde(
             rename = "endDate",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub end_date: ::std::option::Option<crate::schemas::Date>,
-        #[doc = "The start date of the range (inclusive).\nMust be within the 30 days leading up to current date, and must be equal to\nor before end_date."]
+        #[doc = "The start date of the range (inclusive). Must be within the 30 days leading up to current date, and must be equal to or before end_date."]
         #[serde(
             rename = "startDate",
             default,
@@ -87,7 +87,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AdSize {
-        #[doc = "The height of the ad slot in pixels.\nThis field will be present only when size type is `PIXEL`."]
+        #[doc = "The height of the ad slot in pixels. This field will be present only when size type is `PIXEL`."]
         #[serde(
             rename = "height",
             default,
@@ -102,7 +102,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub size_type: ::std::option::Option<crate::schemas::AdSizeSizeType>,
-        #[doc = "The width of the ad slot in pixels.\nThis field will be present only when size type is `PIXEL`."]
+        #[doc = "The width of the ad slot in pixels. This field will be present only when size type is `PIXEL`."]
         #[serde(
             rename = "width",
             default,
@@ -123,7 +123,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AdSizeSizeType {
-        #[doc = "Fluid size (i.e., responsive size) can be resized automatically with the\nchange of outside environment."]
+        #[doc = "Fluid size (i.e., responsive size) can be resized automatically with the change of outside environment."]
         Fluid,
         #[doc = "Special size to describe an interstitial ad slot."]
         Interstitial,
@@ -220,14 +220,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AdTechnologyProviders {
-        #[doc = "The detected ad technology provider IDs for this creative.\nSee https://storage.googleapis.com/adx-rtb-dictionaries/providers.csv for\nmapping of provider ID to provided name, a privacy policy URL, and a list\nof domains which can be attributed to the provider.\n\nIf the creative contains provider IDs that are outside of those listed in\nthe `BidRequest.adslot.consented_providers_settings.consented_providers`\nfield on the (Google bid\nprotocol)[https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto]\nand the\n`BidRequest.user.ext.consented_providers_settings.consented_providers`\nfield on the (OpenRTB\nprotocol)[https://developers.google.com/authorized-buyers/rtb/downloads/openrtb-adx-proto],\nand a bid is submitted with that creative for an impression that will\nserve to an EEA user, the bid will be filtered before the auction."]
+        #[doc = "The detected ad technology provider IDs for this creative. See https://storage.googleapis.com/adx-rtb-dictionaries/providers.csv for mapping of provider ID to provided name, a privacy policy URL, and a list of domains which can be attributed to the provider. If the creative contains provider IDs that are outside of those listed in the `BidRequest.adslot.consented_providers_settings.consented_providers` field on the (Google bid protocol)[https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto] and the `BidRequest.user.ext.consented_providers_settings.consented_providers` field on the (OpenRTB protocol)[https://developers.google.com/authorized-buyers/rtb/downloads/openrtb-adx-proto], and a bid is submitted with that creative for an impression that will serve to an EEA user, the bid will be filtered before the auction."]
         #[serde(
             rename = "detectedProviderIds",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub detected_provider_ids: ::std::option::Option<Vec<i64>>,
-        #[doc = "Whether the creative contains an unidentified ad technology provider.\n\nIf true for a given creative, any bid submitted with that creative for an\nimpression that will serve to an EEA user will be filtered before the\nauction."]
+        #[doc = "Whether the creative contains an unidentified ad technology provider. If true for a given creative, any bid submitted with that creative for an impression that will serve to an EEA user will be filtered before the auction."]
         #[serde(
             rename = "hasUnidentifiedProvider",
             default,
@@ -340,7 +340,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AppContextAppTypesItems {
+        #[doc = "Native app context."]
         Native,
+        #[doc = "Mobile web app context."]
         Web,
     }
     impl AppContextAppTypesItems {
@@ -441,7 +443,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AuctionContextAuctionTypesItems {
+        #[doc = "The restriction applies to direct deals."]
         DirectDeals,
+        #[doc = "The restriction applies to open auction."]
         OpenAuction,
     }
     impl AuctionContextAuctionTypesItems {
@@ -549,14 +553,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub impressions_won: ::std::option::Option<crate::schemas::MetricValue>,
-        #[doc = "The number of bids for which the corresponding impression was measurable\nfor viewability (as defined by Active View)."]
+        #[doc = "The number of bids for which the corresponding impression was measurable for viewability (as defined by Active View)."]
         #[serde(
             rename = "measurableImpressions",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub measurable_impressions: ::std::option::Option<crate::schemas::MetricValue>,
-        #[doc = "The number of bids that won the auction and also won the mediation\nwaterfall (if any)."]
+        #[doc = "The number of bids that won the auction and also won the mediation waterfall (if any)."]
         #[serde(
             rename = "reachedQueries",
             default,
@@ -570,7 +574,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub row_dimensions: ::std::option::Option<crate::schemas::RowDimensions>,
-        #[doc = "The number of bids for which the corresponding impression was viewable (as\ndefined by Active View)."]
+        #[doc = "The number of bids for which the corresponding impression was viewable (as defined by Active View)."]
         #[serde(
             rename = "viewableImpressions",
             default,
@@ -601,7 +605,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct BidResponseWithoutBidsStatusRow {
-        #[doc = "The number of impressions for which there was a bid response with the\nspecified status."]
+        #[doc = "The number of impressions for which there was a bid response with the specified status."]
         #[serde(
             rename = "impressionCount",
             default,
@@ -615,7 +619,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub row_dimensions: ::std::option::Option<crate::schemas::RowDimensions>,
-        #[doc = "The status specifying why the bid responses were considered to have no\napplicable bids."]
+        #[doc = "The status specifying why the bid responses were considered to have no applicable bids."]
         #[serde(
             rename = "status",
             default,
@@ -637,11 +641,11 @@ pub mod schemas {
     pub enum BidResponseWithoutBidsStatusRowStatus {
         #[doc = "The response had no bids."]
         ResponsesWithoutBids,
-        #[doc = "The response had no bids for the specified account, though it may have\nincluded bids on behalf of other accounts.\nApplies if:\n\n1. Request is on behalf of a bidder and an account filter is present.\n1. Request is on behalf of a child seat."]
+        #[doc = "The response had no bids for the specified account, though it may have included bids on behalf of other accounts. Applies if: 1. Request is on behalf of a bidder and an account filter is present. 2. Request is on behalf of a child seat."]
         ResponsesWithoutBidsForAccount,
-        #[doc = "The response had no bids for the specified deal, though it may have\nincluded bids on other deals on behalf of the account to which the deal\nbelongs. If request is on behalf of a bidder and an account filter is not\npresent, this also includes responses that have bids on behalf of\naccounts other than the account to which the deal belongs."]
+        #[doc = "The response had no bids for the specified deal, though it may have included bids on other deals on behalf of the account to which the deal belongs. If request is on behalf of a bidder and an account filter is not present, this also includes responses that have bids on behalf of accounts other than the account to which the deal belongs."]
         ResponsesWithoutBidsForDeal,
-        #[doc = "A placeholder for an undefined status.\nThis value will never be returned in responses."]
+        #[doc = "A placeholder for an undefined status. This value will never be returned in responses."]
         StatusUnspecified,
     }
     impl BidResponseWithoutBidsStatusRowStatus {
@@ -776,14 +780,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CalloutStatusRow {
-        #[doc = "The ID of the callout status.\nSee\n[callout-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/callout-status-codes)."]
+        #[doc = "The ID of the callout status. See [callout-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/callout-status-codes)."]
         #[serde(
             rename = "calloutStatusId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub callout_status_id: ::std::option::Option<i32>,
-        #[doc = "The number of impressions for which there was a bid request or bid response\nwith the specified callout status."]
+        #[doc = "The number of impressions for which there was a bid request or bid response with the specified callout status."]
         #[serde(
             rename = "impressionCount",
             default,
@@ -845,7 +849,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Client {
-        #[doc = "The globally-unique numerical ID of the client.\nThe value of this field is ignored in create and update operations."]
+        #[doc = "The globally-unique numerical ID of the client. The value of this field is ignored in create and update operations."]
         #[serde(
             rename = "clientAccountId",
             default,
@@ -853,14 +857,14 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub client_account_id: ::std::option::Option<i64>,
-        #[doc = "Name used to represent this client to publishers.\nYou may have multiple clients that map to the same entity,\nbut for each client the combination of `clientName` and entity\nmust be unique.\nYou can specify this field as empty."]
+        #[doc = "Name used to represent this client to publishers. You may have multiple clients that map to the same entity, but for each client the combination of `clientName` and entity must be unique. You can specify this field as empty."]
         #[serde(
             rename = "clientName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub client_name: ::std::option::Option<String>,
-        #[doc = "Numerical identifier of the client entity.\nThe entity can be an advertiser, a brand, or an agency.\nThis identifier is unique among all the entities with the same type.\nThe value of this field is ignored if the entity type is not provided.\n\nA list of all known advertisers with their identifiers is available in the\n[advertisers.txt](https://storage.googleapis.com/adx-rtb-dictionaries/advertisers.txt)\nfile.\n\nA list of all known brands with their identifiers is available in the\n[brands.txt](https://storage.googleapis.com/adx-rtb-dictionaries/brands.txt)\nfile.\n\nA list of all known agencies with their identifiers is available in the\n[agencies.txt](https://storage.googleapis.com/adx-rtb-dictionaries/agencies.txt)\nfile."]
+        #[doc = "Numerical identifier of the client entity. The entity can be an advertiser, a brand, or an agency. This identifier is unique among all the entities with the same type. The value of this field is ignored if the entity type is not provided. A list of all known advertisers with their identifiers is available in the [advertisers.txt](https://storage.googleapis.com/adx-rtb-dictionaries/advertisers.txt) file. A list of all known brands with their identifiers is available in the [brands.txt](https://storage.googleapis.com/adx-rtb-dictionaries/brands.txt) file. A list of all known agencies with their identifiers is available in the [agencies.txt](https://storage.googleapis.com/adx-rtb-dictionaries/agencies.txt) file."]
         #[serde(
             rename = "entityId",
             default,
@@ -868,28 +872,28 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub entity_id: ::std::option::Option<i64>,
-        #[doc = "The name of the entity. This field is automatically fetched based on\nthe type and ID.\nThe value of this field is ignored in create and update operations."]
+        #[doc = "The name of the entity. This field is automatically fetched based on the type and ID. The value of this field is ignored in create and update operations."]
         #[serde(
             rename = "entityName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub entity_name: ::std::option::Option<String>,
-        #[doc = "An optional field for specifying the type of the client entity:\n`ADVERTISER`, `BRAND`, or `AGENCY`."]
+        #[doc = "An optional field for specifying the type of the client entity: `ADVERTISER`, `BRAND`, or `AGENCY`."]
         #[serde(
             rename = "entityType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub entity_type: ::std::option::Option<crate::schemas::ClientEntityType>,
-        #[doc = "Optional arbitrary unique identifier of this client buyer from the\nstandpoint of its Ad Exchange sponsor buyer.\n\nThis field can be used to associate a client buyer with the identifier\nin the namespace of its sponsor buyer, lookup client buyers by that\nidentifier and verify whether an Ad Exchange counterpart of a given client\nbuyer already exists.\n\nIf present, must be unique among all the client buyers for its\nAd Exchange sponsor buyer."]
+        #[doc = "Optional arbitrary unique identifier of this client buyer from the standpoint of its Ad Exchange sponsor buyer. This field can be used to associate a client buyer with the identifier in the namespace of its sponsor buyer, lookup client buyers by that identifier and verify whether an Ad Exchange counterpart of a given client buyer already exists. If present, must be unique among all the client buyers for its Ad Exchange sponsor buyer."]
         #[serde(
             rename = "partnerClientId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub partner_client_id: ::std::option::Option<String>,
-        #[doc = "The role which is assigned to the client buyer. Each role implies a set of\npermissions granted to the client. Must be one of `CLIENT_DEAL_VIEWER`,\n`CLIENT_DEAL_NEGOTIATOR` or `CLIENT_DEAL_APPROVER`."]
+        #[doc = "The role which is assigned to the client buyer. Each role implies a set of permissions granted to the client. Must be one of `CLIENT_DEAL_VIEWER`, `CLIENT_DEAL_NEGOTIATOR` or `CLIENT_DEAL_APPROVER`."]
         #[serde(
             rename = "role",
             default,
@@ -929,7 +933,7 @@ pub mod schemas {
         Agency,
         #[doc = "A brand."]
         Brand,
-        #[doc = "An explicit value for a client that was not yet classified\nas any particular entity."]
+        #[doc = "An explicit value for a client that was not yet classified as any particular entity."]
         EntityTypeUnclassified,
         #[doc = "A placeholder for an undefined client entity type. Should not be used."]
         EntityTypeUnspecified,
@@ -1009,11 +1013,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ClientRole {
-        #[doc = "Users associated with this client can approve eligible deals\non your behalf. Some deals may still explicitly require publisher\nfinalization. If this role is not selected, the sponsor buyer\nwill need to manually approve each of their deals."]
+        #[doc = "Users associated with this client can approve eligible deals on your behalf. Some deals may still explicitly require publisher finalization. If this role is not selected, the sponsor buyer will need to manually approve each of their deals."]
         ClientDealApprover,
-        #[doc = "Users associated with this client can respond to deal proposals\nsent to them by publishers. They can also initiate deal proposals\nof their own."]
+        #[doc = "Users associated with this client can respond to deal proposals sent to them by publishers. They can also initiate deal proposals of their own."]
         ClientDealNegotiator,
-        #[doc = "Users associated with this client can see publisher deal offers\nin the Marketplace.\nThey can neither negotiate proposals nor approve deals.\nIf this client is visible to publishers, they can send deal proposals\nto this client."]
+        #[doc = "Users associated with this client can see publisher deal offers in the Marketplace. They can neither negotiate proposals nor approve deals. If this client is visible to publishers, they can send deal proposals to this client."]
         ClientDealViewer,
         #[doc = "A placeholder for an undefined client role."]
         ClientRoleUnspecified,
@@ -1177,7 +1181,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ClientUser {
-        #[doc = "Numerical account ID of the client buyer\nwith which the user is associated; the\nbuyer must be a client of the current sponsor buyer.\nThe value of this field is ignored in an update operation."]
+        #[doc = "Numerical account ID of the client buyer with which the user is associated; the buyer must be a client of the current sponsor buyer. The value of this field is ignored in an update operation."]
         #[serde(
             rename = "clientAccountId",
             default,
@@ -1185,7 +1189,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub client_account_id: ::std::option::Option<i64>,
-        #[doc = "User's email address. The value of this field\nis ignored in an update operation."]
+        #[doc = "User's email address. The value of this field is ignored in an update operation."]
         #[serde(
             rename = "email",
             default,
@@ -1199,7 +1203,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub status: ::std::option::Option<crate::schemas::ClientUserStatus>,
-        #[doc = "The unique numerical ID of the client user\nthat has accepted an invitation.\nThe value of this field is ignored in an update operation."]
+        #[doc = "The unique numerical ID of the client user that has accepted an invitation. The value of this field is ignored in an update operation."]
         #[serde(
             rename = "userId",
             default,
@@ -1312,7 +1316,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ClientUserInvitation {
-        #[doc = "Numerical account ID of the client buyer\nthat the invited user is associated with.\nThe value of this field is ignored in create operations."]
+        #[doc = "Numerical account ID of the client buyer that the invited user is associated with. The value of this field is ignored in create operations."]
         #[serde(
             rename = "clientAccountId",
             default,
@@ -1320,14 +1324,14 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub client_account_id: ::std::option::Option<i64>,
-        #[doc = "The email address to which the invitation is sent. Email\naddresses should be unique among all client users under each sponsor\nbuyer."]
+        #[doc = "The email address to which the invitation is sent. Email addresses should be unique among all client users under each sponsor buyer."]
         #[serde(
             rename = "email",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub email: ::std::option::Option<String>,
-        #[doc = "The unique numerical ID of the invitation that is sent to the user.\nThe value of this field is ignored in create operations."]
+        #[doc = "The unique numerical ID of the invitation that is sent to the user. The value of this field is ignored in create operations."]
         #[serde(
             rename = "invitationId",
             default,
@@ -1457,25 +1461,25 @@ pub mod schemas {
     pub enum CorrectionType {
         #[doc = "The correction type is unknown. Refer to the details for more information."]
         CorrectionTypeUnspecified,
-        #[doc = "The ad unnecessarily declared the Flash attribute, so the Flash attribute\nwas removed."]
+        #[doc = "The ad unnecessarily declared the Flash attribute, so the Flash attribute was removed."]
         FlashAttributeRemoved,
-        #[doc = "The ad was not declared as Flash-free but it did not reference any flash\ncontent, so the Flash-free attribute was added."]
+        #[doc = "The ad was not declared as Flash-free but it did not reference any flash content, so the Flash-free attribute was added."]
         FlashFreeAttributeAdded,
-        #[doc = "The ad was declared as Flash-free but contained Flash, so the Flash-free\nattribute was removed."]
+        #[doc = "The ad was declared as Flash-free but contained Flash, so the Flash-free attribute was removed."]
         FlashFreeAttributeRemoved,
-        #[doc = "Properties consistent with In-banner video were found, so an\nIn-Banner Video attribute was added."]
+        #[doc = "Properties consistent with In-banner video were found, so an In-Banner Video attribute was added."]
         InBannerVideoAttributeAdded,
         #[doc = "The ad makes calls to the MRAID API so the MRAID attribute was added."]
         MraidAttributeAdded,
-        #[doc = "The ad did not declare a required creative attribute.\nThe attribute was added."]
+        #[doc = "The ad did not declare a required creative attribute. The attribute was added."]
         RequiredAttributeAdded,
-        #[doc = "The ad did not declare a required technology vendor.\nThe technology vendor was added."]
+        #[doc = "The ad did not declare a required technology vendor. The technology vendor was added."]
         RequiredVendorAdded,
-        #[doc = "The ad did not declare the SSL attribute but was SSL-compliant, so the\nSSL attribute was added."]
+        #[doc = "The ad did not declare the SSL attribute but was SSL-compliant, so the SSL attribute was added."]
         SslAttributeAdded,
-        #[doc = "The ad had the SSL attribute declared but was not SSL-compliant.\nThe SSL attribute was removed."]
+        #[doc = "The ad had the SSL attribute declared but was not SSL-compliant. The SSL attribute was removed."]
         SslAttributeRemoved,
-        #[doc = "The ad's declared vendors did not match the vendors that were detected.\nThe detected vendors were added."]
+        #[doc = "The ad's declared vendors did not match the vendors that were detected. The detected vendors were added."]
         VendorIdsAdded,
         #[doc = "The ad contains video content."]
         VideoInSnippetAttributeAdded,
@@ -1578,7 +1582,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Creative {
-        #[doc = "The account that this creative belongs to.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
+        #[doc = "The account that this creative belongs to. Can be used to filter the response of the creatives.list method."]
         #[serde(
             rename = "accountId",
             default,
@@ -1621,7 +1625,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub api_update_time: ::std::option::Option<String>,
-        #[doc = "All attributes for the ads that may be shown from this creative.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
+        #[doc = "All attributes for the ads that may be shown from this creative. Can be used to filter the response of the creatives.list method."]
         #[serde(
             rename = "attributes",
             default,
@@ -1642,14 +1646,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub corrections: ::std::option::Option<Vec<crate::schemas::Correction>>,
-        #[doc = "The buyer-defined creative ID of this creative.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
+        #[doc = "The buyer-defined creative ID of this creative. Can be used to filter the response of the creatives.list method."]
         #[serde(
             rename = "creativeId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub creative_id: ::std::option::Option<String>,
-        #[doc = "Output only. The top-level deals status of this creative.\nIf disapproved, an entry for 'auctionType=DIRECT_DEALS' (or 'ALL') in\nserving_restrictions will also exist. Note\nthat this may be nuanced with other contextual restrictions, in which case,\nit may be preferable to read from serving_restrictions directly.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
+        #[doc = "Output only. The top-level deals status of this creative. If disapproved, an entry for 'auctionType=DIRECT_DEALS' (or 'ALL') in serving_restrictions will also exist. Note that this may be nuanced with other contextual restrictions, in which case, it may be preferable to read from serving_restrictions directly. Can be used to filter the response of the creatives.list method."]
         #[serde(
             rename = "dealsStatus",
             default,
@@ -1677,21 +1681,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub detected_domains: ::std::option::Option<Vec<String>>,
-        #[doc = "Output only. The detected languages for this creative. The order is\narbitrary. The codes are 2 or 5 characters and are documented at\nhttps://developers.google.com/adwords/api/docs/appendix/languagecodes."]
+        #[doc = "Output only. The detected languages for this creative. The order is arbitrary. The codes are 2 or 5 characters and are documented at https://developers.google.com/adwords/api/docs/appendix/languagecodes."]
         #[serde(
             rename = "detectedLanguages",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub detected_languages: ::std::option::Option<Vec<String>>,
-        #[doc = "Output only. Detected product categories, if any.\nSee the ad-product-categories.txt file in the technical documentation\nfor a list of IDs."]
+        #[doc = "Output only. Detected product categories, if any. See the ad-product-categories.txt file in the technical documentation for a list of IDs."]
         #[serde(
             rename = "detectedProductCategories",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub detected_product_categories: ::std::option::Option<Vec<i32>>,
-        #[doc = "Output only. Detected sensitive categories, if any.\nSee the ad-sensitive-categories.txt file in the technical documentation for\na list of IDs. You should use these IDs along with the\nexcluded-sensitive-category field in the bid request to filter your bids."]
+        #[doc = "Output only. Detected sensitive categories, if any. See the ad-sensitive-categories.txt file in the technical documentation for a list of IDs. You should use these IDs along with the excluded-sensitive-category field in the bid request to filter your bids."]
         #[serde(
             rename = "detectedSensitiveCategories",
             default,
@@ -1719,7 +1723,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub native: ::std::option::Option<crate::schemas::NativeContent>,
-        #[doc = "Output only. The top-level open auction status of this creative.\nIf disapproved, an entry for 'auctionType = OPEN_AUCTION' (or 'ALL') in\nserving_restrictions will also exist. Note\nthat this may be nuanced with other contextual restrictions, in which case,\nit may be preferable to read from serving_restrictions directly.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
+        #[doc = "Output only. The top-level open auction status of this creative. If disapproved, an entry for 'auctionType = OPEN_AUCTION' (or 'ALL') in serving_restrictions will also exist. Note that this may be nuanced with other contextual restrictions, in which case, it may be preferable to read from serving_restrictions directly. Can be used to filter the response of the creatives.list method."]
         #[serde(
             rename = "openAuctionStatus",
             default,
@@ -1734,14 +1738,14 @@ pub mod schemas {
         )]
         pub restricted_categories:
             ::std::option::Option<Vec<crate::schemas::CreativeRestrictedCategoriesItems>>,
-        #[doc = "Output only. The granular status of this ad in specific contexts.\nA context here relates to where something ultimately serves (for example,\na physical location, a platform, an HTTPS vs HTTP request, or the type\nof auction)."]
+        #[doc = "Output only. The granular status of this ad in specific contexts. A context here relates to where something ultimately serves (for example, a physical location, a platform, an HTTPS vs HTTP request, or the type of auction)."]
         #[serde(
             rename = "servingRestrictions",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub serving_restrictions: ::std::option::Option<Vec<crate::schemas::ServingRestriction>>,
-        #[doc = "All vendor IDs for the ads that may be shown from this creative.\nSee https://storage.googleapis.com/adx-rtb-dictionaries/vendors.txt\nfor possible values."]
+        #[doc = "All vendor IDs for the ads that may be shown from this creative. See https://storage.googleapis.com/adx-rtb-dictionaries/vendors.txt for possible values."]
         #[serde(
             rename = "vendorIds",
             default,
@@ -1775,43 +1779,81 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeAttributesItems {
+        #[doc = "The creative is of video type Adobe Flash FLV. For pretargeting."]
         AdobeFlashFlv,
+        #[doc = "The creative has an interstitial size of any interstitial. For pretargeting."]
         AnyInterstitial,
+        #[doc = "Do not use. This is a placeholder value only."]
         AttributeUnspecified,
+        #[doc = "The creative type is HTML."]
         CreativeTypeHtml,
+        #[doc = "The creative type is VAST video."]
         CreativeTypeVastVideo,
+        #[doc = "The creative expands when rolled over."]
         ExpandingActionRolloverToExpand,
+        #[doc = "The creative expands on any diagonal."]
         ExpandingDirectionAnyDiagonal,
+        #[doc = "The creative expands down."]
         ExpandingDirectionDown,
+        #[doc = "The creative expands down and left."]
         ExpandingDirectionDownLeft,
+        #[doc = "The creative expands down and right."]
         ExpandingDirectionDownRight,
+        #[doc = "The creative expands left."]
         ExpandingDirectionLeft,
+        #[doc = "The creative expands left or right."]
         ExpandingDirectionLeftOrRight,
+        #[doc = "The creative does not expand."]
         ExpandingDirectionNone,
+        #[doc = "The creative expands right."]
         ExpandingDirectionRight,
+        #[doc = "The creative expands up."]
         ExpandingDirectionUp,
+        #[doc = "The creative expands up and left."]
         ExpandingDirectionUpLeft,
+        #[doc = "The creative expands up or down."]
         ExpandingDirectionUpOrDown,
+        #[doc = "The creative expands up and right."]
         ExpandingDirectionUpRight,
+        #[doc = "The creative is of type image/rich media. For pretargeting."]
         ImageRichMedia,
+        #[doc = "The video type is in-banner video."]
         InBannerVideo,
+        #[doc = "The instream vast video type is vpaid flash."]
         InstreamVastVideoTypeVpaidFlash,
+        #[doc = "The creative is cookie targeted."]
         IsCookieTargeted,
+        #[doc = "The creative is tagged."]
         IsTagged,
+        #[doc = "The creative is user interest targeted."]
         IsUserInterestTargeted,
+        #[doc = "The creative is eligible for native."]
         NativeEligibilityEligible,
+        #[doc = "The creative is not eligible for native."]
         NativeEligibilityNotEligible,
+        #[doc = "The creative has an interstitial size of non interstitial. For pretargeting."]
         NonInterstitial,
+        #[doc = "The creative has an instream VAST video type of non-skippable instream video. For pretargeting."]
         NonSkippableInstreamVideo,
+        #[doc = "The creative has an instream VAST video type of non-VPAID. For pretargeting."]
         NonVpaid,
+        #[doc = "The open measurement SDK is supported."]
         Omsdk10,
+        #[doc = "The creative can dynamically resize to fill a variety of slot sizes."]
         RenderingSizelessAdx,
+        #[doc = "The creative is Flash."]
         RichMediaCapabilityTypeFlash,
+        #[doc = "The creative is HTML5."]
         RichMediaCapabilityTypeHtml5,
+        #[doc = "The creative is an interstitial."]
         RichMediaCapabilityTypeInterstitial,
+        #[doc = "The creative is MRAID."]
         RichMediaCapabilityTypeMraid,
+        #[doc = "The creative is non-SSL."]
         RichMediaCapabilityTypeNonSsl,
+        #[doc = "The creative is SSL."]
         RichMediaCapabilityTypeSsl,
+        #[doc = "The creative has an instream VAST video type of skippable instream video. For pretargeting."]
         SkippableInstreamVideo,
     }
     impl CreativeAttributesItems {
@@ -2086,7 +2128,7 @@ pub mod schemas {
     pub enum CreativeDealsStatus {
         #[doc = "The creative has been approved."]
         Approved,
-        #[doc = "The creative has been conditionally approved.\nSee serving_restrictions for details."]
+        #[doc = "The creative has been conditionally approved. See serving_restrictions for details."]
         ConditionallyApproved,
         #[doc = "The creative has been disapproved."]
         Disapproved,
@@ -2182,7 +2224,7 @@ pub mod schemas {
     pub enum CreativeOpenAuctionStatus {
         #[doc = "The creative has been approved."]
         Approved,
-        #[doc = "The creative has been conditionally approved.\nSee serving_restrictions for details."]
+        #[doc = "The creative has been conditionally approved. See serving_restrictions for details."]
         ConditionallyApproved,
         #[doc = "The creative has been disapproved."]
         Disapproved,
@@ -2276,7 +2318,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeRestrictedCategoriesItems {
+        #[doc = "The alcohol restricted category."]
         Alcohol,
+        #[doc = "The ad has no restricted categories"]
         NoRestrictedCategories,
     }
     impl CreativeRestrictedCategoriesItems {
@@ -2447,7 +2491,7 @@ pub mod schemas {
         CreativeFormatUnspecified,
         #[doc = "A creative that will be displayed in environments such as a browser."]
         Display,
-        #[doc = "A video creative that will be displayed in environments such as a video\nplayer."]
+        #[doc = "A video creative that will be displayed in environments such as a video player."]
         Video,
     }
     impl CreativeRestrictionsCreativeFormat {
@@ -2525,7 +2569,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeRestrictionsSkippableAdType {
-        #[doc = "This video ad can be skipped after 5 seconds, and is counted as\nengaged view after 30 seconds. The creative is hosted on\nYouTube only, and viewcount of the YouTube video increments\nafter the engaged view."]
+        #[doc = "This video ad can be skipped after 5 seconds, and is counted as engaged view after 30 seconds. The creative is hosted on YouTube only, and viewcount of the YouTube video increments after the engaged view."]
         InstreamSelect,
         #[doc = "This video ad is not skippable."]
         NotSkippable,
@@ -2623,7 +2667,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CreativeSize {
-        #[doc = "What formats are allowed by the publisher.\nIf this repeated field is empty then all formats are allowed.\nFor example, if this field contains AllowedFormatType.AUDIO then the\npublisher only allows an audio ad (without any video)."]
+        #[doc = "What formats are allowed by the publisher. If this repeated field is empty then all formats are allowed. For example, if this field contains AllowedFormatType.AUDIO then the publisher only allows an audio ad (without any video)."]
         #[serde(
             rename = "allowedFormats",
             default,
@@ -2631,7 +2675,7 @@ pub mod schemas {
         )]
         pub allowed_formats:
             ::std::option::Option<Vec<crate::schemas::CreativeSizeAllowedFormatsItems>>,
-        #[doc = "For video creatives specifies the sizes of companion ads (if present).\nCompanion sizes may be filled in only when creative_size_type = VIDEO"]
+        #[doc = "For video creatives specifies the sizes of companion ads (if present). Companion sizes may be filled in only when creative_size_type = VIDEO"]
         #[serde(
             rename = "companionSizes",
             default,
@@ -2645,21 +2689,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub creative_size_type: ::std::option::Option<crate::schemas::CreativeSizeCreativeSizeType>,
-        #[doc = "Output only. The native template for this creative. It will have a value\nonly if creative_size_type = CreativeSizeType.NATIVE."]
+        #[doc = "Output only. The native template for this creative. It will have a value only if creative_size_type = CreativeSizeType.NATIVE."]
         #[serde(
             rename = "nativeTemplate",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub native_template: ::std::option::Option<crate::schemas::CreativeSizeNativeTemplate>,
-        #[doc = "For regular or video creative size type, specifies the size\nof the creative"]
+        #[doc = "For regular or video creative size type, specifies the size of the creative"]
         #[serde(
             rename = "size",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub size: ::std::option::Option<crate::schemas::Size>,
-        #[doc = "The type of skippable ad for this creative. It will have a value only if\ncreative_size_type = CreativeSizeType.VIDEO."]
+        #[doc = "The type of skippable ad for this creative. It will have a value only if creative_size_type = CreativeSizeType.VIDEO."]
         #[serde(
             rename = "skippableAdType",
             default,
@@ -2679,7 +2723,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreativeSizeAllowedFormatsItems {
+        #[doc = "An audio-only ad (without any video)."]
         Audio,
+        #[doc = "A placeholder for an undefined allowed format."]
         Unknown,
     }
     impl CreativeSizeAllowedFormatsItems {
@@ -2934,7 +2980,7 @@ pub mod schemas {
     pub enum CreativeSizeSkippableAdType {
         #[doc = "This video ad can be skipped after 5 seconds."]
         Generic,
-        #[doc = "This video ad can be skipped after 5 seconds, and count as\nengaged view after 30 seconds. The creative is hosted on\nYouTube only, and viewcount of the YouTube video increments\nafter the engaged view."]
+        #[doc = "This video ad can be skipped after 5 seconds, and count as engaged view after 30 seconds. The creative is hosted on YouTube only, and viewcount of the YouTube video increments after the engaged view."]
         InstreamSelect,
         #[doc = "This video ad is not skippable."]
         NotSkippable,
@@ -3075,7 +3121,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bid_count: ::std::option::Option<crate::schemas::MetricValue>,
-        #[doc = "The ID of the creative status.\nSee\n[creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes)."]
+        #[doc = "The ID of the creative status. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes)."]
         #[serde(
             rename = "creativeStatusId",
             default,
@@ -3151,21 +3197,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Date {
-        #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month, or 0\nif specifying a year by itself or a year and month where the day is not\nsignificant."]
+        #[doc = "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant."]
         #[serde(
             rename = "day",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub day: ::std::option::Option<i32>,
-        #[doc = "Month of year. Must be from 1 to 12, or 0 if specifying a year without a\nmonth and day."]
+        #[doc = "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day."]
         #[serde(
             rename = "month",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub month: ::std::option::Option<i32>,
-        #[doc = "Year of date. Must be from 1 to 9999, or 0 if specifying a date without\na year."]
+        #[doc = "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year."]
         #[serde(
             rename = "year",
             default,
@@ -3203,14 +3249,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub day_of_week: ::std::option::Option<crate::schemas::DayPartDayOfWeek>,
-        #[doc = "The ending time of the day for the ad to show (minute level\ngranularity). The end time is exclusive. This field is not available\nfor filtering in PQL queries."]
+        #[doc = "The ending time of the day for the ad to show (minute level granularity). The end time is exclusive. This field is not available for filtering in PQL queries."]
         #[serde(
             rename = "endTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub end_time: ::std::option::Option<crate::schemas::TimeOfDay>,
-        #[doc = "The starting time of day for the ad to show (minute level granularity).\nThe start time is inclusive.\nThis field is not available for filtering in PQL queries."]
+        #[doc = "The starting time of day for the ad to show (minute level granularity). The start time is inclusive. This field is not available for filtering in PQL queries."]
         #[serde(
             rename = "startTime",
             default,
@@ -3462,14 +3508,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Deal {
-        #[doc = "Proposed flight end time of the deal.\nThis will generally be stored in a granularity of a second.\nA value is not required for Private Auction deals or Preferred Deals."]
+        #[doc = "Proposed flight end time of the deal. This will generally be stored in a granularity of a second. A value is not required for Private Auction deals or Preferred Deals."]
         #[serde(
             rename = "availableEndTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub available_end_time: ::std::option::Option<String>,
-        #[doc = "Optional proposed flight start time of the deal.\nThis will generally be stored in the granularity of one second since deal\nserving starts at seconds boundary. Any time specified with more\ngranularity (e.g., in milliseconds) will be truncated towards the start of\ntime in seconds."]
+        #[doc = "Optional. Proposed flight start time of the deal. This will generally be stored in the granularity of one second since deal serving starts at seconds boundary. Any time specified with more granularity (e.g., in milliseconds) will be truncated towards the start of time in seconds."]
         #[serde(
             rename = "availableStartTime",
             default,
@@ -3483,14 +3529,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub buyer_private_data: ::std::option::Option<crate::schemas::PrivateData>,
-        #[doc = "The product ID from which this deal was created.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
+        #[doc = "The product ID from which this deal was created. Note: This field may be set only when creating the resource. Modifying this field while updating the resource will result in an error."]
         #[serde(
             rename = "createProductId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub create_product_id: ::std::option::Option<String>,
-        #[doc = "Optional revision number of the product that the deal was created from.\nIf present on create, and the server `product_revision` has advanced sinced\nthe passed-in `create_product_revision`, an `ABORTED` error will be\nreturned.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
+        #[doc = "Optional. Revision number of the product that the deal was created from. If present on create, and the server `product_revision` has advanced since the passed-in `create_product_revision`, an `ABORTED` error will be returned. Note: This field may be set only when creating the resource. Modifying this field while updating the resource will result in an error."]
         #[serde(
             rename = "createProductRevision",
             default,
@@ -3513,7 +3559,7 @@ pub mod schemas {
         )]
         pub creative_pre_approval_policy:
             ::std::option::Option<crate::schemas::DealCreativePreApprovalPolicy>,
-        #[doc = "Output only. Restricitions about the creatives associated with the deal\n(i.e., size) This is available for Programmatic Guaranteed/Preferred Deals\nin Ad Manager."]
+        #[doc = "Output only. Restricitions about the creatives associated with the deal (i.e., size) This is available for Programmatic Guaranteed/Preferred Deals in Ad Manager."]
         #[serde(
             rename = "creativeRestrictions",
             default,
@@ -3549,7 +3595,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub deal_terms: ::std::option::Option<crate::schemas::DealTerms>,
-        #[doc = "The set of fields around delivery control that are interesting for a buyer\nto see but are non-negotiable. These are set by the publisher."]
+        #[doc = "The set of fields around delivery control that are interesting for a buyer to see but are non-negotiable. These are set by the publisher."]
         #[serde(
             rename = "deliveryControl",
             default,
@@ -3570,21 +3616,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "Output only. The external deal ID assigned to this deal once the deal is\nfinalized. This is the deal ID that shows up in serving/reporting etc."]
+        #[doc = "Output only. The external deal ID assigned to this deal once the deal is finalized. This is the deal ID that shows up in serving/reporting etc."]
         #[serde(
             rename = "externalDealId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub external_deal_id: ::std::option::Option<String>,
-        #[doc = "Output only. True, if the buyside inventory setup is complete for this\ndeal."]
+        #[doc = "Output only. True, if the buyside inventory setup is complete for this deal."]
         #[serde(
             rename = "isSetupComplete",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_setup_complete: ::std::option::Option<bool>,
-        #[doc = "Output only. Specifies the creative source for programmatic deals.\nPUBLISHER means creative is provided by seller and ADVERTISER means\ncreative is provided by buyer."]
+        #[doc = "Output only. Specifies the creative source for programmatic deals. PUBLISHER means creative is provided by seller and ADVERTISER means creative is provided by buyer."]
         #[serde(
             rename = "programmaticCreativeSource",
             default,
@@ -3606,7 +3652,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub seller_contacts: ::std::option::Option<Vec<crate::schemas::ContactInformation>>,
-        #[doc = "The syndication product associated with the deal.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
+        #[doc = "The syndication product associated with the deal. Note: This field may be set only when creating the resource. Modifying this field while updating the resource will result in an error."]
         #[serde(
             rename = "syndicationProduct",
             default,
@@ -3620,7 +3666,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub targeting: ::std::option::Option<crate::schemas::MarketplaceTargeting>,
-        #[doc = "The shared targeting visible to buyers and sellers. Each shared\ntargeting entity is AND'd together."]
+        #[doc = "The shared targeting visible to buyers and sellers. Each shared targeting entity is AND'd together."]
         #[serde(
             rename = "targetingCriterion",
             default,
@@ -4201,14 +4247,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "Non-binding estimate of the estimated gross spend for this deal.\nCan be set by buyer or seller."]
+        #[doc = "Non-binding estimate of the estimated gross spend for this deal. Can be set by buyer or seller."]
         #[serde(
             rename = "estimatedGrossSpend",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub estimated_gross_spend: ::std::option::Option<crate::schemas::Price>,
-        #[doc = "Non-binding estimate of the impressions served per day.\nCan be set by buyer or seller."]
+        #[doc = "Non-binding estimate of the impressions served per day. Can be set by buyer or seller."]
         #[serde(
             rename = "estimatedImpressionsPerDay",
             default,
@@ -4240,7 +4286,7 @@ pub mod schemas {
         )]
         pub non_guaranteed_fixed_price_terms:
             ::std::option::Option<crate::schemas::NonGuaranteedFixedPriceTerms>,
-        #[doc = "The time zone name. For deals with Cost Per Day billing, defines the\ntime zone used to mark the boundaries of a day. It should be an\nIANA TZ name, such as \"America/Los_Angeles\". For more information,\nsee https://en.wikipedia.org/wiki/List_of_tz_database_time_zones."]
+        #[doc = "The time zone name. For deals with Cost Per Day billing, defines the time zone used to mark the boundaries of a day. It should be an IANA TZ name, such as \"America/Los_Angeles\". For more information, see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones."]
         #[serde(
             rename = "sellerTimeZone",
             default,
@@ -4264,7 +4310,7 @@ pub mod schemas {
         Branded,
         #[doc = "A placeholder for an undefined branding type."]
         BrandingTypeUnspecified,
-        #[doc = "A TopLevelDomain or masked URL is sent in bid requests\nrather than the full one."]
+        #[doc = "A TopLevelDomain or masked URL is sent in bid requests rather than the full one."]
         SemiTransparent,
     }
     impl DealTermsBrandingType {
@@ -4608,7 +4654,7 @@ pub mod schemas {
         AdSizeDoesNotMatchAdSlot,
         #[doc = "The ad contains adult images or video content."]
         AdultImageOrVideo,
-        #[doc = "The ad automatically redirects to the destination site without a click,\nor reports a click when none were made."]
+        #[doc = "The ad automatically redirects to the destination site without a click, or reports a click when none were made."]
         AutomatedAdClicking,
         #[doc = "Bad URL: Legal disapproval."]
         BadUrlLegalDisapproval,
@@ -4666,7 +4712,7 @@ pub mod schemas {
         ExpandableInvalidVendor,
         #[doc = "Promotes speculative and/or experimental medical treatments."]
         ExperimentalMedicalTreatment,
-        #[doc = "The creative attempts to set cookies from a fourth party that is not\ncertified."]
+        #[doc = "The creative attempts to set cookies from a fourth party that is not certified."]
         FourthPartyBrowserCookies,
         #[doc = "The ad tries to gain an unfair traffic advantage."]
         GainingAnUnfairAdvantage,
@@ -4684,7 +4730,7 @@ pub mod schemas {
         IncorrectDestinationUrlDeclaration,
         #[doc = "Incorrect Image Layout."]
         IncorrectImageLayout,
-        #[doc = "The ad targets consumers using remarketing lists and/or collects\ndata for subsequent use in retargeting, but does not correctly declare\nthat use."]
+        #[doc = "The ad targets consumers using remarketing lists and/or collects data for subsequent use in retargeting, but does not correctly declare that use."]
         IncorrectRemarketingDeclaration,
         #[doc = "Invalid bidding method."]
         InvalidBiddingMethod,
@@ -4744,7 +4790,7 @@ pub mod schemas {
         OmissionOfRelevantInformation,
         #[doc = "Financial service ad does not adhere to specifications."]
         PersonalLoans,
-        #[doc = "Pharmaceuticals, Gambling, Alcohol not allowed and at least one was\ndetected."]
+        #[doc = "Pharmaceuticals, Gambling, Alcohol not allowed and at least one was detected."]
         PharmaGamblingAlcoholNotAllowed,
         #[doc = "Poor Image / Video Quality."]
         PoorImageOrVideoQuality,
@@ -4772,7 +4818,7 @@ pub mod schemas {
         TemporaryPause,
         #[doc = "Unacceptable content. For example, malware."]
         UnacceptableContent,
-        #[doc = "The ad or landing page contains unacceptable content because it initiated\na software or executable download."]
+        #[doc = "The ad or landing page contains unacceptable content because it initiated a software or executable download."]
         UnacceptableContentSoftware,
         #[doc = "For example, Image Trick to Click."]
         UnacceptableImageContent,
@@ -4786,7 +4832,7 @@ pub mod schemas {
         UnclearOrIrrelevantAd,
         #[doc = "Flash content found when no flash was declared."]
         UndeclaredFlashObjects,
-        #[doc = "Restricted content (for example, alcohol) was found in the ad but not\ndeclared."]
+        #[doc = "Restricted content (for example, alcohol) was found in the ad but not declared."]
         UndeclaredRestrictedContent,
         #[doc = "Unsupported content."]
         UnsupportedContent,
@@ -5286,14 +5332,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct FilterSet {
-        #[doc = "An absolute date range, defined by a start date and an end date.\nInterpreted relative to Pacific time zone."]
+        #[doc = "An absolute date range, defined by a start date and an end date. Interpreted relative to Pacific time zone."]
         #[serde(
             rename = "absoluteDateRange",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub absolute_date_range: ::std::option::Option<crate::schemas::AbsoluteDateRange>,
-        #[doc = "The set of dimensions along which to break down the response; may be empty.\nIf multiple dimensions are requested, the breakdown is along the Cartesian\nproduct of the requested dimensions."]
+        #[doc = "The set of dimensions along which to break down the response; may be empty. If multiple dimensions are requested, the breakdown is along the Cartesian product of the requested dimensions."]
         #[serde(
             rename = "breakdownDimensions",
             default,
@@ -5301,14 +5347,14 @@ pub mod schemas {
         )]
         pub breakdown_dimensions:
             ::std::option::Option<Vec<crate::schemas::FilterSetBreakdownDimensionsItems>>,
-        #[doc = "The ID of the creative on which to filter; optional. This field may be set\nonly for a filter set that accesses account-level troubleshooting data,\ni.e., one whose name matches the `bidders/*/accounts/*/filterSets/*`\npattern."]
+        #[doc = "The ID of the creative on which to filter; optional. This field may be set only for a filter set that accesses account-level troubleshooting data, i.e., one whose name matches the `bidders/*/accounts/*/filterSets/*` pattern."]
         #[serde(
             rename = "creativeId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub creative_id: ::std::option::Option<String>,
-        #[doc = "The ID of the deal on which to filter; optional. This field may be set\nonly for a filter set that accesses account-level troubleshooting data,\ni.e., one whose name matches the `bidders/*/accounts/*/filterSets/*`\npattern."]
+        #[doc = "The ID of the deal on which to filter; optional. This field may be set only for a filter set that accesses account-level troubleshooting data, i.e., one whose name matches the `bidders/*/accounts/*/filterSets/*` pattern."]
         #[serde(
             rename = "dealId",
             default,
@@ -5330,56 +5376,56 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub format: ::std::option::Option<crate::schemas::FilterSetFormat>,
-        #[doc = "Creative formats bidded on or allowed to bid on, can be empty. Although\nthis field is a list, it can only be populated with a single item. A\nHTTP 400 bad request error will be returned in the response if you specify\nmultiple items."]
+        #[doc = "Creative formats bidded on or allowed to bid on, can be empty. Although this field is a list, it can only be populated with a single item. A HTTP 400 bad request error will be returned in the response if you specify multiple items."]
         #[serde(
             rename = "formats",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub formats: ::std::option::Option<Vec<crate::schemas::FilterSetFormatsItems>>,
-        #[doc = "A user-defined name of the filter set. Filter set names must be unique\nglobally and match one of the patterns:\n\n* `bidders/*/filterSets/*` (for accessing bidder-level troubleshooting\n  data)\n* `bidders/*/accounts/*/filterSets/*` (for accessing account-level\n  troubleshooting data)\n\nThis field is required in create operations."]
+        #[doc = "A user-defined name of the filter set. Filter set names must be unique globally and match one of the patterns: - `bidders/*/filterSets/*` (for accessing bidder-level troubleshooting data) - `bidders/*/accounts/*/filterSets/*` (for accessing account-level troubleshooting data) This field is required in create operations."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "The list of platforms on which to filter; may be empty. The filters\nrepresented by multiple platforms are ORed together (i.e., if non-empty,\nresults must match any one of the platforms)."]
+        #[doc = "The list of platforms on which to filter; may be empty. The filters represented by multiple platforms are ORed together (i.e., if non-empty, results must match any one of the platforms)."]
         #[serde(
             rename = "platforms",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub platforms: ::std::option::Option<Vec<crate::schemas::FilterSetPlatformsItems>>,
-        #[doc = "For Open Bidding partners only.\nThe list of publisher identifiers on which to filter; may be empty.\nThe filters represented by multiple publisher identifiers are ORed\ntogether."]
+        #[doc = "For Open Bidding partners only. The list of publisher identifiers on which to filter; may be empty. The filters represented by multiple publisher identifiers are ORed together."]
         #[serde(
             rename = "publisherIdentifiers",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub publisher_identifiers: ::std::option::Option<Vec<String>>,
-        #[doc = "An open-ended realtime time range, defined by the aggregation start\ntimestamp."]
+        #[doc = "An open-ended realtime time range, defined by the aggregation start timestamp."]
         #[serde(
             rename = "realtimeTimeRange",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub realtime_time_range: ::std::option::Option<crate::schemas::RealtimeTimeRange>,
-        #[doc = "A relative date range, defined by an offset from today and a duration.\nInterpreted relative to Pacific time zone."]
+        #[doc = "A relative date range, defined by an offset from today and a duration. Interpreted relative to Pacific time zone."]
         #[serde(
             rename = "relativeDateRange",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub relative_date_range: ::std::option::Option<crate::schemas::RelativeDateRange>,
-        #[doc = "For Authorized Buyers only.\nThe list of IDs of the seller (publisher) networks on which to filter;\nmay be empty. The filters represented by multiple seller network IDs are\nORed together (i.e., if non-empty, results must match any one of the\npublisher networks). See\n[seller-network-ids](https://developers.google.com/authorized-buyers/rtb/downloads/seller-network-ids)\nfile for the set of existing seller network IDs."]
+        #[doc = "For Authorized Buyers only. The list of IDs of the seller (publisher) networks on which to filter; may be empty. The filters represented by multiple seller network IDs are ORed together (i.e., if non-empty, results must match any one of the publisher networks). See [seller-network-ids](https://developers.google.com/authorized-buyers/rtb/downloads/seller-network-ids) file for the set of existing seller network IDs."]
         #[serde(
             rename = "sellerNetworkIds",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub seller_network_ids: ::std::option::Option<Vec<i32>>,
-        #[doc = "The granularity of time intervals if a time series breakdown is desired;\noptional."]
+        #[doc = "The granularity of time intervals if a time series breakdown is desired; optional."]
         #[serde(
             rename = "timeSeriesGranularity",
             default,
@@ -5400,7 +5446,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FilterSetBreakdownDimensionsItems {
+        #[doc = "A placeholder for an unspecified dimension; should not be used."]
         BreakdownDimensionUnspecified,
+        #[doc = "The response should be broken down by publisher identifier. This option is available only for Open Bidding buyers."]
         PublisherIdentifier,
     }
     impl FilterSetBreakdownDimensionsItems {
@@ -5477,7 +5525,7 @@ pub mod schemas {
     pub enum FilterSetEnvironment {
         #[doc = "The ad impression appears in an app."]
         App,
-        #[doc = "A placeholder for an undefined environment; indicates that no environment\nfilter will be applied."]
+        #[doc = "A placeholder for an undefined environment; indicates that no environment filter will be applied."]
         EnvironmentUnspecified,
         #[doc = "The ad impression appears on the web."]
         Web,
@@ -5551,7 +5599,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FilterSetFormat {
-        #[doc = "A placeholder for an undefined format; indicates that no format filter\nwill be applied."]
+        #[doc = "A placeholder for an undefined format; indicates that no format filter will be applied."]
         FormatUnspecified,
         #[doc = "The ad impression is a native ad, and display (i.e., image) format."]
         NativeDisplay,
@@ -5637,10 +5685,15 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FilterSetFormatsItems {
+        #[doc = "A placeholder for an undefined format; indicates that no format filter will be applied."]
         FormatUnspecified,
+        #[doc = "The ad impression is a native ad, and display (i.e., image) format."]
         NativeDisplay,
+        #[doc = "The ad impression is a native ad, and video format."]
         NativeVideo,
+        #[doc = "The ad impression is not a native ad, and display (i.e., image) format."]
         NonNativeDisplay,
+        #[doc = "The ad impression is not a native ad, and video format."]
         NonNativeVideo,
     }
     impl FilterSetFormatsItems {
@@ -5718,9 +5771,13 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FilterSetPlatformsItems {
+        #[doc = "The ad impression appears on a desktop."]
         Desktop,
+        #[doc = "The ad impression appears on a mobile device."]
         Mobile,
+        #[doc = "A placeholder for an undefined platform; indicates that no platform filter will be applied."]
         PlatformUnspecified,
+        #[doc = "The ad impression appears on a tablet."]
         Tablet,
     }
     impl FilterSetPlatformsItems {
@@ -5799,7 +5856,7 @@ pub mod schemas {
         Daily,
         #[doc = "Indicates that data will be broken down by the hour."]
         Hourly,
-        #[doc = "A placeholder for an unspecified interval; no time series is applied.\nAll rows in response will contain data for the entire requested time range."]
+        #[doc = "A placeholder for an unspecified interval; no time series is applied. All rows in response will contain data for the entire requested time range."]
         TimeSeriesGranularityUnspecified,
     }
     impl FilterSetTimeSeriesGranularity {
@@ -5940,7 +5997,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bid_count: ::std::option::Option<crate::schemas::MetricValue>,
-        #[doc = "The ID of the detail. The associated value can be looked up in the\ndictionary file corresponding to the DetailType in the response message."]
+        #[doc = "The ID of the detail, can be numeric or text. The associated value can be looked up in the dictionary file corresponding to the DetailType in the response message."]
+        #[serde(
+            rename = "detail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub detail: ::std::option::Option<String>,
+        #[doc = "Note: this field will be deprecated, use \"detail\" field instead. When \"detail\" field represents an integer value, this field is populated as the same integer value \"detail\" field represents, otherwise this field will be 0. The ID of the detail. The associated value can be looked up in the dictionary file corresponding to the DetailType in the response message."]
         #[serde(
             rename = "detailId",
             default,
@@ -6016,21 +6080,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct FrequencyCap {
-        #[doc = "The maximum number of impressions that can be served to a user within the\nspecified time period."]
+        #[doc = "The maximum number of impressions that can be served to a user within the specified time period."]
         #[serde(
             rename = "maxImpressions",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub max_impressions: ::std::option::Option<i32>,
-        #[doc = "The amount of time, in the units specified by time_unit_type. Defines the\namount of time over which impressions per user are counted and capped."]
+        #[doc = "The amount of time, in the units specified by time_unit_type. Defines the amount of time over which impressions per user are counted and capped."]
         #[serde(
             rename = "numTimeUnits",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub num_time_units: ::std::option::Option<i32>,
-        #[doc = "The time unit. Along with num_time_units defines the amount of time over\nwhich impressions per user are counted and capped."]
+        #[doc = "The time unit. Along with num_time_units defines the amount of time over which impressions per user are counted and capped."]
         #[serde(
             rename = "timeUnitType",
             default,
@@ -6060,7 +6124,7 @@ pub mod schemas {
         Minute,
         #[doc = "Month"]
         Month,
-        #[doc = "A placeholder for an undefined time unit type. This just indicates the\nvariable with this value hasn't been initialized."]
+        #[doc = "A placeholder for an undefined time unit type. This just indicates the variable with this value hasn't been initialized."]
         TimeUnitTypeUnspecified,
         #[doc = "Week"]
         Week,
@@ -6164,7 +6228,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fixed_prices: ::std::option::Option<Vec<crate::schemas::PricePerBuyer>>,
-        #[doc = "Guaranteed impressions as a percentage. This is the percentage\nof guaranteed looks that the buyer is guaranteeing to buy."]
+        #[doc = "Guaranteed impressions as a percentage. This is the percentage of guaranteed looks that the buyer is guaranteeing to buy."]
         #[serde(
             rename = "guaranteedImpressions",
             default,
@@ -6302,14 +6366,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ImpressionMetricsRow {
-        #[doc = "The number of impressions available to the buyer on Ad Exchange.\nIn some cases this value may be unavailable."]
+        #[doc = "The number of impressions available to the buyer on Ad Exchange. In some cases this value may be unavailable."]
         #[serde(
             rename = "availableImpressions",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub available_impressions: ::std::option::Option<crate::schemas::MetricValue>,
-        #[doc = "The number of impressions for which Ad Exchange sent the buyer a bid\nrequest."]
+        #[doc = "The number of impressions for which Ad Exchange sent the buyer a bid request."]
         #[serde(
             rename = "bidRequests",
             default,
@@ -6323,7 +6387,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub inventory_matches: ::std::option::Option<crate::schemas::MetricValue>,
-        #[doc = "The number of impressions for which Ad Exchange received a response from\nthe buyer that contained at least one applicable bid."]
+        #[doc = "The number of impressions for which Ad Exchange received a response from the buyer that contained at least one applicable bid."]
         #[serde(
             rename = "responsesWithBids",
             default,
@@ -6337,7 +6401,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub row_dimensions: ::std::option::Option<crate::schemas::RowDimensions>,
-        #[doc = "The number of impressions for which the buyer successfully sent a response\nto Ad Exchange."]
+        #[doc = "The number of impressions for which the buyer successfully sent a response to Ad Exchange."]
         #[serde(
             rename = "successfulResponses",
             default,
@@ -6413,7 +6477,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bid_metrics_rows: ::std::option::Option<Vec<crate::schemas::BidMetricsRow>>,
-        #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListBidMetricsRequest.pageToken\nfield in the subsequent call to the bidMetrics.list\nmethod to retrieve the next page of results."]
+        #[doc = "A token to retrieve the next page of results. Pass this value in the ListBidMetricsRequest.pageToken field in the subsequent call to the bidMetrics.list method to retrieve the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -6451,7 +6515,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub callout_status_rows: ::std::option::Option<Vec<crate::schemas::CalloutStatusRow>>,
-        #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListBidResponseErrorsRequest.pageToken\nfield in the subsequent call to the bidResponseErrors.list\nmethod to retrieve the next page of results."]
+        #[doc = "A token to retrieve the next page of results. Pass this value in the ListBidResponseErrorsRequest.pageToken field in the subsequent call to the bidResponseErrors.list method to retrieve the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -6482,7 +6546,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ListBidResponsesWithoutBidsResponse {
-        #[doc = "List of rows, with counts of bid responses without bids aggregated by\nstatus."]
+        #[doc = "List of rows, with counts of bid responses without bids aggregated by status."]
         #[serde(
             rename = "bidResponseWithoutBidsStatusRows",
             default,
@@ -6490,7 +6554,7 @@ pub mod schemas {
         )]
         pub bid_response_without_bids_status_rows:
             ::std::option::Option<Vec<crate::schemas::BidResponseWithoutBidsStatusRow>>,
-        #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListBidResponsesWithoutBidsRequest.pageToken\nfield in the subsequent call to the bidResponsesWithoutBids.list\nmethod to retrieve the next page of results."]
+        #[doc = "A token to retrieve the next page of results. Pass this value in the ListBidResponsesWithoutBidsRequest.pageToken field in the subsequent call to the bidResponsesWithoutBids.list method to retrieve the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -6528,7 +6592,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub invitations: ::std::option::Option<Vec<crate::schemas::ClientUserInvitation>>,
-        #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListClientUserInvitationsRequest.pageToken\nfield in the subsequent call to the\nclients.invitations.list\nmethod to retrieve the next\npage of results."]
+        #[doc = "A token to retrieve the next page of results. Pass this value in the ListClientUserInvitationsRequest.pageToken field in the subsequent call to the clients.invitations.list method to retrieve the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -6559,7 +6623,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ListClientUsersResponse {
-        #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListClientUsersRequest.pageToken\nfield in the subsequent call to the\nclients.invitations.list\nmethod to retrieve the next\npage of results."]
+        #[doc = "A token to retrieve the next page of results. Pass this value in the ListClientUsersRequest.pageToken field in the subsequent call to the clients.invitations.list method to retrieve the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -6604,7 +6668,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub clients: ::std::option::Option<Vec<crate::schemas::Client>>,
-        #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListClientsRequest.pageToken\nfield in the subsequent call to the\naccounts.clients.list\nmethod to retrieve the next page of results."]
+        #[doc = "A token to retrieve the next page of results. Pass this value in the ListClientsRequest.pageToken field in the subsequent call to the accounts.clients.list method to retrieve the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -6635,7 +6699,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ListCreativeStatusBreakdownByCreativeResponse {
-        #[doc = "List of rows, with counts of bids with a given creative status aggregated\nby creative."]
+        #[doc = "List of rows, with counts of bids with a given creative status aggregated by creative."]
         #[serde(
             rename = "filteredBidCreativeRows",
             default,
@@ -6643,7 +6707,7 @@ pub mod schemas {
         )]
         pub filtered_bid_creative_rows:
             ::std::option::Option<Vec<crate::schemas::FilteredBidCreativeRow>>,
-        #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListCreativeStatusBreakdownByCreativeRequest.pageToken\nfield in the subsequent call to the filteredBids.creatives.list\nmethod to retrieve the next page of results."]
+        #[doc = "A token to retrieve the next page of results. Pass this value in the ListCreativeStatusBreakdownByCreativeRequest.pageToken field in the subsequent call to the filteredBids.creatives.list method to retrieve the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -6683,7 +6747,7 @@ pub mod schemas {
         pub detail_type: ::std::option::Option<
             crate::schemas::ListCreativeStatusBreakdownByDetailResponseDetailType,
         >,
-        #[doc = "List of rows, with counts of bids with a given creative status aggregated\nby detail."]
+        #[doc = "List of rows, with counts of bids with a given creative status aggregated by detail."]
         #[serde(
             rename = "filteredBidDetailRows",
             default,
@@ -6691,7 +6755,7 @@ pub mod schemas {
         )]
         pub filtered_bid_detail_rows:
             ::std::option::Option<Vec<crate::schemas::FilteredBidDetailRow>>,
-        #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListCreativeStatusBreakdownByDetailRequest.pageToken\nfield in the subsequent call to the filteredBids.details.list\nmethod to retrieve the next page of results."]
+        #[doc = "A token to retrieve the next page of results. Pass this value in the ListCreativeStatusBreakdownByDetailRequest.pageToken field in the subsequent call to the filteredBids.details.list method to retrieve the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -6711,22 +6775,31 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ListCreativeStatusBreakdownByDetailResponseDetailType {
-        #[doc = "Indicates that the detail ID refers to a creative attribute; see\n[publisher-excludable-creative-attributes](https://developers.google.com/authorized-buyers/rtb/downloads/publisher-excludable-creative-attributes)."]
+        #[doc = "Indicates that the detail ID refers to an ad technology provider (ATP); see [providers] (https://storage.googleapis.com/adx-rtb-dictionaries/providers.csv). This namespace is different from the `VENDOR` detail type; see [ad technology providers](https://support.google.com/admanager/answer/9012903) for more information."]
+        AtpVendor,
+        #[doc = "Indicates that the detail ID refers to a creative attribute; see [publisher-excludable-creative-attributes](https://developers.google.com/authorized-buyers/rtb/downloads/publisher-excludable-creative-attributes)."]
         CreativeAttribute,
-        #[doc = "A placeholder for an undefined status.\nThis value will never be returned in responses."]
+        #[doc = "A placeholder for an undefined status. This value will never be returned in responses."]
         DetailTypeUnspecified,
-        #[doc = "Indicates that the detail ID refers to a disapproval reason; see\nDisapprovalReason enum in\n[snippet-status-report-proto](https://developers.google.com/authorized-buyers/rtb/downloads/snippet-status-report-proto)."]
+        #[doc = "Indicates that the detail ID refers to a disapproval reason; see DisapprovalReason enum in [snippet-status-report-proto](https://developers.google.com/authorized-buyers/rtb/downloads/snippet-status-report-proto)."]
         DisapprovalReason,
-        #[doc = "Indicates that the detail ID refers to a product category; see\n[ad-product-categories](https://developers.google.com/authorized-buyers/rtb/downloads/ad-product-categories)."]
+        #[doc = "Indicates that the detail ID refers an IAB GVL ID which Google did not detect in the latest TCF Vendor List. See [Global Vendor List] (https://vendor-list.consensu.org/v2/vendor-list.json)"]
+        GvlId,
+        #[doc = "Indicates that the detail ID refers to a policy topic."]
+        PolicyTopic,
+        #[doc = "Indicates that the detail ID refers to a product category; see [ad-product-categories](https://developers.google.com/authorized-buyers/rtb/downloads/ad-product-categories)."]
         ProductCategory,
-        #[doc = "Indicates that the detail ID refers to a sensitive category; see\n[ad-sensitive-categories](https://developers.google.com/authorized-buyers/rtb/downloads/ad-sensitive-categories)."]
+        #[doc = "Indicates that the detail ID refers to a sensitive category; see [ad-sensitive-categories](https://developers.google.com/authorized-buyers/rtb/downloads/ad-sensitive-categories)."]
         SensitiveCategory,
-        #[doc = "Indicates that the detail ID refers to a vendor; see\n[vendors](https://developers.google.com/authorized-buyers/rtb/downloads/vendors)."]
+        #[doc = "Indicates that the detail ID refers to a vendor; see [vendors](https://developers.google.com/authorized-buyers/rtb/downloads/vendors). This namespace is different from that of the `ATP_VENDOR` detail type."]
         Vendor,
+        #[doc = "Indicates that the detail string refers the domain of an unknown vendor."]
+        VendorDomain,
     }
     impl ListCreativeStatusBreakdownByDetailResponseDetailType {
         pub fn as_str(self) -> &'static str {
             match self {
+                ListCreativeStatusBreakdownByDetailResponseDetailType::AtpVendor => "ATP_VENDOR",
                 ListCreativeStatusBreakdownByDetailResponseDetailType::CreativeAttribute => {
                     "CREATIVE_ATTRIBUTE"
                 }
@@ -6736,6 +6809,10 @@ pub mod schemas {
                 ListCreativeStatusBreakdownByDetailResponseDetailType::DisapprovalReason => {
                     "DISAPPROVAL_REASON"
                 }
+                ListCreativeStatusBreakdownByDetailResponseDetailType::GvlId => "GVL_ID",
+                ListCreativeStatusBreakdownByDetailResponseDetailType::PolicyTopic => {
+                    "POLICY_TOPIC"
+                }
                 ListCreativeStatusBreakdownByDetailResponseDetailType::ProductCategory => {
                     "PRODUCT_CATEGORY"
                 }
@@ -6743,6 +6820,9 @@ pub mod schemas {
                     "SENSITIVE_CATEGORY"
                 }
                 ListCreativeStatusBreakdownByDetailResponseDetailType::Vendor => "VENDOR",
+                ListCreativeStatusBreakdownByDetailResponseDetailType::VendorDomain => {
+                    "VENDOR_DOMAIN"
+                }
             }
         }
     }
@@ -6758,6 +6838,7 @@ pub mod schemas {
         ) -> ::std::result::Result<ListCreativeStatusBreakdownByDetailResponseDetailType, ()>
         {
             Ok(match s {
+                "ATP_VENDOR" => ListCreativeStatusBreakdownByDetailResponseDetailType::AtpVendor,
                 "CREATIVE_ATTRIBUTE" => {
                     ListCreativeStatusBreakdownByDetailResponseDetailType::CreativeAttribute
                 }
@@ -6767,6 +6848,10 @@ pub mod schemas {
                 "DISAPPROVAL_REASON" => {
                     ListCreativeStatusBreakdownByDetailResponseDetailType::DisapprovalReason
                 }
+                "GVL_ID" => ListCreativeStatusBreakdownByDetailResponseDetailType::GvlId,
+                "POLICY_TOPIC" => {
+                    ListCreativeStatusBreakdownByDetailResponseDetailType::PolicyTopic
+                }
                 "PRODUCT_CATEGORY" => {
                     ListCreativeStatusBreakdownByDetailResponseDetailType::ProductCategory
                 }
@@ -6774,6 +6859,9 @@ pub mod schemas {
                     ListCreativeStatusBreakdownByDetailResponseDetailType::SensitiveCategory
                 }
                 "VENDOR" => ListCreativeStatusBreakdownByDetailResponseDetailType::Vendor,
+                "VENDOR_DOMAIN" => {
+                    ListCreativeStatusBreakdownByDetailResponseDetailType::VendorDomain
+                }
                 _ => return Err(()),
             })
         }
@@ -6798,6 +6886,7 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ATP_VENDOR" => ListCreativeStatusBreakdownByDetailResponseDetailType::AtpVendor,
                 "CREATIVE_ATTRIBUTE" => {
                     ListCreativeStatusBreakdownByDetailResponseDetailType::CreativeAttribute
                 }
@@ -6807,6 +6896,10 @@ pub mod schemas {
                 "DISAPPROVAL_REASON" => {
                     ListCreativeStatusBreakdownByDetailResponseDetailType::DisapprovalReason
                 }
+                "GVL_ID" => ListCreativeStatusBreakdownByDetailResponseDetailType::GvlId,
+                "POLICY_TOPIC" => {
+                    ListCreativeStatusBreakdownByDetailResponseDetailType::PolicyTopic
+                }
                 "PRODUCT_CATEGORY" => {
                     ListCreativeStatusBreakdownByDetailResponseDetailType::ProductCategory
                 }
@@ -6814,6 +6907,9 @@ pub mod schemas {
                     ListCreativeStatusBreakdownByDetailResponseDetailType::SensitiveCategory
                 }
                 "VENDOR" => ListCreativeStatusBreakdownByDetailResponseDetailType::Vendor,
+                "VENDOR_DOMAIN" => {
+                    ListCreativeStatusBreakdownByDetailResponseDetailType::VendorDomain
+                }
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -6848,7 +6944,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub creatives: ::std::option::Option<Vec<crate::schemas::Creative>>,
-        #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListCreativesRequest.page_token\nfield in the subsequent call to `ListCreatives` method to retrieve the next\npage of results."]
+        #[doc = "A token to retrieve the next page of results. Pass this value in the ListCreativesRequest.page_token field in the subsequent call to `ListCreatives` method to retrieve the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -6886,7 +6982,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub associations: ::std::option::Option<Vec<crate::schemas::CreativeDealAssociation>>,
-        #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListDealAssociationsRequest.page_token\nfield in the subsequent call to 'ListDealAssociation' method to retrieve\nthe next page of results."]
+        #[doc = "A token to retrieve the next page of results. Pass this value in the ListDealAssociationsRequest.page_token field in the subsequent call to 'ListDealAssociation' method to retrieve the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -6924,7 +7020,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub filter_sets: ::std::option::Option<Vec<crate::schemas::FilterSet>>,
-        #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListFilterSetsRequest.pageToken\nfield in the subsequent call to the\naccounts.filterSets.list\nmethod to retrieve the next page of results."]
+        #[doc = "A token to retrieve the next page of results. Pass this value in the ListFilterSetsRequest.pageToken field in the subsequent call to the accounts.filterSets.list method to retrieve the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -6955,14 +7051,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ListFilteredBidRequestsResponse {
-        #[doc = "List of rows, with counts of filtered bid requests aggregated by callout\nstatus."]
+        #[doc = "List of rows, with counts of filtered bid requests aggregated by callout status."]
         #[serde(
             rename = "calloutStatusRows",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub callout_status_rows: ::std::option::Option<Vec<crate::schemas::CalloutStatusRow>>,
-        #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListFilteredBidRequestsRequest.pageToken\nfield in the subsequent call to the filteredBidRequests.list\nmethod to retrieve the next page of results."]
+        #[doc = "A token to retrieve the next page of results. Pass this value in the ListFilteredBidRequestsRequest.pageToken field in the subsequent call to the filteredBidRequests.list method to retrieve the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -6993,14 +7089,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ListFilteredBidsResponse {
-        #[doc = "List of rows, with counts of filtered bids aggregated by filtering reason\n(i.e. creative status)."]
+        #[doc = "List of rows, with counts of filtered bids aggregated by filtering reason (i.e. creative status)."]
         #[serde(
             rename = "creativeStatusRows",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub creative_status_rows: ::std::option::Option<Vec<crate::schemas::CreativeStatusRow>>,
-        #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListFilteredBidsRequest.pageToken\nfield in the subsequent call to the filteredBids.list\nmethod to retrieve the next page of results."]
+        #[doc = "A token to retrieve the next page of results. Pass this value in the ListFilteredBidsRequest.pageToken field in the subsequent call to the filteredBids.list method to retrieve the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -7039,7 +7135,7 @@ pub mod schemas {
         )]
         pub impression_metrics_rows:
             ::std::option::Option<Vec<crate::schemas::ImpressionMetricsRow>>,
-        #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListImpressionMetricsRequest.pageToken\nfield in the subsequent call to the impressionMetrics.list\nmethod to retrieve the next page of results."]
+        #[doc = "A token to retrieve the next page of results. Pass this value in the ListImpressionMetricsRequest.pageToken field in the subsequent call to the impressionMetrics.list method to retrieve the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -7070,14 +7166,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ListLosingBidsResponse {
-        #[doc = "List of rows, with counts of losing bids aggregated by loss reason (i.e.\ncreative status)."]
+        #[doc = "List of rows, with counts of losing bids aggregated by loss reason (i.e. creative status)."]
         #[serde(
             rename = "creativeStatusRows",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub creative_status_rows: ::std::option::Option<Vec<crate::schemas::CreativeStatusRow>>,
-        #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListLosingBidsRequest.pageToken\nfield in the subsequent call to the losingBids.list\nmethod to retrieve the next page of results."]
+        #[doc = "A token to retrieve the next page of results. Pass this value in the ListLosingBidsRequest.pageToken field in the subsequent call to the losingBids.list method to retrieve the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -7108,7 +7204,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ListNonBillableWinningBidsResponse {
-        #[doc = "A token to retrieve the next page of results.\nPass this value in the\nListNonBillableWinningBidsRequest.pageToken\nfield in the subsequent call to the nonBillableWinningBids.list\nmethod to retrieve the next page of results."]
+        #[doc = "A token to retrieve the next page of results. Pass this value in the ListNonBillableWinningBidsRequest.pageToken field in the subsequent call to the nonBillableWinningBids.list method to retrieve the next page of results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -7261,7 +7357,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LocationContext {
-        #[doc = "IDs representing the geo location for this context.\nPlease refer to the\n[geo-table.csv](https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv)\nfile for different geo criteria IDs."]
+        #[doc = "IDs representing the geo location for this context. Please refer to the [geo-table.csv](https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv) file for different geo criteria IDs."]
         #[serde(
             rename = "geoCriteriaIds",
             default,
@@ -7359,7 +7455,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub value: ::std::option::Option<i64>,
-        #[doc = "The variance (i.e. square of the standard deviation) of the metric value.\nIf value is exact, variance is 0.\nCan be used to calculate margin of error as a percentage of value, using\nthe following formula, where Z is the standard constant that depends on the\ndesired size of the confidence interval (e.g. for 90% confidence interval,\nuse Z = 1.645):\n\nmarginOfError = 100 * Z * sqrt(variance) / value"]
+        #[doc = "The variance (i.e. square of the standard deviation) of the metric value. If value is exact, variance is 0. Can be used to calculate margin of error as a percentage of value, using the following formula, where Z is the standard constant that depends on the desired size of the confidence interval (e.g. for 90% confidence interval, use Z = 1.645): marginOfError = 100 * Z * sqrt(variance) / value"]
         #[serde(
             rename = "variance",
             default,
@@ -7391,7 +7487,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct MobileApplicationTargeting {
-        #[doc = "Publisher owned apps to be targeted or excluded by the publisher to\ndisplay the ads in."]
+        #[doc = "Publisher owned apps to be targeted or excluded by the publisher to display the ads in."]
         #[serde(
             rename = "firstPartyTargeting",
             default,
@@ -7423,21 +7519,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Money {
-        #[doc = "The 3-letter currency code defined in ISO 4217."]
+        #[doc = "The three-letter currency code defined in ISO 4217."]
         #[serde(
             rename = "currencyCode",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub currency_code: ::std::option::Option<String>,
-        #[doc = "Number of nano (10^-9) units of the amount.\nThe value must be between -999,999,999 and +999,999,999 inclusive.\nIf `units` is positive, `nanos` must be positive or zero.\nIf `units` is zero, `nanos` can be positive, zero, or negative.\nIf `units` is negative, `nanos` must be negative or zero.\nFor example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000."]
+        #[doc = "Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000."]
         #[serde(
             rename = "nanos",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub nanos: ::std::option::Option<i32>,
-        #[doc = "The whole units of the amount.\nFor example if `currencyCode` is `\"USD\"`, then 1 unit is one US dollar."]
+        #[doc = "The whole units of the amount. For example if `currencyCode` is `\"USD\"`, then 1 unit is one US dollar."]
         #[serde(
             rename = "units",
             default,
@@ -7609,15 +7705,15 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum NonBillableWinningBidStatusRowStatus {
-        #[doc = "The buyer was not billed because the ad was not rendered by the\npublisher."]
+        #[doc = "The buyer was not billed because the ad was not rendered by the publisher."]
         AdNotRendered,
-        #[doc = "A video impression was served but a fatal error was reported from the\nclient during playback."]
+        #[doc = "A video impression was served but a fatal error was reported from the client during playback."]
         FatalVastError,
-        #[doc = "The buyer was not billed because the impression won by the bid was\ndetermined to be invalid."]
+        #[doc = "The buyer was not billed because the impression won by the bid was determined to be invalid."]
         InvalidImpression,
-        #[doc = "The buyer was not billed because the ad was outplaced in the mediation\nwaterfall."]
+        #[doc = "The buyer was not billed because the ad was outplaced in the mediation waterfall."]
         LostInMediation,
-        #[doc = "A placeholder for an undefined status.\nThis value will never be returned in responses."]
+        #[doc = "A placeholder for an undefined status. This value will never be returned in responses."]
         StatusUnspecified,
     }
     impl NonBillableWinningBidStatusRowStatus {
@@ -7706,7 +7802,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct NonGuaranteedAuctionTerms {
-        #[doc = "True if open auction buyers are allowed to compete with invited buyers\nin this private auction."]
+        #[doc = "True if open auction buyers are allowed to compete with invited buyers in this private auction."]
         #[serde(
             rename = "autoOptimizePrivateAuction",
             default,
@@ -7789,7 +7885,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub creator_role: ::std::option::Option<crate::schemas::NoteCreatorRole>,
-        #[doc = "The actual note to attach.\n(max-length: 1024 unicode code units)\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
+        #[doc = "The actual note to attach. (max-length: 1024 unicode code units) Note: This field may be set only when creating the resource. Modifying this field while updating the resource will result in an error."]
         #[serde(
             rename = "note",
             default,
@@ -7950,7 +8046,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PauseProposalRequest {
-        #[doc = "The reason why the proposal is being paused.\nThis human readable message will be displayed in the seller's UI.\n(Max length: 1000 unicode code units.)"]
+        #[doc = "The reason why the proposal is being paused. This human readable message will be displayed in the seller's UI. (Max length: 1000 unicode code units.)"]
         #[serde(
             rename = "reason",
             default,
@@ -7981,7 +8077,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PlacementTargeting {
-        #[doc = "Mobile application targeting information in a deal.\nThis doesn't apply to Auction Packages."]
+        #[doc = "Mobile application targeting information in a deal. This doesn't apply to Auction Packages."]
         #[serde(
             rename = "mobileApplicationTargeting",
             default,
@@ -8040,8 +8136,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PlatformContextPlatformsItems {
+        #[doc = "Android platform."]
         Android,
+        #[doc = "Desktop platform."]
         Desktop,
+        #[doc = "iOS platform."]
         Ios,
     }
     impl PlatformContextPlatformsItems {
@@ -8155,7 +8254,7 @@ pub mod schemas {
         CostPerDay,
         #[doc = "Cost per thousand impressions."]
         CostPerMille,
-        #[doc = "A placeholder for an undefined pricing type. If the pricing type is\nunpsecified, `COST_PER_MILLE` will be used instead."]
+        #[doc = "A placeholder for an undefined pricing type. If the pricing type is unpsecified, `COST_PER_MILLE` will be used instead."]
         PricingTypeUnspecified,
     }
     impl PricePricingType {
@@ -8238,14 +8337,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PricePerBuyer {
-        #[doc = "The list of advertisers for this price when associated with this buyer.\nIf empty, all advertisers with this buyer pay this price."]
+        #[doc = "The list of advertisers for this price when associated with this buyer. If empty, all advertisers with this buyer pay this price."]
         #[serde(
             rename = "advertiserIds",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub advertiser_ids: ::std::option::Option<Vec<String>>,
-        #[doc = "The buyer who will pay this price. If unset, all buyers can pay this price\n(if the\nadvertisers match, and there's no more specific rule matching the buyer)."]
+        #[doc = "The buyer who will pay this price. If unset, all buyers can pay this price (if the advertisers match, and there's no more specific rule matching the buyer)."]
         #[serde(
             rename = "buyer",
             default,
@@ -8283,7 +8382,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PrivateData {
-        #[doc = "A buyer or seller specified reference ID. This can be queried in the list\noperations (max-length: 1024 unicode code units)."]
+        #[doc = "A buyer or seller specified reference ID. This can be queried in the list operations (max-length: 1024 unicode code units)."]
         #[serde(
             rename = "referenceId",
             default,
@@ -8314,14 +8413,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Product {
-        #[doc = "The proposed end time for the deal. The field will be truncated to the\norder of seconds during serving."]
+        #[doc = "The proposed end time for the deal. The field will be truncated to the order of seconds during serving."]
         #[serde(
             rename = "availableEndTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub available_end_time: ::std::option::Option<String>,
-        #[doc = "Inventory availability dates. The start time will be truncated to seconds\nduring serving. Thus, a field specified as 3:23:34.456 (HH:mm:ss.SSS) will\nbe truncated to 3:23:34 when serving."]
+        #[doc = "Inventory availability dates. The start time will be truncated to seconds during serving. Thus, a field specified as 3:23:34.456 (HH:mm:ss.SSS) will be truncated to 3:23:34 when serving."]
         #[serde(
             rename = "availableStartTime",
             default,
@@ -8349,7 +8448,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "If the creator has already signed off on the product, then the buyer can\nfinalize the deal by accepting the product as is. When copying to a\nproposal, if any of the terms are changed, then auto_finalize is\nautomatically set to false."]
+        #[doc = "If the creator has already signed off on the product, then the buyer can finalize the deal by accepting the product as is. When copying to a proposal, if any of the terms are changed, then auto_finalize is automatically set to false."]
         #[serde(
             rename = "hasCreatorSignedOff",
             default,
@@ -8371,7 +8470,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub product_revision: ::std::option::Option<i64>,
-        #[doc = "An ID which can be used by the Publisher Profile API to get more\ninformation about the seller that created this product."]
+        #[doc = "An ID which can be used by the Publisher Profile API to get more information about the seller that created this product."]
         #[serde(
             rename = "publisherProfileId",
             default,
@@ -8392,7 +8491,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub syndication_product: ::std::option::Option<crate::schemas::ProductSyndicationProduct>,
-        #[doc = "Targeting that is shared between the buyer and the seller. Each targeting\ncriterion has a specified key and for each key there is a list of inclusion\nvalue or exclusion values."]
+        #[doc = "Targeting that is shared between the buyer and the seller. Each targeting criterion has a specified key and for each key there is a list of inclusion value or exclusion values."]
         #[serde(
             rename = "targetingCriterion",
             default,
@@ -8413,7 +8512,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub update_time: ::std::option::Option<String>,
-        #[doc = "The web-property code for the seller. This needs to be copied as is when\nadding a new deal to a proposal."]
+        #[doc = "The web-property code for the seller. This needs to be copied as is when adding a new deal to a proposal."]
         #[serde(
             rename = "webPropertyCode",
             default,
@@ -8543,7 +8642,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub billed_buyer: ::std::option::Option<crate::schemas::Buyer>,
-        #[doc = "Reference to the buyer on the proposal.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
+        #[doc = "Reference to the buyer on the proposal. Note: This field may be set only when creating the resource. Modifying this field while updating the resource will result in an error."]
         #[serde(
             rename = "buyer",
             default,
@@ -8564,7 +8663,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub buyer_private_data: ::std::option::Option<crate::schemas::PrivateData>,
-        #[doc = "The deals associated with this proposal. For Private Auction proposals\n(whose deals have NonGuaranteedAuctionTerms), there will only be one deal."]
+        #[doc = "The deals associated with this proposal. For Private Auction proposals (whose deals have NonGuaranteedAuctionTerms), there will only be one deal."]
         #[serde(
             rename = "deals",
             default,
@@ -8585,14 +8684,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_renegotiating: ::std::option::Option<bool>,
-        #[doc = "Output only. True, if the buyside inventory setup is complete for this\nproposal."]
+        #[doc = "Output only. True, if the buyside inventory setup is complete for this proposal."]
         #[serde(
             rename = "isSetupComplete",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_setup_complete: ::std::option::Option<bool>,
-        #[doc = "Output only. The role of the last user that either updated the proposal or\nleft a comment."]
+        #[doc = "Output only. The role of the last user that either updated the proposal or left a comment."]
         #[serde(
             rename = "lastUpdaterOrCommentorRole",
             default,
@@ -8614,7 +8713,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub originator_role: ::std::option::Option<crate::schemas::ProposalOriginatorRole>,
-        #[doc = "Output only. Private auction ID if this proposal is a private auction\nproposal."]
+        #[doc = "Output only. Private auction ID if this proposal is a private auction proposal."]
         #[serde(
             rename = "privateAuctionId",
             default,
@@ -8628,7 +8727,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub proposal_id: ::std::option::Option<String>,
-        #[doc = "Output only. The revision number for the proposal.\nEach update to the proposal or the deal causes the proposal revision number\nto auto-increment. The buyer keeps track of the last revision number they\nknow of and pass it in when making an update. If the head revision number\non the server has since incremented, then an ABORTED error is returned\nduring the update operation to let the buyer know that a subsequent update\nwas made."]
+        #[doc = "Output only. The revision number for the proposal. Each update to the proposal or the deal causes the proposal revision number to auto-increment. The buyer keeps track of the last revision number they know of and pass it in when making an update. If the head revision number on the server has since incremented, then an ABORTED error is returned during the update operation to let the buyer know that a subsequent update was made."]
         #[serde(
             rename = "proposalRevision",
             default,
@@ -8643,7 +8742,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub proposal_state: ::std::option::Option<crate::schemas::ProposalProposalState>,
-        #[doc = "Reference to the seller on the proposal.\n\nNote: This field may be set only when creating the resource. Modifying\nthis field while updating the resource will result in an error."]
+        #[doc = "Reference to the seller on the proposal. Note: This field may be set only when creating the resource. Modifying this field while updating the resource will result in an error."]
         #[serde(
             rename = "seller",
             default,
@@ -8657,6 +8756,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub seller_contacts: ::std::option::Option<Vec<crate::schemas::ContactInformation>>,
+        #[doc = "Output only. The terms and conditions set by the publisher for this proposal."]
+        #[serde(
+            rename = "termsAndConditions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub terms_and_conditions: ::std::option::Option<String>,
         #[doc = "Output only. The time when the proposal was last revised."]
         #[serde(
             rename = "updateTime",
@@ -8843,9 +8949,9 @@ pub mod schemas {
     pub enum ProposalProposalState {
         #[doc = "The proposal has been accepted by the buyer."]
         BuyerAccepted,
-        #[doc = "The negotiations on the proposal were canceled and the proposal was never\nfinalized."]
+        #[doc = "The negotiations on the proposal were canceled and the proposal was never finalized."]
         Canceled,
-        #[doc = "The proposal is finalized. During renegotiation, the proposal may\nnot be in this state."]
+        #[doc = "The proposal is finalized. During renegotiation, the proposal may not be in this state."]
         Finalized,
         #[doc = "A placeholder for an undefined proposal state."]
         ProposalStateUnspecified,
@@ -8950,14 +9056,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub audience_description: ::std::option::Option<String>,
-        #[doc = "Statement explaining what's unique about publisher's business, and why\nbuyers should partner with the publisher."]
+        #[doc = "Statement explaining what's unique about publisher's business, and why buyers should partner with the publisher."]
         #[serde(
             rename = "buyerPitchStatement",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub buyer_pitch_statement: ::std::option::Option<String>,
-        #[doc = "Contact information for direct reservation deals. This is free text entered\nby the publisher and may include information like names, phone numbers and\nemail addresses."]
+        #[doc = "Contact information for direct reservation deals. This is free text entered by the publisher and may include information like names, phone numbers and email addresses."]
         #[serde(
             rename = "directDealsContact",
             default,
@@ -8971,7 +9077,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "The list of domains represented in this publisher profile. Empty if this is\na parent profile. These are top private domains, meaning that these will\nnot contain a string like \"photos.google.co.uk/123\", but will instead\ncontain \"google.co.uk\"."]
+        #[doc = "The list of domains represented in this publisher profile. Empty if this is a parent profile. These are top private domains, meaning that these will not contain a string like \"photos.google.co.uk/123\", but will instead contain \"google.co.uk\"."]
         #[serde(
             rename = "domains",
             default,
@@ -8985,14 +9091,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub google_plus_url: ::std::option::Option<String>,
-        #[doc = "Indicates if this profile is the parent profile of the seller. A parent\nprofile represents all the inventory from the seller, as opposed to child\nprofile that is created to brand a portion of inventory. One seller should\nhave only one parent publisher profile, and can have multiple child\nprofiles. Publisher profiles for the same seller will have same value of\nfield google.ads.adexchange.buyer.v2beta1.PublisherProfile.seller.\nSee https://support.google.com/admanager/answer/6035806?hl=en for details."]
+        #[doc = "Indicates if this profile is the parent profile of the seller. A parent profile represents all the inventory from the seller, as opposed to child profile that is created to brand a portion of inventory. One seller should have only one parent publisher profile, and can have multiple child profiles. Publisher profiles for the same seller will have same value of field google.ads.adexchange.buyer.v2beta1.PublisherProfile.seller. See https://support.google.com/admanager/answer/6035806 for details."]
         #[serde(
             rename = "isParent",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_parent: ::std::option::Option<bool>,
-        #[doc = "A Google public URL to the logo for this publisher profile. The logo is\nstored as a PNG, JPG, or GIF image."]
+        #[doc = "A Google public URL to the logo for this publisher profile. The logo is stored as a PNG, JPG, or GIF image."]
         #[serde(
             rename = "logoUrl",
             default,
@@ -9006,6 +9112,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub media_kit_url: ::std::option::Option<String>,
+        #[doc = "The list of apps represented in this publisher profile. Empty if this is a parent profile."]
+        #[serde(
+            rename = "mobileApps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub mobile_apps:
+            ::std::option::Option<Vec<crate::schemas::PublisherProfileMobileApplication>>,
         #[doc = "Overview of the publisher."]
         #[serde(
             rename = "overview",
@@ -9013,7 +9127,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub overview: ::std::option::Option<String>,
-        #[doc = "Contact information for programmatic deals. This is free text entered by\nthe publisher and may include information like names, phone numbers and\nemail addresses."]
+        #[doc = "Contact information for programmatic deals. This is free text entered by the publisher and may include information like names, phone numbers and email addresses."]
         #[serde(
             rename = "programmaticDealsContact",
             default,
@@ -9048,7 +9162,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub seller: ::std::option::Option<crate::schemas::Seller>,
-        #[doc = "Up to three key metrics and rankings. Max 100 characters each.\nFor example \"#1 Mobile News Site for 20 Straight Months\"."]
+        #[doc = "Up to three key metrics and rankings. Max 100 characters each. For example \"#1 Mobile News Site for 20 Straight Months\"."]
         #[serde(
             rename = "topHeadlines",
             default,
@@ -9062,6 +9176,186 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for PublisherProfile {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PublisherProfileMobileApplication {
+        #[doc = "The app store the app belongs to."]
+        #[serde(
+            rename = "appStore",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub app_store:
+            ::std::option::Option<crate::schemas::PublisherProfileMobileApplicationAppStore>,
+        #[doc = "The external ID for the app from its app store."]
+        #[serde(
+            rename = "externalAppId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub external_app_id: ::std::option::Option<String>,
+        #[doc = "The name of the app."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for PublisherProfileMobileApplication {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PublisherProfileMobileApplication {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum PublisherProfileMobileApplicationAppStore {
+        #[doc = "Amazon Appstore"]
+        Amazon,
+        #[doc = "Amazon Fire TV"]
+        AmazonFiretv,
+        #[doc = "A placeholder for an unknown app store."]
+        AppStoreTypeUnspecified,
+        #[doc = "Apple iTunes"]
+        AppleItunes,
+        #[doc = "Google Play"]
+        GooglePlay,
+        #[doc = "OPPO App Market"]
+        Oppo,
+        #[doc = "Playstation"]
+        Playstation,
+        #[doc = "Roku"]
+        Roku,
+        #[doc = "Samsung Galaxy Store"]
+        Samsung,
+        #[doc = "Samsung TV"]
+        SamsungTv,
+        #[doc = "VIVO App Store"]
+        Vivo,
+        #[doc = "Xbox"]
+        Xbox,
+        #[doc = "Xiaomi GetApps"]
+        Xiaomi,
+    }
+    impl PublisherProfileMobileApplicationAppStore {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                PublisherProfileMobileApplicationAppStore::Amazon => "AMAZON",
+                PublisherProfileMobileApplicationAppStore::AmazonFiretv => "AMAZON_FIRETV",
+                PublisherProfileMobileApplicationAppStore::AppStoreTypeUnspecified => {
+                    "APP_STORE_TYPE_UNSPECIFIED"
+                }
+                PublisherProfileMobileApplicationAppStore::AppleItunes => "APPLE_ITUNES",
+                PublisherProfileMobileApplicationAppStore::GooglePlay => "GOOGLE_PLAY",
+                PublisherProfileMobileApplicationAppStore::Oppo => "OPPO",
+                PublisherProfileMobileApplicationAppStore::Playstation => "PLAYSTATION",
+                PublisherProfileMobileApplicationAppStore::Roku => "ROKU",
+                PublisherProfileMobileApplicationAppStore::Samsung => "SAMSUNG",
+                PublisherProfileMobileApplicationAppStore::SamsungTv => "SAMSUNG_TV",
+                PublisherProfileMobileApplicationAppStore::Vivo => "VIVO",
+                PublisherProfileMobileApplicationAppStore::Xbox => "XBOX",
+                PublisherProfileMobileApplicationAppStore::Xiaomi => "XIAOMI",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PublisherProfileMobileApplicationAppStore {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PublisherProfileMobileApplicationAppStore {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<PublisherProfileMobileApplicationAppStore, ()> {
+            Ok(match s {
+                "AMAZON" => PublisherProfileMobileApplicationAppStore::Amazon,
+                "AMAZON_FIRETV" => PublisherProfileMobileApplicationAppStore::AmazonFiretv,
+                "APP_STORE_TYPE_UNSPECIFIED" => {
+                    PublisherProfileMobileApplicationAppStore::AppStoreTypeUnspecified
+                }
+                "APPLE_ITUNES" => PublisherProfileMobileApplicationAppStore::AppleItunes,
+                "GOOGLE_PLAY" => PublisherProfileMobileApplicationAppStore::GooglePlay,
+                "OPPO" => PublisherProfileMobileApplicationAppStore::Oppo,
+                "PLAYSTATION" => PublisherProfileMobileApplicationAppStore::Playstation,
+                "ROKU" => PublisherProfileMobileApplicationAppStore::Roku,
+                "SAMSUNG" => PublisherProfileMobileApplicationAppStore::Samsung,
+                "SAMSUNG_TV" => PublisherProfileMobileApplicationAppStore::SamsungTv,
+                "VIVO" => PublisherProfileMobileApplicationAppStore::Vivo,
+                "XBOX" => PublisherProfileMobileApplicationAppStore::Xbox,
+                "XIAOMI" => PublisherProfileMobileApplicationAppStore::Xiaomi,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for PublisherProfileMobileApplicationAppStore {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for PublisherProfileMobileApplicationAppStore {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for PublisherProfileMobileApplicationAppStore {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "AMAZON" => PublisherProfileMobileApplicationAppStore::Amazon,
+                "AMAZON_FIRETV" => PublisherProfileMobileApplicationAppStore::AmazonFiretv,
+                "APP_STORE_TYPE_UNSPECIFIED" => {
+                    PublisherProfileMobileApplicationAppStore::AppStoreTypeUnspecified
+                }
+                "APPLE_ITUNES" => PublisherProfileMobileApplicationAppStore::AppleItunes,
+                "GOOGLE_PLAY" => PublisherProfileMobileApplicationAppStore::GooglePlay,
+                "OPPO" => PublisherProfileMobileApplicationAppStore::Oppo,
+                "PLAYSTATION" => PublisherProfileMobileApplicationAppStore::Playstation,
+                "ROKU" => PublisherProfileMobileApplicationAppStore::Roku,
+                "SAMSUNG" => PublisherProfileMobileApplicationAppStore::Samsung,
+                "SAMSUNG_TV" => PublisherProfileMobileApplicationAppStore::SamsungTv,
+                "VIVO" => PublisherProfileMobileApplicationAppStore::Vivo,
+                "XBOX" => PublisherProfileMobileApplicationAppStore::Xbox,
+                "XIAOMI" => PublisherProfileMobileApplicationAppStore::Xiaomi,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for PublisherProfileMobileApplicationAppStore {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PublisherProfileMobileApplicationAppStore {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -9110,14 +9404,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RelativeDateRange {
-        #[doc = "The number of days in the requested date range, e.g., for a range spanning\ntoday: 1. For a range spanning the last 7 days: 7."]
+        #[doc = "The number of days in the requested date range, e.g., for a range spanning today: 1. For a range spanning the last 7 days: 7."]
         #[serde(
             rename = "durationDays",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub duration_days: ::std::option::Option<i32>,
-        #[doc = "The end date of the filter set, specified as the number of days before\ntoday, e.g., for a range where the last date is today: 0."]
+        #[doc = "The end date of the filter set, specified as the number of days before today, e.g., for a range where the last date is today: 0."]
         #[serde(
             rename = "offsetDays",
             default,
@@ -9203,7 +9497,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RowDimensions {
-        #[doc = "The publisher identifier for this row, if a breakdown by\n[BreakdownDimension.PUBLISHER_IDENTIFIER](https://developers.google.com/authorized-buyers/apis/reference/rest/v2beta1/bidders.accounts.filterSets#FilterSet.BreakdownDimension)\nwas requested."]
+        #[doc = "The publisher identifier for this row, if a breakdown by [BreakdownDimension.PUBLISHER_IDENTIFIER](https://developers.google.com/authorized-buyers/apis/reference/rest/v2beta1/bidders.accounts.filterSets#FilterSet.BreakdownDimension) was requested."]
         #[serde(
             rename = "publisherIdentifier",
             default,
@@ -9261,7 +9555,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum SecurityContextSecuritiesItems {
+        #[doc = "Matches impressions that require insecure compatibility."]
         Insecure,
+        #[doc = "Matches impressions that require SSL compatibility."]
         Ssl,
     }
     impl SecurityContextSecuritiesItems {
@@ -9341,7 +9637,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Seller {
-        #[doc = "The unique ID for the seller. The seller fills in this field.\nThe seller account ID is then available to buyer in the product."]
+        #[doc = "The unique ID for the seller. The seller fills in this field. The seller account ID is then available to buyer in the product."]
         #[serde(
             rename = "accountId",
             default,
@@ -9400,7 +9696,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub auction_type: ::std::option::Option<crate::schemas::AuctionContext>,
-        #[doc = "Matches impressions coming from users *or* publishers in a specific\nlocation."]
+        #[doc = "Matches impressions coming from users *or* publishers in a specific location."]
         #[serde(
             rename = "location",
             default,
@@ -9518,21 +9814,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub contexts: ::std::option::Option<Vec<crate::schemas::ServingContext>>,
-        #[doc = "Disapproval bound to this restriction.\nOnly present if status=DISAPPROVED.\nCan be used to filter the response of the\ncreatives.list\nmethod."]
+        #[doc = "Disapproval bound to this restriction. Only present if status=DISAPPROVED. Can be used to filter the response of the creatives.list method."]
         #[serde(
             rename = "disapproval",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub disapproval: ::std::option::Option<crate::schemas::Disapproval>,
-        #[doc = "Any disapprovals bound to this restriction.\nOnly present if status=DISAPPROVED.\nCan be used to filter the response of the\ncreatives.list\nmethod.\nDeprecated; please use\ndisapproval\nfield instead."]
+        #[doc = "Any disapprovals bound to this restriction. Only present if status=DISAPPROVED. Can be used to filter the response of the creatives.list method. Deprecated; please use disapproval field instead."]
         #[serde(
             rename = "disapprovalReasons",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub disapproval_reasons: ::std::option::Option<Vec<crate::schemas::Disapproval>>,
-        #[doc = "The status of the creative in this context (for example, it has been\nexplicitly disapproved or is pending review)."]
+        #[doc = "The status of the creative in this context (for example, it has been explicitly disapproved or is pending review)."]
         #[serde(
             rename = "status",
             default,
@@ -9701,21 +9997,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TargetingCriteria {
-        #[doc = "The list of values to exclude from targeting. Each value is AND'd\ntogether."]
+        #[doc = "The list of values to exclude from targeting. Each value is AND'd together."]
         #[serde(
             rename = "exclusions",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub exclusions: ::std::option::Option<Vec<crate::schemas::TargetingValue>>,
-        #[doc = "The list of value to include as part of the targeting. Each value is OR'd\ntogether."]
+        #[doc = "The list of value to include as part of the targeting. Each value is OR'd together."]
         #[serde(
             rename = "inclusions",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub inclusions: ::std::option::Option<Vec<crate::schemas::TargetingValue>>,
-        #[doc = "The key representing the shared targeting criterion.\nTargeting criteria defined by Google ad servers will begin with GOOG_.\nThird parties may define their own keys.\nA list of permissible keys along with the acceptable values will be\nprovided as part of the external documentation."]
+        #[doc = "The key representing the shared targeting criterion. Targeting criteria defined by Google ad servers will begin with GOOG_. Third parties may define their own keys. A list of permissible keys along with the acceptable values will be provided as part of the external documentation."]
         #[serde(
             rename = "key",
             default,
@@ -9746,14 +10042,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TargetingValue {
-        #[doc = "The creative size value to include/exclude.\nFilled in when key = GOOG_CREATIVE_SIZE"]
+        #[doc = "The creative size value to include/exclude. Filled in when key = GOOG_CREATIVE_SIZE"]
         #[serde(
             rename = "creativeSizeValue",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub creative_size_value: ::std::option::Option<crate::schemas::CreativeSize>,
-        #[doc = "The daypart targeting to include / exclude.\nFilled in when the key is GOOG_DAYPART_TARGETING.\nThe definition of this targeting is derived from the structure\nused by Ad Manager."]
+        #[doc = "The daypart targeting to include / exclude. Filled in when the key is GOOG_DAYPART_TARGETING. The definition of this targeting is derived from the structure used by Ad Manager."]
         #[serde(
             rename = "dayPartTargetingValue",
             default,
@@ -9845,14 +10141,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TimeInterval {
-        #[doc = "The timestamp marking the end of the range (exclusive) for which data is\nincluded."]
+        #[doc = "The timestamp marking the end of the range (exclusive) for which data is included."]
         #[serde(
             rename = "endTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub end_time: ::std::option::Option<String>,
-        #[doc = "The timestamp marking the start of the range (inclusive) for which data is\nincluded."]
+        #[doc = "The timestamp marking the start of the range (inclusive) for which data is included."]
         #[serde(
             rename = "startTime",
             default,
@@ -9883,7 +10179,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TimeOfDay {
-        #[doc = "Hours of day in 24 hour format. Should be from 0 to 23. An API may choose\nto allow the value \"24:00:00\" for scenarios like business closing time."]
+        #[doc = "Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value \"24:00:00\" for scenarios like business closing time."]
         #[serde(
             rename = "hours",
             default,
@@ -9904,7 +10200,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub nanos: ::std::option::Option<i32>,
-        #[doc = "Seconds of minutes of the time. Must normally be from 0 to 59. An API may\nallow the value 60 if it allows leap-seconds."]
+        #[doc = "Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds."]
         #[serde(
             rename = "seconds",
             default,
@@ -9980,7 +10276,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub video_url: ::std::option::Option<String>,
-        #[doc = "The contents of a VAST document for a video ad.\nThis document should conform to the VAST 2.0 or 3.0 standard."]
+        #[doc = "The contents of a VAST document for a video ad. This document should conform to the VAST 2.0 or 3.0 standard."]
         #[serde(
             rename = "videoVastXml",
             default,
@@ -10011,7 +10307,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct VideoTargeting {
-        #[doc = "A list of video positions to be excluded.\nPosition types can either be included or excluded (XOR)."]
+        #[doc = "A list of video positions to be excluded. Position types can either be included or excluded (XOR)."]
         #[serde(
             rename = "excludedPositionTypes",
             default,
@@ -10019,7 +10315,7 @@ pub mod schemas {
         )]
         pub excluded_position_types:
             ::std::option::Option<Vec<crate::schemas::VideoTargetingExcludedPositionTypesItems>>,
-        #[doc = "A list of video positions to be included.\nWhen the included list is present, the excluded list must be empty.\nWhen the excluded list is present, the included list must be empty."]
+        #[doc = "A list of video positions to be included. When the included list is present, the excluded list must be empty. When the excluded list is present, the included list must be empty."]
         #[serde(
             rename = "targetedPositionTypes",
             default,
@@ -10040,9 +10336,13 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum VideoTargetingExcludedPositionTypesItems {
+        #[doc = "Ad is played during the video."]
         Midroll,
+        #[doc = "A placeholder for an undefined video position."]
         PositionTypeUnspecified,
+        #[doc = "Ad is played after the video."]
         Postroll,
+        #[doc = "Ad is played before the video."]
         Preroll,
     }
     impl VideoTargetingExcludedPositionTypesItems {
@@ -10125,9 +10425,13 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum VideoTargetingTargetedPositionTypesItems {
+        #[doc = "Ad is played during the video."]
         Midroll,
+        #[doc = "A placeholder for an undefined video position."]
         PositionTypeUnspecified,
+        #[doc = "Ad is played after the video."]
         Postroll,
+        #[doc = "Ad is played before the video."]
         Preroll,
     }
     impl VideoTargetingTargetedPositionTypesItems {
@@ -10221,7 +10525,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct WatchCreativeRequest {
-        #[doc = "The Pub/Sub topic to publish notifications to.\nThis topic must already exist and must give permission to\nad-exchange-buyside-reports@google.com to write to the topic.\nThis should be the full resource name in\n\"projects/{project_id}/topics/{topic_id}\" format."]
+        #[doc = "The Pub/Sub topic to publish notifications to. This topic must already exist and must give permission to ad-exchange-buyside-reports@google.com to write to the topic. This should be the full resource name in \"projects/{project_id}/topics/{topic_id}\" format."]
         #[serde(
             rename = "topic",
             default,
@@ -10756,19 +11060,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10926,19 +11230,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10968,17 +11272,17 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "Requested page size. The server may return fewer clients than requested.\nIf unspecified, the server will pick an appropriate default."]
+                #[doc = "Requested page size. The server may return fewer clients than requested. If unspecified, the server will pick an appropriate default."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
                     self
                 }
-                #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListClientsResponse.nextPageToken\nreturned from the previous call to the\naccounts.clients.list\nmethod."]
+                #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListClientsResponse.nextPageToken returned from the previous call to the accounts.clients.list method."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
                     self
                 }
-                #[doc = "Optional unique identifier (from the standpoint of an Ad Exchange sponsor\nbuyer partner) of the client to return.\nIf specified, at most one client will be returned in the response."]
+                #[doc = "Optional unique identifier (from the standpoint of an Ad Exchange sponsor buyer partner) of the client to return. If specified, at most one client will be returned in the response."]
                 pub fn partner_client_id(mut self, value: impl Into<String>) -> Self {
                     self.partner_client_id = Some(value.into());
                     self
@@ -11205,22 +11509,22 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("partnerClientId", &self.partner_client_id)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("partnerClientId", &self.partner_client_id)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11391,19 +11695,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11421,7 +11725,7 @@ pub mod resources {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "Creates and sends out an email invitation to access\nan Ad Exchange client buyer account."]
+                    #[doc = "Creates and sends out an email invitation to access an Ad Exchange client buyer account."]
                     pub fn create(
                         &self,
                         request: crate::schemas::ClientUserInvitation,
@@ -11473,7 +11777,7 @@ pub mod resources {
                             invitation_id,
                         }
                     }
-                    #[doc = "Lists all the client users invitations for a client\nwith a given account ID."]
+                    #[doc = "Lists all the client users invitations for a client with a given account ID."]
                     pub fn list(
                         &self,
                         account_id: i64,
@@ -11656,19 +11960,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11839,19 +12143,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11881,12 +12185,12 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
-                    #[doc = "Requested page size. Server may return fewer clients than requested.\nIf unspecified, server will pick an appropriate default."]
+                    #[doc = "Requested page size. Server may return fewer clients than requested. If unspecified, server will pick an appropriate default."]
                     pub fn page_size(mut self, value: i32) -> Self {
                         self.page_size = Some(value);
                         self
                     }
-                    #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListClientUserInvitationsResponse.nextPageToken\nreturned from the previous call to the\nclients.invitations.list\nmethod."]
+                    #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListClientUserInvitationsResponse.nextPageToken returned from the previous call to the clients.invitations.list method."]
                     pub fn page_token(mut self, value: impl Into<String>) -> Self {
                         self.page_token = Some(value.into());
                         self
@@ -12131,21 +12435,21 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("pageSize", &self.page_size)]);
-                        let req = req.query(&[("pageToken", &self.page_token)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("pageSize", &self.page_size)]);
+                        req = req.query(&[("pageToken", &self.page_token)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12201,7 +12505,7 @@ pub mod resources {
                             user_id,
                         }
                     }
-                    #[doc = "Lists all the known client users for a specified\nsponsor buyer account ID."]
+                    #[doc = "Lists all the known client users for a specified sponsor buyer account ID."]
                     pub fn list(
                         &self,
                         account_id: i64,
@@ -12227,7 +12531,7 @@ pub mod resources {
                             page_token: None,
                         }
                     }
-                    #[doc = "Updates an existing client user.\nOnly the user status can be changed on update."]
+                    #[doc = "Updates an existing client user. Only the user status can be changed on update."]
                     pub fn update(
                         &self,
                         request: crate::schemas::ClientUser,
@@ -12417,19 +12721,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12459,12 +12763,12 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
-                    #[doc = "Requested page size. The server may return fewer clients than requested.\nIf unspecified, the server will pick an appropriate default."]
+                    #[doc = "Requested page size. The server may return fewer clients than requested. If unspecified, the server will pick an appropriate default."]
                     pub fn page_size(mut self, value: i32) -> Self {
                         self.page_size = Some(value);
                         self
                     }
-                    #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListClientUsersResponse.nextPageToken\nreturned from the previous call to the\naccounts.clients.users.list\nmethod."]
+                    #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListClientUsersResponse.nextPageToken returned from the previous call to the accounts.clients.users.list method."]
                     pub fn page_token(mut self, value: impl Into<String>) -> Self {
                         self.page_token = Some(value.into());
                         self
@@ -12705,21 +13009,21 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("pageSize", &self.page_size)]);
-                        let req = req.query(&[("pageToken", &self.page_token)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("pageSize", &self.page_size)]);
+                        req = req.query(&[("pageToken", &self.page_token)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12901,19 +13205,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12927,7 +13231,9 @@ pub mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum CreateDuplicateIdMode {
+                    #[doc = "Not recommended. Using this option will allow multiple creatives to share the same ID. Get and Update requests will not be possible for any ID that has more than one creative associated. (List will still function.) This is only intended for backwards compatibility in cases where a single ID is already shared by multiple creatives from previous APIs."]
                     ForceEnableDuplicateIds,
+                    #[doc = "Recommended. This means that an ID will be unique to a single creative. Multiple creatives will not share an ID."]
                     NoDuplicates,
                 }
                 impl CreateDuplicateIdMode {
@@ -13080,7 +13386,7 @@ pub mod resources {
                         query: None,
                     }
                 }
-                #[doc = "Stops watching a creative. Will stop push notifications being sent to the\ntopics when the creative changes status."]
+                #[doc = "Stops watching a creative. Will stop push notifications being sent to the topics when the creative changes status."]
                 pub fn stop_watching(
                     &self,
                     request: crate::schemas::StopWatchingCreativeRequest,
@@ -13132,7 +13438,7 @@ pub mod resources {
                         creative_id: creative_id.into(),
                     }
                 }
-                #[doc = "Watches a creative. Will result in push notifications being sent to the\ntopic when the creative changes status."]
+                #[doc = "Watches a creative. Will result in push notifications being sent to the topic when the creative changes status."]
                 pub fn watch(
                     &self,
                     request: crate::schemas::WatchCreativeRequest,
@@ -13188,7 +13494,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> CreateRequestBuilder<'a> {
-                #[doc = "Indicates if multiple creatives can share an ID or not. Default is\nNO_DUPLICATES (one ID per creative)."]
+                #[doc = "Indicates if multiple creatives can share an ID or not. Default is NO_DUPLICATES (one ID per creative)."]
                 pub fn duplicate_id_mode(
                     mut self,
                     value: crate::resources::accounts::creatives::params::CreateDuplicateIdMode,
@@ -13318,20 +13624,20 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("duplicateIdMode", &self.duplicate_id_mode)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("duplicateIdMode", &self.duplicate_id_mode)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13487,19 +13793,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13529,17 +13835,17 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "Requested page size. The server may return fewer creatives than requested\n(due to timeout constraint) even if more are available via another call.\nIf unspecified, server will pick an appropriate default.\nAcceptable values are 1 to 1000, inclusive."]
+                #[doc = "Requested page size. The server may return fewer creatives than requested (due to timeout constraint) even if more are available via another call. If unspecified, server will pick an appropriate default. Acceptable values are 1 to 1000, inclusive."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
                     self
                 }
-                #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListCreativesResponse.next_page_token\nreturned from the previous call to 'ListCreatives' method."]
+                #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListCreativesResponse.next_page_token returned from the previous call to 'ListCreatives' method."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
                     self
                 }
-                #[doc = "An optional query string to filter creatives. If no filter is specified,\nall active creatives will be returned.\n\n<p>Supported queries are:\n<ul>\n<li>accountId=<i>account_id_string</i>\n<li>creativeId=<i>creative_id_string</i>\n<li>dealsStatus: {approved, conditionally_approved, disapproved,\n                   not_checked}\n<li>openAuctionStatus: {approved, conditionally_approved, disapproved,\n                          not_checked}\n<li>attribute: {a numeric attribute from the list of attributes}\n<li>disapprovalReason: {a reason from\nDisapprovalReason}\n</ul>\nExample: 'accountId=12345 AND (dealsStatus:disapproved AND\ndisapprovalReason:unacceptable_content) OR attribute:47'"]
+                #[doc = "An optional query string to filter creatives. If no filter is specified, all active creatives will be returned. Supported queries are: - accountId=*account_id_string* - creativeId=*creative_id_string* - dealsStatus: {approved, conditionally_approved, disapproved, not_checked} - openAuctionStatus: {approved, conditionally_approved, disapproved, not_checked} - attribute: {a numeric attribute from the list of attributes} - disapprovalReason: {a reason from DisapprovalReason} Example: 'accountId=12345 AND (dealsStatus:disapproved AND disapprovalReason:unacceptable_content) OR attribute:47'"]
                 pub fn query(mut self, value: impl Into<String>) -> Self {
                     self.query = Some(value.into());
                     self
@@ -13765,22 +14071,22 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("query", &self.query)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("query", &self.query)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13950,19 +14256,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14120,19 +14426,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14291,19 +14597,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14553,19 +14859,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14596,17 +14902,17 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
-                    #[doc = "Requested page size. Server may return fewer associations than requested.\nIf unspecified, server will pick an appropriate default."]
+                    #[doc = "Requested page size. Server may return fewer associations than requested. If unspecified, server will pick an appropriate default."]
                     pub fn page_size(mut self, value: i32) -> Self {
                         self.page_size = Some(value);
                         self
                     }
-                    #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListDealAssociationsResponse.next_page_token\nreturned from the previous call to 'ListDealAssociations' method."]
+                    #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListDealAssociationsResponse.next_page_token returned from the previous call to 'ListDealAssociations' method."]
                     pub fn page_token(mut self, value: impl Into<String>) -> Self {
                         self.page_token = Some(value.into());
                         self
                     }
-                    #[doc = "An optional query string to filter deal associations. If no filter is\nspecified, all associations will be returned.\nSupported queries are:\n\n<ul>\n<li>accountId=<i>account_id_string</i>\n<li>creativeId=<i>creative_id_string</i>\n<li>dealsId=<i>deals_id_string</i>\n<li>dealsStatus:{approved, conditionally_approved, disapproved,\n                  not_checked}\n<li>openAuctionStatus:{approved, conditionally_approved, disapproved,\n                         not_checked}\n</ul>\nExample: 'dealsId=12345 AND dealsStatus:disapproved'"]
+                    #[doc = "An optional query string to filter deal associations. If no filter is specified, all associations will be returned. Supported queries are: - accountId=*account_id_string* - creativeId=*creative_id_string* - dealsId=*deals_id_string* - dealsStatus:{approved, conditionally_approved, disapproved, not_checked} - openAuctionStatus:{approved, conditionally_approved, disapproved, not_checked} Example: 'dealsId=12345 AND dealsStatus:disapproved'"]
                     pub fn query(mut self, value: impl Into<String>) -> Self {
                         self.query = Some(value.into());
                         self
@@ -14846,22 +15152,22 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("pageSize", &self.page_size)]);
-                        let req = req.query(&[("pageToken", &self.page_token)]);
-                        let req = req.query(&[("query", &self.query)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("pageSize", &self.page_size)]);
+                        req = req.query(&[("pageToken", &self.page_token)]);
+                        req = req.query(&[("query", &self.query)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -15032,19 +15338,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -15058,8 +15364,11 @@ pub mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListFilterSyntax {
+                    #[doc = "A placeholder for an undefined filter syntax."]
                     FilterSyntaxUnspecified,
+                    #[doc = "API list filtering syntax. Read about syntax and usage at https://developers.google.com/authorized-buyers/apis/guides/v2/list-filters."]
                     ListFilter,
+                    #[doc = "PQL query syntax. Visit https://developers.google.com/ad-manager/api/pqlreference for PQL documentation and examples."]
                     Pql,
                 }
                 impl ListFilterSyntax {
@@ -15144,7 +15453,7 @@ pub mod resources {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "List finalized proposals, regardless if a proposal is being renegotiated.\nA filter expression (PQL query) may be specified to filter the results.\nThe notes will not be returned."]
+                #[doc = "List finalized proposals, regardless if a proposal is being renegotiated. A filter expression (PQL query) may be specified to filter the results. The notes will not be returned."]
                 pub fn list(&self, account_id: impl Into<String>) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
@@ -15193,12 +15502,12 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "An optional PQL filter query used to query for proposals.\n\nNested repeated fields, such as proposal.deals.targetingCriterion,\ncannot be filtered."]
+                #[doc = "An optional PQL filter query used to query for proposals. Nested repeated fields, such as proposal.deals.targetingCriterion, cannot be filtered."]
                 pub fn filter(mut self, value: impl Into<String>) -> Self {
                     self.filter = Some(value.into());
                     self
                 }
-                #[doc = "Syntax the filter is written in. Current implementation defaults to PQL\nbut in the future it will be LIST_FILTER."]
+                #[doc = "Syntax the filter is written in. Current implementation defaults to PQL but in the future it will be LIST_FILTER."]
                 pub fn filter_syntax(
                     mut self,
                     value : crate :: resources :: accounts :: finalized_proposals :: params :: ListFilterSyntax,
@@ -15206,7 +15515,7 @@ pub mod resources {
                     self.filter_syntax = Some(value);
                     self
                 }
-                #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
                     self
@@ -15437,23 +15746,23 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("filter", &self.filter)]);
-                    let req = req.query(&[("filterSyntax", &self.filter_syntax)]);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("filter", &self.filter)]);
+                    req = req.query(&[("filterSyntax", &self.filter_syntax)]);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -15507,7 +15816,7 @@ pub mod resources {
                         product_id: product_id.into(),
                     }
                 }
-                #[doc = "List all products visible to the buyer (optionally filtered by the\nspecified PQL query)."]
+                #[doc = "List all products visible to the buyer (optionally filtered by the specified PQL query)."]
                 pub fn list(&self, account_id: impl Into<String>) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
@@ -15678,19 +15987,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -15720,12 +16029,12 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "An optional PQL query used to query for products. See\nhttps://developers.google.com/ad-manager/docs/pqlreference\nfor documentation about PQL and examples.\n\nNested repeated fields, such as product.targetingCriterion.inclusions,\ncannot be filtered."]
+                #[doc = "An optional PQL query used to query for products. See https://developers.google.com/ad-manager/docs/pqlreference for documentation about PQL and examples. Nested repeated fields, such as product.targetingCriterion.inclusions, cannot be filtered."]
                 pub fn filter(mut self, value: impl Into<String>) -> Self {
                     self.filter = Some(value.into());
                     self
                 }
-                #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
                     self
@@ -15956,22 +16265,22 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("filter", &self.filter)]);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("filter", &self.filter)]);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -15995,8 +16304,11 @@ pub mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListFilterSyntax {
+                    #[doc = "A placeholder for an undefined filter syntax."]
                     FilterSyntaxUnspecified,
+                    #[doc = "API list filtering syntax. Read about syntax and usage at https://developers.google.com/authorized-buyers/apis/guides/v2/list-filters."]
                     ListFilter,
+                    #[doc = "PQL query syntax. Visit https://developers.google.com/ad-manager/api/pqlreference for PQL documentation and examples."]
                     Pql,
                 }
                 impl ListFilterSyntax {
@@ -16081,7 +16393,7 @@ pub mod resources {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Mark the proposal as accepted at the given revision number. If the number\ndoes not match the server's revision number an `ABORTED` error message will\nbe returned. This call updates the proposal_state from `PROPOSED` to\n`BUYER_ACCEPTED`, or from `SELLER_ACCEPTED` to `FINALIZED`."]
+                #[doc = "Mark the proposal as accepted at the given revision number. If the number does not match the server's revision number an `ABORTED` error message will be returned. This call updates the proposal_state from `PROPOSED` to `BUYER_ACCEPTED`, or from `SELLER_ACCEPTED` to `FINALIZED`. Upon calling this endpoint, the buyer implicitly agrees to the terms and conditions optionally set within the proposal by the publisher."]
                 pub fn accept(
                     &self,
                     request: crate::schemas::AcceptProposalRequest,
@@ -16107,7 +16419,7 @@ pub mod resources {
                         proposal_id: proposal_id.into(),
                     }
                 }
-                #[doc = "Create a new note and attach it to the proposal. The note is assigned\na unique ID by the server.\nThe proposal revision number will not increase when associated with a\nnew note."]
+                #[doc = "Create a new note and attach it to the proposal. The note is assigned a unique ID by the server. The proposal revision number will not increase when associated with a new note."]
                 pub fn add_note(
                     &self,
                     request: crate::schemas::AddNoteRequest,
@@ -16133,7 +16445,7 @@ pub mod resources {
                         proposal_id: proposal_id.into(),
                     }
                 }
-                #[doc = "Cancel an ongoing negotiation on a proposal. This does not cancel or end\nserving for the deals if the proposal has been finalized, but only cancels\na negotiation unilaterally."]
+                #[doc = "Cancel an ongoing negotiation on a proposal. This does not cancel or end serving for the deals if the proposal has been finalized, but only cancels a negotiation unilaterally."]
                 pub fn cancel_negotiation(
                     &self,
                     request: crate::schemas::CancelNegotiationRequest,
@@ -16159,7 +16471,7 @@ pub mod resources {
                         proposal_id: proposal_id.into(),
                     }
                 }
-                #[doc = "Update the given proposal to indicate that setup has been completed.\nThis method is called by the buyer when the line items have been created\non their end for a finalized proposal and all the required creatives\nhave been uploaded using the creatives API. This call updates the\n`is_setup_completed` bit on the proposal and also notifies the seller.\nThe server will advance the revision number of the most recent proposal."]
+                #[doc = "Update the given proposal to indicate that setup has been completed. This method is called by the buyer when the line items have been created on their end for a finalized proposal and all the required creatives have been uploaded using the creatives API. This call updates the `is_setup_completed` bit on the proposal and also notifies the seller. The server will advance the revision number of the most recent proposal."]
                 pub fn complete_setup(
                     &self,
                     request: crate::schemas::CompleteSetupRequest,
@@ -16185,7 +16497,7 @@ pub mod resources {
                         proposal_id: proposal_id.into(),
                     }
                 }
-                #[doc = "Create the given proposal. Each created proposal and any deals it contains\nare assigned a unique ID by the server."]
+                #[doc = "Create the given proposal. Each created proposal and any deals it contains are assigned a unique ID by the server."]
                 pub fn create(
                     &self,
                     request: crate::schemas::Proposal,
@@ -16209,7 +16521,7 @@ pub mod resources {
                         account_id: account_id.into(),
                     }
                 }
-                #[doc = "Gets a proposal given its ID. The proposal is returned at its head\nrevision."]
+                #[doc = "Gets a proposal given its ID. The proposal is returned at its head revision."]
                 pub fn get(
                     &self,
                     account_id: impl Into<String>,
@@ -16233,7 +16545,7 @@ pub mod resources {
                         proposal_id: proposal_id.into(),
                     }
                 }
-                #[doc = "List proposals. A filter expression (PQL query) may be specified to\nfilter the results. To retrieve all finalized proposals, regardless if a\nproposal is being renegotiated, see the FinalizedProposals resource.\nNote that Bidder/ChildSeat relationships differ from the usual behavior.\nA Bidder account can only see its child seats' proposals by specifying\nthe ChildSeat's accountId in the request path."]
+                #[doc = "List proposals. A filter expression (PQL query) may be specified to filter the results. To retrieve all finalized proposals, regardless if a proposal is being renegotiated, see the FinalizedProposals resource. Note that Bidder/ChildSeat relationships differ from the usual behavior. A Bidder account can only see its child seats' proposals by specifying the ChildSeat's accountId in the request path."]
                 pub fn list(&self, account_id: impl Into<String>) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
@@ -16256,7 +16568,7 @@ pub mod resources {
                         page_token: None,
                     }
                 }
-                #[doc = "Update the given proposal to pause serving.\nThis method will set the\n`DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all\ndeals in the proposal.\n\nIt is a no-op to pause an already-paused proposal.\nIt is an error to call PauseProposal for a proposal that is not\nfinalized or renegotiating."]
+                #[doc = "Update the given proposal to pause serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all deals in the proposal. It is a no-op to pause an already-paused proposal. It is an error to call PauseProposal for a proposal that is not finalized or renegotiating."]
                 pub fn pause(
                     &self,
                     request: crate::schemas::PauseProposalRequest,
@@ -16282,7 +16594,7 @@ pub mod resources {
                         proposal_id: proposal_id.into(),
                     }
                 }
-                #[doc = "Update the given proposal to resume serving.\nThis method will set the\n`DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all\ndeals in the proposal.\n\nNote that if the `has_seller_paused` bit is also set, serving will not\nresume until the seller also resumes.\n\nIt is a no-op to resume an already-running proposal.\nIt is an error to call ResumeProposal for a proposal that is not\nfinalized or renegotiating."]
+                #[doc = "Update the given proposal to resume serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all deals in the proposal. Note that if the `has_seller_paused` bit is also set, serving will not resume until the seller also resumes. It is a no-op to resume an already-running proposal. It is an error to call ResumeProposal for a proposal that is not finalized or renegotiating."]
                 pub fn resume(
                     &self,
                     request: crate::schemas::ResumeProposalRequest,
@@ -16308,7 +16620,7 @@ pub mod resources {
                         proposal_id: proposal_id.into(),
                     }
                 }
-                #[doc = "Update the given proposal at the client known revision number. If the\nserver revision has advanced since the passed-in\n`proposal.proposal_revision`, an `ABORTED` error message will be returned.\nOnly the buyer-modifiable fields of the proposal will be updated.\n\nNote that the deals in the proposal will be updated to match the passed-in\ncopy.\nIf a passed-in deal does not have a `deal_id`, the server will assign a new\nunique ID and create the deal.\nIf passed-in deal has a `deal_id`, it will be updated to match the\npassed-in copy.\nAny existing deals not present in the passed-in proposal will be deleted.\nIt is an error to pass in a deal with a `deal_id` not present at head."]
+                #[doc = "Update the given proposal at the client known revision number. If the server revision has advanced since the passed-in `proposal.proposal_revision`, an `ABORTED` error message will be returned. Only the buyer-modifiable fields of the proposal will be updated. Note that the deals in the proposal will be updated to match the passed-in copy. If a passed-in deal does not have a `deal_id`, the server will assign a new unique ID and create the deal. If passed-in deal has a `deal_id`, it will be updated to match the passed-in copy. Any existing deals not present in the passed-in proposal will be deleted. It is an error to pass in a deal with a `deal_id` not present at head."]
                 pub fn update(
                     &self,
                     request: crate::schemas::Proposal,
@@ -16486,19 +16798,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -16655,19 +16967,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -16826,19 +17138,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -16997,19 +17309,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -17159,19 +17471,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -17327,19 +17639,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -17371,12 +17683,12 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "An optional PQL filter query used to query for proposals.\n\nNested repeated fields, such as proposal.deals.targetingCriterion,\ncannot be filtered."]
+                #[doc = "An optional PQL filter query used to query for proposals. Nested repeated fields, such as proposal.deals.targetingCriterion, cannot be filtered."]
                 pub fn filter(mut self, value: impl Into<String>) -> Self {
                     self.filter = Some(value.into());
                     self
                 }
-                #[doc = "Syntax the filter is written in. Current implementation defaults to PQL\nbut in the future it will be LIST_FILTER."]
+                #[doc = "Syntax the filter is written in. Current implementation defaults to PQL but in the future it will be LIST_FILTER."]
                 pub fn filter_syntax(
                     mut self,
                     value: crate::resources::accounts::proposals::params::ListFilterSyntax,
@@ -17384,7 +17696,7 @@ pub mod resources {
                     self.filter_syntax = Some(value);
                     self
                 }
-                #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
                     self
@@ -17615,23 +17927,23 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("filter", &self.filter)]);
-                    let req = req.query(&[("filterSyntax", &self.filter_syntax)]);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("filter", &self.filter)]);
+                    req = req.query(&[("filterSyntax", &self.filter_syntax)]);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -17801,19 +18113,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -17972,19 +18284,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -18142,19 +18454,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -18367,19 +18679,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -18644,21 +18956,21 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -18760,7 +19072,7 @@ pub mod resources {
                             is_transient: None,
                         }
                     }
-                    #[doc = "Deletes the requested filter set from the account with the given account\nID."]
+                    #[doc = "Deletes the requested filter set from the account with the given account ID."]
                     pub fn delete(&self, name: impl Into<String>) -> DeleteRequestBuilder {
                         DeleteRequestBuilder {
                             reqwest: &self.reqwest,
@@ -18779,7 +19091,7 @@ pub mod resources {
                             name: name.into(),
                         }
                     }
-                    #[doc = "Retrieves the requested filter set for the account with the given account\nID."]
+                    #[doc = "Retrieves the requested filter set for the account with the given account ID."]
                     pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder {
                         GetRequestBuilder {
                             reqwest: &self.reqwest,
@@ -18819,28 +19131,28 @@ pub mod resources {
                             page_token: None,
                         }
                     }
-                    #[doc = "Actions that can be performed on the bid_metrics resource"]pub fn bid_metrics ( & self ) -> crate :: resources :: bidders :: accounts :: filter_sets :: bid_metrics :: BidMetricsActions{
+                    #[doc = "Actions that can be performed on the bid_metrics resource"]                    pub fn bid_metrics ( & self ) -> crate :: resources :: bidders :: accounts :: filter_sets :: bid_metrics :: BidMetricsActions{
                         crate :: resources :: bidders :: accounts :: filter_sets :: bid_metrics :: BidMetricsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                     }
-                    #[doc = "Actions that can be performed on the bid_response_errors resource"]pub fn bid_response_errors ( & self ) -> crate :: resources :: bidders :: accounts :: filter_sets :: bid_response_errors :: BidResponseErrorsActions{
+                    #[doc = "Actions that can be performed on the bid_response_errors resource"]                    pub fn bid_response_errors ( & self ) -> crate :: resources :: bidders :: accounts :: filter_sets :: bid_response_errors :: BidResponseErrorsActions{
                         crate :: resources :: bidders :: accounts :: filter_sets :: bid_response_errors :: BidResponseErrorsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                     }
-                    #[doc = "Actions that can be performed on the bid_responses_without_bids resource"]pub fn bid_responses_without_bids ( & self ) -> crate :: resources :: bidders :: accounts :: filter_sets :: bid_responses_without_bids :: BidResponsesWithoutBidsActions{
+                    #[doc = "Actions that can be performed on the bid_responses_without_bids resource"]                    pub fn bid_responses_without_bids ( & self ) -> crate :: resources :: bidders :: accounts :: filter_sets :: bid_responses_without_bids :: BidResponsesWithoutBidsActions{
                         crate :: resources :: bidders :: accounts :: filter_sets :: bid_responses_without_bids :: BidResponsesWithoutBidsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                     }
-                    #[doc = "Actions that can be performed on the filtered_bid_requests resource"]pub fn filtered_bid_requests ( & self ) -> crate :: resources :: bidders :: accounts :: filter_sets :: filtered_bid_requests :: FilteredBidRequestsActions{
+                    #[doc = "Actions that can be performed on the filtered_bid_requests resource"]                    pub fn filtered_bid_requests ( & self ) -> crate :: resources :: bidders :: accounts :: filter_sets :: filtered_bid_requests :: FilteredBidRequestsActions{
                         crate :: resources :: bidders :: accounts :: filter_sets :: filtered_bid_requests :: FilteredBidRequestsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                     }
-                    #[doc = "Actions that can be performed on the filtered_bids resource"]pub fn filtered_bids ( & self ) -> crate :: resources :: bidders :: accounts :: filter_sets :: filtered_bids :: FilteredBidsActions{
+                    #[doc = "Actions that can be performed on the filtered_bids resource"]                    pub fn filtered_bids ( & self ) -> crate :: resources :: bidders :: accounts :: filter_sets :: filtered_bids :: FilteredBidsActions{
                         crate :: resources :: bidders :: accounts :: filter_sets :: filtered_bids :: FilteredBidsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                     }
-                    #[doc = "Actions that can be performed on the impression_metrics resource"]pub fn impression_metrics ( & self ) -> crate :: resources :: bidders :: accounts :: filter_sets :: impression_metrics :: ImpressionMetricsActions{
+                    #[doc = "Actions that can be performed on the impression_metrics resource"]                    pub fn impression_metrics ( & self ) -> crate :: resources :: bidders :: accounts :: filter_sets :: impression_metrics :: ImpressionMetricsActions{
                         crate :: resources :: bidders :: accounts :: filter_sets :: impression_metrics :: ImpressionMetricsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                     }
-                    #[doc = "Actions that can be performed on the losing_bids resource"]pub fn losing_bids ( & self ) -> crate :: resources :: bidders :: accounts :: filter_sets :: losing_bids :: LosingBidsActions{
+                    #[doc = "Actions that can be performed on the losing_bids resource"]                    pub fn losing_bids ( & self ) -> crate :: resources :: bidders :: accounts :: filter_sets :: losing_bids :: LosingBidsActions{
                         crate :: resources :: bidders :: accounts :: filter_sets :: losing_bids :: LosingBidsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                     }
-                    #[doc = "Actions that can be performed on the non_billable_winning_bids resource"]pub fn non_billable_winning_bids ( & self ) -> crate :: resources :: bidders :: accounts :: filter_sets :: non_billable_winning_bids :: NonBillableWinningBidsActions{
+                    #[doc = "Actions that can be performed on the non_billable_winning_bids resource"]                    pub fn non_billable_winning_bids ( & self ) -> crate :: resources :: bidders :: accounts :: filter_sets :: non_billable_winning_bids :: NonBillableWinningBidsActions{
                         crate :: resources :: bidders :: accounts :: filter_sets :: non_billable_winning_bids :: NonBillableWinningBidsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                     }
                 }
@@ -18865,7 +19177,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> CreateRequestBuilder<'a> {
-                    #[doc = "Whether the filter set is transient, or should be persisted indefinitely.\nBy default, filter sets are not transient.\nIf transient, it will be available for at least 1 hour after creation."]
+                    #[doc = "Whether the filter set is transient, or should be persisted indefinitely. By default, filter sets are not transient. If transient, it will be available for at least 1 hour after creation."]
                     pub fn is_transient(mut self, value: bool) -> Self {
                         self.is_transient = Some(value);
                         self
@@ -18993,20 +19305,20 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("isTransient", &self.is_transient)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("isTransient", &self.is_transient)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -19154,19 +19466,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -19314,19 +19626,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -19355,12 +19667,12 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
-                    #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                    #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                     pub fn page_size(mut self, value: i32) -> Self {
                         self.page_size = Some(value);
                         self
                     }
-                    #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListFilterSetsResponse.nextPageToken\nreturned from the previous call to the\naccounts.filterSets.list\nmethod."]
+                    #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListFilterSetsResponse.nextPageToken returned from the previous call to the accounts.filterSets.list method."]
                     pub fn page_token(mut self, value: impl Into<String>) -> Self {
                         self.page_token = Some(value.into());
                         self
@@ -19592,21 +19904,21 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("pageSize", &self.page_size)]);
-                        let req = req.query(&[("pageToken", &self.page_token)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("pageSize", &self.page_size)]);
+                        req = req.query(&[("pageToken", &self.page_token)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -19681,12 +19993,12 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> ListRequestBuilder<'a> {
-                        #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                        #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                         pub fn page_size(mut self, value: i32) -> Self {
                             self.page_size = Some(value);
                             self
                         }
-                        #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListBidMetricsResponse.nextPageToken\nreturned from the previous call to the bidMetrics.list\nmethod."]
+                        #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListBidMetricsResponse.nextPageToken returned from the previous call to the bidMetrics.list method."]
                         pub fn page_token(mut self, value: impl Into<String>) -> Self {
                             self.page_token = Some(value.into());
                             self
@@ -19923,21 +20235,21 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("pageSize", &self.page_size)]);
-                            let req = req.query(&[("pageToken", &self.page_token)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("pageSize", &self.page_size)]);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -19967,7 +20279,7 @@ pub mod resources {
                         fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                             self.auth
                         }
-                        #[doc = "List all errors that occurred in bid responses, with the number of bid\nresponses affected for each reason."]
+                        #[doc = "List all errors that occurred in bid responses, with the number of bid responses affected for each reason."]
                         pub fn list(
                             &self,
                             filter_set_name: impl Into<String>,
@@ -20013,12 +20325,12 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> ListRequestBuilder<'a> {
-                        #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                        #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                         pub fn page_size(mut self, value: i32) -> Self {
                             self.page_size = Some(value);
                             self
                         }
-                        #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListBidResponseErrorsResponse.nextPageToken\nreturned from the previous call to the bidResponseErrors.list\nmethod."]
+                        #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListBidResponseErrorsResponse.nextPageToken returned from the previous call to the bidResponseErrors.list method."]
                         pub fn page_token(mut self, value: impl Into<String>) -> Self {
                             self.page_token = Some(value.into());
                             self
@@ -20261,21 +20573,21 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("pageSize", &self.page_size)]);
-                            let req = req.query(&[("pageToken", &self.page_token)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("pageSize", &self.page_size)]);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -20305,7 +20617,7 @@ pub mod resources {
                         fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                             self.auth
                         }
-                        #[doc = "List all reasons for which bid responses were considered to have no\napplicable bids, with the number of bid responses affected for each reason."]
+                        #[doc = "List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason."]
                         pub fn list(
                             &self,
                             filter_set_name: impl Into<String>,
@@ -20351,12 +20663,12 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> ListRequestBuilder<'a> {
-                        #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                        #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                         pub fn page_size(mut self, value: i32) -> Self {
                             self.page_size = Some(value);
                             self
                         }
-                        #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListBidResponsesWithoutBidsResponse.nextPageToken\nreturned from the previous call to the bidResponsesWithoutBids.list\nmethod."]
+                        #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListBidResponsesWithoutBidsResponse.nextPageToken returned from the previous call to the bidResponsesWithoutBids.list method."]
                         pub fn page_token(mut self, value: impl Into<String>) -> Self {
                             self.page_token = Some(value.into());
                             self
@@ -20606,21 +20918,21 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("pageSize", &self.page_size)]);
-                            let req = req.query(&[("pageToken", &self.page_token)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("pageSize", &self.page_size)]);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -20650,7 +20962,7 @@ pub mod resources {
                         fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                             self.auth
                         }
-                        #[doc = "List all reasons that caused a bid request not to be sent for an\nimpression, with the number of bid requests not sent for each reason."]
+                        #[doc = "List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason."]
                         pub fn list(
                             &self,
                             filter_set_name: impl Into<String>,
@@ -20696,12 +21008,12 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> ListRequestBuilder<'a> {
-                        #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                        #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                         pub fn page_size(mut self, value: i32) -> Self {
                             self.page_size = Some(value);
                             self
                         }
-                        #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListFilteredBidRequestsResponse.nextPageToken\nreturned from the previous call to the filteredBidRequests.list\nmethod."]
+                        #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidRequestsResponse.nextPageToken returned from the previous call to the filteredBidRequests.list method."]
                         pub fn page_token(mut self, value: impl Into<String>) -> Self {
                             self.page_token = Some(value.into());
                             self
@@ -20944,21 +21256,21 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("pageSize", &self.page_size)]);
-                            let req = req.query(&[("pageToken", &self.page_token)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("pageSize", &self.page_size)]);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -20988,7 +21300,7 @@ pub mod resources {
                         fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                             self.auth
                         }
-                        #[doc = "List all reasons for which bids were filtered, with the number of bids\nfiltered for each reason."]
+                        #[doc = "List all reasons for which bids were filtered, with the number of bids filtered for each reason."]
                         pub fn list(
                             &self,
                             filter_set_name: impl Into<String>,
@@ -21012,10 +21324,10 @@ pub mod resources {
                                 page_token: None,
                             }
                         }
-                        #[doc = "Actions that can be performed on the creatives resource"]pub fn creatives ( & self ) -> crate :: resources :: bidders :: accounts :: filter_sets :: filtered_bids :: creatives :: CreativesActions{
+                        #[doc = "Actions that can be performed on the creatives resource"]                        pub fn creatives ( & self ) -> crate :: resources :: bidders :: accounts :: filter_sets :: filtered_bids :: creatives :: CreativesActions{
                             crate :: resources :: bidders :: accounts :: filter_sets :: filtered_bids :: creatives :: CreativesActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                         }
-                        #[doc = "Actions that can be performed on the details resource"]pub fn details ( & self ) -> crate :: resources :: bidders :: accounts :: filter_sets :: filtered_bids :: details :: DetailsActions{
+                        #[doc = "Actions that can be performed on the details resource"]                        pub fn details ( & self ) -> crate :: resources :: bidders :: accounts :: filter_sets :: filtered_bids :: details :: DetailsActions{
                             crate :: resources :: bidders :: accounts :: filter_sets :: filtered_bids :: details :: DetailsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                         }
                     }
@@ -21040,12 +21352,12 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> ListRequestBuilder<'a> {
-                        #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                        #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                         pub fn page_size(mut self, value: i32) -> Self {
                             self.page_size = Some(value);
                             self
                         }
-                        #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListFilteredBidsResponse.nextPageToken\nreturned from the previous call to the filteredBids.list\nmethod."]
+                        #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidsResponse.nextPageToken returned from the previous call to the filteredBids.list method."]
                         pub fn page_token(mut self, value: impl Into<String>) -> Self {
                             self.page_token = Some(value.into());
                             self
@@ -21284,21 +21596,21 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("pageSize", &self.page_size)]);
-                            let req = req.query(&[("pageToken", &self.page_token)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("pageSize", &self.page_size)]);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -21327,7 +21639,7 @@ pub mod resources {
                             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                                 self.auth
                             }
-                            #[doc = "List all creatives associated with a specific reason for which bids were\nfiltered, with the number of bids filtered for each creative."]
+                            #[doc = "List all creatives associated with a specific reason for which bids were filtered, with the number of bids filtered for each creative."]
                             pub fn list(
                                 &self,
                                 filter_set_name: impl Into<String>,
@@ -21376,12 +21688,12 @@ pub mod resources {
                             xgafv: Option<crate::params::Xgafv>,
                         }
                         impl<'a> ListRequestBuilder<'a> {
-                            #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                            #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                             pub fn page_size(mut self, value: i32) -> Self {
                                 self.page_size = Some(value);
                                 self
                             }
-                            #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListCreativeStatusBreakdownByCreativeResponse.nextPageToken\nreturned from the previous call to the filteredBids.creatives.list\nmethod."]
+                            #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from the previous call to the filteredBids.creatives.list method."]
                             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                                 self.page_token = Some(value.into());
                                 self
@@ -21643,21 +21955,21 @@ pub mod resources {
                                 path: &str,
                             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
-                                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                                let req = req.query(&[("pageSize", &self.page_size)]);
-                                let req = req.query(&[("pageToken", &self.page_token)]);
-                                let req = req.query(&[("access_token", &self.access_token)]);
-                                let req = req.query(&[("alt", &self.alt)]);
-                                let req = req.query(&[("callback", &self.callback)]);
-                                let req = req.query(&[("fields", &self.fields)]);
-                                let req = req.query(&[("key", &self.key)]);
-                                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                                let req = req.query(&[("uploadType", &self.upload_type)]);
-                                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                                let req = req.bearer_auth(
+                                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                                req = req.query(&[("pageSize", &self.page_size)]);
+                                req = req.query(&[("pageToken", &self.page_token)]);
+                                req = req.query(&[("access_token", &self.access_token)]);
+                                req = req.query(&[("alt", &self.alt)]);
+                                req = req.query(&[("callback", &self.callback)]);
+                                req = req.query(&[("fields", &self.fields)]);
+                                req = req.query(&[("key", &self.key)]);
+                                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                                req = req.query(&[("quotaUser", &self.quota_user)]);
+                                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                                req = req.query(&[("uploadType", &self.upload_type)]);
+                                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                                req = req.bearer_auth(
                                     self.auth
                                         .access_token()
                                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -21687,7 +21999,7 @@ pub mod resources {
                             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                                 self.auth
                             }
-                            #[doc = "List all details associated with a specific reason for which bids were\nfiltered, with the number of bids filtered for each detail."]
+                            #[doc = "List all details associated with a specific reason for which bids were filtered, with the number of bids filtered for each detail."]
                             pub fn list(
                                 &self,
                                 filter_set_name: impl Into<String>,
@@ -21736,12 +22048,12 @@ pub mod resources {
                             xgafv: Option<crate::params::Xgafv>,
                         }
                         impl<'a> ListRequestBuilder<'a> {
-                            #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                            #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                             pub fn page_size(mut self, value: i32) -> Self {
                                 self.page_size = Some(value);
                                 self
                             }
-                            #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListCreativeStatusBreakdownByDetailResponse.nextPageToken\nreturned from the previous call to the filteredBids.details.list\nmethod."]
+                            #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByDetailResponse.nextPageToken returned from the previous call to the filteredBids.details.list method."]
                             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                                 self.page_token = Some(value.into());
                                 self
@@ -21999,21 +22311,21 @@ pub mod resources {
                                 path: &str,
                             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
-                                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                                let req = req.query(&[("pageSize", &self.page_size)]);
-                                let req = req.query(&[("pageToken", &self.page_token)]);
-                                let req = req.query(&[("access_token", &self.access_token)]);
-                                let req = req.query(&[("alt", &self.alt)]);
-                                let req = req.query(&[("callback", &self.callback)]);
-                                let req = req.query(&[("fields", &self.fields)]);
-                                let req = req.query(&[("key", &self.key)]);
-                                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                                let req = req.query(&[("uploadType", &self.upload_type)]);
-                                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                                let req = req.bearer_auth(
+                                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                                req = req.query(&[("pageSize", &self.page_size)]);
+                                req = req.query(&[("pageToken", &self.page_token)]);
+                                req = req.query(&[("access_token", &self.access_token)]);
+                                req = req.query(&[("alt", &self.alt)]);
+                                req = req.query(&[("callback", &self.callback)]);
+                                req = req.query(&[("fields", &self.fields)]);
+                                req = req.query(&[("key", &self.key)]);
+                                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                                req = req.query(&[("quotaUser", &self.quota_user)]);
+                                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                                req = req.query(&[("uploadType", &self.upload_type)]);
+                                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                                req = req.bearer_auth(
                                     self.auth
                                         .access_token()
                                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -22090,12 +22402,12 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> ListRequestBuilder<'a> {
-                        #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                        #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                         pub fn page_size(mut self, value: i32) -> Self {
                             self.page_size = Some(value);
                             self
                         }
-                        #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListImpressionMetricsResponse.nextPageToken\nreturned from the previous call to the impressionMetrics.list\nmethod."]
+                        #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to the impressionMetrics.list method."]
                         pub fn page_token(mut self, value: impl Into<String>) -> Self {
                             self.page_token = Some(value.into());
                             self
@@ -22338,21 +22650,21 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("pageSize", &self.page_size)]);
-                            let req = req.query(&[("pageToken", &self.page_token)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("pageSize", &self.page_size)]);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -22382,7 +22694,7 @@ pub mod resources {
                         fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                             self.auth
                         }
-                        #[doc = "List all reasons for which bids lost in the auction, with the number of\nbids that lost for each reason."]
+                        #[doc = "List all reasons for which bids lost in the auction, with the number of bids that lost for each reason."]
                         pub fn list(
                             &self,
                             filter_set_name: impl Into<String>,
@@ -22428,12 +22740,12 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> ListRequestBuilder<'a> {
-                        #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                        #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                         pub fn page_size(mut self, value: i32) -> Self {
                             self.page_size = Some(value);
                             self
                         }
-                        #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListLosingBidsResponse.nextPageToken\nreturned from the previous call to the losingBids.list\nmethod."]
+                        #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListLosingBidsResponse.nextPageToken returned from the previous call to the losingBids.list method."]
                         pub fn page_token(mut self, value: impl Into<String>) -> Self {
                             self.page_token = Some(value.into());
                             self
@@ -22672,21 +22984,21 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("pageSize", &self.page_size)]);
-                            let req = req.query(&[("pageToken", &self.page_token)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("pageSize", &self.page_size)]);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -22716,7 +23028,7 @@ pub mod resources {
                         fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                             self.auth
                         }
-                        #[doc = "List all reasons for which winning bids were not billable, with the number\nof bids not billed for each reason."]
+                        #[doc = "List all reasons for which winning bids were not billable, with the number of bids not billed for each reason."]
                         pub fn list(
                             &self,
                             filter_set_name: impl Into<String>,
@@ -22762,12 +23074,12 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> ListRequestBuilder<'a> {
-                        #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                        #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                         pub fn page_size(mut self, value: i32) -> Self {
                             self.page_size = Some(value);
                             self
                         }
-                        #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListNonBillableWinningBidsResponse.nextPageToken\nreturned from the previous call to the nonBillableWinningBids.list\nmethod."]
+                        #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListNonBillableWinningBidsResponse.nextPageToken returned from the previous call to the nonBillableWinningBids.list method."]
                         pub fn page_token(mut self, value: impl Into<String>) -> Self {
                             self.page_token = Some(value.into());
                             self
@@ -23017,21 +23329,21 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("pageSize", &self.page_size)]);
-                            let req = req.query(&[("pageToken", &self.page_token)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("pageSize", &self.page_size)]);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -23088,7 +23400,7 @@ pub mod resources {
                         is_transient: None,
                     }
                 }
-                #[doc = "Deletes the requested filter set from the account with the given account\nID."]
+                #[doc = "Deletes the requested filter set from the account with the given account ID."]
                 pub fn delete(&self, name: impl Into<String>) -> DeleteRequestBuilder {
                     DeleteRequestBuilder {
                         reqwest: &self.reqwest,
@@ -23107,7 +23419,7 @@ pub mod resources {
                         name: name.into(),
                     }
                 }
-                #[doc = "Retrieves the requested filter set for the account with the given account\nID."]
+                #[doc = "Retrieves the requested filter set for the account with the given account ID."]
                 pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder {
                     GetRequestBuilder {
                         reqwest: &self.reqwest,
@@ -23157,13 +23469,13 @@ pub mod resources {
                         auth: self.auth_ref(),
                     }
                 }
-                #[doc = "Actions that can be performed on the bid_response_errors resource"]pub fn bid_response_errors ( & self ) -> crate :: resources :: bidders :: filter_sets :: bid_response_errors :: BidResponseErrorsActions{
+                #[doc = "Actions that can be performed on the bid_response_errors resource"]                pub fn bid_response_errors ( & self ) -> crate :: resources :: bidders :: filter_sets :: bid_response_errors :: BidResponseErrorsActions{
                     crate :: resources :: bidders :: filter_sets :: bid_response_errors :: BidResponseErrorsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                 }
-                #[doc = "Actions that can be performed on the bid_responses_without_bids resource"]pub fn bid_responses_without_bids ( & self ) -> crate :: resources :: bidders :: filter_sets :: bid_responses_without_bids :: BidResponsesWithoutBidsActions{
+                #[doc = "Actions that can be performed on the bid_responses_without_bids resource"]                pub fn bid_responses_without_bids ( & self ) -> crate :: resources :: bidders :: filter_sets :: bid_responses_without_bids :: BidResponsesWithoutBidsActions{
                     crate :: resources :: bidders :: filter_sets :: bid_responses_without_bids :: BidResponsesWithoutBidsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                 }
-                #[doc = "Actions that can be performed on the filtered_bid_requests resource"]pub fn filtered_bid_requests ( & self ) -> crate :: resources :: bidders :: filter_sets :: filtered_bid_requests :: FilteredBidRequestsActions{
+                #[doc = "Actions that can be performed on the filtered_bid_requests resource"]                pub fn filtered_bid_requests ( & self ) -> crate :: resources :: bidders :: filter_sets :: filtered_bid_requests :: FilteredBidRequestsActions{
                     crate :: resources :: bidders :: filter_sets :: filtered_bid_requests :: FilteredBidRequestsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                 }
                 #[doc = "Actions that can be performed on the filtered_bids resource"]
@@ -23176,7 +23488,7 @@ pub mod resources {
                         auth: self.auth_ref(),
                     }
                 }
-                #[doc = "Actions that can be performed on the impression_metrics resource"]pub fn impression_metrics ( & self ) -> crate :: resources :: bidders :: filter_sets :: impression_metrics :: ImpressionMetricsActions{
+                #[doc = "Actions that can be performed on the impression_metrics resource"]                pub fn impression_metrics ( & self ) -> crate :: resources :: bidders :: filter_sets :: impression_metrics :: ImpressionMetricsActions{
                     crate :: resources :: bidders :: filter_sets :: impression_metrics :: ImpressionMetricsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                 }
                 #[doc = "Actions that can be performed on the losing_bids resource"]
@@ -23189,7 +23501,7 @@ pub mod resources {
                         auth: self.auth_ref(),
                     }
                 }
-                #[doc = "Actions that can be performed on the non_billable_winning_bids resource"]pub fn non_billable_winning_bids ( & self ) -> crate :: resources :: bidders :: filter_sets :: non_billable_winning_bids :: NonBillableWinningBidsActions{
+                #[doc = "Actions that can be performed on the non_billable_winning_bids resource"]                pub fn non_billable_winning_bids ( & self ) -> crate :: resources :: bidders :: filter_sets :: non_billable_winning_bids :: NonBillableWinningBidsActions{
                     crate :: resources :: bidders :: filter_sets :: non_billable_winning_bids :: NonBillableWinningBidsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                 }
             }
@@ -23214,7 +23526,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> CreateRequestBuilder<'a> {
-                #[doc = "Whether the filter set is transient, or should be persisted indefinitely.\nBy default, filter sets are not transient.\nIf transient, it will be available for at least 1 hour after creation."]
+                #[doc = "Whether the filter set is transient, or should be persisted indefinitely. By default, filter sets are not transient. If transient, it will be available for at least 1 hour after creation."]
                 pub fn is_transient(mut self, value: bool) -> Self {
                     self.is_transient = Some(value);
                     self
@@ -23341,20 +23653,20 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("isTransient", &self.is_transient)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("isTransient", &self.is_transient)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -23501,19 +23813,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -23660,19 +23972,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -23701,12 +24013,12 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
                     self
                 }
-                #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListFilterSetsResponse.nextPageToken\nreturned from the previous call to the\naccounts.filterSets.list\nmethod."]
+                #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListFilterSetsResponse.nextPageToken returned from the previous call to the accounts.filterSets.list method."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
                     self
@@ -23932,21 +24244,21 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -24018,12 +24330,12 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
-                    #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                    #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                     pub fn page_size(mut self, value: i32) -> Self {
                         self.page_size = Some(value);
                         self
                     }
-                    #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListBidMetricsResponse.nextPageToken\nreturned from the previous call to the bidMetrics.list\nmethod."]
+                    #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListBidMetricsResponse.nextPageToken returned from the previous call to the bidMetrics.list method."]
                     pub fn page_token(mut self, value: impl Into<String>) -> Self {
                         self.page_token = Some(value.into());
                         self
@@ -24256,21 +24568,21 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("pageSize", &self.page_size)]);
-                        let req = req.query(&[("pageToken", &self.page_token)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("pageSize", &self.page_size)]);
+                        req = req.query(&[("pageToken", &self.page_token)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -24300,7 +24612,7 @@ pub mod resources {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "List all errors that occurred in bid responses, with the number of bid\nresponses affected for each reason."]
+                    #[doc = "List all errors that occurred in bid responses, with the number of bid responses affected for each reason."]
                     pub fn list(&self, filter_set_name: impl Into<String>) -> ListRequestBuilder {
                         ListRequestBuilder {
                             reqwest: &self.reqwest,
@@ -24343,12 +24655,12 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
-                    #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                    #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                     pub fn page_size(mut self, value: i32) -> Self {
                         self.page_size = Some(value);
                         self
                     }
-                    #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListBidResponseErrorsResponse.nextPageToken\nreturned from the previous call to the bidResponseErrors.list\nmethod."]
+                    #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListBidResponseErrorsResponse.nextPageToken returned from the previous call to the bidResponseErrors.list method."]
                     pub fn page_token(mut self, value: impl Into<String>) -> Self {
                         self.page_token = Some(value.into());
                         self
@@ -24581,21 +24893,21 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("pageSize", &self.page_size)]);
-                        let req = req.query(&[("pageToken", &self.page_token)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("pageSize", &self.page_size)]);
+                        req = req.query(&[("pageToken", &self.page_token)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -24625,7 +24937,7 @@ pub mod resources {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "List all reasons for which bid responses were considered to have no\napplicable bids, with the number of bid responses affected for each reason."]
+                    #[doc = "List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason."]
                     pub fn list(&self, filter_set_name: impl Into<String>) -> ListRequestBuilder {
                         ListRequestBuilder {
                             reqwest: &self.reqwest,
@@ -24668,12 +24980,12 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
-                    #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                    #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                     pub fn page_size(mut self, value: i32) -> Self {
                         self.page_size = Some(value);
                         self
                     }
-                    #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListBidResponsesWithoutBidsResponse.nextPageToken\nreturned from the previous call to the bidResponsesWithoutBids.list\nmethod."]
+                    #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListBidResponsesWithoutBidsResponse.nextPageToken returned from the previous call to the bidResponsesWithoutBids.list method."]
                     pub fn page_token(mut self, value: impl Into<String>) -> Self {
                         self.page_token = Some(value.into());
                         self
@@ -24917,21 +25229,21 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("pageSize", &self.page_size)]);
-                        let req = req.query(&[("pageToken", &self.page_token)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("pageSize", &self.page_size)]);
+                        req = req.query(&[("pageToken", &self.page_token)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -24961,7 +25273,7 @@ pub mod resources {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "List all reasons that caused a bid request not to be sent for an\nimpression, with the number of bid requests not sent for each reason."]
+                    #[doc = "List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason."]
                     pub fn list(&self, filter_set_name: impl Into<String>) -> ListRequestBuilder {
                         ListRequestBuilder {
                             reqwest: &self.reqwest,
@@ -25004,12 +25316,12 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
-                    #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                    #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                     pub fn page_size(mut self, value: i32) -> Self {
                         self.page_size = Some(value);
                         self
                     }
-                    #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListFilteredBidRequestsResponse.nextPageToken\nreturned from the previous call to the filteredBidRequests.list\nmethod."]
+                    #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidRequestsResponse.nextPageToken returned from the previous call to the filteredBidRequests.list method."]
                     pub fn page_token(mut self, value: impl Into<String>) -> Self {
                         self.page_token = Some(value.into());
                         self
@@ -25242,21 +25554,21 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("pageSize", &self.page_size)]);
-                        let req = req.query(&[("pageToken", &self.page_token)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("pageSize", &self.page_size)]);
+                        req = req.query(&[("pageToken", &self.page_token)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -25286,7 +25598,7 @@ pub mod resources {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "List all reasons for which bids were filtered, with the number of bids\nfiltered for each reason."]
+                    #[doc = "List all reasons for which bids were filtered, with the number of bids filtered for each reason."]
                     pub fn list(&self, filter_set_name: impl Into<String>) -> ListRequestBuilder {
                         ListRequestBuilder {
                             reqwest: &self.reqwest,
@@ -25307,10 +25619,10 @@ pub mod resources {
                             page_token: None,
                         }
                     }
-                    #[doc = "Actions that can be performed on the creatives resource"]pub fn creatives ( & self ) -> crate :: resources :: bidders :: filter_sets :: filtered_bids :: creatives :: CreativesActions{
+                    #[doc = "Actions that can be performed on the creatives resource"]                    pub fn creatives ( & self ) -> crate :: resources :: bidders :: filter_sets :: filtered_bids :: creatives :: CreativesActions{
                         crate :: resources :: bidders :: filter_sets :: filtered_bids :: creatives :: CreativesActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                     }
-                    #[doc = "Actions that can be performed on the details resource"]pub fn details ( & self ) -> crate :: resources :: bidders :: filter_sets :: filtered_bids :: details :: DetailsActions{
+                    #[doc = "Actions that can be performed on the details resource"]                    pub fn details ( & self ) -> crate :: resources :: bidders :: filter_sets :: filtered_bids :: details :: DetailsActions{
                         crate :: resources :: bidders :: filter_sets :: filtered_bids :: details :: DetailsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                     }
                 }
@@ -25335,12 +25647,12 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
-                    #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                    #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                     pub fn page_size(mut self, value: i32) -> Self {
                         self.page_size = Some(value);
                         self
                     }
-                    #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListFilteredBidsResponse.nextPageToken\nreturned from the previous call to the filteredBids.list\nmethod."]
+                    #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidsResponse.nextPageToken returned from the previous call to the filteredBids.list method."]
                     pub fn page_token(mut self, value: impl Into<String>) -> Self {
                         self.page_token = Some(value.into());
                         self
@@ -25573,21 +25885,21 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("pageSize", &self.page_size)]);
-                        let req = req.query(&[("pageToken", &self.page_token)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("pageSize", &self.page_size)]);
+                        req = req.query(&[("pageToken", &self.page_token)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -25616,7 +25928,7 @@ pub mod resources {
                         fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                             self.auth
                         }
-                        #[doc = "List all creatives associated with a specific reason for which bids were\nfiltered, with the number of bids filtered for each creative."]
+                        #[doc = "List all creatives associated with a specific reason for which bids were filtered, with the number of bids filtered for each creative."]
                         pub fn list(
                             &self,
                             filter_set_name: impl Into<String>,
@@ -25665,12 +25977,12 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> ListRequestBuilder<'a> {
-                        #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                        #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                         pub fn page_size(mut self, value: i32) -> Self {
                             self.page_size = Some(value);
                             self
                         }
-                        #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListCreativeStatusBreakdownByCreativeResponse.nextPageToken\nreturned from the previous call to the filteredBids.creatives.list\nmethod."]
+                        #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from the previous call to the filteredBids.creatives.list method."]
                         pub fn page_token(mut self, value: impl Into<String>) -> Self {
                             self.page_token = Some(value.into());
                             self
@@ -25926,21 +26238,21 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("pageSize", &self.page_size)]);
-                            let req = req.query(&[("pageToken", &self.page_token)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("pageSize", &self.page_size)]);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -25970,7 +26282,7 @@ pub mod resources {
                         fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                             self.auth
                         }
-                        #[doc = "List all details associated with a specific reason for which bids were\nfiltered, with the number of bids filtered for each detail."]
+                        #[doc = "List all details associated with a specific reason for which bids were filtered, with the number of bids filtered for each detail."]
                         pub fn list(
                             &self,
                             filter_set_name: impl Into<String>,
@@ -26019,12 +26331,12 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> ListRequestBuilder<'a> {
-                        #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                        #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                         pub fn page_size(mut self, value: i32) -> Self {
                             self.page_size = Some(value);
                             self
                         }
-                        #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListCreativeStatusBreakdownByDetailResponse.nextPageToken\nreturned from the previous call to the filteredBids.details.list\nmethod."]
+                        #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByDetailResponse.nextPageToken returned from the previous call to the filteredBids.details.list method."]
                         pub fn page_token(mut self, value: impl Into<String>) -> Self {
                             self.page_token = Some(value.into());
                             self
@@ -26280,21 +26592,21 @@ pub mod resources {
                             path: &str,
                         ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
-                            let req = self.reqwest.request(::reqwest::Method::GET, path);
-                            let req = req.query(&[("pageSize", &self.page_size)]);
-                            let req = req.query(&[("pageToken", &self.page_token)]);
-                            let req = req.query(&[("access_token", &self.access_token)]);
-                            let req = req.query(&[("alt", &self.alt)]);
-                            let req = req.query(&[("callback", &self.callback)]);
-                            let req = req.query(&[("fields", &self.fields)]);
-                            let req = req.query(&[("key", &self.key)]);
-                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                            let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                            let req = req.query(&[("uploadType", &self.upload_type)]);
-                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                            let req = req.bearer_auth(
+                            let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                            req = req.query(&[("pageSize", &self.page_size)]);
+                            req = req.query(&[("pageToken", &self.page_token)]);
+                            req = req.query(&[("access_token", &self.access_token)]);
+                            req = req.query(&[("alt", &self.alt)]);
+                            req = req.query(&[("callback", &self.callback)]);
+                            req = req.query(&[("fields", &self.fields)]);
+                            req = req.query(&[("key", &self.key)]);
+                            req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            req = req.query(&[("quotaUser", &self.quota_user)]);
+                            req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            req = req.query(&[("uploadType", &self.upload_type)]);
+                            req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            req = req.bearer_auth(
                                 self.auth
                                     .access_token()
                                     .map_err(|err| crate::Error::OAuth2(err))?,
@@ -26368,12 +26680,12 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
-                    #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                    #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                     pub fn page_size(mut self, value: i32) -> Self {
                         self.page_size = Some(value);
                         self
                     }
-                    #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListImpressionMetricsResponse.nextPageToken\nreturned from the previous call to the impressionMetrics.list\nmethod."]
+                    #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to the impressionMetrics.list method."]
                     pub fn page_token(mut self, value: impl Into<String>) -> Self {
                         self.page_token = Some(value.into());
                         self
@@ -26608,21 +26920,21 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("pageSize", &self.page_size)]);
-                        let req = req.query(&[("pageToken", &self.page_token)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("pageSize", &self.page_size)]);
+                        req = req.query(&[("pageToken", &self.page_token)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -26652,7 +26964,7 @@ pub mod resources {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "List all reasons for which bids lost in the auction, with the number of\nbids that lost for each reason."]
+                    #[doc = "List all reasons for which bids lost in the auction, with the number of bids that lost for each reason."]
                     pub fn list(&self, filter_set_name: impl Into<String>) -> ListRequestBuilder {
                         ListRequestBuilder {
                             reqwest: &self.reqwest,
@@ -26695,12 +27007,12 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
-                    #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                    #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                     pub fn page_size(mut self, value: i32) -> Self {
                         self.page_size = Some(value);
                         self
                     }
-                    #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListLosingBidsResponse.nextPageToken\nreturned from the previous call to the losingBids.list\nmethod."]
+                    #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListLosingBidsResponse.nextPageToken returned from the previous call to the losingBids.list method."]
                     pub fn page_token(mut self, value: impl Into<String>) -> Self {
                         self.page_token = Some(value.into());
                         self
@@ -26933,21 +27245,21 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("pageSize", &self.page_size)]);
-                        let req = req.query(&[("pageToken", &self.page_token)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("pageSize", &self.page_size)]);
+                        req = req.query(&[("pageToken", &self.page_token)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -26977,7 +27289,7 @@ pub mod resources {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "List all reasons for which winning bids were not billable, with the number\nof bids not billed for each reason."]
+                    #[doc = "List all reasons for which winning bids were not billable, with the number of bids not billed for each reason."]
                     pub fn list(&self, filter_set_name: impl Into<String>) -> ListRequestBuilder {
                         ListRequestBuilder {
                             reqwest: &self.reqwest,
@@ -27020,12 +27332,12 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
-                    #[doc = "Requested page size. The server may return fewer results than requested.\nIf unspecified, the server will pick an appropriate default."]
+                    #[doc = "Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default."]
                     pub fn page_size(mut self, value: i32) -> Self {
                         self.page_size = Some(value);
                         self
                     }
-                    #[doc = "A token identifying a page of results the server should return.\nTypically, this is the value of\nListNonBillableWinningBidsResponse.nextPageToken\nreturned from the previous call to the nonBillableWinningBids.list\nmethod."]
+                    #[doc = "A token identifying a page of results the server should return. Typically, this is the value of ListNonBillableWinningBidsResponse.nextPageToken returned from the previous call to the nonBillableWinningBids.list method."]
                     pub fn page_token(mut self, value: impl Into<String>) -> Self {
                         self.page_token = Some(value.into());
                         self
@@ -27269,21 +27581,21 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("pageSize", &self.page_size)]);
-                        let req = req.query(&[("pageToken", &self.page_token)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("pageSize", &self.page_size)]);
+                        req = req.query(&[("pageToken", &self.page_token)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,

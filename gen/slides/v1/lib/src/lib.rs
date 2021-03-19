@@ -83,7 +83,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AffineTransformUnit {
-        #[doc = "An English Metric Unit (EMU) is defined as 1/360,000 of a centimeter\nand thus there are 914,400 EMUs per inch, and 12,700 EMUs per point."]
+        #[doc = "An English Metric Unit (EMU) is defined as 1/360,000 of a centimeter and thus there are 914,400 EMUs per inch, and 12,700 EMUs per point."]
         Emu,
         #[doc = "A point, 1/72 of an inch."]
         Pt,
@@ -267,6 +267,123 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
+    pub struct Autofit {
+        #[doc = "The autofit type of the shape. If the autofit type is AUTOFIT_TYPE_UNSPECIFIED, the autofit type is inherited from a parent placeholder if it exists. The field is automatically set to NONE if a request is made that might affect text fitting within its bounding text box. In this case the font_scale is applied to the font_size and the line_spacing_reduction is applied to the line_spacing. Both properties are also reset to default values."]
+        #[serde(
+            rename = "autofitType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub autofit_type: ::std::option::Option<crate::schemas::AutofitAutofitType>,
+        #[doc = "The font scale applied to the shape. For shapes with autofit_type NONE or SHAPE_AUTOFIT, this value is the default value of 1. For TEXT_AUTOFIT, this value multiplied by the font_size gives the font size that is rendered in the editor. This property is read-only."]
+        #[serde(
+            rename = "fontScale",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub font_scale: ::std::option::Option<f32>,
+        #[doc = "The line spacing reduction applied to the shape. For shapes with autofit_type NONE or SHAPE_AUTOFIT, this value is the default value of 0. For TEXT_AUTOFIT, this value subtracted from the line_spacing gives the line spacing that is rendered in the editor. This property is read-only."]
+        #[serde(
+            rename = "lineSpacingReduction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub line_spacing_reduction: ::std::option::Option<f32>,
+    }
+    impl ::google_field_selector::FieldSelector for Autofit {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Autofit {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum AutofitAutofitType {
+        #[doc = "The autofit type is unspecified."]
+        AutofitTypeUnspecified,
+        #[doc = "Do not autofit."]
+        None,
+        #[doc = "Resize the shape to fit the text."]
+        ShapeAutofit,
+        #[doc = "Shrink text on overflow to fit the shape."]
+        TextAutofit,
+    }
+    impl AutofitAutofitType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                AutofitAutofitType::AutofitTypeUnspecified => "AUTOFIT_TYPE_UNSPECIFIED",
+                AutofitAutofitType::None => "NONE",
+                AutofitAutofitType::ShapeAutofit => "SHAPE_AUTOFIT",
+                AutofitAutofitType::TextAutofit => "TEXT_AUTOFIT",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AutofitAutofitType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AutofitAutofitType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AutofitAutofitType, ()> {
+            Ok(match s {
+                "AUTOFIT_TYPE_UNSPECIFIED" => AutofitAutofitType::AutofitTypeUnspecified,
+                "NONE" => AutofitAutofitType::None,
+                "SHAPE_AUTOFIT" => AutofitAutofitType::ShapeAutofit,
+                "TEXT_AUTOFIT" => AutofitAutofitType::TextAutofit,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for AutofitAutofitType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for AutofitAutofitType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for AutofitAutofitType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "AUTOFIT_TYPE_UNSPECIFIED" => AutofitAutofitType::AutofitTypeUnspecified,
+                "NONE" => AutofitAutofitType::None,
+                "SHAPE_AUTOFIT" => AutofitAutofitType::ShapeAutofit,
+                "TEXT_AUTOFIT" => AutofitAutofitType::TextAutofit,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for AutofitAutofitType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for AutofitAutofitType {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
     pub struct BatchUpdatePresentationRequest {
         #[doc = "A list of updates to apply to the presentation."]
         #[serde(
@@ -313,7 +430,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub presentation_id: ::std::option::Option<String>,
-        #[doc = "The reply of the updates.  This maps 1:1 with the updates, although\nreplies to some requests may be empty."]
+        #[doc = "The reply of the updates. This maps 1:1 with the updates, although replies to some requests may be empty."]
         #[serde(
             rename = "replies",
             default,
@@ -407,7 +524,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ColorStop {
-        #[doc = "The alpha value of this color in the gradient band. Defaults to 1.0,\nfully opaque."]
+        #[doc = "The alpha value of this color in the gradient band. Defaults to 1.0, fully opaque."]
         #[serde(
             rename = "alpha",
             default,
@@ -421,7 +538,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub color: ::std::option::Option<crate::schemas::OpaqueColor>,
-        #[doc = "The relative position of the color stop in the gradient band measured\nin percentage. The value should be in the interval [0.0, 1.0]."]
+        #[doc = "The relative position of the color stop in the gradient band measured in percentage. The value should be in the interval [0.0, 1.0]."]
         #[serde(
             rename = "position",
             default,
@@ -443,21 +560,21 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct CreateImageRequest {
-        #[doc = "The element properties for the image.\n\nWhen the aspect ratio of the provided size does not match the image aspect\nratio, the image is scaled and centered with respect to the size in order\nto maintain aspect ratio. The provided transform is applied after this\noperation.\n\nThe PageElementProperties.size property is\noptional. If you don't specify the size, the default size of the image is\nused.\n\nThe PageElementProperties.transform property is\noptional. If you don't specify a transform, the image will be placed at the\ntop left corner of the page."]
+        #[doc = "The element properties for the image. When the aspect ratio of the provided size does not match the image aspect ratio, the image is scaled and centered with respect to the size in order to maintain aspect ratio. The provided transform is applied after this operation. The PageElementProperties.size property is optional. If you don't specify the size, the default size of the image is used. The PageElementProperties.transform property is optional. If you don't specify a transform, the image will be placed at the top left corner of the page."]
         #[serde(
             rename = "elementProperties",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub element_properties: ::std::option::Option<crate::schemas::PageElementProperties>,
-        #[doc = "A user-supplied object ID.\n\nIf you specify an ID, it must be unique among all pages and page elements\nin the presentation. The ID must start with an alphanumeric character or an\nunderscore (matches regex `[a-zA-Z0-9_]`); remaining characters\nmay include those as well as a hyphen or colon (matches regex\n`[a-zA-Z0-9_-:]`).\nThe length of the ID must not be less than 5 or greater than 50.\n\nIf you don't specify an ID, a unique one is generated."]
+        #[doc = "A user-supplied object ID. If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an ID, a unique one is generated."]
         #[serde(
             rename = "objectId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub object_id: ::std::option::Option<String>,
-        #[doc = "The image URL.\n\nThe image is fetched once at insertion time and a copy is stored for\ndisplay inside the presentation. Images must be less than 50MB in size,\ncannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF\nformat.\n\nThe provided URL can be at most 2 kB in length. The URL itself is saved\nwith the image, and exposed via the Image.source_url field."]
+        #[doc = "The image URL. The image is fetched once at insertion time and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format. The provided URL can be at most 2 kB in length. The URL itself is saved with the image, and exposed via the Image.source_url field."]
         #[serde(
             rename = "url",
             default,
@@ -510,7 +627,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct CreateLineRequest {
-        #[doc = "The category of the line to be created.\n\nThe exact line type created is\ndetermined based on the category and how it's routed to connect to other\npage elements.\n\nIf you specify both a `category` and a `line_category`, the `category`\ntakes precedence.\n\nIf you do not specify a value for `category`, but specify a value for\n`line_category`, then the specified `line_category` value is used.\n\nIf you do not specify either, then STRAIGHT is used."]
+        #[doc = "The category of the line to be created. The exact line type created is determined based on the category and how it's routed to connect to other page elements. If you specify both a `category` and a `line_category`, the `category` takes precedence. If you do not specify a value for `category`, but specify a value for `line_category`, then the specified `line_category` value is used. If you do not specify either, then STRAIGHT is used."]
         #[serde(
             rename = "category",
             default,
@@ -524,14 +641,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub element_properties: ::std::option::Option<crate::schemas::PageElementProperties>,
-        #[doc = "The category of the line to be created.\n\n<b>Deprecated</b>: use `category` instead.\n\nThe exact line type created is\ndetermined based on the category and how it's routed to connect to other\npage elements.\n\nIf you specify both a `category` and a `line_category`, the `category`\ntakes precedence."]
+        #[doc = "The category of the line to be created. *Deprecated*: use `category` instead. The exact line type created is determined based on the category and how it's routed to connect to other page elements. If you specify both a `category` and a `line_category`, the `category` takes precedence."]
         #[serde(
             rename = "lineCategory",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub line_category: ::std::option::Option<crate::schemas::CreateLineRequestLineCategory>,
-        #[doc = "A user-supplied object ID.\n\nIf you specify an ID, it must be unique among all pages and page elements\nin the presentation. The ID must start with an alphanumeric character or an\nunderscore (matches regex `[a-zA-Z0-9_]`); remaining characters\nmay include those as well as a hyphen or colon (matches regex\n`[a-zA-Z0-9_-:]`).\nThe length of the ID must not be less than 5 or greater than 50.\n\nIf you don't specify an ID, a unique one is generated."]
+        #[doc = "A user-supplied object ID. If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an ID, a unique one is generated."]
         #[serde(
             rename = "objectId",
             default,
@@ -636,7 +753,7 @@ pub mod schemas {
         Bent,
         #[doc = "Curved connectors, including curved connector 2 to 5."]
         Curved,
-        #[doc = "Straight connectors, including straight connector 1. The is the default\ncategory when one is not specified."]
+        #[doc = "Straight connectors, including straight connector 1. The is the default category when one is not specified."]
         Straight,
     }
     impl CreateLineRequestLineCategory {
@@ -750,7 +867,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CreateParagraphBulletsRequest {
-        #[doc = "The kinds of bullet glyphs to be used. Defaults to the\n`BULLET_DISC_CIRCLE_SQUARE` preset."]
+        #[doc = "The kinds of bullet glyphs to be used. Defaults to the `BULLET_DISC_CIRCLE_SQUARE` preset."]
         #[serde(
             rename = "bulletPreset",
             default,
@@ -758,7 +875,7 @@ pub mod schemas {
         )]
         pub bullet_preset:
             ::std::option::Option<crate::schemas::CreateParagraphBulletsRequestBulletPreset>,
-        #[doc = "The optional table cell location if the text to be modified is in a table\ncell. If present, the object_id must refer to a table."]
+        #[doc = "The optional table cell location if the text to be modified is in a table cell. If present, the object_id must refer to a table."]
         #[serde(
             rename = "cellLocation",
             default,
@@ -792,35 +909,35 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreateParagraphBulletsRequestBulletPreset {
-        #[doc = "A bulleted list with a `ARROW3D`, `CIRCLE` and `SQUARE` bullet glyph for\nthe first 3 list nesting levels."]
+        #[doc = "A bulleted list with a `ARROW3D`, `CIRCLE` and `SQUARE` bullet glyph for the first 3 list nesting levels."]
         BulletArrow3DCircleSquare,
-        #[doc = "A bulleted list with a `ARROW`, `DIAMOND` and `DISC` bullet glyph for\nthe first 3 list nesting levels."]
+        #[doc = "A bulleted list with a `ARROW`, `DIAMOND` and `DISC` bullet glyph for the first 3 list nesting levels."]
         BulletArrowDiamondDisc,
         #[doc = "A bulleted list with `CHECKBOX` bullet glyphs for all list nesting levels."]
         BulletCheckbox,
-        #[doc = "A bulleted list with a `DIAMOND`, `CIRCLE` and `SQUARE` bullet glyph\nfor the first 3 list nesting levels."]
+        #[doc = "A bulleted list with a `DIAMOND`, `CIRCLE` and `SQUARE` bullet glyph for the first 3 list nesting levels."]
         BulletDiamondCircleSquare,
-        #[doc = "A bulleted list with a `DIAMONDX`, `ARROW3D` and `SQUARE` bullet glyph for\nthe first 3 list nesting levels."]
+        #[doc = "A bulleted list with a `DIAMONDX`, `ARROW3D` and `SQUARE` bullet glyph for the first 3 list nesting levels."]
         BulletDiamondxArrow3DSquare,
-        #[doc = "A bulleted list with a `DIAMONDX`, `HOLLOWDIAMOND` and `SQUARE` bullet\nglyph for the first 3 list nesting levels."]
+        #[doc = "A bulleted list with a `DIAMONDX`, `HOLLOWDIAMOND` and `SQUARE` bullet glyph for the first 3 list nesting levels."]
         BulletDiamondxHollowdiamondSquare,
-        #[doc = "A bulleted list with a `DISC`, `CIRCLE` and `SQUARE` bullet glyph for the\nfirst 3 list nesting levels."]
+        #[doc = "A bulleted list with a `DISC`, `CIRCLE` and `SQUARE` bullet glyph for the first 3 list nesting levels."]
         BulletDiscCircleSquare,
-        #[doc = "A bulleted list with a `LEFTTRIANGLE`, `DIAMOND` and `DISC` bullet glyph\nfor the first 3 list nesting levels."]
+        #[doc = "A bulleted list with a `LEFTTRIANGLE`, `DIAMOND` and `DISC` bullet glyph for the first 3 list nesting levels."]
         BulletLefttriangleDiamondDisc,
-        #[doc = "A bulleted list with a `STAR`, `CIRCLE` and `SQUARE` bullet glyph for\nthe first 3 list nesting levels."]
+        #[doc = "A bulleted list with a `STAR`, `CIRCLE` and `SQUARE` bullet glyph for the first 3 list nesting levels."]
         BulletStarCircleSquare,
-        #[doc = "A numbered list with `DIGIT`, `ALPHA` and `ROMAN` numeric glyphs for\nthe first 3 list nesting levels, followed by periods."]
+        #[doc = "A numbered list with `DIGIT`, `ALPHA` and `ROMAN` numeric glyphs for the first 3 list nesting levels, followed by periods."]
         NumberedDigitAlphaRoman,
-        #[doc = "A numbered list with `DIGIT`, `ALPHA` and `ROMAN` numeric glyphs for\nthe first 3 list nesting levels, followed by parenthesis."]
+        #[doc = "A numbered list with `DIGIT`, `ALPHA` and `ROMAN` numeric glyphs for the first 3 list nesting levels, followed by parenthesis."]
         NumberedDigitAlphaRomanParens,
-        #[doc = "A numbered list with `DIGIT` numeric glyphs separated by periods, where\neach nesting level uses the previous nesting level's glyph as a prefix.\nFor example: '1.', '1.1.', '2.', '2.2.'."]
+        #[doc = "A numbered list with `DIGIT` numeric glyphs separated by periods, where each nesting level uses the previous nesting level's glyph as a prefix. For example: '1.', '1.1.', '2.', '2.2.'."]
         NumberedDigitNested,
-        #[doc = "A numbered list with `UPPERALPHA`, `ALPHA` and `ROMAN` numeric glyphs for\nthe first 3 list nesting levels, followed by periods."]
+        #[doc = "A numbered list with `UPPERALPHA`, `ALPHA` and `ROMAN` numeric glyphs for the first 3 list nesting levels, followed by periods."]
         NumberedUpperalphaAlphaRoman,
-        #[doc = "A numbered list with `UPPERROMAN`, `UPPERALPHA` and `DIGIT` numeric glyphs\nfor the first 3 list nesting levels, followed by periods."]
+        #[doc = "A numbered list with `UPPERROMAN`, `UPPERALPHA` and `DIGIT` numeric glyphs for the first 3 list nesting levels, followed by periods."]
         NumberedUpperromanUpperalphaDigit,
-        #[doc = "A numbered list with `ZERODIGIT`, `ALPHA` and `ROMAN` numeric glyphs for\nthe first 3 list nesting levels, followed by periods."]
+        #[doc = "A numbered list with `ZERODIGIT`, `ALPHA` and `ROMAN` numeric glyphs for the first 3 list nesting levels, followed by periods."]
         NumberedZerodigitAlphaRoman,
     }
     impl CreateParagraphBulletsRequestBulletPreset {
@@ -1023,7 +1140,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub element_properties: ::std::option::Option<crate::schemas::PageElementProperties>,
-        #[doc = "A user-supplied object ID.\n\nIf you specify an ID, it must be unique among all pages and page elements\nin the presentation. The ID must start with an alphanumeric character or an\nunderscore (matches regex `[a-zA-Z0-9_]`); remaining characters\nmay include those as well as a hyphen or colon (matches regex\n`[a-zA-Z0-9_-:]`).\nThe length of the ID must not be less than 5 or greater than 50.\nIf empty, a unique identifier will be generated."]
+        #[doc = "A user-supplied object ID. If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If empty, a unique identifier will be generated."]
         #[serde(
             rename = "objectId",
             default,
@@ -1084,13 +1201,13 @@ pub mod schemas {
         Corner,
         #[doc = "Cube shape. Corresponds to ECMA-376 ST_ShapeType 'cube'"]
         Cube,
-        #[doc = "Curved down arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'curvedDownArrow'"]
+        #[doc = "Curved down arrow shape. Corresponds to ECMA-376 ST_ShapeType 'curvedDownArrow'"]
         CurvedDownArrow,
-        #[doc = "Curved left arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'curvedLeftArrow'"]
+        #[doc = "Curved left arrow shape. Corresponds to ECMA-376 ST_ShapeType 'curvedLeftArrow'"]
         CurvedLeftArrow,
-        #[doc = "Curved right arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'curvedRightArrow'"]
+        #[doc = "Curved right arrow shape. Corresponds to ECMA-376 ST_ShapeType 'curvedRightArrow'"]
         CurvedRightArrow,
-        #[doc = "Curved up arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'curvedUpArrow'"]
+        #[doc = "Curved up arrow shape. Corresponds to ECMA-376 ST_ShapeType 'curvedUpArrow'"]
         CurvedUpArrow,
         #[doc = "Custom shape."]
         Custom,
@@ -1108,71 +1225,71 @@ pub mod schemas {
         DoubleWave,
         #[doc = "Down arrow shape. Corresponds to ECMA-376 ST_ShapeType 'downArrow'"]
         DownArrow,
-        #[doc = "Callout down arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'downArrowCallout'"]
+        #[doc = "Callout down arrow shape. Corresponds to ECMA-376 ST_ShapeType 'downArrowCallout'"]
         DownArrowCallout,
         #[doc = "Ellipse shape. Corresponds to ECMA-376 ST_ShapeType 'ellipse'"]
         Ellipse,
-        #[doc = "Ellipse ribbon shape. Corresponds to ECMA-376 ST_ShapeType\n'ellipseRibbon'"]
+        #[doc = "Ellipse ribbon shape. Corresponds to ECMA-376 ST_ShapeType 'ellipseRibbon'"]
         EllipseRibbon,
-        #[doc = "Ellipse ribbon 2 shape. Corresponds to ECMA-376 ST_ShapeType\n'ellipseRibbon2'"]
+        #[doc = "Ellipse ribbon 2 shape. Corresponds to ECMA-376 ST_ShapeType 'ellipseRibbon2'"]
         EllipseRibbon2,
-        #[doc = "Alternate process flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartAlternateProcess'"]
+        #[doc = "Alternate process flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartAlternateProcess'"]
         FlowChartAlternateProcess,
-        #[doc = "Collate flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartCollate'"]
+        #[doc = "Collate flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartCollate'"]
         FlowChartCollate,
-        #[doc = "Connector flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartConnector'"]
+        #[doc = "Connector flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartConnector'"]
         FlowChartConnector,
-        #[doc = "Decision flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartDecision'"]
+        #[doc = "Decision flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartDecision'"]
         FlowChartDecision,
         #[doc = "Delay flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartDelay'"]
         FlowChartDelay,
-        #[doc = "Display flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartDisplay'"]
+        #[doc = "Display flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartDisplay'"]
         FlowChartDisplay,
-        #[doc = "Document flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartDocument'"]
+        #[doc = "Document flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartDocument'"]
         FlowChartDocument,
-        #[doc = "Extract flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartExtract'"]
+        #[doc = "Extract flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartExtract'"]
         FlowChartExtract,
-        #[doc = "Input output flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartInputOutput'"]
+        #[doc = "Input output flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartInputOutput'"]
         FlowChartInputOutput,
-        #[doc = "Internal storage flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartInternalStorage'"]
+        #[doc = "Internal storage flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartInternalStorage'"]
         FlowChartInternalStorage,
-        #[doc = "Magnetic disk flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMagneticDisk'"]
+        #[doc = "Magnetic disk flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartMagneticDisk'"]
         FlowChartMagneticDisk,
-        #[doc = "Magnetic drum flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMagneticDrum'"]
+        #[doc = "Magnetic drum flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartMagneticDrum'"]
         FlowChartMagneticDrum,
-        #[doc = "Magnetic tape flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMagneticTape'"]
+        #[doc = "Magnetic tape flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartMagneticTape'"]
         FlowChartMagneticTape,
-        #[doc = "Manual input flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartManualInput'"]
+        #[doc = "Manual input flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartManualInput'"]
         FlowChartManualInput,
-        #[doc = "Manual operation flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartManualOperation'"]
+        #[doc = "Manual operation flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartManualOperation'"]
         FlowChartManualOperation,
         #[doc = "Merge flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartMerge'"]
         FlowChartMerge,
-        #[doc = "Multi-document flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMultidocument'"]
+        #[doc = "Multi-document flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartMultidocument'"]
         FlowChartMultidocument,
-        #[doc = "Offline storage flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartOfflineStorage'"]
+        #[doc = "Offline storage flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartOfflineStorage'"]
         FlowChartOfflineStorage,
-        #[doc = "Off-page connector flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartOffpageConnector'"]
+        #[doc = "Off-page connector flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartOffpageConnector'"]
         FlowChartOffpageConnector,
-        #[doc = "Online storage flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartOnlineStorage'"]
+        #[doc = "Online storage flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartOnlineStorage'"]
         FlowChartOnlineStorage,
         #[doc = "Or flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartOr'"]
         FlowChartOr,
-        #[doc = "Predefined process flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPredefinedProcess'"]
+        #[doc = "Predefined process flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartPredefinedProcess'"]
         FlowChartPredefinedProcess,
-        #[doc = "Preparation flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPreparation'"]
+        #[doc = "Preparation flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartPreparation'"]
         FlowChartPreparation,
-        #[doc = "Process flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartProcess'"]
+        #[doc = "Process flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartProcess'"]
         FlowChartProcess,
-        #[doc = "Punched card flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPunchedCard'"]
+        #[doc = "Punched card flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartPunchedCard'"]
         FlowChartPunchedCard,
-        #[doc = "Punched tape flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPunchedTape'"]
+        #[doc = "Punched tape flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartPunchedTape'"]
         FlowChartPunchedTape,
         #[doc = "Sort flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartSort'"]
         FlowChartSort,
-        #[doc = "Summing junction flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartSummingJunction'"]
+        #[doc = "Summing junction flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartSummingJunction'"]
         FlowChartSummingJunction,
-        #[doc = "Terminator flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartTerminator'"]
+        #[doc = "Terminator flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartTerminator'"]
         FlowChartTerminator,
         #[doc = "Folded corner shape. Corresponds to ECMA-376 ST_ShapeType 'foldedCorner'"]
         FoldedCorner,
@@ -1188,29 +1305,29 @@ pub mod schemas {
         Hexagon,
         #[doc = "Home plate shape. Corresponds to ECMA-376 ST_ShapeType 'homePlate'"]
         HomePlate,
-        #[doc = "Horizontal scroll shape. Corresponds to ECMA-376 ST_ShapeType\n'horizontalScroll'"]
+        #[doc = "Horizontal scroll shape. Corresponds to ECMA-376 ST_ShapeType 'horizontalScroll'"]
         HorizontalScroll,
-        #[doc = "Irregular seal 1 shape. Corresponds to ECMA-376 ST_ShapeType\n'irregularSeal1'"]
+        #[doc = "Irregular seal 1 shape. Corresponds to ECMA-376 ST_ShapeType 'irregularSeal1'"]
         IrregularSeal1,
-        #[doc = "Irregular seal 2 shape. Corresponds to ECMA-376 ST_ShapeType\n'irregularSeal2'"]
+        #[doc = "Irregular seal 2 shape. Corresponds to ECMA-376 ST_ShapeType 'irregularSeal2'"]
         IrregularSeal2,
         #[doc = "Left arrow shape. Corresponds to ECMA-376 ST_ShapeType 'leftArrow'"]
         LeftArrow,
-        #[doc = "Callout left arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'leftArrowCallout'"]
+        #[doc = "Callout left arrow shape. Corresponds to ECMA-376 ST_ShapeType 'leftArrowCallout'"]
         LeftArrowCallout,
         #[doc = "Left brace shape. Corresponds to ECMA-376 ST_ShapeType 'leftBrace'"]
         LeftBrace,
         #[doc = "Left bracket shape. Corresponds to ECMA-376 ST_ShapeType 'leftBracket'"]
         LeftBracket,
-        #[doc = "Left right arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'leftRightArrow'"]
+        #[doc = "Left right arrow shape. Corresponds to ECMA-376 ST_ShapeType 'leftRightArrow'"]
         LeftRightArrow,
-        #[doc = "Callout left right arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'leftRightArrowCallout'"]
+        #[doc = "Callout left right arrow shape. Corresponds to ECMA-376 ST_ShapeType 'leftRightArrowCallout'"]
         LeftRightArrowCallout,
-        #[doc = "Left right up arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'leftRightUpArrow'"]
+        #[doc = "Left right up arrow shape. Corresponds to ECMA-376 ST_ShapeType 'leftRightUpArrow'"]
         LeftRightUpArrow,
         #[doc = "Left up arrow shape. Corresponds to ECMA-376 ST_ShapeType 'leftUpArrow'"]
         LeftUpArrow,
-        #[doc = "Lightning bolt shape. Corresponds to ECMA-376 ST_ShapeType\n'lightningBolt'"]
+        #[doc = "Lightning bolt shape. Corresponds to ECMA-376 ST_ShapeType 'lightningBolt'"]
         LightningBolt,
         #[doc = "Divide math shape. Corresponds to ECMA-376 ST_ShapeType 'mathDivide'"]
         MathDivide,
@@ -1228,7 +1345,7 @@ pub mod schemas {
         Moon,
         #[doc = "No smoking shape. Corresponds to ECMA-376 ST_ShapeType 'noSmoking'"]
         NoSmoking,
-        #[doc = "Notched right arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'notchedRightArrow'"]
+        #[doc = "Notched right arrow shape. Corresponds to ECMA-376 ST_ShapeType 'notchedRightArrow'"]
         NotchedRightArrow,
         #[doc = "Octagon shape. Corresponds to ECMA-376 ST_ShapeType 'octagon'"]
         Octagon,
@@ -1244,7 +1361,7 @@ pub mod schemas {
         Plus,
         #[doc = "Quad-arrow shape. Corresponds to ECMA-376 ST_ShapeType 'quadArrow'"]
         QuadArrow,
-        #[doc = "Callout quad-arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'quadArrowCallout'"]
+        #[doc = "Callout quad-arrow shape. Corresponds to ECMA-376 ST_ShapeType 'quadArrowCallout'"]
         QuadArrowCallout,
         #[doc = "Rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'rect'."]
         Rectangle,
@@ -1254,7 +1371,7 @@ pub mod schemas {
         Ribbon2,
         #[doc = "Right arrow shape. Corresponds to ECMA-376 ST_ShapeType 'rightArrow'"]
         RightArrow,
-        #[doc = "Callout right arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'rightArrowCallout'"]
+        #[doc = "Callout right arrow shape. Corresponds to ECMA-376 ST_ShapeType 'rightArrowCallout'"]
         RightArrowCallout,
         #[doc = "Right brace shape. Corresponds to ECMA-376 ST_ShapeType 'rightBrace'"]
         RightBrace,
@@ -1262,23 +1379,23 @@ pub mod schemas {
         RightBracket,
         #[doc = "Right triangle shape. Corresponds to ECMA-376 ST_ShapeType 'rtTriangle'"]
         RightTriangle,
-        #[doc = "One round corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType\n'round1Rect'"]
+        #[doc = "One round corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'round1Rect'"]
         Round1Rectangle,
-        #[doc = "Two diagonal round corner rectangle shape. Corresponds to ECMA-376\nST_ShapeType 'round2DiagRect'"]
+        #[doc = "Two diagonal round corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'round2DiagRect'"]
         Round2DiagonalRectangle,
-        #[doc = "Two same-side round corner rectangle shape. Corresponds to ECMA-376\nST_ShapeType 'round2SameRect'"]
+        #[doc = "Two same-side round corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'round2SameRect'"]
         Round2SameRectangle,
-        #[doc = "Round corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType\n'roundRect'"]
+        #[doc = "Round corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'roundRect'"]
         RoundRectangle,
         #[doc = "Smiley face shape. Corresponds to ECMA-376 ST_ShapeType 'smileyFace'"]
         SmileyFace,
-        #[doc = "One snip corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType\n'snip1Rect'"]
+        #[doc = "One snip corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'snip1Rect'"]
         Snip1Rectangle,
-        #[doc = "Two diagonal snip corner rectangle shape. Corresponds to ECMA-376\nST_ShapeType 'snip2DiagRect'"]
+        #[doc = "Two diagonal snip corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'snip2DiagRect'"]
         Snip2DiagonalRectangle,
-        #[doc = "Two same-side snip corner rectangle shape. Corresponds to ECMA-376\nST_ShapeType 'snip2SameRect'"]
+        #[doc = "Two same-side snip corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'snip2SameRect'"]
         Snip2SameRectangle,
-        #[doc = "One snip one round corner rectangle shape. Corresponds to ECMA-376\nST_ShapeType 'snipRoundRect'"]
+        #[doc = "One snip one round corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'snipRoundRect'"]
         SnipRoundRectangle,
         #[doc = "Speech shape."]
         Speech,
@@ -1288,9 +1405,9 @@ pub mod schemas {
         Star12,
         #[doc = "Sixteen pointed star shape. Corresponds to ECMA-376 ST_ShapeType 'star16'"]
         Star16,
-        #[doc = "Twenty four pointed star shape. Corresponds to ECMA-376 ST_ShapeType\n'star24'"]
+        #[doc = "Twenty four pointed star shape. Corresponds to ECMA-376 ST_ShapeType 'star24'"]
         Star24,
-        #[doc = "Thirty two pointed star shape. Corresponds to ECMA-376 ST_ShapeType\n'star32'"]
+        #[doc = "Thirty two pointed star shape. Corresponds to ECMA-376 ST_ShapeType 'star32'"]
         Star32,
         #[doc = "Four pointed star shape. Corresponds to ECMA-376 ST_ShapeType 'star4'"]
         Star4,
@@ -1304,7 +1421,7 @@ pub mod schemas {
         Star8,
         #[doc = "Star burst shape."]
         Starburst,
-        #[doc = "Striped right arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'stripedRightArrow'"]
+        #[doc = "Striped right arrow shape. Corresponds to ECMA-376 ST_ShapeType 'stripedRightArrow'"]
         StripedRightArrow,
         #[doc = "Sun shape. Corresponds to ECMA-376 ST_ShapeType 'sun'"]
         Sun,
@@ -1320,21 +1437,21 @@ pub mod schemas {
         TypeUnspecified,
         #[doc = "Up arrow shape. Corresponds to ECMA-376 ST_ShapeType 'upArrow'"]
         UpArrow,
-        #[doc = "Callout up arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'upArrowCallout'"]
+        #[doc = "Callout up arrow shape. Corresponds to ECMA-376 ST_ShapeType 'upArrowCallout'"]
         UpArrowCallout,
         #[doc = "Up down arrow shape. Corresponds to ECMA-376 ST_ShapeType 'upDownArrow'"]
         UpDownArrow,
         #[doc = "U-turn arrow shape. Corresponds to ECMA-376 ST_ShapeType 'uturnArrow'"]
         UturnArrow,
-        #[doc = "Vertical scroll shape. Corresponds to ECMA-376 ST_ShapeType\n'verticalScroll'"]
+        #[doc = "Vertical scroll shape. Corresponds to ECMA-376 ST_ShapeType 'verticalScroll'"]
         VerticalScroll,
         #[doc = "Wave shape. Corresponds to ECMA-376 ST_ShapeType 'wave'"]
         Wave,
-        #[doc = "Callout wedge ellipse shape. Corresponds to ECMA-376 ST_ShapeType\n'wedgeEllipseCallout'"]
+        #[doc = "Callout wedge ellipse shape. Corresponds to ECMA-376 ST_ShapeType 'wedgeEllipseCallout'"]
         WedgeEllipseCallout,
-        #[doc = "Callout wedge rectangle shape. Corresponds to ECMA-376 ST_ShapeType\n'wedgeRectCallout'"]
+        #[doc = "Callout wedge rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'wedgeRectCallout'"]
         WedgeRectangleCallout,
-        #[doc = "Callout wedge round rectangle shape. Corresponds to ECMA-376 ST_ShapeType\n'wedgeRoundRectCallout'"]
+        #[doc = "Callout wedge round rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'wedgeRoundRectCallout'"]
         WedgeRoundRectangleCallout,
     }
     impl CreateShapeRequestShapeType {
@@ -1920,14 +2037,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub chart_id: ::std::option::Option<i32>,
-        #[doc = "The element properties for the chart.\n\nWhen the aspect ratio of the provided size does not match the chart aspect\nratio, the chart is scaled and centered with respect to the size in order\nto maintain aspect ratio. The provided transform is applied after this\noperation."]
+        #[doc = "The element properties for the chart. When the aspect ratio of the provided size does not match the chart aspect ratio, the chart is scaled and centered with respect to the size in order to maintain aspect ratio. The provided transform is applied after this operation."]
         #[serde(
             rename = "elementProperties",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub element_properties: ::std::option::Option<crate::schemas::PageElementProperties>,
-        #[doc = "The mode with which the chart is linked to the source spreadsheet. When\nnot specified, the chart will be an image that is not linked."]
+        #[doc = "The mode with which the chart is linked to the source spreadsheet. When not specified, the chart will be an image that is not linked."]
         #[serde(
             rename = "linkingMode",
             default,
@@ -1935,7 +2052,7 @@ pub mod schemas {
         )]
         pub linking_mode:
             ::std::option::Option<crate::schemas::CreateSheetsChartRequestLinkingMode>,
-        #[doc = "A user-supplied object ID.\n\nIf specified, the ID must be unique among all pages and page elements in\nthe presentation. The ID should start with a word character [a-zA-Z0-9_]\nand then followed by any number of the following characters [a-zA-Z0-9_-:].\nThe length of the ID should not be less than 5 or greater than 50.\nIf empty, a unique identifier will be generated."]
+        #[doc = "A user-supplied object ID. If specified, the ID must be unique among all pages and page elements in the presentation. The ID should start with a word character [a-zA-Z0-9_] and then followed by any number of the following characters [a-zA-Z0-9_-:]. The length of the ID should not be less than 5 or greater than 50. If empty, a unique identifier will be generated."]
         #[serde(
             rename = "objectId",
             default,
@@ -1962,9 +2079,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CreateSheetsChartRequestLinkingMode {
-        #[doc = "Linking the chart allows it to be updated, and other collaborators will\nsee a link to the spreadsheet."]
+        #[doc = "Linking the chart allows it to be updated, and other collaborators will see a link to the spreadsheet."]
         Linked,
-        #[doc = "The chart is not associated with the source spreadsheet and cannot be\nupdated. A chart that is not linked will be inserted as an image."]
+        #[doc = "The chart is not associated with the source spreadsheet and cannot be updated. A chart that is not linked will be inserted as an image."]
         NotLinkedImage,
     }
     impl CreateSheetsChartRequestLinkingMode {
@@ -2075,21 +2192,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CreateSlideRequest {
-        #[doc = "The optional zero-based index indicating where to insert the slides.\n\nIf you don't specify an index, the new slide is created at the end."]
+        #[doc = "The optional zero-based index indicating where to insert the slides. If you don't specify an index, the new slide is created at the end."]
         #[serde(
             rename = "insertionIndex",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub insertion_index: ::std::option::Option<i32>,
-        #[doc = "A user-supplied object ID.\n\nIf you specify an ID, it must be unique among all pages and page elements\nin the presentation. The ID must start with an alphanumeric character or an\nunderscore (matches regex `[a-zA-Z0-9_]`); remaining characters\nmay include those as well as a hyphen or colon (matches regex\n`[a-zA-Z0-9_-:]`).\nThe length of the ID must not be less than 5 or greater than 50.\n\nIf you don't specify an ID, a unique one is generated."]
+        #[doc = "A user-supplied object ID. If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an ID, a unique one is generated."]
         #[serde(
             rename = "objectId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub object_id: ::std::option::Option<String>,
-        #[doc = "An optional list of object ID mappings from the placeholder(s) on the layout to the placeholder(s)\nthat will be created on the new slide from that specified layout. Can only\nbe used when `slide_layout_reference` is specified."]
+        #[doc = "An optional list of object ID mappings from the placeholder(s) on the layout to the placeholder(s) that will be created on the new slide from that specified layout. Can only be used when `slide_layout_reference` is specified."]
         #[serde(
             rename = "placeholderIdMappings",
             default,
@@ -2097,7 +2214,7 @@ pub mod schemas {
         )]
         pub placeholder_id_mappings:
             ::std::option::Option<Vec<crate::schemas::LayoutPlaceholderIdMapping>>,
-        #[doc = "Layout reference of the slide to be inserted, based on the *current\nmaster*, which is one of the following:\n\n* The master of the previous slide index.\n* The master of the first slide, if the insertion_index is zero.\n* The first master in the presentation, if there are no slides.\n\nIf the LayoutReference is not found in the current master, a 400 bad\nrequest error is returned.\n\nIf you don't specify a layout reference, then the new slide will use the\npredefined layout `BLANK`."]
+        #[doc = "Layout reference of the slide to be inserted, based on the *current master*, which is one of the following: - The master of the previous slide index. - The master of the first slide, if the insertion_index is zero. - The first master in the presentation, if there are no slides. If the LayoutReference is not found in the current master, a 400 bad request error is returned. If you don't specify a layout reference, then the new slide will use the predefined layout `BLANK`."]
         #[serde(
             rename = "slideLayoutReference",
             default,
@@ -2157,14 +2274,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub columns: ::std::option::Option<i32>,
-        #[doc = "The element properties for the table.\n\nThe table will be created at the provided size, subject to a minimum size.\nIf no size is provided, the table will be automatically sized.\n\nTable transforms must have a scale of 1 and no shear components. If no\ntransform is provided, the table will be centered on the page."]
+        #[doc = "The element properties for the table. The table will be created at the provided size, subject to a minimum size. If no size is provided, the table will be automatically sized. Table transforms must have a scale of 1 and no shear components. If no transform is provided, the table will be centered on the page."]
         #[serde(
             rename = "elementProperties",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub element_properties: ::std::option::Option<crate::schemas::PageElementProperties>,
-        #[doc = "A user-supplied object ID.\n\nIf you specify an ID, it must be unique among all pages and page elements\nin the presentation. The ID must start with an alphanumeric character or an\nunderscore (matches regex `[a-zA-Z0-9_]`); remaining characters\nmay include those as well as a hyphen or colon (matches regex\n`[a-zA-Z0-9_-:]`).\nThe length of the ID must not be less than 5 or greater than 50.\n\nIf you don't specify an ID, a unique one is generated."]
+        #[doc = "A user-supplied object ID. If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an ID, a unique one is generated."]
         #[serde(
             rename = "objectId",
             default,
@@ -2224,21 +2341,21 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct CreateVideoRequest {
-        #[doc = "The element properties for the video.\n\nThe PageElementProperties.size property is\noptional. If you don't specify a size, a default size is chosen by the\nserver.\n\nThe PageElementProperties.transform property is\noptional. The transform must not have shear components.\nIf you don't specify a transform, the video will be placed at the top left\ncorner of the page."]
+        #[doc = "The element properties for the video. The PageElementProperties.size property is optional. If you don't specify a size, a default size is chosen by the server. The PageElementProperties.transform property is optional. The transform must not have shear components. If you don't specify a transform, the video will be placed at the top left corner of the page."]
         #[serde(
             rename = "elementProperties",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub element_properties: ::std::option::Option<crate::schemas::PageElementProperties>,
-        #[doc = "The video source's unique identifier for this video.\n\ne.g. For YouTube video https://www.youtube.com/watch?v=7U3axjORYZ0,\nthe ID is 7U3axjORYZ0. For a Google Drive video\nhttps://drive.google.com/file/d/1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q the ID\nis 1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q."]
+        #[doc = "The video source's unique identifier for this video. e.g. For YouTube video https://www.youtube.com/watch?v=7U3axjORYZ0, the ID is 7U3axjORYZ0. For a Google Drive video https://drive.google.com/file/d/1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q the ID is 1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q."]
         #[serde(
             rename = "id",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "A user-supplied object ID.\n\nIf you specify an ID, it must be unique among all pages and page elements\nin the presentation. The ID must start with an alphanumeric character or an\nunderscore (matches regex `[a-zA-Z0-9_]`); remaining characters\nmay include those as well as a hyphen or colon (matches regex\n`[a-zA-Z0-9_-:]`).\nThe length of the ID must not be less than 5 or greater than 50.\n\nIf you don't specify an ID, a unique one is generated."]
+        #[doc = "A user-supplied object ID. If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an ID, a unique one is generated."]
         #[serde(
             rename = "objectId",
             default,
@@ -2374,35 +2491,35 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct CropProperties {
-        #[doc = "The rotation angle of the crop window around its center, in radians.\nRotation angle is applied after the offset."]
+        #[doc = "The rotation angle of the crop window around its center, in radians. Rotation angle is applied after the offset."]
         #[serde(
             rename = "angle",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub angle: ::std::option::Option<f32>,
-        #[doc = "The offset specifies the bottom edge of the crop rectangle that is located\nabove the original bounding rectangle bottom edge, relative to the object's\noriginal height."]
+        #[doc = "The offset specifies the bottom edge of the crop rectangle that is located above the original bounding rectangle bottom edge, relative to the object's original height."]
         #[serde(
             rename = "bottomOffset",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bottom_offset: ::std::option::Option<f32>,
-        #[doc = "The offset specifies the left edge of the crop rectangle that is located to\nthe right of the original bounding rectangle left edge, relative to the\nobject's original width."]
+        #[doc = "The offset specifies the left edge of the crop rectangle that is located to the right of the original bounding rectangle left edge, relative to the object's original width."]
         #[serde(
             rename = "leftOffset",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub left_offset: ::std::option::Option<f32>,
-        #[doc = "The offset specifies the right edge of the crop rectangle that is located\nto the left of the original bounding rectangle right edge, relative to the\nobject's original width."]
+        #[doc = "The offset specifies the right edge of the crop rectangle that is located to the left of the original bounding rectangle right edge, relative to the object's original width."]
         #[serde(
             rename = "rightOffset",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub right_offset: ::std::option::Option<f32>,
-        #[doc = "The offset specifies the top edge of the crop rectangle that is located\nbelow the original bounding rectangle top edge, relative to the object's\noriginal height."]
+        #[doc = "The offset specifies the top edge of the crop rectangle that is located below the original bounding rectangle top edge, relative to the object's original height."]
         #[serde(
             rename = "topOffset",
             default,
@@ -2433,7 +2550,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DeleteObjectRequest {
-        #[doc = "The object ID of the page or page element to delete.\n\nIf after a delete operation a group contains\nonly 1 or no page elements, the group is also deleted.\n\nIf a placeholder is deleted on a layout, any empty inheriting shapes are\nalso deleted."]
+        #[doc = "The object ID of the page or page element to delete. If after a delete operation a group contains only 1 or no page elements, the group is also deleted. If a placeholder is deleted on a layout, any empty inheriting shapes are also deleted."]
         #[serde(
             rename = "objectId",
             default,
@@ -2464,14 +2581,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DeleteParagraphBulletsRequest {
-        #[doc = "The optional table cell location if the text to be modified is in a table\ncell. If present, the object_id must refer to a table."]
+        #[doc = "The optional table cell location if the text to be modified is in a table cell. If present, the object_id must refer to a table."]
         #[serde(
             rename = "cellLocation",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cell_location: ::std::option::Option<crate::schemas::TableCellLocation>,
-        #[doc = "The object ID of the shape or table containing the text to delete bullets\nfrom."]
+        #[doc = "The object ID of the shape or table containing the text to delete bullets from."]
         #[serde(
             rename = "objectId",
             default,
@@ -2509,7 +2626,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DeleteTableColumnRequest {
-        #[doc = "The reference table cell location from which a column will be deleted.\n\nThe column this cell spans will be deleted. If this is a merged cell,\nmultiple columns will be deleted. If no columns remain in the table after\nthis deletion, the whole table is deleted."]
+        #[doc = "The reference table cell location from which a column will be deleted. The column this cell spans will be deleted. If this is a merged cell, multiple columns will be deleted. If no columns remain in the table after this deletion, the whole table is deleted."]
         #[serde(
             rename = "cellLocation",
             default,
@@ -2547,7 +2664,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DeleteTableRowRequest {
-        #[doc = "The reference table cell location from which a row will be deleted.\n\nThe row this cell spans will be deleted. If this is a merged cell, multiple\nrows will be deleted. If no rows remain in the table after this deletion,\nthe whole table is deleted."]
+        #[doc = "The reference table cell location from which a row will be deleted. The row this cell spans will be deleted. If this is a merged cell, multiple rows will be deleted. If no rows remain in the table after this deletion, the whole table is deleted."]
         #[serde(
             rename = "cellLocation",
             default,
@@ -2585,7 +2702,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DeleteTextRequest {
-        #[doc = "The optional table cell location if the text is to be deleted from a table\ncell. If present, the object_id must refer to a table."]
+        #[doc = "The optional table cell location if the text is to be deleted from a table cell. If present, the object_id must refer to a table."]
         #[serde(
             rename = "cellLocation",
             default,
@@ -2599,7 +2716,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub object_id: ::std::option::Option<String>,
-        #[doc = "The range of text to delete, based on TextElement indexes.\n\nThere is always an implicit newline character at the end of a shape's or\ntable cell's text that cannot be deleted. `Range.Type.ALL` will use the\ncorrect bounds, but care must be taken when specifying explicit bounds for\nrange types `FROM_START_INDEX` and `FIXED_RANGE`. For example, if the text\nis \"ABC\", followed by an implicit newline, then the maximum value is 2 for\n`text_range.start_index` and 3 for `text_range.end_index`.\n\nDeleting text that crosses a paragraph boundary may result in changes\nto paragraph styles and lists as the two paragraphs are merged.\n\nRanges that include only one code unit of a surrogate pair are expanded to\ninclude both code units."]
+        #[doc = "The range of text to delete, based on TextElement indexes. There is always an implicit newline character at the end of a shape's or table cell's text that cannot be deleted. `Range.Type.ALL` will use the correct bounds, but care must be taken when specifying explicit bounds for range types `FROM_START_INDEX` and `FIXED_RANGE`. For example, if the text is \"ABC\", followed by an implicit newline, then the maximum value is 2 for `text_range.start_index` and 3 for `text_range.end_index`. Deleting text that crosses a paragraph boundary may result in changes to paragraph styles and lists as the two paragraphs are merged. Ranges that include only one code unit of a surrogate pair are expanded to include both code units."]
         #[serde(
             rename = "textRange",
             default,
@@ -2648,7 +2765,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum DimensionUnit {
-        #[doc = "An English Metric Unit (EMU) is defined as 1/360,000 of a centimeter\nand thus there are 914,400 EMUs per inch, and 12,700 EMUs per point."]
+        #[doc = "An English Metric Unit (EMU) is defined as 1/360,000 of a centimeter and thus there are 914,400 EMUs per inch, and 12,700 EMUs per point."]
         Emu,
         #[doc = "A point, 1/72 of an inch."]
         Pt,
@@ -2742,7 +2859,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub object_id: ::std::option::Option<String>,
-        #[doc = "The object being duplicated may contain other objects, for example when\nduplicating a slide or a group page element. This map defines how the IDs\nof duplicated objects are generated: the keys are the IDs of the original\nobjects and its values are the IDs that will be assigned to the\ncorresponding duplicate object. The ID of the source object's duplicate\nmay be specified in this map as well, using the same value of the\n`object_id` field as a key and the newly desired ID as the value.\n\nAll keys must correspond to existing IDs in the presentation. All values\nmust be unique in the presentation and must start with an alphanumeric\ncharacter or an underscore (matches regex `[a-zA-Z0-9_]`); remaining\ncharacters may include those as well as a hyphen or colon (matches regex\n`[a-zA-Z0-9_-:]`). The length of the new ID must not be less than 5 or\ngreater than 50.\n\nIf any IDs of source objects are omitted from the map, a new random ID will\nbe assigned. If the map is empty or unset, all duplicate objects will\nreceive a new random ID."]
+        #[doc = "The object being duplicated may contain other objects, for example when duplicating a slide or a group page element. This map defines how the IDs of duplicated objects are generated: the keys are the IDs of the original objects and its values are the IDs that will be assigned to the corresponding duplicate object. The ID of the source object's duplicate may be specified in this map as well, using the same value of the `object_id` field as a key and the newly desired ID as the value. All keys must correspond to existing IDs in the presentation. All values must be unique in the presentation and must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the new ID must not be less than 5 or greater than 50. If any IDs of source objects are omitted from the map, a new random ID will be assigned. If the map is empty or unset, all duplicate objects will receive a new random ID."]
         #[serde(
             rename = "objectIds",
             default,
@@ -2826,14 +2943,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GroupObjectsRequest {
-        #[doc = "The object IDs of the objects to group.\n\nOnly page elements can be grouped. There should be at least two page\nelements on the same page that are not already in another group. Some page\nelements, such as videos, tables and placeholder shapes cannot be grouped."]
+        #[doc = "The object IDs of the objects to group. Only page elements can be grouped. There should be at least two page elements on the same page that are not already in another group. Some page elements, such as videos, tables and placeholder shapes cannot be grouped."]
         #[serde(
             rename = "childrenObjectIds",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub children_object_ids: ::std::option::Option<Vec<String>>,
-        #[doc = "A user-supplied object ID for the group to be created.\n\nIf you specify an ID, it must be unique among all pages and page elements\nin the presentation. The ID must start with an alphanumeric character or an\nunderscore (matches regex `[a-zA-Z0-9_]`); remaining characters\nmay include those as well as a hyphen or colon (matches regex\n`[a-zA-Z0-9_-:]`).\nThe length of the ID must not be less than 5 or greater than 50.\n\nIf you don't specify an ID, a unique one is generated."]
+        #[doc = "A user-supplied object ID for the group to be created. If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an ID, a unique one is generated."]
         #[serde(
             rename = "groupObjectId",
             default,
@@ -2886,7 +3003,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Image {
-        #[doc = "An URL to an image with a default lifetime of 30 minutes.\nThis URL is tagged with the account of the requester. Anyone with the URL\neffectively accesses the image as the original requester. Access to the\nimage may be lost if the presentation's sharing settings change."]
+        #[doc = "An URL to an image with a default lifetime of 30 minutes. This URL is tagged with the account of the requester. Anyone with the URL effectively accesses the image as the original requester. Access to the image may be lost if the presentation's sharing settings change."]
         #[serde(
             rename = "contentUrl",
             default,
@@ -2900,7 +3017,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub image_properties: ::std::option::Option<crate::schemas::ImageProperties>,
-        #[doc = "The source URL is the URL used to insert the image. The source URL can be\nempty."]
+        #[doc = "The source URL is the URL used to insert the image. The source URL can be empty."]
         #[serde(
             rename = "sourceUrl",
             default,
@@ -2922,21 +3039,21 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ImageProperties {
-        #[doc = "The brightness effect of the image. The value should be in the interval\n[-1.0, 1.0], where 0 means no effect. This property is read-only."]
+        #[doc = "The brightness effect of the image. The value should be in the interval [-1.0, 1.0], where 0 means no effect. This property is read-only."]
         #[serde(
             rename = "brightness",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub brightness: ::std::option::Option<f32>,
-        #[doc = "The contrast effect of the image. The value should be in the interval\n[-1.0, 1.0], where 0 means no effect. This property is read-only."]
+        #[doc = "The contrast effect of the image. The value should be in the interval [-1.0, 1.0], where 0 means no effect. This property is read-only."]
         #[serde(
             rename = "contrast",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub contrast: ::std::option::Option<f32>,
-        #[doc = "The crop properties of the image. If not set, the image is not cropped.\nThis property is read-only."]
+        #[doc = "The crop properties of the image. If not set, the image is not cropped. This property is read-only."]
         #[serde(
             rename = "cropProperties",
             default,
@@ -2957,21 +3074,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub outline: ::std::option::Option<crate::schemas::Outline>,
-        #[doc = "The recolor effect of the image. If not set, the image is not recolored.\nThis property is read-only."]
+        #[doc = "The recolor effect of the image. If not set, the image is not recolored. This property is read-only."]
         #[serde(
             rename = "recolor",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub recolor: ::std::option::Option<crate::schemas::Recolor>,
-        #[doc = "The shadow of the image. If not set, the image has no shadow. This property\nis read-only."]
+        #[doc = "The shadow of the image. If not set, the image has no shadow. This property is read-only."]
         #[serde(
             rename = "shadow",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub shadow: ::std::option::Option<crate::schemas::Shadow>,
-        #[doc = "The transparency effect of the image. The value should be in the interval\n[0.0, 1.0], where 0 means no effect and 1 means completely transparent.\nThis property is read-only."]
+        #[doc = "The transparency effect of the image. The value should be in the interval [0.0, 1.0], where 0 means no effect and 1 means completely transparent. This property is read-only."]
         #[serde(
             rename = "transparency",
             default,
@@ -3002,14 +3119,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct InsertTableColumnsRequest {
-        #[doc = "The reference table cell location from which columns will be inserted.\n\nA new column will be inserted to the left (or right) of the column where\nthe reference cell is. If the reference cell is a merged cell, a new\ncolumn will be inserted to the left (or right) of the merged cell."]
+        #[doc = "The reference table cell location from which columns will be inserted. A new column will be inserted to the left (or right) of the column where the reference cell is. If the reference cell is a merged cell, a new column will be inserted to the left (or right) of the merged cell."]
         #[serde(
             rename = "cellLocation",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cell_location: ::std::option::Option<crate::schemas::TableCellLocation>,
-        #[doc = "Whether to insert new columns to the right of the reference cell location.\n\n* `True`: insert to the right.\n* `False`: insert to the left."]
+        #[doc = "Whether to insert new columns to the right of the reference cell location. - `True`: insert to the right. - `False`: insert to the left."]
         #[serde(
             rename = "insertRight",
             default,
@@ -3054,14 +3171,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct InsertTableRowsRequest {
-        #[doc = "The reference table cell location from which rows will be inserted.\n\nA new row will be inserted above (or below) the row where the reference\ncell is. If the reference cell is a merged cell, a new row will be\ninserted above (or below) the merged cell."]
+        #[doc = "The reference table cell location from which rows will be inserted. A new row will be inserted above (or below) the row where the reference cell is. If the reference cell is a merged cell, a new row will be inserted above (or below) the merged cell."]
         #[serde(
             rename = "cellLocation",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cell_location: ::std::option::Option<crate::schemas::TableCellLocation>,
-        #[doc = "Whether to insert new rows below the reference cell location.\n\n* `True`: insert below the cell.\n* `False`: insert above the cell."]
+        #[doc = "Whether to insert new rows below the reference cell location. - `True`: insert below the cell. - `False`: insert above the cell."]
         #[serde(
             rename = "insertBelow",
             default,
@@ -3106,14 +3223,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct InsertTextRequest {
-        #[doc = "The optional table cell location if the text is to be inserted into a table\ncell. If present, the object_id must refer to a table."]
+        #[doc = "The optional table cell location if the text is to be inserted into a table cell. If present, the object_id must refer to a table."]
         #[serde(
             rename = "cellLocation",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cell_location: ::std::option::Option<crate::schemas::TableCellLocation>,
-        #[doc = "The index where the text will be inserted, in Unicode code units, based\non TextElement indexes.\n\nThe index is zero-based and is computed from the start of the string.\nThe index may be adjusted to prevent insertions inside Unicode grapheme\nclusters. In these cases, the text will be inserted immediately after the\ngrapheme cluster."]
+        #[doc = "The index where the text will be inserted, in Unicode code units, based on TextElement indexes. The index is zero-based and is computed from the start of the string. The index may be adjusted to prevent insertions inside Unicode grapheme clusters. In these cases, the text will be inserted immediately after the grapheme cluster."]
         #[serde(
             rename = "insertionIndex",
             default,
@@ -3127,7 +3244,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub object_id: ::std::option::Option<String>,
-        #[doc = "The text to be inserted.\n\nInserting a newline character will implicitly create a new\nParagraphMarker at that index.\nThe paragraph style of the new paragraph will be copied from the paragraph\nat the current insertion index, including lists and bullets.\n\nText styles for inserted text will be determined automatically, generally\npreserving the styling of neighboring text. In most cases, the text will be\nadded to the TextRun that exists at the\ninsertion index.\n\nSome control characters (U+0000-U+0008, U+000C-U+001F) and characters\nfrom the Unicode Basic Multilingual Plane Private Use Area (U+E000-U+F8FF)\nwill be stripped out of the inserted text."]
+        #[doc = "The text to be inserted. Inserting a newline character will implicitly create a new ParagraphMarker at that index. The paragraph style of the new paragraph will be copied from the paragraph at the current insertion index, including lists and bullets. Text styles for inserted text will be determined automatically, generally preserving the styling of neighboring text. In most cases, the text will be added to the TextRun that exists at the insertion index. Some control characters (U+0000-U+0008, U+000C-U+001F) and characters from the Unicode Basic Multilingual Plane Private Use Area (U+E000-U+F8FF) will be stripped out of the inserted text."]
         #[serde(
             rename = "text",
             default,
@@ -3158,21 +3275,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LayoutPlaceholderIdMapping {
-        #[doc = "The placeholder on a layout that will be applied to a slide. Only type and index are needed. For example, a\npredefined `TITLE_AND_BODY` layout may usually have a TITLE placeholder\nwith index 0 and a BODY placeholder with index 0."]
+        #[doc = "The placeholder on a layout that will be applied to a slide. Only type and index are needed. For example, a predefined `TITLE_AND_BODY` layout may usually have a TITLE placeholder with index 0 and a BODY placeholder with index 0."]
         #[serde(
             rename = "layoutPlaceholder",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub layout_placeholder: ::std::option::Option<crate::schemas::Placeholder>,
-        #[doc = "The object ID of the placeholder on a layout that will be applied\nto a slide."]
+        #[doc = "The object ID of the placeholder on a layout that will be applied to a slide."]
         #[serde(
             rename = "layoutPlaceholderObjectId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub layout_placeholder_object_id: ::std::option::Option<String>,
-        #[doc = "A user-supplied object ID for the placeholder identified above that to be\ncreated onto a slide.\n\nIf you specify an ID, it must be unique among all pages and page elements\nin the presentation. The ID must start with an alphanumeric character or an\nunderscore (matches regex `[a-zA-Z0-9_]`); remaining characters\nmay include those as well as a hyphen or colon (matches regex\n`[a-zA-Z0-9_-:]`).\nThe length of the ID must not be less than 5 or greater than 50.\n\nIf you don't specify an ID, a unique one is generated."]
+        #[doc = "A user-supplied object ID for the placeholder identified above that to be created onto a slide. If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an ID, a unique one is generated."]
         #[serde(
             rename = "objectId",
             default,
@@ -3411,7 +3528,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Line {
-        #[doc = "The category of the line.\n\nIt matches the `category` specified in CreateLineRequest, and can be updated with\nUpdateLineCategoryRequest."]
+        #[doc = "The category of the line. It matches the `category` specified in CreateLineRequest, and can be updated with UpdateLineCategoryRequest."]
         #[serde(
             rename = "lineCategory",
             default,
@@ -3526,25 +3643,25 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum LineLineType {
-        #[doc = "Bent connector 2 form. Corresponds to ECMA-376 ST_ShapeType\n'bentConnector2'."]
+        #[doc = "Bent connector 2 form. Corresponds to ECMA-376 ST_ShapeType 'bentConnector2'."]
         BentConnector2,
-        #[doc = "Bent connector 3 form. Corresponds to ECMA-376 ST_ShapeType\n'bentConnector3'."]
+        #[doc = "Bent connector 3 form. Corresponds to ECMA-376 ST_ShapeType 'bentConnector3'."]
         BentConnector3,
-        #[doc = "Bent connector 4 form. Corresponds to ECMA-376 ST_ShapeType\n'bentConnector4'."]
+        #[doc = "Bent connector 4 form. Corresponds to ECMA-376 ST_ShapeType 'bentConnector4'."]
         BentConnector4,
-        #[doc = "Bent connector 5 form. Corresponds to ECMA-376 ST_ShapeType\n'bentConnector5'."]
+        #[doc = "Bent connector 5 form. Corresponds to ECMA-376 ST_ShapeType 'bentConnector5'."]
         BentConnector5,
-        #[doc = "Curved connector 2 form. Corresponds to ECMA-376 ST_ShapeType\n'curvedConnector2'."]
+        #[doc = "Curved connector 2 form. Corresponds to ECMA-376 ST_ShapeType 'curvedConnector2'."]
         CurvedConnector2,
-        #[doc = "Curved connector 3 form. Corresponds to ECMA-376 ST_ShapeType\n'curvedConnector3'."]
+        #[doc = "Curved connector 3 form. Corresponds to ECMA-376 ST_ShapeType 'curvedConnector3'."]
         CurvedConnector3,
-        #[doc = "Curved connector 4 form. Corresponds to ECMA-376 ST_ShapeType\n'curvedConnector4'."]
+        #[doc = "Curved connector 4 form. Corresponds to ECMA-376 ST_ShapeType 'curvedConnector4'."]
         CurvedConnector4,
-        #[doc = "Curved connector 5 form. Corresponds to ECMA-376 ST_ShapeType\n'curvedConnector5'."]
+        #[doc = "Curved connector 5 form. Corresponds to ECMA-376 ST_ShapeType 'curvedConnector5'."]
         CurvedConnector5,
-        #[doc = "Straight connector 1 form. Corresponds to ECMA-376 ST_ShapeType\n'straightConnector1'."]
+        #[doc = "Straight connector 1 form. Corresponds to ECMA-376 ST_ShapeType 'straightConnector1'."]
         StraightConnector1,
-        #[doc = "Straight line. Corresponds to ECMA-376 ST_ShapeType 'line'. This line\ntype is not a connector."]
+        #[doc = "Straight line. Corresponds to ECMA-376 ST_ShapeType 'line'. This line type is not a connector."]
         StraightLine,
         #[doc = "An unspecified line type."]
         TypeUnspecified,
@@ -3653,14 +3770,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LineConnection {
-        #[doc = "The object ID of the connected page element.\n\nSome page elements, such as groups, tables, and lines\ndo not have connection sites and therefore cannot be connected to a\nconnector line."]
+        #[doc = "The object ID of the connected page element. Some page elements, such as groups, tables, and lines do not have connection sites and therefore cannot be connected to a connector line."]
         #[serde(
             rename = "connectedObjectId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub connected_object_id: ::std::option::Option<String>,
-        #[doc = "The index of the connection site on the connected page element.\n\nIn most cases, it corresponds to the predefined connection site index from\nthe ECMA-376 standard. More information on those connection sites can be\nfound in the description of the \"cnx\" attribute in section 20.1.9.9 and\nAnnex H. \"Predefined DrawingML Shape and Text Geometries\" of \"Office Open\nXML File Formats-Fundamentals and Markup Language Reference\", part 1 of\n[ECMA-376 5th edition]\n(http://www.ecma-international.org/publications/standards/Ecma-376.htm).\n\nThe position of each connection site can also be viewed from Slides editor."]
+        #[doc = "The index of the connection site on the connected page element. In most cases, it corresponds to the predefined connection site index from the ECMA-376 standard. More information on those connection sites can be found in the description of the \"cnx\" attribute in section 20.1.9.9 and Annex H. \"Predefined DrawingML Shape and Text Geometries\" of \"Office Open XML File Formats-Fundamentals and Markup Language Reference\", part 1 of [ECMA-376 5th edition] (http://www.ecma-international.org/publications/standards/Ecma-376.htm). The position of each connection site can also be viewed from Slides editor."]
         #[serde(
             rename = "connectionSiteIndex",
             default,
@@ -3718,14 +3835,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub end_arrow: ::std::option::Option<crate::schemas::LinePropertiesEndArrow>,
-        #[doc = "The connection at the end of the line. If unset, there is no connection.\n\nOnly lines with a Type indicating it is\na \"connector\" can have an `end_connection`."]
+        #[doc = "The connection at the end of the line. If unset, there is no connection. Only lines with a Type indicating it is a \"connector\" can have an `end_connection`."]
         #[serde(
             rename = "endConnection",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub end_connection: ::std::option::Option<crate::schemas::LineConnection>,
-        #[doc = "The fill of the line. The default line fill matches the defaults for new\nlines created in the Slides editor."]
+        #[doc = "The fill of the line. The default line fill matches the defaults for new lines created in the Slides editor."]
         #[serde(
             rename = "lineFill",
             default,
@@ -3746,7 +3863,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub start_arrow: ::std::option::Option<crate::schemas::LinePropertiesStartArrow>,
-        #[doc = "The connection at the beginning of the line. If unset, there is no\nconnection.\n\nOnly lines with a Type indicating it is\na \"connector\" can have a `start_connection`."]
+        #[doc = "The connection at the beginning of the line. If unset, there is no connection. Only lines with a Type indicating it is a \"connector\" can have a `start_connection`."]
         #[serde(
             rename = "startConnection",
             default,
@@ -3775,17 +3892,17 @@ pub mod schemas {
     pub enum LinePropertiesDashStyle {
         #[doc = "Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dash'."]
         Dash,
-        #[doc = "Alternating dashes and dots. Corresponds to ECMA-376 ST_PresetLineDashVal\nvalue 'dashDot'."]
+        #[doc = "Alternating dashes and dots. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dashDot'."]
         DashDot,
         #[doc = "Unspecified dash style."]
         DashStyleUnspecified,
         #[doc = "Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dot'."]
         Dot,
-        #[doc = "Line with large dashes. Corresponds to ECMA-376 ST_PresetLineDashVal\nvalue 'lgDash'."]
+        #[doc = "Line with large dashes. Corresponds to ECMA-376 ST_PresetLineDashVal value 'lgDash'."]
         LongDash,
-        #[doc = "Alternating large dashes and dots. Corresponds to ECMA-376\nST_PresetLineDashVal value 'lgDashDot'."]
+        #[doc = "Alternating large dashes and dots. Corresponds to ECMA-376 ST_PresetLineDashVal value 'lgDashDot'."]
         LongDashDot,
-        #[doc = "Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'solid'.\nThis is the default dash style."]
+        #[doc = "Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'solid'. This is the default dash style."]
         Solid,
     }
     impl LinePropertiesDashStyle {
@@ -3889,7 +4006,7 @@ pub mod schemas {
         OpenDiamond,
         #[doc = "Hollow square."]
         OpenSquare,
-        #[doc = "Arrow with notched back. Corresponds to ECMA-376 ST_LineEndType value\n'stealth'."]
+        #[doc = "Arrow with notched back. Corresponds to ECMA-376 ST_LineEndType value 'stealth'."]
         StealthArrow,
     }
     impl LinePropertiesEndArrow {
@@ -4005,7 +4122,7 @@ pub mod schemas {
         OpenDiamond,
         #[doc = "Hollow square."]
         OpenSquare,
-        #[doc = "Arrow with notched back. Corresponds to ECMA-376 ST_LineEndType value\n'stealth'."]
+        #[doc = "Arrow with notched back. Corresponds to ECMA-376 ST_LineEndType value 'stealth'."]
         StealthArrow,
     }
     impl LinePropertiesStartArrow {
@@ -4112,21 +4229,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Link {
-        #[doc = "If set, indicates this is a link to the specific page in this\npresentation with this ID. A page with this ID may not exist."]
+        #[doc = "If set, indicates this is a link to the specific page in this presentation with this ID. A page with this ID may not exist."]
         #[serde(
             rename = "pageObjectId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub page_object_id: ::std::option::Option<String>,
-        #[doc = "If set, indicates this is a link to a slide in this presentation,\naddressed by its position."]
+        #[doc = "If set, indicates this is a link to a slide in this presentation, addressed by its position."]
         #[serde(
             rename = "relativeLink",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub relative_link: ::std::option::Option<crate::schemas::LinkRelativeLink>,
-        #[doc = "If set, indicates this is a link to the slide at this zero-based index\nin the presentation. There may not be a slide at this index."]
+        #[doc = "If set, indicates this is a link to the slide at this zero-based index in the presentation. There may not be a slide at this index."]
         #[serde(
             rename = "slideIndex",
             default,
@@ -4248,7 +4365,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub list_id: ::std::option::Option<String>,
-        #[doc = "A map of nesting levels to the properties of bullets at the associated\nlevel. A list has at most nine levels of nesting, so the possible values\nfor the keys of this map are 0 through 8, inclusive."]
+        #[doc = "A map of nesting levels to the properties of bullets at the associated level. A list has at most nine levels of nesting, so the possible values for the keys of this map are 0 through 8, inclusive."]
         #[serde(
             rename = "nestingLevel",
             default,
@@ -4319,7 +4436,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub object_id: ::std::option::Option<String>,
-        #[doc = "The table range specifying which cells of the table to merge.\n\nAny text in the cells being merged will be concatenated and stored in the\nupper-left (\"head\") cell of the range. If the range is non-rectangular\n(which can occur in some cases where the range covers cells that are\nalready merged), a 400 bad request error is returned."]
+        #[doc = "The table range specifying which cells of the table to merge. Any text in the cells being merged will be concatenated and stored in the upper-left (\"head\") cell of the range. If the range is non-rectangular (which can occur in some cases where the range covers cells that are already merged), a 400 bad request error is returned."]
         #[serde(
             rename = "tableRange",
             default,
@@ -4372,7 +4489,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct NotesProperties {
-        #[doc = "The object ID of the shape on this notes page that contains the speaker\nnotes for the corresponding slide.\nThe actual shape may not always exist on the notes page. Inserting text\nusing this object ID will automatically create the shape. In this case, the\nactual shape may have different object ID. The `GetPresentation` or\n`GetPage` action will always return the latest object ID."]
+        #[doc = "The object ID of the shape on this notes page that contains the speaker notes for the corresponding slide. The actual shape may not always exist on the notes page. Inserting text using this object ID will automatically create the shape. In this case, the actual shape may have different object ID. The `GetPresentation` or `GetPage` action will always return the latest object ID."]
         #[serde(
             rename = "speakerNotesObjectId",
             default,
@@ -4569,7 +4686,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct OptionalColor {
-        #[doc = "If set, this will be used as an opaque color. If unset, this represents\na transparent color."]
+        #[doc = "If set, this will be used as an opaque color. If unset, this represents a transparent color."]
         #[serde(
             rename = "opaqueColor",
             default,
@@ -4605,7 +4722,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub outline_fill: ::std::option::Option<crate::schemas::OutlineFill>,
-        #[doc = "The outline property state.\n\nUpdating the outline on a page element will implicitly update this field\nto `RENDERED`, unless another value is specified in the same request. To\nhave no outline on a page element, set this field to `NOT_RENDERED`. In\nthis case, any other outline fields set in the same request will be\nignored."]
+        #[doc = "The outline property state. Updating the outline on a page element will implicitly update this field to `RENDERED`, unless another value is specified in the same request. To have no outline on a page element, set this field to `NOT_RENDERED`. In this case, any other outline fields set in the same request will be ignored."]
         #[serde(
             rename = "propertyState",
             default,
@@ -4634,17 +4751,17 @@ pub mod schemas {
     pub enum OutlineDashStyle {
         #[doc = "Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dash'."]
         Dash,
-        #[doc = "Alternating dashes and dots. Corresponds to ECMA-376 ST_PresetLineDashVal\nvalue 'dashDot'."]
+        #[doc = "Alternating dashes and dots. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dashDot'."]
         DashDot,
         #[doc = "Unspecified dash style."]
         DashStyleUnspecified,
         #[doc = "Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dot'."]
         Dot,
-        #[doc = "Line with large dashes. Corresponds to ECMA-376 ST_PresetLineDashVal\nvalue 'lgDash'."]
+        #[doc = "Line with large dashes. Corresponds to ECMA-376 ST_PresetLineDashVal value 'lgDash'."]
         LongDash,
-        #[doc = "Alternating large dashes and dots. Corresponds to ECMA-376\nST_PresetLineDashVal value 'lgDashDot'."]
+        #[doc = "Alternating large dashes and dots. Corresponds to ECMA-376 ST_PresetLineDashVal value 'lgDashDot'."]
         LongDashDot,
-        #[doc = "Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'solid'.\nThis is the default dash style."]
+        #[doc = "Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'solid'. This is the default dash style."]
         Solid,
     }
     impl OutlineDashStyle {
@@ -4728,11 +4845,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum OutlinePropertyState {
-        #[doc = "If a property's state is INHERIT, then the property state uses the value of\ncorresponding `property_state` field on the parent shape. Elements that do\nnot inherit will never have an INHERIT property state."]
+        #[doc = "If a property's state is INHERIT, then the property state uses the value of corresponding `property_state` field on the parent shape. Elements that do not inherit will never have an INHERIT property state."]
         Inherit,
-        #[doc = "If a property's state is NOT_RENDERED, then the element does not have the\ncorresponding property when rendered on a page. However, the field may\nstill be set so it can be inherited by child shapes. To remove a property\nfrom a rendered element, set its property_state to NOT_RENDERED."]
+        #[doc = "If a property's state is NOT_RENDERED, then the element does not have the corresponding property when rendered on a page. However, the field may still be set so it can be inherited by child shapes. To remove a property from a rendered element, set its property_state to NOT_RENDERED."]
         NotRendered,
-        #[doc = "If a property's state is RENDERED, then the element has the corresponding\nproperty when rendered on a page. If the element is a placeholder shape as\ndetermined by the placeholder\nfield, and it inherits from a placeholder shape, the corresponding field\nmay be unset, meaning that the property value is inherited from a parent\nplaceholder. If the element does not inherit, then the field will contain\nthe rendered value. This is the default value."]
+        #[doc = "If a property's state is RENDERED, then the element has the corresponding property when rendered on a page. If the element is a placeholder shape as determined by the placeholder field, and it inherits from a placeholder shape, the corresponding field may be unset, meaning that the property value is inherited from a parent placeholder. If the element does not inherit, then the field will contain the rendered value. This is the default value."]
         Rendered,
     }
     impl OutlinePropertyState {
@@ -4849,7 +4966,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub notes_properties: ::std::option::Option<crate::schemas::NotesProperties>,
-        #[doc = "The object ID for this page. Object IDs used by\nPage and\nPageElement share the same namespace."]
+        #[doc = "The object ID for this page. Object IDs used by Page and PageElement share the same namespace."]
         #[serde(
             rename = "objectId",
             default,
@@ -4877,7 +4994,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub page_type: ::std::option::Option<crate::schemas::PagePageType>,
-        #[doc = "The revision ID of the presentation containing this page. Can be used in\nupdate requests to assert that the presentation revision hasn't changed\nsince the last read operation. Only populated if the user has edit access\nto the presentation.\n\nThe format of the revision ID may change over time, so it should be treated\nopaquely. A returned revision ID is only guaranteed to be valid for 24\nhours after it has been returned and cannot be shared across users. If the\nrevision ID is unchanged between calls, then the presentation has not\nchanged. Conversely, a changed ID (for the same presentation and user)\nusually means the presentation has been updated; however, a changed ID can\nalso be due to internal factors such as ID format changes."]
+        #[doc = "The revision ID of the presentation containing this page. Can be used in update requests to assert that the presentation revision hasn't changed since the last read operation. Only populated if the user has edit access to the presentation. The format of the revision ID may change over time, so it should be treated opaquely. A returned revision ID is only guaranteed to be valid for 24 hours after it has been returned and cannot be shared across users. If the revision ID is unchanged between calls, then the presentation has not changed. Conversely, a changed ID (for the same presentation and user) usually means the presentation has been updated; however, a changed ID can also be due to internal factors such as ID format changes."]
         #[serde(
             rename = "revisionId",
             default,
@@ -4992,7 +5109,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct PageBackgroundFill {
-        #[doc = "The background fill property state.\n\nUpdating the fill on a page will implicitly update this field to\n`RENDERED`, unless another value is specified in the same request. To\nhave no fill on a page, set this field to `NOT_RENDERED`. In this case,\nany other fill fields set in the same request will be ignored."]
+        #[doc = "The background fill property state. Updating the fill on a page will implicitly update this field to `RENDERED`, unless another value is specified in the same request. To have no fill on a page, set this field to `NOT_RENDERED`. In this case, any other fill fields set in the same request will be ignored."]
         #[serde(
             rename = "propertyState",
             default,
@@ -5026,11 +5143,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PageBackgroundFillPropertyState {
-        #[doc = "If a property's state is INHERIT, then the property state uses the value of\ncorresponding `property_state` field on the parent shape. Elements that do\nnot inherit will never have an INHERIT property state."]
+        #[doc = "If a property's state is INHERIT, then the property state uses the value of corresponding `property_state` field on the parent shape. Elements that do not inherit will never have an INHERIT property state."]
         Inherit,
-        #[doc = "If a property's state is NOT_RENDERED, then the element does not have the\ncorresponding property when rendered on a page. However, the field may\nstill be set so it can be inherited by child shapes. To remove a property\nfrom a rendered element, set its property_state to NOT_RENDERED."]
+        #[doc = "If a property's state is NOT_RENDERED, then the element does not have the corresponding property when rendered on a page. However, the field may still be set so it can be inherited by child shapes. To remove a property from a rendered element, set its property_state to NOT_RENDERED."]
         NotRendered,
-        #[doc = "If a property's state is RENDERED, then the element has the corresponding\nproperty when rendered on a page. If the element is a placeholder shape as\ndetermined by the placeholder\nfield, and it inherits from a placeholder shape, the corresponding field\nmay be unset, meaning that the property value is inherited from a parent\nplaceholder. If the element does not inherit, then the field will contain\nthe rendered value. This is the default value."]
+        #[doc = "If a property's state is RENDERED, then the element has the corresponding property when rendered on a page. If the element is a placeholder shape as determined by the placeholder field, and it inherits from a placeholder shape, the corresponding field may be unset, meaning that the property value is inherited from a parent placeholder. If the element does not inherit, then the field will contain the rendered value. This is the default value."]
         Rendered,
     }
     impl PageBackgroundFillPropertyState {
@@ -5104,7 +5221,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct PageElement {
-        #[doc = "The description of the page element. Combined with title to display alt\ntext.\n\nThe field is not supported for Group\nelements."]
+        #[doc = "The description of the page element. Combined with title to display alt text. The field is not supported for Group elements."]
         #[serde(
             rename = "description",
             default,
@@ -5132,7 +5249,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub line: ::std::option::Option<crate::schemas::Line>,
-        #[doc = "The object ID for this page element. Object IDs used by\ngoogle.apps.slides.v1.Page and\ngoogle.apps.slides.v1.PageElement share the same namespace."]
+        #[doc = "The object ID for this page element. Object IDs used by google.apps.slides.v1.Page and google.apps.slides.v1.PageElement share the same namespace."]
         #[serde(
             rename = "objectId",
             default,
@@ -5146,7 +5263,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub shape: ::std::option::Option<crate::schemas::Shape>,
-        #[doc = "A linked chart embedded from Google Sheets. Unlinked charts are\nrepresented as images."]
+        #[doc = "A linked chart embedded from Google Sheets. Unlinked charts are represented as images."]
         #[serde(
             rename = "sheetsChart",
             default,
@@ -5167,14 +5284,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub table: ::std::option::Option<crate::schemas::Table>,
-        #[doc = "The title of the page element. Combined with description to display alt\ntext.\n\nThe field is not supported for Group\nelements."]
+        #[doc = "The title of the page element. Combined with description to display alt text. The field is not supported for Group elements."]
         #[serde(
             rename = "title",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub title: ::std::option::Option<String>,
-        #[doc = "The transform of the page element.\n\nThe visual appearance of the page element is determined by its absolute\ntransform. To compute the absolute transform, preconcatenate a page\nelement's transform with the transforms of all of its parent groups. If the\npage element is not in a group, its absolute transform is the same as the\nvalue in this field.\n\nThe initial transform for the newly created Group is always the identity transform."]
+        #[doc = "The transform of the page element. The visual appearance of the page element is determined by its absolute transform. To compute the absolute transform, preconcatenate a page element's transform with the transforms of all of its parent groups. If the page element is not in a group, its absolute transform is the same as the value in this field. The initial transform for the newly created Group is always the identity transform."]
         #[serde(
             rename = "transform",
             default,
@@ -5246,14 +5363,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct PageProperties {
-        #[doc = "The color scheme of the page. If unset, the color scheme is inherited from\na parent page. If the page has no parent, the color scheme uses a default\nSlides color scheme, matching the defaults in the Slides editor.\n\nOnly the concrete colors of the first 12 ThemeColorTypes are editable. In addition, only\nthe color scheme on `Master` pages can be updated. To update the field, a\ncolor scheme containing mappings from all the first 12 ThemeColorTypes to\ntheir concrete colors must be provided. Colors for the remaining\nThemeColorTypes will be ignored."]
+        #[doc = "The color scheme of the page. If unset, the color scheme is inherited from a parent page. If the page has no parent, the color scheme uses a default Slides color scheme, matching the defaults in the Slides editor. Only the concrete colors of the first 12 ThemeColorTypes are editable. In addition, only the color scheme on `Master` pages can be updated. To update the field, a color scheme containing mappings from all the first 12 ThemeColorTypes to their concrete colors must be provided. Colors for the remaining ThemeColorTypes will be ignored."]
         #[serde(
             rename = "colorScheme",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub color_scheme: ::std::option::Option<crate::schemas::ColorScheme>,
-        #[doc = "The background fill of the page. If unset, the background fill is inherited\nfrom a parent page if it exists. If the page has no parent, then the\nbackground fill defaults to the corresponding fill in the Slides editor."]
+        #[doc = "The background fill of the page. If unset, the background fill is inherited from a parent page if it exists. If the page has no parent, then the background fill defaults to the corresponding fill in the Slides editor."]
         #[serde(
             rename = "pageBackgroundFill",
             default,
@@ -5275,7 +5392,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ParagraphMarker {
-        #[doc = "The bullet for this paragraph. If not present, the paragraph does not\nbelong to a list."]
+        #[doc = "The bullet for this paragraph. If not present, the paragraph does not belong to a list."]
         #[serde(
             rename = "bullet",
             default,
@@ -5311,49 +5428,49 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub alignment: ::std::option::Option<crate::schemas::ParagraphStyleAlignment>,
-        #[doc = "The text direction of this paragraph. If unset, the value defaults to\nLEFT_TO_RIGHT since\ntext direction is not inherited."]
+        #[doc = "The text direction of this paragraph. If unset, the value defaults to LEFT_TO_RIGHT since text direction is not inherited."]
         #[serde(
             rename = "direction",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub direction: ::std::option::Option<crate::schemas::ParagraphStyleDirection>,
-        #[doc = "The amount indentation for the paragraph on the side that corresponds to\nthe end of the text, based on the current text direction. If unset, the\nvalue is inherited from the parent."]
+        #[doc = "The amount indentation for the paragraph on the side that corresponds to the end of the text, based on the current text direction. If unset, the value is inherited from the parent."]
         #[serde(
             rename = "indentEnd",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub indent_end: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The amount of indentation for the start of the first line of the paragraph.\nIf unset, the value is inherited from the parent."]
+        #[doc = "The amount of indentation for the start of the first line of the paragraph. If unset, the value is inherited from the parent."]
         #[serde(
             rename = "indentFirstLine",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub indent_first_line: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The amount indentation for the paragraph on the side that corresponds to\nthe start of the text, based on the current text direction. If unset, the\nvalue is inherited from the parent."]
+        #[doc = "The amount indentation for the paragraph on the side that corresponds to the start of the text, based on the current text direction. If unset, the value is inherited from the parent."]
         #[serde(
             rename = "indentStart",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub indent_start: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The amount of space between lines, as a percentage of normal, where normal\nis represented as 100.0. If unset, the value is inherited from the parent."]
+        #[doc = "The amount of space between lines, as a percentage of normal, where normal is represented as 100.0. If unset, the value is inherited from the parent."]
         #[serde(
             rename = "lineSpacing",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub line_spacing: ::std::option::Option<f32>,
-        #[doc = "The amount of extra space above the paragraph. If unset, the value is\ninherited from the parent."]
+        #[doc = "The amount of extra space above the paragraph. If unset, the value is inherited from the parent."]
         #[serde(
             rename = "spaceAbove",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub space_above: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The amount of extra space below the paragraph. If unset, the value is\ninherited from the parent."]
+        #[doc = "The amount of extra space below the paragraph. If unset, the value is inherited from the parent."]
         #[serde(
             rename = "spaceBelow",
             default,
@@ -5384,11 +5501,11 @@ pub mod schemas {
         AlignmentUnspecified,
         #[doc = "The paragraph is centered."]
         Center,
-        #[doc = "The paragraph is aligned to the end of the line. Right-aligned for\nLTR text, left-aligned otherwise."]
+        #[doc = "The paragraph is aligned to the end of the line. Right-aligned for LTR text, left-aligned otherwise."]
         End,
         #[doc = "The paragraph is justified."]
         Justified,
-        #[doc = "The paragraph is aligned to the start of the line. Left-aligned for\nLTR text, right-aligned otherwise."]
+        #[doc = "The paragraph is aligned to the start of the line. Left-aligned for LTR text, right-aligned otherwise."]
         Start,
     }
     impl ParagraphStyleAlignment {
@@ -5629,14 +5746,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Placeholder {
-        #[doc = "The index of the placeholder. If the same placeholder types are present in\nthe same page, they would have different index values."]
+        #[doc = "The index of the placeholder. If the same placeholder types are present in the same page, they would have different index values."]
         #[serde(
             rename = "index",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub index: ::std::option::Option<i32>,
-        #[doc = "The object ID of this shape's parent placeholder.\nIf unset, the parent placeholder shape does not exist, so the shape does\nnot inherit properties from any other shape."]
+        #[doc = "The object ID of this shape's parent placeholder. If unset, the parent placeholder shape does not exist, so the shape does not inherit properties from any other shape."]
         #[serde(
             rename = "parentObjectId",
             default,
@@ -5811,7 +5928,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Presentation {
-        #[doc = "The layouts in the presentation. A layout is a template that determines\nhow content is arranged and styled on the slides that inherit from that\nlayout."]
+        #[doc = "The layouts in the presentation. A layout is a template that determines how content is arranged and styled on the slides that inherit from that layout."]
         #[serde(
             rename = "layouts",
             default,
@@ -5825,14 +5942,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub locale: ::std::option::Option<String>,
-        #[doc = "The slide masters in the presentation. A slide master contains all common\npage elements and the common properties for a set of layouts. They serve\nthree purposes:\n\n* Placeholder shapes on a master contain the default text styles and shape\n  properties of all placeholder shapes on pages that use that master.\n* The master page properties define the common page properties inherited by\n  its layouts.\n* Any other shapes on the master slide appear on all slides using that\n  master, regardless of their layout."]
+        #[doc = "The slide masters in the presentation. A slide master contains all common page elements and the common properties for a set of layouts. They serve three purposes: - Placeholder shapes on a master contain the default text styles and shape properties of all placeholder shapes on pages that use that master. - The master page properties define the common page properties inherited by its layouts. - Any other shapes on the master slide appear on all slides using that master, regardless of their layout."]
         #[serde(
             rename = "masters",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub masters: ::std::option::Option<Vec<crate::schemas::Page>>,
-        #[doc = "The notes master in the presentation. It serves three purposes:\n\n* Placeholder shapes on a notes master contain the default text styles and\n  shape properties of all placeholder shapes on notes pages. Specifically,\n  a `SLIDE_IMAGE` placeholder shape contains the slide thumbnail, and a\n  `BODY` placeholder shape contains the speaker notes.\n* The notes master page properties define the common page properties\n  inherited by all notes pages.\n* Any other shapes on the notes master appears on all notes pages.\n\nThe notes master is read-only."]
+        #[doc = "The notes master in the presentation. It serves three purposes: - Placeholder shapes on a notes master contain the default text styles and shape properties of all placeholder shapes on notes pages. Specifically, a `SLIDE_IMAGE` placeholder shape contains the slide thumbnail, and a `BODY` placeholder shape contains the speaker notes. - The notes master page properties define the common page properties inherited by all notes pages. - Any other shapes on the notes master appear on all notes pages. The notes master is read-only."]
         #[serde(
             rename = "notesMaster",
             default,
@@ -5853,14 +5970,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub presentation_id: ::std::option::Option<String>,
-        #[doc = "The revision ID of the presentation. Can be used in update requests\nto assert that the presentation revision hasn't changed since the last\nread operation. Only populated if the user has edit access to the\npresentation.\n\nThe format of the revision ID may change over time, so it should be treated\nopaquely. A returned revision ID is only guaranteed to be valid for 24\nhours after it has been returned and cannot be shared across users. If the\nrevision ID is unchanged between calls, then the presentation has not\nchanged. Conversely, a changed ID (for the same presentation and user)\nusually means the presentation has been updated; however, a changed ID can\nalso be due to internal factors such as ID format changes."]
+        #[doc = "The revision ID of the presentation. Can be used in update requests to assert that the presentation revision hasn't changed since the last read operation. Only populated if the user has edit access to the presentation. The format of the revision ID may change over time, so it should be treated opaquely. A returned revision ID is only guaranteed to be valid for 24 hours after it has been returned and cannot be shared across users. If the revision ID is unchanged between calls, then the presentation has not changed. Conversely, a changed ID (for the same presentation and user) usually means the presentation has been updated; however, a changed ID can also be due to internal factors such as ID format changes."]
         #[serde(
             rename = "revisionId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub revision_id: ::std::option::Option<String>,
-        #[doc = "The slides in the presentation.\nA slide inherits properties from a slide layout."]
+        #[doc = "The slides in the presentation. A slide inherits properties from a slide layout."]
         #[serde(
             rename = "slides",
             default,
@@ -5898,7 +6015,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Range {
-        #[doc = "The optional zero-based index of the end of the collection.\nRequired for `FIXED_RANGE` ranges."]
+        #[doc = "The optional zero-based index of the end of the collection. Required for `FIXED_RANGE` ranges."]
         #[serde(
             rename = "endIndex",
             default,
@@ -5912,7 +6029,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<crate::schemas::RangeType>,
-        #[doc = "The optional zero-based index of the beginning of the collection.\nRequired for `FIXED_RANGE` and `FROM_START_INDEX` ranges."]
+        #[doc = "The optional zero-based index of the beginning of the collection. Required for `FIXED_RANGE` and `FROM_START_INDEX` ranges."]
         #[serde(
             rename = "startIndex",
             default,
@@ -5932,11 +6049,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RangeType {
-        #[doc = "Sets the range to be the whole length of the collection. Both the\n`start_index` and the `end_index` must not be\nspecified."]
+        #[doc = "Sets the range to be the whole length of the collection. Both the `start_index` and the `end_index` must not be specified."]
         All,
-        #[doc = "A fixed range. Both the `start_index` and\n`end_index` must be specified."]
+        #[doc = "A fixed range. Both the `start_index` and `end_index` must be specified."]
         FixedRange,
-        #[doc = "Starts the range at `start_index` and continues until the\nend of the collection. The `end_index` must not be specified."]
+        #[doc = "Starts the range at `start_index` and continues until the end of the collection. The `end_index` must not be specified."]
         FromStartIndex,
         #[doc = "Unspecified range type. This value must not be used."]
         RangeTypeUnspecified,
@@ -6015,14 +6132,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Recolor {
-        #[doc = "The name of the recolor effect.\n\nThe name is determined from the `recolor_stops` by matching the gradient\nagainst the colors in the page's current color scheme. This property is\nread-only."]
+        #[doc = "The name of the recolor effect. The name is determined from the `recolor_stops` by matching the gradient against the colors in the page's current color scheme. This property is read-only."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<crate::schemas::RecolorName>,
-        #[doc = "The recolor effect is represented by a gradient, which is a list of color\nstops.\n\nThe colors in the gradient will replace the corresponding colors at\nthe same position in the color palette and apply to the image. This\nproperty is read-only."]
+        #[doc = "The recolor effect is represented by a gradient, which is a list of color stops. The colors in the gradient will replace the corresponding colors at the same position in the color palette and apply to the image. This property is read-only."]
         #[serde(
             rename = "recolorStops",
             default,
@@ -6042,49 +6159,49 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum RecolorName {
-        #[doc = "Custom recolor effect. Refer to `recolor_stops` for the concrete\ngradient."]
+        #[doc = "Custom recolor effect. Refer to `recolor_stops` for the concrete gradient."]
         Custom,
-        #[doc = "A recolor effect that darkens the image using the page's first available\ncolor from its color scheme."]
+        #[doc = "A recolor effect that darkens the image using the page's first available color from its color scheme."]
         Dark1,
-        #[doc = "A recolor effect that darkens the image using the page's tenth available\ncolor from its color scheme."]
+        #[doc = "A recolor effect that darkens the image using the page's tenth available color from its color scheme."]
         Dark10,
-        #[doc = "A recolor effect that darkens the image using the page's second available\ncolor from its color scheme."]
+        #[doc = "A recolor effect that darkens the image using the page's second available color from its color scheme."]
         Dark2,
-        #[doc = "A recolor effect that darkens the image using the page's third available\ncolor from its color scheme."]
+        #[doc = "A recolor effect that darkens the image using the page's third available color from its color scheme."]
         Dark3,
-        #[doc = "A recolor effect that darkens the image using the page's fourth available\ncolor from its color scheme."]
+        #[doc = "A recolor effect that darkens the image using the page's fourth available color from its color scheme."]
         Dark4,
-        #[doc = "A recolor effect that darkens the image using the page's fifth available\ncolor from its color scheme."]
+        #[doc = "A recolor effect that darkens the image using the page's fifth available color from its color scheme."]
         Dark5,
-        #[doc = "A recolor effect that darkens the image using the page's sixth available\ncolor from its color scheme."]
+        #[doc = "A recolor effect that darkens the image using the page's sixth available color from its color scheme."]
         Dark6,
-        #[doc = "A recolor effect that darkens the image using the page's seventh\navailable color from its color scheme."]
+        #[doc = "A recolor effect that darkens the image using the page's seventh available color from its color scheme."]
         Dark7,
-        #[doc = "A recolor effect that darkens the image using the page's eighth available\ncolor from its color scheme."]
+        #[doc = "A recolor effect that darkens the image using the page's eighth available color from its color scheme."]
         Dark8,
-        #[doc = "A recolor effect that darkens the image using the page's ninth available\ncolor from its color scheme."]
+        #[doc = "A recolor effect that darkens the image using the page's ninth available color from its color scheme."]
         Dark9,
         #[doc = "A recolor effect that recolors the image to grayscale."]
         Grayscale,
-        #[doc = "A recolor effect that lightens the image using the page's first available\ncolor from its color scheme."]
+        #[doc = "A recolor effect that lightens the image using the page's first available color from its color scheme."]
         Light1,
-        #[doc = "A recolor effect that lightens the image using the page's tenth available\ncolor from its color scheme."]
+        #[doc = "A recolor effect that lightens the image using the page's tenth available color from its color scheme."]
         Light10,
-        #[doc = "A recolor effect that lightens the image using the page's second\navailable color from its color scheme."]
+        #[doc = "A recolor effect that lightens the image using the page's second available color from its color scheme."]
         Light2,
-        #[doc = "A recolor effect that lightens the image using the page's third available\ncolor from its color scheme."]
+        #[doc = "A recolor effect that lightens the image using the page's third available color from its color scheme."]
         Light3,
-        #[doc = "A recolor effect that lightens the image using the page's forth available\ncolor from its color scheme."]
+        #[doc = "A recolor effect that lightens the image using the page's forth available color from its color scheme."]
         Light4,
-        #[doc = "A recolor effect that lightens the image using the page's fifth available\ncolor from its color scheme."]
+        #[doc = "A recolor effect that lightens the image using the page's fifth available color from its color scheme."]
         Light5,
-        #[doc = "A recolor effect that lightens the image using the page's sixth available\ncolor from its color scheme."]
+        #[doc = "A recolor effect that lightens the image using the page's sixth available color from its color scheme."]
         Light6,
-        #[doc = "A recolor effect that lightens the image using the page's seventh\navailable color from its color scheme."]
+        #[doc = "A recolor effect that lightens the image using the page's seventh available color from its color scheme."]
         Light7,
-        #[doc = "A recolor effect that lightens the image using the page's eighth\navailable color from its color scheme."]
+        #[doc = "A recolor effect that lightens the image using the page's eighth available color from its color scheme."]
         Light8,
-        #[doc = "A recolor effect that lightens the image using the page's ninth available\ncolor from its color scheme."]
+        #[doc = "A recolor effect that lightens the image using the page's ninth available color from its color scheme."]
         Light9,
         #[doc = "A recolor effect that recolors the image to negative grayscale."]
         Negative,
@@ -6270,14 +6387,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ReplaceAllShapesWithImageRequest {
-        #[doc = "If set, this request will replace all of the shapes that contain the\ngiven text."]
+        #[doc = "If set, this request will replace all of the shapes that contain the given text."]
         #[serde(
             rename = "containsText",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub contains_text: ::std::option::Option<crate::schemas::SubstringMatchCriteria>,
-        #[doc = "The image replace method.\n\nIf you specify both a `replace_method` and an `image_replace_method`, the\n`image_replace_method` takes precedence.\n\nIf you do not specify a value for `image_replace_method`, but specify a\nvalue for `replace_method`, then the specified `replace_method` value is\nused.\n\nIf you do not specify either, then CENTER_INSIDE is used."]
+        #[doc = "The image replace method. If you specify both a `replace_method` and an `image_replace_method`, the `image_replace_method` takes precedence. If you do not specify a value for `image_replace_method`, but specify a value for `replace_method`, then the specified `replace_method` value is used. If you do not specify either, then CENTER_INSIDE is used."]
         #[serde(
             rename = "imageReplaceMethod",
             default,
@@ -6286,21 +6403,21 @@ pub mod schemas {
         pub image_replace_method: ::std::option::Option<
             crate::schemas::ReplaceAllShapesWithImageRequestImageReplaceMethod,
         >,
-        #[doc = "The image URL.\n\nThe image is fetched once at insertion time and a copy is stored for\ndisplay inside the presentation. Images must be less than 50MB in size,\ncannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF\nformat.\n\nThe provided URL can be at most 2 kB in length. The URL itself is saved\nwith the image, and exposed via the Image.source_url field."]
+        #[doc = "The image URL. The image is fetched once at insertion time and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format. The provided URL can be at most 2 kB in length. The URL itself is saved with the image, and exposed via the Image.source_url field."]
         #[serde(
             rename = "imageUrl",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub image_url: ::std::option::Option<String>,
-        #[doc = "If non-empty, limits the matches to page elements only on the given pages.\n\nReturns a 400 bad request error if given the page object ID of a\nnotes page or a\nnotes master, or if a\npage with that object ID doesn't exist in the presentation."]
+        #[doc = "If non-empty, limits the matches to page elements only on the given pages. Returns a 400 bad request error if given the page object ID of a notes page or a notes master, or if a page with that object ID doesn't exist in the presentation."]
         #[serde(
             rename = "pageObjectIds",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub page_object_ids: ::std::option::Option<Vec<String>>,
-        #[doc = "The replace method.\n\n<b>Deprecated</b>: use `image_replace_method` instead.\n\nIf you specify both a `replace_method` and an `image_replace_method`, the\n`image_replace_method` takes precedence."]
+        #[doc = "The replace method. *Deprecated*: use `image_replace_method` instead. If you specify both a `replace_method` and an `image_replace_method`, the `image_replace_method` takes precedence."]
         #[serde(
             rename = "replaceMethod",
             default,
@@ -6321,9 +6438,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ReplaceAllShapesWithImageRequestImageReplaceMethod {
-        #[doc = "Scales and centers the image to fill the bounds of the original shape.\nThe image may be cropped in order to fill the shape. The rendered size of\nthe image will be the same as that of the original shape."]
+        #[doc = "Scales and centers the image to fill the bounds of the original shape. The image may be cropped in order to fill the shape. The rendered size of the image will be the same as that of the original shape."]
         CenterCrop,
-        #[doc = "Scales and centers the image to fit within the bounds of the original\nshape and maintains the image's aspect ratio. The rendered size of the\nimage may be smaller than the size of the shape. This is the default\nmethod when one is not specified."]
+        #[doc = "Scales and centers the image to fit within the bounds of the original shape and maintains the image's aspect ratio. The rendered size of the image may be smaller than the size of the shape. This is the default method when one is not specified."]
         CenterInside,
         #[doc = "Unspecified image replace method. This value must not be used."]
         ImageReplaceMethodUnspecified,
@@ -6380,9 +6497,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ReplaceAllShapesWithImageRequestReplaceMethod {
-        #[doc = "Scales and centers the image to fill the bounds of the original shape.\nThe image may be cropped in order to fill the shape. The rendered size of\nthe image will be the same as that of the original shape."]
+        #[doc = "Scales and centers the image to fill the bounds of the original shape. The image may be cropped in order to fill the shape. The rendered size of the image will be the same as that of the original shape."]
         CenterCrop,
-        #[doc = "Scales and centers the image to fit within the bounds of the original\nshape and maintains the image's aspect ratio. The rendered size of the\nimage may be smaller than the size of the shape. This is the default\nmethod when one is not specified."]
+        #[doc = "Scales and centers the image to fit within the bounds of the original shape and maintains the image's aspect ratio. The rendered size of the image may be smaller than the size of the shape. This is the default method when one is not specified."]
         CenterInside,
     }
     impl ReplaceAllShapesWithImageRequestReplaceMethod {
@@ -6502,14 +6619,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub chart_id: ::std::option::Option<i32>,
-        #[doc = "The criteria that the shapes must match in order to be replaced. The\nrequest will replace all of the shapes that contain the given text."]
+        #[doc = "The criteria that the shapes must match in order to be replaced. The request will replace all of the shapes that contain the given text."]
         #[serde(
             rename = "containsText",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub contains_text: ::std::option::Option<crate::schemas::SubstringMatchCriteria>,
-        #[doc = "The mode with which the chart is linked to the source spreadsheet. When\nnot specified, the chart will be an image that is not linked."]
+        #[doc = "The mode with which the chart is linked to the source spreadsheet. When not specified, the chart will be an image that is not linked."]
         #[serde(
             rename = "linkingMode",
             default,
@@ -6518,7 +6635,7 @@ pub mod schemas {
         pub linking_mode: ::std::option::Option<
             crate::schemas::ReplaceAllShapesWithSheetsChartRequestLinkingMode,
         >,
-        #[doc = "If non-empty, limits the matches to page elements only on the given pages.\n\nReturns a 400 bad request error if given the page object ID of a\nnotes page or a\nnotes master, or if a\npage with that object ID doesn't exist in the presentation."]
+        #[doc = "If non-empty, limits the matches to page elements only on the given pages. Returns a 400 bad request error if given the page object ID of a notes page or a notes master, or if a page with that object ID doesn't exist in the presentation."]
         #[serde(
             rename = "pageObjectIds",
             default,
@@ -6545,9 +6662,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ReplaceAllShapesWithSheetsChartRequestLinkingMode {
-        #[doc = "Linking the chart allows it to be updated, and other collaborators will\nsee a link to the spreadsheet."]
+        #[doc = "Linking the chart allows it to be updated, and other collaborators will see a link to the spreadsheet."]
         Linked,
-        #[doc = "The chart is not associated with the source spreadsheet and cannot be\nupdated. A chart that is not linked will be inserted as an image."]
+        #[doc = "The chart is not associated with the source spreadsheet and cannot be updated. A chart that is not linked will be inserted as an image."]
         NotLinkedImage,
     }
     impl ReplaceAllShapesWithSheetsChartRequestLinkingMode {
@@ -6673,7 +6790,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub contains_text: ::std::option::Option<crate::schemas::SubstringMatchCriteria>,
-        #[doc = "If non-empty, limits the matches to page elements only on the given pages.\n\nReturns a 400 bad request error if given the page object ID of a\nnotes master,\nor if a page with that object ID doesn't exist in the presentation."]
+        #[doc = "If non-empty, limits the matches to page elements only on the given pages. Returns a 400 bad request error if given the page object ID of a notes master, or if a page with that object ID doesn't exist in the presentation."]
         #[serde(
             rename = "pageObjectIds",
             default,
@@ -6757,7 +6874,7 @@ pub mod schemas {
         )]
         pub image_replace_method:
             ::std::option::Option<crate::schemas::ReplaceImageRequestImageReplaceMethod>,
-        #[doc = "The image URL.\n\nThe image is fetched once at insertion time and a copy is stored for\ndisplay inside the presentation. Images must be less than 50MB in size,\ncannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF\nformat.\n\nThe provided URL can be at most 2 kB in length. The URL itself is saved\nwith the image, and exposed via the Image.source_url field."]
+        #[doc = "The image URL. The image is fetched once at insertion time and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format. The provided URL can be at most 2 kB in length. The URL itself is saved with the image, and exposed via the Image.source_url field."]
         #[serde(
             rename = "url",
             default,
@@ -6777,9 +6894,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ReplaceImageRequestImageReplaceMethod {
-        #[doc = "Scales and centers the image to fill the bounds of the original shape.\nThe image may be cropped in order to fill the shape. The rendered size of\nthe image will be the same as that of the original shape."]
+        #[doc = "Scales and centers the image to fill the bounds of the original shape. The image may be cropped in order to fill the shape. The rendered size of the image will be the same as that of the original shape."]
         CenterCrop,
-        #[doc = "Scales and centers the image to fit within the bounds of the original\nshape and maintains the image's aspect ratio. The rendered size of the\nimage may be smaller than the size of the shape. This is the default\nmethod when one is not specified."]
+        #[doc = "Scales and centers the image to fit within the bounds of the original shape and maintains the image's aspect ratio. The rendered size of the image may be smaller than the size of the shape. This is the default method when one is not specified."]
         CenterInside,
         #[doc = "Unspecified image replace method. This value must not be used."]
         ImageReplaceMethodUnspecified,
@@ -7033,7 +7150,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub replace_image: ::std::option::Option<crate::schemas::ReplaceImageRequest>,
-        #[doc = "Reroutes a line such that it's connected\nat the two closest connection sites on the connected page elements."]
+        #[doc = "Reroutes a line such that it's connected at the two closest connection sites on the connected page elements."]
         #[serde(
             rename = "rerouteLine",
             default,
@@ -7077,7 +7194,7 @@ pub mod schemas {
         )]
         pub update_line_properties:
             ::std::option::Option<crate::schemas::UpdateLinePropertiesRequest>,
-        #[doc = "Updates the alt text title and/or description of a\npage element."]
+        #[doc = "Updates the alt text title and/or description of a page element."]
         #[serde(
             rename = "updatePageElementAltText",
             default,
@@ -7149,7 +7266,7 @@ pub mod schemas {
         )]
         pub update_table_cell_properties:
             ::std::option::Option<crate::schemas::UpdateTableCellPropertiesRequest>,
-        #[doc = "Updates the properties of a Table\ncolumn."]
+        #[doc = "Updates the properties of a Table column."]
         #[serde(
             rename = "updateTableColumnProperties",
             default,
@@ -7204,7 +7321,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RerouteLineRequest {
-        #[doc = "The object ID of the line to reroute.\n\nOnly a line with a category\nindicating it is a \"connector\" can be rerouted. The start and end\nconnections of the line must be on different page elements."]
+        #[doc = "The object ID of the line to reroute. Only a line with a category indicating it is a \"connector\" can be rerouted. The start and end connections of the line must be on different page elements."]
         #[serde(
             rename = "objectId",
             default,
@@ -7298,7 +7415,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub group_objects: ::std::option::Option<crate::schemas::GroupObjectsResponse>,
-        #[doc = "The result of replacing all shapes matching some criteria with an\nimage."]
+        #[doc = "The result of replacing all shapes matching some criteria with an image."]
         #[serde(
             rename = "replaceAllShapesWithImage",
             default,
@@ -7306,7 +7423,7 @@ pub mod schemas {
         )]
         pub replace_all_shapes_with_image:
             ::std::option::Option<crate::schemas::ReplaceAllShapesWithImageResponse>,
-        #[doc = "The result of replacing all shapes matching some criteria with a Google\nSheets chart."]
+        #[doc = "The result of replacing all shapes matching some criteria with a Google Sheets chart."]
         #[serde(
             rename = "replaceAllShapesWithSheetsChart",
             default,
@@ -7372,7 +7489,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Shadow {
-        #[doc = "The alignment point of the shadow, that sets the origin for translate,\nscale and skew of the shadow. This property is read-only."]
+        #[doc = "The alignment point of the shadow, that sets the origin for translate, scale and skew of the shadow. This property is read-only."]
         #[serde(
             rename = "alignment",
             default,
@@ -7386,7 +7503,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub alpha: ::std::option::Option<f32>,
-        #[doc = "The radius of the shadow blur. The larger the radius, the more diffuse the\nshadow becomes."]
+        #[doc = "The radius of the shadow blur. The larger the radius, the more diffuse the shadow becomes."]
         #[serde(
             rename = "blurRadius",
             default,
@@ -7400,7 +7517,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub color: ::std::option::Option<crate::schemas::OpaqueColor>,
-        #[doc = "The shadow property state.\n\nUpdating the shadow on a page element will implicitly update this field to\n`RENDERED`, unless another value is specified in the same request. To have\nno shadow on a page element, set this field to `NOT_RENDERED`. In this\ncase, any other shadow fields set in the same request will be ignored."]
+        #[doc = "The shadow property state. Updating the shadow on a page element will implicitly update this field to `RENDERED`, unless another value is specified in the same request. To have no shadow on a page element, set this field to `NOT_RENDERED`. In this case, any other shadow fields set in the same request will be ignored."]
         #[serde(
             rename = "propertyState",
             default,
@@ -7414,14 +7531,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<crate::schemas::ShadowType>,
-        #[doc = "Whether the shadow should rotate with the shape. This property is\nread-only."]
+        #[doc = "Whether the shadow should rotate with the shape. This property is read-only."]
         #[serde(
             rename = "rotateWithShape",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub rotate_with_shape: ::std::option::Option<bool>,
-        #[doc = "Transform that encodes the translate, scale, and skew of the shadow,\nrelative to the alignment position."]
+        #[doc = "Transform that encodes the translate, scale, and skew of the shadow, relative to the alignment position."]
         #[serde(
             rename = "transform",
             default,
@@ -7552,11 +7669,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ShadowPropertyState {
-        #[doc = "If a property's state is INHERIT, then the property state uses the value of\ncorresponding `property_state` field on the parent shape. Elements that do\nnot inherit will never have an INHERIT property state."]
+        #[doc = "If a property's state is INHERIT, then the property state uses the value of corresponding `property_state` field on the parent shape. Elements that do not inherit will never have an INHERIT property state."]
         Inherit,
-        #[doc = "If a property's state is NOT_RENDERED, then the element does not have the\ncorresponding property when rendered on a page. However, the field may\nstill be set so it can be inherited by child shapes. To remove a property\nfrom a rendered element, set its property_state to NOT_RENDERED."]
+        #[doc = "If a property's state is NOT_RENDERED, then the element does not have the corresponding property when rendered on a page. However, the field may still be set so it can be inherited by child shapes. To remove a property from a rendered element, set its property_state to NOT_RENDERED."]
         NotRendered,
-        #[doc = "If a property's state is RENDERED, then the element has the corresponding\nproperty when rendered on a page. If the element is a placeholder shape as\ndetermined by the placeholder\nfield, and it inherits from a placeholder shape, the corresponding field\nmay be unset, meaning that the property value is inherited from a parent\nplaceholder. If the element does not inherit, then the field will contain\nthe rendered value. This is the default value."]
+        #[doc = "If a property's state is RENDERED, then the element has the corresponding property when rendered on a page. If the element is a placeholder shape as determined by the placeholder field, and it inherits from a placeholder shape, the corresponding field may be unset, meaning that the property value is inherited from a parent placeholder. If the element does not inherit, then the field will contain the rendered value. This is the default value."]
         Rendered,
     }
     impl ShadowPropertyState {
@@ -7701,7 +7818,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Shape {
-        #[doc = "Placeholders are shapes that are inherit from corresponding placeholders on\nlayouts and masters.\n\nIf set, the shape is a placeholder shape and any inherited properties\ncan be resolved by looking at the parent placeholder identified by the\nPlaceholder.parent_object_id field."]
+        #[doc = "Placeholders are shapes that are inherit from corresponding placeholders on layouts and masters. If set, the shape is a placeholder shape and any inherited properties can be resolved by looking at the parent placeholder identified by the Placeholder.parent_object_id field."]
         #[serde(
             rename = "placeholder",
             default,
@@ -7776,13 +7893,13 @@ pub mod schemas {
         Corner,
         #[doc = "Cube shape. Corresponds to ECMA-376 ST_ShapeType 'cube'"]
         Cube,
-        #[doc = "Curved down arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'curvedDownArrow'"]
+        #[doc = "Curved down arrow shape. Corresponds to ECMA-376 ST_ShapeType 'curvedDownArrow'"]
         CurvedDownArrow,
-        #[doc = "Curved left arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'curvedLeftArrow'"]
+        #[doc = "Curved left arrow shape. Corresponds to ECMA-376 ST_ShapeType 'curvedLeftArrow'"]
         CurvedLeftArrow,
-        #[doc = "Curved right arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'curvedRightArrow'"]
+        #[doc = "Curved right arrow shape. Corresponds to ECMA-376 ST_ShapeType 'curvedRightArrow'"]
         CurvedRightArrow,
-        #[doc = "Curved up arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'curvedUpArrow'"]
+        #[doc = "Curved up arrow shape. Corresponds to ECMA-376 ST_ShapeType 'curvedUpArrow'"]
         CurvedUpArrow,
         #[doc = "Custom shape."]
         Custom,
@@ -7800,71 +7917,71 @@ pub mod schemas {
         DoubleWave,
         #[doc = "Down arrow shape. Corresponds to ECMA-376 ST_ShapeType 'downArrow'"]
         DownArrow,
-        #[doc = "Callout down arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'downArrowCallout'"]
+        #[doc = "Callout down arrow shape. Corresponds to ECMA-376 ST_ShapeType 'downArrowCallout'"]
         DownArrowCallout,
         #[doc = "Ellipse shape. Corresponds to ECMA-376 ST_ShapeType 'ellipse'"]
         Ellipse,
-        #[doc = "Ellipse ribbon shape. Corresponds to ECMA-376 ST_ShapeType\n'ellipseRibbon'"]
+        #[doc = "Ellipse ribbon shape. Corresponds to ECMA-376 ST_ShapeType 'ellipseRibbon'"]
         EllipseRibbon,
-        #[doc = "Ellipse ribbon 2 shape. Corresponds to ECMA-376 ST_ShapeType\n'ellipseRibbon2'"]
+        #[doc = "Ellipse ribbon 2 shape. Corresponds to ECMA-376 ST_ShapeType 'ellipseRibbon2'"]
         EllipseRibbon2,
-        #[doc = "Alternate process flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartAlternateProcess'"]
+        #[doc = "Alternate process flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartAlternateProcess'"]
         FlowChartAlternateProcess,
-        #[doc = "Collate flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartCollate'"]
+        #[doc = "Collate flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartCollate'"]
         FlowChartCollate,
-        #[doc = "Connector flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartConnector'"]
+        #[doc = "Connector flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartConnector'"]
         FlowChartConnector,
-        #[doc = "Decision flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartDecision'"]
+        #[doc = "Decision flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartDecision'"]
         FlowChartDecision,
         #[doc = "Delay flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartDelay'"]
         FlowChartDelay,
-        #[doc = "Display flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartDisplay'"]
+        #[doc = "Display flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartDisplay'"]
         FlowChartDisplay,
-        #[doc = "Document flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartDocument'"]
+        #[doc = "Document flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartDocument'"]
         FlowChartDocument,
-        #[doc = "Extract flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartExtract'"]
+        #[doc = "Extract flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartExtract'"]
         FlowChartExtract,
-        #[doc = "Input output flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartInputOutput'"]
+        #[doc = "Input output flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartInputOutput'"]
         FlowChartInputOutput,
-        #[doc = "Internal storage flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartInternalStorage'"]
+        #[doc = "Internal storage flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartInternalStorage'"]
         FlowChartInternalStorage,
-        #[doc = "Magnetic disk flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMagneticDisk'"]
+        #[doc = "Magnetic disk flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartMagneticDisk'"]
         FlowChartMagneticDisk,
-        #[doc = "Magnetic drum flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMagneticDrum'"]
+        #[doc = "Magnetic drum flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartMagneticDrum'"]
         FlowChartMagneticDrum,
-        #[doc = "Magnetic tape flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMagneticTape'"]
+        #[doc = "Magnetic tape flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartMagneticTape'"]
         FlowChartMagneticTape,
-        #[doc = "Manual input flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartManualInput'"]
+        #[doc = "Manual input flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartManualInput'"]
         FlowChartManualInput,
-        #[doc = "Manual operation flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartManualOperation'"]
+        #[doc = "Manual operation flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartManualOperation'"]
         FlowChartManualOperation,
         #[doc = "Merge flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartMerge'"]
         FlowChartMerge,
-        #[doc = "Multi-document flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartMultidocument'"]
+        #[doc = "Multi-document flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartMultidocument'"]
         FlowChartMultidocument,
-        #[doc = "Offline storage flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartOfflineStorage'"]
+        #[doc = "Offline storage flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartOfflineStorage'"]
         FlowChartOfflineStorage,
-        #[doc = "Off-page connector flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartOffpageConnector'"]
+        #[doc = "Off-page connector flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartOffpageConnector'"]
         FlowChartOffpageConnector,
-        #[doc = "Online storage flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartOnlineStorage'"]
+        #[doc = "Online storage flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartOnlineStorage'"]
         FlowChartOnlineStorage,
         #[doc = "Or flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartOr'"]
         FlowChartOr,
-        #[doc = "Predefined process flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPredefinedProcess'"]
+        #[doc = "Predefined process flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartPredefinedProcess'"]
         FlowChartPredefinedProcess,
-        #[doc = "Preparation flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPreparation'"]
+        #[doc = "Preparation flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartPreparation'"]
         FlowChartPreparation,
-        #[doc = "Process flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartProcess'"]
+        #[doc = "Process flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartProcess'"]
         FlowChartProcess,
-        #[doc = "Punched card flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPunchedCard'"]
+        #[doc = "Punched card flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartPunchedCard'"]
         FlowChartPunchedCard,
-        #[doc = "Punched tape flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartPunchedTape'"]
+        #[doc = "Punched tape flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartPunchedTape'"]
         FlowChartPunchedTape,
         #[doc = "Sort flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartSort'"]
         FlowChartSort,
-        #[doc = "Summing junction flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartSummingJunction'"]
+        #[doc = "Summing junction flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartSummingJunction'"]
         FlowChartSummingJunction,
-        #[doc = "Terminator flow shape. Corresponds to ECMA-376 ST_ShapeType\n'flowChartTerminator'"]
+        #[doc = "Terminator flow shape. Corresponds to ECMA-376 ST_ShapeType 'flowChartTerminator'"]
         FlowChartTerminator,
         #[doc = "Folded corner shape. Corresponds to ECMA-376 ST_ShapeType 'foldedCorner'"]
         FoldedCorner,
@@ -7880,29 +7997,29 @@ pub mod schemas {
         Hexagon,
         #[doc = "Home plate shape. Corresponds to ECMA-376 ST_ShapeType 'homePlate'"]
         HomePlate,
-        #[doc = "Horizontal scroll shape. Corresponds to ECMA-376 ST_ShapeType\n'horizontalScroll'"]
+        #[doc = "Horizontal scroll shape. Corresponds to ECMA-376 ST_ShapeType 'horizontalScroll'"]
         HorizontalScroll,
-        #[doc = "Irregular seal 1 shape. Corresponds to ECMA-376 ST_ShapeType\n'irregularSeal1'"]
+        #[doc = "Irregular seal 1 shape. Corresponds to ECMA-376 ST_ShapeType 'irregularSeal1'"]
         IrregularSeal1,
-        #[doc = "Irregular seal 2 shape. Corresponds to ECMA-376 ST_ShapeType\n'irregularSeal2'"]
+        #[doc = "Irregular seal 2 shape. Corresponds to ECMA-376 ST_ShapeType 'irregularSeal2'"]
         IrregularSeal2,
         #[doc = "Left arrow shape. Corresponds to ECMA-376 ST_ShapeType 'leftArrow'"]
         LeftArrow,
-        #[doc = "Callout left arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'leftArrowCallout'"]
+        #[doc = "Callout left arrow shape. Corresponds to ECMA-376 ST_ShapeType 'leftArrowCallout'"]
         LeftArrowCallout,
         #[doc = "Left brace shape. Corresponds to ECMA-376 ST_ShapeType 'leftBrace'"]
         LeftBrace,
         #[doc = "Left bracket shape. Corresponds to ECMA-376 ST_ShapeType 'leftBracket'"]
         LeftBracket,
-        #[doc = "Left right arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'leftRightArrow'"]
+        #[doc = "Left right arrow shape. Corresponds to ECMA-376 ST_ShapeType 'leftRightArrow'"]
         LeftRightArrow,
-        #[doc = "Callout left right arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'leftRightArrowCallout'"]
+        #[doc = "Callout left right arrow shape. Corresponds to ECMA-376 ST_ShapeType 'leftRightArrowCallout'"]
         LeftRightArrowCallout,
-        #[doc = "Left right up arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'leftRightUpArrow'"]
+        #[doc = "Left right up arrow shape. Corresponds to ECMA-376 ST_ShapeType 'leftRightUpArrow'"]
         LeftRightUpArrow,
         #[doc = "Left up arrow shape. Corresponds to ECMA-376 ST_ShapeType 'leftUpArrow'"]
         LeftUpArrow,
-        #[doc = "Lightning bolt shape. Corresponds to ECMA-376 ST_ShapeType\n'lightningBolt'"]
+        #[doc = "Lightning bolt shape. Corresponds to ECMA-376 ST_ShapeType 'lightningBolt'"]
         LightningBolt,
         #[doc = "Divide math shape. Corresponds to ECMA-376 ST_ShapeType 'mathDivide'"]
         MathDivide,
@@ -7920,7 +8037,7 @@ pub mod schemas {
         Moon,
         #[doc = "No smoking shape. Corresponds to ECMA-376 ST_ShapeType 'noSmoking'"]
         NoSmoking,
-        #[doc = "Notched right arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'notchedRightArrow'"]
+        #[doc = "Notched right arrow shape. Corresponds to ECMA-376 ST_ShapeType 'notchedRightArrow'"]
         NotchedRightArrow,
         #[doc = "Octagon shape. Corresponds to ECMA-376 ST_ShapeType 'octagon'"]
         Octagon,
@@ -7936,7 +8053,7 @@ pub mod schemas {
         Plus,
         #[doc = "Quad-arrow shape. Corresponds to ECMA-376 ST_ShapeType 'quadArrow'"]
         QuadArrow,
-        #[doc = "Callout quad-arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'quadArrowCallout'"]
+        #[doc = "Callout quad-arrow shape. Corresponds to ECMA-376 ST_ShapeType 'quadArrowCallout'"]
         QuadArrowCallout,
         #[doc = "Rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'rect'."]
         Rectangle,
@@ -7946,7 +8063,7 @@ pub mod schemas {
         Ribbon2,
         #[doc = "Right arrow shape. Corresponds to ECMA-376 ST_ShapeType 'rightArrow'"]
         RightArrow,
-        #[doc = "Callout right arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'rightArrowCallout'"]
+        #[doc = "Callout right arrow shape. Corresponds to ECMA-376 ST_ShapeType 'rightArrowCallout'"]
         RightArrowCallout,
         #[doc = "Right brace shape. Corresponds to ECMA-376 ST_ShapeType 'rightBrace'"]
         RightBrace,
@@ -7954,23 +8071,23 @@ pub mod schemas {
         RightBracket,
         #[doc = "Right triangle shape. Corresponds to ECMA-376 ST_ShapeType 'rtTriangle'"]
         RightTriangle,
-        #[doc = "One round corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType\n'round1Rect'"]
+        #[doc = "One round corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'round1Rect'"]
         Round1Rectangle,
-        #[doc = "Two diagonal round corner rectangle shape. Corresponds to ECMA-376\nST_ShapeType 'round2DiagRect'"]
+        #[doc = "Two diagonal round corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'round2DiagRect'"]
         Round2DiagonalRectangle,
-        #[doc = "Two same-side round corner rectangle shape. Corresponds to ECMA-376\nST_ShapeType 'round2SameRect'"]
+        #[doc = "Two same-side round corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'round2SameRect'"]
         Round2SameRectangle,
-        #[doc = "Round corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType\n'roundRect'"]
+        #[doc = "Round corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'roundRect'"]
         RoundRectangle,
         #[doc = "Smiley face shape. Corresponds to ECMA-376 ST_ShapeType 'smileyFace'"]
         SmileyFace,
-        #[doc = "One snip corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType\n'snip1Rect'"]
+        #[doc = "One snip corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'snip1Rect'"]
         Snip1Rectangle,
-        #[doc = "Two diagonal snip corner rectangle shape. Corresponds to ECMA-376\nST_ShapeType 'snip2DiagRect'"]
+        #[doc = "Two diagonal snip corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'snip2DiagRect'"]
         Snip2DiagonalRectangle,
-        #[doc = "Two same-side snip corner rectangle shape. Corresponds to ECMA-376\nST_ShapeType 'snip2SameRect'"]
+        #[doc = "Two same-side snip corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'snip2SameRect'"]
         Snip2SameRectangle,
-        #[doc = "One snip one round corner rectangle shape. Corresponds to ECMA-376\nST_ShapeType 'snipRoundRect'"]
+        #[doc = "One snip one round corner rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'snipRoundRect'"]
         SnipRoundRectangle,
         #[doc = "Speech shape."]
         Speech,
@@ -7980,9 +8097,9 @@ pub mod schemas {
         Star12,
         #[doc = "Sixteen pointed star shape. Corresponds to ECMA-376 ST_ShapeType 'star16'"]
         Star16,
-        #[doc = "Twenty four pointed star shape. Corresponds to ECMA-376 ST_ShapeType\n'star24'"]
+        #[doc = "Twenty four pointed star shape. Corresponds to ECMA-376 ST_ShapeType 'star24'"]
         Star24,
-        #[doc = "Thirty two pointed star shape. Corresponds to ECMA-376 ST_ShapeType\n'star32'"]
+        #[doc = "Thirty two pointed star shape. Corresponds to ECMA-376 ST_ShapeType 'star32'"]
         Star32,
         #[doc = "Four pointed star shape. Corresponds to ECMA-376 ST_ShapeType 'star4'"]
         Star4,
@@ -7996,7 +8113,7 @@ pub mod schemas {
         Star8,
         #[doc = "Star burst shape."]
         Starburst,
-        #[doc = "Striped right arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'stripedRightArrow'"]
+        #[doc = "Striped right arrow shape. Corresponds to ECMA-376 ST_ShapeType 'stripedRightArrow'"]
         StripedRightArrow,
         #[doc = "Sun shape. Corresponds to ECMA-376 ST_ShapeType 'sun'"]
         Sun,
@@ -8012,21 +8129,21 @@ pub mod schemas {
         TypeUnspecified,
         #[doc = "Up arrow shape. Corresponds to ECMA-376 ST_ShapeType 'upArrow'"]
         UpArrow,
-        #[doc = "Callout up arrow shape. Corresponds to ECMA-376 ST_ShapeType\n'upArrowCallout'"]
+        #[doc = "Callout up arrow shape. Corresponds to ECMA-376 ST_ShapeType 'upArrowCallout'"]
         UpArrowCallout,
         #[doc = "Up down arrow shape. Corresponds to ECMA-376 ST_ShapeType 'upDownArrow'"]
         UpDownArrow,
         #[doc = "U-turn arrow shape. Corresponds to ECMA-376 ST_ShapeType 'uturnArrow'"]
         UturnArrow,
-        #[doc = "Vertical scroll shape. Corresponds to ECMA-376 ST_ShapeType\n'verticalScroll'"]
+        #[doc = "Vertical scroll shape. Corresponds to ECMA-376 ST_ShapeType 'verticalScroll'"]
         VerticalScroll,
         #[doc = "Wave shape. Corresponds to ECMA-376 ST_ShapeType 'wave'"]
         Wave,
-        #[doc = "Callout wedge ellipse shape. Corresponds to ECMA-376 ST_ShapeType\n'wedgeEllipseCallout'"]
+        #[doc = "Callout wedge ellipse shape. Corresponds to ECMA-376 ST_ShapeType 'wedgeEllipseCallout'"]
         WedgeEllipseCallout,
-        #[doc = "Callout wedge rectangle shape. Corresponds to ECMA-376 ST_ShapeType\n'wedgeRectCallout'"]
+        #[doc = "Callout wedge rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'wedgeRectCallout'"]
         WedgeRectangleCallout,
-        #[doc = "Callout wedge round rectangle shape. Corresponds to ECMA-376 ST_ShapeType\n'wedgeRoundRectCallout'"]
+        #[doc = "Callout wedge round rectangle shape. Corresponds to ECMA-376 ST_ShapeType 'wedgeRoundRectCallout'"]
         WedgeRoundRectangleCallout,
     }
     impl ShapeShapeType {
@@ -8520,7 +8637,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ShapeBackgroundFill {
-        #[doc = "The background fill property state.\n\nUpdating the fill on a shape will implicitly update this field to\n`RENDERED`, unless another value is specified in the same request. To\nhave no fill on a shape, set this field to `NOT_RENDERED`. In this case,\nany other fill fields set in the same request will be ignored."]
+        #[doc = "The background fill property state. Updating the fill on a shape will implicitly update this field to `RENDERED`, unless another value is specified in the same request. To have no fill on a shape, set this field to `NOT_RENDERED`. In this case, any other fill fields set in the same request will be ignored."]
         #[serde(
             rename = "propertyState",
             default,
@@ -8547,11 +8664,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ShapeBackgroundFillPropertyState {
-        #[doc = "If a property's state is INHERIT, then the property state uses the value of\ncorresponding `property_state` field on the parent shape. Elements that do\nnot inherit will never have an INHERIT property state."]
+        #[doc = "If a property's state is INHERIT, then the property state uses the value of corresponding `property_state` field on the parent shape. Elements that do not inherit will never have an INHERIT property state."]
         Inherit,
-        #[doc = "If a property's state is NOT_RENDERED, then the element does not have the\ncorresponding property when rendered on a page. However, the field may\nstill be set so it can be inherited by child shapes. To remove a property\nfrom a rendered element, set its property_state to NOT_RENDERED."]
+        #[doc = "If a property's state is NOT_RENDERED, then the element does not have the corresponding property when rendered on a page. However, the field may still be set so it can be inherited by child shapes. To remove a property from a rendered element, set its property_state to NOT_RENDERED."]
         NotRendered,
-        #[doc = "If a property's state is RENDERED, then the element has the corresponding\nproperty when rendered on a page. If the element is a placeholder shape as\ndetermined by the placeholder\nfield, and it inherits from a placeholder shape, the corresponding field\nmay be unset, meaning that the property value is inherited from a parent\nplaceholder. If the element does not inherit, then the field will contain\nthe rendered value. This is the default value."]
+        #[doc = "If a property's state is RENDERED, then the element has the corresponding property when rendered on a page. If the element is a placeholder shape as determined by the placeholder field, and it inherits from a placeholder shape, the corresponding field may be unset, meaning that the property value is inherited from a parent placeholder. If the element does not inherit, then the field will contain the rendered value. This is the default value."]
         Rendered,
     }
     impl ShapeBackgroundFillPropertyState {
@@ -8625,7 +8742,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ShapeProperties {
-        #[doc = "The alignment of the content in the shape. If unspecified,\nthe alignment is inherited from a parent placeholder if it exists. If the\nshape has no parent, the default alignment matches the alignment for new\nshapes created in the Slides editor."]
+        #[doc = "The autofit properties of the shape. This property is only set for shapes that allow text."]
+        #[serde(
+            rename = "autofit",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub autofit: ::std::option::Option<crate::schemas::Autofit>,
+        #[doc = "The alignment of the content in the shape. If unspecified, the alignment is inherited from a parent placeholder if it exists. If the shape has no parent, the default alignment matches the alignment for new shapes created in the Slides editor."]
         #[serde(
             rename = "contentAlignment",
             default,
@@ -8633,28 +8757,28 @@ pub mod schemas {
         )]
         pub content_alignment:
             ::std::option::Option<crate::schemas::ShapePropertiesContentAlignment>,
-        #[doc = "The hyperlink destination of the shape. If unset, there is no link. Links\nare not inherited from parent placeholders."]
+        #[doc = "The hyperlink destination of the shape. If unset, there is no link. Links are not inherited from parent placeholders."]
         #[serde(
             rename = "link",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub link: ::std::option::Option<crate::schemas::Link>,
-        #[doc = "The outline of the shape. If unset, the outline is inherited from a\nparent placeholder if it exists. If the shape has no parent, then the\ndefault outline depends on the shape type, matching the defaults for\nnew shapes created in the Slides editor."]
+        #[doc = "The outline of the shape. If unset, the outline is inherited from a parent placeholder if it exists. If the shape has no parent, then the default outline depends on the shape type, matching the defaults for new shapes created in the Slides editor."]
         #[serde(
             rename = "outline",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub outline: ::std::option::Option<crate::schemas::Outline>,
-        #[doc = "The shadow properties of the shape. If unset, the shadow is inherited from\na parent placeholder if it exists. If the shape has no parent, then the\ndefault shadow matches the defaults for new shapes created in the Slides\neditor. This property is read-only."]
+        #[doc = "The shadow properties of the shape. If unset, the shadow is inherited from a parent placeholder if it exists. If the shape has no parent, then the default shadow matches the defaults for new shapes created in the Slides editor. This property is read-only."]
         #[serde(
             rename = "shadow",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub shadow: ::std::option::Option<crate::schemas::Shadow>,
-        #[doc = "The background fill of the shape. If unset, the background fill is\ninherited from a parent placeholder if it exists. If the shape has no\nparent, then the default background fill depends on the shape type,\nmatching the defaults for new shapes created in the Slides editor."]
+        #[doc = "The background fill of the shape. If unset, the background fill is inherited from a parent placeholder if it exists. If the shape has no parent, then the default background fill depends on the shape type, matching the defaults for new shapes created in the Slides editor."]
         #[serde(
             rename = "shapeBackgroundFill",
             default,
@@ -8674,15 +8798,15 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ShapePropertiesContentAlignment {
-        #[doc = "An alignment that aligns the content to the bottom of the content\nholder. Corresponds to ECMA-376 ST_TextAnchoringType 'b'."]
+        #[doc = "An alignment that aligns the content to the bottom of the content holder. Corresponds to ECMA-376 ST_TextAnchoringType 'b'."]
         Bottom,
-        #[doc = "An unspecified content alignment. The content alignment is inherited from\nthe parent if it exists."]
+        #[doc = "An unspecified content alignment. The content alignment is inherited from the parent if it exists."]
         ContentAlignmentUnspecified,
         #[doc = "An unsupported content alignment."]
         ContentAlignmentUnsupported,
-        #[doc = "An alignment that aligns the content to the middle of the content\nholder. Corresponds to ECMA-376 ST_TextAnchoringType 'ctr'."]
+        #[doc = "An alignment that aligns the content to the middle of the content holder. Corresponds to ECMA-376 ST_TextAnchoringType 'ctr'."]
         Middle,
-        #[doc = "An alignment that aligns the content to the top of the content holder.\nCorresponds to ECMA-376 ST_TextAnchoringType 't'."]
+        #[doc = "An alignment that aligns the content to the top of the content holder. Corresponds to ECMA-376 ST_TextAnchoringType 't'."]
         Top,
     }
     impl ShapePropertiesContentAlignment {
@@ -8774,14 +8898,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct SheetsChart {
-        #[doc = "The ID of the specific chart in the Google Sheets spreadsheet that is\nembedded."]
+        #[doc = "The ID of the specific chart in the Google Sheets spreadsheet that is embedded."]
         #[serde(
             rename = "chartId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub chart_id: ::std::option::Option<i32>,
-        #[doc = "The URL of an image of the embedded chart, with a default lifetime of 30\nminutes. This URL is tagged with the account of the requester. Anyone with\nthe URL effectively accesses the image as the original requester. Access to\nthe image may be lost if the presentation's sharing settings change."]
+        #[doc = "The URL of an image of the embedded chart, with a default lifetime of 30 minutes. This URL is tagged with the account of the requester. Anyone with the URL effectively accesses the image as the original requester. Access to the image may be lost if the presentation's sharing settings change."]
         #[serde(
             rename = "contentUrl",
             default,
@@ -8868,21 +8992,21 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct SlideProperties {
-        #[doc = "The object ID of the layout that this slide is based on. This property is\nread-only."]
+        #[doc = "The object ID of the layout that this slide is based on. This property is read-only."]
         #[serde(
             rename = "layoutObjectId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub layout_object_id: ::std::option::Option<String>,
-        #[doc = "The object ID of the master that this slide is based on. This property is\nread-only."]
+        #[doc = "The object ID of the master that this slide is based on. This property is read-only."]
         #[serde(
             rename = "masterObjectId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub master_object_id: ::std::option::Option<String>,
-        #[doc = "The notes page that this slide is associated with. It defines the visual\nappearance of a notes page when printing or exporting slides with speaker\nnotes. A notes page inherits properties from the\nnotes master.\nThe placeholder shape with type BODY on the notes page contains the speaker\nnotes for this slide. The ID of this shape is identified by the\nspeakerNotesObjectId field.\nThe notes page is read-only except for the text content and styles of the\nspeaker notes shape. This property is read-only."]
+        #[doc = "The notes page that this slide is associated with. It defines the visual appearance of a notes page when printing or exporting slides with speaker notes. A notes page inherits properties from the notes master. The placeholder shape with type BODY on the notes page contains the speaker notes for this slide. The ID of this shape is identified by the speakerNotesObjectId field. The notes page is read-only except for the text content and styles of the speaker notes shape. This property is read-only."]
         #[serde(
             rename = "notesPage",
             default,
@@ -8904,7 +9028,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct SolidFill {
-        #[doc = "The fraction of this `color` that should be applied to the pixel.\nThat is, the final pixel color is defined by the equation:\n\npixel color = alpha * (color) + (1.0 - alpha) * (background color)\n\nThis means that a value of 1.0 corresponds to a solid color, whereas\na value of 0.0 corresponds to a completely transparent color."]
+        #[doc = "The fraction of this `color` that should be applied to the pixel. That is, the final pixel color is defined by the equation: pixel color = alpha * (color) + (1.0 - alpha) * (background color) This means that a value of 1.0 corresponds to a solid color, whereas a value of 0.0 corresponds to a completely transparent color."]
         #[serde(
             rename = "alpha",
             default,
@@ -8933,7 +9057,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct StretchedPictureFill {
-        #[doc = "Reading the content_url:\n\nAn URL to a picture with a default lifetime of 30 minutes.\nThis URL is tagged with the account of the requester. Anyone with the URL\neffectively accesses the picture as the original requester. Access to the\npicture may be lost if the presentation's sharing settings change.\n\nWriting the content_url:\n\nThe picture is fetched once at insertion time and a copy is stored for\ndisplay inside the presentation. Pictures must be less than 50MB in size,\ncannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF\nformat.\n\nThe provided URL can be at most 2 kB in length."]
+        #[doc = "Reading the content_url: An URL to a picture with a default lifetime of 30 minutes. This URL is tagged with the account of the requester. Anyone with the URL effectively accesses the picture as the original requester. Access to the picture may be lost if the presentation's sharing settings change. Writing the content_url: The picture is fetched once at insertion time and a copy is stored for display inside the presentation. Pictures must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format. The provided URL can be at most 2 kB in length."]
         #[serde(
             rename = "contentUrl",
             default,
@@ -8971,7 +9095,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SubstringMatchCriteria {
-        #[doc = "Indicates whether the search should respect case:\n\n* `True`: the search is case sensitive.\n* `False`: the search is case insensitive."]
+        #[doc = "Indicates whether the search should respect case: - `True`: the search is case sensitive. - `False`: the search is case insensitive."]
         #[serde(
             rename = "matchCase",
             default,
@@ -9007,7 +9131,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub columns: ::std::option::Option<i32>,
-        #[doc = "Properties of horizontal cell borders.\n\nA table's horizontal cell borders are represented as a grid. The grid has\none more row than the number of rows in the table and the same number of\ncolumns as the table. For example, if the table is 3 x 3, its horizontal\nborders will be represented as a grid with 4 rows and 3 columns."]
+        #[doc = "Properties of horizontal cell borders. A table's horizontal cell borders are represented as a grid. The grid has one more row than the number of rows in the table and the same number of columns as the table. For example, if the table is 3 x 3, its horizontal borders will be represented as a grid with 4 rows and 3 columns."]
         #[serde(
             rename = "horizontalBorderRows",
             default,
@@ -9028,14 +9152,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub table_columns: ::std::option::Option<Vec<crate::schemas::TableColumnProperties>>,
-        #[doc = "Properties and contents of each row.\n\nCells that span multiple rows are contained in only one of these rows and\nhave a row_span greater\nthan 1."]
+        #[doc = "Properties and contents of each row. Cells that span multiple rows are contained in only one of these rows and have a row_span greater than 1."]
         #[serde(
             rename = "tableRows",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub table_rows: ::std::option::Option<Vec<crate::schemas::TableRow>>,
-        #[doc = "Properties of vertical cell borders.\n\nA table's vertical cell borders are represented as a grid. The grid has the\nsame number of rows as the table and one more column than the number of\ncolumns in the table. For example, if the table is 3 x 3, its vertical\nborders will be represented as a grid with 3 rows and 4 columns."]
+        #[doc = "Properties of vertical cell borders. A table's vertical cell borders are represented as a grid. The grid has the same number of rows as the table and one more column than the number of columns in the table. For example, if the table is 3 x 3, its vertical borders will be represented as a grid with 3 rows and 4 columns."]
         #[serde(
             rename = "verticalBorderRows",
             default,
@@ -9144,17 +9268,17 @@ pub mod schemas {
     pub enum TableBorderPropertiesDashStyle {
         #[doc = "Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dash'."]
         Dash,
-        #[doc = "Alternating dashes and dots. Corresponds to ECMA-376 ST_PresetLineDashVal\nvalue 'dashDot'."]
+        #[doc = "Alternating dashes and dots. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dashDot'."]
         DashDot,
         #[doc = "Unspecified dash style."]
         DashStyleUnspecified,
         #[doc = "Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dot'."]
         Dot,
-        #[doc = "Line with large dashes. Corresponds to ECMA-376 ST_PresetLineDashVal\nvalue 'lgDash'."]
+        #[doc = "Line with large dashes. Corresponds to ECMA-376 ST_PresetLineDashVal value 'lgDash'."]
         LongDash,
-        #[doc = "Alternating large dashes and dots. Corresponds to ECMA-376\nST_PresetLineDashVal value 'lgDashDot'."]
+        #[doc = "Alternating large dashes and dots. Corresponds to ECMA-376 ST_PresetLineDashVal value 'lgDashDot'."]
         LongDashDot,
-        #[doc = "Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'solid'.\nThis is the default dash style."]
+        #[doc = "Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'solid'. This is the default dash style."]
         Solid,
     }
     impl TableBorderPropertiesDashStyle {
@@ -9240,7 +9364,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct TableBorderRow {
-        #[doc = "Properties of each border cell. When a border's adjacent table cells are\nmerged, it is not included in the response."]
+        #[doc = "Properties of each border cell. When a border's adjacent table cells are merged, it is not included in the response."]
         #[serde(
             rename = "tableBorderCells",
             default,
@@ -9312,7 +9436,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct TableCellBackgroundFill {
-        #[doc = "The background fill property state.\n\nUpdating the fill on a table cell will implicitly update this field\nto `RENDERED`, unless another value is specified in the same request. To\nhave no fill on a table cell, set this field to `NOT_RENDERED`. In this\ncase, any other fill fields set in the same request will be ignored."]
+        #[doc = "The background fill property state. Updating the fill on a table cell will implicitly update this field to `RENDERED`, unless another value is specified in the same request. To have no fill on a table cell, set this field to `NOT_RENDERED`. In this case, any other fill fields set in the same request will be ignored."]
         #[serde(
             rename = "propertyState",
             default,
@@ -9340,11 +9464,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TableCellBackgroundFillPropertyState {
-        #[doc = "If a property's state is INHERIT, then the property state uses the value of\ncorresponding `property_state` field on the parent shape. Elements that do\nnot inherit will never have an INHERIT property state."]
+        #[doc = "If a property's state is INHERIT, then the property state uses the value of corresponding `property_state` field on the parent shape. Elements that do not inherit will never have an INHERIT property state."]
         Inherit,
-        #[doc = "If a property's state is NOT_RENDERED, then the element does not have the\ncorresponding property when rendered on a page. However, the field may\nstill be set so it can be inherited by child shapes. To remove a property\nfrom a rendered element, set its property_state to NOT_RENDERED."]
+        #[doc = "If a property's state is NOT_RENDERED, then the element does not have the corresponding property when rendered on a page. However, the field may still be set so it can be inherited by child shapes. To remove a property from a rendered element, set its property_state to NOT_RENDERED."]
         NotRendered,
-        #[doc = "If a property's state is RENDERED, then the element has the corresponding\nproperty when rendered on a page. If the element is a placeholder shape as\ndetermined by the placeholder\nfield, and it inherits from a placeholder shape, the corresponding field\nmay be unset, meaning that the property value is inherited from a parent\nplaceholder. If the element does not inherit, then the field will contain\nthe rendered value. This is the default value."]
+        #[doc = "If a property's state is RENDERED, then the element has the corresponding property when rendered on a page. If the element is a placeholder shape as determined by the placeholder field, and it inherits from a placeholder shape, the corresponding field may be unset, meaning that the property value is inherited from a parent placeholder. If the element does not inherit, then the field will contain the rendered value. This is the default value."]
         Rendered,
     }
     impl TableCellBackgroundFillPropertyState {
@@ -9456,7 +9580,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct TableCellProperties {
-        #[doc = "The alignment of the content in the table cell. The default alignment\nmatches the alignment for newly created table cells in the Slides editor."]
+        #[doc = "The alignment of the content in the table cell. The default alignment matches the alignment for newly created table cells in the Slides editor."]
         #[serde(
             rename = "contentAlignment",
             default,
@@ -9464,7 +9588,7 @@ pub mod schemas {
         )]
         pub content_alignment:
             ::std::option::Option<crate::schemas::TableCellPropertiesContentAlignment>,
-        #[doc = "The background fill of the table cell. The default fill matches the fill\nfor newly created table cells in the Slides editor."]
+        #[doc = "The background fill of the table cell. The default fill matches the fill for newly created table cells in the Slides editor."]
         #[serde(
             rename = "tableCellBackgroundFill",
             default,
@@ -9485,15 +9609,15 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TableCellPropertiesContentAlignment {
-        #[doc = "An alignment that aligns the content to the bottom of the content\nholder. Corresponds to ECMA-376 ST_TextAnchoringType 'b'."]
+        #[doc = "An alignment that aligns the content to the bottom of the content holder. Corresponds to ECMA-376 ST_TextAnchoringType 'b'."]
         Bottom,
-        #[doc = "An unspecified content alignment. The content alignment is inherited from\nthe parent if it exists."]
+        #[doc = "An unspecified content alignment. The content alignment is inherited from the parent if it exists."]
         ContentAlignmentUnspecified,
         #[doc = "An unsupported content alignment."]
         ContentAlignmentUnsupported,
-        #[doc = "An alignment that aligns the content to the middle of the content\nholder. Corresponds to ECMA-376 ST_TextAnchoringType 'ctr'."]
+        #[doc = "An alignment that aligns the content to the middle of the content holder. Corresponds to ECMA-376 ST_TextAnchoringType 'ctr'."]
         Middle,
-        #[doc = "An alignment that aligns the content to the top of the content holder.\nCorresponds to ECMA-376 ST_TextAnchoringType 't'."]
+        #[doc = "An alignment that aligns the content to the top of the content holder. Corresponds to ECMA-376 ST_TextAnchoringType 't'."]
         Top,
     }
     impl TableCellPropertiesContentAlignment {
@@ -9659,7 +9783,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub row_height: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "Properties and contents of each cell.\n\nCells that span multiple columns are represented only once with a\ncolumn_span greater\nthan 1. As a result, the length of this collection does not always match\nthe number of columns of the entire table."]
+        #[doc = "Properties and contents of each cell. Cells that span multiple columns are represented only once with a column_span greater than 1. As a result, the length of this collection does not always match the number of columns of the entire table."]
         #[serde(
             rename = "tableCells",
             default,
@@ -9688,7 +9812,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct TableRowProperties {
-        #[doc = "Minimum height of the row. The row will be rendered in the Slides editor at\na height equal to or greater than this value in order to show all the text\nin the row's cell(s)."]
+        #[doc = "Minimum height of the row. The row will be rendered in the Slides editor at a height equal to or greater than this value in order to show all the text in the row's cell(s)."]
         #[serde(
             rename = "minRowHeight",
             default,
@@ -9718,7 +9842,7 @@ pub mod schemas {
         )]
         pub lists:
             ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::List>>,
-        #[doc = "The text contents broken down into its component parts, including styling\ninformation. This property is read-only."]
+        #[doc = "The text contents broken down into its component parts, including styling information. This property is read-only."]
         #[serde(
             rename = "textElements",
             default,
@@ -9740,21 +9864,21 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct TextElement {
-        #[doc = "A TextElement representing a spot in the text that is dynamically\nreplaced with content that can change over time."]
+        #[doc = "A TextElement representing a spot in the text that is dynamically replaced with content that can change over time."]
         #[serde(
             rename = "autoText",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub auto_text: ::std::option::Option<crate::schemas::AutoText>,
-        #[doc = "The zero-based end index of this text element, exclusive, in Unicode code\nunits."]
+        #[doc = "The zero-based end index of this text element, exclusive, in Unicode code units."]
         #[serde(
             rename = "endIndex",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub end_index: ::std::option::Option<i32>,
-        #[doc = "A marker representing the beginning of a new paragraph.\n\nThe `start_index` and `end_index` of this TextElement represent the\nrange of the paragraph. Other TextElements with an index range contained\ninside this paragraph's range are considered to be part of this\nparagraph. The range of indices of two separate paragraphs will never\noverlap."]
+        #[doc = "A marker representing the beginning of a new paragraph. The `start_index` and `end_index` of this TextElement represent the range of the paragraph. Other TextElements with an index range contained inside this paragraph's range are considered to be part of this paragraph. The range of indices of two separate paragraphs will never overlap."]
         #[serde(
             rename = "paragraphMarker",
             default,
@@ -9768,7 +9892,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub start_index: ::std::option::Option<i32>,
-        #[doc = "A TextElement representing a run of text where all of the characters\nin the run have the same TextStyle.\n\nThe `start_index` and `end_index` of TextRuns will always be fully\ncontained in the index range of a single `paragraph_marker` TextElement.\nIn other words, a TextRun will never span multiple paragraphs."]
+        #[doc = "A TextElement representing a run of text where all of the characters in the run have the same TextStyle. The `start_index` and `end_index` of TextRuns will always be fully contained in the index range of a single `paragraph_marker` TextElement. In other words, a TextRun will never span multiple paragraphs."]
         #[serde(
             rename = "textRun",
             default,
@@ -9819,14 +9943,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct TextStyle {
-        #[doc = "The background color of the text. If set, the color is either opaque or\ntransparent, depending on if the `opaque_color` field in it is set."]
+        #[doc = "The background color of the text. If set, the color is either opaque or transparent, depending on if the `opaque_color` field in it is set."]
         #[serde(
             rename = "backgroundColor",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub background_color: ::std::option::Option<crate::schemas::OptionalColor>,
-        #[doc = "The text's vertical offset from its normal position.\n\nText with `SUPERSCRIPT` or `SUBSCRIPT` baseline offsets is automatically\nrendered in a smaller font size, computed based on the `font_size` field.\nThe `font_size` itself is not affected by changes in this field."]
+        #[doc = "The text's vertical offset from its normal position. Text with `SUPERSCRIPT` or `SUBSCRIPT` baseline offsets is automatically rendered in a smaller font size, computed based on the `font_size` field. The `font_size` itself is not affected by changes in this field."]
         #[serde(
             rename = "baselineOffset",
             default,
@@ -9840,21 +9964,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bold: ::std::option::Option<bool>,
-        #[doc = "The font family of the text.\n\nThe font family can be any font from the Font menu in Slides or from\n[Google Fonts] (https://fonts.google.com/). If the font name is\nunrecognized, the text is rendered in `Arial`.\n\nSome fonts can affect the weight of the text. If an update request\nspecifies values for both `font_family` and `bold`, the explicitly-set\n`bold` value is used."]
+        #[doc = "The font family of the text. The font family can be any font from the Font menu in Slides or from [Google Fonts] (https://fonts.google.com/). If the font name is unrecognized, the text is rendered in `Arial`. Some fonts can affect the weight of the text. If an update request specifies values for both `font_family` and `bold`, the explicitly-set `bold` value is used."]
         #[serde(
             rename = "fontFamily",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub font_family: ::std::option::Option<String>,
-        #[doc = "The size of the text's font. When read, the `font_size` will specified in\npoints."]
+        #[doc = "The size of the text's font. When read, the `font_size` will specified in points."]
         #[serde(
             rename = "fontSize",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub font_size: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The color of the text itself. If set, the color is either opaque or\ntransparent, depending on if the `opaque_color` field in it is set."]
+        #[doc = "The color of the text itself. If set, the color is either opaque or transparent, depending on if the `opaque_color` field in it is set."]
         #[serde(
             rename = "foregroundColor",
             default,
@@ -9868,7 +9992,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub italic: ::std::option::Option<bool>,
-        #[doc = "The hyperlink destination of the text. If unset, there is no link. Links\nare not inherited from parent text.\n\nChanging the link in an update request causes some other changes to the\ntext style of the range:\n\n* When setting a link, the text foreground color will be set to\n  ThemeColorType.HYPERLINK and the text will\n  be underlined. If these fields are modified in the same\n  request, those values will be used instead of the link defaults.\n* Setting a link on a text range that overlaps with an existing link will\n  also update the existing link to point to the new URL.\n* Links are not settable on newline characters. As a result, setting a link\n  on a text range that crosses a paragraph boundary, such as `\"ABC\\n123\"`,\n  will separate the newline character(s) into their own text runs. The\n  link will be applied separately to the runs before and after the newline.\n* Removing a link will update the text style of the range to match the\n  style of the preceding text (or the default text styles if the preceding\n  text is another link) unless different styles are being set in the same\n  request."]
+        #[doc = "The hyperlink destination of the text. If unset, there is no link. Links are not inherited from parent text. Changing the link in an update request causes some other changes to the text style of the range: * When setting a link, the text foreground color will be set to ThemeColorType.HYPERLINK and the text will be underlined. If these fields are modified in the same request, those values will be used instead of the link defaults. * Setting a link on a text range that overlaps with an existing link will also update the existing link to point to the new URL. * Links are not settable on newline characters. As a result, setting a link on a text range that crosses a paragraph boundary, such as `\"ABC\\n123\"`, will separate the newline character(s) into their own text runs. The link will be applied separately to the runs before and after the newline. * Removing a link will update the text style of the range to match the style of the preceding text (or the default text styles if the preceding text is another link) unless different styles are being set in the same request."]
         #[serde(
             rename = "link",
             default,
@@ -9896,7 +10020,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub underline: ::std::option::Option<bool>,
-        #[doc = "The font family and rendered weight of the text.\n\nThis field is an extension of `font_family` meant to support explicit font\nweights without breaking backwards compatibility. As such, when reading the\nstyle of a range of text, the value of `weighted_font_family#font_family`\nwill always be equal to that of `font_family`. However, when writing, if\nboth fields are included in the field mask (either explicitly or through\nthe wildcard `\"*\"`), their values are reconciled as follows:\n\n* If `font_family` is set and `weighted_font_family` is not, the value of\n  `font_family` is applied with weight `400` (\"normal\").\n* If both fields are set, the value of `font_family` must match that of\n  `weighted_font_family#font_family`. If so, the font family and weight of\n  `weighted_font_family` is applied. Otherwise, a 400 bad request error is\n  returned.\n* If `weighted_font_family` is set and `font_family` is not, the font\n  family and weight of `weighted_font_family` is applied.\n* If neither field is set, the font family and weight of the text inherit\n  from the parent. Note that these properties cannot inherit separately\n  from each other.\n\nIf an update request specifies values for both `weighted_font_family` and\n`bold`, the `weighted_font_family` is applied first, then `bold`.\n\nIf `weighted_font_family#weight` is not set, it defaults to `400`.\n\nIf `weighted_font_family` is set, then `weighted_font_family#font_family`\nmust also be set with a non-empty value. Otherwise, a 400 bad request error\nis returned."]
+        #[doc = "The font family and rendered weight of the text. This field is an extension of `font_family` meant to support explicit font weights without breaking backwards compatibility. As such, when reading the style of a range of text, the value of `weighted_font_family#font_family` will always be equal to that of `font_family`. However, when writing, if both fields are included in the field mask (either explicitly or through the wildcard `\"*\"`), their values are reconciled as follows: * If `font_family` is set and `weighted_font_family` is not, the value of `font_family` is applied with weight `400` (\"normal\"). * If both fields are set, the value of `font_family` must match that of `weighted_font_family#font_family`. If so, the font family and weight of `weighted_font_family` is applied. Otherwise, a 400 bad request error is returned. * If `weighted_font_family` is set and `font_family` is not, the font family and weight of `weighted_font_family` is applied. * If neither field is set, the font family and weight of the text inherit from the parent. Note that these properties cannot inherit separately from each other. If an update request specifies values for both `weighted_font_family` and `bold`, the `weighted_font_family` is applied first, then `bold`. If `weighted_font_family#weight` is not set, it defaults to `400`. If `weighted_font_family` is set, then `weighted_font_family#font_family` must also be set with a non-empty value. Otherwise, a 400 bad request error is returned."]
         #[serde(
             rename = "weightedFontFamily",
             default,
@@ -10183,7 +10307,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Thumbnail {
-        #[doc = "The content URL of the thumbnail image.\n\nThe URL to the image has a default lifetime of 30 minutes.\nThis URL is tagged with the account of the requester. Anyone with the URL\neffectively accesses the image as the original requester. Access to the\nimage may be lost if the presentation's sharing settings change.\nThe mime type of the thumbnail image is the same as specified in the\n`GetPageThumbnailRequest`."]
+        #[doc = "The content URL of the thumbnail image. The URL to the image has a default lifetime of 30 minutes. This URL is tagged with the account of the requester. Anyone with the URL effectively accesses the image as the original requester. Access to the image may be lost if the presentation's sharing settings change. The mime type of the thumbnail image is the same as specified in the `GetPageThumbnailRequest`."]
         #[serde(
             rename = "contentUrl",
             default,
@@ -10228,7 +10352,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UngroupObjectsRequest {
-        #[doc = "The object IDs of the objects to ungroup.\n\nOnly groups that are not inside other\ngroups can be ungrouped. All the groups\nshould be on the same page. The group itself is deleted. The visual sizes\nand positions of all the children are preserved."]
+        #[doc = "The object IDs of the objects to ungroup. Only groups that are not inside other groups can be ungrouped. All the groups should be on the same page. The group itself is deleted. The visual sizes and positions of all the children are preserved."]
         #[serde(
             rename = "objectIds",
             default,
@@ -10266,7 +10390,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub object_id: ::std::option::Option<String>,
-        #[doc = "The table range specifying which cells of the table to unmerge.\n\nAll merged cells in this range will be unmerged, and cells that are already\nunmerged will not be affected. If the range has no merged cells, the\nrequest will do nothing. If there is text in any of the merged cells, the\ntext will remain in the upper-left (\"head\") cell of the resulting block of\nunmerged cells."]
+        #[doc = "The table range specifying which cells of the table to unmerge. All merged cells in this range will be unmerged, and cells that are already unmerged will not be affected. If the range has no merged cells, the request will do nothing. If there is text in any of the merged cells, the text will remain in the upper-left (\"head\") cell of the resulting block of unmerged cells."]
         #[serde(
             rename = "tableRange",
             default,
@@ -10288,7 +10412,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct UpdateImagePropertiesRequest {
-        #[doc = "The fields that should be updated.\n\nAt least one field must be specified. The root `imageProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the image outline color, set `fields` to\n`\"outline.outlineFill.solidFill.color\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset."]
+        #[doc = "The fields that should be updated. At least one field must be specified. The root `imageProperties` is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field. For example to update the image outline color, set `fields` to `\"outline.outlineFill.solidFill.color\"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset."]
         #[serde(
             rename = "fields",
             default,
@@ -10333,7 +10457,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UpdateLineCategoryRequest {
-        #[doc = "The line category to update to.\n\nThe exact line type is determined based\non the category to update to and how it's routed to connect to other page\nelements."]
+        #[doc = "The line category to update to. The exact line type is determined based on the category to update to and how it's routed to connect to other page elements."]
         #[serde(
             rename = "lineCategory",
             default,
@@ -10341,7 +10465,7 @@ pub mod schemas {
         )]
         pub line_category:
             ::std::option::Option<crate::schemas::UpdateLineCategoryRequestLineCategory>,
-        #[doc = "The object ID of the line the update is applied to.\n\nOnly a line with a category\nindicating it is a \"connector\" can be updated.\n\nThe line may be rerouted after updating its category."]
+        #[doc = "The object ID of the line the update is applied to. Only a line with a category indicating it is a \"connector\" can be updated. The line may be rerouted after updating its category."]
         #[serde(
             rename = "objectId",
             default,
@@ -10450,7 +10574,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct UpdateLinePropertiesRequest {
-        #[doc = "The fields that should be updated.\n\nAt least one field must be specified. The root `lineProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the line solid fill color, set `fields` to\n`\"lineFill.solidFill.color\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset."]
+        #[doc = "The fields that should be updated. At least one field must be specified. The root `lineProperties` is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field. For example to update the line solid fill color, set `fields` to `\"lineFill.solidFill.color\"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset."]
         #[serde(
             rename = "fields",
             default,
@@ -10495,7 +10619,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UpdatePageElementAltTextRequest {
-        #[doc = "The updated alt text description of the page element. If unset the existing\nvalue will be maintained. The description is exposed to screen readers\nand other accessibility interfaces. Only use human readable values related\nto the content of the page element."]
+        #[doc = "The updated alt text description of the page element. If unset the existing value will be maintained. The description is exposed to screen readers and other accessibility interfaces. Only use human readable values related to the content of the page element."]
         #[serde(
             rename = "description",
             default,
@@ -10509,7 +10633,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub object_id: ::std::option::Option<String>,
-        #[doc = "The updated alt text title of the page element. If unset the\nexisting value will be maintained. The title is exposed to screen readers\nand other accessibility interfaces. Only use human readable values related\nto the content of the page element."]
+        #[doc = "The updated alt text title of the page element. If unset the existing value will be maintained. The title is exposed to screen readers and other accessibility interfaces. Only use human readable values related to the content of the page element."]
         #[serde(
             rename = "title",
             default,
@@ -10570,7 +10694,7 @@ pub mod schemas {
         Absolute,
         #[doc = "Unspecified mode."]
         ApplyModeUnspecified,
-        #[doc = "Applies the new AffineTransform matrix to the existing one, and\nreplaces the existing one with the resulting concatenation."]
+        #[doc = "Applies the new AffineTransform matrix to the existing one, and replaces the existing one with the resulting concatenation."]
         Relative,
     }
     impl UpdatePageElementTransformRequestApplyMode {
@@ -10661,7 +10785,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UpdatePageElementsZOrderRequest {
-        #[doc = "The Z-order operation to apply on the page elements.\n\nWhen applying the operation on multiple page elements, the relative\nZ-orders within these page elements before the operation is maintained."]
+        #[doc = "The Z-order operation to apply on the page elements. When applying the operation on multiple page elements, the relative Z-orders within these page elements before the operation is maintained."]
         #[serde(
             rename = "operation",
             default,
@@ -10669,7 +10793,7 @@ pub mod schemas {
         )]
         pub operation:
             ::std::option::Option<crate::schemas::UpdatePageElementsZOrderRequestOperation>,
-        #[doc = "The object IDs of the page elements to update.\n\nAll the page elements must be on the same page and must not be grouped."]
+        #[doc = "The object IDs of the page elements to update. All the page elements must be on the same page and must not be grouped."]
         #[serde(
             rename = "pageElementObjectIds",
             default,
@@ -10689,11 +10813,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum UpdatePageElementsZOrderRequestOperation {
-        #[doc = "Brings the page elements forward on the page by one element relative to the\nforwardmost one in the specified page elements."]
+        #[doc = "Brings the page elements forward on the page by one element relative to the forwardmost one in the specified page elements."]
         BringForward,
         #[doc = "Brings the page elements to the front of the page."]
         BringToFront,
-        #[doc = "Sends the page elements backward on the page by one element relative to the\nfurthest behind one in the specified page elements."]
+        #[doc = "Sends the page elements backward on the page by one element relative to the furthest behind one in the specified page elements."]
         SendBackward,
         #[doc = "Sends the page elements to the back of the page."]
         SendToBack,
@@ -10785,7 +10909,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct UpdatePagePropertiesRequest {
-        #[doc = "The fields that should be updated.\n\nAt least one field must be specified. The root `pageProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the page background solid fill color, set `fields`\nto `\"pageBackgroundFill.solidFill.color\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset."]
+        #[doc = "The fields that should be updated. At least one field must be specified. The root `pageProperties` is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field. For example to update the page background solid fill color, set `fields` to `\"pageBackgroundFill.solidFill.color\"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset."]
         #[serde(
             rename = "fields",
             default,
@@ -10821,14 +10945,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct UpdateParagraphStyleRequest {
-        #[doc = "The location of the cell in the table containing the paragraph(s) to\nstyle. If `object_id` refers to a table, `cell_location` must have a value.\nOtherwise, it must not."]
+        #[doc = "The location of the cell in the table containing the paragraph(s) to style. If `object_id` refers to a table, `cell_location` must have a value. Otherwise, it must not."]
         #[serde(
             rename = "cellLocation",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cell_location: ::std::option::Option<crate::schemas::TableCellLocation>,
-        #[doc = "The fields that should be updated.\n\nAt least one field must be specified. The root `style` is implied and\nshould not be specified. A single `\"*\"` can be used as short-hand for\nlisting every field.\n\nFor example, to update the paragraph alignment, set `fields` to\n`\"alignment\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset."]
+        #[doc = "The fields that should be updated. At least one field must be specified. The root `style` is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field. For example, to update the paragraph alignment, set `fields` to `\"alignment\"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset."]
         #[serde(
             rename = "fields",
             default,
@@ -10871,7 +10995,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct UpdateShapePropertiesRequest {
-        #[doc = "The fields that should be updated.\n\nAt least one field must be specified. The root `shapeProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the shape background solid fill color, set `fields`\nto `\"shapeBackgroundFill.solidFill.color\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset."]
+        #[doc = "The fields that should be updated. At least one field must be specified. The root `shapeProperties` is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field. For example to update the shape background solid fill color, set `fields` to `\"shapeBackgroundFill.solidFill.color\"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset."]
         #[serde(
             rename = "fields",
             default,
@@ -10916,14 +11040,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UpdateSlidesPositionRequest {
-        #[doc = "The index where the slides should be inserted, based on the slide\narrangement before the move takes place. Must be between zero and the\nnumber of slides in the presentation, inclusive."]
+        #[doc = "The index where the slides should be inserted, based on the slide arrangement before the move takes place. Must be between zero and the number of slides in the presentation, inclusive."]
         #[serde(
             rename = "insertionIndex",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub insertion_index: ::std::option::Option<i32>,
-        #[doc = "The IDs of the slides in the presentation that should be moved.\nThe slides in this list must be in existing presentation order, without\nduplicates."]
+        #[doc = "The IDs of the slides in the presentation that should be moved. The slides in this list must be in existing presentation order, without duplicates."]
         #[serde(
             rename = "slideObjectIds",
             default,
@@ -10945,7 +11069,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct UpdateTableBorderPropertiesRequest {
-        #[doc = "The border position in the table range the updates should apply to. If a\nborder position is not specified, the updates will apply to all borders in\nthe table range."]
+        #[doc = "The border position in the table range the updates should apply to. If a border position is not specified, the updates will apply to all borders in the table range."]
         #[serde(
             rename = "borderPosition",
             default,
@@ -10953,7 +11077,7 @@ pub mod schemas {
         )]
         pub border_position:
             ::std::option::Option<crate::schemas::UpdateTableBorderPropertiesRequestBorderPosition>,
-        #[doc = "The fields that should be updated.\n\nAt least one field must be specified. The root `tableBorderProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the table border solid fill color, set\n`fields` to `\"tableBorderFill.solidFill.color\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset."]
+        #[doc = "The fields that should be updated. At least one field must be specified. The root `tableBorderProperties` is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field. For example to update the table border solid fill color, set `fields` to `\"tableBorderFill.solidFill.color\"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset."]
         #[serde(
             rename = "fields",
             default,
@@ -10974,7 +11098,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub table_border_properties: ::std::option::Option<crate::schemas::TableBorderProperties>,
-        #[doc = "The table range representing the subset of the table to which the updates\nare applied. If a table range is not specified, the updates will apply to\nthe entire table."]
+        #[doc = "The table range representing the subset of the table to which the updates are applied. If a table range is not specified, the updates will apply to the entire table."]
         #[serde(
             rename = "tableRange",
             default,
@@ -11110,7 +11234,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct UpdateTableCellPropertiesRequest {
-        #[doc = "The fields that should be updated.\n\nAt least one field must be specified. The root `tableCellProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the table cell background solid fill color, set\n`fields` to `\"tableCellBackgroundFill.solidFill.color\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset."]
+        #[doc = "The fields that should be updated. At least one field must be specified. The root `tableCellProperties` is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field. For example to update the table cell background solid fill color, set `fields` to `\"tableCellBackgroundFill.solidFill.color\"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset."]
         #[serde(
             rename = "fields",
             default,
@@ -11131,7 +11255,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub table_cell_properties: ::std::option::Option<crate::schemas::TableCellProperties>,
-        #[doc = "The table range representing the subset of the table to which the updates\nare applied. If a table range is not specified, the updates will apply to\nthe entire table."]
+        #[doc = "The table range representing the subset of the table to which the updates are applied. If a table range is not specified, the updates will apply to the entire table."]
         #[serde(
             rename = "tableRange",
             default,
@@ -11153,14 +11277,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct UpdateTableColumnPropertiesRequest {
-        #[doc = "The list of zero-based indices specifying which columns to update. If no\nindices are provided, all columns in the table will be updated."]
+        #[doc = "The list of zero-based indices specifying which columns to update. If no indices are provided, all columns in the table will be updated."]
         #[serde(
             rename = "columnIndices",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub column_indices: ::std::option::Option<Vec<i32>>,
-        #[doc = "The fields that should be updated.\n\nAt least one field must be specified. The root `tableColumnProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the column width, set `fields` to `\"column_width\"`.\n\nIf '\"column_width\"' is included in the field mask but the property is left\nunset, the column width will default to 406,400 EMU (32 points)."]
+        #[doc = "The fields that should be updated. At least one field must be specified. The root `tableColumnProperties` is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field. For example to update the column width, set `fields` to `\"column_width\"`. If '\"column_width\"' is included in the field mask but the property is left unset, the column width will default to 406,400 EMU (32 points)."]
         #[serde(
             rename = "fields",
             default,
@@ -11174,7 +11298,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub object_id: ::std::option::Option<String>,
-        #[doc = "The table column properties to update.\n\nIf the value of `table_column_properties#column_width` in the request is\nless than 406,400 EMU (32 points), a 400 bad request error is returned."]
+        #[doc = "The table column properties to update. If the value of `table_column_properties#column_width` in the request is less than 406,400 EMU (32 points), a 400 bad request error is returned."]
         #[serde(
             rename = "tableColumnProperties",
             default,
@@ -11196,7 +11320,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct UpdateTableRowPropertiesRequest {
-        #[doc = "The fields that should be updated.\n\nAt least one field must be specified. The root `tableRowProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the minimum row height, set `fields` to\n`\"min_row_height\"`.\n\nIf '\"min_row_height\"' is included in the field mask but the property is\nleft unset, the minimum row height will default to 0."]
+        #[doc = "The fields that should be updated. At least one field must be specified. The root `tableRowProperties` is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field. For example to update the minimum row height, set `fields` to `\"min_row_height\"`. If '\"min_row_height\"' is included in the field mask but the property is left unset, the minimum row height will default to 0."]
         #[serde(
             rename = "fields",
             default,
@@ -11210,7 +11334,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub object_id: ::std::option::Option<String>,
-        #[doc = "The list of zero-based indices specifying which rows to update. If no\nindices are provided, all rows in the table will be updated."]
+        #[doc = "The list of zero-based indices specifying which rows to update. If no indices are provided, all rows in the table will be updated."]
         #[serde(
             rename = "rowIndices",
             default,
@@ -11239,14 +11363,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct UpdateTextStyleRequest {
-        #[doc = "The location of the cell in the table containing the text to style. If\n`object_id` refers to a table, `cell_location` must have a value.\nOtherwise, it must not."]
+        #[doc = "The location of the cell in the table containing the text to style. If `object_id` refers to a table, `cell_location` must have a value. Otherwise, it must not."]
         #[serde(
             rename = "cellLocation",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cell_location: ::std::option::Option<crate::schemas::TableCellLocation>,
-        #[doc = "The fields that should be updated.\n\nAt least one field must be specified. The root `style` is implied and\nshould not be specified. A single `\"*\"` can be used as short-hand for\nlisting every field.\n\nFor example, to update the text style to bold, set `fields` to `\"bold\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset."]
+        #[doc = "The fields that should be updated. At least one field must be specified. The root `style` is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field. For example, to update the text style to bold, set `fields` to `\"bold\"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset."]
         #[serde(
             rename = "fields",
             default,
@@ -11260,14 +11384,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub object_id: ::std::option::Option<String>,
-        #[doc = "The style(s) to set on the text.\n\nIf the value for a particular style matches that of the parent, that style\nwill be set to inherit.\n\nCertain text style changes may cause other changes meant to mirror the\nbehavior of the Slides editor. See the documentation of\nTextStyle for more information."]
+        #[doc = "The style(s) to set on the text. If the value for a particular style matches that of the parent, that style will be set to inherit. Certain text style changes may cause other changes meant to mirror the behavior of the Slides editor. See the documentation of TextStyle for more information."]
         #[serde(
             rename = "style",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub style: ::std::option::Option<crate::schemas::TextStyle>,
-        #[doc = "The range of text to style.\n\nThe range may be extended to include adjacent newlines.\n\nIf the range fully contains a paragraph belonging to a list, the\nparagraph's bullet is also updated with the matching text style."]
+        #[doc = "The range of text to style. The range may be extended to include adjacent newlines. If the range fully contains a paragraph belonging to a list, the paragraph's bullet is also updated with the matching text style."]
         #[serde(
             rename = "textRange",
             default,
@@ -11289,7 +11413,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct UpdateVideoPropertiesRequest {
-        #[doc = "The fields that should be updated.\n\nAt least one field must be specified. The root `videoProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the video outline color, set `fields` to\n`\"outline.outlineFill.solidFill.color\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset."]
+        #[doc = "The fields that should be updated. At least one field must be specified. The root `videoProperties` is implied and should not be specified. A single `\"*\"` can be used as short-hand for listing every field. For example to update the video outline color, set `fields` to `\"outline.outlineFill.solidFill.color\"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset."]
         #[serde(
             rename = "fields",
             default,
@@ -11339,7 +11463,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub source: ::std::option::Option<crate::schemas::VideoSource>,
-        #[doc = "An URL to a video. The URL is valid as long as the source video exists and\nsharing settings do not change."]
+        #[doc = "An URL to a video. The URL is valid as long as the source video exists and sharing settings do not change."]
         #[serde(
             rename = "url",
             default,
@@ -11444,14 +11568,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct VideoProperties {
-        #[doc = "Whether to enable video autoplay when the page is displayed in present\nmode. Defaults to false."]
+        #[doc = "Whether to enable video autoplay when the page is displayed in present mode. Defaults to false."]
         #[serde(
             rename = "autoPlay",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub auto_play: ::std::option::Option<bool>,
-        #[doc = "The time at which to end playback, measured in seconds from the beginning\nof the video.\nIf set, the end time should be after the start time.\nIf not set or if you set this to a value that exceeds the video's length,\nthe video will be played until its end."]
+        #[doc = "The time at which to end playback, measured in seconds from the beginning of the video. If set, the end time should be after the start time. If not set or if you set this to a value that exceeds the video's length, the video will be played until its end."]
         #[serde(
             rename = "end",
             default,
@@ -11465,14 +11589,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mute: ::std::option::Option<bool>,
-        #[doc = "The outline of the video. The default outline matches the defaults for new\nvideos created in the Slides editor."]
+        #[doc = "The outline of the video. The default outline matches the defaults for new videos created in the Slides editor."]
         #[serde(
             rename = "outline",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub outline: ::std::option::Option<crate::schemas::Outline>,
-        #[doc = "The time at which to start playback, measured in seconds from the beginning\nof the video.\nIf set, the start time should be before the end time.\nIf you set this to a value that exceeds the video's length in seconds, the\nvideo will be played from the last second.\nIf not set, the video will be played from the beginning."]
+        #[doc = "The time at which to start playback, measured in seconds from the beginning of the video. If set, the start time should be before the end time. If you set this to a value that exceeds the video's length in seconds, the video will be played from the last second. If not set, the video will be played from the beginning."]
         #[serde(
             rename = "start",
             default,
@@ -11503,14 +11627,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct WeightedFontFamily {
-        #[doc = "The font family of the text.\n\nThe font family can be any font from the Font menu in Slides or from\n[Google Fonts] (https://fonts.google.com/). If the font name is\nunrecognized, the text is rendered in `Arial`."]
+        #[doc = "The font family of the text. The font family can be any font from the Font menu in Slides or from [Google Fonts] (https://fonts.google.com/). If the font name is unrecognized, the text is rendered in `Arial`."]
         #[serde(
             rename = "fontFamily",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub font_family: ::std::option::Option<String>,
-        #[doc = "The rendered weight of the text. This field can have any value that is a\nmultiple of `100` between `100` and `900`, inclusive. This range\ncorresponds to the numerical values described in the CSS 2.1\nSpecification,\n[section 15.6](https://www.w3.org/TR/CSS21/fonts.html#font-boldness),\nwith non-numerical values disallowed. Weights greater than or equal to\n`700` are considered bold, and weights less than `700`are not bold. The\ndefault value is `400` (\"normal\")."]
+        #[doc = "The rendered weight of the text. This field can have any value that is a multiple of `100` between `100` and `900`, inclusive. This range corresponds to the numerical values described in the CSS 2.1 Specification, [section 15.6](https://www.w3.org/TR/CSS21/fonts.html#font-boldness), with non-numerical values disallowed. Weights greater than or equal to `700` are considered bold, and weights less than `700`are not bold. The default value is `400` (\"normal\")."]
         #[serde(
             rename = "weight",
             default,
@@ -11572,7 +11696,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct WriteControl {
-        #[doc = "The revision ID of the presentation required for the write request. If\nspecified and the `required_revision_id` doesn't exactly match the\npresentation's current `revision_id`, the request will not be processed and\nwill return a 400 bad request error."]
+        #[doc = "The revision ID of the presentation required for the write request. If specified and the `required_revision_id` doesn't exactly match the presentation's current `revision_id`, the request will not be processed and will return a 400 bad request error."]
         #[serde(
             rename = "requiredRevisionId",
             default,
@@ -11788,7 +11912,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Applies one or more updates to the presentation.\n\nEach request is validated before\nbeing applied. If any request is not valid, then the entire request will\nfail and nothing will be applied.\n\nSome requests have replies to\ngive you some information about how they are applied. Other requests do\nnot need to return information; these each return an empty reply.\nThe order of replies matches that of the requests.\n\nFor example, suppose you call batchUpdate with four updates, and only the\nthird one returns information. The response would have two empty replies:\nthe reply to the third request, and another empty reply, in that order.\n\nBecause other users may be editing the presentation, the presentation\nmight not exactly reflect your changes: your changes may\nbe altered with respect to collaborator changes. If there are no\ncollaborators, the presentation should reflect your changes. In any case,\nthe updates in your request are guaranteed to be applied together\natomically."]
+            #[doc = "Applies one or more updates to the presentation. Each request is validated before being applied. If any request is not valid, then the entire request will fail and nothing will be applied. Some requests have replies to give you some information about how they are applied. Other requests do not need to return information; these each return an empty reply. The order of replies matches that of the requests. For example, suppose you call batchUpdate with four updates, and only the third one returns information. The response would have two empty replies: the reply to the third request, and another empty reply, in that order. Because other users may be editing the presentation, the presentation might not exactly reflect your changes: your changes may be altered with respect to collaborator changes. If there are no collaborators, the presentation should reflect your changes. In any case, the updates in your request are guaranteed to be applied together atomically."]
             pub fn batch_update(
                 &self,
                 request: crate::schemas::BatchUpdatePresentationRequest,
@@ -11812,7 +11936,7 @@ pub mod resources {
                     presentation_id: presentation_id.into(),
                 }
             }
-            #[doc = "Creates a blank presentation using the title given in the request. If a\n`presentationId` is provided, it is used as the ID of the new presentation.\nOtherwise, a new ID is generated. Other fields in the request, including\nany provided content, are ignored.\nReturns the created presentation."]
+            #[doc = "Creates a blank presentation using the title given in the request. If a `presentationId` is provided, it is used as the ID of the new presentation. Otherwise, a new ID is generated. Other fields in the request, including any provided content, are ignored. Returns the created presentation."]
             pub fn create(&self, request: crate::schemas::Presentation) -> CreateRequestBuilder {
                 CreateRequestBuilder {
                     reqwest: &self.reqwest,
@@ -11997,19 +12121,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12147,19 +12271,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12303,19 +12427,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12327,6 +12451,7 @@ pub mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum GetThumbnailThumbnailPropertiesMimeType {
+                    #[doc = "The default mime type."]
                     Png,
                 }
                 impl GetThumbnailThumbnailPropertiesMimeType {
@@ -12395,9 +12520,13 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum GetThumbnailThumbnailPropertiesThumbnailSize {
+                    #[doc = "The thumbnail image width of 1600px."]
                     Large,
+                    #[doc = "The thumbnail image width of 800px."]
                     Medium,
+                    #[doc = "The thumbnail image width of 200px."]
                     Small,
+                    #[doc = "The default thumbnail image size. The unspecified thumbnail size implies that the server chooses the size of the image in a way that might vary in the future."]
                     ThumbnailSizeUnspecified,
                 }
                 impl GetThumbnailThumbnailPropertiesThumbnailSize {
@@ -12484,7 +12613,7 @@ pub mod resources {
                         page_object_id: page_object_id.into(),
                     }
                 }
-                #[doc = "Generates a thumbnail of the latest version of the specified page in the\npresentation and returns a URL to the thumbnail image.\n\nThis request counts as an [expensive read request](/slides/limits) for\nquota purposes."]
+                #[doc = "Generates a thumbnail of the latest version of the specified page in the presentation and returns a URL to the thumbnail image. This request counts as an [expensive read request](/slides/limits) for quota purposes."]
                 pub fn get_thumbnail(
                     &self,
                     presentation_id: impl Into<String>,
@@ -12657,19 +12786,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12681,7 +12810,7 @@ pub mod resources {
             #[derive(Debug, Clone)]
             pub struct GetThumbnailRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , presentation_id : String , page_object_id : String , thumbnail_properties_mime_type : Option < crate :: resources :: presentations :: pages :: params :: GetThumbnailThumbnailPropertiesMimeType > , thumbnail_properties_thumbnail_size : Option < crate :: resources :: presentations :: pages :: params :: GetThumbnailThumbnailPropertiesThumbnailSize > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
             impl<'a> GetThumbnailRequestBuilder<'a> {
-                #[doc = "The optional mime type of the thumbnail image.\n\nIf you don't specify the mime type, the mime type defaults to PNG."]
+                #[doc = "The optional mime type of the thumbnail image. If you don't specify the mime type, the mime type defaults to PNG."]
                 pub fn thumbnail_properties_mime_type(
                     mut self,
                     value : crate :: resources :: presentations :: pages :: params :: GetThumbnailThumbnailPropertiesMimeType,
@@ -12689,7 +12818,7 @@ pub mod resources {
                     self.thumbnail_properties_mime_type = Some(value);
                     self
                 }
-                #[doc = "The optional thumbnail image size.\n\nIf you don't specify the size, the server chooses a default size of the\nimage."]
+                #[doc = "The optional thumbnail image size. If you don't specify the size, the server chooses a default size of the image."]
                 pub fn thumbnail_properties_thumbnail_size(
                     mut self,
                     value : crate :: resources :: presentations :: pages :: params :: GetThumbnailThumbnailPropertiesThumbnailSize,
@@ -12826,27 +12955,27 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[(
                         "thumbnailProperties.mimeType",
                         &self.thumbnail_properties_mime_type,
                     )]);
-                    let req = req.query(&[(
+                    req = req.query(&[(
                         "thumbnailProperties.thumbnailSize",
                         &self.thumbnail_properties_thumbnail_size,
                     )]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,

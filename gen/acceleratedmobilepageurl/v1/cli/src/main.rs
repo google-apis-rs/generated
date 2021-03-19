@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("acceleratedmobilepageurl1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200624")
-            .about("Retrieves the list of AMP URLs (and equivalent AMP Cache URLs) for a given list of public URL(s).\n")
+            .version("0.1.0-20210317")
+            .about("Retrieves the list of AMP URLs (and equivalent AMP Cache URLs) for a given list of public URL(s). ")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -37,7 +37,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: batch_get");
         {
-            let mcmd = SubCommand::with_name("batch_get").about("Returns AMP URL(s) and equivalent\n[AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format).");
+            let mcmd = SubCommand::with_name("batch_get").about("Returns AMP URL(s) and equivalent [AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format).");
             amp_urls0 = amp_urls0.subcommand(mcmd);
         }
         app = app.subcommand(amp_urls0);

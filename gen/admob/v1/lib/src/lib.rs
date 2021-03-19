@@ -1,5 +1,10 @@
 #![doc = "# Resources and Methods\n    * [accounts](resources/accounts/struct.AccountsActions.html)\n      * [*get*](resources/accounts/struct.GetRequestBuilder.html), [*list*](resources/accounts/struct.ListRequestBuilder.html)\n      * [mediation_report](resources/accounts/mediation_report/struct.MediationReportActions.html)\n        * [*generate*](resources/accounts/mediation_report/struct.GenerateRequestBuilder.html)\n      * [network_report](resources/accounts/network_report/struct.NetworkReportActions.html)\n        * [*generate*](resources/accounts/network_report/struct.GenerateRequestBuilder.html)\n"]
-pub mod scopes {}
+pub mod scopes {
+    #[doc = "See your AdMob data\n\n`https://www.googleapis.com/auth/admob.readonly`"]
+    pub const ADMOB_READONLY: &str = "https://www.googleapis.com/auth/admob.readonly";
+    #[doc = "See your AdMob data\n\n`https://www.googleapis.com/auth/admob.report`"]
+    pub const ADMOB_REPORT: &str = "https://www.googleapis.com/auth/admob.report";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -14,21 +19,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Date {
-        #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month, or 0\nif specifying a year by itself or a year and month where the day is not\nsignificant."]
+        #[doc = "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant."]
         #[serde(
             rename = "day",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub day: ::std::option::Option<i32>,
-        #[doc = "Month of year. Must be from 1 to 12, or 0 if specifying a year without a\nmonth and day."]
+        #[doc = "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day."]
         #[serde(
             rename = "month",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub month: ::std::option::Option<i32>,
-        #[doc = "Year of date. Must be from 1 to 9999, or 0 if specifying a date without\na year."]
+        #[doc = "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year."]
         #[serde(
             rename = "year",
             default,
@@ -59,14 +64,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DateRange {
-        #[doc = "End date of the date range, inclusive. Must be greater than or equal to the\nstart date."]
+        #[doc = "End date of the date range, inclusive. Must be greater than or equal to the start date."]
         #[serde(
             rename = "endDate",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub end_date: ::std::option::Option<crate::schemas::Date>,
-        #[doc = "Start date of the date range, inclusive. Must be less than or equal to the\nend date."]
+        #[doc = "Start date of the date range, inclusive. Must be less than or equal to the end date."]
         #[serde(
             rename = "startDate",
             default,
@@ -119,14 +124,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GenerateMediationReportResponse {
-        #[doc = "Additional information about the generated report, such as warnings about\nthe data."]
+        #[doc = "Additional information about the generated report, such as warnings about the data."]
         #[serde(
             rename = "footer",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub footer: ::std::option::Option<crate::schemas::ReportFooter>,
-        #[doc = "Report generation settings that describes the report contents, such as\nthe report date range and localization settings."]
+        #[doc = "Report generation settings that describes the report contents, such as the report date range and localization settings."]
         #[serde(
             rename = "header",
             default,
@@ -186,14 +191,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GenerateNetworkReportResponse {
-        #[doc = "Additional information about the generated report, such as warnings about\nthe data."]
+        #[doc = "Additional information about the generated report, such as warnings about the data."]
         #[serde(
             rename = "footer",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub footer: ::std::option::Option<crate::schemas::ReportFooter>,
-        #[doc = "Report generation settings that describes the report contents, such as\nthe report date range and localization settings."]
+        #[doc = "Report generation settings that describes the report contents, such as the report date range and localization settings."]
         #[serde(
             rename = "header",
             default,
@@ -238,7 +243,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub account: ::std::option::Option<Vec<crate::schemas::PublisherAccount>>,
-        #[doc = "If not empty, indicates that there might be more accounts for the request;\nyou must pass this value in a new `ListPublisherAccountsRequest`."]
+        #[doc = "If not empty, indicates that there might be more accounts for the request; you must pass this value in a new `ListPublisherAccountsRequest`."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -269,14 +274,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LocalizationSettings {
-        #[doc = "Currency code of the earning related metrics, which is the 3-letter code\ndefined in ISO 4217. The daily average rate is used for the currency\nconversion. Defaults to the account currency code if unspecified."]
+        #[doc = "Currency code of the earning related metrics, which is the 3-letter code defined in ISO 4217. The daily average rate is used for the currency conversion. Defaults to the account currency code if unspecified."]
         #[serde(
             rename = "currencyCode",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub currency_code: ::std::option::Option<String>,
-        #[doc = "Language used for any localized text, such as some dimension value display\nlabels. The language tag defined in the IETF BCP47. Defaults to 'en-US' if\nunspecified."]
+        #[doc = "Language used for any localized text, such as some dimension value display labels. The language tag defined in the IETF BCP47. Defaults to 'en-US' if unspecified."]
         #[serde(
             rename = "languageCode",
             default,
@@ -322,7 +327,7 @@ pub mod schemas {
         )]
         pub dimension_filters:
             ::std::option::Option<Vec<crate::schemas::MediationReportSpecDimensionFilter>>,
-        #[doc = "List of dimensions of the report. The value combination of these dimensions\ndetermines the row of the report. If no dimensions are specified, the\nreport returns a single row of requested metrics for the entire account."]
+        #[doc = "List of dimensions of the report. The value combination of these dimensions determines the row of the report. If no dimensions are specified, the report returns a single row of requested metrics for the entire account."]
         #[serde(
             rename = "dimensions",
             default,
@@ -337,7 +342,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub localization_settings: ::std::option::Option<crate::schemas::LocalizationSettings>,
-        #[doc = "Maximum number of report data rows to return. If the value is not set, the\nAPI returns as many rows as possible, up to 100000. Acceptable values are\n1-100000, inclusive. Any other values are treated as 100000."]
+        #[doc = "Maximum number of report data rows to return. If the value is not set, the API returns as many rows as possible, up to 100000. Acceptable values are 1-100000, inclusive. Values larger than 100000 return an error."]
         #[serde(
             rename = "maxReportRows",
             default,
@@ -351,7 +356,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metrics: ::std::option::Option<Vec<crate::schemas::MediationReportSpecMetricsItems>>,
-        #[doc = "Describes the sorting of report rows. The order of the condition in the\nlist defines its precedence; the earlier the condition, the higher its\nprecedence. If no sort conditions are specified, the row ordering is\nundefined."]
+        #[doc = "Describes the sorting of report rows. The order of the condition in the list defines its precedence; the earlier the condition, the higher its precedence. If no sort conditions are specified, the row ordering is undefined."]
         #[serde(
             rename = "sortConditions",
             default,
@@ -359,7 +364,7 @@ pub mod schemas {
         )]
         pub sort_conditions:
             ::std::option::Option<Vec<crate::schemas::MediationReportSpecSortCondition>>,
-        #[doc = "A report time zone. Accepts an IANA TZ name values, such as\n\"America/Los_Angeles.\"  If no time zone is defined, the account default\ntakes effect. Check default value by the get account action.\n\n**Warning:** The \"America/Los_Angeles\" is the only supported value at\nthe moment."]
+        #[doc = "A report time zone. Accepts an IANA TZ name values, such as \"America/Los_Angeles.\" If no time zone is defined, the account default takes effect. Check default value by the get account action. **Warning:** The \"America/Los_Angeles\" is the only supported value at the moment."]
         #[serde(
             rename = "timeZone",
             default,
@@ -379,17 +384,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum MediationReportSpecDimensionsItems {
+        #[doc = "The [unique ID of the ad source](/admob/api/v1/ad_sources) (for example, \"5450213213286189855\" and \"AdMob Network\" as label value)."]
         AdSource,
+        #[doc = "The unique ID of the ad source instance (for example, \"ca-app-pub-1234#5678\" and \"AdMob (default)\" as label value)."]
         AdSourceInstance,
+        #[doc = "The unique ID of the ad unit (for example, \"ca-app-pub-1234/8790\"). If AD_UNIT dimension is specified, then APP is included automatically."]
         AdUnit,
+        #[doc = "The unique ID of the mobile application (for example, \"ca-app-pub-1234~1234\")."]
         App,
+        #[doc = "CLDR country code of the place where the ad views/clicks occur (for example, \"US\" or \"FR\"). This is a geography dimension."]
         Country,
+        #[doc = "A date in the YYYY-MM-DD format (for example, \"2018-12-21\"). Requests can specify at most one time dimension."]
         Date,
+        #[doc = "Default value for an unset field. Do not use."]
         DimensionUnspecified,
+        #[doc = "Format of the ad unit (for example, \"banner\", \"native\"), an ad delivery dimension."]
         Format,
+        #[doc = "The unique ID of the mediation group (for example, \"ca-app-pub-1234:mg:1234\" and \"AdMob (default)\" as label value)."]
         MediationGroup,
+        #[doc = "A month in the YYYY-MM format (for example, \"2018-12\"). Requests can specify at most one time dimension."]
         Month,
+        #[doc = "Mobile OS platform of the app (for example, \"Android\" or \"iOS\")."]
         Platform,
+        #[doc = "The date of the first day of a week in the YYYY-MM-DD format (for example, \"2018-12-21\"). Requests can specify at most one time dimension."]
         Week,
     }
     impl MediationReportSpecDimensionsItems {
@@ -488,14 +505,23 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum MediationReportSpecMetricsItems {
+        #[doc = "The number of requests. The value is an integer."]
         AdRequests,
+        #[doc = "The number of times a user clicks an ad. The value is an integer."]
         Clicks,
+        #[doc = "The estimated earnings of the AdMob publisher. The currency unit (USD, EUR, or other) of the earning metrics are determined by the localization setting for currency. The amount is in micros. For example, $6.50 would be represented as 6500000. Estimated earnings per mediation group and per ad source instance level is supported dating back to October 20, 2019. Third-party estimated earnings will show 0 for dates prior to October 20, 2019."]
         EstimatedEarnings,
+        #[doc = "The ratio of clicks over impressions. The value is a double precision (approximate) decimal value."]
         ImpressionCtr,
+        #[doc = "The total number of ads shown to users. The value is an integer."]
         Impressions,
+        #[doc = "The ratio of matched ad requests over the total ad requests. The value is a double precision (approximate) decimal value."]
         MatchRate,
+        #[doc = "The number of times ads are returned in response to a request. The value is an integer."]
         MatchedRequests,
+        #[doc = "Default value for an unset field. Do not use."]
         MetricUnspecified,
+        #[doc = "The third-party ad network's estimated average eCPM. The currency unit (USD, EUR, or other) of the earning metrics are determined by the localization setting for currency. The amount is in micros. For example, $2.30 would be represented as 2300000. The estimated average eCPM per mediation group and per ad source instance level is supported dating back to October 20, 2019. Third-party estimated average eCPM will show 0 for dates prior to October 20, 2019."]
         ObservedEcpm,
     }
     impl MediationReportSpecMetricsItems {
@@ -604,7 +630,7 @@ pub mod schemas {
         )]
         pub dimension:
             ::std::option::Option<crate::schemas::MediationReportSpecDimensionFilterDimension>,
-        #[doc = "Matches a row if its value for the specified dimension is in one of the\nvalues specified in this condition."]
+        #[doc = "Matches a row if its value for the specified dimension is in one of the values specified in this condition."]
         #[serde(
             rename = "matchesAny",
             default,
@@ -624,29 +650,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum MediationReportSpecDimensionFilterDimension {
-        #[doc = "The unique ID of the ad source (for example, \"5450213213286189855\" and\n\"AdMob Network\" as label value)."]
+        #[doc = "The [unique ID of the ad source](/admob/api/v1/ad_sources) (for example, \"5450213213286189855\" and \"AdMob Network\" as label value)."]
         AdSource,
-        #[doc = "The unique ID of the ad source instance (for example,\n\"ca-app-pub-1234#5678\" and \"AdMob (default)\" as label value).\n\n**Warning:** The dimension is incompatible with\n[ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS) and\n[OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics."]
+        #[doc = "The unique ID of the ad source instance (for example, \"ca-app-pub-1234#5678\" and \"AdMob (default)\" as label value)."]
         AdSourceInstance,
-        #[doc = "The unique ID of the ad unit (for example, \"ca-app-pub-1234/8790\").\nIf AD_UNIT dimension is specified, then APP is included automatically."]
+        #[doc = "The unique ID of the ad unit (for example, \"ca-app-pub-1234/8790\"). If AD_UNIT dimension is specified, then APP is included automatically."]
         AdUnit,
-        #[doc = "The unique ID of the mobile application (for example,\n\"ca-app-pub-1234~1234\")."]
+        #[doc = "The unique ID of the mobile application (for example, \"ca-app-pub-1234~1234\")."]
         App,
-        #[doc = "CLDR country code of the place where the ad views/clicks occur (for\nexample, \"US\" or \"FR\"). This is a geography dimension."]
+        #[doc = "CLDR country code of the place where the ad views/clicks occur (for example, \"US\" or \"FR\"). This is a geography dimension."]
         Country,
-        #[doc = "A date in the YYYY-MM-DD format (for example, \"2018-12-21\"). Requests can\nspecify at most one time dimension."]
+        #[doc = "A date in the YYYY-MM-DD format (for example, \"2018-12-21\"). Requests can specify at most one time dimension."]
         Date,
         #[doc = "Default value for an unset field. Do not use."]
         DimensionUnspecified,
-        #[doc = "Format of the ad unit (for example, \"banner\", \"native\"), an ad delivery\ndimension."]
+        #[doc = "Format of the ad unit (for example, \"banner\", \"native\"), an ad delivery dimension."]
         Format,
-        #[doc = "The unique ID of the mediation group (for example,\n\"ca-app-pub-1234:mg:1234\" and \"AdMob (default)\" as label value).\n\n**Warning:** The dimension is incompatible with\n[ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS) and\n[OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics."]
+        #[doc = "The unique ID of the mediation group (for example, \"ca-app-pub-1234:mg:1234\" and \"AdMob (default)\" as label value)."]
         MediationGroup,
-        #[doc = "A month in the YYYY-MM format (for example, \"2018-12\"). Requests can\nspecify at most one time dimension."]
+        #[doc = "A month in the YYYY-MM format (for example, \"2018-12\"). Requests can specify at most one time dimension."]
         Month,
         #[doc = "Mobile OS platform of the app (for example, \"Android\" or \"iOS\")."]
         Platform,
-        #[doc = "The date of the first day of a week in the YYYY-MM-DD format\n(for example, \"2018-12-21\"). Requests can specify at most one time\ndimension."]
+        #[doc = "The date of the first day of a week in the YYYY-MM-DD format (for example, \"2018-12-21\"). Requests can specify at most one time dimension."]
         Week,
     }
     impl MediationReportSpecDimensionFilterDimension {
@@ -805,29 +831,29 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum MediationReportSpecSortConditionDimension {
-        #[doc = "The unique ID of the ad source (for example, \"5450213213286189855\" and\n\"AdMob Network\" as label value)."]
+        #[doc = "The [unique ID of the ad source](/admob/api/v1/ad_sources) (for example, \"5450213213286189855\" and \"AdMob Network\" as label value)."]
         AdSource,
-        #[doc = "The unique ID of the ad source instance (for example,\n\"ca-app-pub-1234#5678\" and \"AdMob (default)\" as label value).\n\n**Warning:** The dimension is incompatible with\n[ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS) and\n[OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics."]
+        #[doc = "The unique ID of the ad source instance (for example, \"ca-app-pub-1234#5678\" and \"AdMob (default)\" as label value)."]
         AdSourceInstance,
-        #[doc = "The unique ID of the ad unit (for example, \"ca-app-pub-1234/8790\").\nIf AD_UNIT dimension is specified, then APP is included automatically."]
+        #[doc = "The unique ID of the ad unit (for example, \"ca-app-pub-1234/8790\"). If AD_UNIT dimension is specified, then APP is included automatically."]
         AdUnit,
-        #[doc = "The unique ID of the mobile application (for example,\n\"ca-app-pub-1234~1234\")."]
+        #[doc = "The unique ID of the mobile application (for example, \"ca-app-pub-1234~1234\")."]
         App,
-        #[doc = "CLDR country code of the place where the ad views/clicks occur (for\nexample, \"US\" or \"FR\"). This is a geography dimension."]
+        #[doc = "CLDR country code of the place where the ad views/clicks occur (for example, \"US\" or \"FR\"). This is a geography dimension."]
         Country,
-        #[doc = "A date in the YYYY-MM-DD format (for example, \"2018-12-21\"). Requests can\nspecify at most one time dimension."]
+        #[doc = "A date in the YYYY-MM-DD format (for example, \"2018-12-21\"). Requests can specify at most one time dimension."]
         Date,
         #[doc = "Default value for an unset field. Do not use."]
         DimensionUnspecified,
-        #[doc = "Format of the ad unit (for example, \"banner\", \"native\"), an ad delivery\ndimension."]
+        #[doc = "Format of the ad unit (for example, \"banner\", \"native\"), an ad delivery dimension."]
         Format,
-        #[doc = "The unique ID of the mediation group (for example,\n\"ca-app-pub-1234:mg:1234\" and \"AdMob (default)\" as label value).\n\n**Warning:** The dimension is incompatible with\n[ESTIMATED_EARNINGS](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS) and\n[OBSERVED_ECPM](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics."]
+        #[doc = "The unique ID of the mediation group (for example, \"ca-app-pub-1234:mg:1234\" and \"AdMob (default)\" as label value)."]
         MediationGroup,
-        #[doc = "A month in the YYYY-MM format (for example, \"2018-12\"). Requests can\nspecify at most one time dimension."]
+        #[doc = "A month in the YYYY-MM format (for example, \"2018-12\"). Requests can specify at most one time dimension."]
         Month,
         #[doc = "Mobile OS platform of the app (for example, \"Android\" or \"iOS\")."]
         Platform,
-        #[doc = "The date of the first day of a week in the YYYY-MM-DD format\n(for example, \"2018-12-21\"). Requests can specify at most one time\ndimension."]
+        #[doc = "The date of the first day of a week in the YYYY-MM-DD format (for example, \"2018-12-21\"). Requests can specify at most one time dimension."]
         Week,
     }
     impl MediationReportSpecSortConditionDimension {
@@ -938,19 +964,19 @@ pub mod schemas {
         AdRequests,
         #[doc = "The number of times a user clicks an ad. The value is an integer."]
         Clicks,
-        #[doc = "The estimated earnings of the AdMob publisher. The currency unit (USD,\nEUR, or other) of the earning metrics are determined by the localization\nsetting for currency. The amount is in micros. For example, $6.50 would\nbe represented as 6500000.\n\n**Warning:** The metric is incompatible with\n[AD_SOURCE_INSTANCE](#Dimension.ENUM_VALUES.AD_SOURCE_INSTANCE) and\n[MEDIATION_GROUP](#Dimension.ENUM_VALUES.MEDIATION_GROUP) dimensions."]
+        #[doc = "The estimated earnings of the AdMob publisher. The currency unit (USD, EUR, or other) of the earning metrics are determined by the localization setting for currency. The amount is in micros. For example, $6.50 would be represented as 6500000. Estimated earnings per mediation group and per ad source instance level is supported dating back to October 20, 2019. Third-party estimated earnings will show 0 for dates prior to October 20, 2019."]
         EstimatedEarnings,
-        #[doc = "The ratio of clicks over impressions. The value is a double precision\n(approximate) decimal value."]
+        #[doc = "The ratio of clicks over impressions. The value is a double precision (approximate) decimal value."]
         ImpressionCtr,
         #[doc = "The total number of ads shown to users. The value is an integer."]
         Impressions,
-        #[doc = "The ratio of matched ad requests over the total ad requests. The value is\na double precision (approximate) decimal value."]
+        #[doc = "The ratio of matched ad requests over the total ad requests. The value is a double precision (approximate) decimal value."]
         MatchRate,
-        #[doc = "The number of times ads are returned in response to a request. The value\nis an integer."]
+        #[doc = "The number of times ads are returned in response to a request. The value is an integer."]
         MatchedRequests,
         #[doc = "Default value for an unset field. Do not use."]
         MetricUnspecified,
-        #[doc = "The third-party ad network's estimated average eCPM. The currency unit\n(USD, EUR, or other) of the earning metrics are determined by the\nlocalization setting for currency. The amount is in micros. For example,\n$2.30 would be represented as 2300000.\n\n**Warning:** The metric is incompatible with\n[AD_SOURCE_INSTANCE](#Dimension.ENUM_VALUES.AD_SOURCE_INSTANCE) and\n[MEDIATION_GROUP](#Dimension.ENUM_VALUES.MEDIATION_GROUP) dimensions."]
+        #[doc = "The third-party ad network's estimated average eCPM. The currency unit (USD, EUR, or other) of the earning metrics are determined by the localization setting for currency. The amount is in micros. For example, $2.30 would be represented as 2300000. The estimated average eCPM per mediation group and per ad source instance level is supported dating back to October 20, 2019. Third-party estimated average eCPM will show 0 for dates prior to October 20, 2019."]
         ObservedEcpm,
     }
     impl MediationReportSpecSortConditionMetric {
@@ -1148,7 +1174,7 @@ pub mod schemas {
         )]
         pub dimension_filters:
             ::std::option::Option<Vec<crate::schemas::NetworkReportSpecDimensionFilter>>,
-        #[doc = "List of dimensions of the report. The value combination of these dimensions\ndetermines the row of the report. If no dimensions are specified, the\nreport returns a single row of requested metrics for the entire account."]
+        #[doc = "List of dimensions of the report. The value combination of these dimensions determines the row of the report. If no dimensions are specified, the report returns a single row of requested metrics for the entire account."]
         #[serde(
             rename = "dimensions",
             default,
@@ -1163,7 +1189,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub localization_settings: ::std::option::Option<crate::schemas::LocalizationSettings>,
-        #[doc = "Maximum number of report data rows to return. If the value is not set, the\nAPI returns as many rows as possible, up to 100000. Acceptable values are\n1-100000, inclusive. Any other values are treated as 100000."]
+        #[doc = "Maximum number of report data rows to return. If the value is not set, the API returns as many rows as possible, up to 100000. Acceptable values are 1-100000, inclusive. Values larger than 100000 return an error."]
         #[serde(
             rename = "maxReportRows",
             default,
@@ -1177,7 +1203,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metrics: ::std::option::Option<Vec<crate::schemas::NetworkReportSpecMetricsItems>>,
-        #[doc = "Describes the sorting of report rows. The order of the condition in the\nlist defines its precedence; the earlier the condition, the higher its\nprecedence. If no sort conditions are specified, the row ordering is\nundefined."]
+        #[doc = "Describes the sorting of report rows. The order of the condition in the list defines its precedence; the earlier the condition, the higher its precedence. If no sort conditions are specified, the row ordering is undefined."]
         #[serde(
             rename = "sortConditions",
             default,
@@ -1185,7 +1211,7 @@ pub mod schemas {
         )]
         pub sort_conditions:
             ::std::option::Option<Vec<crate::schemas::NetworkReportSpecSortCondition>>,
-        #[doc = "A report time zone. Accepts an IANA TZ name values, such as\n\"America/Los_Angeles.\"  If no time zone is defined, the account default\ntakes effect. Check default value by the get account action.\n\n**Warning:** The \"America/Los_Angeles\" is the only supported value at\nthe moment."]
+        #[doc = "A report time zone. Accepts an IANA TZ name values, such as \"America/Los_Angeles.\" If no time zone is defined, the account default takes effect. Check default value by the get account action. **Warning:** The \"America/Los_Angeles\" is the only supported value at the moment."]
         #[serde(
             rename = "timeZone",
             default,
@@ -1205,15 +1231,25 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum NetworkReportSpecDimensionsItems {
+        #[doc = "Type of the ad (for example, \"text\" or \"image\"), an ad delivery dimension. **Warning:** The dimension is incompatible with [AD_REQUESTS](#Metric.ENUM_VALUES.AD_REQUESTS), [MATCH_RATE](#Metric.ENUM_VALUES.MATCH_RATE) and [IMPRESSION_RPM](#Metric.ENUM_VALUES.IMPRESSION_RPM) metrics."]
         AdType,
+        #[doc = "The unique ID of the ad unit (for example, \"ca-app-pub-1234/1234\"). If AD_UNIT dimension is specified, then APP is included automatically."]
         AdUnit,
+        #[doc = "The unique ID of the mobile application (for example, \"ca-app-pub-1234~1234\")."]
         App,
+        #[doc = "CLDR country code of the place where the ad views/clicks occur (for example, \"US\" or \"FR\"). This is a geography dimension."]
         Country,
+        #[doc = "A date in the YYYY-MM-DD format (for example, \"2018-12-21\"). Requests can specify at most one time dimension."]
         Date,
+        #[doc = "Default value for an unset field. Do not use."]
         DimensionUnspecified,
+        #[doc = "Format of the ad unit (for example, \"banner\", \"native\"), an ad delivery dimension."]
         Format,
+        #[doc = "A month in the YYYY-MM format (for example, \"2018-12\"). Requests can specify at most one time dimension."]
         Month,
+        #[doc = "Mobile OS platform of the app (for example, \"Android\" or \"iOS\")."]
         Platform,
+        #[doc = "The date of the first day of a week in the YYYY-MM-DD format (for example, \"2018-12-21\"). Requests can specify at most one time dimension."]
         Week,
     }
     impl NetworkReportSpecDimensionsItems {
@@ -1306,15 +1342,25 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum NetworkReportSpecMetricsItems {
+        #[doc = "The number of ad requests. The value is an integer. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension."]
         AdRequests,
+        #[doc = "The number of times a user clicks an ad. The value is an integer."]
         Clicks,
+        #[doc = "The estimated earnings of the AdMob publisher. The currency unit (USD, EUR, or other) of the earning metrics are determined by the localization setting for currency. The amount is in micros. For example, $6.50 would be represented as 6500000."]
         EstimatedEarnings,
+        #[doc = "The ratio of clicks over impressions. The value is a double precision (approximate) decimal value."]
         ImpressionCtr,
+        #[doc = "The estimated earnings per thousand ad impressions. The value is in micros. For example, $1.03 would be represented as 1030000. Equivalent to eCPM in the AdMob UI. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension."]
         ImpressionRpm,
+        #[doc = "The total number of ads shown to users. The value is an integer."]
         Impressions,
+        #[doc = "The ratio of matched ad requests over the total ad requests. The value is a double precision (approximate) decimal value. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension."]
         MatchRate,
+        #[doc = "The number of times ads are returned in response to a request. The value is an integer."]
         MatchedRequests,
+        #[doc = "Default value for an unset field. Do not use."]
         MetricUnspecified,
+        #[doc = "The ratio of ads that are displayed over ads that are returned, defined as impressions / matched requests. The value is a double precision (approximate) decimal value."]
         ShowRate,
     }
     impl NetworkReportSpecMetricsItems {
@@ -1426,7 +1472,7 @@ pub mod schemas {
         )]
         pub dimension:
             ::std::option::Option<crate::schemas::NetworkReportSpecDimensionFilterDimension>,
-        #[doc = "Matches a row if its value for the specified dimension is in one of the\nvalues specified in this condition."]
+        #[doc = "Matches a row if its value for the specified dimension is in one of the values specified in this condition."]
         #[serde(
             rename = "matchesAny",
             default,
@@ -1446,25 +1492,25 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum NetworkReportSpecDimensionFilterDimension {
-        #[doc = "Type of the ad (for example, \"text\" or \"image\"), an ad delivery\ndimension.\n\n**Warning:** The dimension is incompatible with\n[AD_REQUESTS](#Metric.ENUM_VALUES.AD_REQUESTS),\n[MATCH_RATE](#Metric.ENUM_VALUES.MATCH_RATE) and\n[IMPRESSION_RPM](#Metric.ENUM_VALUES.IMPRESSION_RPM) metrics."]
+        #[doc = "Type of the ad (for example, \"text\" or \"image\"), an ad delivery dimension. **Warning:** The dimension is incompatible with [AD_REQUESTS](#Metric.ENUM_VALUES.AD_REQUESTS), [MATCH_RATE](#Metric.ENUM_VALUES.MATCH_RATE) and [IMPRESSION_RPM](#Metric.ENUM_VALUES.IMPRESSION_RPM) metrics."]
         AdType,
-        #[doc = "The unique ID of the ad unit (for example, \"ca-app-pub-1234/1234\").\nIf AD_UNIT dimension is specified, then APP is included automatically."]
+        #[doc = "The unique ID of the ad unit (for example, \"ca-app-pub-1234/1234\"). If AD_UNIT dimension is specified, then APP is included automatically."]
         AdUnit,
-        #[doc = "The unique ID of the mobile application (for example,\n\"ca-app-pub-1234~1234\")."]
+        #[doc = "The unique ID of the mobile application (for example, \"ca-app-pub-1234~1234\")."]
         App,
-        #[doc = "CLDR country code of the place where the ad views/clicks occur (for\nexample, \"US\" or \"FR\"). This is a geography dimension."]
+        #[doc = "CLDR country code of the place where the ad views/clicks occur (for example, \"US\" or \"FR\"). This is a geography dimension."]
         Country,
-        #[doc = "A date in the YYYY-MM-DD format (for example, \"2018-12-21\"). Requests can\nspecify at most one time dimension."]
+        #[doc = "A date in the YYYY-MM-DD format (for example, \"2018-12-21\"). Requests can specify at most one time dimension."]
         Date,
         #[doc = "Default value for an unset field. Do not use."]
         DimensionUnspecified,
-        #[doc = "Format of the ad unit (for example, \"banner\", \"native\"), an ad delivery\ndimension."]
+        #[doc = "Format of the ad unit (for example, \"banner\", \"native\"), an ad delivery dimension."]
         Format,
-        #[doc = "A month in the YYYY-MM format (for example, \"2018-12\"). Requests can\nspecify at most one time dimension."]
+        #[doc = "A month in the YYYY-MM format (for example, \"2018-12\"). Requests can specify at most one time dimension."]
         Month,
         #[doc = "Mobile OS platform of the app (for example, \"Android\" or \"iOS\")."]
         Platform,
-        #[doc = "The date of the first day of a week in the YYYY-MM-DD format\n(for example, \"2018-12-21\"). Requests can specify at most one time\ndimension."]
+        #[doc = "The date of the first day of a week in the YYYY-MM-DD format (for example, \"2018-12-21\"). Requests can specify at most one time dimension."]
         Week,
     }
     impl NetworkReportSpecDimensionFilterDimension {
@@ -1611,25 +1657,25 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum NetworkReportSpecSortConditionDimension {
-        #[doc = "Type of the ad (for example, \"text\" or \"image\"), an ad delivery\ndimension.\n\n**Warning:** The dimension is incompatible with\n[AD_REQUESTS](#Metric.ENUM_VALUES.AD_REQUESTS),\n[MATCH_RATE](#Metric.ENUM_VALUES.MATCH_RATE) and\n[IMPRESSION_RPM](#Metric.ENUM_VALUES.IMPRESSION_RPM) metrics."]
+        #[doc = "Type of the ad (for example, \"text\" or \"image\"), an ad delivery dimension. **Warning:** The dimension is incompatible with [AD_REQUESTS](#Metric.ENUM_VALUES.AD_REQUESTS), [MATCH_RATE](#Metric.ENUM_VALUES.MATCH_RATE) and [IMPRESSION_RPM](#Metric.ENUM_VALUES.IMPRESSION_RPM) metrics."]
         AdType,
-        #[doc = "The unique ID of the ad unit (for example, \"ca-app-pub-1234/1234\").\nIf AD_UNIT dimension is specified, then APP is included automatically."]
+        #[doc = "The unique ID of the ad unit (for example, \"ca-app-pub-1234/1234\"). If AD_UNIT dimension is specified, then APP is included automatically."]
         AdUnit,
-        #[doc = "The unique ID of the mobile application (for example,\n\"ca-app-pub-1234~1234\")."]
+        #[doc = "The unique ID of the mobile application (for example, \"ca-app-pub-1234~1234\")."]
         App,
-        #[doc = "CLDR country code of the place where the ad views/clicks occur (for\nexample, \"US\" or \"FR\"). This is a geography dimension."]
+        #[doc = "CLDR country code of the place where the ad views/clicks occur (for example, \"US\" or \"FR\"). This is a geography dimension."]
         Country,
-        #[doc = "A date in the YYYY-MM-DD format (for example, \"2018-12-21\"). Requests can\nspecify at most one time dimension."]
+        #[doc = "A date in the YYYY-MM-DD format (for example, \"2018-12-21\"). Requests can specify at most one time dimension."]
         Date,
         #[doc = "Default value for an unset field. Do not use."]
         DimensionUnspecified,
-        #[doc = "Format of the ad unit (for example, \"banner\", \"native\"), an ad delivery\ndimension."]
+        #[doc = "Format of the ad unit (for example, \"banner\", \"native\"), an ad delivery dimension."]
         Format,
-        #[doc = "A month in the YYYY-MM format (for example, \"2018-12\"). Requests can\nspecify at most one time dimension."]
+        #[doc = "A month in the YYYY-MM format (for example, \"2018-12\"). Requests can specify at most one time dimension."]
         Month,
         #[doc = "Mobile OS platform of the app (for example, \"Android\" or \"iOS\")."]
         Platform,
-        #[doc = "The date of the first day of a week in the YYYY-MM-DD format\n(for example, \"2018-12-21\"). Requests can specify at most one time\ndimension."]
+        #[doc = "The date of the first day of a week in the YYYY-MM-DD format (for example, \"2018-12-21\"). Requests can specify at most one time dimension."]
         Week,
     }
     impl NetworkReportSpecSortConditionDimension {
@@ -1728,25 +1774,25 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum NetworkReportSpecSortConditionMetric {
-        #[doc = "The number of ad requests. The value is an integer.\n\n**Warning:** The metric is incompatible with\n[AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension."]
+        #[doc = "The number of ad requests. The value is an integer. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension."]
         AdRequests,
         #[doc = "The number of times a user clicks an ad. The value is an integer."]
         Clicks,
-        #[doc = "The estimated earnings of the AdMob publisher. The currency unit (USD,\nEUR, or other) of the earning metrics are determined by the localization\nsetting for currency. The amount is in micros. For example, $6.50 would\nbe represented as 6500000."]
+        #[doc = "The estimated earnings of the AdMob publisher. The currency unit (USD, EUR, or other) of the earning metrics are determined by the localization setting for currency. The amount is in micros. For example, $6.50 would be represented as 6500000."]
         EstimatedEarnings,
-        #[doc = "The ratio of clicks over impressions. The value is a double precision\n(approximate) decimal value."]
+        #[doc = "The ratio of clicks over impressions. The value is a double precision (approximate) decimal value."]
         ImpressionCtr,
-        #[doc = "The estimated earnings per thousand ad impressions. The value is in\nmicros. For example, $1.03 would be represented as 1030000.\n\n**Warning:** The metric is incompatible with\n[AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension."]
+        #[doc = "The estimated earnings per thousand ad impressions. The value is in micros. For example, $1.03 would be represented as 1030000. Equivalent to eCPM in the AdMob UI. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension."]
         ImpressionRpm,
         #[doc = "The total number of ads shown to users. The value is an integer."]
         Impressions,
-        #[doc = "The ratio of matched ad requests over the total ad requests. The value is\na double precision (approximate) decimal value.\n\n**Warning:** The metric is incompatible with\n[AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension."]
+        #[doc = "The ratio of matched ad requests over the total ad requests. The value is a double precision (approximate) decimal value. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension."]
         MatchRate,
-        #[doc = "The number of times ads are returned in response to a request. The value\nis an integer."]
+        #[doc = "The number of times ads are returned in response to a request. The value is an integer."]
         MatchedRequests,
         #[doc = "Default value for an unset field. Do not use."]
         MetricUnspecified,
-        #[doc = "The ratio of ads that are displayed over ads that are returned, defined\nas impressions / matched requests. The value is a double precision\n(approximate) decimal value."]
+        #[doc = "The ratio of ads that are displayed over ads that are returned, defined as impressions / matched requests. The value is a double precision (approximate) decimal value."]
         ShowRate,
     }
     impl NetworkReportSpecSortConditionMetric {
@@ -1932,28 +1978,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PublisherAccount {
-        #[doc = "Currency code of the earning-related metrics, which is the 3-letter code\ndefined in ISO 4217. The daily average rate is used for the currency\nconversion."]
+        #[doc = "Currency code of the earning-related metrics, which is the 3-letter code defined in ISO 4217. The daily average rate is used for the currency conversion."]
         #[serde(
             rename = "currencyCode",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub currency_code: ::std::option::Option<String>,
-        #[doc = "Resource name of this account.\nFormat is accounts/{publisher_id}."]
+        #[doc = "Resource name of this account. Format is accounts/{publisher_id}."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "The unique ID by which this publisher account can be identified\nin the API requests (for example, pub-1234567890)."]
+        #[doc = "The unique ID by which this publisher account can be identified in the API requests (for example, pub-1234567890)."]
         #[serde(
             rename = "publisherId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub publisher_id: ::std::option::Option<String>,
-        #[doc = "The time zone that is used in reports that are generated for this account.\nThe value is a time-zone ID as specified by the CLDR project,\nfor example, \"America/Los_Angeles\"."]
+        #[doc = "The time zone that is used in reports that are generated for this account. The value is a time-zone ID as specified by the CLDR project, for example, \"America/Los_Angeles\"."]
         #[serde(
             rename = "reportingTimeZone",
             default,
@@ -1984,7 +2030,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ReportFooter {
-        #[doc = "Total number of rows that did match the request."]
+        #[doc = "Total number of rows that matched the request. Warning: This count does NOT always match the number of rows in the response. Do not make that assumption when processing the response."]
         #[serde(
             rename = "matchingRowCount",
             default,
@@ -2023,21 +2069,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ReportHeader {
-        #[doc = "The date range for which the report is generated. This is identical to the\nrange specified in the report request."]
+        #[doc = "The date range for which the report is generated. This is identical to the range specified in the report request."]
         #[serde(
             rename = "dateRange",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub date_range: ::std::option::Option<crate::schemas::DateRange>,
-        #[doc = "Localization settings of the report. This is identical to the settings\nin the report request."]
+        #[doc = "Localization settings of the report. This is identical to the settings in the report request."]
         #[serde(
             rename = "localizationSettings",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub localization_settings: ::std::option::Option<crate::schemas::LocalizationSettings>,
-        #[doc = "The report time zone. The value is a time-zone ID as specified by the CLDR\nproject, for example, \"America/Los_Angeles\"."]
+        #[doc = "The report time zone. The value is a time-zone ID as specified by the CLDR project, for example, \"America/Los_Angeles\"."]
         #[serde(
             rename = "reportingTimeZone",
             default,
@@ -2068,7 +2114,7 @@ pub mod schemas {
         pub dimension_values: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::ReportRowDimensionValue>,
         >,
-        #[doc = "Map of metric values in a row, with keys as enum name of the metrics. If\na metric being requested has no value returned, the map will not include\nit."]
+        #[doc = "Map of metric values in a row, with keys as enum name of the metrics. If a metric being requested has no value returned, the map will not include it."]
         #[serde(
             rename = "metricValues",
             default,
@@ -2101,14 +2147,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ReportRowDimensionValue {
-        #[doc = "The localized string representation of the value. If unspecified, the\ndisplay label should be derived from the value."]
+        #[doc = "The localized string representation of the value. If unspecified, the display label should be derived from the value."]
         #[serde(
             rename = "displayLabel",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_label: ::std::option::Option<String>,
-        #[doc = "Dimension value in the format specified in the report's spec Dimension\nenum."]
+        #[doc = "Dimension value in the format specified in the report's spec Dimension enum."]
         #[serde(
             rename = "value",
             default,
@@ -2145,7 +2191,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub integer_value: ::std::option::Option<i64>,
-        #[doc = "Amount in micros. One million is equivalent to one unit. Currency value\nis in the unit (USD, EUR or other) specified by the request.\nFor example, $6.50 whould be represented as 6500000 micros."]
+        #[doc = "Amount in micros. One million is equivalent to one unit. Currency value is in the unit (USD, EUR or other) specified by the request. For example, $6.50 whould be represented as 6500000 micros."]
         #[serde(
             rename = "microsValue",
             default,
@@ -2204,13 +2250,13 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ReportWarningType {
-        #[doc = "Some data in this report is aggregated based on a time zone different\nfrom the requested time zone. This could happen if a local time-zone\nreport has the start time before the last time this time zone changed.\nThe description field will contain the date of the last time zone\nchange."]
+        #[doc = "Some data in this report is aggregated based on a time zone different from the requested time zone. This could happen if a local time-zone report has the start time before the last time this time zone changed. The description field will contain the date of the last time zone change."]
         DataBeforeAccountTimezoneChange,
-        #[doc = "There is an unusual delay in processing the source data for the\nrequested date range. The report results might be less up to date than\nusual. AdMob is aware of the issue and is actively working to resolve\nit."]
+        #[doc = "There is an unusual delay in processing the source data for the requested date range. The report results might be less up to date than usual. AdMob is aware of the issue and is actively working to resolve it."]
         DataDelayed,
-        #[doc = "Warnings that are exposed without a specific type. Useful when new\nwarning types are added but the API is not changed yet."]
+        #[doc = "Warnings that are exposed without a specific type. Useful when new warning types are added but the API is not changed yet."]
         Other,
-        #[doc = "The currency being requested is not the account currency. The earning\nmetrics will be based on the requested currency, and thus not a good\nestimation of the final payment anymore, due to the currency rate\nfluctuation."]
+        #[doc = "The currency being requested is not the account currency. The earning metrics will be based on the requested currency, and thus not a good estimation of the final payment anymore, due to the currency rate fluctuation."]
         ReportCurrencyNotAccountCurrency,
         #[doc = "Default value for an unset field. Do not use."]
         TypeUnspecified,
@@ -2548,7 +2594,7 @@ pub mod resources {
                     name: name.into(),
                 }
             }
-            #[doc = "Lists the AdMob publisher account accessible with the client credential.\nCurrently, all credentials have access to at most one AdMob account."]
+            #[doc = "Lists the AdMob publisher account that was most recently signed in to from the AdMob UI. For more information, see https://support.google.com/admob/answer/10243672."]
             pub fn list(&self) -> ListRequestBuilder {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
@@ -2723,19 +2769,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -2768,7 +2814,7 @@ pub mod resources {
                 self.page_size = Some(value);
                 self
             }
-            #[doc = "The value returned by the last `ListPublisherAccountsResponse`; indicates\nthat this is a continuation of a prior `ListPublisherAccounts` call, and\nthat the system should return the next page of data."]
+            #[doc = "The value returned by the last `ListPublisherAccountsResponse`; indicates that this is a continuation of a prior `ListPublisherAccounts` call, and that the system should return the next page of data."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
@@ -2983,21 +3029,21 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("pageSize", &self.page_size)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("pageSize", &self.page_size)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -3026,7 +3072,7 @@ pub mod resources {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Generates an AdMob Mediation report based on the provided report\nspecification."]
+                #[doc = "Generates an AdMob Mediation report based on the provided report specification. Returns result of a server-side streaming RPC. The result is returned in a sequence of responses."]
                 pub fn generate(
                     &self,
                     request: crate::schemas::GenerateMediationReportRequest,
@@ -3195,19 +3241,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -3226,7 +3272,7 @@ pub mod resources {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Generates an AdMob Network report based on the provided report\nspecification."]
+                #[doc = "Generates an AdMob Network report based on the provided report specification. Returns result of a server-side streaming RPC. The result is returned in a sequence of responses."]
                 pub fn generate(
                     &self,
                     request: crate::schemas::GenerateNetworkReportRequest,
@@ -3395,19 +3441,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,

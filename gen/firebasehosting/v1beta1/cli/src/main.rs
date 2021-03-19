@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("firebasehosting1_beta1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200615")
-            .about("The Firebase Hosting REST API enables programmatic and customizable deployments to your Firebase-hosted sites. Use this REST API to deploy new or updated hosting configurations and content files.")
+            .version("0.1.0-20210315")
+            .about("The Firebase Hosting REST API enables programmatic and customizable management and deployments to your Firebase-hosted sites. Use this REST API to create and manage channels and sites as well as to deploy new or updated hosting configurations and content files.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -53,15 +53,40 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: get");
         {
-            let mcmd = SubCommand::with_name("get").about("Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.");
+            let mcmd = SubCommand::with_name("get").about("Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.");
             operations1 = operations1.subcommand(mcmd);
         }
         let mut sites1 = SubCommand::with_name("sites")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: get_config and update_config");
+            .about("methods: create, delete, get, get_config, list, patch and update_config");
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates a new Hosting Site in the specified parent Firebase project. Note that Hosting sites can take several minutes to propagate through Firebase systems.");
+            sites1 = sites1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about(
+                "Deletes the specified Hosting Site from the specified parent Firebase project.",
+            );
+            sites1 = sites1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Gets the specified Hosting Site.");
+            sites1 = sites1.subcommand(mcmd);
+        }
         {
             let mcmd = SubCommand::with_name("get_config")
                 .about("Gets the Hosting metadata for a specific site.");
+            sites1 = sites1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about(
+                "Lists each Hosting Site associated with the specified parent Firebase project.",
+            );
+            sites1 = sites1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch")
+                .about("Updates attributes of the specified Hosting Site.");
             sites1 = sites1.subcommand(mcmd);
         }
         {
@@ -71,7 +96,29 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut channels1 = SubCommand::with_name("channels")
             .setting(AppSettings::ColoredHelp)
-            .about("sub-resources: releases");
+            .about("methods: create, delete, get, list and patch");
+        {
+            let mcmd = SubCommand::with_name("create")
+                .about("Creates a new channel in the specified site.");
+            channels1 = channels1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes the specified channel of the specified site. The `live` channel cannot be deleted.");
+            channels1 = channels1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Retrieves information for the specified channel of the specified site.");
+            channels1 = channels1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Lists the channels for the specified site. All sites have a default `live` channel.");
+            channels1 = channels1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Updates information for the specified channel of the specified site. Implicitly creates the channel if it doesn\'t already exist.");
+            channels1 = channels1.subcommand(mcmd);
+        }
         let mut domains1 = SubCommand::with_name("domains")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get, list and update");
@@ -96,26 +143,30 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             domains1 = domains1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Updates the specified domain mapping, creating the mapping as if it does\nnot exist.");
+            let mcmd = SubCommand::with_name("update").about("Updates the specified domain mapping, creating the mapping as if it does not exist.");
             domains1 = domains1.subcommand(mcmd);
         }
         let mut releases1 = SubCommand::with_name("releases")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create and list");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a new release which makes the content of the specified version\nactively display on the appropriate URL(s).");
+            let mcmd = SubCommand::with_name("create").about("Creates a new release, which makes the content of the specified version actively display on the appropriate URL(s).");
             releases1 = releases1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Lists the releases that have been created on the specified site.");
+            let mcmd = SubCommand::with_name("list").about("Lists the releases that have been created for the specified site or channel. When used to list releases for a site, this list includes releases for both the default `live` channel and any active preview channels for the specified site.");
             releases1 = releases1.subcommand(mcmd);
         }
         let mut versions1 = SubCommand::with_name("versions")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: create, delete, list, patch and populate_files");
+            .about("methods: clone, create, delete, list, patch and populate_files");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a new version for a site.");
+            let mcmd = SubCommand::with_name("clone").about("Creates a new version on the specified target site using the content of the specified version.");
+            versions1 = versions1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("create")
+                .about("Creates a new version for the specified site.");
             versions1 = versions1.subcommand(mcmd);
         }
         {
@@ -123,21 +174,44 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             versions1 = versions1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists the versions that have been created on the specified site.\nWill include filtering in the future.");
+            let mcmd = SubCommand::with_name("list").about("Lists the versions that have been created for the specified site. This list includes versions for both the default `live` channel and any active preview channels for the specified site.");
             versions1 = versions1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates the specified metadata for a version. Note that this method will\nfail with `FAILED_PRECONDITION` in the event of an invalid state\ntransition. The only valid transition for a version is currently from a\n`CREATED` status to a `FINALIZED` status.\nUse [`DeleteVersion`](../sites.versions/delete) to set the status of a\nversion to `DELETED`.");
+            let mcmd = SubCommand::with_name("patch").about(" Updates the specified metadata for the specified version. This method will fail with `FAILED_PRECONDITION` in the event of an invalid state transition. The supported [state](../sites.versions#versionstatus) transitions for a version are from `CREATED` to `FINALIZED`. Use [`DeleteVersion`](delete) to set the status of a version to `DELETED`.");
             versions1 = versions1.subcommand(mcmd);
         }
         {
-            let mcmd =
-                SubCommand::with_name("populate_files").about("Adds content files to a version.");
+            let mcmd = SubCommand::with_name("populate_files").about(
+                " Adds content files to the specified version. Each file must be under 2 GB.",
+            );
             versions1 = versions1.subcommand(mcmd);
         }
         let mut channels2 = SubCommand::with_name("channels")
             .setting(AppSettings::ColoredHelp)
-            .about("sub-resources: releases");
+            .about("methods: create, delete, get, list and patch");
+        {
+            let mcmd = SubCommand::with_name("create")
+                .about("Creates a new channel in the specified site.");
+            channels2 = channels2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes the specified channel of the specified site. The `live` channel cannot be deleted.");
+            channels2 = channels2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Retrieves information for the specified channel of the specified site.");
+            channels2 = channels2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Lists the channels for the specified site. All sites have a default `live` channel.");
+            channels2 = channels2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Updates information for the specified channel of the specified site. Implicitly creates the channel if it doesn\'t already exist.");
+            channels2 = channels2.subcommand(mcmd);
+        }
         let mut domains2 = SubCommand::with_name("domains")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get, list and update");
@@ -162,26 +236,30 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             domains2 = domains2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Updates the specified domain mapping, creating the mapping as if it does\nnot exist.");
+            let mcmd = SubCommand::with_name("update").about("Updates the specified domain mapping, creating the mapping as if it does not exist.");
             domains2 = domains2.subcommand(mcmd);
         }
         let mut releases2 = SubCommand::with_name("releases")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create and list");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a new release which makes the content of the specified version\nactively display on the appropriate URL(s).");
+            let mcmd = SubCommand::with_name("create").about("Creates a new release, which makes the content of the specified version actively display on the appropriate URL(s).");
             releases2 = releases2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Lists the releases that have been created on the specified site.");
+            let mcmd = SubCommand::with_name("list").about("Lists the releases that have been created for the specified site or channel. When used to list releases for a site, this list includes releases for both the default `live` channel and any active preview channels for the specified site.");
             releases2 = releases2.subcommand(mcmd);
         }
         let mut versions2 = SubCommand::with_name("versions")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: create, delete, list, patch and populate_files");
+            .about("methods: clone, create, delete, list, patch and populate_files");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a new version for a site.");
+            let mcmd = SubCommand::with_name("clone").about("Creates a new version on the specified target site using the content of the specified version.");
+            versions2 = versions2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("create")
+                .about("Creates a new version for the specified site.");
             versions2 = versions2.subcommand(mcmd);
         }
         {
@@ -189,28 +267,28 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             versions2 = versions2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists the versions that have been created on the specified site.\nWill include filtering in the future.");
+            let mcmd = SubCommand::with_name("list").about("Lists the versions that have been created for the specified site. This list includes versions for both the default `live` channel and any active preview channels for the specified site.");
             versions2 = versions2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates the specified metadata for a version. Note that this method will\nfail with `FAILED_PRECONDITION` in the event of an invalid state\ntransition. The only valid transition for a version is currently from a\n`CREATED` status to a `FINALIZED` status.\nUse [`DeleteVersion`](../sites.versions/delete) to set the status of a\nversion to `DELETED`.");
+            let mcmd = SubCommand::with_name("patch").about(" Updates the specified metadata for the specified version. This method will fail with `FAILED_PRECONDITION` in the event of an invalid state transition. The supported [state](../sites.versions#versionstatus) transitions for a version are from `CREATED` to `FINALIZED`. Use [`DeleteVersion`](delete) to set the status of a version to `DELETED`.");
             versions2 = versions2.subcommand(mcmd);
         }
         {
-            let mcmd =
-                SubCommand::with_name("populate_files").about("Adds content files to a version.");
+            let mcmd = SubCommand::with_name("populate_files").about(
+                " Adds content files to the specified version. Each file must be under 2 GB.",
+            );
             versions2 = versions2.subcommand(mcmd);
         }
         let mut releases2 = SubCommand::with_name("releases")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create and list");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a new release which makes the content of the specified version\nactively display on the appropriate URL(s).");
+            let mcmd = SubCommand::with_name("create").about("Creates a new release, which makes the content of the specified version actively display on the appropriate URL(s).");
             releases2 = releases2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Lists the releases that have been created on the specified site.");
+            let mcmd = SubCommand::with_name("list").about("Lists the releases that have been created for the specified site or channel. When used to list releases for a site, this list includes releases for both the default `live` channel and any active preview channels for the specified site.");
             releases2 = releases2.subcommand(mcmd);
         }
         let mut files2 = SubCommand::with_name("files")
@@ -225,12 +303,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create and list");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a new release which makes the content of the specified version\nactively display on the appropriate URL(s).");
+            let mcmd = SubCommand::with_name("create").about("Creates a new release, which makes the content of the specified version actively display on the appropriate URL(s).");
             releases3 = releases3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Lists the releases that have been created on the specified site.");
+            let mcmd = SubCommand::with_name("list").about("Lists the releases that have been created for the specified site or channel. When used to list releases for a site, this list includes releases for both the default `live` channel and any active preview channels for the specified site.");
             releases3 = releases3.subcommand(mcmd);
         }
         let mut files3 = SubCommand::with_name("files")

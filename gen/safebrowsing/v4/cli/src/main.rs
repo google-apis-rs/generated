@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("safebrowsing4")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200621")
+            .version("0.1.0-20210317")
             .about("Enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources. The Safe Browsing APIs are for non-commercial use only. If you need to use APIs to detect malicious URLs for commercial purposes – meaning “for sale or revenue-generating purposes” – please refer to the Web Risk API.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -59,14 +59,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create");
         {
-            let mcmd = SubCommand::with_name("create").about("Reports a Safe Browsing threat list hit to Google. Only projects with\nTRUSTED_REPORTER visibility can use this method.");
+            let mcmd = SubCommand::with_name("create").about("Reports a Safe Browsing threat list hit to Google. Only projects with TRUSTED_REPORTER visibility can use this method.");
             threat_hits0 = threat_hits0.subcommand(mcmd);
         }
         let mut threat_list_updates0 = SubCommand::with_name("threat_list_updates")
             .setting(AppSettings::ColoredHelp)
             .about("methods: fetch");
         {
-            let mcmd = SubCommand::with_name("fetch").about("Fetches the most recent threat list updates. A client can request updates\nfor multiple lists at once.");
+            let mcmd = SubCommand::with_name("fetch").about("Fetches the most recent threat list updates. A client can request updates for multiple lists at once.");
             threat_list_updates0 = threat_list_updates0.subcommand(mcmd);
         }
         let mut threat_lists0 = SubCommand::with_name("threat_lists")

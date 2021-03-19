@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("billingbudgets1_beta1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200619")
+            .version("0.1.0-20210314")
             .about("The Cloud Billing Budget API stores Cloud Billing budgets, which define a budget plan and the rules to execute as spend is tracked against that plan.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -40,7 +40,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get, list and patch");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a new budget. See\n<a href=\"https://cloud.google.com/billing/quotas\">Quotas and limits</a>\nfor more information on the limits of the number of budgets you can create.");
+            let mcmd = SubCommand::with_name("create").about("Creates a new budget. See Quotas and limits for more information on the limits of the number of budgets you can create.");
             budgets1 = budgets1.subcommand(mcmd);
         }
         {
@@ -49,15 +49,15 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             budgets1 = budgets1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Returns a budget.\n\nWARNING: There are some fields exposed on the Google Cloud Console that\naren\'t available on this API. When reading from the API, you will not\nsee these fields in the return value, though they may have been set\nin the Cloud Console.");
+            let mcmd = SubCommand::with_name("get").about("Returns a budget. WARNING: There are some fields exposed on the Google Cloud Console that aren\'t available on this API. When reading from the API, you will not see these fields in the return value, though they may have been set in the Cloud Console.");
             budgets1 = budgets1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Returns a list of budgets for a billing account.\n\nWARNING: There are some fields exposed on the Google Cloud Console that\naren\'t available on this API. When reading from the API, you will not\nsee these fields in the return value, though they may have been set\nin the Cloud Console.");
+            let mcmd = SubCommand::with_name("list").about("Returns a list of budgets for a billing account. WARNING: There are some fields exposed on the Google Cloud Console that aren\'t available on this API. When reading from the API, you will not see these fields in the return value, though they may have been set in the Cloud Console.");
             budgets1 = budgets1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates a budget and returns the updated budget.\n\nWARNING: There are some fields exposed on the Google Cloud Console that\naren\'t available on this API. Budget fields that are not exposed in\nthis API will not be changed by this method.");
+            let mcmd = SubCommand::with_name("patch").about("Updates a budget and returns the updated budget. WARNING: There are some fields exposed on the Google Cloud Console that aren\'t available on this API. Budget fields that are not exposed in this API will not be changed by this method.");
             budgets1 = budgets1.subcommand(mcmd);
         }
         billing_accounts0 = billing_accounts0.subcommand(budgets1);

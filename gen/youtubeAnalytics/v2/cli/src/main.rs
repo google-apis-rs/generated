@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("youtubeAnalytics2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200624")
+            .version("0.1.0-20210317")
             .about("Retrieves your YouTube Analytics data.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -62,7 +62,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             groups0 = groups0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Returns a collection of groups that match the API request parameters. For\nexample, you can retrieve all groups that the authenticated user owns,\nor you can retrieve one or more groups by their unique IDs.");
+            let mcmd = SubCommand::with_name("list").about("Returns a collection of groups that match the API request parameters. For example, you can retrieve all groups that the authenticated user owns, or you can retrieve one or more groups by their unique IDs.");
             groups0 = groups0.subcommand(mcmd);
         }
         {

@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("websecurityscanner1_beta")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200613")
+            .version("0.1.0-20210314")
             .about("Scans your Compute and App Engine apps for common web vulnerabilities.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -75,7 +75,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             scan_runs2 = scan_runs2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists ScanRuns under a given ScanConfig, in descending order of ScanRun\nstop time.");
+            let mcmd = SubCommand::with_name("list").about("Lists ScanRuns under a given ScanConfig, in descending order of ScanRun stop time.");
             scan_runs2 = scan_runs2.subcommand(mcmd);
         }
         {

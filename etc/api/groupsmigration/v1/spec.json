@@ -7,9 +7,9 @@
   "canonicalName": "Groups Migration",
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20200618",
+  "revision": "20210311",
   "title": "Groups Migration API",
-  "description": "The Groups Migration API allows domain administrators to archive\n    emails into Google groups.",
+  "description": "The Groups Migration API allows domain administrators to archive emails into Google groups.",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "icons": {
@@ -18,11 +18,11 @@
   },
   "documentationLink": "https://developers.google.com/google-apps/groups-migration/",
   "protocol": "rest",
-  "baseUrl": "https://www.googleapis.com/",
+  "baseUrl": "https://groupsmigration.googleapis.com/",
   "basePath": "",
-  "rootUrl": "https://www.googleapis.com/",
+  "rootUrl": "https://groupsmigration.googleapis.com/",
   "servicePath": "",
-  "batchPath": "batch/groupsmigration/v1",
+  "batchPath": "batch",
   "version_module": null,
   "packagePath": null,
   "labels": null,
@@ -201,7 +201,7 @@
     "oauth2": {
       "scopes": {
         "https://www.googleapis.com/auth/apps.groups.migration": {
-          "description": "Manage messages in groups on your domain"
+          "description": "Upload messages to any Google group in your domain"
         }
       }
     }

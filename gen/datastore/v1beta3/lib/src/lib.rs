@@ -19,7 +19,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AllocateIdsRequest {
-        #[doc = "Required. A list of keys with incomplete key paths for which to allocate IDs.\nNo key may be reserved/read-only."]
+        #[doc = "Required. A list of keys with incomplete key paths for which to allocate IDs. No key may be reserved/read-only."]
         #[serde(
             rename = "keys",
             default,
@@ -50,7 +50,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AllocateIdsResponse {
-        #[doc = "The keys specified in the request (in the same order), each with\nits key path completed with a newly allocated ID."]
+        #[doc = "The keys specified in the request (in the same order), each with its key path completed with a newly allocated ID."]
         #[serde(
             rename = "keys",
             default,
@@ -72,7 +72,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ArrayValue {
-        #[doc = "Values in the array.\nThe order of values in an array is preserved as long as all values have\nidentical settings for 'exclude_from_indexes'."]
+        #[doc = "Values in the array. The order of values in an array is preserved as long as all values have identical settings for 'exclude_from_indexes'."]
         #[serde(
             rename = "values",
             default,
@@ -163,14 +163,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mode: ::std::option::Option<crate::schemas::CommitRequestMode>,
-        #[doc = "The mutations to perform.\n\nWhen mode is `TRANSACTIONAL`, mutations affecting a single entity are\napplied in order. The following sequences of mutations affecting a single\nentity are not permitted in a single `Commit` request:\n\n* `insert` followed by `insert`\n* `update` followed by `insert`\n* `upsert` followed by `insert`\n* `delete` followed by `update`\n\nWhen mode is `NON_TRANSACTIONAL`, no two mutations may affect a single\nentity."]
+        #[doc = "The mutations to perform. When mode is `TRANSACTIONAL`, mutations affecting a single entity are applied in order. The following sequences of mutations affecting a single entity are not permitted in a single `Commit` request: - `insert` followed by `insert` - `update` followed by `insert` - `upsert` followed by `insert` - `delete` followed by `update` When mode is `NON_TRANSACTIONAL`, no two mutations may affect a single entity."]
         #[serde(
             rename = "mutations",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mutations: ::std::option::Option<Vec<crate::schemas::Mutation>>,
-        #[doc = "The identifier of the transaction associated with the commit. A\ntransaction identifier is returned by a call to\nDatastore.BeginTransaction."]
+        #[doc = "The identifier of the transaction associated with the commit. A transaction identifier is returned by a call to Datastore.BeginTransaction."]
         #[serde(
             rename = "transaction",
             default,
@@ -194,7 +194,7 @@ pub mod schemas {
         ModeUnspecified,
         #[doc = "Non-transactional: The mutations may not apply as all or none."]
         NonTransactional,
-        #[doc = "Transactional: The mutations are either all applied, or none are applied.\nLearn about transactions\n[here](https://cloud.google.com/datastore/docs/concepts/transactions)."]
+        #[doc = "Transactional: The mutations are either all applied, or none are applied. Learn about transactions [here](https://cloud.google.com/datastore/docs/concepts/transactions)."]
         Transactional,
     }
     impl CommitRequestMode {
@@ -277,14 +277,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CommitResponse {
-        #[doc = "The number of index entries updated during the commit, or zero if none were\nupdated."]
+        #[doc = "The number of index entries updated during the commit, or zero if none were updated."]
         #[serde(
             rename = "indexUpdates",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub index_updates: ::std::option::Option<i32>,
-        #[doc = "The result of performing the mutations.\nThe i-th mutation result corresponds to the i-th mutation in the request."]
+        #[doc = "The result of performing the mutations. The i-th mutation result corresponds to the i-th mutation in the request."]
         #[serde(
             rename = "mutationResults",
             default,
@@ -306,7 +306,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct CompositeFilter {
-        #[doc = "The list of filters to combine.\nMust contain at least one filter."]
+        #[doc = "The list of filters to combine. Must contain at least one filter."]
         #[serde(
             rename = "filters",
             default,
@@ -406,14 +406,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Entity {
-        #[doc = "The entity's key.\n\nAn entity must have a key, unless otherwise documented (for example,\nan entity in `Value.entity_value` may have no key).\nAn entity's kind is its key path's last element's kind,\nor null if it has no key."]
+        #[doc = "The entity's key. An entity must have a key, unless otherwise documented (for example, an entity in `Value.entity_value` may have no key). An entity's kind is its key path's last element's kind, or null if it has no key."]
         #[serde(
             rename = "key",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub key: ::std::option::Option<crate::schemas::Key>,
-        #[doc = "The entity's properties.\nThe map's keys are property names.\nA property name matching regex `__.*__` is reserved.\nA reserved property name is forbidden in certain documented contexts.\nThe name must not contain more than 500 characters.\nThe name cannot be `\"\"`."]
+        #[doc = "The entity's properties. The map's keys are property names. A property name matching regex `__.*__` is reserved. A reserved property name is forbidden in certain documented contexts. The name must not contain more than 500 characters. The name cannot be `\"\"`."]
         #[serde(
             rename = "properties",
             default,
@@ -436,7 +436,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct EntityResult {
-        #[doc = "A cursor that points to the position after the result entity.\nSet only when the `EntityResult` is part of a `QueryResultBatch` message."]
+        #[doc = "A cursor that points to the position after the result entity. Set only when the `EntityResult` is part of a `QueryResultBatch` message."]
         #[serde(
             rename = "cursor",
             default,
@@ -450,7 +450,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub entity: ::std::option::Option<crate::schemas::Entity>,
-        #[doc = "The version of the entity, a strictly positive number that monotonically\nincreases with changes to the entity.\n\nThis field is set for `FULL` entity\nresults.\n\nFor missing entities in `LookupResponse`, this\nis the version of the snapshot that was used to look up the entity, and it\nis always set except for eventually consistent reads."]
+        #[doc = "The version of the entity, a strictly positive number that monotonically increases with changes to the entity. This field is set for `FULL` entity results. For missing entities in `LookupResponse`, this is the version of the snapshot that was used to look up the entity, and it is always set except for eventually consistent reads."]
         #[serde(
             rename = "version",
             default,
@@ -518,14 +518,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub end_time: ::std::option::Option<String>,
-        #[doc = "The client-assigned labels which were provided when the operation was\ncreated. May also include additional labels."]
+        #[doc = "The client-assigned labels which were provided when the operation was created. May also include additional labels."]
         #[serde(
             rename = "labels",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The type of the operation. Can be used as a filter in\nListOperationsRequest."]
+        #[doc = "The type of the operation. Can be used as a filter in ListOperationsRequest."]
         #[serde(
             rename = "operationType",
             default,
@@ -653,9 +653,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDatastoreAdminV1Beta1CommonMetadataState {
-        #[doc = "Request has finished being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation."]
+        #[doc = "Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation."]
         Cancelled,
-        #[doc = "Request is in the process of being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation on the operation."]
+        #[doc = "Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation."]
         Cancelling,
         #[doc = "Request has finished being processed, but encountered an error."]
         Failed,
@@ -780,7 +780,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kinds: ::std::option::Option<Vec<String>>,
-        #[doc = "An empty list represents all namespaces. This is the preferred\nusage for projects that don't use namespaces.\n\nAn empty string element represents the default namespace. This should be\nused if the project has data in non-default namespaces, but doesn't want to\ninclude them.\nEach namespace in this list must be unique."]
+        #[doc = "An empty list represents all namespaces. This is the preferred usage for projects that don't use namespaces. An empty string element represents the default namespace. This should be used if the project has data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be unique."]
         #[serde(
             rename = "namespaceIds",
             default,
@@ -827,7 +827,7 @@ pub mod schemas {
         )]
         pub entity_filter:
             ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1Beta1EntityFilter>,
-        #[doc = "Location for the export metadata and data files. This will be the same\nvalue as the\ngoogle.datastore.admin.v1beta1.ExportEntitiesRequest.output_url_prefix\nfield. The final output location is provided in\ngoogle.datastore.admin.v1beta1.ExportEntitiesResponse.output_url."]
+        #[doc = "Location for the export metadata and data files. This will be the same value as the google.datastore.admin.v1beta1.ExportEntitiesRequest.output_url_prefix field. The final output location is provided in google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url."]
         #[serde(
             rename = "outputUrlPrefix",
             default,
@@ -874,7 +874,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleDatastoreAdminV1Beta1ExportEntitiesResponse {
-        #[doc = "Location of the output metadata file. This can be used to begin an import\ninto Cloud Datastore (this project or another project). See\ngoogle.datastore.admin.v1beta1.ImportEntitiesRequest.input_url.\nOnly present if the operation completed successfully."]
+        #[doc = "Location of the output metadata file. This can be used to begin an import into Cloud Datastore (this project or another project). See google.datastore.admin.v1beta1.ImportEntitiesRequest.input_url. Only present if the operation completed successfully."]
         #[serde(
             rename = "outputUrl",
             default,
@@ -921,7 +921,7 @@ pub mod schemas {
         )]
         pub entity_filter:
             ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1Beta1EntityFilter>,
-        #[doc = "The location of the import metadata file. This will be the same value as\nthe google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url\nfield."]
+        #[doc = "The location of the import metadata file. This will be the same value as the google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url field."]
         #[serde(
             rename = "inputUrl",
             default,
@@ -968,7 +968,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleDatastoreAdminV1Beta1Progress {
-        #[doc = "The amount of work that has been completed. Note that this may be greater\nthan work_estimated."]
+        #[doc = "The amount of work that has been completed. Note that this may be greater than work_estimated."]
         #[serde(
             rename = "workCompleted",
             default,
@@ -976,7 +976,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub work_completed: ::std::option::Option<i64>,
-        #[doc = "An estimate of how much work needs to be performed. May be zero if the\nwork estimate is unavailable."]
+        #[doc = "An estimate of how much work needs to be performed. May be zero if the work estimate is unavailable."]
         #[serde(
             rename = "workEstimated",
             default,
@@ -1015,14 +1015,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub end_time: ::std::option::Option<String>,
-        #[doc = "The client-assigned labels which were provided when the operation was\ncreated. May also include additional labels."]
+        #[doc = "The client-assigned labels which were provided when the operation was created. May also include additional labels."]
         #[serde(
             rename = "labels",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The type of the operation. Can be used as a filter in\nListOperationsRequest."]
+        #[doc = "The type of the operation. Can be used as a filter in ListOperationsRequest."]
         #[serde(
             rename = "operationType",
             default,
@@ -1164,9 +1164,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleDatastoreAdminV1CommonMetadataState {
-        #[doc = "Request has finished being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation."]
+        #[doc = "Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation."]
         Cancelled,
-        #[doc = "Request is in the process of being cancelled after user called\ngoogle.longrunning.Operations.CancelOperation on the operation."]
+        #[doc = "Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation."]
         Cancelling,
         #[doc = "Request has finished being processed, but encountered an error."]
         Failed,
@@ -1285,7 +1285,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kinds: ::std::option::Option<Vec<String>>,
-        #[doc = "An empty list represents all namespaces. This is the preferred\nusage for projects that don't use namespaces.\n\nAn empty string element represents the default namespace. This should be\nused if the project has data in non-default namespaces, but doesn't want to\ninclude them.\nEach namespace in this list must be unique."]
+        #[doc = "An empty list represents all namespaces. This is the preferred usage for projects that don't use namespaces. An empty string element represents the default namespace. This should be used if the project has data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be unique."]
         #[serde(
             rename = "namespaceIds",
             default,
@@ -1331,7 +1331,7 @@ pub mod schemas {
         )]
         pub entity_filter:
             ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1EntityFilter>,
-        #[doc = "Location for the export metadata and data files. This will be the same\nvalue as the\ngoogle.datastore.admin.v1.ExportEntitiesRequest.output_url_prefix\nfield. The final output location is provided in\ngoogle.datastore.admin.v1.ExportEntitiesResponse.output_url."]
+        #[doc = "Location for the export metadata and data files. This will be the same value as the google.datastore.admin.v1.ExportEntitiesRequest.output_url_prefix field. The final output location is provided in google.datastore.admin.v1.ExportEntitiesResponse.output_url."]
         #[serde(
             rename = "outputUrlPrefix",
             default,
@@ -1377,7 +1377,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleDatastoreAdminV1ExportEntitiesResponse {
-        #[doc = "Location of the output metadata file. This can be used to begin an import\ninto Cloud Datastore (this project or another project). See\ngoogle.datastore.admin.v1.ImportEntitiesRequest.input_url.\nOnly present if the operation completed successfully."]
+        #[doc = "Location of the output metadata file. This can be used to begin an import into Cloud Datastore (this project or another project). See google.datastore.admin.v1.ImportEntitiesRequest.input_url. Only present if the operation completed successfully."]
         #[serde(
             rename = "outputUrl",
             default,
@@ -1423,7 +1423,7 @@ pub mod schemas {
         )]
         pub entity_filter:
             ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1EntityFilter>,
-        #[doc = "The location of the import metadata file. This will be the same value as\nthe google.datastore.admin.v1.ExportEntitiesResponse.output_url field."]
+        #[doc = "The location of the import metadata file. This will be the same value as the google.datastore.admin.v1.ExportEntitiesResponse.output_url field."]
         #[serde(
             rename = "inputUrl",
             default,
@@ -1515,7 +1515,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleDatastoreAdminV1Progress {
-        #[doc = "The amount of work that has been completed. Note that this may be greater\nthan work_estimated."]
+        #[doc = "The amount of work that has been completed. Note that this may be greater than work_estimated."]
         #[serde(
             rename = "workCompleted",
             default,
@@ -1523,7 +1523,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub work_completed: ::std::option::Option<i64>,
-        #[doc = "An estimate of how much work needs to be performed. May be zero if the\nwork estimate is unavailable."]
+        #[doc = "An estimate of how much work needs to be performed. May be zero if the work estimate is unavailable."]
         #[serde(
             rename = "workEstimated",
             default,
@@ -1546,14 +1546,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GqlQuery {
-        #[doc = "When false, the query string must not contain any literals and instead must\nbind all values. For example,\n`SELECT * FROM Kind WHERE a = 'string literal'` is not allowed, while\n`SELECT * FROM Kind WHERE a = @value` is."]
+        #[doc = "When false, the query string must not contain any literals and instead must bind all values. For example, `SELECT * FROM Kind WHERE a = 'string literal'` is not allowed, while `SELECT * FROM Kind WHERE a = @value` is."]
         #[serde(
             rename = "allowLiterals",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub allow_literals: ::std::option::Option<bool>,
-        #[doc = "For each non-reserved named binding site in the query string, there must be\na named parameter with that name, but not necessarily the inverse.\n\nKey must match regex `A-Za-z_$*`, must not match regex\n`__.*__`, and must not be `\"\"`."]
+        #[doc = "For each non-reserved named binding site in the query string, there must be a named parameter with that name, but not necessarily the inverse. Key must match regex `A-Za-z_$*`, must not match regex `__.*__`, and must not be `\"\"`."]
         #[serde(
             rename = "namedBindings",
             default,
@@ -1562,14 +1562,14 @@ pub mod schemas {
         pub named_bindings: ::std::option::Option<
             ::std::collections::BTreeMap<String, crate::schemas::GqlQueryParameter>,
         >,
-        #[doc = "Numbered binding site @1 references the first numbered parameter,\neffectively using 1-based indexing, rather than the usual 0.\n\nFor each binding site numbered i in `query_string`, there must be an i-th\nnumbered parameter. The inverse must also be true."]
+        #[doc = "Numbered binding site @1 references the first numbered parameter, effectively using 1-based indexing, rather than the usual 0. For each binding site numbered i in `query_string`, there must be an i-th numbered parameter. The inverse must also be true."]
         #[serde(
             rename = "positionalBindings",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub positional_bindings: ::std::option::Option<Vec<crate::schemas::GqlQueryParameter>>,
-        #[doc = "A string of the format described\n[here](https://cloud.google.com/datastore/docs/apis/gql/gql_reference)."]
+        #[doc = "A string of the format described [here](https://cloud.google.com/datastore/docs/apis/gql/gql_reference)."]
         #[serde(
             rename = "queryString",
             default,
@@ -1591,7 +1591,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GqlQueryParameter {
-        #[doc = "A query cursor. Query cursors are returned in query\nresult batches."]
+        #[doc = "A query cursor. Query cursors are returned in query result batches."]
         #[serde(
             rename = "cursor",
             default,
@@ -1629,14 +1629,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Key {
-        #[doc = "Entities are partitioned into subsets, currently identified by a project\nID and namespace ID.\nQueries are scoped to a single partition."]
+        #[doc = "Entities are partitioned into subsets, currently identified by a project ID and namespace ID. Queries are scoped to a single partition."]
         #[serde(
             rename = "partitionId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub partition_id: ::std::option::Option<crate::schemas::PartitionId>,
-        #[doc = "The entity path.\nAn entity path consists of one or more elements composed of a kind and a\nstring or numerical identifier, which identify entities. The first\nelement identifies a *root entity*, the second element identifies\na *child* of the root entity, the third element identifies a child of the\nsecond entity, and so forth. The entities identified by all prefixes of\nthe path are called the element's *ancestors*.\n\nAn entity path is always fully complete: *all* of the entity's ancestors\nare required to be in the path along with the entity identifier itself.\nThe only exception is that in some documented cases, the identifier in the\nlast path element (for the entity) itself may be omitted. For example,\nthe last path element of the key of `Mutation.insert` may have no\nidentifier.\n\nA path can never be empty, and a path can have at most 100 elements."]
+        #[doc = "The entity path. An entity path consists of one or more elements composed of a kind and a string or numerical identifier, which identify entities. The first element identifies a *root entity*, the second element identifies a *child* of the root entity, the third element identifies a child of the second entity, and so forth. The entities identified by all prefixes of the path are called the element's *ancestors*. An entity path is always fully complete: *all* of the entity's ancestors are required to be in the path along with the entity identifier itself. The only exception is that in some documented cases, the identifier in the last path element (for the entity) itself may be omitted. For example, the last path element of the key of `Mutation.insert` may have no identifier. A path can never be empty, and a path can have at most 100 elements."]
         #[serde(
             rename = "path",
             default,
@@ -1756,21 +1756,21 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct LookupResponse {
-        #[doc = "A list of keys that were not looked up due to resource constraints. The\norder of results in this field is undefined and has no relation to the\norder of the keys in the input."]
+        #[doc = "A list of keys that were not looked up due to resource constraints. The order of results in this field is undefined and has no relation to the order of the keys in the input."]
         #[serde(
             rename = "deferred",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub deferred: ::std::option::Option<Vec<crate::schemas::Key>>,
-        #[doc = "Entities found as `ResultType.FULL` entities. The order of results in this\nfield is undefined and has no relation to the order of the keys in the\ninput."]
+        #[doc = "Entities found as `ResultType.FULL` entities. The order of results in this field is undefined and has no relation to the order of the keys in the input."]
         #[serde(
             rename = "found",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub found: ::std::option::Option<Vec<crate::schemas::EntityResult>>,
-        #[doc = "Entities not found as `ResultType.KEY_ONLY` entities. The order of results\nin this field is undefined and has no relation to the order of the keys\nin the input."]
+        #[doc = "Entities not found as `ResultType.KEY_ONLY` entities. The order of results in this field is undefined and has no relation to the order of the keys in the input."]
         #[serde(
             rename = "missing",
             default,
@@ -1792,7 +1792,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Mutation {
-        #[doc = "The version of the entity that this mutation is being applied to. If this\ndoes not match the current version on the server, the mutation conflicts."]
+        #[doc = "The version of the entity that this mutation is being applied to. If this does not match the current version on the server, the mutation conflicts."]
         #[serde(
             rename = "baseVersion",
             default,
@@ -1800,28 +1800,28 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub base_version: ::std::option::Option<i64>,
-        #[doc = "The key of the entity to delete. The entity may or may not already exist.\nMust have a complete key path and must not be reserved/read-only."]
+        #[doc = "The key of the entity to delete. The entity may or may not already exist. Must have a complete key path and must not be reserved/read-only."]
         #[serde(
             rename = "delete",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub delete: ::std::option::Option<crate::schemas::Key>,
-        #[doc = "The entity to insert. The entity must not already exist.\nThe entity key's final path element may be incomplete."]
+        #[doc = "The entity to insert. The entity must not already exist. The entity key's final path element may be incomplete."]
         #[serde(
             rename = "insert",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub insert: ::std::option::Option<crate::schemas::Entity>,
-        #[doc = "The entity to update. The entity must already exist.\nMust have a complete key path."]
+        #[doc = "The entity to update. The entity must already exist. Must have a complete key path."]
         #[serde(
             rename = "update",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub update: ::std::option::Option<crate::schemas::Entity>,
-        #[doc = "The entity to upsert. The entity may or may not already exist.\nThe entity key's final path element may be incomplete."]
+        #[doc = "The entity to upsert. The entity may or may not already exist. The entity key's final path element may be incomplete."]
         #[serde(
             rename = "upsert",
             default,
@@ -1852,21 +1852,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct MutationResult {
-        #[doc = "Whether a conflict was detected for this mutation. Always false when a\nconflict detection strategy field is not set in the mutation."]
+        #[doc = "Whether a conflict was detected for this mutation. Always false when a conflict detection strategy field is not set in the mutation."]
         #[serde(
             rename = "conflictDetected",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub conflict_detected: ::std::option::Option<bool>,
-        #[doc = "The automatically allocated key.\nSet only when the mutation allocated a key."]
+        #[doc = "The automatically allocated key. Set only when the mutation allocated a key."]
         #[serde(
             rename = "key",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub key: ::std::option::Option<crate::schemas::Key>,
-        #[doc = "The version of the entity on the server after processing the mutation. If\nthe mutation doesn't change anything on the server, then the version will\nbe the version of the current entity or, if no entity is present, a version\nthat is strictly greater than the version of any previous entity and less\nthan the version of any possible future entity."]
+        #[doc = "The version of the entity on the server after processing the mutation. If the mutation doesn't change anything on the server, then the version will be the version of the current entity or, if no entity is present, a version that is strictly greater than the version of any previous entity and less than the version of any possible future entity."]
         #[serde(
             rename = "version",
             default,
@@ -1936,7 +1936,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PathElement {
-        #[doc = "The auto-allocated ID of the entity.\nNever equal to zero. Values less than zero are discouraged and may not\nbe supported in the future."]
+        #[doc = "The auto-allocated ID of the entity. Never equal to zero. Values less than zero are discouraged and may not be supported in the future."]
         #[serde(
             rename = "id",
             default,
@@ -1944,14 +1944,14 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub id: ::std::option::Option<i64>,
-        #[doc = "The kind of the entity.\nA kind matching regex `__.*__` is reserved/read-only.\nA kind must not contain more than 1500 bytes when UTF-8 encoded.\nCannot be `\"\"`."]
+        #[doc = "The kind of the entity. A kind matching regex `__.*__` is reserved/read-only. A kind must not contain more than 1500 bytes when UTF-8 encoded. Cannot be `\"\"`."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The name of the entity.\nA name matching regex `__.*__` is reserved/read-only.\nA name must not be more than 1500 bytes when UTF-8 encoded.\nCannot be `\"\"`."]
+        #[doc = "The name of the entity. A name matching regex `__.*__` is reserved/read-only. A name must not be more than 1500 bytes when UTF-8 encoded. Cannot be `\"\"`."]
         #[serde(
             rename = "name",
             default,
@@ -2259,7 +2259,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PropertyReference {
-        #[doc = "The name of the property.\nIf name includes \".\"s, it may be interpreted as a property name path."]
+        #[doc = "The name of the property. If name includes \".\"s, it may be interpreted as a property name path."]
         #[serde(
             rename = "name",
             default,
@@ -2281,14 +2281,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Query {
-        #[doc = "The properties to make distinct. The query results will contain the first\nresult for each distinct combination of values for the given properties\n(if empty, all results are returned)."]
+        #[doc = "The properties to make distinct. The query results will contain the first result for each distinct combination of values for the given properties (if empty, all results are returned)."]
         #[serde(
             rename = "distinctOn",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub distinct_on: ::std::option::Option<Vec<crate::schemas::PropertyReference>>,
-        #[doc = "An ending point for the query results. Query cursors are\nreturned in query result batches and\n[can only be used to limit the same\nquery](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets)."]
+        #[doc = "An ending point for the query results. Query cursors are returned in query result batches and [can only be used to limit the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets)."]
         #[serde(
             rename = "endCursor",
             default,
@@ -2302,21 +2302,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub filter: ::std::option::Option<crate::schemas::Filter>,
-        #[doc = "The kinds to query (if empty, returns entities of all kinds).\nCurrently at most 1 kind may be specified."]
+        #[doc = "The kinds to query (if empty, returns entities of all kinds). Currently at most 1 kind may be specified."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<Vec<crate::schemas::KindExpression>>,
-        #[doc = "The maximum number of results to return. Applies after all other\nconstraints. Optional.\nUnspecified is interpreted as no limit.\nMust be >= 0 if specified."]
+        #[doc = "The maximum number of results to return. Applies after all other constraints. Optional. Unspecified is interpreted as no limit. Must be >= 0 if specified."]
         #[serde(
             rename = "limit",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub limit: ::std::option::Option<i32>,
-        #[doc = "The number of results to skip. Applies before limit, but after all other\nconstraints. Optional. Must be >= 0 if specified."]
+        #[doc = "The number of results to skip. Applies before limit, but after all other constraints. Optional. Must be >= 0 if specified."]
         #[serde(
             rename = "offset",
             default,
@@ -2337,7 +2337,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub projection: ::std::option::Option<Vec<crate::schemas::Projection>>,
-        #[doc = "A starting point for the query results. Query cursors are\nreturned in query result batches and\n[can only be used to continue the same\nquery](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets)."]
+        #[doc = "A starting point for the query results. Query cursors are returned in query result batches and [can only be used to continue the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets)."]
         #[serde(
             rename = "startCursor",
             default,
@@ -2388,7 +2388,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub more_results: ::std::option::Option<crate::schemas::QueryResultBatchMoreResults>,
-        #[doc = "A cursor that points to the position after the last skipped result.\nWill be set when `skipped_results` != 0."]
+        #[doc = "A cursor that points to the position after the last skipped result. Will be set when `skipped_results` != 0."]
         #[serde(
             rename = "skippedCursor",
             default,
@@ -2402,7 +2402,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub skipped_results: ::std::option::Option<i32>,
-        #[doc = "The version number of the snapshot this batch was returned from.\nThis applies to the range of results from the query's `start_cursor` (or\nthe beginning of the query if no cursor was given) to this batch's\n`end_cursor` (not the query's `end_cursor`).\n\nIn a single transaction, subsequent query result batches for the same query\ncan have a greater snapshot version number. Each batch's snapshot version\nis valid for all preceding batches.\nThe value will be zero for eventually consistent queries."]
+        #[doc = "The version number of the snapshot this batch was returned from. This applies to the range of results from the query's `start_cursor` (or the beginning of the query if no cursor was given) to this batch's `end_cursor` (not the query's `end_cursor`). In a single transaction, subsequent query result batches for the same query can have a greater snapshot version number. Each batch's snapshot version is valid for all preceding batches. The value will be zero for eventually consistent queries."]
         #[serde(
             rename = "snapshotVersion",
             default,
@@ -2510,7 +2510,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum QueryResultBatchMoreResults {
-        #[doc = "The query is finished, but there may be more results after the end\ncursor."]
+        #[doc = "The query is finished, but there may be more results after the end cursor."]
         MoreResultsAfterCursor,
         #[doc = "The query is finished, but there may be more results after the limit."]
         MoreResultsAfterLimit,
@@ -2637,14 +2637,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ReadOptions {
-        #[doc = "The non-transactional read consistency to use.\nCannot be set to `STRONG` for global queries."]
+        #[doc = "The non-transactional read consistency to use. Cannot be set to `STRONG` for global queries."]
         #[serde(
             rename = "readConsistency",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub read_consistency: ::std::option::Option<crate::schemas::ReadOptionsReadConsistency>,
-        #[doc = "The identifier of the transaction in which to read. A\ntransaction identifier is returned by a call to\nDatastore.BeginTransaction."]
+        #[doc = "The identifier of the transaction in which to read. A transaction identifier is returned by a call to Datastore.BeginTransaction."]
         #[serde(
             rename = "transaction",
             default,
@@ -2795,7 +2795,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub database_id: ::std::option::Option<String>,
-        #[doc = "Required. A list of keys with complete key paths whose numeric IDs should not be\nauto-allocated."]
+        #[doc = "Required. A list of keys with complete key paths whose numeric IDs should not be auto-allocated."]
         #[serde(
             rename = "keys",
             default,
@@ -2850,7 +2850,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RollbackRequest {
-        #[doc = "Required. The transaction identifier, returned by a call to\nDatastore.BeginTransaction."]
+        #[doc = "Required. The transaction identifier, returned by a call to Datastore.BeginTransaction."]
         #[serde(
             rename = "transaction",
             default,
@@ -2903,7 +2903,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub gql_query: ::std::option::Option<crate::schemas::GqlQuery>,
-        #[doc = "Entities are partitioned into subsets, identified by a partition ID.\nQueries are scoped to a single partition.\nThis partition ID is normalized with the standard default context\npartition ID."]
+        #[doc = "Entities are partitioned into subsets, identified by a partition ID. Queries are scoped to a single partition. This partition ID is normalized with the standard default context partition ID."]
         #[serde(
             rename = "partitionId",
             default,
@@ -3006,14 +3006,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Value {
-        #[doc = "An array value.\nCannot contain another array value.\nA `Value` instance that sets field `array_value` must not set fields\n`meaning` or `exclude_from_indexes`."]
+        #[doc = "An array value. Cannot contain another array value. A `Value` instance that sets field `array_value` must not set fields `meaning` or `exclude_from_indexes`."]
         #[serde(
             rename = "arrayValue",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub array_value: ::std::option::Option<crate::schemas::ArrayValue>,
-        #[doc = "A blob value.\nMay have at most 1,000,000 bytes.\nWhen `exclude_from_indexes` is false, may have at most 1500 bytes.\nIn JSON requests, must be base64-encoded."]
+        #[doc = "A blob value. May have at most 1,000,000 bytes. When `exclude_from_indexes` is false, may have at most 1500 bytes. In JSON requests, must be base64-encoded."]
         #[serde(
             rename = "blobValue",
             default,
@@ -3034,14 +3034,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub double_value: ::std::option::Option<f64>,
-        #[doc = "An entity value.\n\n* May have no key.\n* May have a key with an incomplete key path.\n* May have a reserved/read-only key."]
+        #[doc = "An entity value. - May have no key. - May have a key with an incomplete key path. - May have a reserved/read-only key."]
         #[serde(
             rename = "entityValue",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub entity_value: ::std::option::Option<crate::schemas::Entity>,
-        #[doc = "If the value should be excluded from all indexes including those defined\nexplicitly."]
+        #[doc = "If the value should be excluded from all indexes including those defined explicitly."]
         #[serde(
             rename = "excludeFromIndexes",
             default,
@@ -3084,14 +3084,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub null_value: ::std::option::Option<crate::schemas::ValueNullValue>,
-        #[doc = "A UTF-8 encoded string value.\nWhen `exclude_from_indexes` is false (it is indexed) , may have at most 1500 bytes.\nOtherwise, may be set to at most 1,000,000 bytes."]
+        #[doc = "A UTF-8 encoded string value. When `exclude_from_indexes` is false (it is indexed) , may have at most 1500 bytes. Otherwise, may be set to at most 1,000,000 bytes."]
         #[serde(
             rename = "stringValue",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub string_value: ::std::option::Option<String>,
-        #[doc = "A timestamp value.\nWhen stored in the Datastore, precise only to microseconds;\nany additional precision is rounded down."]
+        #[doc = "A timestamp value. When stored in the Datastore, precise only to microseconds; any additional precision is rounded down."]
         #[serde(
             rename = "timestampValue",
             default,
@@ -3373,7 +3373,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Allocates IDs for the given keys, which is useful for referencing an entity\nbefore it is inserted."]
+            #[doc = "Allocates IDs for the given keys, which is useful for referencing an entity before it is inserted."]
             pub fn allocate_ids(
                 &self,
                 request: crate::schemas::AllocateIdsRequest,
@@ -3421,7 +3421,7 @@ pub mod resources {
                     project_id: project_id.into(),
                 }
             }
-            #[doc = "Commits a transaction, optionally creating, deleting or modifying some\nentities."]
+            #[doc = "Commits a transaction, optionally creating, deleting or modifying some entities."]
             pub fn commit(
                 &self,
                 request: crate::schemas::CommitRequest,
@@ -3469,7 +3469,7 @@ pub mod resources {
                     project_id: project_id.into(),
                 }
             }
-            #[doc = "Prevents the supplied keys' IDs from being auto-allocated by Cloud\nDatastore."]
+            #[doc = "Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore."]
             pub fn reserve_ids(
                 &self,
                 request: crate::schemas::ReserveIdsRequest,
@@ -3681,19 +3681,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -3840,19 +3840,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -3999,19 +3999,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -4158,19 +4158,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -4317,19 +4317,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -4476,19 +4476,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -4635,19 +4635,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,

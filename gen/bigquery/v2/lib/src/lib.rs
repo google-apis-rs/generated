@@ -1,4 +1,4 @@
-#![doc = "# Resources and Methods\n    * [datasets](resources/datasets/struct.DatasetsActions.html)\n      * [*delete*](resources/datasets/struct.DeleteRequestBuilder.html), [*get*](resources/datasets/struct.GetRequestBuilder.html), [*insert*](resources/datasets/struct.InsertRequestBuilder.html), [*list*](resources/datasets/struct.ListRequestBuilder.html), [*patch*](resources/datasets/struct.PatchRequestBuilder.html), [*update*](resources/datasets/struct.UpdateRequestBuilder.html)\n    * [jobs](resources/jobs/struct.JobsActions.html)\n      * [*cancel*](resources/jobs/struct.CancelRequestBuilder.html), [*get*](resources/jobs/struct.GetRequestBuilder.html), [*getQueryResults*](resources/jobs/struct.GetQueryResultsRequestBuilder.html), [*insert*](resources/jobs/struct.InsertRequestBuilder.html), [*list*](resources/jobs/struct.ListRequestBuilder.html), [*query*](resources/jobs/struct.QueryRequestBuilder.html)\n    * [models](resources/models/struct.ModelsActions.html)\n      * [*delete*](resources/models/struct.DeleteRequestBuilder.html), [*get*](resources/models/struct.GetRequestBuilder.html), [*list*](resources/models/struct.ListRequestBuilder.html), [*patch*](resources/models/struct.PatchRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*getServiceAccount*](resources/projects/struct.GetServiceAccountRequestBuilder.html), [*list*](resources/projects/struct.ListRequestBuilder.html)\n    * [routines](resources/routines/struct.RoutinesActions.html)\n      * [*delete*](resources/routines/struct.DeleteRequestBuilder.html), [*get*](resources/routines/struct.GetRequestBuilder.html), [*insert*](resources/routines/struct.InsertRequestBuilder.html), [*list*](resources/routines/struct.ListRequestBuilder.html), [*update*](resources/routines/struct.UpdateRequestBuilder.html)\n    * [tabledata](resources/tabledata/struct.TabledataActions.html)\n      * [*insertAll*](resources/tabledata/struct.InsertAllRequestBuilder.html), [*list*](resources/tabledata/struct.ListRequestBuilder.html)\n    * [tables](resources/tables/struct.TablesActions.html)\n      * [*delete*](resources/tables/struct.DeleteRequestBuilder.html), [*get*](resources/tables/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/tables/struct.GetIamPolicyRequestBuilder.html), [*insert*](resources/tables/struct.InsertRequestBuilder.html), [*list*](resources/tables/struct.ListRequestBuilder.html), [*patch*](resources/tables/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/tables/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/tables/struct.TestIamPermissionsRequestBuilder.html), [*update*](resources/tables/struct.UpdateRequestBuilder.html)\n"]
+#![doc = "# Resources and Methods\n    * [datasets](resources/datasets/struct.DatasetsActions.html)\n      * [*delete*](resources/datasets/struct.DeleteRequestBuilder.html), [*get*](resources/datasets/struct.GetRequestBuilder.html), [*insert*](resources/datasets/struct.InsertRequestBuilder.html), [*list*](resources/datasets/struct.ListRequestBuilder.html), [*patch*](resources/datasets/struct.PatchRequestBuilder.html), [*update*](resources/datasets/struct.UpdateRequestBuilder.html)\n    * [jobs](resources/jobs/struct.JobsActions.html)\n      * [*cancel*](resources/jobs/struct.CancelRequestBuilder.html), [*get*](resources/jobs/struct.GetRequestBuilder.html), [*getQueryResults*](resources/jobs/struct.GetQueryResultsRequestBuilder.html), [*insert*](resources/jobs/struct.InsertRequestBuilder.html), [*list*](resources/jobs/struct.ListRequestBuilder.html), [*query*](resources/jobs/struct.QueryRequestBuilder.html)\n    * [models](resources/models/struct.ModelsActions.html)\n      * [*delete*](resources/models/struct.DeleteRequestBuilder.html), [*get*](resources/models/struct.GetRequestBuilder.html), [*list*](resources/models/struct.ListRequestBuilder.html), [*patch*](resources/models/struct.PatchRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*getServiceAccount*](resources/projects/struct.GetServiceAccountRequestBuilder.html), [*list*](resources/projects/struct.ListRequestBuilder.html)\n    * [routines](resources/routines/struct.RoutinesActions.html)\n      * [*delete*](resources/routines/struct.DeleteRequestBuilder.html), [*get*](resources/routines/struct.GetRequestBuilder.html), [*insert*](resources/routines/struct.InsertRequestBuilder.html), [*list*](resources/routines/struct.ListRequestBuilder.html), [*update*](resources/routines/struct.UpdateRequestBuilder.html)\n    * [row_access_policies](resources/row_access_policies/struct.RowAccessPoliciesActions.html)\n      * [*getIamPolicy*](resources/row_access_policies/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/row_access_policies/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/row_access_policies/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/row_access_policies/struct.TestIamPermissionsRequestBuilder.html)\n    * [tabledata](resources/tabledata/struct.TabledataActions.html)\n      * [*insertAll*](resources/tabledata/struct.InsertAllRequestBuilder.html), [*list*](resources/tabledata/struct.ListRequestBuilder.html)\n    * [tables](resources/tables/struct.TablesActions.html)\n      * [*delete*](resources/tables/struct.DeleteRequestBuilder.html), [*get*](resources/tables/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/tables/struct.GetIamPolicyRequestBuilder.html), [*insert*](resources/tables/struct.InsertRequestBuilder.html), [*list*](resources/tables/struct.ListRequestBuilder.html), [*patch*](resources/tables/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/tables/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/tables/struct.TestIamPermissionsRequestBuilder.html), [*update*](resources/tables/struct.UpdateRequestBuilder.html)\n"]
 pub mod scopes {
     #[doc = "View and manage your data in Google BigQuery\n\n`https://www.googleapis.com/auth/bigquery`"]
     pub const BIGQUERY: &str = "https://www.googleapis.com/auth/bigquery";
@@ -24,14 +24,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AggregateClassificationMetrics {
-        #[doc = "Accuracy is the fraction of predictions given the correct label. For\nmulticlass this is a micro-averaged metric."]
+        #[doc = "Accuracy is the fraction of predictions given the correct label. For multiclass this is a micro-averaged metric."]
         #[serde(
             rename = "accuracy",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub accuracy: ::std::option::Option<f64>,
-        #[doc = "The F1 score is an average of recall and precision. For multiclass\nthis is a macro-averaged metric."]
+        #[doc = "The F1 score is an average of recall and precision. For multiclass this is a macro-averaged metric."]
         #[serde(
             rename = "f1Score",
             default,
@@ -45,28 +45,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub log_loss: ::std::option::Option<f64>,
-        #[doc = "Precision is the fraction of actual positive predictions that had\npositive actual labels. For multiclass this is a macro-averaged\nmetric treating each class as a binary classifier."]
+        #[doc = "Precision is the fraction of actual positive predictions that had positive actual labels. For multiclass this is a macro-averaged metric treating each class as a binary classifier."]
         #[serde(
             rename = "precision",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub precision: ::std::option::Option<f64>,
-        #[doc = "Recall is the fraction of actual positive labels that were given a\npositive prediction. For multiclass this is a macro-averaged metric."]
+        #[doc = "Recall is the fraction of actual positive labels that were given a positive prediction. For multiclass this is a macro-averaged metric."]
         #[serde(
             rename = "recall",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub recall: ::std::option::Option<f64>,
-        #[doc = "Area Under a ROC Curve. For multiclass this is a macro-averaged\nmetric."]
+        #[doc = "Area Under a ROC Curve. For multiclass this is a macro-averaged metric."]
         #[serde(
             rename = "rocAuc",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub roc_auc: ::std::option::Option<f64>,
-        #[doc = "Threshold at which the metrics are computed. For binary\nclassification models this is the positive class threshold.\nFor multi-class classfication models this is the confidence\nthreshold."]
+        #[doc = "Threshold at which the metrics are computed. For binary classification models this is the positive class threshold. For multi-class classfication models this is the confidence threshold."]
         #[serde(
             rename = "threshold",
             default,
@@ -111,7 +111,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub data_type: ::std::option::Option<crate::schemas::StandardSqlDataType>,
-        #[doc = "Optional. Specifies whether the argument is input or output.\nCan be set for procedures only."]
+        #[doc = "Optional. Specifies whether the argument is input or output. Can be set for procedures only."]
         #[serde(
             rename = "mode",
             default,
@@ -138,10 +138,10 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ArgumentArgumentKind {
-        #[doc = "The argument is any type, including struct or array, but not a table.\nTo be added: FIXED_TABLE, ANY_TABLE"]
+        #[doc = "The argument is any type, including struct or array, but not a table. To be added: FIXED_TABLE, ANY_TABLE"]
         AnyType,
         ArgumentKindUnspecified,
-        #[doc = "The argument is a variable with fully specified type, which can be a\nstruct or an array, but not a table."]
+        #[doc = "The argument is a variable with fully specified type, which can be a struct or an array, but not a table."]
         FixedType,
     }
     impl ArgumentArgumentKind {
@@ -366,6 +366,168 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
+    pub struct ArimaForecastingMetrics {
+        #[doc = "Arima model fitting metrics."]
+        #[serde(
+            rename = "arimaFittingMetrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub arima_fitting_metrics: ::std::option::Option<Vec<crate::schemas::ArimaFittingMetrics>>,
+        #[doc = "Repeated as there can be many metric sets (one for each model) in auto-arima and the large-scale case."]
+        #[serde(
+            rename = "arimaSingleModelForecastingMetrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub arima_single_model_forecasting_metrics:
+            ::std::option::Option<Vec<crate::schemas::ArimaSingleModelForecastingMetrics>>,
+        #[doc = "Whether Arima model fitted with drift or not. It is always false when d is not 1."]
+        #[serde(
+            rename = "hasDrift",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub has_drift: ::std::option::Option<Vec<bool>>,
+        #[doc = "Non-seasonal order."]
+        #[serde(
+            rename = "nonSeasonalOrder",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub non_seasonal_order: ::std::option::Option<Vec<crate::schemas::ArimaOrder>>,
+        #[doc = "Seasonal periods. Repeated because multiple periods are supported for one time series."]
+        #[serde(
+            rename = "seasonalPeriods",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub seasonal_periods:
+            ::std::option::Option<Vec<crate::schemas::ArimaForecastingMetricsSeasonalPeriodsItems>>,
+        #[doc = "Id to differentiate different time series for the large-scale case."]
+        #[serde(
+            rename = "timeSeriesId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub time_series_id: ::std::option::Option<Vec<String>>,
+    }
+    impl ::google_field_selector::FieldSelector for ArimaForecastingMetrics {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ArimaForecastingMetrics {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ArimaForecastingMetricsSeasonalPeriodsItems {
+        #[doc = "Daily period, 24 hours."]
+        Daily,
+        #[doc = "Monthly period, 30 days or irregular."]
+        Monthly,
+        #[doc = "No seasonality"]
+        NoSeasonality,
+        #[doc = "Quarterly period, 90 days or irregular."]
+        Quarterly,
+        SeasonalPeriodTypeUnspecified,
+        #[doc = "Weekly period, 7 days."]
+        Weekly,
+        #[doc = "Yearly period, 365 days or irregular."]
+        Yearly,
+    }
+    impl ArimaForecastingMetricsSeasonalPeriodsItems {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ArimaForecastingMetricsSeasonalPeriodsItems::Daily => "DAILY",
+                ArimaForecastingMetricsSeasonalPeriodsItems::Monthly => "MONTHLY",
+                ArimaForecastingMetricsSeasonalPeriodsItems::NoSeasonality => "NO_SEASONALITY",
+                ArimaForecastingMetricsSeasonalPeriodsItems::Quarterly => "QUARTERLY",
+                ArimaForecastingMetricsSeasonalPeriodsItems::SeasonalPeriodTypeUnspecified => {
+                    "SEASONAL_PERIOD_TYPE_UNSPECIFIED"
+                }
+                ArimaForecastingMetricsSeasonalPeriodsItems::Weekly => "WEEKLY",
+                ArimaForecastingMetricsSeasonalPeriodsItems::Yearly => "YEARLY",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ArimaForecastingMetricsSeasonalPeriodsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ArimaForecastingMetricsSeasonalPeriodsItems {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<ArimaForecastingMetricsSeasonalPeriodsItems, ()> {
+            Ok(match s {
+                "DAILY" => ArimaForecastingMetricsSeasonalPeriodsItems::Daily,
+                "MONTHLY" => ArimaForecastingMetricsSeasonalPeriodsItems::Monthly,
+                "NO_SEASONALITY" => ArimaForecastingMetricsSeasonalPeriodsItems::NoSeasonality,
+                "QUARTERLY" => ArimaForecastingMetricsSeasonalPeriodsItems::Quarterly,
+                "SEASONAL_PERIOD_TYPE_UNSPECIFIED" => {
+                    ArimaForecastingMetricsSeasonalPeriodsItems::SeasonalPeriodTypeUnspecified
+                }
+                "WEEKLY" => ArimaForecastingMetricsSeasonalPeriodsItems::Weekly,
+                "YEARLY" => ArimaForecastingMetricsSeasonalPeriodsItems::Yearly,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for ArimaForecastingMetricsSeasonalPeriodsItems {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ArimaForecastingMetricsSeasonalPeriodsItems {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ArimaForecastingMetricsSeasonalPeriodsItems {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "DAILY" => ArimaForecastingMetricsSeasonalPeriodsItems::Daily,
+                "MONTHLY" => ArimaForecastingMetricsSeasonalPeriodsItems::Monthly,
+                "NO_SEASONALITY" => ArimaForecastingMetricsSeasonalPeriodsItems::NoSeasonality,
+                "QUARTERLY" => ArimaForecastingMetricsSeasonalPeriodsItems::Quarterly,
+                "SEASONAL_PERIOD_TYPE_UNSPECIFIED" => {
+                    ArimaForecastingMetricsSeasonalPeriodsItems::SeasonalPeriodTypeUnspecified
+                }
+                "WEEKLY" => ArimaForecastingMetricsSeasonalPeriodsItems::Weekly,
+                "YEARLY" => ArimaForecastingMetricsSeasonalPeriodsItems::Yearly,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for ArimaForecastingMetricsSeasonalPeriodsItems {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ArimaForecastingMetricsSeasonalPeriodsItems {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
     pub struct ArimaModelInfo {
         #[doc = "Arima coefficients."]
         #[serde(
@@ -381,7 +543,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub arima_fitting_metrics: ::std::option::Option<crate::schemas::ArimaFittingMetrics>,
-        #[doc = "Whether Arima model fitted with drift or not. It is always false\nwhen d is not 1."]
+        #[doc = "Whether Arima model fitted with drift or not. It is always false when d is not 1."]
         #[serde(
             rename = "hasDrift",
             default,
@@ -395,7 +557,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub non_seasonal_order: ::std::option::Option<crate::schemas::ArimaOrder>,
-        #[doc = "Seasonal periods. Repeated because multiple periods are supported\nfor one time series."]
+        #[doc = "Seasonal periods. Repeated because multiple periods are supported for one time series."]
         #[serde(
             rename = "seasonalPeriods",
             default,
@@ -403,7 +565,7 @@ pub mod schemas {
         )]
         pub seasonal_periods:
             ::std::option::Option<Vec<crate::schemas::ArimaModelInfoSeasonalPeriodsItems>>,
-        #[doc = "The id to indicate different time series."]
+        #[doc = "The time_series_id value for this time series. It will be one of the unique values from the time_series_id_column specified during ARIMA model training. Only present when time_series_id_column training option was used."]
         #[serde(
             rename = "timeSeriesId",
             default,
@@ -423,12 +585,18 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ArimaModelInfoSeasonalPeriodsItems {
+        #[doc = "Daily period, 24 hours."]
         Daily,
+        #[doc = "Monthly period, 30 days or irregular."]
         Monthly,
+        #[doc = "No seasonality"]
         NoSeasonality,
+        #[doc = "Quarterly period, 90 days or irregular."]
         Quarterly,
         SeasonalPeriodTypeUnspecified,
+        #[doc = "Weekly period, 7 days."]
         Weekly,
+        #[doc = "Yearly period, 365 days or irregular."]
         Yearly,
     }
     impl ArimaModelInfoSeasonalPeriodsItems {
@@ -568,14 +736,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ArimaResult {
-        #[doc = "This message is repeated because there are multiple arima models\nfitted in auto-arima. For non-auto-arima model, its size is one."]
+        #[doc = "This message is repeated because there are multiple arima models fitted in auto-arima. For non-auto-arima model, its size is one."]
         #[serde(
             rename = "arimaModelInfo",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub arima_model_info: ::std::option::Option<Vec<crate::schemas::ArimaModelInfo>>,
-        #[doc = "Seasonal periods. Repeated because multiple periods are supported for\none time series."]
+        #[doc = "Seasonal periods. Repeated because multiple periods are supported for one time series."]
         #[serde(
             rename = "seasonalPeriods",
             default,
@@ -596,12 +764,18 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ArimaResultSeasonalPeriodsItems {
+        #[doc = "Daily period, 24 hours."]
         Daily,
+        #[doc = "Monthly period, 30 days or irregular."]
         Monthly,
+        #[doc = "No seasonality"]
         NoSeasonality,
+        #[doc = "Quarterly period, 90 days or irregular."]
         Quarterly,
         SeasonalPeriodTypeUnspecified,
+        #[doc = "Weekly period, 7 days."]
         Weekly,
+        #[doc = "Yearly period, 365 days or irregular."]
         Yearly,
     }
     impl ArimaResultSeasonalPeriodsItems {
@@ -690,6 +864,129 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct ArimaSingleModelForecastingMetrics {
+        #[doc = "Arima fitting metrics."]
+        #[serde(
+            rename = "arimaFittingMetrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub arima_fitting_metrics: ::std::option::Option<crate::schemas::ArimaFittingMetrics>,
+        #[doc = "Is arima model fitted with drift or not. It is always false when d is not 1."]
+        #[serde(
+            rename = "hasDrift",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub has_drift: ::std::option::Option<bool>,
+        #[doc = "Non-seasonal order."]
+        #[serde(
+            rename = "nonSeasonalOrder",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub non_seasonal_order: ::std::option::Option<crate::schemas::ArimaOrder>,
+        #[doc = "Seasonal periods. Repeated because multiple periods are supported for one time series."]
+        #[serde(
+            rename = "seasonalPeriods",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub seasonal_periods: ::std::option::Option<
+            Vec<crate::schemas::ArimaSingleModelForecastingMetricsSeasonalPeriodsItems>,
+        >,
+        #[doc = "The time_series_id value for this time series. It will be one of the unique values from the time_series_id_column specified during ARIMA model training. Only present when time_series_id_column training option was used."]
+        #[serde(
+            rename = "timeSeriesId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub time_series_id: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for ArimaSingleModelForecastingMetrics {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ArimaSingleModelForecastingMetrics {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ArimaSingleModelForecastingMetricsSeasonalPeriodsItems {
+        #[doc = "Daily period, 24 hours."]
+        Daily,
+        #[doc = "Monthly period, 30 days or irregular."]
+        Monthly,
+        #[doc = "No seasonality"]
+        NoSeasonality,
+        #[doc = "Quarterly period, 90 days or irregular."]
+        Quarterly,
+        SeasonalPeriodTypeUnspecified,
+        #[doc = "Weekly period, 7 days."]
+        Weekly,
+        #[doc = "Yearly period, 365 days or irregular."]
+        Yearly,
+    }
+    impl ArimaSingleModelForecastingMetricsSeasonalPeriodsItems {
+        pub fn as_str(self) -> &'static str {
+            match self { ArimaSingleModelForecastingMetricsSeasonalPeriodsItems :: Daily => "DAILY" , ArimaSingleModelForecastingMetricsSeasonalPeriodsItems :: Monthly => "MONTHLY" , ArimaSingleModelForecastingMetricsSeasonalPeriodsItems :: NoSeasonality => "NO_SEASONALITY" , ArimaSingleModelForecastingMetricsSeasonalPeriodsItems :: Quarterly => "QUARTERLY" , ArimaSingleModelForecastingMetricsSeasonalPeriodsItems :: SeasonalPeriodTypeUnspecified => "SEASONAL_PERIOD_TYPE_UNSPECIFIED" , ArimaSingleModelForecastingMetricsSeasonalPeriodsItems :: Weekly => "WEEKLY" , ArimaSingleModelForecastingMetricsSeasonalPeriodsItems :: Yearly => "YEARLY" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ArimaSingleModelForecastingMetricsSeasonalPeriodsItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ArimaSingleModelForecastingMetricsSeasonalPeriodsItems {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<ArimaSingleModelForecastingMetricsSeasonalPeriodsItems, ()>
+        {
+            Ok ( match s { "DAILY" => ArimaSingleModelForecastingMetricsSeasonalPeriodsItems :: Daily , "MONTHLY" => ArimaSingleModelForecastingMetricsSeasonalPeriodsItems :: Monthly , "NO_SEASONALITY" => ArimaSingleModelForecastingMetricsSeasonalPeriodsItems :: NoSeasonality , "QUARTERLY" => ArimaSingleModelForecastingMetricsSeasonalPeriodsItems :: Quarterly , "SEASONAL_PERIOD_TYPE_UNSPECIFIED" => ArimaSingleModelForecastingMetricsSeasonalPeriodsItems :: SeasonalPeriodTypeUnspecified , "WEEKLY" => ArimaSingleModelForecastingMetricsSeasonalPeriodsItems :: Weekly , "YEARLY" => ArimaSingleModelForecastingMetricsSeasonalPeriodsItems :: Yearly , _ => return Err ( ( ) ) , } )
+        }
+    }
+    impl ::std::fmt::Display for ArimaSingleModelForecastingMetricsSeasonalPeriodsItems {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ArimaSingleModelForecastingMetricsSeasonalPeriodsItems {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ArimaSingleModelForecastingMetricsSeasonalPeriodsItems {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok ( match value { "DAILY" => ArimaSingleModelForecastingMetricsSeasonalPeriodsItems :: Daily , "MONTHLY" => ArimaSingleModelForecastingMetricsSeasonalPeriodsItems :: Monthly , "NO_SEASONALITY" => ArimaSingleModelForecastingMetricsSeasonalPeriodsItems :: NoSeasonality , "QUARTERLY" => ArimaSingleModelForecastingMetricsSeasonalPeriodsItems :: Quarterly , "SEASONAL_PERIOD_TYPE_UNSPECIFIED" => ArimaSingleModelForecastingMetricsSeasonalPeriodsItems :: SeasonalPeriodTypeUnspecified , "WEEKLY" => ArimaSingleModelForecastingMetricsSeasonalPeriodsItems :: Weekly , "YEARLY" => ArimaSingleModelForecastingMetricsSeasonalPeriodsItems :: Yearly , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for ArimaSingleModelForecastingMetricsSeasonalPeriodsItems
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for ArimaSingleModelForecastingMetricsSeasonalPeriodsItems
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -709,7 +1006,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub audit_log_configs: ::std::option::Option<Vec<crate::schemas::AuditLogConfig>>,
-        #[doc = "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services."]
+        #[doc = "Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services."]
         #[serde(
             rename = "service",
             default,
@@ -740,7 +1037,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AuditLogConfig {
-        #[doc = "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."]
+        #[doc = "Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members."]
         #[serde(
             rename = "exemptedMembers",
             default,
@@ -1140,14 +1437,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub positive_class_threshold: ::std::option::Option<f64>,
-        #[doc = "The fraction of actual positive predictions that had positive actual\nlabels."]
+        #[doc = "The fraction of actual positive predictions that had positive actual labels."]
         #[serde(
             rename = "precision",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub precision: ::std::option::Option<f64>,
-        #[doc = "The fraction of actual positive labels that were given a positive\nprediction."]
+        #[doc = "The fraction of actual positive labels that were given a positive prediction."]
         #[serde(
             rename = "recall",
             default,
@@ -1194,21 +1491,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Binding {
-        #[doc = "The condition that is associated with this binding.\n\nIf the condition evaluates to `true`, then this binding applies to the\ncurrent request.\n\nIf the condition evaluates to `false`, then this binding does not apply to\nthe current request. However, a different role binding might grant the same\nrole to one or more of the members in this binding.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM\ndocumentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
+        #[doc = "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
         #[serde(
             rename = "condition",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
-        #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique\n  identifier) representing a user that has been recently deleted. For\n  example, `alice@example.com?uid=123456789012345678901`. If the user is\n  recovered, this value reverts to `user:{emailid}` and the recovered user\n  retains the role in the binding.\n\n* `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus\n  unique identifier) representing a service account that has been recently\n  deleted. For example,\n  `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.\n  If the service account is undeleted, this value reverts to\n  `serviceAccount:{emailid}` and the undeleted service account retains the\n  role in the binding.\n\n* `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique\n  identifier) representing a Google group that has been recently\n  deleted. For example, `admins@example.com?uid=123456789012345678901`. If\n  the group is recovered, this value reverts to `group:{emailid}` and the\n  recovered group retains the role in the binding.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
+        #[doc = "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. "]
         #[serde(
             rename = "members",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub members: ::std::option::Option<Vec<String>>,
-        #[doc = "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
+        #[doc = "Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`."]
         #[serde(
             rename = "role",
             default,
@@ -1403,7 +1700,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CategoricalValue {
-        #[doc = "Counts of all categories for the categorical feature. If there are\nmore than ten categories, we return top ten (by count) and return\none more CategoryCount with category \"*OTHER*\" and count as\naggregate counts of remaining categories."]
+        #[doc = "Counts of all categories for the categorical feature. If there are more than ten categories, we return top ten (by count) and return one more CategoryCount with category \"*OTHER*\" and count as aggregate counts of remaining categories."]
         #[serde(
             rename = "categoryCounts",
             default,
@@ -1441,7 +1738,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub category: ::std::option::Option<String>,
-        #[doc = "The count of training samples matching the category within the\ncluster."]
+        #[doc = "The count of training samples matching the category within the cluster."]
         #[serde(
             rename = "count",
             default,
@@ -1510,7 +1807,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub centroid_id: ::std::option::Option<i64>,
-        #[doc = "Cluster radius, the average distance from centroid\nto each point assigned to the cluster."]
+        #[doc = "Cluster radius, the average distance from centroid to each point assigned to the cluster."]
         #[serde(
             rename = "clusterRadius",
             default,
@@ -1571,7 +1868,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ClusteringMetrics {
-        #[doc = "[Beta] Information for all clusters."]
+        #[doc = "Information for all clusters."]
         #[serde(
             rename = "clusters",
             default,
@@ -1607,7 +1904,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ConfusionMatrix {
-        #[doc = "Confidence threshold used when computing the entries of the\nconfusion matrix."]
+        #[doc = "Confidence threshold used when computing the entries of the confusion matrix."]
         #[serde(
             rename = "confidenceThreshold",
             default,
@@ -1890,6 +2187,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub location: ::std::option::Option<String>,
+        #[doc = "[Output-only] Reserved for future use."]
+        #[serde(
+            rename = "satisfiesPZS",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub satisfies_pzs: ::std::option::Option<bool>,
         #[doc = "[Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource."]
         #[serde(
             rename = "selfLink",
@@ -1921,6 +2225,13 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DatasetAccessItems {
+        #[doc = "[Pick one] A grant authorizing all resources of a particular type in a particular dataset access to this dataset. Only views are supported for now. The role field is not required when this field is set. If that dataset is deleted and re-created, its access needs to be granted again via an update operation."]
+        #[serde(
+            rename = "dataset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub dataset: ::std::option::Option<crate::schemas::DatasetAccessEntry>,
         #[doc = "[Pick one] A domain to grant access to. Any users signed in with the domain specified will be granted the specified access. Example: \"example.com\". Maps to IAM policy member \"domain:DOMAIN\"."]
         #[serde(
             rename = "domain",
@@ -1949,6 +2260,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub role: ::std::option::Option<String>,
+        #[doc = "[Pick one] A routine from a different dataset to grant access to. Queries executed against that routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now. The role field is not required when this field is set. If that routine is updated by any user, access to the routine needs to be granted again via an update operation."]
+        #[serde(
+            rename = "routine",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub routine: ::std::option::Option<crate::schemas::RoutineReference>,
         #[doc = "[Pick one] A special group to grant access to. Possible values include: projectOwners: Owners of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named IAM members."]
         #[serde(
             rename = "specialGroup",
@@ -1977,6 +2295,75 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for DatasetAccessItems {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DatasetAccessEntry {
+        #[doc = "[Required] The dataset this entry applies to."]
+        #[serde(
+            rename = "dataset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub dataset: ::std::option::Option<crate::schemas::DatasetReference>,
+        #[serde(
+            rename = "target_types",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub target_types:
+            ::std::option::Option<Vec<crate::schemas::DatasetAccessEntryTargetTypesItems>>,
+    }
+    impl ::google_field_selector::FieldSelector for DatasetAccessEntry {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DatasetAccessEntry {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DatasetAccessEntryTargetTypesItems {
+        #[doc = "[Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset."]
+        #[serde(
+            rename = "targetType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub target_type: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for DatasetAccessEntryTargetTypesItems {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DatasetAccessEntryTargetTypesItems {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -2183,6 +2570,28 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct DimensionalityReductionMetrics {
+        #[doc = "Total percentage of variance explained by the selected principal components."]
+        #[serde(
+            rename = "totalExplainedVarianceRatio",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub total_explained_variance_ratio: ::std::option::Option<f64>,
+    }
+    impl ::google_field_selector::FieldSelector for DimensionalityReductionMetrics {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DimensionalityReductionMetrics {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -2234,7 +2643,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub item_count: ::std::option::Option<i64>,
-        #[doc = "The predicted label. For confidence_threshold > 0, we will\nalso add an entry indicating the number of items under the\nconfidence threshold."]
+        #[doc = "The predicted label. For confidence_threshold > 0, we will also add an entry indicating the number of items under the confidence threshold."]
         #[serde(
             rename = "predictedLabel",
             default,
@@ -2308,6 +2717,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct EvaluationMetrics {
+        #[doc = "Populated for ARIMA models."]
+        #[serde(
+            rename = "arimaForecastingMetrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub arima_forecasting_metrics:
+            ::std::option::Option<crate::schemas::ArimaForecastingMetrics>,
         #[doc = "Populated for binary classification/classifier models."]
         #[serde(
             rename = "binaryClassificationMetrics",
@@ -2323,6 +2740,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub clustering_metrics: ::std::option::Option<crate::schemas::ClusteringMetrics>,
+        #[doc = "Evaluation metrics when the model is a dimensionality reduction model, which currently includes PCA."]
+        #[serde(
+            rename = "dimensionalityReductionMetrics",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub dimensionality_reduction_metrics:
+            ::std::option::Option<crate::schemas::DimensionalityReductionMetrics>,
         #[doc = "Populated for multi-class classification/classifier models."]
         #[serde(
             rename = "multiClassClassificationMetrics",
@@ -2331,14 +2756,14 @@ pub mod schemas {
         )]
         pub multi_class_classification_metrics:
             ::std::option::Option<crate::schemas::MultiClassClassificationMetrics>,
-        #[doc = "[Alpha] Populated for implicit feedback type matrix factorization\nmodels."]
+        #[doc = "Populated for implicit feedback type matrix factorization models."]
         #[serde(
             rename = "rankingMetrics",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ranking_metrics: ::std::option::Option<crate::schemas::RankingMetrics>,
-        #[doc = "Populated for regression models and explicit feedback type matrix\nfactorization models."]
+        #[doc = "Populated for regression models and explicit feedback type matrix factorization models."]
         #[serde(
             rename = "regressionMetrics",
             default,
@@ -2638,6 +3063,35 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct Explanation {
+        #[doc = "Attribution of feature."]
+        #[serde(
+            rename = "attribution",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub attribution: ::std::option::Option<f64>,
+        #[doc = "Full name of the feature. For non-numerical features, will be formatted like .. Overall size of feature name will always be truncated to first 120 characters."]
+        #[serde(
+            rename = "featureName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub feature_name: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for Explanation {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Explanation {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -2650,28 +3104,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Expr {
-        #[doc = "Optional. Description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
+        #[doc = "Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI."]
         #[serde(
             rename = "description",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "Textual representation of an expression in Common Expression Language\nsyntax."]
+        #[doc = "Textual representation of an expression in Common Expression Language syntax."]
         #[serde(
             rename = "expression",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub expression: ::std::option::Option<String>,
-        #[doc = "Optional. String indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
+        #[doc = "Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file."]
         #[serde(
             rename = "location",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub location: ::std::option::Option<String>,
-        #[doc = "Optional. Title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
+        #[doc = "Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression."]
         #[serde(
             rename = "title",
             default,
@@ -2744,7 +3198,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub google_sheets_options: ::std::option::Option<crate::schemas::GoogleSheetsOptions>,
-        #[doc = "[Optional, Trusted Tester] Options to configure hive partitioning support."]
+        #[doc = "[Optional] Options to configure hive partitioning support."]
         #[serde(
             rename = "hivePartitioningOptions",
             default,
@@ -2766,6 +3220,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub max_bad_records: ::std::option::Option<i32>,
+        #[doc = "Additional properties to set if sourceFormat is set to Parquet."]
+        #[serde(
+            rename = "parquetOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub parquet_options: ::std::option::Option<crate::schemas::ParquetOptions>,
         #[doc = "[Optional] The schema for the data. Schema is required for CSV and JSON formats. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats."]
         #[serde(
             rename = "schema",
@@ -2816,7 +3277,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub feature_column: ::std::option::Option<String>,
-        #[doc = "The numerical feature value. This is the centroid value for this\nfeature."]
+        #[doc = "The numerical feature value. This is the centroid value for this feature."]
         #[serde(
             rename = "numericalValue",
             default,
@@ -2847,7 +3308,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GetIamPolicyRequest {
-        #[doc = "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`."]
+        #[doc = "OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`."]
         #[serde(
             rename = "options",
             default,
@@ -2878,7 +3339,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GetPolicyOptions {
-        #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM\ndocumentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
+        #[doc = "Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional bindings must specify version 3. Policies without any conditional bindings may specify any valid value or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
         #[serde(
             rename = "requestedPolicyVersion",
             default,
@@ -3035,6 +3496,35 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GlobalExplanation {
+        #[doc = "Class label for this set of global explanations. Will be empty/null for binary logistic and linear regression models. Sorted alphabetically in descending order."]
+        #[serde(
+            rename = "classLabel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub class_label: ::std::option::Option<String>,
+        #[doc = "A list of the top global explanations. Sorted by absolute value of attribution in descending order."]
+        #[serde(
+            rename = "explanations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub explanations: ::std::option::Option<Vec<crate::schemas::Explanation>>,
+    }
+    impl ::google_field_selector::FieldSelector for GlobalExplanation {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GlobalExplanation {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -3086,14 +3576,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct HivePartitioningOptions {
-        #[doc = "[Optional, Trusted Tester] When set, what mode of hive partitioning to use when reading data. Two modes are supported. (1) AUTO: automatically infer partition key name(s) and type(s). (2) STRINGS: automatically infer partition key name(s). All types are interpreted as strings. Not all storage formats support hive partitioning. Requesting hive partitioning on an unsupported format will lead to an error. Currently supported types include: AVRO, CSV, JSON, ORC and Parquet."]
+        #[doc = "[Optional] When set, what mode of hive partitioning to use when reading data. The following modes are supported. (1) AUTO: automatically infer partition key name(s) and type(s). (2) STRINGS: automatically infer partition key name(s). All types are interpreted as strings. (3) CUSTOM: partition key schema is encoded in the source URI prefix. Not all storage formats support hive partitioning. Requesting hive partitioning on an unsupported format will lead to an error. Currently supported types include: AVRO, CSV, JSON, ORC and Parquet."]
         #[serde(
             rename = "mode",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mode: ::std::option::Option<String>,
-        #[doc = "[Optional, Trusted Tester] When hive partition detection is requested, a common prefix for all source uris should be supplied. The prefix must end immediately before the partition key encoding begins. For example, consider files following this data layout. gs://bucket/path_to_table/dt=2019-01-01/country=BR/id=7/file.avro gs://bucket/path_to_table/dt=2018-12-31/country=CA/id=3/file.avro When hive partitioning is requested with either AUTO or STRINGS detection, the common prefix can be either of gs://bucket/path_to_table or gs://bucket/path_to_table/ (trailing slash does not matter)."]
+        #[doc = "[Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified. Note that this field should only be true when creating a permanent external table or querying a temporary external table. Hive-partitioned loads with requirePartitionFilter explicitly set to true will fail."]
+        #[serde(
+            rename = "requirePartitionFilter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub require_partition_filter: ::std::option::Option<bool>,
+        #[doc = "[Optional] When hive partition detection is requested, a common prefix for all source uris should be supplied. The prefix must end immediately before the partition key encoding begins. For example, consider files following this data layout. gs://bucket/path_to_table/dt=2019-01-01/country=BR/id=7/file.avro gs://bucket/path_to_table/dt=2018-12-31/country=CA/id=3/file.avro When hive partitioning is requested with either AUTO or STRINGS detection, the common prefix can be either of gs://bucket/path_to_table or gs://bucket/path_to_table/ (trailing slash does not matter)."]
         #[serde(
             rename = "sourceUriPrefix",
             default,
@@ -3157,6 +3654,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub learn_rate: ::std::option::Option<f64>,
+        #[doc = "The information of the principal components."]
+        #[serde(
+            rename = "principalComponentInfos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub principal_component_infos:
+            ::std::option::Option<Vec<crate::schemas::PrincipalComponentInfo>>,
         #[doc = "Loss computed on the training data at the end of iteration."]
         #[serde(
             rename = "trainingLoss",
@@ -3368,7 +3873,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub compression: ::std::option::Option<String>,
-        #[doc = "[Optional] The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON or AVRO for tables and ML_TF_SAVED_MODEL or ML_XGBOOST_BOOSTER for models. The default value for tables is CSV. Tables with nested or repeated fields cannot be exported as CSV. The default value for models is ML_TF_SAVED_MODEL."]
+        #[doc = "[Optional] The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON, PARQUET or AVRO for tables and ML_TF_SAVED_MODEL or ML_XGBOOST_BOOSTER for models. The default value for tables is CSV. Tables with nested or repeated fields cannot be exported as CSV. The default value for models is ML_TF_SAVED_MODEL."]
         #[serde(
             rename = "destinationFormat",
             default,
@@ -3483,6 +3988,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub create_disposition: ::std::option::Option<String>,
+        #[doc = "Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC ([Preview](/products/#product-launch-stages)), and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is [\"NUMERIC\", \"BIGNUMERIC\"]. If (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, [\"BIGNUMERIC\", \"NUMERIC\"] is the same as [\"NUMERIC\", \"BIGNUMERIC\"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to [\"NUMERIC\", \"STRING\"] for ORC and [\"NUMERIC\"] for the other file formats."]
+        #[serde(
+            rename = "decimalTargetTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub decimal_target_types: ::std::option::Option<Vec<String>>,
         #[doc = "Custom encryption configuration (e.g., Cloud KMS keys)."]
         #[serde(
             rename = "destinationEncryptionConfiguration",
@@ -3520,7 +4032,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub field_delimiter: ::std::option::Option<String>,
-        #[doc = "[Optional, Trusted Tester] Options to configure hive partitioning support."]
+        #[doc = "[Optional] Options to configure hive partitioning support."]
         #[serde(
             rename = "hivePartitioningOptions",
             default,
@@ -3535,6 +4047,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ignore_unknown_values: ::std::option::Option<bool>,
+        #[doc = "[Optional] If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON. For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited GeoJSON: set to GEOJSON."]
+        #[serde(
+            rename = "jsonExtension",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub json_extension: ::std::option::Option<String>,
         #[doc = "[Optional] The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV and JSON. The default value is 0, which requires that all records are valid."]
         #[serde(
             rename = "maxBadRecords",
@@ -3549,6 +4068,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub null_marker: ::std::option::Option<String>,
+        #[doc = "[Optional] Options to configure parquet support."]
+        #[serde(
+            rename = "parquetOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub parquet_options: ::std::option::Option<crate::schemas::ParquetOptions>,
         #[doc = "If sourceFormat is set to \"DATASTORE_BACKUP\", indicates which entity properties to load into BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties. If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result."]
         #[serde(
             rename = "projectionFields",
@@ -3692,6 +4218,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub create_disposition: ::std::option::Option<String>,
+        #[doc = "If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs query in non-session mode."]
+        #[serde(
+            rename = "createSession",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub create_session: ::std::option::Option<bool>,
         #[doc = "[Optional] Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names."]
         #[serde(
             rename = "defaultDataset",
@@ -4197,6 +4730,13 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub total_slot_ms: ::std::option::Option<i64>,
+        #[doc = "[Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one."]
+        #[serde(
+            rename = "transactionInfoTemplate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub transaction_info_template: ::std::option::Option<crate::schemas::TransactionInfo>,
     }
     impl ::google_field_selector::FieldSelector for JobStatistics {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -4280,6 +4820,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ddl_operation_performed: ::std::option::Option<String>,
+        #[doc = "[Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries."]
+        #[serde(
+            rename = "ddlTargetDataset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub ddl_target_dataset: ::std::option::Option<crate::schemas::DatasetReference>,
         #[doc = "The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE queries."]
         #[serde(
             rename = "ddlTargetRoutine",
@@ -4640,7 +5187,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ListModelsResponse {
-        #[doc = "Models in the requested dataset. Only the following fields are populated:\nmodel_reference, model_type, creation_time, last_modified_time and\nlabels."]
+        #[doc = "Models in the requested dataset. Only the following fields are populated: model_reference, model_type, creation_time, last_modified_time and labels."]
         #[serde(
             rename = "models",
             default,
@@ -4685,7 +5232,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub next_page_token: ::std::option::Option<String>,
-        #[doc = "Routines in the requested dataset. Unless read_mask is set in the request,\nonly the following fields are populated:\netag, project_id, dataset_id, routine_id, routine_type, creation_time,\nlast_modified_time, and language."]
+        #[doc = "Routines in the requested dataset. Unless read_mask is set in the request, only the following fields are populated: etag, project_id, dataset_id, routine_id, routine_type, creation_time, last_modified_time, and language."]
         #[serde(
             rename = "routines",
             default,
@@ -4715,8 +5262,46 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct ListRowAccessPoliciesResponse {
+        #[doc = "A token to request the next page of results."]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub next_page_token: ::std::option::Option<String>,
+        #[doc = "Row access policies on the requested table."]
+        #[serde(
+            rename = "rowAccessPolicies",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub row_access_policies: ::std::option::Option<Vec<crate::schemas::RowAccessPolicy>>,
+    }
+    impl ::google_field_selector::FieldSelector for ListRowAccessPoliciesResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ListRowAccessPoliciesResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct LocationMetadata {
-        #[doc = "The legacy BigQuery location ID, e.g. “EU” for the “europe” location.\nThis is for any API consumers that need the legacy “US” and “EU” locations."]
+        #[doc = "The legacy BigQuery location ID, e.g. “EU” for the “europe” location. This is for any API consumers that need the legacy “US” and “EU” locations."]
         #[serde(
             rename = "legacyLocationId",
             default,
@@ -4792,6 +5377,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Model {
+        #[doc = "The best trial_id across all training runs."]
+        #[serde(
+            rename = "bestTrialId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub best_trial_id: ::std::option::Option<i64>,
         #[doc = "Output only. The time when this model was created, in millisecs since the epoch."]
         #[serde(
             rename = "creationTime",
@@ -4807,7 +5400,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "Custom encryption configuration (e.g., Cloud KMS keys). This shows the\nencryption configuration of the model data while stored in BigQuery\nstorage. This field can be used with PatchModel to update encryption key\nfor an already encrypted model."]
+        #[doc = "Custom encryption configuration (e.g., Cloud KMS keys). This shows the encryption configuration of the model data while stored in BigQuery storage. This field can be used with PatchModel to update encryption key for an already encrypted model."]
         #[serde(
             rename = "encryptionConfiguration",
             default,
@@ -4822,7 +5415,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<String>,
-        #[doc = "Optional. The time when this model expires, in milliseconds since the epoch.\nIf not present, the model will persist indefinitely. Expired models\nwill be deleted and their storage reclaimed.  The defaultTableExpirationMs\nproperty of the encapsulating dataset can be used to set a default\nexpirationTime on newly created models."]
+        #[doc = "Optional. The time when this model expires, in milliseconds since the epoch. If not present, the model will persist indefinitely. Expired models will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created models."]
         #[serde(
             rename = "expirationTime",
             default,
@@ -4844,14 +5437,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub friendly_name: ::std::option::Option<String>,
-        #[doc = "Output only. Label columns that were used to train this model.\nThe output of the model will have a \"predicted_\" prefix to these columns."]
+        #[doc = "Output only. Label columns that were used to train this model. The output of the model will have a \"predicted_\" prefix to these columns."]
         #[serde(
             rename = "labelColumns",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub label_columns: ::std::option::Option<Vec<crate::schemas::StandardSqlField>>,
-        #[doc = "The labels associated with this model. You can use these to organize\nand group your models. Label keys and values can be no longer\nthan 63 characters, can only contain lowercase letters, numeric\ncharacters, underscores and dashes. International characters are allowed.\nLabel values are optional. Label keys must start with a letter and each\nlabel in the list must have a different key."]
+        #[doc = "The labels associated with this model. You can use these to organize and group your models. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key."]
         #[serde(
             rename = "labels",
             default,
@@ -4866,7 +5459,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub last_modified_time: ::std::option::Option<i64>,
-        #[doc = "Output only. The geographic location where the model resides. This value\nis inherited from the dataset."]
+        #[doc = "Output only. The geographic location where the model resides. This value is inherited from the dataset."]
         #[serde(
             rename = "location",
             default,
@@ -4907,9 +5500,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ModelModelType {
-        #[doc = "AutoML Tables classification model."]
+        #[doc = "ARIMA model."]
+        Arima,
+        #[doc = "[Beta] AutoML Tables classification model."]
         AutomlClassifier,
-        #[doc = "AutoML Tables regression model."]
+        #[doc = "[Beta] AutoML Tables regression model."]
         AutomlRegressor,
         #[doc = "Boosted tree classifier model."]
         BoostedTreeClassifier,
@@ -4928,12 +5523,13 @@ pub mod schemas {
         #[doc = "Matrix factorization model."]
         MatrixFactorization,
         ModelTypeUnspecified,
-        #[doc = "[Beta] An imported TensorFlow model."]
+        #[doc = "An imported TensorFlow model."]
         Tensorflow,
     }
     impl ModelModelType {
         pub fn as_str(self) -> &'static str {
             match self {
+                ModelModelType::Arima => "ARIMA",
                 ModelModelType::AutomlClassifier => "AUTOML_CLASSIFIER",
                 ModelModelType::AutomlRegressor => "AUTOML_REGRESSOR",
                 ModelModelType::BoostedTreeClassifier => "BOOSTED_TREE_CLASSIFIER",
@@ -4958,6 +5554,7 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<ModelModelType, ()> {
             Ok(match s {
+                "ARIMA" => ModelModelType::Arima,
                 "AUTOML_CLASSIFIER" => ModelModelType::AutomlClassifier,
                 "AUTOML_REGRESSOR" => ModelModelType::AutomlRegressor,
                 "BOOSTED_TREE_CLASSIFIER" => ModelModelType::BoostedTreeClassifier,
@@ -4994,6 +5591,7 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ARIMA" => ModelModelType::Arima,
                 "AUTOML_CLASSIFIER" => ModelModelType::AutomlClassifier,
                 "AUTOML_REGRESSOR" => ModelModelType::AutomlRegressor,
                 "BOOSTED_TREE_CLASSIFIER" => ModelModelType::BoostedTreeClassifier,
@@ -5183,6 +5781,44 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct ParquetOptions {
+        #[doc = "[Optional] Indicates whether to use schema inference specifically for Parquet LIST logical type."]
+        #[serde(
+            rename = "enableListInference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub enable_list_inference: ::std::option::Option<bool>,
+        #[doc = "[Optional] Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default."]
+        #[serde(
+            rename = "enumAsString",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub enum_as_string: ::std::option::Option<bool>,
+    }
+    impl ::google_field_selector::FieldSelector for ParquetOptions {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ParquetOptions {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct Policy {
         #[doc = "Specifies cloud audit logging configuration for this policy."]
         #[serde(
@@ -5191,21 +5827,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub audit_configs: ::std::option::Option<Vec<crate::schemas::AuditConfig>>,
-        #[doc = "Associates a list of `members` to a `role`. Optionally, may specify a\n`condition` that determines how and when the `bindings` are applied. Each\nof the `bindings` must contain at least one member."]
+        #[doc = "Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member."]
         #[serde(
             rename = "bindings",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
-        #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost."]
+        #[doc = "`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost."]
         #[serde(
             rename = "etag",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Specifies the format of the policy.\n\nValid values are `0`, `1`, and `3`. Requests that specify an invalid value\nare rejected.\n\nAny operation that affects conditional role bindings must specify version\n`3`. This requirement applies to the following operations:\n\n* Getting a policy that includes a conditional role binding\n* Adding a conditional role binding to a policy\n* Changing a conditional role binding in a policy\n* Removing any role binding, with or without a condition, from a policy\n  that includes conditions\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.\n\nIf a policy does not include any conditions, operations on that policy may\nspecify any valid version or leave the field unset.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
+        #[doc = "Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
         #[serde(
             rename = "version",
             default,
@@ -5219,6 +5855,50 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Policy {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct PrincipalComponentInfo {
+        #[doc = "The explained_variance is pre-ordered in the descending order to compute the cumulative explained variance ratio."]
+        #[serde(
+            rename = "cumulativeExplainedVarianceRatio",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cumulative_explained_variance_ratio: ::std::option::Option<f64>,
+        #[doc = "Explained variance by this principal component, which is simply the eigenvalue."]
+        #[serde(
+            rename = "explainedVariance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub explained_variance: ::std::option::Option<f64>,
+        #[doc = "Explained_variance over the total explained variance."]
+        #[serde(
+            rename = "explainedVarianceRatio",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub explained_variance_ratio: ::std::option::Option<f64>,
+        #[doc = "Id of the principal component."]
+        #[serde(
+            rename = "principalComponentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub principal_component_id: ::std::option::Option<i64>,
+    }
+    impl ::google_field_selector::FieldSelector for PrincipalComponentInfo {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PrincipalComponentInfo {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -5576,6 +6256,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub connection_properties: ::std::option::Option<Vec<crate::schemas::ConnectionProperty>>,
+        #[doc = "If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs query in non-session mode."]
+        #[serde(
+            rename = "createSession",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub create_session: ::std::option::Option<bool>,
         #[doc = "[Optional] Specifies the default datasetId and projectId to assume for any unqualified table names in the query. If not set, all table names in the query string must be qualified in the format 'datasetId.tableId'."]
         #[serde(
             rename = "defaultDataset",
@@ -5940,28 +6627,28 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct RankingMetrics {
-        #[doc = "Determines the goodness of a ranking by computing the percentile rank\nfrom the predicted confidence and dividing it by the original rank."]
+        #[doc = "Determines the goodness of a ranking by computing the percentile rank from the predicted confidence and dividing it by the original rank."]
         #[serde(
             rename = "averageRank",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub average_rank: ::std::option::Option<f64>,
-        #[doc = "Calculates a precision per user for all the items by ranking them and\nthen averages all the precisions across all the users."]
+        #[doc = "Calculates a precision per user for all the items by ranking them and then averages all the precisions across all the users."]
         #[serde(
             rename = "meanAveragePrecision",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mean_average_precision: ::std::option::Option<f64>,
-        #[doc = "Similar to the mean squared error computed in regression and explicit\nrecommendation models except instead of computing the rating directly,\nthe output from evaluate is computed against a preference which is 1 or 0\ndepending on if the rating exists or not."]
+        #[doc = "Similar to the mean squared error computed in regression and explicit recommendation models except instead of computing the rating directly, the output from evaluate is computed against a preference which is 1 or 0 depending on if the rating exists or not."]
         #[serde(
             rename = "meanSquaredError",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mean_squared_error: ::std::option::Option<f64>,
-        #[doc = "A metric to determine the goodness of a ranking calculated from the\npredicted confidence by comparing it to an ideal rank measured by the\noriginal ratings."]
+        #[doc = "A metric to determine the goodness of a ranking calculated from the predicted confidence by comparing it to an ideal rank measured by the original ratings."]
         #[serde(
             rename = "normalizedDiscountedCumulativeGain",
             default,
@@ -6011,7 +6698,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub median_absolute_error: ::std::option::Option<f64>,
-        #[doc = "R^2 score."]
+        #[doc = "R^2 score. This corresponds to r2_score in ML.EVALUATE."]
         #[serde(
             rename = "rSquared",
             default,
@@ -6049,7 +6736,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub arguments: ::std::option::Option<Vec<crate::schemas::Argument>>,
-        #[doc = "Output only. The time when this routine was created, in milliseconds since\nthe epoch."]
+        #[doc = "Output only. The time when this routine was created, in milliseconds since the epoch."]
         #[serde(
             rename = "creationTime",
             default,
@@ -6057,7 +6744,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub creation_time: ::std::option::Option<i64>,
-        #[doc = "Required. The body of the routine.\n\nFor functions, this is the expression in the AS clause.\n\nIf language=SQL, it is the substring inside (but excluding) the\nparentheses. For example, for the function created with the following\nstatement:\n\n`CREATE FUNCTION JoinLines(x string, y string) as (concat(x, \"\\n\", y))`\n\nThe definition_body is `concat(x, \"\\n\", y)` (\\n is not replaced with\nlinebreak).\n\nIf language=JAVASCRIPT, it is the evaluated string in the AS clause.\nFor example, for the function created with the following statement:\n\n`CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return \"\\n\";\\n'`\n\nThe definition_body is\n\n`return \"\\n\";\\n`\n\nNote that both \\n are replaced with linebreaks."]
+        #[doc = "Required. The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, \"\\n\", y))` The definition_body is `concat(x, \"\\n\", y)` (\\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return \"\\n\";\\n'` The definition_body is `return \"\\n\";\\n` Note that both \\n are replaced with linebreaks."]
         #[serde(
             rename = "definitionBody",
             default,
@@ -6085,7 +6772,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<String>,
-        #[doc = "Optional. If language = \"JAVASCRIPT\", this field stores the path of the\nimported JAVASCRIPT libraries."]
+        #[doc = "Optional. If language = \"JAVASCRIPT\", this field stores the path of the imported JAVASCRIPT libraries."]
         #[serde(
             rename = "importedLibraries",
             default,
@@ -6099,7 +6786,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub language: ::std::option::Option<crate::schemas::RoutineLanguage>,
-        #[doc = "Output only. The time when this routine was last modified, in milliseconds\nsince the epoch."]
+        #[doc = "Output only. The time when this routine was last modified, in milliseconds since the epoch."]
         #[serde(
             rename = "lastModifiedTime",
             default,
@@ -6107,7 +6794,14 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub last_modified_time: ::std::option::Option<i64>,
-        #[doc = "Optional if language = \"SQL\"; required otherwise.\n\nIf absent, the return type is inferred from definition_body at query time\nin each query that references this routine. If present, then the evaluated\nresult will be cast to the specified returned type at query time.\n\nFor example, for the functions created with the following statements:\n\n* `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);`\n\n* `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));`\n\n* `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));`\n\nThe return_type is `{type_kind: \"FLOAT64\"}` for `Add` and `Decrement`, and\nis absent for `Increment` (inferred as FLOAT64 at query time).\n\nSuppose the function `Add` is replaced by\n`CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);`\n\nThen the inferred return type of `Increment` is automatically changed to\nINT64 at query time, while the return type of `Decrement` remains FLOAT64."]
+        #[doc = "Optional. Set only if Routine is a \"TABLE_VALUED_FUNCTION\". TODO(b/173344646) - Update return_type documentation to say it cannot be set for TABLE_VALUED_FUNCTION before preview launch."]
+        #[serde(
+            rename = "returnTableType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub return_table_type: ::std::option::Option<crate::schemas::StandardSqlTableType>,
+        #[doc = "Optional if language = \"SQL\"; required otherwise. If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: \"FLOAT64\"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64."]
         #[serde(
             rename = "returnType",
             default,
@@ -6143,7 +6837,7 @@ pub mod schemas {
     pub enum RoutineDeterminismLevel {
         #[doc = "The determinism of the UDF is unspecified."]
         DeterminismLevelUnspecified,
-        #[doc = "The UDF is deterministic, meaning that 2 function calls with the same\ninputs always produce the same result, even across 2 query runs."]
+        #[doc = "The UDF is deterministic, meaning that 2 function calls with the same inputs always produce the same result, even across 2 query runs."]
         Deterministic,
         #[doc = "The UDF is not deterministic."]
         NotDeterministic,
@@ -6303,6 +6997,8 @@ pub mod schemas {
         RoutineTypeUnspecified,
         #[doc = "Non-builtin permanent scalar function."]
         ScalarFunction,
+        #[doc = "Non-builtin permanent TVF."]
+        TableValuedFunction,
     }
     impl RoutineRoutineType {
         pub fn as_str(self) -> &'static str {
@@ -6310,6 +7006,7 @@ pub mod schemas {
                 RoutineRoutineType::Procedure => "PROCEDURE",
                 RoutineRoutineType::RoutineTypeUnspecified => "ROUTINE_TYPE_UNSPECIFIED",
                 RoutineRoutineType::ScalarFunction => "SCALAR_FUNCTION",
+                RoutineRoutineType::TableValuedFunction => "TABLE_VALUED_FUNCTION",
             }
         }
     }
@@ -6325,6 +7022,7 @@ pub mod schemas {
                 "PROCEDURE" => RoutineRoutineType::Procedure,
                 "ROUTINE_TYPE_UNSPECIFIED" => RoutineRoutineType::RoutineTypeUnspecified,
                 "SCALAR_FUNCTION" => RoutineRoutineType::ScalarFunction,
+                "TABLE_VALUED_FUNCTION" => RoutineRoutineType::TableValuedFunction,
                 _ => return Err(()),
             })
         }
@@ -6352,6 +7050,7 @@ pub mod schemas {
                 "PROCEDURE" => RoutineRoutineType::Procedure,
                 "ROUTINE_TYPE_UNSPECIFIED" => RoutineRoutineType::RoutineTypeUnspecified,
                 "SCALAR_FUNCTION" => RoutineRoutineType::ScalarFunction,
+                "TABLE_VALUED_FUNCTION" => RoutineRoutineType::TableValuedFunction,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -6450,6 +7149,66 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Row {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct RowAccessPolicy {
+        #[doc = "Output only. The time when this row access policy was created, in milliseconds since the epoch."]
+        #[serde(
+            rename = "creationTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub creation_time: ::std::option::Option<String>,
+        #[doc = "Output only. A hash of this resource."]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<String>,
+        #[doc = "Required. A SQL boolean expression that represents the rows defined by this row access policy, similar to the boolean expression in a WHERE clause of a SELECT query on a table. References to other tables, routines, and temporary functions are not supported. Examples: region=\"EU\" date_field = CAST('2019-9-27' as DATE) nullable_field is not NULL numeric_field BETWEEN 1.0 AND 5.0"]
+        #[serde(
+            rename = "filterPredicate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub filter_predicate: ::std::option::Option<String>,
+        #[doc = "Output only. The time when this row access policy was last modified, in milliseconds since the epoch."]
+        #[serde(
+            rename = "lastModifiedTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub last_modified_time: ::std::option::Option<String>,
+        #[doc = "Required. Reference describing the ID of this row access policy."]
+        #[serde(
+            rename = "rowAccessPolicyReference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub row_access_policy_reference:
+            ::std::option::Option<crate::schemas::RowAccessPolicyReference>,
+    }
+    impl ::google_field_selector::FieldSelector for RowAccessPolicy {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for RowAccessPolicy {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -6654,14 +7413,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SetIamPolicyRequest {
-        #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."]
+        #[doc = "REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might reject them."]
         #[serde(
             rename = "policy",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub policy: ::std::option::Option<crate::schemas::Policy>,
-        #[doc = "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, the\nfollowing default mask is used:\n\n`paths: \"bindings, etag\"`"]
+        #[doc = "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: \"bindings, etag\"`"]
         #[serde(
             rename = "updateMask",
             default,
@@ -6675,6 +7434,44 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for SetIamPolicyRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SnapshotDefinition {
+        #[doc = "[Required] Reference describing the ID of the table that is snapshotted."]
+        #[serde(
+            rename = "baseTableReference",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub base_table_reference: ::std::option::Option<crate::schemas::TableReference>,
+        #[doc = "[Required] The time at which the base table was snapshot."]
+        #[serde(
+            rename = "snapshotTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub snapshot_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+    }
+    impl ::google_field_selector::FieldSelector for SnapshotDefinition {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SnapshotDefinition {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -6706,7 +7503,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub struct_type: ::std::option::Option<crate::schemas::StandardSqlStructType>,
-        #[doc = "Required. The top level type of this field.\nCan be any standard SQL data type (e.g., \"INT64\", \"DATE\", \"ARRAY\")."]
+        #[doc = "Required. The top level type of this field. Can be any standard SQL data type (e.g., \"INT64\", \"DATE\", \"ARRAY\")."]
         #[serde(
             rename = "typeKind",
             default,
@@ -6728,6 +7525,8 @@ pub mod schemas {
     pub enum StandardSqlDataTypeTypeKind {
         #[doc = "Encoded as a list with types matching Type.array_type."]
         Array,
+        #[doc = "Encoded as a decimal string."]
+        Bignumeric,
         #[doc = "Encoded as a boolean \"false\" or \"true\"."]
         Bool,
         #[doc = "Encoded as a base64 string per RFC 4648, section 4."]
@@ -6746,11 +7545,11 @@ pub mod schemas {
         Numeric,
         #[doc = "Encoded as a string value."]
         String,
-        #[doc = "Encoded as a list with fields of type Type.struct_type[i]. List is used\nbecause a JSON object cannot have duplicate field names."]
+        #[doc = "Encoded as a list with fields of type Type.struct_type[i]. List is used because a JSON object cannot have duplicate field names."]
         Struct,
         #[doc = "Encoded as RFC 3339 partial-time format string: 23:20:50.52"]
         Time,
-        #[doc = "Encoded as an RFC 3339 timestamp with mandatory \"Z\" time zone string:\n1985-04-12T23:20:50.52Z"]
+        #[doc = "Encoded as an RFC 3339 timestamp with mandatory \"Z\" time zone string: 1985-04-12T23:20:50.52Z"]
         Timestamp,
         #[doc = "Invalid type."]
         TypeKindUnspecified,
@@ -6759,6 +7558,7 @@ pub mod schemas {
         pub fn as_str(self) -> &'static str {
             match self {
                 StandardSqlDataTypeTypeKind::Array => "ARRAY",
+                StandardSqlDataTypeTypeKind::Bignumeric => "BIGNUMERIC",
                 StandardSqlDataTypeTypeKind::Bool => "BOOL",
                 StandardSqlDataTypeTypeKind::Bytes => "BYTES",
                 StandardSqlDataTypeTypeKind::Date => "DATE",
@@ -6785,6 +7585,7 @@ pub mod schemas {
         fn from_str(s: &str) -> ::std::result::Result<StandardSqlDataTypeTypeKind, ()> {
             Ok(match s {
                 "ARRAY" => StandardSqlDataTypeTypeKind::Array,
+                "BIGNUMERIC" => StandardSqlDataTypeTypeKind::Bignumeric,
                 "BOOL" => StandardSqlDataTypeTypeKind::Bool,
                 "BYTES" => StandardSqlDataTypeTypeKind::Bytes,
                 "DATE" => StandardSqlDataTypeTypeKind::Date,
@@ -6823,6 +7624,7 @@ pub mod schemas {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "ARRAY" => StandardSqlDataTypeTypeKind::Array,
+                "BIGNUMERIC" => StandardSqlDataTypeTypeKind::Bignumeric,
                 "BOOL" => StandardSqlDataTypeTypeKind::Bool,
                 "BYTES" => StandardSqlDataTypeTypeKind::Bytes,
                 "DATE" => StandardSqlDataTypeTypeKind::Date,
@@ -6875,7 +7677,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Optional. The type of this parameter. Absent if not explicitly\nspecified (e.g., CREATE FUNCTION statement can omit the return type;\nin this case the output parameter does not have this \"type\" field)."]
+        #[doc = "Optional. The type of this parameter. Absent if not explicitly specified (e.g., CREATE FUNCTION statement can omit the return type; in this case the output parameter does not have this \"type\" field)."]
         #[serde(
             rename = "type",
             default,
@@ -6919,6 +7721,37 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for StandardSqlStructType {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct StandardSqlTableType {
+        #[doc = "The columns in this table type"]
+        #[serde(
+            rename = "columns",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub columns: ::std::option::Option<Vec<crate::schemas::StandardSqlField>>,
+    }
+    impl ::google_field_selector::FieldSelector for StandardSqlTableType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for StandardSqlTableType {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -7117,7 +7950,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub num_rows: ::std::option::Option<u64>,
-        #[doc = "[Output-only] Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE."]
+        #[doc = "[Output-only] Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE."]
         #[serde(
             rename = "type",
             default,
@@ -7152,6 +7985,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub self_link: ::std::option::Option<String>,
+        #[doc = "[Output-only] Snapshot definition."]
+        #[serde(
+            rename = "snapshotDefinition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub snapshot_definition: ::std::option::Option<crate::schemas::SnapshotDefinition>,
         #[doc = "[Output-only] Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer."]
         #[serde(
             rename = "streamingBuffer",
@@ -7466,7 +8306,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub policy_tags: ::std::option::Option<crate::schemas::TableFieldSchemaPolicyTags>,
-        #[doc = "[Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD)."]
+        #[doc = "[Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD)."]
         #[serde(
             rename = "type",
             default,
@@ -7855,7 +8695,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TestIamPermissionsRequest {
-        #[doc = "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
+        #[doc = "The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or 'storage.*') are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."]
         #[serde(
             rename = "permissions",
             default,
@@ -7886,7 +8726,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TestIamPermissionsResponse {
-        #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed."]
+        #[doc = "A subset of `TestPermissionsRequest.permissions` that the caller is allowed."]
         #[serde(
             rename = "permissions",
             default,
@@ -7932,7 +8772,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub field: ::std::option::Option<String>,
-        #[doc = "[Required] The only type supported is DAY, which will generate one partition per day."]
+        #[doc = "[Required] The supported types are DAY, HOUR, MONTH, and YEAR, which will generate one partition per day, hour, month, and year, respectively. When the type is not specified, the default behavior is DAY."]
         #[serde(
             rename = "type",
             default,
@@ -7960,6 +8800,21 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct TrainingOptions {
+        #[doc = "Whether to enable auto ARIMA or not."]
+        #[serde(
+            rename = "autoArima",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub auto_arima: ::std::option::Option<bool>,
+        #[doc = "The max value of non-seasonal p and q."]
+        #[serde(
+            rename = "autoArimaMaxOrder",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub auto_arima_max_order: ::std::option::Option<i64>,
         #[doc = "Batch size for dnn models."]
         #[serde(
             rename = "batchSize",
@@ -7968,14 +8823,21 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub batch_size: ::std::option::Option<i64>,
-        #[doc = "The column to split data with. This column won't be used as a\nfeature.\n\n1. When data_split_method is CUSTOM, the corresponding column should\n   be boolean. The rows with true value tag are eval data, and the false\n   are training data.\n1. When data_split_method is SEQ, the first DATA_SPLIT_EVAL_FRACTION\n   rows (from smallest to largest) in the corresponding column are used\n   as training data, and the rest are eval data. It respects the order\n   in Orderable data types:\n   https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#data-type-properties"]
+        #[doc = "The data frequency of a time series."]
+        #[serde(
+            rename = "dataFrequency",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_frequency: ::std::option::Option<crate::schemas::TrainingOptionsDataFrequency>,
+        #[doc = "The column to split data with. This column won't be used as a feature. 1. When data_split_method is CUSTOM, the corresponding column should be boolean. The rows with true value tag are eval data, and the false are training data. 2. When data_split_method is SEQ, the first DATA_SPLIT_EVAL_FRACTION rows (from smallest to largest) in the corresponding column are used as training data, and the rest are eval data. It respects the order in Orderable data types: https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#data-type-properties"]
         #[serde(
             rename = "dataSplitColumn",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub data_split_column: ::std::option::Option<String>,
-        #[doc = "The fraction of evaluation data over the whole input data. The rest\nof data will be used as training data. The format should be double.\nAccurate to two decimal places.\nDefault value is 0.2."]
+        #[doc = "The fraction of evaluation data over the whole input data. The rest of data will be used as training data. The format should be double. Accurate to two decimal places. Default value is 0.2."]
         #[serde(
             rename = "dataSplitEvalFraction",
             default,
@@ -8004,14 +8866,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub dropout: ::std::option::Option<f64>,
-        #[doc = "Whether to stop early when the loss doesn't improve significantly\nany more (compared to min_relative_progress). Used only for iterative\ntraining algorithms."]
+        #[doc = "Whether to stop early when the loss doesn't improve significantly any more (compared to min_relative_progress). Used only for iterative training algorithms."]
         #[serde(
             rename = "earlyStop",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub early_stop: ::std::option::Option<bool>,
-        #[doc = "Feedback type that specifies which algorithm to run for matrix\nfactorization."]
+        #[doc = "Feedback type that specifies which algorithm to run for matrix factorization."]
         #[serde(
             rename = "feedbackType",
             default,
@@ -8025,7 +8887,29 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub hidden_units: ::std::option::Option<Vec<i64>>,
-        #[doc = "Specifies the initial learning rate for the line search learn rate\nstrategy."]
+        #[doc = "The geographical region based on which the holidays are considered in time series modeling. If a valid value is specified, then holiday effects modeling is enabled."]
+        #[serde(
+            rename = "holidayRegion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub holiday_region: ::std::option::Option<crate::schemas::TrainingOptionsHolidayRegion>,
+        #[doc = "The number of periods ahead that need to be forecasted."]
+        #[serde(
+            rename = "horizon",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub horizon: ::std::option::Option<i64>,
+        #[doc = "Include drift when fitting an ARIMA model."]
+        #[serde(
+            rename = "includeDrift",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub include_drift: ::std::option::Option<bool>,
+        #[doc = "Specifies the initial learning rate for the line search learn rate strategy."]
         #[serde(
             rename = "initialLearnRate",
             default,
@@ -8046,7 +8930,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub item_column: ::std::option::Option<String>,
-        #[doc = "The column used to provide the initial centroids for kmeans algorithm\nwhen kmeans_initialization_method is CUSTOM."]
+        #[doc = "The column used to provide the initial centroids for kmeans algorithm when kmeans_initialization_method is CUSTOM."]
         #[serde(
             rename = "kmeansInitializationColumn",
             default,
@@ -8075,7 +8959,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub l_2_regularization: ::std::option::Option<f64>,
-        #[doc = "Weights associated with each label class, for rebalancing the\ntraining data. Only applicable for classification models."]
+        #[doc = "Weights associated with each label class, for rebalancing the training data. Only applicable for classification models."]
         #[serde(
             rename = "labelClassWeights",
             default,
@@ -8104,7 +8988,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub loss_type: ::std::option::Option<crate::schemas::TrainingOptionsLossType>,
-        #[doc = "The maximum number of iterations in training. Used only for iterative\ntraining algorithms."]
+        #[doc = "The maximum number of iterations in training. Used only for iterative training algorithms."]
         #[serde(
             rename = "maxIterations",
             default,
@@ -8120,7 +9004,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub max_tree_depth: ::std::option::Option<i64>,
-        #[doc = "When early_stop is true, stops training when accuracy improvement is\nless than 'min_relative_progress'. Used only for iterative training\nalgorithms."]
+        #[doc = "When early_stop is true, stops training when accuracy improvement is less than 'min_relative_progress'. Used only for iterative training algorithms."]
         #[serde(
             rename = "minRelativeProgress",
             default,
@@ -8134,13 +9018,20 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub min_split_loss: ::std::option::Option<f64>,
-        #[doc = "[Beta] Google Cloud Storage URI from which the model was imported. Only\napplicable for imported models."]
+        #[doc = "Google Cloud Storage URI from which the model was imported. Only applicable for imported models."]
         #[serde(
             rename = "modelUri",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub model_uri: ::std::option::Option<String>,
+        #[doc = "A specification of the non-seasonal part of the ARIMA model: the three components (p, d, q) are the AR order, the degree of differencing, and the MA order."]
+        #[serde(
+            rename = "nonSeasonalOrder",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub non_seasonal_order: ::std::option::Option<crate::schemas::ArimaOrder>,
         #[doc = "Number of clusters for clustering models."]
         #[serde(
             rename = "numClusters",
@@ -8165,20 +9056,41 @@ pub mod schemas {
         )]
         pub optimization_strategy:
             ::std::option::Option<crate::schemas::TrainingOptionsOptimizationStrategy>,
-        #[doc = "Whether to preserve the input structs in output feature names.\nSuppose there is a struct A with field b.\nWhen false (default), the output feature name is A_b.\nWhen true, the output feature name is A.b."]
+        #[doc = "Whether to preserve the input structs in output feature names. Suppose there is a struct A with field b. When false (default), the output feature name is A_b. When true, the output feature name is A.b."]
         #[serde(
             rename = "preserveInputStructs",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub preserve_input_structs: ::std::option::Option<bool>,
-        #[doc = "Subsample fraction of the training data to grow tree to prevent\noverfitting for boosted tree models."]
+        #[doc = "Subsample fraction of the training data to grow tree to prevent overfitting for boosted tree models."]
         #[serde(
             rename = "subsample",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub subsample: ::std::option::Option<f64>,
+        #[doc = "Column to be designated as time series data for ARIMA model."]
+        #[serde(
+            rename = "timeSeriesDataColumn",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub time_series_data_column: ::std::option::Option<String>,
+        #[doc = "The time series id column that was used during ARIMA model training."]
+        #[serde(
+            rename = "timeSeriesIdColumn",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub time_series_id_column: ::std::option::Option<String>,
+        #[doc = "Column to be designated as time series timestamp for ARIMA model."]
+        #[serde(
+            rename = "timeSeriesTimestampColumn",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub time_series_timestamp_column: ::std::option::Option<String>,
         #[doc = "User column specified for matrix factorization models."]
         #[serde(
             rename = "userColumn",
@@ -8186,7 +9098,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub user_column: ::std::option::Option<String>,
-        #[doc = "Hyperparameter for matrix factoration when implicit feedback type is\nspecified."]
+        #[doc = "Hyperparameter for matrix factoration when implicit feedback type is specified."]
         #[serde(
             rename = "walsAlpha",
             default,
@@ -8212,8 +9124,119 @@ pub mod schemas {
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum TrainingOptionsDataFrequency {
+        #[doc = "Automatically inferred from timestamps."]
+        AutoFrequency,
+        #[doc = "Daily data."]
+        Daily,
+        DataFrequencyUnspecified,
+        #[doc = "Hourly data."]
+        Hourly,
+        #[doc = "Monthly data."]
+        Monthly,
+        #[doc = "Per-minute data."]
+        PerMinute,
+        #[doc = "Quarterly data."]
+        Quarterly,
+        #[doc = "Weekly data."]
+        Weekly,
+        #[doc = "Yearly data."]
+        Yearly,
+    }
+    impl TrainingOptionsDataFrequency {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                TrainingOptionsDataFrequency::AutoFrequency => "AUTO_FREQUENCY",
+                TrainingOptionsDataFrequency::Daily => "DAILY",
+                TrainingOptionsDataFrequency::DataFrequencyUnspecified => {
+                    "DATA_FREQUENCY_UNSPECIFIED"
+                }
+                TrainingOptionsDataFrequency::Hourly => "HOURLY",
+                TrainingOptionsDataFrequency::Monthly => "MONTHLY",
+                TrainingOptionsDataFrequency::PerMinute => "PER_MINUTE",
+                TrainingOptionsDataFrequency::Quarterly => "QUARTERLY",
+                TrainingOptionsDataFrequency::Weekly => "WEEKLY",
+                TrainingOptionsDataFrequency::Yearly => "YEARLY",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TrainingOptionsDataFrequency {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TrainingOptionsDataFrequency {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TrainingOptionsDataFrequency, ()> {
+            Ok(match s {
+                "AUTO_FREQUENCY" => TrainingOptionsDataFrequency::AutoFrequency,
+                "DAILY" => TrainingOptionsDataFrequency::Daily,
+                "DATA_FREQUENCY_UNSPECIFIED" => {
+                    TrainingOptionsDataFrequency::DataFrequencyUnspecified
+                }
+                "HOURLY" => TrainingOptionsDataFrequency::Hourly,
+                "MONTHLY" => TrainingOptionsDataFrequency::Monthly,
+                "PER_MINUTE" => TrainingOptionsDataFrequency::PerMinute,
+                "QUARTERLY" => TrainingOptionsDataFrequency::Quarterly,
+                "WEEKLY" => TrainingOptionsDataFrequency::Weekly,
+                "YEARLY" => TrainingOptionsDataFrequency::Yearly,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for TrainingOptionsDataFrequency {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for TrainingOptionsDataFrequency {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for TrainingOptionsDataFrequency {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "AUTO_FREQUENCY" => TrainingOptionsDataFrequency::AutoFrequency,
+                "DAILY" => TrainingOptionsDataFrequency::Daily,
+                "DATA_FREQUENCY_UNSPECIFIED" => {
+                    TrainingOptionsDataFrequency::DataFrequencyUnspecified
+                }
+                "HOURLY" => TrainingOptionsDataFrequency::Hourly,
+                "MONTHLY" => TrainingOptionsDataFrequency::Monthly,
+                "PER_MINUTE" => TrainingOptionsDataFrequency::PerMinute,
+                "QUARTERLY" => TrainingOptionsDataFrequency::Quarterly,
+                "WEEKLY" => TrainingOptionsDataFrequency::Weekly,
+                "YEARLY" => TrainingOptionsDataFrequency::Yearly,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for TrainingOptionsDataFrequency {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for TrainingOptionsDataFrequency {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TrainingOptionsDataSplitMethod {
-        #[doc = "Splits data automatically: Uses NO_SPLIT if the data size is small.\nOtherwise uses RANDOM."]
+        #[doc = "Splits data automatically: Uses NO_SPLIT if the data size is small. Otherwise uses RANDOM."]
         AutoSplit,
         #[doc = "Splits data with the user provided tags."]
         Custom,
@@ -8458,9 +9481,422 @@ pub mod schemas {
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum TrainingOptionsHolidayRegion {
+        #[doc = "United Arab Emirates"]
+        Ae,
+        #[doc = "Argentina"]
+        Ar,
+        #[doc = "Austria"]
+        At,
+        #[doc = "Australia"]
+        Au,
+        #[doc = "Belgium"]
+        Be,
+        #[doc = "Brazil"]
+        Br,
+        #[doc = "Canada"]
+        Ca,
+        #[doc = "Switzerland"]
+        Ch,
+        #[doc = "Chile"]
+        Cl,
+        #[doc = "China"]
+        Cn,
+        #[doc = "Colombia"]
+        Co,
+        #[doc = "Czechoslovakia"]
+        Cs,
+        #[doc = "Czech Republic"]
+        Cz,
+        #[doc = "Germany"]
+        De,
+        #[doc = "Denmark"]
+        Dk,
+        #[doc = "Algeria"]
+        Dz,
+        #[doc = "Ecuador"]
+        Ec,
+        #[doc = "Estonia"]
+        Ee,
+        #[doc = "Egypt"]
+        Eg,
+        #[doc = "Europe, the Middle East and Africa."]
+        Emea,
+        #[doc = "Spain"]
+        Es,
+        #[doc = "Finland"]
+        Fi,
+        #[doc = "France"]
+        Fr,
+        #[doc = "Great Britain (United Kingdom)"]
+        Gb,
+        #[doc = "Global."]
+        Global,
+        #[doc = "Greece"]
+        Gr,
+        #[doc = "Hong Kong"]
+        Hk,
+        #[doc = "Holiday region unspecified."]
+        HolidayRegionUnspecified,
+        #[doc = "Hungary"]
+        Hu,
+        #[doc = "Indonesia"]
+        Id,
+        #[doc = "Ireland"]
+        Ie,
+        #[doc = "Israel"]
+        Il,
+        #[doc = "India"]
+        In,
+        #[doc = "Iran"]
+        Ir,
+        #[doc = "Italy"]
+        It,
+        #[doc = "Japan and Asia Pacific: Korea, Greater China, India, Australia, and New Zealand."]
+        Japac,
+        #[doc = "Japan"]
+        Jp,
+        #[doc = "Korea (South)"]
+        Kr,
+        #[doc = "Latin America and the Caribbean."]
+        Lac,
+        #[doc = "Latvia"]
+        Lv,
+        #[doc = "Morocco"]
+        Ma,
+        #[doc = "Mexico"]
+        Mx,
+        #[doc = "Malaysia"]
+        My,
+        #[doc = "North America."]
+        Na,
+        #[doc = "Nigeria"]
+        Ng,
+        #[doc = "Netherlands"]
+        Nl,
+        #[doc = "Norway"]
+        No,
+        #[doc = "New Zealand"]
+        Nz,
+        #[doc = "Peru"]
+        Pe,
+        #[doc = "Philippines"]
+        Ph,
+        #[doc = "Pakistan"]
+        Pk,
+        #[doc = "Poland"]
+        Pl,
+        #[doc = "Portugal"]
+        Pt,
+        #[doc = "Romania"]
+        Ro,
+        #[doc = "Serbia"]
+        Rs,
+        #[doc = "Russian Federation"]
+        Ru,
+        #[doc = "Saudi Arabia"]
+        Sa,
+        #[doc = "Sweden"]
+        Se,
+        #[doc = "Singapore"]
+        Sg,
+        #[doc = "Slovenia"]
+        Si,
+        #[doc = "Slovakia"]
+        Sk,
+        #[doc = "Thailand"]
+        Th,
+        #[doc = "Turkey"]
+        Tr,
+        #[doc = "Taiwan"]
+        Tw,
+        #[doc = "Ukraine"]
+        Ua,
+        #[doc = "United States"]
+        Us,
+        #[doc = "Venezuela"]
+        Ve,
+        #[doc = "Viet Nam"]
+        Vn,
+        #[doc = "South Africa"]
+        Za,
+    }
+    impl TrainingOptionsHolidayRegion {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                TrainingOptionsHolidayRegion::Ae => "AE",
+                TrainingOptionsHolidayRegion::Ar => "AR",
+                TrainingOptionsHolidayRegion::At => "AT",
+                TrainingOptionsHolidayRegion::Au => "AU",
+                TrainingOptionsHolidayRegion::Be => "BE",
+                TrainingOptionsHolidayRegion::Br => "BR",
+                TrainingOptionsHolidayRegion::Ca => "CA",
+                TrainingOptionsHolidayRegion::Ch => "CH",
+                TrainingOptionsHolidayRegion::Cl => "CL",
+                TrainingOptionsHolidayRegion::Cn => "CN",
+                TrainingOptionsHolidayRegion::Co => "CO",
+                TrainingOptionsHolidayRegion::Cs => "CS",
+                TrainingOptionsHolidayRegion::Cz => "CZ",
+                TrainingOptionsHolidayRegion::De => "DE",
+                TrainingOptionsHolidayRegion::Dk => "DK",
+                TrainingOptionsHolidayRegion::Dz => "DZ",
+                TrainingOptionsHolidayRegion::Ec => "EC",
+                TrainingOptionsHolidayRegion::Ee => "EE",
+                TrainingOptionsHolidayRegion::Eg => "EG",
+                TrainingOptionsHolidayRegion::Emea => "EMEA",
+                TrainingOptionsHolidayRegion::Es => "ES",
+                TrainingOptionsHolidayRegion::Fi => "FI",
+                TrainingOptionsHolidayRegion::Fr => "FR",
+                TrainingOptionsHolidayRegion::Gb => "GB",
+                TrainingOptionsHolidayRegion::Global => "GLOBAL",
+                TrainingOptionsHolidayRegion::Gr => "GR",
+                TrainingOptionsHolidayRegion::Hk => "HK",
+                TrainingOptionsHolidayRegion::HolidayRegionUnspecified => {
+                    "HOLIDAY_REGION_UNSPECIFIED"
+                }
+                TrainingOptionsHolidayRegion::Hu => "HU",
+                TrainingOptionsHolidayRegion::Id => "ID",
+                TrainingOptionsHolidayRegion::Ie => "IE",
+                TrainingOptionsHolidayRegion::Il => "IL",
+                TrainingOptionsHolidayRegion::In => "IN",
+                TrainingOptionsHolidayRegion::Ir => "IR",
+                TrainingOptionsHolidayRegion::It => "IT",
+                TrainingOptionsHolidayRegion::Japac => "JAPAC",
+                TrainingOptionsHolidayRegion::Jp => "JP",
+                TrainingOptionsHolidayRegion::Kr => "KR",
+                TrainingOptionsHolidayRegion::Lac => "LAC",
+                TrainingOptionsHolidayRegion::Lv => "LV",
+                TrainingOptionsHolidayRegion::Ma => "MA",
+                TrainingOptionsHolidayRegion::Mx => "MX",
+                TrainingOptionsHolidayRegion::My => "MY",
+                TrainingOptionsHolidayRegion::Na => "NA",
+                TrainingOptionsHolidayRegion::Ng => "NG",
+                TrainingOptionsHolidayRegion::Nl => "NL",
+                TrainingOptionsHolidayRegion::No => "NO",
+                TrainingOptionsHolidayRegion::Nz => "NZ",
+                TrainingOptionsHolidayRegion::Pe => "PE",
+                TrainingOptionsHolidayRegion::Ph => "PH",
+                TrainingOptionsHolidayRegion::Pk => "PK",
+                TrainingOptionsHolidayRegion::Pl => "PL",
+                TrainingOptionsHolidayRegion::Pt => "PT",
+                TrainingOptionsHolidayRegion::Ro => "RO",
+                TrainingOptionsHolidayRegion::Rs => "RS",
+                TrainingOptionsHolidayRegion::Ru => "RU",
+                TrainingOptionsHolidayRegion::Sa => "SA",
+                TrainingOptionsHolidayRegion::Se => "SE",
+                TrainingOptionsHolidayRegion::Sg => "SG",
+                TrainingOptionsHolidayRegion::Si => "SI",
+                TrainingOptionsHolidayRegion::Sk => "SK",
+                TrainingOptionsHolidayRegion::Th => "TH",
+                TrainingOptionsHolidayRegion::Tr => "TR",
+                TrainingOptionsHolidayRegion::Tw => "TW",
+                TrainingOptionsHolidayRegion::Ua => "UA",
+                TrainingOptionsHolidayRegion::Us => "US",
+                TrainingOptionsHolidayRegion::Ve => "VE",
+                TrainingOptionsHolidayRegion::Vn => "VN",
+                TrainingOptionsHolidayRegion::Za => "ZA",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TrainingOptionsHolidayRegion {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TrainingOptionsHolidayRegion {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TrainingOptionsHolidayRegion, ()> {
+            Ok(match s {
+                "AE" => TrainingOptionsHolidayRegion::Ae,
+                "AR" => TrainingOptionsHolidayRegion::Ar,
+                "AT" => TrainingOptionsHolidayRegion::At,
+                "AU" => TrainingOptionsHolidayRegion::Au,
+                "BE" => TrainingOptionsHolidayRegion::Be,
+                "BR" => TrainingOptionsHolidayRegion::Br,
+                "CA" => TrainingOptionsHolidayRegion::Ca,
+                "CH" => TrainingOptionsHolidayRegion::Ch,
+                "CL" => TrainingOptionsHolidayRegion::Cl,
+                "CN" => TrainingOptionsHolidayRegion::Cn,
+                "CO" => TrainingOptionsHolidayRegion::Co,
+                "CS" => TrainingOptionsHolidayRegion::Cs,
+                "CZ" => TrainingOptionsHolidayRegion::Cz,
+                "DE" => TrainingOptionsHolidayRegion::De,
+                "DK" => TrainingOptionsHolidayRegion::Dk,
+                "DZ" => TrainingOptionsHolidayRegion::Dz,
+                "EC" => TrainingOptionsHolidayRegion::Ec,
+                "EE" => TrainingOptionsHolidayRegion::Ee,
+                "EG" => TrainingOptionsHolidayRegion::Eg,
+                "EMEA" => TrainingOptionsHolidayRegion::Emea,
+                "ES" => TrainingOptionsHolidayRegion::Es,
+                "FI" => TrainingOptionsHolidayRegion::Fi,
+                "FR" => TrainingOptionsHolidayRegion::Fr,
+                "GB" => TrainingOptionsHolidayRegion::Gb,
+                "GLOBAL" => TrainingOptionsHolidayRegion::Global,
+                "GR" => TrainingOptionsHolidayRegion::Gr,
+                "HK" => TrainingOptionsHolidayRegion::Hk,
+                "HOLIDAY_REGION_UNSPECIFIED" => {
+                    TrainingOptionsHolidayRegion::HolidayRegionUnspecified
+                }
+                "HU" => TrainingOptionsHolidayRegion::Hu,
+                "ID" => TrainingOptionsHolidayRegion::Id,
+                "IE" => TrainingOptionsHolidayRegion::Ie,
+                "IL" => TrainingOptionsHolidayRegion::Il,
+                "IN" => TrainingOptionsHolidayRegion::In,
+                "IR" => TrainingOptionsHolidayRegion::Ir,
+                "IT" => TrainingOptionsHolidayRegion::It,
+                "JAPAC" => TrainingOptionsHolidayRegion::Japac,
+                "JP" => TrainingOptionsHolidayRegion::Jp,
+                "KR" => TrainingOptionsHolidayRegion::Kr,
+                "LAC" => TrainingOptionsHolidayRegion::Lac,
+                "LV" => TrainingOptionsHolidayRegion::Lv,
+                "MA" => TrainingOptionsHolidayRegion::Ma,
+                "MX" => TrainingOptionsHolidayRegion::Mx,
+                "MY" => TrainingOptionsHolidayRegion::My,
+                "NA" => TrainingOptionsHolidayRegion::Na,
+                "NG" => TrainingOptionsHolidayRegion::Ng,
+                "NL" => TrainingOptionsHolidayRegion::Nl,
+                "NO" => TrainingOptionsHolidayRegion::No,
+                "NZ" => TrainingOptionsHolidayRegion::Nz,
+                "PE" => TrainingOptionsHolidayRegion::Pe,
+                "PH" => TrainingOptionsHolidayRegion::Ph,
+                "PK" => TrainingOptionsHolidayRegion::Pk,
+                "PL" => TrainingOptionsHolidayRegion::Pl,
+                "PT" => TrainingOptionsHolidayRegion::Pt,
+                "RO" => TrainingOptionsHolidayRegion::Ro,
+                "RS" => TrainingOptionsHolidayRegion::Rs,
+                "RU" => TrainingOptionsHolidayRegion::Ru,
+                "SA" => TrainingOptionsHolidayRegion::Sa,
+                "SE" => TrainingOptionsHolidayRegion::Se,
+                "SG" => TrainingOptionsHolidayRegion::Sg,
+                "SI" => TrainingOptionsHolidayRegion::Si,
+                "SK" => TrainingOptionsHolidayRegion::Sk,
+                "TH" => TrainingOptionsHolidayRegion::Th,
+                "TR" => TrainingOptionsHolidayRegion::Tr,
+                "TW" => TrainingOptionsHolidayRegion::Tw,
+                "UA" => TrainingOptionsHolidayRegion::Ua,
+                "US" => TrainingOptionsHolidayRegion::Us,
+                "VE" => TrainingOptionsHolidayRegion::Ve,
+                "VN" => TrainingOptionsHolidayRegion::Vn,
+                "ZA" => TrainingOptionsHolidayRegion::Za,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for TrainingOptionsHolidayRegion {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for TrainingOptionsHolidayRegion {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for TrainingOptionsHolidayRegion {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "AE" => TrainingOptionsHolidayRegion::Ae,
+                "AR" => TrainingOptionsHolidayRegion::Ar,
+                "AT" => TrainingOptionsHolidayRegion::At,
+                "AU" => TrainingOptionsHolidayRegion::Au,
+                "BE" => TrainingOptionsHolidayRegion::Be,
+                "BR" => TrainingOptionsHolidayRegion::Br,
+                "CA" => TrainingOptionsHolidayRegion::Ca,
+                "CH" => TrainingOptionsHolidayRegion::Ch,
+                "CL" => TrainingOptionsHolidayRegion::Cl,
+                "CN" => TrainingOptionsHolidayRegion::Cn,
+                "CO" => TrainingOptionsHolidayRegion::Co,
+                "CS" => TrainingOptionsHolidayRegion::Cs,
+                "CZ" => TrainingOptionsHolidayRegion::Cz,
+                "DE" => TrainingOptionsHolidayRegion::De,
+                "DK" => TrainingOptionsHolidayRegion::Dk,
+                "DZ" => TrainingOptionsHolidayRegion::Dz,
+                "EC" => TrainingOptionsHolidayRegion::Ec,
+                "EE" => TrainingOptionsHolidayRegion::Ee,
+                "EG" => TrainingOptionsHolidayRegion::Eg,
+                "EMEA" => TrainingOptionsHolidayRegion::Emea,
+                "ES" => TrainingOptionsHolidayRegion::Es,
+                "FI" => TrainingOptionsHolidayRegion::Fi,
+                "FR" => TrainingOptionsHolidayRegion::Fr,
+                "GB" => TrainingOptionsHolidayRegion::Gb,
+                "GLOBAL" => TrainingOptionsHolidayRegion::Global,
+                "GR" => TrainingOptionsHolidayRegion::Gr,
+                "HK" => TrainingOptionsHolidayRegion::Hk,
+                "HOLIDAY_REGION_UNSPECIFIED" => {
+                    TrainingOptionsHolidayRegion::HolidayRegionUnspecified
+                }
+                "HU" => TrainingOptionsHolidayRegion::Hu,
+                "ID" => TrainingOptionsHolidayRegion::Id,
+                "IE" => TrainingOptionsHolidayRegion::Ie,
+                "IL" => TrainingOptionsHolidayRegion::Il,
+                "IN" => TrainingOptionsHolidayRegion::In,
+                "IR" => TrainingOptionsHolidayRegion::Ir,
+                "IT" => TrainingOptionsHolidayRegion::It,
+                "JAPAC" => TrainingOptionsHolidayRegion::Japac,
+                "JP" => TrainingOptionsHolidayRegion::Jp,
+                "KR" => TrainingOptionsHolidayRegion::Kr,
+                "LAC" => TrainingOptionsHolidayRegion::Lac,
+                "LV" => TrainingOptionsHolidayRegion::Lv,
+                "MA" => TrainingOptionsHolidayRegion::Ma,
+                "MX" => TrainingOptionsHolidayRegion::Mx,
+                "MY" => TrainingOptionsHolidayRegion::My,
+                "NA" => TrainingOptionsHolidayRegion::Na,
+                "NG" => TrainingOptionsHolidayRegion::Ng,
+                "NL" => TrainingOptionsHolidayRegion::Nl,
+                "NO" => TrainingOptionsHolidayRegion::No,
+                "NZ" => TrainingOptionsHolidayRegion::Nz,
+                "PE" => TrainingOptionsHolidayRegion::Pe,
+                "PH" => TrainingOptionsHolidayRegion::Ph,
+                "PK" => TrainingOptionsHolidayRegion::Pk,
+                "PL" => TrainingOptionsHolidayRegion::Pl,
+                "PT" => TrainingOptionsHolidayRegion::Pt,
+                "RO" => TrainingOptionsHolidayRegion::Ro,
+                "RS" => TrainingOptionsHolidayRegion::Rs,
+                "RU" => TrainingOptionsHolidayRegion::Ru,
+                "SA" => TrainingOptionsHolidayRegion::Sa,
+                "SE" => TrainingOptionsHolidayRegion::Se,
+                "SG" => TrainingOptionsHolidayRegion::Sg,
+                "SI" => TrainingOptionsHolidayRegion::Si,
+                "SK" => TrainingOptionsHolidayRegion::Sk,
+                "TH" => TrainingOptionsHolidayRegion::Th,
+                "TR" => TrainingOptionsHolidayRegion::Tr,
+                "TW" => TrainingOptionsHolidayRegion::Tw,
+                "UA" => TrainingOptionsHolidayRegion::Ua,
+                "US" => TrainingOptionsHolidayRegion::Us,
+                "VE" => TrainingOptionsHolidayRegion::Ve,
+                "VN" => TrainingOptionsHolidayRegion::Vn,
+                "ZA" => TrainingOptionsHolidayRegion::Za,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for TrainingOptionsHolidayRegion {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for TrainingOptionsHolidayRegion {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TrainingOptionsKmeansInitializationMethod {
-        #[doc = "Initializes the centroids using data specified in\nkmeans_initialization_column."]
+        #[doc = "Initializes the centroids using data specified in kmeans_initialization_column."]
         Custom,
+        #[doc = "Unspecified initialization method."]
         KmeansInitializationMethodUnspecified,
         #[doc = "Initializes with kmeans++."]
         KmeansPlusPlus,
@@ -8785,20 +10221,27 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct TrainingRun {
-        #[doc = "Data split result of the training run. Only set when the input data is\nactually split."]
+        #[doc = "Data split result of the training run. Only set when the input data is actually split."]
         #[serde(
             rename = "dataSplitResult",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub data_split_result: ::std::option::Option<crate::schemas::DataSplitResult>,
-        #[doc = "The evaluation metrics over training/eval data that were computed at the\nend of training."]
+        #[doc = "The evaluation metrics over training/eval data that were computed at the end of training."]
         #[serde(
             rename = "evaluationMetrics",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub evaluation_metrics: ::std::option::Option<crate::schemas::EvaluationMetrics>,
+        #[doc = "Global explanations for important features of the model. For multi-class models, there is one entry for each label class. For other models, there is only one entry in the list."]
+        #[serde(
+            rename = "globalExplanations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub global_explanations: ::std::option::Option<Vec<crate::schemas::GlobalExplanation>>,
         #[doc = "Output of each iteration run, results.size() <= max_iterations."]
         #[serde(
             rename = "results",
@@ -8813,7 +10256,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub start_time: ::std::option::Option<String>,
-        #[doc = "Options that were used for this training run, includes\nuser specified and default options that were used."]
+        #[doc = "Options that were used for this training run, includes user specified and default options that were used."]
         #[serde(
             rename = "trainingOptions",
             default,
@@ -8827,6 +10270,37 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for TrainingRun {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct TransactionInfo {
+        #[doc = "[Output-only] // [Alpha] Id of the transaction."]
+        #[serde(
+            rename = "transactionId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub transaction_id: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for TransactionInfo {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for TransactionInfo {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -9049,6 +10523,15 @@ impl Client {
     #[doc = "Actions that can be performed on the routines resource"]
     pub fn routines(&self) -> crate::resources::routines::RoutinesActions {
         crate::resources::routines::RoutinesActions {
+            reqwest: &self.reqwest,
+            auth: self.auth_ref(),
+        }
+    }
+    #[doc = "Actions that can be performed on the row_access_policies resource"]
+    pub fn row_access_policies(
+        &self,
+    ) -> crate::resources::row_access_policies::RowAccessPoliciesActions {
+        crate::resources::row_access_policies::RowAccessPoliciesActions {
             reqwest: &self.reqwest,
             auth: self.auth_ref(),
         }
@@ -9280,16 +10763,16 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("deleteContents", &self.delete_contents)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("deleteContents", &self.delete_contents)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9416,15 +10899,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9545,15 +11028,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9798,19 +11281,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("all", &self.all)]);
-                let req = req.query(&[("filter", &self.filter)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("all", &self.all)]);
+                req = req.query(&[("filter", &self.filter)]);
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9950,15 +11433,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10087,15 +11570,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10521,16 +12004,16 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("location", &self.location)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("location", &self.location)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10661,16 +12144,16 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("location", &self.location)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("location", &self.location)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10829,20 +12312,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("location", &self.location)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("startIndex", &self.start_index)]);
-                let req = req.query(&[("timeoutMs", &self.timeout_ms)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("location", &self.location)]);
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("startIndex", &self.start_index)]);
+                req = req.query(&[("timeoutMs", &self.timeout_ms)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11052,15 +12535,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11331,23 +12814,25 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("allUsers", &self.all_users)]);
-                let req = req.query(&[("maxCreationTime", &self.max_creation_time)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("minCreationTime", &self.min_creation_time)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("parentJobId", &self.parent_job_id)]);
-                let req = req.query(&[("projection", &self.projection)]);
-                let req = req.query(&[("stateFilter", &self.state_filter)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("allUsers", &self.all_users)]);
+                req = req.query(&[("maxCreationTime", &self.max_creation_time)]);
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("minCreationTime", &self.min_creation_time)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("parentJobId", &self.parent_job_id)]);
+                req = req.query(&[("projection", &self.projection)]);
+                for value in self.state_filter.iter().flatten() {
+                    req = req.query(&[("stateFilter", value)]);
+                }
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11481,15 +12966,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11552,7 +13037,7 @@ pub mod resources {
                     model_id: model_id.into(),
                 }
             }
-            #[doc = "Lists all models in the specified dataset. Requires the READER dataset\nrole."]
+            #[doc = "Lists all models in the specified dataset. Requires the READER dataset role."]
             pub fn list(
                 &self,
                 project_id: impl Into<String>,
@@ -11678,15 +13163,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11822,15 +13307,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11856,12 +13341,12 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "The maximum number of results to return in a single response page.\nLeverage the page tokens to iterate through the entire collection."]
+            #[doc = "The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection."]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
             }
-            #[doc = "Page token, returned by a previous call to request the next page of\nresults"]
+            #[doc = "Page token, returned by a previous call to request the next page of results"]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
@@ -12070,17 +13555,17 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12229,15 +13714,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12404,15 +13889,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12636,17 +14121,17 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12743,7 +14228,7 @@ pub mod resources {
                     dataset_id: dataset_id.into(),
                 }
             }
-            #[doc = "Lists all routines in the specified dataset. Requires the READER dataset\nrole."]
+            #[doc = "Lists all routines in the specified dataset. Requires the READER dataset role."]
             pub fn list(
                 &self,
                 project_id: impl Into<String>,
@@ -12767,7 +14252,7 @@ pub mod resources {
                     read_mask: None,
                 }
             }
-            #[doc = "Updates information in an existing routine. The update method replaces the\nentire Routine resource."]
+            #[doc = "Updates information in an existing routine. The update method replaces the entire Routine resource."]
             pub fn update(
                 &self,
                 request: crate::schemas::Routine,
@@ -12871,15 +14356,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12905,7 +14390,7 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> GetRequestBuilder<'a> {
-            #[doc = "If set, only the Routine fields in the field mask are returned in the\nresponse. If unset, all Routine fields are returned."]
+            #[doc = "If set, only the Routine fields in the field mask are returned in the response. If unset, all Routine fields are returned."]
             pub fn read_mask(mut self, value: impl Into<String>) -> Self {
                 self.read_mask = Some(value.into());
                 self
@@ -13021,16 +14506,16 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("readMask", &self.read_mask)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("readMask", &self.read_mask)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13160,15 +14645,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13196,22 +14681,22 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "If set, then only the Routines matching this filter are returned.\nThe current supported form is either \"routine_type:<RoutineType>\" or\n\"routineType:<RoutineType>\", where <RoutineType> is a RoutineType enum.\nExample: \"routineType:SCALAR_FUNCTION\"."]
+            #[doc = "If set, then only the Routines matching this filter are returned. The current supported form is either \"routine_type:\" or \"routineType:\", where is a RoutineType enum. Example: \"routineType:SCALAR_FUNCTION\"."]
             pub fn filter(mut self, value: impl Into<String>) -> Self {
                 self.filter = Some(value.into());
                 self
             }
-            #[doc = "The maximum number of results to return in a single response page.\nLeverage the page tokens to iterate through the entire collection."]
+            #[doc = "The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection."]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
             }
-            #[doc = "Page token, returned by a previous call, to request the next page of\nresults"]
+            #[doc = "Page token, returned by a previous call, to request the next page of results"]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
             }
-            #[doc = "If set, then only the Routine fields in the field mask, as well as\nproject_id, dataset_id and routine_id, are returned in the response.\nIf unset, then the following Routine fields are returned:\netag, project_id, dataset_id, routine_id, routine_type, creation_time,\nlast_modified_time, and language."]
+            #[doc = "If set, then only the Routine fields in the field mask, as well as project_id, dataset_id and routine_id, are returned in the response. If unset, then the following Routine fields are returned: etag, project_id, dataset_id, routine_id, routine_type, creation_time, last_modified_time, and language."]
             pub fn read_mask(mut self, value: impl Into<String>) -> Self {
                 self.read_mask = Some(value.into());
                 self
@@ -13420,19 +14905,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("filter", &self.filter)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("readMask", &self.read_mask)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("filter", &self.filter)]);
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("readMask", &self.read_mask)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13581,15 +15066,769 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
+                Ok(req)
+            }
+        }
+    }
+    pub mod row_access_policies {
+        pub mod params {}
+        pub struct RowAccessPoliciesActions<'a> {
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+        }
+        impl<'a> RowAccessPoliciesActions<'a> {
+            fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                self.auth
+            }
+            #[doc = "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set."]
+            pub fn get_iam_policy(
+                &self,
+                request: crate::schemas::GetIamPolicyRequest,
+                resource: impl Into<String>,
+            ) -> GetIamPolicyRequestBuilder {
+                GetIamPolicyRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    request,
+                    alt: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    user_ip: None,
+                    resource: resource.into(),
+                }
+            }
+            #[doc = "Lists all row access policies on the specified table."]
+            pub fn list(
+                &self,
+                project_id: impl Into<String>,
+                dataset_id: impl Into<String>,
+                table_id: impl Into<String>,
+            ) -> ListRequestBuilder {
+                ListRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    alt: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    user_ip: None,
+                    project_id: project_id.into(),
+                    dataset_id: dataset_id.into(),
+                    table_id: table_id.into(),
+                    page_size: None,
+                    page_token: None,
+                }
+            }
+            #[doc = "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors."]
+            pub fn set_iam_policy(
+                &self,
+                request: crate::schemas::SetIamPolicyRequest,
+                resource: impl Into<String>,
+            ) -> SetIamPolicyRequestBuilder {
+                SetIamPolicyRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    request,
+                    alt: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    user_ip: None,
+                    resource: resource.into(),
+                }
+            }
+            #[doc = "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning."]
+            pub fn test_iam_permissions(
+                &self,
+                request: crate::schemas::TestIamPermissionsRequest,
+                resource: impl Into<String>,
+            ) -> TestIamPermissionsRequestBuilder {
+                TestIamPermissionsRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    request,
+                    alt: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    user_ip: None,
+                    resource: resource.into(),
+                }
+            }
+        }
+        #[doc = "Created via [RowAccessPoliciesActions::get_iam_policy()](struct.RowAccessPoliciesActions.html#method.get_iam_policy)"]
+        #[derive(Debug, Clone)]
+        pub struct GetIamPolicyRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            request: crate::schemas::GetIamPolicyRequest,
+            resource: String,
+            alt: Option<crate::params::Alt>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            user_ip: Option<String>,
+        }
+        impl<'a> GetIamPolicyRequestBuilder<'a> {
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Deprecated. Please use quotaUser instead."]
+            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
+                self.user_ip = Some(value.into());
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::Policy, crate::Error> {
+                self.execute_with_fields(None::<&str>)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_with_all_fields(self) -> Result<crate::schemas::Policy, crate::Error> {
+                self.execute_with_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path())?;
+                let req = req.json(&self.request);
+                Ok(crate::error_from_response(req.send()?)?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://bigquery.googleapis.com/bigquery/v2/".to_owned();
+                {
+                    let var_as_str = &self.resource;
+                    output.extend(::percent_encoding::utf8_percent_encode(
+                        &var_as_str,
+                        crate::RESERVED,
+                    ));
+                }
+                output.push_str(":getIamPolicy");
+                output
+            }
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
+                Ok(req)
+            }
+        }
+        #[doc = "Created via [RowAccessPoliciesActions::list()](struct.RowAccessPoliciesActions.html#method.list)"]
+        #[derive(Debug, Clone)]
+        pub struct ListRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            project_id: String,
+            dataset_id: String,
+            table_id: String,
+            page_size: Option<i32>,
+            page_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            user_ip: Option<String>,
+        }
+        impl<'a> ListRequestBuilder<'a> {
+            #[doc = "The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection."]
+            pub fn page_size(mut self, value: i32) -> Self {
+                self.page_size = Some(value);
+                self
+            }
+            #[doc = "Page token, returned by a previous call, to request the next page of results."]
+            pub fn page_token(mut self, value: impl Into<String>) -> Self {
+                self.page_token = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Deprecated. Please use quotaUser instead."]
+            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
+                self.user_ip = Some(value.into());
+                self
+            }
+            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+            #[doc = r" items yielded by the iterator are chosen by the caller of this"]
+            #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
+            #[doc = r" populated fields in the yielded items will be determined by the"]
+            #[doc = r" `FieldSelector` implementation."]
+            pub fn iter_row_access_policies<T>(self) -> crate::iter::PageItemIter<Self, T>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.iter_row_access_policies_with_fields(fields)
+            }
+            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+            #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
+            #[doc = r" fields in `#items_type` will be the default fields populated by"]
+            #[doc = r" the server."]
+            pub fn iter_row_access_policies_with_default_fields(
+                self,
+            ) -> crate::iter::PageItemIter<Self, crate::schemas::RowAccessPolicy> {
+                self.iter_row_access_policies_with_fields(None::<String>)
+            }
+            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+            #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
+            #[doc = r" fields in `#items_type` will be all fields available. This should"]
+            #[doc = r" primarily be used during developement and debugging as fetching"]
+            #[doc = r" all fields can be expensive both in bandwidth and server"]
+            #[doc = r" resources."]
+            pub fn iter_row_access_policies_with_all_fields(
+                self,
+            ) -> crate::iter::PageItemIter<Self, crate::schemas::RowAccessPolicy> {
+                self.iter_row_access_policies_with_fields(Some("*"))
+            }
+            pub fn iter_row_access_policies_with_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> crate::iter::PageItemIter<Self, T>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: AsRef<str>,
+            {
+                self.fields = Some({
+                    let mut selector = concat!("nextPageToken,", "rowAccessPolicies").to_owned();
+                    let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
+                    if !items_fields.is_empty() {
+                        selector.push_str("(");
+                        selector.push_str(items_fields);
+                        selector.push_str(")");
+                    }
+                    selector
+                });
+                crate::iter::PageItemIter::new(self, "rowAccessPolicies")
+            }
+            pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.iter_with_fields(fields)
+            }
+            pub fn iter_with_default_fields(
+                self,
+            ) -> crate::iter::PageIter<Self, crate::schemas::ListRowAccessPoliciesResponse>
+            {
+                self.iter_with_fields(None::<&str>)
+            }
+            pub fn iter_with_all_fields(
+                self,
+            ) -> crate::iter::PageIter<Self, crate::schemas::ListRowAccessPoliciesResponse>
+            {
+                self.iter_with_fields(Some("*"))
+            }
+            pub fn iter_with_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> crate::iter::PageIter<Self, T>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: AsRef<str>,
+            {
+                let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
+                if !fields.is_empty() {
+                    match fields.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => fields.push_str(","),
+                    }
+                    fields.push_str("nextPageToken");
+                    self.fields = Some(fields);
+                }
+                crate::iter::PageIter::new(self)
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::ListRowAccessPoliciesResponse, crate::Error> {
+                self.execute_with_fields(None::<&str>)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_with_all_fields(
+                self,
+            ) -> Result<crate::schemas::ListRowAccessPoliciesResponse, crate::Error> {
+                self.execute_with_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path())?;
+                Ok(crate::error_from_response(req.send()?)?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://bigquery.googleapis.com/bigquery/v2/".to_owned();
+                output.push_str("projects/");
+                {
+                    let var_as_str = &self.project_id;
+                    output.extend(::percent_encoding::utf8_percent_encode(
+                        &var_as_str,
+                        crate::RESERVED,
+                    ));
+                }
+                output.push_str("/datasets/");
+                {
+                    let var_as_str = &self.dataset_id;
+                    output.extend(::percent_encoding::utf8_percent_encode(
+                        &var_as_str,
+                        crate::RESERVED,
+                    ));
+                }
+                output.push_str("/tables/");
+                {
+                    let var_as_str = &self.table_id;
+                    output.extend(::percent_encoding::utf8_percent_encode(
+                        &var_as_str,
+                        crate::RESERVED,
+                    ));
+                }
+                output.push_str("/rowAccessPolicies");
+                output
+            }
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("pageSize", &self.page_size)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
+                Ok(req)
+            }
+        }
+        impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
+            fn set_page_token(&mut self, value: String) {
+                self.page_token = value.into();
+            }
+            fn execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                self._execute()
+            }
+        }
+        #[doc = "Created via [RowAccessPoliciesActions::set_iam_policy()](struct.RowAccessPoliciesActions.html#method.set_iam_policy)"]
+        #[derive(Debug, Clone)]
+        pub struct SetIamPolicyRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            request: crate::schemas::SetIamPolicyRequest,
+            resource: String,
+            alt: Option<crate::params::Alt>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            user_ip: Option<String>,
+        }
+        impl<'a> SetIamPolicyRequestBuilder<'a> {
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Deprecated. Please use quotaUser instead."]
+            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
+                self.user_ip = Some(value.into());
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::Policy, crate::Error> {
+                self.execute_with_fields(None::<&str>)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_with_all_fields(self) -> Result<crate::schemas::Policy, crate::Error> {
+                self.execute_with_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path())?;
+                let req = req.json(&self.request);
+                Ok(crate::error_from_response(req.send()?)?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://bigquery.googleapis.com/bigquery/v2/".to_owned();
+                {
+                    let var_as_str = &self.resource;
+                    output.extend(::percent_encoding::utf8_percent_encode(
+                        &var_as_str,
+                        crate::RESERVED,
+                    ));
+                }
+                output.push_str(":setIamPolicy");
+                output
+            }
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
+                Ok(req)
+            }
+        }
+        #[doc = "Created via [RowAccessPoliciesActions::test_iam_permissions()](struct.RowAccessPoliciesActions.html#method.test_iam_permissions)"]
+        #[derive(Debug, Clone)]
+        pub struct TestIamPermissionsRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            request: crate::schemas::TestIamPermissionsRequest,
+            resource: String,
+            alt: Option<crate::params::Alt>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            user_ip: Option<String>,
+        }
+        impl<'a> TestIamPermissionsRequestBuilder<'a> {
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Deprecated. Please use quotaUser instead."]
+            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
+                self.user_ip = Some(value.into());
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::TestIamPermissionsResponse, crate::Error> {
+                self.execute_with_fields(None::<&str>)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_with_all_fields(
+                self,
+            ) -> Result<crate::schemas::TestIamPermissionsResponse, crate::Error> {
+                self.execute_with_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path())?;
+                let req = req.json(&self.request);
+                Ok(crate::error_from_response(req.send()?)?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://bigquery.googleapis.com/bigquery/v2/".to_owned();
+                {
+                    let var_as_str = &self.resource;
+                    output.extend(::percent_encoding::utf8_percent_encode(
+                        &var_as_str,
+                        crate::RESERVED,
+                    ));
+                }
+                output.push_str(":testIamPermissions");
+                output
+            }
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13792,15 +16031,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13963,19 +16202,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("selectedFields", &self.selected_fields)]);
-                let req = req.query(&[("startIndex", &self.start_index)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("selectedFields", &self.selected_fields)]);
+                req = req.query(&[("startIndex", &self.start_index)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14039,7 +16278,7 @@ pub mod resources {
                     selected_fields: None,
                 }
             }
-            #[doc = "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset."]
+            #[doc = "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set."]
             pub fn get_iam_policy(
                 &self,
                 request: crate::schemas::GetIamPolicyRequest,
@@ -14127,7 +16366,7 @@ pub mod resources {
                     table_id: table_id.into(),
                 }
             }
-            #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors."]
+            #[doc = "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors."]
             pub fn set_iam_policy(
                 &self,
                 request: crate::schemas::SetIamPolicyRequest,
@@ -14147,7 +16386,7 @@ pub mod resources {
                     resource: resource.into(),
                 }
             }
-            #[doc = "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a `NOT_FOUND` error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning."]
+            #[doc = "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning."]
             pub fn test_iam_permissions(
                 &self,
                 request: crate::schemas::TestIamPermissionsRequest,
@@ -14271,15 +16510,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14421,16 +16660,16 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("selectedFields", &self.selected_fields)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("selectedFields", &self.selected_fields)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14550,15 +16789,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14688,15 +16927,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14936,17 +17175,17 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("maxResults", &self.max_results)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -15095,15 +17334,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -15223,15 +17462,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -15353,15 +17592,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -15499,15 +17738,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,

@@ -85,7 +85,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub job_title: ::std::option::Option<String>,
-        #[doc = "A person or organization stating the claim. For instance, \"John Doe\".<br>\nCorresponds to `ClaimReview.itemReviewed.author.name`."]
+        #[doc = "A person or organization stating the claim. For instance, \"John Doe\". Corresponds to `ClaimReview.itemReviewed.author.name`."]
         #[serde(
             rename = "name",
             default,
@@ -125,7 +125,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleFactcheckingFactchecktoolsV1Alpha1ClaimRating {
-        #[doc = "For numeric ratings, the best value possible in the scale from worst to\nbest.<br>\nCorresponds to `ClaimReview.reviewRating.bestRating`."]
+        #[doc = "For numeric ratings, the best value possible in the scale from worst to best. Corresponds to `ClaimReview.reviewRating.bestRating`."]
         #[serde(
             rename = "bestRating",
             default,
@@ -146,21 +146,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub rating_explanation: ::std::option::Option<String>,
-        #[doc = "A numeric rating of this claim, in the range worstRating — bestRating\ninclusive.<br>\nCorresponds to `ClaimReview.reviewRating.ratingValue`."]
+        #[doc = "A numeric rating of this claim, in the range worstRating — bestRating inclusive. Corresponds to `ClaimReview.reviewRating.ratingValue`."]
         #[serde(
             rename = "ratingValue",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub rating_value: ::std::option::Option<i32>,
-        #[doc = "The truthfulness rating as a human-readible short word or phrase.<br>\nCorresponds to `ClaimReview.reviewRating.alternateName`."]
+        #[doc = "The truthfulness rating as a human-readible short word or phrase. Corresponds to `ClaimReview.reviewRating.alternateName`."]
         #[serde(
             rename = "textualRating",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub textual_rating: ::std::option::Option<String>,
-        #[doc = "For numeric ratings, the worst value possible in the scale from worst to\nbest.<br>\nCorresponds to `ClaimReview.reviewRating.worstRating`."]
+        #[doc = "For numeric ratings, the worst value possible in the scale from worst to best. Corresponds to `ClaimReview.reviewRating.worstRating`."]
         #[serde(
             rename = "worstRating",
             default,
@@ -270,7 +270,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub image_url: ::std::option::Option<String>,
-        #[doc = "Name of the organization that is publishing the fact check.<br>\nCorresponds to `ClaimReview.author.name`."]
+        #[doc = "Name of the organization that is publishing the fact check. Corresponds to `ClaimReview.author.name`."]
         #[serde(
             rename = "name",
             default,
@@ -305,7 +305,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleFactcheckingFactchecktoolsV1Alpha1ClaimReviewMarkup {
-        #[doc = "A list of links to works in which this claim appears, aside from the one\nspecified in `claim_first_appearance`.<br>\nCorresponds to `ClaimReview.itemReviewed[@type=Claim].appearance.url`."]
+        #[doc = "A list of links to works in which this claim appears, aside from the one specified in `claim_first_appearance`. Corresponds to `ClaimReview.itemReviewed[@type=Claim].appearance.url`."]
         #[serde(
             rename = "claimAppearances",
             default,
@@ -321,28 +321,28 @@ pub mod schemas {
         pub claim_author: ::std::option::Option<
             crate::schemas::GoogleFactcheckingFactchecktoolsV1Alpha1ClaimAuthor,
         >,
-        #[doc = "The date when the claim was made or entered public discourse.<br>\nCorresponds to `ClaimReview.itemReviewed.datePublished`."]
+        #[doc = "The date when the claim was made or entered public discourse. Corresponds to `ClaimReview.itemReviewed.datePublished`."]
         #[serde(
             rename = "claimDate",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub claim_date: ::std::option::Option<String>,
-        #[doc = "A link to a work in which this claim first appears.<br>\nCorresponds to `ClaimReview.itemReviewed[@type=Claim].firstAppearance.url`."]
+        #[doc = "A link to a work in which this claim first appears. Corresponds to `ClaimReview.itemReviewed[@type=Claim].firstAppearance.url`."]
         #[serde(
             rename = "claimFirstAppearance",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub claim_first_appearance: ::std::option::Option<String>,
-        #[doc = "The location where this claim was made.<br>\nCorresponds to `ClaimReview.itemReviewed.name`."]
+        #[doc = "The location where this claim was made. Corresponds to `ClaimReview.itemReviewed.name`."]
         #[serde(
             rename = "claimLocation",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub claim_location: ::std::option::Option<String>,
-        #[doc = "A short summary of the claim being evaluated.<br>\nCorresponds to `ClaimReview.claimReviewed`."]
+        #[doc = "A short summary of the claim being evaluated. Corresponds to `ClaimReview.claimReviewed`."]
         #[serde(
             rename = "claimReviewed",
             default,
@@ -358,7 +358,7 @@ pub mod schemas {
         pub rating: ::std::option::Option<
             crate::schemas::GoogleFactcheckingFactchecktoolsV1Alpha1ClaimRating,
         >,
-        #[doc = "This field is optional, and will default to the page URL. We provide this\nfield to allow you the override the default value, but the only permitted\noverride is the page URL plus an optional anchor link (\"page jump\").<br>\nCorresponds to `ClaimReview.url`"]
+        #[doc = "This field is optional, and will default to the page URL. We provide this field to allow you the override the default value, but the only permitted override is the page URL plus an optional anchor link (\"page jump\"). Corresponds to `ClaimReview.url`"]
         #[serde(
             rename = "url",
             default,
@@ -393,7 +393,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleFactcheckingFactchecktoolsV1Alpha1ClaimReviewMarkupPage {
-        #[doc = "Info about the author of this claim review.\nSimilar to the above, semantically these are page-level fields, and each\n`ClaimReview` on this page will contain the same values."]
+        #[doc = "Info about the author of this claim review. Similar to the above, semantically these are page-level fields, and each `ClaimReview` on this page will contain the same values."]
         #[serde(
             rename = "claimReviewAuthor",
             default,
@@ -402,7 +402,7 @@ pub mod schemas {
         pub claim_review_author: ::std::option::Option<
             crate::schemas::GoogleFactcheckingFactchecktoolsV1Alpha1ClaimReviewAuthor,
         >,
-        #[doc = "A list of individual claim reviews for this page.\nEach item in the list corresponds to one `ClaimReview` element."]
+        #[doc = "A list of individual claim reviews for this page. Each item in the list corresponds to one `ClaimReview` element."]
         #[serde(
             rename = "claimReviewMarkups",
             default,
@@ -411,28 +411,28 @@ pub mod schemas {
         pub claim_review_markups: ::std::option::Option<
             Vec<crate::schemas::GoogleFactcheckingFactchecktoolsV1Alpha1ClaimReviewMarkup>,
         >,
-        #[doc = "The name of this `ClaimReview` markup page resource, in the form of\n`pages/{page_id}`. Except for update requests, this field is output-only\nand should not be set by the user."]
+        #[doc = "The name of this `ClaimReview` markup page resource, in the form of `pages/{page_id}`. Except for update requests, this field is output-only and should not be set by the user."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "The URL of the page associated with this `ClaimReview` markup.\nWhile every individual `ClaimReview` has its own URL field, semantically\nthis is a page-level field, and each `ClaimReview` on this page will use\nthis value unless individually overridden.<br>\nCorresponds to `ClaimReview.url`"]
+        #[doc = "The URL of the page associated with this `ClaimReview` markup. While every individual `ClaimReview` has its own URL field, semantically this is a page-level field, and each `ClaimReview` on this page will use this value unless individually overridden. Corresponds to `ClaimReview.url`"]
         #[serde(
             rename = "pageUrl",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub page_url: ::std::option::Option<String>,
-        #[doc = "The date when the fact check was published.\nSimilar to the URL, semantically this is a page-level field, and each\n`ClaimReview` on this page will contain the same value.<br>\nCorresponds to `ClaimReview.datePublished`"]
+        #[doc = "The date when the fact check was published. Similar to the URL, semantically this is a page-level field, and each `ClaimReview` on this page will contain the same value. Corresponds to `ClaimReview.datePublished`"]
         #[serde(
             rename = "publishDate",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub publish_date: ::std::option::Option<String>,
-        #[doc = "The version ID for this markup. Except for update requests, this field is\noutput-only and should not be set by the user."]
+        #[doc = "The version ID for this markup. Except for update requests, this field is output-only and should not be set by the user."]
         #[serde(
             rename = "versionId",
             default,
@@ -476,7 +476,7 @@ pub mod schemas {
         pub claims: ::std::option::Option<
             Vec<crate::schemas::GoogleFactcheckingFactchecktoolsV1Alpha1Claim>,
         >,
-        #[doc = "The next pagination token in the Search response. It should be used as the\n`page_token` for the following request. An empty value means no more\nresults."]
+        #[doc = "The next pagination token in the Search response. It should be used as the `page_token` for the following request. An empty value means no more results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -520,7 +520,7 @@ pub mod schemas {
         pub claim_review_markup_pages: ::std::option::Option<
             Vec<crate::schemas::GoogleFactcheckingFactchecktoolsV1Alpha1ClaimReviewMarkupPage>,
         >,
-        #[doc = "The next pagination token in the Search response. It should be used as the\n`page_token` for the following request. An empty value means no more\nresults."]
+        #[doc = "The next pagination token in the Search response. It should be used as the `page_token` for the following request. An empty value means no more results."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -562,7 +562,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Host-level site name, without the protocol or \"www\" prefix. For instance,\n\"awesomefactchecks.com\". This value of this field is based purely on the\nclaim review URL."]
+        #[doc = "Host-level site name, without the protocol or \"www\" prefix. For instance, \"awesomefactchecks.com\". This value of this field is based purely on the claim review URL."]
         #[serde(
             rename = "site",
             default,
@@ -860,32 +860,32 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> SearchRequestBuilder<'a> {
-            #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". Can be used to\nrestrict results by language, though we do not currently consider the\nregion."]
+            #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\". Can be used to restrict results by language, though we do not currently consider the region."]
             pub fn language_code(mut self, value: impl Into<String>) -> Self {
                 self.language_code = Some(value.into());
                 self
             }
-            #[doc = "The maximum age of the returned search results, in days.\nAge is determined by either claim date or review date, whichever is newer."]
+            #[doc = "The maximum age of the returned search results, in days. Age is determined by either claim date or review date, whichever is newer."]
             pub fn max_age_days(mut self, value: i32) -> Self {
                 self.max_age_days = Some(value);
                 self
             }
-            #[doc = "An integer that specifies the current offset (that is, starting result\nlocation) in search results. This field is only considered if `page_token`\nis unset. For example, 0 means to return results starting from the first\nmatching result, and 10 means to return from the 11th result."]
+            #[doc = "An integer that specifies the current offset (that is, starting result location) in search results. This field is only considered if `page_token` is unset. For example, 0 means to return results starting from the first matching result, and 10 means to return from the 11th result."]
             pub fn offset(mut self, value: i32) -> Self {
                 self.offset = Some(value);
                 self
             }
-            #[doc = "The pagination size. We will return up to that many results. Defaults to\n10 if not set."]
+            #[doc = "The pagination size. We will return up to that many results. Defaults to 10 if not set."]
             pub fn page_size(mut self, value: i32) -> Self {
                 self.page_size = Some(value);
                 self
             }
-            #[doc = "The pagination token. You may provide the `next_page_token` returned from a\nprevious List request, if any, in order to get the next page. All other\nfields must have the same values as in the previous request."]
+            #[doc = "The pagination token. You may provide the `next_page_token` returned from a previous List request, if any, in order to get the next page. All other fields must have the same values as in the previous request."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
             }
-            #[doc = "Textual query string. Required unless `review_publisher_site_filter` is\nspecified."]
+            #[doc = "Textual query string. Required unless `review_publisher_site_filter` is specified."]
             pub fn query(mut self, value: impl Into<String>) -> Self {
                 self.query = Some(value.into());
                 self
@@ -1014,9 +1014,9 @@ pub mod resources {
                     Some(fields)
                 };
                 self.iter_with_fields(fields)
-            }pub fn iter_with_default_fields ( self ) -> crate :: iter :: PageIter < Self , crate :: schemas :: GoogleFactcheckingFactchecktoolsV1Alpha1FactCheckedClaimSearchResponse >{
+            }            pub fn iter_with_default_fields ( self ) -> crate :: iter :: PageIter < Self , crate :: schemas :: GoogleFactcheckingFactchecktoolsV1Alpha1FactCheckedClaimSearchResponse >{
                 self.iter_with_fields(None::<&str>)
-            }pub fn iter_with_all_fields ( self ) -> crate :: iter :: PageIter < Self , crate :: schemas :: GoogleFactcheckingFactchecktoolsV1Alpha1FactCheckedClaimSearchResponse >{
+            }            pub fn iter_with_all_fields ( self ) -> crate :: iter :: PageIter < Self , crate :: schemas :: GoogleFactcheckingFactchecktoolsV1Alpha1FactCheckedClaimSearchResponse >{
                 self.iter_with_fields(Some("*"))
             }
             pub fn iter_with_fields<T, F>(
@@ -1061,13 +1061,13 @@ pub mod resources {
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
-            #[doc = r" the response resource."]pub fn execute_with_default_fields ( self ) -> Result < crate :: schemas :: GoogleFactcheckingFactchecktoolsV1Alpha1FactCheckedClaimSearchResponse , crate :: Error >{
+            #[doc = r" the response resource."]            pub fn execute_with_default_fields ( self ) -> Result < crate :: schemas :: GoogleFactcheckingFactchecktoolsV1Alpha1FactCheckedClaimSearchResponse , crate :: Error >{
                 self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
-            #[doc = r" development or debugging."]pub fn execute_with_all_fields ( self ) -> Result < crate :: schemas :: GoogleFactcheckingFactchecktoolsV1Alpha1FactCheckedClaimSearchResponse , crate :: Error >{
+            #[doc = r" development or debugging."]            pub fn execute_with_all_fields ( self ) -> Result < crate :: schemas :: GoogleFactcheckingFactchecktoolsV1Alpha1FactCheckedClaimSearchResponse , crate :: Error >{
                 self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
@@ -1097,29 +1097,29 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("languageCode", &self.language_code)]);
-                let req = req.query(&[("maxAgeDays", &self.max_age_days)]);
-                let req = req.query(&[("offset", &self.offset)]);
-                let req = req.query(&[("pageSize", &self.page_size)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("query", &self.query)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("languageCode", &self.language_code)]);
+                req = req.query(&[("maxAgeDays", &self.max_age_days)]);
+                req = req.query(&[("offset", &self.offset)]);
+                req = req.query(&[("pageSize", &self.page_size)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("query", &self.query)]);
+                req = req.query(&[(
                     "reviewPublisherSiteFilter",
                     &self.review_publisher_site_filter,
                 )]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -1209,7 +1209,7 @@ pub mod resources {
                     name: name.into(),
                 }
             }
-            #[doc = "List the `ClaimReview` markup pages for a specific URL or for an\norganization."]
+            #[doc = "List the `ClaimReview` markup pages for a specific URL or for an organization."]
             pub fn list(&self) -> ListRequestBuilder {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
@@ -1232,7 +1232,7 @@ pub mod resources {
                     url: None,
                 }
             }
-            #[doc = "Update for all `ClaimReview` markup on a page\n\nNote that this is a full update. To retain the existing `ClaimReview`\nmarkup on a page, first perform a Get operation, then modify the returned\nmarkup, and finally call Update with the entire `ClaimReview` markup as the\nbody."]
+            #[doc = "Update for all `ClaimReview` markup on a page Note that this is a full update. To retain the existing `ClaimReview` markup on a page, first perform a Get operation, then modify the returned markup, and finally call Update with the entire `ClaimReview` markup as the body."]
             pub fn update(
                 &self,
                 request : crate :: schemas :: GoogleFactcheckingFactchecktoolsV1Alpha1ClaimReviewMarkupPage,
@@ -1393,19 +1393,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -1549,19 +1549,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -1711,19 +1711,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -1754,27 +1754,27 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "An integer that specifies the current offset (that is, starting result\nlocation) in search results. This field is only considered if `page_token`\nis unset, and if the request is not for a specific URL. For example, 0\nmeans to return results starting from the first matching result, and 10\nmeans to return from the 11th result."]
+            #[doc = "An integer that specifies the current offset (that is, starting result location) in search results. This field is only considered if `page_token` is unset, and if the request is not for a specific URL. For example, 0 means to return results starting from the first matching result, and 10 means to return from the 11th result."]
             pub fn offset(mut self, value: i32) -> Self {
                 self.offset = Some(value);
                 self
             }
-            #[doc = "The organization for which we want to fetch markups for. For instance,\n\"site.com\". Cannot be specified along with an URL."]
+            #[doc = "The organization for which we want to fetch markups for. For instance, \"site.com\". Cannot be specified along with an URL."]
             pub fn organization(mut self, value: impl Into<String>) -> Self {
                 self.organization = Some(value.into());
                 self
             }
-            #[doc = "The pagination size. We will return up to that many results. Defaults to\n10 if not set. Has no effect if a URL is requested."]
+            #[doc = "The pagination size. We will return up to that many results. Defaults to 10 if not set. Has no effect if a URL is requested."]
             pub fn page_size(mut self, value: i32) -> Self {
                 self.page_size = Some(value);
                 self
             }
-            #[doc = "The pagination token. You may provide the `next_page_token` returned from a\nprevious List request, if any, in order to get the next page. All other\nfields must have the same values as in the previous request."]
+            #[doc = "The pagination token. You may provide the `next_page_token` returned from a previous List request, if any, in order to get the next page. All other fields must have the same values as in the previous request."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
             }
-            #[doc = "The URL from which to get `ClaimReview` markup. There will be at most one\nresult. If markup is associated with a more canonical version of the URL\nprovided, we will return that URL instead. Cannot be specified along with\nan organization."]
+            #[doc = "The URL from which to get `ClaimReview` markup. There will be at most one result. If markup is associated with a more canonical version of the URL provided, we will return that URL instead. Cannot be specified along with an organization."]
             pub fn url(mut self, value: impl Into<String>) -> Self {
                 self.url = Some(value.into());
                 self
@@ -1899,9 +1899,9 @@ pub mod resources {
                     Some(fields)
                 };
                 self.iter_with_fields(fields)
-            }pub fn iter_with_default_fields ( self ) -> crate :: iter :: PageIter < Self , crate :: schemas :: GoogleFactcheckingFactchecktoolsV1Alpha1ListClaimReviewMarkupPagesResponse >{
+            }            pub fn iter_with_default_fields ( self ) -> crate :: iter :: PageIter < Self , crate :: schemas :: GoogleFactcheckingFactchecktoolsV1Alpha1ListClaimReviewMarkupPagesResponse >{
                 self.iter_with_fields(None::<&str>)
-            }pub fn iter_with_all_fields ( self ) -> crate :: iter :: PageIter < Self , crate :: schemas :: GoogleFactcheckingFactchecktoolsV1Alpha1ListClaimReviewMarkupPagesResponse >{
+            }            pub fn iter_with_all_fields ( self ) -> crate :: iter :: PageIter < Self , crate :: schemas :: GoogleFactcheckingFactchecktoolsV1Alpha1ListClaimReviewMarkupPagesResponse >{
                 self.iter_with_fields(Some("*"))
             }
             pub fn iter_with_fields<T, F>(
@@ -1946,13 +1946,13 @@ pub mod resources {
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
-            #[doc = r" the response resource."]pub fn execute_with_default_fields ( self ) -> Result < crate :: schemas :: GoogleFactcheckingFactchecktoolsV1Alpha1ListClaimReviewMarkupPagesResponse , crate :: Error >{
+            #[doc = r" the response resource."]            pub fn execute_with_default_fields ( self ) -> Result < crate :: schemas :: GoogleFactcheckingFactchecktoolsV1Alpha1ListClaimReviewMarkupPagesResponse , crate :: Error >{
                 self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
-            #[doc = r" development or debugging."]pub fn execute_with_all_fields ( self ) -> Result < crate :: schemas :: GoogleFactcheckingFactchecktoolsV1Alpha1ListClaimReviewMarkupPagesResponse , crate :: Error >{
+            #[doc = r" development or debugging."]            pub fn execute_with_all_fields ( self ) -> Result < crate :: schemas :: GoogleFactcheckingFactchecktoolsV1Alpha1ListClaimReviewMarkupPagesResponse , crate :: Error >{
                 self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
@@ -1982,24 +1982,24 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("offset", &self.offset)]);
-                let req = req.query(&[("organization", &self.organization)]);
-                let req = req.query(&[("pageSize", &self.page_size)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("url", &self.url)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("offset", &self.offset)]);
+                req = req.query(&[("organization", &self.organization)]);
+                req = req.query(&[("pageSize", &self.page_size)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("url", &self.url)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -2162,19 +2162,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PUT, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,

@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("doubleclickbidmanager1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200616")
-            .about("API for viewing and managing your reports in DoubleClick Bid Manager.")
+            .version("0.1.0-20210315")
+            .about("DoubleClick Bid Manager API allows users to manage and create campaigns and reports.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -37,14 +37,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: downloadlineitems and uploadlineitems");
         {
-            let mcmd = SubCommand::with_name("downloadlineitems").about(
-                "Retrieves line items in CSV format. TrueView line items are not supported.",
-            );
+            let mcmd = SubCommand::with_name("downloadlineitems").about("Retrieves line items in CSV format. YouTube & partners line items are not supported.");
             lineitems0 = lineitems0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("uploadlineitems")
-                .about("Uploads line items in CSV format. TrueView line items are not supported.");
+            let mcmd = SubCommand::with_name("uploadlineitems").about("Uploads line items in CSV format. YouTube & partners line items are not supported.");
             lineitems0 = lineitems0.subcommand(mcmd);
         }
         let mut queries0 = SubCommand::with_name("queries")

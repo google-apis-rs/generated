@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("bigquery2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200617")
+            .version("0.1.0-20210303")
             .about("A data platform for customers to create, manage, share and query data.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -105,7 +105,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("list").about(
-                "Lists all models in the specified dataset. Requires the READER dataset\nrole.",
+                "Lists all models in the specified dataset. Requires the READER dataset role.",
             );
             models0 = models0.subcommand(mcmd);
         }
@@ -146,13 +146,33 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("list").about(
-                "Lists all routines in the specified dataset. Requires the READER dataset\nrole.",
+                "Lists all routines in the specified dataset. Requires the READER dataset role.",
             );
             routines0 = routines0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Updates information in an existing routine. The update method replaces the\nentire Routine resource.");
+            let mcmd = SubCommand::with_name("update").about("Updates information in an existing routine. The update method replaces the entire Routine resource.");
             routines0 = routines0.subcommand(mcmd);
+        }
+        let mut row_access_policies0 = SubCommand::with_name("row_access_policies")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: get_iam_policy, list, set_iam_policy and test_iam_permissions");
+        {
+            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.");
+            row_access_policies0 = row_access_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists all row access policies on the specified table.");
+            row_access_policies0 = row_access_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.");
+            row_access_policies0 = row_access_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.");
+            row_access_policies0 = row_access_policies0.subcommand(mcmd);
         }
         let mut tabledata0 = SubCommand::with_name("tabledata")
             .setting(AppSettings::ColoredHelp)
@@ -177,7 +197,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             tables0 = tables0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset.");
+            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.");
             tables0 = tables0.subcommand(mcmd);
         }
         {
@@ -196,11 +216,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             tables0 = tables0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.");
             tables0 = tables0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a `NOT_FOUND` error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.");
+            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.");
             tables0 = tables0.subcommand(mcmd);
         }
         {
@@ -209,6 +229,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         app = app.subcommand(tables0);
         app = app.subcommand(tabledata0);
+        app = app.subcommand(row_access_policies0);
         app = app.subcommand(routines0);
         app = app.subcommand(projects0);
         app = app.subcommand(models0);

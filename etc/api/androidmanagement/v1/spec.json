@@ -7,7 +7,7 @@
   "canonicalName": "Android Management",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200615",
+  "revision": "20210308",
   "title": "Android Management API",
   "description": "The Android Management API provides remote enterprise management of Android devices and apps.",
   "ownerDomain": "google.com",
@@ -215,6 +215,24 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "commonCriteriaMode": {
+          "description": "Controls Common Criteria Mode—security standards defined in the Common Criteria for Information Technology Security Evaluation (https://www.commoncriteriaportal.org/) (CC). Enabling Common Criteria Mode increases certain security components on a device, including AES-GCM encryption of Bluetooth Long Term Keys, and Wi-Fi configuration stores.Warning: Common Criteria Mode enforces a strict security model typically only required for IT products used in national security systems and other highly sensitive organizations. Standard device use may be affected. Only enabled if required.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "COMMON_CRITERIA_MODE_UNSPECIFIED",
+            "COMMON_CRITERIA_MODE_DISABLED",
+            "COMMON_CRITERIA_MODE_ENABLED"
+          ],
+          "enumDescriptions": [
+            "Unspecified. Defaults to COMMON_CRITERIA_MODE_DISABLED.",
+            "Default. Disables Common Criteria Mode.",
+            "Enables Common Criteria Mode."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "untrustedAppsPolicy": {
           "description": "The policy for untrusted apps (apps from unknown sources) enforced on the device. Replaces install_unknown_sources_allowed (deprecated).",
           "type": "string",
@@ -513,6 +531,44 @@
             "items": null
           }
         },
+        "autoUpdateMode": {
+          "description": "This feature is not generally available yet.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "AUTO_UPDATE_MODE_UNSPECIFIED",
+            "AUTO_UPDATE_DEFAULT",
+            "AUTO_UPDATE_POSTPONED",
+            "AUTO_UPDATE_HIGH_PRIORITY"
+          ],
+          "enumDescriptions": [
+            "This feature is not generally available yet.",
+            "This feature is not generally available yet.",
+            "This feature is not generally available yet.",
+            "This feature is not generally available yet."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "connectedWorkAndPersonalApp": {
+          "description": "Controls whether the app can communicate with itself across a device’s work and personal profiles, subject to user consent.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "CONNECTED_WORK_AND_PERSONAL_APP_UNSPECIFIED",
+            "CONNECTED_WORK_AND_PERSONAL_APP_DISALLOWED",
+            "CONNECTED_WORK_AND_PERSONAL_APP_ALLOWED"
+          ],
+          "enumDescriptions": [
+            "Unspecified. Defaults to CONNECTED_WORK_AND_PERSONAL_APPS_DISALLOWED.",
+            "Default. Prevents the app from communicating cross-profile.",
+            "Allows the app to communicate across profiles after receiving user consent."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "defaultPermissionPolicy": {
           "description": "The default policy for all permissions requested by the app. If specified, this overrides the policy-level default_permission_policy which applies to all apps. It does not override the permission_grants which applies to all apps.",
           "type": "string",
@@ -538,15 +594,7 @@
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [
-            "No delegation scope specified.",
-            "Grants access to certificate installation and management.",
-            "Grants access to managed configurations management.",
-            "Grants access to blocking uninstallation.",
-            "Grants access to permission policy and permission grant state.",
-            "Grants access to package access state.",
-            "Grants access for enabling system apps."
-          ],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": {
@@ -561,7 +609,15 @@
               "PACKAGE_ACCESS",
               "ENABLE_SYSTEM_APP"
             ],
-            "enumDescriptions": [],
+            "enumDescriptions": [
+              "No delegation scope specified.",
+              "Grants access to certificate installation and management.",
+              "Grants access to managed configurations management.",
+              "Grants access to blocking uninstallation.",
+              "Grants access to permission policy and permission grant state.",
+              "Grants access to package access state.",
+              "Grants access for enabling system apps."
+            ],
             "properties": {},
             "additionalProperties": null,
             "items": null
@@ -614,7 +670,7 @@
           "items": null
         },
         "managedConfiguration": {
-          "description": "Managed configuration applied to the app. The format for the configuration is dictated by the ManagedProperty values supported by the app. Each field name in the managed configuration must match the key field of the ManagedProperty. The field value must be compatible with the type of the ManagedProperty: <table> <tr><td><i>type</i></td><td><i>JSON value</i></td></tr> <tr><td>BOOL</td><td>true or false</td></tr> <tr><td>STRING</td><td>string</td></tr> <tr><td>INTEGER</td><td>number</td></tr> <tr><td>CHOICE</td><td>string</td></tr> <tr><td>MULTISELECT</td><td>array of strings</td></tr> <tr><td>HIDDEN</td><td>string</td></tr> <tr><td>BUNDLE_ARRAY</td><td>array of objects</td></tr> </table>",
+          "description": "Managed configuration applied to the app. The format for the configuration is dictated by the ManagedProperty values supported by the app. Each field name in the managed configuration must match the key field of the ManagedProperty. The field value must be compatible with the type of the ManagedProperty: *type* *JSON value* BOOL true or false STRING string INTEGER number CHOICE string MULTISELECT array of strings HIDDEN string BUNDLE_ARRAY array of objects ",
           "type": "object",
           "format": null,
           "enum": [],
@@ -1003,12 +1059,7 @@
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [
-            "This value is ignored.",
-            "Don't allow other admins to change the password again until the user has entered it.",
-            "Don't ask for user credentials on device boot.",
-            "Lock the device after password reset."
-          ],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": {
@@ -1020,7 +1071,12 @@
               "DO_NOT_ASK_CREDENTIALS_ON_BOOT",
               "LOCK_NOW"
             ],
-            "enumDescriptions": [],
+            "enumDescriptions": [
+              "This value is ignored.",
+              "Don't allow other admins to change the password again until the user has entered it.",
+              "Don't ask for user credentials on device boot.",
+              "Lock the device after password reset."
+            ],
             "properties": {},
             "additionalProperties": null,
             "items": null
@@ -1034,13 +1090,15 @@
             "COMMAND_TYPE_UNSPECIFIED",
             "LOCK",
             "RESET_PASSWORD",
-            "REBOOT"
+            "REBOOT",
+            "RELINQUISH_OWNERSHIP"
           ],
           "enumDescriptions": [
             "This value is disallowed.",
             "Lock the device, as if the lock screen timeout had expired.",
             "Reset the user's password.",
-            "Reboot the device. Only supported on API level 24+."
+            "Reboot the device. Only supported on fully managed devices running Android 7.0 (API level 24) or higher.",
+            "Removes the work profile and all policies from a company-owned Android 8.0+ device, relinquishing the device for personal use. Apps and data associated with the personal profile(s) are preserved. The device will be deleted from the server after it acknowledges the command."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -1052,6 +1110,36 @@
           "format": null,
           "enum": [],
           "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "CommonCriteriaModeInfo": {
+      "id": "CommonCriteriaModeInfo",
+      "description": "Information about Common Criteria Mode—security standards defined in the Common Criteria for Information Technology Security Evaluation (https://www.commoncriteriaportal.org/) (CC).This information is only available if statusReportingSettings.commonCriteriaModeEnabled is true in the device's policy.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "commonCriteriaModeStatus": {
+          "description": "Whether Common Criteria Mode is enabled.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "COMMON_CRITERIA_MODE_STATUS_UNKNOWN",
+            "COMMON_CRITERIA_MODE_DISABLED",
+            "COMMON_CRITERIA_MODE_ENABLED"
+          ],
+          "enumDescriptions": [
+            "Unknown status.",
+            "Common Criteria Mode is currently disabled.",
+            "Common Criteria Mode is currently enabled."
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -1108,16 +1196,148 @@
       "additionalProperties": null,
       "items": null
     },
+    "ContactInfo": {
+      "id": "ContactInfo",
+      "description": "Contact details for LaForge enterprises.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "contactEmail": {
+          "description": "Email address for a point of contact, which will be used to send important announcements related to managed Google Play.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "dataProtectionOfficerEmail": {
+          "description": "The email of the data protection officer. The email is validated but not verified.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "dataProtectionOfficerName": {
+          "description": "The name of the data protection officer.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "dataProtectionOfficerPhone": {
+          "description": "The phone number of the data protection officer The phone number is validated but not verified.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "euRepresentativeEmail": {
+          "description": "The email of the EU representative. The email is validated but not verified.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "euRepresentativeName": {
+          "description": "The name of the EU representative.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "euRepresentativePhone": {
+          "description": "The phone number of the EU representative. The phone number is validated but not verified.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ContentProviderEndpoint": {
+      "id": "ContentProviderEndpoint",
+      "description": "This feature is not generally available.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "packageName": {
+          "description": "This feature is not generally available.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "signingCertsSha256": {
+          "description": "Required. This feature is not generally available.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "uri": {
+          "description": "This feature is not generally available.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "Date": {
       "id": "Date",
-      "description": "Represents a whole or partial calendar date, e.g. a birthday. The time of day and time zone are either specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. This can represent:\nA full date, with non-zero year, month and day values\nA month and day value, with a zero year, e.g. an anniversary\nA year on its own, with zero month and day values\nA year and month value, with a zero day, e.g. a credit card expiration dateRelated types are google.type.TimeOfDay and google.protobuf.Timestamp.",
+      "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: A full date, with non-zero year, month, and day values A month and day value, with a zero year, such as an anniversary A year on its own, with zero month and day values A year and month value, with a zero day, such as a credit card expiration dateRelated types are google.type.TimeOfDay and google.protobuf.Timestamp.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "day": {
-          "description": "Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by itself or a year and month where the day is not significant.",
+          "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1127,7 +1347,7 @@
           "items": null
         },
         "month": {
-          "description": "Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.",
+          "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1137,7 +1357,7 @@
           "items": null
         },
         "year": {
-          "description": "Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.",
+          "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1221,6 +1441,10 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "commonCriteriaModeInfo": {
+          "description": "Information about Common Criteria Mode—security standards defined in the Common Criteria for Information Technology Security Evaluation (https://www.commoncriteriaportal.org/) (CC).This information is only available if statusReportingSettings.commonCriteriaModeEnabled is true in the device's policy.",
+          "$ref": "CommonCriteriaModeInfo"
         },
         "deviceSettings": {
           "description": "Device settings information. This information is only available if deviceSettingsEnabled is true in the device's policy.",
@@ -1707,7 +1931,7 @@
     },
     "Empty": {
       "id": "Empty",
-      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance:\nservice Foo {\n  rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n}\nThe JSON representation for Empty is empty JSON object {}.",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for Empty is empty JSON object {}.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1735,7 +1959,7 @@
           "items": null
         },
         "allowPersonalUsage": {
-          "description": "Controls personal usage on devices provisioned using this enrollment token.",
+          "description": "Controls whether personal usage is allowed on a device provisioned with this enrollment token.For company-owned devices: Enabling personal usage allows the user to set up a work profile on the device. Disabling personal usage requires the user provision the device as a fully managed device.For personally-owned devices: Enabling personal usage allows the user to set up a work profile on the device. Disabling personal usage will prevent the device from provisioning. Personal usage cannot be disabled on personally-owned device.",
           "type": "string",
           "format": null,
           "enum": [
@@ -1753,7 +1977,7 @@
           "items": null
         },
         "duration": {
-          "description": "The length of time the enrollment token is valid, ranging from 1 minute to 30 days. If not specified, the default duration is 1 hour.",
+          "description": "The length of time the enrollment token is valid, ranging from 1 minute to 90 days. If not specified, the default duration is 1 hour.",
           "type": "string",
           "format": "google-duration",
           "enum": [],
@@ -1848,18 +2072,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "contactInfo": {
+          "description": "This feature is not generally available yet. The enterprise contact info of an EMM owned enterprise",
+          "$ref": "ContactInfo"
+        },
         "enabledNotificationTypes": {
           "description": "The types of Google Pub/Sub notifications enabled for the enterprise.",
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [
-            "This value is ignored.",
-            "A notification sent when a device enrolls.",
-            "Deprecated.",
-            "A notification sent when a device issues a status report.",
-            "A notification sent when a device command has completed."
-          ],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": {
@@ -1872,7 +2094,13 @@
               "STATUS_REPORT",
               "COMMAND"
             ],
-            "enumDescriptions": [],
+            "enumDescriptions": [
+              "This value is ignored.",
+              "A notification sent when a device enrolls.",
+              "Deprecated.",
+              "A notification sent when a device issues a status report.",
+              "A notification sent when a device command has completed."
+            ],
             "properties": {},
             "additionalProperties": null,
             "items": null
@@ -2590,6 +2818,40 @@
       "additionalProperties": null,
       "items": null
     },
+    "ListEnterprisesResponse": {
+      "id": "ListEnterprisesResponse",
+      "description": "This feature is not generally available yet. Response to a request to list enterprises.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "enterprises": {
+          "description": "This feature is not generally available yet. The list of enterprises.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "Enterprise"
+          }
+        },
+        "nextPageToken": {
+          "description": "This feature is not generally available yet. If there are more results, a token to retrieve next page of results.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "ListOperationsResponse": {
       "id": "ListOperationsResponse",
       "description": "The response message for Operations.ListOperations.",
@@ -2701,7 +2963,7 @@
       "enumDescriptions": [],
       "properties": {
         "configurationVariables": {
-          "description": "Optional, a map containing <key, value> configuration variables defined for the configuration.",
+          "description": "Optional, a map containing configuration variables defined for the configuration.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -2997,6 +3259,18 @@
           "additionalProperties": null,
           "items": null
         },
+        "telephonyInfos": {
+          "description": "Provides telephony information associated with each SIM card on the device. Only supported on fully managed devices starting from Android API level 23.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "TelephonyInfo"
+          }
+        },
         "wifiMacAddress": {
           "description": "Wi-Fi MAC address of the device. For example, 7c:11:11:11:11:11.",
           "type": "string",
@@ -3030,7 +3304,7 @@
           "items": null
         },
         "fieldPath": {
-          "description": "For settings with nested fields, if a particular nested field is out of compliance, this specifies the full path to the offending field. The path is formatted in the same way the policy JSON field would be referenced in JavaScript, that is: 1) For object-typed fields, the field name is followed by a dot then by a  subfield name. 2) For array-typed fields, the field name is followed by the array index  enclosed in brackets. For example, to indicate a problem with the url field in the externalData field in the 3rd application, the path would be applications[2].externalData.url",
+          "description": "For settings with nested fields, if a particular nested field is out of compliance, this specifies the full path to the offending field. The path is formatted in the same way the policy JSON field would be referenced in JavaScript, that is: 1) For object-typed fields, the field name is followed by a dot then by a subfield name. 2) For array-typed fields, the field name is followed by the array index enclosed in brackets. For example, to indicate a problem with the url field in the externalData field in the 3rd application, the path would be applications[2].externalData.url",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3066,7 +3340,7 @@
             "The app has new permissions that have not been accepted by the admin.",
             "The app is not available in the user's country.",
             "There are no licenses available to assign to the user.",
-            "The enterprise is no longer enrolled with managed Play or the admin has not accepted the latest managed Play terms of service.",
+            "The enterprise is no longer enrolled with Managed Google Play or the admin has not accepted the latest Managed Google Play Terms of Service.",
             "The user is no longer valid. The user may have been deleted or disabled."
           ],
           "properties": {},
@@ -3118,7 +3392,7 @@
           "items": null
         },
         "settingName": {
-          "description": "The name of the policy setting. This is the JSON field name of a top-level Policy  field.",
+          "description": "The name of the policy setting. This is the JSON field name of a top-level Policy field.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3192,6 +3466,40 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "OncCertificateProvider": {
+      "id": "OncCertificateProvider",
+      "description": "This feature is not generally available.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "certificateReferences": {
+          "description": "This feature is not generally available.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "contentProviderEndpoint": {
+          "description": "This feature is not generally available.",
+          "$ref": "ContentProviderEndpoint"
         }
       },
       "additionalProperties": null,
@@ -3579,7 +3887,7 @@
     },
     "PersonalApplicationPolicy": {
       "id": "PersonalApplicationPolicy",
-      "description": "Policies for apps on the personal profile of a Corporate Owned Personally Enabled device.",
+      "description": "Policies for apps in the personal profile of a company-owned device with a work profile.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -3591,11 +3899,13 @@
           "format": null,
           "enum": [
             "INSTALL_TYPE_UNSPECIFIED",
-            "BLOCKED"
+            "BLOCKED",
+            "AVAILABLE"
           ],
           "enumDescriptions": [
-            "Unspecified. The default behavior is that all installs are allowed.",
-            "The app is blocked and can't be installed."
+            "Unspecified. Defaults to AVAILABLE.",
+            "The app is blocked and can't be installed in the personal profile.",
+            "The app is available to install in the personal profile."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -3617,7 +3927,7 @@
     },
     "PersonalUsagePolicies": {
       "id": "PersonalUsagePolicies",
-      "description": "Policies controlling personal usage on a Corporate Owned Personally Enabled device.",
+      "description": "Policies controlling personal usage on a company-owned device with a work profile.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -3652,7 +3962,7 @@
           "items": null
         },
         "maxDaysWithWorkOff": {
-          "description": "Controls how long the work profile can stay off.",
+          "description": "Controls how long the work profile can stay off. The duration must be at least 3 days.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -3662,7 +3972,7 @@
           "items": null
         },
         "personalApplications": {
-          "description": "Policy applied to applications on the personal profile.",
+          "description": "Policy applied to applications in the personal profile.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -3674,16 +3984,20 @@
           }
         },
         "personalPlayStoreMode": {
-          "description": "Controls how apps on the personal profile are allowed or blocked.",
+          "description": "Used together with personalApplications to control how apps in the personal profile are allowed or blocked.",
           "type": "string",
           "format": null,
           "enum": [
             "PLAY_STORE_MODE_UNSPECIFIED",
-            "BLACKLIST"
+            "BLACKLIST",
+            "BLOCKLIST",
+            "ALLOWLIST"
           ],
           "enumDescriptions": [
-            "Unspecified. Default behavior is to allow all installs.",
-            "All Play Store apps are available, except those whose install_type is BLOCKED in PersonalApplicationPolicy."
+            "Unspecified. Defaults to BLOCKLIST.",
+            "All Play Store apps are available for installation in the personal profile, except those whose installType is BLOCKED in personalApplications.",
+            "All Play Store apps are available for installation in the personal profile, except those whose installType is BLOCKED in personalApplications.",
+            "Only apps explicitly specified in personalApplications with installType set to AVAILABLE are allowed to be installed in the personal profile."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -3740,7 +4054,7 @@
           "items": null
         },
         "adjustVolumeDisabled": {
-          "description": "Whether adjusting the master volume is disabled.",
+          "description": "Whether adjusting the master volume is disabled. Also mutes the device.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -3762,11 +4076,7 @@
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [
-            "This value is ignored.",
-            "The production track, which provides the latest stable release.",
-            "The beta track, which provides the latest beta release."
-          ],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": {
@@ -3777,7 +4087,11 @@
               "PRODUCTION",
               "BETA"
             ],
-            "enumDescriptions": [],
+            "enumDescriptions": [
+              "This value is ignored.",
+              "The production track, which provides the latest stable release.",
+              "The beta track, which provides the latest beta release."
+            ],
             "properties": {},
             "additionalProperties": null,
             "items": null
@@ -3817,8 +4131,26 @@
             "$ref": "ApplicationPolicy"
           }
         },
+        "autoDateAndTimeZone": {
+          "description": "Whether auto date, time, and time zone are enabled on a company-owned device. If this is set, then autoTimeRequired is ignored.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "AUTO_DATE_AND_TIME_ZONE_UNSPECIFIED",
+            "AUTO_DATE_AND_TIME_ZONE_USER_CHOICE",
+            "AUTO_DATE_AND_TIME_ZONE_ENFORCED"
+          ],
+          "enumDescriptions": [
+            "Unspecified. Defaults to AUTO_DATE_AND_TIME_ZONE_USER_CHOICE.",
+            "Auto date, time, and time zone are left to user's choice.",
+            "Enforce auto date, time, and time zone on the device."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "autoTimeRequired": {
-          "description": "Whether auto time is required, which prevents the user from manually setting the date and time.",
+          "description": "Whether auto time is required, which prevents the user from manually setting the date and time. If autoDateAndTimeZone is set, this field is ignored.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -4052,7 +4384,7 @@
           "items": null
         },
         "installUnknownSourcesAllowed": {
-          "description": "Whether the user is allowed to enable the \"Unknown Sources\" setting, which allows installation of apps from unknown sources.",
+          "description": "This field has no effect.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -4076,19 +4408,7 @@
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [
-            "This value is ignored.",
-            "Disable the camera on secure keyguard screens (e.g. PIN).",
-            "Disable showing all notifications on secure keyguard screens.",
-            "Disable unredacted notifications on secure keyguard screens.",
-            "Ignore trust agent state on secure keyguard screens.",
-            "Disable fingerprint sensor on secure keyguard screens.",
-            "Disable text entry into notifications on secure keyguard screens.",
-            "Disable face authentication on secure keyguard screens.",
-            "Disable iris authentication on secure keyguard screens.",
-            "Disable all biometric authentication on secure keyguard screens.",
-            "Disable all current and future keyguard customizations."
-          ],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": {
@@ -4107,7 +4427,19 @@
               "BIOMETRICS",
               "ALL_FEATURES"
             ],
-            "enumDescriptions": [],
+            "enumDescriptions": [
+              "This value is ignored.",
+              "Disable the camera on secure keyguard screens (e.g. PIN).",
+              "Disable showing all notifications on secure keyguard screens.",
+              "Disable unredacted notifications on secure keyguard screens.",
+              "Ignore trust agent state on secure keyguard screens.",
+              "Disable fingerprint sensor on secure keyguard screens.",
+              "Disable text entry into notifications on secure keyguard screens.",
+              "Disable face authentication on secure keyguard screens.",
+              "Disable iris authentication on secure keyguard screens.",
+              "Disable all biometric authentication on secure keyguard screens.",
+              "Disable all current and future keyguard customizations."
+            ],
             "properties": {},
             "additionalProperties": null,
             "items": null
@@ -4128,7 +4460,7 @@
           "$ref": "KioskCustomization"
         },
         "locationMode": {
-          "description": "The degree of location detection enabled. The user may change the value unless the user is otherwise blocked from accessing device settings.",
+          "description": "The degree of location detection enabled.",
           "type": "string",
           "format": null,
           "enum": [
@@ -4136,14 +4468,20 @@
             "HIGH_ACCURACY",
             "SENSORS_ONLY",
             "BATTERY_SAVING",
-            "OFF"
+            "OFF",
+            "LOCATION_USER_CHOICE",
+            "LOCATION_ENFORCED",
+            "LOCATION_DISABLED"
           ],
           "enumDescriptions": [
-            "The current device value is not modified.",
-            "All location detection methods are enabled, including GPS, networks, and other sensors.",
-            "Only GPS and other sensors are enabled.",
-            "Only the network location provider is enabled.",
-            "Location detection is disabled."
+            "Defaults to LOCATION_USER_CHOICE.",
+            "On Android 8 and below, all location detection methods are enabled, including GPS, networks, and other sensors. On Android 9 and above, this is equivalent to LOCATION_ENFORCED.",
+            "On Android 8 and below, only GPS and other sensors are enabled. On Android 9 and above, this is equivalent to LOCATION_ENFORCED.",
+            "On Android 8 and below, only the network location provider is enabled. On Android 9 and above, this is equivalent to LOCATION_ENFORCED.",
+            "On Android 8 and below, location setting and accuracy are disabled. On Android 9 and above, this is equivalent to LOCATION_DISABLED.",
+            "Location setting is not restricted on the device. No specific behavior is set or enforced.",
+            "Enable location setting on the device.",
+            "Disable location setting on the device."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -4232,6 +4570,18 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "oncCertificateProviders": {
+          "description": "This feature is not generally available.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "OncCertificateProvider"
+          }
         },
         "openNetworkConfiguration": {
           "description": "Network configuration for the device. See configure networks for more information.",
@@ -4483,12 +4833,7 @@
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [
-            "This value is ignored.",
-            "Power source is an AC charger.",
-            "Power source is a USB port.",
-            "Power source is wireless."
-          ],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": {
@@ -4500,7 +4845,12 @@
               "USB",
               "WIRELESS"
             ],
-            "enumDescriptions": [],
+            "enumDescriptions": [
+              "This value is ignored.",
+              "Power source is an AC charger.",
+              "Power source is a USB port.",
+              "Power source is wireless."
+            ],
             "properties": {},
             "additionalProperties": null,
             "items": null
@@ -4873,7 +5223,7 @@
       "enumDescriptions": [],
       "properties": {
         "allowPersonalUsage": {
-          "description": "Controls whether personal usage is allowed on a device provisioned with this enrollment token.For company-owned devices:\nEnabling personal usage allows the user to set up a work profile on the device.\nDisabling personal usage requires the user provision the device as a fully managed device.For personally-owned devices:\nEnabling personal usage allows the user to set up a work profile on the device.\nDisabling personal usage will prevent the device from provisioning. Personal usage cannot be disabled on personally-owned device.",
+          "description": "Controls whether personal usage is allowed on a device provisioned with this enrollment token.For company-owned devices: Enabling personal usage allows the user to set up a work profile on the device. Disabling personal usage requires the user provision the device as a fully managed device.For personally-owned devices: Enabling personal usage allows the user to set up a work profile on the device. Disabling personal usage will prevent the device from provisioning. Personal usage cannot be disabled on personally-owned device.",
           "type": "string",
           "format": null,
           "enum": [
@@ -4911,7 +5261,7 @@
           "items": null
         },
         "signinUrl": {
-          "description": "Sign-in URL for authentication when device is provisioned with a sign-in enrollment token. The sign-in endpoint should finish authentication flow with a URL in the form of https://enterprise.google.com/android/enroll?et=<token> for a successful login, or https://enterprise.google.com/android/enroll/invalid for a failed login.",
+          "description": "Sign-in URL for authentication when device is provisioned with a sign-in enrollment token. The sign-in endpoint should finish authentication flow with a URL in the form of https://enterprise.google.com/android/enroll?et= for a successful login, or https://enterprise.google.com/android/enroll/invalid for a failed login.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5063,6 +5413,10 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "systemUpdateInfo": {
+          "description": "Information about a potential pending system update.",
+          "$ref": "SystemUpdateInfo"
         }
       },
       "additionalProperties": null,
@@ -5141,6 +5495,16 @@
         },
         "applicationReportsEnabled": {
           "description": "Whether app reports are enabled.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "commonCriteriaModeEnabled": {
+          "description": "Whether Common Criteria Mode reporting is enabled.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -5297,6 +5661,82 @@
       "additionalProperties": null,
       "items": null
     },
+    "SystemUpdateInfo": {
+      "id": "SystemUpdateInfo",
+      "description": "Information about a potential pending system update.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "updateReceivedTime": {
+          "description": "The time when the update was first available. A zero value indicates that this field is not set. This field is set only if an update is available (that is, updateStatus is neither UPDATE_STATUS_UNKNOWN nor UP_TO_DATE).",
+          "type": "string",
+          "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "updateStatus": {
+          "description": "The status of an update: whether an update exists and what type it is.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "UPDATE_STATUS_UNKNOWN",
+            "UP_TO_DATE",
+            "UNKNOWN_UPDATE_AVAILABLE",
+            "SECURITY_UPDATE_AVAILABLE",
+            "OS_UPDATE_AVAILABLE"
+          ],
+          "enumDescriptions": [
+            "It is unknown whether there is a pending system update. This happens when, for example, the device API level is less than 26, or if the version of Android Device Policy is outdated.",
+            "There is no pending system update available on the device.",
+            "There is a pending system update available, but its type is not known.",
+            "There is a pending security update available.",
+            "There is a pending OS update available."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "TelephonyInfo": {
+      "id": "TelephonyInfo",
+      "description": "Telephony information associated with a given SIM card on the device. Only supported on fully managed devices starting from Android API level 23.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "carrierName": {
+          "description": "The carrier name associated with this SIM card.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "phoneNumber": {
+          "description": "The phone number associated with this SIM card.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "TermsAndConditions": {
       "id": "TermsAndConditions",
       "description": "A terms and conditions page to be accepted during provisioning.",
@@ -5358,7 +5798,7 @@
           "items": null
         },
         "localizedMessages": {
-          "description": "A map containing <locale, message> pairs, where locale is a well-formed BCP 47 language (https://www.w3.org/International/articles/language-tags/) code, such as en-US, es-ES, or fr.",
+          "description": "A map containing pairs, where locale is a well-formed BCP 47 language (https://www.w3.org/International/articles/language-tags/) code, such as en-US, es-ES, or fr.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -5473,7 +5913,7 @@
       "enumDescriptions": [],
       "properties": {
         "imageData": {
-          "description": "The actual bytes of the image in a base64url encoded string (c.f. RFC4648, section 5 \"Base 64 Encoding with URL and Filename Safe Alphabet\"). <ul> <li>The image type can be png or jpg. <li>The image should ideally be square. <li>The image should ideally have a size of 512x512. </ul>",
+          "description": "The actual bytes of the image in a base64url encoded string (c.f. RFC4648, section 5 \"Base 64 Encoding with URL and Filename Safe Alphabet\"). - The image type can be png or jpg. - The image should ideally be square. - The image should ideally have a size of 512x512. ",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5495,18 +5935,11 @@
       "enumDescriptions": [],
       "properties": {
         "enabledFeatures": {
-          "description": "The features to enable. Use this if you want to control exactly which feature(s) will be activated; leave empty to allow all features.Restrictions / things to note: <ul> <li> If no features are listed here, all features are enabled — this is the  default behavior where you give access to all features to your admins. <li> This must not contain any FEATURE_UNSPECIFIED values. <li> Repeated values are ignored </ul>",
+          "description": "The features to enable. Use this if you want to control exactly which feature(s) will be activated; leave empty to allow all features.Restrictions / things to note: - If no features are listed here, all features are enabled — this is the default behavior where you give access to all features to your admins. - This must not contain any FEATURE_UNSPECIFIED values. - Repeated values are ignored ",
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [
-            "Unspecified feature.",
-            "The Managed Play search apps page (https://developers.google.com/android/management/apps#search-apps).",
-            "The private apps page (https://developers.google.com/android/management/apps#private-apps).",
-            "The Web Apps page (https://developers.google.com/android/management/apps#web-apps).",
-            "The organize apps page (https://developers.google.com/android/management/apps#organize-apps).",
-            "The managed configurations page (https://developers.google.com/android/management/managed-configurations-iframe)."
-          ],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": {
@@ -5520,7 +5953,14 @@
               "STORE_BUILDER",
               "MANAGED_CONFIGURATIONS"
             ],
-            "enumDescriptions": [],
+            "enumDescriptions": [
+              "Unspecified feature.",
+              "The Managed Play search apps page (https://developers.google.com/android/management/apps#search-apps).",
+              "The private apps page (https://developers.google.com/android/management/apps#private-apps).",
+              "The Web Apps page (https://developers.google.com/android/management/apps#web-apps).",
+              "The organize apps page (https://developers.google.com/android/management/apps#organize-apps).",
+              "The managed configurations page (https://developers.google.com/android/management/managed-configurations-iframe)."
+            ],
             "properties": {},
             "additionalProperties": null,
             "items": null
@@ -5551,10 +5991,7 @@
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [
-            "This value is ignored.",
-            "The permission to approve apps for the enterprise."
-          ],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": {
@@ -5564,7 +6001,10 @@
               "WEB_TOKEN_PERMISSION_UNSPECIFIED",
               "APPROVE_APPS"
             ],
-            "enumDescriptions": [],
+            "enumDescriptions": [
+              "This value is ignored.",
+              "The permission to approve apps for the enterprise."
+            ],
             "properties": {},
             "additionalProperties": null,
             "items": null
@@ -5910,7 +6350,11 @@
                     "PRESERVE_RESET_PROTECTION_DATA",
                     "WIPE_EXTERNAL_STORAGE"
                   ],
-                  "enumDescriptions": [],
+                  "enumDescriptions": [
+                    "This value is ignored.",
+                    "Preserve the factory reset protection data on the device.",
+                    "Additionally wipe the device's external storage (such as SD cards)."
+                  ],
                   "repeated": true
                 },
                 "wipeReasonMessage": {
@@ -6706,6 +7150,20 @@
           "httpMethod": "POST",
           "description": "Creates an enterprise. This is the last step in the enterprise signup flow.",
           "parameters": {
+            "agreementAccepted": {
+              "description": "This feature is not generally available yet. Whether the managed Google Play Agreement is presented and agreed.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "boolean",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
             "enterpriseToken": {
               "description": "The enterprise token appended to the callback URL.",
               "default": null,
@@ -6765,6 +7223,43 @@
           "supportsMediaUpload": false,
           "mediaUpload": null
         },
+        "delete": {
+          "id": "androidmanagement.enterprises.delete",
+          "path": "v1/{+name}",
+          "httpMethod": "DELETE",
+          "description": "This feature is not generally available yet. Deletes an enterprise.",
+          "parameters": {
+            "name": {
+              "description": "This feature is not generally available yet. The name of the enterprise in the form enterprises/{enterpriseId}.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": "^enterprises/[^/]+$",
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "Empty"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/androidmanagement"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
         "get": {
           "id": "androidmanagement.enterprises.get",
           "path": "v1/{+name}",
@@ -6792,6 +7287,89 @@
           "request": null,
           "response": {
             "$ref": "Enterprise"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/androidmanagement"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "list": {
+          "id": "androidmanagement.enterprises.list",
+          "path": "v1/enterprises",
+          "httpMethod": "GET",
+          "description": "This feature is not generally available yet. Lists enterprises that are managed by an EMM. Only partial views are returned.",
+          "parameters": {
+            "pageSize": {
+              "description": "This feature is not generally available yet. The requested page size. The actual page size may be fixed to a min or max value.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "pageToken": {
+              "description": "This feature is not generally available yet. A token identifying a page of results returned by the server.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "projectId": {
+              "description": "Required. This feature is not generally available yet. The ID of the Cloud project of the EMM the enterprises belongs to.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "view": {
+              "description": "This feature is not generally available yet. View that specify that partial response should be returned.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "ENTERPRISE_VIEW_UNSPECIFIED",
+                "BASIC"
+              ],
+              "enumDescriptions": [
+                "This feature is not generally available yet. The API will default to the BASIC view for the List method.",
+                "This feature is not generally available yet. Includes name and enterprise_display_name fields."
+              ],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [],
+          "request": null,
+          "response": {
+            "$ref": "ListEnterprisesResponse"
           },
           "scopes": [
             "https://www.googleapis.com/auth/androidmanagement"

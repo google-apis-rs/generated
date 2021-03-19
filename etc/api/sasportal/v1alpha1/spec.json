@@ -7,7 +7,7 @@
   "canonicalName": null,
   "fullyEncodeReservedExpansion": true,
   "version": "v1alpha1",
-  "revision": "20200624",
+  "revision": "20210315",
   "title": "SAS Portal API",
   "description": "",
   "ownerDomain": "google.com",
@@ -216,7 +216,7 @@
       "enumDescriptions": [],
       "properties": {
         "members": {
-          "description": "The identities the role is assigned to. It can have the following\nvalues:\n\n* `{user_email}`: An email address that represents a specific\n   Google account. For example: `alice@gmail.com`.\n\n* `{group_email}`: An email address that represents a Google\n   group.  For example, `viewers@gmail.com`.",
+          "description": "The identities the role is assigned to. It can have the following values: * `{user_email}`: An email address that represents a specific Google account. For example: `alice@gmail.com`. * `{group_email}`: An email address that represents a Google group. For example, `viewers@gmail.com`.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -247,18 +247,22 @@
       "additionalProperties": null,
       "items": null
     },
-    "SasPortalBulkCreateDeviceRequest": {
-      "id": "SasPortalBulkCreateDeviceRequest",
-      "description": "Request for BulkCreateDevice method.",
+    "SasPortalChannelWithScore": {
+      "id": "SasPortalChannelWithScore",
+      "description": "The channel with score.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
-        "csv": {
-          "description": "Required. A csv with each row representing a [device]. Each row must\nconform to the regulations described on CreateDeviceRequest's device field.",
-          "type": "string",
-          "format": null,
+        "frequencyRange": {
+          "description": "The frequency range of the channel.",
+          "$ref": "SasPortalFrequencyRange"
+        },
+        "score": {
+          "description": "The channel score, normalized to be in [0,100].",
+          "type": "number",
+          "format": "double",
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -269,40 +273,16 @@
       "additionalProperties": null,
       "items": null
     },
-    "SasPortalBulkCreateDeviceResponse": {
-      "id": "SasPortalBulkCreateDeviceResponse",
-      "description": "Response for BulkCreateDevice method.",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "devices": {
-          "description": "Required. The devices that were imported.",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "SasPortalDevice"
-          }
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
     "SasPortalCreateSignedDeviceRequest": {
       "id": "SasPortalCreateSignedDeviceRequest",
-      "description": "Request for CreateSignedDevice method.",
+      "description": "Request for CreateSignedDevice.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "encodedDevice": {
-          "description": "Required. JSON Web Token signed using a CPI private key. Payload\nmust be the JSON encoding of the [Device]. The user_id field must be set.",
+          "description": "Required. JSON Web Token signed using a CPI private key. Payload must be the JSON encoding of the device. The user_id field must be set.",
           "type": "string",
           "format": "byte",
           "enum": [],
@@ -312,7 +292,7 @@
           "items": null
         },
         "installerId": {
-          "description": "Required. Unique installer id (cpiId) from the Certified Professional\nInstallers database.",
+          "description": "Required. Unique installer id (CPI ID) from the Certified Professional Installers database.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -375,6 +355,100 @@
       "additionalProperties": null,
       "items": null
     },
+    "SasPortalDeployment": {
+      "id": "SasPortalDeployment",
+      "description": "The Deployment.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "allowedBillingModes": {
+          "description": "The allowed billing modes under this deployment.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [
+              "BILLING_MODE_UNSPECIFIED",
+              "MOBILE",
+              "FIXED_WIRELESS"
+            ],
+            "enumDescriptions": [
+              "Billing mode has not been specified.",
+              "Price is based on category of CBSD: Category A, Category B registered with SAS.",
+              "Price is based on type of CBSD: Base station or CPE."
+            ],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "defaultBillingMode": {
+          "description": "Default billing mode for the deployment and devices under it.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "BILLING_MODE_UNSPECIFIED",
+            "MOBILE",
+            "FIXED_WIRELESS"
+          ],
+          "enumDescriptions": [
+            "Billing mode has not been specified.",
+            "Price is based on category of CBSD: Category A, Category B registered with SAS.",
+            "Price is based on type of CBSD: Base station or CPE."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "displayName": {
+          "description": "The deployment's display name.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "name": {
+          "description": "Output only. Resource name.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "sasUserIds": {
+          "description": "User ID used by the devices belonging to this deployment. Each deployment should be associated with one unique user ID.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "SasPortalDevice": {
       "id": "SasPortalDevice",
       "description": null,
@@ -387,8 +461,20 @@
           "description": "Output only. Current configuration of the device as registered to the SAS.",
           "$ref": "SasPortalDeviceConfig"
         },
+        "currentChannels": {
+          "description": "Output only. Current channels with scores.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "SasPortalChannelWithScore"
+          }
+        },
         "deviceMetadata": {
-          "description": "Device parameters that can be overridden by both SAS Portal and SAS\nregistration requests.",
+          "description": "Device parameters that can be overridden by both SAS Portal and SAS registration requests.",
           "$ref": "SasPortalDeviceMetadata"
         },
         "displayName": {
@@ -410,6 +496,18 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "grantRangeAllowlists": {
+          "description": "Only ranges within the allowlists are available for new grants.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "SasPortalFrequencyRange"
+          }
         },
         "grants": {
           "description": "Output only. Grants held by the device.",
@@ -438,7 +536,7 @@
           "$ref": "SasPortalDeviceConfig"
         },
         "serialNumber": {
-          "description": "A serial number assigned to the device by the device\nmanufacturer.",
+          "description": "A serial number assigned to the device by the device manufacturer.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -459,7 +557,7 @@
           ],
           "enumDescriptions": [
             "Unspecified state.",
-            "Device created in the SAS Portal, however, not yet registered\nwith SAS.",
+            "Device created in the SAS Portal, however, not yet registered with SAS.",
             "Device registered with SAS.",
             "Device de-registered with SAS."
           ],
@@ -480,7 +578,7 @@
       "enumDescriptions": [],
       "properties": {
         "radioTechnology": {
-          "description": "This field specifies the radio access technology that is used for the CBSD.\n\nConditional",
+          "description": "Conditional. This field specifies the radio access technology that is used for the CBSD.",
           "type": "string",
           "format": null,
           "enum": [
@@ -510,7 +608,7 @@
           "items": null
         },
         "supportedSpec": {
-          "description": "This field is related to the radioTechnology field and provides the air\ninterface specification that the CBSD is compliant with at the time of\nregistration.\n\nOptional",
+          "description": "Optional. This field is related to the `radioTechnology` and provides the air interface specification that the CBSD is compliant with at the time of registration.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -568,7 +666,7 @@
           "$ref": "SasPortalInstallationParams"
         },
         "isSigned": {
-          "description": "Output-only. Whether the configuration has been signed by a CPI.",
+          "description": "Output only. Whether the configuration has been signed by a CPI.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -582,11 +680,7 @@
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [
-            "",
-            "",
-            ""
-          ],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": {
@@ -597,7 +691,11 @@
               "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITH_GRANT",
               "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITHOUT_GRANT"
             ],
-            "enumDescriptions": [],
+            "enumDescriptions": [
+              "",
+              "",
+              ""
+            ],
             "properties": {},
             "additionalProperties": null,
             "items": null
@@ -626,7 +724,7 @@
           "items": null
         },
         "updateTime": {
-          "description": "Output-only. The last time the device configuration was edited.",
+          "description": "Output only. The last time the device configuration was edited.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -651,7 +749,7 @@
     },
     "SasPortalDeviceGrant": {
       "id": "SasPortalDeviceGrant",
-      "description": "Device grant. It is an authorization provided by the Spectrum\nAccess System to a device to transmit using specified operating\nparameters after a successful heartbeat by the device.",
+      "description": "Device grant. It is an authorization provided by the Spectrum Access System to a device to transmit using specified operating parameters after a successful heartbeat by the device.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -689,8 +787,18 @@
           "description": "The transmission frequency range.",
           "$ref": "SasPortalFrequencyRange"
         },
+        "grantId": {
+          "description": "Grant Id.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "maxEirp": {
-          "description": "Maximum Equivalent Isotropically Radiated Power (EIRP) permitted\nby the grant. The maximum EIRP is in units of dBm/MHz. The\nvalue of maxEirp represents the average (RMS) EIRP that would be\nmeasured by the procedure defined in FCC part 96.41(e)(3).",
+          "description": "Maximum Equivalent Isotropically Radiated Power (EIRP) permitted by the grant. The maximum EIRP is in units of dBm/MHz. The value of `maxEirp` represents the average (RMS) EIRP that would be measured by the procedure defined in FCC part 96.41(e)(3).",
           "type": "number",
           "format": "double",
           "enum": [],
@@ -858,7 +966,7 @@
     },
     "SasPortalEmpty": {
       "id": "SasPortalEmpty",
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -901,7 +1009,7 @@
     },
     "SasPortalGenerateSecretRequest": {
       "id": "SasPortalGenerateSecretRequest",
-      "description": "Request for GenerateSecret method]\n[spectrum.sas.portal.v1alpha1.DeviceManager.GenerateSecret].",
+      "description": "Request for GenerateSecret.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -912,14 +1020,14 @@
     },
     "SasPortalGenerateSecretResponse": {
       "id": "SasPortalGenerateSecretResponse",
-      "description": "Response for GenerateSecret method.",
+      "description": "Response for GenerateSecret.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "secret": {
-          "description": "The secret generated by the string and used by\n[ValidateInstaller] method.",
+          "description": "The secret generated by the string and used by ValidateInstaller.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -963,7 +1071,7 @@
       "enumDescriptions": [],
       "properties": {
         "antennaAzimuth": {
-          "description": "Boresight direction of the horizontal plane of the antenna in\ndegrees with respect to true north. The value of this parameter\nis an integer with a value between 0 and 359 inclusive. A value\nof 0 degrees means true north; a value of 90 degrees means\neast. This parameter is optional for Category A devices and\nconditional for Category B devices.",
+          "description": "Boresight direction of the horizontal plane of the antenna in degrees with respect to true north. The value of this parameter is an integer with a value between 0 and 359 inclusive. A value of 0 degrees means true north; a value of 90 degrees means east. This parameter is optional for Category A devices and conditional for Category B devices.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -973,7 +1081,7 @@
           "items": null
         },
         "antennaBeamwidth": {
-          "description": "3-dB antenna beamwidth of the antenna in the horizontal-plane in\ndegrees.  This parameter is an unsigned integer having a value\nbetween 0 and 360 (degrees) inclusive; it is optional for\nCategory A devices and conditional for Category B devices.",
+          "description": "3-dB antenna beamwidth of the antenna in the horizontal-plane in degrees. This parameter is an unsigned integer having a value between 0 and 360 (degrees) inclusive; it is optional for Category A devices and conditional for Category B devices.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -983,7 +1091,7 @@
           "items": null
         },
         "antennaDowntilt": {
-          "description": "Antenna downtilt in degrees and is an integer with a value\nbetween -90 and +90 inclusive; a negative value means the antenna\nis tilted up (above horizontal). This parameter is optional for\nCategory A devices and conditional for Category B devices.",
+          "description": "Antenna downtilt in degrees and is an integer with a value between -90 and +90 inclusive; a negative value means the antenna is tilted up (above horizontal). This parameter is optional for Category A devices and conditional for Category B devices.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -993,7 +1101,7 @@
           "items": null
         },
         "antennaGain": {
-          "description": "Peak antenna gain in dBi. This parameter is an integer with a\nvalue between -127 and +128 (dBi) inclusive.",
+          "description": "Peak antenna gain in dBi. This parameter is an integer with a value between -127 and +128 (dBi) inclusive.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1003,7 +1111,7 @@
           "items": null
         },
         "antennaModel": {
-          "description": "If an external antenna is used, the antenna model is optionally\nprovided in this field. The string has a maximum length of 128\noctets.",
+          "description": "If an external antenna is used, the antenna model is optionally provided in this field. The string has a maximum length of 128 octets.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1023,7 +1131,7 @@
           "items": null
         },
         "eirpCapability": {
-          "description": "This parameter is the maximum device EIRP in units of dBm/10MHz\nand is an integer with a value between -127 and +47 (dBm/10 MHz)\ninclusive. If not included, SAS interprets it as maximum\nallowable EIRP in units of dBm/10MHz for device category.",
+          "description": "This parameter is the maximum device EIRP in units of dBm/10MHz and is an integer with a value between -127 and +47 (dBm/10 MHz) inclusive. If not included, SAS interprets it as maximum allowable EIRP in units of dBm/10MHz for device category.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1033,7 +1141,7 @@
           "items": null
         },
         "height": {
-          "description": "Device antenna height in meters. When the heightType parameter\nvalue is \"AGL\", the antenna height should be given relative to\nground level. When the heightType parameter value is \"AMSL\", it\nis given with respect to WGS84 datum.",
+          "description": "Device antenna height in meters. When the `heightType` parameter value is \"AGL\", the antenna height should be given relative to ground level. When the `heightType` parameter value is \"AMSL\", it is given with respect to WGS84 datum.",
           "type": "number",
           "format": "double",
           "enum": [],
@@ -1061,7 +1169,7 @@
           "items": null
         },
         "horizontalAccuracy": {
-          "description": "A positive number in meters to indicate accuracy of the device\nantenna horizontal location. This optional parameter should only\nbe present if its value is less than the FCC requirement of 50\nmeters.",
+          "description": "A positive number in meters to indicate accuracy of the device antenna horizontal location. This optional parameter should only be present if its value is less than the FCC requirement of 50 meters.",
           "type": "number",
           "format": "double",
           "enum": [],
@@ -1071,7 +1179,7 @@
           "items": null
         },
         "indoorDeployment": {
-          "description": "Whether the device antenna is indoor or not. True: indoor. False:\noutdoor.",
+          "description": "Whether the device antenna is indoor or not. `true`: indoor. `false`: outdoor.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -1081,7 +1189,7 @@
           "items": null
         },
         "latitude": {
-          "description": "Latitude of the device antenna location in degrees relative to\nthe WGS 84 datum. The allowed range is from -90.000000 to\n+90.000000. Positive values represent latitudes north of the\nequator; negative values south of the equator.",
+          "description": "Latitude of the device antenna location in degrees relative to the WGS 84 datum. The allowed range is from -90.000000 to +90.000000. Positive values represent latitudes north of the equator; negative values south of the equator.",
           "type": "number",
           "format": "double",
           "enum": [],
@@ -1091,7 +1199,7 @@
           "items": null
         },
         "longitude": {
-          "description": "Longitude of the device antenna location. in degrees relative to\nthe WGS 84 datum. The allowed range is from -180.000000 to\n+180.000000. Positive values represent longitudes east of the\nprime meridian; negative values west of the prime\nmeridian.",
+          "description": "Longitude of the device antenna location in degrees relative to the WGS 84 datum. The allowed range is from -180.000000 to +180.000000. Positive values represent longitudes east of the prime meridian; negative values west of the prime meridian.",
           "type": "number",
           "format": "double",
           "enum": [],
@@ -1101,7 +1209,7 @@
           "items": null
         },
         "verticalAccuracy": {
-          "description": "A positive number in meters to indicate accuracy of the device\nantenna vertical location. This optional parameter should only be\npresent if its value is less than the FCC requirement of 3\nmeters.",
+          "description": "A positive number in meters to indicate accuracy of the device antenna vertical location. This optional parameter should only be present if its value is less than the FCC requirement of 3 meters.",
           "type": "number",
           "format": "double",
           "enum": [],
@@ -1123,7 +1231,7 @@
       "enumDescriptions": [],
       "properties": {
         "customers": {
-          "description": "The list of customers that\nmatch the request.",
+          "description": "The list of customers that match the request.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1135,7 +1243,41 @@
           }
         },
         "nextPageToken": {
-          "description": "A pagination token returned from a previous call to ListCustomers method that indicates from\nwhere listing should continue. If the field is missing or empty, it means\nthere are no more customers.",
+          "description": "A pagination token returned from a previous call to ListCustomers that indicates from where listing should continue. If the field is missing or empty, it means there are no more customers.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "SasPortalListDeploymentsResponse": {
+      "id": "SasPortalListDeploymentsResponse",
+      "description": "Response for ListDeployments.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "deployments": {
+          "description": "The deployments that match the request.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "SasPortalDeployment"
+          }
+        },
+        "nextPageToken": {
+          "description": "A pagination token returned from a previous call to ListDeployments that indicates from where listing should continue. If the field is missing or empty, it means there are no more deployments.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1150,7 +1292,7 @@
     },
     "SasPortalListDevicesResponse": {
       "id": "SasPortalListDevicesResponse",
-      "description": "Response for ListDevices method.",
+      "description": "Response for ListDevices.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1169,7 +1311,7 @@
           }
         },
         "nextPageToken": {
-          "description": "A pagination token returned from a previous call to ListDevices method\nthat indicates from where listing should continue. If the field\nis missing or empty, it means there is no more devices.",
+          "description": "A pagination token returned from a previous call to ListDevices that indicates from where listing should continue. If the field is missing or empty, it means there is no more devices.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1184,14 +1326,14 @@
     },
     "SasPortalListNodesResponse": {
       "id": "SasPortalListNodesResponse",
-      "description": "Response for ListNodes method.",
+      "description": "Response for ListNodes.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "nextPageToken": {
-          "description": "A pagination token returned from a previous call to\nListNodes method\nthat indicates from where listing should continue. If the field is missing\nor empty, it means there is no more nodes.",
+          "description": "A pagination token returned from a previous call to ListNodes that indicates from where listing should continue. If the field is missing or empty, it means there is no more nodes.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1216,16 +1358,38 @@
       "additionalProperties": null,
       "items": null
     },
-    "SasPortalMoveDeviceRequest": {
-      "id": "SasPortalMoveDeviceRequest",
-      "description": "Request for MoveDevice method.",
+    "SasPortalMoveDeploymentRequest": {
+      "id": "SasPortalMoveDeploymentRequest",
+      "description": "Request for MoveDeployment.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "destination": {
-          "description": "Required. The name of the new parent resource (Node or Customer) to\nreparent the device under.",
+          "description": "Required. The name of the new parent resource node or customer to reparent the deployment under.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "SasPortalMoveDeviceRequest": {
+      "id": "SasPortalMoveDeviceRequest",
+      "description": "Request for MoveDevice.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "destination": {
+          "description": "Required. The name of the new parent resource node or customer to reparent the device under.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1240,14 +1404,14 @@
     },
     "SasPortalMoveNodeRequest": {
       "id": "SasPortalMoveNodeRequest",
-      "description": "Request for MoveNode method.",
+      "description": "Request for MoveNode.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "destination": {
-          "description": "Required. The name of the new parent resource node or Customer) to reparent the node under.",
+          "description": "Required. The name of the new parent resource node or customer to reparent the node under.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1312,14 +1476,14 @@
     },
     "SasPortalOperation": {
       "id": "SasPortalOperation",
-      "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
+      "description": "This resource represents a long-running operation that is the result of a network API call.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "done": {
-          "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable.",
+          "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -1333,7 +1497,7 @@
           "$ref": "SasPortalStatus"
         },
         "metadata": {
-          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
+          "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -1352,7 +1516,7 @@
           "items": null
         },
         "name": {
-          "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should be a resource name ending with `operations/{unique_id}`.",
+          "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1362,7 +1526,7 @@
           "items": null
         },
         "response": {
-          "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
+          "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -1393,7 +1557,7 @@
       "enumDescriptions": [],
       "properties": {
         "assignments": {
-          "description": null,
+          "description": "List of assignments",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1405,7 +1569,7 @@
           }
         },
         "etag": {
-          "description": "The [etag] is used for optimistic concurrency control as a way to\nhelp prevent simultaneous updates of a policy from overwriting\neach other.  It is strongly suggested that systems make use of\nthe [etag] in the read-modify-write cycle to perform policy\nupdates in order to avoid race conditions: An [etag] is returned\nin the response to [GetPolicy], and systems are expected to put\nthat etag in the request to [SetPolicy] to ensure that their\nchange will be applied to the same version of the policy.\n\nIf no [etag] is provided in the call to [SetPolicy], then the\nexisting policy is overwritten blindly.",
+          "description": "The etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the etag in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An etag is returned in the response to GetPolicy, and systems are expected to put that etag in the request to SetPolicy to ensure that their change will be applied to the same version of the policy. If no etag is provided in the call to GetPolicy, then the existing policy is overwritten blindly.",
           "type": "string",
           "format": "byte",
           "enum": [],
@@ -1431,7 +1595,7 @@
           "$ref": "SasPortalPolicy"
         },
         "resource": {
-          "description": "Required. The resource for which the policy is being specified. This policy\nreplaces any existing policy.",
+          "description": "Required. The resource for which the policy is being specified. This policy replaces any existing policy.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1446,14 +1610,14 @@
     },
     "SasPortalSignDeviceRequest": {
       "id": "SasPortalSignDeviceRequest",
-      "description": "Request for SignDevice method.",
+      "description": "Request for SignDevice.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "device": {
-          "description": "Required. The device to sign.\nThe device fields name, fcc_id and serial_number must be set.\nThe user_id field must be set.",
+          "description": "Required. The device to sign. The device fields name, fcc_id and serial_number must be set. The user_id field must be set.",
           "$ref": "SasPortalDevice"
         }
       },
@@ -1462,7 +1626,7 @@
     },
     "SasPortalStatus": {
       "id": "SasPortalStatus",
-      "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors).",
+      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1479,7 +1643,7 @@
           "items": null
         },
         "details": {
-          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
+          "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1506,7 +1670,7 @@
           }
         },
         "message": {
-          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
+          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1591,14 +1755,14 @@
     },
     "SasPortalUpdateSignedDeviceRequest": {
       "id": "SasPortalUpdateSignedDeviceRequest",
-      "description": "Request for UpdateSignedDevice method.",
+      "description": "Request for UpdateSignedDevice.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "encodedDevice": {
-          "description": "Required. The JSON Web Token signed using a CPI private key. Payload\nmust be the JSON encoding\nof the device. The user_id field must be set.",
+          "description": "Required. The JSON Web Token signed using a CPI private key. Payload must be the JSON encoding of the device. The user_id field must be set.",
           "type": "string",
           "format": "byte",
           "enum": [],
@@ -1608,7 +1772,7 @@
           "items": null
         },
         "installerId": {
-          "description": "Required. Unique installer ID (CPI ID) from the Certified Professional\nInstallers database.",
+          "description": "Required. Unique installer ID (CPI ID) from the Certified Professional Installers database.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1623,14 +1787,14 @@
     },
     "SasPortalValidateInstallerRequest": {
       "id": "SasPortalValidateInstallerRequest",
-      "description": "Request for ValidateInstaller method.",
+      "description": "Request for ValidateInstaller.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "encodedSecret": {
-          "description": "Required. JSON Web Token signed using a CPI private key. Payload\nmust include a \"secret\" claim whose value is the secret.",
+          "description": "Required. JSON Web Token signed using a CPI private key. Payload must include a \"secret\" claim whose value is the secret.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1640,7 +1804,7 @@
           "items": null
         },
         "installerId": {
-          "description": "Required. Unique installer id (cpiId) from the Certified\nProfessional Installers database.",
+          "description": "Required. Unique installer id (CPI ID) from the Certified Professional Installers database.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1650,7 +1814,7 @@
           "items": null
         },
         "secret": {
-          "description": "Required. Secret returned by the GenerateSecret method.",
+          "description": "Required. Secret returned by the GenerateSecret.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1665,7 +1829,7 @@
     },
     "SasPortalValidateInstallerResponse": {
       "id": "SasPortalValidateInstallerResponse",
-      "description": "Response for ValidateInstaller method]\n[spectrum.sas.portal.v1alpha1.DeviceManager.ValidateInstaller].",
+      "description": "Response for ValidateInstaller.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1678,17 +1842,180 @@
   "resources": {
     "customers": {
       "resources": {
-        "devices": {
-          "resources": {},
+        "deployments": {
+          "resources": {
+            "devices": {
+              "resources": {},
+              "methods": {
+                "create": {
+                  "id": "sasportal.customers.deployments.devices.create",
+                  "path": "v1alpha1/{+parent}/devices",
+                  "httpMethod": "POST",
+                  "description": "Creates a device under a node or customer.",
+                  "parameters": {
+                    "parent": {
+                      "description": "Required. The name of the parent resource.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^customers/[^/]+/deployments/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "request": {
+                    "$ref": "SasPortalDevice"
+                  },
+                  "response": {
+                    "$ref": "SasPortalDevice"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/userinfo.email"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "createSigned": {
+                  "id": "sasportal.customers.deployments.devices.createSigned",
+                  "path": "v1alpha1/{+parent}/devices:createSigned",
+                  "httpMethod": "POST",
+                  "description": "Creates a signed device under a node or customer.",
+                  "parameters": {
+                    "parent": {
+                      "description": "Required. The name of the parent resource.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^customers/[^/]+/deployments/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "request": {
+                    "$ref": "SasPortalCreateSignedDeviceRequest"
+                  },
+                  "response": {
+                    "$ref": "SasPortalDevice"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/userinfo.email"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "list": {
+                  "id": "sasportal.customers.deployments.devices.list",
+                  "path": "v1alpha1/{+parent}/devices",
+                  "httpMethod": "GET",
+                  "description": "Lists devices under a node or customer.",
+                  "parameters": {
+                    "filter": {
+                      "description": "The filter expression. The filter should have one of the following formats: \"sn=123454\" or \"display_name=MyDevice\". sn corresponds to serial number of the device. The filter is case insensitive.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageSize": {
+                      "description": "The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000].",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageToken": {
+                      "description": "A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "parent": {
+                      "description": "Required. The name of the parent resource.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^customers/[^/]+/deployments/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "SasPortalListDevicesResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/userinfo.email"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                }
+              }
+            }
+          },
           "methods": {
-            "bulk": {
-              "id": "sasportal.customers.devices.bulk",
-              "path": "v1alpha1/{+parent}/devices:bulk",
+            "create": {
+              "id": "sasportal.customers.deployments.create",
+              "path": "v1alpha1/{+parent}/deployments",
               "httpMethod": "POST",
-              "description": "Creates a device under a node or customer. Returned devices are unordered.",
+              "description": "Creates a new deployment.",
               "parameters": {
                 "parent": {
-                  "description": "Required. The name of the parent resource.",
+                  "description": "Required. The parent resource name where the deployment is to be created.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -1706,10 +2033,10 @@
                 "parent"
               ],
               "request": {
-                "$ref": "SasPortalBulkCreateDeviceRequest"
+                "$ref": "SasPortalDeployment"
               },
               "response": {
-                "$ref": "SasPortalBulkCreateDeviceResponse"
+                "$ref": "SasPortalDeployment"
               },
               "scopes": [
                 "https://www.googleapis.com/auth/userinfo.email"
@@ -1720,6 +2047,256 @@
               "supportsMediaUpload": false,
               "mediaUpload": null
             },
+            "delete": {
+              "id": "sasportal.customers.deployments.delete",
+              "path": "v1alpha1/{+name}",
+              "httpMethod": "DELETE",
+              "description": "Deletes a deployment.",
+              "parameters": {
+                "name": {
+                  "description": "Required. The name of the deployment.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^customers/[^/]+/deployments/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "SasPortalEmpty"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/userinfo.email"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "get": {
+              "id": "sasportal.customers.deployments.get",
+              "path": "v1alpha1/{+name}",
+              "httpMethod": "GET",
+              "description": "Returns a requested deployment.",
+              "parameters": {
+                "name": {
+                  "description": "Required. The name of the deployment.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^customers/[^/]+/deployments/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "SasPortalDeployment"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/userinfo.email"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "list": {
+              "id": "sasportal.customers.deployments.list",
+              "path": "v1alpha1/{+parent}/deployments",
+              "httpMethod": "GET",
+              "description": "Lists deployments.",
+              "parameters": {
+                "filter": {
+                  "description": "The filter expression. The filter should have the following format: \"DIRECT_CHILDREN\" or format: \"direct_children\". The filter is case insensitive. If empty, then no deployments are filtered.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "pageSize": {
+                  "description": "The maximum number of deployments to return in the response.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "integer",
+                  "format": "int32",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "pageToken": {
+                  "description": "A pagination token returned from a previous call to ListDeployments that indicates where this listing should continue from.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "parent": {
+                  "description": "Required. The parent resource name, for example, \"nodes/1\", customer/1/nodes/2.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^customers/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "SasPortalListDeploymentsResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/userinfo.email"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "move": {
+              "id": "sasportal.customers.deployments.move",
+              "path": "v1alpha1/{+name}:move",
+              "httpMethod": "POST",
+              "description": "Moves a deployment under another node or customer.",
+              "parameters": {
+                "name": {
+                  "description": "Required. The name of the deployment to move.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^customers/[^/]+/deployments/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": {
+                "$ref": "SasPortalMoveDeploymentRequest"
+              },
+              "response": {
+                "$ref": "SasPortalOperation"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/userinfo.email"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "patch": {
+              "id": "sasportal.customers.deployments.patch",
+              "path": "v1alpha1/{+name}",
+              "httpMethod": "PATCH",
+              "description": "Updates an existing deployment.",
+              "parameters": {
+                "name": {
+                  "description": "Output only. Resource name.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^customers/[^/]+/deployments/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "updateMask": {
+                  "description": "Fields to be updated.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": "google-fieldmask",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": {
+                "$ref": "SasPortalDeployment"
+              },
+              "response": {
+                "$ref": "SasPortalDeployment"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/userinfo.email"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            }
+          }
+        },
+        "devices": {
+          "resources": {},
+          "methods": {
             "create": {
               "id": "sasportal.customers.devices.create",
               "path": "v1alpha1/{+parent}/devices",
@@ -1763,7 +2340,7 @@
               "id": "sasportal.customers.devices.createSigned",
               "path": "v1alpha1/{+parent}/devices:createSigned",
               "httpMethod": "POST",
-              "description": "Creates a signed device under a\nnode or customer.",
+              "description": "Creates a signed device under a node or customer.",
               "parameters": {
                 "parent": {
                   "description": "Required. The name of the parent resource.",
@@ -1879,7 +2456,7 @@
               "description": "Lists devices under a node or customer.",
               "parameters": {
                 "filter": {
-                  "description": "The filter expression. The filter should have one of the following\nformats: \"sn=123454\" or \"display_name=MyDevice\". sn\ncorresponds to serial_number of the device. The filter is case insensitive.",
+                  "description": "The filter expression. The filter should have one of the following formats: \"sn=123454\" or \"display_name=MyDevice\". sn corresponds to serial number of the device. The filter is case insensitive.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -1893,7 +2470,7 @@
                   "repeated": false
                 },
                 "pageSize": {
-                  "description": "The maximum number of devices to return in the response.\nIf empty or zero, all devices will be listed.\nMust be in the range [0, 1000].",
+                  "description": "The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000].",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -1907,7 +2484,7 @@
                   "repeated": false
                 },
                 "pageToken": {
-                  "description": "A pagination token returned from a previous call to ListDevices\nthat indicates where this listing should continue from.",
+                  "description": "A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -2125,6 +2702,291 @@
         },
         "nodes": {
           "resources": {
+            "deployments": {
+              "resources": {},
+              "methods": {
+                "create": {
+                  "id": "sasportal.customers.nodes.deployments.create",
+                  "path": "v1alpha1/{+parent}/deployments",
+                  "httpMethod": "POST",
+                  "description": "Creates a new deployment.",
+                  "parameters": {
+                    "parent": {
+                      "description": "Required. The parent resource name where the deployment is to be created.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^customers/[^/]+/nodes/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "request": {
+                    "$ref": "SasPortalDeployment"
+                  },
+                  "response": {
+                    "$ref": "SasPortalDeployment"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/userinfo.email"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "list": {
+                  "id": "sasportal.customers.nodes.deployments.list",
+                  "path": "v1alpha1/{+parent}/deployments",
+                  "httpMethod": "GET",
+                  "description": "Lists deployments.",
+                  "parameters": {
+                    "filter": {
+                      "description": "The filter expression. The filter should have the following format: \"DIRECT_CHILDREN\" or format: \"direct_children\". The filter is case insensitive. If empty, then no deployments are filtered.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageSize": {
+                      "description": "The maximum number of deployments to return in the response.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageToken": {
+                      "description": "A pagination token returned from a previous call to ListDeployments that indicates where this listing should continue from.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "parent": {
+                      "description": "Required. The parent resource name, for example, \"nodes/1\", customer/1/nodes/2.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^customers/[^/]+/nodes/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "SasPortalListDeploymentsResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/userinfo.email"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                }
+              }
+            },
+            "devices": {
+              "resources": {},
+              "methods": {
+                "create": {
+                  "id": "sasportal.customers.nodes.devices.create",
+                  "path": "v1alpha1/{+parent}/devices",
+                  "httpMethod": "POST",
+                  "description": "Creates a device under a node or customer.",
+                  "parameters": {
+                    "parent": {
+                      "description": "Required. The name of the parent resource.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^customers/[^/]+/nodes/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "request": {
+                    "$ref": "SasPortalDevice"
+                  },
+                  "response": {
+                    "$ref": "SasPortalDevice"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/userinfo.email"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "createSigned": {
+                  "id": "sasportal.customers.nodes.devices.createSigned",
+                  "path": "v1alpha1/{+parent}/devices:createSigned",
+                  "httpMethod": "POST",
+                  "description": "Creates a signed device under a node or customer.",
+                  "parameters": {
+                    "parent": {
+                      "description": "Required. The name of the parent resource.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^customers/[^/]+/nodes/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "request": {
+                    "$ref": "SasPortalCreateSignedDeviceRequest"
+                  },
+                  "response": {
+                    "$ref": "SasPortalDevice"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/userinfo.email"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "list": {
+                  "id": "sasportal.customers.nodes.devices.list",
+                  "path": "v1alpha1/{+parent}/devices",
+                  "httpMethod": "GET",
+                  "description": "Lists devices under a node or customer.",
+                  "parameters": {
+                    "filter": {
+                      "description": "The filter expression. The filter should have one of the following formats: \"sn=123454\" or \"display_name=MyDevice\". sn corresponds to serial number of the device. The filter is case insensitive.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageSize": {
+                      "description": "The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000].",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageToken": {
+                      "description": "A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "parent": {
+                      "description": "Required. The name of the parent resource.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^customers/[^/]+/nodes/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "SasPortalListDevicesResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/userinfo.email"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                }
+              }
+            },
             "nodes": {
               "resources": {},
               "methods": {
@@ -2173,6 +3035,20 @@
                   "httpMethod": "GET",
                   "description": "Lists nodes.",
                   "parameters": {
+                    "filter": {
+                      "description": "The filter expression. The filter should have the following format: \"DIRECT_CHILDREN\" or format: \"direct_children\". The filter is case insensitive. If empty, then no nodes are filtered.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
                     "pageSize": {
                       "description": "The maximum number of nodes to return in the response.",
                       "default": null,
@@ -2188,7 +3064,7 @@
                       "repeated": false
                     },
                     "pageToken": {
-                      "description": "A pagination token returned from a previous call to ListNodes method\nthat indicates where this listing should continue from.",
+                      "description": "A pagination token returned from a previous call to ListNodes that indicates where this listing should continue from.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -2355,6 +3231,20 @@
               "httpMethod": "GET",
               "description": "Lists nodes.",
               "parameters": {
+                "filter": {
+                  "description": "The filter expression. The filter should have the following format: \"DIRECT_CHILDREN\" or format: \"direct_children\". The filter is case insensitive. If empty, then no nodes are filtered.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
                 "pageSize": {
                   "description": "The maximum number of nodes to return in the response.",
                   "default": null,
@@ -2370,7 +3260,7 @@
                   "repeated": false
                 },
                 "pageToken": {
-                  "description": "A pagination token returned from a previous call to ListNodes method\nthat indicates where this listing should continue from.",
+                  "description": "A pagination token returned from a previous call to ListNodes that indicates where this listing should continue from.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -2421,7 +3311,7 @@
               "description": "Moves a node under another node or customer.",
               "parameters": {
                 "name": {
-                  "description": "Required. The name of the node to\nmove.",
+                  "description": "Required. The name of the node to move.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -2554,7 +3444,7 @@
           "description": "Returns a list of requested customers.",
           "parameters": {
             "pageSize": {
-              "description": "The maximum number of customers\nto return in the response.",
+              "description": "The maximum number of customers to return in the response.",
               "default": null,
               "location": "query",
               "required": false,
@@ -2568,7 +3458,7 @@
               "repeated": false
             },
             "pageToken": {
-              "description": "A pagination token returned from a previous call to ListCustomers method that indicates where\nthis listing should continue from.",
+              "description": "A pagination token returned from a previous call to ListCustomers that indicates where this listing should continue from.",
               "default": null,
               "location": "query",
               "required": false,
@@ -2651,6 +3541,298 @@
         }
       }
     },
+    "deployments": {
+      "resources": {
+        "devices": {
+          "resources": {},
+          "methods": {
+            "delete": {
+              "id": "sasportal.deployments.devices.delete",
+              "path": "v1alpha1/{+name}",
+              "httpMethod": "DELETE",
+              "description": "Deletes a device.",
+              "parameters": {
+                "name": {
+                  "description": "Required. The name of the device.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^deployments/[^/]+/devices/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "SasPortalEmpty"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/userinfo.email"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "get": {
+              "id": "sasportal.deployments.devices.get",
+              "path": "v1alpha1/{+name}",
+              "httpMethod": "GET",
+              "description": "Gets details about a device.",
+              "parameters": {
+                "name": {
+                  "description": "Required. The name of the device.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^deployments/[^/]+/devices/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "SasPortalDevice"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/userinfo.email"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "move": {
+              "id": "sasportal.deployments.devices.move",
+              "path": "v1alpha1/{+name}:move",
+              "httpMethod": "POST",
+              "description": "Moves a device under another node or customer.",
+              "parameters": {
+                "name": {
+                  "description": "Required. The name of the device to move.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^deployments/[^/]+/devices/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": {
+                "$ref": "SasPortalMoveDeviceRequest"
+              },
+              "response": {
+                "$ref": "SasPortalOperation"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/userinfo.email"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "patch": {
+              "id": "sasportal.deployments.devices.patch",
+              "path": "v1alpha1/{+name}",
+              "httpMethod": "PATCH",
+              "description": "Updates a device.",
+              "parameters": {
+                "name": {
+                  "description": "Output only. The resource path name.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^deployments/[^/]+/devices/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "updateMask": {
+                  "description": "Fields to be updated.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": "google-fieldmask",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": {
+                "$ref": "SasPortalDevice"
+              },
+              "response": {
+                "$ref": "SasPortalDevice"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/userinfo.email"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "signDevice": {
+              "id": "sasportal.deployments.devices.signDevice",
+              "path": "v1alpha1/{+name}:signDevice",
+              "httpMethod": "POST",
+              "description": "Signs a device.",
+              "parameters": {
+                "name": {
+                  "description": "Output only. The resource path name.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^deployments/[^/]+/devices/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": {
+                "$ref": "SasPortalSignDeviceRequest"
+              },
+              "response": {
+                "$ref": "SasPortalEmpty"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/userinfo.email"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "updateSigned": {
+              "id": "sasportal.deployments.devices.updateSigned",
+              "path": "v1alpha1/{+name}:updateSigned",
+              "httpMethod": "PATCH",
+              "description": "Updates a signed device.",
+              "parameters": {
+                "name": {
+                  "description": "Required. The name of the device to update.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^deployments/[^/]+/devices/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": {
+                "$ref": "SasPortalUpdateSignedDeviceRequest"
+              },
+              "response": {
+                "$ref": "SasPortalDevice"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/userinfo.email"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            }
+          }
+        }
+      },
+      "methods": {
+        "get": {
+          "id": "sasportal.deployments.get",
+          "path": "v1alpha1/{+name}",
+          "httpMethod": "GET",
+          "description": "Returns a requested deployment.",
+          "parameters": {
+            "name": {
+              "description": "Required. The name of the deployment.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": "^deployments/[^/]+$",
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "SasPortalDeployment"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/userinfo.email"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
     "installer": {
       "resources": {},
       "methods": {
@@ -2658,7 +3840,7 @@
           "id": "sasportal.installer.generateSecret",
           "path": "v1alpha1/installer:generateSecret",
           "httpMethod": "POST",
-          "description": "Generates a secret to be used with the ValidateInstaller method",
+          "description": "Generates a secret to be used with the ValidateInstaller.",
           "parameters": {},
           "parameterOrder": [],
           "request": {
@@ -2702,17 +3884,296 @@
     },
     "nodes": {
       "resources": {
-        "devices": {
-          "resources": {},
+        "deployments": {
+          "resources": {
+            "devices": {
+              "resources": {},
+              "methods": {
+                "create": {
+                  "id": "sasportal.nodes.deployments.devices.create",
+                  "path": "v1alpha1/{+parent}/devices",
+                  "httpMethod": "POST",
+                  "description": "Creates a device under a node or customer.",
+                  "parameters": {
+                    "parent": {
+                      "description": "Required. The name of the parent resource.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^nodes/[^/]+/deployments/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "request": {
+                    "$ref": "SasPortalDevice"
+                  },
+                  "response": {
+                    "$ref": "SasPortalDevice"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/userinfo.email"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "createSigned": {
+                  "id": "sasportal.nodes.deployments.devices.createSigned",
+                  "path": "v1alpha1/{+parent}/devices:createSigned",
+                  "httpMethod": "POST",
+                  "description": "Creates a signed device under a node or customer.",
+                  "parameters": {
+                    "parent": {
+                      "description": "Required. The name of the parent resource.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^nodes/[^/]+/deployments/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "request": {
+                    "$ref": "SasPortalCreateSignedDeviceRequest"
+                  },
+                  "response": {
+                    "$ref": "SasPortalDevice"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/userinfo.email"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "list": {
+                  "id": "sasportal.nodes.deployments.devices.list",
+                  "path": "v1alpha1/{+parent}/devices",
+                  "httpMethod": "GET",
+                  "description": "Lists devices under a node or customer.",
+                  "parameters": {
+                    "filter": {
+                      "description": "The filter expression. The filter should have one of the following formats: \"sn=123454\" or \"display_name=MyDevice\". sn corresponds to serial number of the device. The filter is case insensitive.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageSize": {
+                      "description": "The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000].",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageToken": {
+                      "description": "A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "parent": {
+                      "description": "Required. The name of the parent resource.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^nodes/[^/]+/deployments/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "SasPortalListDevicesResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/userinfo.email"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                }
+              }
+            }
+          },
           "methods": {
-            "bulk": {
-              "id": "sasportal.nodes.devices.bulk",
-              "path": "v1alpha1/{+parent}/devices:bulk",
-              "httpMethod": "POST",
-              "description": "Creates a device under a node or customer. Returned devices are unordered.",
+            "delete": {
+              "id": "sasportal.nodes.deployments.delete",
+              "path": "v1alpha1/{+name}",
+              "httpMethod": "DELETE",
+              "description": "Deletes a deployment.",
               "parameters": {
+                "name": {
+                  "description": "Required. The name of the deployment.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^nodes/[^/]+/deployments/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "SasPortalEmpty"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/userinfo.email"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "get": {
+              "id": "sasportal.nodes.deployments.get",
+              "path": "v1alpha1/{+name}",
+              "httpMethod": "GET",
+              "description": "Returns a requested deployment.",
+              "parameters": {
+                "name": {
+                  "description": "Required. The name of the deployment.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^nodes/[^/]+/deployments/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "SasPortalDeployment"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/userinfo.email"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "list": {
+              "id": "sasportal.nodes.deployments.list",
+              "path": "v1alpha1/{+parent}/deployments",
+              "httpMethod": "GET",
+              "description": "Lists deployments.",
+              "parameters": {
+                "filter": {
+                  "description": "The filter expression. The filter should have the following format: \"DIRECT_CHILDREN\" or format: \"direct_children\". The filter is case insensitive. If empty, then no deployments are filtered.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "pageSize": {
+                  "description": "The maximum number of deployments to return in the response.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "integer",
+                  "format": "int32",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "pageToken": {
+                  "description": "A pagination token returned from a previous call to ListDeployments that indicates where this listing should continue from.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
                 "parent": {
-                  "description": "Required. The name of the parent resource.",
+                  "description": "Required. The parent resource name, for example, \"nodes/1\", customer/1/nodes/2.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -2729,11 +4190,9 @@
               "parameterOrder": [
                 "parent"
               ],
-              "request": {
-                "$ref": "SasPortalBulkCreateDeviceRequest"
-              },
+              "request": null,
               "response": {
-                "$ref": "SasPortalBulkCreateDeviceResponse"
+                "$ref": "SasPortalListDeploymentsResponse"
               },
               "scopes": [
                 "https://www.googleapis.com/auth/userinfo.email"
@@ -2744,6 +4203,103 @@
               "supportsMediaUpload": false,
               "mediaUpload": null
             },
+            "move": {
+              "id": "sasportal.nodes.deployments.move",
+              "path": "v1alpha1/{+name}:move",
+              "httpMethod": "POST",
+              "description": "Moves a deployment under another node or customer.",
+              "parameters": {
+                "name": {
+                  "description": "Required. The name of the deployment to move.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^nodes/[^/]+/deployments/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": {
+                "$ref": "SasPortalMoveDeploymentRequest"
+              },
+              "response": {
+                "$ref": "SasPortalOperation"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/userinfo.email"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "patch": {
+              "id": "sasportal.nodes.deployments.patch",
+              "path": "v1alpha1/{+name}",
+              "httpMethod": "PATCH",
+              "description": "Updates an existing deployment.",
+              "parameters": {
+                "name": {
+                  "description": "Output only. Resource name.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^nodes/[^/]+/deployments/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "updateMask": {
+                  "description": "Fields to be updated.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": "google-fieldmask",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": {
+                "$ref": "SasPortalDeployment"
+              },
+              "response": {
+                "$ref": "SasPortalDeployment"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/userinfo.email"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            }
+          }
+        },
+        "devices": {
+          "resources": {},
+          "methods": {
             "create": {
               "id": "sasportal.nodes.devices.create",
               "path": "v1alpha1/{+parent}/devices",
@@ -2787,7 +4343,7 @@
               "id": "sasportal.nodes.devices.createSigned",
               "path": "v1alpha1/{+parent}/devices:createSigned",
               "httpMethod": "POST",
-              "description": "Creates a signed device under a\nnode or customer.",
+              "description": "Creates a signed device under a node or customer.",
               "parameters": {
                 "parent": {
                   "description": "Required. The name of the parent resource.",
@@ -2903,7 +4459,7 @@
               "description": "Lists devices under a node or customer.",
               "parameters": {
                 "filter": {
-                  "description": "The filter expression. The filter should have one of the following\nformats: \"sn=123454\" or \"display_name=MyDevice\". sn\ncorresponds to serial_number of the device. The filter is case insensitive.",
+                  "description": "The filter expression. The filter should have one of the following formats: \"sn=123454\" or \"display_name=MyDevice\". sn corresponds to serial number of the device. The filter is case insensitive.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -2917,7 +4473,7 @@
                   "repeated": false
                 },
                 "pageSize": {
-                  "description": "The maximum number of devices to return in the response.\nIf empty or zero, all devices will be listed.\nMust be in the range [0, 1000].",
+                  "description": "The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000].",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -2931,7 +4487,7 @@
                   "repeated": false
                 },
                 "pageToken": {
-                  "description": "A pagination token returned from a previous call to ListDevices\nthat indicates where this listing should continue from.",
+                  "description": "A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -3149,17 +4705,17 @@
         },
         "nodes": {
           "resources": {
-            "devices": {
+            "deployments": {
               "resources": {},
               "methods": {
-                "bulk": {
-                  "id": "sasportal.nodes.nodes.devices.bulk",
-                  "path": "v1alpha1/{+parent}/devices:bulk",
+                "create": {
+                  "id": "sasportal.nodes.nodes.deployments.create",
+                  "path": "v1alpha1/{+parent}/deployments",
                   "httpMethod": "POST",
-                  "description": "Creates a device under a node or customer. Returned devices are unordered.",
+                  "description": "Creates a new deployment.",
                   "parameters": {
                     "parent": {
-                      "description": "Required. The name of the parent resource.",
+                      "description": "Required. The parent resource name where the deployment is to be created.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -3177,10 +4733,10 @@
                     "parent"
                   ],
                   "request": {
-                    "$ref": "SasPortalBulkCreateDeviceRequest"
+                    "$ref": "SasPortalDeployment"
                   },
                   "response": {
-                    "$ref": "SasPortalBulkCreateDeviceResponse"
+                    "$ref": "SasPortalDeployment"
                   },
                   "scopes": [
                     "https://www.googleapis.com/auth/userinfo.email"
@@ -3191,6 +4747,90 @@
                   "supportsMediaUpload": false,
                   "mediaUpload": null
                 },
+                "list": {
+                  "id": "sasportal.nodes.nodes.deployments.list",
+                  "path": "v1alpha1/{+parent}/deployments",
+                  "httpMethod": "GET",
+                  "description": "Lists deployments.",
+                  "parameters": {
+                    "filter": {
+                      "description": "The filter expression. The filter should have the following format: \"DIRECT_CHILDREN\" or format: \"direct_children\". The filter is case insensitive. If empty, then no deployments are filtered.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageSize": {
+                      "description": "The maximum number of deployments to return in the response.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageToken": {
+                      "description": "A pagination token returned from a previous call to ListDeployments that indicates where this listing should continue from.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "parent": {
+                      "description": "Required. The parent resource name, for example, \"nodes/1\", customer/1/nodes/2.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^nodes/[^/]+/nodes/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "SasPortalListDeploymentsResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/userinfo.email"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                }
+              }
+            },
+            "devices": {
+              "resources": {},
+              "methods": {
                 "create": {
                   "id": "sasportal.nodes.nodes.devices.create",
                   "path": "v1alpha1/{+parent}/devices",
@@ -3234,7 +4874,7 @@
                   "id": "sasportal.nodes.nodes.devices.createSigned",
                   "path": "v1alpha1/{+parent}/devices:createSigned",
                   "httpMethod": "POST",
-                  "description": "Creates a signed device under a\nnode or customer.",
+                  "description": "Creates a signed device under a node or customer.",
                   "parameters": {
                     "parent": {
                       "description": "Required. The name of the parent resource.",
@@ -3276,7 +4916,7 @@
                   "description": "Lists devices under a node or customer.",
                   "parameters": {
                     "filter": {
-                      "description": "The filter expression. The filter should have one of the following\nformats: \"sn=123454\" or \"display_name=MyDevice\". sn\ncorresponds to serial_number of the device. The filter is case insensitive.",
+                      "description": "The filter expression. The filter should have one of the following formats: \"sn=123454\" or \"display_name=MyDevice\". sn corresponds to serial number of the device. The filter is case insensitive.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -3290,7 +4930,7 @@
                       "repeated": false
                     },
                     "pageSize": {
-                      "description": "The maximum number of devices to return in the response.\nIf empty or zero, all devices will be listed.\nMust be in the range [0, 1000].",
+                      "description": "The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000].",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -3304,7 +4944,7 @@
                       "repeated": false
                     },
                     "pageToken": {
-                      "description": "A pagination token returned from a previous call to ListDevices\nthat indicates where this listing should continue from.",
+                      "description": "A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -3398,6 +5038,20 @@
                   "httpMethod": "GET",
                   "description": "Lists nodes.",
                   "parameters": {
+                    "filter": {
+                      "description": "The filter expression. The filter should have the following format: \"DIRECT_CHILDREN\" or format: \"direct_children\". The filter is case insensitive. If empty, then no nodes are filtered.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
                     "pageSize": {
                       "description": "The maximum number of nodes to return in the response.",
                       "default": null,
@@ -3413,7 +5067,7 @@
                       "repeated": false
                     },
                     "pageToken": {
-                      "description": "A pagination token returned from a previous call to ListNodes method\nthat indicates where this listing should continue from.",
+                      "description": "A pagination token returned from a previous call to ListNodes that indicates where this listing should continue from.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -3580,6 +5234,20 @@
               "httpMethod": "GET",
               "description": "Lists nodes.",
               "parameters": {
+                "filter": {
+                  "description": "The filter expression. The filter should have the following format: \"DIRECT_CHILDREN\" or format: \"direct_children\". The filter is case insensitive. If empty, then no nodes are filtered.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
                 "pageSize": {
                   "description": "The maximum number of nodes to return in the response.",
                   "default": null,
@@ -3595,7 +5263,7 @@
                   "repeated": false
                 },
                 "pageToken": {
-                  "description": "A pagination token returned from a previous call to ListNodes method\nthat indicates where this listing should continue from.",
+                  "description": "A pagination token returned from a previous call to ListNodes that indicates where this listing should continue from.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -3646,7 +5314,7 @@
               "description": "Moves a node under another node or customer.",
               "parameters": {
                 "name": {
-                  "description": "Required. The name of the node to\nmove.",
+                  "description": "Required. The name of the node to move.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3781,7 +5449,7 @@
           "id": "sasportal.policies.get",
           "path": "v1alpha1/policies:get",
           "httpMethod": "POST",
-          "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset.",
+          "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
           "parameters": {},
           "parameterOrder": [],
           "request": {
@@ -3803,7 +5471,7 @@
           "id": "sasportal.policies.set",
           "path": "v1alpha1/policies:set",
           "httpMethod": "POST",
-          "description": "Sets the access control policy on the specified resource. Replaces any\nexisting policy.",
+          "description": "Sets the access control policy on the specified resource. Replaces any existing policy.",
           "parameters": {},
           "parameterOrder": [],
           "request": {

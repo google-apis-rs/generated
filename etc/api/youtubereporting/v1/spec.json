@@ -7,7 +7,7 @@
   "canonicalName": "YouTube Reporting",
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20200624",
+  "revision": "20210317",
   "title": "YouTube Reporting API",
   "description": "Schedules reporting jobs containing your YouTube Analytics data and downloads the resulting bulk data reports in the form of CSV files.",
   "ownerDomain": "google.com",
@@ -212,7 +212,7 @@
   "schemas": {
     "Empty": {
       "id": "Empty",
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1002,7 +1002,7 @@
           "items": null
         },
         "expireTime": {
-          "description": "The date/time when this job will expire/expired. After a job expired, no\nnew reports are generated.",
+          "description": "The date/time when this job will expire/expired. After a job expired, no new reports are generated.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -1032,7 +1032,7 @@
           "items": null
         },
         "reportTypeId": {
-          "description": "The type of reports this job creates. Corresponds to the ID of a\nReportType.",
+          "description": "The type of reports this job creates. Corresponds to the ID of a ReportType.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1042,7 +1042,7 @@
           "items": null
         },
         "systemManaged": {
-          "description": "True if this a system-managed job that cannot be modified by the user;\notherwise false.",
+          "description": "True if this a system-managed job that cannot be modified by the user; otherwise false.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -1076,7 +1076,7 @@
           }
         },
         "nextPageToken": {
-          "description": "A token to retrieve next page of results.\nPass this value in the\nListJobsRequest.page_token\nfield in the subsequent call to `ListJobs` method to retrieve the next\npage of results.",
+          "description": "A token to retrieve next page of results. Pass this value in the ListJobsRequest.page_token field in the subsequent call to `ListJobs` method to retrieve the next page of results.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1098,7 +1098,7 @@
       "enumDescriptions": [],
       "properties": {
         "nextPageToken": {
-          "description": "A token to retrieve next page of results.\nPass this value in the\nListReportTypesRequest.page_token\nfield in the subsequent call to `ListReportTypes` method to retrieve the\nnext page of results.",
+          "description": "A token to retrieve next page of results. Pass this value in the ListReportTypesRequest.page_token field in the subsequent call to `ListReportTypes` method to retrieve the next page of results.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1132,7 +1132,7 @@
       "enumDescriptions": [],
       "properties": {
         "nextPageToken": {
-          "description": "A token to retrieve next page of results.\nPass this value in the\nListReportsRequest.page_token\nfield in the subsequent call to `ListReports` method to retrieve the next\npage of results.",
+          "description": "A token to retrieve next page of results. Pass this value in the ListReportsRequest.page_token field in the subsequent call to `ListReports` method to retrieve the next page of results.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1159,7 +1159,7 @@
     },
     "Report": {
       "id": "Report",
-      "description": "A report's metadata including the URL from which the report itself can be\ndownloaded.",
+      "description": "A report's metadata including the URL from which the report itself can be downloaded.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1186,7 +1186,7 @@
           "items": null
         },
         "endTime": {
-          "description": "The end of the time period that the report instance covers. The value is\nexclusive.",
+          "description": "The end of the time period that the report instance covers. The value is exclusive.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -1226,7 +1226,7 @@
           "items": null
         },
         "startTime": {
-          "description": "The start of the time period that the report instance covers. The value is\ninclusive.",
+          "description": "The start of the time period that the report instance covers. The value is inclusive.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -1278,7 +1278,7 @@
           "items": null
         },
         "systemManaged": {
-          "description": "True if this a system-managed report type; otherwise false. Reporting jobs\nfor system-managed report types are created automatically and can thus not\nbe used in the `CreateJob` method.",
+          "description": "True if this a system-managed report type; otherwise false. Reporting jobs for system-managed report types are created automatically and can thus not be used in the `CreateJob` method.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -1319,7 +1319,7 @@
                   "repeated": false
                 },
                 "onBehalfOfContentOwner": {
-                  "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
+                  "description": "The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel).",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -1369,7 +1369,7 @@
               "id": "youtubereporting.jobs.reports.list",
               "path": "v1/jobs/{jobId}/reports",
               "httpMethod": "GET",
-              "description": "Lists reports created by a specific job.\nReturns NOT_FOUND if the job does not exist.",
+              "description": "Lists reports created by a specific job. Returns NOT_FOUND if the job does not exist.",
               "parameters": {
                 "createdAfter": {
                   "description": "If set, only reports created after the specified date/time are returned.",
@@ -1400,7 +1400,7 @@
                   "repeated": false
                 },
                 "onBehalfOfContentOwner": {
-                  "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
+                  "description": "The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel).",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -1414,7 +1414,7 @@
                   "repeated": false
                 },
                 "pageSize": {
-                  "description": "Requested page size. Server may return fewer report types than requested.\nIf unspecified, server will pick an appropriate default.",
+                  "description": "Requested page size. Server may return fewer report types than requested. If unspecified, server will pick an appropriate default.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -1428,7 +1428,7 @@
                   "repeated": false
                 },
                 "pageToken": {
-                  "description": "A token identifying a page of results the server should return. Typically,\nthis is the value of\nListReportsResponse.next_page_token\nreturned in response to the previous call to the `ListReports` method.",
+                  "description": "A token identifying a page of results the server should return. Typically, this is the value of ListReportsResponse.next_page_token returned in response to the previous call to the `ListReports` method.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -1442,7 +1442,7 @@
                   "repeated": false
                 },
                 "startTimeAtOrAfter": {
-                  "description": "If set, only reports whose start time is greater than or equal the\nspecified date/time are returned.",
+                  "description": "If set, only reports whose start time is greater than or equal the specified date/time are returned.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -1456,7 +1456,7 @@
                   "repeated": false
                 },
                 "startTimeBefore": {
-                  "description": "If set, only reports whose start time is smaller than the specified\ndate/time are returned.",
+                  "description": "If set, only reports whose start time is smaller than the specified date/time are returned.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -1498,7 +1498,7 @@
           "description": "Creates a job and returns it.",
           "parameters": {
             "onBehalfOfContentOwner": {
-              "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
+              "description": "The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel).",
               "default": null,
               "location": "query",
               "required": false,
@@ -1550,7 +1550,7 @@
               "repeated": false
             },
             "onBehalfOfContentOwner": {
-              "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
+              "description": "The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel).",
               "default": null,
               "location": "query",
               "required": false,
@@ -1602,7 +1602,7 @@
               "repeated": false
             },
             "onBehalfOfContentOwner": {
-              "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
+              "description": "The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel).",
               "default": null,
               "location": "query",
               "required": false,
@@ -1640,7 +1640,7 @@
           "description": "Lists jobs.",
           "parameters": {
             "includeSystemManaged": {
-              "description": "If set to true, also system-managed jobs will be returned; otherwise only\nuser-created jobs will be returned. System-managed jobs can neither be\nmodified nor deleted.",
+              "description": "If set to true, also system-managed jobs will be returned; otherwise only user-created jobs will be returned. System-managed jobs can neither be modified nor deleted.",
               "default": null,
               "location": "query",
               "required": false,
@@ -1654,7 +1654,7 @@
               "repeated": false
             },
             "onBehalfOfContentOwner": {
-              "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
+              "description": "The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel).",
               "default": null,
               "location": "query",
               "required": false,
@@ -1668,7 +1668,7 @@
               "repeated": false
             },
             "pageSize": {
-              "description": "Requested page size. Server may return fewer jobs than requested.\nIf unspecified, server will pick an appropriate default.",
+              "description": "Requested page size. Server may return fewer jobs than requested. If unspecified, server will pick an appropriate default.",
               "default": null,
               "location": "query",
               "required": false,
@@ -1682,7 +1682,7 @@
               "repeated": false
             },
             "pageToken": {
-              "description": "A token identifying a page of results the server should return. Typically,\nthis is the value of\nListReportTypesResponse.next_page_token\nreturned in response to the previous call to the `ListJobs` method.",
+              "description": "A token identifying a page of results the server should return. Typically, this is the value of ListReportTypesResponse.next_page_token returned in response to the previous call to the `ListJobs` method.",
               "default": null,
               "location": "query",
               "required": false,
@@ -1720,7 +1720,7 @@
           "id": "youtubereporting.media.download",
           "path": "v1/media/{+resourceName}",
           "httpMethod": "GET",
-          "description": "Method for media download. Download is supported\non the URI `/v1/media/{+name}?alt=media`.",
+          "description": "Method for media download. Download is supported on the URI `/v1/media/{+name}?alt=media`.",
           "parameters": {
             "resourceName": {
               "description": "Name of the media that is being downloaded.",
@@ -1766,7 +1766,7 @@
           "description": "Lists report types.",
           "parameters": {
             "includeSystemManaged": {
-              "description": "If set to true, also system-managed report types will be returned;\notherwise only the report types that can be used to create new reporting\njobs will be returned.",
+              "description": "If set to true, also system-managed report types will be returned; otherwise only the report types that can be used to create new reporting jobs will be returned.",
               "default": null,
               "location": "query",
               "required": false,
@@ -1780,7 +1780,7 @@
               "repeated": false
             },
             "onBehalfOfContentOwner": {
-              "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
+              "description": "The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel).",
               "default": null,
               "location": "query",
               "required": false,
@@ -1794,7 +1794,7 @@
               "repeated": false
             },
             "pageSize": {
-              "description": "Requested page size. Server may return fewer report types than requested.\nIf unspecified, server will pick an appropriate default.",
+              "description": "Requested page size. Server may return fewer report types than requested. If unspecified, server will pick an appropriate default.",
               "default": null,
               "location": "query",
               "required": false,
@@ -1808,7 +1808,7 @@
               "repeated": false
             },
             "pageToken": {
-              "description": "A token identifying a page of results the server should return. Typically,\nthis is the value of\nListReportTypesResponse.next_page_token\nreturned in response to the previous call to the `ListReportTypes` method.",
+              "description": "A token identifying a page of results the server should return. Typically, this is the value of ListReportTypesResponse.next_page_token returned in response to the previous call to the `ListReportTypes` method.",
               "default": null,
               "location": "query",
               "required": false,

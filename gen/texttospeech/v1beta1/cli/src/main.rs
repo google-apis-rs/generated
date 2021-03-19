@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("texttospeech1_beta1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200619")
+            .version("0.1.0-20210312")
             .about("Synthesizes natural-sounding speech by applying powerful neural network models.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -37,7 +37,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: synthesize");
         {
-            let mcmd = SubCommand::with_name("synthesize").about("Synthesizes speech synchronously: receive results after all text input\nhas been processed.");
+            let mcmd = SubCommand::with_name("synthesize").about("Synthesizes speech synchronously: receive results after all text input has been processed.");
             text0 = text0.subcommand(mcmd);
         }
         let mut voices0 = SubCommand::with_name("voices")

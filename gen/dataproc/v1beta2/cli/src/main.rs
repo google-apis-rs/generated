@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("dataproc1_beta2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200611")
+            .version("0.1.0-20210305")
             .about("Manages Hadoop-based clusters and jobs on Google Cloud Platform.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -161,7 +161,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut clusters2 = SubCommand::with_name("clusters")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: create, delete, diagnose, get, get_iam_policy, list, patch, set_iam_policy, start, stop and test_iam_permissions");
+                        .about("methods: create, delete, diagnose, get, get_iam_policy, inject_credentials, list, patch, set_iam_policy, start, stop and test_iam_permissions");
         {
             let mcmd = SubCommand::with_name("create").about("Creates a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#clusteroperationmetadata).");
             clusters2 = clusters2.subcommand(mcmd);
@@ -181,6 +181,10 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.");
+            clusters2 = clusters2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("inject_credentials").about("Inject encrypted credentials into all of the VMs in a cluster.The target cluster must be a personal auth cluster assigned to the user who is issuing the RPC.");
             clusters2 = clusters2.subcommand(mcmd);
         }
         {

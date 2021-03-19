@@ -24,7 +24,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub language_code: ::std::option::Option<String>,
-        #[doc = "Output only. Package name of the created Android app.\nOnly present in the API response."]
+        #[doc = "Output only. Package name of the created Android app. Only present in the API response."]
         #[serde(
             rename = "packageName",
             default,
@@ -358,7 +358,7 @@ pub mod resources {
                     self
                 }
                 fn _simple_upload_path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://playcustomapp.googleapis.com/".to_owned();
                     output.push_str("upload/playcustomapp/v1/accounts/");
                     {
                         let var_as_string = self.account.to_string();
@@ -402,6 +402,53 @@ pub mod resources {
                     );
                     let req = req.body(reqwest::blocking::Body::new(multipart.into_reader()));
                     Ok(crate::error_from_response(req.send()?)?.json()?)
+                }
+                fn _resumable_upload_path(&self) -> String {
+                    let mut output = "https://playcustomapp.googleapis.com/".to_owned();
+                    output.push_str("resumable/upload/playcustomapp/v1/accounts/");
+                    {
+                        let var_as_string = self.account.to_string();
+                        let var_as_str = &var_as_string;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::SIMPLE,
+                        ));
+                    }
+                    output.push_str("/customApps");
+                    output
+                }
+                pub fn start_resumable_upload(
+                    self,
+                    mime_type: ::mime::Mime,
+                ) -> Result<crate::ResumableUpload, crate::Error> {
+                    let req = self._request(&self._resumable_upload_path())?;
+                    let req = req.query(&[("uploadType", "resumable")]);
+                    let req = req.header(
+                        ::reqwest::header::HeaderName::from_static("x-upload-content-type"),
+                        mime_type.to_string(),
+                    );
+                    let req = req.json(&self.request);
+                    let resp = crate::error_from_response(req.send()?)?;
+                    let location_header = resp
+                        .headers()
+                        .get(::reqwest::header::LOCATION)
+                        .ok_or_else(|| {
+                            crate::Error::Other(
+                                format!(
+                                    "No LOCATION header returned when initiating resumable upload"
+                                )
+                                .into(),
+                            )
+                        })?;
+                    let upload_url = ::std::str::from_utf8(location_header.as_bytes())
+                        .map_err(|_| {
+                            crate::Error::Other(format!("Non UTF8 LOCATION header returned").into())
+                        })?
+                        .to_owned();
+                    Ok(crate::ResumableUpload::new(
+                        self.reqwest.clone(),
+                        upload_url,
+                    ))
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
                 #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -464,7 +511,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/".to_owned();
+                    let mut output = "https://playcustomapp.googleapis.com/".to_owned();
                     output.push_str("playcustomapp/v1/accounts/");
                     {
                         let var_as_string = self.account.to_string();
@@ -481,19 +528,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -777,4 +824,82 @@ mod parsed_string {
             None => Ok(None),
         }
     }
+}
+pub struct ResumableUpload {
+    reqwest: ::reqwest::blocking::Client,
+    url: String,
+    progress: Option<i64>,
+}
+
+impl ResumableUpload {
+    pub fn new(reqwest: ::reqwest::blocking::Client, url: String) -> Self {
+        ResumableUpload {
+            reqwest,
+            url,
+            progress: None,
+        }
+    }
+
+    pub fn url(&self) -> &str {
+        &self.url
+    }
+
+    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
+    where
+        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
+    {
+        let reader_len = {
+            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
+            let end = reader.seek(::std::io::SeekFrom::End(0))?;
+            reader.seek(::std::io::SeekFrom::Start(start))?;
+            end
+        };
+        let progress = match self.progress {
+            Some(progress) => progress,
+            None => {
+                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
+                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
+                let req = req.header(
+                    ::reqwest::header::CONTENT_RANGE,
+                    format!("bytes */{}", reader_len),
+                );
+                let resp = req.send()?.error_for_status()?;
+                match resp.headers().get(::reqwest::header::RANGE) {
+                    Some(range_header) => {
+                        let (_, progress) = parse_range_header(range_header)
+                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
+                        progress + 1
+                    }
+                    None => 0,
+                }
+            }
+        };
+
+        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
+        let content_length = reader_len - progress as u64;
+        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
+        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
+        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
+        let req = req.body(::reqwest::blocking::Body::sized(reader, content_length));
+        req.send()?.error_for_status()?;
+        Ok(())
+    }
+}
+
+fn parse_range_header(
+    range: &::reqwest::header::HeaderValue,
+) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
+    let range = range.to_str()?;
+    if !range.starts_with("bytes ") {
+        return Err(r#"does not begin with "bytes""#.to_owned().into());
+    }
+    let range = &range[6..];
+    let slash_idx = range
+        .find('/')
+        .ok_or_else(|| r#"does not contain"#.to_owned())?;
+    let (begin, end) = range.split_at(slash_idx);
+    let end = &end[1..]; // remove '/'
+    let begin: i64 = begin.parse()?;
+    let end: i64 = end.parse()?;
+    Ok((begin, end))
 }

@@ -57,21 +57,6 @@
       "rest_url": "https://accessapproval.googleapis.com/$discovery/rest?version=v1"
     },
     {
-      "name": "accessapproval",
-      "id": "accessapproval:v1beta1",
-      "metadata_file": "accessapproval/v1beta1/meta.json",
-      "lib_cargo_file": "accessapproval/v1beta1/lib/Cargo.toml",
-      "gen_error_file": "accessapproval/v1beta1/generator-errors.log",
-      "cargo_error_file": "accessapproval/v1beta1/cargo-errors.log",
-      "gen_dir": "accessapproval/v1beta1",
-      "spec_file": "accessapproval/v1beta1/spec.json",
-      "lib_crate_name": "google-accessapproval1_beta1",
-      "cli_crate_name": "google-accessapproval1_beta1-cli",
-      "make_target": "accessapproval1_beta1",
-      "bin_name": "accessapproval1_beta1",
-      "rest_url": "https://accessapproval.googleapis.com/$discovery/rest?version=v1beta1"
-    },
-    {
       "name": "accesscontextmanager",
       "id": "accesscontextmanager:v1beta",
       "metadata_file": "accesscontextmanager/v1beta/meta.json",
@@ -189,7 +174,7 @@
       "cli_crate_name": "google-admin1_datatransfer-cli",
       "make_target": "admin1_datatransfer",
       "bin_name": "admin1_datatransfer",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/admin/datatransfer_v1/rest"
+      "rest_url": "https://admin.googleapis.com/$discovery/rest?version=datatransfer_v1"
     },
     {
       "name": "admin",
@@ -204,7 +189,7 @@
       "cli_crate_name": "google-admin1_directory-cli",
       "make_target": "admin1_directory",
       "bin_name": "admin1_directory",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/admin/directory_v1/rest"
+      "rest_url": "https://admin.googleapis.com/$discovery/rest?version=directory_v1"
     },
     {
       "name": "admin",
@@ -219,7 +204,7 @@
       "cli_crate_name": "google-admin1_reports-cli",
       "make_target": "admin1_reports",
       "bin_name": "admin1_reports",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/admin/reports_v1/rest"
+      "rest_url": "https://admin.googleapis.com/$discovery/rest?version=reports_v1"
     },
     {
       "name": "admob",
@@ -249,7 +234,7 @@
       "cli_crate_name": "google-adsense1d4-cli",
       "make_target": "adsense1d4",
       "bin_name": "adsense1d4",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/adsense/v1.4/rest"
+      "rest_url": "https://adsense.googleapis.com/$discovery/rest?version=v1.4"
     },
     {
       "name": "adsensehost",
@@ -264,7 +249,7 @@
       "cli_crate_name": "google-adsensehost4d1-cli",
       "make_target": "adsensehost4d1",
       "bin_name": "adsensehost4d1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/adsensehost/v4.1/rest"
+      "rest_url": "https://adsensehost.googleapis.com/$discovery/rest?version=v4.1"
     },
     {
       "name": "alertcenter",
@@ -294,7 +279,7 @@
       "cli_crate_name": "google-analytics3-cli",
       "make_target": "analytics3",
       "bin_name": "analytics3",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/analytics/v3/rest"
+      "rest_url": "https://analytics.googleapis.com/$discovery/rest?version=v3"
     },
     {
       "name": "analyticsreporting",
@@ -339,7 +324,7 @@
       "cli_crate_name": "google-androidenterprise1-cli",
       "make_target": "androidenterprise1",
       "bin_name": "androidenterprise1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/androidenterprise/v1/rest"
+      "rest_url": "https://androidenterprise.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "androidmanagement",
@@ -358,33 +343,33 @@
     },
     {
       "name": "androidpublisher",
-      "id": "androidpublisher:v1.1",
-      "metadata_file": "androidpublisher/v1.1/meta.json",
-      "lib_cargo_file": "androidpublisher/v1.1/lib/Cargo.toml",
-      "gen_error_file": "androidpublisher/v1.1/generator-errors.log",
-      "cargo_error_file": "androidpublisher/v1.1/cargo-errors.log",
-      "gen_dir": "androidpublisher/v1.1",
-      "spec_file": "androidpublisher/v1.1/spec.json",
-      "lib_crate_name": "google-androidpublisher1d1",
-      "cli_crate_name": "google-androidpublisher1d1-cli",
-      "make_target": "androidpublisher1d1",
-      "bin_name": "androidpublisher1d1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/androidpublisher/v1.1/rest"
+      "id": "androidpublisher:v3",
+      "metadata_file": "androidpublisher/v3/meta.json",
+      "lib_cargo_file": "androidpublisher/v3/lib/Cargo.toml",
+      "gen_error_file": "androidpublisher/v3/generator-errors.log",
+      "cargo_error_file": "androidpublisher/v3/cargo-errors.log",
+      "gen_dir": "androidpublisher/v3",
+      "spec_file": "androidpublisher/v3/spec.json",
+      "lib_crate_name": "google-androidpublisher3",
+      "cli_crate_name": "google-androidpublisher3-cli",
+      "make_target": "androidpublisher3",
+      "bin_name": "androidpublisher3",
+      "rest_url": "https://androidpublisher.googleapis.com/$discovery/rest?version=v3"
     },
     {
-      "name": "androidpublisher",
-      "id": "androidpublisher:v2",
-      "metadata_file": "androidpublisher/v2/meta.json",
-      "lib_cargo_file": "androidpublisher/v2/lib/Cargo.toml",
-      "gen_error_file": "androidpublisher/v2/generator-errors.log",
-      "cargo_error_file": "androidpublisher/v2/cargo-errors.log",
-      "gen_dir": "androidpublisher/v2",
-      "spec_file": "androidpublisher/v2/spec.json",
-      "lib_crate_name": "google-androidpublisher2",
-      "cli_crate_name": "google-androidpublisher2-cli",
-      "make_target": "androidpublisher2",
-      "bin_name": "androidpublisher2",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/androidpublisher/v2/rest"
+      "name": "apigateway",
+      "id": "apigateway:v1",
+      "metadata_file": "apigateway/v1/meta.json",
+      "lib_cargo_file": "apigateway/v1/lib/Cargo.toml",
+      "gen_error_file": "apigateway/v1/generator-errors.log",
+      "cargo_error_file": "apigateway/v1/cargo-errors.log",
+      "gen_dir": "apigateway/v1",
+      "spec_file": "apigateway/v1/spec.json",
+      "lib_crate_name": "google-apigateway1",
+      "cli_crate_name": "google-apigateway1-cli",
+      "make_target": "apigateway1",
+      "bin_name": "apigateway1",
+      "rest_url": "https://apigateway.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "apigee",
@@ -447,19 +432,34 @@
       "rest_url": "https://appengine.googleapis.com/$discovery/rest?version=v1"
     },
     {
-      "name": "appsactivity",
-      "id": "appsactivity:v1",
-      "metadata_file": "appsactivity/v1/meta.json",
-      "lib_cargo_file": "appsactivity/v1/lib/Cargo.toml",
-      "gen_error_file": "appsactivity/v1/generator-errors.log",
-      "cargo_error_file": "appsactivity/v1/cargo-errors.log",
-      "gen_dir": "appsactivity/v1",
-      "spec_file": "appsactivity/v1/spec.json",
-      "lib_crate_name": "google-appsactivity1",
-      "cli_crate_name": "google-appsactivity1-cli",
-      "make_target": "appsactivity1",
-      "bin_name": "appsactivity1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/appsactivity/v1/rest"
+      "name": "artifactregistry",
+      "id": "artifactregistry:v1",
+      "metadata_file": "artifactregistry/v1/meta.json",
+      "lib_cargo_file": "artifactregistry/v1/lib/Cargo.toml",
+      "gen_error_file": "artifactregistry/v1/generator-errors.log",
+      "cargo_error_file": "artifactregistry/v1/cargo-errors.log",
+      "gen_dir": "artifactregistry/v1",
+      "spec_file": "artifactregistry/v1/spec.json",
+      "lib_crate_name": "google-artifactregistry1",
+      "cli_crate_name": "google-artifactregistry1-cli",
+      "make_target": "artifactregistry1",
+      "bin_name": "artifactregistry1",
+      "rest_url": "https://artifactregistry.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
+      "name": "assuredworkloads",
+      "id": "assuredworkloads:v1",
+      "metadata_file": "assuredworkloads/v1/meta.json",
+      "lib_cargo_file": "assuredworkloads/v1/lib/Cargo.toml",
+      "gen_error_file": "assuredworkloads/v1/generator-errors.log",
+      "cargo_error_file": "assuredworkloads/v1/cargo-errors.log",
+      "gen_dir": "assuredworkloads/v1",
+      "spec_file": "assuredworkloads/v1/spec.json",
+      "lib_crate_name": "google-assuredworkloads1",
+      "cli_crate_name": "google-assuredworkloads1-cli",
+      "make_target": "assuredworkloads1",
+      "bin_name": "assuredworkloads1",
+      "rest_url": "https://assuredworkloads.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "bigquery",
@@ -474,7 +474,7 @@
       "cli_crate_name": "google-bigquery2-cli",
       "make_target": "bigquery2",
       "bin_name": "bigquery2",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/bigquery/v2/rest"
+      "rest_url": "https://bigquery.googleapis.com/$discovery/rest?version=v2"
     },
     {
       "name": "bigqueryconnection",
@@ -508,18 +508,18 @@
     },
     {
       "name": "bigqueryreservation",
-      "id": "bigqueryreservation:v1alpha2",
-      "metadata_file": "bigqueryreservation/v1alpha2/meta.json",
-      "lib_cargo_file": "bigqueryreservation/v1alpha2/lib/Cargo.toml",
-      "gen_error_file": "bigqueryreservation/v1alpha2/generator-errors.log",
-      "cargo_error_file": "bigqueryreservation/v1alpha2/cargo-errors.log",
-      "gen_dir": "bigqueryreservation/v1alpha2",
-      "spec_file": "bigqueryreservation/v1alpha2/spec.json",
-      "lib_crate_name": "google-bigqueryreservation1_alpha2",
-      "cli_crate_name": "google-bigqueryreservation1_alpha2-cli",
-      "make_target": "bigqueryreservation1_alpha2",
-      "bin_name": "bigqueryreservation1_alpha2",
-      "rest_url": "https://bigqueryreservation.googleapis.com/$discovery/rest?version=v1alpha2"
+      "id": "bigqueryreservation:v1beta1",
+      "metadata_file": "bigqueryreservation/v1beta1/meta.json",
+      "lib_cargo_file": "bigqueryreservation/v1beta1/lib/Cargo.toml",
+      "gen_error_file": "bigqueryreservation/v1beta1/generator-errors.log",
+      "cargo_error_file": "bigqueryreservation/v1beta1/cargo-errors.log",
+      "gen_dir": "bigqueryreservation/v1beta1",
+      "spec_file": "bigqueryreservation/v1beta1/spec.json",
+      "lib_crate_name": "google-bigqueryreservation1_beta1",
+      "cli_crate_name": "google-bigqueryreservation1_beta1-cli",
+      "make_target": "bigqueryreservation1_beta1",
+      "bin_name": "bigqueryreservation1_beta1",
+      "rest_url": "https://bigqueryreservation.googleapis.com/$discovery/rest?version=v1beta1"
     },
     {
       "name": "bigqueryreservation",
@@ -535,21 +535,6 @@
       "make_target": "bigqueryreservation1",
       "bin_name": "bigqueryreservation1",
       "rest_url": "https://bigqueryreservation.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
-      "name": "bigqueryreservation",
-      "id": "bigqueryreservation:v1beta1",
-      "metadata_file": "bigqueryreservation/v1beta1/meta.json",
-      "lib_cargo_file": "bigqueryreservation/v1beta1/lib/Cargo.toml",
-      "gen_error_file": "bigqueryreservation/v1beta1/generator-errors.log",
-      "cargo_error_file": "bigqueryreservation/v1beta1/cargo-errors.log",
-      "gen_dir": "bigqueryreservation/v1beta1",
-      "spec_file": "bigqueryreservation/v1beta1/spec.json",
-      "lib_crate_name": "google-bigqueryreservation1_beta1",
-      "cli_crate_name": "google-bigqueryreservation1_beta1-cli",
-      "make_target": "bigqueryreservation1_beta1",
-      "bin_name": "bigqueryreservation1_beta1",
-      "rest_url": "https://bigqueryreservation.googleapis.com/$discovery/rest?version=v1beta1"
     },
     {
       "name": "bigtableadmin",
@@ -597,19 +582,19 @@
       "rest_url": "https://billingbudgets.googleapis.com/$discovery/rest?version=v1beta1"
     },
     {
-      "name": "binaryauthorization",
-      "id": "binaryauthorization:v1",
-      "metadata_file": "binaryauthorization/v1/meta.json",
-      "lib_cargo_file": "binaryauthorization/v1/lib/Cargo.toml",
-      "gen_error_file": "binaryauthorization/v1/generator-errors.log",
-      "cargo_error_file": "binaryauthorization/v1/cargo-errors.log",
-      "gen_dir": "binaryauthorization/v1",
-      "spec_file": "binaryauthorization/v1/spec.json",
-      "lib_crate_name": "google-binaryauthorization1",
-      "cli_crate_name": "google-binaryauthorization1-cli",
-      "make_target": "binaryauthorization1",
-      "bin_name": "binaryauthorization1",
-      "rest_url": "https://binaryauthorization.googleapis.com/$discovery/rest?version=v1"
+      "name": "billingbudgets",
+      "id": "billingbudgets:v1",
+      "metadata_file": "billingbudgets/v1/meta.json",
+      "lib_cargo_file": "billingbudgets/v1/lib/Cargo.toml",
+      "gen_error_file": "billingbudgets/v1/generator-errors.log",
+      "cargo_error_file": "billingbudgets/v1/cargo-errors.log",
+      "gen_dir": "billingbudgets/v1",
+      "spec_file": "billingbudgets/v1/spec.json",
+      "lib_crate_name": "google-billingbudgets1",
+      "cli_crate_name": "google-billingbudgets1-cli",
+      "make_target": "billingbudgets1",
+      "bin_name": "billingbudgets1",
+      "rest_url": "https://billingbudgets.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "binaryauthorization",
@@ -625,6 +610,21 @@
       "make_target": "binaryauthorization1_beta1",
       "bin_name": "binaryauthorization1_beta1",
       "rest_url": "https://binaryauthorization.googleapis.com/$discovery/rest?version=v1beta1"
+    },
+    {
+      "name": "binaryauthorization",
+      "id": "binaryauthorization:v1",
+      "metadata_file": "binaryauthorization/v1/meta.json",
+      "lib_cargo_file": "binaryauthorization/v1/lib/Cargo.toml",
+      "gen_error_file": "binaryauthorization/v1/generator-errors.log",
+      "cargo_error_file": "binaryauthorization/v1/cargo-errors.log",
+      "gen_dir": "binaryauthorization/v1",
+      "spec_file": "binaryauthorization/v1/spec.json",
+      "lib_crate_name": "google-binaryauthorization1",
+      "cli_crate_name": "google-binaryauthorization1-cli",
+      "make_target": "binaryauthorization1",
+      "bin_name": "binaryauthorization1",
+      "rest_url": "https://binaryauthorization.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "blogger",
@@ -669,7 +669,7 @@
       "cli_crate_name": "google-books1-cli",
       "make_target": "books1",
       "bin_name": "books1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/books/v1/rest"
+      "rest_url": "https://books.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "calendar",
@@ -684,7 +684,7 @@
       "cli_crate_name": "google-calendar3-cli",
       "make_target": "calendar3",
       "bin_name": "calendar3",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"
+      "rest_url": "https://calendar-json.googleapis.com/$discovery/rest?version=v3"
     },
     {
       "name": "chat",
@@ -700,6 +700,51 @@
       "make_target": "chat1",
       "bin_name": "chat1",
       "rest_url": "https://chat.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
+      "name": "chromemanagement",
+      "id": "chromemanagement:v1",
+      "metadata_file": "chromemanagement/v1/meta.json",
+      "lib_cargo_file": "chromemanagement/v1/lib/Cargo.toml",
+      "gen_error_file": "chromemanagement/v1/generator-errors.log",
+      "cargo_error_file": "chromemanagement/v1/cargo-errors.log",
+      "gen_dir": "chromemanagement/v1",
+      "spec_file": "chromemanagement/v1/spec.json",
+      "lib_crate_name": "google-chromemanagement1",
+      "cli_crate_name": "google-chromemanagement1-cli",
+      "make_target": "chromemanagement1",
+      "bin_name": "chromemanagement1",
+      "rest_url": "https://chromemanagement.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
+      "name": "chromepolicy",
+      "id": "chromepolicy:v1",
+      "metadata_file": "chromepolicy/v1/meta.json",
+      "lib_cargo_file": "chromepolicy/v1/lib/Cargo.toml",
+      "gen_error_file": "chromepolicy/v1/generator-errors.log",
+      "cargo_error_file": "chromepolicy/v1/cargo-errors.log",
+      "gen_dir": "chromepolicy/v1",
+      "spec_file": "chromepolicy/v1/spec.json",
+      "lib_crate_name": "google-chromepolicy1",
+      "cli_crate_name": "google-chromepolicy1-cli",
+      "make_target": "chromepolicy1",
+      "bin_name": "chromepolicy1",
+      "rest_url": "https://chromepolicy.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
+      "name": "chromeuxreport",
+      "id": "chromeuxreport:v1",
+      "metadata_file": "chromeuxreport/v1/meta.json",
+      "lib_cargo_file": "chromeuxreport/v1/lib/Cargo.toml",
+      "gen_error_file": "chromeuxreport/v1/generator-errors.log",
+      "cargo_error_file": "chromeuxreport/v1/cargo-errors.log",
+      "gen_dir": "chromeuxreport/v1",
+      "spec_file": "chromeuxreport/v1/spec.json",
+      "lib_crate_name": "google-chromeuxreport1",
+      "cli_crate_name": "google-chromeuxreport1-cli",
+      "make_target": "chromeuxreport1",
+      "bin_name": "chromeuxreport1",
+      "rest_url": "https://chromeuxreport.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "civicinfo",
@@ -763,21 +808,6 @@
     },
     {
       "name": "cloudasset",
-      "id": "cloudasset:v1",
-      "metadata_file": "cloudasset/v1/meta.json",
-      "lib_cargo_file": "cloudasset/v1/lib/Cargo.toml",
-      "gen_error_file": "cloudasset/v1/generator-errors.log",
-      "cargo_error_file": "cloudasset/v1/cargo-errors.log",
-      "gen_dir": "cloudasset/v1",
-      "spec_file": "cloudasset/v1/spec.json",
-      "lib_crate_name": "google-cloudasset1",
-      "cli_crate_name": "google-cloudasset1-cli",
-      "make_target": "cloudasset1",
-      "bin_name": "cloudasset1",
-      "rest_url": "https://cloudasset.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
-      "name": "cloudasset",
       "id": "cloudasset:v1beta1",
       "metadata_file": "cloudasset/v1beta1/meta.json",
       "lib_cargo_file": "cloudasset/v1beta1/lib/Cargo.toml",
@@ -790,6 +820,21 @@
       "make_target": "cloudasset1_beta1",
       "bin_name": "cloudasset1_beta1",
       "rest_url": "https://cloudasset.googleapis.com/$discovery/rest?version=v1beta1"
+    },
+    {
+      "name": "cloudasset",
+      "id": "cloudasset:v1",
+      "metadata_file": "cloudasset/v1/meta.json",
+      "lib_cargo_file": "cloudasset/v1/lib/Cargo.toml",
+      "gen_error_file": "cloudasset/v1/generator-errors.log",
+      "cargo_error_file": "cloudasset/v1/cargo-errors.log",
+      "gen_dir": "cloudasset/v1",
+      "spec_file": "cloudasset/v1/spec.json",
+      "lib_crate_name": "google-cloudasset1",
+      "cli_crate_name": "google-cloudasset1-cli",
+      "make_target": "cloudasset1",
+      "bin_name": "cloudasset1",
+      "rest_url": "https://cloudasset.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "cloudbilling",
@@ -852,6 +897,21 @@
       "rest_url": "https://cloudbuild.googleapis.com/$discovery/rest?version=v1"
     },
     {
+      "name": "cloudchannel",
+      "id": "cloudchannel:v1",
+      "metadata_file": "cloudchannel/v1/meta.json",
+      "lib_cargo_file": "cloudchannel/v1/lib/Cargo.toml",
+      "gen_error_file": "cloudchannel/v1/generator-errors.log",
+      "cargo_error_file": "cloudchannel/v1/cargo-errors.log",
+      "gen_dir": "cloudchannel/v1",
+      "spec_file": "cloudchannel/v1/spec.json",
+      "lib_crate_name": "google-cloudchannel1",
+      "cli_crate_name": "google-cloudchannel1-cli",
+      "make_target": "cloudchannel1",
+      "bin_name": "cloudchannel1",
+      "rest_url": "https://cloudchannel.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
       "name": "clouddebugger",
       "id": "clouddebugger:v2",
       "metadata_file": "clouddebugger/v2/meta.json",
@@ -897,19 +957,19 @@
       "rest_url": "https://cloudfunctions.googleapis.com/$discovery/rest?version=v1"
     },
     {
-      "name": "cloudfunctions",
-      "id": "cloudfunctions:v1beta2",
-      "metadata_file": "cloudfunctions/v1beta2/meta.json",
-      "lib_cargo_file": "cloudfunctions/v1beta2/lib/Cargo.toml",
-      "gen_error_file": "cloudfunctions/v1beta2/generator-errors.log",
-      "cargo_error_file": "cloudfunctions/v1beta2/cargo-errors.log",
-      "gen_dir": "cloudfunctions/v1beta2",
-      "spec_file": "cloudfunctions/v1beta2/spec.json",
-      "lib_crate_name": "google-cloudfunctions1_beta2",
-      "cli_crate_name": "google-cloudfunctions1_beta2-cli",
-      "make_target": "cloudfunctions1_beta2",
-      "bin_name": "cloudfunctions1_beta2",
-      "rest_url": "https://cloudfunctions.googleapis.com/$discovery/rest?version=v1beta2"
+      "name": "cloudidentity",
+      "id": "cloudidentity:v1beta1",
+      "metadata_file": "cloudidentity/v1beta1/meta.json",
+      "lib_cargo_file": "cloudidentity/v1beta1/lib/Cargo.toml",
+      "gen_error_file": "cloudidentity/v1beta1/generator-errors.log",
+      "cargo_error_file": "cloudidentity/v1beta1/cargo-errors.log",
+      "gen_dir": "cloudidentity/v1beta1",
+      "spec_file": "cloudidentity/v1beta1/spec.json",
+      "lib_crate_name": "google-cloudidentity1_beta1",
+      "cli_crate_name": "google-cloudidentity1_beta1-cli",
+      "make_target": "cloudidentity1_beta1",
+      "bin_name": "cloudidentity1_beta1",
+      "rest_url": "https://cloudidentity.googleapis.com/$discovery/rest?version=v1beta1"
     },
     {
       "name": "cloudidentity",
@@ -925,21 +985,6 @@
       "make_target": "cloudidentity1",
       "bin_name": "cloudidentity1",
       "rest_url": "https://cloudidentity.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
-      "name": "cloudidentity",
-      "id": "cloudidentity:v1beta1",
-      "metadata_file": "cloudidentity/v1beta1/meta.json",
-      "lib_cargo_file": "cloudidentity/v1beta1/lib/Cargo.toml",
-      "gen_error_file": "cloudidentity/v1beta1/generator-errors.log",
-      "cargo_error_file": "cloudidentity/v1beta1/cargo-errors.log",
-      "gen_dir": "cloudidentity/v1beta1",
-      "spec_file": "cloudidentity/v1beta1/spec.json",
-      "lib_crate_name": "google-cloudidentity1_beta1",
-      "cli_crate_name": "google-cloudidentity1_beta1-cli",
-      "make_target": "cloudidentity1_beta1",
-      "bin_name": "cloudidentity1_beta1",
-      "rest_url": "https://cloudidentity.googleapis.com/$discovery/rest?version=v1beta1"
     },
     {
       "name": "cloudiot",
@@ -988,21 +1033,6 @@
     },
     {
       "name": "cloudresourcemanager",
-      "id": "cloudresourcemanager:v1",
-      "metadata_file": "cloudresourcemanager/v1/meta.json",
-      "lib_cargo_file": "cloudresourcemanager/v1/lib/Cargo.toml",
-      "gen_error_file": "cloudresourcemanager/v1/generator-errors.log",
-      "cargo_error_file": "cloudresourcemanager/v1/cargo-errors.log",
-      "gen_dir": "cloudresourcemanager/v1",
-      "spec_file": "cloudresourcemanager/v1/spec.json",
-      "lib_crate_name": "google-cloudresourcemanager1",
-      "cli_crate_name": "google-cloudresourcemanager1-cli",
-      "make_target": "cloudresourcemanager1",
-      "bin_name": "cloudresourcemanager1",
-      "rest_url": "https://cloudresourcemanager.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
-      "name": "cloudresourcemanager",
       "id": "cloudresourcemanager:v1beta1",
       "metadata_file": "cloudresourcemanager/v1beta1/meta.json",
       "lib_cargo_file": "cloudresourcemanager/v1beta1/lib/Cargo.toml",
@@ -1015,6 +1045,36 @@
       "make_target": "cloudresourcemanager1_beta1",
       "bin_name": "cloudresourcemanager1_beta1",
       "rest_url": "https://cloudresourcemanager.googleapis.com/$discovery/rest?version=v1beta1"
+    },
+    {
+      "name": "cloudresourcemanager",
+      "id": "cloudresourcemanager:v2beta1",
+      "metadata_file": "cloudresourcemanager/v2beta1/meta.json",
+      "lib_cargo_file": "cloudresourcemanager/v2beta1/lib/Cargo.toml",
+      "gen_error_file": "cloudresourcemanager/v2beta1/generator-errors.log",
+      "cargo_error_file": "cloudresourcemanager/v2beta1/cargo-errors.log",
+      "gen_dir": "cloudresourcemanager/v2beta1",
+      "spec_file": "cloudresourcemanager/v2beta1/spec.json",
+      "lib_crate_name": "google-cloudresourcemanager2_beta1",
+      "cli_crate_name": "google-cloudresourcemanager2_beta1-cli",
+      "make_target": "cloudresourcemanager2_beta1",
+      "bin_name": "cloudresourcemanager2_beta1",
+      "rest_url": "https://cloudresourcemanager.googleapis.com/$discovery/rest?version=v2beta1"
+    },
+    {
+      "name": "cloudresourcemanager",
+      "id": "cloudresourcemanager:v1",
+      "metadata_file": "cloudresourcemanager/v1/meta.json",
+      "lib_cargo_file": "cloudresourcemanager/v1/lib/Cargo.toml",
+      "gen_error_file": "cloudresourcemanager/v1/generator-errors.log",
+      "cargo_error_file": "cloudresourcemanager/v1/cargo-errors.log",
+      "gen_dir": "cloudresourcemanager/v1",
+      "spec_file": "cloudresourcemanager/v1/spec.json",
+      "lib_crate_name": "google-cloudresourcemanager1",
+      "cli_crate_name": "google-cloudresourcemanager1-cli",
+      "make_target": "cloudresourcemanager1",
+      "bin_name": "cloudresourcemanager1",
+      "rest_url": "https://cloudresourcemanager.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "cloudresourcemanager",
@@ -1033,33 +1093,18 @@
     },
     {
       "name": "cloudresourcemanager",
-      "id": "cloudresourcemanager:v2beta1",
-      "metadata_file": "cloudresourcemanager/v2beta1/meta.json",
-      "lib_cargo_file": "cloudresourcemanager/v2beta1/lib/Cargo.toml",
-      "gen_error_file": "cloudresourcemanager/v2beta1/generator-errors.log",
-      "cargo_error_file": "cloudresourcemanager/v2beta1/cargo-errors.log",
-      "gen_dir": "cloudresourcemanager/v2beta1",
-      "spec_file": "cloudresourcemanager/v2beta1/spec.json",
-      "lib_crate_name": "google-cloudresourcemanager2_beta1",
-      "cli_crate_name": "google-cloudresourcemanager2_beta1-cli",
-      "make_target": "cloudresourcemanager2_beta1",
-      "bin_name": "cloudresourcemanager2_beta1",
-      "rest_url": "https://cloudresourcemanager.googleapis.com/$discovery/rest?version=v2beta1"
-    },
-    {
-      "name": "cloudscheduler",
-      "id": "cloudscheduler:v1",
-      "metadata_file": "cloudscheduler/v1/meta.json",
-      "lib_cargo_file": "cloudscheduler/v1/lib/Cargo.toml",
-      "gen_error_file": "cloudscheduler/v1/generator-errors.log",
-      "cargo_error_file": "cloudscheduler/v1/cargo-errors.log",
-      "gen_dir": "cloudscheduler/v1",
-      "spec_file": "cloudscheduler/v1/spec.json",
-      "lib_crate_name": "google-cloudscheduler1",
-      "cli_crate_name": "google-cloudscheduler1-cli",
-      "make_target": "cloudscheduler1",
-      "bin_name": "cloudscheduler1",
-      "rest_url": "https://cloudscheduler.googleapis.com/$discovery/rest?version=v1"
+      "id": "cloudresourcemanager:v3",
+      "metadata_file": "cloudresourcemanager/v3/meta.json",
+      "lib_cargo_file": "cloudresourcemanager/v3/lib/Cargo.toml",
+      "gen_error_file": "cloudresourcemanager/v3/generator-errors.log",
+      "cargo_error_file": "cloudresourcemanager/v3/cargo-errors.log",
+      "gen_dir": "cloudresourcemanager/v3",
+      "spec_file": "cloudresourcemanager/v3/spec.json",
+      "lib_crate_name": "google-cloudresourcemanager3",
+      "cli_crate_name": "google-cloudresourcemanager3-cli",
+      "make_target": "cloudresourcemanager3",
+      "bin_name": "cloudresourcemanager3",
+      "rest_url": "https://cloudresourcemanager.googleapis.com/$discovery/rest?version=v3"
     },
     {
       "name": "cloudscheduler",
@@ -1075,6 +1120,21 @@
       "make_target": "cloudscheduler1_beta1",
       "bin_name": "cloudscheduler1_beta1",
       "rest_url": "https://cloudscheduler.googleapis.com/$discovery/rest?version=v1beta1"
+    },
+    {
+      "name": "cloudscheduler",
+      "id": "cloudscheduler:v1",
+      "metadata_file": "cloudscheduler/v1/meta.json",
+      "lib_cargo_file": "cloudscheduler/v1/lib/Cargo.toml",
+      "gen_error_file": "cloudscheduler/v1/generator-errors.log",
+      "cargo_error_file": "cloudscheduler/v1/cargo-errors.log",
+      "gen_dir": "cloudscheduler/v1",
+      "spec_file": "cloudscheduler/v1/spec.json",
+      "lib_crate_name": "google-cloudscheduler1",
+      "cli_crate_name": "google-cloudscheduler1-cli",
+      "make_target": "cloudscheduler1",
+      "bin_name": "cloudscheduler1",
+      "rest_url": "https://cloudscheduler.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "cloudsearch",
@@ -1093,21 +1153,6 @@
     },
     {
       "name": "cloudshell",
-      "id": "cloudshell:v1alpha1",
-      "metadata_file": "cloudshell/v1alpha1/meta.json",
-      "lib_cargo_file": "cloudshell/v1alpha1/lib/Cargo.toml",
-      "gen_error_file": "cloudshell/v1alpha1/generator-errors.log",
-      "cargo_error_file": "cloudshell/v1alpha1/cargo-errors.log",
-      "gen_dir": "cloudshell/v1alpha1",
-      "spec_file": "cloudshell/v1alpha1/spec.json",
-      "lib_crate_name": "google-cloudshell1_alpha1",
-      "cli_crate_name": "google-cloudshell1_alpha1-cli",
-      "make_target": "cloudshell1_alpha1",
-      "bin_name": "cloudshell1_alpha1",
-      "rest_url": "https://cloudshell.googleapis.com/$discovery/rest?version=v1alpha1"
-    },
-    {
-      "name": "cloudshell",
       "id": "cloudshell:v1",
       "metadata_file": "cloudshell/v1/meta.json",
       "lib_cargo_file": "cloudshell/v1/lib/Cargo.toml",
@@ -1120,21 +1165,6 @@
       "make_target": "cloudshell1",
       "bin_name": "cloudshell1",
       "rest_url": "https://cloudshell.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
-      "name": "cloudtasks",
-      "id": "cloudtasks:v2",
-      "metadata_file": "cloudtasks/v2/meta.json",
-      "lib_cargo_file": "cloudtasks/v2/lib/Cargo.toml",
-      "gen_error_file": "cloudtasks/v2/generator-errors.log",
-      "cargo_error_file": "cloudtasks/v2/cargo-errors.log",
-      "gen_dir": "cloudtasks/v2",
-      "spec_file": "cloudtasks/v2/spec.json",
-      "lib_crate_name": "google-cloudtasks2",
-      "cli_crate_name": "google-cloudtasks2-cli",
-      "make_target": "cloudtasks2",
-      "bin_name": "cloudtasks2",
-      "rest_url": "https://cloudtasks.googleapis.com/$discovery/rest?version=v2"
     },
     {
       "name": "cloudtasks",
@@ -1167,6 +1197,36 @@
       "rest_url": "https://cloudtasks.googleapis.com/$discovery/rest?version=v2beta3"
     },
     {
+      "name": "cloudtasks",
+      "id": "cloudtasks:v2",
+      "metadata_file": "cloudtasks/v2/meta.json",
+      "lib_cargo_file": "cloudtasks/v2/lib/Cargo.toml",
+      "gen_error_file": "cloudtasks/v2/generator-errors.log",
+      "cargo_error_file": "cloudtasks/v2/cargo-errors.log",
+      "gen_dir": "cloudtasks/v2",
+      "spec_file": "cloudtasks/v2/spec.json",
+      "lib_crate_name": "google-cloudtasks2",
+      "cli_crate_name": "google-cloudtasks2-cli",
+      "make_target": "cloudtasks2",
+      "bin_name": "cloudtasks2",
+      "rest_url": "https://cloudtasks.googleapis.com/$discovery/rest?version=v2"
+    },
+    {
+      "name": "cloudtrace",
+      "id": "cloudtrace:v2beta1",
+      "metadata_file": "cloudtrace/v2beta1/meta.json",
+      "lib_cargo_file": "cloudtrace/v2beta1/lib/Cargo.toml",
+      "gen_error_file": "cloudtrace/v2beta1/generator-errors.log",
+      "cargo_error_file": "cloudtrace/v2beta1/cargo-errors.log",
+      "gen_dir": "cloudtrace/v2beta1",
+      "spec_file": "cloudtrace/v2beta1/spec.json",
+      "lib_crate_name": "google-cloudtrace2_beta1",
+      "cli_crate_name": "google-cloudtrace2_beta1-cli",
+      "make_target": "cloudtrace2_beta1",
+      "bin_name": "cloudtrace2_beta1",
+      "rest_url": "https://cloudtrace.googleapis.com/$discovery/rest?version=v2beta1"
+    },
+    {
       "name": "cloudtrace",
       "id": "cloudtrace:v1",
       "metadata_file": "cloudtrace/v1/meta.json",
@@ -1197,19 +1257,19 @@
       "rest_url": "https://cloudtrace.googleapis.com/$discovery/rest?version=v2"
     },
     {
-      "name": "cloudtrace",
-      "id": "cloudtrace:v2beta1",
-      "metadata_file": "cloudtrace/v2beta1/meta.json",
-      "lib_cargo_file": "cloudtrace/v2beta1/lib/Cargo.toml",
-      "gen_error_file": "cloudtrace/v2beta1/generator-errors.log",
-      "cargo_error_file": "cloudtrace/v2beta1/cargo-errors.log",
-      "gen_dir": "cloudtrace/v2beta1",
-      "spec_file": "cloudtrace/v2beta1/spec.json",
-      "lib_crate_name": "google-cloudtrace2_beta1",
-      "cli_crate_name": "google-cloudtrace2_beta1-cli",
-      "make_target": "cloudtrace2_beta1",
-      "bin_name": "cloudtrace2_beta1",
-      "rest_url": "https://cloudtrace.googleapis.com/$discovery/rest?version=v2beta1"
+      "name": "composer",
+      "id": "composer:v1beta1",
+      "metadata_file": "composer/v1beta1/meta.json",
+      "lib_cargo_file": "composer/v1beta1/lib/Cargo.toml",
+      "gen_error_file": "composer/v1beta1/generator-errors.log",
+      "cargo_error_file": "composer/v1beta1/cargo-errors.log",
+      "gen_dir": "composer/v1beta1",
+      "spec_file": "composer/v1beta1/spec.json",
+      "lib_crate_name": "google-composer1_beta1",
+      "cli_crate_name": "google-composer1_beta1-cli",
+      "make_target": "composer1_beta1",
+      "bin_name": "composer1_beta1",
+      "rest_url": "https://composer.googleapis.com/$discovery/rest?version=v1beta1"
     },
     {
       "name": "composer",
@@ -1225,21 +1285,6 @@
       "make_target": "composer1",
       "bin_name": "composer1",
       "rest_url": "https://composer.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
-      "name": "composer",
-      "id": "composer:v1beta1",
-      "metadata_file": "composer/v1beta1/meta.json",
-      "lib_cargo_file": "composer/v1beta1/lib/Cargo.toml",
-      "gen_error_file": "composer/v1beta1/generator-errors.log",
-      "cargo_error_file": "composer/v1beta1/cargo-errors.log",
-      "gen_dir": "composer/v1beta1",
-      "spec_file": "composer/v1beta1/spec.json",
-      "lib_crate_name": "google-composer1_beta1",
-      "cli_crate_name": "google-composer1_beta1-cli",
-      "make_target": "composer1_beta1",
-      "bin_name": "composer1_beta1",
-      "rest_url": "https://composer.googleapis.com/$discovery/rest?version=v1beta1"
     },
     {
       "name": "compute",
@@ -1288,21 +1333,6 @@
     },
     {
       "name": "container",
-      "id": "container:v1",
-      "metadata_file": "container/v1/meta.json",
-      "lib_cargo_file": "container/v1/lib/Cargo.toml",
-      "gen_error_file": "container/v1/generator-errors.log",
-      "cargo_error_file": "container/v1/cargo-errors.log",
-      "gen_dir": "container/v1",
-      "spec_file": "container/v1/spec.json",
-      "lib_crate_name": "google-container1",
-      "cli_crate_name": "google-container1-cli",
-      "make_target": "container1",
-      "bin_name": "container1",
-      "rest_url": "https://container.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
-      "name": "container",
       "id": "container:v1beta1",
       "metadata_file": "container/v1beta1/meta.json",
       "lib_cargo_file": "container/v1beta1/lib/Cargo.toml",
@@ -1315,6 +1345,21 @@
       "make_target": "container1_beta1",
       "bin_name": "container1_beta1",
       "rest_url": "https://container.googleapis.com/$discovery/rest?version=v1beta1"
+    },
+    {
+      "name": "container",
+      "id": "container:v1",
+      "metadata_file": "container/v1/meta.json",
+      "lib_cargo_file": "container/v1/lib/Cargo.toml",
+      "gen_error_file": "container/v1/generator-errors.log",
+      "cargo_error_file": "container/v1/cargo-errors.log",
+      "gen_dir": "container/v1",
+      "spec_file": "container/v1/spec.json",
+      "lib_crate_name": "google-container1",
+      "cli_crate_name": "google-container1-cli",
+      "make_target": "container1",
+      "bin_name": "container1",
+      "rest_url": "https://container.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "containeranalysis",
@@ -1359,7 +1404,7 @@
       "cli_crate_name": "google-content2-cli",
       "make_target": "content2",
       "bin_name": "content2",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/content/v2/rest"
+      "rest_url": "https://shoppingcontent.googleapis.com/$discovery/rest?version=v2"
     },
     {
       "name": "content",
@@ -1374,7 +1419,22 @@
       "cli_crate_name": "google-content2d1-cli",
       "make_target": "content2d1",
       "bin_name": "content2d1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/content/v2.1/rest"
+      "rest_url": "https://shoppingcontent.googleapis.com/$discovery/rest?version=v2.1"
+    },
+    {
+      "name": "customsearch",
+      "id": "customsearch:v1",
+      "metadata_file": "customsearch/v1/meta.json",
+      "lib_cargo_file": "customsearch/v1/lib/Cargo.toml",
+      "gen_error_file": "customsearch/v1/generator-errors.log",
+      "cargo_error_file": "customsearch/v1/cargo-errors.log",
+      "gen_dir": "customsearch/v1",
+      "spec_file": "customsearch/v1/spec.json",
+      "lib_crate_name": "google-customsearch1",
+      "cli_crate_name": "google-customsearch1-cli",
+      "make_target": "customsearch1",
+      "bin_name": "customsearch1",
+      "rest_url": "https://customsearch.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "datacatalog",
@@ -1422,19 +1482,34 @@
       "rest_url": "https://datafusion.googleapis.com/$discovery/rest?version=v1beta1"
     },
     {
-      "name": "dataproc",
-      "id": "dataproc:v1",
-      "metadata_file": "dataproc/v1/meta.json",
-      "lib_cargo_file": "dataproc/v1/lib/Cargo.toml",
-      "gen_error_file": "dataproc/v1/generator-errors.log",
-      "cargo_error_file": "dataproc/v1/cargo-errors.log",
-      "gen_dir": "dataproc/v1",
-      "spec_file": "dataproc/v1/spec.json",
-      "lib_crate_name": "google-dataproc1",
-      "cli_crate_name": "google-dataproc1-cli",
-      "make_target": "dataproc1",
-      "bin_name": "dataproc1",
-      "rest_url": "https://dataproc.googleapis.com/$discovery/rest?version=v1"
+      "name": "datafusion",
+      "id": "datafusion:v1",
+      "metadata_file": "datafusion/v1/meta.json",
+      "lib_cargo_file": "datafusion/v1/lib/Cargo.toml",
+      "gen_error_file": "datafusion/v1/generator-errors.log",
+      "cargo_error_file": "datafusion/v1/cargo-errors.log",
+      "gen_dir": "datafusion/v1",
+      "spec_file": "datafusion/v1/spec.json",
+      "lib_crate_name": "google-datafusion1",
+      "cli_crate_name": "google-datafusion1-cli",
+      "make_target": "datafusion1",
+      "bin_name": "datafusion1",
+      "rest_url": "https://datafusion.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
+      "name": "datamigration",
+      "id": "datamigration:v1",
+      "metadata_file": "datamigration/v1/meta.json",
+      "lib_cargo_file": "datamigration/v1/lib/Cargo.toml",
+      "gen_error_file": "datamigration/v1/generator-errors.log",
+      "cargo_error_file": "datamigration/v1/cargo-errors.log",
+      "gen_dir": "datamigration/v1",
+      "spec_file": "datamigration/v1/spec.json",
+      "lib_crate_name": "google-datamigration1",
+      "cli_crate_name": "google-datamigration1-cli",
+      "make_target": "datamigration1",
+      "bin_name": "datamigration1",
+      "rest_url": "https://datamigration.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "dataproc",
@@ -1452,19 +1527,19 @@
       "rest_url": "https://dataproc.googleapis.com/$discovery/rest?version=v1beta2"
     },
     {
-      "name": "datastore",
-      "id": "datastore:v1",
-      "metadata_file": "datastore/v1/meta.json",
-      "lib_cargo_file": "datastore/v1/lib/Cargo.toml",
-      "gen_error_file": "datastore/v1/generator-errors.log",
-      "cargo_error_file": "datastore/v1/cargo-errors.log",
-      "gen_dir": "datastore/v1",
-      "spec_file": "datastore/v1/spec.json",
-      "lib_crate_name": "google-datastore1",
-      "cli_crate_name": "google-datastore1-cli",
-      "make_target": "datastore1",
-      "bin_name": "datastore1",
-      "rest_url": "https://datastore.googleapis.com/$discovery/rest?version=v1"
+      "name": "dataproc",
+      "id": "dataproc:v1",
+      "metadata_file": "dataproc/v1/meta.json",
+      "lib_cargo_file": "dataproc/v1/lib/Cargo.toml",
+      "gen_error_file": "dataproc/v1/generator-errors.log",
+      "cargo_error_file": "dataproc/v1/cargo-errors.log",
+      "gen_dir": "dataproc/v1",
+      "spec_file": "dataproc/v1/spec.json",
+      "lib_crate_name": "google-dataproc1",
+      "cli_crate_name": "google-dataproc1-cli",
+      "make_target": "dataproc1",
+      "bin_name": "dataproc1",
+      "rest_url": "https://dataproc.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "datastore",
@@ -1497,6 +1572,21 @@
       "rest_url": "https://datastore.googleapis.com/$discovery/rest?version=v1beta3"
     },
     {
+      "name": "datastore",
+      "id": "datastore:v1",
+      "metadata_file": "datastore/v1/meta.json",
+      "lib_cargo_file": "datastore/v1/lib/Cargo.toml",
+      "gen_error_file": "datastore/v1/generator-errors.log",
+      "cargo_error_file": "datastore/v1/cargo-errors.log",
+      "gen_dir": "datastore/v1",
+      "spec_file": "datastore/v1/spec.json",
+      "lib_crate_name": "google-datastore1",
+      "cli_crate_name": "google-datastore1-cli",
+      "make_target": "datastore1",
+      "bin_name": "datastore1",
+      "rest_url": "https://datastore.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
       "name": "deploymentmanager",
       "id": "deploymentmanager:alpha",
       "metadata_file": "deploymentmanager/alpha/meta.json",
@@ -1509,7 +1599,7 @@
       "cli_crate_name": "google-deploymentmanageralpha-cli",
       "make_target": "deploymentmanageralpha",
       "bin_name": "deploymentmanageralpha",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/deploymentmanager/alpha/rest"
+      "rest_url": "https://deploymentmanager.googleapis.com/$discovery/rest?version=alpha"
     },
     {
       "name": "deploymentmanager",
@@ -1524,7 +1614,7 @@
       "cli_crate_name": "google-deploymentmanager2_beta-cli",
       "make_target": "deploymentmanager2_beta",
       "bin_name": "deploymentmanager2_beta",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/deploymentmanager/v2beta/rest"
+      "rest_url": "https://deploymentmanager.googleapis.com/$discovery/rest?version=v2beta"
     },
     {
       "name": "deploymentmanager",
@@ -1539,7 +1629,7 @@
       "cli_crate_name": "google-deploymentmanager2-cli",
       "make_target": "deploymentmanager2",
       "bin_name": "deploymentmanager2",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/deploymentmanager/v2/rest"
+      "rest_url": "https://deploymentmanager.googleapis.com/$discovery/rest?version=v2"
     },
     {
       "name": "dfareporting",
@@ -1554,7 +1644,7 @@
       "cli_crate_name": "google-dfareporting3d3-cli",
       "make_target": "dfareporting3d3",
       "bin_name": "dfareporting3d3",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/dfareporting/v3.3/rest"
+      "rest_url": "https://dfareporting.googleapis.com/$discovery/rest?version=v3.3"
     },
     {
       "name": "dfareporting",
@@ -1569,7 +1659,22 @@
       "cli_crate_name": "google-dfareporting3d4-cli",
       "make_target": "dfareporting3d4",
       "bin_name": "dfareporting3d4",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/dfareporting/v3.4/rest"
+      "rest_url": "https://dfareporting.googleapis.com/$discovery/rest?version=v3.4"
+    },
+    {
+      "name": "dialogflow",
+      "id": "dialogflow:v2beta1",
+      "metadata_file": "dialogflow/v2beta1/meta.json",
+      "lib_cargo_file": "dialogflow/v2beta1/lib/Cargo.toml",
+      "gen_error_file": "dialogflow/v2beta1/generator-errors.log",
+      "cargo_error_file": "dialogflow/v2beta1/cargo-errors.log",
+      "gen_dir": "dialogflow/v2beta1",
+      "spec_file": "dialogflow/v2beta1/spec.json",
+      "lib_crate_name": "google-dialogflow2_beta1",
+      "cli_crate_name": "google-dialogflow2_beta1-cli",
+      "make_target": "dialogflow2_beta1",
+      "bin_name": "dialogflow2_beta1",
+      "rest_url": "https://dialogflow.googleapis.com/$discovery/rest?version=v2beta1"
     },
     {
       "name": "dialogflow",
@@ -1588,18 +1693,18 @@
     },
     {
       "name": "dialogflow",
-      "id": "dialogflow:v2beta1",
-      "metadata_file": "dialogflow/v2beta1/meta.json",
-      "lib_cargo_file": "dialogflow/v2beta1/lib/Cargo.toml",
-      "gen_error_file": "dialogflow/v2beta1/generator-errors.log",
-      "cargo_error_file": "dialogflow/v2beta1/cargo-errors.log",
-      "gen_dir": "dialogflow/v2beta1",
-      "spec_file": "dialogflow/v2beta1/spec.json",
-      "lib_crate_name": "google-dialogflow2_beta1",
-      "cli_crate_name": "google-dialogflow2_beta1-cli",
-      "make_target": "dialogflow2_beta1",
-      "bin_name": "dialogflow2_beta1",
-      "rest_url": "https://dialogflow.googleapis.com/$discovery/rest?version=v2beta1"
+      "id": "dialogflow:v3",
+      "metadata_file": "dialogflow/v3/meta.json",
+      "lib_cargo_file": "dialogflow/v3/lib/Cargo.toml",
+      "gen_error_file": "dialogflow/v3/generator-errors.log",
+      "cargo_error_file": "dialogflow/v3/cargo-errors.log",
+      "gen_dir": "dialogflow/v3",
+      "spec_file": "dialogflow/v3/spec.json",
+      "lib_crate_name": "google-dialogflow3",
+      "cli_crate_name": "google-dialogflow3-cli",
+      "make_target": "dialogflow3",
+      "bin_name": "dialogflow3",
+      "rest_url": "https://dialogflow.googleapis.com/$discovery/rest?version=v3"
     },
     {
       "name": "digitalassetlinks",
@@ -1629,7 +1734,7 @@
       "cli_crate_name": "google-discovery1-cli",
       "make_target": "discovery1",
       "bin_name": "discovery1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/discovery/v1/rest"
+      "rest_url": "https://discovery.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "displayvideo",
@@ -1663,21 +1768,6 @@
     },
     {
       "name": "dns",
-      "id": "dns:v1",
-      "metadata_file": "dns/v1/meta.json",
-      "lib_cargo_file": "dns/v1/lib/Cargo.toml",
-      "gen_error_file": "dns/v1/generator-errors.log",
-      "cargo_error_file": "dns/v1/cargo-errors.log",
-      "gen_dir": "dns/v1",
-      "spec_file": "dns/v1/spec.json",
-      "lib_crate_name": "google-dns1",
-      "cli_crate_name": "google-dns1-cli",
-      "make_target": "dns1",
-      "bin_name": "dns1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/dns/v1/rest"
-    },
-    {
-      "name": "dns",
       "id": "dns:v1beta2",
       "metadata_file": "dns/v1beta2/meta.json",
       "lib_cargo_file": "dns/v1beta2/lib/Cargo.toml",
@@ -1689,22 +1779,22 @@
       "cli_crate_name": "google-dns1_beta2-cli",
       "make_target": "dns1_beta2",
       "bin_name": "dns1_beta2",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/dns/v1beta2/rest"
+      "rest_url": "https://dns.googleapis.com/$discovery/rest?version=v1beta2"
     },
     {
       "name": "dns",
-      "id": "dns:v2beta1",
-      "metadata_file": "dns/v2beta1/meta.json",
-      "lib_cargo_file": "dns/v2beta1/lib/Cargo.toml",
-      "gen_error_file": "dns/v2beta1/generator-errors.log",
-      "cargo_error_file": "dns/v2beta1/cargo-errors.log",
-      "gen_dir": "dns/v2beta1",
-      "spec_file": "dns/v2beta1/spec.json",
-      "lib_crate_name": "google-dns2_beta1",
-      "cli_crate_name": "google-dns2_beta1-cli",
-      "make_target": "dns2_beta1",
-      "bin_name": "dns2_beta1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/dns/v2beta1/rest"
+      "id": "dns:v1",
+      "metadata_file": "dns/v1/meta.json",
+      "lib_cargo_file": "dns/v1/lib/Cargo.toml",
+      "gen_error_file": "dns/v1/generator-errors.log",
+      "cargo_error_file": "dns/v1/cargo-errors.log",
+      "gen_dir": "dns/v1",
+      "spec_file": "dns/v1/spec.json",
+      "lib_crate_name": "google-dns1",
+      "cli_crate_name": "google-dns1-cli",
+      "make_target": "dns1",
+      "bin_name": "dns1",
+      "rest_url": "https://dns.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "docs",
@@ -1749,7 +1839,7 @@
       "cli_crate_name": "google-doubleclickbidmanager1-cli",
       "make_target": "doubleclickbidmanager1",
       "bin_name": "doubleclickbidmanager1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/doubleclickbidmanager/v1/rest"
+      "rest_url": "https://doubleclickbidmanager.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "doubleclicksearch",
@@ -1764,7 +1854,7 @@
       "cli_crate_name": "google-doubleclicksearch2-cli",
       "make_target": "doubleclicksearch2",
       "bin_name": "doubleclicksearch2",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/doubleclicksearch/v2/rest"
+      "rest_url": "https://doubleclicksearch.googleapis.com/$discovery/rest?version=v2"
     },
     {
       "name": "drive",
@@ -1812,6 +1902,21 @@
       "rest_url": "https://driveactivity.googleapis.com/$discovery/rest?version=v2"
     },
     {
+      "name": "eventarc",
+      "id": "eventarc:v1",
+      "metadata_file": "eventarc/v1/meta.json",
+      "lib_cargo_file": "eventarc/v1/lib/Cargo.toml",
+      "gen_error_file": "eventarc/v1/generator-errors.log",
+      "cargo_error_file": "eventarc/v1/cargo-errors.log",
+      "gen_dir": "eventarc/v1",
+      "spec_file": "eventarc/v1/spec.json",
+      "lib_crate_name": "google-eventarc1",
+      "cli_crate_name": "google-eventarc1-cli",
+      "make_target": "eventarc1",
+      "bin_name": "eventarc1",
+      "rest_url": "https://eventarc.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
       "name": "factchecktools",
       "id": "factchecktools:v1alpha1",
       "metadata_file": "factchecktools/v1alpha1/meta.json",
@@ -1843,21 +1948,6 @@
     },
     {
       "name": "file",
-      "id": "file:v1",
-      "metadata_file": "file/v1/meta.json",
-      "lib_cargo_file": "file/v1/lib/Cargo.toml",
-      "gen_error_file": "file/v1/generator-errors.log",
-      "cargo_error_file": "file/v1/cargo-errors.log",
-      "gen_dir": "file/v1",
-      "spec_file": "file/v1/spec.json",
-      "lib_crate_name": "google-file1",
-      "cli_crate_name": "google-file1-cli",
-      "make_target": "file1",
-      "bin_name": "file1",
-      "rest_url": "https://file.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
-      "name": "file",
       "id": "file:v1beta1",
       "metadata_file": "file/v1beta1/meta.json",
       "lib_cargo_file": "file/v1beta1/lib/Cargo.toml",
@@ -1870,6 +1960,21 @@
       "make_target": "file1_beta1",
       "bin_name": "file1_beta1",
       "rest_url": "https://file.googleapis.com/$discovery/rest?version=v1beta1"
+    },
+    {
+      "name": "file",
+      "id": "file:v1",
+      "metadata_file": "file/v1/meta.json",
+      "lib_cargo_file": "file/v1/lib/Cargo.toml",
+      "gen_error_file": "file/v1/generator-errors.log",
+      "cargo_error_file": "file/v1/cargo-errors.log",
+      "gen_dir": "file/v1",
+      "spec_file": "file/v1/spec.json",
+      "lib_crate_name": "google-file1",
+      "cli_crate_name": "google-file1-cli",
+      "make_target": "file1",
+      "bin_name": "file1",
+      "rest_url": "https://file.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "firebase",
@@ -1917,6 +2022,21 @@
       "rest_url": "https://firebasehosting.googleapis.com/$discovery/rest?version=v1beta1"
     },
     {
+      "name": "firebasehosting",
+      "id": "firebasehosting:v1",
+      "metadata_file": "firebasehosting/v1/meta.json",
+      "lib_cargo_file": "firebasehosting/v1/lib/Cargo.toml",
+      "gen_error_file": "firebasehosting/v1/generator-errors.log",
+      "cargo_error_file": "firebasehosting/v1/cargo-errors.log",
+      "gen_dir": "firebasehosting/v1",
+      "spec_file": "firebasehosting/v1/spec.json",
+      "lib_crate_name": "google-firebasehosting1",
+      "cli_crate_name": "google-firebasehosting1-cli",
+      "make_target": "firebasehosting1",
+      "bin_name": "firebasehosting1",
+      "rest_url": "https://firebasehosting.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
       "name": "firebaseml",
       "id": "firebaseml:v1beta2",
       "metadata_file": "firebaseml/v1beta2/meta.json",
@@ -1932,6 +2052,21 @@
       "rest_url": "https://firebaseml.googleapis.com/$discovery/rest?version=v1beta2"
     },
     {
+      "name": "firebaseml",
+      "id": "firebaseml:v1",
+      "metadata_file": "firebaseml/v1/meta.json",
+      "lib_cargo_file": "firebaseml/v1/lib/Cargo.toml",
+      "gen_error_file": "firebaseml/v1/generator-errors.log",
+      "cargo_error_file": "firebaseml/v1/cargo-errors.log",
+      "gen_dir": "firebaseml/v1",
+      "spec_file": "firebaseml/v1/spec.json",
+      "lib_crate_name": "google-firebaseml1",
+      "cli_crate_name": "google-firebaseml1-cli",
+      "make_target": "firebaseml1",
+      "bin_name": "firebaseml1",
+      "rest_url": "https://firebaseml.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
       "name": "firebaserules",
       "id": "firebaserules:v1",
       "metadata_file": "firebaserules/v1/meta.json",
@@ -1945,21 +2080,6 @@
       "make_target": "firebaserules1",
       "bin_name": "firebaserules1",
       "rest_url": "https://firebaserules.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
-      "name": "firestore",
-      "id": "firestore:v1",
-      "metadata_file": "firestore/v1/meta.json",
-      "lib_cargo_file": "firestore/v1/lib/Cargo.toml",
-      "gen_error_file": "firestore/v1/generator-errors.log",
-      "cargo_error_file": "firestore/v1/cargo-errors.log",
-      "gen_dir": "firestore/v1",
-      "spec_file": "firestore/v1/spec.json",
-      "lib_crate_name": "google-firestore1",
-      "cli_crate_name": "google-firestore1-cli",
-      "make_target": "firestore1",
-      "bin_name": "firestore1",
-      "rest_url": "https://firestore.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "firestore",
@@ -1992,6 +2112,21 @@
       "rest_url": "https://firestore.googleapis.com/$discovery/rest?version=v1beta2"
     },
     {
+      "name": "firestore",
+      "id": "firestore:v1",
+      "metadata_file": "firestore/v1/meta.json",
+      "lib_cargo_file": "firestore/v1/lib/Cargo.toml",
+      "gen_error_file": "firestore/v1/generator-errors.log",
+      "cargo_error_file": "firestore/v1/cargo-errors.log",
+      "gen_dir": "firestore/v1",
+      "spec_file": "firestore/v1/spec.json",
+      "lib_crate_name": "google-firestore1",
+      "cli_crate_name": "google-firestore1-cli",
+      "make_target": "firestore1",
+      "bin_name": "firestore1",
+      "rest_url": "https://firestore.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
       "name": "fitness",
       "id": "fitness:v1",
       "metadata_file": "fitness/v1/meta.json",
@@ -2004,7 +2139,7 @@
       "cli_crate_name": "google-fitness1-cli",
       "make_target": "fitness1",
       "bin_name": "fitness1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/fitness/v1/rest"
+      "rest_url": "https://fitness.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "games",
@@ -2019,7 +2154,7 @@
       "cli_crate_name": "google-games1-cli",
       "make_target": "games1",
       "bin_name": "games1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/games/v1/rest"
+      "rest_url": "https://games.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "gamesConfiguration",
@@ -2034,7 +2169,7 @@
       "cli_crate_name": "google-gamesConfiguration1_configuration-cli",
       "make_target": "gamesConfiguration1_configuration",
       "bin_name": "gamesConfiguration1_configuration",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/gamesConfiguration/v1configuration/rest"
+      "rest_url": "https://gamesconfiguration.googleapis.com/$discovery/rest?version=v1configuration"
     },
     {
       "name": "gamesManagement",
@@ -2049,7 +2184,7 @@
       "cli_crate_name": "google-gamesManagement1_management-cli",
       "make_target": "gamesManagement1_management",
       "bin_name": "gamesManagement1_management",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/gamesManagement/v1management/rest"
+      "rest_url": "https://gamesmanagement.googleapis.com/$discovery/rest?version=v1management"
     },
     {
       "name": "gameservices",
@@ -2065,6 +2200,21 @@
       "make_target": "gameservices1_beta",
       "bin_name": "gameservices1_beta",
       "rest_url": "https://gameservices.googleapis.com/$discovery/rest?version=v1beta"
+    },
+    {
+      "name": "gameservices",
+      "id": "gameservices:v1",
+      "metadata_file": "gameservices/v1/meta.json",
+      "lib_cargo_file": "gameservices/v1/lib/Cargo.toml",
+      "gen_error_file": "gameservices/v1/generator-errors.log",
+      "cargo_error_file": "gameservices/v1/cargo-errors.log",
+      "gen_dir": "gameservices/v1",
+      "spec_file": "gameservices/v1/spec.json",
+      "lib_crate_name": "google-gameservices1",
+      "cli_crate_name": "google-gameservices1-cli",
+      "make_target": "gameservices1",
+      "bin_name": "gameservices1",
+      "rest_url": "https://gameservices.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "genomics",
@@ -2112,6 +2262,21 @@
       "rest_url": "https://genomics.googleapis.com/$discovery/rest?version=v1"
     },
     {
+      "name": "gkehub",
+      "id": "gkehub:v1",
+      "metadata_file": "gkehub/v1/meta.json",
+      "lib_cargo_file": "gkehub/v1/lib/Cargo.toml",
+      "gen_error_file": "gkehub/v1/generator-errors.log",
+      "cargo_error_file": "gkehub/v1/cargo-errors.log",
+      "gen_dir": "gkehub/v1",
+      "spec_file": "gkehub/v1/spec.json",
+      "lib_crate_name": "google-gkehub1",
+      "cli_crate_name": "google-gkehub1-cli",
+      "make_target": "gkehub1",
+      "bin_name": "gkehub1",
+      "rest_url": "https://gkehub.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
       "name": "gmail",
       "id": "gmail:v1",
       "metadata_file": "gmail/v1/meta.json",
@@ -2124,7 +2289,22 @@
       "cli_crate_name": "google-gmail1-cli",
       "make_target": "gmail1",
       "bin_name": "gmail1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest"
+      "rest_url": "https://gmail.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
+      "name": "gmailpostmastertools",
+      "id": "gmailpostmastertools:v1",
+      "metadata_file": "gmailpostmastertools/v1/meta.json",
+      "lib_cargo_file": "gmailpostmastertools/v1/lib/Cargo.toml",
+      "gen_error_file": "gmailpostmastertools/v1/generator-errors.log",
+      "cargo_error_file": "gmailpostmastertools/v1/cargo-errors.log",
+      "gen_dir": "gmailpostmastertools/v1",
+      "spec_file": "gmailpostmastertools/v1/spec.json",
+      "lib_crate_name": "google-gmailpostmastertools1",
+      "cli_crate_name": "google-gmailpostmastertools1-cli",
+      "make_target": "gmailpostmastertools1",
+      "bin_name": "gmailpostmastertools1",
+      "rest_url": "https://gmailpostmastertools.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "groupsmigration",
@@ -2139,7 +2319,7 @@
       "cli_crate_name": "google-groupsmigration1-cli",
       "make_target": "groupsmigration1",
       "bin_name": "groupsmigration1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/groupsmigration/v1/rest"
+      "rest_url": "https://groupsmigration.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "groupssettings",
@@ -2154,22 +2334,7 @@
       "cli_crate_name": "google-groupssettings1-cli",
       "make_target": "groupssettings1",
       "bin_name": "groupssettings1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/groupssettings/v1/rest"
-    },
-    {
-      "name": "healthcare",
-      "id": "healthcare:v1",
-      "metadata_file": "healthcare/v1/meta.json",
-      "lib_cargo_file": "healthcare/v1/lib/Cargo.toml",
-      "gen_error_file": "healthcare/v1/generator-errors.log",
-      "cargo_error_file": "healthcare/v1/cargo-errors.log",
-      "gen_dir": "healthcare/v1",
-      "spec_file": "healthcare/v1/spec.json",
-      "lib_crate_name": "google-healthcare1",
-      "cli_crate_name": "google-healthcare1-cli",
-      "make_target": "healthcare1",
-      "bin_name": "healthcare1",
-      "rest_url": "https://healthcare.googleapis.com/$discovery/rest?version=v1"
+      "rest_url": "https://groupssettings.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "healthcare",
@@ -2185,6 +2350,21 @@
       "make_target": "healthcare1_beta1",
       "bin_name": "healthcare1_beta1",
       "rest_url": "https://healthcare.googleapis.com/$discovery/rest?version=v1beta1"
+    },
+    {
+      "name": "healthcare",
+      "id": "healthcare:v1",
+      "metadata_file": "healthcare/v1/meta.json",
+      "lib_cargo_file": "healthcare/v1/lib/Cargo.toml",
+      "gen_error_file": "healthcare/v1/generator-errors.log",
+      "cargo_error_file": "healthcare/v1/cargo-errors.log",
+      "gen_dir": "healthcare/v1",
+      "spec_file": "healthcare/v1/spec.json",
+      "lib_crate_name": "google-healthcare1",
+      "cli_crate_name": "google-healthcare1-cli",
+      "make_target": "healthcare1",
+      "bin_name": "healthcare1",
+      "rest_url": "https://healthcare.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "homegraph",
@@ -2233,21 +2413,6 @@
     },
     {
       "name": "iap",
-      "id": "iap:v1",
-      "metadata_file": "iap/v1/meta.json",
-      "lib_cargo_file": "iap/v1/lib/Cargo.toml",
-      "gen_error_file": "iap/v1/generator-errors.log",
-      "cargo_error_file": "iap/v1/cargo-errors.log",
-      "gen_dir": "iap/v1",
-      "spec_file": "iap/v1/spec.json",
-      "lib_crate_name": "google-iap1",
-      "cli_crate_name": "google-iap1-cli",
-      "make_target": "iap1",
-      "bin_name": "iap1",
-      "rest_url": "https://iap.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
-      "name": "iap",
       "id": "iap:v1beta1",
       "metadata_file": "iap/v1beta1/meta.json",
       "lib_cargo_file": "iap/v1beta1/lib/Cargo.toml",
@@ -2262,34 +2427,19 @@
       "rest_url": "https://iap.googleapis.com/$discovery/rest?version=v1beta1"
     },
     {
-      "name": "identitytoolkit",
-      "id": "identitytoolkit:v1",
-      "metadata_file": "identitytoolkit/v1/meta.json",
-      "lib_cargo_file": "identitytoolkit/v1/lib/Cargo.toml",
-      "gen_error_file": "identitytoolkit/v1/generator-errors.log",
-      "cargo_error_file": "identitytoolkit/v1/cargo-errors.log",
-      "gen_dir": "identitytoolkit/v1",
-      "spec_file": "identitytoolkit/v1/spec.json",
-      "lib_crate_name": "google-identitytoolkit1",
-      "cli_crate_name": "google-identitytoolkit1-cli",
-      "make_target": "identitytoolkit1",
-      "bin_name": "identitytoolkit1",
-      "rest_url": "https://identitytoolkit.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
-      "name": "identitytoolkit",
-      "id": "identitytoolkit:v2",
-      "metadata_file": "identitytoolkit/v2/meta.json",
-      "lib_cargo_file": "identitytoolkit/v2/lib/Cargo.toml",
-      "gen_error_file": "identitytoolkit/v2/generator-errors.log",
-      "cargo_error_file": "identitytoolkit/v2/cargo-errors.log",
-      "gen_dir": "identitytoolkit/v2",
-      "spec_file": "identitytoolkit/v2/spec.json",
-      "lib_crate_name": "google-identitytoolkit2",
-      "cli_crate_name": "google-identitytoolkit2-cli",
-      "make_target": "identitytoolkit2",
-      "bin_name": "identitytoolkit2",
-      "rest_url": "https://identitytoolkit.googleapis.com/$discovery/rest?version=v2"
+      "name": "iap",
+      "id": "iap:v1",
+      "metadata_file": "iap/v1/meta.json",
+      "lib_cargo_file": "iap/v1/lib/Cargo.toml",
+      "gen_error_file": "iap/v1/generator-errors.log",
+      "cargo_error_file": "iap/v1/cargo-errors.log",
+      "gen_dir": "iap/v1",
+      "spec_file": "iap/v1/spec.json",
+      "lib_crate_name": "google-iap1",
+      "cli_crate_name": "google-iap1-cli",
+      "make_target": "iap1",
+      "bin_name": "iap1",
+      "rest_url": "https://iap.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "identitytoolkit",
@@ -2338,21 +2488,6 @@
     },
     {
       "name": "jobs",
-      "id": "jobs:v2",
-      "metadata_file": "jobs/v2/meta.json",
-      "lib_cargo_file": "jobs/v2/lib/Cargo.toml",
-      "gen_error_file": "jobs/v2/generator-errors.log",
-      "cargo_error_file": "jobs/v2/cargo-errors.log",
-      "gen_dir": "jobs/v2",
-      "spec_file": "jobs/v2/spec.json",
-      "lib_crate_name": "google-jobs2",
-      "cli_crate_name": "google-jobs2-cli",
-      "make_target": "jobs2",
-      "bin_name": "jobs2",
-      "rest_url": "https://jobs.googleapis.com/$discovery/rest?version=v2"
-    },
-    {
-      "name": "jobs",
       "id": "jobs:v3",
       "metadata_file": "jobs/v3/meta.json",
       "lib_cargo_file": "jobs/v3/lib/Cargo.toml",
@@ -2365,6 +2500,21 @@
       "make_target": "jobs3",
       "bin_name": "jobs3",
       "rest_url": "https://jobs.googleapis.com/$discovery/rest?version=v3"
+    },
+    {
+      "name": "jobs",
+      "id": "jobs:v4",
+      "metadata_file": "jobs/v4/meta.json",
+      "lib_cargo_file": "jobs/v4/lib/Cargo.toml",
+      "gen_error_file": "jobs/v4/generator-errors.log",
+      "cargo_error_file": "jobs/v4/cargo-errors.log",
+      "gen_dir": "jobs/v4",
+      "spec_file": "jobs/v4/spec.json",
+      "lib_crate_name": "google-jobs4",
+      "cli_crate_name": "google-jobs4-cli",
+      "make_target": "jobs4",
+      "bin_name": "jobs4",
+      "rest_url": "https://jobs.googleapis.com/$discovery/rest?version=v4"
     },
     {
       "name": "kgsearch",
@@ -2380,21 +2530,6 @@
       "make_target": "kgsearch1",
       "bin_name": "kgsearch1",
       "rest_url": "https://kgsearch.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
-      "name": "language",
-      "id": "language:v1",
-      "metadata_file": "language/v1/meta.json",
-      "lib_cargo_file": "language/v1/lib/Cargo.toml",
-      "gen_error_file": "language/v1/generator-errors.log",
-      "cargo_error_file": "language/v1/cargo-errors.log",
-      "gen_dir": "language/v1",
-      "spec_file": "language/v1/spec.json",
-      "lib_crate_name": "google-language1",
-      "cli_crate_name": "google-language1-cli",
-      "make_target": "language1",
-      "bin_name": "language1",
-      "rest_url": "https://language.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "language",
@@ -2427,6 +2562,21 @@
       "rest_url": "https://language.googleapis.com/$discovery/rest?version=v1beta2"
     },
     {
+      "name": "language",
+      "id": "language:v1",
+      "metadata_file": "language/v1/meta.json",
+      "lib_cargo_file": "language/v1/lib/Cargo.toml",
+      "gen_error_file": "language/v1/generator-errors.log",
+      "cargo_error_file": "language/v1/cargo-errors.log",
+      "gen_dir": "language/v1",
+      "spec_file": "language/v1/spec.json",
+      "lib_crate_name": "google-language1",
+      "cli_crate_name": "google-language1-cli",
+      "make_target": "language1",
+      "bin_name": "language1",
+      "rest_url": "https://language.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
       "name": "libraryagent",
       "id": "libraryagent:v1",
       "metadata_file": "libraryagent/v1/meta.json",
@@ -2454,7 +2604,7 @@
       "cli_crate_name": "google-licensing1-cli",
       "make_target": "licensing1",
       "bin_name": "licensing1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/licensing/v1/rest"
+      "rest_url": "https://licensing.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "lifesciences",
@@ -2470,6 +2620,21 @@
       "make_target": "lifesciences2_beta",
       "bin_name": "lifesciences2_beta",
       "rest_url": "https://lifesciences.googleapis.com/$discovery/rest?version=v2beta"
+    },
+    {
+      "name": "localservices",
+      "id": "localservices:v1",
+      "metadata_file": "localservices/v1/meta.json",
+      "lib_cargo_file": "localservices/v1/lib/Cargo.toml",
+      "gen_error_file": "localservices/v1/generator-errors.log",
+      "cargo_error_file": "localservices/v1/cargo-errors.log",
+      "gen_dir": "localservices/v1",
+      "spec_file": "localservices/v1/spec.json",
+      "lib_crate_name": "google-localservices1",
+      "cli_crate_name": "google-localservices1-cli",
+      "make_target": "localservices1",
+      "bin_name": "localservices1",
+      "rest_url": "https://localservices.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "logging",
@@ -2503,21 +2668,6 @@
     },
     {
       "name": "managedidentities",
-      "id": "managedidentities:v1",
-      "metadata_file": "managedidentities/v1/meta.json",
-      "lib_cargo_file": "managedidentities/v1/lib/Cargo.toml",
-      "gen_error_file": "managedidentities/v1/generator-errors.log",
-      "cargo_error_file": "managedidentities/v1/cargo-errors.log",
-      "gen_dir": "managedidentities/v1",
-      "spec_file": "managedidentities/v1/spec.json",
-      "lib_crate_name": "google-managedidentities1",
-      "cli_crate_name": "google-managedidentities1-cli",
-      "make_target": "managedidentities1",
-      "bin_name": "managedidentities1",
-      "rest_url": "https://managedidentities.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
-      "name": "managedidentities",
       "id": "managedidentities:v1beta1",
       "metadata_file": "managedidentities/v1beta1/meta.json",
       "lib_cargo_file": "managedidentities/v1beta1/lib/Cargo.toml",
@@ -2530,6 +2680,21 @@
       "make_target": "managedidentities1_beta1",
       "bin_name": "managedidentities1_beta1",
       "rest_url": "https://managedidentities.googleapis.com/$discovery/rest?version=v1beta1"
+    },
+    {
+      "name": "managedidentities",
+      "id": "managedidentities:v1",
+      "metadata_file": "managedidentities/v1/meta.json",
+      "lib_cargo_file": "managedidentities/v1/lib/Cargo.toml",
+      "gen_error_file": "managedidentities/v1/generator-errors.log",
+      "cargo_error_file": "managedidentities/v1/cargo-errors.log",
+      "gen_dir": "managedidentities/v1",
+      "spec_file": "managedidentities/v1/spec.json",
+      "lib_crate_name": "google-managedidentities1",
+      "cli_crate_name": "google-managedidentities1-cli",
+      "make_target": "managedidentities1",
+      "bin_name": "managedidentities1",
+      "rest_url": "https://managedidentities.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "manufacturers",
@@ -2560,6 +2725,21 @@
       "make_target": "memcache1_beta2",
       "bin_name": "memcache1_beta2",
       "rest_url": "https://memcache.googleapis.com/$discovery/rest?version=v1beta2"
+    },
+    {
+      "name": "memcache",
+      "id": "memcache:v1",
+      "metadata_file": "memcache/v1/meta.json",
+      "lib_cargo_file": "memcache/v1/lib/Cargo.toml",
+      "gen_error_file": "memcache/v1/generator-errors.log",
+      "cargo_error_file": "memcache/v1/cargo-errors.log",
+      "gen_dir": "memcache/v1",
+      "spec_file": "memcache/v1/spec.json",
+      "lib_crate_name": "google-memcache1",
+      "cli_crate_name": "google-memcache1-cli",
+      "make_target": "memcache1",
+      "bin_name": "memcache1",
+      "rest_url": "https://memcache.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "ml",
@@ -2607,6 +2787,21 @@
       "rest_url": "https://monitoring.googleapis.com/$discovery/rest?version=v3"
     },
     {
+      "name": "mybusinessaccountmanagement",
+      "id": "mybusinessaccountmanagement:v1",
+      "metadata_file": "mybusinessaccountmanagement/v1/meta.json",
+      "lib_cargo_file": "mybusinessaccountmanagement/v1/lib/Cargo.toml",
+      "gen_error_file": "mybusinessaccountmanagement/v1/generator-errors.log",
+      "cargo_error_file": "mybusinessaccountmanagement/v1/cargo-errors.log",
+      "gen_dir": "mybusinessaccountmanagement/v1",
+      "spec_file": "mybusinessaccountmanagement/v1/spec.json",
+      "lib_crate_name": "google-mybusinessaccountmanagement1",
+      "cli_crate_name": "google-mybusinessaccountmanagement1-cli",
+      "make_target": "mybusinessaccountmanagement1",
+      "bin_name": "mybusinessaccountmanagement1",
+      "rest_url": "https://mybusinessaccountmanagement.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
       "name": "networkmanagement",
       "id": "networkmanagement:v1beta1",
       "metadata_file": "networkmanagement/v1beta1/meta.json",
@@ -2622,6 +2817,36 @@
       "rest_url": "https://networkmanagement.googleapis.com/$discovery/rest?version=v1beta1"
     },
     {
+      "name": "networkmanagement",
+      "id": "networkmanagement:v1",
+      "metadata_file": "networkmanagement/v1/meta.json",
+      "lib_cargo_file": "networkmanagement/v1/lib/Cargo.toml",
+      "gen_error_file": "networkmanagement/v1/generator-errors.log",
+      "cargo_error_file": "networkmanagement/v1/cargo-errors.log",
+      "gen_dir": "networkmanagement/v1",
+      "spec_file": "networkmanagement/v1/spec.json",
+      "lib_crate_name": "google-networkmanagement1",
+      "cli_crate_name": "google-networkmanagement1-cli",
+      "make_target": "networkmanagement1",
+      "bin_name": "networkmanagement1",
+      "rest_url": "https://networkmanagement.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
+      "name": "notebooks",
+      "id": "notebooks:v1",
+      "metadata_file": "notebooks/v1/meta.json",
+      "lib_cargo_file": "notebooks/v1/lib/Cargo.toml",
+      "gen_error_file": "notebooks/v1/generator-errors.log",
+      "cargo_error_file": "notebooks/v1/cargo-errors.log",
+      "gen_dir": "notebooks/v1",
+      "spec_file": "notebooks/v1/spec.json",
+      "lib_crate_name": "google-notebooks1",
+      "cli_crate_name": "google-notebooks1-cli",
+      "make_target": "notebooks1",
+      "bin_name": "notebooks1",
+      "rest_url": "https://notebooks.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
       "name": "oauth",
       "id": "oauth2:v2",
       "metadata_file": "oauth/v2/meta.json",
@@ -2635,6 +2860,21 @@
       "make_target": "oauth2",
       "bin_name": "oauth2",
       "rest_url": "https://www.googleapis.com/discovery/v1/apis/oauth2/v2/rest"
+    },
+    {
+      "name": "orgpolicy",
+      "id": "orgpolicy:v2",
+      "metadata_file": "orgpolicy/v2/meta.json",
+      "lib_cargo_file": "orgpolicy/v2/lib/Cargo.toml",
+      "gen_error_file": "orgpolicy/v2/generator-errors.log",
+      "cargo_error_file": "orgpolicy/v2/cargo-errors.log",
+      "gen_dir": "orgpolicy/v2",
+      "spec_file": "orgpolicy/v2/spec.json",
+      "lib_crate_name": "google-orgpolicy2",
+      "cli_crate_name": "google-orgpolicy2-cli",
+      "make_target": "orgpolicy2",
+      "bin_name": "orgpolicy2",
+      "rest_url": "https://orgpolicy.googleapis.com/$discovery/rest?version=v2"
     },
     {
       "name": "osconfig",
@@ -2709,7 +2949,7 @@
       "cli_crate_name": "google-pagespeedonline5-cli",
       "make_target": "pagespeedonline5",
       "bin_name": "pagespeedonline5",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/pagespeedonline/v5/rest"
+      "rest_url": "https://pagespeedonline.googleapis.com/$discovery/rest?version=v5"
     },
     {
       "name": "people",
@@ -2727,6 +2967,21 @@
       "rest_url": "https://people.googleapis.com/$discovery/rest?version=v1"
     },
     {
+      "name": "playablelocations",
+      "id": "playablelocations:v3",
+      "metadata_file": "playablelocations/v3/meta.json",
+      "lib_cargo_file": "playablelocations/v3/lib/Cargo.toml",
+      "gen_error_file": "playablelocations/v3/generator-errors.log",
+      "cargo_error_file": "playablelocations/v3/cargo-errors.log",
+      "gen_dir": "playablelocations/v3",
+      "spec_file": "playablelocations/v3/spec.json",
+      "lib_crate_name": "google-playablelocations3",
+      "cli_crate_name": "google-playablelocations3-cli",
+      "make_target": "playablelocations3",
+      "bin_name": "playablelocations3",
+      "rest_url": "https://playablelocations.googleapis.com/$discovery/rest?version=v3"
+    },
+    {
       "name": "playcustomapp",
       "id": "playcustomapp:v1",
       "metadata_file": "playcustomapp/v1/meta.json",
@@ -2739,22 +2994,7 @@
       "cli_crate_name": "google-playcustomapp1-cli",
       "make_target": "playcustomapp1",
       "bin_name": "playcustomapp1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/playcustomapp/v1/rest"
-    },
-    {
-      "name": "plus",
-      "id": "plus:v1",
-      "metadata_file": "plus/v1/meta.json",
-      "lib_cargo_file": "plus/v1/lib/Cargo.toml",
-      "gen_error_file": "plus/v1/generator-errors.log",
-      "cargo_error_file": "plus/v1/cargo-errors.log",
-      "gen_dir": "plus/v1",
-      "spec_file": "plus/v1/spec.json",
-      "lib_crate_name": "google-plus1",
-      "cli_crate_name": "google-plus1-cli",
-      "make_target": "plus1",
-      "bin_name": "plus1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/plus/v1/rest"
+      "rest_url": "https://playcustomapp.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "policytroubleshooter",
@@ -2833,6 +3073,21 @@
     },
     {
       "name": "pubsub",
+      "id": "pubsub:v1beta2",
+      "metadata_file": "pubsub/v1beta2/meta.json",
+      "lib_cargo_file": "pubsub/v1beta2/lib/Cargo.toml",
+      "gen_error_file": "pubsub/v1beta2/generator-errors.log",
+      "cargo_error_file": "pubsub/v1beta2/cargo-errors.log",
+      "gen_dir": "pubsub/v1beta2",
+      "spec_file": "pubsub/v1beta2/spec.json",
+      "lib_crate_name": "google-pubsub1_beta2",
+      "cli_crate_name": "google-pubsub1_beta2-cli",
+      "make_target": "pubsub1_beta2",
+      "bin_name": "pubsub1_beta2",
+      "rest_url": "https://pubsub.googleapis.com/$discovery/rest?version=v1beta2"
+    },
+    {
+      "name": "pubsub",
       "id": "pubsub:v1",
       "metadata_file": "pubsub/v1/meta.json",
       "lib_cargo_file": "pubsub/v1/lib/Cargo.toml",
@@ -2847,19 +3102,34 @@
       "rest_url": "https://pubsub.googleapis.com/$discovery/rest?version=v1"
     },
     {
-      "name": "pubsub",
-      "id": "pubsub:v1beta2",
-      "metadata_file": "pubsub/v1beta2/meta.json",
-      "lib_cargo_file": "pubsub/v1beta2/lib/Cargo.toml",
-      "gen_error_file": "pubsub/v1beta2/generator-errors.log",
-      "cargo_error_file": "pubsub/v1beta2/cargo-errors.log",
-      "gen_dir": "pubsub/v1beta2",
-      "spec_file": "pubsub/v1beta2/spec.json",
-      "lib_crate_name": "google-pubsub1_beta2",
-      "cli_crate_name": "google-pubsub1_beta2-cli",
-      "make_target": "pubsub1_beta2",
-      "bin_name": "pubsub1_beta2",
-      "rest_url": "https://pubsub.googleapis.com/$discovery/rest?version=v1beta2"
+      "name": "pubsublite",
+      "id": "pubsublite:v1",
+      "metadata_file": "pubsublite/v1/meta.json",
+      "lib_cargo_file": "pubsublite/v1/lib/Cargo.toml",
+      "gen_error_file": "pubsublite/v1/generator-errors.log",
+      "cargo_error_file": "pubsublite/v1/cargo-errors.log",
+      "gen_dir": "pubsublite/v1",
+      "spec_file": "pubsublite/v1/spec.json",
+      "lib_crate_name": "google-pubsublite1",
+      "cli_crate_name": "google-pubsublite1-cli",
+      "make_target": "pubsublite1",
+      "bin_name": "pubsublite1",
+      "rest_url": "https://pubsublite.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
+      "name": "realtimebidding",
+      "id": "realtimebidding:v1",
+      "metadata_file": "realtimebidding/v1/meta.json",
+      "lib_cargo_file": "realtimebidding/v1/lib/Cargo.toml",
+      "gen_error_file": "realtimebidding/v1/generator-errors.log",
+      "cargo_error_file": "realtimebidding/v1/cargo-errors.log",
+      "gen_dir": "realtimebidding/v1",
+      "spec_file": "realtimebidding/v1/spec.json",
+      "lib_crate_name": "google-realtimebidding1",
+      "cli_crate_name": "google-realtimebidding1-cli",
+      "make_target": "realtimebidding1",
+      "bin_name": "realtimebidding1",
+      "rest_url": "https://realtimebidding.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "recommender",
@@ -2877,19 +3147,19 @@
       "rest_url": "https://recommender.googleapis.com/$discovery/rest?version=v1beta1"
     },
     {
-      "name": "redis",
-      "id": "redis:v1",
-      "metadata_file": "redis/v1/meta.json",
-      "lib_cargo_file": "redis/v1/lib/Cargo.toml",
-      "gen_error_file": "redis/v1/generator-errors.log",
-      "cargo_error_file": "redis/v1/cargo-errors.log",
-      "gen_dir": "redis/v1",
-      "spec_file": "redis/v1/spec.json",
-      "lib_crate_name": "google-redis1",
-      "cli_crate_name": "google-redis1-cli",
-      "make_target": "redis1",
-      "bin_name": "redis1",
-      "rest_url": "https://redis.googleapis.com/$discovery/rest?version=v1"
+      "name": "recommender",
+      "id": "recommender:v1",
+      "metadata_file": "recommender/v1/meta.json",
+      "lib_cargo_file": "recommender/v1/lib/Cargo.toml",
+      "gen_error_file": "recommender/v1/generator-errors.log",
+      "cargo_error_file": "recommender/v1/cargo-errors.log",
+      "gen_dir": "recommender/v1",
+      "spec_file": "recommender/v1/spec.json",
+      "lib_crate_name": "google-recommender1",
+      "cli_crate_name": "google-recommender1-cli",
+      "make_target": "recommender1",
+      "bin_name": "recommender1",
+      "rest_url": "https://recommender.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "redis",
@@ -2907,6 +3177,21 @@
       "rest_url": "https://redis.googleapis.com/$discovery/rest?version=v1beta1"
     },
     {
+      "name": "redis",
+      "id": "redis:v1",
+      "metadata_file": "redis/v1/meta.json",
+      "lib_cargo_file": "redis/v1/lib/Cargo.toml",
+      "gen_error_file": "redis/v1/generator-errors.log",
+      "cargo_error_file": "redis/v1/cargo-errors.log",
+      "gen_dir": "redis/v1",
+      "spec_file": "redis/v1/spec.json",
+      "lib_crate_name": "google-redis1",
+      "cli_crate_name": "google-redis1-cli",
+      "make_target": "redis1",
+      "bin_name": "redis1",
+      "rest_url": "https://redis.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
       "name": "remotebuildexecution",
       "id": "remotebuildexecution:v1alpha",
       "metadata_file": "remotebuildexecution/v1alpha/meta.json",
@@ -2919,7 +3204,7 @@
       "cli_crate_name": "google-remotebuildexecution1_alpha-cli",
       "make_target": "remotebuildexecution1_alpha",
       "bin_name": "remotebuildexecution1_alpha",
-      "rest_url": "https://remotebuildexecution.googleapis.com/$discovery/rest?version=v1alpha"
+      "rest_url": "https://admin-remotebuildexecution.googleapis.com/$discovery/rest?version=v1alpha"
     },
     {
       "name": "remotebuildexecution",
@@ -2964,7 +3249,22 @@
       "cli_crate_name": "google-reseller1-cli",
       "make_target": "reseller1",
       "bin_name": "reseller1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/reseller/v1/rest"
+      "rest_url": "https://reseller.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
+      "name": "retail",
+      "id": "retail:v2",
+      "metadata_file": "retail/v2/meta.json",
+      "lib_cargo_file": "retail/v2/lib/Cargo.toml",
+      "gen_error_file": "retail/v2/generator-errors.log",
+      "cargo_error_file": "retail/v2/cargo-errors.log",
+      "gen_dir": "retail/v2",
+      "spec_file": "retail/v2/spec.json",
+      "lib_crate_name": "google-retail2",
+      "cli_crate_name": "google-retail2-cli",
+      "make_target": "retail2",
+      "bin_name": "retail2",
+      "rest_url": "https://retail.googleapis.com/$discovery/rest?version=v2"
     },
     {
       "name": "run",
@@ -2983,21 +3283,6 @@
     },
     {
       "name": "run",
-      "id": "run:v1",
-      "metadata_file": "run/v1/meta.json",
-      "lib_cargo_file": "run/v1/lib/Cargo.toml",
-      "gen_error_file": "run/v1/generator-errors.log",
-      "cargo_error_file": "run/v1/cargo-errors.log",
-      "gen_dir": "run/v1",
-      "spec_file": "run/v1/spec.json",
-      "lib_crate_name": "google-run1",
-      "cli_crate_name": "google-run1-cli",
-      "make_target": "run1",
-      "bin_name": "run1",
-      "rest_url": "https://run.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
-      "name": "run",
       "id": "run:v1beta1",
       "metadata_file": "run/v1beta1/meta.json",
       "lib_cargo_file": "run/v1beta1/lib/Cargo.toml",
@@ -3012,19 +3297,19 @@
       "rest_url": "https://run.googleapis.com/$discovery/rest?version=v1beta1"
     },
     {
-      "name": "runtimeconfig",
-      "id": "runtimeconfig:v1",
-      "metadata_file": "runtimeconfig/v1/meta.json",
-      "lib_cargo_file": "runtimeconfig/v1/lib/Cargo.toml",
-      "gen_error_file": "runtimeconfig/v1/generator-errors.log",
-      "cargo_error_file": "runtimeconfig/v1/cargo-errors.log",
-      "gen_dir": "runtimeconfig/v1",
-      "spec_file": "runtimeconfig/v1/spec.json",
-      "lib_crate_name": "google-runtimeconfig1",
-      "cli_crate_name": "google-runtimeconfig1-cli",
-      "make_target": "runtimeconfig1",
-      "bin_name": "runtimeconfig1",
-      "rest_url": "https://runtimeconfig.googleapis.com/$discovery/rest?version=v1"
+      "name": "run",
+      "id": "run:v1",
+      "metadata_file": "run/v1/meta.json",
+      "lib_cargo_file": "run/v1/lib/Cargo.toml",
+      "gen_error_file": "run/v1/generator-errors.log",
+      "cargo_error_file": "run/v1/cargo-errors.log",
+      "gen_dir": "run/v1",
+      "spec_file": "run/v1/spec.json",
+      "lib_crate_name": "google-run1",
+      "cli_crate_name": "google-run1-cli",
+      "make_target": "run1",
+      "bin_name": "run1",
+      "rest_url": "https://run.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "runtimeconfig",
@@ -3040,6 +3325,21 @@
       "make_target": "runtimeconfig1_beta1",
       "bin_name": "runtimeconfig1_beta1",
       "rest_url": "https://runtimeconfig.googleapis.com/$discovery/rest?version=v1beta1"
+    },
+    {
+      "name": "runtimeconfig",
+      "id": "runtimeconfig:v1",
+      "metadata_file": "runtimeconfig/v1/meta.json",
+      "lib_cargo_file": "runtimeconfig/v1/lib/Cargo.toml",
+      "gen_error_file": "runtimeconfig/v1/generator-errors.log",
+      "cargo_error_file": "runtimeconfig/v1/cargo-errors.log",
+      "gen_dir": "runtimeconfig/v1",
+      "spec_file": "runtimeconfig/v1/spec.json",
+      "lib_crate_name": "google-runtimeconfig1",
+      "cli_crate_name": "google-runtimeconfig1-cli",
+      "make_target": "runtimeconfig1",
+      "bin_name": "runtimeconfig1",
+      "rest_url": "https://runtimeconfig.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "safebrowsing",
@@ -3103,21 +3403,6 @@
     },
     {
       "name": "secretmanager",
-      "id": "secretmanager:v1",
-      "metadata_file": "secretmanager/v1/meta.json",
-      "lib_cargo_file": "secretmanager/v1/lib/Cargo.toml",
-      "gen_error_file": "secretmanager/v1/generator-errors.log",
-      "cargo_error_file": "secretmanager/v1/cargo-errors.log",
-      "gen_dir": "secretmanager/v1",
-      "spec_file": "secretmanager/v1/spec.json",
-      "lib_crate_name": "google-secretmanager1",
-      "cli_crate_name": "google-secretmanager1-cli",
-      "make_target": "secretmanager1",
-      "bin_name": "secretmanager1",
-      "rest_url": "https://secretmanager.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
-      "name": "secretmanager",
       "id": "secretmanager:v1beta1",
       "metadata_file": "secretmanager/v1beta1/meta.json",
       "lib_cargo_file": "secretmanager/v1beta1/lib/Cargo.toml",
@@ -3132,49 +3417,19 @@
       "rest_url": "https://secretmanager.googleapis.com/$discovery/rest?version=v1beta1"
     },
     {
-      "name": "securitycenter",
-      "id": "securitycenter:v1p1alpha1",
-      "metadata_file": "securitycenter/v1p1alpha1/meta.json",
-      "lib_cargo_file": "securitycenter/v1p1alpha1/lib/Cargo.toml",
-      "gen_error_file": "securitycenter/v1p1alpha1/generator-errors.log",
-      "cargo_error_file": "securitycenter/v1p1alpha1/cargo-errors.log",
-      "gen_dir": "securitycenter/v1p1alpha1",
-      "spec_file": "securitycenter/v1p1alpha1/spec.json",
-      "lib_crate_name": "google-securitycenter1_p1alpha1",
-      "cli_crate_name": "google-securitycenter1_p1alpha1-cli",
-      "make_target": "securitycenter1_p1alpha1",
-      "bin_name": "securitycenter1_p1alpha1",
-      "rest_url": "https://securitycenter.googleapis.com/$discovery/rest?version=v1p1alpha1"
-    },
-    {
-      "name": "securitycenter",
-      "id": "securitycenter:v1p1beta1",
-      "metadata_file": "securitycenter/v1p1beta1/meta.json",
-      "lib_cargo_file": "securitycenter/v1p1beta1/lib/Cargo.toml",
-      "gen_error_file": "securitycenter/v1p1beta1/generator-errors.log",
-      "cargo_error_file": "securitycenter/v1p1beta1/cargo-errors.log",
-      "gen_dir": "securitycenter/v1p1beta1",
-      "spec_file": "securitycenter/v1p1beta1/spec.json",
-      "lib_crate_name": "google-securitycenter1_p1beta1",
-      "cli_crate_name": "google-securitycenter1_p1beta1-cli",
-      "make_target": "securitycenter1_p1beta1",
-      "bin_name": "securitycenter1_p1beta1",
-      "rest_url": "https://securitycenter.googleapis.com/$discovery/rest?version=v1p1beta1"
-    },
-    {
-      "name": "securitycenter",
-      "id": "securitycenter:v1",
-      "metadata_file": "securitycenter/v1/meta.json",
-      "lib_cargo_file": "securitycenter/v1/lib/Cargo.toml",
-      "gen_error_file": "securitycenter/v1/generator-errors.log",
-      "cargo_error_file": "securitycenter/v1/cargo-errors.log",
-      "gen_dir": "securitycenter/v1",
-      "spec_file": "securitycenter/v1/spec.json",
-      "lib_crate_name": "google-securitycenter1",
-      "cli_crate_name": "google-securitycenter1-cli",
-      "make_target": "securitycenter1",
-      "bin_name": "securitycenter1",
-      "rest_url": "https://securitycenter.googleapis.com/$discovery/rest?version=v1"
+      "name": "secretmanager",
+      "id": "secretmanager:v1",
+      "metadata_file": "secretmanager/v1/meta.json",
+      "lib_cargo_file": "secretmanager/v1/lib/Cargo.toml",
+      "gen_error_file": "secretmanager/v1/generator-errors.log",
+      "cargo_error_file": "secretmanager/v1/cargo-errors.log",
+      "gen_dir": "secretmanager/v1",
+      "spec_file": "secretmanager/v1/spec.json",
+      "lib_crate_name": "google-secretmanager1",
+      "cli_crate_name": "google-secretmanager1-cli",
+      "make_target": "secretmanager1",
+      "bin_name": "secretmanager1",
+      "rest_url": "https://secretmanager.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "securitycenter",
@@ -3190,6 +3445,21 @@
       "make_target": "securitycenter1_beta1",
       "bin_name": "securitycenter1_beta1",
       "rest_url": "https://securitycenter.googleapis.com/$discovery/rest?version=v1beta1"
+    },
+    {
+      "name": "securitycenter",
+      "id": "securitycenter:v1",
+      "metadata_file": "securitycenter/v1/meta.json",
+      "lib_cargo_file": "securitycenter/v1/lib/Cargo.toml",
+      "gen_error_file": "securitycenter/v1/generator-errors.log",
+      "cargo_error_file": "securitycenter/v1/cargo-errors.log",
+      "gen_dir": "securitycenter/v1",
+      "spec_file": "securitycenter/v1/spec.json",
+      "lib_crate_name": "google-securitycenter1",
+      "cli_crate_name": "google-securitycenter1-cli",
+      "make_target": "securitycenter1",
+      "bin_name": "securitycenter1",
+      "rest_url": "https://securitycenter.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "serviceconsumermanagement",
@@ -3222,6 +3492,21 @@
       "rest_url": "https://servicecontrol.googleapis.com/$discovery/rest?version=v1"
     },
     {
+      "name": "servicecontrol",
+      "id": "servicecontrol:v2",
+      "metadata_file": "servicecontrol/v2/meta.json",
+      "lib_cargo_file": "servicecontrol/v2/lib/Cargo.toml",
+      "gen_error_file": "servicecontrol/v2/generator-errors.log",
+      "cargo_error_file": "servicecontrol/v2/cargo-errors.log",
+      "gen_dir": "servicecontrol/v2",
+      "spec_file": "servicecontrol/v2/spec.json",
+      "lib_crate_name": "google-servicecontrol2",
+      "cli_crate_name": "google-servicecontrol2-cli",
+      "make_target": "servicecontrol2",
+      "bin_name": "servicecontrol2",
+      "rest_url": "https://servicecontrol.googleapis.com/$discovery/rest?version=v2"
+    },
+    {
       "name": "servicedirectory",
       "id": "servicedirectory:v1beta1",
       "metadata_file": "servicedirectory/v1beta1/meta.json",
@@ -3235,6 +3520,21 @@
       "make_target": "servicedirectory1_beta1",
       "bin_name": "servicedirectory1_beta1",
       "rest_url": "https://servicedirectory.googleapis.com/$discovery/rest?version=v1beta1"
+    },
+    {
+      "name": "servicedirectory",
+      "id": "servicedirectory:v1",
+      "metadata_file": "servicedirectory/v1/meta.json",
+      "lib_cargo_file": "servicedirectory/v1/lib/Cargo.toml",
+      "gen_error_file": "servicedirectory/v1/generator-errors.log",
+      "cargo_error_file": "servicedirectory/v1/cargo-errors.log",
+      "gen_dir": "servicedirectory/v1",
+      "spec_file": "servicedirectory/v1/spec.json",
+      "lib_crate_name": "google-servicedirectory1",
+      "cli_crate_name": "google-servicedirectory1-cli",
+      "make_target": "servicedirectory1",
+      "bin_name": "servicedirectory1",
+      "rest_url": "https://servicedirectory.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "servicemanagement",
@@ -3283,21 +3583,6 @@
     },
     {
       "name": "serviceusage",
-      "id": "serviceusage:v1",
-      "metadata_file": "serviceusage/v1/meta.json",
-      "lib_cargo_file": "serviceusage/v1/lib/Cargo.toml",
-      "gen_error_file": "serviceusage/v1/generator-errors.log",
-      "cargo_error_file": "serviceusage/v1/cargo-errors.log",
-      "gen_dir": "serviceusage/v1",
-      "spec_file": "serviceusage/v1/spec.json",
-      "lib_crate_name": "google-serviceusage1",
-      "cli_crate_name": "google-serviceusage1-cli",
-      "make_target": "serviceusage1",
-      "bin_name": "serviceusage1",
-      "rest_url": "https://serviceusage.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
-      "name": "serviceusage",
       "id": "serviceusage:v1beta1",
       "metadata_file": "serviceusage/v1beta1/meta.json",
       "lib_cargo_file": "serviceusage/v1beta1/lib/Cargo.toml",
@@ -3310,6 +3595,21 @@
       "make_target": "serviceusage1_beta1",
       "bin_name": "serviceusage1_beta1",
       "rest_url": "https://serviceusage.googleapis.com/$discovery/rest?version=v1beta1"
+    },
+    {
+      "name": "serviceusage",
+      "id": "serviceusage:v1",
+      "metadata_file": "serviceusage/v1/meta.json",
+      "lib_cargo_file": "serviceusage/v1/lib/Cargo.toml",
+      "gen_error_file": "serviceusage/v1/generator-errors.log",
+      "cargo_error_file": "serviceusage/v1/cargo-errors.log",
+      "gen_dir": "serviceusage/v1",
+      "spec_file": "serviceusage/v1/spec.json",
+      "lib_crate_name": "google-serviceusage1",
+      "cli_crate_name": "google-serviceusage1-cli",
+      "make_target": "serviceusage1",
+      "bin_name": "serviceusage1",
+      "rest_url": "https://serviceusage.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "sheets",
@@ -3339,7 +3639,7 @@
       "cli_crate_name": "google-siteVerification1-cli",
       "make_target": "siteVerification1",
       "bin_name": "siteVerification1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/siteVerification/v1/rest"
+      "rest_url": "https://siteverification.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "slides",
@@ -3355,6 +3655,21 @@
       "make_target": "slides1",
       "bin_name": "slides1",
       "rest_url": "https://slides.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
+      "name": "smartdevicemanagement",
+      "id": "smartdevicemanagement:v1",
+      "metadata_file": "smartdevicemanagement/v1/meta.json",
+      "lib_cargo_file": "smartdevicemanagement/v1/lib/Cargo.toml",
+      "gen_error_file": "smartdevicemanagement/v1/generator-errors.log",
+      "cargo_error_file": "smartdevicemanagement/v1/cargo-errors.log",
+      "gen_dir": "smartdevicemanagement/v1",
+      "spec_file": "smartdevicemanagement/v1/spec.json",
+      "lib_crate_name": "google-smartdevicemanagement1",
+      "cli_crate_name": "google-smartdevicemanagement1-cli",
+      "make_target": "smartdevicemanagement1",
+      "bin_name": "smartdevicemanagement1",
+      "rest_url": "https://smartdevicemanagement.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "sourcerepo",
@@ -3403,21 +3718,6 @@
     },
     {
       "name": "speech",
-      "id": "speech:v1",
-      "metadata_file": "speech/v1/meta.json",
-      "lib_cargo_file": "speech/v1/lib/Cargo.toml",
-      "gen_error_file": "speech/v1/generator-errors.log",
-      "cargo_error_file": "speech/v1/cargo-errors.log",
-      "gen_dir": "speech/v1",
-      "spec_file": "speech/v1/spec.json",
-      "lib_crate_name": "google-speech1",
-      "cli_crate_name": "google-speech1-cli",
-      "make_target": "speech1",
-      "bin_name": "speech1",
-      "rest_url": "https://speech.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
-      "name": "speech",
       "id": "speech:v2beta1",
       "metadata_file": "speech/v2beta1/meta.json",
       "lib_cargo_file": "speech/v2beta1/lib/Cargo.toml",
@@ -3432,18 +3732,33 @@
       "rest_url": "https://speech.googleapis.com/$discovery/rest?version=v2beta1"
     },
     {
-      "name": "sql",
-      "id": "sql:v1beta4",
-      "metadata_file": "sql/v1beta4/meta.json",
-      "lib_cargo_file": "sql/v1beta4/lib/Cargo.toml",
-      "gen_error_file": "sql/v1beta4/generator-errors.log",
-      "cargo_error_file": "sql/v1beta4/cargo-errors.log",
-      "gen_dir": "sql/v1beta4",
-      "spec_file": "sql/v1beta4/spec.json",
-      "lib_crate_name": "google-sql1_beta4",
-      "cli_crate_name": "google-sql1_beta4-cli",
-      "make_target": "sql1_beta4",
-      "bin_name": "sql1_beta4",
+      "name": "speech",
+      "id": "speech:v1",
+      "metadata_file": "speech/v1/meta.json",
+      "lib_cargo_file": "speech/v1/lib/Cargo.toml",
+      "gen_error_file": "speech/v1/generator-errors.log",
+      "cargo_error_file": "speech/v1/cargo-errors.log",
+      "gen_dir": "speech/v1",
+      "spec_file": "speech/v1/spec.json",
+      "lib_crate_name": "google-speech1",
+      "cli_crate_name": "google-speech1-cli",
+      "make_target": "speech1",
+      "bin_name": "speech1",
+      "rest_url": "https://speech.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
+      "name": "sqladmin",
+      "id": "sqladmin:v1beta4",
+      "metadata_file": "sqladmin/v1beta4/meta.json",
+      "lib_cargo_file": "sqladmin/v1beta4/lib/Cargo.toml",
+      "gen_error_file": "sqladmin/v1beta4/generator-errors.log",
+      "cargo_error_file": "sqladmin/v1beta4/cargo-errors.log",
+      "gen_dir": "sqladmin/v1beta4",
+      "spec_file": "sqladmin/v1beta4/spec.json",
+      "lib_crate_name": "google-sqladmin1_beta4",
+      "cli_crate_name": "google-sqladmin1_beta4-cli",
+      "make_target": "sqladmin1_beta4",
+      "bin_name": "sqladmin1_beta4",
       "rest_url": "https://sqladmin.googleapis.com/$discovery/rest?version=v1beta4"
     },
     {
@@ -3459,22 +3774,7 @@
       "cli_crate_name": "google-storage1-cli",
       "make_target": "storage1",
       "bin_name": "storage1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/storage/v1/rest"
-    },
-    {
-      "name": "storage",
-      "id": "storage:v1beta2",
-      "metadata_file": "storage/v1beta2/meta.json",
-      "lib_cargo_file": "storage/v1beta2/lib/Cargo.toml",
-      "gen_error_file": "storage/v1beta2/generator-errors.log",
-      "cargo_error_file": "storage/v1beta2/cargo-errors.log",
-      "gen_dir": "storage/v1beta2",
-      "spec_file": "storage/v1beta2/spec.json",
-      "lib_crate_name": "google-storage1_beta2",
-      "cli_crate_name": "google-storage1_beta2-cli",
-      "make_target": "storage1_beta2",
-      "bin_name": "storage1_beta2",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/storage/v1beta2/rest"
+      "rest_url": "https://storage.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "storagetransfer",
@@ -3507,6 +3807,21 @@
       "rest_url": "https://streetviewpublish.googleapis.com/$discovery/rest?version=v1"
     },
     {
+      "name": "sts",
+      "id": "sts:v1",
+      "metadata_file": "sts/v1/meta.json",
+      "lib_cargo_file": "sts/v1/lib/Cargo.toml",
+      "gen_error_file": "sts/v1/generator-errors.log",
+      "cargo_error_file": "sts/v1/cargo-errors.log",
+      "gen_dir": "sts/v1",
+      "spec_file": "sts/v1/spec.json",
+      "lib_crate_name": "google-sts1",
+      "cli_crate_name": "google-sts1-cli",
+      "make_target": "sts1",
+      "bin_name": "sts1",
+      "rest_url": "https://sts.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
       "name": "tagmanager",
       "id": "tagmanager:v1",
       "metadata_file": "tagmanager/v1/meta.json",
@@ -3519,7 +3834,7 @@
       "cli_crate_name": "google-tagmanager1-cli",
       "make_target": "tagmanager1",
       "bin_name": "tagmanager1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/tagmanager/v1/rest"
+      "rest_url": "https://tagmanager.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "tagmanager",
@@ -3534,7 +3849,7 @@
       "cli_crate_name": "google-tagmanager2-cli",
       "make_target": "tagmanager2",
       "bin_name": "tagmanager2",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/tagmanager/v2/rest"
+      "rest_url": "https://tagmanager.googleapis.com/$discovery/rest?version=v2"
     },
     {
       "name": "tasks",
@@ -3549,7 +3864,7 @@
       "cli_crate_name": "google-tasks1-cli",
       "make_target": "tasks1",
       "bin_name": "tasks1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/tasks/v1/rest"
+      "rest_url": "https://tasks.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "testing",
@@ -3568,21 +3883,6 @@
     },
     {
       "name": "texttospeech",
-      "id": "texttospeech:v1",
-      "metadata_file": "texttospeech/v1/meta.json",
-      "lib_cargo_file": "texttospeech/v1/lib/Cargo.toml",
-      "gen_error_file": "texttospeech/v1/generator-errors.log",
-      "cargo_error_file": "texttospeech/v1/cargo-errors.log",
-      "gen_dir": "texttospeech/v1",
-      "spec_file": "texttospeech/v1/spec.json",
-      "lib_crate_name": "google-texttospeech1",
-      "cli_crate_name": "google-texttospeech1-cli",
-      "make_target": "texttospeech1",
-      "bin_name": "texttospeech1",
-      "rest_url": "https://texttospeech.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
-      "name": "texttospeech",
       "id": "texttospeech:v1beta1",
       "metadata_file": "texttospeech/v1beta1/meta.json",
       "lib_cargo_file": "texttospeech/v1beta1/lib/Cargo.toml",
@@ -3597,6 +3897,21 @@
       "rest_url": "https://texttospeech.googleapis.com/$discovery/rest?version=v1beta1"
     },
     {
+      "name": "texttospeech",
+      "id": "texttospeech:v1",
+      "metadata_file": "texttospeech/v1/meta.json",
+      "lib_cargo_file": "texttospeech/v1/lib/Cargo.toml",
+      "gen_error_file": "texttospeech/v1/generator-errors.log",
+      "cargo_error_file": "texttospeech/v1/cargo-errors.log",
+      "gen_dir": "texttospeech/v1",
+      "spec_file": "texttospeech/v1/spec.json",
+      "lib_crate_name": "google-texttospeech1",
+      "cli_crate_name": "google-texttospeech1-cli",
+      "make_target": "texttospeech1",
+      "bin_name": "texttospeech1",
+      "rest_url": "https://texttospeech.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
       "name": "toolresults",
       "id": "toolresults:v1beta3",
       "metadata_file": "toolresults/v1beta3/meta.json",
@@ -3609,7 +3924,7 @@
       "cli_crate_name": "google-toolresults1_beta3-cli",
       "make_target": "toolresults1_beta3",
       "bin_name": "toolresults1_beta3",
-      "rest_url": "https://www.googleapis.com/$discovery/rest?version=v1beta3"
+      "rest_url": "https://toolresults.googleapis.com/$discovery/rest?version=v1beta3"
     },
     {
       "name": "tpu",
@@ -3642,6 +3957,36 @@
       "rest_url": "https://tpu.googleapis.com/$discovery/rest?version=v1"
     },
     {
+      "name": "trafficdirector",
+      "id": "trafficdirector:v2",
+      "metadata_file": "trafficdirector/v2/meta.json",
+      "lib_cargo_file": "trafficdirector/v2/lib/Cargo.toml",
+      "gen_error_file": "trafficdirector/v2/generator-errors.log",
+      "cargo_error_file": "trafficdirector/v2/cargo-errors.log",
+      "gen_dir": "trafficdirector/v2",
+      "spec_file": "trafficdirector/v2/spec.json",
+      "lib_crate_name": "google-trafficdirector2",
+      "cli_crate_name": "google-trafficdirector2-cli",
+      "make_target": "trafficdirector2",
+      "bin_name": "trafficdirector2",
+      "rest_url": "https://trafficdirector.googleapis.com/$discovery/rest?version=v2"
+    },
+    {
+      "name": "translate",
+      "id": "translate:v3beta1",
+      "metadata_file": "translate/v3beta1/meta.json",
+      "lib_cargo_file": "translate/v3beta1/lib/Cargo.toml",
+      "gen_error_file": "translate/v3beta1/generator-errors.log",
+      "cargo_error_file": "translate/v3beta1/cargo-errors.log",
+      "gen_dir": "translate/v3beta1",
+      "spec_file": "translate/v3beta1/spec.json",
+      "lib_crate_name": "google-translate3_beta1",
+      "cli_crate_name": "google-translate3_beta1-cli",
+      "make_target": "translate3_beta1",
+      "bin_name": "translate3_beta1",
+      "rest_url": "https://translation.googleapis.com/$discovery/rest?version=v3beta1"
+    },
+    {
       "name": "translate",
       "id": "translate:v2",
       "metadata_file": "translate/v2/meta.json",
@@ -3672,21 +4017,6 @@
       "rest_url": "https://translation.googleapis.com/$discovery/rest?version=v3"
     },
     {
-      "name": "translate",
-      "id": "translate:v3beta1",
-      "metadata_file": "translate/v3beta1/meta.json",
-      "lib_cargo_file": "translate/v3beta1/lib/Cargo.toml",
-      "gen_error_file": "translate/v3beta1/generator-errors.log",
-      "cargo_error_file": "translate/v3beta1/cargo-errors.log",
-      "gen_dir": "translate/v3beta1",
-      "spec_file": "translate/v3beta1/spec.json",
-      "lib_crate_name": "google-translate3_beta1",
-      "cli_crate_name": "google-translate3_beta1-cli",
-      "make_target": "translate3_beta1",
-      "bin_name": "translate3_beta1",
-      "rest_url": "https://translation.googleapis.com/$discovery/rest?version=v3beta1"
-    },
-    {
       "name": "vault",
       "id": "vault:v1",
       "metadata_file": "vault/v1/meta.json",
@@ -3700,6 +4030,21 @@
       "make_target": "vault1",
       "bin_name": "vault1",
       "rest_url": "https://vault.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
+      "name": "vectortile",
+      "id": "vectortile:v1",
+      "metadata_file": "vectortile/v1/meta.json",
+      "lib_cargo_file": "vectortile/v1/lib/Cargo.toml",
+      "gen_error_file": "vectortile/v1/generator-errors.log",
+      "cargo_error_file": "vectortile/v1/cargo-errors.log",
+      "gen_dir": "vectortile/v1",
+      "spec_file": "vectortile/v1/spec.json",
+      "lib_crate_name": "google-vectortile1",
+      "cli_crate_name": "google-vectortile1-cli",
+      "make_target": "vectortile1",
+      "bin_name": "vectortile1",
+      "rest_url": "https://vectortile.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "verifiedaccess",
@@ -3763,21 +4108,6 @@
     },
     {
       "name": "videointelligence",
-      "id": "videointelligence:v1",
-      "metadata_file": "videointelligence/v1/meta.json",
-      "lib_cargo_file": "videointelligence/v1/lib/Cargo.toml",
-      "gen_error_file": "videointelligence/v1/generator-errors.log",
-      "cargo_error_file": "videointelligence/v1/cargo-errors.log",
-      "gen_dir": "videointelligence/v1",
-      "spec_file": "videointelligence/v1/spec.json",
-      "lib_crate_name": "google-videointelligence1",
-      "cli_crate_name": "google-videointelligence1-cli",
-      "make_target": "videointelligence1",
-      "bin_name": "videointelligence1",
-      "rest_url": "https://videointelligence.googleapis.com/$discovery/rest?version=v1"
-    },
-    {
-      "name": "videointelligence",
       "id": "videointelligence:v1beta2",
       "metadata_file": "videointelligence/v1beta2/meta.json",
       "lib_cargo_file": "videointelligence/v1beta2/lib/Cargo.toml",
@@ -3790,6 +4120,21 @@
       "make_target": "videointelligence1_beta2",
       "bin_name": "videointelligence1_beta2",
       "rest_url": "https://videointelligence.googleapis.com/$discovery/rest?version=v1beta2"
+    },
+    {
+      "name": "videointelligence",
+      "id": "videointelligence:v1",
+      "metadata_file": "videointelligence/v1/meta.json",
+      "lib_cargo_file": "videointelligence/v1/lib/Cargo.toml",
+      "gen_error_file": "videointelligence/v1/generator-errors.log",
+      "cargo_error_file": "videointelligence/v1/cargo-errors.log",
+      "gen_dir": "videointelligence/v1",
+      "spec_file": "videointelligence/v1/spec.json",
+      "lib_crate_name": "google-videointelligence1",
+      "cli_crate_name": "google-videointelligence1-cli",
+      "make_target": "videointelligence1",
+      "bin_name": "videointelligence1",
+      "rest_url": "https://videointelligence.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "vision",
@@ -3849,7 +4194,7 @@
       "cli_crate_name": "google-webfonts1-cli",
       "make_target": "webfonts1",
       "bin_name": "webfonts1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/webfonts/v1/rest"
+      "rest_url": "https://webfonts.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "webmasters",
@@ -3865,6 +4210,21 @@
       "make_target": "webmasters3",
       "bin_name": "webmasters3",
       "rest_url": "https://www.googleapis.com/discovery/v1/apis/webmasters/v3/rest"
+    },
+    {
+      "name": "webrisk",
+      "id": "webrisk:v1",
+      "metadata_file": "webrisk/v1/meta.json",
+      "lib_cargo_file": "webrisk/v1/lib/Cargo.toml",
+      "gen_error_file": "webrisk/v1/generator-errors.log",
+      "cargo_error_file": "webrisk/v1/cargo-errors.log",
+      "gen_dir": "webrisk/v1",
+      "spec_file": "webrisk/v1/spec.json",
+      "lib_crate_name": "google-webrisk1",
+      "cli_crate_name": "google-webrisk1-cli",
+      "make_target": "webrisk1",
+      "bin_name": "webrisk1",
+      "rest_url": "https://webrisk.googleapis.com/$discovery/rest?version=v1"
     },
     {
       "name": "websecurityscanner",
@@ -3912,6 +4272,36 @@
       "rest_url": "https://websecurityscanner.googleapis.com/$discovery/rest?version=v1"
     },
     {
+      "name": "workflowexecutions",
+      "id": "workflowexecutions:v1",
+      "metadata_file": "workflowexecutions/v1/meta.json",
+      "lib_cargo_file": "workflowexecutions/v1/lib/Cargo.toml",
+      "gen_error_file": "workflowexecutions/v1/generator-errors.log",
+      "cargo_error_file": "workflowexecutions/v1/cargo-errors.log",
+      "gen_dir": "workflowexecutions/v1",
+      "spec_file": "workflowexecutions/v1/spec.json",
+      "lib_crate_name": "google-workflowexecutions1",
+      "cli_crate_name": "google-workflowexecutions1-cli",
+      "make_target": "workflowexecutions1",
+      "bin_name": "workflowexecutions1",
+      "rest_url": "https://workflowexecutions.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
+      "name": "workflows",
+      "id": "workflows:v1",
+      "metadata_file": "workflows/v1/meta.json",
+      "lib_cargo_file": "workflows/v1/lib/Cargo.toml",
+      "gen_error_file": "workflows/v1/generator-errors.log",
+      "cargo_error_file": "workflows/v1/cargo-errors.log",
+      "gen_dir": "workflows/v1",
+      "spec_file": "workflows/v1/spec.json",
+      "lib_crate_name": "google-workflows1",
+      "cli_crate_name": "google-workflows1-cli",
+      "make_target": "workflows1",
+      "bin_name": "workflows1",
+      "rest_url": "https://workflows.googleapis.com/$discovery/rest?version=v1"
+    },
+    {
       "name": "youtube",
       "id": "youtube:v3",
       "metadata_file": "youtube/v3/meta.json",
@@ -3924,22 +4314,7 @@
       "cli_crate_name": "google-youtube3-cli",
       "make_target": "youtube3",
       "bin_name": "youtube3",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest"
-    },
-    {
-      "name": "youtubeAnalytics",
-      "id": "youtubeAnalytics:v1",
-      "metadata_file": "youtubeAnalytics/v1/meta.json",
-      "lib_cargo_file": "youtubeAnalytics/v1/lib/Cargo.toml",
-      "gen_error_file": "youtubeAnalytics/v1/generator-errors.log",
-      "cargo_error_file": "youtubeAnalytics/v1/cargo-errors.log",
-      "gen_dir": "youtubeAnalytics/v1",
-      "spec_file": "youtubeAnalytics/v1/spec.json",
-      "lib_crate_name": "google-youtubeAnalytics1",
-      "cli_crate_name": "google-youtubeAnalytics1-cli",
-      "make_target": "youtubeAnalytics1",
-      "bin_name": "youtubeAnalytics1",
-      "rest_url": "https://youtubeanalytics.googleapis.com/$discovery/rest?version=v1"
+      "rest_url": "https://youtube.googleapis.com/$discovery/rest?version=v3"
     },
     {
       "name": "youtubeAnalytics",

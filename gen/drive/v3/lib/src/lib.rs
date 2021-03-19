@@ -2,13 +2,13 @@
 pub mod scopes {
     #[doc = "See, edit, create, and delete all of your Google Drive files\n\n`https://www.googleapis.com/auth/drive`"]
     pub const DRIVE: &str = "https://www.googleapis.com/auth/drive";
-    #[doc = "View and manage its own configuration data in your Google Drive\n\n`https://www.googleapis.com/auth/drive.appdata`"]
+    #[doc = "See, create, and delete its own configuration data in your Google Drive\n\n`https://www.googleapis.com/auth/drive.appdata`"]
     pub const DRIVE_APPDATA: &str = "https://www.googleapis.com/auth/drive.appdata";
-    #[doc = "View and manage Google Drive files and folders that you have opened or created with this app\n\n`https://www.googleapis.com/auth/drive.file`"]
+    #[doc = "See, edit, create, and delete only the specific Google Drive files you use with this app\n\n`https://www.googleapis.com/auth/drive.file`"]
     pub const DRIVE_FILE: &str = "https://www.googleapis.com/auth/drive.file";
     #[doc = "View and manage metadata of files in your Google Drive\n\n`https://www.googleapis.com/auth/drive.metadata`"]
     pub const DRIVE_METADATA: &str = "https://www.googleapis.com/auth/drive.metadata";
-    #[doc = "View metadata for files in your Google Drive\n\n`https://www.googleapis.com/auth/drive.metadata.readonly`"]
+    #[doc = "See information about your Google Drive files\n\n`https://www.googleapis.com/auth/drive.metadata.readonly`"]
     pub const DRIVE_METADATA_READONLY: &str =
         "https://www.googleapis.com/auth/drive.metadata.readonly";
     #[doc = "View the photos, videos and albums in your Google Photos\n\n`https://www.googleapis.com/auth/drive.photos.readonly`"]
@@ -475,7 +475,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub payload: ::std::option::Option<bool>,
-        #[doc = "The type of delivery mechanism used for this channel."]
+        #[doc = "The type of delivery mechanism used for this channel. Valid values are \"web_hook\" (or \"webhook\"). Both values refer to a channel where Http requests are used to deliver messages."]
         #[serde(
             rename = "type",
             default,
@@ -701,6 +701,65 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for CommentList {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ContentRestriction {
+        #[doc = "The type of the content restriction. Currently the only possible value is globalContentRestriction."]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub r#type: ::std::option::Option<String>,
+        #[doc = "Whether the content of the file is read-only. If a file is read-only, a new revision of the file may not be added, comments may not be added or modified, and the title of the file may not be modified."]
+        #[serde(
+            rename = "readOnly",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub read_only: ::std::option::Option<bool>,
+        #[doc = "Reason for why the content of the file is restricted. This is only mutable on requests that also set readOnly=true."]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub reason: ::std::option::Option<String>,
+        #[doc = "The user who set the content restriction. Only populated if readOnly is true."]
+        #[serde(
+            rename = "restrictingUser",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub restricting_user: ::std::option::Option<crate::schemas::User>,
+        #[doc = "The time at which the content restriction was set (formatted RFC 3339 timestamp). Only populated if readOnly is true."]
+        #[serde(
+            rename = "restrictionTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub restriction_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+    }
+    impl ::google_field_selector::FieldSelector for ContentRestriction {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ContentRestriction {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1082,7 +1141,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct File {
-        #[doc = "A collection of arbitrary key-value pairs which are private to the requesting app.\nEntries with null values are cleared in update and copy requests."]
+        #[doc = "A collection of arbitrary key-value pairs which are private to the requesting app.\nEntries with null values are cleared in update and copy requests. These properties can only be retrieved using an authenticated request. An authenticated request uses an access token obtained with a OAuth 2 client ID. You cannot use an API key to retrieve private properties."]
         #[serde(
             rename = "appProperties",
             default,
@@ -1103,6 +1162,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub content_hints: ::std::option::Option<crate::schemas::FileContentHints>,
+        #[doc = "Restrictions for accessing the content of the file. Only populated if such a restriction exists."]
+        #[serde(
+            rename = "contentRestrictions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub content_restrictions: ::std::option::Option<Vec<crate::schemas::ContentRestriction>>,
         #[doc = "Whether the options to copy, print, or download this file, should be disabled for readers and commenters."]
         #[serde(
             rename = "copyRequiresWriterPermission",
@@ -1138,7 +1204,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub explicitly_trashed: ::std::option::Option<bool>,
-        #[doc = "Links for exporting Google Docs to specific formats."]
+        #[doc = "Links for exporting Docs Editors files to specific formats."]
         #[serde(
             rename = "exportLinks",
             default,
@@ -1356,7 +1422,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub shortcut_details: ::std::option::Option<crate::schemas::FileShortcutDetails>,
-        #[doc = "The size of the file's content in bytes. This is only applicable to files with binary content in Google Drive."]
+        #[doc = "The size of the file's content in bytes. This is applicable to binary files in Google Drive and Google Docs files."]
         #[serde(
             rename = "size",
             default,
@@ -1385,7 +1451,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub team_drive_id: ::std::option::Option<String>,
-        #[doc = "A short-lived link to the file's thumbnail, if available. Typically lasts on the order of hours. Only populated when the requesting app can access the file's content."]
+        #[doc = "A short-lived link to the file's thumbnail, if available. Typically lasts on the order of hours. Only populated when the requesting app can access the file's content. If the file isn't shared publicly, the URL returned in Files.thumbnailLink must be fetched using a credentialed request."]
         #[serde(
             rename = "thumbnailLink",
             default,
@@ -1400,7 +1466,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub thumbnail_version: ::std::option::Option<i64>,
-        #[doc = "Whether the file has been trashed, either explicitly or from a trashed parent folder. Only the owner may trash a file, and other users cannot see files in the owner's trash."]
+        #[doc = "Whether the file has been trashed, either explicitly or from a trashed parent folder. Only the owner may trash a file. The trashed item is excluded from all files.list responses returned for any user who does not own the file. However, all users with access to the file can see the trashed item metadata in an API response. All users with access can copy, download, export, and share the file."]
         #[serde(
             rename = "trashed",
             default,
@@ -1509,6 +1575,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub can_add_children: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can add a folder from another drive (different shared drive or My Drive) to this folder. This is false when the item is not a folder. Only populated for items in shared drives."]
+        #[serde(
+            rename = "canAddFolderFromAnotherDrive",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub can_add_folder_from_another_drive: ::std::option::Option<bool>,
         #[doc = "Whether the current user can add a parent for the item without removing an existing parent in the same request. Not populated for shared drive files."]
         #[serde(
             rename = "canAddMyDriveParent",
@@ -1586,6 +1659,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub can_modify_content: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can modify restrictions on content of this file."]
+        #[serde(
+            rename = "canModifyContentRestriction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub can_modify_content_restriction: ::std::option::Option<bool>,
         #[doc = "Whether the current user can move children of this folder outside of the shared drive. This is false when the item is not a folder. Only populated for items in shared drives."]
         #[serde(
             rename = "canMoveChildrenOutOfDrive",
@@ -1600,7 +1680,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub can_move_children_out_of_team_drive: ::std::option::Option<bool>,
-        #[doc = "Whether the current user can move children of this folder within the shared drive. This is false when the item is not a folder. Only populated for items in shared drives."]
+        #[doc = "Whether the current user can move children of this folder within this drive. This is false when the item is not a folder. Note that a request to move the child may still fail depending on the current user's access to the child and to the destination folder."]
         #[serde(
             rename = "canMoveChildrenWithinDrive",
             default,
@@ -1635,7 +1715,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub can_move_item_out_of_team_drive: ::std::option::Option<bool>,
-        #[doc = "Whether the current user can move this item within this shared drive. Note that a request to change the parent of the item may still fail depending on the new parent that is being added. Only populated for items in shared drives."]
+        #[doc = "Whether the current user can move this item within this drive. Note that a request to change the parent of the item may still fail depending on the new parent that is being added and the parent that is being removed."]
         #[serde(
             rename = "canMoveItemWithinDrive",
             default,
@@ -2289,6 +2369,13 @@ pub mod schemas {
         )]
         pub team_drive_permission_details:
             ::std::option::Option<Vec<crate::schemas::PermissionTeamDrivePermissionDetailsItems>>,
+        #[doc = "Indicates the view for this permission. Only populated for permissions that belong to a view. published is the only supported value."]
+        #[serde(
+            rename = "view",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub view: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Permission {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -2594,7 +2681,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Revision {
-        #[doc = "Links for exporting Google Docs to specific formats."]
+        #[doc = "Links for exporting Docs Editors files to specific formats."]
         #[serde(
             rename = "exportLinks",
             default,
@@ -2657,21 +2744,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub original_filename: ::std::option::Option<String>,
-        #[doc = "Whether subsequent revisions will be automatically republished. This is only applicable to Google Docs."]
+        #[doc = "Whether subsequent revisions will be automatically republished. This is only applicable to Docs Editors files."]
         #[serde(
             rename = "publishAuto",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub publish_auto: ::std::option::Option<bool>,
-        #[doc = "Whether this revision is published. This is only applicable to Google Docs."]
+        #[doc = "Whether this revision is published. This is only applicable to Docs Editors files."]
         #[serde(
             rename = "published",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub published: ::std::option::Option<bool>,
-        #[doc = "Whether this revision is published outside the domain. This is only applicable to Google Docs."]
+        #[doc = "A link to the published revision. This is only populated for Google Sites files."]
+        #[serde(
+            rename = "publishedLink",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub published_link: ::std::option::Option<String>,
+        #[doc = "Whether this revision is published outside the domain. This is only applicable to Docs Editors files."]
         #[serde(
             rename = "publishedOutsideDomain",
             default,
@@ -3522,15 +3616,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -3583,6 +3677,7 @@ pub mod resources {
                     drive_id: None,
                     include_corpus_removals: None,
                     include_items_from_all_drives: None,
+                    include_permissions_for_view: None,
                     include_removed: None,
                     include_team_drive_items: None,
                     page_size: None,
@@ -3614,6 +3709,7 @@ pub mod resources {
                     drive_id: None,
                     include_corpus_removals: None,
                     include_items_from_all_drives: None,
+                    include_permissions_for_view: None,
                     include_removed: None,
                     include_team_drive_items: None,
                     page_size: None,
@@ -3753,19 +3849,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("driveId", &self.drive_id)]);
-                let req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
-                let req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
-                let req = req.query(&[("teamDriveId", &self.team_drive_id)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("driveId", &self.drive_id)]);
+                req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
+                req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
+                req = req.query(&[("teamDriveId", &self.team_drive_id)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -3782,6 +3878,7 @@ pub mod resources {
             drive_id: Option<String>,
             include_corpus_removals: Option<bool>,
             include_items_from_all_drives: Option<bool>,
+            include_permissions_for_view: Option<String>,
             include_removed: Option<bool>,
             include_team_drive_items: Option<bool>,
             page_size: Option<i32>,
@@ -3812,6 +3909,11 @@ pub mod resources {
             #[doc = "Whether both My Drive and shared drive items should be included in results."]
             pub fn include_items_from_all_drives(mut self, value: bool) -> Self {
                 self.include_items_from_all_drives = Some(value);
+                self
+            }
+            #[doc = "Specifies which additional view's permissions to include in the response. Only 'published' is supported."]
+            pub fn include_permissions_for_view(mut self, value: impl Into<String>) -> Self {
+                self.include_permissions_for_view = Some(value.into());
                 self
             }
             #[doc = "Whether to include changes indicating that items have been removed from the list of changes, for example by deletion or loss of access."]
@@ -4042,30 +4144,34 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("driveId", &self.drive_id)]);
-                let req = req.query(&[("includeCorpusRemovals", &self.include_corpus_removals)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("driveId", &self.drive_id)]);
+                req = req.query(&[("includeCorpusRemovals", &self.include_corpus_removals)]);
+                req = req.query(&[(
                     "includeItemsFromAllDrives",
                     &self.include_items_from_all_drives,
                 )]);
-                let req = req.query(&[("includeRemoved", &self.include_removed)]);
-                let req = req.query(&[("includeTeamDriveItems", &self.include_team_drive_items)]);
-                let req = req.query(&[("pageSize", &self.page_size)]);
-                let req = req.query(&[("restrictToMyDrive", &self.restrict_to_my_drive)]);
-                let req = req.query(&[("spaces", &self.spaces)]);
-                let req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
-                let req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
-                let req = req.query(&[("teamDriveId", &self.team_drive_id)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                req = req.query(&[(
+                    "includePermissionsForView",
+                    &self.include_permissions_for_view,
+                )]);
+                req = req.query(&[("includeRemoved", &self.include_removed)]);
+                req = req.query(&[("includeTeamDriveItems", &self.include_team_drive_items)]);
+                req = req.query(&[("pageSize", &self.page_size)]);
+                req = req.query(&[("restrictToMyDrive", &self.restrict_to_my_drive)]);
+                req = req.query(&[("spaces", &self.spaces)]);
+                req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
+                req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
+                req = req.query(&[("teamDriveId", &self.team_drive_id)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -4094,6 +4200,7 @@ pub mod resources {
             drive_id: Option<String>,
             include_corpus_removals: Option<bool>,
             include_items_from_all_drives: Option<bool>,
+            include_permissions_for_view: Option<String>,
             include_removed: Option<bool>,
             include_team_drive_items: Option<bool>,
             page_size: Option<i32>,
@@ -4124,6 +4231,11 @@ pub mod resources {
             #[doc = "Whether both My Drive and shared drive items should be included in results."]
             pub fn include_items_from_all_drives(mut self, value: bool) -> Self {
                 self.include_items_from_all_drives = Some(value);
+                self
+            }
+            #[doc = "Specifies which additional view's permissions to include in the response. Only 'published' is supported."]
+            pub fn include_permissions_for_view(mut self, value: impl Into<String>) -> Self {
+                self.include_permissions_for_view = Some(value.into());
                 self
             }
             #[doc = "Whether to include changes indicating that items have been removed from the list of changes, for example by deletion or loss of access."]
@@ -4255,30 +4367,34 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("driveId", &self.drive_id)]);
-                let req = req.query(&[("includeCorpusRemovals", &self.include_corpus_removals)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("driveId", &self.drive_id)]);
+                req = req.query(&[("includeCorpusRemovals", &self.include_corpus_removals)]);
+                req = req.query(&[(
                     "includeItemsFromAllDrives",
                     &self.include_items_from_all_drives,
                 )]);
-                let req = req.query(&[("includeRemoved", &self.include_removed)]);
-                let req = req.query(&[("includeTeamDriveItems", &self.include_team_drive_items)]);
-                let req = req.query(&[("pageSize", &self.page_size)]);
-                let req = req.query(&[("restrictToMyDrive", &self.restrict_to_my_drive)]);
-                let req = req.query(&[("spaces", &self.spaces)]);
-                let req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
-                let req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
-                let req = req.query(&[("teamDriveId", &self.team_drive_id)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                req = req.query(&[(
+                    "includePermissionsForView",
+                    &self.include_permissions_for_view,
+                )]);
+                req = req.query(&[("includeRemoved", &self.include_removed)]);
+                req = req.query(&[("includeTeamDriveItems", &self.include_team_drive_items)]);
+                req = req.query(&[("pageSize", &self.page_size)]);
+                req = req.query(&[("restrictToMyDrive", &self.restrict_to_my_drive)]);
+                req = req.query(&[("spaces", &self.spaces)]);
+                req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
+                req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
+                req = req.query(&[("teamDriveId", &self.team_drive_id)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -4368,15 +4484,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -4611,15 +4727,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -4697,15 +4813,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -4838,16 +4954,16 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("includeDeleted", &self.include_deleted)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("includeDeleted", &self.include_deleted)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -5090,19 +5206,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("includeDeleted", &self.include_deleted)]);
-                let req = req.query(&[("pageSize", &self.page_size)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("startModifiedTime", &self.start_modified_time)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("includeDeleted", &self.include_deleted)]);
+                req = req.query(&[("pageSize", &self.page_size)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("startModifiedTime", &self.start_modified_time)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -5242,15 +5358,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -5495,16 +5611,16 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("requestId", &self.request_id)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("requestId", &self.request_id)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -5573,15 +5689,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -5705,16 +5821,16 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -5833,15 +5949,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -6075,19 +6191,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("pageSize", &self.page_size)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("q", &self.q)]);
-                let req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("pageSize", &self.page_size)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("q", &self.q)]);
+                req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -6217,15 +6333,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -6351,16 +6467,16 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                let req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -6375,7 +6491,7 @@ pub mod resources {
             pub enum ListCorpus {
                 #[doc = "Files shared to the user's domain."]
                 Domain,
-                #[doc = "Files owned by or shared to the user."]
+                #[doc = "Files owned by or shared to the user. If a user has permissions on a Shared Drive, the files inside it won't be retrieved unless the user has created, opened, or shared the file."]
                 User,
             }
             impl ListCorpus {
@@ -6451,7 +6567,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Creates a copy of a file and applies any requested updates with patch semantics."]
+            #[doc = "Creates a copy of a file and applies any requested updates with patch semantics. Folders cannot be copied."]
             pub fn copy(
                 &self,
                 request: crate::schemas::File,
@@ -6471,6 +6587,7 @@ pub mod resources {
                     file_id: file_id.into(),
                     enforce_single_parent: None,
                     ignore_default_visibility: None,
+                    include_permissions_for_view: None,
                     keep_revision_forever: None,
                     ocr_language: None,
                     supports_all_drives: None,
@@ -6492,6 +6609,7 @@ pub mod resources {
                     user_ip: None,
                     enforce_single_parent: None,
                     ignore_default_visibility: None,
+                    include_permissions_for_view: None,
                     keep_revision_forever: None,
                     ocr_language: None,
                     supports_all_drives: None,
@@ -6512,6 +6630,7 @@ pub mod resources {
                     quota_user: None,
                     user_ip: None,
                     file_id: file_id.into(),
+                    enforce_single_parent: None,
                     supports_all_drives: None,
                     supports_team_drives: None,
                 }
@@ -6528,6 +6647,7 @@ pub mod resources {
                     pretty_print: None,
                     quota_user: None,
                     user_ip: None,
+                    enforce_single_parent: None,
                 }
             }
             #[doc = "Exports a Google Doc to the requested MIME type and returns the exported content. Please note that the exported content is limited to 10MB."]
@@ -6580,6 +6700,7 @@ pub mod resources {
                     user_ip: None,
                     file_id: file_id.into(),
                     acknowledge_abuse: None,
+                    include_permissions_for_view: None,
                     supports_all_drives: None,
                     supports_team_drives: None,
                 }
@@ -6600,6 +6721,7 @@ pub mod resources {
                     corpus: None,
                     drive_id: None,
                     include_items_from_all_drives: None,
+                    include_permissions_for_view: None,
                     include_team_drive_items: None,
                     order_by: None,
                     page_size: None,
@@ -6611,7 +6733,7 @@ pub mod resources {
                     team_drive_id: None,
                 }
             }
-            #[doc = "Updates a file's metadata and/or content with patch semantics."]
+            #[doc = "Updates a file's metadata and/or content. This method supports patch semantics."]
             pub fn update(
                 &self,
                 request: crate::schemas::File,
@@ -6631,6 +6753,7 @@ pub mod resources {
                     file_id: file_id.into(),
                     add_parents: None,
                     enforce_single_parent: None,
+                    include_permissions_for_view: None,
                     keep_revision_forever: None,
                     ocr_language: None,
                     remove_parents: None,
@@ -6658,6 +6781,7 @@ pub mod resources {
                     user_ip: None,
                     file_id: file_id.into(),
                     acknowledge_abuse: None,
+                    include_permissions_for_view: None,
                     supports_all_drives: None,
                     supports_team_drives: None,
                 }
@@ -6672,6 +6796,7 @@ pub mod resources {
             file_id: String,
             enforce_single_parent: Option<bool>,
             ignore_default_visibility: Option<bool>,
+            include_permissions_for_view: Option<String>,
             keep_revision_forever: Option<bool>,
             ocr_language: Option<String>,
             supports_all_drives: Option<bool>,
@@ -6685,7 +6810,7 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> CopyRequestBuilder<'a> {
-            #[doc = "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter only takes effect if the item is not in a shared drive. Requests that specify more than one parent fail."]
+            #[doc = "Deprecated. Copying files into multiple folders is no longer supported. Use shortcuts instead."]
             pub fn enforce_single_parent(mut self, value: bool) -> Self {
                 self.enforce_single_parent = Some(value);
                 self
@@ -6693,6 +6818,11 @@ pub mod resources {
             #[doc = "Whether to ignore the domain's default visibility settings for the created file. Domain administrators can choose to make all uploaded files visible to the domain by default; this parameter bypasses that behavior for the request. Permissions are still inherited from parent folders."]
             pub fn ignore_default_visibility(mut self, value: bool) -> Self {
                 self.ignore_default_visibility = Some(value);
+                self
+            }
+            #[doc = "Specifies which additional view's permissions to include in the response. Only 'published' is supported."]
+            pub fn include_permissions_for_view(mut self, value: impl Into<String>) -> Self {
+                self.include_permissions_for_view = Some(value.into());
                 self
             }
             #[doc = "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the limit is reached, try deleting pinned revisions."]
@@ -6810,22 +6940,25 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("enforceSingleParent", &self.enforce_single_parent)]);
-                let req =
-                    req.query(&[("ignoreDefaultVisibility", &self.ignore_default_visibility)]);
-                let req = req.query(&[("keepRevisionForever", &self.keep_revision_forever)]);
-                let req = req.query(&[("ocrLanguage", &self.ocr_language)]);
-                let req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
-                let req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("enforceSingleParent", &self.enforce_single_parent)]);
+                req = req.query(&[("ignoreDefaultVisibility", &self.ignore_default_visibility)]);
+                req = req.query(&[(
+                    "includePermissionsForView",
+                    &self.include_permissions_for_view,
+                )]);
+                req = req.query(&[("keepRevisionForever", &self.keep_revision_forever)]);
+                req = req.query(&[("ocrLanguage", &self.ocr_language)]);
+                req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
+                req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -6841,6 +6974,7 @@ pub mod resources {
             request: crate::schemas::File,
             enforce_single_parent: Option<bool>,
             ignore_default_visibility: Option<bool>,
+            include_permissions_for_view: Option<String>,
             keep_revision_forever: Option<bool>,
             ocr_language: Option<String>,
             supports_all_drives: Option<bool>,
@@ -6855,7 +6989,7 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> CreateRequestBuilder<'a> {
-            #[doc = "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter only takes effect if the item is not in a shared drive. Requests that specify more than one parent fail."]
+            #[doc = "Deprecated. Creating files in multiple folders is no longer supported."]
             pub fn enforce_single_parent(mut self, value: bool) -> Self {
                 self.enforce_single_parent = Some(value);
                 self
@@ -6863,6 +6997,11 @@ pub mod resources {
             #[doc = "Whether to ignore the domain's default visibility settings for the created file. Domain administrators can choose to make all uploaded files visible to the domain by default; this parameter bypasses that behavior for the request. Permissions are still inherited from parent folders."]
             pub fn ignore_default_visibility(mut self, value: bool) -> Self {
                 self.ignore_default_visibility = Some(value);
+                self
+            }
+            #[doc = "Specifies which additional view's permissions to include in the response. Only 'published' is supported."]
+            pub fn include_permissions_for_view(mut self, value: impl Into<String>) -> Self {
+                self.include_permissions_for_view = Some(value.into());
                 self
             }
             #[doc = "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the limit is reached, try deleting pinned revisions."]
@@ -7052,26 +7191,29 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("enforceSingleParent", &self.enforce_single_parent)]);
-                let req =
-                    req.query(&[("ignoreDefaultVisibility", &self.ignore_default_visibility)]);
-                let req = req.query(&[("keepRevisionForever", &self.keep_revision_forever)]);
-                let req = req.query(&[("ocrLanguage", &self.ocr_language)]);
-                let req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
-                let req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("enforceSingleParent", &self.enforce_single_parent)]);
+                req = req.query(&[("ignoreDefaultVisibility", &self.ignore_default_visibility)]);
+                req = req.query(&[(
+                    "includePermissionsForView",
+                    &self.include_permissions_for_view,
+                )]);
+                req = req.query(&[("keepRevisionForever", &self.keep_revision_forever)]);
+                req = req.query(&[("ocrLanguage", &self.ocr_language)]);
+                req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
+                req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
+                req = req.query(&[(
                     "useContentAsIndexableText",
                     &self.use_content_as_indexable_text,
                 )]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -7085,6 +7227,7 @@ pub mod resources {
             pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             file_id: String,
+            enforce_single_parent: Option<bool>,
             supports_all_drives: Option<bool>,
             supports_team_drives: Option<bool>,
             alt: Option<crate::params::Alt>,
@@ -7096,6 +7239,11 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> DeleteRequestBuilder<'a> {
+            #[doc = "Deprecated. If an item is not in a shared drive and its last parent is deleted but the item itself is not, the item will be placed under its owner's root."]
+            pub fn enforce_single_parent(mut self, value: bool) -> Self {
+                self.enforce_single_parent = Some(value);
+                self
+            }
             #[doc = "Whether the requesting application supports both My Drives and shared drives."]
             pub fn supports_all_drives(mut self, value: bool) -> Self {
                 self.supports_all_drives = Some(value);
@@ -7152,17 +7300,18 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
-                let req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("enforceSingleParent", &self.enforce_single_parent)]);
+                req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
+                req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -7175,6 +7324,7 @@ pub mod resources {
         pub struct EmptyTrashRequestBuilder<'a> {
             pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            enforce_single_parent: Option<bool>,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
             key: Option<String>,
@@ -7184,6 +7334,11 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> EmptyTrashRequestBuilder<'a> {
+            #[doc = "Deprecated. If an item is not in a shared drive and its last parent is deleted but the item itself is not, the item will be placed under its owner's root."]
+            pub fn enforce_single_parent(mut self, value: bool) -> Self {
+                self.enforce_single_parent = Some(value);
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -7223,15 +7378,16 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("enforceSingleParent", &self.enforce_single_parent)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -7325,16 +7481,16 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("mimeType", &self.mime_type)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("mimeType", &self.mime_type)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -7458,17 +7614,17 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("count", &self.count)]);
-                let req = req.query(&[("space", &self.space)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("count", &self.count)]);
+                req = req.query(&[("space", &self.space)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -7483,6 +7639,7 @@ pub mod resources {
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             file_id: String,
             acknowledge_abuse: Option<bool>,
+            include_permissions_for_view: Option<String>,
             supports_all_drives: Option<bool>,
             supports_team_drives: Option<bool>,
             alt: Option<crate::params::Alt>,
@@ -7497,6 +7654,11 @@ pub mod resources {
             #[doc = "Whether the user is acknowledging the risk of downloading known malware or other abusive files. This is only applicable when alt=media."]
             pub fn acknowledge_abuse(mut self, value: bool) -> Self {
                 self.acknowledge_abuse = Some(value);
+                self
+            }
+            #[doc = "Specifies which additional view's permissions to include in the response. Only 'published' is supported."]
+            pub fn include_permissions_for_view(mut self, value: impl Into<String>) -> Self {
+                self.include_permissions_for_view = Some(value.into());
                 self
             }
             #[doc = "Whether the requesting application supports both My Drives and shared drives."]
@@ -7624,18 +7786,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("acknowledgeAbuse", &self.acknowledge_abuse)]);
-                let req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
-                let req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("acknowledgeAbuse", &self.acknowledge_abuse)]);
+                req = req.query(&[(
+                    "includePermissionsForView",
+                    &self.include_permissions_for_view,
+                )]);
+                req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
+                req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -7652,6 +7818,7 @@ pub mod resources {
             corpus: Option<crate::resources::files::params::ListCorpus>,
             drive_id: Option<String>,
             include_items_from_all_drives: Option<bool>,
+            include_permissions_for_view: Option<String>,
             include_team_drive_items: Option<bool>,
             order_by: Option<String>,
             page_size: Option<i32>,
@@ -7670,7 +7837,7 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "Bodies of items (files/documents) to which the query applies. Supported bodies are 'user', 'domain', 'drive' and 'allDrives'. Prefer 'user' or 'drive' to 'allDrives' for efficiency."]
+            #[doc = "Groupings of files to which the query applies. Supported groupings are: 'user' (files created by, opened by, or shared directly with the user), 'drive' (files in the specified shared drive as indicated by the 'driveId'), 'domain' (files shared to the user's domain), and 'allDrives' (A combination of 'user' and 'drive' for all drives where the user is a member). When able, use 'user' or 'drive', instead of 'allDrives', for efficiency."]
             pub fn corpora(mut self, value: impl Into<String>) -> Self {
                 self.corpora = Some(value.into());
                 self
@@ -7688,6 +7855,11 @@ pub mod resources {
             #[doc = "Whether both My Drive and shared drive items should be included in results."]
             pub fn include_items_from_all_drives(mut self, value: bool) -> Self {
                 self.include_items_from_all_drives = Some(value);
+                self
+            }
+            #[doc = "Specifies which additional view's permissions to include in the response. Only 'published' is supported."]
+            pub fn include_permissions_for_view(mut self, value: impl Into<String>) -> Self {
+                self.include_permissions_for_view = Some(value.into());
                 self
             }
             #[doc = "Deprecated use includeItemsFromAllDrives instead."]
@@ -7921,31 +8093,35 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("corpora", &self.corpora)]);
-                let req = req.query(&[("corpus", &self.corpus)]);
-                let req = req.query(&[("driveId", &self.drive_id)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("corpora", &self.corpora)]);
+                req = req.query(&[("corpus", &self.corpus)]);
+                req = req.query(&[("driveId", &self.drive_id)]);
+                req = req.query(&[(
                     "includeItemsFromAllDrives",
                     &self.include_items_from_all_drives,
                 )]);
-                let req = req.query(&[("includeTeamDriveItems", &self.include_team_drive_items)]);
-                let req = req.query(&[("orderBy", &self.order_by)]);
-                let req = req.query(&[("pageSize", &self.page_size)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("q", &self.q)]);
-                let req = req.query(&[("spaces", &self.spaces)]);
-                let req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
-                let req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
-                let req = req.query(&[("teamDriveId", &self.team_drive_id)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                req = req.query(&[(
+                    "includePermissionsForView",
+                    &self.include_permissions_for_view,
+                )]);
+                req = req.query(&[("includeTeamDriveItems", &self.include_team_drive_items)]);
+                req = req.query(&[("orderBy", &self.order_by)]);
+                req = req.query(&[("pageSize", &self.page_size)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("q", &self.q)]);
+                req = req.query(&[("spaces", &self.spaces)]);
+                req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
+                req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
+                req = req.query(&[("teamDriveId", &self.team_drive_id)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -7973,6 +8149,7 @@ pub mod resources {
             file_id: String,
             add_parents: Option<String>,
             enforce_single_parent: Option<bool>,
+            include_permissions_for_view: Option<String>,
             keep_revision_forever: Option<bool>,
             ocr_language: Option<String>,
             remove_parents: Option<String>,
@@ -7993,9 +8170,14 @@ pub mod resources {
                 self.add_parents = Some(value.into());
                 self
             }
-            #[doc = "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter only takes effect if the item is not in a shared drive. If the item's owner makes a request to add a single parent, the item is removed from all current folders and placed in the requested folder. Other requests that increase the number of parents fail, except when the canAddMyDriveParent file capability is true and a single parent is being added."]
+            #[doc = "Deprecated. Adding files to multiple folders is no longer supported. Use shortcuts instead."]
             pub fn enforce_single_parent(mut self, value: bool) -> Self {
                 self.enforce_single_parent = Some(value);
+                self
+            }
+            #[doc = "Specifies which additional view's permissions to include in the response. Only 'published' is supported."]
+            pub fn include_permissions_for_view(mut self, value: impl Into<String>) -> Self {
+                self.include_permissions_for_view = Some(value.into());
                 self
             }
             #[doc = "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the limit is reached, try deleting pinned revisions."]
@@ -8211,26 +8393,30 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                let req = req.query(&[("addParents", &self.add_parents)]);
-                let req = req.query(&[("enforceSingleParent", &self.enforce_single_parent)]);
-                let req = req.query(&[("keepRevisionForever", &self.keep_revision_forever)]);
-                let req = req.query(&[("ocrLanguage", &self.ocr_language)]);
-                let req = req.query(&[("removeParents", &self.remove_parents)]);
-                let req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
-                let req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
-                let req = req.query(&[(
+                let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                req = req.query(&[("addParents", &self.add_parents)]);
+                req = req.query(&[("enforceSingleParent", &self.enforce_single_parent)]);
+                req = req.query(&[(
+                    "includePermissionsForView",
+                    &self.include_permissions_for_view,
+                )]);
+                req = req.query(&[("keepRevisionForever", &self.keep_revision_forever)]);
+                req = req.query(&[("ocrLanguage", &self.ocr_language)]);
+                req = req.query(&[("removeParents", &self.remove_parents)]);
+                req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
+                req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
+                req = req.query(&[(
                     "useContentAsIndexableText",
                     &self.use_content_as_indexable_text,
                 )]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -8246,6 +8432,7 @@ pub mod resources {
             request: crate::schemas::Channel,
             file_id: String,
             acknowledge_abuse: Option<bool>,
+            include_permissions_for_view: Option<String>,
             supports_all_drives: Option<bool>,
             supports_team_drives: Option<bool>,
             alt: Option<crate::params::Alt>,
@@ -8260,6 +8447,11 @@ pub mod resources {
             #[doc = "Whether the user is acknowledging the risk of downloading known malware or other abusive files. This is only applicable when alt=media."]
             pub fn acknowledge_abuse(mut self, value: bool) -> Self {
                 self.acknowledge_abuse = Some(value);
+                self
+            }
+            #[doc = "Specifies which additional view's permissions to include in the response. Only 'published' is supported."]
+            pub fn include_permissions_for_view(mut self, value: impl Into<String>) -> Self {
+                self.include_permissions_for_view = Some(value.into());
                 self
             }
             #[doc = "Whether the requesting application supports both My Drives and shared drives."]
@@ -8392,18 +8584,22 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("acknowledgeAbuse", &self.acknowledge_abuse)]);
-                let req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
-                let req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("acknowledgeAbuse", &self.acknowledge_abuse)]);
+                req = req.query(&[(
+                    "includePermissionsForView",
+                    &self.include_permissions_for_view,
+                )]);
+                req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
+                req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -8509,6 +8705,7 @@ pub mod resources {
                     quota_user: None,
                     user_ip: None,
                     file_id: file_id.into(),
+                    include_permissions_for_view: None,
                     page_size: None,
                     page_token: None,
                     supports_all_drives: None,
@@ -8573,12 +8770,12 @@ pub mod resources {
                 self.email_message = Some(value.into());
                 self
             }
-            #[doc = "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter only takes effect if the item is not in a shared drive. See moveToNewOwnersRoot for details."]
+            #[doc = "Deprecated. See moveToNewOwnersRoot for details."]
             pub fn enforce_single_parent(mut self, value: bool) -> Self {
                 self.enforce_single_parent = Some(value);
                 self
             }
-            #[doc = "This parameter only takes effect if the item is not in a shared drive and the request is attempting to transfer the ownership of the item. When set to true, the item is moved to the new owner's My Drive root folder and all prior parents removed. If set to false, when enforceSingleParent=true, parents are not changed. If set to false, when enforceSingleParent=false, existing parents are not changed; however, the file will be added to the new owner's My Drive root folder, unless it is already in the new owner's My Drive."]
+            #[doc = "This parameter will only take effect if the item is not in a shared drive and the request is attempting to transfer the ownership of the item. If set to true, the item will be moved to the new owner's My Drive root folder and all prior parents removed. If set to false, parents are not changed."]
             pub fn move_to_new_owners_root(mut self, value: bool) -> Self {
                 self.move_to_new_owners_root = Some(value);
                 self
@@ -8707,23 +8904,23 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("emailMessage", &self.email_message)]);
-                let req = req.query(&[("enforceSingleParent", &self.enforce_single_parent)]);
-                let req = req.query(&[("moveToNewOwnersRoot", &self.move_to_new_owners_root)]);
-                let req = req.query(&[("sendNotificationEmail", &self.send_notification_email)]);
-                let req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
-                let req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
-                let req = req.query(&[("transferOwnership", &self.transfer_ownership)]);
-                let req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("emailMessage", &self.email_message)]);
+                req = req.query(&[("enforceSingleParent", &self.enforce_single_parent)]);
+                req = req.query(&[("moveToNewOwnersRoot", &self.move_to_new_owners_root)]);
+                req = req.query(&[("sendNotificationEmail", &self.send_notification_email)]);
+                req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
+                req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
+                req = req.query(&[("transferOwnership", &self.transfer_ownership)]);
+                req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -8819,18 +9016,18 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
-                let req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
-                let req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
+                req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
+                req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -8977,18 +9174,18 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
-                let req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
-                let req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
+                req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
+                req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9002,6 +9199,7 @@ pub mod resources {
             pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             file_id: String,
+            include_permissions_for_view: Option<String>,
             page_size: Option<i32>,
             page_token: Option<String>,
             supports_all_drives: Option<bool>,
@@ -9016,6 +9214,11 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> ListRequestBuilder<'a> {
+            #[doc = "Specifies which additional view's permissions to include in the response. Only 'published' is supported."]
+            pub fn include_permissions_for_view(mut self, value: impl Into<String>) -> Self {
+                self.include_permissions_for_view = Some(value.into());
+                self
+            }
             #[doc = "The maximum number of permissions to return per page. When not set for files in a shared drive, at most 100 results will be returned. When not set for files that are not in a shared drive, the entire list will be returned."]
             pub fn page_size(mut self, value: i32) -> Self {
                 self.page_size = Some(value);
@@ -9237,20 +9440,24 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("pageSize", &self.page_size)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
-                let req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
-                let req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[(
+                    "includePermissionsForView",
+                    &self.include_permissions_for_view,
+                )]);
+                req = req.query(&[("pageSize", &self.page_size)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
+                req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
+                req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9422,20 +9629,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                let req = req.query(&[("removeExpiration", &self.remove_expiration)]);
-                let req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
-                let req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
-                let req = req.query(&[("transferOwnership", &self.transfer_ownership)]);
-                let req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                req = req.query(&[("removeExpiration", &self.remove_expiration)]);
+                req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
+                req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
+                req = req.query(&[("transferOwnership", &self.transfer_ownership)]);
+                req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9691,15 +9898,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9786,15 +9993,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9936,16 +10143,16 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("includeDeleted", &self.include_deleted)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("includeDeleted", &self.include_deleted)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10191,18 +10398,18 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("includeDeleted", &self.include_deleted)]);
-                let req = req.query(&[("pageSize", &self.page_size)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("includeDeleted", &self.include_deleted)]);
+                req = req.query(&[("pageSize", &self.page_size)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10351,15 +10558,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10529,15 +10736,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10700,16 +10907,16 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("acknowledgeAbuse", &self.acknowledge_abuse)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("acknowledgeAbuse", &self.acknowledge_abuse)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10940,17 +11147,17 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("pageSize", &self.page_size)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("pageSize", &self.page_size)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11090,15 +11297,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11315,16 +11522,16 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("requestId", &self.request_id)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("requestId", &self.request_id)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11393,15 +11600,15 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11527,16 +11734,16 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11770,19 +11977,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("pageSize", &self.page_size)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("q", &self.q)]);
-                let req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("pageSize", &self.page_size)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("q", &self.q)]);
+                req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11921,16 +12128,16 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                let req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("userIp", &self.user_ip)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,

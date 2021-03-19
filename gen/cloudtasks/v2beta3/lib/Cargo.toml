@@ -1,6 +1,6 @@
 [package]
 name = "google-cloudtasks2_beta3"
-version = "0.1.0-20200615"
+version = "0.1.0-20210303"
 authors = ["Glenn Griffin <ggriffiniii@gmail.com"]
 edition = "2018"
 # for now, let's not even accidentally publish these

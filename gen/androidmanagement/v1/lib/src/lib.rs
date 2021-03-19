@@ -1,4 +1,4 @@
-#![doc = "# Resources and Methods\n    * [enterprises](resources/enterprises/struct.EnterprisesActions.html)\n      * [*create*](resources/enterprises/struct.CreateRequestBuilder.html), [*get*](resources/enterprises/struct.GetRequestBuilder.html), [*patch*](resources/enterprises/struct.PatchRequestBuilder.html)\n      * [applications](resources/enterprises/applications/struct.ApplicationsActions.html)\n        * [*get*](resources/enterprises/applications/struct.GetRequestBuilder.html)\n      * [devices](resources/enterprises/devices/struct.DevicesActions.html)\n        * [*delete*](resources/enterprises/devices/struct.DeleteRequestBuilder.html), [*get*](resources/enterprises/devices/struct.GetRequestBuilder.html), [*issueCommand*](resources/enterprises/devices/struct.IssueCommandRequestBuilder.html), [*list*](resources/enterprises/devices/struct.ListRequestBuilder.html), [*patch*](resources/enterprises/devices/struct.PatchRequestBuilder.html)\n        * [operations](resources/enterprises/devices/operations/struct.OperationsActions.html)\n          * [*cancel*](resources/enterprises/devices/operations/struct.CancelRequestBuilder.html), [*delete*](resources/enterprises/devices/operations/struct.DeleteRequestBuilder.html), [*get*](resources/enterprises/devices/operations/struct.GetRequestBuilder.html), [*list*](resources/enterprises/devices/operations/struct.ListRequestBuilder.html)\n      * [enrollment_tokens](resources/enterprises/enrollment_tokens/struct.EnrollmentTokensActions.html)\n        * [*create*](resources/enterprises/enrollment_tokens/struct.CreateRequestBuilder.html), [*delete*](resources/enterprises/enrollment_tokens/struct.DeleteRequestBuilder.html)\n      * [policies](resources/enterprises/policies/struct.PoliciesActions.html)\n        * [*delete*](resources/enterprises/policies/struct.DeleteRequestBuilder.html), [*get*](resources/enterprises/policies/struct.GetRequestBuilder.html), [*list*](resources/enterprises/policies/struct.ListRequestBuilder.html), [*patch*](resources/enterprises/policies/struct.PatchRequestBuilder.html)\n      * [web_apps](resources/enterprises/web_apps/struct.WebAppsActions.html)\n        * [*create*](resources/enterprises/web_apps/struct.CreateRequestBuilder.html), [*delete*](resources/enterprises/web_apps/struct.DeleteRequestBuilder.html), [*get*](resources/enterprises/web_apps/struct.GetRequestBuilder.html), [*list*](resources/enterprises/web_apps/struct.ListRequestBuilder.html), [*patch*](resources/enterprises/web_apps/struct.PatchRequestBuilder.html)\n      * [web_tokens](resources/enterprises/web_tokens/struct.WebTokensActions.html)\n        * [*create*](resources/enterprises/web_tokens/struct.CreateRequestBuilder.html)\n    * [signup_urls](resources/signup_urls/struct.SignupUrlsActions.html)\n      * [*create*](resources/signup_urls/struct.CreateRequestBuilder.html)\n"]
+#![doc = "# Resources and Methods\n    * [enterprises](resources/enterprises/struct.EnterprisesActions.html)\n      * [*create*](resources/enterprises/struct.CreateRequestBuilder.html), [*delete*](resources/enterprises/struct.DeleteRequestBuilder.html), [*get*](resources/enterprises/struct.GetRequestBuilder.html), [*list*](resources/enterprises/struct.ListRequestBuilder.html), [*patch*](resources/enterprises/struct.PatchRequestBuilder.html)\n      * [applications](resources/enterprises/applications/struct.ApplicationsActions.html)\n        * [*get*](resources/enterprises/applications/struct.GetRequestBuilder.html)\n      * [devices](resources/enterprises/devices/struct.DevicesActions.html)\n        * [*delete*](resources/enterprises/devices/struct.DeleteRequestBuilder.html), [*get*](resources/enterprises/devices/struct.GetRequestBuilder.html), [*issueCommand*](resources/enterprises/devices/struct.IssueCommandRequestBuilder.html), [*list*](resources/enterprises/devices/struct.ListRequestBuilder.html), [*patch*](resources/enterprises/devices/struct.PatchRequestBuilder.html)\n        * [operations](resources/enterprises/devices/operations/struct.OperationsActions.html)\n          * [*cancel*](resources/enterprises/devices/operations/struct.CancelRequestBuilder.html), [*delete*](resources/enterprises/devices/operations/struct.DeleteRequestBuilder.html), [*get*](resources/enterprises/devices/operations/struct.GetRequestBuilder.html), [*list*](resources/enterprises/devices/operations/struct.ListRequestBuilder.html)\n      * [enrollment_tokens](resources/enterprises/enrollment_tokens/struct.EnrollmentTokensActions.html)\n        * [*create*](resources/enterprises/enrollment_tokens/struct.CreateRequestBuilder.html), [*delete*](resources/enterprises/enrollment_tokens/struct.DeleteRequestBuilder.html)\n      * [policies](resources/enterprises/policies/struct.PoliciesActions.html)\n        * [*delete*](resources/enterprises/policies/struct.DeleteRequestBuilder.html), [*get*](resources/enterprises/policies/struct.GetRequestBuilder.html), [*list*](resources/enterprises/policies/struct.ListRequestBuilder.html), [*patch*](resources/enterprises/policies/struct.PatchRequestBuilder.html)\n      * [web_apps](resources/enterprises/web_apps/struct.WebAppsActions.html)\n        * [*create*](resources/enterprises/web_apps/struct.CreateRequestBuilder.html), [*delete*](resources/enterprises/web_apps/struct.DeleteRequestBuilder.html), [*get*](resources/enterprises/web_apps/struct.GetRequestBuilder.html), [*list*](resources/enterprises/web_apps/struct.ListRequestBuilder.html), [*patch*](resources/enterprises/web_apps/struct.PatchRequestBuilder.html)\n      * [web_tokens](resources/enterprises/web_tokens/struct.WebTokensActions.html)\n        * [*create*](resources/enterprises/web_tokens/struct.CreateRequestBuilder.html)\n    * [signup_urls](resources/signup_urls/struct.SignupUrlsActions.html)\n      * [*create*](resources/signup_urls/struct.CreateRequestBuilder.html)\n"]
 pub mod scopes {
     #[doc = "Manage Android devices and apps for your customers\n\n`https://www.googleapis.com/auth/androidmanagement`"]
     pub const ANDROIDMANAGEMENT: &str = "https://www.googleapis.com/auth/androidmanagement";
@@ -17,6 +17,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AdvancedSecurityOverrides {
+        #[doc = "Controls Common Criteria Mode—security standards defined in the Common Criteria for Information Technology Security Evaluation (https://www.commoncriteriaportal.org/) (CC). Enabling Common Criteria Mode increases certain security components on a device, including AES-GCM encryption of Bluetooth Long Term Keys, and Wi-Fi configuration stores.Warning: Common Criteria Mode enforces a strict security model typically only required for IT products used in national security systems and other highly sensitive organizations. Standard device use may be affected. Only enabled if required."]
+        #[serde(
+            rename = "commonCriteriaMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub common_criteria_mode:
+            ::std::option::Option<crate::schemas::AdvancedSecurityOverridesCommonCriteriaMode>,
         #[doc = "The policy for untrusted apps (apps from unknown sources) enforced on the device. Replaces install_unknown_sources_allowed (deprecated)."]
         #[serde(
             rename = "untrustedAppsPolicy",
@@ -32,6 +40,102 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for AdvancedSecurityOverrides {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum AdvancedSecurityOverridesCommonCriteriaMode {
+        #[doc = "Default. Disables Common Criteria Mode."]
+        CommonCriteriaModeDisabled,
+        #[doc = "Enables Common Criteria Mode."]
+        CommonCriteriaModeEnabled,
+        #[doc = "Unspecified. Defaults to COMMON_CRITERIA_MODE_DISABLED."]
+        CommonCriteriaModeUnspecified,
+    }
+    impl AdvancedSecurityOverridesCommonCriteriaMode {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                AdvancedSecurityOverridesCommonCriteriaMode::CommonCriteriaModeDisabled => {
+                    "COMMON_CRITERIA_MODE_DISABLED"
+                }
+                AdvancedSecurityOverridesCommonCriteriaMode::CommonCriteriaModeEnabled => {
+                    "COMMON_CRITERIA_MODE_ENABLED"
+                }
+                AdvancedSecurityOverridesCommonCriteriaMode::CommonCriteriaModeUnspecified => {
+                    "COMMON_CRITERIA_MODE_UNSPECIFIED"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AdvancedSecurityOverridesCommonCriteriaMode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AdvancedSecurityOverridesCommonCriteriaMode {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<AdvancedSecurityOverridesCommonCriteriaMode, ()> {
+            Ok(match s {
+                "COMMON_CRITERIA_MODE_DISABLED" => {
+                    AdvancedSecurityOverridesCommonCriteriaMode::CommonCriteriaModeDisabled
+                }
+                "COMMON_CRITERIA_MODE_ENABLED" => {
+                    AdvancedSecurityOverridesCommonCriteriaMode::CommonCriteriaModeEnabled
+                }
+                "COMMON_CRITERIA_MODE_UNSPECIFIED" => {
+                    AdvancedSecurityOverridesCommonCriteriaMode::CommonCriteriaModeUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for AdvancedSecurityOverridesCommonCriteriaMode {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for AdvancedSecurityOverridesCommonCriteriaMode {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for AdvancedSecurityOverridesCommonCriteriaMode {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "COMMON_CRITERIA_MODE_DISABLED" => {
+                    AdvancedSecurityOverridesCommonCriteriaMode::CommonCriteriaModeDisabled
+                }
+                "COMMON_CRITERIA_MODE_ENABLED" => {
+                    AdvancedSecurityOverridesCommonCriteriaMode::CommonCriteriaModeEnabled
+                }
+                "COMMON_CRITERIA_MODE_UNSPECIFIED" => {
+                    AdvancedSecurityOverridesCommonCriteriaMode::CommonCriteriaModeUnspecified
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for AdvancedSecurityOverridesCommonCriteriaMode {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for AdvancedSecurityOverridesCommonCriteriaMode {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -496,6 +600,22 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub accessible_track_ids: ::std::option::Option<Vec<String>>,
+        #[doc = "This feature is not generally available yet."]
+        #[serde(
+            rename = "autoUpdateMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub auto_update_mode:
+            ::std::option::Option<crate::schemas::ApplicationPolicyAutoUpdateMode>,
+        #[doc = "Controls whether the app can communicate with itself across a device’s work and personal profiles, subject to user consent."]
+        #[serde(
+            rename = "connectedWorkAndPersonalApp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub connected_work_and_personal_app:
+            ::std::option::Option<crate::schemas::ApplicationPolicyConnectedWorkAndPersonalApp>,
         #[doc = "The default policy for all permissions requested by the app. If specified, this overrides the policy-level default_permission_policy which applies to all apps. It does not override the permission_grants which applies to all apps."]
         #[serde(
             rename = "defaultPermissionPolicy",
@@ -533,7 +653,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub lock_task_allowed: ::std::option::Option<bool>,
-        #[doc = "Managed configuration applied to the app. The format for the configuration is dictated by the ManagedProperty values supported by the app. Each field name in the managed configuration must match the key field of the ManagedProperty. The field value must be compatible with the type of the ManagedProperty: <table> <tr><td><i>type</i></td><td><i>JSON value</i></td></tr> <tr><td>BOOL</td><td>true or false</td></tr> <tr><td>STRING</td><td>string</td></tr> <tr><td>INTEGER</td><td>number</td></tr> <tr><td>CHOICE</td><td>string</td></tr> <tr><td>MULTISELECT</td><td>array of strings</td></tr> <tr><td>HIDDEN</td><td>string</td></tr> <tr><td>BUNDLE_ARRAY</td><td>array of objects</td></tr> </table>"]
+        #[doc = "Managed configuration applied to the app. The format for the configuration is dictated by the ManagedProperty values supported by the app. Each field name in the managed configuration must match the key field of the ManagedProperty. The field value must be compatible with the type of the ManagedProperty: *type* *JSON value* BOOL true or false STRING string INTEGER number CHOICE string MULTISELECT array of strings HIDDEN string BUNDLE_ARRAY array of objects "]
         #[serde(
             rename = "managedConfiguration",
             default,
@@ -577,6 +697,158 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for ApplicationPolicy {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ApplicationPolicyAutoUpdateMode {
+        #[doc = "This feature is not generally available yet."]
+        AutoUpdateDefault,
+        #[doc = "This feature is not generally available yet."]
+        AutoUpdateHighPriority,
+        #[doc = "This feature is not generally available yet."]
+        AutoUpdateModeUnspecified,
+        #[doc = "This feature is not generally available yet."]
+        AutoUpdatePostponed,
+    }
+    impl ApplicationPolicyAutoUpdateMode {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ApplicationPolicyAutoUpdateMode::AutoUpdateDefault => "AUTO_UPDATE_DEFAULT",
+                ApplicationPolicyAutoUpdateMode::AutoUpdateHighPriority => {
+                    "AUTO_UPDATE_HIGH_PRIORITY"
+                }
+                ApplicationPolicyAutoUpdateMode::AutoUpdateModeUnspecified => {
+                    "AUTO_UPDATE_MODE_UNSPECIFIED"
+                }
+                ApplicationPolicyAutoUpdateMode::AutoUpdatePostponed => "AUTO_UPDATE_POSTPONED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ApplicationPolicyAutoUpdateMode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ApplicationPolicyAutoUpdateMode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ApplicationPolicyAutoUpdateMode, ()> {
+            Ok(match s {
+                "AUTO_UPDATE_DEFAULT" => ApplicationPolicyAutoUpdateMode::AutoUpdateDefault,
+                "AUTO_UPDATE_HIGH_PRIORITY" => {
+                    ApplicationPolicyAutoUpdateMode::AutoUpdateHighPriority
+                }
+                "AUTO_UPDATE_MODE_UNSPECIFIED" => {
+                    ApplicationPolicyAutoUpdateMode::AutoUpdateModeUnspecified
+                }
+                "AUTO_UPDATE_POSTPONED" => ApplicationPolicyAutoUpdateMode::AutoUpdatePostponed,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for ApplicationPolicyAutoUpdateMode {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ApplicationPolicyAutoUpdateMode {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ApplicationPolicyAutoUpdateMode {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "AUTO_UPDATE_DEFAULT" => ApplicationPolicyAutoUpdateMode::AutoUpdateDefault,
+                "AUTO_UPDATE_HIGH_PRIORITY" => {
+                    ApplicationPolicyAutoUpdateMode::AutoUpdateHighPriority
+                }
+                "AUTO_UPDATE_MODE_UNSPECIFIED" => {
+                    ApplicationPolicyAutoUpdateMode::AutoUpdateModeUnspecified
+                }
+                "AUTO_UPDATE_POSTPONED" => ApplicationPolicyAutoUpdateMode::AutoUpdatePostponed,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for ApplicationPolicyAutoUpdateMode {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ApplicationPolicyAutoUpdateMode {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ApplicationPolicyConnectedWorkAndPersonalApp {
+        #[doc = "Allows the app to communicate across profiles after receiving user consent."]
+        ConnectedWorkAndPersonalAppAllowed,
+        #[doc = "Default. Prevents the app from communicating cross-profile."]
+        ConnectedWorkAndPersonalAppDisallowed,
+        #[doc = "Unspecified. Defaults to CONNECTED_WORK_AND_PERSONAL_APPS_DISALLOWED."]
+        ConnectedWorkAndPersonalAppUnspecified,
+    }
+    impl ApplicationPolicyConnectedWorkAndPersonalApp {
+        pub fn as_str(self) -> &'static str {
+            match self { ApplicationPolicyConnectedWorkAndPersonalApp :: ConnectedWorkAndPersonalAppAllowed => "CONNECTED_WORK_AND_PERSONAL_APP_ALLOWED" , ApplicationPolicyConnectedWorkAndPersonalApp :: ConnectedWorkAndPersonalAppDisallowed => "CONNECTED_WORK_AND_PERSONAL_APP_DISALLOWED" , ApplicationPolicyConnectedWorkAndPersonalApp :: ConnectedWorkAndPersonalAppUnspecified => "CONNECTED_WORK_AND_PERSONAL_APP_UNSPECIFIED" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ApplicationPolicyConnectedWorkAndPersonalApp {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ApplicationPolicyConnectedWorkAndPersonalApp {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<ApplicationPolicyConnectedWorkAndPersonalApp, ()> {
+            Ok ( match s { "CONNECTED_WORK_AND_PERSONAL_APP_ALLOWED" => ApplicationPolicyConnectedWorkAndPersonalApp :: ConnectedWorkAndPersonalAppAllowed , "CONNECTED_WORK_AND_PERSONAL_APP_DISALLOWED" => ApplicationPolicyConnectedWorkAndPersonalApp :: ConnectedWorkAndPersonalAppDisallowed , "CONNECTED_WORK_AND_PERSONAL_APP_UNSPECIFIED" => ApplicationPolicyConnectedWorkAndPersonalApp :: ConnectedWorkAndPersonalAppUnspecified , _ => return Err ( ( ) ) , } )
+        }
+    }
+    impl ::std::fmt::Display for ApplicationPolicyConnectedWorkAndPersonalApp {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ApplicationPolicyConnectedWorkAndPersonalApp {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ApplicationPolicyConnectedWorkAndPersonalApp {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok ( match value { "CONNECTED_WORK_AND_PERSONAL_APP_ALLOWED" => ApplicationPolicyConnectedWorkAndPersonalApp :: ConnectedWorkAndPersonalAppAllowed , "CONNECTED_WORK_AND_PERSONAL_APP_DISALLOWED" => ApplicationPolicyConnectedWorkAndPersonalApp :: ConnectedWorkAndPersonalAppDisallowed , "CONNECTED_WORK_AND_PERSONAL_APP_UNSPECIFIED" => ApplicationPolicyConnectedWorkAndPersonalApp :: ConnectedWorkAndPersonalAppUnspecified , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+        }
+    }
+    impl ::google_field_selector::FieldSelector for ApplicationPolicyConnectedWorkAndPersonalApp {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ApplicationPolicyConnectedWorkAndPersonalApp {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -672,12 +944,19 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ApplicationPolicyDelegatedScopesItems {
+        #[doc = "Grants access to blocking uninstallation."]
         BlockUninstall,
+        #[doc = "Grants access to certificate installation and management."]
         CertInstall,
+        #[doc = "No delegation scope specified."]
         DelegatedScopeUnspecified,
+        #[doc = "Grants access for enabling system apps."]
         EnableSystemApp,
+        #[doc = "Grants access to managed configurations management."]
         ManagedConfigurations,
+        #[doc = "Grants access to package access state."]
         PackageAccess,
+        #[doc = "Grants access to permission policy and permission grant state."]
         PermissionGrant,
     }
     impl ApplicationPolicyDelegatedScopesItems {
@@ -1517,8 +1796,10 @@ pub mod schemas {
         CommandTypeUnspecified,
         #[doc = "Lock the device, as if the lock screen timeout had expired."]
         Lock,
-        #[doc = "Reboot the device. Only supported on API level 24+."]
+        #[doc = "Reboot the device. Only supported on fully managed devices running Android 7.0 (API level 24) or higher."]
         Reboot,
+        #[doc = "Removes the work profile and all policies from a company-owned Android 8.0+ device, relinquishing the device for personal use. Apps and data associated with the personal profile(s) are preserved. The device will be deleted from the server after it acknowledges the command."]
+        RelinquishOwnership,
         #[doc = "Reset the user's password."]
         ResetPassword,
     }
@@ -1528,6 +1809,7 @@ pub mod schemas {
                 CommandType::CommandTypeUnspecified => "COMMAND_TYPE_UNSPECIFIED",
                 CommandType::Lock => "LOCK",
                 CommandType::Reboot => "REBOOT",
+                CommandType::RelinquishOwnership => "RELINQUISH_OWNERSHIP",
                 CommandType::ResetPassword => "RESET_PASSWORD",
             }
         }
@@ -1544,6 +1826,7 @@ pub mod schemas {
                 "COMMAND_TYPE_UNSPECIFIED" => CommandType::CommandTypeUnspecified,
                 "LOCK" => CommandType::Lock,
                 "REBOOT" => CommandType::Reboot,
+                "RELINQUISH_OWNERSHIP" => CommandType::RelinquishOwnership,
                 "RESET_PASSWORD" => CommandType::ResetPassword,
                 _ => return Err(()),
             })
@@ -1572,6 +1855,7 @@ pub mod schemas {
                 "COMMAND_TYPE_UNSPECIFIED" => CommandType::CommandTypeUnspecified,
                 "LOCK" => CommandType::Lock,
                 "REBOOT" => CommandType::Reboot,
+                "RELINQUISH_OWNERSHIP" => CommandType::RelinquishOwnership,
                 "RESET_PASSWORD" => CommandType::ResetPassword,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -1594,9 +1878,13 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CommandResetPasswordFlagsItems {
+        #[doc = "Don't ask for user credentials on device boot."]
         DoNotAskCredentialsOnBoot,
+        #[doc = "Lock the device after password reset."]
         LockNow,
+        #[doc = "Don't allow other admins to change the password again until the user has entered it."]
         RequireEntry,
+        #[doc = "This value is ignored."]
         ResetPasswordFlagUnspecified,
     }
     impl CommandResetPasswordFlagsItems {
@@ -1693,6 +1981,134 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct CommonCriteriaModeInfo {
+        #[doc = "Whether Common Criteria Mode is enabled."]
+        #[serde(
+            rename = "commonCriteriaModeStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub common_criteria_mode_status:
+            ::std::option::Option<crate::schemas::CommonCriteriaModeInfoCommonCriteriaModeStatus>,
+    }
+    impl ::google_field_selector::FieldSelector for CommonCriteriaModeInfo {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CommonCriteriaModeInfo {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum CommonCriteriaModeInfoCommonCriteriaModeStatus {
+        #[doc = "Common Criteria Mode is currently disabled."]
+        CommonCriteriaModeDisabled,
+        #[doc = "Common Criteria Mode is currently enabled."]
+        CommonCriteriaModeEnabled,
+        #[doc = "Unknown status."]
+        CommonCriteriaModeStatusUnknown,
+    }
+    impl CommonCriteriaModeInfoCommonCriteriaModeStatus {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                CommonCriteriaModeInfoCommonCriteriaModeStatus::CommonCriteriaModeDisabled => {
+                    "COMMON_CRITERIA_MODE_DISABLED"
+                }
+                CommonCriteriaModeInfoCommonCriteriaModeStatus::CommonCriteriaModeEnabled => {
+                    "COMMON_CRITERIA_MODE_ENABLED"
+                }
+                CommonCriteriaModeInfoCommonCriteriaModeStatus::CommonCriteriaModeStatusUnknown => {
+                    "COMMON_CRITERIA_MODE_STATUS_UNKNOWN"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CommonCriteriaModeInfoCommonCriteriaModeStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CommonCriteriaModeInfoCommonCriteriaModeStatus {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<CommonCriteriaModeInfoCommonCriteriaModeStatus, ()> {
+            Ok(match s {
+                "COMMON_CRITERIA_MODE_DISABLED" => {
+                    CommonCriteriaModeInfoCommonCriteriaModeStatus::CommonCriteriaModeDisabled
+                }
+                "COMMON_CRITERIA_MODE_ENABLED" => {
+                    CommonCriteriaModeInfoCommonCriteriaModeStatus::CommonCriteriaModeEnabled
+                }
+                "COMMON_CRITERIA_MODE_STATUS_UNKNOWN" => {
+                    CommonCriteriaModeInfoCommonCriteriaModeStatus::CommonCriteriaModeStatusUnknown
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for CommonCriteriaModeInfoCommonCriteriaModeStatus {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for CommonCriteriaModeInfoCommonCriteriaModeStatus {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for CommonCriteriaModeInfoCommonCriteriaModeStatus {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "COMMON_CRITERIA_MODE_DISABLED" => {
+                    CommonCriteriaModeInfoCommonCriteriaModeStatus::CommonCriteriaModeDisabled
+                }
+                "COMMON_CRITERIA_MODE_ENABLED" => {
+                    CommonCriteriaModeInfoCommonCriteriaModeStatus::CommonCriteriaModeEnabled
+                }
+                "COMMON_CRITERIA_MODE_STATUS_UNKNOWN" => {
+                    CommonCriteriaModeInfoCommonCriteriaModeStatus::CommonCriteriaModeStatusUnknown
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for CommonCriteriaModeInfoCommonCriteriaModeStatus {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CommonCriteriaModeInfoCommonCriteriaModeStatus {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct ComplianceRule {
         #[doc = "A condition which is satisfied if the Android Framework API level on the device doesn't meet a minimum requirement."]
         #[serde(
@@ -1746,22 +2162,140 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct ContactInfo {
+        #[doc = "Email address for a point of contact, which will be used to send important announcements related to managed Google Play."]
+        #[serde(
+            rename = "contactEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub contact_email: ::std::option::Option<String>,
+        #[doc = "The email of the data protection officer. The email is validated but not verified."]
+        #[serde(
+            rename = "dataProtectionOfficerEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_protection_officer_email: ::std::option::Option<String>,
+        #[doc = "The name of the data protection officer."]
+        #[serde(
+            rename = "dataProtectionOfficerName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_protection_officer_name: ::std::option::Option<String>,
+        #[doc = "The phone number of the data protection officer The phone number is validated but not verified."]
+        #[serde(
+            rename = "dataProtectionOfficerPhone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_protection_officer_phone: ::std::option::Option<String>,
+        #[doc = "The email of the EU representative. The email is validated but not verified."]
+        #[serde(
+            rename = "euRepresentativeEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub eu_representative_email: ::std::option::Option<String>,
+        #[doc = "The name of the EU representative."]
+        #[serde(
+            rename = "euRepresentativeName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub eu_representative_name: ::std::option::Option<String>,
+        #[doc = "The phone number of the EU representative. The phone number is validated but not verified."]
+        #[serde(
+            rename = "euRepresentativePhone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub eu_representative_phone: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for ContactInfo {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ContactInfo {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ContentProviderEndpoint {
+        #[doc = "This feature is not generally available."]
+        #[serde(
+            rename = "packageName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub package_name: ::std::option::Option<String>,
+        #[doc = "Required. This feature is not generally available."]
+        #[serde(
+            rename = "signingCertsSha256",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub signing_certs_sha_256: ::std::option::Option<Vec<String>>,
+        #[doc = "This feature is not generally available."]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub uri: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for ContentProviderEndpoint {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ContentProviderEndpoint {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct Date {
-        #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by itself or a year and month where the day is not significant."]
+        #[doc = "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant."]
         #[serde(
             rename = "day",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub day: ::std::option::Option<i32>,
-        #[doc = "Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day."]
+        #[doc = "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day."]
         #[serde(
             rename = "month",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub month: ::std::option::Option<i32>,
-        #[doc = "Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year."]
+        #[doc = "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year."]
         #[serde(
             rename = "year",
             default,
@@ -1817,6 +2351,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub applied_state: ::std::option::Option<crate::schemas::DeviceAppliedState>,
+        #[doc = "Information about Common Criteria Mode—security standards defined in the Common Criteria for Information Technology Security Evaluation (https://www.commoncriteriaportal.org/) (CC).This information is only available if statusReportingSettings.commonCriteriaModeEnabled is true in the device's policy."]
+        #[serde(
+            rename = "commonCriteriaModeInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub common_criteria_mode_info:
+            ::std::option::Option<crate::schemas::CommonCriteriaModeInfo>,
         #[doc = "Device settings information. This information is only available if deviceSettingsEnabled is true in the device's policy."]
         #[serde(
             rename = "deviceSettings",
@@ -2728,7 +3270,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub additional_data: ::std::option::Option<String>,
-        #[doc = "Controls personal usage on devices provisioned using this enrollment token."]
+        #[doc = "Controls whether personal usage is allowed on a device provisioned with this enrollment token.For company-owned devices: Enabling personal usage allows the user to set up a work profile on the device. Disabling personal usage requires the user provision the device as a fully managed device.For personally-owned devices: Enabling personal usage allows the user to set up a work profile on the device. Disabling personal usage will prevent the device from provisioning. Personal usage cannot be disabled on personally-owned device."]
         #[serde(
             rename = "allowPersonalUsage",
             default,
@@ -2736,7 +3278,7 @@ pub mod schemas {
         )]
         pub allow_personal_usage:
             ::std::option::Option<crate::schemas::EnrollmentTokenAllowPersonalUsage>,
-        #[doc = "The length of time the enrollment token is valid, ranging from 1 minute to 30 days. If not specified, the default duration is 1 hour."]
+        #[doc = "The length of time the enrollment token is valid, ranging from 1 minute to 90 days. If not specified, the default duration is 1 hour."]
         #[serde(
             rename = "duration",
             default,
@@ -2911,6 +3453,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub app_auto_approval_enabled: ::std::option::Option<bool>,
+        #[doc = "This feature is not generally available yet. The enterprise contact info of an EMM owned enterprise"]
+        #[serde(
+            rename = "contactInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub contact_info: ::std::option::Option<crate::schemas::ContactInfo>,
         #[doc = "The types of Google Pub/Sub notifications enabled for the enterprise."]
         #[serde(
             rename = "enabledNotificationTypes",
@@ -2981,10 +3530,15 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum EnterpriseEnabledNotificationTypesItems {
+        #[doc = "A notification sent when a device command has completed."]
         Command,
+        #[doc = "Deprecated."]
         ComplianceReport,
+        #[doc = "A notification sent when a device enrolls."]
         Enrollment,
+        #[doc = "This value is ignored."]
         NotificationTypeUnspecified,
+        #[doc = "A notification sent when a device issues a status report."]
         StatusReport,
     }
     impl EnterpriseEnabledNotificationTypesItems {
@@ -4038,6 +4592,44 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ListEnterprisesResponse {
+        #[doc = "This feature is not generally available yet. The list of enterprises."]
+        #[serde(
+            rename = "enterprises",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub enterprises: ::std::option::Option<Vec<crate::schemas::Enterprise>>,
+        #[doc = "This feature is not generally available yet. If there are more results, a token to retrieve next page of results."]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub next_page_token: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for ListEnterprisesResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ListEnterprisesResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListOperationsResponse {
         #[doc = "The standard List next-page token."]
@@ -4143,7 +4735,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ManagedConfigurationTemplate {
-        #[doc = "Optional, a map containing <key, value> configuration variables defined for the configuration."]
+        #[doc = "Optional, a map containing configuration variables defined for the configuration."]
         #[serde(
             rename = "configurationVariables",
             default,
@@ -4592,6 +5184,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub network_operator_name: ::std::option::Option<String>,
+        #[doc = "Provides telephony information associated with each SIM card on the device. Only supported on fully managed devices starting from Android API level 23."]
+        #[serde(
+            rename = "telephonyInfos",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub telephony_infos: ::std::option::Option<Vec<crate::schemas::TelephonyInfo>>,
         #[doc = "Wi-Fi MAC address of the device. For example, 7c:11:11:11:11:11."]
         #[serde(
             rename = "wifiMacAddress",
@@ -4619,7 +5218,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub current_value: ::std::option::Option<::serde_json::Value>,
-        #[doc = "For settings with nested fields, if a particular nested field is out of compliance, this specifies the full path to the offending field. The path is formatted in the same way the policy JSON field would be referenced in JavaScript, that is: 1) For object-typed fields, the field name is followed by a dot then by a  subfield name. 2) For array-typed fields, the field name is followed by the array index  enclosed in brackets. For example, to indicate a problem with the url field in the externalData field in the 3rd application, the path would be applications[2].externalData.url"]
+        #[doc = "For settings with nested fields, if a particular nested field is out of compliance, this specifies the full path to the offending field. The path is formatted in the same way the policy JSON field would be referenced in JavaScript, that is: 1) For object-typed fields, the field name is followed by a dot then by a subfield name. 2) For array-typed fields, the field name is followed by the array index enclosed in brackets. For example, to indicate a problem with the url field in the externalData field in the 3rd application, the path would be applications[2].externalData.url"]
         #[serde(
             rename = "fieldPath",
             default,
@@ -4649,7 +5248,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub package_name: ::std::option::Option<String>,
-        #[doc = "The name of the policy setting. This is the JSON field name of a top-level Policy  field."]
+        #[doc = "The name of the policy setting. This is the JSON field name of a top-level Policy field."]
         #[serde(
             rename = "settingName",
             default,
@@ -4683,7 +5282,7 @@ pub mod schemas {
         NotAvailableInCountry,
         #[doc = "The app is incompatible with the device."]
         NotCompatibleWithDevice,
-        #[doc = "The enterprise is no longer enrolled with managed Play or the admin has not accepted the latest managed Play terms of service."]
+        #[doc = "The enterprise is no longer enrolled with Managed Google Play or the admin has not accepted the latest Managed Google Play Terms of Service."]
         NotEnrolled,
         #[doc = "The app was not found in Play."]
         NotFound,
@@ -5048,6 +5647,45 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for NonComplianceDetailConditionNonComplianceReason {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct OncCertificateProvider {
+        #[doc = "This feature is not generally available."]
+        #[serde(
+            rename = "certificateReferences",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub certificate_references: ::std::option::Option<Vec<String>>,
+        #[doc = "This feature is not generally available."]
+        #[serde(
+            rename = "contentProviderEndpoint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub content_provider_endpoint:
+            ::std::option::Option<crate::schemas::ContentProviderEndpoint>,
+    }
+    impl ::google_field_selector::FieldSelector for OncCertificateProvider {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for OncCertificateProvider {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -5735,14 +6373,17 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PersonalApplicationPolicyInstallType {
-        #[doc = "The app is blocked and can't be installed."]
+        #[doc = "The app is available to install in the personal profile."]
+        Available,
+        #[doc = "The app is blocked and can't be installed in the personal profile."]
         Blocked,
-        #[doc = "Unspecified. The default behavior is that all installs are allowed."]
+        #[doc = "Unspecified. Defaults to AVAILABLE."]
         InstallTypeUnspecified,
     }
     impl PersonalApplicationPolicyInstallType {
         pub fn as_str(self) -> &'static str {
             match self {
+                PersonalApplicationPolicyInstallType::Available => "AVAILABLE",
                 PersonalApplicationPolicyInstallType::Blocked => "BLOCKED",
                 PersonalApplicationPolicyInstallType::InstallTypeUnspecified => {
                     "INSTALL_TYPE_UNSPECIFIED"
@@ -5759,6 +6400,7 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<PersonalApplicationPolicyInstallType, ()> {
             Ok(match s {
+                "AVAILABLE" => PersonalApplicationPolicyInstallType::Available,
                 "BLOCKED" => PersonalApplicationPolicyInstallType::Blocked,
                 "INSTALL_TYPE_UNSPECIFIED" => {
                     PersonalApplicationPolicyInstallType::InstallTypeUnspecified
@@ -5787,6 +6429,7 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "AVAILABLE" => PersonalApplicationPolicyInstallType::Available,
                 "BLOCKED" => PersonalApplicationPolicyInstallType::Blocked,
                 "INSTALL_TYPE_UNSPECIFIED" => {
                     PersonalApplicationPolicyInstallType::InstallTypeUnspecified
@@ -5837,14 +6480,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub camera_disabled: ::std::option::Option<bool>,
-        #[doc = "Controls how long the work profile can stay off."]
+        #[doc = "Controls how long the work profile can stay off. The duration must be at least 3 days."]
         #[serde(
             rename = "maxDaysWithWorkOff",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub max_days_with_work_off: ::std::option::Option<i32>,
-        #[doc = "Policy applied to applications on the personal profile."]
+        #[doc = "Policy applied to applications in the personal profile."]
         #[serde(
             rename = "personalApplications",
             default,
@@ -5852,7 +6495,7 @@ pub mod schemas {
         )]
         pub personal_applications:
             ::std::option::Option<Vec<crate::schemas::PersonalApplicationPolicy>>,
-        #[doc = "Controls how apps on the personal profile are allowed or blocked."]
+        #[doc = "Used together with personalApplications to control how apps in the personal profile are allowed or blocked."]
         #[serde(
             rename = "personalPlayStoreMode",
             default,
@@ -5880,15 +6523,21 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PersonalUsagePoliciesPersonalPlayStoreMode {
-        #[doc = "All Play Store apps are available, except those whose install_type is BLOCKED in PersonalApplicationPolicy."]
+        #[doc = "Only apps explicitly specified in personalApplications with installType set to AVAILABLE are allowed to be installed in the personal profile."]
+        Allowlist,
+        #[doc = "All Play Store apps are available for installation in the personal profile, except those whose installType is BLOCKED in personalApplications."]
         Blacklist,
-        #[doc = "Unspecified. Default behavior is to allow all installs."]
+        #[doc = "All Play Store apps are available for installation in the personal profile, except those whose installType is BLOCKED in personalApplications."]
+        Blocklist,
+        #[doc = "Unspecified. Defaults to BLOCKLIST."]
         PlayStoreModeUnspecified,
     }
     impl PersonalUsagePoliciesPersonalPlayStoreMode {
         pub fn as_str(self) -> &'static str {
             match self {
+                PersonalUsagePoliciesPersonalPlayStoreMode::Allowlist => "ALLOWLIST",
                 PersonalUsagePoliciesPersonalPlayStoreMode::Blacklist => "BLACKLIST",
+                PersonalUsagePoliciesPersonalPlayStoreMode::Blocklist => "BLOCKLIST",
                 PersonalUsagePoliciesPersonalPlayStoreMode::PlayStoreModeUnspecified => {
                     "PLAY_STORE_MODE_UNSPECIFIED"
                 }
@@ -5906,7 +6555,9 @@ pub mod schemas {
             s: &str,
         ) -> ::std::result::Result<PersonalUsagePoliciesPersonalPlayStoreMode, ()> {
             Ok(match s {
+                "ALLOWLIST" => PersonalUsagePoliciesPersonalPlayStoreMode::Allowlist,
                 "BLACKLIST" => PersonalUsagePoliciesPersonalPlayStoreMode::Blacklist,
+                "BLOCKLIST" => PersonalUsagePoliciesPersonalPlayStoreMode::Blocklist,
                 "PLAY_STORE_MODE_UNSPECIFIED" => {
                     PersonalUsagePoliciesPersonalPlayStoreMode::PlayStoreModeUnspecified
                 }
@@ -5934,7 +6585,9 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ALLOWLIST" => PersonalUsagePoliciesPersonalPlayStoreMode::Allowlist,
                 "BLACKLIST" => PersonalUsagePoliciesPersonalPlayStoreMode::Blacklist,
+                "BLOCKLIST" => PersonalUsagePoliciesPersonalPlayStoreMode::Blocklist,
                 "PLAY_STORE_MODE_UNSPECIFIED" => {
                     PersonalUsagePoliciesPersonalPlayStoreMode::PlayStoreModeUnspecified
                 }
@@ -5973,7 +6626,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub add_user_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether adjusting the master volume is disabled."]
+        #[doc = "Whether adjusting the master volume is disabled. Also mutes the device."]
         #[serde(
             rename = "adjustVolumeDisabled",
             default,
@@ -6018,7 +6671,15 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub applications: ::std::option::Option<Vec<crate::schemas::ApplicationPolicy>>,
-        #[doc = "Whether auto time is required, which prevents the user from manually setting the date and time."]
+        #[doc = "Whether auto date, time, and time zone are enabled on a company-owned device. If this is set, then autoTimeRequired is ignored."]
+        #[serde(
+            rename = "autoDateAndTimeZone",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub auto_date_and_time_zone:
+            ::std::option::Option<crate::schemas::PolicyAutoDateAndTimeZone>,
+        #[doc = "Whether auto time is required, which prevents the user from manually setting the date and time. If autoDateAndTimeZone is set, this field is ignored."]
         #[serde(
             rename = "autoTimeRequired",
             default,
@@ -6167,7 +6828,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub install_apps_disabled: ::std::option::Option<bool>,
-        #[doc = "Whether the user is allowed to enable the \"Unknown Sources\" setting, which allows installation of apps from unknown sources."]
+        #[doc = "This field has no effect."]
         #[serde(
             rename = "installUnknownSourcesAllowed",
             default,
@@ -6203,7 +6864,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kiosk_customization: ::std::option::Option<crate::schemas::KioskCustomization>,
-        #[doc = "The degree of location detection enabled. The user may change the value unless the user is otherwise blocked from accessing device settings."]
+        #[doc = "The degree of location detection enabled."]
         #[serde(
             rename = "locationMode",
             default,
@@ -6274,6 +6935,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub network_reset_disabled: ::std::option::Option<bool>,
+        #[doc = "This feature is not generally available."]
+        #[serde(
+            rename = "oncCertificateProviders",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub onc_certificate_providers:
+            ::std::option::Option<Vec<crate::schemas::OncCertificateProvider>>,
         #[doc = "Network configuration for the device. See configure networks for more information."]
         #[serde(
             rename = "openNetworkConfiguration",
@@ -6553,8 +7222,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PolicyAndroidDevicePolicyTracksItems {
+        #[doc = "This value is ignored."]
         AppTrackUnspecified,
+        #[doc = "The beta track, which provides the latest beta release."]
         Beta,
+        #[doc = "The production track, which provides the latest stable release."]
         Production,
     }
     impl PolicyAndroidDevicePolicyTracksItems {
@@ -6718,6 +7390,100 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for PolicyAppAutoUpdatePolicy {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum PolicyAutoDateAndTimeZone {
+        #[doc = "Enforce auto date, time, and time zone on the device."]
+        AutoDateAndTimeZoneEnforced,
+        #[doc = "Unspecified. Defaults to AUTO_DATE_AND_TIME_ZONE_USER_CHOICE."]
+        AutoDateAndTimeZoneUnspecified,
+        #[doc = "Auto date, time, and time zone are left to user's choice."]
+        AutoDateAndTimeZoneUserChoice,
+    }
+    impl PolicyAutoDateAndTimeZone {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                PolicyAutoDateAndTimeZone::AutoDateAndTimeZoneEnforced => {
+                    "AUTO_DATE_AND_TIME_ZONE_ENFORCED"
+                }
+                PolicyAutoDateAndTimeZone::AutoDateAndTimeZoneUnspecified => {
+                    "AUTO_DATE_AND_TIME_ZONE_UNSPECIFIED"
+                }
+                PolicyAutoDateAndTimeZone::AutoDateAndTimeZoneUserChoice => {
+                    "AUTO_DATE_AND_TIME_ZONE_USER_CHOICE"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PolicyAutoDateAndTimeZone {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PolicyAutoDateAndTimeZone {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PolicyAutoDateAndTimeZone, ()> {
+            Ok(match s {
+                "AUTO_DATE_AND_TIME_ZONE_ENFORCED" => {
+                    PolicyAutoDateAndTimeZone::AutoDateAndTimeZoneEnforced
+                }
+                "AUTO_DATE_AND_TIME_ZONE_UNSPECIFIED" => {
+                    PolicyAutoDateAndTimeZone::AutoDateAndTimeZoneUnspecified
+                }
+                "AUTO_DATE_AND_TIME_ZONE_USER_CHOICE" => {
+                    PolicyAutoDateAndTimeZone::AutoDateAndTimeZoneUserChoice
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for PolicyAutoDateAndTimeZone {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for PolicyAutoDateAndTimeZone {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for PolicyAutoDateAndTimeZone {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "AUTO_DATE_AND_TIME_ZONE_ENFORCED" => {
+                    PolicyAutoDateAndTimeZone::AutoDateAndTimeZoneEnforced
+                }
+                "AUTO_DATE_AND_TIME_ZONE_UNSPECIFIED" => {
+                    PolicyAutoDateAndTimeZone::AutoDateAndTimeZoneUnspecified
+                }
+                "AUTO_DATE_AND_TIME_ZONE_USER_CHOICE" => {
+                    PolicyAutoDateAndTimeZone::AutoDateAndTimeZoneUserChoice
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for PolicyAutoDateAndTimeZone {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PolicyAutoDateAndTimeZone {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -6893,16 +7659,27 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PolicyKeyguardDisabledFeaturesItems {
+        #[doc = "Disable all current and future keyguard customizations."]
         AllFeatures,
+        #[doc = "Disable all biometric authentication on secure keyguard screens."]
         Biometrics,
+        #[doc = "Disable the camera on secure keyguard screens (e.g. PIN)."]
         Camera,
+        #[doc = "Disable fingerprint sensor on secure keyguard screens."]
         DisableFingerprint,
+        #[doc = "Disable text entry into notifications on secure keyguard screens."]
         DisableRemoteInput,
+        #[doc = "Disable face authentication on secure keyguard screens."]
         Face,
+        #[doc = "Disable iris authentication on secure keyguard screens."]
         Iris,
+        #[doc = "This value is ignored."]
         KeyguardDisabledFeatureUnspecified,
+        #[doc = "Disable showing all notifications on secure keyguard screens."]
         Notifications,
+        #[doc = "Ignore trust agent state on secure keyguard screens."]
         TrustAgents,
+        #[doc = "Disable unredacted notifications on secure keyguard screens."]
         UnredactedNotifications,
     }
     impl PolicyKeyguardDisabledFeaturesItems {
@@ -7010,15 +7787,21 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PolicyLocationMode {
-        #[doc = "Only the network location provider is enabled."]
+        #[doc = "On Android 8 and below, only the network location provider is enabled. On Android 9 and above, this is equivalent to LOCATION_ENFORCED."]
         BatterySaving,
-        #[doc = "All location detection methods are enabled, including GPS, networks, and other sensors."]
+        #[doc = "On Android 8 and below, all location detection methods are enabled, including GPS, networks, and other sensors. On Android 9 and above, this is equivalent to LOCATION_ENFORCED."]
         HighAccuracy,
-        #[doc = "The current device value is not modified."]
+        #[doc = "Disable location setting on the device."]
+        LocationDisabled,
+        #[doc = "Enable location setting on the device."]
+        LocationEnforced,
+        #[doc = "Defaults to LOCATION_USER_CHOICE."]
         LocationModeUnspecified,
-        #[doc = "Location detection is disabled."]
+        #[doc = "Location setting is not restricted on the device. No specific behavior is set or enforced."]
+        LocationUserChoice,
+        #[doc = "On Android 8 and below, location setting and accuracy are disabled. On Android 9 and above, this is equivalent to LOCATION_DISABLED."]
         Off,
-        #[doc = "Only GPS and other sensors are enabled."]
+        #[doc = "On Android 8 and below, only GPS and other sensors are enabled. On Android 9 and above, this is equivalent to LOCATION_ENFORCED."]
         SensorsOnly,
     }
     impl PolicyLocationMode {
@@ -7026,7 +7809,10 @@ pub mod schemas {
             match self {
                 PolicyLocationMode::BatterySaving => "BATTERY_SAVING",
                 PolicyLocationMode::HighAccuracy => "HIGH_ACCURACY",
+                PolicyLocationMode::LocationDisabled => "LOCATION_DISABLED",
+                PolicyLocationMode::LocationEnforced => "LOCATION_ENFORCED",
                 PolicyLocationMode::LocationModeUnspecified => "LOCATION_MODE_UNSPECIFIED",
+                PolicyLocationMode::LocationUserChoice => "LOCATION_USER_CHOICE",
                 PolicyLocationMode::Off => "OFF",
                 PolicyLocationMode::SensorsOnly => "SENSORS_ONLY",
             }
@@ -7043,7 +7829,10 @@ pub mod schemas {
             Ok(match s {
                 "BATTERY_SAVING" => PolicyLocationMode::BatterySaving,
                 "HIGH_ACCURACY" => PolicyLocationMode::HighAccuracy,
+                "LOCATION_DISABLED" => PolicyLocationMode::LocationDisabled,
+                "LOCATION_ENFORCED" => PolicyLocationMode::LocationEnforced,
                 "LOCATION_MODE_UNSPECIFIED" => PolicyLocationMode::LocationModeUnspecified,
+                "LOCATION_USER_CHOICE" => PolicyLocationMode::LocationUserChoice,
                 "OFF" => PolicyLocationMode::Off,
                 "SENSORS_ONLY" => PolicyLocationMode::SensorsOnly,
                 _ => return Err(()),
@@ -7072,7 +7861,10 @@ pub mod schemas {
             Ok(match value {
                 "BATTERY_SAVING" => PolicyLocationMode::BatterySaving,
                 "HIGH_ACCURACY" => PolicyLocationMode::HighAccuracy,
+                "LOCATION_DISABLED" => PolicyLocationMode::LocationDisabled,
+                "LOCATION_ENFORCED" => PolicyLocationMode::LocationEnforced,
                 "LOCATION_MODE_UNSPECIFIED" => PolicyLocationMode::LocationModeUnspecified,
+                "LOCATION_USER_CHOICE" => PolicyLocationMode::LocationUserChoice,
                 "OFF" => PolicyLocationMode::Off,
                 "SENSORS_ONLY" => PolicyLocationMode::SensorsOnly,
                 _ => {
@@ -7172,9 +7964,13 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PolicyStayOnPluggedModesItems {
+        #[doc = "Power source is an AC charger."]
         Ac,
+        #[doc = "This value is ignored."]
         BatteryPluggedModeUnspecified,
+        #[doc = "Power source is a USB port."]
         Usb,
+        #[doc = "Power source is wireless."]
         Wireless,
     }
     impl PolicyStayOnPluggedModesItems {
@@ -7784,7 +8580,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SigninDetail {
-        #[doc = "Controls whether personal usage is allowed on a device provisioned with this enrollment token.For company-owned devices:\nEnabling personal usage allows the user to set up a work profile on the device.\nDisabling personal usage requires the user provision the device as a fully managed device.For personally-owned devices:\nEnabling personal usage allows the user to set up a work profile on the device.\nDisabling personal usage will prevent the device from provisioning. Personal usage cannot be disabled on personally-owned device."]
+        #[doc = "Controls whether personal usage is allowed on a device provisioned with this enrollment token.For company-owned devices: Enabling personal usage allows the user to set up a work profile on the device. Disabling personal usage requires the user provision the device as a fully managed device.For personally-owned devices: Enabling personal usage allows the user to set up a work profile on the device. Disabling personal usage will prevent the device from provisioning. Personal usage cannot be disabled on personally-owned device."]
         #[serde(
             rename = "allowPersonalUsage",
             default,
@@ -7806,7 +8602,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub signin_enrollment_token: ::std::option::Option<String>,
-        #[doc = "Sign-in URL for authentication when device is provisioned with a sign-in enrollment token. The sign-in endpoint should finish authentication flow with a URL in the form of https://enterprise.google.com/android/enroll?et=<token> for a successful login, or https://enterprise.google.com/android/enroll/invalid for a failed login."]
+        #[doc = "Sign-in URL for authentication when device is provisioned with a sign-in enrollment token. The sign-in endpoint should finish authentication flow with a URL in the form of https://enterprise.google.com/android/enroll?et= for a successful login, or https://enterprise.google.com/android/enroll/invalid for a failed login."]
         #[serde(
             rename = "signinUrl",
             default,
@@ -8033,6 +8829,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub security_patch_level: ::std::option::Option<String>,
+        #[doc = "Information about a potential pending system update."]
+        #[serde(
+            rename = "systemUpdateInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub system_update_info: ::std::option::Option<crate::schemas::SystemUpdateInfo>,
     }
     impl ::google_field_selector::FieldSelector for SoftwareInfo {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -8107,6 +8910,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub application_reports_enabled: ::std::option::Option<bool>,
+        #[doc = "Whether Common Criteria Mode reporting is enabled."]
+        #[serde(
+            rename = "commonCriteriaModeEnabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub common_criteria_mode_enabled: ::std::option::Option<bool>,
         #[doc = "Whether device settings reporting is enabled."]
         #[serde(
             rename = "deviceSettingsEnabled",
@@ -8319,6 +9129,174 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct SystemUpdateInfo {
+        #[doc = "The time when the update was first available. A zero value indicates that this field is not set. This field is set only if an update is available (that is, updateStatus is neither UPDATE_STATUS_UNKNOWN nor UP_TO_DATE)."]
+        #[serde(
+            rename = "updateReceivedTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub update_received_time: ::std::option::Option<String>,
+        #[doc = "The status of an update: whether an update exists and what type it is."]
+        #[serde(
+            rename = "updateStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub update_status: ::std::option::Option<crate::schemas::SystemUpdateInfoUpdateStatus>,
+    }
+    impl ::google_field_selector::FieldSelector for SystemUpdateInfo {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SystemUpdateInfo {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum SystemUpdateInfoUpdateStatus {
+        #[doc = "There is a pending OS update available."]
+        OsUpdateAvailable,
+        #[doc = "There is a pending security update available."]
+        SecurityUpdateAvailable,
+        #[doc = "There is a pending system update available, but its type is not known."]
+        UnknownUpdateAvailable,
+        #[doc = "There is no pending system update available on the device."]
+        UpToDate,
+        #[doc = "It is unknown whether there is a pending system update. This happens when, for example, the device API level is less than 26, or if the version of Android Device Policy is outdated."]
+        UpdateStatusUnknown,
+    }
+    impl SystemUpdateInfoUpdateStatus {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                SystemUpdateInfoUpdateStatus::OsUpdateAvailable => "OS_UPDATE_AVAILABLE",
+                SystemUpdateInfoUpdateStatus::SecurityUpdateAvailable => {
+                    "SECURITY_UPDATE_AVAILABLE"
+                }
+                SystemUpdateInfoUpdateStatus::UnknownUpdateAvailable => "UNKNOWN_UPDATE_AVAILABLE",
+                SystemUpdateInfoUpdateStatus::UpToDate => "UP_TO_DATE",
+                SystemUpdateInfoUpdateStatus::UpdateStatusUnknown => "UPDATE_STATUS_UNKNOWN",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SystemUpdateInfoUpdateStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SystemUpdateInfoUpdateStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SystemUpdateInfoUpdateStatus, ()> {
+            Ok(match s {
+                "OS_UPDATE_AVAILABLE" => SystemUpdateInfoUpdateStatus::OsUpdateAvailable,
+                "SECURITY_UPDATE_AVAILABLE" => {
+                    SystemUpdateInfoUpdateStatus::SecurityUpdateAvailable
+                }
+                "UNKNOWN_UPDATE_AVAILABLE" => SystemUpdateInfoUpdateStatus::UnknownUpdateAvailable,
+                "UP_TO_DATE" => SystemUpdateInfoUpdateStatus::UpToDate,
+                "UPDATE_STATUS_UNKNOWN" => SystemUpdateInfoUpdateStatus::UpdateStatusUnknown,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for SystemUpdateInfoUpdateStatus {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for SystemUpdateInfoUpdateStatus {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for SystemUpdateInfoUpdateStatus {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "OS_UPDATE_AVAILABLE" => SystemUpdateInfoUpdateStatus::OsUpdateAvailable,
+                "SECURITY_UPDATE_AVAILABLE" => {
+                    SystemUpdateInfoUpdateStatus::SecurityUpdateAvailable
+                }
+                "UNKNOWN_UPDATE_AVAILABLE" => SystemUpdateInfoUpdateStatus::UnknownUpdateAvailable,
+                "UP_TO_DATE" => SystemUpdateInfoUpdateStatus::UpToDate,
+                "UPDATE_STATUS_UNKNOWN" => SystemUpdateInfoUpdateStatus::UpdateStatusUnknown,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for SystemUpdateInfoUpdateStatus {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SystemUpdateInfoUpdateStatus {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct TelephonyInfo {
+        #[doc = "The carrier name associated with this SIM card."]
+        #[serde(
+            rename = "carrierName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub carrier_name: ::std::option::Option<String>,
+        #[doc = "The phone number associated with this SIM card."]
+        #[serde(
+            rename = "phoneNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub phone_number: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for TelephonyInfo {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for TelephonyInfo {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct TermsAndConditions {
         #[doc = "A well-formatted HTML string. It will be parsed on the client with android.text.Html#fromHtml."]
         #[serde(
@@ -8396,7 +9374,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub default_message: ::std::option::Option<String>,
-        #[doc = "A map containing <locale, message> pairs, where locale is a well-formed BCP 47 language (https://www.w3.org/International/articles/language-tags/) code, such as en-US, es-ES, or fr."]
+        #[doc = "A map containing pairs, where locale is a well-formed BCP 47 language (https://www.w3.org/International/articles/language-tags/) code, such as en-US, es-ES, or fr."]
         #[serde(
             rename = "localizedMessages",
             default,
@@ -8575,7 +9553,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct WebAppIcon {
-        #[doc = "The actual bytes of the image in a base64url encoded string (c.f. RFC4648, section 5 \"Base 64 Encoding with URL and Filename Safe Alphabet\"). <ul> <li>The image type can be png or jpg. <li>The image should ideally be square. <li>The image should ideally have a size of 512x512. </ul>"]
+        #[doc = "The actual bytes of the image in a base64url encoded string (c.f. RFC4648, section 5 \"Base 64 Encoding with URL and Filename Safe Alphabet\"). - The image type can be png or jpg. - The image should ideally be square. - The image should ideally have a size of 512x512. "]
         #[serde(
             rename = "imageData",
             default,
@@ -8606,7 +9584,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct WebToken {
-        #[doc = "The features to enable. Use this if you want to control exactly which feature(s) will be activated; leave empty to allow all features.Restrictions / things to note: <ul> <li> If no features are listed here, all features are enabled — this is the  default behavior where you give access to all features to your admins. <li> This must not contain any FEATURE_UNSPECIFIED values. <li> Repeated values are ignored </ul>"]
+        #[doc = "The features to enable. Use this if you want to control exactly which feature(s) will be activated; leave empty to allow all features.Restrictions / things to note: - If no features are listed here, all features are enabled — this is the default behavior where you give access to all features to your admins. - This must not contain any FEATURE_UNSPECIFIED values. - Repeated values are ignored "]
         #[serde(
             rename = "enabledFeatures",
             default,
@@ -8655,11 +9633,17 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum WebTokenEnabledFeaturesItems {
+        #[doc = "Unspecified feature."]
         FeatureUnspecified,
+        #[doc = "The managed configurations page (https://developers.google.com/android/management/managed-configurations-iframe)."]
         ManagedConfigurations,
+        #[doc = "The Managed Play search apps page (https://developers.google.com/android/management/apps#search-apps)."]
         PlaySearch,
+        #[doc = "The private apps page (https://developers.google.com/android/management/apps#private-apps)."]
         PrivateApps,
+        #[doc = "The organize apps page (https://developers.google.com/android/management/apps#organize-apps)."]
         StoreBuilder,
+        #[doc = "The Web Apps page (https://developers.google.com/android/management/apps#web-apps)."]
         WebApps,
     }
     impl WebTokenEnabledFeaturesItems {
@@ -8740,7 +9724,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum WebTokenPermissionsItems {
+        #[doc = "The permission to approve apps for the enterprise."]
         ApproveApps,
+        #[doc = "This value is ignored."]
         WebTokenPermissionUnspecified,
     }
     impl WebTokenPermissionsItems {
@@ -9047,7 +10033,79 @@ impl Client {
 }
 pub mod resources {
     pub mod enterprises {
-        pub mod params {}
+        pub mod params {
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+            pub enum ListView {
+                #[doc = "This feature is not generally available yet. Includes name and enterprise_display_name fields."]
+                Basic,
+                #[doc = "This feature is not generally available yet. The API will default to the BASIC view for the List method."]
+                EnterpriseViewUnspecified,
+            }
+            impl ListView {
+                pub fn as_str(self) -> &'static str {
+                    match self {
+                        ListView::Basic => "BASIC",
+                        ListView::EnterpriseViewUnspecified => "ENTERPRISE_VIEW_UNSPECIFIED",
+                    }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListView {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListView {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListView, ()> {
+                    Ok(match s {
+                        "BASIC" => ListView::Basic,
+                        "ENTERPRISE_VIEW_UNSPECIFIED" => ListView::EnterpriseViewUnspecified,
+                        _ => return Err(()),
+                    })
+                }
+            }
+            impl ::std::fmt::Display for ListView {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                    f.write_str(self.as_str())
+                }
+            }
+            impl ::serde::Serialize for ListView {
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+                where
+                    S: ::serde::ser::Serializer,
+                {
+                    serializer.serialize_str(self.as_str())
+                }
+            }
+            impl<'de> ::serde::Deserialize<'de> for ListView {
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+                where
+                    D: ::serde::de::Deserializer<'de>,
+                {
+                    let value: &'de str = <&str>::deserialize(deserializer)?;
+                    Ok(match value {
+                        "BASIC" => ListView::Basic,
+                        "ENTERPRISE_VIEW_UNSPECIFIED" => ListView::EnterpriseViewUnspecified,
+                        _ => {
+                            return Err(::serde::de::Error::custom(format!(
+                                "invalid enum for #name: {}",
+                                value
+                            )))
+                        }
+                    })
+                }
+            }
+            impl ::google_field_selector::FieldSelector for ListView {
+                fn fields() -> Vec<::google_field_selector::Field> {
+                    Vec::new()
+                }
+            }
+            impl ::google_field_selector::ToFieldType for ListView {
+                fn field_type() -> ::google_field_selector::FieldType {
+                    ::google_field_selector::FieldType::Leaf
+                }
+            }
+        }
         pub struct EnterprisesActions<'a> {
             pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
@@ -9073,9 +10131,29 @@ pub mod resources {
                     upload_protocol: None,
                     upload_type: None,
                     xgafv: None,
+                    agreement_accepted: None,
                     enterprise_token: None,
                     project_id: None,
                     signup_url_name: None,
+                }
+            }
+            #[doc = "This feature is not generally available yet. Deletes an enterprise."]
+            pub fn delete(&self, name: impl Into<String>) -> DeleteRequestBuilder {
+                DeleteRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    name: name.into(),
                 }
             }
             #[doc = "Gets an enterprise."]
@@ -9095,6 +10173,28 @@ pub mod resources {
                     upload_type: None,
                     xgafv: None,
                     name: name.into(),
+                }
+            }
+            #[doc = "This feature is not generally available yet. Lists enterprises that are managed by an EMM. Only partial views are returned."]
+            pub fn list(&self) -> ListRequestBuilder {
+                ListRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    page_size: None,
+                    page_token: None,
+                    project_id: None,
+                    view: None,
                 }
             }
             #[doc = "Updates an enterprise."]
@@ -9178,6 +10278,7 @@ pub mod resources {
             pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Enterprise,
+            agreement_accepted: Option<bool>,
             enterprise_token: Option<String>,
             project_id: Option<String>,
             signup_url_name: Option<String>,
@@ -9194,6 +10295,11 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> CreateRequestBuilder<'a> {
+            #[doc = "This feature is not generally available yet. Whether the managed Google Play Agreement is presented and agreed."]
+            pub fn agreement_accepted(mut self, value: bool) -> Self {
+                self.agreement_accepted = Some(value);
+                self
+            }
             #[doc = "The enterprise token appended to the callback URL."]
             pub fn enterprise_token(mut self, value: impl Into<String>) -> Self {
                 self.enterprise_token = Some(value.into());
@@ -9320,22 +10426,177 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("enterpriseToken", &self.enterprise_token)]);
-                let req = req.query(&[("projectId", &self.project_id)]);
-                let req = req.query(&[("signupUrlName", &self.signup_url_name)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("agreementAccepted", &self.agreement_accepted)]);
+                req = req.query(&[("enterpriseToken", &self.enterprise_token)]);
+                req = req.query(&[("projectId", &self.project_id)]);
+                req = req.query(&[("signupUrlName", &self.signup_url_name)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
+                Ok(req)
+            }
+        }
+        #[doc = "Created via [EnterprisesActions::delete()](struct.EnterprisesActions.html#method.delete)"]
+        #[derive(Debug, Clone)]
+        pub struct DeleteRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            name: String,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a> DeleteRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::Empty, crate::Error> {
+                self.execute_with_fields(None::<&str>)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_with_all_fields(self) -> Result<crate::schemas::Empty, crate::Error> {
+                self.execute_with_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path())?;
+                Ok(crate::error_from_response(req.send()?)?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://androidmanagement.googleapis.com/".to_owned();
+                output.push_str("v1/");
+                {
+                    let var_as_str = &self.name;
+                    output.extend(::percent_encoding::utf8_percent_encode(
+                        &var_as_str,
+                        crate::RESERVED,
+                    ));
+                }
+                output
+            }
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9479,24 +10740,309 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
                 );
                 Ok(req)
+            }
+        }
+        #[doc = "Created via [EnterprisesActions::list()](struct.EnterprisesActions.html#method.list)"]
+        #[derive(Debug, Clone)]
+        pub struct ListRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            page_size: Option<i32>,
+            page_token: Option<String>,
+            project_id: Option<String>,
+            view: Option<crate::resources::enterprises::params::ListView>,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a> ListRequestBuilder<'a> {
+            #[doc = "This feature is not generally available yet. The requested page size. The actual page size may be fixed to a min or max value."]
+            pub fn page_size(mut self, value: i32) -> Self {
+                self.page_size = Some(value);
+                self
+            }
+            #[doc = "This feature is not generally available yet. A token identifying a page of results returned by the server."]
+            pub fn page_token(mut self, value: impl Into<String>) -> Self {
+                self.page_token = Some(value.into());
+                self
+            }
+            #[doc = "Required. This feature is not generally available yet. The ID of the Cloud project of the EMM the enterprises belongs to."]
+            pub fn project_id(mut self, value: impl Into<String>) -> Self {
+                self.project_id = Some(value.into());
+                self
+            }
+            #[doc = "This feature is not generally available yet. View that specify that partial response should be returned."]
+            pub fn view(mut self, value: crate::resources::enterprises::params::ListView) -> Self {
+                self.view = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+            #[doc = r" items yielded by the iterator are chosen by the caller of this"]
+            #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
+            #[doc = r" populated fields in the yielded items will be determined by the"]
+            #[doc = r" `FieldSelector` implementation."]
+            pub fn iter_enterprises<T>(self) -> crate::iter::PageItemIter<Self, T>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.iter_enterprises_with_fields(fields)
+            }
+            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+            #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
+            #[doc = r" fields in `#items_type` will be the default fields populated by"]
+            #[doc = r" the server."]
+            pub fn iter_enterprises_with_default_fields(
+                self,
+            ) -> crate::iter::PageItemIter<Self, crate::schemas::Enterprise> {
+                self.iter_enterprises_with_fields(None::<String>)
+            }
+            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+            #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
+            #[doc = r" fields in `#items_type` will be all fields available. This should"]
+            #[doc = r" primarily be used during developement and debugging as fetching"]
+            #[doc = r" all fields can be expensive both in bandwidth and server"]
+            #[doc = r" resources."]
+            pub fn iter_enterprises_with_all_fields(
+                self,
+            ) -> crate::iter::PageItemIter<Self, crate::schemas::Enterprise> {
+                self.iter_enterprises_with_fields(Some("*"))
+            }
+            pub fn iter_enterprises_with_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> crate::iter::PageItemIter<Self, T>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: AsRef<str>,
+            {
+                self.fields = Some({
+                    let mut selector = concat!("nextPageToken,", "enterprises").to_owned();
+                    let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
+                    if !items_fields.is_empty() {
+                        selector.push_str("(");
+                        selector.push_str(items_fields);
+                        selector.push_str(")");
+                    }
+                    selector
+                });
+                crate::iter::PageItemIter::new(self, "enterprises")
+            }
+            pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.iter_with_fields(fields)
+            }
+            pub fn iter_with_default_fields(
+                self,
+            ) -> crate::iter::PageIter<Self, crate::schemas::ListEnterprisesResponse> {
+                self.iter_with_fields(None::<&str>)
+            }
+            pub fn iter_with_all_fields(
+                self,
+            ) -> crate::iter::PageIter<Self, crate::schemas::ListEnterprisesResponse> {
+                self.iter_with_fields(Some("*"))
+            }
+            pub fn iter_with_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> crate::iter::PageIter<Self, T>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: AsRef<str>,
+            {
+                let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
+                if !fields.is_empty() {
+                    match fields.chars().rev().nth(0) {
+                        Some(',') | None => {}
+                        _ => fields.push_str(","),
+                    }
+                    fields.push_str("nextPageToken");
+                    self.fields = Some(fields);
+                }
+                crate::iter::PageIter::new(self)
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::ListEnterprisesResponse, crate::Error> {
+                self.execute_with_fields(None::<&str>)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_with_all_fields(
+                self,
+            ) -> Result<crate::schemas::ListEnterprisesResponse, crate::Error> {
+                self.execute_with_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path())?;
+                Ok(crate::error_from_response(req.send()?)?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://androidmanagement.googleapis.com/".to_owned();
+                output.push_str("v1/enterprises");
+                output
+            }
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("pageSize", &self.page_size)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("projectId", &self.project_id)]);
+                req = req.query(&[("view", &self.view)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
+                Ok(req)
+            }
+        }
+        impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
+            fn set_page_token(&mut self, value: String) {
+                self.page_token = value.into();
+            }
+            fn execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                self._execute()
             }
         }
         #[doc = "Created via [EnterprisesActions::patch()](struct.EnterprisesActions.html#method.patch)"]
@@ -9643,20 +11189,20 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                let req = req.query(&[("updateMask", &self.update_mask)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                req = req.query(&[("updateMask", &self.update_mask)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9840,20 +11386,20 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("languageCode", &self.language_code)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("languageCode", &self.language_code)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -9866,8 +11412,11 @@ pub mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum DeleteWipeDataFlagsItems {
+                    #[doc = "Preserve the factory reset protection data on the device."]
                     PreserveResetProtectionData,
+                    #[doc = "This value is ignored."]
                     WipeDataFlagUnspecified,
+                    #[doc = "Additionally wipe the device's external storage (such as SD cards)."]
                     WipeExternalStorage,
                 }
                 impl DeleteWipeDataFlagsItems {
@@ -10241,21 +11790,23 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                    let req = req.query(&[("wipeDataFlags", &self.wipe_data_flags)]);
-                    let req = req.query(&[("wipeReasonMessage", &self.wipe_reason_message)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                    for value in self.wipe_data_flags.iter().flatten() {
+                        req = req.query(&[("wipeDataFlags", value)]);
+                    }
+                    req = req.query(&[("wipeReasonMessage", &self.wipe_reason_message)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10402,19 +11953,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10564,19 +12115,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -10836,21 +12387,21 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11016,20 +12567,20 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                    let req = req.query(&[("updateMask", &self.update_mask)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                    req = req.query(&[("updateMask", &self.update_mask)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11268,19 +12819,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11428,19 +12979,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11588,19 +13139,19 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -11871,22 +13422,22 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                     {
-                        let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("filter", &self.filter)]);
-                        let req = req.query(&[("pageSize", &self.page_size)]);
-                        let req = req.query(&[("pageToken", &self.page_token)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
-                        let req = req.query(&[("alt", &self.alt)]);
-                        let req = req.query(&[("callback", &self.callback)]);
-                        let req = req.query(&[("fields", &self.fields)]);
-                        let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                        let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                        let req = req.query(&[("uploadType", &self.upload_type)]);
-                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
+                        let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                        req = req.query(&[("filter", &self.filter)]);
+                        req = req.query(&[("pageSize", &self.page_size)]);
+                        req = req.query(&[("pageToken", &self.page_token)]);
+                        req = req.query(&[("access_token", &self.access_token)]);
+                        req = req.query(&[("alt", &self.alt)]);
+                        req = req.query(&[("callback", &self.callback)]);
+                        req = req.query(&[("fields", &self.fields)]);
+                        req = req.query(&[("key", &self.key)]);
+                        req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        req = req.query(&[("quotaUser", &self.quota_user)]);
+                        req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        req = req.query(&[("uploadType", &self.upload_type)]);
+                        req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        req = req.bearer_auth(
                             self.auth
                                 .access_token()
                                 .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12103,19 +13654,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12262,19 +13813,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12517,19 +14068,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12676,19 +14227,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -12948,21 +14499,21 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13128,20 +14679,20 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                    let req = req.query(&[("updateMask", &self.update_mask)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                    req = req.query(&[("updateMask", &self.update_mask)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13411,19 +14962,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13570,19 +15121,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -13729,19 +15280,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14001,21 +15552,21 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14181,20 +15732,20 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                    let req = req.query(&[("updateMask", &self.update_mask)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                    req = req.query(&[("updateMask", &self.update_mask)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14380,19 +15931,19 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -14573,21 +16124,21 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("callbackUrl", &self.callback_url)]);
-                let req = req.query(&[("projectId", &self.project_id)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::POST, path);
+                req = req.query(&[("callbackUrl", &self.callback_url)]);
+                req = req.query(&[("projectId", &self.project_id)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,

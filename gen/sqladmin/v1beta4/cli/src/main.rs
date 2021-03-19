@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("sqladmin1_beta4")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190827")
-            .about("Creates and manages Cloud SQL instances, which provide fully managed MySQL or PostgreSQL databases.")
+            .version("0.1.0-20210310")
+            .about("API for Cloud SQL database instance management")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -76,7 +76,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             databases0 = databases0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates a resource containing information about a database inside a Cloud SQL instance. This method supports patch semantics.");
+            let mcmd = SubCommand::with_name("patch").about("Partially updates a resource containing information about a database inside a Cloud SQL instance. This method supports patch semantics.");
             databases0 = databases0.subcommand(mcmd);
         }
         {
@@ -99,8 +99,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instances0 = instances0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("clone")
-                .about("Creates a Cloud SQL instance as a clone of the source instance.");
+            let mcmd = SubCommand::with_name("clone").about("Creates a Cloud SQL instance as a clone of the source instance. Using this operation might cause your instance to restart.");
             instances0 = instances0.subcommand(mcmd);
         }
         {
@@ -116,8 +115,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instances0 = instances0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("failover")
-                .about("Failover the instance to its failover replica instance.");
+            let mcmd = SubCommand::with_name("failover").about("Failover the instance to its failover replica instance. Using this operation might cause your instance to restart.");
             instances0 = instances0.subcommand(mcmd);
         }
         {
@@ -134,7 +132,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instances0 = instances0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists instances under a given project in the alphabetical order of the instance name.");
+            let mcmd =
+                SubCommand::with_name("list").about("Lists instances under a given project.");
             instances0 = instances0.subcommand(mcmd);
         }
         {
@@ -142,13 +141,13 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instances0 = instances0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates settings of a Cloud SQL instance. Caution: This is not a partial update, so you must include values for all the settings that you want to retain. For partial updates, use patch.. This method supports patch semantics.");
+            let mcmd = SubCommand::with_name("patch").about(
+                "Updates settings of a Cloud SQL instance. This method supports patch semantics.",
+            );
             instances0 = instances0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("promote_replica").about(
-                "Promotes the read replica instance to be a stand-alone Cloud SQL instance.",
-            );
+            let mcmd = SubCommand::with_name("promote_replica").about("Promotes the read replica instance to be a stand-alone Cloud SQL instance. Using this operation might cause your instance to restart.");
             instances0 = instances0.subcommand(mcmd);
         }
         {
@@ -160,8 +159,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instances0 = instances0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("restore_backup")
-                .about("Restores a backup of a Cloud SQL instance.");
+            let mcmd = SubCommand::with_name("restore_backup").about("Restores a backup of a Cloud SQL instance. Using this operation might cause your instance to restart.");
             instances0 = instances0.subcommand(mcmd);
         }
         {
@@ -180,11 +178,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("truncate_log")
-                .about("Truncate MySQL general and slow query log tables");
+                .about("Truncate MySQL general and slow query log tables MySQL only.");
             instances0 = instances0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Updates settings of a Cloud SQL instance. Caution: This is not a partial update, so you must include values for all the settings that you want to retain. For partial updates, use patch.");
+            let mcmd = SubCommand::with_name("update").about("Updates settings of a Cloud SQL instance. Using this operation might cause your instance to restart.");
             instances0 = instances0.subcommand(mcmd);
         }
         let mut operations0 = SubCommand::with_name("operations")
@@ -199,6 +197,9 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("list").about("Lists all instance operations that have been performed on the given Cloud SQL instance in the reverse chronological order of the start time.");
             operations0 = operations0.subcommand(mcmd);
         }
+        let mut projects0 = SubCommand::with_name("projects")
+            .setting(AppSettings::ColoredHelp)
+            .about("sub-resources: instances");
         let mut ssl_certs0 = SubCommand::with_name("ssl_certs")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create_ephemeral, delete, get, insert and list");
@@ -253,9 +254,29 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .about("Updates an existing user in a Cloud SQL instance.");
             users0 = users0.subcommand(mcmd);
         }
+        let mut instances1 = SubCommand::with_name("instances")
+                        .setting(AppSettings::ColoredHelp)
+                        .about("methods: reschedule_maintenance, start_external_sync and verify_external_sync_settings");
+        {
+            let mcmd = SubCommand::with_name("reschedule_maintenance")
+                .about("Reschedules the maintenance on the given instance.");
+            instances1 = instances1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("start_external_sync")
+                .about("Start External primary instance migration.");
+            instances1 = instances1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("verify_external_sync_settings")
+                .about("Verify External primary instance external sync settings.");
+            instances1 = instances1.subcommand(mcmd);
+        }
+        projects0 = projects0.subcommand(instances1);
         app = app.subcommand(users0);
         app = app.subcommand(tiers0);
         app = app.subcommand(ssl_certs0);
+        app = app.subcommand(projects0);
         app = app.subcommand(operations0);
         app = app.subcommand(instances0);
         app = app.subcommand(flags0);

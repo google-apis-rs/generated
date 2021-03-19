@@ -13,29 +13,231 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Cluster {
-        #[doc = "Immutable. The type of storage used by this cluster to serve its\nparent instance's tables, unless explicitly overridden."]
+    pub struct Backup {
+        #[doc = "Output only. `end_time` is the time that the backup was finished. The row data in the backup will be no newer than this timestamp."]
         #[serde(
-            rename = "defaultStorageType",
+            rename = "endTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub default_storage_type: ::std::option::Option<crate::schemas::ClusterDefaultStorageType>,
-        #[doc = "Immutable. The location where this cluster's nodes and storage reside. For best\nperformance, clients should be located as close as possible to this\ncluster. Currently only zones are supported, so values should be of the\nform `projects/{project}/locations/{zone}`."]
+        pub end_time: ::std::option::Option<String>,
+        #[doc = "Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup."]
         #[serde(
-            rename = "location",
+            rename = "expireTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub location: ::std::option::Option<String>,
-        #[doc = "The unique name of the cluster. Values are of the form\n`projects/{project}/instances/{instance}/clusters/a-z*`."]
+        pub expire_time: ::std::option::Option<String>,
+        #[doc = "A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Required. The number of nodes allocated to this cluster. More nodes enable higher\nthroughput and more consistent performance."]
+        #[doc = "Output only. Size of the backup in bytes."]
+        #[serde(
+            rename = "sizeBytes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub size_bytes: ::std::option::Option<i64>,
+        #[doc = "Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`."]
+        #[serde(
+            rename = "sourceTable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub source_table: ::std::option::Option<String>,
+        #[doc = "Output only. `start_time` is the time that the backup was started (i.e. approximately the time the CreateBackup request is received). The row data in this backup will be no older than this timestamp."]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_time: ::std::option::Option<String>,
+        #[doc = "Output only. The current state of the backup."]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub state: ::std::option::Option<crate::schemas::BackupState>,
+    }
+    impl ::google_field_selector::FieldSelector for Backup {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Backup {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum BackupState {
+        #[doc = "The pending backup is still being created. Operations on the backup may fail with `FAILED_PRECONDITION` in this state."]
+        Creating,
+        #[doc = "The backup is complete and ready for use."]
+        Ready,
+        #[doc = "Not specified."]
+        StateUnspecified,
+    }
+    impl BackupState {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                BackupState::Creating => "CREATING",
+                BackupState::Ready => "READY",
+                BackupState::StateUnspecified => "STATE_UNSPECIFIED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for BackupState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for BackupState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<BackupState, ()> {
+            Ok(match s {
+                "CREATING" => BackupState::Creating,
+                "READY" => BackupState::Ready,
+                "STATE_UNSPECIFIED" => BackupState::StateUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for BackupState {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for BackupState {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for BackupState {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "CREATING" => BackupState::Creating,
+                "READY" => BackupState::Ready,
+                "STATE_UNSPECIFIED" => BackupState::StateUnspecified,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for BackupState {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for BackupState {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BackupInfo {
+        #[doc = "Output only. Name of the backup."]
+        #[serde(
+            rename = "backup",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub backup: ::std::option::Option<String>,
+        #[doc = "Output only. This time that the backup was finished. Row data in the backup will be no newer than this timestamp."]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub end_time: ::std::option::Option<String>,
+        #[doc = "Output only. Name of the table the backup was created from."]
+        #[serde(
+            rename = "sourceTable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub source_table: ::std::option::Option<String>,
+        #[doc = "Output only. The time that the backup was started. Row data in the backup will be no older than this timestamp."]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_time: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for BackupInfo {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for BackupInfo {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Cluster {
+        #[doc = "Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden."]
+        #[serde(
+            rename = "defaultStorageType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub default_storage_type: ::std::option::Option<crate::schemas::ClusterDefaultStorageType>,
+        #[doc = "Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`."]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub location: ::std::option::Option<String>,
+        #[doc = "The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance."]
         #[serde(
             rename = "serveNodes",
             default,
@@ -138,13 +340,13 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ClusterState {
-        #[doc = "The cluster is currently being created, and may be destroyed\nif the creation process encounters an error.\nA cluster may not be able to serve requests while being created."]
+        #[doc = "The cluster is currently being created, and may be destroyed if the creation process encounters an error. A cluster may not be able to serve requests while being created."]
         Creating,
-        #[doc = "The cluster has no backing nodes. The data (tables) still\nexist, but no operations can be performed on the cluster."]
+        #[doc = "The cluster has no backing nodes. The data (tables) still exist, but no operations can be performed on the cluster."]
         Disabled,
         #[doc = "The cluster has been successfully created and is ready to serve requests."]
         Ready,
-        #[doc = "The cluster is currently being resized, and may revert to its previous\nnode count if the process encounters an error.\nA cluster is still capable of serving requests while being resized,\nbut may exhibit performance as if its number of allocated nodes is\nbetween the starting and requested states."]
+        #[doc = "The cluster is currently being resized, and may revert to its previous node count if the process encounters an error. A cluster is still capable of serving requests while being resized, but may exhibit performance as if its number of allocated nodes is between the starting and requested states."]
         Resizing,
         #[doc = "The state of the cluster could not be determined."]
         StateNotKnown,
@@ -234,6 +436,58 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct CreateBackupMetadata {
+        #[doc = "If set, the time at which this operation finished or was cancelled."]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub end_time: ::std::option::Option<String>,
+        #[doc = "The name of the backup being created."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The name of the table the backup is created from."]
+        #[serde(
+            rename = "sourceTable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub source_table: ::std::option::Option<String>,
+        #[doc = "The time at which this operation started."]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_time: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for CreateBackupMetadata {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CreateBackupMetadata {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct CreateClusterMetadata {
         #[doc = "The time at which the operation failed or was completed successfully."]
         #[serde(
@@ -256,7 +510,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub request_time: ::std::option::Option<String>,
-        #[doc = "Keys: the full `name` of each table that existed in the instance when\nCreateCluster was first called, i.e.\n`projects/<project>/instances/<instance>/tables/<table>`. Any table added\nto the instance by a later API call will be created in the new cluster by\nthat API call, not this one.\n\nValues: information on how much of a table's data has been copied to the\nnewly-created cluster so far."]
+        #[doc = "Keys: the full `name` of each table that existed in the instance when CreateCluster was first called, i.e. `projects//instances//tables/`. Any table added to the instance by a later API call will be created in the new cluster by that API call, not this one. Values: information on how much of a table's data has been copied to the newly-created cluster so far."]
         #[serde(
             rename = "tables",
             default,
@@ -289,21 +543,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CreateClusterRequest {
-        #[doc = "Required. The cluster to be created.\nFields marked `OutputOnly` must be left blank."]
+        #[doc = "Required. The cluster to be created. Fields marked `OutputOnly` must be left blank."]
         #[serde(
             rename = "cluster",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cluster: ::std::option::Option<crate::schemas::Cluster>,
-        #[doc = "Required. The ID to be used when referring to the new cluster within its instance,\ne.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`."]
+        #[doc = "Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`."]
         #[serde(
             rename = "clusterId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cluster_id: ::std::option::Option<String>,
-        #[doc = "Required. The unique name of the instance in which to create the new cluster.\nValues are of the form\n`projects/{project}/instances/{instance}`."]
+        #[doc = "Required. The unique name of the instance in which to create the new cluster. Values are of the form `projects/{project}/instances/{instance}`."]
         #[serde(
             rename = "parent",
             default,
@@ -379,7 +633,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CreateInstanceRequest {
-        #[doc = "Required. The clusters to be created within the instance, mapped by desired\ncluster ID, e.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`.\nFields marked `OutputOnly` must be left blank.\nCurrently, at most four clusters can be specified."]
+        #[doc = "Required. The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank. Currently, at most four clusters can be specified."]
         #[serde(
             rename = "clusters",
             default,
@@ -387,21 +641,21 @@ pub mod schemas {
         )]
         pub clusters:
             ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::Cluster>>,
-        #[doc = "Required. The instance to create.\nFields marked `OutputOnly` must be left blank."]
+        #[doc = "Required. The instance to create. Fields marked `OutputOnly` must be left blank."]
         #[serde(
             rename = "instance",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub instance: ::std::option::Option<crate::schemas::Instance>,
-        #[doc = "Required. The ID to be used when referring to the new instance within its project,\ne.g., just `myinstance` rather than\n`projects/myproject/instances/myinstance`."]
+        #[doc = "Required. The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`."]
         #[serde(
             rename = "instanceId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub instance_id: ::std::option::Option<String>,
-        #[doc = "Required. The unique name of the project in which to create the new instance.\nValues are of the form `projects/{project}`."]
+        #[doc = "Required. The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`."]
         #[serde(
             rename = "parent",
             default,
@@ -431,22 +685,94 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct FailureTrace {
+        #[serde(
+            rename = "frames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub frames: ::std::option::Option<Vec<crate::schemas::Frame>>,
+    }
+    impl ::google_field_selector::FieldSelector for FailureTrace {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for FailureTrace {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Frame {
+        #[serde(
+            rename = "targetName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub target_name: ::std::option::Option<String>,
+        #[serde(
+            rename = "workflowGuid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub workflow_guid: ::std::option::Option<String>,
+        #[serde(
+            rename = "zoneId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub zone_id: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for Frame {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Frame {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct Instance {
-        #[doc = "Required. The descriptive name for this instance as it appears in UIs.\nCan be changed at any time, but should be kept globally unique\nto avoid confusion."]
+        #[doc = "Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion."]
         #[serde(
             rename = "displayName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "Required. Labels are a flexible and lightweight mechanism for organizing cloud\nresources into groups that reflect a customer's organizational needs and\ndeployment strategies. They can be used to filter resources and aggregate\nmetrics.\n\n* Label keys must be between 1 and 63 characters long and must conform to\n  the regular expression: `\\p{Ll}\\p{Lo}{0,62}`.\n* Label values must be between 0 and 63 characters long and must conform to\n  the regular expression: `[\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}`.\n* No more than 64 labels can be associated with a given resource.\n* Keys and values must both be under 128 bytes."]
+        #[doc = "Required. Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\\p{Ll}\\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes."]
         #[serde(
             rename = "labels",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The unique name of the instance. Values are of the form\n`projects/{project}/instances/a-z+[a-z0-9]`."]
+        #[doc = "The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`."]
         #[serde(
             rename = "name",
             default,
@@ -480,11 +806,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum InstanceType {
-        #[doc = "DEPRECATED: Prefer PRODUCTION for all use cases, as it no longer enforces\na higher minimum node count than DEVELOPMENT."]
+        #[doc = "DEPRECATED: Prefer PRODUCTION for all use cases, as it no longer enforces a higher minimum node count than DEVELOPMENT."]
         Development,
-        #[doc = "An instance meant for production use. `serve_nodes` must be set\non the cluster."]
+        #[doc = "An instance meant for production use. `serve_nodes` must be set on the cluster."]
         Production,
-        #[doc = "The type of the instance is unspecified. If set when creating an\ninstance, a `PRODUCTION` instance will be created. If set when updating\nan instance, the type will be left unchanged."]
+        #[doc = "The type of the instance is unspecified. If set when creating an instance, a `PRODUCTION` instance will be created. If set when updating an instance, the type will be left unchanged."]
         TypeUnspecified,
     }
     impl InstanceType {
@@ -556,9 +882,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum InstanceState {
-        #[doc = "The instance is currently being created, and may be destroyed\nif the creation process encounters an error."]
+        #[doc = "The instance is currently being created, and may be destroyed if the creation process encounters an error."]
         Creating,
-        #[doc = "The instance has been successfully created and can serve requests\nto its tables."]
+        #[doc = "The instance has been successfully created and can serve requests to its tables."]
         Ready,
         #[doc = "The state of the instance could not be determined."]
         StateNotKnown,
@@ -642,6 +968,89 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct OperationProgress {
+        #[doc = "If set, the time at which this operation failed or was completed successfully."]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub end_time: ::std::option::Option<String>,
+        #[doc = "Percent completion of the operation. Values are between 0 and 100 inclusive."]
+        #[serde(
+            rename = "progressPercent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub progress_percent: ::std::option::Option<i32>,
+        #[doc = "Time the request was received."]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_time: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for OperationProgress {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for OperationProgress {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct OptimizeRestoredTableMetadata {
+        #[doc = "Name of the restored table being optimized."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The progress of the post-restore optimizations."]
+        #[serde(
+            rename = "progress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub progress: ::std::option::Option<crate::schemas::OperationProgress>,
+    }
+    impl ::google_field_selector::FieldSelector for OptimizeRestoredTableMetadata {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for OptimizeRestoredTableMetadata {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct PartialUpdateInstanceRequest {
         #[doc = "Required. The Instance which will (partially) replace the current value."]
         #[serde(
@@ -650,7 +1059,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub instance: ::std::option::Option<crate::schemas::Instance>,
-        #[doc = "Required. The subset of Instance fields which should be replaced.\nMust be explicitly set."]
+        #[doc = "Required. The subset of Instance fields which should be replaced. Must be explicitly set."]
         #[serde(
             rename = "updateMask",
             default,
@@ -680,8 +1089,143 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct RestoreTableMetadata {
+        #[serde(
+            rename = "backupInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub backup_info: ::std::option::Option<crate::schemas::BackupInfo>,
+        #[doc = "Name of the table being created and restored to."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "If exists, the name of the long-running operation that will be used to track the post-restore optimization process to optimize the performance of the restored table. The metadata type of the long-running operation is OptimizeRestoreTableMetadata. The response type is Empty. This long-running operation may be automatically created by the system if applicable after the RestoreTable long-running operation completes successfully. This operation may not be created if the table is already optimized or the restore was not successful."]
+        #[serde(
+            rename = "optimizeTableOperationName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub optimize_table_operation_name: ::std::option::Option<String>,
+        #[doc = "The progress of the RestoreTable operation."]
+        #[serde(
+            rename = "progress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub progress: ::std::option::Option<crate::schemas::OperationProgress>,
+        #[doc = "The type of the restore source."]
+        #[serde(
+            rename = "sourceType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub source_type: ::std::option::Option<crate::schemas::RestoreTableMetadataSourceType>,
+    }
+    impl ::google_field_selector::FieldSelector for RestoreTableMetadata {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for RestoreTableMetadata {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum RestoreTableMetadataSourceType {
+        #[doc = "A backup was used as the source of the restore."]
+        Backup,
+        #[doc = "No restore associated."]
+        RestoreSourceTypeUnspecified,
+    }
+    impl RestoreTableMetadataSourceType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                RestoreTableMetadataSourceType::Backup => "BACKUP",
+                RestoreTableMetadataSourceType::RestoreSourceTypeUnspecified => {
+                    "RESTORE_SOURCE_TYPE_UNSPECIFIED"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for RestoreTableMetadataSourceType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for RestoreTableMetadataSourceType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<RestoreTableMetadataSourceType, ()> {
+            Ok(match s {
+                "BACKUP" => RestoreTableMetadataSourceType::Backup,
+                "RESTORE_SOURCE_TYPE_UNSPECIFIED" => {
+                    RestoreTableMetadataSourceType::RestoreSourceTypeUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for RestoreTableMetadataSourceType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for RestoreTableMetadataSourceType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for RestoreTableMetadataSourceType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "BACKUP" => RestoreTableMetadataSourceType::Backup,
+                "RESTORE_SOURCE_TYPE_UNSPECIFIED" => {
+                    RestoreTableMetadataSourceType::RestoreSourceTypeUnspecified
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for RestoreTableMetadataSourceType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for RestoreTableMetadataSourceType {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct TableProgress {
-        #[doc = "Estimate of the number of bytes copied so far for this table.\nThis will eventually reach 'estimated_size_bytes' unless the table copy\nis CANCELLED."]
+        #[doc = "Estimate of the number of bytes copied so far for this table. This will eventually reach 'estimated_size_bytes' unless the table copy is CANCELLED."]
         #[serde(
             rename = "estimatedCopiedBytes",
             default,
@@ -716,7 +1260,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TableProgressState {
-        #[doc = "The table was deleted before it finished copying to the new cluster.\nNote that tables deleted after completion will stay marked as\nCOMPLETED, not CANCELLED."]
+        #[doc = "The table was deleted before it finished copying to the new cluster. Note that tables deleted after completion will stay marked as COMPLETED, not CANCELLED."]
         Cancelled,
         #[doc = "The table has been fully copied to the new cluster."]
         Completed,

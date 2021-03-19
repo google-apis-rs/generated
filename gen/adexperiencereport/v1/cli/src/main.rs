@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("adexperiencereport1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200621")
+            .version("0.1.0-20210315")
             .about("Views Ad Experience Report data, and gets a list of sites that have a significant number of annoying ads.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -45,7 +45,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("Lists sites that are failing in the Ad Experience Report on at least one\nplatform.");
+            let mcmd = SubCommand::with_name("list").about("Lists sites that are failing in the Ad Experience Report on at least one platform.");
             violating_sites0 = violating_sites0.subcommand(mcmd);
         }
         app = app.subcommand(violating_sites0);

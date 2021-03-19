@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("cloudscheduler1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200618")
+            .version("0.1.0-20210303")
             .about("Creates and manages jobs run on a regular recurring schedule.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -68,19 +68,19 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             jobs2 = jobs2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates a job.\n\nIf successful, the updated Job is returned. If the job does\nnot exist, `NOT_FOUND` is returned.\n\nIf UpdateJob does not successfully return, it is possible for the\njob to be in an Job.State.UPDATE_FAILED state. A job in this state may\nnot be executed. If this happens, retry the UpdateJob request\nuntil a successful response is received.");
+            let mcmd = SubCommand::with_name("patch").about("Updates a job. If successful, the updated Job is returned. If the job does not exist, `NOT_FOUND` is returned. If UpdateJob does not successfully return, it is possible for the job to be in an Job.State.UPDATE_FAILED state. A job in this state may not be executed. If this happens, retry the UpdateJob request until a successful response is received.");
             jobs2 = jobs2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("pause").about("Pauses a job.\n\nIf a job is paused then the system will stop executing the job\nuntil it is re-enabled via ResumeJob. The\nstate of the job is stored in state; if paused it\nwill be set to Job.State.PAUSED. A job must be in Job.State.ENABLED\nto be paused.");
+            let mcmd = SubCommand::with_name("pause").about("Pauses a job. If a job is paused then the system will stop executing the job until it is re-enabled via ResumeJob. The state of the job is stored in state; if paused it will be set to Job.State.PAUSED. A job must be in Job.State.ENABLED to be paused.");
             jobs2 = jobs2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("resume").about("Resume a job.\n\nThis method reenables a job after it has been Job.State.PAUSED. The\nstate of a job is stored in Job.state; after calling this method it\nwill be set to Job.State.ENABLED. A job must be in\nJob.State.PAUSED to be resumed.");
+            let mcmd = SubCommand::with_name("resume").about("Resume a job. This method reenables a job after it has been Job.State.PAUSED. The state of a job is stored in Job.state; after calling this method it will be set to Job.State.ENABLED. A job must be in Job.State.PAUSED to be resumed.");
             jobs2 = jobs2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("run").about("Forces a job to run now.\n\nWhen this method is called, Cloud Scheduler will dispatch the job, even\nif the job is already running.");
+            let mcmd = SubCommand::with_name("run").about("Forces a job to run now. When this method is called, Cloud Scheduler will dispatch the job, even if the job is already running.");
             jobs2 = jobs2.subcommand(mcmd);
         }
         locations1 = locations1.subcommand(jobs2);

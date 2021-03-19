@@ -5,14 +5,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Asset {
-        #[doc = "The author's publicly visible name. Use this name when giving credit to the\nauthor. For more information, see [Licensing](/poly/discover/licensing)."]
+        #[doc = "The author's publicly visible name. Use this name when giving credit to the author. For more information, see [Licensing](/poly/discover/licensing)."]
         #[serde(
             rename = "authorName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub author_name: ::std::option::Option<String>,
-        #[doc = "For published assets, the time when the asset was published.\nFor unpublished assets, the time when the asset was created."]
+        #[doc = "For published assets, the time when the asset was published. For unpublished assets, the time when the asset was created."]
         #[serde(
             rename = "createTime",
             default,
@@ -33,7 +33,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "A list of Formats where each\nformat describes one representation of the asset."]
+        #[doc = "A list of Formats where each format describes one representation of the asset."]
         #[serde(
             rename = "formats",
             default,
@@ -47,28 +47,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_curated: ::std::option::Option<bool>,
-        #[doc = "The license under which the author has made the asset available\nfor use, if any."]
+        #[doc = "The license under which the author has made the asset available for use, if any."]
         #[serde(
             rename = "license",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub license: ::std::option::Option<crate::schemas::AssetLicense>,
-        #[doc = "Application-defined opaque metadata for this asset. This field is only\nreturned when querying for the signed-in user's own assets, not for public\nassets. This string is limited to 1K chars. It is up to the creator of\nthe asset to define the format for this string (for example, JSON)."]
+        #[doc = "Application-defined opaque metadata for this asset. This field is only returned when querying for the signed-in user's own assets, not for public assets. This string is limited to 1K chars. It is up to the creator of the asset to define the format for this string (for example, JSON)."]
         #[serde(
             rename = "metadata",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata: ::std::option::Option<String>,
-        #[doc = "The unique identifier for the asset in the form:\n`assets/{ASSET_ID}`."]
+        #[doc = "The unique identifier for the asset in the form: `assets/{ASSET_ID}`."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Hints for displaying the asset. Note that these parameters are not\nimmutable; the author of an asset may change them post-publication."]
+        #[doc = "Hints for displaying the asset. Note that these parameters are not immutable; the author of an asset may change them post-publication."]
         #[serde(
             rename = "presentationParams",
             default,
@@ -89,7 +89,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub thumbnail: ::std::option::Option<crate::schemas::File>,
-        #[doc = "The time when the asset was last modified. For published assets, whose\ncontents are immutable, the update time changes only when metadata\nproperties, such as visibility, are updated."]
+        #[doc = "The time when the asset was last modified. For published assets, whose contents are immutable, the update time changes only when metadata properties, such as visibility, are updated."]
         #[serde(
             rename = "updateTime",
             default,
@@ -116,7 +116,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AssetLicense {
-        #[doc = "Unlicensed: All Rights Reserved by the author. Unlicensed assets are\n**not** returned by List Assets."]
+        #[doc = "Unlicensed: All Rights Reserved by the author. Unlicensed assets are **not** returned by List Assets."]
         AllRightsReserved,
         #[doc = "Creative Commons CC-BY 3.0. https://creativecommons.org/licenses/by/3.0/"]
         CreativeCommonsBy,
@@ -192,11 +192,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum AssetVisibility {
-        #[doc = "Access to the asset and its underlying files and resources is restricted to\nthe author.\n**Authentication:** You must supply an OAuth token that corresponds to the\nauthor's account."]
+        #[doc = "Access to the asset and its underlying files and resources is restricted to the author. **Authentication:** You must supply an OAuth token that corresponds to the author's account."]
         Private,
-        #[doc = "Access to the asset and its underlying files and resources is available\nto anyone."]
+        #[doc = "Access to the asset and its underlying files and resources is available to anyone."]
         Public,
-        #[doc = "Access to the asset and its underlying files and resources is available to\nanyone with the asset's name. Unlisted assets are **not**\nreturned by List Assets."]
+        #[doc = "Access to the asset and its underlying files and resources is available to anyone with the asset's name. Unlisted assets are **not** returned by List Assets."]
         Unlisted,
         #[doc = "Unknown (and invalid) visibility."]
         VisibilityUnspecified,
@@ -327,23 +327,23 @@ pub mod schemas {
     pub enum AssetImportMessageCode {
         #[doc = "Unknown error code."]
         CodeUnspecified,
-        #[doc = "Default materials are used in the model. This means that one or more\nfaces is using default materials either because no usemtl statement was\nspecified or because the requested material was not found due to a\nmissing material file or bad material name. This does not cover the case\nof missing textures."]
+        #[doc = "Default materials are used in the model. This means that one or more faces is using default materials either because no usemtl statement was specified or because the requested material was not found due to a missing material file or bad material name. This does not cover the case of missing textures."]
         DefaultMaterials,
         #[doc = "When generating the preview for the import, no geometry was found."]
         EmptyModel,
         #[doc = "The importer was not able to import the model before the expiration time."]
         Expired,
-        #[doc = "Multiple files were encountered in addition to a ZIP archive. When\nuploading an archive only one file is permitted."]
+        #[doc = "Multiple files were encountered in addition to a ZIP archive. When uploading an archive only one file is permitted."]
         ExtraFilesWithArchive,
-        #[doc = "The importer encountered a fatal error and was unable to import the\nmodel."]
+        #[doc = "The importer encountered a fatal error and was unable to import the model."]
         FatalError,
         #[doc = "The importer encountered a problem reading an image file."]
         ImageError,
-        #[doc = "The import includes a file of an unsupported element type. The file path\nis specified."]
+        #[doc = "The import includes a file of an unsupported element type. The file path is specified."]
         InvalidElementType,
-        #[doc = "The asset import did not include any file that we can import (i.e. an OBJ\nfile)."]
+        #[doc = "The asset import did not include any file that we can import (i.e. an OBJ file)."]
         NoImportableFile,
-        #[doc = "A problem was encountered while parsing the OBJ file. The converter makes\na 'best effort' attempt to continue when encountering such issues. In\nsome cases the resulting preview model may still be acceptable. The\ndetails can be found in the parse error message."]
+        #[doc = "A problem was encountered while parsing the OBJ file. The converter makes a 'best effort' attempt to continue when encountering such issues. In some cases the resulting preview model may still be acceptable. The details can be found in the parse error message."]
         ObjParseError,
     }
     impl AssetImportMessageCode {
@@ -447,14 +447,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct File {
-        #[doc = "The MIME content-type, such as `image/png`.\nFor more information, see\n[MIME\ntypes](//developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)."]
+        #[doc = "The MIME content-type, such as `image/png`. For more information, see [MIME types](//developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)."]
         #[serde(
             rename = "contentType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub content_type: ::std::option::Option<String>,
-        #[doc = "The path of the resource file relative to the\nroot file. For root or thumbnail files,\nthis is just the filename."]
+        #[doc = "The path of the resource file relative to the root file. For root or thumbnail files, this is just the filename."]
         #[serde(
             rename = "relativePath",
             default,
@@ -499,21 +499,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub format_complexity: ::std::option::Option<crate::schemas::FormatComplexity>,
-        #[doc = "A short string that identifies the format type of this representation.\nPossible values are: `FBX`, `GLTF`, `GLTF2`, `OBJ`, and `TILT`."]
+        #[doc = "A short string that identifies the format type of this representation. Possible values are: `FBX`, `GLTF`, `GLTF2`, `OBJ`, and `TILT`."]
         #[serde(
             rename = "formatType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub format_type: ::std::option::Option<String>,
-        #[doc = "A list of dependencies of the root element. May include, but is not\nlimited to, materials, textures, and shader programs."]
+        #[doc = "A list of dependencies of the root element. May include, but is not limited to, materials, textures, and shader programs."]
         #[serde(
             rename = "resources",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub resources: ::std::option::Option<Vec<crate::schemas::File>>,
-        #[doc = "The root of the file hierarchy. This will always be populated.\nFor some format_types - such as `TILT`, which are\nself-contained - this is all of the data.\n\nOther types - such as `OBJ` - often reference other data elements.\nThese are contained in the resources field."]
+        #[doc = "The root of the file hierarchy. This will always be populated. For some format_types - such as `TILT`, which are self-contained - this is all of the data. Other types - such as `OBJ` - often reference other data elements. These are contained in the resources field."]
         #[serde(
             rename = "root",
             default,
@@ -544,7 +544,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct FormatComplexity {
-        #[doc = "A non-negative integer that represents the level of detail (LOD) of this\nformat relative to other formats of the same asset with the same\nformat_type.\nThis hint allows you to sort formats from the most-detailed (0) to\nleast-detailed (integers greater than 0)."]
+        #[doc = "A non-negative integer that represents the level of detail (LOD) of this format relative to other formats of the same asset with the same format_type. This hint allows you to sort formats from the most-detailed (0) to least-detailed (integers greater than 0)."]
         #[serde(
             rename = "lodHint",
             default,
@@ -700,7 +700,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub assets: ::std::option::Option<Vec<crate::schemas::Asset>>,
-        #[doc = "The continuation token for retrieving the next page. If empty,\nindicates that there are no more pages. To get the next page, submit the\nsame request specifying this value as the\npage_token."]
+        #[doc = "The continuation token for retrieving the next page. If empty, indicates that there are no more pages. To get the next page, submit the same request specifying this value as the page_token."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -736,7 +736,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub assets: ::std::option::Option<Vec<crate::schemas::Asset>>,
-        #[doc = "The continuation token for retrieving the next page. If empty,\nindicates that there are no more pages. To get the next page, submit the\nsame request specifying this value as the\npage_token."]
+        #[doc = "The continuation token for retrieving the next page. If empty, indicates that there are no more pages. To get the next page, submit the same request specifying this value as the page_token."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -765,7 +765,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ListUserAssetsResponse {
-        #[doc = "The continuation token for retrieving the next page. If empty,\nindicates that there are no more pages. To get the next page, submit the\nsame request specifying this value as the\npage_token."]
+        #[doc = "The continuation token for retrieving the next page. If empty, indicates that there are no more pages. To get the next page, submit the same request specifying this value as the page_token."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -831,7 +831,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub file_path: ::std::option::Option<String>,
-        #[doc = "The text of the line. Note that this may be truncated if the line was very\nlong. This may not include the error if it occurs after line truncation."]
+        #[doc = "The text of the line. Note that this may be truncated if the line was very long. This may not include the error if it occurs after line truncation."]
         #[serde(
             rename = "line",
             default,
@@ -871,7 +871,7 @@ pub mod schemas {
         FileNotFound,
         #[doc = "A missing file was found at a different file path."]
         FileSubstitution,
-        #[doc = "Vertex references are specified in an inconsistent style for a face (e.g.\nsome vertices specify texture vertices but some don't)."]
+        #[doc = "Vertex references are specified in an inconsistent style for a face (e.g. some vertices specify texture vertices but some don't)."]
         InconsistentVertexRefs,
         #[doc = "The command is invalid."]
         InvalidCommand,
@@ -907,11 +907,11 @@ pub mod schemas {
         TooFewVertices,
         #[doc = "The vertex specified too many dimensions for its usage."]
         TooManyDimensions,
-        #[doc = "The maximum number of problems to report was reached. Parsing continues,\nbut further problems will be ignored."]
+        #[doc = "The maximum number of problems to report was reached. Parsing continues, but further problems will be ignored."]
         TooManyProblems,
-        #[doc = "The specified material was not found in any material definition in the\nimport."]
+        #[doc = "The specified material was not found in any material definition in the import."]
         UnknownMaterial,
-        #[doc = "This command is a valid OBJ command but is not supported. This error is\nonly generated for the first instance of such a command."]
+        #[doc = "This command is a valid OBJ command but is not supported. This error is only generated for the first instance of such a command."]
         UnsupportedCommand,
         #[doc = "This line ended with unparsed token characters."]
         UnusedTokens,
@@ -1058,21 +1058,21 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct PresentationParams {
-        #[doc = "A background color which could be used for displaying the 3D asset in a\n'thumbnail' or 'palette' style view. Authors have the option to set this\nbackground color when publishing or editing their asset.\n\nThis is represented as a six-digit hexademical triplet specifying the\nRGB components of the background color, e.g. #FF0000 for Red."]
+        #[doc = "A background color which could be used for displaying the 3D asset in a 'thumbnail' or 'palette' style view. Authors have the option to set this background color when publishing or editing their asset. This is represented as a six-digit hexademical triplet specifying the RGB components of the background color, e.g. #FF0000 for Red."]
         #[serde(
             rename = "backgroundColor",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub background_color: ::std::option::Option<String>,
-        #[doc = "The materials' diffuse/albedo color. This does not apply to vertex colors\nor texture maps."]
+        #[doc = "The materials' diffuse/albedo color. This does not apply to vertex colors or texture maps."]
         #[serde(
             rename = "colorSpace",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub color_space: ::std::option::Option<crate::schemas::PresentationParamsColorSpace>,
-        #[doc = "A rotation that should be applied to the object root to make it upright.\nMore precisely, this quaternion transforms from \"object space\" (the space\nin which the object is defined) to \"presentation space\", a coordinate\nsystem where +Y is up, +X is right, -Z is forward. For example, if\nthe object is the Eiffel Tower, in its local coordinate system the\nobject might be laid out such that the base of the tower is on the\nYZ plane and the tip of the tower is towards positive X. In this case\nthis quaternion would specify a rotation (of 90 degrees about the Z\naxis) such that in the presentation space the base of the tower is\naligned with the XZ plane, and the tip of the tower lies towards +Y.\n\nThis rotation is unrelated to the object's pose in the web preview,\nwhich is just a camera position setting and is *not* reflected in this\nrotation.\n\nPlease note: this is applicable only to the gLTF."]
+        #[doc = "A rotation that should be applied to the object root to make it upright. More precisely, this quaternion transforms from \"object space\" (the space in which the object is defined) to \"presentation space\", a coordinate system where +Y is up, +X is right, -Z is forward. For example, if the object is the Eiffel Tower, in its local coordinate system the object might be laid out such that the base of the tower is on the YZ plane and the tip of the tower is towards positive X. In this case this quaternion would specify a rotation (of 90 degrees about the Z axis) such that in the presentation space the base of the tower is aligned with the XZ plane, and the tip of the tower lies towards +Y. This rotation is unrelated to the object's pose in the web preview, which is just a camera position setting and is *not* reflected in this rotation. Please note: this is applicable only to the gLTF."]
         #[serde(
             rename = "orientingRotation",
             default,
@@ -1222,7 +1222,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RemixInfo {
-        #[doc = "Resource ids for the sources of this remix, of the form:\n`assets/{ASSET_ID}`"]
+        #[doc = "Resource ids for the sources of this remix, of the form: `assets/{ASSET_ID}`"]
         #[serde(
             rename = "sourceAsset",
             default,
@@ -1253,7 +1253,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct StartAssetImportResponse {
-        #[doc = "The id of newly created asset. If this is empty when the operation is\ncomplete it means the import failed. Please refer to the\nassetImportMessages field to understand what went wrong."]
+        #[doc = "The id of newly created asset. If this is empty when the operation is complete it means the import failed. Please refer to the assetImportMessages field to understand what went wrong."]
         #[serde(
             rename = "assetId",
             default,
@@ -1267,7 +1267,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub asset_import_id: ::std::option::Option<String>,
-        #[doc = "The message from the asset import. This will contain any warnings\n(or - in the case of failure - errors) that occurred during import."]
+        #[doc = "The message from the asset import. This will contain any warnings (or - in the case of failure - errors) that occurred during import."]
         #[serde(
             rename = "assetImportMessages",
             default,
@@ -1513,9 +1513,13 @@ pub mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListMaxComplexity {
+                #[doc = "Highly-complex."]
                 Complex,
+                #[doc = "No complexity specified. This is equivalent to omitting the filter."]
                 ComplexityUnspecified,
+                #[doc = "Averagely-complex."]
                 Medium,
+                #[doc = "Simple."]
                 Simple,
             }
             impl ListMaxComplexity {
@@ -1597,7 +1601,7 @@ pub mod resources {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Returns detailed information about an asset given its name.\nPRIVATE assets are returned only if\nthe currently authenticated user (via OAuth token) is the author of the\nasset."]
+            #[doc = "Returns detailed information about an asset given its name. PRIVATE assets are returned only if the currently authenticated user (via OAuth token) is the author of the asset."]
             pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
@@ -1616,7 +1620,7 @@ pub mod resources {
                     name: name.into(),
                 }
             }
-            #[doc = "Lists all public, remixable assets. These are assets with an access level\nof PUBLIC and published under the\nCC-By license."]
+            #[doc = "Lists all public, remixable assets. These are assets with an access level of PUBLIC and published under the CC-By license."]
             pub fn list(&self) -> ListRequestBuilder {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
@@ -1777,19 +1781,19 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -1823,7 +1827,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "Filter assets based on the specified category. Supported values are:\n`animals`, `architecture`, `art`, `food`, `nature`, `objects`, `people`,\n`scenes`, `technology`, and `transport`."]
+            #[doc = "Filter assets based on the specified category. Supported values are: `animals`, `architecture`, `art`, `food`, `nature`, `objects`, `people`, `scenes`, `technology`, and `transport`."]
             pub fn category(mut self, value: impl Into<String>) -> Self {
                 self.category = Some(value.into());
                 self
@@ -1833,17 +1837,17 @@ pub mod resources {
                 self.curated = Some(value);
                 self
             }
-            #[doc = "Return only assets with the matching format. Acceptable values are:\n`BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, `TILT`."]
+            #[doc = "Return only assets with the matching format. Acceptable values are: `BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, `TILT`."]
             pub fn format(mut self, value: impl Into<String>) -> Self {
                 self.format = Some(value.into());
                 self
             }
-            #[doc = "One or more search terms to be matched against all text that Poly has\nindexed for assets, which includes display_name,\ndescription, and tags. Multiple keywords should be\nseparated by spaces."]
+            #[doc = "One or more search terms to be matched against all text that Poly has indexed for assets, which includes display_name, description, and tags. Multiple keywords should be separated by spaces."]
             pub fn keywords(mut self, value: impl Into<String>) -> Self {
                 self.keywords = Some(value.into());
                 self
             }
-            #[doc = "Returns assets that are of the specified complexity or less. Defaults to\nCOMPLEX. For example, a request for\nMEDIUM assets also includes\nSIMPLE assets."]
+            #[doc = "Returns assets that are of the specified complexity or less. Defaults to COMPLEX. For example, a request for MEDIUM assets also includes SIMPLE assets."]
             pub fn max_complexity(
                 mut self,
                 value: crate::resources::assets::params::ListMaxComplexity,
@@ -1851,17 +1855,17 @@ pub mod resources {
                 self.max_complexity = Some(value);
                 self
             }
-            #[doc = "Specifies an ordering for assets. Acceptable values are:\n`BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets\nbased on a combination of popularity and other features."]
+            #[doc = "Specifies an ordering for assets. Acceptable values are: `BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets based on a combination of popularity and other features."]
             pub fn order_by(mut self, value: impl Into<String>) -> Self {
                 self.order_by = Some(value.into());
                 self
             }
-            #[doc = "The maximum number of assets to be returned. This value must be between `1`\nand `100`. Defaults to `20`."]
+            #[doc = "The maximum number of assets to be returned. This value must be between `1` and `100`. Defaults to `20`."]
             pub fn page_size(mut self, value: i32) -> Self {
                 self.page_size = Some(value);
                 self
             }
-            #[doc = "Specifies a continuation token from a previous search whose results were\nsplit into multiple pages. To get the next page, submit the same request\nspecifying the value from\nnext_page_token."]
+            #[doc = "Specifies a continuation token from a previous search whose results were split into multiple pages. To get the next page, submit the same request specifying the value from next_page_token."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
@@ -2074,27 +2078,27 @@ pub mod resources {
                 &self,
                 path: &str,
             ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("category", &self.category)]);
-                let req = req.query(&[("curated", &self.curated)]);
-                let req = req.query(&[("format", &self.format)]);
-                let req = req.query(&[("keywords", &self.keywords)]);
-                let req = req.query(&[("maxComplexity", &self.max_complexity)]);
-                let req = req.query(&[("orderBy", &self.order_by)]);
-                let req = req.query(&[("pageSize", &self.page_size)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
+                let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                req = req.query(&[("category", &self.category)]);
+                req = req.query(&[("curated", &self.curated)]);
+                req = req.query(&[("format", &self.format)]);
+                req = req.query(&[("keywords", &self.keywords)]);
+                req = req.query(&[("maxComplexity", &self.max_complexity)]);
+                req = req.query(&[("orderBy", &self.order_by)]);
+                req = req.query(&[("pageSize", &self.page_size)]);
+                req = req.query(&[("pageToken", &self.page_token)]);
+                req = req.query(&[("access_token", &self.access_token)]);
+                req = req.query(&[("alt", &self.alt)]);
+                req = req.query(&[("callback", &self.callback)]);
+                req = req.query(&[("fields", &self.fields)]);
+                req = req.query(&[("key", &self.key)]);
+                req = req.query(&[("oauth_token", &self.oauth_token)]);
+                req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                req = req.query(&[("quotaUser", &self.quota_user)]);
+                req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                req = req.query(&[("uploadType", &self.upload_type)]);
+                req = req.query(&[("$.xgafv", &self.xgafv)]);
+                req = req.bearer_auth(
                     self.auth
                         .access_token()
                         .map_err(|err| crate::Error::OAuth2(err))?,
@@ -2143,8 +2147,11 @@ pub mod resources {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListVisibility {
+                    #[doc = "Returns only private assets."]
                     Private,
+                    #[doc = "Returns only published assets."]
                     Published,
+                    #[doc = "No visibility specified. Returns all assets."]
                     VisibilityUnspecified,
                 }
                 impl ListVisibility {
@@ -2223,7 +2230,7 @@ pub mod resources {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Lists assets authored by the given user. Only the value 'me', representing\nthe currently-authenticated user, is supported. May include assets with an\naccess level of PRIVATE or\nUNLISTED and assets which are\nAll Rights Reserved for the\ncurrently-authenticated user."]
+                #[doc = "Lists assets authored by the given user. Only the value 'me', representing the currently-authenticated user, is supported. May include assets with an access level of PRIVATE or UNLISTED and assets which are All Rights Reserved for the currently-authenticated user."]
                 pub fn list(&self, name: impl Into<String>) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
@@ -2272,27 +2279,27 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "Return only assets with the matching format. Acceptable values are:\n`BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, and `TILT`."]
+                #[doc = "Return only assets with the matching format. Acceptable values are: `BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, and `TILT`."]
                 pub fn format(mut self, value: impl Into<String>) -> Self {
                     self.format = Some(value.into());
                     self
                 }
-                #[doc = "Specifies an ordering for assets. Acceptable values are:\n`BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets\nbased on a combination of popularity and other features."]
+                #[doc = "Specifies an ordering for assets. Acceptable values are: `BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets based on a combination of popularity and other features."]
                 pub fn order_by(mut self, value: impl Into<String>) -> Self {
                     self.order_by = Some(value.into());
                     self
                 }
-                #[doc = "The maximum number of assets to be returned. This value must be between `1`\nand `100`. Defaults to `20`."]
+                #[doc = "The maximum number of assets to be returned. This value must be between `1` and `100`. Defaults to `20`."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
                     self
                 }
-                #[doc = "Specifies a continuation token from a previous search whose results were\nsplit into multiple pages. To get the next page, submit the same request\nspecifying the value from\nnext_page_token."]
+                #[doc = "Specifies a continuation token from a previous search whose results were split into multiple pages. To get the next page, submit the same request specifying the value from next_page_token."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
                     self
                 }
-                #[doc = "The visibility of the assets to be returned.\nDefaults to\nVISIBILITY_UNSPECIFIED\nwhich returns all assets."]
+                #[doc = "The visibility of the assets to be returned. Defaults to VISIBILITY_UNSPECIFIED which returns all assets."]
                 pub fn visibility(
                     mut self,
                     value: crate::resources::users::assets::params::ListVisibility,
@@ -2521,24 +2528,24 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("format", &self.format)]);
-                    let req = req.query(&[("orderBy", &self.order_by)]);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("visibility", &self.visibility)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("format", &self.format)]);
+                    req = req.query(&[("orderBy", &self.order_by)]);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("visibility", &self.visibility)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,
@@ -2568,7 +2575,7 @@ pub mod resources {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Lists assets that the user has liked. Only the value 'me', representing\nthe currently-authenticated user, is supported. May include assets with an\naccess level of UNLISTED."]
+                #[doc = "Lists assets that the user has liked. Only the value 'me', representing the currently-authenticated user, is supported. May include assets with an access level of UNLISTED."]
                 pub fn list(&self, name: impl Into<String>) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
@@ -2615,22 +2622,22 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "Return only assets with the matching format. Acceptable values are:\n`BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, `TILT`."]
+                #[doc = "Return only assets with the matching format. Acceptable values are: `BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, `TILT`."]
                 pub fn format(mut self, value: impl Into<String>) -> Self {
                     self.format = Some(value.into());
                     self
                 }
-                #[doc = "Specifies an ordering for assets. Acceptable values are:\n`BEST`, `NEWEST`, `OLDEST`, 'LIKED_TIME'. Defaults to `LIKED_TIME`, which\nranks assets based on how recently they were liked."]
+                #[doc = "Specifies an ordering for assets. Acceptable values are: `BEST`, `NEWEST`, `OLDEST`, 'LIKED_TIME'. Defaults to `LIKED_TIME`, which ranks assets based on how recently they were liked."]
                 pub fn order_by(mut self, value: impl Into<String>) -> Self {
                     self.order_by = Some(value.into());
                     self
                 }
-                #[doc = "The maximum number of assets to be returned. This value must be between `1`\nand `100`. Defaults to `20`."]
+                #[doc = "The maximum number of assets to be returned. This value must be between `1` and `100`. Defaults to `20`."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
                     self
                 }
-                #[doc = "Specifies a continuation token from a previous search whose results were\nsplit into multiple pages. To get the next page, submit the same request\nspecifying the value from\nnext_page_token."]
+                #[doc = "Specifies a continuation token from a previous search whose results were split into multiple pages. To get the next page, submit the same request specifying the value from next_page_token."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
                     self
@@ -2856,23 +2863,23 @@ pub mod resources {
                     &self,
                     path: &str,
                 ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("format", &self.format)]);
-                    let req = req.query(&[("orderBy", &self.order_by)]);
-                    let req = req.query(&[("pageSize", &self.page_size)]);
-                    let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
+                    let mut req = self.reqwest.request(::reqwest::Method::GET, path);
+                    req = req.query(&[("format", &self.format)]);
+                    req = req.query(&[("orderBy", &self.order_by)]);
+                    req = req.query(&[("pageSize", &self.page_size)]);
+                    req = req.query(&[("pageToken", &self.page_token)]);
+                    req = req.query(&[("access_token", &self.access_token)]);
+                    req = req.query(&[("alt", &self.alt)]);
+                    req = req.query(&[("callback", &self.callback)]);
+                    req = req.query(&[("fields", &self.fields)]);
+                    req = req.query(&[("key", &self.key)]);
+                    req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    req = req.query(&[("quotaUser", &self.quota_user)]);
+                    req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    req = req.query(&[("uploadType", &self.upload_type)]);
+                    req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    req = req.bearer_auth(
                         self.auth
                             .access_token()
                             .map_err(|err| crate::Error::OAuth2(err))?,

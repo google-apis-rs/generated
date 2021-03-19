@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("customsearch1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200513")
+            .version("0.1.0-20210317")
             .about("Searches over a website or collection of websites")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -37,14 +37,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("Returns metadata about the search performed, metadata about the custom\nsearch engine used for the search, and the search results.");
+            let mcmd = SubCommand::with_name("list").about("Returns metadata about the search performed, metadata about the engine used for the search, and the search results.");
             cse0 = cse0.subcommand(mcmd);
         }
         let mut siterestrict1 = SubCommand::with_name("siterestrict")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("Returns metadata about the search performed, metadata about the custom\nsearch engine used for the search, and the search results. Uses a small set\nof url patterns.");
+            let mcmd = SubCommand::with_name("list").about("Returns metadata about the search performed, metadata about the engine used for the search, and the search results. Uses a small set of url patterns.");
             siterestrict1 = siterestrict1.subcommand(mcmd);
         }
         cse0 = cse0.subcommand(siterestrict1);
